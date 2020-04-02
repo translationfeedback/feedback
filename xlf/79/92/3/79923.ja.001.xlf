@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/79923">
+    <body>
+      <group id="79923">
+        <trans-unit id="94b77d4c21edabc0121f024c01bcc9ef48259dc3" translate="yes" xml:space="preserve">
+          <source>&quot;Static&quot; (AKA statically allocated) variables are not allocated on the stack. Do not assume so - many people do only because &quot;static&quot; sounds a lot like &quot;stack&quot;. They actually exist in neither the stack nor the heap. The are part of what's called the &lt;a href=&quot;http://en.wikipedia.org/wiki/Data_segment&quot;&gt;data segment&lt;/a&gt;.</source>
+          <target state="translated">「静的」（静的に割り当てられる）変数はスタックに割り当てられません。 そう思わないでください-多くの人々は、「静的」が「スタック」のように聞こえるためだけにそうします。 それらは実際にはスタックにもヒープにも存在しません。 これらは、いわゆる&lt;a href=&quot;http://en.wikipedia.org/wiki/Data_segment&quot;&gt;データセグメント&lt;/a&gt;の一部です。</target>
+        </trans-unit>
+        <trans-unit id="e7b5c0042bc6fdc5e224949119eea46897b85f96" translate="yes" xml:space="preserve">
+          <source>&quot;You can use the stack if you know exactly how much data you need to allocate before compile time, and it is not too big. You can use the heap if you don't know exactly how much data you will need at runtime or if you need to allocate a lot of data.&quot;</source>
+          <target state="translated">&quot;コンパイル前にどのくらいのデータを割り当てる必要があるのかが正確にわかっていて、大きすぎない場合はスタックを使うことができます。実行時にどのくらいのデータが必要になるのかが正確にわからない場合や、多くのデータを割り当てる必要がある場合は、ヒープを使用することができます。&quot;</target>
+        </trans-unit>
+        <trans-unit id="6b71c1598ca48211c09537cb37ffecd0279e4352" translate="yes" xml:space="preserve">
+          <source>(I have moved this answer from another question that was more or less a dupe of this one.)</source>
+          <target state="translated">(この回答を多かれ少なかれ別の質問から移動させました)</target>
+        </trans-unit>
+        <trans-unit id="61257768b7a93e136c9c290d6825931b71bdb701" translate="yes" xml:space="preserve">
+          <source>(Relatively) slower access</source>
+          <target state="translated">相対的に)アクセスが遅い</target>
+        </trans-unit>
+        <trans-unit id="260e2615aff475120193632bb3dec58b387e3862" translate="yes" xml:space="preserve">
+          <source>1) Where and what are they (physically in a real computer's memory)?</source>
+          <target state="translated">1)どこに何があるのか(物理的には実際のコンピュータのメモリの中にある)?</target>
+        </trans-unit>
+        <trans-unit id="fdb1507c9ac6adb1fa6fa6251df8690b83ca6414" translate="yes" xml:space="preserve">
+          <source>2) To what extent are they controlled by the OS or language runtime?</source>
+          <target state="translated">2)OSや言語のランタイムによってどこまで制御されているか?</target>
+        </trans-unit>
+        <trans-unit id="99b4e74430a1011d0a32a5e6a68f89192d5600f4" translate="yes" xml:space="preserve">
+          <source>2b) What is their scope?</source>
+          <target state="translated">2b)その範囲は?</target>
+        </trans-unit>
+        <trans-unit id="9888f38f3e423435fa5b8292adbdd39fb0f72092" translate="yes" xml:space="preserve">
+          <source>2c) What determines the size of each of them?</source>
+          <target state="translated">2c)それぞれの大きさは何で決まるのか?</target>
+        </trans-unit>
+        <trans-unit id="019eef749bba4958d2ffca2f9849b67199fb6815" translate="yes" xml:space="preserve">
+          <source>2d) What makes one faster?</source>
+          <target state="translated">2d)何が人を速くするのか?</target>
+        </trans-unit>
+        <trans-unit id="e2d2295e136ea1dc3f598156ec945a446432c714" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Local Variables&lt;/code&gt; that only need to last as long as the function invocation go in the stack. The heap is used for variables whose lifetime we don't really know up front but we expect them to last a while. In most languages it's critical that we know at compile time how large a variable is if we want to store it on the stack.</source>
+          <target state="translated">関数の呼び出しがスタックに入る間だけ持続する必要がある &lt;code&gt;Local Variables&lt;/code&gt; 。 ヒープは、その存続期間が実際にはわからない変数に使用されますが、しばらく続くと予想されます。 ほとんどの言語では、変数をスタックに格納する場合、コンパイル時に変数の大きさを知ることが重要です。</target>
+        </trans-unit>
+        <trans-unit id="db81e688d99a4e08a6e79477826a7c115e20208c" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;To what extent are they controlled by the OS or language runtime?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;OSまたは言語ランタイムによってどの程度制御されていますか？&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="513a3b3ab4e6ae37babfa4b83b1cb3c51c31881a" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;What determines the size of each of them?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;それぞれのサイズを決定するものは何ですか？&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="7d053678e5d47e6f07a8fde4ce00b7cddb559cbb" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;What is their scope?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;それらの範囲は何ですか？&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="dcfa20263ead7486e0e7d967879203f1a13837a0" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;What makes one faster?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;何が速くなるのですか？&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="e9a6c5f939fd49e7bad84b2be8abb7f468b02d07" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Both together&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;一緒に&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4168878b06eaa6917a0f012585506612f5054ea6" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Example:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Example:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="84a530a09edadff20200961546fdc028c855eefc" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Heap:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Heap:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="85e58808cd94b0b4694342607d9808c4b578db9b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Heap&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Heap&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="917e40efec8d1d189c6f18faaf670f99b1bd7e44" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Heap&lt;/strong&gt;: No order, processing gonna be slower and values are messed up together with no specific order or index... there are random and there is no relationship between them... so execution and usage time could be vary...</source>
+          <target state="translated">&lt;strong&gt;ヒープ&lt;/strong&gt; ：順序がなく、処理が遅くなり、値が特定の順序またはインデックスなしで混乱する...ランダムであり、それらの間に関係はない...したがって、実行時間と使用時間は変化する可能性がある...</target>
+        </trans-unit>
+        <trans-unit id="742792f83b9d6d503d676cd5342ac745b1a51f3c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Implementation&lt;/strong&gt;
+Implementation of both the stack and heap is usually down to the runtime / OS. Often games and other applications that are performance critical create their own memory solutions that grab a large chunk of memory from the heap and then dish it out internally to avoid relying on the OS for memory.</source>
+          <target state="translated">&lt;strong&gt;実装&lt;/strong&gt;スタックとヒープの両方の実装は通常、ランタイム/ OSに依存します。 多くの場合、パフォーマンスが重要なゲームやその他のアプリケーションは独自のメモリソリューションを作成し、ヒープから大量のメモリを取得し、OSに依存しないように内部的に提供します。</target>
+        </trans-unit>
+        <trans-unit id="b0c3414fb835eb86d73b6be57a2a7aebafd2801c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Interesting note:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;興味深いメモ：&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3a0e3df07fea6c0d8b408481568ec08761eb430d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;OK,&lt;/strong&gt; simply and in short words, they mean &lt;strong&gt;ordered&lt;/strong&gt; and &lt;strong&gt;not ordered&lt;/strong&gt;...!</source>
+          <target state="translated">&lt;strong&gt;わかりました、&lt;/strong&gt;簡単に、そして短い言葉で言えば、それらは&lt;strong&gt;注文されたもの&lt;/strong&gt;と&lt;strong&gt;注文され&lt;/strong&gt;て&lt;strong&gt;いない&lt;/strong&gt;ものを意味します...</target>
+        </trans-unit>
+        <trans-unit id="8628c9ba0a73bc55254ac6ceb73adfa8e4eada2c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Physical location in memory&lt;/strong&gt;
+This is less relevant than you think because of a technology called &lt;a href=&quot;http://en.wikipedia.org/wiki/Virtual_memory&quot;&gt;Virtual Memory&lt;/a&gt; which makes your program think that you have access to a certain address where the physical data is somewhere else (even on the hard disc!). The addresses you get for the stack are in increasing order as your call tree gets deeper. The addresses for the heap are un-predictable (i.e implimentation specific) and frankly not important.</source>
+          <target state="translated">&lt;strong&gt;メモリ内の物理的な場所&lt;/strong&gt;これは、物理データが他の場所にある特定のアドレス（ハードディスク上でも！） スタックに対して取得するアドレスは、呼び出しツリーが深くなるにつれて昇順になります。 ヒープのアドレスは予測不可能であり（つまり、実装に固有）、率直に言って重要ではありません。</target>
+        </trans-unit>
+        <trans-unit id="e19a9343f895eca75944e60482202b71e0cbcd58" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Stack:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Stack:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="c741ee79de20716b9e2549b13bac80467d01d08f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Stack&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Stack&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a7e4ac541ac7066d86d467c49418a1b8c8ab19f5" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Stack&lt;/strong&gt;: In stack items, things get on the top of each-other, means gonna be faster and more efficient to be processed!...</source>
+          <target state="translated">&lt;strong&gt;スタック&lt;/strong&gt; ：スタックアイテムでは、物事は互いの上に配置されます。つまり、処理がより高速で効率的になります！...</target>
+        </trans-unit>
+        <trans-unit id="7e7cfe5d1f60635f341d1ef4579eb83f724c5d41" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Heap&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;ヒープ&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a6709062928227b6319f7deeb9a0847d3a67f3a7" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Heap&lt;/strong&gt;
+The heap is a generic name for where you put the data that you create on the fly. If you don't know how many spaceships your program is going to create, you are likely to use the new (or malloc or equivalent) operator to create each spaceship. This allocation is going to stick around for a while, so it is likely we will free things in a different order than we created them.</source>
+          <target state="translated">ヒープヒープは、作成したデータをその場で配置する場所の総称です。 プログラムが作成する宇宙船の数がわからない場合は、新しい（またはmallocまたは同等の）演算子を使用して各宇宙船を作成する可能性があります。 この割り当てはしばらく続くため、作成した順序とは異なる順序で解放する可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="bcb3f513eb6fa7ddc8d6c4dc2b21d182cce677d5" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Stack&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;スタック&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a390d755244266caf60a0813cd14b6beb633141e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Stack&lt;/strong&gt;
+When you call a function the arguments to that function plus some other overhead is put on the stack. Some info (such as where to go on return) is also stored there.
+When you declare a variable inside your function, that variable is also allocated on the stack.</source>
+          <target state="translated">&lt;strong&gt;スタック&lt;/strong&gt;関数を呼び出すと、その関数の引数とその他のオーバーヘッドがスタックに置かれます。 一部の情報（戻り先など）もそこに格納されます。 関数内で変数を宣言すると、その変数もスタックに割り当てられます。</target>
+        </trans-unit>
+        <trans-unit id="76cc17ae17ebb267fcbd177db1d4f1d292b7ce9b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;To what extent are they controlled by the OS or language runtime?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;OSまたは言語ランタイムによってどの程度制御されていますか？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="0563b18a23e550f58bac67d459c94a52a3249acd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What determines the size of each of them?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;それぞれのサイズを決定するものは何ですか？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3c6c7dce19b600ea980045fc6edcd1962f6b5551" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What is a heap?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;ヒープとは何ですか？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b97a8d104003b830b171fde9ab6c0f738620e336" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What is a stack?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;スタックとは何ですか？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a6b73e40eadb8e589a235f27b4b54d80562f2496" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What is their scope?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;それらの範囲は何ですか？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="159e5d461f5ea67df5f298bd8e4358250caeb1b3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What makes one faster?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;何が速くなるのですか？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="78f9413c67586527ba6c81668b7aa287b0c28430" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Which is faster &amp;ndash; the stack or the heap? And why?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;スタックとヒープのどちらが速いですか？&lt;/strong&gt; &lt;strong&gt;なぜ？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="ad882499bf2a5c77de197c8c4907389551e5d253" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;stack&lt;/strong&gt;, &lt;strong&gt;heap&lt;/strong&gt; and &lt;strong&gt;data&lt;/strong&gt; of each process in virtual memory:</source>
+          <target state="translated">仮想メモリ内の各プロセスの&lt;strong&gt;スタック&lt;/strong&gt; 、 &lt;strong&gt;ヒープ&lt;/strong&gt; 、および&lt;strong&gt;データ&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="2e2ab5cd39dfbdc8c03b7bbbbd7b88d895cbeb77" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt;Image source: &lt;a href=&quot;http://vikashazrati.wordpress.com/2007/10/01/quicktip-java-basics-stack-and-heap/&quot;&gt;vikashazrati.wordpress.com&lt;/a&gt;&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt;画像ソース： &lt;a href=&quot;http://vikashazrati.wordpress.com/2007/10/01/quicktip-java-basics-stack-and-heap/&quot;&gt;vikashazrati.wordpress.com&lt;/a&gt;&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="66efe8c438bd049d124a2fb9c161181488baa05f" translate="yes" xml:space="preserve">
+          <source>A clear demonstration:</source>
+          <target state="translated">明快なデモ。</target>
+        </trans-unit>
+        <trans-unit id="01ce9bd8f6baf3c7c49927f90f1d012016d83e18" translate="yes" xml:space="preserve">
+          <source>A couple of cents: I think, it will be good to draw memory graphical and more simple:</source>
+          <target state="translated">セントのカップル。私は思うに、それはメモリのグラフィカルな、よりシンプルな描画することが良いでしょう。</target>
+        </trans-unit>
+        <trans-unit id="a15b908bf3b3ecfd069a0fe5e01ef6e82a56da1d" translate="yes" xml:space="preserve">
+          <source>A heap is a general term for anything that can be dynamically allocated.  Depending on which way you look at it, it is constantly changing size.  In modern processors and operating systems the exact way it works is very abstracted anyway, so you don't normally need to worry much about how it works deep down, except that (in languages where it lets you) you mustn't use memory that you haven't allocated yet or memory that you have freed.</source>
+          <target state="translated">ヒープとは、動的に割り当てられるものの総称です。どのように見るかによって、ヒープのサイズは常に変化しています。最近のプロセッサやオペレーティングシステムでは、ヒープがどのように動作するかは非常に抽象化されているので、通常はヒープがどのように動作するのかについて深く心配する必要はありませんが、(割り当てが可能な言語では)まだ割り当てていないメモリや解放したメモリを使ってはいけないということ以外は、あまり心配する必要はありません。</target>
+        </trans-unit>
+        <trans-unit id="068dd7e9d8ed5b397b0a6eff3ba84c4edc71f672" translate="yes" xml:space="preserve">
+          <source>A heap is a general term used for any memory that is allocated dynamically and randomly; i.e. out of order.  The memory is typically allocated by the OS, with the application calling API functions to do this allocation.  There is a fair bit of overhead required in managing dynamically allocated memory, which is usually handled by the runtime code of the programming language or environment used.</source>
+          <target state="translated">ヒープとは、動的かつランダムに割り当てられるメモリの総称です。メモリは通常 OS によって割り当てられ、アプリケーションはこの割り当てを行うために API 関数を呼び出します。動的に割り当てられたメモリの管理にはかなりのオーバーヘッドが必要で、通常は使用するプログラミング言語や環境のランタイムコードによって処理されます。</target>
+        </trans-unit>
+        <trans-unit id="34f5d3ec6b1ce5253cef0356a62d5aa350e32ac5" translate="yes" xml:space="preserve">
+          <source>A heap is an untidy collection of things piled up haphazardly.</source>
+          <target state="translated">ヒープとは、無造作に積み上げられた物の集まりのことです。</target>
+        </trans-unit>
+        <trans-unit id="ee141ae29a5c83c4f8aa0cade4298cafffd77712" translate="yes" xml:space="preserve">
+          <source>A lot of answers are correct as concepts, but we must note that a stack is needed by the hardware (i.e. microprocessor) to allow calling subroutines (CALL in assembly language..). (OOP guys will call it &lt;em&gt;methods&lt;/em&gt;)</source>
+          <target state="translated">多くの答えは概念として正しいですが、サブルーチン（アセンブリ言語でのCALL）を呼び出すには、ハードウェア（マイクロプロセッサなど）がスタックを必要とすることに注意する必要があります。 （OOPの人はそれを&lt;em&gt;メソッド&lt;/em&gt;と呼び&lt;em&gt;ます&lt;/em&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="c31b57674dbc2b0d1d5439a1c86d854b8d2b25b9" translate="yes" xml:space="preserve">
+          <source>A particularly poignant example of why it's important to distinguish between lifetime and scope is that a variable can have local scope but static lifetime - for instance, &quot;someLocalStaticVariable&quot; in the code sample above. Such variables can make our common but informal naming habits very confusing. For instance when we say &quot;&lt;em&gt;local&lt;/em&gt;&quot; we usually mean &quot;&lt;em&gt;locally scoped automatically allocated variable&lt;/em&gt;&quot; and when we say global we usually mean &quot;&lt;em&gt;globally scoped statically allocated variable&lt;/em&gt;&quot;. Unfortunately when it comes to things like &quot;&lt;em&gt;file scoped statically allocated variables&lt;/em&gt;&quot; many people just say... &quot;&lt;em&gt;huh???&lt;/em&gt;&quot;.</source>
+          <target state="translated">ライフタイムとスコープを区別することが重要である理由の特に感動的な例は、変数がローカルスコープを持つことができるが静的なライフタイムを持つことができることです-たとえば、上記のコードサンプルの「someLocalStaticVariable」。 そのような変数は、私たちの一般的だが非公式な命名習慣を非常に混乱させる可能性があります。 たとえば、「 &lt;em&gt;ローカル&lt;/em&gt; 」とは通常、「 &lt;em&gt;ローカルスコープの自動的に割り当てられた変数&lt;/em&gt; 」を意味し、グローバルとは、通常「 &lt;em&gt;グローバルスコープの静的に割り当てられた変数&lt;/em&gt; 」を意味し&lt;em&gt;ます&lt;/em&gt; 。 残念ながら、「 &lt;em&gt;ファイルスコープの静的に割り当てられた変数&lt;/em&gt; 」のようなことになると、多くの人が言うのは...「 &lt;em&gt;ハァッ???&lt;/em&gt; 」です。</target>
+        </trans-unit>
+        <trans-unit id="cc133acebf965ce867ad157a05f353a3707fecd3" translate="yes" xml:space="preserve">
+          <source>A stack is a pile of objects, typically one that is neatly arranged.</source>
+          <target state="translated">スタックとは、オブジェクトが積み重なったもので、一般的には整然と配置されたものを指します。</target>
+        </trans-unit>
+        <trans-unit id="9f4c46ea1849c89970aa6079e049594ebbd9a39c" translate="yes" xml:space="preserve">
+          <source>A stack is used for static memory allocation and a heap for dynamic memory allocation, both stored in the computer's RAM.</source>
+          <target state="translated">スタックはスタティックメモリの割り当てに使用され、ヒープはダイナミックメモリの割り当てに使用され、両方ともコンピュータのRAMに格納されます。</target>
+        </trans-unit>
+        <trans-unit id="7d53fc8a81490a3d76add68a85ec8e7f0f02250f" translate="yes" xml:space="preserve">
+          <source>A typical C program was laid out flat in memory with
+an opportunity to increase by changing the brk() value.
+Typically, the HEAP was just below this brk value
+and increasing brk increased the amount of available heap.</source>
+          <target state="translated">典型的なC言語のプログラムは、メモリ上にフラットにレイアウトされており、brk()の値を変更することで増加させることができます。一般的に、HEAPはこのbrk値のすぐ下にあり、brkを増やすことで利用可能なヒープの量が増えます。</target>
+        </trans-unit>
+        <trans-unit id="0eb3c88bb9382983d9131328ce15ca6b37271be5" translate="yes" xml:space="preserve">
+          <source>Again, it depends on the language, compiler, operating system and architecture.  A stack is usually pre-allocated, because by definition it must be contiguous memory.  The language compiler or the OS determine its size.  You don't store huge chunks of data on the stack, so it'll be big enough that it should never be fully used, except in cases of unwanted endless recursion (hence, &quot;stack overflow&quot;) or other unusual programming decisions.</source>
+          <target state="translated">繰り返しになりますが、言語、コンパイラ、オペレーティングシステム、アーキテクチャに依存します。スタックは通常、定義上、連続したメモリでなければならないため、事前に割り当てられています。言語コンパイラや OS がそのサイズを決定します。巨大なデータの塊をスタックに保存することはありませんので、不要な無限の再帰(つまり、「スタックオーバーフロー」)やその他の異常なプログラミング上の決定の場合を除いて、スタックを完全に使用してはいけないほどの大きさになります。</target>
+        </trans-unit>
+        <trans-unit id="3c53181b48366809a97c6caadb3cafb768a586d9" translate="yes" xml:space="preserve">
+          <source>Allocating and deallocating many small blocks may leave the heap in a state where there are a lot of small free blocks interspersed between the used blocks. A request to allocate a large block may fail because none of the free blocks are large enough to satisfy the allocation request even though the combined size of the free blocks may be large enough. This is called &lt;em&gt;heap fragmentation&lt;/em&gt;.</source>
+          <target state="translated">多くの小さなブロックを割り当てたり割り当てを解除したりすると、ヒープは、使用されているブロックの間に散在する小さな空きブロックがたくさんある状態のままになることがあります。 フリーブロックの合計サイズが十分に大きい場合でも、割り当て要求を満たすのに十分なフリーブロックがないため、大きなブロックを割り当てる要求は失敗する可能性があります。 これは、 &lt;em&gt;ヒープの断片化&lt;/em&gt;と呼ばれ&lt;em&gt;ます&lt;/em&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="038e52e8565cce864ffd7e1b894e6892fe5a1d29" translate="yes" xml:space="preserve">
+          <source>Allocating memory on the stack is as simple as moving the stack pointer up.</source>
+          <target state="translated">スタック上のメモリの割り当ては、スタックポインタを上に移動させるのと同じくらい簡単です。</target>
+        </trans-unit>
+        <trans-unit id="361ef44f8aa22b0b13d1393adb5398aff7afdb86" translate="yes" xml:space="preserve">
+          <source>Already given in top.</source>
+          <target state="translated">すでにトップで与えられている。</target>
+        </trans-unit>
+        <trans-unit id="d9ac18d3c62e0844f72b69b9833ed0b09f4440d4" translate="yes" xml:space="preserve">
+          <source>Also, stack vs. heap is not only a performance consideration; it also tells you a lot about the expected lifetime of objects.</source>
+          <target state="translated">また、スタックとヒープの比較はパフォーマンスだけでなく、オブジェクトの期待される寿命についても多くのことを教えてくれます。</target>
+        </trans-unit>
+        <trans-unit id="1e2d387706b8a4328b31b3009e56251e7ed275fb" translate="yes" xml:space="preserve">
+          <source>Although most compilers and interpreters implement this behavior similarly in terms of using stacks, heaps, etc, a compiler may sometimes break these conventions if it wants as long as behavior is correct. For instance, due to optimization a local variable may only exist in a register or be removed entirely, even though most local variables exist in the stack. As has been pointed out in a few comments, you are free to implement a compiler that doesn't even use a stack or a heap, but instead some other storage mechanisms (rarely done, since stacks and heaps are great for this).</source>
+          <target state="translated">ほとんどのコンパイラやインタプリタは、スタックやヒープなどを使用して同様の動作を実装していますが、正しい動作をしている限り、コンパイラがこれらの規則を破ることもあります。例えば、最適化のために、ほとんどのローカル変数がスタックに存在するにもかかわらず、ローカル変数がレジスタにしか存在しなかったり、完全に削除されたりすることがあります。いくつかのコメントで指摘されているように、スタックやヒープを使わないコンパイラを実装することは自由です。</target>
+        </trans-unit>
+        <trans-unit id="eeb33740077a9e43e5825d3e19723b4a66394dcc" translate="yes" xml:space="preserve">
+          <source>Arrows - show where grow stack and heap, process stack size have limit, defined in OS, thread stack size limits by parameters in thread create API usually. Heap usually limiting by process maximum virtual memory size, for 32 bit 2-4&amp;nbsp;GB for example.</source>
+          <target state="translated">矢印-成長スタックとヒープ、プロセススタックサイズに制限がある場所を示します。OSで定義され、通常はスレッド作成APIのパラメーターによるスレッドスタックサイズの制限です。 ヒープは通常、たとえば32ビット2〜4 GBの場合、プロセスの最大仮想メモリサイズによって制限されます。</target>
+        </trans-unit>
+        <trans-unit id="24e9bfdff99d8d81e72e86eb67d28dd9afa0f779" translate="yes" xml:space="preserve">
+          <source>As mentioned, heap and stack are general terms, and can be implemented in many ways.  Computer programs typically have a stack called a &lt;a href=&quot;http://en.wikipedia.org/wiki/Call_stack&quot;&gt;call stack&lt;/a&gt; which stores information relevant to the current function such as a pointer to whichever function it was called from, and any local variables.  Because functions call other functions and then return, the stack grows and shrinks to hold information from the functions further down the call stack.  A program doesn't really have runtime control over it; it's determined by the programming language, OS and even the system architecture.</source>
+          <target state="translated">前述のように、ヒープとスタックは一般的な用語であり、さまざまな方法で実装できます。 コンピュータプログラムには通常、 &lt;a href=&quot;http://en.wikipedia.org/wiki/Call_stack&quot;&gt;呼び出し&lt;/a&gt;スタックと呼ばれるスタックがあり、 呼び出し元の関数へのポインタやローカル変数など、現在の関数に関連する情報が格納されています。 関数は他の関数を呼び出してから戻るため、スタックは拡大および縮小して、関数からの情報を呼び出しスタックのさらに下に保持します。 プログラムは実際にはそれを実行時に制御しません。 プログラミング言語、OS、さらにはシステムアーキテクチャによっても異なります。</target>
+        </trans-unit>
+        <trans-unit id="2df8df4816fd4ed74f3ebc71f597979521860d83" translate="yes" xml:space="preserve">
+          <source>As the heap grows new blocks are often allocated from lower addresses towards higher addresses. Thus you can think of the heap as a &lt;em&gt;heap&lt;/em&gt; of memory blocks that grows in size as memory is allocated. If the heap is too small for an allocation the size can often be increased by acquiring more memory from the underlying operating system.</source>
+          <target state="translated">ヒープが大きくなると、新しいブロックが低いアドレスから高いアドレスに向かって割り当てられることがよくあります。 したがって、 &lt;em&gt;ヒープ&lt;/em&gt;は、メモリが割り当てられるとサイズが大きくなるメモリブロックのヒープと考えることができます。 ヒープが小さすぎて割り当てできない場合は、基盤となるオペレーティングシステムからより多くのメモリを取得することにより、サイズを増やすことができます。</target>
+        </trans-unit>
+        <trans-unit id="50556eca9ce5726de27e85d02f2175c0f224c952" translate="yes" xml:space="preserve">
+          <source>As the stack is a limited block of memory, you can cause a &lt;em&gt;stack overflow&lt;/em&gt; by calling too many nested functions and/or allocating too much space for local variables. Often the memory area used for the stack is set up in such a way that writing below the bottom (the lowest address) of the stack will trigger a trap or exception in the CPU. This exceptional condition can then be caught by the runtime and converted into some kind of stack overflow exception.</source>
+          <target state="translated">スタックはメモリの限られたブロックであるため、ネストされた関数を呼び出しすぎたり、ローカル変数に割り当てられたスペースが多すぎたりして、 &lt;em&gt;スタックオーバーフローを&lt;/em&gt;引き起こす可能性があります。 多くの場合、スタックに使用されるメモリ領域は、スタックの最下位（最下位アドレス）の下に書き込むと、CPUでトラップまたは例外がトリガーされるように設定されます。 この例外的な状態は、ランタイムによってキャッチされ、ある種のスタックオーバーフロー例外に変換されます。</target>
+        </trans-unit>
+        <trans-unit id="b215c6f533c85e53fa09d968e37f28f9d39f9d4b" translate="yes" xml:space="preserve">
+          <source>At run-time, if the application needs more heap, it can allocate memory from free memory and if the stack needs memory, it can allocate memory from free memory allocated memory for the application.</source>
+          <target state="translated">実行時に、アプリケーションがより多くのヒープを必要とする場合は、空きメモリからメモリを割り当て、スタックがメモリを必要とする場合は、アプリケーションに割り当てられた空きメモリからメモリを割り当てることができます。</target>
+        </trans-unit>
+        <trans-unit id="54b26119365b1389f21ece7a4adac459e7df78fd" translate="yes" xml:space="preserve">
+          <source>Because the different threads share the heap in a multi-threaded application, this also means that there has to be some coordination between the threads so that they don&amp;rsquo;t try to access and manipulate the same piece(s) of memory in the heap at the same time.</source>
+          <target state="translated">異なるスレッドはマルチスレッドアプリケーションでヒープを共有するので、これは、スレッド間でヒープ内の同じメモリにアクセスして操作しないように、スレッド間に何らかの調整が必要であることも意味します。同時に。</target>
+        </trans-unit>
+        <trans-unit id="ccbbb8bb2cb5a86ca4310f5e73a45cd3c134e32e" translate="yes" xml:space="preserve">
+          <source>Because the stack is small, you would want to use it when you know exactly how much memory you will need for your data, or if you know the size of your data is very small.</source>
+          <target state="translated">スタックが小さいので、データに必要なメモリ量が正確にわかっている場合や、データのサイズが非常に小さいことがわかっている場合に使いたくなります。</target>
+        </trans-unit>
+        <trans-unit id="85af045b5af1615c35dbbd47456bb468389824a3" translate="yes" xml:space="preserve">
+          <source>Because you've allocated the stack before launching the program, you never need to malloc before you can use the stack, so that's a slight advantage there.  In practice, it's very hard to predict what will be fast and what will be slow in modern operating systems that have virtual memory subsystems, because how the pages are implemented and where they are stored is an implementation detail.</source>
+          <target state="translated">プログラムを起動する前にスタックを確保しているので、スタックを使用する前にmallocする必要はありません。実際には、仮想メモリサブシステムを持つ最新のオペレーティングシステムでは、何が速くて何が遅いのかを予測するのは非常に困難です。</target>
+        </trans-unit>
+        <trans-unit id="a1789265dfb7f69ad43a9c93ac040821d26c1139" translate="yes" xml:space="preserve">
+          <source>Both the stack and the heap are memory areas allocated from the underlying operating system (often virtual memory that is mapped to physical memory on demand).</source>
+          <target state="translated">スタックとヒープの両方とも、基盤となるオペレーティングシステムから割り当てられたメモリ領域です(多くの場合、オンデマンドで物理メモリにマップされる仮想メモリです)。</target>
+        </trans-unit>
+        <trans-unit id="74ded9b65c26de9b34aafae7449e1393446d30f8" translate="yes" xml:space="preserve">
+          <source>Can a function be allocated on the heap instead of a stack?</source>
+          <target state="translated">関数をスタックではなくヒープに割り当てることはできますか?</target>
+        </trans-unit>
+        <trans-unit id="5812990e8a5f0104b222e128474fb28611af16f1" translate="yes" xml:space="preserve">
+          <source>Can have a stack overflow when too much of the stack is used (mostly from infinite or too deep recursion, very large allocations).</source>
+          <target state="translated">スタックの使用量が多すぎるとスタックオーバーフローを起こすことがあります (主に無限または深すぎる再帰、非常に大きなアロケーションによるものです)。</target>
+        </trans-unit>
+        <trans-unit id="965cae31b330377a8052d9fde41cc56a8629759e" translate="yes" xml:space="preserve">
+          <source>Can have allocation failures if too big of a buffer is requested to be allocated.</source>
+          <target state="translated">大きすぎるバッファの割り当てが要求された場合、割り当てに失敗することがあります。</target>
+        </trans-unit>
+        <trans-unit id="1c8dd66e84903a898b8ce09b004e11d5dd348f81" translate="yes" xml:space="preserve">
+          <source>Can have fragmentation when there are a lot of allocations and deallocations.</source>
+          <target state="translated">割り当てやデアロケートが多いと断片化する可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="57ed76834f319ea80eb97efad57dfda743be40d9" translate="yes" xml:space="preserve">
+          <source>Creating Objects on the Stack and Heap</source>
+          <target state="translated">スタックとヒープ上でのオブジェクトの作成</target>
+        </trans-unit>
+        <trans-unit id="3c85e89113521a7aade115de0029e8e2378f88c7" translate="yes" xml:space="preserve">
+          <source>Data created on the stack can be used without pointers.</source>
+          <target state="translated">スタック上に作成されたデータは、ポインタなしで使用することができます。</target>
+        </trans-unit>
+        <trans-unit id="10b6d2f5365d704078f50dcd64eef839102a1ac7" translate="yes" xml:space="preserve">
+          <source>Deallocating the stack is pretty simple because you always deallocate in the reverse order in which you allocate. Stack stuff is added as you enter functions, the corresponding data is removed as you exit them. This means that you tend to stay within a small region of the stack unless you call lots of functions that call lots of other functions (or create a recursive solution).</source>
+          <target state="translated">スタックの解放は非常に簡単で、常に割り当てた順番と逆の順番で解放します。スタックは関数を入力すると追加され、関数を終了すると対応するデータが削除されます。これは、他の関数をたくさん呼び出す関数をたくさん呼び出す(または再帰的な解決策を作る)場合を除いて、スタックの小さな領域に留まる傾向があることを意味します。</target>
+        </trans-unit>
+        <trans-unit id="2e6efb7de0e3b1a967b575cd00a39178bc6cda79" translate="yes" xml:space="preserve">
+          <source>Details can be found from &lt;strong&gt;&lt;a href=&quot;https://stackoverflow.com/questions/161053/which-is-faster-stack-allocation-or-heap-allocation&quot;&gt;here&lt;/a&gt;&lt;/strong&gt;.</source>
+          <target state="translated">詳細は&lt;strong&gt;&lt;a href=&quot;https://stackoverflow.com/questions/161053/which-is-faster-stack-allocation-or-heap-allocation&quot;&gt;こちら&lt;/a&gt;&lt;/strong&gt;から。</target>
+        </trans-unit>
+        <trans-unit id="3454116b814c4a540b1fa2eaa28b022a062afd97" translate="yes" xml:space="preserve">
+          <source>Don't have to explicitly de-allocate variables</source>
+          <target state="translated">明示的に変数の割り当てを解除する必要はありません。</target>
+        </trans-unit>
+        <trans-unit id="0060cdcb4b02afd4a89a6475ecd1acc3d319f929" translate="yes" xml:space="preserve">
+          <source>Due to sequential storage in stack, execution is faster. Storage in heap would have resulted in huge time consumption thus making the whole program execute slower.</source>
+          <target state="translated">スタックにシーケンシャルストレージがあるため、実行が速くなります。ヒープに格納すると膨大な時間を消費してしまい、プログラム全体の実行が遅くなります。</target>
+        </trans-unit>
+        <trans-unit id="f04d90ff7dea8c8dc11581ddfc938b88076014c3" translate="yes" xml:space="preserve">
+          <source>Dynamically created variables are stored here, which later requires freeing the allocated memory after use.</source>
+          <target state="translated">動的に作成された変数はここに格納され、使用後に割り当てられたメモリを解放する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="846279cf02a7a28e2eaddba31c218b6c4f28b95f" translate="yes" xml:space="preserve">
+          <source>Each thread gets a stack, while there's typically only one heap for the application (although it isn't uncommon to have multiple heaps for different types of allocation).</source>
+          <target state="translated">各スレッドはスタックを取得しますが、アプリケーションには通常 1 つのヒープしかありません (異なるタイプの割り当てのために複数のヒープを持つことは珍しくありませんが)。</target>
+        </trans-unit>
+        <trans-unit id="5e929f13154e75203839bfc2de286aa0a1a47dcc" translate="yes" xml:space="preserve">
+          <source>Even, more detail is given &lt;a href=&quot;http://net-informations.com/faq/net/stack-heap.htm&quot;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&quot;http://gribblelab.org/CBootcamp/7_Memory_Stack_vs_Heap.html&quot;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;.</source>
+          <target state="translated">さらに、 &lt;a href=&quot;http://net-informations.com/faq/net/stack-heap.htm&quot;&gt;&lt;strong&gt;ここ&lt;/strong&gt;&lt;/a&gt;と&lt;a href=&quot;http://gribblelab.org/CBootcamp/7_Memory_Stack_vs_Heap.html&quot;&gt;&lt;strong&gt;ここ&lt;/strong&gt;&lt;/a&gt;でより詳細に説明さ&lt;strong&gt;れ&lt;/strong&gt;てい&lt;strong&gt;ます&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="4077dc49f1766565dde4b0c98c71c99d05d1cf12" translate="yes" xml:space="preserve">
+          <source>Every time an object is instantiated, a chunk of heap memory is set aside to hold the data (state) of that object. Since objects can contain other objects, some of this data can in fact hold references to those nested objects.</source>
+          <target state="translated">オブジェクトがインスタンス化されるたびに、そのオブジェクトのデータ(状態)を保持するためにヒープメモリの塊が脇に置かれます。オブジェクトは他のオブジェクトを含むことができるので、このデータの一部は実際には入れ子になったオブジェクトへの参照を保持することができます。</target>
+        </trans-unit>
+        <trans-unit id="5211deda8670661ee7d1ce34e2735da4431ad6c2" translate="yes" xml:space="preserve">
+          <source>Fibers proposal to the C++ standard library is forthcoming. Also, there're some third-party &lt;a href=&quot;https://stackoverflow.com/questions/1285714/lightweight-portable-c-fibers-mit-license&quot;&gt;libraries&lt;/a&gt;. Green threads are extremely popular in languages like Python and Ruby.</source>
+          <target state="translated">C ++標準ライブラリへのファイバーの提案が近づいています。 また、いくつかのサードパーティの&lt;a href=&quot;https://stackoverflow.com/questions/1285714/lightweight-portable-c-fibers-mit-license&quot;&gt;ライブラリ&lt;/a&gt;があります。 緑のスレッドは、PythonやRubyなどの言語で非常に人気があります。</target>
+        </trans-unit>
+        <trans-unit id="6bf6a0d4778960ac1e375eed1f1e9f0d010f59b1" translate="yes" xml:space="preserve">
+          <source>Fibers, green threads and coroutines are in many ways similar, which leads to much confusion.  The difference between fibers and green threads is that the former use cooperative multitasking, while the latter may feature either cooperative or preemptive one (or even both). For the distinction between fibers and coroutines, see &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4024.pdf&quot;&gt;here&lt;/a&gt;.</source>
+          <target state="translated">繊維、緑の糸、コルーチンは多くの点で似ているため、多くの混乱が生じます。 ファイバーとグリーンスレッドの違いは、前者は協調型マルチタスクを使用し、後者は協調型またはプリエンプティブのいずれか（または両方）を特徴とする可能性があることです。 ファイバーとコルーチンの違いについては、 &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4024.pdf&quot;&gt;こちらを&lt;/a&gt;ご覧ください 。</target>
+        </trans-unit>
+        <trans-unit id="9d2ac197a7a104bcd6641f6a118e10124e3a8763" translate="yes" xml:space="preserve">
+          <source>For people new to programming, it&amp;rsquo;s probably a good idea to use the stack since it&amp;rsquo;s easier.</source>
+          <target state="translated">プログラミングに不慣れな人にとっては、スタックの方が簡単なので、スタックを使用することをお勧めします。</target>
+        </trans-unit>
+        <trans-unit id="d9bf6ea4d7dd59b322b7679e48bc374e1b2878a5" translate="yes" xml:space="preserve">
+          <source>Fragmentation occurs when memory objects are allocated with small spaces in between that are too small to hold additional memory objects.</source>
+          <target state="translated">フラグメンテーションは、メモリオブジェクトが追加のメモリオブジェクトを保持するには小さすぎるスペースを挟んで割り当てられている場合に発生します。</target>
+        </trans-unit>
+        <trans-unit id="e237e4dadd747be21907ecdd643773f2cded6948" translate="yes" xml:space="preserve">
+          <source>From WikiAnwser.</source>
+          <target state="translated">ウィキアンサーより。</target>
+        </trans-unit>
+        <trans-unit id="4e3b5b95822a6480a6ed4d32a309c404a4c107f7" translate="yes" xml:space="preserve">
+          <source>Function calls are loaded here along with the local variables and function parameters passed.</source>
+          <target state="translated">関数呼び出しは、渡されたローカル変数と関数パラメータとともにここにロードされます。</target>
+        </trans-unit>
+        <trans-unit id="977169a2f56615065497cd1735f54129679d50ec" translate="yes" xml:space="preserve">
+          <source>Heap</source>
+          <target state="translated">Heap</target>
+        </trans-unit>
+        <trans-unit id="69c0fce84d3be50b555c1e7c6c0ace50232978e0" translate="yes" xml:space="preserve">
+          <source>Heap allocation requires maintaining a full record of what memory is allocated and what isn't, as well as some overhead maintenance to reduce fragmentation, find contiguous memory segments big enough to fit the requested size, and so on.  Memory can be deallocated at any time leaving free space.  Sometimes a memory allocator will perform maintenance tasks such as defragmenting memory by moving allocated memory around, or garbage collecting - identifying at runtime when memory is no longer in scope and deallocating it.</source>
+          <target state="translated">ヒープの割り当てには、どのメモリが割り当てられていて何が割り当てられていないかの完全な記録を維持する必要があります。また、断片化を減らしたり、要求されたサイズに十分な大きさの連続したメモリセグメントを見つけたりするためのオーバーヘッドのメンテナンスも必要です。メモリは、空き領域を残していつでも割り当てを解除することができます。メモリアロケータは、割り当てられたメモリを移動させてメモリをデフラグしたり、ガベージコレクション(実行時にメモリがスコープ外になったときに識別してデアロケートする)などのメンテナンスタスクを実行することもあります。</target>
+        </trans-unit>
+        <trans-unit id="c4ad91f43c7e132c0c64e796c08f23caf41b0111" translate="yes" xml:space="preserve">
+          <source>Here's how the memory is managed</source>
+          <target state="translated">メモリの管理方法は以下の通りです。</target>
+        </trans-unit>
+        <trans-unit id="bf4cd344a404d07f4320ed2b8128bc0699d576ee" translate="yes" xml:space="preserve">
+          <source>How the heap is managed is really up to the runtime environment. C uses &lt;code&gt;malloc&lt;/code&gt; and C++ uses &lt;code&gt;new&lt;/code&gt;, but many other languages have garbage collection.</source>
+          <target state="translated">ヒープの管理方法は、実際にはランタイム環境次第です。 Cは &lt;code&gt;malloc&lt;/code&gt; を使用し、C ++は &lt;code&gt;new&lt;/code&gt; を使用しますが、他の多くの言語にはガベージコレクションがあります。</target>
+        </trans-unit>
+        <trans-unit id="e6d9adabdb8c7c013e5c6cedd3fd35a30646fc45" translate="yes" xml:space="preserve">
+          <source>However, it is generally better to consider &quot;&lt;strong&gt;scope&lt;/strong&gt;&quot; and &quot;&lt;strong&gt;lifetime&lt;/strong&gt;&quot; rather than &quot;stack&quot; and &quot;heap&quot;.</source>
+          <target state="translated">ただし、一般的には、「スタック」や「ヒープ」ではなく、「 &lt;strong&gt;スコープ&lt;/strong&gt; 」や「 &lt;strong&gt;ライフタイム&lt;/strong&gt; 」を検討することをお勧めします。</target>
+        </trans-unit>
+        <trans-unit id="aed2fb7f74c3443670e7a902fd753397a138bf75" translate="yes" xml:space="preserve">
+          <source>However, the stack is a more low-level feature closely tied to the processor architecture. Growing the heap when there is not enough space isn't too hard since it can be implemented in the library call that handles the heap. However, growing the stack is often impossible as the stack overflow only is discovered when it is too late; and shutting down the thread of execution is the only viable option.</source>
+          <target state="translated">しかし、スタックはプロセッサアーキテクチャと密接に結びついた低レベルの機能です。十分なスペースがないときにヒープを増やすことは、ヒープを処理するライブラリコールで実装できるので、それほど難しくありません。しかし、スタックオーバーフローが発見されるのは手遅れになってからであり、実行スレッドをシャットダウンすることが唯一の実行可能な選択肢であるため、スタックを成長させることはしばしば不可能です。</target>
+        </trans-unit>
+        <trans-unit id="369a9b90a4bdfde4e85ad68cde3ff685aa91dd1f" translate="yes" xml:space="preserve">
+          <source>I also create the image below to show how they may look like:</source>
+          <target state="translated">また、下の画像のように、どのように見えるかを示すために、私は下の画像を作成します。</target>
+        </trans-unit>
+        <trans-unit id="b6b70f6bfb4b2dfbc4a60602e806084366a63de7" translate="yes" xml:space="preserve">
+          <source>I have something to share, although the major points are already covered.</source>
+          <target state="translated">主要なポイントはすでに網羅されていますが、私も共有したいことがあります。</target>
+        </trans-unit>
+        <trans-unit id="9c1b11110bea9796fff4f2aa43b42de19c50096d" translate="yes" xml:space="preserve">
+          <source>I think many other people have given you mostly correct answers on this matter.</source>
+          <target state="translated">この件に関しては、他の多くの方がほぼ正解を出していると思います。</target>
+        </trans-unit>
+        <trans-unit id="f84b830b40010139bb2bc50481c768d543c9849a" translate="yes" xml:space="preserve">
+          <source>I will provide some simple annotated C code to illustrate all of this. The best way to learn is to run a program under a debugger and watch the behavior. If you prefer to read python, skip to the end of the answer :)</source>
+          <target state="translated">これらすべてを説明するために、簡単な注釈付きの C コードをいくつか提供します。学ぶための最良の方法は、デバッガの下でプログラムを実行し、動作を見ることです。pythonを読みたいのであれば、答えの最後まで読み飛ばしてください。)</target>
+        </trans-unit>
+        <trans-unit id="19be6ca3ce7acb355b8593c36bbe51f806cb3467" translate="yes" xml:space="preserve">
+          <source>If a function has parameters, these are pushed onto the stack before the call to the function. The code in the function is then able to navigate up the stack from the current stack pointer to locate these values.</source>
+          <target state="translated">関数がパラメータを持っている場合は、関数を呼び出す前にスタックにプッシュされます。関数内のコードは、現在のスタックポインタからスタック上を移動して、これらの値を見つけることができます。</target>
+        </trans-unit>
+        <trans-unit id="d6fd840c486fd422511fccb949147762c4da1fa6" translate="yes" xml:space="preserve">
+          <source>If functions were stored in heap (messy storage pointed by pointer), there would have been no way to return to the caller address back (which stack gives due to sequential storage in memory).</source>
+          <target state="translated">関数がヒープに格納されていた場合(ポインタが指す厄介なストレージ)、呼び出し元のアドレスに戻る方法がなかったでしょう(メモリにシーケンシャルに格納されているためにスタックが与える)。</target>
+        </trans-unit>
+        <trans-unit id="582e735b7a23d77b1a919b1c33ed8aa128f12765" translate="yes" xml:space="preserve">
+          <source>If the private heap gets too large it will overlap the stack area, as will the stack overlap the heap if it gets too big. Because the stack starts at a higher address and works its way down to lower address, with proper hacking you can get make the stack so large that it will overrun the private heap area and overlap the code area. The trick then is to overlap enough of the code area that you can hook into the code. It's a little tricky to do and you risk a program crash, but it's easy and very effective.</source>
+          <target state="translated">プライベートヒープが大きくなりすぎると、スタックがヒープに重なってしまうのと同じように、スタックの領域にも重なります。スタックはより高いアドレスから始まり、より低いアドレスまで動作するので、適切なハッキングを行えば、プライベートヒープ領域をオーバーランさせてコード領域をオーバーラップさせるほどスタックを大きくすることができます。その後のトリックは、コード領域を十分にオーバーラップさせて、コードにフックできるようにすることです。これは少しトリッキーで、プログラムがクラッシュする危険性がありますが、簡単で非常に効果的です。</target>
+        </trans-unit>
+        <trans-unit id="8164de7b8275fe6bd6610a9f1a1f510df9d0953d" translate="yes" xml:space="preserve">
+          <source>If you fail to do this, your program will have what is known as a memory leak. That is, memory on the heap will still be set aside (and won't be available to other processes). As we will see in the debugging section, there is a tool called &lt;a href=&quot;http://en.wikipedia.org/wiki/Valgrind&quot;&gt;Valgrind&lt;/a&gt; that can help you detect memory leaks.</source>
+          <target state="translated">これを行わないと、プログラムにメモリリークと呼ばれるものが発生します。 つまり、ヒープ上のメモリは確保されます（他のプロセスでは利用できません）。 デバッグのセクションで説明するように、メモリリークの検出に役立つ&lt;a href=&quot;http://en.wikipedia.org/wiki/Valgrind&quot;&gt;Valgrind&lt;/a&gt;というツールがあります。</target>
+        </trans-unit>
+        <trans-unit id="5d14809b020f6dc3b1ca1b516594f7c26711d489" translate="yes" xml:space="preserve">
+          <source>Implemented with an actual stack data structure.</source>
+          <target state="translated">実際のスタックデータ構造体を用いて実装されています。</target>
+        </trans-unit>
+        <trans-unit id="0ec9c44eba796de6b3f45bf5b3038e9e98f84fe1" translate="yes" xml:space="preserve">
+          <source>In &quot;classic&quot; systems RAM was laid out such that the stack pointer started out at the bottom of memory, the heap pointer started out at the top, and they grew towards each other. If they overlap, you are out of RAM. That doesn't work with modern multi-threaded OSes though. Every thread has to have its own stack, and those can get created dynamicly.</source>
+          <target state="translated">古典的な」システムでは、RAMはスタックポインタがメモリの一番下から始まり、ヒープポインタが一番上から始まり、お互いに向かって成長していくようにレイアウトされていました。それらが重なると、RAMが足りなくなります。しかし、最近のマルチスレッドOSではそうはいきません。各スレッドは独自のスタックを持たなければならず、それらは動的に作成されます。</target>
+        </trans-unit>
+        <trans-unit id="9595be1b961175468df336b7cd57107f6d9e6d67" translate="yes" xml:space="preserve">
+          <source>In C you can get the benefit of variable length allocation through the use of &lt;a href=&quot;https://www.freebsd.org/cgi/man.cgi?alloca&quot;&gt;alloca&lt;/a&gt;, which allocates on the stack, as opposed to alloc, which allocates on the heap. This memory won't survive your return statement, but it's useful for a scratch buffer.</source>
+          <target state="translated">Cでは、ヒープに割り当てるallocではなく、スタックに割り当てる&lt;a href=&quot;https://www.freebsd.org/cgi/man.cgi?alloca&quot;&gt;allocaを&lt;/a&gt;使用することにより、可変長割り当ての利点を得ることができます。 このメモリは、returnステートメントを存続させることはできませんが、スクラッチバッファには役立ちます。</target>
+        </trans-unit>
+        <trans-unit id="4c49c1e042066fcde12cf790d1255e5d4128c6ed" translate="yes" xml:space="preserve">
+          <source>In C++ or C, data created on the heap will be pointed to by pointers and allocated with &lt;code&gt;new&lt;/code&gt; or &lt;code&gt;malloc&lt;/code&gt; respectively.</source>
+          <target state="translated">C ++またはCでは、ヒープ上に作成されたデータはポインターによってポイントされ、それぞれ &lt;code&gt;new&lt;/code&gt; または &lt;code&gt;malloc&lt;/code&gt; で割り当てられます。</target>
+        </trans-unit>
+        <trans-unit id="2dddb5409ddfb8bfae0332e6674cb30e4030c766" translate="yes" xml:space="preserve">
+          <source>In C++, variables on the heap must be destroyed manually and never fall out of scope. The data is freed with &lt;code&gt;delete&lt;/code&gt;, &lt;code&gt;delete[]&lt;/code&gt;, or &lt;code&gt;free&lt;/code&gt;.</source>
+          <target state="translated">C ++では、ヒープ上の変数は手動で破棄する必要があり、スコープから外れることはありません。 データは、 &lt;code&gt;delete&lt;/code&gt; 、 &lt;code&gt;delete[]&lt;/code&gt; 、または &lt;code&gt;free&lt;/code&gt; で解放されます。</target>
+        </trans-unit>
+        <trans-unit id="0ab2e606ea24062674776c9630ae58f479fc3332" translate="yes" xml:space="preserve">
+          <source>In Detail</source>
+          <target state="translated">詳細はこちら</target>
+        </trans-unit>
+        <trans-unit id="d070ed182c0710ddbb3f2b533e23ff5a60e665ff" translate="yes" xml:space="preserve">
+          <source>In Java, most objects go directly into the heap. In languages like C / C++, structs and classes can often remain on the stack when you're not dealing with pointers.</source>
+          <target state="translated">Java では、ほとんどのオブジェクトは直接ヒープに入ります。C C++のような言語では、構造体やクラスは、ポインタを扱っていない場合、スタック上に残ることがよくあります。</target>
+        </trans-unit>
+        <trans-unit id="4f383e35971605d5e60dda592302a0dfbedde224" translate="yes" xml:space="preserve">
+          <source>In Short</source>
+          <target state="translated">簡潔に言うと</target>
+        </trans-unit>
+        <trans-unit id="5147749ca6668db2a2e89a21934367a8e767227a" translate="yes" xml:space="preserve">
+          <source>In a heap, there is no particular order to the way items are placed.  You can reach in and remove items in any order because there is no clear 'top' item.</source>
+          <target state="translated">ヒープでは、アイテムの配置には特に順番がありません。明確な「一番上」のアイテムがないため、どのような順番でもアイテムに手を伸ばして取り出すことができます。</target>
+        </trans-unit>
+        <trans-unit id="c178a8267cc3e47eec2a91c3a323a8fdc32c3e39" translate="yes" xml:space="preserve">
+          <source>In a multi-threaded application, each thread will have its own stack.</source>
+          <target state="translated">マルチスレッドアプリケーションでは、各スレッドは独自のスタックを持つことになります。</target>
+        </trans-unit>
+        <trans-unit id="aea37718a1d7d897745b71fc7a069d9dac94a163" translate="yes" xml:space="preserve">
+          <source>In a multi-threaded application, each thread will have its own stack. But, all the different threads will share the heap.</source>
+          <target state="translated">マルチスレッドアプリケーションでは、各スレッドは独自のスタックを持つことになります。しかし、すべての異なるスレッドがヒープを共有します。</target>
+        </trans-unit>
+        <trans-unit id="bed80375d9899ce917d044e4b57acedb6c419964" translate="yes" xml:space="preserve">
+          <source>In a multi-threaded environment each thread will have its own completely independent stack but they will share the heap. Concurrent access has to be controlled on the heap and is not possible on the stack.</source>
+          <target state="translated">マルチスレッド環境では、各スレッドは完全に独立したスタックを持ちますが、ヒープを共有します。並行アクセスはヒープ上で制御されなければならず、スタック上では不可能です。</target>
+        </trans-unit>
+        <trans-unit id="2afdc75d76febc6978738ba0407aee2a8e1a2690" translate="yes" xml:space="preserve">
+          <source>In a multi-threaded situation each thread will have its own completely independent stack, but they will share the heap. The stack is thread specific and the heap is application specific. The stack is important to consider in exception handling and thread executions.</source>
+          <target state="translated">マルチスレッドの状況では、各スレッドは完全に独立したスタックを持ちますが、ヒープを共有します。スタックはスレッド固有のものであり、ヒープはアプリケーション固有のものです。スタックは例外処理やスレッド実行において考慮すべき重要なものです。</target>
+        </trans-unit>
+        <trans-unit id="3b5a4a1f69f2a44d7b973472f440395d38db3aef" translate="yes" xml:space="preserve">
+          <source>In a stack of items, items sit one on top of the other in the order they were placed there, and you can only remove the top one (without toppling the whole thing over).</source>
+          <target state="translated">アイテムの積み重ねでは、アイテムはそこに置かれた順に他の上に1つずつ座り、あなたは上の1つだけを削除することができます(全体のものを上に倒すことなく)。</target>
+        </trans-unit>
+        <trans-unit id="6de943cc8f12c5ab1e03aa49853e2f81f883c968" translate="yes" xml:space="preserve">
+          <source>In any case, the purpose of both fibers, green threads and coroutines is having multiple functions executing concurrently, but &lt;strong&gt;not&lt;/strong&gt; in parallel (see &lt;a href=&quot;https://stackoverflow.com/questions/1050222/concurrency-vs-parallelism-what-is-the-difference&quot;&gt;this SO question&lt;/a&gt; for the distinction) within a single OS-level thread, transferring control back and forth from one another in an organized fashion.</source>
+          <target state="translated">いずれの場合も、ファイバー、グリーンスレッド、コルーチンの両方の目的は、単一のOSレベルのスレッド内で複数の関数を並行して実行するが、並列で&lt;strong&gt;はない&lt;/strong&gt; （区別については&lt;a href=&quot;https://stackoverflow.com/questions/1050222/concurrency-vs-parallelism-what-is-the-difference&quot;&gt;このSOの質問&lt;/a&gt;を参照）ことで、制御を相互にやり取りします。組織的に。</target>
+        </trans-unit>
+        <trans-unit id="6ff0d53ec18f38266dd0067ebeca5dc7b79c4307" translate="yes" xml:space="preserve">
+          <source>In computing architectures the heap is an area of dynamically-allocated memory that is managed automatically by the operating system or the memory manager library.</source>
+          <target state="translated">コンピューティングアーキテクチャでは、ヒープは動的に割り当てられたメモリの領域であり、オペレーティングシステムまたはメモリマネージャライブラリによって自動的に管理されます。</target>
+        </trans-unit>
+        <trans-unit id="14147c40afba7195a6e743160146832b550785ac" translate="yes" xml:space="preserve">
+          <source>In systems without virtual memory, such as some embedded systems, the same basic layout often applies, except the stack and heap are fixed in size. However, in other embedded systems (such as those based on Microchip PIC microcontrollers), the program stack is a separate block of memory that is not addressable by data movement instructions, and can only be modified or read indirectly through program flow instructions (call, return, etc.). Other architectures, such as Intel Itanium processors, have &lt;a href=&quot;http://blogs.msdn.com/oldnewthing/archive/2005/04/21/410397.aspx&quot;&gt;multiple stacks&lt;/a&gt;. In this sense, the stack is an element of the CPU architecture.</source>
+          <target state="translated">一部の組み込みシステムなど、仮想メモリのないシステムでは、スタックとヒープのサイズが固定されていることを除いて、同じ基本レイアウトがよく適用されます。 ただし、他の組み込みシステム（Microchip PICマイクロコントローラーに基づくシステムなど）では、プログラムスタックはメモリの独立したブロックであり、データ移動命令ではアドレス指定できず、プログラムフロー命令（呼び出し、返品など）。 Intel Itaniumプロセッサなどの他のアーキテクチャには、 &lt;a href=&quot;http://blogs.msdn.com/oldnewthing/archive/2005/04/21/410397.aspx&quot;&gt;複数のスタックがあります&lt;/a&gt; 。 この意味で、スタックはCPUアーキテクチャの要素です。</target>
+        </trans-unit>
+        <trans-unit id="9aec9cb3ea820b87a5cf73897d19e91456e49aff" translate="yes" xml:space="preserve">
+          <source>In the 1980s, UNIX propagated like bunnies with big companies rolling their own.
+Exxon had one as did dozens of brand names lost to history.
+How memory was laid out was at the discretion of the many implementors.</source>
+          <target state="translated">1980年代には、UNIXは大企業の手によって、バニーのように広まっていった。歴史から消えてしまった何十ものブランド名がそうであったように、 エクソンにもUNIXがあった。メモリをどのようにレイアウトするかは、多くの実装者の裁量に委ねられていた。</target>
+        </trans-unit>
+        <trans-unit id="33565c031152b190e31e2e646c439179d7871e3f" translate="yes" xml:space="preserve">
+          <source>In the following C# code</source>
+          <target state="translated">次の C#コードでは</target>
+        </trans-unit>
+        <trans-unit id="630247c43e13b3493c95ccf3dcf571c7304c4c8f" translate="yes" xml:space="preserve">
+          <source>Is hardware, and even push/pop are very efficient.</source>
+          <target state="translated">ハードウェアですが、pushpopでも非常に効率が良いです。</target>
+        </trans-unit>
+        <trans-unit id="fbec35b1fe092a0a42603acde06323d190983ce3" translate="yes" xml:space="preserve">
+          <source>It&amp;rsquo;s better to use the heap when you know that you will need a lot of memory for your data, or you just are not sure how much memory you will need (like with a dynamic array).</source>
+          <target state="translated">データに大量のメモリが必要であることがわかっている場合、または必要なメモリの量がわからない場合（動的配列の場合など）は、ヒープを使用することをお勧めします。</target>
+        </trans-unit>
+        <trans-unit id="457deb90d7d9b5e518927cf1c37ce9f9c8468ecf" translate="yes" xml:space="preserve">
+          <source>Java Memory Model</source>
+          <target state="translated">ジャワメモリモデル</target>
+        </trans-unit>
+        <trans-unit id="ffbbcf1f84185847b6720632d5f0dd4615871ac7" translate="yes" xml:space="preserve">
+          <source>Lifetime refers to when a variable is allocated and deallocated during program execution. Usually we think of &lt;strong&gt;static allocation&lt;/strong&gt; (variable will persist through the entire duration of the program, making it useful for storing the same information across several function calls) versus &lt;strong&gt;automatic allocation&lt;/strong&gt; (variable only persists during a single call to a function, making it useful for storing information that is only used during your function and can be discarded once you are done) versus &lt;strong&gt;dynamic allocation&lt;/strong&gt; (variables whose duration is defined at runtime, instead of compile time like static or automatic).</source>
+          <target state="translated">ライフタイムとは、プログラムの実行中に変数が割り当てられ、割り当てが解除される時期を指します。 通常、 &lt;strong&gt;静的割り当て&lt;/strong&gt; （変数はプログラムの全期間を通じて持続するため、複数の関数呼び出しにわたって同じ情報を保存するのに役立ちます）と&lt;strong&gt;自動割り当て&lt;/strong&gt; （変数は関数の1回の呼び出し中にのみ持続し、関数の実行中にのみ使用され、実行後に破棄できる情報の格納と&lt;strong&gt;動的割り当て&lt;/strong&gt; （静的または自動のようなコンパイル時ではなく、実行時に期間が定義される変数）の比較。</target>
+        </trans-unit>
+        <trans-unit id="89eb38e39ee83b4afbd53d56ba3e811dd7e4c25b" translate="yes" xml:space="preserve">
+          <source>Limit on stack size (OS-dependent)</source>
+          <target state="translated">スタックサイズの制限(OS依存</target>
+        </trans-unit>
+        <trans-unit id="e0b77457d171049e39cb59f6d0cc6e0aa958f4d7" translate="yes" xml:space="preserve">
+          <source>Local variables only</source>
+          <target state="translated">ローカル変数のみ</target>
+        </trans-unit>
+        <trans-unit id="a7063db18651eedcd045e8b41c98ba145000f990" translate="yes" xml:space="preserve">
+          <source>Making a huge temporary buffer on Windows that you don't use much of is not free. This is because the compiler will generate a stack probe loop that is called every time your function is entered to make sure the stack exists (because Windows uses a single guard page at the end of your stack to detect when it needs to grow the stack. If you access memory more than one page off the end of the stack you will crash). Example:</source>
+          <target state="translated">あまり使わない巨大な一時的なバッファを Windows 上に作ることは自由ではありません。これは、関数が入力されるたびにコンパイラがスタックが存在するかどうかを確認するために呼び出されるスタックプローブループを生成するからです (Windows はスタックを成長させる必要があるときに検出するためにスタックの最後に 1 つのガードページを使用するからです。スタックの最後から 1 ページ以上離れたメモリにアクセスするとクラッシュします)。)例。</target>
+        </trans-unit>
+        <trans-unit id="ca52649198f4fcd9db011db1f93bf7a0fbf8fc6f" translate="yes" xml:space="preserve">
+          <source>Memory on the heap is allocated, deallocated, and resized regularly during program execution, and this can lead to a problem called fragmentation.</source>
+          <target state="translated">ヒープ上のメモリは、プログラムの実行中に定期的に割り当て、解放、サイズ変更が行われるため、フラグメンテーションと呼ばれる問題が発生することがあります。</target>
+        </trans-unit>
+        <trans-unit id="92fa2b03cecd0df74b8828996b6d8dbd49f2c6f2" translate="yes" xml:space="preserve">
+          <source>More can be found &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Memory_management&quot;&gt;here&lt;/a&gt;&lt;/strong&gt;.</source>
+          <target state="translated">詳細については、 &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Memory_management&quot;&gt;こちらをご覧ください&lt;/a&gt;&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="2be48705642c1c2849cd129948c17459949f6ab7" translate="yes" xml:space="preserve">
+          <source>More can be found &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Stack_(abstract_data_type)&quot;&gt;here&lt;/a&gt;&lt;/strong&gt;.</source>
+          <target state="translated">詳細については、 &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Stack_(abstract_data_type)&quot;&gt;こちらをご覧ください&lt;/a&gt;&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="cd2086a7c7de1d63c092402cee2278afc2a9fcb4" translate="yes" xml:space="preserve">
+          <source>More can be found &lt;strong&gt;&lt;a href=&quot;https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap/80113#80113&quot;&gt;here&lt;/a&gt;&lt;/strong&gt;.</source>
+          <target state="translated">詳細については、 &lt;strong&gt;&lt;a href=&quot;https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap/80113#80113&quot;&gt;こちらをご覧ください&lt;/a&gt;&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="ff90893ecc13cc33b31a0c7ba89530291adf207c" translate="yes" xml:space="preserve">
+          <source>More can be found in &lt;a href=&quot;https://stackoverflow.com/questions/408670/stack-static-and-heap-in-c&quot;&gt;here&lt;/a&gt;.</source>
+          <target state="translated">詳細については、 &lt;a href=&quot;https://stackoverflow.com/questions/408670/stack-static-and-heap-in-c&quot;&gt;こちらをご覧ください&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="d87631c079431a997cdc54c230389a89f964ee05" translate="yes" xml:space="preserve">
+          <source>More information can be found here:</source>
+          <target state="translated">詳細はこちらに掲載されています。</target>
+        </trans-unit>
+        <trans-unit id="daed2813a5860321bea40be47381eb4727e55905" translate="yes" xml:space="preserve">
+          <source>Much faster to allocate in comparison to variables on the heap.</source>
+          <target state="translated">ヒープ上の変数と比較して、割り当てが非常に速くなりました。</target>
+        </trans-unit>
+        <trans-unit id="611a2d27ec35591a9d1a945571bf2c19006fe525" translate="yes" xml:space="preserve">
+          <source>Nesting function calls work like a charm. Each new call will allocate function parameters, the return address and space for local variables and these &lt;em&gt;activation records&lt;/em&gt; can be stacked for nested calls and will unwind in the correct way when the functions return.</source>
+          <target state="translated">ネスト関数呼び出しは魅力のように機能します。 新しい呼び出しごとに、関数パラメーター、ローカル変数の戻りアドレスとスペースが割り当てられ、これらの&lt;em&gt;アクティブ化レコード&lt;/em&gt;はネストされた呼び出し用にスタックでき、関数が戻るときに正しい方法で巻き戻されます。</target>
+        </trans-unit>
+        <trans-unit id="f5f359ca9a7c1ab08f498e157e0409d9d76c46da" translate="yes" xml:space="preserve">
+          <source>No guaranteed efficient use of space, memory may become fragmented over time as blocks of memory are allocated, then freed</source>
+          <target state="translated">スペースの効率的な使用が保証されていないため、メモリのブロックが割り当てられた後に解放されるため、時間の経過とともにメモリが断片化する可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="15c9ee58559d66b5b15a6a82aa330160c95db8c1" translate="yes" xml:space="preserve">
+          <source>No limit on memory size</source>
+          <target state="translated">メモリサイズの制限なし</target>
+        </trans-unit>
+        <trans-unit id="50b9533f7ca93c1b7165a50cb0b44b0cfb20fb35" translate="yes" xml:space="preserve">
+          <source>No, activation records for functions (i.e. local or automatic variables) are allocated on the stack that is used not only to store these variables, but also to keep track of nested function calls.</source>
+          <target state="translated">いいえ、関数(すなわちローカル変数や自動変数)の活性化レコードは、これらの変数を格納するためだけでなく、入れ子になった関数呼び出しを追跡するためにも使用されるスタックに割り当てられています。</target>
+        </trans-unit>
+        <trans-unit id="4ab51a7f5c3504c0459c4e33aa2f1830407e1fa5" translate="yes" xml:space="preserve">
+          <source>Note that I said &quot;&lt;em&gt;usually&lt;/em&gt; have a separate stack per function&quot;. There're both &lt;em&gt;stackful&lt;/em&gt; and &lt;em&gt;stackless&lt;/em&gt; implementations of couroutines. Most notable stackful C++ implementations are &lt;a href=&quot;http://www.boost.org/doc/libs/1_53_0/libs/coroutine/doc/html/index.html&quot;&gt;Boost.Coroutine&lt;/a&gt; and &lt;a href=&quot;https://msdn.microsoft.com/en-us/library/dd492418.aspx&quot;&gt;Microsoft PPL&lt;/a&gt;'s &lt;code&gt;async/await&lt;/code&gt;. (However, C++'s &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4134.pdf&quot;&gt;resumable functions&lt;/a&gt; (a.k.a. &quot;&lt;code&gt;async&lt;/code&gt; and &lt;code&gt;await&lt;/code&gt;&quot;), which were proposed to C++17, are likely to use stackless coroutines.)</source>
+          <target state="translated">「 &lt;em&gt;通常&lt;/em&gt; 、関数ごとに個別のスタックがある」と言ったことに注意してください。 &lt;em&gt;スタックのスタック&lt;/em&gt;された実装と&lt;em&gt;スタックのない&lt;/em&gt;実装の両方があります。 最も注目すべきスタックフルC ++実装は、 &lt;a href=&quot;http://www.boost.org/doc/libs/1_53_0/libs/coroutine/doc/html/index.html&quot;&gt;Boost.Coroutine&lt;/a&gt;と&lt;a href=&quot;https://msdn.microsoft.com/en-us/library/dd492418.aspx&quot;&gt;Microsoft PPL&lt;/a&gt;の &lt;code&gt;async/await&lt;/code&gt; です。 （ただし、C ++ 17に提案されたC ++の&lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4134.pdf&quot;&gt;再開可能な関数&lt;/a&gt; （別名「 &lt;code&gt;async&lt;/code&gt; および &lt;code&gt;await&lt;/code&gt; 」）は、スタックレスコルーチンを使用する可能性があります。）</target>
+        </trans-unit>
+        <trans-unit id="d2cf9d062fe2a4c663f0c8c2cedd3fc551bc3d7a" translate="yes" xml:space="preserve">
+          <source>Note that putting the keyword &quot;static&quot; in the declaration above prevents var2 from having global scope. Nevertheless, the global var1 has static allocation. This is not intuitive! For this reason, I try to never use the word &quot;static&quot; when describing scope, and instead say something like &quot;file&quot; or &quot;file limited&quot; scope. However many people use the phrase &quot;static&quot; or &quot;static scope&quot; to describe a variable that can only be accessed from one code file. In the context of lifetime, &quot;static&quot; &lt;em&gt;always&lt;/em&gt; means the variable is allocated at program start and deallocated when program exits.</source>
+          <target state="translated">上記の宣言にキーワード &quot;static&quot;を含めると、var2がグローバルスコープを持つことができなくなります。 それにもかかわらず、グローバルvar1には静的な割り当てがあります。 これは直感的ではありません！ このため、スコープを説明するときに「静的」という言葉を使わないようにし、代わりに「ファイル」または「ファイル制限」スコープのように言います。 ただし、多くの人は「静的」または「静的スコープ」という語句を使用して、1つのコードファイルからのみアクセスできる変数を記述しています。 ライフタイムのコンテキストでは、「静的」 &lt;em&gt;と&lt;/em&gt;は、 &lt;em&gt;常に&lt;/em&gt;変数がプログラムの開始時に割り当てられ、プログラムの終了時に割り当て解除されることを意味します。</target>
+        </trans-unit>
+        <trans-unit id="0871b21874420432475c6d4351849b35d915057f" translate="yes" xml:space="preserve">
+          <source>Now come to &lt;strong&gt;your question's answers&lt;/strong&gt;.</source>
+          <target state="translated">今&lt;strong&gt;あなたの質問の答えに&lt;/strong&gt;来&lt;strong&gt;ます&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="74c615a4a42b31624f1cc296011324866cfe8b77" translate="yes" xml:space="preserve">
+          <source>Objects (which vary in size as we update them) go on the heap because we don't know at creation time how long they are going to last. In many languages the heap is garbage collected to find objects (such as the cls1 object) that no longer have any references.</source>
+          <target state="translated">オブジェクト(更新するとサイズが変わる)はヒープ上に置かれますが、これは作成時にはどのくらいの期間続くかわからないからです。多くの言語では、もはや参照を持たないオブジェクト (例えば cls1 オブジェクト)を見つけるために、ヒープはガベージコレクションされます。</target>
+        </trans-unit>
+        <trans-unit id="e4fe13843a3ecc800429114b92b44c8d355d6bed" translate="yes" xml:space="preserve">
+          <source>On the stack you save return addresses and call &amp;rarr; push / ret &amp;rarr; pop is managed directly in hardware.</source>
+          <target state="translated">スタックでは、リターンアドレスを保存し、コール&amp;rarr;プッシュ/レット&amp;rarr;ポップをハードウェアで直接管理します。</target>
+        </trans-unit>
+        <trans-unit id="29a4742ef363b18a49d8dab9624425d36200ea1e" translate="yes" xml:space="preserve">
+          <source>One detail that has been missed, however, is that the &quot;heap&quot; should in fact probably be called the &quot;free store&quot;.  The reason for this distinction is that the original free store was implemented with a data structure known as a &quot;binomial heap.&quot;  For that reason, allocating from early implementations of malloc()/free() was allocation from a heap.  However, in this modern day, most free stores are implemented with very elaborate data structures that are not binomial heaps.</source>
+          <target state="translated">しかし、見落とされている1つの詳細は、&quot;ヒープ &quot;は実際にはおそらく &quot;フリーストア &quot;と呼ばれるべきだということです。この区別の理由は、元々のフリーストアは &quot;二項ヒープ &quot;として知られるデータ構造で実装されていたからです。そのため、malloc()free()の初期の実装からの割り当ては、ヒープからの割り当てでした。しかし、現代では、ほとんどのフリーストアは二項ヒープではない非常に精巧なデータ構造で実装されています。</target>
+        </trans-unit>
+        <trans-unit id="13d7afdda2ae69ca5bb8408fcc1546f3b6c11363" translate="yes" xml:space="preserve">
+          <source>One typical memory block was BSS (a block of zero values)
+which was accidentally not zeroed in one manufacturer's offering.
+Another was DATA containing initialized values, including strings and numbers.
+A third was CODE containing CRT (C runtime), main, functions, and libraries.</source>
+          <target state="translated">典型的なメモリブロックの1つはBSS(ゼロ値のブロック)で、あるメーカーが提供しているものでは誤ってゼロ化されていませんでした。もう一つは、文字列や数値を含む初期化された値を含むDATAでした。3番目はCRT(Cランタイム)、メイン、関数、ライブラリを含むCODEでした。</target>
+        </trans-unit>
+        <trans-unit id="e3d075236948af076fad91d4bb43d9d26eb82acc" translate="yes" xml:space="preserve">
+          <source>Others have answered the broad strokes pretty well, so I'll throw in a few details.</source>
+          <target state="translated">他の方が大雑把な回答をされていたので、詳細を投げかけておきます。</target>
+        </trans-unit>
+        <trans-unit id="6f64e795a39ecd2c765903677e991445c7062f09" translate="yes" xml:space="preserve">
+          <source>Others have directly answered your question, but when trying to understand the stack and the heap, I think it is helpful to consider the memory layout of a traditional UNIX process (without threads and &lt;code&gt;mmap()&lt;/code&gt;-based allocators). The &lt;a href=&quot;http://www.memorymanagement.org/glossary/b.html#term-brk&quot;&gt;Memory Management Glossary&lt;/a&gt; web page has a diagram of this memory layout.</source>
+          <target state="translated">他の人はあなたの質問に直接答えましたが、スタックとヒープを理解しようとするときは、従来のUNIXプロセス（スレッドと &lt;code&gt;mmap()&lt;/code&gt; ベースのアロケータなし）のメモリレイアウトを検討することは役立つと思います。 &lt;a href=&quot;http://www.memorymanagement.org/glossary/b.html#term-brk&quot;&gt;メモリ管理用語集の&lt;/a&gt; Webページに、このメモリレイアウトの図があります。</target>
+        </trans-unit>
+        <trans-unit id="e33f67dded7084c7a1497e2d2409091903f39904" translate="yes" xml:space="preserve">
+          <source>Programming language books explain that value types are created on the &lt;strong&gt;stack&lt;/strong&gt;, and reference types are created on the &lt;strong&gt;heap&lt;/strong&gt;, without explaining what these two things are. I haven't read a clear explanation of this.  I understand what &lt;em&gt;a stack&lt;/em&gt; is. But,</source>
+          <target state="translated">プログラミング言語の本では、これらの2つが何であるかを説明することなく、値型は&lt;strong&gt;スタック&lt;/strong&gt;上に作成され、参照型は&lt;strong&gt;ヒープ&lt;/strong&gt;上に作成されると説明されてい&lt;strong&gt;ます&lt;/strong&gt; 。 私はこれの明確な説明を読んでいません。 &lt;em&gt;スタック&lt;/em&gt;とは何&lt;em&gt;ですか&lt;/em&gt; 。 だが、</target>
+        </trans-unit>
+        <trans-unit id="6e6e17f4d2768e59d3304c88f5860bd92caee2a8" translate="yes" xml:space="preserve">
+          <source>REF:</source>
+          <target state="translated">REF:</target>
+        </trans-unit>
+        <trans-unit id="b5fef21aad832234d260e32f67bed2552c27b3f3" translate="yes" xml:space="preserve">
+          <source>Responsible for memory leaks.</source>
+          <target state="translated">メモリリークの責任者。</target>
+        </trans-unit>
+        <trans-unit id="69bf7896b4602d80f099d7c96e91ea211768accd" translate="yes" xml:space="preserve">
+          <source>Scope refers to what parts of the code can access a variable. Generally we think of &lt;strong&gt;local scope&lt;/strong&gt; (can only be accessed by the current function) versus &lt;strong&gt;global scope&lt;/strong&gt; (can be accessed anywhere) although scope can get much more complex.</source>
+          <target state="translated">スコープとは、コードのどの部分が変数にアクセスできるかを指します。 一般に、 &lt;strong&gt;ローカルスコープ&lt;/strong&gt; （現在の関数からのみアクセス可能）と&lt;strong&gt;グローバルスコープ&lt;/strong&gt; （どこからでもアクセス可能）を考えますが、スコープはさらに複雑になる可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="509aa940c1c036efce29c8fe0c9b4b55069f2302" translate="yes" xml:space="preserve">
+          <source>Should the function calls had been stored in heap, it would had resulted in 2 messy points:</source>
+          <target state="translated">関数の呼び出しをヒープに格納していたら、2つの厄介な点が発生していたかもしれません。</target>
+        </trans-unit>
+        <trans-unit id="a2185ca86acc0c919180d9c04aad21adc109c7e3" translate="yes" xml:space="preserve">
+          <source>Simply, the stack is where local variables get created. Also, every time you call a subroutine the program counter (pointer to the next machine instruction) and any important registers, and sometimes the parameters get pushed on the stack. Then any local variables inside the subroutine are pushed onto the stack (and used from there). When the subroutine finishes, that stuff all gets popped back off the stack. The PC and register data gets and put back where it was as it is popped, so your program can go on its merry way.</source>
+          <target state="translated">簡単に言えば、スタックはローカル変数が作成される場所です。また、サブルーチンを呼び出すたびに、プログラムカウンタ(次のマシン命令へのポインタ)や重要なレジスタ、時にはパラメータがスタックにプッシュされます。そして、サブルーチン内のローカル変数はすべてスタックにプッシュされます(そこから使用されます)。サブルーチンが終了すると、それらはすべてスタックからポップバックされます。PCやレジスタのデータはポップされたまま元の場所に戻されるので、プログラムは元気に動き回ることができます。</target>
+        </trans-unit>
+        <trans-unit id="2c86213718746adf4ed3b869ab8ebf53621c0bd5" translate="yes" xml:space="preserve">
+          <source>Since some answers went nitpicking, I'm going to contribute my mite.</source>
+          <target state="translated">いくつかの回答では、小出しになってしまったので、私のオイシイところを投稿しておきます。</target>
+        </trans-unit>
+        <trans-unit id="9aeb164d237567097685b40284f2116644d171b1" translate="yes" xml:space="preserve">
+          <source>Slow access comparatively to Stack.</source>
+          <target state="translated">Stackに比べてアクセスが遅い。</target>
+        </trans-unit>
+        <trans-unit id="f9fa73fb582337740b2c7cd4692dfd71eaccd2bf" translate="yes" xml:space="preserve">
+          <source>Slower to allocate in comparison to variables on the stack.</source>
+          <target state="translated">スタック上の変数に比べて割り当てが遅くなります。</target>
+        </trans-unit>
+        <trans-unit id="84def04a560bda893e52388cc083ef70d321b378" translate="yes" xml:space="preserve">
+          <source>So simple way: process heap is general for process and all threads inside, using for memory allocation in common case with something like &lt;strong&gt;malloc()&lt;/strong&gt;.</source>
+          <target state="translated">とてもシンプルな方法：プロセスヒープはプロセスと内部のすべてのスレッドで一般的であり、一般的に&lt;strong&gt;malloc（）の&lt;/strong&gt;ようなものでメモリ割り当てに使用します。</target>
+        </trans-unit>
+        <trans-unit id="4d6256f41ed90ef56893f4c0e80ba67b5f4b8734" translate="yes" xml:space="preserve">
+          <source>So there is always an index to point the specific item, also processing gonna be faster, there is relationship between the items as well!...</source>
+          <target state="translated">そのため、特定の項目を指すインデックスが常に存在し、処理も高速化され、項目間にも関係があります!...</target>
+        </trans-unit>
+        <trans-unit id="26e4934add44c2df343844921794ed5d56eccfd7" translate="yes" xml:space="preserve">
+          <source>Some of the syntax choices in C/C++ exacerbate this problem - for instance many people think global variables are not &quot;static&quot; because of the syntax shown below.</source>
+          <target state="translated">例えば、多くの人がグローバル変数は以下のような構文のために &quot;スタティック &quot;ではないと考えています。</target>
+        </trans-unit>
+        <trans-unit id="95320488ab41410560b78b52dfa9e017b243c84d" translate="yes" xml:space="preserve">
+          <source>Some people think of these concepts as C/C++ specific. They are not. For instance, the Python sample below illustrates all three types of allocation (there are some subtle differences possible in interpreted languages that I won't get into here).</source>
+          <target state="translated">これらの概念をCC++特有のものと考える人もいます。しかし、そうではありません。例えば、以下の Python のサンプルでは、3 種類のアロケーションのすべてを説明しています (ここでは説明しませんが、インタプリタ言語では微妙な違いがあります)。</target>
+        </trans-unit>
+        <trans-unit id="c9c53060f090e60a073e898da17d700ab9341170" translate="yes" xml:space="preserve">
+          <source>Space is freed automatically when program goes out of a scope.</source>
+          <target state="translated">プログラムがスコープ外に出ると自動的にスペースが解放されます。</target>
+        </trans-unit>
+        <trans-unit id="a04e6278e75e6c001c297db6eeaca0f21b4f1cf9" translate="yes" xml:space="preserve">
+          <source>Space is managed efficiently by CPU, memory will not become fragmented</source>
+          <target state="translated">スペースはCPUで効率的に管理され、メモリが断片化しない</target>
+        </trans-unit>
+        <trans-unit id="83e5a0d3d2ef19df258412a4d3ef3f9533b0c0c1" translate="yes" xml:space="preserve">
+          <source>Stack</source>
+          <target state="translated">Stack</target>
+        </trans-unit>
+        <trans-unit id="2a1e3b0bbb1f0808e4252a6f745c19b958ac4d85" translate="yes" xml:space="preserve">
+          <source>Stack allocation is much faster since all it really does is move the stack pointer. Using memory pools, you can get comparable performance out of heap allocation, but that comes with a slight added complexity and its own headaches.</source>
+          <target state="translated">スタックアロケーションはスタックポインタを移動させるだけなので、はるかに高速です。メモリプールを使えば、ヒープ割り当てでも同等のパフォーマンスを得ることができますが、それには若干の複雑さと頭痛の種が加わります。</target>
+        </trans-unit>
+        <trans-unit id="990b9b0ae5cb9ef33f5882c479501ea9ec73fc18" translate="yes" xml:space="preserve">
+          <source>Stack and heap need not be singular. A common situation in which you have more than one stack is if you have more than one thread in a process.  In this case each thread has its own stack. You can also have more than one heap, for example some DLL configurations can result in different DLLs allocating from different heaps, which is why it's generally a bad idea to release memory allocated by a different library.</source>
+          <target state="translated">スタックとヒープは単数である必要はありません。複数のスタックを持つ一般的な状況は、プロセス内に複数のスレッドがある場合です。この場合、各スレッドはそれぞれのスタックを持ちます。また、複数のヒープを持つこともできます。例えば、いくつかの DLL の設定では、異なる DLL が異なるヒープから割り当てを行うことになりますが、 これは一般的には、異なるライブラリによって割り当てられたメモリを解放するのは良くない考えです。</target>
+        </trans-unit>
+        <trans-unit id="12fa9cb21a886762f171950816a55e2e59c869da" translate="yes" xml:space="preserve">
+          <source>Stack is quick memory for store in common case function return pointers and variables, processed as parameters in function call, local function variables.</source>
+          <target state="translated">スタックは、関数呼び出しのパラメータとして処理されたコモンケース関数の戻りポインタや変数、ローカル関数の変数を格納するためのクイックメモリです。</target>
+        </trans-unit>
+        <trans-unit id="e3f92779f11d4b0f3467f92a53682253210952a8" translate="yes" xml:space="preserve">
+          <source>Stack usage is faster as:</source>
+          <target state="translated">スタックの使用は、以下のように速くなります。</target>
+        </trans-unit>
+        <trans-unit id="24de6d4cf48238082c51e345becf26e29ec1d2b0" translate="yes" xml:space="preserve">
+          <source>Stacks in computing architectures are regions of memory where data is added or removed in a last-in-first-out manner.</source>
+          <target state="translated">コンピューティング・アーキテクチャのスタックは、ラスト・イン・ファースト・アウトの方法でデータが追加または削除されるメモリの領域です。</target>
+        </trans-unit>
+        <trans-unit id="22877b6a12ccde62a270b7ab1193154412bb82ab" translate="yes" xml:space="preserve">
+          <source>Stored in RAM.</source>
+          <target state="translated">RAMに格納されています。</target>
+        </trans-unit>
+        <trans-unit id="dc53b0aeba09646ffe4c0adfb1d92487fe376514" translate="yes" xml:space="preserve">
+          <source>Stored in computer RAM just like the heap.</source>
+          <target state="translated">ヒープと同じようにコンピュータのRAMに格納されています。</target>
+        </trans-unit>
+        <trans-unit id="5ba923ec538ab00b7c8b1596311059a6d8275c93" translate="yes" xml:space="preserve">
+          <source>Stored in computer RAM just like the stack.</source>
+          <target state="translated">スタックと同じようにコンピュータのRAMに格納されています。</target>
+        </trans-unit>
+        <trans-unit id="4cff577d64e66b1b435d415f1b04c55974ebb6a6" translate="yes" xml:space="preserve">
+          <source>Stored in sequential memory.</source>
+          <target state="translated">シーケンシャルメモリに格納されています。</target>
+        </trans-unit>
+        <trans-unit id="8df107699395056ea16ab53263372585c3596bba" translate="yes" xml:space="preserve">
+          <source>Stored wherever memory allocation is done, accessed by pointer always.</source>
+          <target state="translated">メモリ割り当てが行われた場所に格納され、常にポインタでアクセスされます。</target>
+        </trans-unit>
+        <trans-unit id="89a636351088b12243704905bf43a965507d4b10" translate="yes" xml:space="preserve">
+          <source>Stores local data, return addresses, used for parameter passing.</source>
+          <target state="translated">パラメータの受け渡しに使用されるローカルデータ、戻り値のアドレスを格納します。</target>
+        </trans-unit>
+        <trans-unit id="dbf8af31722360d4cd5768e22244d5f8a401c59d" translate="yes" xml:space="preserve">
+          <source>Surprisingly, no one has mentioned that multiple (i.e. not related to the number of running OS-level threads) call stacks are to be found not only in exotic languages (PostScript) or platforms (Intel Itanium), but also in &lt;a href=&quot;http://en.wikipedia.org/wiki/Fiber_(computer_science)&quot;&gt;&lt;em&gt;fibers&lt;/em&gt;&lt;/a&gt;, &lt;a href=&quot;http://en.wikipedia.org/wiki/Green_threads&quot;&gt;&lt;em&gt;green threads&lt;/em&gt;&lt;/a&gt; and some implementations of &lt;a href=&quot;http://en.wikipedia.org/wiki/Coroutine&quot;&gt;&lt;em&gt;coroutines&lt;/em&gt;&lt;/a&gt;.</source>
+          <target state="translated">驚くべきことに、エキゾチックな言語（PostScript）やプラットフォーム（Intel Itanium）だけでなく、 &lt;a href=&quot;http://en.wikipedia.org/wiki/Fiber_(computer_science)&quot;&gt;&lt;em&gt;ファイバー&lt;/em&gt;&lt;/a&gt; 、 &lt;a href=&quot;http://en.wikipedia.org/wiki/Green_threads&quot;&gt;&lt;em&gt;グリーンスレッドに&lt;/em&gt;&lt;/a&gt;も複数の（つまり、実行中のOSレベルのスレッドの数とは関係ない）コールスタックが見つかるとは誰も述べていません&lt;a href=&quot;http://en.wikipedia.org/wiki/Coroutine&quot;&gt;&lt;em&gt;コルーチンの&lt;/em&gt;&lt;/a&gt;いくつかの実装。</target>
+        </trans-unit>
+        <trans-unit id="918fc88eb49d9688ce62b0cb92ecf74e2130215f" translate="yes" xml:space="preserve">
+          <source>That said, stack-based memory errors are some of the worst I've experienced.  If you use heap memory, and you overstep the bounds of your allocated block, you have a decent chance of triggering a segment fault.  (Not 100%: your block may be incidentally contiguous with another that you have previously allocated.)  But since variables created on the stack are always contiguous with each other, writing out of bounds can change the value of another variable.  I have learned that whenever I feel that my program has stopped obeying the laws of logic, it is probably buffer overflow.</source>
+          <target state="translated">そうは言っても、スタックベースのメモリエラーは、私が経験した中で最悪のものです。ヒープメモリを使用していて、割り当てられたブロックの範囲を超えてしまった場合、セグメントフォルトが発生する可能性は十分にあります (100% ではありません:あなたのブロックは、以前に割り当てたブロックと偶然にも連続しているかもしれません。(100% ではありません:あなたのブロックは、以前に割り当てた別のブロックと偶然にも連続しているかもしれません)。しかし、スタック上に作成された変数は常に互いに連続しているので、境界外に書き込むと別の変数の値が変更される可能性があります。私は、自分のプログラムが論理の法則に従わなくなったと感じるときはいつでも、それはおそらくバッファオーバーフローであることを学びました。</target>
+        </trans-unit>
+        <trans-unit id="77e50870e9d92e46d032efa6ebe4c3cc162d7aa6" translate="yes" xml:space="preserve">
+          <source>The CPU has special instructions for &lt;em&gt;pushing&lt;/em&gt; values onto the stack and &lt;em&gt;popping&lt;/em&gt; them back from the stack. Each &lt;em&gt;push&lt;/em&gt; stores the value at the current location of the stack pointer and decreases the stack pointer.  A &lt;em&gt;pop&lt;/em&gt; retrieves the value pointed to by the stack pointer and then increases the stack pointer (don't be confused by the fact that &lt;em&gt;adding&lt;/em&gt; a value to the stack &lt;em&gt;decreases&lt;/em&gt; the stack pointer and &lt;em&gt;removing&lt;/em&gt; a value &lt;em&gt;increases&lt;/em&gt; it. Remember that the stack grows to the bottom). The values stored and retrieved are the values of the CPU registers.</source>
+          <target state="translated">CPUには、値をスタックに&lt;em&gt;プッシュ&lt;/em&gt;し、スタックから&lt;em&gt;ポップ&lt;/em&gt;バックするための特別な命令があります。 各&lt;em&gt;プッシュ&lt;/em&gt;は、スタックポインターの現在の場所に値を格納し、スタックポインターを減らします。 &lt;em&gt;pop&lt;/em&gt;は、スタックポインターが指す値を取得してから、スタックポインターを増やします（スタックに値を&lt;em&gt;追加&lt;/em&gt;するとスタックポインター&lt;em&gt;が減り&lt;/em&gt; 、値を&lt;em&gt;削除&lt;/em&gt;すると値&lt;em&gt;が増える&lt;/em&gt;という事実と混同しないでください。スタックは、ボトム）。 保存および取得される値は、CPUレジスタの値です。</target>
+        </trans-unit>
+        <trans-unit id="acf431b632d416223fea9a3ceddf5add4bc0a95f" translate="yes" xml:space="preserve">
+          <source>The OS allocates the stack for each system-level thread when the thread is created. Typically the OS is called by the language runtime to allocate the heap for the application.</source>
+          <target state="translated">OSはスレッドが作成されると、各システムレベルのスレッドに対してスタックを割り当てます。通常、OSはアプリケーションのヒープを割り当てるために言語ランタイムから呼び出されます。</target>
+        </trans-unit>
+        <trans-unit id="38a855cabffd8eca3496aa5a7a4076cf2ab0ee27" translate="yes" xml:space="preserve">
+          <source>The advantage of using the stack to store variables, is that memory is managed for you. You don't have to allocate memory by hand, or free it once you don't need it any more. What's more, because the CPU organizes stack memory so efficiently, reading from and writing to stack variables is very fast.</source>
+          <target state="translated">スタックを使って変数を格納する利点は、メモリを管理してくれることです。手でメモリを割り当てたり、不要になったら解放したりする必要はありません。さらに、CPU はスタックメモリを非常に効率的に整理しているので、スタック変数からの読み書きが非常に速くなります。</target>
+        </trans-unit>
+        <trans-unit id="8a9b474ea07882c9a3be36b7edcb52f7b0126430" translate="yes" xml:space="preserve">
+          <source>The advent of virtual memory in UNIX changes many of the constraints.
+There is no objective reason why these blocks need be contiguous,
+or fixed in size, or ordered a particular way now.
+Of course, before UNIX was Multics which didn't suffer from these constraints.
+Here is a schematic showing one of the memory layouts of that era.</source>
+          <target state="translated">UNIXにおける仮想メモリの出現により、制約の多くが変更されました。ブロックが連続していたり、サイズが固定されていたり、特定の方法で順序付けられていたりする必要があるという客観的な理由はありません。もちろん、UNIX以前のMulticsは、これらの制約に悩まされることはありませんでした。以下に、その時代のメモリレイアウトの一つを示す回路図を示します。</target>
+        </trans-unit>
+        <trans-unit id="ff4d4ca937c7d0d51d422534fe1735405013c379" translate="yes" xml:space="preserve">
+          <source>The answer to your question is implementation specific and may vary across compilers and processor architectures. However, here is a simplified explanation.</source>
+          <target state="translated">ご質問への回答は実装固有のものであり、コンパイラやプロセッサアーキテクチャによって異なる場合があります。しかし、ここでは簡単に説明します。</target>
+        </trans-unit>
+        <trans-unit id="020c36cef487c3028c3b0a5e48330117297c3aa9" translate="yes" xml:space="preserve">
+          <source>The call stack is such a low level concept that it doesn't relate to 'scope' in the sense of programming.  If you disassemble some code you'll see relative pointer style references to portions of the stack, but as far as a higher level language is concerned, the language imposes its own rules of scope.  One important aspect of a stack, however, is that once a function returns, anything local to that function is immediately freed from the stack.  That works the way you'd expect it to work given how your programming languages work.  In a heap, it's also difficult to define.  The scope is whatever is exposed by the OS, but your programming language probably adds its rules about what a &quot;scope&quot; is in your application.  The processor architecture and the OS use virtual addressing, which the processor translates to physical addresses and there are page faults, etc.  They keep track of what pages belong to which applications.  You never really need to worry about this, though, because you just use whatever method your programming language uses to allocate and free memory, and check for errors (if the allocation/freeing fails for any reason).</source>
+          <target state="translated">呼び出しスタックは、プログラミングの意味での「スコープ」とは関係ないような低レベルの概念です。いくつかのコードを分解すると、スタックの一部への相対ポインタスタイルの参照を見ることができますが、より高レベルの言語では、その言語は独自のスコープのルールを課しています。しかし、スタックの重要な側面の一つは、一旦関数が戻ると、その関数のローカルなものはすぐにスタックから解放されるということです。これは、あなたのプログラミング言語がどのように動作するかを考えれば、あなたが期待する方法で動作します。ヒープでは、定義するのも難しいです。スコープは OS によって公開されているものであれば何でもよいのですが、プログラミング言語はおそらくアプリケーションの中で「スコープ」が何であるかについて独自のルールを追加しているでしょう。プロセッサアーキテクチャとOSは仮想アドレッシングを使用しており、プロセッサが物理アドレスに変換してページフォルトなどが発生します。どのページがどのアプリケーションに属しているかを追跡しています。なぜなら、あなたのプログラミング言語がメモリの割り当てと解放に使用している方法を使用して、エラーをチェックするだけだからです (何らかの理由で割り当て解放に失敗した場合)。</target>
+        </trans-unit>
+        <trans-unit id="71984997f1c1e6f1262af07953881c1b0a8417ca" translate="yes" xml:space="preserve">
+          <source>The difference between stack and heap memory allocation &amp;laquo;  timmurphy.org</source>
+          <target state="translated">スタックとヒープのメモリ割り当ての違い&amp;laquo;timmurphy.org</target>
+        </trans-unit>
+        <trans-unit id="7a5590373ff6649f9475365f1f774384f831b25c" translate="yes" xml:space="preserve">
+          <source>The heap</source>
+          <target state="translated">積み重なった</target>
+        </trans-unit>
+        <trans-unit id="64692d2958abffc9963293d7cc83b6289b346bca" translate="yes" xml:space="preserve">
+          <source>The heap contains a linked list of used and free blocks. New allocations on the heap (by &lt;code&gt;new&lt;/code&gt; or &lt;code&gt;malloc&lt;/code&gt;) are satisfied by creating a suitable block from one of the free blocks. This requires updating list of blocks on the heap. This &lt;em&gt;meta information&lt;/em&gt; about the blocks on the heap is also stored on the heap often in a small area just in front of every block.</source>
+          <target state="translated">ヒープには、使用済みブロックと空きブロックのリンクリストが含まれています。 ヒープ上の新しい割り当て（ &lt;code&gt;new&lt;/code&gt; または &lt;code&gt;malloc&lt;/code&gt; による ）は、空きブロックの1つから適切なブロックを作成することによって満たされます。 これには、ヒープ上のブロックのリストを更新する必要があります。 ヒープ上のブロックに関するこの&lt;em&gt;メタ情報&lt;/em&gt;は、多くの場合、各ブロックの直前の小さな領域のヒープにも格納されます。</target>
+        </trans-unit>
+        <trans-unit id="4ca28207330bff52b70007af68c711c32e17159a" translate="yes" xml:space="preserve">
+          <source>The heap is a portion of memory that is given to an application by the operating system, typically through a syscall like malloc.  On modern OSes this memory is a set of pages that only the calling process has access to.</source>
+          <target state="translated">ヒープとは、オペレーティングシステムからアプリケーションに与えられるメモリの一部のことで、通常はmallocのようなsyscallを介して行われます。最近のOSでは、このメモリは呼び出したプロセスだけがアクセスできるページのセットです。</target>
+        </trans-unit>
+        <trans-unit id="71f619e3570fe3e7aac533a912d787b19b6db9a4" translate="yes" xml:space="preserve">
+          <source>The heap is a region of your computer's memory that is not managed automatically for you, and is not as tightly managed by the CPU. It is a more free-floating region of memory (and is larger). To allocate memory on the heap, you must use malloc() or calloc(), which are built-in C functions. Once you have allocated memory on the heap, you are responsible for using free() to deallocate that memory once you don't need it any more.</source>
+          <target state="translated">ヒープは、コンピュータのメモリの領域で、自動的には管理されておらず、CPUによって厳重に管理されていません。ヒープは、より自由に浮遊するメモリの領域です (そして、より大きくなります)。ヒープにメモリを割り当てるには、C 言語の組み込み関数である malloc()や calloc()を使わなければなりません。ヒープにメモリを割り当てた後は、不要になったメモリを解放するために free()を使用しなければなりません。</target>
+        </trans-unit>
+        <trans-unit id="7be7d8e45896d63bdae0ae933b6b0e1b8111b33b" translate="yes" xml:space="preserve">
+          <source>The heap is memory set aside for dynamic allocation.  Unlike the stack, there's no enforced pattern to the allocation and deallocation of blocks from the heap; you can allocate a block at any time and free it at any time.  This makes it much more complex to keep track of which parts of the heap are allocated or free at any given time; there are many custom heap allocators available to tune heap performance for different usage patterns.</source>
+          <target state="translated">ヒープは動的な割り当てのためのメモリです。スタックとは異なり、ヒープからのブロックの割り当てや解放には強制的なパターンはありません。このため、ヒープのどの部分が任意の時間に割り当てられているか、または解放されているかを追跡するのは非常に複雑になります。</target>
+        </trans-unit>
+        <trans-unit id="408b6a604741833882cb371639a20f7a50001b81" translate="yes" xml:space="preserve">
+          <source>The heap is simply the memory used by programs to store variables.
+Element of the heap (variables) have no dependencies with each other and can always be accessed randomly at any time.</source>
+          <target state="translated">ヒープとは、プログラムが変数を格納するために使用するメモリのことです。ヒープの要素(変数)は互いに依存関係がなく、いつでもランダムにアクセスすることができます。</target>
+        </trans-unit>
+        <trans-unit id="18cf12075777cee089f775e186e6f7b937d612e6" translate="yes" xml:space="preserve">
+          <source>The heap is the area of memory dynamic memory allocations are made out of (explicit &quot;new&quot; or &quot;allocate&quot; calls). It is a special data structure that can keep track of blocks of memory of varying sizes and their allocation status.</source>
+          <target state="translated">ヒープは、動的なメモリ割り当てが行われるメモリの領域です (明示的な「新規」または「割り当て」呼び出し)。これは、さまざまなサイズのメモリのブロックとその割り当て状況を追跡することができる特別なデータ構造です。</target>
+        </trans-unit>
+        <trans-unit id="3aabde1f5818e4761b37f38a6704fc125ea9920e" translate="yes" xml:space="preserve">
+          <source>The most important point is that heap and stack are generic terms for ways in which memory can be allocated.  They can be implemented in many different ways, and the terms apply to the basic concepts.</source>
+          <target state="translated">最も重要な点は、ヒープとスタックはメモリを割り当てる方法の一般的な用語であるということです。これらは多くの異なる方法で実装することができ、用語は基本的な概念に適用されます。</target>
+        </trans-unit>
+        <trans-unit id="bda899c3bb77eaf54a1599448a403c98162d7221" translate="yes" xml:space="preserve">
+          <source>The net result is a percentage of the heap space that is not usable for further memory allocations.</source>
+          <target state="translated">正味の結果は、それ以上のメモリ割り当てに使用できないヒープ空間のパーセンテージです。</target>
+        </trans-unit>
+        <trans-unit id="9db69de7d5cb25cb1dab28c5edef62348d01cbca" translate="yes" xml:space="preserve">
+          <source>The private heap begins on a 16-byte boundary (for 64-bit programs) or a 8-byte boundary (for 32-bit programs) after the last byte of code in your program, and then increases in value from there. It is also called the default heap.</source>
+          <target state="translated">プライベートヒープは、プログラムの最後のバイトのコードの後、16 バイトの境界 (64 ビットプログラムの場合)または 8 バイトの境界 (32 ビットプログラムの場合)から始まり、そこから値が大きくなります。これはデフォルトヒープとも呼ばれます。</target>
+        </trans-unit>
+        <trans-unit id="c92a151a963f47b45a4e38472c1ddbfa83a05978" translate="yes" xml:space="preserve">
+          <source>The public heap resides in it's own memory space outside of your program image space. It is this memory that will be siphoned off onto the hard disk if memory resources get scarce.</source>
+          <target state="translated">パブリックヒープは、プログラムのイメージ空間の外にある独自のメモリ空間に存在します。このメモリは、メモリリソースが不足した場合にハードディスクに吸い上げられます。</target>
+        </trans-unit>
+        <trans-unit id="c2c0a23048e8df047bdd90c519e230882a5ebc7e" translate="yes" xml:space="preserve">
+          <source>The simplicity of a stack is that you do not need to maintain a table containing a record of each section of allocated memory; the only state information you need is a single pointer to the end of the stack.  To allocate and de-allocate, you just increment and decrement that single pointer.  Note: a stack can sometimes be implemented to start at the top of a section of memory and extend downwards rather than growing upwards.</source>
+          <target state="translated">スタックのシンプルさは、割り当てられたメモリの各セクションの記録を含むテーブルを管理する必要がないことです。割り当てや割り当て解除を行うには、その単一のポインタをインクリメントしたりデクリメントしたりするだけです。注意:スタックはメモリのセクションの先頭から始まり、上に向かって伸びるのではなく下に向かって伸びるように実装されることもあります。</target>
+        </trans-unit>
+        <trans-unit id="0a5a7df2173b3956056001d4db19a49a57a3b1c3" translate="yes" xml:space="preserve">
+          <source>The single STACK was typically an area below HEAP which was a tract of memory
+containing nothing of value until the top of the next fixed block of memory.
+This next block was often CODE which could be overwritten by stack data
+in one of the famous hacks of its era.</source>
+          <target state="translated">シングルスタックは、典型的にはHEAPより下の領域で、メモリの次の固定ブロックの先頭まで何も価値のないものを含むメモリのトラクトでした。この次のブロックは、多くの場合、その時代の有名なハックの一つであるスタックデータで上書きできるCODEでした。</target>
+        </trans-unit>
+        <trans-unit id="011fc8ced4b02d6e5bbcdaf8c062421d1082656a" translate="yes" xml:space="preserve">
+          <source>The size of the stack and the private heap are determined by your compiler runtime options. The public heap is initialized at runtime using a size parameter.</source>
+          <target state="translated">スタックとプライベート・ヒープのサイズは、コンパイラのランタイム・オプションによって決定されます。パブリック・ヒープは、サイズ・パラメータを使用して実行時に初期化されます。</target>
+        </trans-unit>
+        <trans-unit id="beb914534381f099cbd641ab522253e8764a0c7c" translate="yes" xml:space="preserve">
+          <source>The size of the stack is determined at runtime, and generally does not grow after the program launches.  In a C program, the stack needs to be large enough to hold every variable declared within each function.  The heap will grow dynamically as needed, but the OS is ultimately making the call (it will often grow the heap by more than the value requested by malloc, so that at least some future mallocs won't need to go back to the kernel to get more memory.  This behavior is often customizable)</source>
+          <target state="translated">スタックのサイズは実行時に決定され、一般的にはプログラムの起動後に大きくなることはありません。C言語のプログラムでは、スタックは各関数内で宣言されたすべての変数を保持するのに十分な大きさである必要があります。ヒープは必要に応じて動的に成長しますが、最終的に呼び出しを行うのは OS です (多くの場合、malloc によって要求された値以上にヒープを成長させます。この動作はカスタマイズ可能な場合が多いです)</target>
+        </trans-unit>
+        <trans-unit id="16b7e0f64c42733b20a4e51a341eddcfa754d823" translate="yes" xml:space="preserve">
+          <source>The size of the stack is set by &lt;a href=&quot;https://en.wikipedia.org/wiki/Operating_system&quot;&gt;OS&lt;/a&gt; when a thread is created. The size of the heap is set on application startup, but it can grow as space is needed (the allocator requests more memory from the operating system).</source>
+          <target state="translated">スタックのサイズは、スレッドの作成時に&lt;a href=&quot;https://en.wikipedia.org/wiki/Operating_system&quot;&gt;OS&lt;/a&gt;によって設定されます。 ヒープのサイズはアプリケーションの起動時に設定されますが、スペースが必要になると大きくなる可能性があります（アロケーターはオペレーティングシステムからより多くのメモリを要求します）。</target>
+        </trans-unit>
+        <trans-unit id="5cc1aba664ea781e5f0b096e032491b096dd802e" translate="yes" xml:space="preserve">
+          <source>The size of the stack is set when a thread is created.  The size of the heap is set on application startup, but can grow as space is needed (the allocator requests more memory from the operating system).</source>
+          <target state="translated">スタックのサイズはスレッドの作成時に設定されます。ヒープのサイズはアプリケーションの起動時に設定されますが、スペースが必要に応じて大きくすることができます (アロケータはオペレーティングシステムからより多くのメモリを要求します)。</target>
+        </trans-unit>
+        <trans-unit id="864abb86138112e4b6d575123f37974ac0c3d5c5" translate="yes" xml:space="preserve">
+          <source>The stack</source>
+          <target state="translated">スタック</target>
+        </trans-unit>
+        <trans-unit id="901c2c85d8f6f1f4b65665c0438d9a9ae1aeb6f6" translate="yes" xml:space="preserve">
+          <source>The stack and heap are traditionally located at opposite ends of the process's virtual address space. The stack grows automatically when accessed, up to a size set by the kernel (which can be adjusted with &lt;code&gt;setrlimit(RLIMIT_STACK, ...)&lt;/code&gt;). The heap grows when the memory allocator invokes the &lt;code&gt;brk()&lt;/code&gt; or &lt;code&gt;sbrk()&lt;/code&gt; system call, mapping more pages of physical memory into the process's virtual address space.</source>
+          <target state="translated">スタックとヒープは、従来、プロセスの仮想アドレス空間の両端に配置されています。 スタックは、アクセス時にカーネルによって設定されたサイズ（ &lt;code&gt;setrlimit(RLIMIT_STACK, ...)&lt;/code&gt; で調整できるサイズ）まで自動的に増加します。 ヒープは、メモリアロケータが &lt;code&gt;brk()&lt;/code&gt; または &lt;code&gt;sbrk()&lt;/code&gt; システムコールを呼び出すときに大きくなり、物理メモリのより多くのページをプロセスの仮想アドレス空間にマッピングします。</target>
+        </trans-unit>
+        <trans-unit id="5a39a45e4339d966ed8ccdb706ae6cfcecd17231" translate="yes" xml:space="preserve">
+          <source>The stack is a &quot;LIFO&quot; (last in, first out) data structure, that is managed and optimized by the CPU quite closely. Every time a function declares a new variable, it is &quot;pushed&quot; onto the stack. Then every time a function exits, all of the variables pushed onto the stack by that function, are freed (that is to say, they are deleted). Once a stack variable is freed, that region of memory becomes available for other stack variables.</source>
+          <target state="translated">スタックは「LIFO」(last in,first out)データ構造であり、CPUによって非常に密接に管理・最適化されています。関数が新しい変数を宣言するたびに、スタックに「プッシュ」されます。そして、関数が終了するたびに、その関数によってスタックにプッシュされたすべての変数が解放されます(つまり、削除されます)。スタック変数が解放されると、その領域のメモリは他のスタック変数に利用できるようになります。</target>
+        </trans-unit>
+        <trans-unit id="ed0cdd27974e8f28be5b49910ffd382fca3bd094" translate="yes" xml:space="preserve">
+          <source>The stack is a portion of memory that can be manipulated via several key assembly language instructions, such as 'pop' (remove and return a value from the stack) and 'push' (push a value to the stack), but also call (call a subroutine - this pushes the address to return to the stack) and return (return from a subroutine - this pops the address off of the stack and jumps to it).  It's the region of memory below the stack pointer register, which can be set as needed.  The stack is also used for passing arguments to subroutines, and also for preserving the values in registers before calling subroutines.</source>
+          <target state="translated">スタックは、'pop'(スタックから値を削除して返す)や'push'(スタックに値をプッシュする)などのいくつかの主要なアセンブリ言語命令を介して操作できるメモリの部分ですが、call(サブルーチンを呼び出す-これはアドレスをスタックに戻すためにプッシュする)やreturn(サブルーチンから戻る-これはアドレスをスタックからポップしてジャンプする)などもあります。これはスタックポインタレジスタの下にあるメモリの領域で、必要に応じて設定することができます。スタックはサブルーチンに引数を渡したり、サブルーチンを呼び出す前にレジスタに値を保存したりするためにも使われます。</target>
+        </trans-unit>
+        <trans-unit id="8fed4d46c5dcc66fd775586df82611b6cbc4131a" translate="yes" xml:space="preserve">
+          <source>The stack is attached to a thread, so when the thread exits the stack is reclaimed.  The heap is typically allocated at application startup by the runtime, and is reclaimed when the application (technically process) exits.</source>
+          <target state="translated">スタックはスレッドに接続されているので、スレッドが終了するとスタックは再利用されます。ヒープは通常、アプリケーションの起動時にランタイムによって割り当てられ、アプリケーション(技術的にはプロセス)が終了したときに再利用されます。</target>
+        </trans-unit>
+        <trans-unit id="d7d4617ad45d9667a26837a2ef9396a88ed54845" translate="yes" xml:space="preserve">
+          <source>The stack is controlled by the programmer, the private heap is managed by the OS, and the public heap is not controlled by anyone because it is an OS service -- you make requests and either they are granted or denied.</source>
+          <target state="translated">スタックはプログラマが制御し、プライベートヒープはOSが管理し、パブリックヒープはOSのサービスなので誰にも制御されません。</target>
+        </trans-unit>
+        <trans-unit id="776e06a491d0e5871f9e300942fd84b17a6ca19c" translate="yes" xml:space="preserve">
+          <source>The stack is faster because all free memory is always contiguous.  No list needs to be maintained of all the segments of free memory, just a single pointer to the current top of the stack.  Compilers usually store this pointer in a special, fast &lt;a href=&quot;http://en.wikipedia.org/wiki/Stack_register&quot;&gt;register&lt;/a&gt; for this purpose.  What's more, subsequent operations on a stack are usually concentrated within very nearby areas of memory, which at a very low level is good for optimization by the processor on-die caches.</source>
+          <target state="translated">すべての空きメモリが常に連続しているため、スタックはより高速です。 空きメモリのすべてのセグメントのリストを維持する必要はなく、スタックの現在の最上位への単一のポインタだけです。 コンパイラは通常、この目的のために、このポインタを特別な高速&lt;a href=&quot;http://en.wikipedia.org/wiki/Stack_register&quot;&gt;レジスタ&lt;/a&gt;に格納します。 さらに、スタックに対する後続の操作は通常、メモリの非常に近い領域に集中しており、非常に低いレベルでは、プロセッサのオンダイキャッシュによる最適化に適しています。</target>
+        </trans-unit>
+        <trans-unit id="e94a30b9ac14f61035ae0f43d2216250500958c2" translate="yes" xml:space="preserve">
+          <source>The stack is faster because the access pattern makes it trivial to allocate and deallocate memory from it (a pointer/integer is simply incremented or decremented), while the heap has much more complex bookkeeping involved in an allocation or deallocation.  Also, each byte in the stack tends to be reused very frequently which means it tends to be mapped to the processor's cache, making it very fast. Another performance hit for the heap is that the heap, being mostly a global resource, typically has to be multi-threading safe, i.e. each allocation and deallocation needs to be - typically - synchronized with &quot;all&quot; other heap accesses in the program.</source>
+          <target state="translated">スタックが高速なのは、アクセスパターンによってメモリの割り当てや解放が簡単にできるからです(pointerintegerは単純にインクリメントまたはデクリメントされます)が、ヒープは割り当てや解放に複雑な簿記を必要とします。また、スタック内の各バイトは非常に頻繁に再利用される傾向があり、プロセッサのキャッシュにマップされる傾向があり、非常に高速になります。つまり、各アロケーションやデアロケートは、プログラム内の「すべての」他のヒープアクセスと同期する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="b147220a7a5ad0a7828db4392f30462146e56ffc" translate="yes" xml:space="preserve">
+          <source>The stack is important to consider in exception handling and thread executions.</source>
+          <target state="translated">スタックは例外処理やスレッド実行において考慮すべき重要なものです。</target>
+        </trans-unit>
+        <trans-unit id="8ef364bf925f140fae82efa1d95fdcfda187e3d2" translate="yes" xml:space="preserve">
+          <source>The stack is memory that begins as the highest memory address allocated to your program image, and it then decrease in value from there. It is reserved for called function parameters and for all temporary variables used in functions.</source>
+          <target state="translated">スタックとは、プログラムイメージに割り当てられた最も高いメモリアドレスから始まり、そこから値が減少していくメモリのことです。呼び出された関数のパラメータや、関数内で使用されるすべての一時変数のために予約されています。</target>
+        </trans-unit>
+        <trans-unit id="f7b4a5b7d8386940ab1623f4ec51157abd70a3d1" translate="yes" xml:space="preserve">
+          <source>The stack is much faster than the heap.</source>
+          <target state="translated">スタックはヒープよりもはるかに高速です。</target>
+        </trans-unit>
+        <trans-unit id="8b386c56b8fca037b071be51c145e3471e513ded" translate="yes" xml:space="preserve">
+          <source>The stack is the area of memory where local variables (including method parameters) are stored. When it comes to object variables, these are merely references (pointers) to the actual objects on the heap.</source>
+          <target state="translated">スタックは、ローカル変数(メソッドのパラメータを含む)が格納されるメモリの領域です。オブジェクト変数に関しては、ヒープ上の実際のオブジェクトへの参照 (ポインタ)に過ぎません。</target>
+        </trans-unit>
+        <trans-unit id="29503f92d8ce71011e0d49b669cd0afb652670e0" translate="yes" xml:space="preserve">
+          <source>The stack is the memory set aside as scratch space for a thread of execution.  When a function is called, a block is reserved on the top of the stack for local variables and some bookkeeping data.  When that function returns, the block becomes unused and can be used the next time a function is called.  The stack is always reserved in a LIFO (last in first out) order; the most recently reserved block is always the next block to be freed.  This makes it really simple to keep track of the stack; freeing a block from the stack is nothing more than adjusting one pointer.</source>
+          <target state="translated">スタックとは、実行スレッドのためのスクラッチスペースとして設定されたメモリのことです。関数が呼び出されると、スタックの先頭にローカル変数といくつかの簿記データのためのブロックが予約されます。その関数が戻ってくると、ブロックは未使用となり、次に関数が呼ばれたときに使用することができます。スタックは常に LIFO (last in first out)の順番で予約されており、最近予約されたブロックは常に次に解放されるブロックとなります。スタックからブロックを解放するのは、ポインタを一つ調整するだけです。</target>
+        </trans-unit>
+        <trans-unit id="219301ffd0ca8cbb0f7920be42b12f92f7f93e51" translate="yes" xml:space="preserve">
+          <source>The stack often works in close tandem with a special register on the CPU named the &lt;em&gt;stack pointer&lt;/em&gt;. Initially the stack pointer points to the top of the stack (the highest address on the stack).</source>
+          <target state="translated">スタックは、 &lt;em&gt;スタックポインター&lt;/em&gt;と呼ばれるCPU上の特別なレジスターと密接に連携して機能することがよくあり&lt;em&gt;ます&lt;/em&gt; 。 最初、スタックポインタはスタックの先頭（スタックの最上位アドレス）を指しています。</target>
+        </trans-unit>
+        <trans-unit id="44325c548d04ad0c66e804e28b38a41e97cabb5a" translate="yes" xml:space="preserve">
+          <source>There are two heaps: public and private.</source>
+          <target state="translated">公立と私立の2つのヒープがあります。</target>
+        </trans-unit>
+        <trans-unit id="6947fa83d8ffd6b15a325bb26b73b21bd69379ce" translate="yes" xml:space="preserve">
+          <source>These images should do a fairly good job of describing the two ways of allocating and freeing memory in a stack and a heap.  Yum!</source>
+          <target state="translated">これらの画像は、スタックとヒープにおけるメモリの割り当てと解放の2つの方法を説明するのに、かなり良い仕事をしているはずです。美味しい!</target>
+        </trans-unit>
+        <trans-unit id="98d579f7a93657771058e9e0d89785c656c03025" translate="yes" xml:space="preserve">
+          <source>They are all global to the program, but their contents can be private, public, or global.</source>
+          <target state="translated">それらはすべてプログラムにとってグローバルなものですが、その内容はプライベートでもパブリックでもグローバルでも構いません。</target>
+        </trans-unit>
+        <trans-unit id="9ef2da64dd7345ced1b7850afdf59a57b13427ca" translate="yes" xml:space="preserve">
+          <source>They are not designed to be fast, they are designed to be useful. How the programmer utilizes them determines whether they are &quot;fast&quot; or &quot;slow&quot;</source>
+          <target state="translated">それらは高速に設計されているのではなく、有用に設計されています。プログラマがどのようにそれらを利用するかによって、それらが「速い」か「遅い」かが決まります。</target>
+        </trans-unit>
+        <trans-unit id="d177331b2e0afe564671649c9a49a92fcc2d64f0" translate="yes" xml:space="preserve">
+          <source>This article is the source of picture above: &lt;a href=&quot;http://www.codeproject.com/Articles/76153/Six-important-NET-concepts-Stack-heap-value-types#Stack%20and%20Heap&quot;&gt;Six important .NET concepts: Stack, heap, value types, reference types, boxing, and unboxing - CodeProject&lt;/a&gt;</source>
+          <target state="translated">この記事は上の画像のソースです： &lt;a href=&quot;http://www.codeproject.com/Articles/76153/Six-important-NET-concepts-Stack-heap-value-types#Stack%20and%20Heap&quot;&gt;.NETの6つの重要な概念：スタック、ヒープ、値の型、参照型、ボックス化、ボックス化解除-CodeProject&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="717f1e13592dff5b361146af2de994b4dd7d6e98" translate="yes" xml:space="preserve">
+          <source>This chain of suspended function calls is the stack, because elements in the stack (function calls) depend on each other.</source>
+          <target state="translated">スタック(関数呼び出し)の要素は互いに依存しているので、このサスペンドされた関数呼び出しの連鎖がスタックです。</target>
+        </trans-unit>
+        <trans-unit id="f0dbb83fd38c86e398ef0d609e84dfa07ea2c5b6" translate="yes" xml:space="preserve">
+          <source>This is because of the way that memory is allocated on the stack.</source>
+          <target state="translated">これは、スタック上にメモリが割り当てられているからです。</target>
+        </trans-unit>
+        <trans-unit id="fb3c5c901732960cbf1b7b18121a96994d8cfa9e" translate="yes" xml:space="preserve">
+          <source>This is only practical if your memory usage is quite different from the norm - i.e for games where you load a level in one huge operation and can chuck the whole lot away in another huge operation.</source>
+          <target state="translated">これが実用的なのは、メモリ使用量が通常と大きく異なる場合のみです。例えば、1回の大規模な操作でレベルをロードし、別の大規模な操作ですべてを捨てることができるゲームなどです。</target>
+        </trans-unit>
+        <trans-unit id="ce81aba3a9e4c22e20ebcec915d127d8ea49a173" translate="yes" xml:space="preserve">
+          <source>Thus, the heap is far more complex, because there end up being regions of memory that are unused interleaved with chunks that are - memory gets fragmented. Finding free memory of the size you need is a difficult problem. This is why the heap should be avoided (though it is still often used).</source>
+          <target state="translated">このように、ヒープははるかに複雑で、使用されていないメモリの領域とチャンクが混在しているため、メモリは断片化されてしまいます。必要なサイズの空きメモリを見つけるのは難しい問題です。これが、ヒープは避けるべき理由です(それでもよく使われますが)。</target>
+        </trans-unit>
+        <trans-unit id="3718bea08e5c6c1e1ef5855208635c1660091c56" translate="yes" xml:space="preserve">
+          <source>To answer your questions directly:</source>
+          <target state="translated">ご質問に直接お答えするために</target>
+        </trans-unit>
+        <trans-unit id="e510eed8b65862876804eb3fc84dd696d12ba373" translate="yes" xml:space="preserve">
+          <source>To clarify, &lt;a href=&quot;https://stackoverflow.com/a/13308092/1763801&quot;&gt;this answer&lt;/a&gt; has incorrect information (&lt;a href=&quot;https://stackoverflow.com/a/662454/1763801&quot;&gt;thomas&lt;/a&gt; fixed his answer after comments, cool :) ). Other answers just avoid explaining what static allocation means. So I will explain the three main forms of allocation and how they usually relate to the heap, stack, and data segment below. I also will show some examples in both C/C++ and Python to help people understand.</source>
+          <target state="translated">明確にするために、 &lt;a href=&quot;https://stackoverflow.com/a/13308092/1763801&quot;&gt;この回答に&lt;/a&gt;は誤った情報があります（ &lt;a href=&quot;https://stackoverflow.com/a/662454/1763801&quot;&gt;トーマスは&lt;/a&gt;コメントの後で彼の回答を修正しました、クール:)） 他の答えは、静的割り当てが何を意味するかを説明するのを避けます。 したがって、以下の3つの主要な割り当て形式と、それらが通常ヒープ、スタック、およびデータセグメントにどのように関係するかを説明します。 また、人々が理解できるように、C / C ++とPythonの両方でいくつかの例を示します。</target>
+        </trans-unit>
+        <trans-unit id="aba9caf0dd8ab1b5293cad558ca993a95a150673" translate="yes" xml:space="preserve">
+          <source>To what extent are they controlled by the OS or language run-time?</source>
+          <target state="translated">どの程度までOSや言語のランタイムで制御されているのでしょうか?</target>
+        </trans-unit>
+        <trans-unit id="0d0079c7ce4541e2501b37e50c9d74ba8c7a5637" translate="yes" xml:space="preserve">
+          <source>To what extent are they controlled by the OS or language runtime?</source>
+          <target state="translated">どの程度までOSや言語のランタイムによって制御されているのでしょうか?</target>
+        </trans-unit>
+        <trans-unit id="38a1226205399953841a1f147c1b73da6efe0983" translate="yes" xml:space="preserve">
+          <source>Unlike the stack, the heap does not have size restrictions on variable size (apart from the obvious physical limitations of your computer). Heap memory is slightly slower to be read from and written to, because one has to use pointers to access memory on the heap. We will talk about pointers shortly.</source>
+          <target state="translated">スタックとは異なり、ヒープには可変サイズのサイズ制限はありません (コンピュータの明白な物理的制限は別として)。ヒープ上のメモリにアクセスするにはポインタを使用しなければならないため、ヒープメモリからの読み込みや書き込みが若干遅くなります。ポインタについては後ほど説明します。</target>
+        </trans-unit>
+        <trans-unit id="5a0471929b5ff3505424261361762519c6273689" translate="yes" xml:space="preserve">
+          <source>Unlike the stack, variables created on the heap are accessible by any function, anywhere in your program. Heap variables are essentially global in scope.</source>
+          <target state="translated">スタックとは異なり、ヒープ上に作成された変数は、プログラムのどこにいても、どの関数からでもアクセス可能です。ヒープ変数は基本的にグローバルなスコープです。</target>
+        </trans-unit>
+        <trans-unit id="1c9512b6d7a011bae14a8693bd32c0ef50ceaf32" translate="yes" xml:space="preserve">
+          <source>Used on demand to allocate a block of data for use by the program.</source>
+          <target state="translated">プログラムで使用するためのデータブロックを割り当てるためにオンデマンドで使用されます。</target>
+        </trans-unit>
+        <trans-unit id="350c906ec4a09c92d2b1ef4efaf9a024398e8269" translate="yes" xml:space="preserve">
+          <source>Usually has a maximum size already determined when your program starts.</source>
+          <target state="translated">通常、プログラムの開始時にはすでに最大サイズが決定されています。</target>
+        </trans-unit>
+        <trans-unit id="dee4e9274b9716c1313c6fb0868f5a44bbadc5a1" translate="yes" xml:space="preserve">
+          <source>Variables allocated on the heap have their memory allocated at run time and accessing this memory is a bit slower, but the heap size is only limited by the size of virtual memory. Elements of the heap have no dependencies with each other and can always be accessed randomly at any time. You can allocate a block at any time and free it at any time. This makes it much more complex to keep track of which parts of the heap are allocated or free at any given time.</source>
+          <target state="translated">ヒープ上に割り当てられた変数は、実行時にメモリが割り当てられており、このメモリへのアクセスは少し遅くなりますが、ヒープのサイズは仮想メモリのサイズによってのみ制限されます。ヒープの要素は互いに依存関係がなく、いつでもランダムにアクセスできます。いつでもブロックを割り当てることができ、いつでもブロックを解放することができます。これにより、ヒープのどの部分がいつでも割り当てられているか、あるいは解放されているかを追跡するのがはるかに複雑になります。</target>
+        </trans-unit>
+        <trans-unit id="33c4c29193773c536fab56f19aa3e378c611f11a" translate="yes" xml:space="preserve">
+          <source>Variables allocated on the stack are stored directly to the memory and access to this memory is very fast, and its allocation is dealt with when the program is compiled. When a function or a method calls another function which in turns calls another function, etc., the execution of all those functions remains suspended until the very last function returns its value. The stack is always reserved in a LIFO order, the most recently reserved block is always the next block to be freed. This makes it really simple to keep track of the stack, freeing a block from the stack is nothing more than adjusting one pointer.</source>
+          <target state="translated">スタックに割り当てられた変数は直接メモリに格納され、このメモリへのアクセスは非常に高速で、その割り当てはプログラムのコンパイル時に処理されます。ある関数やメソッドが別の関数を呼び出し、その関数が別の関数を呼び出す場合など、最後の関数がその値を返すまで、それらすべての関数の実行は中断されたままになります。スタックは常にLIFO順に予約されており、最近予約されたブロックは常に次のブロックとして解放されます。これにより、スタックを追跡するのが非常に簡単になり、スタックからブロックを解放するのはポインタを調整するだけです。</target>
+        </trans-unit>
+        <trans-unit id="b757f96ab6cbd88a78e6eb37e901095a0f4982d5" translate="yes" xml:space="preserve">
+          <source>Variables can be accessed globally</source>
+          <target state="translated">変数はグローバルにアクセスできます。</target>
+        </trans-unit>
+        <trans-unit id="e1263b2fe0ce0f9a78ac08d33e5cb650a6f890af" translate="yes" xml:space="preserve">
+          <source>Variables can be resized using realloc()</source>
+          <target state="translated">変数は realloc()を使用してサイズを変更することができます。</target>
+        </trans-unit>
+        <trans-unit id="0acb71d1ea9ad7194e7c46ab11399d5d7dc9cbc1" translate="yes" xml:space="preserve">
+          <source>Variables cannot be resized</source>
+          <target state="translated">変数のサイズ変更はできません</target>
+        </trans-unit>
+        <trans-unit id="45bc57bc7c9a39f9e93f0ee2742931507b1a0117" translate="yes" xml:space="preserve">
+          <source>Variables created on the stack will go out of scope and are automatically deallocated.</source>
+          <target state="translated">スタック上に作成された変数はスコープ外になり、自動的に解放されます。</target>
+        </trans-unit>
+        <trans-unit id="83322fdd7220f9c3561a31019be7de90f70f1113" translate="yes" xml:space="preserve">
+          <source>Very fast access</source>
+          <target state="translated">高速アクセス</target>
+        </trans-unit>
+        <trans-unit id="81465c90cda3940dcc21c6d0fc345dbf62900490" translate="yes" xml:space="preserve">
+          <source>Very fast access.</source>
+          <target state="translated">アクセスが非常に速い。</target>
+        </trans-unit>
+        <trans-unit id="d03f25431e8717de4af8cfb5712d2af28175c6de" translate="yes" xml:space="preserve">
+          <source>What and where are the stack and heap</source>
+          <target state="translated">スタックとヒープはどこで何をしているのか</target>
+        </trans-unit>
+        <trans-unit id="e330f4218aa5748683c1aedc4c7ad3739182f7f9" translate="yes" xml:space="preserve">
+          <source>What determines the size of each of them?</source>
+          <target state="translated">それぞれの大きさは何で決まるのでしょうか?</target>
+        </trans-unit>
+        <trans-unit id="780a2c071a1fa9df58512fef52b5d41ee762fbf5" translate="yes" xml:space="preserve">
+          <source>What is their scope?</source>
+          <target state="translated">彼らの範囲は?</target>
+        </trans-unit>
+        <trans-unit id="b72db36173b02e399c3380ebce765f483206c5f5" translate="yes" xml:space="preserve">
+          <source>What makes one faster?</source>
+          <target state="translated">何が人を速くするのか?</target>
+        </trans-unit>
+        <trans-unit id="7dd7be24ae5c5f3254644f00a932a8eaf93d7843" translate="yes" xml:space="preserve">
+          <source>When a function is called the CPU uses special instructions that push the current &lt;em&gt;instruction pointer&lt;/em&gt;, i.e. the address of the code executing on the stack. The CPU then jumps to the function by setting the 
+instruction pointer to the address of the function called. Later, when the function returns, the old instruction pointer is popped from the stack and execution resumes at the code just after the call to the function.</source>
+          <target state="translated">関数が呼び出されると、CPUは、現在の&lt;em&gt;命令ポインター&lt;/em&gt; （スタック上で実行されているコードのアドレス）をプッシュする特別な命令を使用します。 次に、CPUは、呼び出された関数のアドレスに命令ポインタを設定することにより、関数にジャンプします。 その後、関数が戻ると、古い命令ポインタがスタックからポップされ、関数の呼び出し直後のコードから実行が再開されます。</target>
+        </trans-unit>
+        <trans-unit id="76bfa98cbe27f31d7e7e3e9a0604cbd18ab53032" translate="yes" xml:space="preserve">
+          <source>When a function is entered, the stack pointer is decreased to allocate more space on the stack for local (automatic) variables. If the function has one local 32 bit variable four bytes are set aside on the stack. When the function returns, the stack pointer is moved back to free the allocated area.</source>
+          <target state="translated">関数が入力されると、スタックポインタが減少し、ローカル(自動)変数のためのスタック上のより多くのスペースが確保されます。関数が1つのローカル32ビット変数を持っている場合、スタック上に4バイトが確保されます。関数がリターンすると、スタックポインタが戻され、割り当てられた領域が解放されます。</target>
+        </trans-unit>
+        <trans-unit id="7345937a4022621af869e20017f6923e9e95b153" translate="yes" xml:space="preserve">
+          <source>When a function or a method calls another function which in turns calls another function, etc., the execution of all those functions remains suspended until the very last function returns its value.</source>
+          <target state="translated">関数やメソッドが別の関数を呼び出し、その関数が別の関数などを呼び出す場合、最後の関数が値を返すまで、それらすべての関数の実行が中断されたままになります。</target>
+        </trans-unit>
+        <trans-unit id="17eea20994cf0f8b60ad7500e16ae0d2babaffb7" translate="yes" xml:space="preserve">
+          <source>When a used block that is adjacent to a free block is deallocated the new free block may be merged with the adjacent free block to create a larger free block effectively reducing the fragmentation of the heap.</source>
+          <target state="translated">フリーブロックに隣接する使用済みブロックが解放された場合、新しいフリーブロックは隣接するフリーブロックと結合してより大きなフリーブロックを作成し、ヒープの断片化を効果的に減少させることができます。</target>
+        </trans-unit>
+        <trans-unit id="fc80e3d497340bb1dd2782f548d7a04ed5176215" translate="yes" xml:space="preserve">
+          <source>When using fibers, green threads or coroutines, you &lt;em&gt;usually&lt;/em&gt; have a separate stack per function. (Technically, not just a stack but a whole context of execution is per function. Most importantly, CPU registers.) For every thread there're as many stacks as there're concurrently running functions, and the thread is switching between executing each function according to the logic of your program. When a function runs to its end, its stack is destroyed. So, &lt;strong&gt;the number and lifetimes of stacks&lt;/strong&gt; are dynamic and &lt;strong&gt;are not determined by the number of OS-level threads!&lt;/strong&gt;</source>
+          <target state="translated">ファイバー、グリーンスレッド、またはコルーチンを使用する場合&lt;em&gt;、通常&lt;/em&gt; 、関数ごとに個別のスタックがあります。 （技術的には、スタックだけでなく、実行のコンテキスト全体が関数ごとにあります。最も重要なのは、CPUが登録することです。）すべてのスレッドには、同時に実行されている関数と同じ数のスタックがあり、スレッドは各関数の実行を切り替えます。プログラムのロジックに従って。 関数が最後まで実行されると、そのスタックは破棄されます。 したがって、 &lt;strong&gt;スタックの数と有効期間&lt;/strong&gt;は動的であり&lt;strong&gt;、OSレベルのスレッドの数によって決定されません。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a476cf0746ec4d2c4a044655c71d195262024622" translate="yes" xml:space="preserve">
+          <source>Where and what are they (physically in a real computer's memory)?</source>
+          <target state="translated">どこに何があるのか(物理的には実際のコンピュータの記憶の中にある)。</target>
+        </trans-unit>
+        <trans-unit id="1fb0c80cb7c016fa977e4e460c6d36c71cd287e5" translate="yes" xml:space="preserve">
+          <source>Without stack &lt;strong&gt;no&lt;/strong&gt; microprocessor can work. (we can't imagine a program, even in assembly language, without subroutines/functions)</source>
+          <target state="translated">スタックが&lt;strong&gt;ないと、&lt;/strong&gt;マイクロプロセッサは機能し&lt;strong&gt;ません&lt;/strong&gt; 。 （アセンブリ言語であっても、サブルーチン/関数なしではプログラムを想像できません）</target>
+        </trans-unit>
+        <trans-unit id="010f37556d32304cf4397c04fe519e09ac87a1e2" translate="yes" xml:space="preserve">
+          <source>Without the heap it can. (An assembly language program can work without, as the heap is a OS concept, as malloc, that is a OS/Lib call.</source>
+          <target state="translated">ヒープがなくても動作します。(アセンブリ言語のプログラムは、ヒープはOSの概念であるmallocのように、OSLibの呼び出しであるため、ヒープなしでも動作することができます。</target>
+        </trans-unit>
+        <trans-unit id="3a9de33c793289bb4824480cb8f4087bf9168010" translate="yes" xml:space="preserve">
+          <source>Wow! So many answers and I don't think one of them got it right...</source>
+          <target state="translated">うわー!たくさんの答えがあって、その中の1つが正しいとは思えない...</target>
+        </trans-unit>
+        <trans-unit id="b1e7c9f013a3dbd26304d7c5054c48167a4ae117" translate="yes" xml:space="preserve">
+          <source>You can do some interesting things with the stack.  For instance, you have functions like &lt;a href=&quot;http://everything2.com/title/alloca%2528%2529&quot;&gt;alloca&lt;/a&gt; (assuming you can get past the copious warnings concerning its use), which is a form of malloc that specifically uses the stack, not the heap, for memory.</source>
+          <target state="translated">スタックを使用すると、興味深いことができます。 たとえば、メモリのヒープではなくスタックを具体的に使用するmallocの形式である&lt;a href=&quot;http://everything2.com/title/alloca%2528%2529&quot;&gt;alloca&lt;/a&gt; （その使用に関する大量の警告を回避できると想定）のような関数があります。</target>
+        </trans-unit>
+        <trans-unit id="892eae56f7439ba3dcbb1ea3ea17d754f03b35eb" translate="yes" xml:space="preserve">
+          <source>You can use the stack if you know exactly how much data you need to allocate before compile time, and it is not too big. You can use the heap if you don't know exactly how much data you will need at runtime or if you need to allocate a lot of data.</source>
+          <target state="translated">コンパイル前にどのくらいのデータを割り当てる必要があるのかが正確にわかっていて、大きすぎない場合はスタックを使用することができます。実行時にどれだけのデータが必要になるかわからない場合や、大量のデータを割り当てる必要がある場合には、ヒープを使用することができます。</target>
+        </trans-unit>
+        <trans-unit id="3009d59448498f75aa79426e3fa60a5f198f2ebb" translate="yes" xml:space="preserve">
+          <source>You can use the stack to pass parameters.. even if it is slower than using registers (would a microprocessor guru say or a good 1980s BIOS book...)</source>
+          <target state="translated">スタックを使ってパラメータを渡すことができます。たとえそれがレジスタを使うよりも遅くても (マイクロプロセッサの第一人者が言うか、1980年代のBIOSの本を読んでください)</target>
+        </trans-unit>
+        <trans-unit id="6406486d2198ac8633b1773b5680854692fc022d" translate="yes" xml:space="preserve">
+          <source>You must manage memory (you're in charge of allocating and freeing variables)</source>
+          <target state="translated">メモリを管理しなければならない(変数の割り当てと解放を担当している</target>
+        </trans-unit>
+        <trans-unit id="448cd0c4ab29afd1275bb72eaa06d3f1ffbebf2e" translate="yes" xml:space="preserve">
+          <source>You would use the heap if you don't know exactly how much data you will need at run time or if you need to allocate a lot of data.</source>
+          <target state="translated">実行時にどれだけのデータが必要になるかわからない場合や、多くのデータを割り当てる必要がある場合にヒープを使用します。</target>
+        </trans-unit>
+        <trans-unit id="21f0077be84d0a785692e7530efcb1dfe9e053c8" translate="yes" xml:space="preserve">
+          <source>You would use the stack if you know exactly how much data you need to allocate before compile time and it is not too big.</source>
+          <target state="translated">コンパイル前にどのくらいのデータを割り当てる必要があるのかが正確にわかっていて、それが大きすぎない場合はスタックを使うでしょう。</target>
+        </trans-unit>
+        <trans-unit id="2dd752e3a7242d730dc1ffd2af44fb8042a9cd98" translate="yes" xml:space="preserve">
+          <source>and here:</source>
+          <target state="translated">とここで。</target>
+        </trans-unit>
+        <trans-unit id="e7cb8b2830bfb6729d691a0e8fc0b7ca5702106b" translate="yes" xml:space="preserve">
+          <source>but be aware it may contain some inaccuracies.</source>
+          <target state="translated">しかし、それはいくつかの不正確な情報が含まれている可能性があることに注意してください。</target>
+        </trans-unit>
+        <trans-unit id="3e27b62ab595041b7d6fc3295ef65f967e4bb6d4" translate="yes" xml:space="preserve">
+          <source>malloc requires entering kernel mode, use lock/semaphore (or other synchronization primitives) executing some code and manage some structures needed to keep track of allocation.</source>
+          <target state="translated">malloc はカーネルモードに入る必要があり、いくつかのコードを実行して locksemaphore (または他の同期プリミティブ)を使用し、割り当てを追跡するために必要ないくつかの構造体を管理する必要があります。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
