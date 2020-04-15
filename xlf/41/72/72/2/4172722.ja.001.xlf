@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/4172722">
+    <body>
+      <group id="4172722">
+        <trans-unit id="79e24a0626d41444ee958448d5c317e6ee96b2d7" translate="yes" xml:space="preserve">
+          <source>(If you are puzzled by the &lt;code&gt;name(name), age(age)&lt;/code&gt; part,
+this is called a &lt;a href=&quot;https://stackoverflow.com/questions/1272680/&quot;&gt;member initializer list&lt;/a&gt;.)</source>
+          <target state="translated">（ &lt;code&gt;name(name), age(age)&lt;/code&gt; 部分に戸惑っている場合、これは&lt;a href=&quot;https://stackoverflow.com/questions/1272680/&quot;&gt;メンバー初期化子リスト&lt;/a&gt;と呼ばれます 。）</target>
+        </trans-unit>
+        <trans-unit id="9ee45baa134bd16dcc20742aeef7a5dcc5e7df5f" translate="yes" xml:space="preserve">
+          <source>(Note that the forthcoming new version of the C++ standard (which is C++11) adds move semantics to C++, which will likely change the Rule of Three. However, I know too little about this to write a C++11 section about the Rule of Three.)</source>
+          <target state="translated">(C++標準の近々の新バージョン(これはC++11です)では、C++にmoveセマンティクスが追加されており、それによってRule of Threeが変更される可能性が高いことに注意してください。しかし、私はこれについてあまり知らないので、「3の法則」についてC++11のセクションを書くことはできません)。</target>
+        </trans-unit>
+        <trans-unit id="ac32f8d69a83f86f12590e0408e25faea5115d85" translate="yes" xml:space="preserve">
+          <source>(Unfortunately, this &quot;rule&quot; is not enforced by the C++ standard or any compiler I am aware of.)</source>
+          <target state="translated">(残念ながら、この「ルール」はC++標準や私が知っているコンパイラでは施行されていません)。</target>
+        </trans-unit>
+        <trans-unit id="399a7f59e9617cfda8eb3917ac2ec614447795d1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;A consequence of the Rule of Three&lt;/strong&gt; is that the presence of a user-declared destructor indicates that simple member wise copy is unlikely to be appropriate for the copying operations in the class. That, in turn, suggests that if a class declares a destructor, the copy operations probably shouldn&amp;rsquo;t be automatically generated, because they wouldn&amp;rsquo;t do the right thing. At the time C++98 was adopted, the significance of this line of reasoning was not fully appreciated, so in C++98, the existence of a user declared destructor had no impact on compilers&amp;rsquo; willingness to generate copy operations. That continues to be the case in C++11, but only because restricting the conditions under which the copy operations are generated would break too much legacy code.</source>
+          <target state="translated">&lt;strong&gt;3つのルールの結果は、&lt;/strong&gt;ユーザー宣言のデストラクタの存在が、単純なメンバーごとのコピーがクラスのコピー操作に適切である可能性が低いことを示していることです。 つまり、クラスがデストラクタを宣言している場合、コピー操作は正しく行われないため、おそらくコピー操作は自動的に生成されないはずです。 C ++ 98が採用された時点では、この推論の重要性は十分に評価されていなかったため、C ++ 98では、ユーザー宣言のデストラクタの存在は、コピー操作を生成するコンパイラの意欲に影響を与えませんでした。 これはC ++ 11でも同じですが、コピー操作が生成される条件を制限するとレガシーコードが破壊されてしまうためです。</target>
+        </trans-unit>
+        <trans-unit id="0164fa64f12437b3f7154666932df4843f15d77b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Assignment operator and copy constructor&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;代入演算子とコピーコンストラクター&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="bc9c35ab6dcfa7c2dcc49cf50d7fef4989cdbc50" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Non default destructor&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;デフォルト以外のデストラクタ&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="fa9b5621e88a931c947e8c3afe8b1aa2a1130d8e" translate="yes" xml:space="preserve">
+          <source>A deep copy is if we declare an object and then create a completely separate copy of the object...we end up with 2 objects in 2 completely sets of memory.</source>
+          <target state="translated">ディープコピーとは、オブジェクトを宣言してから、そのオブジェクトの完全に別のコピーを作成することです。</target>
+        </trans-unit>
+        <trans-unit id="8295b736050208f7764a760aab4c1497c80f65b8" translate="yes" xml:space="preserve">
+          <source>Advice</source>
+          <target state="translated">Advice</target>
+        </trans-unit>
+        <trans-unit id="31fc773c31823ee138ba7ae357bfa817320368ae" translate="yes" xml:space="preserve">
+          <source>After executing the body of the destructor and destroying any automatic objects allocated within the body,
+  a destructor for class X calls the destructors for X's direct [...] members
+  [n3126.pdf 12.4 &amp;sect;6]</source>
+          <target state="translated">デストラクタの本体を実行し、本体内に割り当てられた自動オブジェクトを破棄した後、クラスXのデストラクタは、Xの直接[...]メンバのデストラクタを呼び出します[n3126.pdf 12.4&amp;sect;6]</target>
+        </trans-unit>
+        <trans-unit id="d381eea5c923562f51eaaeba8f680d94b10e9ebc" translate="yes" xml:space="preserve">
+          <source>Alternatively, you can inherit from &lt;code&gt;boost::noncopyable&lt;/code&gt; or declare them as deleted (in C++11 and above):</source>
+          <target state="translated">または、 &lt;code&gt;boost::noncopyable&lt;/code&gt; から継承するか、削除されたものとして宣言することもできます（C ++ 11以降）：</target>
+        </trans-unit>
+        <trans-unit id="deb0d50380e6ef75ff89f373543f1a6d844bbf0c" translate="yes" xml:space="preserve">
+          <source>An easy example, in plain English, of the kind of problem it solves:</source>
+          <target state="translated">それが解決する問題の種類の簡単な例を平易な英語で説明します。</target>
+        </trans-unit>
+        <trans-unit id="c263cc2c82f31396f753d881e9e77d3326c39577" translate="yes" xml:space="preserve">
+          <source>An example with the signatures:</source>
+          <target state="translated">サインを入れた例。</target>
+        </trans-unit>
+        <trans-unit id="1ee9a96a64d973ab9e4f1c4205c68f56050f9c6d" translate="yes" xml:space="preserve">
+          <source>Basically if you have a destructor (not the default destructor) it means that the class that you defined has some memory allocation. Suppose that the class is used outside by some client code or by you.</source>
+          <target state="translated">基本的にデストラクタ(デフォルトのデストラクタではありません)がある場合は、定義したクラスが何らかのメモリ割り当てを持っていることを意味します。そのクラスがクライアントコードや自分で外部で使われているとしましょう。</target>
+        </trans-unit>
+        <trans-unit id="040aea26272cfb1d12bf7b28729c9a1bc9a8c003" translate="yes" xml:space="preserve">
+          <source>By default, copying an object means copying its members:</source>
+          <target state="translated">デフォルトでは、オブジェクトをコピーすると、そのオブジェクトのメンバをコピーすることになります。</target>
+        </trans-unit>
+        <trans-unit id="261439050af4def416458064b12196626103581a" translate="yes" xml:space="preserve">
+          <source>C++ treats variables of user-defined types with &lt;em&gt;value semantics&lt;/em&gt;.
+This means that objects are implicitly copied in various contexts,
+and we should understand what &quot;copying an object&quot; actually means.</source>
+          <target state="translated">C ++は、ユーザー定義型の変数を&lt;em&gt;値セマンティクスで&lt;/em&gt;扱います。 これは、オブジェクトがさまざまなコンテキストで暗黙的にコピーされることを意味し、「オブジェクトのコピー」が実際に何を意味するかを理解する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="968d5d2027df3519a8f0d765e5be5ddda1fb83f5" translate="yes" xml:space="preserve">
+          <source>Changes via &lt;code&gt;a&lt;/code&gt; can be observed via &lt;code&gt;b&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;b&lt;/code&gt; を介し &lt;code&gt;a&lt;/code&gt; 変更は、 bを介して監視できます。</target>
+        </trans-unit>
+        <trans-unit id="9403b9333150f696ac7a722596c3db118a3e4748" translate="yes" xml:space="preserve">
+          <source>Copy assignment operator is a special assignment operator that is usually used to specify an existing object to others of the same type of object.</source>
+          <target state="translated">コピー代入演算子は、通常、既存のオブジェクトを同じ種類のオブジェクトの他の人に指定するために使用される特殊な代入演算子です。</target>
+        </trans-unit>
+        <trans-unit id="e18cc1bf79ff7f3976543961cb3b485844532b76" translate="yes" xml:space="preserve">
+          <source>Copy constructor  in C++ is a special constructor. It is used to build a new object, which is the new object equivalent to a copy of an existing object.</source>
+          <target state="translated">C++のコピーコンストラクタは、特殊なコンストラクタです。既存のオブジェクトのコピーに相当する新しいオブジェクトを構築するために使用します。</target>
+        </trans-unit>
+        <trans-unit id="facd05cb3a58650993fff6a1db85255e3b0a94e4" translate="yes" xml:space="preserve">
+          <source>Declare copy constructor &amp;amp; copy assignment operator as private access specifier.</source>
+          <target state="translated">コピーコンストラクターとコピー代入演算子をプライベートアクセス指定子として宣言します。</target>
+        </trans-unit>
+        <trans-unit id="c812d5bab43eaee8b4dccb2342f4c954b3622299" translate="yes" xml:space="preserve">
+          <source>Even today, people still write classes in this style and get into trouble:
+&quot;&lt;em&gt;I pushed a person into a vector and now I get crazy memory errors!&lt;/em&gt;&quot;
+Remember that by default, copying an object means copying its members,
+but copying the &lt;code&gt;name&lt;/code&gt; member merely copies a pointer, &lt;em&gt;not&lt;/em&gt; the character array it points to!
+This has several unpleasant effects:</source>
+          <target state="translated">今日でも、人々はこのスタイルでクラスを記述して問題を抱えています：「 &lt;em&gt;私は人をベクターにプッシュしましたが、今ではクレイジーなメモリエラーが発生します！&lt;/em&gt; 」デフォルトでは、オブジェクトのコピーはそのメンバーのコピーを意味しますが、 &lt;code&gt;name&lt;/code&gt; メンバーのコピーを意味しますポインタをコピーするだけで、ポインタが指す文字配列&lt;em&gt;は&lt;/em&gt;コピーし&lt;em&gt;ません&lt;/em&gt; 。 これにはいくつかの不快な影響があります。</target>
+        </trans-unit>
+        <trans-unit id="80d5280e70d86ad891f2b40c8ed78d7da520c6d7" translate="yes" xml:space="preserve">
+          <source>Exception safety</source>
+          <target state="translated">例外的な安全性</target>
+        </trans-unit>
+        <trans-unit id="fd290e2e68fb87d2b14ea759aa77e5a733ae350e" translate="yes" xml:space="preserve">
+          <source>Explicit definitions</source>
+          <target state="translated">明示的な定義</target>
+        </trans-unit>
+        <trans-unit id="4a0cfddf1fb85246d456bc7d093602f37388897b" translate="yes" xml:space="preserve">
+          <source>From C++11 on, an object has 2 extra special member functions: the move constructor and move assignment. The rule of five states to implement these functions as well.</source>
+          <target state="translated">C++11 以降、オブジェクトには 2 つの特別なメンバ関数が追加されました。これらの関数も同様に実装するための 5 つの状態のルール。</target>
+        </trans-unit>
+        <trans-unit id="833fe2498329a54d020e1de8e8b856d36c3fff90" translate="yes" xml:space="preserve">
+          <source>How can I prevent my objects from being copied?</source>
+          <target state="translated">自分のオブジェクトがコピーされないようにするにはどうすればいいですか?</target>
+        </trans-unit>
+        <trans-unit id="e2990e958e6115da8fdfe33d77595387d730ae6a" translate="yes" xml:space="preserve">
+          <source>How can I prevent my objects from being copied?
+Override all of the ways you're allowed to allocate memory for your object with a private function is a reasonable start.  If you really don't want people copying them, you could make it public and alert the programmer by throwing an exception and also not copying the object.</source>
+          <target state="translated">オブジェクトがコピーされないようにするには?プライベート関数でオブジェクトにメモリを割り当てる方法をすべてオーバーライドすることは、合理的なスタートです。もし本当にコピーされたくないのであれば、それを公開して例外を投げてプログラマに警告し、オブジェクトをコピーしないようにすることもできます。</target>
+        </trans-unit>
+        <trans-unit id="2fffc80b2aed30ab6e2c6f37124564640bebd4f7" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;a&lt;/code&gt; is destroyed, deleting the dangling pointer yields &lt;a href=&quot;https://stackoverflow.com/questions/2397984/&quot;&gt;undefined behavior&lt;/a&gt;.</source>
+          <target state="translated">が破棄された場合 &lt;code&gt;a&lt;/code&gt; ぶら下がりポインタを削除すると、 &lt;a href=&quot;https://stackoverflow.com/questions/2397984/&quot;&gt;未定義の動作が発生し&lt;/a&gt;ます。</target>
+        </trans-unit>
+        <trans-unit id="ccc869f09575dbb7deb05212e2e5cf80ad65c178" translate="yes" xml:space="preserve">
+          <source>If MyClass has only some primitive typed members a default assignment operator would work but if it has some pointer members and objects that do not have assignment operators the result would be unpredictable. Therefore we can say that if there is something to delete in destructor of a class, we might need a deep copy operator which means we should provide a copy constructor and assignment operator.</source>
+          <target state="translated">MyClassがプリミティブな型付きメンバしか持っていない場合はデフォルトの代入演算子が有効ですが、ポインタ・メンバや代入演算子を持たないオブジェクトを持っている場合は、結果が予測できません。そのため、クラスのデストラクタで削除したいものがある場合には、ディープコピー演算子が必要になるかもしれませんが、これはコピーコンストラクタと代入演算子を用意することを意味します。</target>
+        </trans-unit>
+        <trans-unit id="a63bf0c27bf9d5b347645c1eb049794e6c9e0a96" translate="yes" xml:space="preserve">
+          <source>If there is no good semantic for copying the resource your class manages, then consider to forbid copying by declaring (not &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration/1410632#1410632&quot;&gt;defining&lt;/a&gt;&lt;/em&gt;) the copy constructor and assignment operator as &lt;code&gt;private&lt;/code&gt;.</source>
+          <target state="translated">クラスが管理するリソースをコピーするための適切なセマンティクスがない場合は、コピーコンストラクターと代入演算子を &lt;code&gt;private&lt;/code&gt; として宣言（ &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration/1410632#1410632&quot;&gt;定義で&lt;/a&gt;&lt;/em&gt;はなく）して、コピーを禁止することを検討してください。</target>
+        </trans-unit>
+        <trans-unit id="51f6e5ade40c3c9a4a68b72fe61c5e91886c7550" translate="yes" xml:space="preserve">
+          <source>If you need to explicitly declare either the destructor,
+  copy constructor or copy assignment operator yourself,
+  you probably need to explicitly declare all three of them.</source>
+          <target state="translated">デストラクタ、コピーコンストラクタ、コピー代入演算子のいずれかを自分で明示的に宣言する必要がある場合は、おそらくこれら3つの演算子をすべて明示的に宣言する必要があるでしょう。</target>
+        </trans-unit>
+        <trans-unit id="09a94708e1b97a605d19d58a5c49654584da2872" translate="yes" xml:space="preserve">
+          <source>If your class needs any of</source>
+          <target state="translated">もしあなたのクラスが以下のものを必要としているならば</target>
+        </trans-unit>
+        <trans-unit id="75ff4574c03c6ae385a5c3f20e0b16c05d00ac94" translate="yes" xml:space="preserve">
+          <source>Implicit definitions</source>
+          <target state="translated">暗黙の定義</target>
+        </trans-unit>
+        <trans-unit id="b155dc653289592b1f4a60114ae84c23564cbcf9" translate="yes" xml:space="preserve">
+          <source>In C++11 onwards you can also declare copy constructor &amp;amp; assignment operator deleted</source>
+          <target state="translated">C ++ 11以降では、コピーコンストラクターと割り当て演算子の削除を宣言することもできます</target>
+        </trans-unit>
+        <trans-unit id="2473e96bc614a911821242119918a241a41836d6" translate="yes" xml:space="preserve">
+          <source>Introduction</source>
+          <target state="translated">Introduction</target>
+        </trans-unit>
+        <trans-unit id="378aea80c897817c0d000fbb012307be514db260" translate="yes" xml:space="preserve">
+          <source>Let us consider a simple example:</source>
+          <target state="translated">簡単な例を考えてみましょう。</target>
+        </trans-unit>
+        <trans-unit id="a417ad7382c5d845e673d6f81d037730bd016e3d" translate="yes" xml:space="preserve">
+          <source>Let us go back in time to pre-standard C++.
+There was no such thing as &lt;code&gt;std::string&lt;/code&gt;, and programmers were in love with pointers.
+The &lt;code&gt;person&lt;/code&gt; class might have looked like this:</source>
+          <target state="translated">以前のC ++に戻ってみましょう。 &lt;code&gt;std::string&lt;/code&gt; ようなものはなく、プログラマーはポインターに夢中になりました。 &lt;code&gt;person&lt;/code&gt; クラスは次のようになります。</target>
+        </trans-unit>
+        <trans-unit id="bce1a863e79c7b9dc13ce487b7372b22bac1853c" translate="yes" xml:space="preserve">
+          <source>Managing resources</source>
+          <target state="translated">資源の管理</target>
+        </trans-unit>
+        <trans-unit id="e76b391e984b0c691e529b288ad536b252afc7b3" translate="yes" xml:space="preserve">
+          <source>Many of the existing answers already touch the copy constructor, assignment operator and destructor.
+However, in post C++11, the introduction of move semantic may expand this beyond 3.</source>
+          <target state="translated">既存の回答の多くは、すでにコピー コンストラクタ、代入演算子、デストラクタに触れています。しかし、ポスト C++11 では、move セマンティックの導入により、これが 3 を超えて拡大される可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="0819198a9da4fb2e67a093cb535fb845ff8654d0" translate="yes" xml:space="preserve">
+          <source>Memberwise copying is exactly what we want in this case:
+&lt;code&gt;name&lt;/code&gt; and &lt;code&gt;age&lt;/code&gt; are copied, so we get a self-contained, independent &lt;code&gt;person&lt;/code&gt; object.
+The implicitly-defined destructor is always empty.
+This is also fine in this case since we did not acquire any resources in the constructor.
+The members' destructors are implicitly called after the &lt;code&gt;person&lt;/code&gt; destructor is finished:</source>
+          <target state="translated">この場合、メンバーごとのコピーがまさに必要です。 &lt;code&gt;name&lt;/code&gt; と &lt;code&gt;age&lt;/code&gt; がコピーされるため、自己完結型の独立した &lt;code&gt;person&lt;/code&gt; オブジェクトが取得されます。 暗黙的に定義されたデストラクタは常に空です。 この場合も、コンストラクターでリソースを取得しなかったため、問題ありません。 メンバーのデストラクタは、 &lt;code&gt;person&lt;/code&gt; デストラクタが終了した後に暗黙的に呼び出されます。</target>
+        </trans-unit>
+        <trans-unit id="0dd92645d263aa57f332c39c57b04a0c6ff5a10e" translate="yes" xml:space="preserve">
+          <source>Most of the time, you do not need to manage a resource yourself,
+because an existing class such as &lt;code&gt;std::string&lt;/code&gt; already does it for you.
+Just compare the simple code using a &lt;code&gt;std::string&lt;/code&gt; member
+to the convoluted and error-prone alternative using a &lt;code&gt;char*&lt;/code&gt; and you should be convinced.
+As long as you stay away from raw pointer members, the rule of three is unlikely to concern your own code.</source>
+          <target state="translated">ほとんどの場合、 &lt;code&gt;std::string&lt;/code&gt; などの既存のクラスがすでに管理しているため、リソースを自分で管理する必要はありません。 &lt;code&gt;std::string&lt;/code&gt; メンバーを使用した単純なコードと、 &lt;code&gt;char*&lt;/code&gt; を使用した複雑でエラーが発生しやすい代替コードを比較するだけで、納得するはずです。 生のポインターメンバーから離れている限り、3つのルールが自分のコードに関係することはほとんどありません。</target>
+        </trans-unit>
+        <trans-unit id="dd0558423f6422a29a6d0332c36f63c59c7f95f8" translate="yes" xml:space="preserve">
+          <source>Noncopyable resources</source>
+          <target state="translated">コピー不可のリソース</target>
+        </trans-unit>
+        <trans-unit id="4be5e1e184cee713a06eb304202691ba706e11be" translate="yes" xml:space="preserve">
+          <source>Note the difference between initialization and assignment:
+we must tear down the old state before assigning to &lt;code&gt;name&lt;/code&gt; to prevent memory leaks.
+Also, we have to protect against self-assignment of the form &lt;code&gt;x = x&lt;/code&gt;.
+Without that check, &lt;code&gt;delete[] name&lt;/code&gt; would delete the array containing the &lt;em&gt;source&lt;/em&gt; string,
+because when you write &lt;code&gt;x = x&lt;/code&gt;, both &lt;code&gt;this-&amp;gt;name&lt;/code&gt; and &lt;code&gt;that.name&lt;/code&gt; contain the same pointer.</source>
+          <target state="translated">初期化と割り当ての違いに注意してください。 &lt;code&gt;name&lt;/code&gt; に割り当てる前に古い状態を破棄して、メモリリークを防ぐ必要があります。 また、 &lt;code&gt;x = x&lt;/code&gt; という形式の自己割り当てから保護する必要があります。 このチェックがなければ、 &lt;code&gt;delete[] name&lt;/code&gt; は&lt;em&gt;ソース&lt;/em&gt;文字列を含む配列を削除します。 &lt;code&gt;that.name&lt;/code&gt; は、 &lt;code&gt;x = x&lt;/code&gt; と書き込むと、 &lt;code&gt;this-&amp;gt;name&lt;/code&gt; とthat.nameの両方に同じポインターが含まれるためです。</target>
+        </trans-unit>
+        <trans-unit id="73057aa0d94caeff72d3f954441205d18a0c5e92" translate="yes" xml:space="preserve">
+          <source>Now let's do something strange.  Let's say car2 is either programmed wrong or purposely meant to share the actual memory that car1 is made of.  (It's usually a mistake to do this and in classes is usually the blanket it's discussed under.)  Pretend that anytime you ask about car2, you're really resolving a pointer to car1's memory space...that's more or less what a shallow copy is.</source>
+          <target state="translated">奇妙なことをしてみよう car2が間違ってプログラムされているか、または意図的にcar1が作られている実際のメモリを共有することを意図しているとしましょう。(通常、このようなことをするのは間違いであり、授業では大抵の場合、このようなことが議論されることになります)。あなたがcar2について尋ねるときはいつでも、あなたは本当にcar1のメモリ空間へのポインタを解決していると仮定してください...それは浅いコピーが多かれ少なかれ何であるかを示しています。</target>
+        </trans-unit>
+        <trans-unit id="fc62f4b9642ccc8d14eccf688ad938a553acfa03" translate="yes" xml:space="preserve">
+          <source>Once &lt;code&gt;b&lt;/code&gt; is destroyed, &lt;code&gt;a.name&lt;/code&gt; is a dangling pointer.</source>
+          <target state="translated">&lt;code&gt;b&lt;/code&gt; が破棄されると、 &lt;code&gt;a.name&lt;/code&gt; はぶら下がりポインタです。</target>
+        </trans-unit>
+        <trans-unit id="943852bcdc471f99d2175602717c3e90a8e2be92" translate="yes" xml:space="preserve">
+          <source>Once, one of these deletes the memory in its destructor, the other will have a pointer to invalid memory (this is called a dangling pointer) when it tries to use it things are going to get hairy.</source>
+          <target state="translated">これらのうちの1つがデストラクタでメモリを削除すると、もう1つは無効なメモリへのポインタを持つことになります(これはダングリングポインタと呼ばれています)。</target>
+        </trans-unit>
+        <trans-unit id="8d49c0a90a74b9bd99cd612e86d765b341ed4fa3" translate="yes" xml:space="preserve">
+          <source>Recently Michael Claisse gave a talk that touches this topic:
+&lt;a href=&quot;http://channel9.msdn.com/events/CPP/C-PP-Con-2014/The-Canonical-Class&quot;&gt;http://channel9.msdn.com/events/CPP/C-PP-Con-2014/The-Canonical-Class&lt;/a&gt;</source>
+          <target state="translated">最近、Michael Claisseがこのトピックに触れる講演を行いました： &lt;a href=&quot;http://channel9.msdn.com/events/CPP/C-PP-Con-2014/The-Canonical-Class&quot;&gt;http&lt;/a&gt; ://channel9.msdn.com/events/CPP/C-PP-Con-2014/The-Canonical-Class</target>
+        </trans-unit>
+        <trans-unit id="4e23ca9e46e33f48cc5cf353d5d00a2dd2ffdf4d" translate="yes" xml:space="preserve">
+          <source>Rule of three in C++ is a fundamental principle of the design and the development of three requirements that if there is clear definition in one of the following member function, then the programmer should define the other two members functions together. Namely the following three member functions are indispensable: destructor, copy constructor, copy assignment operator.</source>
+          <target state="translated">C++における3要件のルールとは、以下のメンバ関数のいずれかに明確な定義があれば、プログラマは他の2つのメンバ関数を一緒に定義する必要があるという設計・開発の基本原則です。具体的には、デストラクタ、コピーコンストラクタ、コピー代入演算子の3つのメンバ関数が不可欠です。</target>
+        </trans-unit>
+        <trans-unit id="211147411bb0b9fe8452e926d2a21b6c29d0375b" translate="yes" xml:space="preserve">
+          <source>Since memberwise copying does not have the desired effect, we must define the copy constructor and the copy assignment operator explicitly to make deep copies of the character array:</source>
+          <target state="translated">メンバ単位のコピーでは期待した効果が得られないので、文字配列の深いコピーを行うには、コピーコンストラクタとコピー代入演算子を明示的に定義する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="360428a6299c49410f566d35610ff9a59032ced5" translate="yes" xml:space="preserve">
+          <source>Since the assignment does not take into account what &lt;code&gt;name&lt;/code&gt; pointed to before the assignment,
+sooner or later you will get memory leaks all over the place.</source>
+          <target state="translated">割り当てでは、割り当て前に指している &lt;code&gt;name&lt;/code&gt; が考慮されないため、遅かれ早かれ、場所全体でメモリリークが発生します。</target>
+        </trans-unit>
+        <trans-unit id="7e6450c00de2897fd30725717505cfce2ddcba24" translate="yes" xml:space="preserve">
+          <source>Since we declared neither the copy constructor nor the assignment operator (nor the destructor) ourselves,
+these are implicitly defined for us. Quote from the standard:</source>
+          <target state="translated">コピーコンストラクタも代入演算子も(デストラクタも)自分たちで宣言していないので、これらは暗黙のうちに定義されています。標準から引用します。</target>
+        </trans-unit>
+        <trans-unit id="b553fbe0594d46cb1cf45f1cf21cb873033e693b" translate="yes" xml:space="preserve">
+          <source>Since we're in an object-oriented language (or at least are assuming so), let's say you have a piece of memory allocated.  Since it's an OO-language, we can easily refer to chunks of memory we allocate because they are usually primitive variables (ints, chars, bytes) or classes we defined that are made of our own types and primitives.  So let's say we have a class of Car as follows:</source>
+          <target state="translated">ここではオブジェクト指向言語を使っているので(少なくともそう仮定しています)、メモリの一部が割り当てられているとしましょう。オブジェクト指向言語なので、割り当てたメモリの塊は、通常はプリミティブ変数(int、char、byte)であったり、独自の型やプリミティブで作られたクラスを定義しているので、簡単に参照することができます。そこで、次のようなCarのクラスがあるとしましょう。</target>
+        </trans-unit>
+        <trans-unit id="432d13bb72859614ef983d24eb754ab62db05256" translate="yes" xml:space="preserve">
+          <source>So regardless of what language you're writing in, be very careful about what you mean when it comes to copying objects because most of the time you want a deep copy.</source>
+          <target state="translated">だから、あなたがどの言語で書いているかに関係なく、ほとんどの場合、あなたは深いコピーを望んでいるので、それがオブジェクトをコピーすることになると、あなたが何を意味するかについて非常に注意してください。</target>
+        </trans-unit>
+        <trans-unit id="e333bc494c02ee48487436daa4334ea20e29487b" translate="yes" xml:space="preserve">
+          <source>So when should we declare those special member functions explicitly?
+When our class &lt;em&gt;manages a resource&lt;/em&gt;, that is,
+when an object of the class is &lt;em&gt;responsible&lt;/em&gt; for that resource.
+That usually means the resource is &lt;em&gt;acquired&lt;/em&gt; in the constructor
+(or passed into the constructor) and &lt;em&gt;released&lt;/em&gt; in the destructor.</source>
+          <target state="translated">では、これらの特別なメンバー関数をいつ明示的に宣言する必要があるのでしょうか。 クラス&lt;em&gt;がリソースを管理する&lt;/em&gt;とき、つまり、クラスのオブジェクトがそのリソースを&lt;em&gt;担当&lt;/em&gt;するとき。 これは通常、リソースがコンストラクターで&lt;em&gt;取得&lt;/em&gt;され（またはコンストラクターに渡され）、デストラクタで&lt;em&gt;解放さ&lt;/em&gt;れることを意味します。</target>
+        </trans-unit>
+        <trans-unit id="7c453391545cb5f2f1a89762b41a0bf392d97e58" translate="yes" xml:space="preserve">
+          <source>Some resources cannot or should not be copied, such as file handles or mutexes.
+In that case, simply declare the copy constructor and copy assignment operator as &lt;code&gt;private&lt;/code&gt; without giving a definition:</source>
+          <target state="translated">ファイルハンドルやミューテックスなど、一部のリソースはコピーできません。 その場合は、定義を行わずに、コピーコンストラクターとコピー代入演算子を &lt;code&gt;private&lt;/code&gt; として宣言するだけです。</target>
+        </trans-unit>
+        <trans-unit id="20e5e60c500a267d3e35b24f8a5cc1ea1cc105ce" translate="yes" xml:space="preserve">
+          <source>Sometimes you need to implement a class that manages a resource.
+(Never manage multiple resources in a single class,
+this will only lead to pain.)
+In that case, remember the &lt;strong&gt;rule of three&lt;/strong&gt;:</source>
+          <target state="translated">場合によっては、リソースを管理するクラスを実装する必要があります。 （単一のクラスで複数のリソースを管理しないでください。これは痛みにつながるだけです。）その場合、 &lt;strong&gt;3つ&lt;/strong&gt;の&lt;strong&gt;ルールを&lt;/strong&gt;覚えておいてください。</target>
+        </trans-unit>
+        <trans-unit id="827e6674de363a70897b99e51fffefdb810a4c6e" translate="yes" xml:space="preserve">
+          <source>Special member functions</source>
+          <target state="translated">特別会員機能</target>
+        </trans-unit>
+        <trans-unit id="aec0b15e6e51aa2d57ebbad90284afce08e7d2a0" translate="yes" xml:space="preserve">
+          <source>The &lt;a href=&quot;http://en.wikipedia.org/wiki/Rule_of_three_%28C%2B%2B_programming%29&quot;&gt;Rule of Three&lt;/a&gt; is a rule of thumb for C++, basically saying</source>
+          <target state="translated">&lt;a href=&quot;http://en.wikipedia.org/wiki/Rule_of_three_%28C%2B%2B_programming%29&quot;&gt;3つ&lt;/a&gt;のルールは C ++の経験則であり、基本的には</target>
+        </trans-unit>
+        <trans-unit id="6f11c9f21f514f7ee41c87b1f2bafc24e2635390" translate="yes" xml:space="preserve">
+          <source>The Rule of Three states that if you declare any of a</source>
+          <target state="translated">のいずれかを宣言した場合、3つのルールでは、次のようになります。</target>
+        </trans-unit>
+        <trans-unit id="1dc26c6289bab93223f65317189061f65e87b723" translate="yes" xml:space="preserve">
+          <source>The [...] copy constructor and copy assignment operator, [...] and destructor are special member functions.
+  [ &lt;em&gt;Note&lt;/em&gt;: &lt;strong&gt;The implementation will implicitly declare these member functions
+  for some class types when the program does not explicitly declare them.&lt;/strong&gt;
+  The implementation will implicitly define them if they are used. [...] &lt;em&gt;end note&lt;/em&gt; ]
+  [n3126.pdf section 12 &amp;sect;1]</source>
+          <target state="translated">[...]コピーコンストラクターとコピー代入演算子、[...]とデストラクターは特別なメンバー関数です。 [ &lt;em&gt;注&lt;/em&gt; ： &lt;strong&gt;プログラムが明示的に宣言していない場合、実装はこれらのメンバー関数をいくつかのクラス型に対して暗黙的に宣言します。&lt;/strong&gt; それらが使用される場合、実装はそれらを暗黙的に定義します。 [...] &lt;em&gt;エンドノート&lt;/em&gt; ] [n3126.pdfセクション12&amp;sect;1]</target>
+        </trans-unit>
+        <trans-unit id="b5768ebb789ad0414cec44ca827a0cff6a0eddbc" translate="yes" xml:space="preserve">
+          <source>The implicitly-defined copy assignment operator for a non-union class X performs memberwise copy assignment
+  of its subobjects.
+  [n3126.pdf section 12.8 &amp;sect;30]</source>
+          <target state="translated">非共用クラスXの暗黙的に定義されたコピー代入演算子は、そのサブオブジェクトのメンバーごとのコピー代入を実行します。 [n3126.pdfセクション12.8&amp;sect;30]</target>
+        </trans-unit>
+        <trans-unit id="156ecf78fca8d8fec636ef6004c3ff179d90628f" translate="yes" xml:space="preserve">
+          <source>The implicitly-defined copy constructor for a non-union class X performs a memberwise copy of its subobjects.
+  [n3126.pdf section 12.8 &amp;sect;16]</source>
+          <target state="translated">非ユニオンクラスXの暗黙的に定義されたコピーコンストラクターは、そのサブオブジェクトのメンバーごとのコピーを実行します。 [n3126.pdfセクション12.8&amp;sect;16]</target>
+        </trans-unit>
+        <trans-unit id="8a6fcda93390d8731cd9984e256fc2aebb8eff80" translate="yes" xml:space="preserve">
+          <source>The implicitly-defined special member functions for &lt;code&gt;person&lt;/code&gt; look like this:</source>
+          <target state="translated">&lt;code&gt;person&lt;/code&gt; の暗黙的に定義された特別なメンバー関数は次のようになります。</target>
+        </trans-unit>
+        <trans-unit id="a650b709af18f4d7fbd3e2ed31b0e773370b2363" translate="yes" xml:space="preserve">
+          <source>The law of the big three is as specified above.</source>
+          <target state="translated">大三元の法則は上記の通りです。</target>
+        </trans-unit>
+        <trans-unit id="d185dd0e04b218850ba08102a2a62761a1f136a6" translate="yes" xml:space="preserve">
+          <source>The problem will be, if a copy is made of your object, then the copy will point to the same memory as the original object.</source>
+          <target state="translated">問題は、あなたのオブジェクトのコピーが作られた場合、コピーは元のオブジェクトと同じメモリを指していることになります。</target>
+        </trans-unit>
+        <trans-unit id="eb497d383301a549cbb9c1d89b7ae37163e627ab" translate="yes" xml:space="preserve">
+          <source>The reasons for this is that all three of them are usually used to manage a resource, and if your class manages a resource, it usually needs to manage copying as well as freeing.</source>
+          <target state="translated">その理由は、3つとも通常はリソースを管理するために使用するもので、クラスがリソースを管理する場合、通常は解放だけでなくコピーも管理する必要があるからです。</target>
+        </trans-unit>
+        <trans-unit id="1e6aaca63062ac28b69db5d58ca82abc5b67162c" translate="yes" xml:space="preserve">
+          <source>The rule of 3/5 is also referred to as the rule of 0/3/5. The zero part of the rule states that you are allowed to not write any of the special member functions when creating your class.</source>
+          <target state="translated">35のルールは035のルールとも呼ばれています。このルールの0の部分は、クラスを作成する際に特別なメンバ関数を書かないことが許されていることを示しています。</target>
+        </trans-unit>
+        <trans-unit id="5fc3cdb89901e2470465908ef90cc89de3c36d0c" translate="yes" xml:space="preserve">
+          <source>The rule of five</source>
+          <target state="translated">五則</target>
+        </trans-unit>
+        <trans-unit id="a855a1fba9a32d8f71b9622855bf798047f92314" translate="yes" xml:space="preserve">
+          <source>The rule of three</source>
+          <target state="translated">三つの法則</target>
+        </trans-unit>
+        <trans-unit id="36c8d8c036bb8fe797cb958ace9878b1d9f0a216" translate="yes" xml:space="preserve">
+          <source>The rule of zero</source>
+          <target state="translated">ゼロの法則</target>
+        </trans-unit>
+        <trans-unit id="a903fdf03fcab0513e11024031b16c3545e6f802" translate="yes" xml:space="preserve">
+          <source>There are quick examples:</source>
+          <target state="translated">簡単な例があります。</target>
+        </trans-unit>
+        <trans-unit id="3cd542f7977cffdfdc31953ce90697e0b2617148" translate="yes" xml:space="preserve">
+          <source>Therefore, you write a copy constructor so that it allocates new objects their own pieces of memory to destroy.</source>
+          <target state="translated">したがって、あなたはそれが破壊するために新しいオブジェクトのメモリの自分の部分を割り当てるようにコピーコンストラクタを記述します。</target>
+        </trans-unit>
+        <trans-unit id="f8798170a9a6651fb0a4c954205b28e6e3af390f" translate="yes" xml:space="preserve">
+          <source>This also takes care of self-assignment without an explicit check.
+An even more robust solution to this problem is the &lt;a href=&quot;https://stackoverflow.com/questions/3279543/&quot;&gt;copy-and-swap idiom&lt;/a&gt;,
+but I will not go into the details of exception safety here.
+I only mentioned exceptions to make the following point: &lt;strong&gt;Writing classes that manage resources is hard.&lt;/strong&gt;</source>
+          <target state="translated">これは、明示的なチェックなしで自己割り当ても処理します。 この問題のさらに強力な解決策は、 &lt;a href=&quot;https://stackoverflow.com/questions/3279543/&quot;&gt;コピーとスワップのイディオム&lt;/a&gt;ですが、ここでは例外の安全性の詳細については触れません。 私は次のポイントを作るために例外についてのみ言及しました： &lt;strong&gt;リソースを管理するクラスを書くのは難しいです。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="27b40563b27907a9f057f675f3f37fd6000ad1ac" translate="yes" xml:space="preserve">
+          <source>This means that the new object and the old object will be pointing at the same piece of memory so when you change it in one object it will be changed for the other objerct too.  If one object deletes this memory the other will carry on trying to use it - eek.</source>
+          <target state="translated">これは、新しいオブジェクトと古いオブジェクトが同じメモリを指していることを意味するので、一方のオブジェクトで変更すると、他方のオブジェクトでも変更されます。一方のオブジェクトがこのメモリを削除すると、他方のオブジェクトはそれを使用しようとし続けます。</target>
+        </trans-unit>
+        <trans-unit id="802dfeceb89576282efc5b61a8af1d0cdbcc4a26" translate="yes" xml:space="preserve">
+          <source>To resolve this you write your own version of the copy constructor and assignment operator.  Your versions allocate separate memory to the new objects and copy across the values that the first pointer is pointing to rather than its address.</source>
+          <target state="translated">これを解決するには、独自のバージョンのコピーコンストラクタと代入演算子を書きます。あなたのバージョンでは、新しいオブジェクトに別々のメモリを割り当て、最初のポインタが指す値をアドレスではなくコピーします。</target>
+        </trans-unit>
+        <trans-unit id="6c910658e0d85611554b78b95cba5500416e1e24" translate="yes" xml:space="preserve">
+          <source>Unfortunately, this solution will fail if &lt;code&gt;new char[...]&lt;/code&gt; throws an exception due to memory exhaustion.
+One possible solution is to introduce a local variable and reorder the statements:</source>
+          <target state="translated">残念ながら、メモリ不足により &lt;code&gt;new char[...]&lt;/code&gt; が例外をスローすると、このソリューションは失敗します。 考えられる解決策の1つは、ローカル変数を導入してステートメントを並べ替えることです。</target>
+        </trans-unit>
+        <trans-unit id="dce3694d3e97fbbf21e3bbef551abea96907eb47" translate="yes" xml:space="preserve">
+          <source>What are the &lt;em&gt;copy constructor&lt;/em&gt; and the &lt;em&gt;copy assignment operator&lt;/em&gt;?</source>
+          <target state="translated">&lt;em&gt;コピーコンストラクタ&lt;/em&gt;と&lt;em&gt;コピー代入演算子とは&lt;/em&gt;何ですか？</target>
+        </trans-unit>
+        <trans-unit id="d284fc80dc776543cde9d354bdfabe8024285a6b" translate="yes" xml:space="preserve">
+          <source>What are the copy constructor and the copy assignment operator?
+I have already used them above.  The copy constructor is called when you type code such as &lt;code&gt;Car car2 = car1;&lt;/code&gt;  Essentially if you declare a variable and assign it in one line, that's when the copy constructor is called.  The assignment operator is what happens when you use an equal sign--&lt;code&gt;car2 = car1;&lt;/code&gt;.  Notice &lt;code&gt;car2&lt;/code&gt; isn't declared in the same statement.  The two chunks of code you write for these operations are likely very similar.  In fact the typical design pattern has another function you call to set everything once you're satisfied the initial copy/assignment is legitimate--if you look at the longhand code I wrote, the functions are nearly identical.</source>
+          <target state="translated">コピーコンストラクタとコピー代入演算子とは何ですか？ 上記ですでに使用しました。 &lt;code&gt;Car car2 = car1;&lt;/code&gt; などのコードを入力すると、コピーコンストラクターが呼び出されます。 基本的に、変数を宣言して1行で割り当てる場合、それはコピーコンストラクターが呼び出されるときです。 代入演算子は、等号を使用するとどうなるかです &lt;code&gt;car2 = car1;&lt;/code&gt; 。 &lt;code&gt;car2&lt;/code&gt; は同じステートメントで宣言されていないことに注意してください。 これらの操作のために作成する2つのコードチャンクは、非常によく似ています。 実際、典型的なデザインパターンには、最初のコピー/割り当てが正当であると満足すると、すべてを設定するために呼び出す別の関数があります-私が書いた長いコードを見ると、関数はほぼ同じです。</target>
+        </trans-unit>
+        <trans-unit id="2e18f7284f77f3d90b9ec0f927d31ea3e9dd4931" translate="yes" xml:space="preserve">
+          <source>What does &lt;em&gt;copying an object&lt;/em&gt; mean?</source>
+          <target state="translated">&lt;em&gt;オブジェクトのコピー&lt;/em&gt;とはどういう意味ですか？</target>
+        </trans-unit>
+        <trans-unit id="e314a085c799aa51bc02f6c5e796a58203d1aa5f" translate="yes" xml:space="preserve">
+          <source>What does copying an object mean? 
+There are a few ways you can copy objects--let's talk about the 2 kinds you're most likely referring to--deep copy and shallow copy.</source>
+          <target state="translated">オブジェクトをコピーするとはどういうことですか?オブジェクトをコピーするにはいくつかの方法があります。</target>
+        </trans-unit>
+        <trans-unit id="18288f95e467e5d08ac50a74ac3a5f64d0b646f6" translate="yes" xml:space="preserve">
+          <source>What does it mean to copy a &lt;code&gt;person&lt;/code&gt; object?
+The &lt;code&gt;main&lt;/code&gt; function shows two distinct copying scenarios.
+The initialization &lt;code&gt;person b(a);&lt;/code&gt; is performed by the &lt;em&gt;copy constructor&lt;/em&gt;.
+Its job is to construct a fresh object based on the state of an existing object.
+The assignment &lt;code&gt;b = a&lt;/code&gt; is performed by the &lt;em&gt;copy assignment operator&lt;/em&gt;.
+Its job is generally a little more complicated,
+because the target object is already in some valid state that needs to be dealt with.</source>
+          <target state="translated">&lt;code&gt;person&lt;/code&gt; オブジェクトをコピーするとはどういう意味ですか？ &lt;code&gt;main&lt;/code&gt; 関数は、2つの異なるコピーシナリオを示しています。 初期化 &lt;code&gt;person b(a);&lt;/code&gt; &lt;em&gt;コピーコンストラクタ&lt;/em&gt;によって実行され&lt;em&gt;ます&lt;/em&gt; 。 その仕事は、既存のオブジェクトの状態に基づいて新しいオブジェクトを構築することです。 代入 &lt;code&gt;b = a&lt;/code&gt; は、 &lt;em&gt;コピー代入演算子&lt;/em&gt;によって実行され&lt;em&gt;ます&lt;/em&gt; 。 ターゲットオブジェクトは既に処理が必要な有効な状態にあるため、そのジョブは一般にもう少し複雑です。</target>
+        </trans-unit>
+        <trans-unit id="525369d9ad8d90cf2e824a3d03f0e647b6245a31" translate="yes" xml:space="preserve">
+          <source>What is The Rule of Three</source>
+          <target state="translated">三つのルールとは</target>
+        </trans-unit>
+        <trans-unit id="9326d3d974cf129180db9fb54ae9fe50c11558bc" translate="yes" xml:space="preserve">
+          <source>When do I need to declare them myself?</source>
+          <target state="translated">自分で申告する必要があるのはいつですか?</target>
+        </trans-unit>
+        <trans-unit id="2b4d3c03212efec5704293148396f064cc3fa772" translate="yes" xml:space="preserve">
+          <source>When do I need to declare them myself? 
+If you are not writing code that is to be shared or for production in some manner, you really only need to declare them when you need them.  You do need to be aware of what your program language does if you choose to use it 'by accident' and didn't make one--i.e. you get the compiler default.  I rarely use copy constructors for instance, but assignment operator overrides are very common.  Did you know you can override what addition, subtraction, etc. mean as well?</source>
+          <target state="translated">自分で宣言する必要があるのはいつですか?共有されるコードを書いていない場合や、何らかの方法で生産用のコードを書いていない場合は、本当に必要なときだけ宣言する必要があります。自分のプログラム言語を「たまたま」使っていて、それを作っていなかった場合、つまりコンパイラのデフォルト値を取得してしまった場合には、自分のプログラム言語が何をしているかを意識する必要があります。例えばコピー・コンストラクタを使うことはほとんどありませんが、代入演算子のオーバーライドは非常に一般的です。足し算、引き算などもオーバーライドできることを知っていましたか?</target>
+        </trans-unit>
+        <trans-unit id="b0748a17383e0d0183f82f7af89a83b5c48c0592" translate="yes" xml:space="preserve">
+          <source>You allocated memory in your constructor and so you need to write a destructor to delete it.  Otherwise you will cause a memory leak.</source>
+          <target state="translated">コンストラクタでメモリを確保しているので、それを削除するためにデストラクタを書く必要があります。そうしないとメモリリークの原因になります。</target>
+        </trans-unit>
+        <trans-unit id="f35591d3af737f6da366aa57fe0c8a3cec3ebd05" translate="yes" xml:space="preserve">
+          <source>You allocated memory in your constructor to a member pointer of your class.  When you copy an object of this class the default assignment operator and copy constructor will copy the value of this member pointer to the new object.</source>
+          <target state="translated">コンストラクタでクラスのメンバポインタにメモリを割り当てました。このクラスのオブジェクトをコピーすると、デフォルトの代入演算子とコピーコンストラクタは、このメンバポインタの値を新しいオブジェクトにコピーします。</target>
+        </trans-unit>
+        <trans-unit id="d665236b12b323d034f1a59d0be9b78aa4a45839" translate="yes" xml:space="preserve">
+          <source>You might think that this is job done.</source>
+          <target state="translated">これは仕事だと思うかもしれません。</target>
+        </trans-unit>
+        <trans-unit id="4245c721abbc6eb77fa44f3f4a16ff9787771472" translate="yes" xml:space="preserve">
+          <source>a &lt;strong&gt;copy constructor&lt;/strong&gt;,</source>
+          <target state="translated">&lt;strong&gt;コピーコンストラクタ&lt;/strong&gt; 、</target>
+        </trans-unit>
+        <trans-unit id="a251f0e395aad7bbb837ca31dc8c54f763926c32" translate="yes" xml:space="preserve">
+          <source>an &lt;strong&gt;assignment operator&lt;/strong&gt;,</source>
+          <target state="translated">&lt;strong&gt;代入演算子&lt;/strong&gt; 、</target>
+        </trans-unit>
+        <trans-unit id="1af3319531cdc9d080e124c289ad057aefd0cc4c" translate="yes" xml:space="preserve">
+          <source>copy assignment operator</source>
+          <target state="translated">コピー代入演算子</target>
+        </trans-unit>
+        <trans-unit id="183ecfccbbd2d4096ad1d48b49c8f24046ebf9c1" translate="yes" xml:space="preserve">
+          <source>copy constructor</source>
+          <target state="translated">コピーコンストラクタ</target>
+        </trans-unit>
+        <trans-unit id="8bc5b477b47fc9df65f37bbb8cb4a49ff6fe6dec" translate="yes" xml:space="preserve">
+          <source>defined explictly, then it is likely to need &lt;strong&gt;all three of them&lt;/strong&gt;.</source>
+          <target state="translated">明示的に定義すると&lt;strong&gt;、3つすべて&lt;/strong&gt;が必要になる可能性があり&lt;strong&gt;ます&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="867e8ce6dcd7e9c598e666c812691b0cff661d7c" translate="yes" xml:space="preserve">
+          <source>destructor</source>
+          <target state="translated">destructor</target>
+        </trans-unit>
+        <trans-unit id="6813b0bf4b910cdeab71fd38315eaad01f7becab" translate="yes" xml:space="preserve">
+          <source>or a &lt;strong&gt;destructor&lt;/strong&gt;,</source>
+          <target state="translated">または&lt;strong&gt;デストラクタ&lt;/strong&gt; 、</target>
+        </trans-unit>
+        <trans-unit id="63ac133f749caa7f0c542633b2a3bf7831b595d0" translate="yes" xml:space="preserve">
+          <source>the class destructor would also be participating in management of the resource (usually releasing it). The classic resource to be managed was memory, and this is why all Standard Library classes that
+manage memory (e.g., the STL containers that perform dynamic memory management) all declare &amp;ldquo;the big three&amp;rdquo;: both copy operations and a destructor.</source>
+          <target state="translated">クラスのデストラクタもリソースの管理に参加します（通常はリソースを解放します）。 管理される古典的なリソースはメモリでした。これが、メモリを管理するすべての標準ライブラリクラス（たとえば、動的メモリ管理を実行するSTLコンテナ）がすべて「大きな3つ」、つまりコピー操作とデストラクタの両方を宣言する理由です。</target>
+        </trans-unit>
+        <trans-unit id="b6b9dbf4312ced3cbd7237155947344baf0a01a7" translate="yes" xml:space="preserve">
+          <source>then you should declare all three. It grew out of the observation that the need to take over the meaning of a copy operation almost always stemmed from the class performing some kind of resource management, and that almost always implied that</source>
+          <target state="translated">の場合は、3つすべてを宣言しなければなりません。これは、コピー操作の意味を引き継ぐ必要性は、ほとんどの場合、クラスが何らかのリソース管理を行っていることに起因しているという観察から生まれました。</target>
+        </trans-unit>
+        <trans-unit id="7ceae16642af9c2edc08b7ed1a5862ae8d9cf4a9" translate="yes" xml:space="preserve">
+          <source>whatever resource management was being done in one copy operation probably needed to be done in the other copy operation and</source>
+          <target state="translated">あるコピー操作で行われていたリソース管理は、おそらく他のコピー操作で行われる必要があり</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/500431">
+    <body>
+      <group id="500431">
+        <trans-unit id="b2b80089f01682b9f7777a6969b9faaa80407f05" translate="yes" xml:space="preserve">
+          <source>(I'm sure there are many subtleties that real JavaScript programmers will be able to point out in other answers. In particular I came across &lt;a href=&quot;http://www.digital-web.com/articles/scope_in_javascript/&quot;&gt;this page&lt;/a&gt; about what exactly &lt;code&gt;this&lt;/code&gt; means at any time. Hopefully &lt;a href=&quot;http://bowles.byethost3.com/javascript/section6/lesson6.htm#part4&quot;&gt;this more introductory link&lt;/a&gt; is enough to get you started though.)</source>
+          <target state="translated">（本当のJavaScriptプログラマーが他の答えで指摘できる多くの微妙な点があると確信しています。特に、これが何を意味するかについていつでも&lt;a href=&quot;http://www.digital-web.com/articles/scope_in_javascript/&quot;&gt;このページに&lt;/a&gt;出くわしました。うまくいけば、 &lt;a href=&quot;http://bowles.byethost3.com/javascript/section6/lesson6.htm#part4&quot;&gt;このより多くの紹介リンク&lt;/a&gt;で開始できます。でも。）</target>
+        </trans-unit>
+        <trans-unit id="2b079c997f6e9e9f11e2b8533c11a4cdefaf6c17" translate="yes" xml:space="preserve">
+          <source>...because of this behavior you need to be careful about closing over variables declared using &lt;code&gt;var&lt;/code&gt; in loops. There is only one instance of variable &lt;code&gt;x&lt;/code&gt; declared here, and it sits logically outside of the loop.</source>
+          <target state="translated">...この動作のため、ループ内で &lt;code&gt;var&lt;/code&gt; を使用して宣言された変数を閉じる場合は注意が必要です。 ここで宣言されている変数 &lt;code&gt;x&lt;/code&gt; のインスタンスは1つだけであり、論理的にループの外側にあります。</target>
+        </trans-unit>
+        <trans-unit id="c2a9084e5d3eb2e4718aab6268e78f5823849081" translate="yes" xml:space="preserve">
+          <source>1) There is a global scope, a function scope, and the with and catch scopes. There is no 'block' level scope in general for variable's -- the with and the catch statements add names to their blocks.</source>
+          <target state="translated">1)グローバルスコープ、関数スコープ、そして with と catch スコープがあります。一般的に変数には'ブロック'レベルのスコープはありません --with文とcatch文はそのブロックに名前を追加します。</target>
+        </trans-unit>
+        <trans-unit id="a7c489f0a7142c687da2af2321ca060655d7e2f8" translate="yes" xml:space="preserve">
+          <source>2) Scopes are nested by functions all the way to the global scope.</source>
+          <target state="translated">2)スコープは、グローバルスコープに至るまで関数によってネストされています。</target>
+        </trans-unit>
+        <trans-unit id="d749b9c70cd3d6ec5a37f9e5c4bb7316601c2a74" translate="yes" xml:space="preserve">
+          <source>3) Properties are resolved by going through the prototype chain.  The with statement brings object property names into the lexical scope defined by the with block.</source>
+          <target state="translated">3)プロパティーは、プロトタイプ・チェーンを経由して解決されます。with文は、オブジェクトのプロパティ名をwithブロックで定義された辞書的スコープに持ち込みます。</target>
+        </trans-unit>
+        <trans-unit id="08b17079c570142726687fb2c5c9bb253783c20e" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;ES5&lt;/code&gt; and earlier:</source>
+          <target state="translated">&lt;code&gt;ES5&lt;/code&gt; 以前：</target>
+        </trans-unit>
+        <trans-unit id="2ac152d0029db3c7cd7c3a77df7bfef8ae5d4c57" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;ES6&lt;/code&gt; (ES 2015) and older:</source>
+          <target state="translated">&lt;code&gt;ES6&lt;/code&gt; （ES 2015）以前：</target>
+        </trans-unit>
+        <trans-unit id="c4c1a80bcfde13b5ffe96bdafa9c43b74b195f4b" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;const&lt;/code&gt; should be used for &lt;strong&gt;95% of cases&lt;/strong&gt;. It makes it so the variable &lt;em&gt;reference&lt;/em&gt; can't change. Array, object, and DOM node properties can change and should likely be &lt;code&gt;const&lt;/code&gt;.</source>
+          <target state="translated">&lt;strong&gt;ケースの95％には&lt;/strong&gt; &lt;code&gt;const&lt;/code&gt; を使用する必要が&lt;strong&gt;あり&lt;/strong&gt;ます。 変数&lt;em&gt;参照&lt;/em&gt;を変更できないようにします。 配列、オブジェクト、DOMノードのプロパティは変更される可能性があり、おそらく &lt;code&gt;const&lt;/code&gt; である必要があります。</target>
+        </trans-unit>
+        <trans-unit id="dcf0ad05684411d0af52e47d334a793a1d346e85" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;const&lt;/code&gt;: creates a block scoped variable which has to be initialized and cannot be reassigned</source>
+          <target state="translated">&lt;code&gt;const&lt;/code&gt; ：初期化する必要があり、再割り当てできないブロックスコープ変数を作成します</target>
+        </trans-unit>
+        <trans-unit id="84d33e7ec01dc28120ceea7d7d07bb9ccda0bdcb" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;import&lt;/code&gt; statements</source>
+          <target state="translated">&lt;code&gt;import&lt;/code&gt; 文</target>
+        </trans-unit>
+        <trans-unit id="f378613076c429aa47b0bc460bdfb9fd805b2aa3" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;let&lt;/code&gt; and &lt;code&gt;const&lt;/code&gt; in the global context do not add properties to the global object, but still have global scope:</source>
+          <target state="translated">&lt;code&gt;let&lt;/code&gt; と &lt;code&gt;const&lt;/code&gt; は、グローバルコンテキストでグローバルオブジェクトにプロパティを追加しませんが、グローバルスコープを持っています。</target>
+        </trans-unit>
+        <trans-unit id="23ddb5e06f75a482ff3a507bfea2c6482c39eb0a" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;let&lt;/code&gt; should be be used for any variable expecting to be reassigned. This includes within a for loop. If you ever change value beyond initialization, use &lt;code&gt;let&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;let&lt;/code&gt; は、再割り当てが予想される変数に使用する必要があります。 これにはforループ内が含まれます。 初期化を超えて値を変更する場合は、 &lt;code&gt;let&lt;/code&gt; を使用してください 。</target>
+        </trans-unit>
+        <trans-unit id="39836bea22536ebe1993a1b9a30ed5062e7fc910" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;let&lt;/code&gt;: creates a block scoped variable</source>
+          <target state="translated">&lt;code&gt;let&lt;/code&gt; ：ブロックスコープの変数を作成します</target>
+        </trans-unit>
+        <trans-unit id="f86a4d006feac6327fadfafd72bedb4b3013db57" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;var&lt;/code&gt;, &lt;code&gt;let&lt;/code&gt; and &lt;code&gt;const&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;var&lt;/code&gt; 、 &lt;code&gt;let&lt;/code&gt; 、 &lt;code&gt;const&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="23a7586104558b94ef7294bd102a26a3fee7bc25" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;(*) Globally and functionally scoped variables can be initialized and used before they are declared because JavaScript variables are &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Glossary/Hoisting&quot;&gt;&lt;strong&gt;hoisted&lt;/strong&gt;&lt;/a&gt;.&lt;/em&gt; This means that declarations are always much to the top of the scope.</source>
+          <target state="translated">&lt;em&gt;（*）JavaScript変数が&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Glossary/Hoisting&quot;&gt;&lt;strong&gt;ホイスト&lt;/strong&gt;&lt;/a&gt;されるため、グローバルおよび機能的にスコープ指定された変数は、宣言される前に初期化して使用できます。&lt;/em&gt; これは、宣言が常にスコープの一番上にあることを意味します。</target>
+        </trans-unit>
+        <trans-unit id="f1f37e4dcff2ea462372b5383bfff8d1536133fc" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Whenever a function is called, a variable scope object is created (and included in scope chain) which is followed by variables in JavaScript.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;関数が呼び出されると、変数スコープオブジェクトが作成され（スコープチェーンに含まれ）、JavaScriptの変数が後に続きます。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="b4f1e280e8a84dd1613867f45aea9b5a09b5e95c" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;i&lt;/em&gt;) The outer context. It has a variable environment of a = 1</source>
+          <target state="translated">&lt;em&gt;i&lt;/em&gt; ）外部コンテキスト。 変数環境はa = 1です</target>
+        </trans-unit>
+        <trans-unit id="27dcebcb7c447ec33f3b94ab4786b7e8986fc48a" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;ii&lt;/em&gt;) The IIFE context, it has a lexical environment of a = 1, but a variable environment of a = 6 which takes precedence in the stack</source>
+          <target state="translated">&lt;em&gt;ii&lt;/em&gt; ）IIFEコンテキスト、それはa = 1の字句環境を持っていますが、スタックで優先されるa = 6の可変環境を持っています</target>
+        </trans-unit>
+        <trans-unit id="f2d982053f1a3fa4551447f1adedd54422f021ad" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;iii&lt;/em&gt;) The returned function context, it has a lexical environment of a = 6 and that is the value referenced in the alert when called.</source>
+          <target state="translated">&lt;em&gt;iii&lt;/em&gt; ）返された関数コンテキスト。これはa = 6の字句環境を持ち、これは呼び出されたときにアラートで参照される値です。</target>
+        </trans-unit>
+        <trans-unit id="f56505ee4c5ecc9846d96be13e7dc0c3c70dfa98" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Android browser 4&lt;/strong&gt; and below</source>
+          <target state="translated">&lt;strong&gt;Androidブラウザー4&lt;/strong&gt;以下</target>
+        </trans-unit>
+        <trans-unit id="55a8f93e956bc391290a79206606d9be4627b589" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Block Scope&lt;/strong&gt; : Identifiers are &quot;known&quot; &lt;a href=&quot;https://stackoverflow.com/a/31222689/38522&quot;&gt;from the top of the scope they are declared within&lt;/a&gt;, but they cannot be assigned to or dereferenced (read) until after the line of their declaration. This interim period is called the &quot;temporal dead zone.&quot;</source>
+          <target state="translated">&lt;strong&gt;ブロックスコープ&lt;/strong&gt; ：識別子は、 &lt;a href=&quot;https://stackoverflow.com/a/31222689/38522&quot;&gt;内&lt;/a&gt;で宣言されたスコープの先頭から 「既知」ですが、宣言の行の後まで割り当てまたは逆参照（読み取り）できません。 この暫定期間は、「一時的なデッドゾーン」と呼ばれます。</target>
+        </trans-unit>
+        <trans-unit id="2f05c56877d8601614fa63855f086a2652e865c4" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Chome 40&lt;/strong&gt; and below</source>
+          <target state="translated">&lt;strong&gt;40丁目&lt;/strong&gt;以下</target>
+        </trans-unit>
+        <trans-unit id="d99cf4a17169c81d37ec13856f6710a2a76cbbad" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Firefox 43&lt;/strong&gt; and below</source>
+          <target state="translated">&lt;strong&gt;Firefox 43&lt;/strong&gt;以下</target>
+        </trans-unit>
+        <trans-unit id="08cd2fc5597977a2613daeb7f079fd9fa0eb16b8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Functional Scope&lt;/strong&gt; : Variable declared within a function with &lt;code&gt;var&lt;/code&gt; keyword has functional scope.</source>
+          <target state="translated">&lt;strong&gt;関数スコープ&lt;/strong&gt; ： &lt;code&gt;var&lt;/code&gt; キーワードを使用して関数内で宣言された変数には、関数スコープがあります。</target>
+        </trans-unit>
+        <trans-unit id="a13963dd31b44d28a808a5e2917cae4be7b837de" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Functional Scope&lt;/strong&gt; : Variables are known within &lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/function&quot;&gt;&lt;strong&gt;the function&lt;/strong&gt;&lt;/a&gt; they are declared in, from the start of the function &lt;em&gt;(*)&lt;/em&gt;</source>
+          <target state="translated">&lt;strong&gt;関数スコープ&lt;/strong&gt; ：変数は&lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/function&quot;&gt;&lt;strong&gt;、関数&lt;/strong&gt;&lt;/a&gt;の最初から、それらが宣言されている&lt;strong&gt;関数&lt;/strong&gt;内で認識されます&lt;em&gt;（*）&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="7298e7a71a2f69245853e050c4bdee749e978e9e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Functional scope or Local scope&lt;/strong&gt;: variable declared in this scope can be used in its own function only. For example:</source>
+          <target state="translated">&lt;strong&gt;関数スコープまたはローカルスコープ&lt;/strong&gt; ：このスコープで宣言された変数は、独自の関数でのみ使用できます。 例えば：</target>
+        </trans-unit>
+        <trans-unit id="89e21e149d0d0dc547601ca86291fe92f9273963" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Global Scope&lt;/strong&gt; : Global is nothing but a window level scope.Here, variable present throughout the application.</source>
+          <target state="translated">&lt;strong&gt;グローバルスコープ&lt;/strong&gt; ：グローバルはウィンドウレベルの&lt;strong&gt;スコープに&lt;/strong&gt;すぎません。ここでは、アプリケーション全体に存在する変数です。</target>
+        </trans-unit>
+        <trans-unit id="f3a549a4e99a97eff2b34e0f09263cffa683cccd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Global Scope&lt;/strong&gt; : Variables are known throughout the application, from the start of the application &lt;em&gt;(*)&lt;/em&gt;</source>
+          <target state="translated">&lt;strong&gt;グローバルスコープ&lt;/strong&gt; ：アプリケーションの最初から変数がアプリケーション全体で認識されます&lt;em&gt;（*）&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="c1f34e4a5bfcdc48aa26833768f67160bd571124" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Global scope&lt;/strong&gt;: variable which is announced in global scope can be used anywhere in the program very smoothly. For example:</source>
+          <target state="translated">&lt;strong&gt;グローバルスコープ&lt;/strong&gt; ： &lt;strong&gt;グローバルスコープ&lt;/strong&gt;でアナウンスされる変数は、プログラムのどこでも非常にスムーズに使用できます。 例えば：</target>
+        </trans-unit>
+        <trans-unit id="a7ca3efb97c36b6d88809b25331124fb1fffa069" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Internet explorer 10&lt;/strong&gt; and below</source>
+          <target state="translated">&lt;strong&gt;Internet Explorer 10&lt;/strong&gt;以下</target>
+        </trans-unit>
+        <trans-unit id="f68d935bfb76269d4c30258cf31d26f604040556" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Opera 27&lt;/strong&gt; and below</source>
+          <target state="translated">&lt;strong&gt;Opera 27&lt;/strong&gt;以下</target>
+        </trans-unit>
+        <trans-unit id="050f7cc7d0dc2635f8b52903f766a2c3db495862" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Safari 9&lt;/strong&gt; and below</source>
+          <target state="translated">&lt;strong&gt;Safari 9&lt;/strong&gt;以下</target>
+        </trans-unit>
+        <trans-unit id="44e5d520bd9d0fb39f77e303b90adad358405de1" translate="yes" xml:space="preserve">
+          <source>A lexical environment is a mapping between identifier names and the values associated with them.</source>
+          <target state="translated">字句環境とは、識別子名とそれに関連付けられた値の間のマッピングのことです。</target>
+        </trans-unit>
+        <trans-unit id="8fd51b0bd0e4f91009d0f3343c699212c3d96c96" translate="yes" xml:space="preserve">
+          <source>A variable declared at the top of a &lt;code&gt;for&lt;/code&gt; loop using &lt;code&gt;let&lt;/code&gt; is scoped to the body of the loop:</source>
+          <target state="translated">&lt;code&gt;let&lt;/code&gt; を使用して &lt;code&gt;for&lt;/code&gt; ループの先頭で宣言された変数は、ループの本体をスコープとしています。</target>
+        </trans-unit>
+        <trans-unit id="48faefee4b09b7b96e9ee196462af3f716e8b8de" translate="yes" xml:space="preserve">
+          <source>A very common issue not described yet that front-end coders often run into is the scope that is visible to an inline event handler in the HTML - for example, with</source>
+          <target state="translated">まだ説明されていない非常に一般的な問題で、フロントエンドのコーダーがよく遭遇するのは、HTML内のインラインイベントハンドラに見えるスコープです。</target>
+        </trans-unit>
+        <trans-unit id="60fc03a08e44792e776e9738812c0a4cd623a464" translate="yes" xml:space="preserve">
+          <source>ANY version of &lt;strong&gt;Opera Mini&lt;/strong&gt; &amp;amp; &lt;strong&gt;Blackberry Browser&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Opera Mini&lt;/strong&gt;と&lt;strong&gt;Blackberry Browserの&lt;/strong&gt;すべてのバージョン</target>
+        </trans-unit>
+        <trans-unit id="ae46cf4abc73a3b9c1f4dfacc1b829774476ba1e" translate="yes" xml:space="preserve">
+          <source>Also, consider that block scoped variables are not known before they are declared because they are not hoisted. You're also not allowed to redeclare the same block scoped variable within the same block. This makes block scoped variables less error prone than globally or functionally scoped variables, which are hoisted and which do not produce any errors in case of multiple declarations.</source>
+          <target state="translated">また、ブロックスコープされた変数はホイストされていないので、宣言される前にはわからないと考えてください。また、同じブロック内で同じブロックスコープ変数を再宣言することもできません。これにより、ブロックスコープされた変数は、グローバルスコープされた変数や関数的にスコープされた変数よりもエラーが発生しにくくなり、 ホイストされ、複数の宣言をしてもエラーが発生しません。</target>
+        </trans-unit>
+        <trans-unit id="cb95f617fd60bdb566772a3a947b9cf56a0e0ee3" translate="yes" xml:space="preserve">
+          <source>An element in the scope chain is basically a Map with a pointer to its parent scope.</source>
+          <target state="translated">スコープチェインの要素は基本的に親スコープへのポインタを持つMapです。</target>
+        </trans-unit>
+        <trans-unit id="2f14bc627ff3b593b8ed5e4441d9f45b15ddec5c" translate="yes" xml:space="preserve">
+          <source>Applying this to one of the previous examples (5. &quot;Closure&quot;) on this page, it is possible to follow the stack of execution contexts. In this example there are three contexts in the stack. They are defined by the outer context, the context in the immediately invoked function called by var six, and the context in the returned function inside of var six's immediately invoked function.</source>
+          <target state="translated">これをこのページの前の例の一つ(5.&quot;Closure&quot;)に適用すると、実行コンテキストのスタックをたどることができます。この例では、スタックには3つのコンテキストがあります。それらは外側のコンテキスト、var six によって呼び出された直後に呼び出された関数内のコンテキスト、そして var six の直後に呼び出された関数の内側にある返された関数内のコンテキストによって定義されています。</target>
+        </trans-unit>
+        <trans-unit id="425a5e8573ac9d1f6ad5077097cd879a85500359" translate="yes" xml:space="preserve">
+          <source>Block - visible within a block (and its sub-blocks)</source>
+          <target state="translated">ブロック-ブロック(およびそのサブブロック)内で表示されます。</target>
+        </trans-unit>
+        <trans-unit id="b268d619791c64ad9a437793c6df4e96c3bea47e" translate="yes" xml:space="preserve">
+          <source>Block scope means that the variable will only be available within the brackets in which it is declared. This extends to internal scopes, including anonymous functions created within your scope.</source>
+          <target state="translated">ブロックスコープとは、変数が宣言されている大括弧内でのみ利用可能になることを意味します。これは、スコープ内で作成された匿名関数を含む内部スコープにも適用されます。</target>
+        </trans-unit>
+        <trans-unit id="6ad05cf476194af6ae4eab02f3b9ae25d3fe726e" translate="yes" xml:space="preserve">
+          <source>Block scope variables are created like this :</source>
+          <target state="translated">ブロックスコープ変数はこのように作成されます。</target>
+        </trans-unit>
+        <trans-unit id="d4734d382405fe72442dafef31013eff2bc92678" translate="yes" xml:space="preserve">
+          <source>But the top level of an ES6 module is &lt;em&gt;not&lt;/em&gt; global. A variable declared at the top of an ES6 module will only be visible inside that module, unless the variable is explicitly &lt;code&gt;export&lt;/code&gt;ed, or unless it's assigned to a property of the global object.</source>
+          <target state="translated">ただし、ES6モジュールの最上位&lt;em&gt;は&lt;/em&gt;グローバルではあり&lt;em&gt;ません&lt;/em&gt; 。 ES6モジュールの上部で宣言された変数は、変数が明示的に &lt;code&gt;export&lt;/code&gt; されない限り、またはグローバルオブジェクトのプロパティに割り当てられない限り、そのモジュール内でのみ表示されます。</target>
+        </trans-unit>
+        <trans-unit id="c4d272ff3f7fc4237376ed64dc233b59d9966000" translate="yes" xml:space="preserve">
+          <source>Catch block parameter</source>
+          <target state="translated">キャッチブロックパラメータ</target>
+        </trans-unit>
+        <trans-unit id="32c3db15ba22df73876c55e60996667cba034b0c" translate="yes" xml:space="preserve">
+          <source>Catch block parameters are scoped to the catch-block body:</source>
+          <target state="translated">キャッチブロックパラメータは、キャッチブロック本体にスコープされています。</target>
+        </trans-unit>
+        <trans-unit id="6fe813611dd6d84d9a1d26977566960643817c11" translate="yes" xml:space="preserve">
+          <source>Check this article for in-depth understanding of scope</source>
+          <target state="translated">スコープの詳細な理解はこちらの記事をチェック</target>
+        </trans-unit>
+        <trans-unit id="806b84e63f4442df339c4262199841634c53b286" translate="yes" xml:space="preserve">
+          <source>Contexts form a stack of environments where variables are stored</source>
+          <target state="translated">コンテキストは、変数が格納される環境のスタックを形成します。</target>
+        </trans-unit>
+        <trans-unit id="3b76905c4fef521cd5b87dffcd70e8f6c5497e77" translate="yes" xml:space="preserve">
+          <source>Control structure body</source>
+          <target state="translated">制御構造体</target>
+        </trans-unit>
+        <trans-unit id="9145c9f2f97356d62bd24da8388b2b38acf59902" translate="yes" xml:space="preserve">
+          <source>Currently the feature offers support for a depth of 16 nested functions, but currently does not color global variables.</source>
+          <target state="translated">現在のところ、この機能は16個の入れ子になった関数の深さをサポートしていますが、現在のところグローバル変数に色をつけることはできません。</target>
+        </trans-unit>
+        <trans-unit id="65fff7fa8d3c3b1a1f3c9528a2264bd097d68887" translate="yes" xml:space="preserve">
+          <source>Declaration Styles</source>
+          <target state="translated">宣言スタイル</target>
+        </trans-unit>
+        <trans-unit id="a8fbe250f6e0a7b427bb5ef03aadced5ed432e98" translate="yes" xml:space="preserve">
+          <source>ECMAScript 6 introduced the let and const keywords. These keywords can be used in place of the var keyword. Contrary to the var keyword, the let and const keywords support the declaration of local scope inside block statements.</source>
+          <target state="translated">ECMAScript 6 では、let キーワードと const キーワードが導入されました。これらのキーワードは、var キーワードの代わりに使用することができます。var キーワードとは逆に、let キーワードと const キーワードは、ブロック文内でのローカルスコープの宣言をサポートします。</target>
+        </trans-unit>
+        <trans-unit id="e4c8806859640baf11f724a1eec52c4f7c4afcf5" translate="yes" xml:space="preserve">
+          <source>EDIT: Based on Benjamin's pointing out of the with and catch statements in the comments, I've edited the post, and added more.  Both the with and the catch statements introduce variables into their respective blocks, and that &lt;em&gt;is&lt;/em&gt; a block scope. These variables are aliased to the properties of the objects passed into them.</source>
+          <target state="translated">編集：コメント内のwithおよびcatchステートメントからのベンジャミンの指摘に基づいて、私は投稿を編集し、さらに追加しました。 withステートメントとcatchステートメントの両方で、それぞれのブロックに変数が導入されます。これ&lt;em&gt;は&lt;/em&gt;ブロックスコープです。 これらの変数は、渡されたオブジェクトのプロパティにエイリアスされます。</target>
+        </trans-unit>
+        <trans-unit id="e6021de7d4da167c9d1924fe6e9b51d156cf4a9a" translate="yes" xml:space="preserve">
+          <source>EDIT: Clarifying example:</source>
+          <target state="translated">EDIT:例を明確にします。</target>
+        </trans-unit>
+        <trans-unit id="409777b6233f21776478ec8ae63313ad04d136b2" translate="yes" xml:space="preserve">
+          <source>EDIT: ECMAAScript 6 (Harmony) is spec'ed to support let, and I know chrome allows a 'harmony' flag, so perhaps it does support it..</source>
+          <target state="translated">EDIT:ECMAAScript 6 (Harmony)は let をサポートするように仕様されていて、chrome が 'harmony' フラグを許可していることを知っているので、おそらくサポートしているのでしょう。</target>
+        </trans-unit>
+        <trans-unit id="35e06056ed8896626ffd136476a7dd3ee396b131" translate="yes" xml:space="preserve">
+          <source>Each function creates an execution context (but not always a new this binding)</source>
+          <target state="translated">各関数は実行コンテキストを作成します(ただし、常に新しいこのバインディングとは限りません)。</target>
+        </trans-unit>
+        <trans-unit id="a6992c03e5f9e7f14a3502886f2fe8726fe41373" translate="yes" xml:space="preserve">
+          <source>Every variable declared with the &lt;code&gt;var&lt;/code&gt; keyword is scoped to the function. However, if other function are declared within that function those functions will have access to the variables of the outer functions. This is called a &lt;strong&gt;scope chain&lt;/strong&gt;. It works in the following manner:</source>
+          <target state="translated">&lt;code&gt;var&lt;/code&gt; キーワードで宣言されたすべての変数は、関数をスコープとしています。 ただし、その関数内で他の関数が宣言されている場合、それらの関数は外部関数の変数にアクセスできます。 これは、 &lt;strong&gt;スコープチェーン&lt;/strong&gt;と呼ばれます。 次のように機能します。</target>
+        </trans-unit>
+        <trans-unit id="be91cfda712a2aa2bbaed218f5da3f4f20ced37f" translate="yes" xml:space="preserve">
+          <source>Example of block scope is :-</source>
+          <target state="translated">ブロックスコープの例は次の通りです。</target>
+        </trans-unit>
+        <trans-unit id="c63737abd7347a7ae582cb9fbdf37d6c0e5b251e" translate="yes" xml:space="preserve">
+          <source>Example:</source>
+          <target state="translated">Example:</target>
+        </trans-unit>
+        <trans-unit id="eb01bf04c9a0e8a71c45816513df424f1c7ffedb" translate="yes" xml:space="preserve">
+          <source>Examples</source>
+          <target state="translated">Examples</target>
+        </trans-unit>
+        <trans-unit id="49c2bd6aa6f23d62660e81e7508644de0747ce48" translate="yes" xml:space="preserve">
+          <source>Expand snippet</source>
+          <target state="translated">スニペットを展開</target>
+        </trans-unit>
+        <trans-unit id="13c2c628d0e65d9c75a59c080f5bcf4a585ac61e" translate="yes" xml:space="preserve">
+          <source>Find out &lt;a href=&quot;https://github.com/getify/You-Dont-Know-JS/tree/2nd-ed/scope-closures&quot;&gt;more&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;https://github.com/getify/You-Dont-Know-JS/tree/2nd-ed/scope-closures&quot;&gt;詳細をご覧ください&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="f3e52c062915c2a123c8f3e107bb729e5edb24b0" translate="yes" xml:space="preserve">
+          <source>For an up-to-date overview of which browsers support the &lt;code&gt;let&lt;/code&gt; statement at the time of your reading this answer, see &lt;a href=&quot;http://caniuse.com/#search=let&quot;&gt;&lt;strong&gt;this &lt;code&gt;Can I Use&lt;/code&gt; page&lt;/strong&gt;&lt;/a&gt;.</source>
+          <target state="translated">この回答を読んだ時点で、どのブラウザが &lt;code&gt;let&lt;/code&gt; ステートメントをサポートしているかについての最新の概要については、 &lt;a href=&quot;http://caniuse.com/#search=let&quot;&gt;&lt;strong&gt;この &lt;code&gt;Can I Use&lt;/code&gt; ページを参照してください&lt;/strong&gt;&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="f759fff65c16814ccf2912386bb55ea2f49f07e2" translate="yes" xml:space="preserve">
+          <source>For those that believe there is only global and local scope, please explain why Mozilla would have an entire page describing the nuances of block scope in JS.</source>
+          <target state="translated">グローバルスコープとローカルスコープしかないと思っている人のために、なぜ Mozilla が JS のブロックスコープのニュアンスを説明するページを全部持っているのか説明してください。</target>
+        </trans-unit>
+        <trans-unit id="b3a281d3e09d661ffef9d575955e9402e9acd1b7" translate="yes" xml:space="preserve">
+          <source>Function - visible within a function (and its sub-functions and blocks)</source>
+          <target state="translated">関数-関数(およびそのサブ関数とブロック)内で表示されます。</target>
+        </trans-unit>
+        <trans-unit id="5bfbcebae9458d0af9e37589048c8edd93acdcad" translate="yes" xml:space="preserve">
+          <source>Function body</source>
+          <target state="translated">機能体</target>
+        </trans-unit>
+        <trans-unit id="301ffb948f7d729015635b11db6553b40624b34f" translate="yes" xml:space="preserve">
+          <source>Function declarations</source>
+          <target state="translated">関数宣言</target>
+        </trans-unit>
+        <trans-unit id="54098e1a6688516674ee45e3b3d0d1327b43c770" translate="yes" xml:space="preserve">
+          <source>Function declarations have block scope in strict mode and function scope in non-strict mode. Note: non-strict mode is a complicated set of emergent rules based on the quirky historical implementations of different browsers.</source>
+          <target state="translated">関数宣言は、厳格モードではブロックスコープを持ち、非厳格モードでは関数スコープを持ちます。注意:非厳格モードは、さまざまなブラウザの奇妙な歴史的実装に基づいた複雑なルールのセットです。</target>
+        </trans-unit>
+        <trans-unit id="7f91e1a8edc0e34ea3bca466ca46d82f7465d0d6" translate="yes" xml:space="preserve">
+          <source>Function parameter names</source>
+          <target state="translated">関数パラメータ名</target>
+        </trans-unit>
+        <trans-unit id="9b10b98fb2db663a6af8871104c108ef004b25fd" translate="yes" xml:space="preserve">
+          <source>Function parameter names are scoped to the function body.</source>
+          <target state="translated">関数パラメータ名は、関数本体にスコープされます。</target>
+        </trans-unit>
+        <trans-unit id="1e0d99529d66efa9e16b2a37d29fa7405450d6fd" translate="yes" xml:space="preserve">
+          <source>Function parameters</source>
+          <target state="translated">機能パラメータ</target>
+        </trans-unit>
+        <trans-unit id="f0919c6e7316ed9e8e640c9b80f7609cc7dbc45b" translate="yes" xml:space="preserve">
+          <source>Function parameters can be considered to be declared in the function body:</source>
+          <target state="translated">関数のパラメータは、関数本体で宣言されていると考えることができます。</target>
+        </trans-unit>
+        <trans-unit id="cc0841f2f77bf09c47bd5cbb83dd0f40e14bf028" translate="yes" xml:space="preserve">
+          <source>Global - visible by everything</source>
+          <target state="translated">グローバル-すべてのものから見える</target>
+        </trans-unit>
+        <trans-unit id="ab9be0bed756d5b31a5365140ba111b3a60a2123" translate="yes" xml:space="preserve">
+          <source>Global Scope :</source>
+          <target state="translated">グローバルスコープ .</target>
+        </trans-unit>
+        <trans-unit id="9c1d41d613e2de602e0cfbbc37dd6fb38c9598e2" translate="yes" xml:space="preserve">
+          <source>Global context</source>
+          <target state="translated">グローバルコンテキスト</target>
+        </trans-unit>
+        <trans-unit id="1fd666f0db8baac461a523eb3696c9d6cf767ffc" translate="yes" xml:space="preserve">
+          <source>Global scope</source>
+          <target state="translated">グローバルスコープ</target>
+        </trans-unit>
+        <trans-unit id="1db5edb9fb9b116986bc02c1af9c99d7780ec95f" translate="yes" xml:space="preserve">
+          <source>Global variables are exactly like global stars (Jackie Chan, Nelson Mandela). You can access them (get or set the value), from any part of your application. Global functions are like global events (New Year, Christmas). You can execute (call) them from any part of your application.</source>
+          <target state="translated">グローバル変数は、まさにグローバルスター(ジャッキー・チェン、ネルソン・マンデラ)のようなものです。アプリケーションのどの部分からでもアクセス(値の取得や設定)が可能です。グローバル関数はグローバルイベント(新年、クリスマス)のようなものです。アプリケーションのどの部分からでも実行(呼び出し)することができます。</target>
+        </trans-unit>
+        <trans-unit id="b6c6545a0afcd35503cd3889c2e63ae786e74d3d" translate="yes" xml:space="preserve">
+          <source>Here is a good article on the subject.</source>
+          <target state="translated">ここに良い記事があります。</target>
+        </trans-unit>
+        <trans-unit id="51e85e4e8113fb3e1f07e1727e78d73f5f0043e6" translate="yes" xml:space="preserve">
+          <source>Here's an example:</source>
+          <target state="translated">一例を挙げてみます。</target>
+        </trans-unit>
+        <trans-unit id="36b16afa86f01c1ed6ed7ee0985634679d23724b" translate="yes" xml:space="preserve">
+          <source>Here, we can see that our variable &lt;code&gt;j&lt;/code&gt; is only known in the first for loop, but not before and after. Yet, our variable &lt;code&gt;i&lt;/code&gt; is known in the entire function.</source>
+          <target state="translated">ここで、変数 &lt;code&gt;j&lt;/code&gt; は最初のforループでのみ認識され、前後では認識されないことがわかります。 しかし、変数 &lt;code&gt;i&lt;/code&gt; は関数全体で知られています。</target>
+        </trans-unit>
+        <trans-unit id="6197c902dc9a969800bbc1f43aa78895c0f511c1" translate="yes" xml:space="preserve">
+          <source>How an identifier was declared</source>
+          <target state="translated">識別子の宣言方法</target>
+        </trans-unit>
+        <trans-unit id="fd84c93e786da583023283e8e6b544cc15f8a544" translate="yes" xml:space="preserve">
+          <source>How do I create block scope variables?</source>
+          <target state="translated">ブロックスコープ変数を作成するには?</target>
+        </trans-unit>
+        <trans-unit id="6523732fcc8d20544777c08d98cafcd3a527d5d8" translate="yes" xml:space="preserve">
+          <source>How it works under the hood</source>
+          <target state="translated">ボンネットの下ではどのように機能するのか</target>
+        </trans-unit>
+        <trans-unit id="9bccab4e65ebb124be42a79a1ea8250f796b3a9e" translate="yes" xml:space="preserve">
+          <source>How to keep track of browser support</source>
+          <target state="translated">ブラウザの対応状況を把握する方法</target>
+        </trans-unit>
+        <trans-unit id="12e28ac9e5aec52d743e292f0a6d97a79a4481d9" translate="yes" xml:space="preserve">
+          <source>I found that many people new to JavaScript have trouble understanding that inheritance is available by default in the language and that function scope is the only scope, so far. I provided an extension to a beautifier I wrote at the end of last year called JSPretty. The feature colors function scope in the code and always associates a color to all variables declared in that scope. Closure is visually demonstrated when a variable with a color from one scope is used in a different scope.</source>
+          <target state="translated">JavaScriptに慣れていない人には、言語ではデフォルトで継承が可能で、関数のスコープは今のところスコープだけだということを理解していない人が多いことがわかりました。私は昨年末に書いた JSPretty というビューティファイアの拡張機能を提供しました。この機能はコード内の関数スコープに色をつけ、そのスコープで宣言されたすべての変数に常に色を関連付けます。あるスコープの色を持つ変数が別のスコープで使われたときに、クロージャが視覚的に示されます。</target>
+        </trans-unit>
+        <trans-unit id="cdf8b31fb66ebedcd5a01dafdc4d2f5c826f3323" translate="yes" xml:space="preserve">
+          <source>I will not elaborate on this, since there are already many other answers explaining the difference.</source>
+          <target state="translated">すでに他にも多くの回答が説明しているので、ここでは詳しく説明しません。</target>
+        </trans-unit>
+        <trans-unit id="eadac369b069051bb3496882603cd8c18a6245be" translate="yes" xml:space="preserve">
+          <source>Identifier resolution only occurs in one direction: outwards. In this way, outer lexical environments cannot &quot;see&quot; into inner lexical environments.</source>
+          <target state="translated">識別子の解決は、一方向、すなわち外側にしか行われない。このように、外側の語彙環境は、内側の語彙環境を「見る」ことができない。</target>
+        </trans-unit>
+        <trans-unit id="bac671b2d31df9b17566a019bb6eec35764631e1" translate="yes" xml:space="preserve">
+          <source>Identifiers declared using &lt;code&gt;let&lt;/code&gt; and &lt;code&gt;const&lt;/code&gt;&lt;strong&gt;have block scope&lt;/strong&gt;, apart from when they are declared directly in the global context, in which case they have global scope.</source>
+          <target state="translated">&lt;code&gt;let&lt;/code&gt; および &lt;code&gt;const&lt;/code&gt; を使用して宣言された識別子は、グローバル&lt;strong&gt;スコープ&lt;/strong&gt;で直接宣言されている場合を除い&lt;strong&gt;て、ブロックスコープ&lt;/strong&gt;を持ちます。</target>
+        </trans-unit>
+        <trans-unit id="26eb35e5d6c55c98bf781bbeb4741c6d644d48f6" translate="yes" xml:space="preserve">
+          <source>Identifiers declared using &lt;code&gt;var&lt;/code&gt;&lt;strong&gt;have function scope&lt;/strong&gt;, apart from when they are declared directly in the global context, in which case they are added as properties on the global object and have global scope. There are separate rules for their use in &lt;code&gt;eval&lt;/code&gt; functions.</source>
+          <target state="translated">&lt;code&gt;var&lt;/code&gt; &lt;strong&gt;を&lt;/strong&gt;使用して宣言された識別子は、グローバルコンテキストで直接宣言される場合を除い&lt;strong&gt;て、関数スコープを持ちます。&lt;/strong&gt;この場合、グローバルオブジェクトのプロパティとして追加され、グローバルスコープを持ちます。 &lt;code&gt;eval&lt;/code&gt; 関数での使用には、別の規則があります。</target>
+        </trans-unit>
+        <trans-unit id="f36a64720f58b77b1ccc6c4e4747411d14a62208" translate="yes" xml:space="preserve">
+          <source>If it cannot find the variable inside the the function body it &lt;strong&gt;will climb up to the chain&lt;/strong&gt; and look at the variable scope in the function in &lt;strong&gt;where the function was defined&lt;/strong&gt;. This is what is meant with lexical scope, we can see in the code where this function was defined and thus can determine the scope chain by merely looking at the code.</source>
+          <target state="translated">関数本体内で変数が見つからない場合&lt;strong&gt;は、チェーンに登り&lt;/strong&gt; &lt;strong&gt;、関数が定義さ&lt;/strong&gt;れている関数の変数スコープを調べます。 これが字句スコープの意味です。この関数が定義されているコードで確認できるため、コードを見るだけでスコープチェーンを特定できます。</target>
+        </trans-unit>
+        <trans-unit id="745abb411c5db9b98fe9940dfa7c7e42d66969dd" translate="yes" xml:space="preserve">
+          <source>If you are in the USA, you may know Kim Kardashian, infamous celebrity ( she somehow manages to make the tabloids). But people outside of the USA will not recognize her. She is a local star, bound to her territory.</source>
+          <target state="translated">あなたがアメリカにいるなら、悪名高いセレブ、キム・カーダシアンを知っているかもしれません(彼女はどうにかしてタブロイド紙を作ることに成功しています)。しかし、アメリカ以外の人は彼女を知らないでしょう。彼女は自分のテリトリーに縛られたローカルスターなのです。</target>
+        </trans-unit>
+        <trans-unit id="db4ede529a33a6d48b929256007928a838c5c68c" translate="yes" xml:space="preserve">
+          <source>If you're writing client-side JavaScript code and don't use a transpiler, you need to consider browser support.</source>
+          <target state="translated">クライアントサイドの JavaScript コードを書いていて、トランスパイラを使用していない場合は、ブラウザのサポートを考慮する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="8dcd2b2b003bbf8ee33318bcf617bf8c5934526f" translate="yes" xml:space="preserve">
+          <source>If you're writing client-side JavaScript code and use a Node based transpiler (like the &lt;a href=&quot;https://github.com/google/traceur-compiler/wiki/Compiling-Offline&quot;&gt;&lt;strong&gt;traceur shell script&lt;/strong&gt;&lt;/a&gt; or &lt;a href=&quot;https://babeljs.io/&quot;&gt;&lt;strong&gt;Babel&lt;/strong&gt;&lt;/a&gt;), you can safely use the &lt;code&gt;let&lt;/code&gt; statement. And because your browser will only know about the transpiled code, performance drawbacks should be limited.</source>
+          <target state="translated">クライアント側のJavaScriptコードを記述していて、ノードベースのトランスパイラー（ &lt;a href=&quot;https://github.com/google/traceur-compiler/wiki/Compiling-Offline&quot;&gt;&lt;strong&gt;traceurシェルスクリプト&lt;/strong&gt;&lt;/a&gt;や&lt;a href=&quot;https://babeljs.io/&quot;&gt;&lt;strong&gt;Babelなど&lt;/strong&gt;&lt;/a&gt; ）を使用している場合は、 &lt;code&gt;let&lt;/code&gt; ステートメントを安全に使用できます。 また、ブラウザーはトランスパイルされたコードのみを認識するため、パフォーマンスの低下は制限されます。</target>
+        </trans-unit>
+        <trans-unit id="78db1b0537f209bbe9cabb545f633294560d8d7f" translate="yes" xml:space="preserve">
+          <source>If you're writing client-side JavaScript code and use a browser based transpiler (like &lt;a href=&quot;https://github.com/google/traceur-compiler&quot;&gt;&lt;strong&gt;Traceur&lt;/strong&gt;&lt;/a&gt; or &lt;a href=&quot;https://github.com/babel/babel-standalone&quot;&gt;&lt;strong&gt;babel-standalone&lt;/strong&gt;&lt;/a&gt;), you can safely use the &lt;code&gt;let&lt;/code&gt; statement, however your code is likely to be anything but optimal with respect to performance.</source>
+          <target state="translated">クライアント側のJavaScriptコードを記述していて、ブラウザーベースのトランスパイラー（ &lt;a href=&quot;https://github.com/google/traceur-compiler&quot;&gt;&lt;strong&gt;Traceur&lt;/strong&gt;&lt;/a&gt;や&lt;a href=&quot;https://github.com/babel/babel-standalone&quot;&gt;&lt;strong&gt;babel-standaloneなど&lt;/strong&gt;&lt;/a&gt; ）を使用している場合は、 &lt;code&gt;let&lt;/code&gt; ステートメントを安全に使用できますが、コードはパフォーマンスに関して最適ではない可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="4730b8ff337fd5e9541397578300f0622cd1031f" translate="yes" xml:space="preserve">
+          <source>If you're writing server-side JavaScript code (&lt;a href=&quot;https://nodejs.org/en/&quot;&gt;&lt;strong&gt;Node.js&lt;/strong&gt;&lt;/a&gt;), you can safely use the &lt;code&gt;let&lt;/code&gt; statement.</source>
+          <target state="translated">サーバーサイドJavaScriptコード（ &lt;a href=&quot;https://nodejs.org/en/&quot;&gt;&lt;strong&gt;Node.js&lt;/strong&gt;&lt;/a&gt; ）を記述している場合は、 &lt;code&gt;let&lt;/code&gt; ステートメントを安全に使用できます。</target>
+        </trans-unit>
+        <trans-unit id="e76b9230322e627054331e7b9ae49ba5c423394b" translate="yes" xml:space="preserve">
+          <source>Implicit variable declarations</source>
+          <target state="translated">暗黙の変数宣言</target>
+        </trans-unit>
+        <trans-unit id="45efcccf469aa7800be7436a4b8905d5812288f9" translate="yes" xml:space="preserve">
+          <source>In &quot;Javascript 1.7&quot; (Mozilla's extension to Javascript) one can also declare block-scope variables with &lt;a href=&quot;https://developer.mozilla.org/en/New_in_JavaScript_1.7#section_11&quot;&gt;&lt;code&gt;let&lt;/code&gt; statement&lt;/a&gt;:</source>
+          <target state="translated">「Javascript 1.7」（MozillaのJavascriptへの拡張）では、 &lt;a href=&quot;https://developer.mozilla.org/en/New_in_JavaScript_1.7#section_11&quot;&gt; &lt;code&gt;let&lt;/code&gt; ステートメントを使用&lt;/a&gt;してブロックスコープ変数を宣言することもできます。</target>
+        </trans-unit>
+        <trans-unit id="df791ba6a19c022e5fd42c64ae7d2edc9a0401c4" translate="yes" xml:space="preserve">
+          <source>In &lt;code&gt;eval&lt;/code&gt; strings, variables declared using &lt;code&gt;var&lt;/code&gt; will be placed in the current scope, or, if &lt;code&gt;eval&lt;/code&gt; is used indirectly, as properties on the global object.</source>
+          <target state="translated">&lt;code&gt;eval&lt;/code&gt; 文字列では、 &lt;code&gt;var&lt;/code&gt; を使用して宣言された変数は現在のスコープに配置されます &lt;code&gt;eval&lt;/code&gt; が間接的に使用されている場合は、グローバルオブジェクトのプロパティとして配置されます。</target>
+        </trans-unit>
+        <trans-unit id="b205565c9d304960cff99be6d6bb359de2add3f5" translate="yes" xml:space="preserve">
+          <source>In EcmaScript5, there are mainly two scopes, &lt;strong&gt;local scope&lt;/strong&gt; and &lt;strong&gt;global scope&lt;/strong&gt; but in EcmaScript6 we have mainly three scopes, local scope, global scope and a new scope called &lt;strong&gt;block scope&lt;/strong&gt;.</source>
+          <target state="translated">EcmaScript5には主に2つのスコープ、 &lt;strong&gt;ローカルスコープ&lt;/strong&gt;と&lt;strong&gt;グローバルスコープ&lt;/strong&gt;があり&lt;strong&gt;ます&lt;/strong&gt;が、EcmaScript6には主に3つのスコープ、ローカルスコープ、グローバルスコープ、および&lt;strong&gt;ブロックスコープ&lt;/strong&gt;と呼ばれる新しいスコープがあり&lt;strong&gt;ます&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="524ef03338ba6373ff8442de44d3525db236f6ed" translate="yes" xml:space="preserve">
+          <source>In JavaScript there are two types of scope:</source>
+          <target state="translated">JavaScriptでは、スコープには2つの種類があります。</target>
+        </trans-unit>
+        <trans-unit id="49f24e5b3ac83ce8f7d46f9b0b5fbf42b56fef59" translate="yes" xml:space="preserve">
+          <source>In JavaScript, every function-object has a hidden &lt;code&gt;[[Environment]]&lt;/code&gt; reference that is a reference to the &lt;a href=&quot;https://www.ecma-international.org/ecma-262/10.0/index.html#sec-lexical-environments&quot;&gt;lexical environment&lt;/a&gt; of the &lt;a href=&quot;https://www.ecma-international.org/ecma-262/10.0/index.html#sec-execution-contexts&quot;&gt;execution context&lt;/a&gt; (stack frame) within which it was created.</source>
+          <target state="translated">JavaScriptでは、すべての関数オブジェクトに非表示の &lt;code&gt;[[Environment]]&lt;/code&gt; 参照があります。これは、それが作成された&lt;a href=&quot;https://www.ecma-international.org/ecma-262/10.0/index.html#sec-execution-contexts&quot;&gt;実行コンテキスト&lt;/a&gt; （スタックフレーム）の&lt;a href=&quot;https://www.ecma-international.org/ecma-262/10.0/index.html#sec-lexical-environments&quot;&gt;字句環境&lt;/a&gt;への参照です。</target>
+        </trans-unit>
+        <trans-unit id="101098685b4ef4c5fe8ddde1f6b84cd946e6cda9" translate="yes" xml:space="preserve">
+          <source>In non-strict mode, function declarations have function scope. In strict mode they have block scope.</source>
+          <target state="translated">厳密でないモードでは、関数宣言は関数スコープを持ちます。厳密なモードではブロックスコープを持ちます。</target>
+        </trans-unit>
+        <trans-unit id="517fb1c6e1e082360f7bfc6a062cddd34106ba21" translate="yes" xml:space="preserve">
+          <source>In non-strict mode, implicit variable declarations are globally scoped. In strict mode you get an error.</source>
+          <target state="translated">非厳格モードでは、暗黙の変数宣言はグローバルにスコープされます。厳密なモードでは、エラーが発生します。</target>
+        </trans-unit>
+        <trans-unit id="c530a0f6e7c617894a5240c8ce5b620b9c103965" translate="yes" xml:space="preserve">
+          <source>In non-strict mode, implicit variable declarations have global scope. In strict mode these are not permitted.</source>
+          <target state="translated">非厳格モードでは、暗黙の変数宣言はグローバルスコープを持ちます。厳密なモードでは、これらは許可されていません。</target>
+        </trans-unit>
+        <trans-unit id="5f6bfeda81e0e8b51ad8697f031e39feead1aa2e" translate="yes" xml:space="preserve">
+          <source>In the above example letVar logs the value global because variables declared with &lt;code&gt;let&lt;/code&gt; are block scoped. They cease to exist outside their respective block, so the variable can't be accessed outside the if block.</source>
+          <target state="translated">上記の例では、 &lt;code&gt;let&lt;/code&gt; で宣言された変数はブロックスコープであるため、letVarは値globalをログに記録します。 それらはそれぞれのブロックの外側に存在しなくなるため、ifブロックの外側では変数にアクセスできません。</target>
+        </trans-unit>
+        <trans-unit id="f75a76f8d36110fb25053c596b58acad7a1e7f42" translate="yes" xml:space="preserve">
+          <source>In the first example, there was no block scope, so the initially declared variables were overwritten. In the second example, there was a new scope due to the function, so the initially declared variables were SHADOWED, and not overwritten.</source>
+          <target state="translated">最初の例では、ブロック・スコープがなかったため、最初に宣言された変数は上書きされました。2 番目の例では、関数による新しいスコープがあったため、最初に宣言された変数は上書きされずに SHADOWED されました。</target>
+        </trans-unit>
+        <trans-unit id="70b614f546808637e2d6bda4b19e2a55f0206cd8" translate="yes" xml:space="preserve">
+          <source>In the following, &lt;code&gt;x&lt;/code&gt; is visible outside of the loop because &lt;code&gt;var&lt;/code&gt; has function scope:</source>
+          <target state="translated">次の例では、 &lt;code&gt;var&lt;/code&gt; に関数スコープがあるため、 &lt;code&gt;x&lt;/code&gt; はループの外側に表示されます。</target>
+        </trans-unit>
+        <trans-unit id="d512dd946ae9252d40645adc648a80ba866281e8" translate="yes" xml:space="preserve">
+          <source>In this language, the displays were done similar to a stack of index cards. There was a master card referred to as the background. It was transparent and can be seen as the bottom card. Any content on this base card was shared with cards placed on top of it. Each card placed on top had its own content which took precedence over the previous card, but still had access to the prior cards if desired.</source>
+          <target state="translated">この言語では、表示はインデックスカードのスタックのように行われました。背景と呼ばれるマスターカードがあった。これは透明で、一番下のカードとして見ることができます。このベースカード上のすべてのコンテンツは、その上に置かれたカードと共有されます。上に置かれた各カードは、前のカードよりも優先される独自のコンテンツを持っていましたが、それでも必要に応じて前のカードにアクセスすることができました。</target>
+        </trans-unit>
+        <trans-unit id="597c9aea5b3298abab060a8929051c7f5d129292" translate="yes" xml:space="preserve">
+          <source>Is it safe to use block scope variables today?</source>
+          <target state="translated">今日はブロックスコープ変数を使っても大丈夫ですか?</target>
+        </trans-unit>
+        <trans-unit id="bed514e2588665341497d11ae432c1980024650f" translate="yes" xml:space="preserve">
+          <source>JavaScript has lexical (also called static) scoping and closures. This means you can tell the scope of an identifier by looking at the source code.</source>
+          <target state="translated">JavaScriptには、語彙的(静的とも呼ばれる)なスコープとクロージャがあります。つまり、ソースコードを見れば識別子のスコープがわかるということです。</target>
+        </trans-unit>
+        <trans-unit id="4452aeeb557996248e57cd5ff1bf92ebc44de21c" translate="yes" xml:space="preserve">
+          <source>JavaScript have only two type of scope :</source>
+          <target state="translated">JavaScriptのスコープは2種類しかありません。</target>
+        </trans-unit>
+        <trans-unit id="34dae96f32e8c613581daf8160bc2454a1788290" translate="yes" xml:space="preserve">
+          <source>Javascript uses scope chains to establish the scope for a given function. There is typically one global scope, and each function defined has its own nested scope. Any function defined within another function has a local scope which is linked to the outer function. It's always the position in the source that defines the scope.</source>
+          <target state="translated">Javascript はスコープ チェーンを使用して、指定された関数のスコープを確立します。通常は 1 つのグローバル スコープがあり、定義された各関数は独自の入れ子になったスコープを持ちます。別の関数内で定義された関数は、外側の関数にリンクされたローカル スコープを持ちます。スコープを定義するのは、常にソース内の位置です。</target>
+        </trans-unit>
+        <trans-unit id="aaccd2b14cae60b4870ad3ae5d1483bf95f1cc7f" translate="yes" xml:space="preserve">
+          <source>Just to add to the other answers, scope is a look-up list of all the declared identifiers (variables), and enforces a strict set of rules as to how these are accessible to currently executing code.  This look-up may be for the purposes of assigning to the variable, which is an LHS (lefthand-side) reference, or it may be for the purposes of retrieving its value, which is an RHS (righthand-side) reference. These look-ups are what the JavaScript engine is doing internally when it's compiling and executing the code.</source>
+          <target state="translated">他の回答に補足すると、スコープは宣言されたすべての識別子(変数)のルックアップリストであり、現在実行中のコードがどのようにアクセスできるかについて、厳密なルールのセットを強制しています。このルックアップは、変数への代入を目的としたもので、LHS (leftfand-side)参照である場合もあれば、RHS (righthand-side)参照である値の取得を目的としたものである場合もあります。これらのルックアップは、JavaScriptエンジンがコードをコンパイルして実行する際に内部的に行っていることです。</target>
+        </trans-unit>
+        <trans-unit id="6e76cdd0f809219e814e41d1445bb5906bf62b65" translate="yes" xml:space="preserve">
+          <source>Let would be a support for block level scoping, but you have to use the keyword to make it happen.</source>
+          <target state="translated">Let はブロックレベルのスコーピングをサポートしますが、それを実現するにはキーワードを使用しなければなりません。</target>
+        </trans-unit>
+        <trans-unit id="8e18f18ab1ca156d4e71dc6cde7b4aa86040a968" translate="yes" xml:space="preserve">
+          <source>Local Scope :</source>
+          <target state="translated">ローカルスコープ.</target>
+        </trans-unit>
+        <trans-unit id="ca1be526eefc4c0c9a3b41b14b0b70782146069f" translate="yes" xml:space="preserve">
+          <source>Local scope</source>
+          <target state="translated">ローカルスコープ</target>
+        </trans-unit>
+        <trans-unit id="a5d58a53fe2af24df0c1d2967e48151aa15ad00d" translate="yes" xml:space="preserve">
+          <source>Local variables are like local stars. You can only access them (get or set the value) inside the scope. A local function is like local events - you can execute only (celebrate) inside that scope. If you want to access them from outside of the scope, you will get a reference error</source>
+          <target state="translated">ローカル変数はローカルの星のようなものです。スコープ内でのみアクセス(値の取得や設定)が可能です。ローカル関数はローカルイベントのようなもので、そのスコープ内でしか実行できません。スコープ外からアクセスしようとすると、参照エラーが発生します。</target>
+        </trans-unit>
+        <trans-unit id="4136eb8081368e099724a9eb455093c190198113" translate="yes" xml:space="preserve">
+          <source>Modern JavaScript</source>
+          <target state="translated">モダンJavaScript</target>
+        </trans-unit>
+        <trans-unit id="7616704e501c489cb1ada1999f1307d7d34894df" translate="yes" xml:space="preserve">
+          <source>Modern Js, ES6+, '&lt;code&gt;const&lt;/code&gt;' and '&lt;code&gt;let&lt;/code&gt;'</source>
+          <target state="translated">モダンJs、ES6 +、 ' &lt;code&gt;const&lt;/code&gt; 'および ' &lt;code&gt;let&lt;/code&gt; '</target>
+        </trans-unit>
+        <trans-unit id="aad38a0f6cdff42e1f74357a58c635fc618d1ed1" translate="yes" xml:space="preserve">
+          <source>Module - visible within a module</source>
+          <target state="translated">モジュール-モジュール内で表示</target>
+        </trans-unit>
+        <trans-unit id="04e9462c0ff02bb9032b92abd45881a3c7e15fb7" translate="yes" xml:space="preserve">
+          <source>Modules</source>
+          <target state="translated">Modules</target>
+        </trans-unit>
+        <trans-unit id="003bc7d27503c7802bcadc1da058ded6bae30f8e" translate="yes" xml:space="preserve">
+          <source>My understanding is that there are 3 scopes: global scope, available globally; local scope, available to an entire function regardless of blocks; and block scope, only available to the block, statement, or expression on which it was used. Global and local scope are indicated with the keyword 'var', either within a function or outside, and block scope is indicated with the keyword 'let'.</source>
+          <target state="translated">私の理解では、スコープには3つのスコープがあると考えています:グローバルに利用可能なグローバルスコープ、ブロックに関係なく関数全体に利用可能なローカルスコープ、そしてブロックスコープは、それが使用されたブロック、ステートメント、または式にのみ利用可能です。グローバルスコープとローカルスコープは、関数内でも関数外でもキーワード 'var' で示され、ブロックスコープはキーワード 'let' で示されます。</target>
+        </trans-unit>
+        <trans-unit id="ebc5769ecf05a1a2a40ee3c38b9f80c576a2506b" translate="yes" xml:space="preserve">
+          <source>Named function expressions</source>
+          <target state="translated">名前付き関数式</target>
+        </trans-unit>
+        <trans-unit id="eaab883a49ed3ddf47b830ade67ddd95c8b8889b" translate="yes" xml:space="preserve">
+          <source>Named function expressions are scooped only to the expression itself:</source>
+          <target state="translated">名前付き関数式は、式自体にのみスクープされます。</target>
+        </trans-unit>
+        <trans-unit id="7e130810bfbd11725f532879f063fa5c57ae9625" translate="yes" xml:space="preserve">
+          <source>Named function expressions are scoped to themselves (eg. for the purpose of recursion).</source>
+          <target state="translated">名前付き関数式は、それ自身にスコープが設定されています(例えば、再帰の目的のため)。</target>
+        </trans-unit>
+        <trans-unit id="0f5c3a674d3ca00ddc3c16a5c7583524970181f2" translate="yes" xml:space="preserve">
+          <source>Note that this link between the new execution context and the lexical environment of the function object is called a &lt;a href=&quot;https://stackoverflow.com/a/111114/38522&quot;&gt;closure&lt;/a&gt;.</source>
+          <target state="translated">新しい実行コンテキストと関数オブジェクトの字句環境の間のこのリンクは、 &lt;a href=&quot;https://stackoverflow.com/a/111114/38522&quot;&gt;クロージャー&lt;/a&gt;と呼ばれることに注意してください。</target>
+        </trans-unit>
+        <trans-unit id="6f243cfe125f58adb4304f18257f0d057d6f2352" translate="yes" xml:space="preserve">
+          <source>Note: &lt;code&gt;let&lt;/code&gt;, &lt;code&gt;const&lt;/code&gt; and &lt;code&gt;var&lt;/code&gt;&lt;a href=&quot;https://stackoverflow.com/a/31222689/38522&quot;&gt;are all hoisted&lt;/a&gt;. This means that their logical position of definition is the top of their enclosing scope (block or function). However, variables declared useing &lt;code&gt;let&lt;/code&gt; and &lt;code&gt;const&lt;/code&gt; cannot be read or assigned to until control has passed the point of declaration in the source code. The interim period is known as the temporal dead zone.</source>
+          <target state="translated">注： &lt;code&gt;let&lt;/code&gt; 、 &lt;code&gt;const&lt;/code&gt; および &lt;code&gt;var&lt;/code&gt; &lt;a href=&quot;https://stackoverflow.com/a/31222689/38522&quot;&gt;はすべて巻き上げられ&lt;/a&gt;ます。 これは、それらの定義の論理的な位置が、それらを包含するスコープ（ブロックまたは関数）の最上位であることを意味します。 ただし、 &lt;code&gt;let&lt;/code&gt; と &lt;code&gt;const&lt;/code&gt; を使用して宣言された変数は、コントロールがソースコードの宣言のポイントを通過するまで、読み取ったり割り当てたりすることはできません。 暫定期間は、一時的な不感帯として知られています。</target>
+        </trans-unit>
+        <trans-unit id="52c316d760a2406f9de3c2dfe34c168873a682d6" translate="yes" xml:space="preserve">
+          <source>Now when a variable &lt;code&gt;a&lt;/code&gt; required it first searches for nearest variable scope and if variable is not there than it move's to next object of variable scope chain.which is in this case is window level.</source>
+          <target state="translated">変数 &lt;code&gt;a&lt;/code&gt; が必須の場合、最初に最も近い変数スコープを検索し、変数がない場合は変数スコープチェーンの次のオブジェクトに移動します。この場合はウィンドウレベルです。</target>
+        </trans-unit>
+        <trans-unit id="07cc61cfbd5542be1dbdf3df9337149c96b1472d" translate="yes" xml:space="preserve">
+          <source>Old school JavaScript</source>
+          <target state="translated">オールドスクールのJavaScript</target>
+        </trans-unit>
+        <trans-unit id="d143a89c1211786baeac1937b212ea01195019e5" translate="yes" xml:space="preserve">
+          <source>On a different note, unlike normal &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; tags, which run on the top level, code inside ES6 modules runs in its own private scope. A variable defined at the top of a normal &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; tag is global, so you can reference it in other &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; tags, like this:</source>
+          <target state="translated">別の注記では、トップレベルで実行される通常の &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; タグとは異なり、ES6モジュール内のコードは独自のプライベートスコープで実行されます。 通常の &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; タグの先頭で定義されている変数はグローバルなので、次のように他の &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; タグで参照できます。</target>
+        </trans-unit>
+        <trans-unit id="d03a95004161c654858d132f7f32b4344e85bba0" translate="yes" xml:space="preserve">
+          <source>One thing of note that is worth mentioning, &quot;Scope look-up stops once it finds the first match&quot;.</source>
+          <target state="translated">特筆すべきは、「最初の一致を見つけたらスコープのルックアップは停止する」ということです。</target>
+        </trans-unit>
+        <trans-unit id="39d115a82e8ca46b1e1da4cb77b8126173035ef2" translate="yes" xml:space="preserve">
+          <source>Ordinary block</source>
+          <target state="translated">通常のブロック</target>
+        </trans-unit>
+        <trans-unit id="3e7192956deaab738bd72c8783df974fd557d341" translate="yes" xml:space="preserve">
+          <source>Otherwise, you'll get a ReferenceError when the handler is invoked. So, for example, if the inline handler references a function which is defined &lt;em&gt;inside&lt;/em&gt;&lt;code&gt;window.onload&lt;/code&gt; or &lt;code&gt;$(function() {&lt;/code&gt;, the reference will fail, because the inline handler may only reference variables in the global scope, and the function is not global:</source>
+          <target state="translated">そうしないと、ハンドラーが呼び出されたときにReferenceErrorが発生します。 したがって、たとえば、インラインハンドラー&lt;em&gt;が&lt;/em&gt; &lt;code&gt;window.onload&lt;/code&gt; または &lt;code&gt;$(function() {&lt;/code&gt; &lt;em&gt;内&lt;/em&gt;で定義された関数を参照する場合、インラインハンドラーはグローバルスコープの変数のみを参照でき、関数はグローバル：</target>
+        </trans-unit>
+        <trans-unit id="b0f7eac222c33234d6b1ce96f288537ff995de59" translate="yes" xml:space="preserve">
+          <source>Outside of the special cases of global and module scope, variables are declared using &lt;code&gt;var&lt;/code&gt; (function scope), &lt;code&gt;let&lt;/code&gt; (block scope) and &lt;code&gt;const&lt;/code&gt; (block scope). Most other forms of identifier declaration have block scope in strict mode.</source>
+          <target state="translated">グローバルスコープとモジュールスコープの特別な場合を除いて、変数は &lt;code&gt;var&lt;/code&gt; （関数スコープ）、 &lt;code&gt;let&lt;/code&gt; （ブロックスコープ）、 &lt;code&gt;const&lt;/code&gt; （ブロックスコープ）を使用して宣言されます。 他のほとんどの形式の識別子宣言は、strictモードでブロックスコープを持っています。</target>
+        </trans-unit>
+        <trans-unit id="0efc2e6be4c23b9a513d7ce0dcff8ed80e8912e7" translate="yes" xml:space="preserve">
+          <source>Overview</source>
+          <target state="translated">Overview</target>
+        </trans-unit>
+        <trans-unit id="4d2fae3746da9a4ac50d19572acc01ad9fa90618" translate="yes" xml:space="preserve">
+          <source>Properties of the &lt;code&gt;document&lt;/code&gt; and properties of the element the handler is attached to may also be referenced as standalone variables inside inline handlers because inline handlers are invoked &lt;a href=&quot;https://i.stack.imgur.com/dTDB0.png&quot;&gt;&lt;em&gt;inside&lt;/em&gt; of two &lt;code&gt;with&lt;/code&gt; blocks&lt;/a&gt;, one for the &lt;code&gt;document&lt;/code&gt;, one for the element. The scope chain of variables inside these handlers is &lt;a href=&quot;https://stackoverflow.com/a/57048067&quot;&gt;extremely unintuitive&lt;/a&gt;, and a working event handler will &lt;em&gt;probably&lt;/em&gt; require a function to be global (and unnecessary global pollution &lt;a href=&quot;https://softwareengineering.stackexchange.com/q/148108&quot;&gt;should probably be avoided&lt;/a&gt;).</source>
+          <target state="translated">&lt;code&gt;document&lt;/code&gt; プロパティとハンドラーが関連付けられている要素のプロパティは、インラインハンドラー内のスタンドアロン変数として参照することもできます。これは、インラインハンドラーが&lt;a href=&quot;https://i.stack.imgur.com/dTDB0.png&quot;&gt;2つのブロックを使用し&lt;/a&gt;て呼び出されるためです。 これらのハンドラー内の変数のスコープチェーンは&lt;a href=&quot;https://stackoverflow.com/a/57048067&quot;&gt;非常に直感的&lt;/a&gt;ではなく、機能するイベントハンドラーは&lt;em&gt;おそらく&lt;/em&gt;関数をグローバルにする必要があります（そして不要なグローバル汚染&lt;a href=&quot;https://softwareengineering.stackexchange.com/q/148108&quot;&gt;はおそらく回避する必要があります&lt;/a&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="358bcd9d5d263dcf0acf4e412ac146d3ec1cbcef" translate="yes" xml:space="preserve">
+          <source>Quoting from his ebook:</source>
+          <target state="translated">彼の電子書籍から引用します。</target>
+        </trans-unit>
+        <trans-unit id="a23997220606bd14c55eafa62be1140a4157f6e3" translate="yes" xml:space="preserve">
+          <source>Scope chain --&amp;gt;</source>
+          <target state="translated">スコープチェーン-&amp;gt;</target>
+        </trans-unit>
+        <trans-unit id="960f638fe475e770a8e797654ca9cc8ebe41b2a9" translate="yes" xml:space="preserve">
+          <source>Scope is defined as the &lt;a href=&quot;https://stackoverflow.com/a/1047479/38522&quot;&gt;lexical&lt;/a&gt; region of code over which an identifier is valid.</source>
+          <target state="translated">スコープは、識別子が有効であるコードの&lt;a href=&quot;https://stackoverflow.com/a/1047479/38522&quot;&gt;字句&lt;/a&gt;領域として定義されます。</target>
+        </trans-unit>
+        <trans-unit id="0001dde1682d4a228cca759a547c5f895b3d0836" translate="yes" xml:space="preserve">
+          <source>Scope is formed of a linked nesting of lexical environments, with each level in the nesting corresponding to a lexical environment of an ancestor execution context.</source>
+          <target state="translated">スコープは、語彙環境のリンクされた入れ子で形成され、入れ子の各レベルは、祖先の実行コンテキストの語彙環境に対応します。</target>
+        </trans-unit>
+        <trans-unit id="03fc8d42427c442b2a752ef4c9a4f0079386dd0a" translate="yes" xml:space="preserve">
+          <source>Scope is the region of the codebase over which an identifier is valid.</source>
+          <target state="translated">スコープとは、識別子が有効なコードベースの領域のことです。</target>
+        </trans-unit>
+        <trans-unit id="d9e69c5319ff44dd0f7e6cd91e381690e40b15e1" translate="yes" xml:space="preserve">
+          <source>Scopes are technically &quot;Execution Contexts&quot;</source>
+          <target state="translated">スコープは技術的には「実行コンテキスト」です。</target>
+        </trans-unit>
+        <trans-unit id="8014aa999f8e9f357a908dec6565c42cc7afe011" translate="yes" xml:space="preserve">
+          <source>See a demo at:</source>
+          <target state="translated">でデモを見る。</target>
+        </trans-unit>
+        <trans-unit id="4bcb4e163bf193fe874c35e7a1a754e4ed2bd51c" translate="yes" xml:space="preserve">
+          <source>Show code snippet</source>
+          <target state="translated">コードスニペットを表示</target>
+        </trans-unit>
+        <trans-unit id="4a2982e515416ff8974a0e226abce538efa699bf" translate="yes" xml:space="preserve">
+          <source>Since the scope chain inside inline handlers is &lt;em&gt;so weird&lt;/em&gt;, and since inline handlers require global pollution to work, and since inline handlers sometimes require ugly string escaping when passing arguments, it's probably easier to avoid them. Instead, attach event handlers using Javascript (like with &lt;code&gt;addEventListener&lt;/code&gt;), rather than with HTML markup.</source>
+          <target state="translated">インラインハンドラー内のスコープチェーンは&lt;em&gt;奇妙&lt;/em&gt;であり、インラインハンドラーは機能するためにグローバルな汚染を必要とするため、またインラインハンドラーは引数を渡すときに醜い文字列エスケープを必要とする場合があるため、おそらくそれらを回避する方が簡単です。 代わりに、HTMLマークアップではなく、JavaScriptを使用して（ &lt;code&gt;addEventListener&lt;/code&gt; などを使用して）イベントハンドラーをアタッチします。</target>
+        </trans-unit>
+        <trans-unit id="d7b8f215615eb4f7e16592cd68df7d8300b6ec09" translate="yes" xml:space="preserve">
+          <source>So from this perspective, I think that a picture would help that I found in the Scopes and Closures ebook by Kyle Simpson:</source>
+          <target state="translated">だから、このような観点から、私はカイル・シンプソンによってScopes and Closuresの電子ブックで見つけたことを絵が助けるだろうと思います。</target>
+        </trans-unit>
+        <trans-unit id="260b57030b2b60bb30906c7875f28bf2c6a9202e" translate="yes" xml:space="preserve">
+          <source>So that is the technical explanation. In practice, it is important to remember that in JavaScript</source>
+          <target state="translated">ということで、技術的な説明は以上です。実際には、JavaScriptでは</target>
+        </trans-unit>
+        <trans-unit id="6eeb8f5239adbcf206f276fe0178d507b944531b" translate="yes" xml:space="preserve">
+          <source>So this code:</source>
+          <target state="translated">だからこのコードは</target>
+        </trans-unit>
+        <trans-unit id="9149eb7ca4536bbe4c6e7d579b916628507a6c43" translate="yes" xml:space="preserve">
+          <source>So what is the difference between functional scope and block scope?</source>
+          <target state="translated">では、機能スコープとブロックスコープの違いは何なのでしょうか?</target>
+        </trans-unit>
+        <trans-unit id="de0115ead2817c9e584c804563ac34e1a02cf494" translate="yes" xml:space="preserve">
+          <source>So you can see JavaScript scoping is actually extremely simple, albeit not always intuitive. A few things to be aware of:</source>
+          <target state="translated">このように、JavaScript のスコープは、必ずしも直感的ではないものの、実際には非常にシンプルなものであることがわかります。いくつかの注意点があります。</target>
+        </trans-unit>
+        <trans-unit id="3812cb403a9ffcb176a50c641ea80b4719348646" translate="yes" xml:space="preserve">
+          <source>So, any blocks other than functions do not create a new scope. That explains why for-loops overwrite outer scoped variables:</source>
+          <target state="translated">つまり、関数以外のブロックは新しいスコープを作成しません。これが、for-loopがスコープの外側の変数を上書きする理由を説明しています。</target>
+        </trans-unit>
+        <trans-unit id="77ce19117cbf62e9aa83a0e9daa5eda964f91d46" translate="yes" xml:space="preserve">
+          <source>Some of the locations identifiers can be declared:</source>
+          <target state="translated">いくつかの場所の識別子を宣言することができます。</target>
+        </trans-unit>
+        <trans-unit id="6c1737e3aa3de31e28974c1c8d07d17beab8ca24" translate="yes" xml:space="preserve">
+          <source>Some of the ways identifiers can be declared:</source>
+          <target state="translated">識別子を宣言する方法のいくつか。</target>
+        </trans-unit>
+        <trans-unit id="de99e0fa995db074a346a8fd3d2e19d830b3b47e" translate="yes" xml:space="preserve">
+          <source>TLDR</source>
+          <target state="translated">TLDR</target>
+        </trans-unit>
+        <trans-unit id="eb94aded85eb85135c48677af15bf3ac1f75c26f" translate="yes" xml:space="preserve">
+          <source>That's almost all you need to know in terms of JavaScript scoping, except:</source>
+          <target state="translated">JavaScriptのスコーピングに関しては、それ以外はほぼ全て知っておく必要があります。</target>
+        </trans-unit>
+        <trans-unit id="20ea4c65a85f13a0f7d5880b871c092105665952" translate="yes" xml:space="preserve">
+          <source>The &lt;a href=&quot;https://www.smashingmagazine.com/2015/10/es6-whats-new-next-version-javascript/&quot;&gt;&lt;strong&gt;most recent JavaScript specs&lt;/strong&gt;&lt;/a&gt; now also allow a third scope :</source>
+          <target state="translated">&lt;a href=&quot;https://www.smashingmagazine.com/2015/10/es6-whats-new-next-version-javascript/&quot;&gt;&lt;strong&gt;最新のJavaScript仕様で&lt;/strong&gt;&lt;/a&gt;は、3番目のスコープも許可されるようになりました。</target>
+        </trans-unit>
+        <trans-unit id="551aa169f58fce36618019678db10f4c0b8c35c3" translate="yes" xml:space="preserve">
+          <source>The Below Class has a Global scope variable &lt;code&gt;carName&lt;/code&gt;. And this variable is accessible from everywhere in the class.</source>
+          <target state="translated">Below Classには、グローバルスコープ変数 &lt;code&gt;carName&lt;/code&gt; があります。 そして、この変数はクラスのどこからでもアクセスできます。</target>
+        </trans-unit>
+        <trans-unit id="6f2e6a008008ebd7c8f8b0790fa024387f5103ae" translate="yes" xml:space="preserve">
+          <source>The Below function has a local scope variable &lt;code&gt;carName&lt;/code&gt;. And this variable is not accessible from outside of the function.</source>
+          <target state="translated">Below関数には、ローカルスコープ変数 &lt;code&gt;carName&lt;/code&gt; があります。 また、この変数には関数の外部からアクセスできません。</target>
+        </trans-unit>
+        <trans-unit id="1c6297960ee1326cc0b6ece03b632419c8697d63" translate="yes" xml:space="preserve">
+          <source>The biggest difference between &lt;code&gt;var&lt;/code&gt; and &lt;code&gt;let&lt;/code&gt;/&lt;code&gt;const&lt;/code&gt; is that &lt;code&gt;var&lt;/code&gt; is function scoped whereas &lt;code&gt;let&lt;/code&gt;/&lt;code&gt;const&lt;/code&gt; are block scoped. Here is an example to illustrate this:</source>
+          <target state="translated">&lt;code&gt;var&lt;/code&gt; と &lt;code&gt;let&lt;/code&gt; / &lt;code&gt;const&lt;/code&gt; の最大の違いは、 &lt;code&gt;var&lt;/code&gt; が関数スコープであるのに対し、 &lt;code&gt;let&lt;/code&gt; / &lt;code&gt;const&lt;/code&gt; はブロックスコープであることです。 これを説明する例を次に示します。</target>
+        </trans-unit>
+        <trans-unit id="dcadd2f97f65d20e36f2d943423cf05c3a58f7a2" translate="yes" xml:space="preserve">
+          <source>The building represents our program&amp;rsquo;s nested scope ruleset. The first
+  floor of the building represents your currently executing scope,
+  wherever you are. The top level of the building is the global scope.
+  You resolve LHS and RHS references by looking on your current floor,
+  and if you don&amp;rsquo;t find it, taking the elevator to the next floor,
+  looking there, then the next, and so on. Once you get to the top floor
+  (the global scope), you either find what you&amp;rsquo;re looking for, or you
+  don&amp;rsquo;t. But you have to stop regardless.</source>
+          <target state="translated">建物は、プログラムのネストされたスコープルールセットを表しています。 建物の1階は、どこにいても、現在実行中のスコープを表しています。 建物のトップレベルはグローバルスコープです。 LHSとRHSの参照を解決するには、現在のフロアを調べます。見つからない場合は、エレベーターで次のフロアに移動し、そこから次のフロアに移動します。 最上階（グローバルスコープ）に到達すると、探しているものが見つかるか、見つからないかのどちらかです。 しかし、あなたは関係なく停止する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="cdc0afcc10d38d1828b1ade5ac3c30395d6075f9" translate="yes" xml:space="preserve">
+          <source>The following prints &lt;code&gt;5&lt;/code&gt;, five times, and then prints &lt;code&gt;5&lt;/code&gt; for an sixth time for the &lt;code&gt;console.log&lt;/code&gt; outside the loop:</source>
+          <target state="translated">次の例では、5を5回出力し、ループの外側にある &lt;code&gt;console.log&lt;/code&gt; について5回出力します。</target>
+        </trans-unit>
+        <trans-unit id="f640071ac23c5f0d26b8e3ca4e3b7d965b5b7397" translate="yes" xml:space="preserve">
+          <source>The following prints &lt;code&gt;undefined&lt;/code&gt; because &lt;code&gt;x&lt;/code&gt; is block-scoped. The callbacks are run one by one asynchronously. New behavior for &lt;code&gt;let&lt;/code&gt; variables means that each anonymous function closed over a different variable named &lt;code&gt;x&lt;/code&gt; (unlike it would have done with &lt;code&gt;var&lt;/code&gt;), and so integers &lt;code&gt;0&lt;/code&gt; through &lt;code&gt;4&lt;/code&gt; are printed.:</source>
+          <target state="translated">&lt;code&gt;x&lt;/code&gt; はブロックスコープであるため、以下は &lt;code&gt;undefined&lt;/code&gt; と出力します。 コールバックは非同期で1つずつ実行されます。 &lt;code&gt;let&lt;/code&gt; 変数の新しい動作は、各無名関数が &lt;code&gt;x&lt;/code&gt; という名前の異なる変数に対して閉じられたことを意味します（ &lt;code&gt;var&lt;/code&gt; を使用した場合とは異なります）。したがって、整数 &lt;code&gt;0&lt;/code&gt; 〜4が出力されます。</target>
+        </trans-unit>
+        <trans-unit id="07a69d238d156e701c5a367c6a5485165dd070e3" translate="yes" xml:space="preserve">
+          <source>The following will NOT throw a &lt;code&gt;ReferenceError&lt;/code&gt; because the visibility of &lt;code&gt;x&lt;/code&gt; is not constrained by the block; it will, however, print &lt;code&gt;undefined&lt;/code&gt; because the variable has not been initialised (because of the &lt;code&gt;if&lt;/code&gt; statement).</source>
+          <target state="translated">以下は、 &lt;code&gt;x&lt;/code&gt; の可視性がブロックによって制約されていないため、 &lt;code&gt;ReferenceError&lt;/code&gt; をスローしません。 ただし、（ &lt;code&gt;if&lt;/code&gt; ステートメントのため）変数が初期化されていないため、 &lt;code&gt;undefined&lt;/code&gt; されます。</target>
+        </trans-unit>
+        <trans-unit id="05ba3ae9dd9b32ddf42ae7069862c90654d442fa" translate="yes" xml:space="preserve">
+          <source>The following will declare a property on the global object, because variables declared using &lt;code&gt;var&lt;/code&gt; within the global context, are added as properties to the global object:</source>
+          <target state="translated">グローバルコンテキスト内で &lt;code&gt;var&lt;/code&gt; を使用して宣言された変数がプロパティとしてグローバルオブジェクトに追加されるため、以下はグローバルオブジェクトのプロパティを宣言します。</target>
+        </trans-unit>
+        <trans-unit id="56e352b3854a340ef82e660d524c84e0929a85f3" translate="yes" xml:space="preserve">
+          <source>The following will throw a &lt;code&gt;ReferenceError&lt;/code&gt; because the visibility of &lt;code&gt;x&lt;/code&gt; is constrained by the block:</source>
+          <target state="translated">次の例では、 &lt;code&gt;x&lt;/code&gt; の可視性がブロックによって制約されているため、 &lt;code&gt;ReferenceError&lt;/code&gt; がスローされます。</target>
+        </trans-unit>
+        <trans-unit id="916178c1871c4ad706738ee8325f52860cf80126" translate="yes" xml:space="preserve">
+          <source>The following will throw a ReferenceError because the names&lt;code&gt;x&lt;/code&gt;, &lt;code&gt;y&lt;/code&gt; and &lt;code&gt;z&lt;/code&gt; have no meaning outside of the function &lt;code&gt;f&lt;/code&gt;.</source>
+          <target state="translated">名前 &lt;code&gt;x&lt;/code&gt; 、 &lt;code&gt;y&lt;/code&gt; 、および &lt;code&gt;z&lt;/code&gt; は関数 &lt;code&gt;f&lt;/code&gt; の外では意味がないため、以下はReferenceErrorをスローします。</target>
+        </trans-unit>
+        <trans-unit id="c15f36c25910e782b2fb893c1b27cfa365282f76" translate="yes" xml:space="preserve">
+          <source>The following will throw a ReferenceError for &lt;code&gt;y&lt;/code&gt; and &lt;code&gt;z&lt;/code&gt;, but not for &lt;code&gt;x&lt;/code&gt;, because the visibility of &lt;code&gt;x&lt;/code&gt; is not constrained by the block. Blocks that define the bodies of control structures like &lt;code&gt;if&lt;/code&gt;, &lt;code&gt;for&lt;/code&gt; and &lt;code&gt;while&lt;/code&gt;, behave similarly.</source>
+          <target state="translated">以下は、 &lt;code&gt;y&lt;/code&gt; と &lt;code&gt;z&lt;/code&gt; に対して ReferenceErrorをスローしますが、 &lt;code&gt;x&lt;/code&gt; に対してはスローしません。これは、 xの可視性がブロックによって制約されていないためです。 &lt;code&gt;if&lt;/code&gt; 、 &lt;code&gt;for&lt;/code&gt; 、 &lt;code&gt;while&lt;/code&gt; などの制御構造の本体を定義するブロックは、同様に動作します。</target>
+        </trans-unit>
+        <trans-unit id="35ea475fa01e3a75809f9d5a47ee4846fc35e629" translate="yes" xml:space="preserve">
+          <source>The four scopes are:</source>
+          <target state="translated">4つのスコープです。</target>
+        </trans-unit>
+        <trans-unit id="667c33893d889bc80fd5ed9df2f266c2588c1bb5" translate="yes" xml:space="preserve">
+          <source>The idea of scoping in JavaScript when originally designed by &lt;a href=&quot;https://en.wikipedia.org/wiki/Brendan_Eich&quot;&gt;Brendan Eich&lt;/a&gt; came from the &lt;a href=&quot;https://en.wikipedia.org/wiki/HyperCard&quot;&gt;HyperCard&lt;/a&gt; scripting language &lt;a href=&quot;https://en.wikipedia.org/wiki/HyperTalk&quot;&gt;HyperTalk&lt;/a&gt;.</source>
+          <target state="translated">JavaScriptでスコープするというアイデアは、もともと&lt;a href=&quot;https://en.wikipedia.org/wiki/Brendan_Eich&quot;&gt;ブレンダンアイヒ&lt;/a&gt;によって設計されたときに、 &lt;a href=&quot;https://en.wikipedia.org/wiki/HyperCard&quot;&gt;HyperCard&lt;/a&gt;スクリプト言語&lt;a href=&quot;https://en.wikipedia.org/wiki/HyperTalk&quot;&gt;HyperTalk&lt;/a&gt;から生まれました。</target>
+        </trans-unit>
+        <trans-unit id="7f6410942035541f508ed90e604fa26f865ffb4a" translate="yes" xml:space="preserve">
+          <source>The key, as I understand it, is that Javascript has function level scoping vs the more common C block scoping.</source>
+          <target state="translated">重要なのは、私が理解しているように、Javascript はより一般的な C ブロックのスコピンピングに対して関数レベルのスコピンピングを持っているということです。</target>
+        </trans-unit>
+        <trans-unit id="baa8f0251c2ad4e18b3c034ad72ce894cbff4fc8" translate="yes" xml:space="preserve">
+          <source>The same concepts of lexically scope and scopechain still apply in &lt;code&gt;ES6&lt;/code&gt;. However a new ways to declare variables were introduced. There are the following:</source>
+          <target state="translated">字句スコープとスコープチェーンの同じ概念が &lt;code&gt;ES6&lt;/code&gt; にも適用されます。 ただし、変数を宣言する新しい方法が導入されました。 以下があります。</target>
+        </trans-unit>
+        <trans-unit id="1facbc7c1c1f813cff549c1dd5c9ee65e8b26f21" translate="yes" xml:space="preserve">
+          <source>The scope of the variables that an &lt;code&gt;on*&lt;/code&gt; attribute can reference &lt;em&gt;must&lt;/em&gt; be either:</source>
+          <target state="translated">&lt;code&gt;on*&lt;/code&gt; 属性が参照できる変数のスコープは、次のいずれかで&lt;em&gt;なければなりませ&lt;/em&gt;ん。</target>
+        </trans-unit>
+        <trans-unit id="a525d3c4347396db376dab57fb2b417bb3d3c520" translate="yes" xml:space="preserve">
+          <source>The this binding will point to the containing object. Sometimes scopes or execution contexts change without the containing object changing, such as in a declared function where the containing object may be &lt;code&gt;window&lt;/code&gt; or a constructor function.</source>
+          <target state="translated">thisバインディングは、それを含むオブジェクトを指します。 含まれているオブジェクトが &lt;code&gt;window&lt;/code&gt; またはコンストラクター関数である可能性がある宣言された関数など、含まれているオブジェクトを変更せずにスコープまたは実行コンテキストが変わる場合があります 。</target>
+        </trans-unit>
+        <trans-unit id="2d36f4ed020b3d4b8edb17fc4c526b8cb4fb6d80" translate="yes" xml:space="preserve">
+          <source>The top level of an ES6 module is similar to that of the inside of an IIFE on the top level in a normal &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;. The module can reference any variables which are global, and nothing can reference anything inside the module unless the module is explicitly designed for it.</source>
+          <target state="translated">ES6モジュールのトップレベルは、通常の &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; のトップレベルにあるIIFEの内部のレベルに似ています。 モジュールはグローバルな変数を参照でき、モジュールが明示的に設計されていない限り、モジュール内の何も参照できません。</target>
+        </trans-unit>
+        <trans-unit id="7125f4b24be7f56c5a5737818cdbed770efa08f5" translate="yes" xml:space="preserve">
+          <source>The top of a control structure (eg. loop, if, while etc)</source>
+          <target state="translated">制御構造の先頭(例:ループ、if、whileなど</target>
+        </trans-unit>
+        <trans-unit id="ec84a003493d5f7ad27772f7fadcf69a38c15e22" translate="yes" xml:space="preserve">
+          <source>The top of the stack takes precedence (the bottom being the global context)</source>
+          <target state="translated">スタックの一番上が優先されます (一番下がグローバルコンテキストです)。</target>
+        </trans-unit>
+        <trans-unit id="e5147662f95f20c6a0a89a3a7abbdb020dd6c0a5" translate="yes" xml:space="preserve">
+          <source>There are ALMOST only two types of JavaScript scopes:</source>
+          <target state="translated">JavaScript のスコープには、ほとんどの場合 2 種類しかありません。</target>
+        </trans-unit>
+        <trans-unit id="eb06dfbee4e2593fde4a86d0b540f447341e7d7e" translate="yes" xml:space="preserve">
+          <source>There are only function scopes in JS. Not block scopes!
+You can see what is hoisting too.</source>
+          <target state="translated">JSにはファンクションスコープしかありません。ブロックスコープではありません 何がフーフーしているのかは、こちらでも確認できます。</target>
+        </trans-unit>
+        <trans-unit id="06ad5b6a8156a5d1e0ba464b34addb7c1635409b" translate="yes" xml:space="preserve">
+          <source>There are three pertinent factors in deciding the &lt;a href=&quot;https://en.wikipedia.org/wiki/Scope_(computer_science)&quot;&gt;scope&lt;/a&gt; of an &lt;a href=&quot;https://www.ecma-international.org/ecma-262/10.0/index.html#sec-names-and-keywords&quot;&gt;identifier&lt;/a&gt; in JavaScript:</source>
+          <target state="translated">JavaScriptで&lt;a href=&quot;https://www.ecma-international.org/ecma-262/10.0/index.html#sec-names-and-keywords&quot;&gt;識別子&lt;/a&gt;の&lt;a href=&quot;https://en.wikipedia.org/wiki/Scope_(computer_science)&quot;&gt;スコープ&lt;/a&gt;を決定するには、3つの適切な要素があります。</target>
+        </trans-unit>
+        <trans-unit id="9f972bb206c8387750ed69130eeb77040dd103a2" translate="yes" xml:space="preserve">
+          <source>There are two types of scopes in JavaScript.</source>
+          <target state="translated">JavaScriptには2種類のスコープがあります。</target>
+        </trans-unit>
+        <trans-unit id="e1a1af2ae159fa99a59c517a33be2803648d6f2f" translate="yes" xml:space="preserve">
+          <source>These are some browsers that don't support &lt;code&gt;let&lt;/code&gt; at all :</source>
+          <target state="translated">これらは、 &lt;code&gt;let&lt;/code&gt; をまったくサポートしていないブラウザです。</target>
+        </trans-unit>
+        <trans-unit id="4157cf90189663de2f2e49ae60f774e33bc5176b" translate="yes" xml:space="preserve">
+          <source>These execution contexts are created any time control is transferred. Control is transferred when code begins to execute, and this is primarily done from function execution.</source>
+          <target state="translated">これらの実行コンテキストは、制御が転送されるたびに作成されます。制御はコードの実行を開始したときに転送され、これは主に関数の実行から行われます。</target>
+        </trans-unit>
+        <trans-unit id="fcd7046418deb6ee5f24a080449c0d25ed0ec8aa" translate="yes" xml:space="preserve">
+          <source>These linked lexical environments form a scope &quot;chain&quot;. Identifier resolution is the process of searching along this chain for a matching identifier.</source>
+          <target state="translated">これらのリンクされた語彙環境は、スコープ「チェーン」を形成します。識別子解決は、この連鎖に沿って一致する識別子を検索するプロセスです。</target>
+        </trans-unit>
+        <trans-unit id="523f7d75f219807a90812d1a03a76d634bd34fc6" translate="yes" xml:space="preserve">
+          <source>This idea of &quot;scope levels&quot; explains why &quot;this&quot; can be changed with a newly created scope, if it's being looked up in a nested function.
+Here is a link that goes into all these details, &lt;a href=&quot;https://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/&quot;&gt;Everything you wanted to know about javascript scope&lt;/a&gt;</source>
+          <target state="translated">この「スコープレベル」の考え方は、ネストされた関数でルックアップされている場合に、新しく作成されたスコープで「this」を変更できる理由を説明しています。 これらのすべての詳細へのリンクは次の&lt;a href=&quot;https://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/&quot;&gt;とおりです。JavaScriptのスコープについて知りたいすべて&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="88c46fe2afcb6c5ec1d4bbaa556544f6c35d6851" translate="yes" xml:space="preserve">
+          <source>This is exactly how the JavaScript scoping system is designed. It just has different names. The cards in JavaScript are known as &lt;strong&gt;&lt;a href=&quot;http://www.ecma-international.org/ecma-262/5.1/#sec-10.3&quot;&gt;Execution Contexts&lt;sup&gt;ECMA&lt;/sup&gt;&lt;/a&gt;&lt;/strong&gt;. Each one of these contexts contains three main parts. A variable environment, a lexical environment, and a this binding. Going back to the cards reference, the lexical environment contains all of the content from prior cards lower in the stack. The current context is at the top of the stack and any content declared there will be stored in the variable environment. The variable environment will take precedence in the case of naming collisions.</source>
+          <target state="translated">これがまさにJavaScriptスコープシステムの設計方法です。 名前が違うだけです。 JavaScriptのカードは、 &lt;strong&gt;&lt;a href=&quot;http://www.ecma-international.org/ecma-262/5.1/#sec-10.3&quot;&gt;実行コンテキスト&lt;sup&gt;ECMAと&lt;/sup&gt;&lt;/a&gt;&lt;/strong&gt;呼ばれます。 これらの各コンテキストには、3つの主要な部分があります。 変数環境、字句環境、およびthisバインディング。 カードのリファレンスに戻ると、字句環境には、スタックの下位にある以前のカードのすべてのコンテンツが含まれています。 現在のコンテキストはスタックの最上位にあり、そこで宣言されたコンテンツはすべて変数環境に格納されます。 名前の衝突が発生した場合は、変数環境が優先されます。</target>
+        </trans-unit>
+        <trans-unit id="f86bca7d7675134768be73474570815258963447" translate="yes" xml:space="preserve">
+          <source>This may seem counter intuitive, but it makes sense from the perspective of a imperative language designer.</source>
+          <target state="translated">これは逆に直感的に見えるかもしれませんが、命令型言語設計者の視点から見れば理にかなっています。</target>
+        </trans-unit>
+        <trans-unit id="9569372657d997762301d2a05e690ebc258d5cc1" translate="yes" xml:space="preserve">
+          <source>Thus, in JavaScript, scope is implemented via lexical environments linked together in a &quot;chain&quot; by outer references. This chain of lexical environments is called the scope chain, and identifier resolution occurs by &lt;a href=&quot;https://www.ecma-international.org/ecma-262/10.0/index.html#sec-getidentifierreference&quot;&gt;searching up the chain&lt;/a&gt; for a matching identifier.</source>
+          <target state="translated">したがって、JavaScriptでは、スコープは外部参照によって「チェーン」でリンクされた字句環境を介して実装されます。 この字句環境のチェーンはスコープチェーンと呼ばれ、識別子の解決は、一致する識別子の&lt;a href=&quot;https://www.ecma-international.org/ecma-262/10.0/index.html#sec-getidentifierreference&quot;&gt;チェーン&lt;/a&gt;を検索することによって行われます。</target>
+        </trans-unit>
+        <trans-unit id="bb6c7e872133e98aeb218ad6ea9c62cee6491672" translate="yes" xml:space="preserve">
+          <source>To understand the difference between functional scope and block scope, consider the following code :</source>
+          <target state="translated">機能スコープとブロックスコープの違いを理解するために、次のコードを考えてみましょう。</target>
+        </trans-unit>
+        <trans-unit id="0163360cc80ec2993c1c8f16533f6de416e326dd" translate="yes" xml:space="preserve">
+          <source>Traditionally, JavaScript really only has two types of scope :</source>
+          <target state="translated">伝統的に、JavaScriptには2種類のスコープしかありません。</target>
+        </trans-unit>
+        <trans-unit id="87b058d74fbe7f22fbb0efb4d9425bc6faa878b9" translate="yes" xml:space="preserve">
+          <source>Traditionally, you create your variables like this :</source>
+          <target state="translated">伝統的には、次のように変数を作成します。</target>
+        </trans-unit>
+        <trans-unit id="ad29238d291882475644003da99e61f8bc49a03b" translate="yes" xml:space="preserve">
+          <source>Try the feature at:</source>
+          <target state="translated">で機能を試してみてください。</target>
+        </trans-unit>
+        <trans-unit id="2c33461d5cae3061ba752f33725ddcdee0745df3" translate="yes" xml:space="preserve">
+          <source>Try this curious example. In the example below if a were a numeric initialized at 0, you'd see 0 and then 1. Except a is an object and javascript will pass f1 a pointer of a rather than a copy of it. The result is that you get the same alert both times.</source>
+          <target state="translated">この奇妙な例を試してみてください。以下の例では、aが0で初期化された数値であった場合、0が表示され、その後1が表示されます。 aがオブジェクトであり、javascriptはf1にコピーではなくポインタを渡します。その結果、2回とも同じアラートが表示されます。</target>
+        </trans-unit>
+        <trans-unit id="9a31c380e5d5713a5b5f2cac2a38ce95810e231c" translate="yes" xml:space="preserve">
+          <source>Using functions instead:</source>
+          <target state="translated">代わりに関数を使う。</target>
+        </trans-unit>
+        <trans-unit id="09e07e786d7ad2ec030bf960813f71d135a77b77" translate="yes" xml:space="preserve">
+          <source>Variables declared globally have a global scope. Variables declared within a function are scoped to that function, and shadow global variables of the same name.</source>
+          <target state="translated">グローバルに宣言された変数は、グローバルスコープを持ちます。関数内で宣言された変数は、その関数にスコープされ、同じ名前のグローバル変数の影になります。</target>
+        </trans-unit>
+        <trans-unit id="83f6135eb31f7889cc2bae9bf00eaae24a2268d7" translate="yes" xml:space="preserve">
+          <source>Variables declared using &lt;code&gt;var&lt;/code&gt;, &lt;code&gt;let&lt;/code&gt; or &lt;code&gt;const&lt;/code&gt; are all scoped to modules:</source>
+          <target state="translated">&lt;code&gt;var&lt;/code&gt; 、 &lt;code&gt;let&lt;/code&gt; 、または &lt;code&gt;const&lt;/code&gt; を使用して宣言された変数は、すべてモジュールにスコープされます。</target>
+        </trans-unit>
+        <trans-unit id="e63da6c1c1854a483ec37bd48437243581e43830" translate="yes" xml:space="preserve">
+          <source>Variables in Javascript were initially (pre &lt;code&gt;ES6&lt;/code&gt;) lexically function scoped. The term lexically scoped means that you can see the scope of the variables by 'looking' at the code.</source>
+          <target state="translated">JavaScriptの変数は、最初（ &lt;code&gt;ES6&lt;/code&gt; 以前）のレキシカル関数スコープでした。 レキシカルスコープの用語は、コードを「調べる」ことで変数のスコープを確認できることを意味します。</target>
+        </trans-unit>
+        <trans-unit id="79b5a1ec62a5c78bf7572a8c6548c2e713ed3a8a" translate="yes" xml:space="preserve">
+          <source>View the code at:</source>
+          <target state="translated">コードを見る</target>
+        </trans-unit>
+        <trans-unit id="d113eb702e389cf7c505ecfecd3bb29698f276f3" translate="yes" xml:space="preserve">
+          <source>We try to log bar to the console, bar cannot be found inside the function &lt;code&gt;innerFunc&lt;/code&gt; itself. Therefore, we need to &lt;strong&gt;climb the scope chain&lt;/strong&gt;. We first look in the outer function in which the function &lt;code&gt;innerFunc&lt;/code&gt; was defined. This is the function &lt;code&gt;outerFunc&lt;/code&gt;. In the scope of &lt;code&gt;outerFunc&lt;/code&gt; we can find the variable bar, which holds the string 'outerFunc'.</source>
+          <target state="translated">barをコンソールに記録しようとしましたが、関数 &lt;code&gt;innerFunc&lt;/code&gt; 自体の中にbarが見つかりません。 したがって、 &lt;strong&gt;スコープチェーン&lt;/strong&gt;を&lt;strong&gt;登る&lt;/strong&gt;必要があります。 最初に、関数 &lt;code&gt;innerFunc&lt;/code&gt; が定義されている外部関数を調べます。 これは関数 &lt;code&gt;outerFunc&lt;/code&gt; です。 &lt;code&gt;outerFunc&lt;/code&gt; のスコープで、文字列 'outerFunc'を保持する変数barを見つけることができます。</target>
+        </trans-unit>
+        <trans-unit id="33483a29e47769decbe475c651c75e62bcc26c1d" translate="yes" xml:space="preserve">
+          <source>We try to log foo to the console, foo can be found inside the function &lt;code&gt;innerFunc&lt;/code&gt; itself. Therefore, the value of foo is resolved to the string &lt;code&gt;innerFunc&lt;/code&gt;.</source>
+          <target state="translated">fooをコンソールに記録しようとします &lt;code&gt;innerFunc&lt;/code&gt; は関数innerFunc自体の中にあります。 したがって、fooの値はストリング &lt;code&gt;innerFunc&lt;/code&gt; に解決されます。</target>
+        </trans-unit>
+        <trans-unit id="f557bb3c7aec4df772e0ff73b2192b0c2d60c84e" translate="yes" xml:space="preserve">
+          <source>What happens when we are trying to log the variables &lt;code&gt;foo&lt;/code&gt;, &lt;code&gt;bar&lt;/code&gt;, and &lt;code&gt;foobar&lt;/code&gt; to the console is the following:</source>
+          <target state="translated">変数 &lt;code&gt;foo&lt;/code&gt; 、 &lt;code&gt;bar&lt;/code&gt; 、および &lt;code&gt;foobar&lt;/code&gt; をコンソールに記録しようとすると、次のようになります。</target>
+        </trans-unit>
+        <trans-unit id="9b903fe3f970849861b225b53f498c1947e65555" translate="yes" xml:space="preserve">
+          <source>What is the scope of variables in JavaScript</source>
+          <target state="translated">JavaScriptの変数の範囲とは</target>
+        </trans-unit>
+        <trans-unit id="c23272951273b7fc083d376b564db88d3610470d" translate="yes" xml:space="preserve">
+          <source>What is the scope of variables in javascript? Do they have the same scope inside as opposed to outside a function? Or does it even matter? Also, where are the variables stored if they are defined globally?</source>
+          <target state="translated">javascriptにおける変数のスコープとは何ですか?関数の外側とは対照的に、変数の内側にも同じスコープがありますか? それともそれは重要なのでしょうか? また、変数がグローバルに定義されている場合、変数はどこに保存されていますか?</target>
+        </trans-unit>
+        <trans-unit id="8bd7003d51c50f3c8761d33449fe913c8f8cac5b" translate="yes" xml:space="preserve">
+          <source>When a function look to resolve a variable value it first looks at its own scope. This is the function body, i.e. everything between curly brackets {} (except for variables inside &lt;strong&gt;other&lt;/strong&gt;&lt;strong&gt;functions&lt;/strong&gt; which are in this scope).</source>
+          <target state="translated">関数が変数値を解決しようとするとき、関数はまず自身のスコープを調べます。 これは関数本体です。つまり、中括弧{}の間のすべて（このスコープにある&lt;strong&gt;他の&lt;/strong&gt; &lt;strong&gt;関数&lt;/strong&gt;内&lt;strong&gt;の&lt;/strong&gt;変数を除く）。</target>
+        </trans-unit>
+        <trans-unit id="7b320f88c37b5d9ddd50505ed7068dbeb83bd406" translate="yes" xml:space="preserve">
+          <source>When resolving a variable, javascript starts at the innermost scope and searches outwards.</source>
+          <target state="translated">変数を解決するとき、javascriptは一番内側のスコープから始まり、外側を検索します。</target>
+        </trans-unit>
+        <trans-unit id="d7cb4beab01b349af01d024bbaf1102dfb872104" translate="yes" xml:space="preserve">
+          <source>When you invoke a function, the hidden &lt;code&gt;[[Call]]&lt;/code&gt; method is called. This method creates a new execution context and establishes a link between the new execution context and the lexical environment of the function-object. It does this by copying the &lt;code&gt;[[Environment]]&lt;/code&gt; value on the function-object, into an &lt;a href=&quot;https://www.ecma-international.org/ecma-262/10.0/index.html#sec-lexical-environments&quot;&gt;outer reference&lt;/a&gt; field on the lexical environment of the new execution context.</source>
+          <target state="translated">関数を呼び出すと、非表示の &lt;code&gt;[[Call]]&lt;/code&gt; メソッドが呼び出されます。 このメソッドは、新しい実行コンテキストを作成し、新しい実行コンテキストと関数オブジェクトの字句環境の間のリンクを確立します。 これは、関数オブジェクトの &lt;code&gt;[[Environment]]&lt;/code&gt; 値を、新しい実行コンテキストの字句環境の&lt;a href=&quot;https://www.ecma-international.org/ecma-262/10.0/index.html#sec-lexical-environments&quot;&gt;外部参照&lt;/a&gt;フィールドにコピーすることによって行われます。</target>
+        </trans-unit>
+        <trans-unit id="c96ef28eb7eabf77773b3a19be2f5414a421175a" translate="yes" xml:space="preserve">
+          <source>Where an identifier was declared</source>
+          <target state="translated">識別子が宣言されている場合</target>
+        </trans-unit>
+        <trans-unit id="db4779584d083e695bd0cf37cd44aa1429a309bc" translate="yes" xml:space="preserve">
+          <source>Whether or not it is safe to use today, depends on your environment :</source>
+          <target state="translated">現在使用しても安全かどうかは、あなたの環境に依存します。</target>
+        </trans-unit>
+        <trans-unit id="98f46dd1a1ed53e1e44f3ab136ef987e105853e9" translate="yes" xml:space="preserve">
+          <source>Whether you are in &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode&quot;&gt;strict mode&lt;/a&gt; or &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Glossary/Sloppy_mode&quot;&gt;non-strict mode&lt;/a&gt;</source>
+          <target state="translated">&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode&quot;&gt;厳密モード&lt;/a&gt;か&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Glossary/Sloppy_mode&quot;&gt;非&lt;/a&gt; 厳密モードか</target>
+        </trans-unit>
+        <trans-unit id="866faa243c8cb14d4f4502051230db635e4581a1" translate="yes" xml:space="preserve">
+          <source>Window level - &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;outer&lt;/code&gt; function are at top level in scope chain.</source>
+          <target state="translated">ウィンドウレベル-と &lt;code&gt;outer&lt;/code&gt; 関数はスコープチェーンの最上位にあります。</target>
+        </trans-unit>
+        <trans-unit id="61285999208212a66bb8fb8f69cb29c51fc58afb" translate="yes" xml:space="preserve">
+          <source>Yikes!  Be careful using 'with' -- just like var is a noop if the variable is already defined in the function, it is also a noop with respect to names imported from the object!  A little heads up on the name already being defined would make this much safer.  I personally will never use with because of this.</source>
+          <target state="translated">うわぁ! with' の使用には注意してください --var が関数内で変数が既に定義されている場合には noop であるのと同じように、オブジェクトからインポートされた名前に関しても noop です! すでに定義されている名前について少し注意しておくと、より安全になります。私は個人的にはこれのために決して使用しません。</target>
+        </trans-unit>
+        <trans-unit id="653677cec5274421cb19c2c9eb0bf04f82dca290" translate="yes" xml:space="preserve">
+          <source>You should be using block scoping for every variable you create, just like most other major languages. &lt;code&gt;var&lt;/code&gt; is &lt;em&gt;obsolete&lt;/em&gt;. This makes your code safer and more maintainable.</source>
+          <target state="translated">他のほとんどの主要言語と同様に、作成するすべての変数にブロックスコープを使用する必要があります。 &lt;code&gt;var&lt;/code&gt; は&lt;em&gt;廃止されました&lt;/em&gt; 。 これにより、コードの安全性と保守性が向上します。</target>
+        </trans-unit>
+        <trans-unit id="98d045c503931bcf6ef7f9b40c8422ec1ba5b590" translate="yes" xml:space="preserve">
+          <source>You'll want to investigate closures, and how to use them to make &lt;a href=&quot;http://www.crockford.com/javascript/private.html&quot;&gt;private members&lt;/a&gt;.</source>
+          <target state="translated">クロージャと、それらを使用して&lt;a href=&quot;http://www.crockford.com/javascript/private.html&quot;&gt;プライベートメンバー&lt;/a&gt;にする方法を調査する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="b63f2d6c0c543f4dd14dae138ce110ce4819bafe" translate="yes" xml:space="preserve">
+          <source>a property of the document (eg, &lt;code&gt;querySelector&lt;/code&gt; as a standalone variable will point to &lt;code&gt;document.querySelector&lt;/code&gt;; rare)</source>
+          <target state="translated">ドキュメントのプロパティ（たとえば、スタンドアロン変数としての &lt;code&gt;querySelector&lt;/code&gt; はdocument.querySelectorを指す;まれ）</target>
+        </trans-unit>
+        <trans-unit id="fceff746a314cc08e9d118ad4bd96fa755c80556" translate="yes" xml:space="preserve">
+          <source>a property of the element the handler is attached to (like above; rare)</source>
+          <target state="translated">ハンドラがアタッチされている要素のプロパティ (上記のようなもの。)</target>
+        </trans-unit>
+        <trans-unit id="822bc13e2d55b402eb4233cb23c9d414a7a03bc1" translate="yes" xml:space="preserve">
+          <source>eval</source>
+          <target state="translated">eval</target>
+        </trans-unit>
+        <trans-unit id="48a783d527b12bb1b6d12822df507e3056d403cb" translate="yes" xml:space="preserve">
+          <source>foobar cannot be found in innerFunc. . Therefore, we need to &lt;strong&gt;climb the scope chain&lt;/strong&gt; to the innerFunc scope. It also cannot be found here, we climb another level to the &lt;strong&gt;global scope&lt;/strong&gt; (i.e. the outermost scope). We find the variable foobar here which holds the string 'global'. If it wouldnot have found the variable after climbing the scope chain the JS engine would throw a &lt;strong&gt;referenceError&lt;/strong&gt;.</source>
+          <target state="translated">foob​​arがinnerFuncに見つかりません。 。 したがって、 &lt;strong&gt;スコープチェーン&lt;/strong&gt;をinnerFuncスコープに&lt;strong&gt;登る&lt;/strong&gt;必要があります。 ここでも見つかりません。 &lt;strong&gt;グローバルスコープ&lt;/strong&gt; （つまり、最も外側のスコープ）に別のレベルを登ります。 ここでは、文字列「global」を保持する変数foobarを見つけます。 スコープチェーンを上った後も変数が見つからなかった場合、JSエンジンは&lt;strong&gt;referenceError&lt;/strong&gt;をスローし&lt;strong&gt;ます&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="887ec4e4d84f875ed30e16b3b555dc44c974324c" translate="yes" xml:space="preserve">
+          <source>global (working inline handlers almost always reference global variables)</source>
+          <target state="translated">グローバル (インラインハンドラの作業では、ほとんどの場合グローバル変数を参照します)</target>
+        </trans-unit>
+        <trans-unit id="7344f99b192214421819b3d6d5d5eb925e77386f" translate="yes" xml:space="preserve">
+          <source>if there is no enclosing function for a var declaration, it is global scope</source>
+          <target state="translated">var 宣言を囲む関数がない場合はグローバルスコープです。</target>
+        </trans-unit>
+        <trans-unit id="18ab6ac7001b131bc4dc74bd619c612205dff372" translate="yes" xml:space="preserve">
+          <source>is equivalent to:</source>
+          <target state="translated">に相当します。</target>
+        </trans-unit>
+        <trans-unit id="fb722bbe2d7de5616bde8841cec1f7151c36e813" translate="yes" xml:space="preserve">
+          <source>let and const</source>
+          <target state="translated">レットアンドコンスティチュート</target>
+        </trans-unit>
+        <trans-unit id="ff9c22082a2b010df2415de1fe69a90317ccdf1c" translate="yes" xml:space="preserve">
+          <source>multiple var declarations within the same scope are combined</source>
+          <target state="translated">同じスコープ内の複数の var 宣言が結合される</target>
+        </trans-unit>
+        <trans-unit id="222f16742f8432d094b140df773f638f634a3fe5" translate="yes" xml:space="preserve">
+          <source>run the code. hope this will give an idea about scoping</source>
+          <target state="translated">コードを実行してみてください。</target>
+        </trans-unit>
+        <trans-unit id="e50c3161b714f4fa46bad3943d0cfb3418bf98a5" translate="yes" xml:space="preserve">
+          <source>test1 is scoped to the with block, but is aliased to a.test1.  'Var test1' creates a new variable test1 in the upper lexical context (function, or global), unless it is a property of a -- which it is.</source>
+          <target state="translated">test1はwithブロックにスコープされていますが、a.test1にエイリアスされています。 'Var test1'は、それがaのプロパティでない限り、上位語彙コンテキスト(関数、またはグローバル)に新しい変数test1を作成します。</target>
+        </trans-unit>
+        <trans-unit id="7c5e5564e501683f6afb89ae0a4affd1e86cdeb1" translate="yes" xml:space="preserve">
+          <source>the scope of each var declaration is associated with the most immediately enclosing function</source>
+          <target state="translated">は、各 var 宣言のスコープは、最もすぐに囲まれた関数に関連付けられています。</target>
+        </trans-unit>
+        <trans-unit id="a4ebaeeee765207f3a08fde4e0bf36e28958ad9a" translate="yes" xml:space="preserve">
+          <source>try/catch introduce new scope ONLY for the exception variable itself, other variables do not have new scope</source>
+          <target state="translated">trycatchは例外変数自身にのみ新しいスコープを導入し、他の変数には新しいスコープを持たせません。</target>
+        </trans-unit>
+        <trans-unit id="e5b4e786e382d03c28e9edfab2d8149378ae69df" translate="yes" xml:space="preserve">
+          <source>var</source>
+          <target state="translated">var</target>
+        </trans-unit>
+        <trans-unit id="7357ecfa390afc2fce34c3167335bf743c442659" translate="yes" xml:space="preserve">
+          <source>var declarations are hoisted to the top of the scope. This means no matter where the var declaration happens, to the compiler it is as if the var itself happens at the top</source>
+          <target state="translated">var 宣言はスコープの一番上に持ち上げられます。これは、var の宣言がどこで行われようとも、コンパイラにとっては var 自体がスコープの先頭で行われているかのように見えることを意味します。</target>
+        </trans-unit>
+        <trans-unit id="80e40e219ee78a38babf8cce499fd3cb0f6182af" translate="yes" xml:space="preserve">
+          <source>when outer function called a new &lt;code&gt;variable scope object&lt;/code&gt;(and included in scope chain) added with variable &lt;code&gt;b&lt;/code&gt; inside it.</source>
+          <target state="translated">外部関数が新しい &lt;code&gt;variable scope object&lt;/code&gt; （およびスコープチェーンに含まれる）を呼び出し、その中に変数 &lt;code&gt;b&lt;/code&gt; を追加したとき。</target>
+        </trans-unit>
+        <trans-unit id="5b3cb00aa7dfc23400daf50a18606b8161567f7b" translate="yes" xml:space="preserve">
+          <source>with-clause apparently is another exception, but using with-clause it highly discouraged (&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with&quot;&gt;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with&lt;/a&gt;)</source>
+          <target state="translated">with-clauseは明らかに別の例外ですが、with-clauseは使用しないことを強くお勧めします（ &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with&quot;&gt;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with&lt;/a&gt; ）</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

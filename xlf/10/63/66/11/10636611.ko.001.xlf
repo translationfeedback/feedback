@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/10636611">
+    <body>
+      <group id="10636611">
+        <trans-unit id="79b3ba11b449f653cf94ea42d31d8665cb70305e" translate="yes" xml:space="preserve">
+          <source>&quot;How do we get around it?&quot; Have the server tell the request that CORS is OK.</source>
+          <target state="translated">&quot;어떻게 해결할 수 있습니까?&quot; CORS가 정상이라는 요청을 서버에 요청하십시오.</target>
+        </trans-unit>
+        <trans-unit id="922d106809a27f5ea5725cbecf04bcf0394fbc75" translate="yes" xml:space="preserve">
+          <source>&quot;Why don't we just block the browser from doing that?&quot; Yep. CORS.</source>
+          <target state="translated">&quot;브라우저가 브라우저를 차단하지 않는 이유는 무엇입니까?&quot; 네. CORS.</target>
+        </trans-unit>
+        <trans-unit id="8cce81f32d4f3933a9d189ba04d55f2214ac9ccf" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://en.wikipedia.org/wiki/Cross-origin_resource_sharing&quot;&gt;Wikipedia&lt;/a&gt;:</source>
+          <target state="translated">&lt;a href=&quot;https://en.wikipedia.org/wiki/Cross-origin_resource_sharing&quot;&gt;Wikipedia&lt;/a&gt;:</target>
+        </trans-unit>
+        <trans-unit id="a4a8b5194f78b6038b34fcb3aaefa3c75ec70357" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; is a &lt;a href=&quot;http://www.html5rocks.com/en/tutorials/cors/&quot;&gt;CORS (Cross-Origin Resource Sharing) header&lt;/a&gt;.</source>
+          <target state="translated">&lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; 은 &lt;a href=&quot;http://www.html5rocks.com/en/tutorials/cors/&quot;&gt;CORS (Cross-Origin Resource Sharing) 헤더&lt;/a&gt; 입니다.</target>
+        </trans-unit>
+        <trans-unit id="c09130b0fcfe3404570f3cf7d450decda7ec406d" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Content-Type&lt;/code&gt; (this is only simple when its value is &lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt;, &lt;code&gt;multipart/form-data&lt;/code&gt;, or &lt;code&gt;text/plain&lt;/code&gt;)</source>
+          <target state="translated">&lt;code&gt;Content-Type&lt;/code&gt; (값이 &lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt; , &lt;code&gt;multipart/form-data&lt;/code&gt; 또는 &lt;code&gt;text/plain&lt;/code&gt; 인 경우에만 간단합니다)</target>
+        </trans-unit>
+        <trans-unit id="31c8c8b02a31794b56f4026cc609f63ad40bb60d" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;https://cors-anywhere.herokuapp.com/&lt;/code&gt; + &lt;code&gt;Your API URL&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;https://cors-anywhere.herokuapp.com/&lt;/code&gt; + &lt;code&gt;Your API URL&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="85bb5e6604df9c285a25a74cf794fab003bbd6a3" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;1. A client downloads javascript code MyCode.js from &lt;a href=&quot;http://siteA&quot;&gt;http://siteA&lt;/a&gt; - the origin.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;1. 클라이언트가 &lt;a href=&quot;http://siteA&quot;&gt;http : //&lt;/a&gt; siteA-원본에서 javascript 코드 MyCode.js를 다운로드합니다.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="e67c2a45dcc374cf1513c3c3847ca0329605f44f" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;2. The response header of MyCode.js contains Access-Control-Allow-Origin: &lt;a href=&quot;http://siteB&quot;&gt;http://siteB&lt;/a&gt;, which I thought meant that MyCode.js was allowed to make cross-origin references to the site B.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;2. MyCode.js의 응답 헤더에는 Access-Control-Allow-Origin : &lt;a href=&quot;http://siteB&quot;&gt;http : // siteB가 포함&lt;/a&gt; 되어 있는데, 이는 MyCode.js가 사이트 B에 대한 출처 간 참조를 허용한다고 생각했습니다.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="e72ad7b755a692bece6c7ac0d6f5e50584dca43a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;DomainA AJAX request headers&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;DomainA AJAX 요청 헤더&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d140b20d9bc077421ada900ec804924f2dd7508c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;DomainB response headers&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;DomainB 응답 헤더&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="43b44e358ed9ab663aff14a7eb3cb779b17abc1d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Key point:&lt;/strong&gt; When a client makes a request to the server, it will send the cookies stored under that domain.</source>
+          <target state="translated">&lt;strong&gt;요점 :&lt;/strong&gt; 클라이언트가 서버에 요청하면 해당 도메인에 저장된 쿠키를 보냅니다.</target>
+        </trans-unit>
+        <trans-unit id="451ed0d1faeb007761b9f1f6e5c819251b69932c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Mechanism&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;메커니즘&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="458265a655ab105933b08a0c271497ca9d12a196" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;this must have before all router&lt;/strong&gt;.</source>
+          <target state="translated">&lt;strong&gt;이것은 모든 라우터 앞에 있어야합니다&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="3144daeec601dcd1b43f2a37773bb3e0722f2c8f" translate="yes" xml:space="preserve">
+          <source>A client downloads javascript code MyCode.js from http://siteA - &lt;strong&gt;the origin&lt;/strong&gt;.</source>
+          <target state="translated">클라이언트는 http : // siteA- 원점에서 javascript 코드 MyCode.js를 다운로드 &lt;strong&gt;합니다&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="b487ed479c5653fe0a2624288946f1c8ef051bd4" translate="yes" xml:space="preserve">
+          <source>A resource makes a &lt;strong&gt;cross-origin HTTP request&lt;/strong&gt; when it requests a resource from a different domain, or port than the one which the first resource itself serves.</source>
+          <target state="translated">자원은 첫 번째 자원 자체가 제공하는 것과 다른 도메인이나 포트에서 자원을 &lt;strong&gt;요청할&lt;/strong&gt; 때 &lt;strong&gt;원본 간 HTTP 요청을&lt;/strong&gt; 합니다.</target>
+        </trans-unit>
+        <trans-unit id="ce0f87926e811ddf23f0d196ca75fb63d5c3ead6" translate="yes" xml:space="preserve">
+          <source>A response that tells the browser to allow code from any origin to
+  access a resource will include the following:</source>
+          <target state="translated">브라우저에서 모든 출처의 코드가 리소스에 액세스하도록 허용하는 응답에는 다음이 포함됩니다.</target>
+        </trans-unit>
+        <trans-unit id="ba3428e2ff13f1e68025f1c48520f8917410ea5c" translate="yes" xml:space="preserve">
+          <source>According to &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS&quot;&gt;this&lt;/a&gt; Mozilla Developer Network article,</source>
+          <target state="translated">&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS&quot;&gt;이&lt;/a&gt; Mozilla 개발자 네트워크 기사에 따르면</target>
+        </trans-unit>
+        <trans-unit id="bf23c326dd333575e69254167b04cd66436a8ddf" translate="yes" xml:space="preserve">
+          <source>Although some validation and authorization can be performed by the server, &lt;strong&gt;it is generally the browser's responsibility&lt;/strong&gt; to support these headers and honor the restrictions they impose.</source>
+          <target state="translated">일부 유효성 검사 및 권한 부여는 서버에서 수행 할 수 있지만 &lt;strong&gt;일반적으로&lt;/strong&gt; 이러한 헤더를 지원하고 해당 제한을 적용하는 &lt;strong&gt;것은 브라우저의 책임&lt;/strong&gt; 입니다.</target>
+        </trans-unit>
+        <trans-unit id="35cb55e5ed57188c2c958286ec803a59b4bb54db" translate="yes" xml:space="preserve">
+          <source>An &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; (ACAO) header in its response indicating which origin sites are allowed.</source>
+          <target state="translated">응답의 ACAO ( &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; ) 헤더는 어떤 오리진 사이트가 허용되는지 표시합니다.</target>
+        </trans-unit>
+        <trans-unit id="4a79c7e5f70a613673420444f94f034d8ff57aa2" translate="yes" xml:space="preserve">
+          <source>An &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; (ACAO) header with a wildcard that allows all domains:</source>
+          <target state="translated">모든 도메인을 허용하는 와일드 카드가있는 ACAO ( &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; ) 헤더 :</target>
+        </trans-unit>
+        <trans-unit id="181e454044a5f8794317a9184ef7086fe1502149" translate="yes" xml:space="preserve">
+          <source>An &lt;strong&gt;HTML page&lt;/strong&gt; served from &lt;code&gt;http://domain-a.com&lt;/code&gt; makes an &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; src request for &lt;code&gt;http://domain-b.com/image.jpg&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;http://domain-a.com&lt;/code&gt; 에서 제공되는 &lt;strong&gt;HTML 페이지&lt;/strong&gt; 는 http://domain-b.com/image.jpg에 대한 &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; src 요청을 작성합니다.</target>
+        </trans-unit>
+        <trans-unit id="b609b5a98435feed729bf00208beca36f266c405" translate="yes" xml:space="preserve">
+          <source>An error page if the server does not allow the cross-origin request</source>
+          <target state="translated">서버가 교차 출처 요청을 허용하지 않는 경우 오류 페이지</target>
+        </trans-unit>
+        <trans-unit id="2aa81cf349bfa1a844c8cd05dff5a9ad245bf1b1" translate="yes" xml:space="preserve">
+          <source>An example story: On your computer, there's a cookie for &lt;code&gt;yourbank.com&lt;/code&gt;. Maybe your session is in there.</source>
+          <target state="translated">사례 : 컴퓨터에는 &lt;code&gt;yourbank.com&lt;/code&gt; 에 대한 쿠키가 있습니다 . 아마도 당신의 세션이 거기에있을 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="b97580e9a4d93057941cecbf72a8e5d77baa599d" translate="yes" xml:space="preserve">
+          <source>And the server sends back an &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt;, just as it would for a simple request:</source>
+          <target state="translated">그리고 서버는 간단한 요청과 마찬가지로 &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; 을 다시 보냅니다.</target>
+        </trans-unit>
+        <trans-unit id="bbcce9482362cd9d846f8ef9260df5096f61aefb" translate="yes" xml:space="preserve">
+          <source>Apparently, I have completely misunderstood its semantics. I thought of something like this:</source>
+          <target state="translated">분명히, 나는 그 의미를 완전히 오해했습니다. 나는 이와 같은 것을 생각했다.</target>
+        </trans-unit>
+        <trans-unit id="9c0a94e83fa3f4a9ba8e76553be179ce0c84ddf9" translate="yes" xml:space="preserve">
+          <source>As I mentioned above, W3 recommended browser to implement a &quot;&lt;strong&gt;preflight request&lt;/strong&gt;&quot; before submiting the actually Cross-Origin HTTP request, in a nutshell it is an HTTP &lt;code&gt;OPTIONS&lt;/code&gt; request:</source>
+          <target state="translated">위에서 언급했듯이 W3는 실제로 Cross-Origin HTTP 요청을 제출하기 전에 &quot; &lt;strong&gt;프리 플라이트 요청&lt;/strong&gt; &quot;을 구현하도록 브라우저를 권장했습니다. 간단히 말해서 HTTP &lt;code&gt;OPTIONS&lt;/code&gt; 요청입니다.</target>
+        </trans-unit>
+        <trans-unit id="18fc2f97599c6123f77e230a7df453afa9545e6c" translate="yes" xml:space="preserve">
+          <source>Cross-Origin Resource Sharing (CORS)</source>
+          <target state="translated">CORS (Cross-Origin Resource Sharing)</target>
+        </trans-unit>
+        <trans-unit id="cd4c33b899fc233fd73d75ce9074d02da1ac4b4d" translate="yes" xml:space="preserve">
+          <source>Cross-Origin Resource Sharing - &lt;code&gt;CORS&lt;/code&gt; (A.K.A. Cross-Domain AJAX request) is an issue that most web developers might encounter, according to Same-Origin-Policy, browsers restrict client JavaScript in a security sandbox, usually JS cannot directly communicate with a remote server from a different domain. In the past developers created many tricky ways to achieve Cross-Domain resource request, most commonly using ways are:</source>
+          <target state="translated">Cross-Origin Resource Sharing- &lt;code&gt;CORS&lt;/code&gt; (AKA Cross-Domain AJAX request)는 대부분의 웹 개발자들이 겪을 수있는 문제입니다. Same-Origin-Policy에 따르면 브라우저는 보안 샌드 박스에서 클라이언트 JavaScript를 제한합니다. 일반적으로 JS는 원격과 직접 통신 할 수 없습니다 다른 도메인의 서버. 과거 개발자들은 도메인 간 리소스 요청을 달성하기위한 많은 까다로운 방법을 만들었습니다. 가장 일반적으로 사용되는 방법은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="011fc91df492b0380e17a87ee2e66441e70c4e0f" translate="yes" xml:space="preserve">
+          <source>Embeds remote server in an iframe and communicate through fragment or window.name, refer &lt;a href=&quot;http://www.ibm.com/developerworks/library/wa-crossdomaincomm/#N10120&quot;&gt;here&lt;/a&gt;.</source>
+          <target state="translated">원격 서버를 iframe에 내장하고 조각 또는 window.name을 통해 통신합니다 ( &lt;a href=&quot;http://www.ibm.com/developerworks/library/wa-crossdomaincomm/#N10120&quot;&gt;여기&lt;/a&gt; 참조).</target>
+        </trans-unit>
+        <trans-unit id="0f01ed56a1e32a05e5ef96e4d779f34784af9a96" translate="yes" xml:space="preserve">
+          <source>Example</source>
+          <target state="translated">Example</target>
+        </trans-unit>
+        <trans-unit id="c55d6bc880c85b7ddccab1864214b1926c931775" translate="yes" xml:space="preserve">
+          <source>For cross origin sharing, set header: &lt;code&gt;'Access-Control-Allow-Origin':'*';&lt;/code&gt;</source>
+          <target state="translated">교차 원점 공유의 경우 헤더를 설정하십시오 : &lt;code&gt;'Access-Control-Allow-Origin':'*';&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="0d1c001eb437a4a4ce15ecea22bb7619b01e35aa" translate="yes" xml:space="preserve">
+          <source>For each resource/page that Site B wants to make accessible to Site A, Site B should serve its pages with the response header:</source>
+          <target state="translated">사이트 B가 사이트 A에 액세스 할 수 있도록하려는 각 리소스 / 페이지에 대해 사이트 B는 응답 헤더를 사용하여 해당 페이지를 제공해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="448733166bdf64413416b6944ad16b39bf49185a" translate="yes" xml:space="preserve">
+          <source>For example, &lt;code&gt;XMLHttpRequest&lt;/code&gt; and &lt;code&gt;Fetch&lt;/code&gt; follow the &lt;strong&gt;same-origin policy&lt;/strong&gt;.</source>
+          <target state="translated">예를 들어, &lt;code&gt;XMLHttpRequest&lt;/code&gt; 및 &lt;code&gt;Fetch&lt;/code&gt; 는 &lt;strong&gt;동일한 출처 정책을&lt;/strong&gt; 따릅니다.</target>
+        </trans-unit>
+        <trans-unit id="059c3e8cce263b2945a18ac90b2637e10a8026b1" translate="yes" xml:space="preserve">
+          <source>For example:</source>
+          <target state="translated">예를 들면 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="2ac76251686f22fcdbe32b54806e17b5c620fa63" translate="yes" xml:space="preserve">
+          <source>For more info, visit &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin&quot;&gt;here&lt;/a&gt;....</source>
+          <target state="translated">자세한 내용을 보려면 &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin&quot;&gt;여기를&lt;/a&gt; 방문 하십시오 ....</target>
+        </trans-unit>
+        <trans-unit id="c434a7a5f602c383de2c018c1b0444a3ea8fbb96" translate="yes" xml:space="preserve">
+          <source>For more specific examples see the documentation. I have used the simple example above to get around the CORS issue in an ionic application I am building that has to access a separate flask server.</source>
+          <target state="translated">보다 구체적인 예는 설명서를 참조하십시오. 위의 간단한 예를 사용하여 별도의 플라스크 서버에 액세스 해야하는 이온 응용 프로그램에서 CORS 문제를 해결했습니다.</target>
+        </trans-unit>
+        <trans-unit id="da1bd7e32d017921022d548d7ad4d638f61ae61e" translate="yes" xml:space="preserve">
+          <source>For security reasons, browsers restrict &lt;strong&gt;cross-origin HTTP&lt;/strong&gt; requests &lt;strong&gt;initiated from within scripts&lt;/strong&gt;.</source>
+          <target state="translated">보안상의 이유로 브라우저 &lt;strong&gt;는 스크립트 내에서 시작된&lt;/strong&gt; &lt;strong&gt;출처 간 HTTP&lt;/strong&gt; 요청을 제한합니다.</target>
+        </trans-unit>
+        <trans-unit id="d6d0578bc5e77903d01a8d5a163a1d8888a0ad92" translate="yes" xml:space="preserve">
+          <source>From a high level we can simply deem CORS is a contract between client AJAX call from domain A and a page hosted on domain B, a typical Cross-Origin request/response would be:</source>
+          <target state="translated">높은 수준에서 간단히 CORS는 도메인 A의 클라이언트 AJAX 호출과 도메인 B에서 호스팅 된 페이지 간의 계약으로 간주됩니다. 일반적인 Cross-Origin 요청 / 응답은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="6edd5efadce6bfaad382d3cb5bd545a64ef9e2c0" translate="yes" xml:space="preserve">
+          <source>From my own experience, it's hard to find a simple explanation why CORS is even a concern.</source>
+          <target state="translated">내 경험으로는 CORS가 왜 문제인지에 대한 간단한 설명을 찾기가 어렵습니다.</target>
+        </trans-unit>
+        <trans-unit id="1727a759182c88301c3e81d2fbbe9997d5ed21c4" translate="yes" xml:space="preserve">
+          <source>How CORS works (&lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; header)</source>
+          <target state="translated">CORS 작동 방식 ( &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; 헤더)</target>
+        </trans-unit>
+        <trans-unit id="c8cc4076ef7542bc5aed83b4de859cfb8a1094e1" translate="yes" xml:space="preserve">
+          <source>How does Access-Control-Allow-Origin header work</source>
+          <target state="translated">Access-Control-Allow-Origin 헤더는 어떻게 작동합니까</target>
+        </trans-unit>
+        <trans-unit id="7ababbc9fc0b6cccf17b2439c963b15cce41b12d" translate="yes" xml:space="preserve">
+          <source>I blogged about CORS three years ago: &lt;a href=&quot;http://wayneye.com/Blog/Ajax-Cross-Origin-HTTP-request&quot;&gt;AJAX Cross-Origin HTTP request&lt;/a&gt;</source>
+          <target state="translated">3 년 전에 CORS에 대해 블로그했습니다 : &lt;a href=&quot;http://wayneye.com/Blog/Ajax-Cross-Origin-HTTP-request&quot;&gt;AJAX Cross-Origin HTTP 요청&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="b6d70cc5a4760303b495e7652f8245f1fe3b0fb9" translate="yes" xml:space="preserve">
+          <source>I do not want to utilize JSONP.</source>
+          <target state="translated">JSONP를 사용하고 싶지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="d09fde375f0cd87d20979405e3d38cb1e221db9d" translate="yes" xml:space="preserve">
+          <source>I have full control of both site A and site B. How do I enable the javascript code downloaded from the site A to access resources on the site B using this header?</source>
+          <target state="translated">사이트 A와 사이트 B를 완전히 제어 할 수 있습니다. 사이트 A에서 다운로드 한 자바 스크립트 코드를 사용하여이 헤더를 사용하여 사이트 B의 리소스에 액세스하려면 어떻게해야합니까?</target>
+        </trans-unit>
+        <trans-unit id="9ab469e49ab007a1f4aca272e24988f133d0239d" translate="yes" xml:space="preserve">
+          <source>I saw a lot of added this headers:</source>
+          <target state="translated">이 헤더를 많이 추가하는 것을 보았습니다.</target>
+        </trans-unit>
+        <trans-unit id="bcfe019fd908beb42af7ba76dea547996805d921" translate="yes" xml:space="preserve">
+          <source>I think the reason for my bad intuition is the point of view I have when developing a site. It's &lt;strong&gt;my&lt;/strong&gt; site, with all &lt;strong&gt;my&lt;/strong&gt; JavaScript, therefore it isn't doing anything malicious and it should be up to &lt;strong&gt;me&lt;/strong&gt; to specify which other sites &lt;strong&gt;my&lt;/strong&gt; JavaScript can interact with. When in fact I should be thinking which &lt;strong&gt;other&lt;/strong&gt; sites JavaScript are trying to interact with my site and should I use CORS to allow them?</source>
+          <target state="translated">내 직관이 잘못된 이유는 사이트를 개발할 때 내가 생각하는 관점이라고 생각합니다. &lt;strong&gt;내&lt;/strong&gt; 사이트이며 모든 JavaScript가 포함되어 있으므로 악의적 인 작업을 수행하지 않으므로 JavaScript가 상호 작용할 수있는 다른 사이트를 지정해야합니다. 사실 JavaScript가 내 사이트와 상호 작용하려고하는 &lt;strong&gt;다른&lt;/strong&gt; 사이트를 생각하고 CORS를 사용하여 사이트를 허용해야합니까?</target>
+        </trans-unit>
+        <trans-unit id="ea75fc450491732817d81c5e6ba7c55e53aaaf8c" translate="yes" xml:space="preserve">
+          <source>If another client makes a &lt;em&gt;cross origin&lt;/em&gt; request to a server, those cookies are sent along, just as before.  Ruh roh.</source>
+          <target state="translated">다른 클라이언트가 서버에 &lt;em&gt;교차 출처&lt;/em&gt; 요청을하면 이전과 마찬가지로 쿠키가 함께 전송됩니다. Ruh roh.</target>
+        </trans-unit>
+        <trans-unit id="0fbef03b48408fe4be85b4fd43c89fcb90ea9874" translate="yes" xml:space="preserve">
+          <source>If foo.aspx supports OPTIONS HTTP verb, it might return response like below:</source>
+          <target state="translated">foo.aspx가 OPTIONS HTTP 동사를 지원하면 아래와 같은 응답을 반환 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="82d42f9e57a8e7c74c1875653db07a225efbc513" translate="yes" xml:space="preserve">
+          <source>If the server responds to the OPTIONS preflight with appropriate response headers (&lt;code&gt;Access-Control-Allow-Headers&lt;/code&gt; for non-simple headers, &lt;code&gt;Access-Control-Allow-Methods&lt;/code&gt; for non-simple verbs) that match the non-simple verb and/or non-simple headers, then the browser sends the actual request.</source>
+          <target state="translated">서버가 단순하지 않은 동사 및 / 또는 비 일치 형과 일치하는 적절한 응답 헤더 (단순하지 않은 &lt;code&gt;Access-Control-Allow-Headers&lt;/code&gt; 경우 Access-Control-Allow-Headers , 단순하지 않은 동사의 경우 &lt;code&gt;Access-Control-Allow-Methods&lt;/code&gt; ) 를 사용하여 OPTIONS 프리 플라이트에 서버가 응답하는 경우 -간단한 헤더, 브라우저는 실제 요청을 보냅니다.</target>
+        </trans-unit>
+        <trans-unit id="b209912bc039e43f1ba2a6ad10304105e971e755" translate="yes" xml:space="preserve">
+          <source>If you are using PHP, try adding the following code at the beginning of the php file:</source>
+          <target state="translated">PHP를 사용하는 경우 PHP 파일의 시작 부분에 다음 코드를 추가하십시오.</target>
+        </trans-unit>
+        <trans-unit id="012b5bc6588408b5759125ca431dc0ee67a011c5" translate="yes" xml:space="preserve">
+          <source>If you are using external domains such as server, try this:</source>
+          <target state="translated">서버와 같은 외부 도메인을 사용하는 경우 다음을 시도하십시오.</target>
+        </trans-unit>
+        <trans-unit id="fac656ade96604b1bb74bdc54813902f91db4ff2" translate="yes" xml:space="preserve">
+          <source>If you are using localhost, try this:</source>
+          <target state="translated">localhost를 사용하는 경우 다음을 시도하십시오.</target>
+        </trans-unit>
+        <trans-unit id="fa242605a7d86095b9190396fd9364feb7753098" translate="yes" xml:space="preserve">
+          <source>If you want just to test a cross domain application in which the browser blocks your request, then you can just open your browser in unsafe mode and test your application without changing your code and without making your code unsafe.
+From MAC OS you can do this from the terminal line:</source>
+          <target state="translated">브라우저가 요청을 차단하는 교차 도메인 응용 프로그램을 테스트하려는 경우 브라우저를 안전하지 않은 모드로 열고 코드를 변경하지 않고 코드를 안전하지 않은 상태로 응용 프로그램을 테스트하면됩니다. MAC OS에서는 터미널 라인에서 다음을 수행 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="511761e5536cf8f170218acc8981aa0ecce25b0b" translate="yes" xml:space="preserve">
+          <source>In Python I have been using the &lt;a href=&quot;https://flask-cors.readthedocs.io/en/latest/&quot;&gt;&lt;code&gt;Flask-CORS&lt;/code&gt; library&lt;/a&gt; with great success. It makes dealing with CORS super easy and painless. I added some code from the library's documentation below.</source>
+          <target state="translated">파이썬에서는 &lt;a href=&quot;https://flask-cors.readthedocs.io/en/latest/&quot;&gt; &lt;code&gt;Flask-CORS&lt;/code&gt; 라이브러리&lt;/a&gt; 를 큰 성공으로 사용했습니다. CORS를 다루는 것이 쉽고 쉬워집니다. 아래 라이브러리 문서에서 일부 코드를 추가했습니다.</target>
+        </trans-unit>
+        <trans-unit id="ecb9b7c454fe20235af87d4ec8e149d40f0c3d94" translate="yes" xml:space="preserve">
+          <source>Installing:</source>
+          <target state="translated">Installing:</target>
+        </trans-unit>
+        <trans-unit id="59923435fe33e2e35eb67133c1bb2118e8264bb1" translate="yes" xml:space="preserve">
+          <source>It's all about cookies. Cookies are stored on a client by their domain.</source>
+          <target state="translated">쿠키에 관한 것입니다. 쿠키는 도메인별로 클라이언트에 저장됩니다.</target>
+        </trans-unit>
+        <trans-unit id="036bc79e753677ceaeb2e07cdc182e7630df8ef3" translate="yes" xml:space="preserve">
+          <source>JSON With Padding (&lt;a href=&quot;http://en.wikipedia.org/wiki/JSONP&quot;&gt;JSONP&lt;/a&gt;).</source>
+          <target state="translated">패딩이있는 JSON ( &lt;a href=&quot;http://en.wikipedia.org/wiki/JSONP&quot;&gt;JSONP&lt;/a&gt; ).</target>
+        </trans-unit>
+        <trans-unit id="ca44019ded082daf451d8d84c802691d29ea6475" translate="yes" xml:space="preserve">
+          <source>Just by adding the Proxy link will work, but it can also throw error for No Access again. Hence better to add header as shown below.</source>
+          <target state="translated">프록시 링크를 추가하는 것만으로도 작동하지만 No Access에 대한 오류가 다시 발생할 수 있습니다. 따라서 아래와 같이 헤더를 추가하는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="990982cfd7f5181c1c4b59985f6c17c7572a78da" translate="yes" xml:space="preserve">
+          <source>Many pages on the web today load resources like &lt;strong&gt;CSS stylesheets&lt;/strong&gt;, &lt;strong&gt;images&lt;/strong&gt; and &lt;strong&gt;scripts&lt;/strong&gt; from separate domains (thus it should be cool).</source>
+          <target state="translated">오늘날 웹상의 많은 페이지는 &lt;strong&gt;CSS 스타일 시트&lt;/strong&gt; , &lt;strong&gt;이미지&lt;/strong&gt; 및 &lt;strong&gt;스크립트&lt;/strong&gt; 와 같은 리소스를 별도의 도메인에서로드합니다 (따라서 멋지다).</target>
+        </trans-unit>
+        <trans-unit id="42aa7d0d1e4cb56cb1cdea6f9ad0ab375346d78d" translate="yes" xml:space="preserve">
+          <source>Modern browsers use &lt;strong&gt;CORS&lt;/strong&gt; in an &lt;strong&gt;API container&lt;/strong&gt; - such as &lt;code&gt;XMLHttpRequest&lt;/code&gt; or &lt;code&gt;Fetch&lt;/code&gt; - to mitigate risks of cross-origin HTTP requests.</source>
+          <target state="translated">최신 브라우저는 &lt;code&gt;XMLHttpRequest&lt;/code&gt; 또는 &lt;code&gt;Fetch&lt;/code&gt; 와 같은 &lt;strong&gt;API 컨테이너&lt;/strong&gt; 에서 &lt;strong&gt;CORS&lt;/strong&gt; 를 사용하여 원본 간 HTTP 요청의 위험을 완화합니다.</target>
+        </trans-unit>
+        <trans-unit id="c158f1129e2a1e2d82881627004ee2f4629d1c66" translate="yes" xml:space="preserve">
+          <source>Modern browsers will not block cross-domain requests outright.  If Site A requests a page from Site B, the browser will actually fetch the requested page &lt;em&gt;on the network level&lt;/em&gt; and check if the response headers list Site A as a permitted requester domain.  If Site B has not indicated that Site A is allowed to access this page, the browser will trigger the &lt;code&gt;XMLHttpRequest&lt;/code&gt;'s &lt;code&gt;error&lt;/code&gt; event and  deny the response data to the requesting JavaScript code.</source>
+          <target state="translated">최신 브라우저는 도메인 간 요청을 완전히 차단하지 않습니다. 사이트 A가 사이트 B에서 페이지를 요청하면 브라우저는 실제로 &lt;em&gt;네트워크 수준&lt;/em&gt; 에서 요청 된 페이지 &lt;em&gt;를&lt;/em&gt; 가져오고 응답 헤더가 사이트 A를 허용 된 요청자 도메인으로 나열하는지 확인합니다. 사이트 B가 사이트 A가이 페이지에 액세스 할 수 있다고 표시하지 않으면 브라우저는 &lt;code&gt;XMLHttpRequest&lt;/code&gt; 의 &lt;code&gt;error&lt;/code&gt; 이벤트를 트리거하고 요청 JavaScript 코드에 대한 응답 데이터를 거부합니다.</target>
+        </trans-unit>
+        <trans-unit id="76e7b7d6dbafadc7d02482466d004be762003b16" translate="yes" xml:space="preserve">
+          <source>Node: &lt;code&gt;app.use('Access-Control-Allow-Origin':'*');&lt;/code&gt;</source>
+          <target state="translated">노드 : &lt;code&gt;app.use('Access-Control-Allow-Origin':'*');&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="0774d4e9c921c6d51ae15b2d71eb985b886205bd" translate="yes" xml:space="preserve">
+          <source>Non-simple requests</source>
+          <target state="translated">단순하지 않은 요청</target>
+        </trans-unit>
+        <trans-unit id="c17d4be261192d21bdacbfa184e2f727114899f3" translate="yes" xml:space="preserve">
+          <source>Note that &lt;code&gt;Access-Control-Request-Method&lt;/code&gt; and &lt;code&gt;Access-Control-Request-Headers&lt;/code&gt; are added by the browser automatically; you do not need to add them. This OPTIONS preflight gets the successful response headers:</source>
+          <target state="translated">&lt;code&gt;Access-Control-Request-Method&lt;/code&gt; 및 &lt;code&gt;Access-Control-Request-Headers&lt;/code&gt; 는 브라우저에 의해 자동으로 추가됩니다. 추가하지 않아도됩니다. 이 옵션 프리 플라이트는 성공적인 응답 헤더를 얻습니다.</target>
+        </trans-unit>
+        <trans-unit id="bca29b4c27957d6c5a6dfc00cdfff94aa12e7ae5" translate="yes" xml:space="preserve">
+          <source>Noted that, you have to paste the following code under &lt;code&gt;&amp;lt;system.webServer&amp;gt;&lt;/code&gt; tag</source>
+          <target state="translated">&lt;code&gt;&amp;lt;system.webServer&amp;gt;&lt;/code&gt; 태그 아래에 다음 코드를 붙여 넣어야합니다.</target>
+        </trans-unit>
+        <trans-unit id="f2b757a60b81b0610f7e0143768cb1bf5f5771cb" translate="yes" xml:space="preserve">
+          <source>Once you understand why it's there, the headers and discussion becomes a lot clearer.  I'll give it a shot in a few lines.</source>
+          <target state="translated">이유가 무엇인지 이해하면 헤더와 토론이 훨씬 명확 해집니다. 몇 줄로하겠습니다.</target>
+        </trans-unit>
+        <trans-unit id="b9fd5fe1077f37c5e40b6997c12d1c88618c93ec" translate="yes" xml:space="preserve">
+          <source>One thing is sure - I still do not understand how am I supposed to use this header.</source>
+          <target state="translated">한 가지 확실한 점은 여전히이 헤더를 어떻게 사용 해야하는지 이해하지 못하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="0c524bfd8fb631d16e1066def5e7ed1f33a402d3" translate="yes" xml:space="preserve">
+          <source>Only if the response contains &quot;Access-Control-Allow-Origin&quot; AND its value is &quot;*&quot; or contain the domain who submitted the CORS request, by satisfying this mandtory condition browser will submit the actual Cross-Domain request, and cache the result in &quot;&lt;strong&gt;Preflight-Result-Cache&lt;/strong&gt;&quot;.</source>
+          <target state="translated">응답에 &quot;Access-Control-Allow-Origin&quot;이 포함되고 값이 &quot;*&quot;이거나 CORS 요청을 제출 한 도메인을 포함하는 경우에만이 필수 조건을 만족하여 브라우저가 실제 도메인 간 요청을 제출하고 결과를 캐시합니다. &quot; &lt;strong&gt;사전 비행 결과 캐시&lt;/strong&gt; &quot;</target>
+        </trans-unit>
+        <trans-unit id="cba4c2393e21aee27e3e96781ebdf9c4f329b911" translate="yes" xml:space="preserve">
+          <source>Origin: &lt;a href=&quot;http://www.example.com&quot;&gt;http://www.example.com&lt;/a&gt;</source>
+          <target state="translated">출처 : &lt;a href=&quot;http://www.example.com&quot;&gt;http://www.example.com&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="42682c0cef7e29104cf2fb7a57155baed6c873a6" translate="yes" xml:space="preserve">
+          <source>P.S.</source>
+          <target state="translated">P.S.</target>
+        </trans-unit>
+        <trans-unit id="ef3b9fb63ad4f41fc921c9eb7daaa16c866b787c" translate="yes" xml:space="preserve">
+          <source>Php: &lt;code&gt;header('Access-Control-Allow-Origin':'*');&lt;/code&gt;</source>
+          <target state="translated">Php : &lt;code&gt;header('Access-Control-Allow-Origin':'*');&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="092830db2ae0b848e4a7fbe6ebb0dd4a586af9c1" translate="yes" xml:space="preserve">
+          <source>Question is a bit too old to answer, but I am posting this for any future reference to this question.</source>
+          <target state="translated">질문에 대답하기에는 너무 오래되었지만 나중에이 질문에 대한 참조를 위해 게시하고 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="e8424d8bb7f11a8cc4b3389cc51d65e5c14d8fe2" translate="yes" xml:space="preserve">
+          <source>Same-Origin Policy</source>
+          <target state="translated">동일 출처 정책</target>
+        </trans-unit>
+        <trans-unit id="d8f49b02b468a270ab421e2d51f5d4263f1bb933" translate="yes" xml:space="preserve">
+          <source>See &lt;a href=&quot;https://stackoverflow.com/a/13400954/710446&quot;&gt;Understanding XMLHttpRequest over CORS&lt;/a&gt; for a little more information about non-simple requests.</source>
+          <target state="translated">단순하지 않은 요청에 대한 자세한 내용은 &lt;a href=&quot;https://stackoverflow.com/a/13400954/710446&quot;&gt;CORS&lt;/a&gt; 를 통한 XMLHttpRequest 이해를 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="4e327445570f452b897677d54af70e33b468e526" translate="yes" xml:space="preserve">
+          <source>Simple example that allows CORS for all domains on all routes:</source>
+          <target state="translated">모든 경로에서 모든 도메인에 대해 CORS를 허용하는 간단한 예 :</target>
+        </trans-unit>
+        <trans-unit id="034a38a06dec45075704e4adb13cbb4ae9f733ba" translate="yes" xml:space="preserve">
+          <source>Simply paste the following code in your web.config file.</source>
+          <target state="translated">다음 코드를 web.config 파일에 붙여 넣기 만하면됩니다.</target>
+        </trans-unit>
+        <trans-unit id="ff6537b92aed8439a00dd653b603494c0e54b0aa" translate="yes" xml:space="preserve">
+          <source>Since the cookies are validated as expected, the server will authorize the response.</source>
+          <target state="translated">쿠키는 예상대로 검증되었으므로 서버는 응답을 승인합니다.</target>
+        </trans-unit>
+        <trans-unit id="3d6a778de145e7651342fa186ec3e751766e4556" translate="yes" xml:space="preserve">
+          <source>So now, a few questions and answers become apparent:</source>
+          <target state="translated">이제 몇 가지 질문과 답변이 분명해졌습니다.</target>
+        </trans-unit>
+        <trans-unit id="168634b8d2a054313c9a1ffe3818f5e07f300afc" translate="yes" xml:space="preserve">
+          <source>So, a web application using &lt;code&gt;XMLHttpRequest&lt;/code&gt; or &lt;code&gt;Fetch&lt;/code&gt; could only make &lt;strong&gt;HTTP requests&lt;/strong&gt; to &lt;strong&gt;its own domain&lt;/strong&gt;.</source>
+          <target state="translated">따라서 &lt;code&gt;XMLHttpRequest&lt;/code&gt; 또는 &lt;code&gt;Fetch&lt;/code&gt; 를 사용하는 웹 애플리케이션 &lt;strong&gt;은 자체 도메인&lt;/strong&gt; 에 &lt;strong&gt;대한&lt;/strong&gt; &lt;strong&gt;HTTP 요청&lt;/strong&gt; 만 할 수 &lt;strong&gt;있습니다&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="d82b9a3c342873a23c4fab6db3c55ef4ea6a66cc" translate="yes" xml:space="preserve">
+          <source>Sometimes you need to work cross domain, which is where CORS comes in. CORS relaxes the same origin policy for domainA.com, using the &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; header to list other domains (domainB.com) that are trusted to run JavaScript that can interact with domainA.com.</source>
+          <target state="translated">때로는 CORS가 제공되는 도메인 간 작업이 필요합니다. CORS는 &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; 헤더를 사용하여 domainA.com에 대해 동일한 오리진 정책을 완화하여 실행할 수있는 다른 도메인 (domainB.com)을 나열합니다. domainA.com과 상호 작용할 수있는 JavaScript</target>
+        </trans-unit>
+        <trans-unit id="d8284b007aa1410cee38f4acd287058a3c7a25bb" translate="yes" xml:space="preserve">
+          <source>Supposing that Site A wants to send a PUT request for &lt;code&gt;/somePage&lt;/code&gt;, with a non-simple &lt;code&gt;Content-Type&lt;/code&gt; value of &lt;code&gt;application/json&lt;/code&gt;, the browser would first send a preflight request:</source>
+          <target state="translated">Site A가 단순하지 않은 &lt;code&gt;Content-Type&lt;/code&gt; 값이 &lt;code&gt;application/json&lt;/code&gt; 인 &lt;code&gt;/somePage&lt;/code&gt; 에 대한 PUT 요청을 보내려고한다고 가정하면 브라우저는 먼저 프리 플라이트 요청을 보냅니다.</target>
+        </trans-unit>
+        <trans-unit id="da390ae4eac8720e9ebf822a8c4b20180f117363" translate="yes" xml:space="preserve">
+          <source>The &lt;strong&gt;Cross-Origin Resource Sharing (CORS)&lt;/strong&gt; mechanism gives web servers &lt;strong&gt;cross-domain access controls&lt;/strong&gt;, which enable secure cross-domain data transfers.</source>
+          <target state="translated">&lt;strong&gt;CORS (Cross-Origin Resource Sharing)&lt;/strong&gt; 메커니즘은 웹 서버 &lt;strong&gt;에 도메인 간 액세스 제어&lt;/strong&gt; 를 제공하여 안전한 도메인 간 데이터 전송을 가능하게합니다.</target>
+        </trans-unit>
+        <trans-unit id="3f523716bd882432eaaceb8c667a9d5d0f98dab8" translate="yes" xml:space="preserve">
+          <source>The Access-Control-Allow-Origin response header indicates whether the
+  response can be shared with requesting code from the given origin.</source>
+          <target state="translated">Access-Control-Allow-Origin 응답 헤더는 지정된 오리진의 요청 코드와 응답을 공유 할 수 있는지 여부를 나타냅니다.</target>
+        </trans-unit>
+        <trans-unit id="64becf81c730d7ddecadf5494d020a3051823f23" translate="yes" xml:space="preserve">
+          <source>The CORS standard describes new HTTP headers which provide browsers and servers a way to request remote URLs only when they have permission.</source>
+          <target state="translated">CORS 표준은 브라우저와 서버에 권한이있는 경우에만 원격 URL을 요청할 수있는 방법을 제공하는 새로운 HTTP 헤더를 설명합니다.</target>
+        </trans-unit>
+        <trans-unit id="7579024e9c6a9814e5d551a9eae975f7eb6243e4" translate="yes" xml:space="preserve">
+          <source>The blue parts I marked above were the kernal facts, &quot;Origin&quot; request header &quot;indicates where the cross-origin request or preflight request originates from&quot;, the &quot;Access-Control-Allow-Origin&quot; response header indicates this page allows remote request from DomainA (if the value is * indicate allows remote requests from any domain).</source>
+          <target state="translated">위에 표시된 파란색 부분은 &quot;원본&quot;요청 헤더 &quot;원점 간 요청 또는 프리 플라이트 요청의 출처&quot;를 나타내는 핵심 사실입니다. &quot;Access-Control-Allow-Origin&quot;응답 헤더는이 페이지가이 페이지에서 원격 요청을 허용 함을 나타냅니다. DomainA (값이 * 인 경우 모든 도메인의 원격 요청을 허용 함).</target>
+        </trans-unit>
+        <trans-unit id="b65de9513f32a4c4cc6825021c061136c01a69dd" translate="yes" xml:space="preserve">
+          <source>The browser sends the &lt;code&gt;OPTIONS&lt;/code&gt; request with an &lt;code&gt;Origin HTTP&lt;/code&gt; header.</source>
+          <target state="translated">브라우저는 &lt;code&gt;Origin HTTP&lt;/code&gt; 헤더와 함께 &lt;code&gt;OPTIONS&lt;/code&gt; 요청을 보냅니다.</target>
+        </trans-unit>
+        <trans-unit id="7d531bbe49a2d68cdc67d51711b7278da9b33732" translate="yes" xml:space="preserve">
+          <source>The browsers sends the actual request:</source>
+          <target state="translated">브라우저는 실제 요청을 보냅니다.</target>
+        </trans-unit>
+        <trans-unit id="a934d256e0a980eeb9f6c444da2f62c93f8bf7b4" translate="yes" xml:space="preserve">
+          <source>The client triggers some functionality of MyCode.js, which in turn make requests to http://siteB, which should be fine, despite being cross-origin requests.</source>
+          <target state="translated">클라이언트는 MyCode.js의 일부 기능을 트리거하여 http : // siteB에 대한 요청을 작성합니다.이 요청은 교차 출처 요청에도 불구하고 괜찮습니다.</target>
+        </trans-unit>
+        <trans-unit id="dbf7b1541a715c0443009d1f4641e7a2ee11f024" translate="yes" xml:space="preserve">
+          <source>The code that does the downloading - your html script tag or xhr from javascript or whatever - came from, let's say, &lt;a href=&quot;http://siteZ&quot;&gt;http://siteZ&lt;/a&gt;.  And, when the browser requests MyCode.js, it sends an Origin: header saying &quot;Origin: &lt;a href=&quot;http://siteZ&quot;&gt;http://siteZ&lt;/a&gt;&quot;, because it can see that you're requesting to siteA and siteZ != siteA.  (You cannot stop or interfere with this.)</source>
+          <target state="translated">다운로드를 수행하는 코드-html 스크립트 태그 또는 javascript의 xhr 또는 그 &lt;a href=&quot;http://siteZ&quot;&gt;밖의 모든 것-http : // siteZ&lt;/a&gt; 라고 가정 해 봅시다. 그리고 브라우저가 MyCode.js를 요청하면 siteA 및 siteZ! = siteA에 요청하고 있음을 알 수 &lt;a href=&quot;http://siteZ&quot;&gt;있으므로&lt;/a&gt; &quot;Origin : http : // siteZ &quot;라는 Origin : 헤더를 보냅니다. (중지하거나 방해 할 수 없습니다.)</target>
+        </trans-unit>
+        <trans-unit id="e26172510c48c8b57c33a3ae16c5818426df4b74" translate="yes" xml:space="preserve">
+          <source>The purpose of the same origin policy is to protect you from malicious JavaScript on siteA.com accessing private information you've chosen to share only with siteB.com. Without the same origin policy, JavaScript written by the authors of siteA.com could make your browser make requests to siteB.com, using your authentication cookies for siteB.com. In this way, siteA.com could steal the secret information you share with siteB.com.</source>
+          <target state="translated">동일한 출처 정책의 목적은 siteB.com 과만 공유하도록 선택한 개인 정보에 액세스하는 siteA.com의 악성 JavaScript로부터 사용자를 보호하는 것입니다. 동일한 출처 정책이 없으면 siteA.com의 작성자가 작성한 JavaScript는 siteB.com의 인증 쿠키를 사용하여 브라우저가 siteB.com에 요청을 할 수 있습니다. 이런 식으로 siteA.com은 siteB.com과 공유하는 비밀 정보를 훔칠 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="61bc29dae0f332e323eadbd6d92b28a19615ab02" translate="yes" xml:space="preserve">
+          <source>The response header of MyCode.js contains &lt;strong&gt;Access-Control-Allow-Origin: http://siteB&lt;/strong&gt;, which I thought meant that MyCode.js was allowed to make cross-origin references to the site B.</source>
+          <target state="translated">MyCode.js의 응답 헤더에는 &lt;strong&gt;Access-Control-Allow-Origin : http : // siteB가 포함&lt;/strong&gt; 되어 있는데, 이는 MyCode.js가 사이트 B에 대한 출처 간 참조를 허용한다고 생각했습니다.</target>
+        </trans-unit>
+        <trans-unit id="7da85dccb097c912fea1e023dcaa3cbcbacfb502" translate="yes" xml:space="preserve">
+          <source>The server at &lt;code&gt;service.example.com&lt;/code&gt; may respond with:</source>
+          <target state="translated">&lt;code&gt;service.example.com&lt;/code&gt; 의 서버는 다음과 같이 응답 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="f9366f7ceb9098513bc618100e4a166fb851ac2d" translate="yes" xml:space="preserve">
+          <source>The value of this header is the domain that served the parent page. When a page from &lt;code&gt;http://www.example.com&lt;/code&gt; attempts to access a user's data in &lt;code&gt;service.example.com&lt;/code&gt;, the following request header would be sent to &lt;code&gt;service.example.com&lt;/code&gt;:</source>
+          <target state="translated">이 헤더의 값은 상위 페이지를 제공 한 도메인입니다. &lt;code&gt;http://www.example.com&lt;/code&gt; 의 페이지가 &lt;code&gt;service.example.com&lt;/code&gt; 의 사용자 데이터에 액세스하려고하면 다음 요청 헤더가 &lt;code&gt;service.example.com&lt;/code&gt; 으로 전송됩니다.</target>
+        </trans-unit>
+        <trans-unit id="657f30c61187db82d87b65e6ce81f0467605fd0d" translate="yes" xml:space="preserve">
+          <source>Then, MyCode.js comes from siteA.  When it makes requests to siteB, they are all cross-origin, the browser sends Origin: siteA, and siteB has to take the siteA, recognize it's on the short list of allowed requesters, and send back A-C-A-O: siteA.  Only then will the browser let your script get the result of those requests.</source>
+          <target state="translated">그런 다음 MyCode.js는 siteA에서 제공됩니다. 사이트 B에 요청하면 모두 교차 출처이며 브라우저는 Origin : siteA를 보내고 siteB는 siteA를 가져 와서 허용 된 요청자의 짧은 목록에있는 것을 인식하고 ACAO : siteA를 다시 보냅니다. 그래야만 브라우저에서 스크립트가 해당 요청의 결과를 얻을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="cc9aabc473d7e2d21950303f057e3358802271a9" translate="yes" xml:space="preserve">
+          <source>This will allow to share content for different domain.</source>
+          <target state="translated">이렇게하면 다른 도메인의 콘텐츠를 공유 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="4503c23a82401d11ba63cd20aeb3e7ecf9db4793" translate="yes" xml:space="preserve">
+          <source>Those cookies get gathered up and sent along - and now, &lt;code&gt;malicious.com&lt;/code&gt; has a response from &lt;code&gt;yourbank&lt;/code&gt;.</source>
+          <target state="translated">이러한 쿠키는 수집되어 함께 전송되며 이제는 &lt;code&gt;malicious.com&lt;/code&gt; 가 &lt;code&gt;yourbank&lt;/code&gt; 으로부터 응답을 받습니다 .</target>
+        </trans-unit>
+        <trans-unit id="aa4d6d318719d478d3206b9a5fe136b655674ae9" translate="yes" xml:space="preserve">
+          <source>Those tricky ways have more or less some issues, for example JSONP might result in security hole if developers simply &quot;eval&quot; it, and #3 above, although it works, both domains should build strict contract between each other, it neither flexible nor elegant IMHO:)</source>
+          <target state="translated">이러한 까다로운 방법에는 다소 문제가 있습니다. 예를 들어 JSONP는 개발자가 단순히 &quot;평가&quot;하는 경우 보안 허점을 초래할 수 있으며 위의 # 3은 작동하지만 두 도메인은 서로간에 엄격한 계약을 구축해야합니다. 이모 :)</target>
+        </trans-unit>
+        <trans-unit id="9ca094af81bfc3826ed4436cf83d45cb4a2e4d44" translate="yes" xml:space="preserve">
+          <source>To improve web applications, developers asked browser vendors to allow cross-domain requests.</source>
+          <target state="translated">웹 애플리케이션을 개선하기 위해 개발자는 브라우저 공급 업체에 도메인 간 요청을 허용하도록 요청했습니다.</target>
+        </trans-unit>
+        <trans-unit id="dec4c5b25b8efa7a70ca001140b06f9b4fc9abc0" translate="yes" xml:space="preserve">
+          <source>To understand which domain should serve the CORS headers, consider this. You visit malicious.com, which contains some JavaScript that tries to make a cross domain request to mybank.com. It should be up to mybank.com, not malicious.com, to decide whether or not it sets CORS headers that relax the same origin policy allowing the JavaScript from malicious.com to interact with it. If malicous.com could set its own CORS headers allowing its own JavaScript access to mybank.com, this would completely nullify the same origin policy.</source>
+          <target state="translated">CORS 헤더를 제공해야하는 도메인을 이해하려면이를 고려하십시오. mybank.com에 대한 도메인 간 요청을 시도하는 JavaScript가 포함 된 malicious.com을 방문합니다. 악성 .com의 JavaScript가 악성 코드와 상호 작용할 수 있도록 동일한 출처 정책을 완화하는 CORS 헤더를 설정할지 여부를 결정하는 것은 악의적 인 것이 아닌 mybank.com의 책임입니다. malicous.com이 mybank.com에 대한 자체 JavaScript 액세스를 허용하는 자체 CORS 헤더를 설정할 수 있으면 동일한 원본 정책이 완전히 무효화됩니다.</target>
+        </trans-unit>
+        <trans-unit id="7bf85d7014db5e0169f6a290c30265c13b955563" translate="yes" xml:space="preserve">
+          <source>Use Flash/Silverlight or server side as a &quot;proxy&quot; to communicate
+with remote.</source>
+          <target state="translated">Flash / Silverlight 또는 서버 측을 &quot;프록시&quot;로 사용하여 원격과 통신하십시오.</target>
+        </trans-unit>
+        <trans-unit id="54542703a4403c62702b623ce59c580d816c24ad" translate="yes" xml:space="preserve">
+          <source>Using &lt;strong&gt;React&lt;/strong&gt; and &lt;strong&gt;Axios&lt;/strong&gt;, join proxy link to the URL and add header as shown below</source>
+          <target state="translated">&lt;strong&gt;React&lt;/strong&gt; 와 &lt;strong&gt;Axios를&lt;/strong&gt; 사용하여 프록시 링크를 URL에 연결하고 아래와 같이 헤더를 추가하십시오.</target>
+        </trans-unit>
+        <trans-unit id="a44858f05242a7b455ce62fdc8df88a473321dc7" translate="yes" xml:space="preserve">
+          <source>W3C had introduced Cross-Origin Resource Sharing (CORS) as a standard solution to provide a safe, flexible and a recommended standard way to solve this issue.</source>
+          <target state="translated">W3C는이 문제를 해결하기 위해 안전하고 유연하며 권장되는 표준 방법을 제공하기 위해 표준 솔루션으로 CORS (Cross-Origin Resource Sharing)를 도입했습니다.</target>
+        </trans-unit>
+        <trans-unit id="f1278b75a70fd6c5b6a83f2408abb534e43d6ca3" translate="yes" xml:space="preserve">
+          <source>Well, I am wrong. It does not work like this at all. So, I have read &lt;a href=&quot;http://en.wikipedia.org/wiki/Cross-origin_resource_sharing&quot;&gt;Cross-origin resource sharing&lt;/a&gt; and attempted to read &lt;a href=&quot;http://www.w3.org/TR/cors/.&quot;&gt;Cross-Origin Resource Sharing in w3c recommendation&lt;/a&gt;</source>
+          <target state="translated">글쎄, 나는 틀렸다. 이처럼 전혀 작동하지 않습니다. 따라서 &lt;a href=&quot;http://en.wikipedia.org/wiki/Cross-origin_resource_sharing&quot;&gt;출처 간 리소스 공유&lt;/a&gt; 를 읽었 &lt;a href=&quot;http://www.w3.org/TR/cors/.&quot;&gt;으며 w3c 권장 사항에서 출처 간 리소스 공유&lt;/a&gt; 를 읽으려고했습니다.</target>
+        </trans-unit>
+        <trans-unit id="acd1d52dcbd73103ac06849984a12c77293f662b" translate="yes" xml:space="preserve">
+          <source>What happens on the network level can be &lt;em&gt;slightly&lt;/em&gt; more complex than explained above. If the request is a &lt;a href=&quot;http://www.html5rocks.com/en/tutorials/cors/#toc-handling-a-not-so-simple-request&quot;&gt;&quot;non-simple&quot; request&lt;/a&gt;, the browser first sends a data-less &quot;preflight&quot; OPTIONS request, to verify that the server will accept the request. A request is non-simple when either (or both):</source>
+          <target state="translated">네트워크 수준에서 발생하는 상황은 위에서 설명한 것보다 &lt;em&gt;약간&lt;/em&gt; 더 복잡 할 수 있습니다. 요청이 &lt;a href=&quot;http://www.html5rocks.com/en/tutorials/cors/#toc-handling-a-not-so-simple-request&quot;&gt;&quot;단순하지 않은&quot;요청 인&lt;/a&gt; 경우, 브라우저는 먼저 데이터가없는 &quot;프리 플라이트&quot;OPTIONS 요청을 전송하여 서버가 요청을 수락하는지 확인합니다. 다음 중 하나 또는 둘 모두의 경우 요청이 단순하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="69b9ebc5edfe8d1c244868c40d9107fcf6856520" translate="yes" xml:space="preserve">
+          <source>When Site A tries to fetch content from Site B,  Site B can send an &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; response header to tell the browser that the content of this page is accessible to certain origins. (An &lt;em&gt;origin&lt;/em&gt; is a &lt;a href=&quot;https://stackoverflow.com/a/19542686/710446&quot;&gt;domain, plus a scheme and port number&lt;/a&gt;.)  By default, Site B's pages are &lt;a href=&quot;https://en.wikipedia.org/wiki/Same-origin_policy&quot;&gt;not accessible to any other origin&lt;/a&gt;; using the &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; header opens a door for cross-origin access by specific requesting origins.</source>
+          <target state="translated">사이트 A가 사이트 B에서 콘텐츠를 가져 오려고하면 사이트 B는 &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; 응답 헤더를 보내 브라우저에이 페이지의 콘텐츠에 특정 출처에 액세스 할 수 있음을 알릴 수 있습니다. ( &lt;em&gt;원점&lt;/em&gt; 은 &lt;a href=&quot;https://stackoverflow.com/a/19542686/710446&quot;&gt;도메인과 구성표 및 포트 번호를 더한 것&lt;/a&gt; 입니다.) 기본적으로 사이트 B의 페이지는 &lt;a href=&quot;https://en.wikipedia.org/wiki/Same-origin_policy&quot;&gt;다른 원본에 액세스 할 수 없습니다&lt;/a&gt; . &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; 헤더를 사용하면 특정 요청 원점으로 교차 출처 액세스를위한 문이 열립니다.</target>
+        </trans-unit>
+        <trans-unit id="e9af21b6fffa981c22773bf6561ab52a3a2c16ad" translate="yes" xml:space="preserve">
+          <source>When sending the actual request (after preflight is done), the behavior is identical to how a simple request is handled. In other words, a non-simple request whose preflight is successful is treated the same as a simple request (i.e., the server must still send &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; again for the actual response).</source>
+          <target state="translated">실제 요청을 전송할 때 (사전 비행 완료 후), 동작은 간단한 요청이 처리되는 방식과 동일합니다. 다시 말해, 프리 플라이트가 성공한 단순하지 않은 요청은 단순 요청과 동일하게 처리됩니다 (즉, 서버는 실제 응답을 위해 여전히 &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; 을 다시 보내야합니다).</target>
+        </trans-unit>
+        <trans-unit id="5c2243f9a6f92171c8e09c8e839ba5cb7bfc4bc2" translate="yes" xml:space="preserve">
+          <source>Whenever I start thinking about CORS, my intuition about which site hosts the headers is incorrect, just as you described in your question. For me, it helps to think about the purpose of the same origin policy.</source>
+          <target state="translated">CORS에 대해 생각하기 시작할 때마다 질문에 설명 된 것처럼 헤더를 호스팅하는 사이트에 대한 내 직감이 잘못되었습니다. 저에게는 동일한 원산지 정책의 목적에 대해 생각하는 것이 도움이됩니다.</target>
+        </trans-unit>
+        <trans-unit id="bd36019344446d4d78cea760c6728f16f73a6008" translate="yes" xml:space="preserve">
+          <source>Yikes.</source>
+          <target state="translated">Yikes.</target>
+        </trans-unit>
+        <trans-unit id="0df105fca3eb53e9f6af003aa2f59e35fafdf39f" translate="yes" xml:space="preserve">
+          <source>You browse to &lt;code&gt;malicious.com&lt;/code&gt;. Malicious makes a bunch of requests to different banks, including &lt;code&gt;yourbank.com&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;malicious.com&lt;/code&gt; 을 탐색하십시오. 악의적 인 사용자는 &lt;code&gt;yourbank.com&lt;/code&gt; 을 포함하여 여러 은행에 많은 요청을합니다.</target>
+        </trans-unit>
+        <trans-unit id="575553b8514f130229077f4c265369eae6418abf" translate="yes" xml:space="preserve">
+          <source>You're logged in on your browser to &lt;code&gt;yourbank.com&lt;/code&gt;.  You request to see all your accounts.  &lt;code&gt;yourbank.com&lt;/code&gt; receives the pile of cookies and sends back its response (your accounts).</source>
+          <target state="translated">브라우저에서 &lt;code&gt;yourbank.com&lt;/code&gt; 에 로그인했습니다. 모든 계정을 보도록 요청합니다. &lt;code&gt;yourbank.com&lt;/code&gt; 은 쿠키 더미를 받고 응답 (계정)을 다시 보냅니다.</target>
+        </trans-unit>
+        <trans-unit id="76203283d6535a8379e646ae6b32fcc30abf3986" translate="yes" xml:space="preserve">
+          <source>a) server side: in file app.js i give headers to all response like:</source>
+          <target state="translated">a) 서버 측 : app.js 파일에서 다음과 같이 모든 응답에 헤더를 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="5131eb102c64e7b1977894cc40c9e5ca9c90ab5d" translate="yes" xml:space="preserve">
+          <source>b) client side: in send ajax you need add: &quot;withCredentials: true,&quot; like:</source>
+          <target state="translated">b) 클라이언트 측 : ajax 전송에서 다음과 같이 추가해야합니다. &quot;withCredentials : true&quot;</target>
+        </trans-unit>
+        <trans-unit id="b20f0919247dbc58bf2955f34f20d7033015f132" translate="yes" xml:space="preserve">
+          <source>but i dont need that,</source>
+          <target state="translated">하지만 난 필요 없어요</target>
+        </trans-unit>
+        <trans-unit id="2897789ee2c19bf53c9dc2e8e84ef213689a1c9b" translate="yes" xml:space="preserve">
+          <source>good luck.</source>
+          <target state="translated">행운을 빕니다.</target>
+        </trans-unit>
+        <trans-unit id="24178e1d2a641a4fcfd1e7606989c6d425edc0c4" translate="yes" xml:space="preserve">
+          <source>i work with express 4 and node 7.4 and angular,I had the same problem me help this:</source>
+          <target state="translated">나는 express 4 및 node 7.4 및 angular로 작업하며,이 문제를 해결하는 데 동일한 문제가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="d066fab57be4b00b3b31353f308ec42e5e698855" translate="yes" xml:space="preserve">
+          <source>no.  It means, Only siteB is allowed to do this request.  So your request for MyCode.js from siteZ gets an error instead, and the browser typically gives you nothing.  But if you make your server return A-C-A-O: siteZ instead, you'll get MyCode.js .  Or if it sends '*', that'll work, that'll let everybody in.  Or if the server always sends the string from the Origin: header... but... for security, if you're afraid of hackers, your server should only allow origins on a shortlist, that are allowed to make those requests.</source>
+          <target state="translated">아니. 즉, siteB 만이 요청을 수행 할 수 있습니다. 따라서 siteZ에서 MyCode.js를 요청하면 오류가 발생하고 브라우저는 일반적으로 아무것도 제공하지 않습니다. 그러나 서버가 ACAO : siteZ를 반환하게하면 MyCode.js가됩니다. 또는 '*'를 보내면 작동합니다. 모두가 들어올 수 있습니다. 또는 서버가 항상 Origin : 헤더에서 문자열을 보내면 ... 보안을 위해 해커를 두려워하는 경우 , 서버는 해당 요청을 할 수있는 후보 목록의 원본 만 허용해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="58403ccfa5556c2cca1135361e0a2e51ef732b2a" translate="yes" xml:space="preserve">
+          <source>using an HTTP verb other than GET or POST (e.g. PUT, DELETE)</source>
+          <target state="translated">GET 또는 POST 이외의 HTTP 동사 사용 (예 : PUT, DELETE)</target>
+        </trans-unit>
+        <trans-unit id="13a2ea31f53ce7d7d241eaebbc7aa4ec4fd25d28" translate="yes" xml:space="preserve">
+          <source>using non-simple request headers; the only simple requests headers are:</source>
+          <target state="translated">단순하지 않은 요청 헤더 사용 간단한 요청 헤더는 다음과 같습니다.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

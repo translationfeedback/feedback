@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="htmlbody" original="https://stackoverflow.com/questions/588004">
+    <body>
+      <group id="588004">
+        <trans-unit id="9a77327f76e62f6925f45c2be16539ae6c9d0041" translate="yes" xml:space="preserve">
+          <source>(Skip to the bottom for the TL;DR version)</source>
+          <target state="translated">(Пропустите вниз для версии TL;DR)</target>
+        </trans-unit>
+        <trans-unit id="84f229d061d11f481f1f19df8986961ca0da2d64" translate="yes" xml:space="preserve">
+          <source>(The difference between those two numbers is the &quot;smallest slice&quot; that we must decide to either include, which introduces an upward bias, or exclude, which introduces a downward bias. The technical term for that smallest slice is an &lt;a href=&quot;https://en.wikipedia.org/wiki/Unit_in_the_last_place&quot;&gt;ulp&lt;/a&gt;.)</source>
+          <target state="translated">(Разница между этими двумя числами заключается в &amp;laquo;наименьшем срезе&amp;raquo;, который мы должны решить либо включить, который вводит смещение вверх, либо исключить, который вводит смещение вниз. Техническим термином для этого наименьшего среза является &lt;a href=&quot;https://en.wikipedia.org/wiki/Unit_in_the_last_place&quot;&gt;ulp&lt;/a&gt; .)</target>
+        </trans-unit>
+        <trans-unit id="9b6d1bf18ecd6ade5e73ff28141534f5496bb1f2" translate="yes" xml:space="preserve">
+          <source>** Of course, that's not exactly how floating-point numbers are stored in memory (they use a form of scientific notation). However, it does illustrate the point that binary floating-point precision errors tend to crop up because the &quot;real world&quot; numbers we are usually interested in working with are so often powers of ten - but only because we use a decimal number system day-to-day. This is also why we'll say things like 71% instead of &quot;5 out of every 7&quot; (71% is an approximation, since 5/7 can't be represented exactly with any decimal number).</source>
+          <target state="translated">**Конечно,не совсем так числа с плавающей точкой хранятся в памяти (они используют форму научной нотации).Тем не менее,это иллюстрирует тот факт,что двоичные ошибки точности с плавающей точкой имеют тенденцию к возникновению,потому что &quot;реальные&quot; числа,с которыми мы обычно заинтересованы в работе,так часто имеют силу десяти-но только потому,что мы используем десятичную систему счисления ежедневно.Поэтому вместо &quot;5 из каждых 7&quot; мы будем говорить 71% (71%-это приближение,так как 57 не может быть точно представлено ни с одним десятичным числом).</target>
+        </trans-unit>
+        <trans-unit id="46c3af8134de9a9765655ad80ac49c39423553fd" translate="yes" xml:space="preserve">
+          <source>*15% and 34% are indeed huge, so always use BigDecimal when precision is of big importance. With 2 decimal digits (step 0.01) the situation worsens a bit more (18% and 36%).</source>
+          <target state="translated">*15% и 34% действительно огромны,поэтому всегда используйте BigDecimal,когда точность имеет большое значение.С 2-мя цифрами после запятой (шаг 0,01)ситуация ухудшается немного больше (18% и 36%).</target>
+        </trans-unit>
+        <trans-unit id="5b2e8d72a1ce0dbc9f2e00162aba5643d6cfbaec" translate="yes" xml:space="preserve">
+          <source>... instead of:</source>
+          <target state="translated">...а не..:</target>
+        </trans-unit>
+        <trans-unit id="8d173aa16ecb116af67a70b11ccf3319c4101b1a" translate="yes" xml:space="preserve">
+          <source>0.1 converts to 0.1000000000000000055511151231257827021181583404541015625,</source>
+          <target state="translated">0.1 преобразуется в 0.100000000000055511151231257827021181583404541015625,</target>
+        </trans-unit>
+        <trans-unit id="fc11127f4be6e6f34950718f135c62cf3c856839" translate="yes" xml:space="preserve">
+          <source>0.2 converts to 0.200000000000000011102230246251565404236316680908203125,</source>
+          <target state="translated">0.2 преобразуется в 0.20000000000011102230246251565404236316680908203125,</target>
+        </trans-unit>
+        <trans-unit id="dd51d97fda6bb2ff93baf6b6621a7896bd5958f5" translate="yes" xml:space="preserve">
+          <source>0.3 converts to 0.299999999999999988897769753748434595763683319091796875, and</source>
+          <target state="translated">0,3 преобразуется в 0,299999999988897769753748434595763683319091796875,и</target>
+        </trans-unit>
+        <trans-unit id="b16b3417bc17ee7e5d7eb955c6af5486031aa6cc" translate="yes" xml:space="preserve">
+          <source>0.30000000000000004 converts to 0.3000000000000000444089209850062616169452667236328125.</source>
+          <target state="translated">0.30000000000000004 преобразуется в 0.300000000000444089209850062616169452667236328125.</target>
+        </trans-unit>
+        <trans-unit id="4a0ab3bf371766a011aeec8dab96140796667719" translate="yes" xml:space="preserve">
+          <source>1. Overview</source>
+          <target state="translated">1.Обзор</target>
+        </trans-unit>
+        <trans-unit id="280ddd4621ebc589f7f4d720fc9808f147099965" translate="yes" xml:space="preserve">
+          <source>2. Standards</source>
+          <target state="translated">2.стандарты</target>
+        </trans-unit>
+        <trans-unit id="f78082cab95c63bf0ca557926b7ee9c2fb55cdbf" translate="yes" xml:space="preserve">
+          <source>3. Cause of Rounding Error in Division</source>
+          <target state="translated">3.Причина ошибки округления в подразделении</target>
+        </trans-unit>
+        <trans-unit id="2224e1de8ddee1360d6dbff9997ab8effced5fe5" translate="yes" xml:space="preserve">
+          <source>4. Rounding Errors in Other Operations: Truncation</source>
+          <target state="translated">4.Ошибки округления в других операциях:Усечение</target>
+        </trans-unit>
+        <trans-unit id="983153e4c20b316f5664ccc0384312b6738b022a" translate="yes" xml:space="preserve">
+          <source>5. Repeated Operations</source>
+          <target state="translated">5.Повторные операции</target>
+        </trans-unit>
+        <trans-unit id="8b9a12652ebaf55470a7b2d8569d105d465e8862" translate="yes" xml:space="preserve">
+          <source>6. Summary</source>
+          <target state="translated">6.Резюме</target>
+        </trans-unit>
+        <trans-unit id="7de70e9b0e9505394d0b85bbae95dc555ccf5cac" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://stackoverflow.com/users/62118/cato-johnston&quot;&gt;Cato Johnston&lt;/a&gt; (the question asker) asked why 0.1 + 0.2 != 0.3.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/users/62118/cato-johnston&quot;&gt;Катон Джонстон&lt;/a&gt; (задающий вопрос) спросил, почему 0,1 + 0,2! = 0,3.</target>
+        </trans-unit>
+        <trans-unit id="2d2e7cb5a614c281b71ef36c79d5cb65b4ba2509" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://www.python.org/dev/peps/pep-0485/&quot;&gt;Since Python 3.5&lt;/a&gt; you can use &lt;code&gt;math.isclose()&lt;/code&gt; function for testing approximate equality:</source>
+          <target state="translated">&lt;a href=&quot;https://www.python.org/dev/peps/pep-0485/&quot;&gt;Начиная с Python 3.5&lt;/a&gt; вы можете использовать &lt;code&gt;math.isclose()&lt;/code&gt; для проверки приблизительного равенства:</target>
+        </trans-unit>
+        <trans-unit id="401d8936879d8ca8394aee47a4c1ff1c1a185d3b" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;0.1000000000000000055511151231257827021181583404541015625&lt;/code&gt; in decimal, or</source>
+          <target state="translated">&lt;code&gt;0.1000000000000000055511151231257827021181583404541015625&lt;/code&gt; в десятичном виде или</target>
+        </trans-unit>
+        <trans-unit id="9ae555a82a2e499fc6d7d060a859ab15f217f180" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;0.1&lt;/code&gt; in decimal, or</source>
+          <target state="translated">&lt;code&gt;0.1&lt;/code&gt; в десятичном виде или</target>
+        </trans-unit>
+        <trans-unit id="938bfc27c36837e08b1fe976025499db2a6ca7de" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;0x1.99999999999999...p-4&lt;/code&gt; in an analogue of C99 hexfloat notation, where the &lt;code&gt;...&lt;/code&gt; represents an unending sequence of 9's.</source>
+          <target state="translated">&lt;code&gt;0x1.99999999999999...p-4&lt;/code&gt; в аналоге шестигранной нотации C99, где &lt;code&gt;...&lt;/code&gt; представляет бесконечную последовательность из 9-ти.</target>
+        </trans-unit>
+        <trans-unit id="89651913f83ecb14efed483cec782827a6bc114c" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;0x1.999999999999ap-4&lt;/code&gt; in &lt;a href=&quot;http://www.exploringbinary.com/hexadecimal-floating-point-constants/&quot;&gt;C99 hexfloat notation&lt;/a&gt;.</source>
+          <target state="translated">&lt;code&gt;0x1.999999999999ap-4&lt;/code&gt; в &lt;a href=&quot;http://www.exploringbinary.com/hexadecimal-floating-point-constants/&quot;&gt;шестнадцатеричной записи C99&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="1e817d9c8c705bf74fdcfcbf1e77b875d1d9ad5d" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;(Originally posted on Quora.)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;(Первоначально опубликовано на Quora.)&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="f786024ccd8f2f5e7d1892462aac5f45ffcefb9b" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;1/10 = 0.0001100110011001100... (base 2)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;1/10 = 0,0001100110011001100 ... (база 2)&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="63b72feaf47b4ec3136591d2e2faba0c081c5044" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;1/3 = 0.333....&lt;/em&gt; and &lt;em&gt;2/3 = 0.666....&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;1/3 = 0,333 ....&lt;/em&gt; и &lt;em&gt;2/3 = 0,666 ....&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="b00475b1e86d24dc6b485e60d7c73b28919a7639" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;1/5 = 0.0011001100110011001... (base 2)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;1/5 = 0,0011001100110011001 ... (база 2)&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="16b45f9e57fbd951f4deea5d5a84d2d6a2e244b1" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;3/10 = 0.01001100110011... (base 2)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;3/10 = 0,01001100110011 ... (база 2)&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="8dcbfaacbdfbc6d2f50d8a56a068e40e1261d6e7" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Dealing with it&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Имея дело с этим&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="0c628db72c8314407e7db73c5c8d371039653296" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;How did this happen?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Как это произошло?&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="114257217f3e4024fab9c8d736f74795530ded13" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;In C++, why is the result of &lt;code&gt;cout &amp;lt;&amp;lt; x&lt;/code&gt; different from the value that a debugger is showing for &lt;code&gt;x&lt;/code&gt;?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;В C ++, почему результат &lt;code&gt;cout &amp;lt;&amp;lt; x&lt;/code&gt; отличается от значения, которое показывает отладчик для &lt;code&gt;x&lt;/code&gt; ?&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="fb29457a5c4a57bd14902466b53747ea1841155b" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Most answers here address this question in very dry, technical terms. I'd like to address this in terms that normal human beings can understand.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Большинство ответов здесь обращаются к этому вопросу в очень сухих, технических терминах.&lt;/em&gt; &lt;em&gt;Я хотел бы рассмотреть это в терминах, которые могут понять нормальные люди.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="812dea3da634f1bfe85f35d342dfc49090ae7e35" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;My answer is quite long, so I've split it into three sections. Since the question is about floating point mathematics, I've put the emphasis on what the machine actually does. I've also made it specific to double (64 bit) precision, but the argument applies equally to any floating point arithmetic.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Мой ответ довольно длинный, поэтому я разделил его на три части.&lt;/em&gt; &lt;em&gt;Поскольку вопрос касается математики с плавающей запятой, я сделал упор на том, что на самом деле делает машина.&lt;/em&gt; &lt;em&gt;Я также определил двойную (64-битную) точность, но аргумент одинаково применим к любой арифметике с плавающей запятой.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="65bea6bb1ae17a4b9f7a3bd71f9fa6d20638dc20" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Summary&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Summary&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="410b8c8555b9687d089ded3e44b46bfe83e53270" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Thanks to @a_guest for pointing that out to me.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Спасибо @a_guest за указание на это мне.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="419db0b8ed72e080cefb0589020b58af00048586" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;a / (2&lt;sup&gt;n&lt;/sup&gt; x 5&lt;sup&gt;m&lt;/sup&gt;)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;а / (2 &lt;sup&gt;н&lt;/sup&gt; х 5 &lt;sup&gt;м&lt;/sup&gt; )&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="03859a6a2231a6787e7d8d22083fb8ea3dd47552" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;a / 2&lt;sup&gt;n&lt;/sup&gt;&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;а / 2 &lt;sup&gt;н&lt;/sup&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="d8490feafcf8730008f92d1c10a76f3c806c53c2" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;precision&lt;/em&gt; refers to the number of digits you want to preserve after the decimal point during addition.</source>
+          <target state="translated">&lt;em&gt;Точность&lt;/em&gt; относится к числу цифр, которые вы хотите сохранить после десятичной точки во время сложения.</target>
+        </trans-unit>
+        <trans-unit id="1e3ee7af3fba4d45fa593681a54a346b038b05dd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;3.1 Division Rounding Error: Approximation of Reciprocal&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;3.1 Ошибка округления деления: аппроксимация взаимности&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3e6bc1e3e005f88dbf93220a210a0fde73485d05" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;A Hardware Designer's Perspective&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Перспектива разработчика оборудования&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a96efce74d6c9dba462233167c7749ee6864dd04" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Getting to the point: the original question&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Приступая к делу: оригинальный вопрос&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7791bf2ab0b52173b0ccf2e8bcaba860d7f299bd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Math.sum&lt;/strong&gt; ( javascript )     .... kind of operator replacement</source>
+          <target state="translated">&lt;strong&gt;Math.sum&lt;/strong&gt; (javascript) .... вид замены оператора</target>
+        </trans-unit>
+        <trans-unit id="991cc4a1d9e4964b8a4f30616ab0b042a2270ceb" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Preamble&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Preamble&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7c64deca575044ac6f1b7a2c724063d8e9be011c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Side Note: All positional (base-N) number systems share this problem with precision&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Примечание: Все позиционные (базовые N) системы счисления точно решают эту проблему&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="42c15268639d23d22e1869e6bd3d9e33364a9ea3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Side Side Note: Working with Floats in Programming&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Примечание стороны: работа с плавающими в программировании&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="284c0cc1c16634ee278d62d9da4d70563394d278" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;TL;DR&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;TL;DR&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4f7a6a4259ba35f3a392f787d9eda8541de9ad1d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;This happens because of the double-precision binary: IEEE 754 double-precision binary floating-point format: binary64&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Это происходит из-за двоичного двоичного формата IEEE 754 с двойной точностью двоичного формата: двоичная64&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a74449c94d4167a6330ce9884c610a9f3e63e10a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Turning a double precision number to binary&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Превращение числа с двойной точностью в двоичное&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="42704c7e9e47a44a6be48d355b7d236b9cd0b77f" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;1&lt;/sup&gt; - IEEE 754 allows for the concept of a &lt;a href=&quot;http://en.wikipedia.org/wiki/Signed_zero&quot;&gt;signed zero&lt;/a&gt; - &lt;code&gt;+0&lt;/code&gt; and &lt;code&gt;-0&lt;/code&gt; are treated differently: &lt;code&gt;1 / (+0)&lt;/code&gt; is positive infinity; &lt;code&gt;1 / (-0)&lt;/code&gt; is negative infinity. For zero values, the mantissa and exponent bits are all zero. Note: zero values (+0 and -0) are explicitly not classed as denormal&lt;sup&gt;2&lt;/sup&gt;.</source>
+          <target state="translated">&lt;sup&gt;1&lt;/sup&gt; - IEEE 754 допускает концепцию &lt;a href=&quot;http://en.wikipedia.org/wiki/Signed_zero&quot;&gt;знакового нуля&lt;/a&gt; - &lt;code&gt;+0&lt;/code&gt; и &lt;code&gt;-0&lt;/code&gt; трактуются по-разному: &lt;code&gt;1 / (+0)&lt;/code&gt; - положительная бесконечность; &lt;code&gt;1 / (-0)&lt;/code&gt; отрицательная бесконечность. Для нулевых значений биты мантиссы и экспоненты равны нулю. Примечание: нулевые значения (+0 и -0) явно не классифицируются как денормальные &lt;sup&gt;2&lt;/sup&gt; .</target>
+        </trans-unit>
+        <trans-unit id="1a547f62556031e29e245098a0954c909bff3ea3" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;1&lt;/sup&gt; Douglas Crockford: &lt;a href=&quot;http://books.google.com/books?id=PXa2bby0oQ0C&amp;amp;pg=PA105&amp;amp;dq=douglas+crockford+javascript+good+parts+dollar+values+can+be+converted&amp;amp;rview=1&amp;amp;cd=1#v=onepage&amp;amp;q=&amp;amp;f=false&quot;&gt;&lt;strong&gt;JavaScript: The Good Parts&lt;/strong&gt;: Appendix A - Awful Parts (page 105)&lt;/a&gt;.</source>
+          <target state="translated">&lt;sup&gt;1&lt;/sup&gt; Дуглас Крокфорд: &lt;a href=&quot;http://books.google.com/books?id=PXa2bby0oQ0C&amp;amp;pg=PA105&amp;amp;dq=douglas+crockford+javascript+good+parts+dollar+values+can+be+converted&amp;amp;rview=1&amp;amp;cd=1#v=onepage&amp;amp;q=&amp;amp;f=false&quot;&gt;&lt;strong&gt;JavaScript: Хорошие части&lt;/strong&gt; : Приложение A - Ужасные части (стр. 105)&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="5ee1c19795ff8f472035c1d76b8687b9760c48eb" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;2&lt;/sup&gt; - This is not the case for &lt;a href=&quot;http://en.wikipedia.org/wiki/Denormal_number&quot;&gt;denormal numbers&lt;/a&gt;, which have an offset exponent of zero (and an implied &lt;code&gt;0.&lt;/code&gt;). The range of denormal double precision numbers is d&lt;sub&gt;min&lt;/sub&gt; &amp;le; |x| &amp;le; d&lt;sub&gt;max&lt;/sub&gt;, where d&lt;sub&gt;min&lt;/sub&gt; (the smallest representable nonzero number) is 2&lt;sup&gt;-1023 - 51&lt;/sup&gt; (&amp;asymp; 4.94 * 10&lt;sup&gt;-324&lt;/sup&gt;) and d&lt;sub&gt;max&lt;/sub&gt; (the largest denormal number, for which the mantissa consists entirely of &lt;code&gt;1&lt;/code&gt;s) is 2&lt;sup&gt;-1023 + 1&lt;/sup&gt; - 2&lt;sup&gt;-1023 - 51&lt;/sup&gt; (&amp;asymp; 2.225 * 10&lt;sup&gt;-308&lt;/sup&gt;).</source>
+          <target state="translated">&lt;sup&gt;2&lt;/sup&gt; - Это не относится к &lt;a href=&quot;http://en.wikipedia.org/wiki/Denormal_number&quot;&gt;ненормальным числам&lt;/a&gt; , у которых показатель смещения равен нулю (и подразумевается &lt;code&gt;0.&lt;/code&gt; ). Диапазон чисел с двойной точностью точности d &lt;sub&gt;min&lt;/sub&gt; &amp;le; | x | &amp;le; d &lt;sub&gt;max&lt;/sub&gt; , где d &lt;sub&gt;min&lt;/sub&gt; (наименьшее представимое ненулевое число) составляет 2 &lt;sup&gt;-1023 - 51&lt;/sup&gt; (&amp;asymp; 4.94 * 10 &lt;sup&gt;-324&lt;/sup&gt; ), а d &lt;sub&gt;max&lt;/sub&gt; (наибольшее денормальное число, для которого мантисса состоит полностью из &lt;code&gt;1&lt;/code&gt; с) равно 2 &lt;sup&gt;- 1023 + 1&lt;/sup&gt; - 2 &lt;sup&gt;-1023 - 51&lt;/sup&gt; (&amp;asymp; 2,225 * 10 &lt;sup&gt;-308&lt;/sup&gt; ).</target>
+        </trans-unit>
+        <trans-unit id="e4b88838f3d945e3111f2ac846b7fe40186f08dc" translate="yes" xml:space="preserve">
+          <source>A different question has been named as a duplicate to this one:</source>
+          <target state="translated">Другой вопрос был назван дубликатом этого вопроса:</target>
+        </trans-unit>
+        <trans-unit id="67d09660cb9d94f97c922d190c9da304946bbc56" translate="yes" xml:space="preserve">
+          <source>A fairly comprehensive treatment of floating-point arithmetic issues is &lt;a href=&quot;http://download.oracle.com/docs/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;&lt;em&gt;What Every Computer Scientist Should Know About Floating-Point Arithmetic&lt;/em&gt;&lt;/a&gt;. For an easier-to-digest explanation, see &lt;a href=&quot;http://floating-point-gui.de&quot;&gt;floating-point-gui.de&lt;/a&gt;.</source>
+          <target state="translated">Достаточно всеобъемлющее рассмотрение арифметических задач с плавающей точкой - это то, &lt;a href=&quot;http://download.oracle.com/docs/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;&lt;em&gt;что должен знать каждый компьютерный специалист об арифметике с плавающей точкой&lt;/em&gt;&lt;/a&gt; . Для более легкого для понимания объяснения, см. Плавающую точку- &lt;a href=&quot;http://floating-point-gui.de&quot;&gt;gui.de&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="292327f21cc858d8c2a42811ceaf2d0a17de5a22" translate="yes" xml:space="preserve">
+          <source>A lot of good answers have been posted, but I'd like to append one more.</source>
+          <target state="translated">Было выложено много хороших ответов,но я хотел бы добавить еще один.</target>
+        </trans-unit>
+        <trans-unit id="87561d6f9557f1f5e17ba3afef835a06d4a73163" translate="yes" xml:space="preserve">
+          <source>Adding the first two numbers manually or in a decimal calculator such as &lt;a href=&quot;https://www.mathsisfun.com/calculator-precision.html&quot;&gt;Full Precision Calculator&lt;/a&gt;, shows the exact sum of the actual inputs is 0.3000000000000000166533453693773481063544750213623046875.</source>
+          <target state="translated">Добавление первых двух чисел вручную или в десятичном калькуляторе, таком как &lt;a href=&quot;https://www.mathsisfun.com/calculator-precision.html&quot;&gt;Калькулятор полной точности&lt;/a&gt; , показывает, что точная сумма фактических входных значений составляет 0,3000000000000000166533453693773481063544750213623046875.</target>
+        </trans-unit>
+        <trans-unit id="0a7ff54c3760c59eab90eb97d484608c8d05aaa7" translate="yes" xml:space="preserve">
+          <source>After the code I attach a console session, in which I compute the sum of terms for both constants (minus PI and 999999999) that really exists in hardware, inserted there by the compiler.</source>
+          <target state="translated">После кода я прикрепляю консольный сеанс,в котором вычисляю сумму терминов для обеих констант (минус PI и 999999999),которые реально существуют в аппаратном обеспечении,вставленном туда компилятором.</target>
+        </trans-unit>
+        <trans-unit id="d6dc17a99e9f681bdfd19158552338365662636c" translate="yes" xml:space="preserve">
+          <source>Also note that we can decrease the power in the exponent by 52 and shift the point in the binary representation to the right by 52 places (much like 10&lt;sup&gt;-3&lt;/sup&gt; * 1.23 == 10&lt;sup&gt;-5&lt;/sup&gt; * 123). This then enables us to represent the binary representation as the exact value that it represents in the form a * 2&lt;sup&gt;p&lt;/sup&gt;. where 'a' is an integer.</source>
+          <target state="translated">Также обратите внимание, что мы можем уменьшить мощность в показателе степени на 52 и сместить точку в двоичном представлении вправо на 52 места (очень похоже на 10 &lt;sup&gt;-3&lt;/sup&gt; * 1.23 == 10 &lt;sup&gt;-5&lt;/sup&gt; * 123). Это тогда позволяет нам представить двоичное представление как точное значение, которое оно представляет в форме a * 2 &lt;sup&gt;p&lt;/sup&gt; . где &amp;laquo;а&amp;raquo; является целым числом.</target>
+        </trans-unit>
+        <trans-unit id="25c2f42952dddc1442cd3fea4ee45931c75bd99d" translate="yes" xml:space="preserve">
+          <source>Also, on real number-crunching problems (the problems that FP was invented for on early, frightfully expensive computers) the physical constants of the universe and all other measurements are only known to a relatively small number of significant figures, so the entire problem space was &quot;inexact&quot; anyway. FP &quot;accuracy&quot; isn't a problem in this kind of application.</source>
+          <target state="translated">Кроме того,по проблемам с реальными числами (проблемы,для решения которых был изобретен ФП на ранних,пугающе дорогих компьютерах)физические константы Вселенной и все остальные измерения известны лишь относительно небольшому количеству значимых фигур,поэтому все проблемное пространство все равно было &quot;неточным&quot;.Точность&quot; FP не является проблемой в подобном применении.</target>
+        </trans-unit>
+        <trans-unit id="85160f78ccb1d3807347386aa0d2ca7539bc234b" translate="yes" xml:space="preserve">
+          <source>An &lt;a href=&quot;http://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;IEEE 754 double-precision binary floating-point format (binary64)&lt;/a&gt; number represents a number of the form</source>
+          <target state="translated">Число &lt;a href=&quot;http://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;двоичного формата с плавающей запятой IEEE 754 (двоичное&lt;/a&gt; число 64) представляет число в форме</target>
+        </trans-unit>
+        <trans-unit id="717a2779595b0983db47fc60af6d89e183d0f462" translate="yes" xml:space="preserve">
+          <source>Another cause of the rounding errors in all operations are the different modes of truncation of the final answer that IEEE-754 allows. There's truncate, round-towards-zero, &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;round-to-nearest (default),&lt;/a&gt; round-down, and round-up. All methods introduce an element of error of less than one unit in the last place for a single operation. Over time and repeated operations, truncation also adds cumulatively to the resultant error. This truncation error is especially problematic in exponentiation, which involves some form of repeated multiplication.</source>
+          <target state="translated">Другой причиной ошибок округления во всех операциях являются различные режимы усечения окончательного ответа, которые допускает IEEE-754. Есть усечение, округление к нулю, &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;округление до ближайшего (по умолчанию),&lt;/a&gt; округление вниз и округление вверх. Все методы вводят элемент ошибки менее чем на одну единицу в последнем месте для одной операции. Со временем и повторяющимися операциями усечение также добавляет к результирующей ошибке. Эта ошибка усечения особенно проблематична в возведении в степень, которая включает в себя некоторую форму повторного умножения.</target>
+        </trans-unit>
+        <trans-unit id="9ead24f56ead1006e9506dd4e4f2be6e9b288737" translate="yes" xml:space="preserve">
+          <source>Another way to look at this: Used are 64 bits to represent numbers. As consequence there is no way more than 2**64 = 18,446,744,073,709,551,616 different numbers can be precisely represented.</source>
+          <target state="translated">Еще один способ взглянуть на это:Для представления чисел используются 64 бита.Как следствие,не может быть точно представлено более 2**64=18 446 744 073 709 551 616 различных чисел.</target>
+        </trans-unit>
+        <trans-unit id="197629060526b0bc6ba54e0d54e8621c108bd09e" translate="yes" xml:space="preserve">
+          <source>Applying it to the numbers in the question, treated as doubles:</source>
+          <target state="translated">Применяя его к числам в вопросе,рассматриваемым как удвоения:</target>
+        </trans-unit>
+        <trans-unit id="acd3695ef743a5217426fec2538dd807e2248e19" translate="yes" xml:space="preserve">
+          <source>As &lt;a href=&quot;https://www.w3schools.com/js/js_numbers.asp&quot;&gt;W3SCHOOLS&lt;/a&gt; suggests there is another solution too, you can multiply and divide to solve the problem above:</source>
+          <target state="translated">Как &lt;a href=&quot;https://www.w3schools.com/js/js_numbers.asp&quot;&gt;рекомендует W3SCHOOLS,&lt;/a&gt; есть и другое решение, вы можете умножить и разделить, чтобы решить проблему выше:</target>
+        </trans-unit>
+        <trans-unit id="5c873182ceb9b32f52a27c7ab3af44165c7183f5" translate="yes" xml:space="preserve">
+          <source>As a practical example, to avoid floating-point problems where accuracy is paramount, it is recommended&lt;sup&gt;1&lt;/sup&gt; to handle money as an integer representing the number of cents: &lt;code&gt;2550&lt;/code&gt; cents instead of &lt;code&gt;25.50&lt;/code&gt; dollars.</source>
+          <target state="translated">В качестве практического примера, чтобы избежать проблем с плавающей запятой, где точность имеет первостепенное значение, рекомендуется &lt;sup&gt;1&lt;/sup&gt; обрабатывать деньги как целое число, представляющее количество центов: &lt;code&gt;2550&lt;/code&gt; центов вместо &lt;code&gt;25.50&lt;/code&gt; долларов.</target>
+        </trans-unit>
+        <trans-unit id="14b3dd03f473733c807181d4f25005fdb4b3c92f" translate="yes" xml:space="preserve">
+          <source>Binary &lt;a href=&quot;https://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;floating point&lt;/a&gt; math is like this. In most programming languages, it is based on the &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_754#Basic_formats&quot;&gt;IEEE 754 standard&lt;/a&gt;. The crux of the problem is that numbers are represented in this format as a whole number times a power of two; rational numbers (such as &lt;code&gt;0.1&lt;/code&gt;, which is &lt;code&gt;1/10&lt;/code&gt;) whose denominator is not a power of two cannot be exactly represented.</source>
+          <target state="translated">Двоичная математика с &lt;a href=&quot;https://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;плавающей запятой&lt;/a&gt; такая. В большинстве языков программирования он основан на &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_754#Basic_formats&quot;&gt;стандарте IEEE 754&lt;/a&gt; . Суть проблемы состоит в том, что числа представлены в этом формате как целое число, умноженное на два; рациональные числа (например, &lt;code&gt;0.1&lt;/code&gt; , что составляет &lt;code&gt;1/10&lt;/code&gt; ), знаменатель которых не является степенью двойки, не могут быть точно представлены.</target>
+        </trans-unit>
+        <trans-unit id="7422ac70577b1628784c436e3c108b8f745d86f7" translate="yes" xml:space="preserve">
+          <source>But if you're okay with the idea that sometimes floating-point math is fuzzy in value and logic and errors can accumulate quickly, and you can write your requirements and tests to allow for that, then your code can frequently get by with what's in your FPU.</source>
+          <target state="translated">Но если вас устраивает мысль о том,что иногда математика с плавающей точкой нечеткая по значению,а логика и ошибки могут быстро накапливаться,и вы можете написать свои требования и тесты,чтобы учесть это,то ваш код часто может справиться с тем,что находится в вашем FPU.</target>
+        </trans-unit>
+        <trans-unit id="55a69cb7e5983987538ca8b12860d952d6b39dfb" translate="yes" xml:space="preserve">
+          <source>Can I just add; people always assume this to be a computer problem, but if you count with your hands (base 10), you can't get &lt;code&gt;(1/3+1/3=2/3)=true&lt;/code&gt; unless you have infinity to add 0.333... to 0.333... so just as with the &lt;code&gt;(1/10+2/10)!==3/10&lt;/code&gt; problem in base 2, you truncate it to 0.333 + 0.333 = 0.666 and probably round it to 0.667 which would be also be technically inaccurate.</source>
+          <target state="translated">Могу ли я просто добавить; люди всегда считают, что это проблема с компьютером, но если вы рассчитываете своими руками (основание 10), вы не можете получить &lt;code&gt;(1/3+1/3=2/3)=true&lt;/code&gt; 1/3 + 1/3 = 2/3 ) = true, если у вас нет бесконечности для добавления 0,333. ... до 0,333 ... так же, как и с проблемой (1/10 + 2/10 &lt;code&gt;(1/10+2/10)!==3/10&lt;/code&gt; в базе 2, вы усекаете ее до 0,333 + 0,333 = 0,666 и, вероятно, округляете до 0,667, что будет также быть технически неточным.</target>
+        </trans-unit>
+        <trans-unit id="82a3e020f14e0b35ca683a0e8ec46b87242aae47" translate="yes" xml:space="preserve">
+          <source>Comparing the last few bits of a floating point number is inherently dangerous, as anyone who reads the famous &quot;&lt;a href=&quot;http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;What Every Computer Scientist Should Know About Floating-Point Arithmetic&lt;/a&gt;&quot; (which covers all the major parts of this answer) will know.</source>
+          <target state="translated">Сравнение последних нескольких битов числа с плавающей запятой по своей природе опасно, и каждый, кто прочитает знаменитую статью &amp;laquo; &lt;a href=&quot;http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;Что должен знать каждый компьютерный специалист об арифметике с плавающей запятой&lt;/a&gt; &amp;raquo; (которая охватывает все основные части этого ответа).</target>
+        </trans-unit>
+        <trans-unit id="7b9418257eb36cecc68969da2f0e00be78afe4f0" translate="yes" xml:space="preserve">
+          <source>Computers don't usually work in base 10, they work in base 2. You can still get exact results for some values, for example &lt;code&gt;0.5&lt;/code&gt; is &lt;code&gt;1 x 2⁻&amp;sup1;&lt;/code&gt; and &lt;code&gt;0.25&lt;/code&gt; is &lt;code&gt;1 x 2⁻&amp;sup2;&lt;/code&gt;, and adding them results in &lt;code&gt;3 x 2⁻&amp;sup2;&lt;/code&gt;, or &lt;code&gt;0.75&lt;/code&gt;. Exactly.</source>
+          <target state="translated">Компьютеры обычно не работают в базе 10, они работают в базе 2. Вы все еще можете получить точные результаты для некоторых значений, например, &lt;code&gt;0.5&lt;/code&gt; - это &lt;code&gt;1 x 2⁻&amp;sup1;&lt;/code&gt; , а &lt;code&gt;0.25&lt;/code&gt; - &lt;code&gt;1 x 2⁻&amp;sup2;&lt;/code&gt; , и добавление их приводит к &lt;code&gt;3 x 2⁻&amp;sup2;&lt;/code&gt; или &lt;code&gt;0.75&lt;/code&gt; . Именно.</target>
+        </trans-unit>
+        <trans-unit id="e39262defe80a83fac1b793497417432c8b1a879" translate="yes" xml:space="preserve">
+          <source>Conclusion</source>
+          <target state="translated">Conclusion</target>
+        </trans-unit>
+        <trans-unit id="4adddd0410090df891e6fa4925fe03ba5adb5c9d" translate="yes" xml:space="preserve">
+          <source>Consider the following code:</source>
+          <target state="translated">Рассмотрим следующий код:</target>
+        </trans-unit>
+        <trans-unit id="e7f1f3b25b7e705aa363815a9723229ad35c0cc4" translate="yes" xml:space="preserve">
+          <source>Consider the following results:</source>
+          <target state="translated">Рассмотрим следующие результаты:</target>
+        </trans-unit>
+        <trans-unit id="12b7b76dc8d2ea9eb4ff8748b10d88e4a85a6169" translate="yes" xml:space="preserve">
+          <source>Converted back to decimal, these values are:</source>
+          <target state="translated">Преобразованные обратно в десятичные значения:</target>
+        </trans-unit>
+        <trans-unit id="aeb57143b3ba83c7c3b04839d7f666efe4124f05" translate="yes" xml:space="preserve">
+          <source>Converting the exponents to decimal, removing the offset, and re-adding the implied &lt;code&gt;1&lt;/code&gt; (in square brackets), 0.1 and 0.2 are:</source>
+          <target state="translated">Преобразование показателей степени в десятичное, удаление смещения и повторное добавление подразумеваемых &lt;code&gt;1&lt;/code&gt; (в квадратных скобках), 0,1 и 0,2:</target>
+        </trans-unit>
+        <trans-unit id="78e4c9a6d77baf375b421e266552930eb4f9337f" translate="yes" xml:space="preserve">
+          <source>Count in ternary, and thirds are not a problem though - maybe some race with 15 fingers on each hand would ask why your decimal math was broken...</source>
+          <target state="translated">Считайте в тернарах,и третьи не являются проблемой,хотя-может быть,какая-то гонка с 15 пальцами на каждой руке будет спрашивать,почему ваша десятичная математика была сломана...</target>
+        </trans-unit>
+        <trans-unit id="a3dd9179dce397e9e1b5fccb9b0cd27f6c3bd5cf" translate="yes" xml:space="preserve">
+          <source>Damn! What are you going to do with those unwanted zeros after 9?
+It's the time to convert it to float to make it as you desire:</source>
+          <target state="translated">Чёрт! Что ты собираешься делать с этими нежелательными нулями после 9? Пришло время превратить его в плавающий,чтобы сделать так,как ты хочешь:</target>
+        </trans-unit>
+        <trans-unit id="9e27f7f948ef21b303c1370a1dec7590701f7df7" translate="yes" xml:space="preserve">
+          <source>Decimal numbers such as &lt;code&gt;0.1&lt;/code&gt;, &lt;code&gt;0.2&lt;/code&gt;, and &lt;code&gt;0.3&lt;/code&gt; are not represented exactly in binary encoded floating point types. The sum of the approximations for &lt;code&gt;0.1&lt;/code&gt; and &lt;code&gt;0.2&lt;/code&gt; differs from the approximation used for &lt;code&gt;0.3&lt;/code&gt;, hence the falsehood of &lt;code&gt;0.1 + 0.2 == 0.3&lt;/code&gt; as can be seen more clearly here:</source>
+          <target state="translated">Десятичные числа, такие как &lt;code&gt;0.1&lt;/code&gt; , &lt;code&gt;0.2&lt;/code&gt; и &lt;code&gt;0.3&lt;/code&gt; , не представлены точно в двоично-кодированных типах с плавающей запятой. Сумма аппроксимаций для &lt;code&gt;0.1&lt;/code&gt; и &lt;code&gt;0.2&lt;/code&gt; отличается от аппроксимации, использованной для &lt;code&gt;0.3&lt;/code&gt; , поэтому ложность &lt;code&gt;0.1 + 0.2 == 0.3&lt;/code&gt; как можно увидеть здесь более четко:</target>
+        </trans-unit>
+        <trans-unit id="6b03123e729e0d99d8829d657b6396043e2860f2" translate="yes" xml:space="preserve">
+          <source>Decimals are very nice when dealing with money: ten cents plus twenty cents are always exactly thirty cents:</source>
+          <target state="translated">Децималы очень хороши,когда имеешь дело с деньгами:десять центов плюс двадцать центов-это всегда ровно тридцать центов:</target>
+        </trans-unit>
+        <trans-unit id="343253c3ffda2f7f610024078888336d7bfcc2d8" translate="yes" xml:space="preserve">
+          <source>Developers are usually instructed to do &lt;em&gt;&amp;lt; epsilon&lt;/em&gt; comparisons, better advice might be to round to integral values (in the C library: round() and roundf(), i.e., stay in the FP format) and then compare. Rounding to a specific decimal fraction length solves most problems with output.</source>
+          <target state="translated">Разработчикам, как правило, дают указание сделать &lt;em&gt;&amp;lt;&lt;/em&gt; сравнение &lt;em&gt;epsilon&lt;/em&gt; , лучше посоветовать округлить до целочисленных значений (в библиотеке C: round () и roundf (), т. Е. Остаться в формате FP), а затем сравнить. Округление до определенной длины десятичной дроби решает большинство проблем с выводом.</target>
+        </trans-unit>
+        <trans-unit id="dafd8ed5e4bb8b26b1f077f8e5b7a321cbc63112" translate="yes" xml:space="preserve">
+          <source>Did you try the duct tape solution?</source>
+          <target state="translated">Ты пробовал раствор клейкой ленты?</target>
+        </trans-unit>
+        <trans-unit id="a8c0d91bbd12171df34d46bb5ca5e22a008105f7" translate="yes" xml:space="preserve">
+          <source>Do &lt;em&gt;not&lt;/em&gt; do &lt;code&gt;if (x == y) { ... }&lt;/code&gt;</source>
+          <target state="translated">Не делать, &lt;code&gt;if (x == y) { ... }&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="49af704836c31c31268ad85bee269007d1863899" translate="yes" xml:space="preserve">
+          <source>Double-precision binary floating-point is a commonly used format on PCs, due to its wider range over single-precision floating point, in spite of its performance and bandwidth cost. As with single-precision floating-point format, it lacks precision on integer numbers when compared with an integer format of the same size. It is commonly known simply as double. The IEEE 754 standard specifies a binary64 as having:</source>
+          <target state="translated">Двоичная двоичная плавающая запятая с двойной точностью является широко используемым форматом на ПК,благодаря более широкому диапазону по сравнению с плавающей запятой с одинарной точностью,несмотря на ее производительность и стоимость пропускной способности.Как и в случае формата с плавающей запятой с одинаковой точностью,в нем отсутствует точность на целочисленных числах при сравнении с форматом с плавающей запятой того же размера.Он широко известен как просто двойной.Стандарт IEEE 754 определяет бинарный64 как имеющий:</target>
+        </trans-unit>
+        <trans-unit id="e94dc886af9a6005f7b61c7e670cccaf284c7871" translate="yes" xml:space="preserve">
+          <source>Even simple numbers like 0.01, 0.02, 0.03, 0.04 ... 0.24 are not representable exactly as binary fractions. If you count up 0.01, .02, .03 ..., not until you get to 0.25 will you get the first fraction representable in base&lt;sub&gt;2&lt;/sub&gt;.  If you tried that using FP, your 0.01 would have been slightly off, so the only way to add 25 of them up to a nice exact 0.25 would have required a long chain of causality involving guard bits and rounding. It's hard to predict so we throw up our hands and say &lt;em&gt;&quot;FP is inexact&quot;,&lt;/em&gt; but that's not really true.</source>
+          <target state="translated">Даже простые числа, такие как 0,01, 0,02, 0,03, 0,04 ... 0,24, не могут быть представлены в виде двоичных дробей. Если вы подсчитаете 0,01, 0,02, 0,03 ..., то только до 0,25 вы получите первую дробь, представимую в базе &lt;sub&gt;2&lt;/sub&gt; . Если вы попробуете это с использованием FP, ваш 0.01 был бы немного не таким, поэтому единственный способ добавить 25 из них до точного 0.25 потребовал бы длинной цепочки причинно-следственных связей, включающей защитные биты и округление. Трудно предсказать, поэтому мы вскидываем руки и говорим: &lt;em&gt;&amp;laquo;FP - это неточно&amp;raquo;,&lt;/em&gt; но это не совсем так.</target>
+        </trans-unit>
+        <trans-unit id="bcc82060c0b5843a747559c24154d4b0cbe17504" translate="yes" xml:space="preserve">
+          <source>Even though you can type &lt;code&gt;0.2&lt;/code&gt; easily, &lt;code&gt;FLT_RADIX&lt;/code&gt; and &lt;code&gt;DBL_RADIX&lt;/code&gt; is 2; not 10 for a computer with FPU which uses &quot;IEEE Standard for Binary Floating-Point Arithmetic (ISO/IEEE Std 754-1985)&quot;.</source>
+          <target state="translated">Даже если вы можете легко ввести &lt;code&gt;0.2&lt;/code&gt; , &lt;code&gt;FLT_RADIX&lt;/code&gt; и &lt;code&gt;DBL_RADIX&lt;/code&gt; - 2; не 10 для компьютера с FPU, который использует &amp;laquo;Стандарт IEEE для двоичной арифметики с плавающей точкой (ISO / IEEE Std 754-1985)&amp;raquo;.</target>
+        </trans-unit>
+        <trans-unit id="49c2bd6aa6f23d62660e81e7508644de0747ce48" translate="yes" xml:space="preserve">
+          <source>Expand snippet</source>
+          <target state="translated">Расширить фрагмент</target>
+        </trans-unit>
+        <trans-unit id="f90ebb584a41f5789fdcea6141d54540d284f0c6" translate="yes" xml:space="preserve">
+          <source>Exponent: 11 bits</source>
+          <target state="translated">Экспонент:11 бит</target>
+        </trans-unit>
+        <trans-unit id="119f8de999f99beecfdb18c6f4554359a130b523" translate="yes" xml:space="preserve">
+          <source>Floating point arithmetic &lt;em&gt;is&lt;/em&gt; exact, unfortunately, it doesn't match up well with our usual base-10 number representation, so it turns out we are often giving it input that is slightly off from what we wrote.</source>
+          <target state="translated">Арифметика с плавающей запятой точна, к сожалению, она не очень хорошо согласуется с нашим обычным представлением чисел с основанием 10, поэтому оказывается, что мы часто даем ей ввод, который немного отличается от того, что мы написали.</target>
+        </trans-unit>
+        <trans-unit id="565fecd9d4386f3183fb30121458f3c6a47002c6" translate="yes" xml:space="preserve">
+          <source>Floating point numbers stored in the computer consist of two parts, an integer and an exponent that the base is taken to and multiplied by the integer part.</source>
+          <target state="translated">Числа с плавающей точкой,хранящиеся в компьютере,состоят из двух частей,целого числа и экспоненты,к которым берётся база и умножается на целое число.</target>
+        </trans-unit>
+        <trans-unit id="124150fb130cdf0860699c9a2d7daf578bd58ed1" translate="yes" xml:space="preserve">
+          <source>Floating point rounding error.  From &lt;a href=&quot;https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;What Every Computer Scientist Should Know About Floating-Point Arithmetic&lt;/a&gt;:</source>
+          <target state="translated">Ошибка округления с плавающей точкой. Из того, &lt;a href=&quot;https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;что каждый компьютерщик должен знать об арифметике с плавающей точкой&lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="027c694de6b12a19a2844cf999e923212e996491" translate="yes" xml:space="preserve">
+          <source>Floating point rounding errors. 0.1 cannot be represented as accurately in base-2 as in base-10 due to the missing prime factor of 5. Just as 1/3 takes an infinite number of digits to represent in decimal, but is &quot;0.1&quot; in base-3, 0.1 takes an infinite number of digits in base-2 where it does not in base-10. And computers don't have an infinite amount of memory.</source>
+          <target state="translated">Ошибки округления с плавающей точкой.0.1 не может быть представлено так же точно в базе-2,как в базе-10,из-за отсутствующего начального коэффициента 5.Точно так же,как 13 берет бесконечное число цифр в десятичной дроби,но в базе 3-&quot;0.1&quot;,0.1 берет бесконечное число цифр в базе 2,где его нет в базе 10.И компьютеры не имеют бесконечного объема памяти.</target>
+        </trans-unit>
+        <trans-unit id="4448487d8eb4f64196dcf615ef11a481b88faaf8" translate="yes" xml:space="preserve">
+          <source>For &lt;code&gt;0.1&lt;/code&gt; in the standard &lt;code&gt;binary64&lt;/code&gt; format, the representation can be written exactly as</source>
+          <target state="translated">Для &lt;code&gt;0.1&lt;/code&gt; в стандартном формате &lt;code&gt;binary64&lt;/code&gt; представление может быть записано точно так же, как</target>
+        </trans-unit>
+        <trans-unit id="2eb8375a66f402510365e9906afeaf34cf9ace9f" translate="yes" xml:space="preserve">
+          <source>For double-precision numbers (which is the precision that allows you to halve your pizza 53 times), the numbers immediately less and greater than 0.1 are 0.09999999999999999167332731531132594682276248931884765625 and 0.1000000000000000055511151231257827021181583404541015625. The latter is quite a bit closer to 0.1 than the former, so a numeric parser will, given an input of 0.1, favour the latter.</source>
+          <target state="translated">Для номеров с двойной точностью (именно эта точность позволяет разделить вашу пиццу вдвое-53 раза),номера мгновенно меньше и больше 0,1-это 0,0999999999999167332731531132594682276248931884765625 и 0,1000000000000555111512312578270211815883404541015625.Последнее несколько ближе к 0.1,чем первое,поэтому числовой парсер,при входе 0.1,отдаст предпочтение последнему.</target>
+        </trans-unit>
+        <trans-unit id="059c3e8cce263b2945a18ac90b2637e10a8026b1" translate="yes" xml:space="preserve">
+          <source>For example:</source>
+          <target state="translated">Например:</target>
+        </trans-unit>
+        <trans-unit id="8977c37ba4ab06faaeb4917f5aef431002e8e3a1" translate="yes" xml:space="preserve">
+          <source>For these computations to be evaluated more reliably, you would need to use a decimal-based representation for floating point values. The C Standard does not specify such types by default but as an extension described in a &lt;a href=&quot;http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1312.pdf&quot;&gt;technical Report&lt;/a&gt;.</source>
+          <target state="translated">Чтобы эти вычисления были оценены более надежно, вам необходимо использовать десятичное представление для значений с плавающей запятой. Стандарт C не определяет такие типы по умолчанию, но как расширение, описанное в &lt;a href=&quot;http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1312.pdf&quot;&gt;техническом отчете&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="438fbe9727771de7094dfe372c89a3c249901587" translate="yes" xml:space="preserve">
+          <source>From &lt;a href=&quot;https://0.30000000000000004.com/&quot;&gt;https://0.30000000000000004.com/&lt;/a&gt;</source>
+          <target state="translated">С &lt;a href=&quot;https://0.30000000000000004.com/&quot;&gt;https://0.30000000000000004.com/&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="c2be387ecb7c744b80f6deca0a884e77b7dc5083" translate="yes" xml:space="preserve">
+          <source>From an engineering perspective, most floating point operations will have some element of error since the hardware that does the floating point computations is only required to have an error of less than one half of one unit in the last place. Therefore, much hardware will stop at a precision that's only necessary to yield an error of less than one half of one unit in the last place for a &lt;em&gt;single operation&lt;/em&gt; which is especially problematic in floating point division. What constitutes a single operation depends upon how many operands the unit takes. For most, it is two, but some units take 3 or more operands. Because of this, there is no guarantee that repeated operations will result in a desirable error since the errors add up over time.</source>
+          <target state="translated">С инженерной точки зрения, большинство операций с плавающей запятой будут иметь некоторый элемент ошибки, поскольку аппаратное обеспечение, которое выполняет вычисления с плавающей запятой, должно иметь ошибку менее половины одной единицы в последнем месте. Следовательно, большое количество оборудования будет останавливаться с точностью, необходимой только для того, чтобы выдать ошибку менее половины одного блока в последнем месте для &lt;em&gt;одной операции,&lt;/em&gt; что особенно проблематично при делении с плавающей запятой. То, что составляет одну операцию, зависит от того, сколько операндов принимает блок. Для большинства это два, но некоторые единицы принимают 3 или более операндов. Из-за этого нет гарантии, что повторные операции приведут к желаемой ошибке, так как ошибки накапливаются со временем.</target>
+        </trans-unit>
+        <trans-unit id="71e6fce755adf54b2e2cee041a1ce78a23d295a2" translate="yes" xml:space="preserve">
+          <source>From the Wikipedia page for &lt;a href=&quot;https://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;Double-precision floating-point format&lt;/a&gt;:</source>
+          <target state="translated">Со страницы Википедии для &lt;a href=&quot;https://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;формата с плавающей запятой двойной точности&lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="13c8d9d9bb5ff174c47e9c103abdfb35251afc02" translate="yes" xml:space="preserve">
+          <source>Given that nobody has mentioned this...</source>
+          <target state="translated">Учитывая,что никто не упоминал об этом...</target>
+        </trans-unit>
+        <trans-unit id="b98e9326cacd57433010c27db8d9ac95dd07cf4d" translate="yes" xml:space="preserve">
+          <source>Here is a console session in which I compute the real value of the float that exists in hardware.  I used &lt;code&gt;bc&lt;/code&gt; to print the sum of terms outputted by the main program.  One can insert that sum in python &lt;code&gt;repl&lt;/code&gt; or something similar also.</source>
+          <target state="translated">Вот сеанс консоли, в котором я вычисляю реальное значение с плавающей точкой, которое существует в аппаратных средствах. Я использовал &lt;code&gt;bc&lt;/code&gt; для вывода суммы слагаемых, выводимых основной программой. Можно вставить эту сумму в Python &lt;code&gt;repl&lt;/code&gt; или что-то подобное.</target>
+        </trans-unit>
+        <trans-unit id="2408136ec0c44b738b07e0b8bf11d10f475c0d40" translate="yes" xml:space="preserve">
+          <source>However, Math says there are already infinitely many decimals between 0 and 1. IEE 754 defines an encoding to use these 64 bits efficiently for a much larger number space plus NaN and +/- Infinity, so there are gaps between accurately represented numbers filled with numbers only approximated.</source>
+          <target state="translated">Тем не менее,Мэтт говорит,что уже существует бесконечное множество десятичных разрядов между 0 и 1.IEE 754 определяет кодировку для эффективного использования этих 64 бит для гораздо большего пространства чисел плюс NaN и +-бесконечность,так что между точно представленными числами,заполненными числами,которые только аппроксимируются,существуют разрывы.</target>
+        </trans-unit>
+        <trans-unit id="46f05586e0302c09020d0bad2f9c90dcbc102d16" translate="yes" xml:space="preserve">
+          <source>I believe I should add a hardware designer&amp;rsquo;s perspective to this since I design and build floating point hardware. Knowing the origin of the error may help in understanding what is happening in the software, and ultimately, I hope this helps explain the reasons for why floating point errors happen and seem to accumulate over time.</source>
+          <target state="translated">Я считаю, что я должен добавить точку зрения разработчика оборудования, так как я проектирую и собираю оборудование с плавающей запятой. Знание источника ошибки может помочь в понимании того, что происходит в программном обеспечении, и, в конечном счете, я надеюсь, что это поможет объяснить причины возникновения ошибок с плавающей запятой и, по-видимому, накапливаться с течением времени.</target>
+        </trans-unit>
+        <trans-unit id="139c3720a5570c1cec83ed7a353859c0807f05fc" translate="yes" xml:space="preserve">
+          <source>I had the same problem in a scientific simulation project in c#, and I can tell you that if you ignore the butterfly effect it's gonna turn to a big fat dragon and bite you in the a**</source>
+          <target state="translated">У меня была та же проблема в проекте научного моделирования в c#,и я могу сказать тебе,что если ты проигнорируешь эффект бабочки,он превратится в большого жирного дракона и укусит тебя в a**.</target>
+        </trans-unit>
+        <trans-unit id="a07562d9120e098fcdb0a15f037dd208a8327be6" translate="yes" xml:space="preserve">
+          <source>I just saw this interesting issue around floating points:</source>
+          <target state="translated">Я только что видел этот интересный вопрос,связанный с плавающими точками:</target>
+        </trans-unit>
+        <trans-unit id="c7cb01d8032bc4b8a88bb1e2f14b9cea42ff093e" translate="yes" xml:space="preserve">
+          <source>I love the Pizza answer by &lt;a href=&quot;https://stackoverflow.com/users/13/chris-jester-young&quot;&gt;Chris&lt;/a&gt;, because it describes the actual problem, not just the usual handwaving about &quot;inaccuracy&quot;. If FP were simply &quot;inaccurate&quot;, we could &lt;em&gt;fix&lt;/em&gt; that and would have done it decades ago. The reason we haven't is because the FP format is compact and fast and it's the best way to crunch a lot of numbers. Also, it's a legacy from the space age and arms race and early attempts to solve big problems with very slow computers using small memory systems. (Sometimes, individual &lt;em&gt;magnetic cores&lt;/em&gt; for 1-bit storage, but that's &lt;a href=&quot;https://en.wikipedia.org/wiki/Magnetic-core_memory&quot;&gt;another story.&lt;/a&gt;)</source>
+          <target state="translated">Мне нравится ответ &lt;a href=&quot;https://stackoverflow.com/users/13/chris-jester-young&quot;&gt;Криса&lt;/a&gt; на &amp;laquo;Пиццу&amp;raquo;, потому что он описывает реальную проблему, а не просто обычные пометки о &amp;laquo;неточности&amp;raquo;. Если бы FP были просто &amp;laquo;неточными&amp;raquo;, мы могли бы это &lt;em&gt;исправить&lt;/em&gt; и сделали бы это десятилетия назад. Причина, по которой мы этого не делаем, заключается в том, что формат FP компактен и быстр, и это лучший способ сократить множество чисел. Кроме того, это наследие космической эры и гонки вооружений и ранних попыток решить большие проблемы с очень медленными компьютерами с использованием небольших систем памяти. (Иногда отдельные &lt;em&gt;магнитные сердечники&lt;/em&gt; для 1-битного хранилища, но это уже &lt;a href=&quot;https://en.wikipedia.org/wiki/Magnetic-core_memory&quot;&gt;другая история.&lt;/a&gt; )</target>
+        </trans-unit>
+        <trans-unit id="086419f7e4f00c4240acc2a8cf8724a0a0440d52" translate="yes" xml:space="preserve">
+          <source>If it were rounded down to the equivalent of 0.3 the rounding error would be 0.0000000000000000277555756156289135105907917022705078125. Rounding up to the equivalent of 0.30000000000000004 also gives rounding error 0.0000000000000000277555756156289135105907917022705078125. The round-to-even tie breaker applies.</source>
+          <target state="translated">Если бы оно было округлено до эквивалента 0,3,то ошибка округления составила бы 0,0000000000277555756156289135105907917022705078125.Округление до эквивалента 0.30000000000000004 также дает ошибку округления 0.000000000000277555756156289135105907917022705078125.Применяется прерыватель округления до безубыточности.</target>
+        </trans-unit>
+        <trans-unit id="fccfcfa3bf25426d4d6621dd068fd42d65e9ed23" translate="yes" xml:space="preserve">
+          <source>If the computer were working in base 10, &lt;code&gt;0.1&lt;/code&gt; would be &lt;code&gt;1 x 10⁻&amp;sup1;&lt;/code&gt;, &lt;code&gt;0.2&lt;/code&gt; would be &lt;code&gt;2 x 10⁻&amp;sup1;&lt;/code&gt;, and &lt;code&gt;0.3&lt;/code&gt; would be &lt;code&gt;3 x 10⁻&amp;sup1;&lt;/code&gt;. Integer math is easy and exact, so adding &lt;code&gt;0.1 + 0.2&lt;/code&gt; will obviously result in &lt;code&gt;0.3&lt;/code&gt;.</source>
+          <target state="translated">Если бы компьютер работал на базе 10, &lt;code&gt;0.1&lt;/code&gt; было бы &lt;code&gt;1 x 10⁻&amp;sup1;&lt;/code&gt; , &lt;code&gt;0.2&lt;/code&gt; было бы &lt;code&gt;2 x 10⁻&amp;sup1;&lt;/code&gt; , а &lt;code&gt;0.3&lt;/code&gt; было бы &lt;code&gt;3 x 10⁻&amp;sup1;&lt;/code&gt; . Целочисленная математика проста и точна, поэтому добавление &lt;code&gt;0.1 + 0.2&lt;/code&gt; , очевидно, приведет к &lt;code&gt;0.3&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="ee2e12a76bfd81d38307a18631db4c3240b59b5c" translate="yes" xml:space="preserve">
+          <source>If we truncated these to, say, seven bits, then we'd get</source>
+          <target state="translated">Если бы мы укоротили их,скажем,до семи кусочков,то мы бы получили</target>
+        </trans-unit>
+        <trans-unit id="57680ac773e9bbe3d4b63cff8433ef37f4eccd11" translate="yes" xml:space="preserve">
+          <source>If you are just counting beans at a bank, software solutions that use decimal string representations in the first place work perfectly well. But you can't do quantum chromodynamics or aerodynamics that way.</source>
+          <target state="translated">Если вы просто считаете бобы в банке,то программные решения,использующие десятичное представление строк в первую очередь,работают отлично.Но так нельзя делать квантовую хромодинамику или аэродинамику.</target>
+        </trans-unit>
+        <trans-unit id="5271cb4c5315d5f9a2c1b7d2e6439177b9ed5f51" translate="yes" xml:space="preserve">
+          <source>If you need infinite precision (using the number &amp;pi;, for example, instead of one of its many shorter stand-ins), you should write or use a symbolic math program instead.</source>
+          <target state="translated">Если вам нужна бесконечная точность (например, с использованием числа &amp;pi; вместо одного из многих его более коротких заменителей), вы должны вместо этого написать или использовать символическую математическую программу.</target>
+        </trans-unit>
+        <trans-unit id="aa080c09b62ae1dce37814f75cd51aab41b3d4c1" translate="yes" xml:space="preserve">
+          <source>Imagine that you are trying to slice up pizzas. You have a robotic pizza cutter that can cut pizza slices &lt;em&gt;exactly&lt;/em&gt; in half. It can halve a whole pizza, or it can halve an existing slice, but in any case, the halving is always exact.</source>
+          <target state="translated">Представьте, что вы пытаетесь нарезать пиццу. У вас есть роботизированный нож для пиццы, который может разрезать кусочки пиццы &lt;em&gt;ровно&lt;/em&gt; пополам. Это может вдвое уменьшить целую пиццу или вдвое сократить существующий ломтик, но в любом случае, процесс деления пополам всегда точен.</target>
+        </trans-unit>
+        <trans-unit id="23fd14fd5cc6f36afaf62617f86f1c6323f8f5d0" translate="yes" xml:space="preserve">
+          <source>Imagine working in base ten with, say, 8 digits of accuracy.  You check whether</source>
+          <target state="translated">Представьте,что вы работаете в первой десятке с,скажем,8-ю цифрами точности.Вы проверяете.</target>
+        </trans-unit>
+        <trans-unit id="99cb5d12f8afe87e5f2199dd7832164a30028595" translate="yes" xml:space="preserve">
+          <source>Imagine you are going to add up two float numbers like &lt;code&gt;0.2&lt;/code&gt; and &lt;code&gt;0.7&lt;/code&gt; here it is: &lt;code&gt;0.2 + 0.7 = 0.8999999999999999&lt;/code&gt;.</source>
+          <target state="translated">Представьте, что вы собираетесь сложить два числа с плавающей точкой, такие как &lt;code&gt;0.2&lt;/code&gt; и &lt;code&gt;0.7&lt;/code&gt; вот оно: &lt;code&gt;0.2 + 0.7 = 0.8999999999999999&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="a2b1148919cbaacaaf9135169d3d2fdb6dafcf25" translate="yes" xml:space="preserve">
+          <source>In addition to the other correct answers, you may want to consider scaling your values to avoid problems with floating-point arithmetic.</source>
+          <target state="translated">В дополнение к другим правильным ответам,Вы можете рассмотреть возможность масштабирования Ваших значений,чтобы избежать проблем с арифметикой с плавающей точкой.</target>
+        </trans-unit>
+        <trans-unit id="d2b3c535762ccb723471ca3d19c266d59819e435" translate="yes" xml:space="preserve">
+          <source>In base&lt;sub&gt;10&lt;/sub&gt; we can't represent &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;3&lt;/sub&gt;. But in binary, we can't do &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;10&lt;/sub&gt;&lt;em&gt;or&lt;/em&gt;&lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;3&lt;/sub&gt;.</source>
+          <target state="translated">В базе &lt;sub&gt;10&lt;/sub&gt; мы не можем представить &lt;sub&gt;1/3&lt;/sub&gt; . Но в двоичном коде мы не можем сделать &lt;sub&gt;1/10&lt;/sub&gt; &lt;em&gt;или&lt;/em&gt; &lt;sub&gt;1/3&lt;/sub&gt; .</target>
+        </trans-unit>
+        <trans-unit id="8f38a9914f49411cfba349dfdb8630e09f562340" translate="yes" xml:space="preserve">
+          <source>In binary, we only get the &lt;em&gt;2&lt;sup&gt;n&lt;/sup&gt;&lt;/em&gt; term, that is:</source>
+          <target state="translated">В двоичном коде мы получаем только &lt;em&gt;2 &lt;sup&gt;n&lt;/sup&gt;&lt;/em&gt; член, то есть:</target>
+        </trans-unit>
+        <trans-unit id="4ef2cdaba6d234b05bee8a68976633267a094852" translate="yes" xml:space="preserve">
+          <source>In contrast, the rational number &lt;code&gt;0.1&lt;/code&gt;, which is &lt;code&gt;1/10&lt;/code&gt;, can be written exactly as</source>
+          <target state="translated">Напротив, рациональное число &lt;code&gt;0.1&lt;/code&gt; , которое является &lt;code&gt;1/10&lt;/code&gt; , может быть записано точно так же, как</target>
+        </trans-unit>
+        <trans-unit id="b961be3443aab68ceeec29a5220e6f9ed3ea8cb9" translate="yes" xml:space="preserve">
+          <source>In order to offer The &lt;strong&gt;best solution&lt;/strong&gt; I can say I discovered following method:</source>
+          <target state="translated">Чтобы предложить &lt;strong&gt;лучшее решение,&lt;/strong&gt; я могу сказать, что обнаружил следующий метод:</target>
+        </trans-unit>
+        <trans-unit id="2e914e63df1d23846968db54c322cfcde5d441c1" translate="yes" xml:space="preserve">
+          <source>In particular, 0.1 + 0.2 is really 0.1000000000000000055511151231257827021181583404541015625 + 0.200000000000000011102230246251565404236316680908203125 = 0.3000000000000000444089209850062616169452667236328125, whereas the number closest to 0.3 is actually 0.299999999999999988897769753748434595763683319091796875.</source>
+          <target state="translated">В частности,0.1+0.2 действительно 0.10000000000000055511151231257827021181583404541015625+0.2000000000000011102230246251565404236316680908203125=0.300000000000444089209850062616169452667236328125,в то время как число,близкое к 0.3,на самом деле равно 0.2999999999999988897769753748434595763683319091796875.</target>
+        </trans-unit>
+        <trans-unit id="4228e410bba6241e580bda13c93c5be682de4fe0" translate="yes" xml:space="preserve">
+          <source>In practice, this problem of precision means you need to use rounding functions to round your floating point numbers off to however many decimal places you're interested in before you display them.</source>
+          <target state="translated">На практике,эта проблема точности означает,что вам нужно использовать функции округления,чтобы округлить числа с плавающей точкой до скольких знаков после запятой,которые вас интересуют,прежде чем вы их отобразите.</target>
+        </trans-unit>
+        <trans-unit id="ac42fff92fa17be820acdfc20ad21aaa24d67e47" translate="yes" xml:space="preserve">
+          <source>In reality, this sum is only an approximation.  For the number 999,999,999  the compiler will insert in bit representation of the float the number 1,000,000,000</source>
+          <target state="translated">На самом деле,эта сумма является лишь приближением.Для числа 999,999,999 компилятор вставит в битовое представление плавания число 1,000,000,000</target>
+        </trans-unit>
+        <trans-unit id="d361ff6e0befd1e900ea2d2a691af9c88a12a12e" translate="yes" xml:space="preserve">
+          <source>In short, the fundamental reason for the errors in floating point operations is a combination of the truncation in hardware, and the truncation of a reciprocal in the case of division. Since the IEEE-754 standard only requires an error of less than one half of one unit in the last place for a single operation, the floating point errors over repeated operations will add up unless corrected.</source>
+          <target state="translated">Короче говоря,фундаментальной причиной ошибок в операциях с плавающей точкой является комбинация усечения в аппаратном обеспечении и усечения обратной в случае деления.Поскольку в стандарте IEEE-754 для одной операции требуется только ошибка менее половины единицы в последнем месте,то ошибки с плавающей точкой при многократных операциях суммируются,если их не исправить.</target>
+        </trans-unit>
+        <trans-unit id="e5fabd55d2fd5b1b6baf316413574a320dcf8783" translate="yes" xml:space="preserve">
+          <source>In the IEEE-754 standard, hardware designers are allowed any value of error/epsilon as long as it's less than one half of one unit in the last place, and the result only has to be less than one half of one unit in the last place for one operation. This explains why when there are repeated operations, the errors add up. For IEEE-754 double precision, this is the 54th bit, since 53 bits are used to represent the numeric part (normalized), also called the mantissa, of the floating point number (e.g. the 5.3 in 5.3e5). The next sections go into more detail on the causes of hardware error on various floating point operations.</source>
+          <target state="translated">В стандарте IEEE-754 аппаратные конструкторы допускают любое значение errorepsilon до тех пор,пока оно меньше половины одного блока в последнем месте,и результат должен быть только меньше половины одного блока в последнем месте за одну операцию.Это объясняет,почему при повторных операциях ошибки суммируются.Для IEEE-754 двойной точности это 54-й бит,так как 53 бита используются для представления числовой части (нормализованной),также называемой мантиссой,числа с плавающей точкой (например,5.3 в 5.3e5).В следующих разделах более подробно рассматриваются причины аппаратных ошибок при различных операциях с плавающей точкой.</target>
+        </trans-unit>
+        <trans-unit id="d2adcf90f9007e61cdec953379088b5fa66be386" translate="yes" xml:space="preserve">
+          <source>In the case of 0.2, the numbers are all the same, just scaled up by a factor of 2. Again, we favour the value that's slightly higher than 0.2.</source>
+          <target state="translated">В случае с 0.2,цифры все одинаковые,только увеличенные в 2 раза.Опять же,мы отдаем предпочтение значению,которое чуть выше 0.2.</target>
+        </trans-unit>
+        <trans-unit id="e4922ee598bf50ce8a8aa97294d719a5f025128d" translate="yes" xml:space="preserve">
+          <source>In this example you need 2 digits precision so it should be &lt;code&gt;toFixed(2)&lt;/code&gt;, so what should be the paramter to fit every given float number?</source>
+          <target state="translated">В этом примере вам нужна точность в 2 цифры, поэтому она должна быть &lt;code&gt;toFixed(2)&lt;/code&gt; , так какой же должен быть параметр, чтобы соответствовать каждому заданному числу с плавающей точкой?</target>
+        </trans-unit>
+        <trans-unit id="d307899e3a9faf88be765042e4c814a072993a93" translate="yes" xml:space="preserve">
+          <source>Instead do &lt;code&gt;if (abs(x - y) &amp;lt; myToleranceValue) { ... }&lt;/code&gt;.</source>
+          <target state="translated">Вместо этого выполните &lt;code&gt;if (abs(x - y) &amp;lt; myToleranceValue) { ... }&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="af2d9d553cd8ff9919717f84680c53a32ea7fd20" translate="yes" xml:space="preserve">
+          <source>Is floating point math broken</source>
+          <target state="translated">математика с плавающей точкой сломана</target>
+        </trans-unit>
+        <trans-unit id="7ae4f138c29e2b8ddf6d3e604ad8ec17b30e1885" translate="yes" xml:space="preserve">
+          <source>It's actually pretty simple. When you have a base 10 system (like ours), it can only express fractions that use a prime factor of the base. The prime factors of 10 are 2 and 5. So 1/2, 1/4, 1/5, 1/8, and 1/10 can all be expressed cleanly because the denominators all use prime factors of 10. In contrast, 1/3, 1/6, and 1/7 are all repeating decimals because their denominators use a prime factor of 3 or 7. In binary (or base 2), the only prime factor is 2. So you can only express fractions cleanly which only contain 2 as a prime factor. In binary, 1/2, 1/4, 1/8 would all be expressed cleanly as decimals. While, 1/5 or 1/10 would be repeating decimals. So 0.1 and 0.2 (1/10 and 1/5) while clean decimals in a base 10 system, are repeating decimals in the base 2 system the computer is operating in. When you do math on these repeating decimals, you end up with leftovers which carry over when you convert the computer's base 2 (binary) number into a more human readable base 10 number.</source>
+          <target state="translated">На самом деле все довольно просто.Когда у вас есть система base 10 (как у нас),она может выражать только те фракции,которые используют основной фактор базы.Основные коэффициенты 10-2 и 5.Таким образом,12,14,15,18 и 110 могут быть выражены чисто,потому что все знаменатели используют простые коэффициенты 10.Напротив,13,16 и 17-это повторяющиеся десятичные числа,потому что в их знаменателях используется простой коэффициент 3 или 7.В двоичной системе (или базе 2)единственным простым коэффициентом является 2,поэтому можно чисто выразить только те дроби,которые в качестве простых коэффициентов содержат только 2.В двоичных 12,14,18 будут чисто выражаться в виде десятичных дробей.В то время как 15 или 110 будут повторяющимися децималями.Таким образом,0,1 и 0,2 (110 и 15),в то время как чистые десятичные дроби в системе основания 10,повторяют десятичные дроби в системе основания 2,в которой работает компьютер.Когда вы делаете математику на этих повторяющихся децималях,вы получаете остатки,которые переносятся,когда вы преобразовываете число базы 2 (двоичное)компьютера в более читаемое человеком число базы 10.</target>
+        </trans-unit>
+        <trans-unit id="9bedf433c947094cc3f7cbfb70b1b08a6b15157f" translate="yes" xml:space="preserve">
+          <source>Just for fun, I played with the representation of floats, following the definitions from the Standard C99 and I wrote the code below.</source>
+          <target state="translated">Просто для забавы я играл с представлением флотов,следуя определениям из Standard C99,и написал код ниже.</target>
+        </trans-unit>
+        <trans-unit id="132f6e2254fa1dd608decdd2acee6a977411ff01" translate="yes" xml:space="preserve">
+          <source>Keep in mind that &lt;code&gt;(0.2 + 0.1) * 10 / 10&lt;/code&gt; won't work at all although it seems the same!
+I prefer the first solution since I can apply it as a function which converts the input float to accurate output float.</source>
+          <target state="translated">Имейте в виду, что &lt;code&gt;(0.2 + 0.1) * 10 / 10&lt;/code&gt; не будет работать вообще, хотя кажется, что то же самое! Я предпочитаю первое решение, так как я могу применить его как функцию, которая преобразует входной float в точный выходной float.</target>
+        </trans-unit>
+        <trans-unit id="2799ad7660549a72b5a827dbb592f0ec6f37f29b" translate="yes" xml:space="preserve">
+          <source>Let me explain why it's the best solution.
+As others mentioned in above answers it's a good idea to use ready to use Javascript toFixed() function to solve the problem. But most likely you'll encounter with some problems.</source>
+          <target state="translated">Позвольте мне объяснить,почему это лучшее решение.Как и другие,упомянутые в ответах выше,это хорошая идея использовать готовую функцию Javascript toFixed()для решения проблемы.Но,скорее всего,вы столкнетесь с некоторыми проблемами.</target>
+        </trans-unit>
+        <trans-unit id="a86e0321652ded6bea22752519aa3d0aa14fe1fd" translate="yes" xml:space="preserve">
+          <source>Let's try it yourself:</source>
+          <target state="translated">Давайте попробуем сами:</target>
+        </trans-unit>
+        <trans-unit id="71a6be33e3fd9f8758c62adc390facaf65d03f2f" translate="yes" xml:space="preserve">
+          <source>Many of this question's numerous duplicates ask about the effects of floating point rounding on specific numbers. In practice, it is easier to get a feeling for how it works by looking at exact results of calculations of interest rather than by just reading about it. Some languages provide ways of doing that - such as converting a &lt;code&gt;float&lt;/code&gt; or &lt;code&gt;double&lt;/code&gt; to &lt;code&gt;BigDecimal&lt;/code&gt; in Java.</source>
+          <target state="translated">Многие из многочисленных дубликатов этого вопроса спрашивают о влиянии округления с плавающей запятой на конкретные числа. На практике легче понять, как это работает, рассматривая точные результаты вычислений, а не просто читая об этом. Некоторые языки предоставляют способы сделать это - например, преобразование числа с &lt;code&gt;float&lt;/code&gt; или &lt;code&gt;double&lt;/code&gt; в &lt;code&gt;BigDecimal&lt;/code&gt; в Java.</target>
+        </trans-unit>
+        <trans-unit id="8934b0ad8a8f5b6d10b480c6e3fb04ebd566c062" translate="yes" xml:space="preserve">
+          <source>Many online converters exist to convert a double precision floating point number to binary (e.g. at &lt;a href=&quot;http://www.binaryconvert.com/convert_double.html&quot;&gt;binaryconvert.com&lt;/a&gt;), but here is some sample C# code to obtain the IEEE 754 representation for a double precision number (I separate the three parts with colons (&lt;code&gt;:&lt;/code&gt;):</source>
+          <target state="translated">Существует много онлайн-конвертеров для преобразования числа с плавающей запятой двойной точности в двоичное (например, на сайте &lt;a href=&quot;http://www.binaryconvert.com/convert_double.html&quot;&gt;binaryconvert.com&lt;/a&gt; ), но здесь приведен пример кода C # для получения представления IEEE 754 для числа с двойной точностью (я разделяю три части двоеточиями ( &lt;code&gt;:&lt;/code&gt; ):</target>
+        </trans-unit>
+        <trans-unit id="5594903df7afb92532bede50aa19f8bc44b9b936" translate="yes" xml:space="preserve">
+          <source>Math.sum accepts any number of arguments</source>
+          <target state="translated">Математика принимает любое количество аргументов</target>
+        </trans-unit>
+        <trans-unit id="a7da8c89426f6244ba27410665d12c52debd6422" translate="yes" xml:space="preserve">
+          <source>Model for store real numbers under the hood represent float numbers as</source>
+          <target state="translated">Модель для магазина реальные номера под капотом представляют собой плавающие номера в виде</target>
+        </trans-unit>
+        <trans-unit id="3c239885b8ff7c9107ab26b704ba9e20dc93111d" translate="yes" xml:space="preserve">
+          <source>Most calculators use additional &lt;a href=&quot;https://en.wikipedia.org/wiki/Guard_digit&quot;&gt;guard digits&lt;/a&gt; to get around this problem, which is how &lt;code&gt;0.1 + 0.2&lt;/code&gt; would give &lt;code&gt;0.3&lt;/code&gt;: the final few bits are rounded.</source>
+          <target state="translated">Большинство калькуляторов используют дополнительные &lt;a href=&quot;https://en.wikipedia.org/wiki/Guard_digit&quot;&gt;защитные цифры,&lt;/a&gt; чтобы обойти эту проблему, и именно так &lt;code&gt;0.1 + 0.2&lt;/code&gt; дало бы &lt;code&gt;0.3&lt;/code&gt; : последние несколько бит округляются.</target>
+        </trans-unit>
+        <trans-unit id="b944713acbfeaefa185fd6b02b29866cbcd20f3a" translate="yes" xml:space="preserve">
+          <source>Most experienced programmers, of course, know the real answer, which is that there is no way to piece together an &lt;em&gt;exact&lt;/em&gt; tenth or fifth of the pizza using those slices, no matter how finely you slice them. You can do a pretty good approximation, and if you add up the approximation of 0.1 with the approximation of 0.2, you get a pretty good approximation of 0.3, but it's still just that, an approximation.</source>
+          <target state="translated">Конечно, большинство опытных программистов знают реальный ответ, который заключается в том, что невозможно собрать &lt;em&gt;точно&lt;/em&gt; десятую или пятую часть пиццы, используя эти кусочки, независимо от того, насколько хорошо вы их нарезаете. Вы можете сделать довольно хорошее приближение, и если вы сложите приближение 0,1 с приближением 0,2, вы получите довольно хорошее приближение 0,3, но это все еще только приближение.</target>
+        </trans-unit>
+        <trans-unit id="db20f0baebe5ae74b4f5ca1ba310ce4d2dac041e" translate="yes" xml:space="preserve">
+          <source>Most processors follow the &lt;a href=&quot;http://en.wikipedia.org/wiki/IEEE_754-2008&quot;&gt;IEEE-754&lt;/a&gt; standard but some use denormalized, or different standards
+. For example, there is a denormalized mode in IEEE-754 which allows representation of very small floating point numbers at the expense of precision. The following, however, will cover the normalized mode of IEEE-754 which is the typical mode of operation.</source>
+          <target state="translated">Большинство процессоров соответствуют &lt;a href=&quot;http://en.wikipedia.org/wiki/IEEE_754-2008&quot;&gt;стандарту IEEE-754,&lt;/a&gt; но некоторые используют денормализованные или другие стандарты. Например, в IEEE-754 есть денормализованный режим, который позволяет представлять очень маленькие числа с плавающей запятой за счет точности. Следующее, однако, будет охватывать нормализованный режим IEEE-754, который является типичным режимом работы.</target>
+        </trans-unit>
+        <trans-unit id="5cf99f8f009932fb02161551e41e5b27ef9ccc1d" translate="yes" xml:space="preserve">
+          <source>My workaround:</source>
+          <target state="translated">Мой обходной приём:</target>
+        </trans-unit>
+        <trans-unit id="fe2cee7e86246cc3c67f2c8393c324743271be71" translate="yes" xml:space="preserve">
+          <source>Neither of these solutions is perfect (especially if we look at performances, or if we require a very high precision), but still they solve a great number of problems with binary floating point arithmetic.</source>
+          <target state="translated">Ни одно из этих решений не является идеальным (особенно,если мы смотрим на выступления,или если мы требуем очень высокой точности),но все же они решают большое количество проблем с бинарной арифметикой с плавающей точкой.</target>
+        </trans-unit>
+        <trans-unit id="2b33a1cd6bfe955729a61c6c2378164276c976df" translate="yes" xml:space="preserve">
+          <source>No, not broken, but most decimal fractions must be approximated</source>
+          <target state="translated">Нет,не сломанная,но большинство десятичных дробей должны быть аппроксимированы</target>
+        </trans-unit>
+        <trans-unit id="64a768dd81380b6d830fc7ba6f606946def99de5" translate="yes" xml:space="preserve">
+          <source>Not all numbers can be represented via &lt;strong&gt;floats&lt;/strong&gt;/&lt;strong&gt;doubles&lt;/strong&gt;
+For example, the number &quot;0.2&quot; will be represented as &quot;0.200000003&quot; in single precision in IEEE754 float point standard.</source>
+          <target state="translated">Не все числа могут быть представлены числами с &lt;strong&gt;плавающей запятой&lt;/strong&gt; / двойными числами. Например, число &amp;laquo;0.2&amp;raquo; будет представлено как &amp;laquo;0.200000003&amp;raquo; с одинарной точностью в стандарте IEEE754 с плавающей запятой.</target>
+        </trans-unit>
+        <trans-unit id="173f07d87b229443d640ce3489ba411e8746ea11" translate="yes" xml:space="preserve">
+          <source>Note that &lt;em&gt;a&lt;/em&gt; and &lt;em&gt;b&lt;/em&gt; differ only in the last bit; &lt;code&gt;...0011&lt;/code&gt; + &lt;code&gt;1&lt;/code&gt; = &lt;code&gt;...0100&lt;/code&gt;. In this case, the value with the least significant bit of zero is &lt;em&gt;b&lt;/em&gt;, so the sum is:</source>
+          <target state="translated">Обратите внимание, что &lt;em&gt;a&lt;/em&gt; и &lt;em&gt;b&lt;/em&gt; отличаются только последним битом; &lt;code&gt;...0011&lt;/code&gt; + &lt;code&gt;1&lt;/code&gt; = &lt;code&gt;...0100&lt;/code&gt; . В этом случае значение с наименьшим значащим нулевым битом равно &lt;em&gt;b&lt;/em&gt; , поэтому сумма равна:</target>
+        </trans-unit>
+        <trans-unit id="fb1682df5506dc738031d2049d0fe97e609c88dc" translate="yes" xml:space="preserve">
+          <source>Note that the default rounding mode, round-to-nearest &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;even digit in the last place&lt;/a&gt;, guarantees an error of less than one half of one unit in the last place for one operation. Using the truncation, round-up, and round down alone may result in an error that is greater than one half of one unit in the last place, but less than one unit in the last place, so these modes are not recommended unless they are used in Interval Arithmetic.</source>
+          <target state="translated">Обратите внимание, что режим округления по умолчанию, округление до ближайшей &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;четной цифры в последнем месте&lt;/a&gt; , гарантирует ошибку менее одной половины одного блока в последнем месте для одной операции. Использование только усечения, округления и округления может привести к ошибке, которая больше, чем половина одного блока в последнем месте, но меньше, чем один блок в последнем месте, поэтому эти режимы не рекомендуются, если они не используется в интервальной арифметике.</target>
+        </trans-unit>
+        <trans-unit id="e275cd62fb5f11144c70906280ad00b0caaae18d" translate="yes" xml:space="preserve">
+          <source>Note that the mantissa is composed of recurring digits of &lt;code&gt;0011&lt;/code&gt;. This is &lt;strong&gt;key&lt;/strong&gt; to why there is any error to the calculations - 0.1, 0.2 and 0.3 cannot be represented in binary &lt;strong&gt;precisely&lt;/strong&gt; in a &lt;em&gt;finite&lt;/em&gt; number of binary bits any more than 1/9, 1/3 or 1/7 can be represented precisely in &lt;em&gt;decimal digits&lt;/em&gt;.</source>
+          <target state="translated">Обратите внимание, что мантисса состоит из повторяющихся цифр &lt;code&gt;0011&lt;/code&gt; . Это является &lt;strong&gt;ключом&lt;/strong&gt; к тому, почему есть какая-либо ошибка в вычислениях - 0,1, 0,2 и 0,3 не могут быть представлены в двоичном виде &lt;strong&gt;точно&lt;/strong&gt; в &lt;em&gt;конечном&lt;/em&gt; количестве двоичных разрядов, больше чем 1/9, 1/3 или 1/7 могут быть представлены точно в &lt;em&gt;десятичные цифры&lt;/em&gt; .</target>
+        </trans-unit>
+        <trans-unit id="d1e48ccd7591a347088699ef49149eac61dd4272" translate="yes" xml:space="preserve">
+          <source>Notice that in both cases, the approximations for 0.1 and 0.2 have a slight upward bias. If we add enough of these biases in, they will push the number further and further away from what we want, and in fact, in the case of 0.1 + 0.2, the bias is high enough that the resulting number is no longer the closest number to 0.3.</source>
+          <target state="translated">Обратите внимание,что в обоих случаях аппроксимации для 0,1 и 0,2 имеют небольшой уклон в сторону увеличения.Если мы прибавим достаточно этих смещений,то они будут отталкивать число все дальше и дальше от того,что мы хотим,и на самом деле,в случае 0,1+0,2,смещение достаточно велико,чтобы получившееся число уже не было ближайшим числом к 0,3.</target>
+        </trans-unit>
+        <trans-unit id="9520be12da7f5411c118335231ed0c5f7a84ec09" translate="yes" xml:space="preserve">
+          <source>Now that you found the solution, it's better to offer it as a function like this:</source>
+          <target state="translated">Теперь,когда вы нашли решение,лучше предложить его как функцию,подобную этой:</target>
+        </trans-unit>
+        <trans-unit id="61b21a44286dfe92732888d44bc4a742729e3bcc" translate="yes" xml:space="preserve">
+          <source>Now, how would you piece all the slices in such a way that would add up to one-tenth (0.1) or one-fifth (0.2) of a pizza? Really think about it, and try working it out. You can even try to use a real pizza, if you have a mythical precision pizza cutter at hand. :-)</source>
+          <target state="translated">Итак,как бы вы распределили все ломтики таким образом,чтобы в итоге получилась одна десятая (0,1)или одна пятая (0,2)пиццы? Подумайте об этом и попробуйте разобраться.Вы даже можете попробовать использовать настоящую пиццу,если под рукой у вас под рукой мифическая прецизионная резака для пиццы.:-)</target>
+        </trans-unit>
+        <trans-unit id="105e5e7696e347e9fea2b0bfb4ac95627ef03c36" translate="yes" xml:space="preserve">
+          <source>One example would be</source>
+          <target state="translated">В качестве примера можно привести</target>
+        </trans-unit>
+        <trans-unit id="f3c8c95c5e534bcd2ea0034a0d83177efa6923f4" translate="yes" xml:space="preserve">
+          <source>Output:</source>
+          <target state="translated">Output:</target>
+        </trans-unit>
+        <trans-unit id="a96f5425027bc80f50fbfd4f9264ef5dadb0389c" translate="yes" xml:space="preserve">
+          <source>P.S. Some programming languages also provide pizza cutters that can &lt;a href=&quot;https://en.wikipedia.org/wiki/Decimal_floating_point&quot;&gt;split slices into exact tenths&lt;/a&gt;. Although such pizza cutters are uncommon, if you do have access to one, you should use it when it's important to be able to get exactly one-tenth or one-fifth of a slice.</source>
+          <target state="translated">PS Некоторые языки программирования также предоставляют нарезчики пиццы, которые могут &lt;a href=&quot;https://en.wikipedia.org/wiki/Decimal_floating_point&quot;&gt;разбивать ломтики на ровные десятые доли&lt;/a&gt; . Хотя такие ножницы для пиццы являются редкостью, если у вас есть доступ к одному, вам следует использовать его, когда важно иметь возможность получить ровно одну десятую или одну пятую части.</target>
+        </trans-unit>
+        <trans-unit id="29dfe574f408d995f2185483c55dbffde4813a84" translate="yes" xml:space="preserve">
+          <source>Plain old decimal (base 10) numbers have the same issues, which is why numbers like 1/3 end up as 0.333333333...</source>
+          <target state="translated">Обычные старые десятичные (базовые 10)числа имеют те же самые выпуски,поэтому числа типа 13 заканчиваются на 0.333333333...</target>
+        </trans-unit>
+        <trans-unit id="27e3ae8dbaba8a0d1b82dbf5add12c954885d1e0" translate="yes" xml:space="preserve">
+          <source>Python's &lt;a href=&quot;https://docs.python.org/dev/library/decimal.html&quot;&gt;&lt;code&gt;decimal&lt;/code&gt; module&lt;/a&gt; and Java's &lt;a href=&quot;http://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html&quot;&gt;&lt;code&gt;BigDecimal&lt;/code&gt; class&lt;/a&gt;, that represent numbers internally with decimal notation (as opposed to binary notation). Both have limited precision, so they are still error prone, however they solve most common problems with binary floating point arithmetic.</source>
+          <target state="translated">&lt;a href=&quot;https://docs.python.org/dev/library/decimal.html&quot;&gt; &lt;code&gt;decimal&lt;/code&gt; модуль&lt;/a&gt; Python и Java- &lt;a href=&quot;http://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html&quot;&gt;класс &lt;code&gt;BigDecimal&lt;/code&gt; &lt;/a&gt; , которые представляют числа внутри с десятичной записью (в отличие от двоичной записи). Оба имеют ограниченную точность, поэтому они по-прежнему подвержены ошибкам, однако они решают наиболее распространенные проблемы с двоичной арифметикой с плавающей запятой.</target>
+        </trans-unit>
+        <trans-unit id="eb619cf9a5eaa0e9433e5e33fece2c06bd48ff6d" translate="yes" xml:space="preserve">
+          <source>Python's &lt;a href=&quot;https://docs.python.org/dev/library/fractions.html&quot;&gt;&lt;code&gt;fractions&lt;/code&gt; module&lt;/a&gt; and Apache Common's &lt;a href=&quot;https://commons.apache.org/proper/commons-math/apidocs/org/apache/commons/math3/fraction/BigFraction.html&quot;&gt;&lt;code&gt;BigFraction&lt;/code&gt; class&lt;/a&gt;. Both represent rational numbers as &lt;code&gt;(numerator, denominator)&lt;/code&gt; pairs and they may give more accurate results than decimal floating point arithmetic.</source>
+          <target state="translated">&lt;a href=&quot;https://docs.python.org/dev/library/fractions.html&quot;&gt;Модуль &lt;code&gt;fractions&lt;/code&gt; &lt;/a&gt; Python и &lt;a href=&quot;https://commons.apache.org/proper/commons-math/apidocs/org/apache/commons/math3/fraction/BigFraction.html&quot;&gt;класс&lt;/a&gt; Apache Common &lt;code&gt;BigFraction&lt;/code&gt; . Оба представляют рациональные числа в виде пар &lt;code&gt;(numerator, denominator)&lt;/code&gt; и они могут давать более точные результаты, чем десятичная арифметика с плавающей запятой.</target>
+        </trans-unit>
+        <trans-unit id="3ac876068bdeda94095d3a7511721e8436f028d3" translate="yes" xml:space="preserve">
+          <source>Python's &lt;code&gt;decimal&lt;/code&gt; module is based on &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_854-1987&quot;&gt;IEEE standard 854-1987&lt;/a&gt;.</source>
+          <target state="translated">&lt;code&gt;decimal&lt;/code&gt; модуль Python основан на &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_854-1987&quot;&gt;стандарте IEEE 854-1987&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="d9c70cbcdb978515e306b58ad0407fb758f03a30" translate="yes" xml:space="preserve">
+          <source>Returning to the floating point converter, the raw hexadecimal for 0.30000000000000004 is 3fd3333333333334, which ends in an even digit and therefore is the correct result.</source>
+          <target state="translated">Возвращаясь к конвертеру с плавающей точкой,исходная шестнадцатеричная цифра для 0.300000000000004 равна 3fd333333333333334,которая заканчивается четной цифрой и,следовательно,является правильным результатом.</target>
+        </trans-unit>
+        <trans-unit id="92b1e4641ea8b0a754e7afa9dfb128e28b38b3b3" translate="yes" xml:space="preserve">
+          <source>See &lt;a href=&quot;http://en.cppreference.com/w/cpp/io/basic_ios/init&quot;&gt;here&lt;/a&gt; for reference</source>
+          <target state="translated">Смотрите &lt;a href=&quot;http://en.cppreference.com/w/cpp/io/basic_ios/init&quot;&gt;здесь&lt;/a&gt; для справки</target>
+        </trans-unit>
+        <trans-unit id="eb3bdffb7759683f4114fd367d5b967cb10277b0" translate="yes" xml:space="preserve">
+          <source>Sign bit: 1 bit</source>
+          <target state="translated">Бит подписи:1 бит</target>
+        </trans-unit>
+        <trans-unit id="8b804a9ed868fea0acf8c3224434cb421a49c76d" translate="yes" xml:space="preserve">
+          <source>Significant precision: 53 bits (52 explicitly stored)</source>
+          <target state="translated">Значительная точность:53 бита (52 хранятся в явном виде)</target>
+        </trans-unit>
+        <trans-unit id="b1ccc6268f35cc5a5baa2d8213bd1bff5a0a1766" translate="yes" xml:space="preserve">
+          <source>Since the hardware that does the floating point calculations only needs to yield a result with an error of less than one half of one unit in the last place for a single operation, the error will grow over repeated operations if not watched. This is the reason that in computations that require a bounded error, mathematicians use methods such as using the round-to-nearest &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;even digit in the last place&lt;/a&gt; of IEEE-754, because, over time, the errors are more likely to cancel each other out, and &lt;a href=&quot;http://en.wikipedia.org/wiki/Interval_arithmetic&quot;&gt;Interval Arithmetic&lt;/a&gt; combined with variations of the &lt;a href=&quot;http://en.wikipedia.org/wiki/IEEE_754-2008#Rounding_rules&quot;&gt;IEEE 754 rounding modes&lt;/a&gt; to predict rounding errors, and correct them. Because of its low relative error compared to other rounding modes, round to nearest even digit (in the last place), is the default rounding mode of IEEE-754.</source>
+          <target state="translated">Поскольку аппаратное обеспечение, которое выполняет вычисления с плавающей запятой, должно давать результат только с ошибкой менее половины одного блока в последнем месте для одной операции, ошибка будет расти по сравнению с повторяющимися операциями, если их не наблюдать. Это является причиной того, что в вычислениях, которые требуют ограниченной ошибки, математики используют такие методы, как использование &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;четного&lt;/a&gt; округленного до ближайшего числа в последнем месте IEEE-754, поскольку с течением времени ошибки с большей вероятностью отменяют друг друга out и &lt;a href=&quot;http://en.wikipedia.org/wiki/Interval_arithmetic&quot;&gt;Interval Arithmetic в&lt;/a&gt; сочетании с вариациями &lt;a href=&quot;http://en.wikipedia.org/wiki/IEEE_754-2008#Rounding_rules&quot;&gt;режимов округления IEEE 754&lt;/a&gt; для прогнозирования ошибок округления и их исправления. Из-за его низкой относительной ошибки по сравнению с другими режимами округления, округление до ближайшей четной цифры (на последнем месте) является режимом округления по умолчанию IEEE-754.</target>
+        </trans-unit>
+        <trans-unit id="4264ec05ffbfc8a229c5efdd658651538e8f7d77" translate="yes" xml:space="preserve">
+          <source>Since the sum is not of the form 2&lt;sup&gt;n&lt;/sup&gt; * 1.{bbb} we increase the exponent by one and shift the decimal (&lt;em&gt;binary&lt;/em&gt;) point to get:</source>
+          <target state="translated">Поскольку сумма не имеет вид 2 &lt;sup&gt;n&lt;/sup&gt; * 1. {bbb}, мы увеличиваем показатель степени на единицу и сдвигаем десятичную ( &lt;em&gt;двоичную&lt;/em&gt; ) точку, чтобы получить:</target>
+        </trans-unit>
+        <trans-unit id="8fe15c45bd8b7e17a57d9e6c07bb827360bf9a63" translate="yes" xml:space="preserve">
+          <source>Since this is a language-agnostic question, it needs language-agnostic tools, such as a &lt;a href=&quot;http://www.exploringbinary.com/floating-point-converter/&quot;&gt;Decimal to Floating-Point Converter&lt;/a&gt;.</source>
+          <target state="translated">Поскольку это вопрос, не зависящий от языка, ему необходимы инструменты, не &lt;a href=&quot;http://www.exploringbinary.com/floating-point-converter/&quot;&gt;зависящие от&lt;/a&gt; языка, такие как преобразователь десятичных чисел в числа с плавающей точкой .</target>
+        </trans-unit>
+        <trans-unit id="5c9a3661043362988247e665a5ff40a889bcfbde" translate="yes" xml:space="preserve">
+          <source>Since this thread branched off a bit into a general discussion over current floating point implementations I'd add that there are projects on fixing their issues.</source>
+          <target state="translated">Поскольку этот поток немного разветвился в общую дискуссию о текущих реализациях с плавающей точкой,я бы добавил,что есть проекты по исправлению их проблем.</target>
+        </trans-unit>
+        <trans-unit id="8d7e45d0733415a3bee40ed99c227b8a4fcc55c9" translate="yes" xml:space="preserve">
+          <source>So in decimal, we can't represent &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;3&lt;/sub&gt;. Because base 10 includes 2 as a prime factor, every number we can write as a binary fraction &lt;em&gt;also&lt;/em&gt; can be written as a base 10 fraction. However, hardly anything we write as a base&lt;sub&gt;10&lt;/sub&gt; fraction is representable in binary. In the range from 0.01, 0.02, 0.03 ... 0.99, only &lt;em&gt;three&lt;/em&gt; numbers can be represented in our FP format: 0.25, 0.50, and 0.75, because they are 1/4, 1/2, and 3/4, all numbers with a prime factor using only the 2&lt;sup&gt;n&lt;/sup&gt; term.</source>
+          <target state="translated">Таким образом, в десятичном виде мы не можем представить &lt;sub&gt;1/3&lt;/sub&gt; . Поскольку основание 10 включает в себя 2 в качестве простого множителя, каждое число, которое мы можем записать в виде двоичной дроби, &lt;em&gt;также&lt;/em&gt; может быть записано в виде десятичной дроби. Однако вряд ли все, что мы пишем как дробь с основанием &lt;sub&gt;10,&lt;/sub&gt; представимо в двоичном виде. В диапазоне от 0,01, 0,02, 0,03 до 0,99 в нашем формате FP могут быть представлены только &lt;em&gt;три&lt;/em&gt; числа: 0,25, 0,50 и 0,75, поскольку они равны 1/4, 1/2 и 3/4, все числа с простым множителем, использующим только 2 &lt;sup&gt;n&lt;/sup&gt; член.</target>
+        </trans-unit>
+        <trans-unit id="f0b724f7d5e93bef7ba979ca2b6db6331ea8ad1c" translate="yes" xml:space="preserve">
+          <source>So it is a bit hard to represent such numbers exactly. Even if you specify this variable explicitly without any intermediate calculation.</source>
+          <target state="translated">Так что представить такие числа в точности немного сложно.Даже если вы указываете эту переменную явно без промежуточного вычисления.</target>
+        </trans-unit>
+        <trans-unit id="6d0912fcda429b68b9e0994a73b85abb7d8f001c" translate="yes" xml:space="preserve">
+          <source>So no: binary floating point numbers are not broken, they just happen to be as imperfect as every other base-N number system :)</source>
+          <target state="translated">Так что нет:двоичные числа с плавающей точкой не ломаются,они просто несовершенны,как и все остальные системы счисления base-N :)</target>
+        </trans-unit>
+        <trans-unit id="38123450cd5a2b687471df50e3e3541c514a8630" translate="yes" xml:space="preserve">
+          <source>So when you write &lt;code&gt;float x = 999...&lt;/code&gt;, the compiler will transform that number in a bit representation printed by the function &lt;code&gt;xx&lt;/code&gt; such that the sum printed by the function &lt;code&gt;yy&lt;/code&gt; be equal to the given number.</source>
+          <target state="translated">Поэтому, когда вы пишете число с &lt;code&gt;float x = 999...&lt;/code&gt; , компилятор преобразует это число в битовое представление, напечатанное функцией &lt;code&gt;xx&lt;/code&gt; , так, чтобы сумма, напечатанная функцией &lt;code&gt;yy&lt;/code&gt; , была равна данному числу.</target>
+        </trans-unit>
+        <trans-unit id="459b7f35474c9c93ae8fcd79868b828ff68a08ab" translate="yes" xml:space="preserve">
+          <source>So while every binary fraction can be written in decimal, the reverse is not true. And in fact most decimal fractions repeat in binary.</source>
+          <target state="translated">Таким образом,в то время как каждая двоичная фракция может быть записана в десятичной форме,обратное не верно.И на самом деле большинство десятичных дробей повторяются в двоичной системе.</target>
+        </trans-unit>
+        <trans-unit id="0f7d8fe8c6fbc3cfacb76978a4bcc7cb719ecf0a" translate="yes" xml:space="preserve">
+          <source>Some high level languages such as Python and Java come with tools to overcome binary floating point limitations. For example:</source>
+          <target state="translated">Некоторые языки высокого уровня,такие как Python и Java,поставляются с инструментами для преодоления бинарных ограничений с плавающей запятой.Например:</target>
+        </trans-unit>
+        <trans-unit id="791b5e413bc079e206d5f368f16ef6fac171632c" translate="yes" xml:space="preserve">
+          <source>Some statistics related to this famous double precision question.</source>
+          <target state="translated">Некоторые статистические данные,связанные с этим известным вопросом двойной точности.</target>
+        </trans-unit>
+        <trans-unit id="ec3fa9530fa475d8f36d0f7a062d084a2bb45c03" translate="yes" xml:space="preserve">
+          <source>Squeezing infinitely many real numbers into a finite number of bits requires an approximate representation. Although there are infinitely many integers, in most programs the result of integer computations can be stored in 32 bits. In contrast, given any fixed number of bits, most calculations with real numbers will produce quantities that cannot be exactly represented using that many bits. Therefore the result of a floating-point calculation must often be rounded in order to fit back into its finite representation. This rounding error is the characteristic feature of floating-point computation.</source>
+          <target state="translated">Сжатие бесконечного множества вещественных чисел в конечное число битов требует приблизительного представления.Хотя существует бесконечное множество целых чисел,в большинстве программ результат целочисленных вычислений может храниться в 32 битах.Напротив,при любом фиксированном количестве битов в большинстве вычислений с вещественными числами будут получаться величины,которые невозможно точно представить,используя столько битов.Поэтому результат вычислений с плавающей точкой часто должен округляться,чтобы вписаться в его конечное представление.Такая ошибка округления является характерной особенностью вычислений с плавающей точкой.</target>
+        </trans-unit>
+        <trans-unit id="c141085414843405292b7e3811baac9439881af4" translate="yes" xml:space="preserve">
+          <source>Take a look at &lt;a href=&quot;https://posithub.org/&quot;&gt;https://posithub.org/&lt;/a&gt; for example, which showcases a number type called posit (and its predecessor unum) that promises to offer better accuracy with fewer bits. If my understanding is correct, it also fixes the kind of problems in the question. Quite interesting project, the person behind it is a mathematician it &lt;a href=&quot;http://www.johngustafson.net/&quot;&gt;Dr. John Gustafson&lt;/a&gt;. The whole thing is open source, with many actual implementations in C/C++, Python, Julia and C# (&lt;a href=&quot;https://hastlayer.com/arithmetics&quot;&gt;https://hastlayer.com/arithmetics&lt;/a&gt;).</source>
+          <target state="translated">Взгляните, например, на &lt;a href=&quot;https://posithub.org/&quot;&gt;https://posithub.org/&lt;/a&gt; , который демонстрирует тип числа, называемый posit (и его предшественник unum), который обещает предложить лучшую точность с меньшим количеством битов. Если мое понимание верно, это также устраняет проблемы в этом вопросе. Довольно интересный проект, за ним стоит математик &lt;a href=&quot;http://www.johngustafson.net/&quot;&gt;доктор Джон Густафсон&lt;/a&gt; . Все это с открытым исходным кодом, со многими актуальными реализациями на C / C ++, Python, Julia и C # ( &lt;a href=&quot;https://hastlayer.com/arithmetics&quot;&gt;https://hastlayer.com/arithmetics&lt;/a&gt; ).</target>
+        </trans-unit>
+        <trans-unit id="f8995c49b038cd4a41a4b96a4e4e6ee914279da4" translate="yes" xml:space="preserve">
+          <source>That pizza cutter has very fine movements, and if you start with a whole pizza, then halve that, and continue halving the smallest slice each time, you can do the halving &lt;em&gt;53 times&lt;/em&gt; before the slice is too small for even its high-precision abilities. At that point, you can no longer halve that very thin slice, but must either include or exclude it as is.</source>
+          <target state="translated">Этот нож для пиццы имеет очень тонкие движения, и если вы начнете с целой пиццы, а затем разделите ее пополам и продолжите каждый раз делить на две части наименьший кусочек, вы можете сделать разделение пополам на &lt;em&gt;53 раза,&lt;/em&gt; прежде чем кусочек станет слишком маленьким даже для его высокоточных способностей , В этот момент вы больше не можете вдвое сократить этот очень тонкий срез, но должны либо включить, либо исключить его как есть.</target>
+        </trans-unit>
+        <trans-unit id="9521ab333644ac6fc5a178f9282365b2b72a2e19" translate="yes" xml:space="preserve">
+          <source>That's it.  The value of 999999999 is in fact</source>
+          <target state="translated">Вот так.Значение 999999999,на самом деле.</target>
+        </trans-unit>
+        <trans-unit id="37fd206bff80a7a4aad65b53473445ec4e6045d1" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;_Decimal32&lt;/code&gt;, &lt;code&gt;_Decimal64&lt;/code&gt; and &lt;code&gt;_Decimal128&lt;/code&gt; types might be available on your system (for example, &lt;a href=&quot;http://en.wikipedia.org/wiki/GNU_Compiler_Collection&quot;&gt;GCC&lt;/a&gt; supports them on &lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/Decimal-Float.html&quot;&gt;selected targets&lt;/a&gt;, but &lt;a href=&quot;http://en.wikipedia.org/wiki/Clang&quot;&gt;Clang&lt;/a&gt; does not support them on &lt;a href=&quot;http://en.wikipedia.org/wiki/OS_X&quot;&gt;OS&amp;nbsp;X&lt;/a&gt;).</source>
+          <target state="translated">&lt;code&gt;_Decimal32&lt;/code&gt; , &lt;code&gt;_Decimal64&lt;/code&gt; и &lt;code&gt;_Decimal128&lt;/code&gt; могут быть доступны в вашей системе (например, &lt;a href=&quot;http://en.wikipedia.org/wiki/GNU_Compiler_Collection&quot;&gt;GCC&lt;/a&gt; поддерживает их для &lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/Decimal-Float.html&quot;&gt;выбранных целей&lt;/a&gt; , но &lt;a href=&quot;http://en.wikipedia.org/wiki/Clang&quot;&gt;Clang&lt;/a&gt; не поддерживает их в &lt;a href=&quot;http://en.wikipedia.org/wiki/OS_X&quot;&gt;OS X&lt;/a&gt; ).</target>
+        </trans-unit>
+        <trans-unit id="b8283a2be83322370e2eff49b9d2031176a2a623" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;x&lt;/code&gt; in the question is a &lt;code&gt;float&lt;/code&gt; variable.</source>
+          <target state="translated">&lt;code&gt;x&lt;/code&gt; в вопросе является переменной с &lt;code&gt;float&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="b94d896b02c25729113497c920111423c44c9588" translate="yes" xml:space="preserve">
+          <source>The answer turns out to be that &lt;code&gt;cout&lt;/code&gt;'s default precision for &lt;code&gt;float&lt;/code&gt; is 6, so it rounds to 6 decimal digits.</source>
+          <target state="translated">Ответ оказывается, что точность &lt;code&gt;cout&lt;/code&gt; по умолчанию для &lt;code&gt;float&lt;/code&gt; равна 6, поэтому он округляется до 6 десятичных цифр.</target>
+        </trans-unit>
+        <trans-unit id="c1e1a2f14e6221a38e01e8ea88f8536a4a118f00" translate="yes" xml:space="preserve">
+          <source>The binary representation of 0.1 and 0.2 are the &lt;em&gt;most accurate&lt;/em&gt; representations of the numbers allowable by IEEE 754. The addition of these representation, due to the default rounding mode, results in a value which differs only in the least-significant-bit.</source>
+          <target state="translated">Двоичное представление 0,1 и 0,2 является &lt;em&gt;наиболее точным&lt;/em&gt; представлением чисел, допустимым IEEE 754. Добавление этого представления из-за режима округления по умолчанию приводит к значению, которое отличается только младшим значащим битом.</target>
+        </trans-unit>
+        <trans-unit id="dc3714342c0c169296b30554e4c7240280cd30d7" translate="yes" xml:space="preserve">
+          <source>The code prints the binary representation of floats in 3 separated groups</source>
+          <target state="translated">Код распечатывает двоичное представление флотов в 3-х разделенных группах</target>
+        </trans-unit>
+        <trans-unit id="cb9787d2beabdc5d5af158f30db785c40d9c4be1" translate="yes" xml:space="preserve">
+          <source>The constants &lt;code&gt;0.2&lt;/code&gt; and &lt;code&gt;0.3&lt;/code&gt; in your program will also be approximations to their true values.  It happens that the closest &lt;code&gt;double&lt;/code&gt; to &lt;code&gt;0.2&lt;/code&gt; is larger than the rational number &lt;code&gt;0.2&lt;/code&gt; but that the closest &lt;code&gt;double&lt;/code&gt; to &lt;code&gt;0.3&lt;/code&gt; is smaller than the rational number &lt;code&gt;0.3&lt;/code&gt;.  The sum of &lt;code&gt;0.1&lt;/code&gt; and &lt;code&gt;0.2&lt;/code&gt; winds up being larger than the rational number &lt;code&gt;0.3&lt;/code&gt; and hence disagreeing with the constant in your code.</source>
+          <target state="translated">Константы &lt;code&gt;0.2&lt;/code&gt; и &lt;code&gt;0.3&lt;/code&gt; в вашей программе также будут приблизительными к их истинным значениям. Бывает, что ближайший &lt;code&gt;double&lt;/code&gt; к &lt;code&gt;0.2&lt;/code&gt; больше рационального числа &lt;code&gt;0.2&lt;/code&gt; а ближайший &lt;code&gt;double&lt;/code&gt; к &lt;code&gt;0.3&lt;/code&gt; меньше рационального числа &lt;code&gt;0.3&lt;/code&gt; . Сумма &lt;code&gt;0.1&lt;/code&gt; и &lt;code&gt;0.2&lt;/code&gt; оказывается больше рационального числа &lt;code&gt;0.3&lt;/code&gt; и, следовательно, не согласуется с константой в вашем коде.</target>
+        </trans-unit>
+        <trans-unit id="aa4988ab132f87fefeb86fd1af7dafa6f7833b5a" translate="yes" xml:space="preserve">
+          <source>The debugger shows &lt;code&gt;9.89999962&lt;/code&gt;, the output of &lt;code&gt;cout&lt;/code&gt; operation is &lt;code&gt;9.9&lt;/code&gt;.</source>
+          <target state="translated">Отладчик показывает &lt;code&gt;9.89999962&lt;/code&gt; , вывод операции &lt;code&gt;cout&lt;/code&gt; - &lt;code&gt;9.9&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="217f6b6cf725f84a8efc542a480c3ef1cad6009d" translate="yes" xml:space="preserve">
+          <source>The difference is exactly 2&lt;sup&gt;-54&lt;/sup&gt;, which is ~5.5511151231258 &amp;times; 10&lt;sup&gt;-17&lt;/sup&gt; - insignificant (for many applications) when compared to the original values.</source>
+          <target state="translated">Разница составляет ровно 2 &lt;sup&gt;-54&lt;/sup&gt; , что составляет ~ 5.5511151231258 &amp;times; 10 &lt;sup&gt;-17&lt;/sup&gt; - незначительно (для многих приложений) по сравнению с исходными значениями.</target>
+        </trans-unit>
+        <trans-unit id="a43c42712f7d96522e8b0f31af33a5949c98d6ac" translate="yes" xml:space="preserve">
+          <source>The displayed sum is what inside the hardware.  The value you obtain by computing it depends on the scale you set.  I did set the &lt;code&gt;scale&lt;/code&gt; factor to 15.  Mathematically, with infinite precision, it seems it is 1,000,000,000.</source>
+          <target state="translated">Отображаемая сумма - это то, что находится внутри оборудования. Значение, которое вы получаете, вычисляя его, зависит от установленного вами масштаба. Я установил &lt;code&gt;scale&lt;/code&gt; коэффициент на 15. Математически, с бесконечной точностью, кажется, что это 1 000 000 000.</target>
+        </trans-unit>
+        <trans-unit id="a93b23943bc3274c1d99364225ccdea1ccea1185" translate="yes" xml:space="preserve">
+          <source>The exact situation is slightly more subtle because these numbers are typically stored in scientific notation.  So, for instance, instead of storing 1/10 as &lt;code&gt;0.0001100&lt;/code&gt; we may store it as something like &lt;code&gt;1.10011 * 2^-4&lt;/code&gt;, depending on how many bits we've allocated for the exponent and the mantissa.  This affects how many digits of precision you get for your calculations.</source>
+          <target state="translated">Точная ситуация немного сложнее, потому что эти цифры обычно хранятся в научной записи. Так, например, вместо того, чтобы хранить 1/10 как &lt;code&gt;0.0001100&lt;/code&gt; мы можем сохранить его как что-то вроде &lt;code&gt;1.10011 * 2^-4&lt;/code&gt; , в зависимости от того, сколько битов мы выделили для экспоненты и мантиссы. Это влияет на то, сколько знаков точности вы получите для своих расчетов.</target>
+        </trans-unit>
+        <trans-unit id="de1b6c0fe71a68b90695b392838785ffd95aa6e3" translate="yes" xml:space="preserve">
+          <source>The expression &lt;code&gt;0.1 + 0.2 === 0.3&lt;/code&gt; returns &lt;code&gt;false&lt;/code&gt; in JavaScript, but fortunately integer arithmetic in floating-point is exact, so decimal representation errors can be avoided by scaling.</source>
+          <target state="translated">Выражение &lt;code&gt;0.1 + 0.2 === 0.3&lt;/code&gt; возвращает &lt;code&gt;false&lt;/code&gt; в JavaScript, но, к счастью, целочисленная арифметика в числах с плавающей точкой является точной, поэтому ошибок масштабирования в десятичном представлении можно избежать.</target>
+        </trans-unit>
+        <trans-unit id="429fc3ca14c02cbeba6e5198aedde1d7338c24e1" translate="yes" xml:space="preserve">
+          <source>The first bit is the &lt;a href=&quot;http://en.wikipedia.org/wiki/Sign_bit&quot;&gt;sign bit&lt;/a&gt;: &lt;code&gt;1&lt;/code&gt; if the number is negative, &lt;code&gt;0&lt;/code&gt; otherwise&lt;sup&gt;1&lt;/sup&gt;.</source>
+          <target state="translated">Первый бит является &lt;a href=&quot;http://en.wikipedia.org/wiki/Sign_bit&quot;&gt;знаковым битом&lt;/a&gt; : &lt;code&gt;1&lt;/code&gt; , если число отрицательное, &lt;code&gt;0&lt;/code&gt; в противном случае &lt;sup&gt;1&lt;/sup&gt; .</target>
+        </trans-unit>
+        <trans-unit id="069711b8888abcc0778a98d9c8f87b1230fc0f79" translate="yes" xml:space="preserve">
+          <source>The kind of floating-point math that can be implemented in a digital computer necessarily uses an approximation of the real numbers and operations on them. (The &lt;em&gt;standard&lt;/em&gt; version runs to over fifty pages of documentation and has a committee to deal with its errata and further refinement.)</source>
+          <target state="translated">Тип математики с плавающей точкой, который может быть реализован в цифровом компьютере, обязательно использует приближение действительных чисел и операций с ними. ( &lt;em&gt;Стандартная&lt;/em&gt; версия содержит более пятидесяти страниц документации и имеет комитет, который занимается ее ошибками и дальнейшей доработкой.)</target>
+        </trans-unit>
+        <trans-unit id="5e8f519edb4b0ab1dc30849c2350c221631c53b5" translate="yes" xml:space="preserve">
+          <source>The main cause of the error in floating point division is the division algorithms used to calculate the quotient. Most computer systems calculate division using multiplication by an inverse, mainly in &lt;code&gt;Z=X/Y&lt;/code&gt;, &lt;code&gt;Z = X * (1/Y)&lt;/code&gt;.  A division is computed iteratively i.e. each cycle computes some bits of the quotient until the desired precision is reached, which for IEEE-754 is anything with an error of less than one unit in the last place. The table of reciprocals of Y (1/Y) is known as the quotient selection table (QST) in the slow division, and the size in bits of the quotient selection table is usually the width of the radix, or a number of bits of the quotient computed in each iteration,  plus a few guard bits. For the IEEE-754 standard, double precision (64-bit), it would be the size of the radix of the divider, plus a few guard bits k, where &lt;code&gt;k&amp;gt;=2&lt;/code&gt;. So for example, a typical Quotient Selection Table for a divider that computes 2 bits of the quotient at a time (radix 4) would be &lt;code&gt;2+2= 4&lt;/code&gt; bits (plus a few optional bits).</source>
+          <target state="translated">Основной причиной ошибки в делении с плавающей запятой являются алгоритмы деления, используемые для вычисления коэффициента. Большинство компьютерных систем вычисляют деление, используя умножение на обратное, главным образом в &lt;code&gt;Z=X/Y&lt;/code&gt; , &lt;code&gt;Z = X * (1/Y)&lt;/code&gt; . Деление вычисляется итеративно, то есть каждый цикл вычисляет некоторые биты частного до тех пор, пока не будет достигнута желаемая точность, которая для IEEE-754 равна нулю с ошибкой менее одной единицы в последнем месте. Таблица обратных значений Y (1 / Y) называется таблицей выбора коэффициентов (QST) при медленном делении, а размер в битах таблицы коэффициентов выбора обычно равен ширине радиуса или числу битов. коэффициент, вычисляемый в каждой итерации, плюс несколько защитных битов. Для стандарта IEEE-754 с двойной точностью (64-разрядная) это будет размер радиуса делителя плюс несколько защитных битов k, где &lt;code&gt;k&amp;gt;=2&lt;/code&gt; . Так, например, типичная таблица коэффициентов выбора для делителя, который вычисляет 2 бита частного за раз (основание 4), будет &lt;code&gt;2+2= 4&lt;/code&gt; бита (плюс несколько необязательных битов).</target>
+        </trans-unit>
+        <trans-unit id="98a67d42a6af5d2090dc3a5053a67f6ad508ac3c" translate="yes" xml:space="preserve">
+          <source>The next 11 bits are the &lt;a href=&quot;http://en.wikipedia.org/wiki/Exponentiation&quot;&gt;exponent&lt;/a&gt;, which is &lt;a href=&quot;http://en.wikipedia.org/wiki/Offset_binary&quot;&gt;offset&lt;/a&gt; by 1023. In other words, after reading the exponent bits from a double-precision number, 1023 must be subtracted to obtain the power of two.</source>
+          <target state="translated">Следующие 11 битов являются &lt;a href=&quot;http://en.wikipedia.org/wiki/Exponentiation&quot;&gt;показателем степени&lt;/a&gt; , который &lt;a href=&quot;http://en.wikipedia.org/wiki/Offset_binary&quot;&gt;смещен&lt;/a&gt; на 1023. Другими словами, после считывания показательных битов из числа с двойной точностью, 1023 необходимо вычесть, чтобы получить степень двойки.</target>
+        </trans-unit>
+        <trans-unit id="7bd1be1af16864d63e8e4e2dd6cd731c917703fa" translate="yes" xml:space="preserve">
+          <source>The problem comes with numbers that can be represented exactly in base 10, but not in base 2. Those numbers need to be rounded to their closest equivalent. Assuming the very common IEEE 64-bit floating point format, the closest number to &lt;code&gt;0.1&lt;/code&gt; is &lt;code&gt;3602879701896397 x 2⁻⁵⁵&lt;/code&gt;, and the closest number to &lt;code&gt;0.2&lt;/code&gt; is &lt;code&gt;7205759403792794 x 2⁻⁵⁵&lt;/code&gt;; adding them together results in &lt;code&gt;10808639105689191 x 2⁻⁵⁵&lt;/code&gt;, or an exact decimal value of &lt;code&gt;0.3000000000000000444089209850062616169452667236328125&lt;/code&gt;. Floating point numbers are generally rounded for display.</source>
+          <target state="translated">Проблема возникает с числами, которые могут быть представлены точно в базе 10, но не в базе 2. Эти числа должны быть округлены до их ближайшего эквивалента. Предполагая, что очень распространенный IEEE 64-битный формат с плавающей запятой, ближайший номер к &lt;code&gt;0.1&lt;/code&gt; равен &lt;code&gt;3602879701896397 x 2⁻⁵⁵&lt;/code&gt; , а ближайший к &lt;code&gt;0.2&lt;/code&gt; - &lt;code&gt;7205759403792794 x 2⁻⁵⁵&lt;/code&gt; ; их сложение приводит к &lt;code&gt;10808639105689191 x 2⁻⁵⁵&lt;/code&gt; или точному десятичному значению &lt;code&gt;0.3000000000000000444089209850062616169452667236328125&lt;/code&gt; . Числа с плавающей точкой обычно округляются для отображения.</target>
+        </trans-unit>
+        <trans-unit id="fc15ca46635e5191a5253547d7e67b8dfff4d9d3" translate="yes" xml:space="preserve">
+          <source>The real value assumed by a given 64-bit double-precision datum with a given biased exponent and a 52-bit fraction is</source>
+          <target state="translated">Вещественное значение,принятое заданным 64-битным значением двойной точности с заданным смещенным экспонентом и 52-битной дробью,равно</target>
+        </trans-unit>
+        <trans-unit id="6c48d666356850a34b3ed56a627c4baa4371b82e" translate="yes" xml:space="preserve">
+          <source>The remaining 52 bits are the &lt;a href=&quot;http://en.wikipedia.org/wiki/Significand&quot;&gt;significand&lt;/a&gt; (or mantissa). In the mantissa, an 'implied' &lt;code&gt;1.&lt;/code&gt; is always&lt;sup&gt;2&lt;/sup&gt; omitted since the most significant bit of any binary value is &lt;code&gt;1&lt;/code&gt;.</source>
+          <target state="translated">Остальные 52 бита являются &lt;a href=&quot;http://en.wikipedia.org/wiki/Significand&quot;&gt;значимыми&lt;/a&gt; (или мантиссами). В мантиссе &amp;laquo;подразумеваемый&amp;raquo; &lt;code&gt;1.&lt;/code&gt; всегда &lt;sup&gt;2&lt;/sup&gt; опускается, поскольку старший бит любого двоичного значения равен &lt;code&gt;1&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="c619f9812cce49ddbec068ed67d1e31806109213" translate="yes" xml:space="preserve">
+          <source>The situation for binary numbers with a fixed number of bits is exactly analogous. As real numbers, we have</source>
+          <target state="translated">Ситуация для двоичных чисел с фиксированным количеством битов точно аналогична.Как реальные числа,мы имеем</target>
+        </trans-unit>
+        <trans-unit id="410bde0aed8816e1edf6c276a59f933a4741b733" translate="yes" xml:space="preserve">
+          <source>The upshot is that because of these rounding errors you essentially never want to use == on floating-point numbers.  Instead, you can check if the absolute value of their difference is smaller than some fixed small number.</source>
+          <target state="translated">Вывод заключается в том,что из-за этих ошибок округления вы,по сути,никогда не захотите использовать ==на числах с плавающей точкой.Вместо этого можно проверить,не меньше ли абсолютного значения их разности,чем некоторое фиксированное малое число.</target>
+        </trans-unit>
+        <trans-unit id="c3f1ba633847618bf6fb98771611c1a94db112dc" translate="yes" xml:space="preserve">
+          <source>The whole issue really arises when people try to use FP for bean counting. It does work for that, but only if you stick to integral values, which kind of defeats the point of using it. &lt;em&gt;This is why we have all those decimal fraction software libraries.&lt;/em&gt;</source>
+          <target state="translated">Вся проблема действительно возникает, когда люди пытаются использовать FP для подсчета бобов. Это работает для этого, но только если вы придерживаетесь целочисленных значений, что побеждает смысл его использования. &lt;em&gt;Вот почему у нас есть все эти программные библиотеки десятичной дроби.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="d808cc026a4e31fe6892bd37e2a4afe8b2d0a1c2" translate="yes" xml:space="preserve">
+          <source>There are a majority of fractional numbers that cannot be represented precisely either in binary or in decimal or both. Result - A rounded up (but precise) number results.</source>
+          <target state="translated">Существует большинство дробных чисел,которые не могут быть точно представлены ни в двоичном,ни в десятичном,ни в обоих вариантах.Результат-результат округленного (но точного)числа.</target>
+        </trans-unit>
+        <trans-unit id="8cb434dd902f101ef41bbec16086530ea8d35b0d" translate="yes" xml:space="preserve">
+          <source>There are now 53 bits in the mantissa (the 53rd is in square brackets in the line above). The default &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_754-1985#Rounding_floating-point_numbers&quot;&gt;rounding mode&lt;/a&gt; for IEEE 754 is '&lt;em&gt;Round to Nearest&lt;/em&gt;' - i.e. if a number &lt;em&gt;x&lt;/em&gt; falls between two values &lt;em&gt;a&lt;/em&gt; and &lt;em&gt;b&lt;/em&gt;, the value where the least significant bit is zero is chosen.</source>
+          <target state="translated">Теперь в мантиссе 53 бита (53-я в квадратных скобках в строке выше). Режим &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_754-1985#Rounding_floating-point_numbers&quot;&gt;округления по&lt;/a&gt; умолчанию для IEEE 754 - &amp;laquo; &lt;em&gt;Округление до ближайшего&lt;/em&gt; &amp;raquo;, т. Е. Если число &lt;em&gt;x&lt;/em&gt; попадает между двумя значениями &lt;em&gt;a&lt;/em&gt; и &lt;em&gt;b&lt;/em&gt; , выбирается значение, где младший значащий бит равен нулю.</target>
+        </trans-unit>
+        <trans-unit id="8a5c579792acf30f381ea21b217f8f45dcbf2591" translate="yes" xml:space="preserve">
+          <source>This approximation is a mixture of approximations of different kinds, each of which can either be ignored or carefully accounted for due to its specific manner of deviation from exactitude. It also involves a number of explicit exceptional cases at both the hardware and software levels that most people walk right past while pretending not to notice.</source>
+          <target state="translated">Эта аппроксимация представляет собой смесь различных видов аппроксимаций,каждая из которых может быть либо проигнорирована,либо тщательно учтена из-за своего специфического способа отклонения от точности.Она также включает в себя ряд явных исключительных случаев,как на аппаратном,так и на программном уровне,которые большинство людей проходят мимо,делая вид,что не замечают.</target>
+        </trans-unit>
+        <trans-unit id="fa73b5a554bb0627f1ba0d745b75294785495d01" translate="yes" xml:space="preserve">
+          <source>Those weird numbers appear because computers use binary(base 2) number system for calculation purposes, while we use decimal(base 10).</source>
+          <target state="translated">Эти странные числа появляются потому,что компьютеры используют двоичную(базовую 2)систему счисления для вычислений,в то время как мы используем десятичную(базовую 10).</target>
+        </trans-unit>
+        <trans-unit id="5181ccaf1ee2c8739257e60d503eec3d8be665e6" translate="yes" xml:space="preserve">
+          <source>To add two numbers, the exponent needs to be the same, i.e.:</source>
+          <target state="translated">Чтобы добавить два числа,экспонент должен быть одним и тем же,т.е:</target>
+        </trans-unit>
+        <trans-unit id="debb7281577780d4752f82cdabebcd636735a6dd" translate="yes" xml:space="preserve">
+          <source>Truncating at eight decimal places, we get</source>
+          <target state="translated">Укорачивая с восьми знаков после запятой,мы получаем</target>
+        </trans-unit>
+        <trans-unit id="34cefea3b795b99cb53c238c42c45eca37fb7b1a" translate="yes" xml:space="preserve">
+          <source>Try to determine when errors occur and fix them with short if statements, it's not pretty but for some problems it is the only solution and this is one of them.</source>
+          <target state="translated">Попробуйте определить,когда возникают ошибки и исправить их короткими утверждениями if,это некрасиво,но для некоторых проблем это единственное решение,и это одно из них.</target>
+        </trans-unit>
+        <trans-unit id="ac5454415e7599b3fa86d8e5365f65ffab330f36" translate="yes" xml:space="preserve">
+          <source>Unfortunately 0.3 sits in a gap.</source>
+          <target state="translated">К сожалению,0.3 сидит в промежутке.</target>
+        </trans-unit>
+        <trans-unit id="1496a09c9b892ec5642faa5112f45b0d303e2129" translate="yes" xml:space="preserve">
+          <source>We can clearly see a breakpoint when &lt;code&gt;2**53+1&lt;/code&gt; - all works fine until &lt;code&gt;2**53&lt;/code&gt;.</source>
+          <target state="translated">Мы ясно видим точку останова, когда &lt;code&gt;2**53+1&lt;/code&gt; - все работает нормально до &lt;code&gt;2**53&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="a203fd809d4ad1cc5e5284e631e856900a9d174a" translate="yes" xml:space="preserve">
+          <source>We constantly give the FP hardware something that seems simple in base 10 but is a repeating fraction in base 2.</source>
+          <target state="translated">Мы постоянно даём FP аппаратуре то,что кажется простым в базе 10,но является повторяющейся фракцией в базе 2.</target>
+        </trans-unit>
+        <trans-unit id="90bb045aec56dda5712dc977aa590d5634f9d4f3" translate="yes" xml:space="preserve">
+          <source>What reciprocals are in the quotient selection table depend on the &lt;a href=&quot;http://en.wikipedia.org/wiki/Division_%28digital%29&quot;&gt;division method&lt;/a&gt;: slow division such as SRT division, or fast division such as Goldschmidt division; each entry is modified according to the division algorithm in an attempt to yield the lowest possible error. In any case, though, all reciprocals are &lt;em&gt;approximations&lt;/em&gt; of the actual reciprocal and introduce some element of error. Both slow division and fast division methods calculate the quotient iteratively, i.e. some number of bits of the quotient are calculated each step, then the result is subtracted from the dividend, and the divider repeats the steps until the error is less than one half of one unit in the last place. Slow division methods calculate a fixed number of digits of the quotient in each step and are usually less expensive to build, and fast division methods calculate a variable number of digits per step and are usually more expensive to build. The most important part of the division methods is that most of them rely upon repeated multiplication by an &lt;em&gt;approximation&lt;/em&gt; of a reciprocal, so they are prone to error.</source>
+          <target state="translated">То, какие обратные величины находятся в таблице коэффициентов выбора, зависит от &lt;a href=&quot;http://en.wikipedia.org/wiki/Division_%28digital%29&quot;&gt;метода деления&lt;/a&gt; : медленное деление, такое как деление СТО, или быстрое деление, такое как деление Гольдшмидта; каждая запись модифицируется в соответствии с алгоритмом деления в попытке получить минимально возможную ошибку. В любом случае, тем не менее, все обратные величины являются &lt;em&gt;приблизительными&lt;/em&gt; значениями действительной обратной величины и вносят некоторый элемент ошибки. И методы с медленным, и с быстрым делением вычисляют частное итеративно, т. Е. Определенное количество бит частного вычисляется на каждом шаге, затем результат вычитается из делимого, и делитель повторяет шаги, пока ошибка не станет меньше половины одного Блок на последнем месте. Методы медленного деления вычисляют фиксированное количество цифр отношения на каждом шаге и, как правило, менее затратны для построения, а методы быстрого деления вычисляют переменное количество цифр на шаг и, как правило, стоят дороже. Самая важная часть методов деления состоит в том, что большинство из них полагаются на повторное умножение на &lt;em&gt;приближение&lt;/em&gt; обратной величины, поэтому они подвержены ошибкам.</target>
+        </trans-unit>
+        <trans-unit id="9af6bd16dcbaed2435e0ad81259607a927b61175" translate="yes" xml:space="preserve">
+          <source>When adding all values (&lt;em&gt;a + b&lt;/em&gt;) using a step of 0.1 (from 0.1 to 100) we have &lt;strong&gt;~15% chance of precision error&lt;/strong&gt;. Note that the error could result in slightly bigger or smaller values.
+Here are some examples:</source>
+          <target state="translated">При сложении всех значений ( &lt;em&gt;a + b&lt;/em&gt; ) с шагом 0,1 (от 0,1 до 100) &lt;strong&gt;вероятность ошибки точности&lt;/strong&gt; составляет &lt;strong&gt;~ 15%&lt;/strong&gt; . Обратите внимание, что ошибка может привести к немного большим или меньшим значениям. Вот некоторые примеры:</target>
+        </trans-unit>
+        <trans-unit id="d692b99fcf87e7edff857861503848f5a6fb925e" translate="yes" xml:space="preserve">
+          <source>When subtracting all values (&lt;em&gt;a - b&lt;/em&gt; where &lt;em&gt;a &amp;gt; b&lt;/em&gt;) using a step of 0.1 (from 100 to 0.1) we have &lt;strong&gt;~34% chance of precision error&lt;/strong&gt;.
+Here are some examples:</source>
+          <target state="translated">При вычитании всех значений ( &lt;em&gt;a - b,&lt;/em&gt; где &lt;em&gt;a&amp;gt; b&lt;/em&gt; ) с шагом 0,1 (от 100 до 0,1) &lt;strong&gt;вероятность ошибки точности&lt;/strong&gt; составляет &lt;strong&gt;~ 34%&lt;/strong&gt; . Вот некоторые примеры:</target>
+        </trans-unit>
+        <trans-unit id="dad29e497d84d7d97e26e14b971f5527c35ad106" translate="yes" xml:space="preserve">
+          <source>When we write in decimal, every fraction (specifically, every &lt;em&gt;terminating decimal)&lt;/em&gt; is a rational number of the form</source>
+          <target state="translated">Когда мы пишем в десятичном виде, каждая дробь (в частности, каждый &lt;em&gt;завершающий десятичный)&lt;/em&gt; является рациональным числом вида</target>
+        </trans-unit>
+        <trans-unit id="cb40a8a2fcac0429d8dc60783983d5e8b6477e35" translate="yes" xml:space="preserve">
+          <source>When you convert .1 or 1/10 to base 2 (binary) you get a repeating pattern after the decimal point, just like trying to represent 1/3 in base 10.  The value is not exact, and therefore you can't do exact math with it using normal floating point methods.</source>
+          <target state="translated">При преобразовании .1 или 110 в базовую 2 (двоичную)вы получаете повторяющийся шаблон после запятой,так же,как и при попытке представить 13 в базе 10.Значение не является точным,и поэтому вы не можете с ним точно рассчитать,используя обычные методы с плавающей точкой.</target>
+        </trans-unit>
+        <trans-unit id="d4a55fd6552568d32b38f3c40d30b4c2bc522d88" translate="yes" xml:space="preserve">
+          <source>Why do these inaccuracies happen?</source>
+          <target state="translated">Почему такие неточности случаются?</target>
+        </trans-unit>
+        <trans-unit id="66881614284e2ba88332cf86401c026f9088c6ae" translate="yes" xml:space="preserve">
+          <source>Writing &lt;code&gt;0.1 + 0.2&lt;/code&gt; in a IEEE 754 binary representation (with colons separating the three parts) and comparing it to &lt;code&gt;0.3&lt;/code&gt;, this is (I've put the distinct bits in square brackets):</source>
+          <target state="translated">Запись &lt;code&gt;0.1 + 0.2&lt;/code&gt; в двоичном представлении IEEE 754 (с двоеточиями, разделяющими три части) и сравнение его с &lt;code&gt;0.3&lt;/code&gt; , это (я поместил отдельные биты в квадратные скобки):</target>
+        </trans-unit>
+        <trans-unit id="24836426f0d15e21562f81deb9ad1c23bb7dfa13" translate="yes" xml:space="preserve">
+          <source>Written in binary (with colons separating the three parts), the IEEE 754 representations of the values are:</source>
+          <target state="translated">Записано в двоичной форме (с двоеточиями,разделяющими три части),IEEE 754 представляет значения:</target>
+        </trans-unit>
+        <trans-unit id="ff2de9d5beb4dd93e3d80141b6eae1dadd2675ee" translate="yes" xml:space="preserve">
+          <source>You also need to replace equality tests with comparisons that allow some amount of tolerance, which means:</source>
+          <target state="translated">Также необходимо заменить тесты на равенство сравнениями,которые допускают определенный уровень толерантности,что означает:</target>
+        </trans-unit>
+        <trans-unit id="8a0f504f8802330bcd73041e639d23b64060aede" translate="yes" xml:space="preserve">
+          <source>You can also check with &lt;code&gt;bc&lt;/code&gt; that -3.14 is also perturbed.  Do not forget to set a &lt;code&gt;scale&lt;/code&gt; factor in &lt;code&gt;bc&lt;/code&gt;.</source>
+          <target state="translated">Вы также можете проверить с помощью &lt;code&gt;bc&lt;/code&gt; , что -3.14 также возмущен. Не забудьте установить &lt;code&gt;scale&lt;/code&gt; коэффициент в &lt;code&gt;bc&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="f8ff3e42e624592a61f01313f784d510526d8c60" translate="yes" xml:space="preserve">
+          <source>You can use it this way:</source>
+          <target state="translated">Ты можешь использовать его таким образом:</target>
+        </trans-unit>
+        <trans-unit id="d5be9a6ea2f8a6e508af9e23eaa095f999692ed9" translate="yes" xml:space="preserve">
+          <source>You might say let it be 10 in every situation then:</source>
+          <target state="translated">Тогда,можно сказать,пусть будет 10 в каждой ситуации:</target>
+        </trans-unit>
+        <trans-unit id="0b6f6f83839ca8e821efbbb35c9e1e1b3662a91c" translate="yes" xml:space="preserve">
+          <source>You've just stumbled on a number (3/10) that happens to be easy to represent with the decimal system, but doesn't fit the binary system. It goes both ways (to some small degree) as well: 1/16 is an ugly number in decimal (0.0625), but in binary it looks as neat as a 10,000th does in decimal (0.0001)** - if we were in the habit of using a base-2 number system in our daily lives, you'd even look at that number and instinctively understand you could arrive there by halving something, halving it again, and again and again.</source>
+          <target state="translated">Вы только что наткнулись на число (310),которое так получилось,что его легко представить в десятичной системе,но оно не подходит для двоичной системы.Оно также идет в обоих направлениях (в какой-то малой степени):116-уродливое число в десятичной системе (0.0625),но в двоичной системе оно выглядит так же аккуратно,как и 10-тысячная в десятичной (0.0001)**-если бы у нас была привычка использовать в повседневной жизни систему счисления base-2,вы бы даже посмотрели на это число и инстинктивно поняли,что можете прийти туда,разделив что-нибудь наполовину,разделив это наполовину,и снова,и снова,и снова.</target>
+        </trans-unit>
+        <trans-unit id="ceb4d2a3636a0cc03450ad3fabafb42a06fc9c6a" translate="yes" xml:space="preserve">
+          <source>Your expected result was &lt;code&gt;0.9&lt;/code&gt; it means you need a result with 1 digit precision in this case.
+So you should have used &lt;code&gt;(0.2 + 0.7).tofixed(1)&lt;/code&gt;
+but you can't just give a certain parameter to toFixed() since it depends on the given number, for instance</source>
+          <target state="translated">Ваш ожидаемый результат был &lt;code&gt;0.9&lt;/code&gt; это означает, что вам нужен результат с точностью до 1 цифры в этом случае. Таким образом, вы должны были использовать &lt;code&gt;(0.2 + 0.7).tofixed(1)&lt;/code&gt; но вы не можете просто дать определенный параметр toFixed (), так как он зависит от данного числа, например</target>
+        </trans-unit>
+        <trans-unit id="ff6c01e4df0a5ca8aefe0c40e07d5e4feff2abb7" translate="yes" xml:space="preserve">
+          <source>also note that Math.diff and Math.sum auto-detect the precision to use</source>
+          <target state="translated">также обратите внимание,что Math.diff и Math.sum автоматически определяют точность использования</target>
+        </trans-unit>
+        <trans-unit id="cffa50a32cb13a240d705317bcec65dd1f31b6ad" translate="yes" xml:space="preserve">
+          <source>and</source>
+          <target state="translated">and</target>
+        </trans-unit>
+        <trans-unit id="2cb33ad31829e0e19a43ec07f7a00e44d6300496" translate="yes" xml:space="preserve">
+          <source>and after that it prints a sum, that, when summed with enough precision, it will show the value that really exists in hardware.</source>
+          <target state="translated">и после этого печатает сумму,которая при достаточно точном суммировании будет показывать значение,реально существующее в аппаратном обеспечении.</target>
+        </trans-unit>
+        <trans-unit id="2733dda989a75e652de2d2c22f2c0c6c32aceeee" translate="yes" xml:space="preserve">
+          <source>and learn that this returns &lt;code&gt;false&lt;/code&gt;.  Why?  Well, as real numbers we have</source>
+          <target state="translated">и узнайте, что это возвращает &lt;code&gt;false&lt;/code&gt; . Почему? Ну, а реальные цифры у нас есть</target>
+        </trans-unit>
+        <trans-unit id="99e2d00acf76f763377d20265efa63bd193e4795" translate="yes" xml:space="preserve">
+          <source>in 64 bits:</source>
+          <target state="translated">в 64 бита:</target>
+        </trans-unit>
+        <trans-unit id="1758356db21759f7c5a0da9b4dd1db8fd6feab3f" translate="yes" xml:space="preserve">
+          <source>or</source>
+          <target state="translated">or</target>
+        </trans-unit>
+        <trans-unit id="efa695af86576c8d47d0d32b2fff911c6f442850" translate="yes" xml:space="preserve">
+          <source>the idea is to use Math instead operators to avoid float errors</source>
+          <target state="translated">идея заключается в том,чтобы использовать математику вместо операторов,чтобы избежать ошибок с плавающей точкой.</target>
+        </trans-unit>
+        <trans-unit id="0b18dc6530e72b787150c3516e6eb9959c507b37" translate="yes" xml:space="preserve">
+          <source>value = (-1)^s * (1.m&lt;sub&gt;51&lt;/sub&gt;m&lt;sub&gt;50&lt;/sub&gt;...m&lt;sub&gt;2&lt;/sub&gt;m&lt;sub&gt;1&lt;/sub&gt;m&lt;sub&gt;0&lt;/sub&gt;)&lt;sub&gt;2&lt;/sub&gt; * 2&lt;sup&gt;e-1023&lt;/sup&gt;</source>
+          <target state="translated">значение = (-1) ^ с * (1.м &lt;sub&gt;51&lt;/sub&gt; м &lt;sub&gt;50&lt;/sub&gt; ... м &lt;sub&gt;2&lt;/sub&gt; м &lt;sub&gt;1&lt;/sub&gt; м &lt;sub&gt;0&lt;/sub&gt; ) &lt;sub&gt;2&lt;/sub&gt; * 2 &lt;sup&gt;e-1023&lt;/sup&gt;</target>
+        </trans-unit>
+        <trans-unit id="d39bd96be9502f3ebbfa8d63484dcd808be51d4c" translate="yes" xml:space="preserve">
+          <source>where &lt;code&gt;abs&lt;/code&gt; is the absolute value. &lt;code&gt;myToleranceValue&lt;/code&gt; needs to be chosen for your particular application - and it will have a lot to do with how much &quot;wiggle room&quot; you are prepared to allow, and what the largest number you are going to be comparing may be (due to loss of precision issues). Beware of &quot;epsilon&quot; style constants in your language of choice. These are &lt;em&gt;not&lt;/em&gt; to be used as tolerance values.</source>
+          <target state="translated">где &lt;code&gt;abs&lt;/code&gt; - абсолютное значение &lt;code&gt;myToleranceValue&lt;/code&gt; должен быть выбран для вашего конкретного приложения - и он будет во многом зависеть от того, сколько &amp;laquo;места для маневра&amp;raquo; вы готовы предоставить, и какое наибольшее число вы собираетесь сравнивать (из-за потери точности вопросы). Остерегайтесь констант стиля &amp;laquo;эпсилон&amp;raquo; на вашем языке. Они &lt;em&gt;не&lt;/em&gt; должны использоваться в качестве значений допуска.</target>
+        </trans-unit>
+        <trans-unit id="636e0e25e23956183d01befb3188bbeda7dd79ab" translate="yes" xml:space="preserve">
+          <source>whereas the binary representation of 0.3 is:</source>
+          <target state="translated">в то время как двоичное представление 0,3 равно:</target>
+        </trans-unit>
+        <trans-unit id="a54c3657d718a97760530877785faf3f0af60915" translate="yes" xml:space="preserve">
+          <source>which is, of course, different from &lt;code&gt;1.00000000&lt;/code&gt; by exactly &lt;code&gt;0.00000001&lt;/code&gt;.</source>
+          <target state="translated">что, конечно, отличается от &lt;code&gt;1.00000000&lt;/code&gt; ровно на &lt;code&gt;0.00000001&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="df6fbb7d0f8bd941c592564fd908669aafff2758" translate="yes" xml:space="preserve">
+          <source>which only differs from the binary representation of the sum of 0.1 and 0.2 by 2&lt;sup&gt;-54&lt;/sup&gt;.</source>
+          <target state="translated">который отличается только от двоичного представления суммы 0,1 и 0,2 на 2 &lt;sup&gt;-54&lt;/sup&gt; .</target>
+        </trans-unit>
+        <trans-unit id="054a411e4463eeebff1fb0a84361000a6d7e65a7" translate="yes" xml:space="preserve">
+          <source>which, truncated to seven bits, is &lt;code&gt;0.0100110&lt;/code&gt;, and these differ by exactly &lt;code&gt;0.0000001&lt;/code&gt;.</source>
+          <target state="translated">который, усеченный до семи битов, равен &lt;code&gt;0.0100110&lt;/code&gt; , и они отличаются точно на &lt;code&gt;0.0000001&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="8b30c99097f9b6a416b08022ec4f86195a695b8b" translate="yes" xml:space="preserve">
+          <source>while on the other hand,</source>
+          <target state="translated">с другой стороны,</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

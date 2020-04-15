@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/3177733">
+    <body>
+      <group id="3177733">
+        <trans-unit id="7c55e13b3a5960f2e06f74f020b8ae99bd6171bc" translate="yes" xml:space="preserve">
+          <source>(Even if you end up using the java in your JSP code, which I hope not, you can encapsulate that code in a tag)</source>
+          <target state="translated">(당신이 JSP 코드에서 java를 사용하더라도 결국 태그를 사용하여 해당 코드를 캡슐화 할 수 있습니다)</target>
+        </trans-unit>
+        <trans-unit id="abecfaae04b845d07cad8db2dacb71965f0897c5" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://jstl.java.net/&quot;&gt;JSTL&lt;/a&gt; offers tags for conditionals, loops, sets, gets, etc. For example:</source>
+          <target state="translated">&lt;a href=&quot;https://jstl.java.net/&quot;&gt;JSTL&lt;/a&gt; 은 조건부, 루프, 세트, ​​가져 오기 등에 대한 태그를 제공합니다. 예를 들면 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="ff137f765374ad5666aafc75629eb2025b1372d0" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;&amp;lt;t:base&amp;gt;&lt;/code&gt; is used to specify the master page you want to use (which is base.tag at this moment). All the content inside the tag &lt;code&gt;&amp;lt;jsp:body&amp;gt;&lt;/code&gt; here will replace the &lt;code&gt;&amp;lt;jsp:doBody/&amp;gt;&lt;/code&gt; on your master page. Your child page can also include any tag lib and you can use it normally like the other mentioned. However, if you use any scriptlet code here (&lt;code&gt;&amp;lt;%= request.getParameter(&quot;name&quot;) %&amp;gt;&lt;/code&gt; ...) and try to run this page, you will get a &lt;code&gt;JasperException because  Scripting elements ( &amp;amp;lt;%!, &amp;amp;lt;jsp:declaration, &amp;amp;lt;%=, &amp;amp;lt;jsp:expression, &amp;amp;lt;%, &amp;amp;lt;jsp:scriptlet ) are disallowed here&lt;/code&gt;. Therefore, there is no way other people can include the evil code into the jsp file</source>
+          <target state="translated">&lt;code&gt;&amp;lt;t:base&amp;gt;&lt;/code&gt; 는 사용하려는 마스터 페이지 (현재는 base.tag)를 지정하는 데 사용됩니다. &lt;code&gt;&amp;lt;jsp:body&amp;gt;&lt;/code&gt; 태그 안의 모든 내용이 마스터 페이지의 &lt;code&gt;&amp;lt;jsp:doBody/&amp;gt;&lt;/code&gt; 를 대체합니다. 자식 페이지에는 모든 태그 lib가 포함될 수 있으며 다른 언급 된 것처럼 정상적으로 사용할 수 있습니다. 그러나 여기에서 스크립틀릿 코드 ( &lt;code&gt;&amp;lt;%= request.getParameter(&quot;name&quot;) %&amp;gt;&lt;/code&gt; ...)를 사용하고이 페이지를 실행하려고하면 &lt;code&gt;JasperException because Scripting elements ( &amp;amp;lt;%!, &amp;amp;lt;jsp:declaration, &amp;amp;lt;%=, &amp;amp;lt;jsp:expression, &amp;amp;lt;%, &amp;amp;lt;jsp:scriptlet ) are disallowed here&lt;/code&gt; . 따라서 다른 사람들이 악의적 인 코드를 jsp 파일에 포함시킬 수있는 방법은 없습니다</target>
+        </trans-unit>
+        <trans-unit id="242c95b3bd4d1500098c2c644b1eabdcae7d762c" translate="yes" xml:space="preserve">
+          <source>&lt;strike&gt;Sun&lt;/strike&gt; Oracle itself also recommends in the &lt;a href=&quot;http://www.oracle.com/technetwork/articles/javase/code-convention-138726.html&quot;&gt;JSP coding conventions&lt;/a&gt; to avoid use of &lt;em&gt;scriptlets&lt;/em&gt; whenever the same functionality is possible by (tag) classes. Here are several cites of relevance:</source>
+          <target state="translated">또한 &lt;strike&gt;Sun&lt;/strike&gt; Oracle 자체는 (태그) 클래스에서 동일한 기능이 가능할 때마다 &lt;em&gt;스크립틀릿을&lt;/em&gt; 사용하지 않도록 &lt;a href=&quot;http://www.oracle.com/technetwork/articles/javase/code-convention-138726.html&quot;&gt;JSP 코딩 규칙&lt;/a&gt; 에서 권장합니다. 여기 몇 가지 관련성이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="47f6077a2de453659dd80148f677647a78ff3cd4" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;How to avoid Java code in JSP files?&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;JSP 파일에서 Java 코드를 피하는 방법은 무엇입니까?&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6d2ca64168746e18166ffea7b50fc32ade312a97" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;As a Safeguard: Disable Scriptlets For Good&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;보호 수단으로 : 스크립틀릿 사용 안 함&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="53ccd4bb22efbe7051e3c1b669e4135918583cc1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Calling this page from your controller:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;컨트롤러에서이 페이지를 호출합니다.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="52ce212588f872e8f16ad1c8207593f87ae8c869" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Create a master page called base.tag under your WEB-INF/tags with the following content&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;WEB-INF / tags 아래에 다음 내용으로 base.tag라는 마스터 페이지를 만듭니다.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="133419c9245e3989fa760d65ab99f57c23aa9d14" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Create child page (child.jsp) in your WebContent folder:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;WebContent 폴더에 하위 페이지 (child.jsp)를 작성하십시오.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4579c5bafd0c96bf4fe66f646911268bde67d154" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Debuggability:&lt;/strong&gt; if scriptlet throws an exception halfway, all you get is a blank page.</source>
+          <target state="translated">&lt;strong&gt;디버깅 가능성 :&lt;/strong&gt; 스크립틀릿에서 예외가 절반 만 발생하면 빈 페이지 만 있으면됩니다.</target>
+        </trans-unit>
+        <trans-unit id="3a6e7652b38b97d5a8c32f449fb30606c438c17f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Facelets&lt;/strong&gt; is the first non JSP page declaration language designed for &lt;strong&gt;JSF (Java Server Faces)&lt;/strong&gt; which provided a simpler and more powerful programming model to JSF developers as compare to JSP. It resolves different issues occurs in JSP for web applications development.</source>
+          <target state="translated">&lt;strong&gt;Facelets&lt;/strong&gt; 는 &lt;strong&gt;JSF (Java Server Faces)&lt;/strong&gt; 를 위해 설계된 첫 번째 비 JSP 페이지 선언 언어로 JSP와 비교하여 JSF 개발자에게보다 단순하고 강력한 프로그래밍 모델을 제공했습니다. 웹 애플리케이션 개발을 위해 JSP에서 발생하는 다양한 문제를 해결합니다.</target>
+        </trans-unit>
+        <trans-unit id="1e5ef583aedb2fa877df3b22256a022618dc6f86" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;How to replace &lt;em&gt;scriptlets&lt;/em&gt; entirely depends on the sole purpose of the code/logic. More than often this code is to be placed in a fullworthy Java class:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;스크립틀릿&lt;/em&gt; 을 교체하는 방법은 전적으로 코드 / 로직의 목적에 달려 있습니다.&lt;/strong&gt; &lt;strong&gt;이 코드는 자주 Java 클래스에 배치되어야합니다.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5d05d31648416deb82a36f230d878a6d38196b83" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;If somebody is really against programming in more languages than one&lt;/strong&gt;, I suggest GWT, theoretically you can avoid all the JS and HTML elements, because Google Toolkit transforms all the client and shared code to JS, you won't have problem with them, so you have a webservice without coding in any other languages. Even you can use some default CSS from somewhere as it is given by extensions (smartGWT or Vaadin). You don't need to learn dozens of annotations.</source>
+          <target state="translated">&lt;strong&gt;누군가가 실제로 둘 이상의 언어로 프로그래밍하는 것에 반대하는 경우&lt;/strong&gt; GWT를 제안합니다. 이론적으로 모든 툴킷과 HTML 요소를 피할 수 있습니다 .Google 툴킷은 모든 클라이언트 및 공유 코드를 JS로 변환하기 때문에 문제가 없으므로 다른 언어로 코딩하지 않고 웹 서비스가 있습니다. 확장 (smartGWT 또는 Vaadin)으로 제공되는 어딘가에서 일부 기본 CSS를 사용할 수도 있습니다. 수십 개의 주석을 배울 필요가 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="3d3ad886a6c5ab3968b4242b8a06f60d6e3bd987" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Learn to customize and write your own tags using JSTL&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;JSTL을 사용하여 자신의 태그를 사용자 정의하고 작성하는 방법 배우기&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6356f55f28c4b437234bb509c95bcd79233fc2fd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Maintainability:&lt;/strong&gt; per saldo more time is needed to maintain mingled/cluttered/duplicated code logic.</source>
+          <target state="translated">&lt;strong&gt;유지 보수성 :&lt;/strong&gt; 혼합 / 정렬 / 복제 된 코드 로직을 유지 보수하려면 Saldo 당 더 많은 시간이 필요합니다.</target>
+        </trans-unit>
+        <trans-unit id="12d108e7baf9032b2bc0679febce2431845aacf3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;OO-ability:&lt;/strong&gt; you can't make use of inheritance/composition.</source>
+          <target state="translated">&lt;strong&gt;OO 기능 :&lt;/strong&gt; 상속 / 구성을 사용할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="a23f822b1d4a14c1f8d45091a579788beb963af1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Replaceability:&lt;/strong&gt; you can't make scriptlets abstract.</source>
+          <target state="translated">&lt;strong&gt;교체 성 :&lt;/strong&gt; 스크립틀릿을 추상적으로 만들 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="dd6c632d066ccf0fc385be85c35d9172a5b13eb2" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Reusability:&lt;/strong&gt; you can't reuse scriptlets.</source>
+          <target state="translated">&lt;strong&gt;재사용 성 :&lt;/strong&gt; 스크립틀릿을 재사용 할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="dab8261ed76aa890287247357fd6bbed2684e5b4" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Tag File&lt;/strong&gt;  are so easy developed as you did not need to restart the server when changing them, like JSP files. This makes them easy for development.</source>
+          <target state="translated">&lt;strong&gt;태그 파일&lt;/strong&gt; 은 JSP 파일과 같이 변경시 서버를 다시 시작할 필요가 없으므로 매우 쉽게 개발할 수 있습니다. 이를 통해 개발이 쉬워집니다.</target>
+        </trans-unit>
+        <trans-unit id="3814b9b9f2dbea323401f0b749d1cea78b81d65c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Technically, JSP are all converted to Servlets during runtime&lt;/strong&gt;. JSP was initially created for the purpose of the decoupling the business logic and the design logic, following the MVC pattern. So JSP are technically all java codes during runtime. But to answer the question, Tag Libraries are usually used for applying logic (removing Java codes) to JSP pages.</source>
+          <target state="translated">&lt;strong&gt;기술적으로 JSP는 런타임 동안 모두 서블릿으로 변환됩니다&lt;/strong&gt; . JSP는 처음에 MVC 패턴에 따라 비즈니스 로직과 디자인 로직을 분리하기 위해 만들어졌습니다. 따라서 JSP는 런타임 동안 기술적으로 모든 Java 코드입니다. 그러나 질문에 대답하기 위해 태그 라이브러리는 일반적으로 JSP 페이지에 논리 (Java 코드 제거)를 적용하는 데 사용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="dca32e18a3b2d52aac3677e7d928e29f14de3e4c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Testability:&lt;/strong&gt; scriptlets are not unit-testable.</source>
+          <target state="translated">&lt;strong&gt;테스트 가능성 :&lt;/strong&gt; 스크립틀릿은 단위 테스트가 불가능합니다.</target>
+        </trans-unit>
+        <trans-unit id="9137dff06cb373f59845928934fa1e992525c9e8" translate="yes" xml:space="preserve">
+          <source>A neat idea from the Python world are &lt;em&gt;Template attribute languages&lt;/em&gt;; TAL was introduced by Zope (therefore a.k.a. &quot;Zope Page Templates&quot;, ZPT) and is a standard, with implementations in PHP, XSLT and Java as well (I have used the Python/Zope and PHP incarnations). In this class of templating languages, one above example could look like this:</source>
+          <target state="translated">파이썬 세계의 깔끔한 아이디어는 &lt;em&gt;템플릿 속성 언어입니다&lt;/em&gt; . TAL은 Zope (따라서 &quot;Zope Page Templates&quot;, ZPT)에 의해 도입되었으며 PHP, XSLT 및 Java에서도 구현 된 표준입니다 (Python / Zope 및 PHP 화신을 사용했습니다). 이 클래스의 템플릿 언어에서 위의 예제 중 하나는 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="cfc5709ae32ab041336687f1e6512f200a0844a5" translate="yes" xml:space="preserve">
+          <source>Also, take note that it is not a best practice to do business logic in the view layer, you should perform your business logics in the Service layer, 
+and pass the output result to your views through a Controller.</source>
+          <target state="translated">또한 뷰 계층에서 비즈니스 로직을 수행하는 것이 가장 좋은 방법은 아니며 서비스 계층에서 비즈니스 로직을 수행하고 출력 결과를 Controller를 통해 뷰에 전달해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="f68d36db9b907801a9eb6798b78a997685810586" translate="yes" xml:space="preserve">
+          <source>Also, you can read the tag body easily</source>
+          <target state="translated">또한 태그 본문을 쉽게 읽을 수 있습니다</target>
+        </trans-unit>
+        <trans-unit id="3287880bd50b1fa49f174a085295b57ed1de703b" translate="yes" xml:space="preserve">
+          <source>And certainly stay away of filters and pre and post processing, otherwise you may deal with support/debugging difficulties since you always do not know where the variable gets the value.</source>
+          <target state="translated">그리고 필터와 사전 및 사후 처리를 피하십시오. 그렇지 않으면 변수가 값을 얻는 위치를 항상 알지 못하므로 지원 / 디버깅 문제를 해결할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="460633aa80eeb1c8f4d8d4d2a283b2cd7c2ea331" translate="yes" xml:space="preserve">
+          <source>And of course many fellow programmers hereby described or recommended several other solutions. GWT is for people who really don't want to deal with the web part or to minimalize it.</source>
+          <target state="translated">그리고 물론 많은 동료 프로그래머들이 몇 가지 다른 솔루션을 설명하거나 추천했습니다. GWT는 웹 파트를 다루거나 최소화하고 싶지 않은 사람들을위한 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="293d82cb47fc75524d2ec23540d9f51807688ce8" translate="yes" xml:space="preserve">
+          <source>As &lt;a href=&quot;https://stackoverflow.com/questions/2188706/how-to-avoid-using-scriptlets-in-my-jsp-page&quot;&gt;another question&lt;/a&gt; is discussing, you can and always should disable scriptlets in your &lt;code&gt;web.xml&lt;/code&gt; web application descriptor.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/questions/2188706/how-to-avoid-using-scriptlets-in-my-jsp-page&quot;&gt;또 다른 질문&lt;/a&gt; 으로, &lt;code&gt;web.xml&lt;/code&gt; 웹 응용 프로그램 설명자에서 스크립틀릿을 비활성화 할 수 있으며 항상 비활성화해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="17bc0d434c97d066ec7b78aa4ac9d4cbc140117e" translate="yes" xml:space="preserve">
+          <source>As many answers says, use JSTL or create your own custom tags. &lt;a href=&quot;http://www.journaldev.com/2099/jsp-custom-tags-example-tutorial&quot;&gt;Here&lt;/a&gt; is good explanation about creating custom tags</source>
+          <target state="translated">많은 답변에서 알 수 있듯이 JSTL을 사용하거나 사용자 정의 태그를 작성하십시오. &lt;a href=&quot;http://www.journaldev.com/2099/jsp-custom-tags-example-tutorial&quot;&gt;다음&lt;/a&gt; 은 맞춤 태그 생성에 대한 좋은 설명입니다.</target>
+        </trans-unit>
+        <trans-unit id="dabf707c8c01e32501275ce0d2adb33afa1729af" translate="yes" xml:space="preserve">
+          <source>Basic MVC example with JSP, Servlet and JDBC</source>
+          <target state="translated">JSP, 서블릿 및 JDBC를 사용한 기본 MVC 예제</target>
+        </trans-unit>
+        <trans-unit id="d202594c5797a73fde182a112e408d80d5a47ff2" translate="yes" xml:space="preserve">
+          <source>Believe me, this will change the way you design</source>
+          <target state="translated">날 믿어, 이것이 당신의 디자인 방식을 바꿀 것입니다</target>
+        </trans-unit>
+        <trans-unit id="d841cf905ba57a2e5b758d8b5de5a5d1feb0d038" translate="yes" xml:space="preserve">
+          <source>By using JSTL tags together with EL expression you can avoid this. Put the following things in your jsp page:</source>
+          <target state="translated">EL 표현식과 함께 JSTL 태그를 사용하면이를 피할 수 있습니다. jsp 페이지에 다음 사항을 입력하십시오.</target>
+        </trans-unit>
+        <trans-unit id="e2b0a0be2c4be101f37fd815c88cbaf5f6d93468" translate="yes" xml:space="preserve">
+          <source>Custom Tags- you can define your own tags to use.</source>
+          <target state="translated">사용자 정의 태그-사용할 고유 태그를 정의 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="2700221f2d233bc435b4aecae915d8f6c4b5eb5e" translate="yes" xml:space="preserve">
+          <source>Design patterns in Java web applications</source>
+          <target state="translated">Java 웹 애플리케이션의 디자인 패턴</target>
+        </trans-unit>
+        <trans-unit id="4c492217496c5720801e5ab32fb88c56ac52c16a" translate="yes" xml:space="preserve">
+          <source>EL</source>
+          <target state="translated">EL</target>
+        </trans-unit>
+        <trans-unit id="9028f357a088f9e3949a25480f3a1fcc603f5d51" translate="yes" xml:space="preserve">
+          <source>EL expressions</source>
+          <target state="translated">EL 표현</target>
+        </trans-unit>
+        <trans-unit id="ff837528477860274cafad4c44c9ba8002de71b3" translate="yes" xml:space="preserve">
+          <source>Even if you use a framework like Struts 2, which have lots of good tags, you may find that having your own tags can reduce your code a lot. You can pass your tag parameters to struts and this way customize your framework tag.</source>
+          <target state="translated">좋은 태그가 많은 Struts 2와 같은 프레임 워크를 사용하더라도 자체 태그를 사용하면 코드가 많이 줄어들 수 있습니다. 태그 매개 변수를 스트럿에 전달하면 프레임 워크 태그를 사용자 정의 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="e5f2929765178283974ec5b0f56d6dbb2d488cb2" translate="yes" xml:space="preserve">
+          <source>Example from &lt;em&gt;java2s&lt;/em&gt;,</source>
+          <target state="translated">&lt;em&gt;java2s의&lt;/em&gt; 예제</target>
+        </trans-unit>
+        <trans-unit id="ab4ad92cb1a1e4761a3bf91a6bffc62b4148df71" translate="yes" xml:space="preserve">
+          <source>Experience has shown that JSP's have some shortcomings, one of them being hard to avoid mixing markup with actual code.</source>
+          <target state="translated">경험에 따르면 JSP에는 몇 가지 단점이 있으며 그 중 하나는 실제 코드와 마크 업을 혼합하는 것을 피하기 어렵습니다.</target>
+        </trans-unit>
+        <trans-unit id="1c7a52dfd00e05d100e7009189a810dae152a373" translate="yes" xml:space="preserve">
+          <source>Expression Language</source>
+          <target state="translated">표현 언어</target>
+        </trans-unit>
+        <trans-unit id="335819d77fcc9ef286b4eee5c8cbe73bf3f8577e" translate="yes" xml:space="preserve">
+          <source>Fetch those values and parameters within your JSP using JSTL/Taglib</source>
+          <target state="translated">JSTL / Taglib을 사용하여 JSP 내에서 해당 값과 매개 변수를 가져옵니다.</target>
+        </trans-unit>
+        <trans-unit id="059c3e8cce263b2945a18ac90b2637e10a8026b1" translate="yes" xml:space="preserve">
+          <source>For example:</source>
+          <target state="translated">예를 들면 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="4145625051f942611b763d861ab36407bba4c90f" translate="yes" xml:space="preserve">
+          <source>From JSP 1.2 Specification, it is highly recommended that the JSP Standard Tag Library  (JSTL) be used in your web application to help &lt;strong&gt;reduce the need for JSP scriptlets&lt;/strong&gt; in your pages. Pages that use JSTL are, in general, easier to read and maintain.</source>
+          <target state="translated">JSP 1.2 스펙에서 웹 애플리케이션에 JSP 표준 태그 라이브러리 (JSTL)를 사용하여 페이지 &lt;strong&gt;에 JSP 스크립틀릿의 필요성을 줄이는&lt;/strong&gt; 것이 좋습니다. JSTL을 사용하는 페이지는 일반적으로 읽고 유지 관리하기가 더 쉽습니다.</target>
+        </trans-unit>
+        <trans-unit id="55fc2f63b02dc3aa67ac5d8c473a54ee6c3335d5" translate="yes" xml:space="preserve">
+          <source>Hidden features of JSP/Servlet</source>
+          <target state="translated">JSP / 서블릿의 숨겨진 기능</target>
+        </trans-unit>
+        <trans-unit id="abbb3de6a2693017a80aac6e69fc528bd68e92f8" translate="yes" xml:space="preserve">
+          <source>How does Servlet, ServletContext, HttpSession and HttpServletRequest/Response work?</source>
+          <target state="translated">Servlet, ServletContext, HttpSession 및 HttpServletRequest / Response는 어떻게 작동합니까?</target>
+        </trans-unit>
+        <trans-unit id="fc6304fc1da24f7332456c2ed85a43e9be667bb1" translate="yes" xml:space="preserve">
+          <source>How to avoid Java code in JSP files</source>
+          <target state="translated">JSP 파일에서 Java 코드를 피하는 방법</target>
+        </trans-unit>
+        <trans-unit id="541f1c70d2cfacfa1fae673b114a9c7b5e3c9ca3" translate="yes" xml:space="preserve">
+          <source>I don't know very much about the &lt;a href=&quot;http://sourceforge.net/projects/javazpt/&quot;&gt;Java implementation&lt;/a&gt;, though.</source>
+          <target state="translated">그래도 &lt;a href=&quot;http://sourceforge.net/projects/javazpt/&quot;&gt;Java 구현&lt;/a&gt; 에 대해서는별로 알지 못합니다.</target>
+        </trans-unit>
+        <trans-unit id="209fa42a6db8dfeb3eb4eb056dd10ed5ad682f31" translate="yes" xml:space="preserve">
+          <source>I have more than 20 years in programming, most of the projects fail before the sextet: Reusability Replaceability OO-ability Debuggability Testability Maintainability is even needed. Other projects, run by people who only cared about functionality, were extremely successful.  Also, stiff object structure, implemented too early in the project, makes the code unable to be adapted to the drastic changes in the specifications (aka agile).</source>
+          <target state="translated">저는 프로그래밍 분야에서 20 년이 넘는 시간을 보냈는데 대부분의 프로젝트가 섹스 테트 이전에 실패했습니다. 재사용 성 대체 가능성 OO- 능 디버깅 가능성 테스트 가능성 유지 보수도 필요합니다. 기능에만 관심이있는 사람들이 운영하는 다른 프로젝트는 매우 성공적이었습니다. 또한 프로젝트에서 너무 일찍 구현 된 견고한 객체 구조로 인해 사양의 급격한 변화 (일명 민첩)에 코드를 적용 할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="1910500d8ffa90d4b15a55788777f83ecb6b6468" translate="yes" xml:space="preserve">
+          <source>I would always do that in order to prevent any developer adding scriptlets, especially in bigger companies where you will lose overview sooner or later. The &lt;code&gt;web.xml&lt;/code&gt; settings look like this:</source>
+          <target state="translated">나는 개발자가 스크립틀릿을 추가하는 것을 방지하기 위해, 특히 조만간 개요를 잃을 수있는 대기업에서 항상 그렇게 할 것입니다. &lt;code&gt;web.xml&lt;/code&gt; 설정은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="c8ea5c5d6cf46dab0bf146f77bb73a4cf420ef49" translate="yes" xml:space="preserve">
+          <source>I'm new to Java EE and I know that something like the following three lines</source>
+          <target state="translated">Java EE를 처음 사용하며 다음 세 줄과 같은 것을 알고 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="7897d079e730103d5c275ad30437b72216d2b88f" translate="yes" xml:space="preserve">
+          <source>I'm not sure if i get this correct.</source>
+          <target state="translated">이것이 올바른지 확실하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="fd9279c3f407a91c673b3d198d2d7165013ce083" translate="yes" xml:space="preserve">
+          <source>If translations of the content are available, they are used.</source>
+          <target state="translated">컨텐츠의 번역이 가능하면 사용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="85c83d910c283a8bdf255689a433590534187269" translate="yes" xml:space="preserve">
+          <source>If we use the following things in a java web application, java code can be eliminated from foreground of the JSP.</source>
+          <target state="translated">Java 웹 애플리케이션에서 다음을 사용하면 JSP의 전경에서 Java 코드를 제거 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="bbec7d7b3dc4d02602a57d628c2e974a87621c53" translate="yes" xml:space="preserve">
+          <source>If you can, then consider using a specialized technology for what you need to do.  In Java EE 6 there is JSF 2.0, which provides a lot of nice features including gluing Java beans together with JSF pages through the &lt;code&gt;#{bean.method(argument)}&lt;/code&gt; approach.</source>
+          <target state="translated">가능하다면 전문 기술을 사용하여 수행해야 할 작업을 고려하십시오. Java EE 6에는 JSF 2.0이 있으며, 이는 &lt;code&gt;#{bean.method(argument)}&lt;/code&gt; 접근 방식을 통해 Java Bean을 JSF 페이지와 함께 붙이는 등 많은 유용한 기능을 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="1928eb1d50f68f5d11732dc80e018320691e2fae" translate="yes" xml:space="preserve">
+          <source>If you want to invoke some &lt;strong&gt;utility&lt;/strong&gt; Java code directly in the JSP page (typically &lt;code&gt;public static&lt;/code&gt; methods), then you need to define them as EL functions. There's a standard &lt;a href=&quot;http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/fn/tld-summary.html&quot;&gt;functions taglib&lt;/a&gt; in JSTL, but &lt;a href=&quot;http://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html#bnaiq&quot;&gt;you can also easily create functions yourself&lt;/a&gt;. Here's an example how JSTL &lt;code&gt;fn:escapeXml&lt;/code&gt; is useful to prevent &lt;a href=&quot;http://en.wikipedia.org/wiki/Cross-site_scripting&quot;&gt;XSS&lt;/a&gt;&lt;a href=&quot;http://ha.ckers.org/xss.html&quot;&gt;attacks&lt;/a&gt;.</source>
+          <target state="translated">JSP 페이지에서 일부 &lt;strong&gt;유틸리티&lt;/strong&gt; Java 코드를 직접 호출하려면 (일반적으로 &lt;code&gt;public static&lt;/code&gt; 메소드) EL 함수로 정의해야합니다. JSTL에는 표준 &lt;a href=&quot;http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/fn/tld-summary.html&quot;&gt;함수 taglib&lt;/a&gt; 가 있지만 &lt;a href=&quot;http://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html#bnaiq&quot;&gt;직접 함수를 직접 만들 수도 있습니다&lt;/a&gt; . 다음은 JSTL &lt;code&gt;fn:escapeXml&lt;/code&gt; 이 &lt;a href=&quot;http://en.wikipedia.org/wiki/Cross-site_scripting&quot;&gt;XSS&lt;/a&gt; &lt;a href=&quot;http://ha.ckers.org/xss.html&quot;&gt;공격&lt;/a&gt; 을 방지하는 데 유용한 방법의 예입니다.</target>
+        </trans-unit>
+        <trans-unit id="38577992a40047e6c37c2fb7c2cab6712a83ae8d" translate="yes" xml:space="preserve">
+          <source>If you want to invoke some Java code to &lt;strong&gt;access and display&lt;/strong&gt; &quot;backend&quot; data inside a JSP page, then you need to use EL (Expression Language), those &lt;code&gt;${}&lt;/code&gt; things. E.g. redisplaying submitted input values:</source>
+          <target state="translated">JSP 페이지에서 &quot;백엔드&quot;데이터에 &lt;strong&gt;액세스하고 표시&lt;/strong&gt; 하기 위해 일부 Java 코드를 호출하려면 &lt;code&gt;${}&lt;/code&gt; 항목 인 EL (Expression Language)을 사용해야합니다. 예 : 제출 된 입력 값을 다시 표시 :</target>
+        </trans-unit>
+        <trans-unit id="6e4f8370b3272119e2841c20a679e8e38d1b031c" translate="yes" xml:space="preserve">
+          <source>If you want to invoke some Java code to &lt;strong&gt;control the flow&lt;/strong&gt; inside a JSP page, then you need to grab an (existing) flow control taglib like &lt;a href=&quot;http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/c/tld-summary.html&quot;&gt;JSTL core&lt;/a&gt;. E.g. displaying &lt;code&gt;List&amp;lt;Product&amp;gt;&lt;/code&gt; in a table:</source>
+          <target state="translated">JSP 페이지 내부 &lt;strong&gt;의 흐름&lt;/strong&gt; 을 &lt;strong&gt;제어&lt;/strong&gt; 하기 위해 일부 Java 코드를 호출하려면 &lt;a href=&quot;http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/c/tld-summary.html&quot;&gt;JSTL core&lt;/a&gt; 와 같은 (기존의) 흐름 제어 taglib를 가져와야합니다. 예를 들어 표에 &lt;code&gt;List&amp;lt;Product&amp;gt;&lt;/code&gt; 표시 :</target>
+        </trans-unit>
+        <trans-unit id="8062301bb015d8a2e33cde53a0ed7e77846a2169" translate="yes" xml:space="preserve">
+          <source>If you want to invoke some Java code to &lt;strong&gt;control&lt;/strong&gt; the execution plan and/or the destination of the request and the response, then implement a &lt;a href=&quot;https://stackoverflow.com/tags/servlets/info&quot;&gt;servlet&lt;/a&gt; according to the &lt;a href=&quot;https://stackoverflow.com/questions/3541077/design-patterns-web-based-applications/3542297#3542297&quot;&gt;MVC's Front Controller Pattern&lt;/a&gt;. E.g.:</source>
+          <target state="translated">실행 계획 및 / 또는 요청의 대상 및 응답을 &lt;strong&gt;제어&lt;/strong&gt; 하기 위해 일부 Java 코드를 호출하려면 &lt;a href=&quot;https://stackoverflow.com/questions/3541077/design-patterns-web-based-applications/3542297#3542297&quot;&gt;MVC의 프론트 컨트롤러 패턴&lt;/a&gt; 에 따라 &lt;a href=&quot;https://stackoverflow.com/tags/servlets/info&quot;&gt;서블릿&lt;/a&gt; 을 구현하십시오. 예 :</target>
+        </trans-unit>
+        <trans-unit id="08ca864cd2ae393a77889ac801c82ca2a1e4cefd" translate="yes" xml:space="preserve">
+          <source>If you want to invoke some Java code to &lt;strong&gt;postprocess&lt;/strong&gt; a request, e.g. processing a form submit, then implement a &lt;a href=&quot;https://stackoverflow.com/tags/servlets/info&quot;&gt;servlet&lt;/a&gt; and write code accordingly in &lt;a href=&quot;http://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServlet.html#doPost%28javax.servlet.http.HttpServletRequest,%20javax.servlet.http.HttpServletResponse%29&quot;&gt;&lt;code&gt;doPost()&lt;/code&gt;&lt;/a&gt; method. E.g.:</source>
+          <target state="translated">양식 제출 처리와 같이 요청을 &lt;strong&gt;후 처리&lt;/strong&gt; 하기 위해 일부 Java 코드를 호출하려면 &lt;a href=&quot;https://stackoverflow.com/tags/servlets/info&quot;&gt;서블릿&lt;/a&gt; 을 구현하고 이에 따라 &lt;a href=&quot;http://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServlet.html#doPost%28javax.servlet.http.HttpServletRequest,%20javax.servlet.http.HttpServletResponse%29&quot;&gt; &lt;code&gt;doPost()&lt;/code&gt; &lt;/a&gt; 메소드에 코드를 작성하십시오. 예 :</target>
+        </trans-unit>
+        <trans-unit id="85a5ccb98f8d25732291548a6b4d3d4950886db9" translate="yes" xml:space="preserve">
+          <source>If you want to invoke some Java code to &lt;strong&gt;preprocess&lt;/strong&gt; a request, e.g. preloading some list from a database to display in some table, if necessary based on some query parameters, then implement a &lt;a href=&quot;https://stackoverflow.com/tags/servlets/info&quot;&gt;servlet&lt;/a&gt; and write code accordingly in &lt;a href=&quot;http://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServlet.html#doGet%28javax.servlet.http.HttpServletRequest,%20javax.servlet.http.HttpServletResponse%29&quot;&gt;&lt;code&gt;doGet()&lt;/code&gt;&lt;/a&gt; method. E.g.:</source>
+          <target state="translated">일부 Java 코드를 호출하여 요청을 &lt;strong&gt;사전 처리&lt;/strong&gt; 하려면 (예 : 일부 쿼리 매개 변수에 따라 필요한 경우 일부 테이블에 표시 할 데이터베이스에서 일부 목록을 사전로드) &lt;a href=&quot;https://stackoverflow.com/tags/servlets/info&quot;&gt;서블릿&lt;/a&gt; 을 구현하고 이에 따라 &lt;a href=&quot;http://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServlet.html#doGet%28javax.servlet.http.HttpServletRequest,%20javax.servlet.http.HttpServletResponse%29&quot;&gt; &lt;code&gt;doGet()&lt;/code&gt; &lt;/a&gt; 메소드에 코드를 작성하십시오. 예 :</target>
+        </trans-unit>
+        <trans-unit id="7d5c2d5e3acf61c6e46e0c5bb9dbe3b694f7d5cc" translate="yes" xml:space="preserve">
+          <source>If you want to invoke the &lt;strong&gt;same&lt;/strong&gt; Java code on &lt;em&gt;every&lt;/em&gt; request, less-or-more regardless of the requested page, e.g. checking if a user is logged in, then implement a &lt;a href=&quot;https://stackoverflow.com/tags/servlet-filters/info&quot;&gt;filter&lt;/a&gt; and write code accordingly in &lt;a href=&quot;http://docs.oracle.com/javaee/7/api/javax/servlet/Filter.html#doFilter%28javax.servlet.ServletRequest,%20javax.servlet.ServletResponse,%20javax.servlet.FilterChain%29&quot;&gt;&lt;code&gt;doFilter()&lt;/code&gt;&lt;/a&gt; method. E.g.:</source>
+          <target state="translated">요청 된 페이지에 관계없이 &lt;em&gt;모든&lt;/em&gt; 요청에서 &lt;strong&gt;동일한&lt;/strong&gt; Java 코드를 호출하려면 (예 : 사용자가 로그인했는지 확인) &lt;a href=&quot;https://stackoverflow.com/tags/servlet-filters/info&quot;&gt;필터&lt;/a&gt; 를 구현하고 이에 따라 &lt;a href=&quot;http://docs.oracle.com/javaee/7/api/javax/servlet/Filter.html#doFilter%28javax.servlet.ServletRequest,%20javax.servlet.ServletResponse,%20javax.servlet.FilterChain%29&quot;&gt; &lt;code&gt;doFilter()&lt;/code&gt; &lt;/a&gt; 메소드에 코드를 작성하십시오. 예 :</target>
+        </trans-unit>
+        <trans-unit id="ee11dba0fd5ce2964e4951a57cf7350d6fac840f" translate="yes" xml:space="preserve">
+          <source>In &lt;a href=&quot;https://stackoverflow.com/tags/facelets/info&quot;&gt;Facelets&lt;/a&gt;, the successor of JSP, which is part of the Java EE provided MVC framework &lt;a href=&quot;https://stackoverflow.com/tags/jsf/info&quot;&gt;JSF&lt;/a&gt;, it is already &lt;strong&gt;not&lt;/strong&gt; possible to use &lt;em&gt;scriptlets&lt;/em&gt;. This way you're automatically forced to do things &quot;the right way&quot;.</source>
+          <target state="translated">Java EE에 포함 된 MVC 프레임 워크 &lt;a href=&quot;https://stackoverflow.com/tags/jsf/info&quot;&gt;JSF의&lt;/a&gt; 일부인 JSP의 후속 버전 인 &lt;a href=&quot;https://stackoverflow.com/tags/facelets/info&quot;&gt;Facelets&lt;/a&gt; 에서는 이미 &lt;em&gt;스크립틀릿&lt;/em&gt; 을 사용할 수 &lt;strong&gt;없습니다&lt;/strong&gt; . 이 방법으로 자동으로 &quot;올바른 방법&quot;을 수행해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="864be0601ecfce0a46e54862f1e8a20535f2a995" translate="yes" xml:space="preserve">
+          <source>In my case I do my systems handling the view with Angular and any data needed is brought from the server using rest services.</source>
+          <target state="translated">필자의 경우 Angular로 뷰를 처리하는 시스템을 수행하고 필요한 데이터는 나머지 서비스를 사용하여 서버에서 가져옵니다.</target>
+        </trans-unit>
+        <trans-unit id="c8be22759def612993661b4f9fd9ea685f8f326b" translate="yes" xml:space="preserve">
+          <source>In the MVC Architectural pattern, JSPs represent the View layer. Embedding java code in JSPs is considered a bad practice.
+You can use &lt;a href=&quot;http://www.oracle.com/technetwork/java/index-jsp-135995.html&quot;&gt;JSTL&lt;/a&gt;, &lt;a href=&quot;http://freemarker.sourceforge.net/&quot;&gt;freeMarker&lt;/a&gt;, &lt;a href=&quot;http://velocity.apache.org/&quot;&gt;velocity&lt;/a&gt; with JSP as &quot;template engine&quot;.
+The data provider to those tags &lt;strong&gt;depends on frameworks&lt;/strong&gt; that you are dealing with. &lt;code&gt;Struts 2&lt;/code&gt; and &lt;code&gt;webwork&lt;/code&gt; as an implementation for MVC Pattern uses &lt;a href=&quot;http://struts.apache.org/2.0.11.1/docs/ognl.html&quot;&gt;OGNL&lt;/a&gt; &quot;very interesting technique to expose Beans Properties to JSP &quot;.</source>
+          <target state="translated">MVC 아키텍처 패턴에서 JSP는보기 계층을 나타냅니다. JSP에 Java 코드를 포함시키는 것은 나쁜 습관으로 간주됩니다. JSP와 함께 &lt;a href=&quot;http://www.oracle.com/technetwork/java/index-jsp-135995.html&quot;&gt;JSTL&lt;/a&gt; , &lt;a href=&quot;http://freemarker.sourceforge.net/&quot;&gt;freeMarker&lt;/a&gt; , &lt;a href=&quot;http://velocity.apache.org/&quot;&gt;velocity&lt;/a&gt; 를 &quot;template engine&quot;으로 사용할 수 있습니다. 해당 태그 &lt;strong&gt;에 대한&lt;/strong&gt; 데이터 공급자는 처리 &lt;strong&gt;중인 프레임 워크에 따라 다릅니다&lt;/strong&gt; . &lt;code&gt;Struts 2&lt;/code&gt; 와 MVC 패턴의 구현으로서 &lt;code&gt;webwork&lt;/code&gt; 는 &lt;a href=&quot;http://struts.apache.org/2.0.11.1/docs/ognl.html&quot;&gt;OGNL&lt;/a&gt; &quot;Beans Properties를 JSP에 노출시키는 매우 흥미로운 기술&quot;을 사용합니다.</target>
+        </trans-unit>
+        <trans-unit id="3379f7440ecf03bd6f4294973b1344867b834b45" translate="yes" xml:space="preserve">
+          <source>In the spirit of adopting the model-view-controller (MVC) design pattern to reduce coupling between the presentation tier from the business logic, &lt;strong&gt;JSP scriptlets should not be used&lt;/strong&gt; for writing business logic. Rather, JSP scriptlets are used if necessary to transform data (also called &quot;value objects&quot;) returned from processing the client's requests into a proper client-ready format. Even then, this would be better done with a front controller servlet or a custom tag.</source>
+          <target state="translated">비즈니스 로직에서 프리젠 테이션 티어 간의 결합을 줄이기 위해 MVC (Model-View-Controller) 디자인 패턴을 채택 &lt;strong&gt;한다는 개념&lt;/strong&gt; 에서 &lt;strong&gt;JSP 스크립틀릿은&lt;/strong&gt; 비즈니스 로직을 작성 &lt;strong&gt;하는 데 사용해서는 안됩니다&lt;/strong&gt; . 대신, JSP 스크립틀릿은 필요한 경우 클라이언트 요청 처리에서 리턴 된 데이터 ( &quot;값 오브젝트&quot;라고도 함)를 적절한 클라이언트 지원 형식으로 변환하는 데 사용됩니다. 그럼에도 불구하고 이것은 프론트 컨트롤러 서블릿 또는 사용자 정의 태그로 더 잘 수행됩니다.</target>
+        </trans-unit>
+        <trans-unit id="5844156b0df20492d28065d5072469ba59148486" translate="yes" xml:space="preserve">
+          <source>Instead, you can use:</source>
+          <target state="translated">대신 다음을 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="9c48d9289fc64581e90dcccfc40ce37a3369ae26" translate="yes" xml:space="preserve">
+          <source>JSP 2.0 has a feature called &lt;strong&gt;&quot;Tag Files&quot;&lt;/strong&gt;, you can write tags without external &lt;code&gt;java&lt;/code&gt; code and &lt;code&gt;tld&lt;/code&gt;. You need to create a &lt;code&gt;.tag&lt;/code&gt; file and put it in &lt;code&gt;WEB-INF\tags&lt;/code&gt; you can even create a directory structure to package your tags.</source>
+          <target state="translated">JSP 2.0에는 &lt;strong&gt;&quot;태그 파일&quot;&lt;/strong&gt; 이라는 기능이 있으며 외부 &lt;code&gt;java&lt;/code&gt; 코드 및 &lt;code&gt;tld&lt;/code&gt; 없이 태그를 작성할 수 있습니다. &lt;code&gt;.tag&lt;/code&gt; 파일을 생성하여 &lt;code&gt;WEB-INF\tags&lt;/code&gt; 에 넣어야합니다. 디렉토리 구조를 만들어 태그를 패키징 할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="9b22fe878901f07cf06aca41d7e95d932c6cc98d" translate="yes" xml:space="preserve">
+          <source>JSTL tags</source>
+          <target state="translated">JSTL 태그</target>
+        </trans-unit>
+        <trans-unit id="a2be0f0a69d1324f0a28e325f93637011a05b9ab" translate="yes" xml:space="preserve">
+          <source>JSTL works with request attributes - they are most often set in the request by a Servlet, which &lt;em&gt;forwards&lt;/em&gt; to the JSP.</source>
+          <target state="translated">JSTL은 요청 속성과 함께 작동합니다. JSP로 &lt;em&gt;전달&lt;/em&gt; 되는 서블릿에 의해 요청에서 가장 자주 설정됩니다.</target>
+        </trans-unit>
+        <trans-unit id="a696556e75e9ef96d0226d1c056f84b37d8f28c0" translate="yes" xml:space="preserve">
+          <source>Just use the JSTL tag and EL expression.</source>
+          <target state="translated">JSTL 태그와 EL 표현식 만 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="b61ea7debe4e081d0507e4a1d7a1698d231f004b" translate="yes" xml:space="preserve">
+          <source>Look at Wicket.</source>
+          <target state="translated">Wicket을보십시오.</target>
+        </trans-unit>
+        <trans-unit id="9c9a06a4a3b3f8ba0b6e04a8601d038b496c2c91" translate="yes" xml:space="preserve">
+          <source>Make your values and parameters inside your servlet classes</source>
+          <target state="translated">서블릿 클래스 내에서 값과 매개 변수 만들기</target>
+        </trans-unit>
+        <trans-unit id="6b1ec125525f6f889b55a94c4be3db9e02183779" translate="yes" xml:space="preserve">
+          <source>No matter how much you try to avoid, when you work with other developers, some of them will still prefer scriptlet and then insert the evil code into the project. Therefore, setting up the project at the first sign is very important if you really want to reduce the scriptlet code. There are several techniques to get over this (including several frameworks that other mentioned). However, if you prefer the pure JSP way, then use the JSTL tag file. The nice thing about this is you can also set up master pages for your project, so the other pages can inherit the master pages</source>
+          <target state="translated">아무리 피하려고해도 다른 개발자와 작업 할 때 일부 개발자는 여전히 스크립틀릿을 선호하고 사악한 코드를 프로젝트에 삽입합니다. 따라서 스크립틀릿 코드를 줄이려면 첫 번째 기호에서 프로젝트를 설정하는 것이 매우 중요합니다. 이를 극복하기위한 몇 가지 기술이 있습니다 (다른 언급 한 몇 가지 프레임 워크 포함). 그러나 순수한 JSP 방식을 선호하는 경우 JSTL 태그 파일을 사용하십시오. 이것에 대한 좋은 점은 프로젝트의 마스터 페이지를 설정하여 다른 페이지가 마스터 페이지를 상속 할 수 있다는 것입니다</target>
+        </trans-unit>
+        <trans-unit id="7496f24aecc09eb1dcd7346285873e798f1449a9" translate="yes" xml:space="preserve">
+          <source>Note that EL is &lt;strong&gt;EviL&lt;/strong&gt; (runtime exceptions, refactoring)</source>
+          <target state="translated">EL은 &lt;strong&gt;EviL입니다&lt;/strong&gt; (런타임 예외, 리팩토링)</target>
+        </trans-unit>
+        <trans-unit id="6f49536a3746430c8f949ea7a5a7a57bcc58bbc4" translate="yes" xml:space="preserve">
+          <source>Note that the XSS sensitivity is in no way specifically related to Java/JSP/JSTL/EL/whatever, this problem needs to be taken into account in &lt;strong&gt;every&lt;/strong&gt; web application you develop. The problem of &lt;em&gt;scriptlets&lt;/em&gt; is that it provides no way of builtin preventions, at least not using the standard Java API. JSP's successor Facelets has already implicit HTML escaping, so you don't need to worry about XSS holes in Facelets.</source>
+          <target state="translated">XSS 감도는 Java / JSP / JSTL / EL /와는 전혀 관련이 없으며 개발하는 &lt;strong&gt;모든&lt;/strong&gt; 웹 응용 프로그램에서이 문제를 고려해야합니다. &lt;em&gt;스크립틀릿&lt;/em&gt; 의 문제점은 최소한 표준 Java API를 사용하지 않는 내장 된 예방 방법을 제공하지 않는다는 것입니다. JSP의 후속 Facelets는 이미 암시적인 HTML 이스케이프 처리를 수행하므로 Facelets의 XSS 구멍에 대해 걱정할 필요가 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="b753a681b0a58549d95c372d985f246cfe1be0e5" translate="yes" xml:space="preserve">
+          <source>Nothing of that is used anymore my friend, my advice is to decouple the view(css, html, javascript, etc) from the server.</source>
+          <target state="translated">그 어느 것도 더 이상 내 친구에게 사용되지 않으며, 조언은 서버에서보기 (css, html, javascript 등)를 분리하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="a9423ba2ba1eee5498d3d54ff884a89cb29e92d1" translate="yes" xml:space="preserve">
+          <source>Of course if you want, you can hack yourself into the depths of the code and inject JS and enrich your HTML page, but really you can avoid it if you want, and the result will be good as it was written in any other frameworks. I say worths a try, and the basic GWT is well-documented.</source>
+          <target state="translated">물론 원하는 경우 코드의 깊이에 빠져 JS를 삽입하고 HTML 페이지를 풍부하게 할 수 있지만 실제로 원하는 경우 피할 수 있으며 다른 프레임 워크에서 작성된 것처럼 결과가 좋습니다. 시도해 볼만한 가치가 있으며 기본 GWT는 잘 문서화되어 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="0d7095f0f8c2e78814464e734575ef8202541d71" translate="yes" xml:space="preserve">
+          <source>On this mater page, I created a fragment called &quot;title&quot;, so that in the child page, I could insert more codes into this place of the master page. Also, the tag &lt;code&gt;&amp;lt;jsp:doBody/&amp;gt;&lt;/code&gt; will be replaced by the content of the child page</source>
+          <target state="translated">이 mater 페이지에서 &quot;title&quot;이라는 조각을 작성하여 하위 페이지에서이 마스터 페이지의이 위치에 더 많은 코드를 삽입 할 수 있습니다. 또한 &lt;code&gt;&amp;lt;jsp:doBody/&amp;gt;&lt;/code&gt; 태그는 하위 페이지의 내용으로 대체됩니다.</target>
+        </trans-unit>
+        <trans-unit id="4c857f865a5b7dda907f07a7e5d9a5393957617c" translate="yes" xml:space="preserve">
+          <source>Or just adopt an MVC framework like &lt;a href=&quot;https://stackoverflow.com/tags/jsf/info&quot;&gt;JSF&lt;/a&gt;, &lt;a href=&quot;https://stackoverflow.com/tags/spring-mvc/info&quot;&gt;Spring MVC&lt;/a&gt;, &lt;a href=&quot;https://stackoverflow.com/tags/wicket/info&quot;&gt;Wicket&lt;/a&gt;, etc so that you end up with just a JSP/Facelets page and a JavaBean class without the need for a custom servlet.</source>
+          <target state="translated">또는 &lt;a href=&quot;https://stackoverflow.com/tags/jsf/info&quot;&gt;JSF&lt;/a&gt; , &lt;a href=&quot;https://stackoverflow.com/tags/spring-mvc/info&quot;&gt;Spring MVC&lt;/a&gt; , &lt;a href=&quot;https://stackoverflow.com/tags/wicket/info&quot;&gt;Wicket&lt;/a&gt; 과 같은 MVC 프레임 워크를 채택하면 사용자 정의 서블릿이 필요하지 않고 JSP / Facelets 페이지와 JavaBean 클래스 만 생길 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="99c7ca3264a1d4cbc0d2abe683d40da7282d8bf4" translate="yes" xml:space="preserve">
+          <source>Please refer to:</source>
+          <target state="translated">다음을 참조하십시오 :</target>
+        </trans-unit>
+        <trans-unit id="371a87eafb4de078ff674d69a5a89c186532eb49" translate="yes" xml:space="preserve">
+          <source>See also:</source>
+          <target state="translated">또한보십시오:</target>
+        </trans-unit>
+        <trans-unit id="cdb70868019074559ad053d547795310d3f219bf" translate="yes" xml:space="preserve">
+          <source>So I consider as procrastination the activity of defining &quot;layers&quot; or redundant data structures either early in the project or when not specifically required. &amp;nbsp;</source>
+          <target state="translated">따라서 프로젝트 초기에 또는 특별히 필요하지 않은 경우 &quot;레이어&quot;또는 중복 데이터 구조를 정의하는 활동을 지연으로 간주합니다.</target>
+        </trans-unit>
+        <trans-unit id="6da13addb000b67d42a6d66391713819e634149f" translate="yes" xml:space="preserve">
+          <source>Source</source>
+          <target state="translated">Source</target>
+        </trans-unit>
+        <trans-unit id="fc9f10111119b6c9e526812b2a1905fd175f558d" translate="yes" xml:space="preserve">
+          <source>Start server and load the bodyContent.jsp in browser</source>
+          <target state="translated">서버를 시작하고 브라우저에 bodyContent.jsp를로드하십시오.</target>
+        </trans-unit>
+        <trans-unit id="2b8e6dd7bd02bbe0f0a2cd944adb7c18a7b97db2" translate="yes" xml:space="preserve">
+          <source>Sure, replace &lt;code&gt;&amp;lt;%! counter++; %&amp;gt;&lt;/code&gt; by an event producer-consumer architecture, where the business layer is notified about the need to increment the counter, it reacts accordingly, and notifies the presenters so that they update the views. A number of database transactions are involved, since in future we will need to know the new and old value of the counter, who has incremented it and with what purpose in mind. Obviously serialization is involved, since the layers are entirely decoupled. You will be able to increment your counter over RMI, IIOP, SOAP. But only HTML is required, which you don't implement, since it is such a mundane case. Your new goal is to reach 250 increments a second on your new shiny E7, 64GB RAM server.</source>
+          <target state="translated">물론 &lt;code&gt;&amp;lt;%! counter++; %&amp;gt;&lt;/code&gt; 카운터 ++; 비즈니스 계층에 카운터를 증가시켜야한다는 알림이 표시되는 이벤트 생산자-소비자 아키텍처에 의해 %&amp;gt; 는 이에 따라 반응하고 발표자에게 뷰를 업데이트하도록 알립니다. 앞으로 데이터베이스의 새로운 가치와 오래된 가치를 알아야 할 필요가 있기 때문에 많은 데이터베이스 트랜잭션이 수반됩니다. 레이어가 완전히 분리되어 있으므로 직렬화가 필요합니다. RMI, IIOP, SOAP보다 카운터를 증가시킬 수 있습니다. 그러나 HTML은 필수입니다. 구현할 필요는 없습니다. 평범한 경우이기 때문입니다. 새로운 목표는 반짝이는 새로운 E7, 64GB RAM 서버에서 초당 250 씩 증가하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="01f6458927b598fd06f1c9b9b3871a4a81966830" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;${param.foo}&lt;/code&gt; displays the outcome of &lt;code&gt;request.getParameter(&quot;foo&quot;)&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;${param.foo}&lt;/code&gt; 는 &lt;code&gt;request.getParameter(&quot;foo&quot;)&lt;/code&gt; 의 결과를 표시합니다.</target>
+        </trans-unit>
+        <trans-unit id="a9b0f7ac06bef52c90743fd20479795225d799b5" translate="yes" xml:space="preserve">
+          <source>The code looks like ordinary HTML (or XHTML) plus some special attributes in an XML namespace; it can be viewed with a browser and safely be tweaked by a designer.
+There is support for macros and for i18n as well:</source>
+          <target state="translated">코드는 일반 HTML (또는 XHTML)과 XML 네임 스페이스의 일부 특수 속성처럼 보입니다. 브라우저로 볼 수 있으며 디자이너가 안전하게 조정할 수 있습니다. 매크로 및 i18n도 지원합니다.</target>
+        </trans-unit>
+        <trans-unit id="8beffd5c99ba40a7c520fac4a0fe7cf1204fe64a" translate="yes" xml:space="preserve">
+          <source>The good thing about this approach is that your code is also HTML like
+  code!</source>
+          <target state="translated">이 방법의 좋은 점은 코드가 HTML과 같은 코드라는 것입니다!</target>
+        </trans-unit>
+        <trans-unit id="5b8afa3aa8081cc0ec560cc7ed29305aed1be3f6" translate="yes" xml:space="preserve">
+          <source>The major disadvantages of &lt;em&gt;scriptlets&lt;/em&gt; are:</source>
+          <target state="translated">&lt;em&gt;스크립틀릿&lt;/em&gt; 의 주요 단점은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="6e8eeb645a8a0b3cea3e70c5c9d1a8b1815529b1" translate="yes" xml:space="preserve">
+          <source>The samples are very simple but you can do lots of complicated tasks here. Please consider you can use other tags (eg: &lt;code&gt;JSTL&lt;/code&gt; which has controlling tags like &lt;code&gt;if/forEcah/chosen&lt;/code&gt; text manipulation like &lt;code&gt;format/contains/uppercase&lt;/code&gt; or even SQL tags &lt;code&gt;select/update&lt;/code&gt;), pass all kind parameters, for example &lt;code&gt;Hashmap&lt;/code&gt;, access &lt;code&gt;session&lt;/code&gt;, &lt;code&gt;request&lt;/code&gt;, ... in your tag file too.</source>
+          <target state="translated">샘플은 매우 간단하지만 여기서 복잡한 작업을 많이 수행 할 수 있습니다. 다른 태그 (예 : &lt;code&gt;format/contains/uppercase&lt;/code&gt; 또는 SQL 태그 &lt;code&gt;select/update&lt;/code&gt; 와 같은 &lt;code&gt;if/forEcah/chosen&lt;/code&gt; 텍스트 조작과 같은 태그를 제어하는 &lt;code&gt;JSTL&lt;/code&gt; ), 모든 유형의 매개 변수 (예 : &lt;code&gt;Hashmap&lt;/code&gt; , 액세스 &lt;code&gt;session&lt;/code&gt; )를 전달할 수 있습니다. &lt;code&gt;request&lt;/code&gt; , ... 태그 파일에도.</target>
+        </trans-unit>
+        <trans-unit id="cadf4f01d22ba51a03cf9a23cd0debeb245888e3" translate="yes" xml:space="preserve">
+          <source>The use of &lt;em&gt;scriptlets&lt;/em&gt; (those &lt;code&gt;&amp;lt;% %&amp;gt;&lt;/code&gt; things) in &lt;a href=&quot;https://stackoverflow.com/tags/jsp/info&quot;&gt;JSP&lt;/a&gt; is indeed highly discouraged since the birth of &lt;em&gt;taglibs&lt;/em&gt; (like &lt;a href=&quot;https://stackoverflow.com/tags/jstl/info&quot;&gt;JSTL&lt;/a&gt;) and &lt;a href=&quot;https://stackoverflow.com/tags/el/info&quot;&gt;EL&lt;/a&gt; (&lt;a href=&quot;https://stackoverflow.com/tags/el/info&quot;&gt;Expression Language&lt;/a&gt;, those &lt;code&gt;${}&lt;/code&gt; things) way back in 2001.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/tags/jsp/info&quot;&gt;JSP&lt;/a&gt; 에서 &lt;em&gt;스크립틀릿&lt;/em&gt; ( &lt;code&gt;&amp;lt;% %&amp;gt;&lt;/code&gt; 것들)의 사용은 2001 년에 &lt;a href=&quot;https://stackoverflow.com/tags/jstl/info&quot;&gt;JSTL&lt;/a&gt; 과 같은 &lt;em&gt;taglibs&lt;/em&gt; 와 &lt;code&gt;${}&lt;/code&gt; 것들의 &lt;a href=&quot;https://stackoverflow.com/tags/el/info&quot;&gt;EL&lt;/a&gt; ( &lt;a href=&quot;https://stackoverflow.com/tags/el/info&quot;&gt;Expression Language&lt;/a&gt; )이 탄생 한 이후로 매우 권장되지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="218a7074a3a3abead1ad3409aeb72a9cfe4b36d1" translate="yes" xml:space="preserve">
+          <source>There are also component-based frameworks such as &lt;strong&gt;Wicket&lt;/strong&gt; that generate a lot of the HTML for you.  The tags that end up in the HTML are extremely basic and there is virtually no logic that gets mixed in.  The result is almost empty-like HTML pages with typical HTML elements.  The downside is that there are a lot of components in the &lt;strong&gt;Wicket&lt;/strong&gt; API to learn and some things can be difficult to achieve under those constraints.</source>
+          <target state="translated">&lt;strong&gt;Wicket&lt;/strong&gt; 과 같은 구성 요소 기반 프레임 워크도 있으므로 많은 HTML을 생성 할 수 있습니다. HTML로 끝나는 태그는 매우 기본적이고 거의 섞이지 않는 논리가 없습니다. 결과는 일반적인 HTML 요소가있는 거의 빈 HTML 페이지입니다. 단점은 &lt;strong&gt;Wicket&lt;/strong&gt; API에 배울 구성 요소가 많고 이러한 제약 조건에서 달성하기 어려운 것이 있다는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="abcbc7b89ae11ccfa31d98b70ef4451cfb919707" translate="yes" xml:space="preserve">
+          <source>There are also other options such as using a templating engine such as Velocity, Freemarker, Thymeleaf etc. But using plain JSP with EL and JSTL serves my purpose most of the time and it also seems the simplest for a beginner.</source>
+          <target state="translated">Velocity, Freemarker, Thymeleaf 등과 같은 템플릿 엔진을 사용하는 것과 같은 다른 옵션도 있습니다. 그러나 EL 및 JSTL과 함께 일반 JSP를 사용하면 대부분의 목적을 달성 할 수 있으며 초보자에게는 가장 간단한 것으로 보입니다.</target>
+        </trans-unit>
+        <trans-unit id="c1ff3b8432d55d1428f36863b4e57b392badd9db" translate="yes" xml:space="preserve">
+          <source>This must be added to the web application's web.xml</source>
+          <target state="translated">웹 애플리케이션의 web.xml에 추가해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="6024548a077642e1968e58baff37a727cc4dd31b" translate="yes" xml:space="preserve">
+          <source>This way dealing with different result page destinations is easier: redisplaying the form with validation errors in case of an error (in this particular example you can redisplay it using &lt;code&gt;${message}&lt;/code&gt; in &lt;a href=&quot;https://stackoverflow.com/tags/el/info&quot;&gt;EL&lt;/a&gt;), or just taking to the desired target page in case of success.</source>
+          <target state="translated">이렇게하면 다른 결과 페이지 대상을 처리하는 것이 더 쉽습니다. 오류가 발생하면 유효성 검사 오류가있는 양식을 다시 표시하거나 (이 특정 예에서는 &lt;a href=&quot;https://stackoverflow.com/tags/el/info&quot;&gt;EL&lt;/a&gt; 에서 &lt;code&gt;${message}&lt;/code&gt; 를 사용하여 다시 표시 할 수 있음) 원하는 경우 원하는 대상 페이지로 이동 성공의.</target>
+        </trans-unit>
+        <trans-unit id="5c2f2b58b23cb864bd138ae1ceef470b24b2359f" translate="yes" xml:space="preserve">
+          <source>This way dealing with exceptions is easier. The DB is not accessed in the midst of JSP rendering, but far before the JSP is been displayed. You still have the possibility to change the response whenever the DB access throws an exception. In the above example, the default error 500 page will be displayed which you can anyway customize by an &lt;code&gt;&amp;lt;error-page&amp;gt;&lt;/code&gt; in &lt;code&gt;web.xml&lt;/code&gt;.</source>
+          <target state="translated">이 방법으로 예외를 처리하는 것이 더 쉽습니다. DB는 JSP 렌더링 도중에 액세스되지 않지만 JSP가 표시되기 훨씬 전에 액세스됩니다. DB 액세스에서 예외가 발생할 때마다 응답을 변경할 수 있습니다. 위의 예제에서 &lt;code&gt;web.xml&lt;/code&gt; 의 &lt;code&gt;&amp;lt;error-page&amp;gt;&lt;/code&gt; 로 사용자 정의 할 수있는 기본 오류 500 페이지가 표시됩니다.</target>
+        </trans-unit>
+        <trans-unit id="3d73eb9cadb674305772ade110550c254cf89564" translate="yes" xml:space="preserve">
+          <source>Use &lt;strong&gt;&lt;code&gt;JSTL Tag libraries&lt;/code&gt;&lt;/strong&gt; in JSP, that will work perfect.</source>
+          <target state="translated">JSP에서 &lt;strong&gt; &lt;code&gt;JSTL Tag libraries&lt;/code&gt; &lt;/strong&gt; 를 사용하면 완벽하게 작동합니다.</target>
+        </trans-unit>
+        <trans-unit id="972fb805d526ef28466dd6b7247afcf3429e9d40" translate="yes" xml:space="preserve">
+          <source>Use JSP Tags</source>
+          <target state="translated">JSP 태그 사용</target>
+        </trans-unit>
+        <trans-unit id="efe4cc8e2edf71091f863266b5fca3301038b019" translate="yes" xml:space="preserve">
+          <source>Use MVC architecture for web application</source>
+          <target state="translated">웹 애플리케이션에 MVC 아키텍처 사용</target>
+        </trans-unit>
+        <trans-unit id="c0c4ea117b4cdb87ebd6313e300e1a15bc1a004d" translate="yes" xml:space="preserve">
+          <source>Use backbone , angular like javascript framework for UI design
+and fetch the data using rest api. This will remove the java dependency from UI completely.</source>
+          <target state="translated">UI 디자인을 위해 자바 스크립트 프레임 워크와 같은 각도를 가진 backbone을 사용하고 나머지 API를 사용하여 데이터를 가져옵니다. 이것은 UI에서 Java 의존성을 완전히 제거합니다.</target>
+        </trans-unit>
+        <trans-unit id="377f415dafbf7162b7e2c41493428f47026cb16c" translate="yes" xml:space="preserve">
+          <source>Use it</source>
+          <target state="translated">사용해</target>
+        </trans-unit>
+        <trans-unit id="b3812e1a927a9030d7df61a9f7b76633477e4d2c" translate="yes" xml:space="preserve">
+          <source>Use it like</source>
+          <target state="translated">처럼 사용</target>
+        </trans-unit>
+        <trans-unit id="6d7ad08fbab98413abb910036a07cbbf3706c8d5" translate="yes" xml:space="preserve">
+          <source>Using Scriptlets is a very old way and Not recommended. If you want directly output something in your JSP pages just use &lt;strong&gt;Expression Language(EL)&lt;/strong&gt;  along with &lt;strong&gt;JSTL&lt;/strong&gt; .</source>
+          <target state="translated">스크립틀릿을 사용하는 것은 매우 오래된 방법이므로 권장하지 않습니다. JSP 페이지에서 직접 출력하려면 &lt;strong&gt;JSTL&lt;/strong&gt; 과 함께 &lt;strong&gt;Expression Language (EL)&lt;/strong&gt; 를 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="d2677389ab068b68879414df724ecfabd8859f86" translate="yes" xml:space="preserve">
+          <source>Using scriptlets in JSPs is not a good practice.</source>
+          <target state="translated">JSP에서 스크립틀릿을 사용하는 것은 좋은 습관이 아닙니다.</target>
+        </trans-unit>
+        <trans-unit id="baf3fd0379691440bf2b3e4cbf92cad964713892" translate="yes" xml:space="preserve">
+          <source>What's the difference between JSP, Servlet and JSF?</source>
+          <target state="translated">JSP, Servlet 및 JSF의 차이점은 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="17b74992560cf4122ca5285c428807fb001749e8" translate="yes" xml:space="preserve">
+          <source>When mapped on an appropriate &lt;code&gt;&amp;lt;url-pattern&amp;gt;&lt;/code&gt; covering the JSP pages of interest, then you don't need to copypaste the same piece of code overall JSP pages.</source>
+          <target state="translated">관심있는 JSP 페이지를 포함하는 적절한 &lt;code&gt;&amp;lt;url-pattern&amp;gt;&lt;/code&gt; 에 맵핑되면 전체 JSP 페이지에서 동일한 코드 조각을 복사하여 붙여 넣을 필요가 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="01de0b031979bcf7bb834c121a66d1089532c613" translate="yes" xml:space="preserve">
+          <source>Where possible, &lt;strong&gt;avoid JSP scriptlets&lt;/strong&gt; whenever tag libraries provide equivalent functionality. This makes pages easier to read and maintain, helps to separate business logic from presentation logic, and will make your pages easier to evolve into JSP 2.0-style pages (JSP 2.0 Specification supports but de-emphasizes the use of scriptlets).</source>
+          <target state="translated">가능하면 태그 라이브러리가 동등한 기능을 제공 할 때마다 &lt;strong&gt;JSP 스크립틀릿을 사용하지 마십시오&lt;/strong&gt; . 이렇게하면 페이지를보다 쉽게 ​​읽고 관리 할 수 ​​있으며 비즈니스 로직과 프리젠 테이션 로직을 분리 할 수 ​​있으며 페이지를 JSP 2.0 스타일 페이지로보다 쉽게 ​​발전시킬 수 있습니다 (JSP 2.0 사양은 스크립틀릿 사용을 지원하지만 강조하지 않습니다).</target>
+        </trans-unit>
+        <trans-unit id="01f59bf1a510897a780d5b0160084a576e832196" translate="yes" xml:space="preserve">
+          <source>Wicket is also an alternative which completely separates java from html, so a designer and programmer can work together and on different sets of code with little understanding of each other.</source>
+          <target state="translated">Wicket은 또한 Java를 HTML과 완전히 분리하는 대안이므로 디자이너와 프로그래머는 서로를 거의 이해하지 않고도 서로 다른 코드 세트에서 함께 작업 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="b75de34560a918f4ac6c5fab856eab492b0b22c7" translate="yes" xml:space="preserve">
+          <source>Wicket may be evil too (performance, toilsome for small apps or simple view tier)</source>
+          <target state="translated">Wicket도 악의적 일 수 있습니다 (성능, 소규모 앱 또는 단순한보기 계층에 어려움)</target>
+        </trans-unit>
+        <trans-unit id="aab83ba5ea14f383f9f61cd2b8c7c97740eddee3" translate="yes" xml:space="preserve">
+          <source>With XML-style tags which fit nicely among all that HTML, the code is better readable (and thus better maintainable) than a bunch of scriptlets with various opening and closing braces (&lt;em&gt;&quot;Where the heck does this closing brace belong to?&quot;&lt;/em&gt;). An easy aid is to configure your web application to throw an exception whenever &lt;em&gt;scriptlets&lt;/em&gt; are still been used by adding the following piece to &lt;code&gt;web.xml&lt;/code&gt;:</source>
+          <target state="translated">모든 HTML에 잘 맞는 XML 스타일 태그를 사용하면 다양한 여는 중괄호와 닫는 중괄호가있는 여러 스크립틀릿보다 코드를 더 잘 읽을 수 있고 유지 관리하기가 더 쉽습니다 ( &lt;em&gt;&quot;&lt;/em&gt; 닫는 중괄호는 &lt;em&gt;어디에 있습니까?&quot;&lt;/em&gt; ). &lt;code&gt;web.xml&lt;/code&gt; 에 다음 조각을 추가하여 &lt;em&gt;스크립틀릿&lt;/em&gt; 을 계속 사용할 때마다 웹 응용 프로그램에서 예외를 발생하도록 구성하는 것이 가장 쉬운 방법입니다.</target>
+        </trans-unit>
+        <trans-unit id="4c2bf52d41e06e8a6a1ac6943b1e400cec513ec0" translate="yes" xml:space="preserve">
+          <source>You can easily call the child.jsp file from your controller. This also works nice with the struts framework</source>
+          <target state="translated">컨트롤러에서 child.jsp 파일을 쉽게 호출 할 수 있습니다. 이것은 또한 struts 프레임 워크와 함께 잘 작동합니다</target>
+        </trans-unit>
+        <trans-unit id="ec25fe25e9b159c96d4f928b8e4b3bb1e43e1359" translate="yes" xml:space="preserve">
+          <source>You can use JSTL tags together with EL expressions to avoid intermixing Java and HTML code:</source>
+          <target state="translated">Java와 HTML 코드의 혼합을 피하기 위해 EL 표현식과 함께 JSTL 태그를 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="eb8afc4289a7ce63d3c4d9c0cdfed01af3cd38db" translate="yes" xml:space="preserve">
+          <source>You can use tab library tags like &lt;strong&gt;JSTL&lt;/strong&gt; in addition to Expression Language (&lt;strong&gt;EL&lt;/strong&gt;). But EL does not work well with JSP. So it's is probably better to drop JSP completely and use &lt;strong&gt;Facelets&lt;/strong&gt;.</source>
+          <target state="translated">Expression Language ( &lt;strong&gt;EL&lt;/strong&gt; ) 외에 &lt;strong&gt;JSTL&lt;/strong&gt; 과 같은 탭 라이브러리 태그를 사용할 수 있습니다. 그러나 EL은 JSP에서 잘 작동하지 않습니다. 따라서 JSP를 완전히 삭제하고 &lt;strong&gt;Facelets를&lt;/strong&gt; 사용하는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="48dd74417b4ebc09a65eea14b7b8611e65edcdff" translate="yes" xml:space="preserve">
+          <source>You can use tag not only to avoid java but also minimize your HTML codes. I myself try to review HTML codes and build tags a lot as soon as see code duplicates start in my pages.</source>
+          <target state="translated">태그를 사용하여 Java를 피할뿐만 아니라 HTML 코드를 최소화 할 수도 있습니다. 내 페이지에서 코드 중복이 시작되는 즉시 HTML 코드를 검토하고 태그를 많이 작성하려고합니다.</target>
+        </trans-unit>
+        <trans-unit id="6885c7a4e9ed902334d26715dd6b36e91c4fb7ea" translate="yes" xml:space="preserve">
+          <source>You raised a good question and although you got good answers, I would suggest that you get rid of JSP. It is outdated technology which eventually will die. Use a modern approach, like template engines. You will have very clear separation of business and presentation layers, and certainly no Java code in templates, so you can generate templates directly from web presentation editing software, in most cases leveraging WYSIWYG.</source>
+          <target state="translated">좋은 질문을 제기했지만 좋은 답변을 얻었지만 JSP를 제거하는 것이 좋습니다. 구식 기술은 결국 죽을 것입니다. 템플릿 엔진과 같은 현대적인 접근 방식을 사용하십시오. 비즈니스 계층과 프리젠 테이션 계층을 명확하게 분리하고 템플릿에 Java 코드가 없으므로 WYSIWYG를 사용하는 대부분의 경우 웹 프리젠 테이션 편집 소프트웨어에서 직접 템플릿을 생성 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="438273965ed8aa8796321fe5db1f2057f772a67b" translate="yes" xml:space="preserve">
+          <source>You should read something about MVC. &lt;a href=&quot;http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/mvc.html&quot;&gt;Spring MVC&lt;/a&gt; &amp;amp; &lt;a href=&quot;http://struts.apache.org/2.1.8.1/index.html&quot;&gt;Struts 2&lt;/a&gt; are the two most common solutions.</source>
+          <target state="translated">MVC에 대해 읽어야합니다. &lt;a href=&quot;http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/mvc.html&quot;&gt;Spring MVC&lt;/a&gt; &amp;amp; &lt;a href=&quot;http://struts.apache.org/2.1.8.1/index.html&quot;&gt;Struts 2&lt;/a&gt; 는 가장 일반적인 두 가지 솔루션입니다.</target>
+        </trans-unit>
+        <trans-unit id="b8ab5363e1e6302f03570a1b8e0ae9b88cbfdce5" translate="yes" xml:space="preserve">
+          <source>a. Standard Tags</source>
+          <target state="translated">ㅏ. 표준 태그</target>
+        </trans-unit>
+        <trans-unit id="04f6e1d2c89d5b0154e152d11433b9186a0b3846" translate="yes" xml:space="preserve">
+          <source>b. Custom Tags</source>
+          <target state="translated">비. 맞춤 태그</target>
+        </trans-unit>
+        <trans-unit id="91fe1449aaf03867f86a0b155fcee28ddfd0f9e8" translate="yes" xml:space="preserve">
+          <source>compile the following code into WEB-INF\classes\com\java2s</source>
+          <target state="translated">다음 코드를 WEB-INF \ classes \ com \ java2s로 컴파일하십시오.</target>
+        </trans-unit>
+        <trans-unit id="a3aca3110daeea1fa393016d5451337f69813249" translate="yes" xml:space="preserve">
+          <source>create File:java2s.tld in the /WEB-INF/</source>
+          <target state="translated">/ WEB-INF /에 File : java2s.tld를 작성하십시오.</target>
+        </trans-unit>
+        <trans-unit id="347e7a992309f255fbabef719461f73688c0b617" translate="yes" xml:space="preserve">
+          <source>if you simply want to avoid the drawbacks of Java coding in JSP you can do so even with scriplets. Just follow some discipline to have minimal Java in JSP and almost no calculation and logic in the JSP page.</source>
+          <target state="translated">JSP에서 Java 코딩의 단점을 피하고 싶다면 scriplet으로도 그렇게 할 수 있습니다. JSP에서 Java를 최소화하고 JSP 페이지에서 계산 및 논리를 거의 갖지 않는 몇 가지 원칙을 따르십시오.</target>
+        </trans-unit>
+        <trans-unit id="5cc12c11e0ce089f9fb529b087b6387795003c7c" translate="yes" xml:space="preserve">
+          <source>in order to avoid java code in JSP files java now provides tag libraries like JSTL also java has come up with JSF into which u can write all programming structures in the form of tags</source>
+          <target state="translated">JSP 파일에서 자바 코드를 피하기 위해 자바는 이제 JSTL과 같은 태그 라이브러리를 제공합니다. 또한 자바는 태그 형태로 모든 프로그래밍 구조를 작성할 수있는 JSF를 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="95d9818e59ca8aa7c7ec1cf5d55885788554dd7a" translate="yes" xml:space="preserve">
+          <source>is an old school way of coding and in JSP version 2 there exists a method to avoid Java code in JSP files. Can someone please tell me the alternative JSP 2 lines, and what this technique is called?</source>
+          <target state="translated">JSP 버전 2에는 JSP 파일에서 Java 코드를 피하는 방법이 있습니다. 다른 JSP 2 라인을 알려주시겠습니까?</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

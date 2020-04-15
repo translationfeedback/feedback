@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/375913">
+    <body>
+      <group id="375913">
+        <trans-unit id="474f686377fbd8012f361b7bd0929092b87eaedd" translate="yes" xml:space="preserve">
+          <source>(The key is that we see &lt;code&gt;I&lt;/code&gt; more than once. If we only see it once, that doesn't tell us much except that &lt;code&gt;f&lt;/code&gt; &amp;gt; 0.)</source>
+          <target state="translated">(핵심은 우리가 두 번 이상 볼 수 있다는 것입니다. 한 번만 볼 경우 &lt;code&gt;f&lt;/code&gt; &amp;gt; 0을 제외하고는 많은 것을 알려주지 않습니다.)</target>
+        </trans-unit>
+        <trans-unit id="6bddfcbf9effc6af0dc2a4017b8af4d6d8c3b612" translate="yes" xml:space="preserve">
+          <source>(not so good for multi-threads, function pointers)</source>
+          <target state="translated">(멀티 스레드, 함수 포인터에는 좋지 않습니다)</target>
+        </trans-unit>
+        <trans-unit id="ba000b98349f454ff4d963d272eea56d9076b1f0" translate="yes" xml:space="preserve">
+          <source>(wikipedia) Valgrind is in essence a virtual
+  machine using just-in-time (JIT)
+  compilation techniques, including
+  dynamic recompilation. Nothing from
+  the original program ever gets run
+  directly on the host processor.
+  Instead, Valgrind first translates the
+  program into a temporary, simpler form
+  called Intermediate Representation
+  (IR), which is a processor-neutral,
+  SSA-based form. After the conversion,
+  a tool (see below) is free to do
+  whatever transformations it would like
+  on the IR, before Valgrind translates
+  the IR back into machine code and lets
+  the host processor run it.</source>
+          <target state="translated">(wikipedia) Valgrind는 본질적으로 동적 재 컴파일을 포함한 JIT (Just-In-Time) 컴파일 기술을 사용하는 가상 머신입니다. 원래 프로그램의 어떤 것도 호스트 프로세서에서 직접 실행되지 않습니다. 대신 Valgrind는 먼저 프로그램을 중립적 표현 (IR)이라고하는 임시적이고 간단한 형식으로 변환합니다.이 형식은 프로세서 중립적 인 SSA 기반 형식입니다. 변환 후 Valgrind가 IR을 기계 코드로 다시 변환하고 호스트 프로세서가이를 실행하기 전에 도구 (아래 참조)가 IR에서 원하는 변환을 자유롭게 수행 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="2f52699e83e4b55e1f403f7c6079898edd6b4dff" translate="yes" xml:space="preserve">
+          <source>- Above function , there is a list of functions that call the function .</source>
+          <target state="translated">-위의 함수에는 함수를 호출하는 함수 목록이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="97381d92a175352738f31c6b84ed1b50492ba724" translate="yes" xml:space="preserve">
+          <source>- Below function , there is a list of functions that are called by the function .</source>
+          <target state="translated">-함수 아래에 함수가 호출하는 함수 목록이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="2a06d6944b31ca287d1197fb91866bf150b9273f" translate="yes" xml:space="preserve">
+          <source>- In each section, one function is marked with an index number.</source>
+          <target state="translated">-각 섹션에서 하나의 기능에는 색인 번호가 표시되어 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="579a41d12eaf05b9059712857073fbbb03bff3f1" translate="yes" xml:space="preserve">
+          <source>- how many seconds were spent in a function&amp;mdash;including and excluding calls to sub-functions,</source>
+          <target state="translated">-하위 함수 호출을 포함하여 제외하는 함수에서 몇 초가 소비 되었습니까?</target>
+        </trans-unit>
+        <trans-unit id="2e6d2ff4ea07291f0fe68b6a1592baa107889c9d" translate="yes" xml:space="preserve">
+          <source>- the average time per call.</source>
+          <target state="translated">-통화 당 평균 시간입니다.</target>
+        </trans-unit>
+        <trans-unit id="09049524fc0fe3657417bd54beda8ddfcc7d00b5" translate="yes" xml:space="preserve">
+          <source>- the number of calls,</source>
+          <target state="translated">-전화 수</target>
+        </trans-unit>
+        <trans-unit id="726e946052f1dbb2b5959a244967231f79036c38" translate="yes" xml:space="preserve">
+          <source>- what percentage of the overall time was spent for the function,</source>
+          <target state="translated">-기능에 소요 된 전체 시간의 백분율</target>
+        </trans-unit>
+        <trans-unit id="e299449c036492af510a743e9982f023ddc5e7c0" translate="yes" xml:space="preserve">
+          <source>1- Flat profiling:</source>
+          <target state="translated">1-플랫 프로파일 링 :</target>
+        </trans-unit>
+        <trans-unit id="961cb4afe9142078530eb983e36df03834cb40bb" translate="yes" xml:space="preserve">
+          <source>2- graph profiling</source>
+          <target state="translated">2- 그래프 프로파일 링</target>
+        </trans-unit>
+        <trans-unit id="45d30831218fba6255f04ee5d6cb69901aae44b4" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;main&lt;/code&gt; calls &lt;code&gt;fast&lt;/code&gt; and &lt;code&gt;maybe_slow&lt;/code&gt; 3 times, one of the &lt;code&gt;maybe_slow&lt;/code&gt; calls being slow</source>
+          <target state="translated">&lt;code&gt;main&lt;/code&gt; 통화는 &lt;code&gt;fast&lt;/code&gt; &lt;code&gt;maybe_slow&lt;/code&gt; 는 3 번, &lt;code&gt;maybe_slow&lt;/code&gt; 통화 중 하나는 느립니다.</target>
+        </trans-unit>
+        <trans-unit id="2b26d60b77140f5edaf92172d3607731805526d8" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;perf&lt;/code&gt; seems to use exclusively Linux kernel sampling mechanisms. This makes it very simple to setup, but also not fully accurate.</source>
+          <target state="translated">&lt;code&gt;perf&lt;/code&gt; 는 독점적으로 Linux 커널 샘플링 메커니즘을 사용하는 것 같습니다. 따라서 설정이 매우 간단하지만 완전히 정확하지는 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="beaa2542bdd5cb48d735e110bbd66e279a970967" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;valgrind&lt;/code&gt; with the combination of &lt;code&gt;callrind&lt;/code&gt; and &lt;code&gt;kcachegrind&lt;/code&gt; should provide a decent estimation on the points above and once it's established that there are issues with some section of code, I'd suggest do a micro bench mark &lt;code&gt;google benchmark&lt;/code&gt; is a good place to start.</source>
+          <target state="translated">&lt;code&gt;callrind&lt;/code&gt; 와 &lt;code&gt;kcachegrind&lt;/code&gt; 의 조합으로 valgrind 는 위의 요점에 대한 적절한 평가를 제공해야하며 코드의 일부 섹션에 문제가 있음이 확인되면 &lt;code&gt;google benchmark&lt;/code&gt; 가 좋은 벤치 마크를 시작하는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="558433641cab85097025b8b72bc823c8bf5e82ad" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;perf&lt;/code&gt; from &lt;code&gt;linux-tools&lt;/code&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;linux-tools&lt;/code&gt; 에서 &lt;code&gt;perf&lt;/code&gt; &lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="1e49cc3868d9deb4e8335aa49828e8c34898c8a8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;For CPU bound applications:&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;CPU 바운드 응용 프로그램의 경우 :&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7196658c799f4043d28d713837910b362f91ab93" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;For I/O bound applications:&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;I / O 바운드 애플리케이션의 경우 :&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="ad2cef4043d111e1ae8c4692b0d3548a6613fcbd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Intel VTune is the best (free for educational purposes).&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Intel VTune이 최고입니다 (교육 목적으로 무료).&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a2b5b23586b55133642cbd2c4d931e703f33536e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Others:&lt;/strong&gt; AMD Codeanalyst (since replaced with AMD CodeXL), OProfile, 'perf' tools (apt-get install linux-tools)</source>
+          <target state="translated">&lt;strong&gt;기타 :&lt;/strong&gt; AMD Codeanalyst (AMD CodeXL로 대체 된 이후), OProfile, 'perf'도구 (apt-get install linux-tools)</target>
+        </trans-unit>
+        <trans-unit id="9f805de8a6187ff8c605dc1b87c1dbf750af8806" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Survey of C++ profiling techniques&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;C ++ 프로파일 링 기술 조사&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5935609263c49f484c816bb47bd583d8ac724622" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Use Valgrind, callgrind and kcachegrind:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Valgrind, callgrind 및 kcachegrind를 사용하십시오.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f76b5fe3b1c9563ed7d1caedae895977e4729ca3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Use google-perftools:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;google-perftools를 사용하십시오.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="eaf91a71c594a624723a2785654641c0d49b648f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Use gprof (add -pg):&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;gprof 사용 (-pg 추가) :&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="e2938d732361a260a7c9ca67f5add9a7cbbbdb25" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;gperftools&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;gperftools&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b34e9a3fe97464e4681d8532723054a812e2edcd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;gprof&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;gprof&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a645022e82b11913d78a887f81582e01e0a2ca4c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;valgrind callgrind&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;valgrind callgrind&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b68ca6f37b8016941f5283f36f3759df87ef2002" translate="yes" xml:space="preserve">
+          <source>A few other buzzwords if &lt;code&gt;gprof&lt;/code&gt; does not do the job for you: &lt;a href=&quot;http://en.wikipedia.org/wiki/Valgrind&quot;&gt;Valgrind&lt;/a&gt;, Intel &lt;a href=&quot;http://en.wikipedia.org/wiki/VTune&quot;&gt;VTune&lt;/a&gt;, Sun &lt;a href=&quot;http://en.wikipedia.org/wiki/DTrace&quot;&gt;DTrace&lt;/a&gt;.</source>
+          <target state="translated">&lt;code&gt;gprof&lt;/code&gt; 가 당신을 위해 일을하지 않으면 다른 몇 가지 유행어 : &lt;a href=&quot;http://en.wikipedia.org/wiki/Valgrind&quot;&gt;Valgrind&lt;/a&gt; , Intel &lt;a href=&quot;http://en.wikipedia.org/wiki/VTune&quot;&gt;VTune&lt;/a&gt; , Sun &lt;a href=&quot;http://en.wikipedia.org/wiki/DTrace&quot;&gt;DTrace&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="7c42306a937ace4fd5a87d18a701b72889554283" translate="yes" xml:space="preserve">
+          <source>ADDED, to give an intuitive feel for the difference between measuring and random stack sampling:</source>
+          <target state="translated">추가, 측정과 랜덤 스택 샘플링의 차이에 대한 직관적 인 느낌을주기 위해 :</target>
+        </trans-unit>
+        <trans-unit id="9276e16e7cc14ecf9ae00f247b4196166d5d1aeb" translate="yes" xml:space="preserve">
+          <source>ADDED: Let me make a Bayesian explanation of how it works.  Suppose there is some instruction &lt;code&gt;I&lt;/code&gt; (call or otherwise) which is on the call stack some fraction &lt;code&gt;f&lt;/code&gt; of the time (and thus costs that much). For simplicity, suppose we don't know what &lt;code&gt;f&lt;/code&gt; is, but assume it is either 0.1, 0.2, 0.3, ... 0.9, 1.0, and the prior probability of each of these possibilities is 0.1, so all of these costs are equally likely a-priori.</source>
+          <target state="translated">추가 : 작동 방식에 대한 베이지안 설명을하겠습니다. 호출 스택에 시간의 일부 ( &lt;code&gt;f&lt;/code&gt; ) 의 일부 (따라서 비용이 많이 들음)가있는 명령 &lt;code&gt;I&lt;/code&gt; (호출 또는 다른 방법)이 있다고 가정합니다. 간단히하기 위해, 우리가 &lt;code&gt;f&lt;/code&gt; 가 무엇인지 모르지만, 그것이 0.1, 0.2, 0.3, ... 0.9, 1.0이고 각각의 가능성에 대한 사전 확률이 0.1이라고 가정하면, 모든 비용은 동일합니다 가능성이 높습니다.</target>
+        </trans-unit>
+        <trans-unit id="830b0bd9a847a1c514fcf9b261f15a81a0e87159" translate="yes" xml:space="preserve">
+          <source>Actually a bit surprised not many mentioned about &lt;a href=&quot;https://github.com/google/benchmark&quot;&gt;google/benchmark&lt;/a&gt; , while it is a bit cumbersome to pin the specific area of code, specially if the code base is a little big one, however I found this really helpful when used in combination with &lt;code&gt;callgrind&lt;/code&gt;</source>
+          <target state="translated">실제로 &lt;a href=&quot;https://github.com/google/benchmark&quot;&gt;google / benchmark&lt;/a&gt; 에 대해 언급하지 않은 많은 사람들이 놀랐습니다. 특히 코드베이스가 조금 큰 경우 특정 코드 영역을 고정하는 것이 약간 성가 &lt;code&gt;callgrind&lt;/code&gt; 와 함께 사용할 때 실제로 도움이됩니다.</target>
+        </trans-unit>
+        <trans-unit id="d081153271ba73f6b08b5c733dfc600113ac8050" translate="yes" xml:space="preserve">
+          <source>Added: It might not be obvious, but the stack sampling technique works equally well in the presence of recursion. The reason is that the time that would be saved by removal of an instruction is approximated by the fraction of samples containing it, regardless of the number of times it may occur within a sample.</source>
+          <target state="translated">추가 : 명확하지 않을 수도 있지만 스택 샘플링 기술은 재귀가있을 때 똑같이 잘 작동합니다. 그 이유는 명령을 제거하여 저장되는 시간이 샘플 내에서 발생할 수있는 횟수에 관계없이 명령을 포함하는 샘플의 비율에 의해 근사되기 때문입니다.</target>
+        </trans-unit>
+        <trans-unit id="c111026e3becc4657525d1504f2a98b1227fa293" translate="yes" xml:space="preserve">
+          <source>After running with either of those methods, we get a &lt;code&gt;prof.out&lt;/code&gt; profile data file as output. We can view that file graphically as an SVG with:</source>
+          <target state="translated">이러한 방법 중 하나를 사용하여 실행 한 후 &lt;code&gt;prof.out&lt;/code&gt; 프로파일 데이터 파일을 출력으로 얻습니다. 다음을 사용하여 해당 파일을 그래픽으로 SVG로 볼 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="938c0204782973ed2cee8235fd6ed9aad9bd19a0" translate="yes" xml:space="preserve">
+          <source>Also worth mentioning are</source>
+          <target state="translated">또한 언급 할 가치가 있습니다</target>
+        </trans-unit>
+        <trans-unit id="30c36d00bdcf5c119d2a78569796b3b993fd0320" translate="yes" xml:space="preserve">
+          <source>Also, if we go on the bottom right &quot;Call Graph&quot; tab, we see a call graph which we can export by right clicking it to obtain the following image with unreasonable amounts of white border :-)</source>
+          <target state="translated">또한 오른쪽 하단의 &quot;콜 그래프&quot;탭으로 이동하면 마우스 오른쪽 버튼을 클릭하여 내보낼 수있는 콜 그래프를 볼 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="1ac3bae0296e72365db70cdbd1d168992f9eb4f9" translate="yes" xml:space="preserve">
+          <source>Alternatively, we can also get some textual data with:</source>
+          <target state="translated">또는 다음과 같은 텍스트 데이터를 얻을 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="6fe0b9fdb5d375e1bdddd4970a95aeb96c822b66" translate="yes" xml:space="preserve">
+          <source>Alternatively, we can also observe the text output of the &lt;code&gt;gprof&lt;/code&gt; built-in binutils tool which we previously saved at:</source>
+          <target state="translated">또는 이전에 저장 한 &lt;code&gt;gprof&lt;/code&gt; 내장 binutils 도구의 텍스트 출력을 관찰 할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="d9dc64edf60dc7f5a3736a9279e32f3c03a13aa5" translate="yes" xml:space="preserve">
+          <source>Alternatively, we can build the library in at link time, dispensing passing &lt;code&gt;LD_PRELOAD&lt;/code&gt; at runtime:</source>
+          <target state="translated">또는 링크 타임에 라이브러리를 빌드하여 런타임에 &lt;code&gt;LD_PRELOAD&lt;/code&gt; 를 전달하지 않아도 됩니다.</target>
+        </trans-unit>
+        <trans-unit id="2cf1c27c41cddb303f6c128115968d14017c5f27" translate="yes" xml:space="preserve">
+          <source>Another objection I often hear is: &quot;&lt;em&gt;It will stop someplace random, and it will miss the real problem&lt;/em&gt;&quot;.
+This comes from having a prior concept of what the real problem is.
+A key property of performance problems is that they defy expectations.
+Sampling tells you something is a problem, and your first reaction is disbelief.
+That is natural, but you can be sure if it finds a problem it is real, and vice-versa.</source>
+          <target state="translated">내가 종종 듣게되는 또 다른 반대는 &quot; &lt;em&gt;임의의 장소를 무작위로 멈출 것이고 실제 문제를 놓치게 될 것이다&lt;/em&gt; &quot;입니다. 이것은 실제 문제가 무엇인지에 대한 사전 개념을 가지고 있습니다. 성능 문제의 주요 속성은 기대를 무시한다는 것입니다. 샘플링은 문제가 있다고 말하고 첫 번째 반응은 불신입니다. 당연한 일이지만 문제가 발견되면 실제로 발생할 수 있으며 그 반대도 마찬가지입니다.</target>
+        </trans-unit>
+        <trans-unit id="fd2b8eb720b92068f67a32658ccfc03d658f34d9" translate="yes" xml:space="preserve">
+          <source>Another perf GUI interfaces which might be worth it include:</source>
+          <target state="translated">그만한 가치가있는 또 다른 perf GUI 인터페이스는 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="48122e4897dd407d27c90182539de52d682b669c" translate="yes" xml:space="preserve">
+          <source>Another tool build upon Valgrind is Massif. I use it to profile heap memory usage. It works great. What it does is that it gives you snapshots of memory usage -- detailed information WHAT holds WHAT percentage of memory, and WHO had put it there. Such information is available at different points of time of application run.</source>
+          <target state="translated">Valgrind에 구축 된 또 다른 도구는 Massif입니다. 힙 메모리 사용량을 프로파일 링하는 데 사용합니다. 잘 작동합니다. 이 기능은 메모리 사용량에 대한 스냅 샷을 제공합니다. 자세한 정보 WHAT에는 몇 퍼센트의 메모리가 저장되어 있으며 WHO는이를 저장했습니다. 이러한 정보는 응용 프로그램 실행 시점에 따라 다릅니다.</target>
+        </trans-unit>
+        <trans-unit id="26cfea3667d4951989c3328a2749151be15581ab" translate="yes" xml:space="preserve">
+          <source>Arm MAP is the profiler for parallel, multithreaded or single threaded C, C++, Fortran and F90 codes.  It provides in-depth analysis and bottleneck pinpointing to the source line.  Unlike most profilers, it's designed to be able to profile pthreads, OpenMP or MPI for parallel and threaded code.</source>
+          <target state="translated">Arm MAP은 병렬, 다중 스레드 또는 단일 스레드 C, C ++, 포트란 및 F90 코드 용 프로파일 러입니다. 소스 라인에 대한 심층 분석 및 병목 현상을 찾아냅니다. 대부분의 프로파일 러와 달리 pthread, OpenMP 또는 MPI를 병렬 및 스레드 코드로 프로파일 링 할 수 있도록 설계되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="f607a78951293acbad31ccf19fd2a9c3fc0343e3" translate="yes" xml:space="preserve">
+          <source>As a very quick summary for each section e.g.:</source>
+          <target state="translated">각 섹션에 대한 매우 빠른 요약 예 :</target>
+        </trans-unit>
+        <trans-unit id="1361188e9146c170f0554ec525ed827cb7592cc2" translate="yes" xml:space="preserve">
+          <source>As no one mentioned Arm MAP, I'd add it as personally I have successfully used Map to profile a C++ scientific program.</source>
+          <target state="translated">아무도 Arm MAP을 언급하지 않았으므로 개인적으로 Map을 사용하여 C ++ 과학 프로그램을 프로파일 링하는 데 성공적으로 추가했습니다.</target>
+        </trans-unit>
+        <trans-unit id="33441507f930cc628d62c6420d02d66548f47be3" translate="yes" xml:space="preserve">
+          <source>At runtime, we have to pass set the &lt;code&gt;LD_PRELOAD&lt;/code&gt; to point to &lt;code&gt;libprofiler.so&lt;/code&gt;, which you can find with &lt;code&gt;locate libprofiler.so&lt;/code&gt;, e.g. on my system:</source>
+          <target state="translated">런타임에 우리는 set &lt;code&gt;LD_PRELOAD&lt;/code&gt; 를 &lt;code&gt;libprofiler.so&lt;/code&gt; 를 가리 키도록 전달해야합니다. libprofiler.so 로 &lt;code&gt;locate libprofiler.so&lt;/code&gt; 수 있습니다 (예 : 내 시스템에서).</target>
+        </trans-unit>
+        <trans-unit id="275c32d1f4761fd0f70f1e315294ca1da95e4155" translate="yes" xml:space="preserve">
+          <source>At work we have a really nice tool that helps us monitoring what we want in terms of scheduling. This has been useful numerous times.</source>
+          <target state="translated">직장에서 우리는 스케줄링 측면에서 원하는 것을 모니터링하는 데 도움이되는 멋진 도구를 가지고 있습니다. 이것은 여러 번 유용했습니다.</target>
+        </trans-unit>
+        <trans-unit id="c762222f2d1b7501653b936c0a39cd0b1aa6a933" translate="yes" xml:space="preserve">
+          <source>Be sure to add &lt;code&gt;-pg&lt;/code&gt; to compilation before profiling:</source>
+          <target state="translated">프로파일 링하기 전에 컴파일에 &lt;code&gt;-pg&lt;/code&gt; 를 추가해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="d55e4a545eefcf858705baa9f8981e8dc001934b" translate="yes" xml:space="preserve">
+          <source>Because we compiled with &lt;code&gt;-pg&lt;/code&gt;, running the program produces a file &lt;code&gt;gmon.out&lt;/code&gt; file containing the profiling data.</source>
+          <target state="translated">&lt;code&gt;-pg&lt;/code&gt; 로 컴파일 했으므로 프로그램을 실행하면 프로파일 링 데이터가 포함 된 파일 &lt;code&gt;gmon.out&lt;/code&gt; 파일이 생성됩니다.</target>
+        </trans-unit>
+        <trans-unit id="0e20564692b92dee75c5d2d38aa97448c7b86382" translate="yes" xml:space="preserve">
+          <source>But this has the downside that you have to first convert the data to the Common Trace Format, which can be done with &lt;code&gt;perf data --to-ctf&lt;/code&gt;, but it needs to be enabled at build time/have &lt;code&gt;perf&lt;/code&gt; new enough, either of which is not the case for the perf in Ubuntu 18.04</source>
+          <target state="translated">그러나 이것은 데이터를 먼저 Common Trace Format으로 변환해야한다는 단점이 있습니다. 이는 &lt;code&gt;perf data --to-ctf&lt;/code&gt; 로 수행 할 수 있지만 빌드 타임에 활성화해야하거나 &lt;code&gt;perf&lt;/code&gt; 를 충분히 새로 만들어야합니다. 우분투 18.04의 성능에 대한 경우는 아닙니다.</target>
+        </trans-unit>
+        <trans-unit id="7940ac6d6de4ba483d9863a1db60f99151f2c050" translate="yes" xml:space="preserve">
+          <source>By default, this produces an extremely verbose output that explains what the output data means. Since I can't explain better than that, I'll let you read it yourself.</source>
+          <target state="translated">기본적으로 출력 데이터의 의미를 설명하는 매우 자세한 출력을 생성합니다. 그보다 더 잘 설명 할 수 없기 때문에 직접 읽어 보도록하겠습니다.</target>
+        </trans-unit>
+        <trans-unit id="0e030095a99fb3257e11106bd611c56f45c2b3ed" translate="yes" xml:space="preserve">
+          <source>Callgrind is a profiler build upon that. Main benefit is that you don't have to run your aplication for hours to get reliable result. Even one second run is sufficient to get rock-solid, reliable results, because Callgrind is a &lt;strong&gt;non-probing&lt;/strong&gt; profiler.</source>
+          <target state="translated">Callgrind는 그 위에 구축 된 프로파일 러입니다. 주요 이점은 신뢰할 수있는 결과를 얻기 위해 몇 시간 동안 애플리케이션을 실행할 필요가 없다는 것입니다. Callgrind는 &lt;strong&gt;비 프로빙&lt;/strong&gt; 프로파일 러이기 때문에 단 1 초만으로도 견고하고 안정적인 결과를 얻을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="5fea0991e44d8690969eca7425688fa735bb73f4" translate="yes" xml:space="preserve">
+          <source>Can you find the most critical call stack easily with all those tiny unsorted spaghetti lines going over one another? There might be better &lt;code&gt;dot&lt;/code&gt; options I'm sure, but I don't want to go there now. What we really need is a proper dedicated viewer for it, but I haven't found one yet:</source>
+          <target state="translated">모든 분류되지 않은 작은 스파게티 라인이 서로 연결되어 가장 중요한 통화 스택을 쉽게 찾을 수 있습니까? 더 나은 &lt;code&gt;dot&lt;/code&gt; 옵션이있을 수 있지만 지금은 가고 싶지 않습니다. 우리에게 정말로 필요한 것은 그것을위한 적절한 전용 뷰어이지만 아직 찾지 못했습니다.</target>
+        </trans-unit>
+        <trans-unit id="20f2f816399d50a15985c861ae31ff174b730293" translate="yes" xml:space="preserve">
+          <source>Caveat: Programmers tend to be skeptical of this technique unless they've used it themselves. They will say that profilers give you this information, but that is only true if they sample the entire call stack, and then let you examine a random set of samples. (The summaries are where the insight is lost.) Call graphs don't give you the same information, because</source>
+          <target state="translated">주의 사항 : 프로그래머는이 기법을 사용하지 않는 한이 기법에 회의적인 경향이 있습니다. 프로파일 러가이 정보를 제공한다고 말하지만 전체 호출 스택을 샘플링 한 다음 임의의 샘플 세트를 검사 할 수있는 경우에만 해당됩니다. (요약은 통찰력을 잃는 곳입니다.) 콜 그래프는 동일한 정보를 제공하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="099dc36893aed4eafd86bced522e4eb9937e5b98" translate="yes" xml:space="preserve">
+          <source>Eclipse Trace Compass plugin: &lt;a href=&quot;https://www.eclipse.org/tracecompass/&quot;&gt;https://www.eclipse.org/tracecompass/&lt;/a&gt;</source>
+          <target state="translated">Eclipse Trace Compass 플러그인 : &lt;a href=&quot;https://www.eclipse.org/tracecompass/&quot;&gt;https://www.eclipse.org/tracecompass/&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="b0500648de7f8cd809c18dfe1a12b0af1850fcf1" translate="yes" xml:space="preserve">
+          <source>First install gperftools with:</source>
+          <target state="translated">먼저 다음을 사용하여 gperftools를 설치하십시오.</target>
+        </trans-unit>
+        <trans-unit id="f718a4c61c9b86b8efe3e4a514c5978b1cf993ee" translate="yes" xml:space="preserve">
+          <source>First we have to remove the &lt;code&gt;-pg&lt;/code&gt; flag to go back to normal compilation, otherwise the run actually fails with &lt;a href=&quot;https://stackoverflow.com/questions/2146082/valgrind-profiling-timer-expired&quot;&gt;&lt;code&gt;Profiling timer expired&lt;/code&gt;&lt;/a&gt;, and yes, this is so common that I did and there was a Stack Overflow question for it.</source>
+          <target state="translated">먼저 일반적인 컴파일로 돌아가려면 &lt;code&gt;-pg&lt;/code&gt; 플래그를 제거해야합니다. 그렇지 않으면 실제로 &lt;a href=&quot;https://stackoverflow.com/questions/2146082/valgrind-profiling-timer-expired&quot;&gt; &lt;code&gt;Profiling timer expired&lt;/code&gt; &lt;/a&gt; 되어 실행이 실패합니다. 그렇습니다. 이것은 너무 일반적이며 스택 오버플로 질문이있었습니다.</target>
+        </trans-unit>
+        <trans-unit id="731b082498e3f526227d4ecd0e76236c0bf482bd" translate="yes" xml:space="preserve">
+          <source>First, &lt;code&gt;time&lt;/code&gt; tells us that the execution time with and without &lt;code&gt;-pg&lt;/code&gt; were the same, which is great: no slowdown! I have however seen accounts of 2x - 3x slowdowns on complex software, e.g. as &lt;a href=&quot;https://gem5.atlassian.net/browse/GEM5-337&quot;&gt;shown in this ticket&lt;/a&gt;.</source>
+          <target state="translated">첫째, &lt;code&gt;time&lt;/code&gt; 은 &lt;code&gt;-pg&lt;/code&gt; 가 있거나 없는 실행 시간이 동일하다는 것을 알려줍니다. 그러나이 &lt;a href=&quot;https://gem5.atlassian.net/browse/GEM5-337&quot;&gt;티켓에 표시된 것처럼&lt;/a&gt; 복잡한 소프트웨어에서 2x-3x 속도 저하가 발생했습니다.</target>
+        </trans-unit>
+        <trans-unit id="bcac6f94f0587cb573e61450977a4e3d79d79994" translate="yes" xml:space="preserve">
+          <source>For &lt;code&gt;-O3&lt;/code&gt;, see here like in the graphical output that &lt;code&gt;maybe_slow&lt;/code&gt; and &lt;code&gt;fast&lt;/code&gt; don't have a known parent, which is what the documentation says that &lt;code&gt;&amp;lt;spontaneous&amp;gt;&lt;/code&gt; means.</source>
+          <target state="translated">&lt;code&gt;-O3&lt;/code&gt; 의 경우 , 그래픽 출력에서 &lt;code&gt;maybe_slow&lt;/code&gt; 및 &lt;code&gt;fast&lt;/code&gt; 에 알려진 부모가없는 것으로 여기에서 참조하십시오. &lt;code&gt;&amp;lt;spontaneous&amp;gt;&lt;/code&gt; 의미하는 문서입니다.</target>
+        </trans-unit>
+        <trans-unit id="06d456a661f5b9ba3d3687e35852bf5858fab879" translate="yes" xml:space="preserve">
+          <source>For CPU, the reason for profiling in &lt;strong&gt;DEBUG&lt;/strong&gt; mode is because if your tried profiling in &lt;strong&gt;RELEASE&lt;/strong&gt; mode, the compiler is going to reduce math, vectorize loops, and inline functions which tends to glob your code into an un-mappable mess when it's assembled. &lt;strong&gt;An un-mappable mess means your profiler will not be able to clearly identify what is taking so long because the assembly may not correspond to the source code under optimization&lt;/strong&gt;. If you need the performance (e.g. timing sensitive) of &lt;strong&gt;RELEASE&lt;/strong&gt; mode, disable debugger features as needed to keep a usable performance.</source>
+          <target state="translated">CPU의 경우 &lt;strong&gt;DEBUG&lt;/strong&gt; 모드에서 프로파일 링하는 이유는 &lt;strong&gt;RELEASE&lt;/strong&gt; 모드에서 프로파일 링을 시도한 경우 컴파일 할 때 코드를 매핑 할 수없는 엉망으로 만드는 경향이있는 수학, 루프 루프 및 인라인 함수를 줄이려고하기 때문입니다. &lt;strong&gt;매핑 할 수없는 엉망은 어셈블리가 최적화중인 소스 코드와 일치하지 않을 수 있기 때문에 프로파일 러가 너무 오래 걸린 것을 명확하게 식별 할 수 없음을 의미합니다&lt;/strong&gt; . &lt;strong&gt;RELEASE&lt;/strong&gt; 모드의 성능 (예 : 타이밍 감지)이 필요한 경우 사용 가능한 성능을 유지하는 데 필요한 디버거 기능을 비활성화하십시오.</target>
+        </trans-unit>
+        <trans-unit id="1fd1a4e3732d0165baa94d16658f7291d1e77cb2" translate="yes" xml:space="preserve">
+          <source>For I/O-bound, the profiler can still identify I/O operations in &lt;strong&gt;RELEASE&lt;/strong&gt; mode because I/O operations are either externally linked to a shared library (most of the time) or in the worst case, will result in a sys-call interrupt vector (which is also easily identifiable by the profiler).</source>
+          <target state="translated">I / O 바인딩의 경우 I / O 작업이 공유 라이브러리에 외부 적으로 연결되거나 (대부분의 경우) 최악의 경우 sys-가 발생하기 때문에 프로파일 러는 &lt;strong&gt;RELEASE&lt;/strong&gt; 모드에서 여전히 I / O 작업을 식별 할 수 있습니다. 호출 인터럽트 벡터 (프로파일 러가 쉽게 식별 할 수 있음).</target>
+        </trans-unit>
+        <trans-unit id="da7a5db11d6d72fa7a5c6be30597dedf122892f3" translate="yes" xml:space="preserve">
+          <source>For educational reasons, we will also do a run without optimizations enabled. Note that this is useless in practice, as you normally only care about optimizing the performance of the optimized program:</source>
+          <target state="translated">교육상의 이유로 최적화를 사용하지 않고 실행도 수행합니다. 일반적으로 최적화 된 프로그램의 성능 최적화에만 관심이 있기 때문에 실제로는 쓸모가 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="59ad9936a7b0f4788c6ad3b0ea79e48e4a42d309" translate="yes" xml:space="preserve">
+          <source>For single-threaded programs you can use &lt;strong&gt;igprof&lt;/strong&gt;, The Ignominous Profiler: &lt;a href=&quot;https://igprof.org/&quot;&gt;https://igprof.org/&lt;/a&gt; .</source>
+          <target state="translated">단일 스레드 프로그램의 경우 &lt;strong&gt;igprof&lt;/strong&gt; , Ignominous Profiler : &lt;a href=&quot;https://igprof.org/&quot;&gt;https://igprof.org/를&lt;/a&gt; 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="e32962da9446269770cb3283319d83603bd59de6" translate="yes" xml:space="preserve">
+          <source>HPCToolkit (&lt;a href=&quot;http://hpctoolkit.org/&quot;&gt;http://hpctoolkit.org/&lt;/a&gt;) - Open-source, works for parallel programs and has a GUI with which to look at the results multiple ways</source>
+          <target state="translated">HPCToolkit ( &lt;a href=&quot;http://hpctoolkit.org/&quot;&gt;http://hpctoolkit.org/)-&lt;/a&gt; 오픈 소스, 병렬 프로그램에서 작동하며 여러 가지 방법으로 결과를 볼 수있는 GUI</target>
+        </trans-unit>
+        <trans-unit id="9717437adb9e366c40c178b8b430e79730bf5d20" translate="yes" xml:space="preserve">
+          <source>Here is an off-the-cuff illustration of the difference between examining measurements and examining stack samples.
+The bottleneck could be one big blob like this, or numerous small ones, it makes no difference.</source>
+          <target state="translated">다음은 측정 검사와 스택 샘플 검사의 차이점에 대한 설명입니다. 병목 현상은 이와 같은 하나의 큰 얼룩이거나 수많은 작은 것이므로 차이가 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="84e40b82ddf20b2158fe8ae0544325f38d246cfd" translate="yes" xml:space="preserve">
+          <source>Here, the &lt;code&gt;gprof&lt;/code&gt; tool reads the &lt;code&gt;gmon.out&lt;/code&gt; trace information, and generates a human readable report in &lt;code&gt;main.gprof&lt;/code&gt;, which &lt;code&gt;gprof2dot&lt;/code&gt; then reads to generate a graph.</source>
+          <target state="translated">여기서 &lt;code&gt;gprof&lt;/code&gt; 도구는 &lt;code&gt;gmon.out&lt;/code&gt; 추적 정보를 읽고 &lt;code&gt;gprof2dot&lt;/code&gt; 에 사람이 읽을 수있는 보고서를 생성 한 다음 gprof2dot 에서 그래프를 생성하기 위해 읽습니다.</target>
+        </trans-unit>
+        <trans-unit id="966dcaa64447ac43f2c9e4440202155cac9e9802" translate="yes" xml:space="preserve">
+          <source>Hope the idea is not obfuscated by the lack of sample code.</source>
+          <target state="translated">샘플 코드가 부족하여 아이디어가 난독 화되지 않기를 바랍니다.</target>
+        </trans-unit>
+        <trans-unit id="b3431131b2f01fa3ab4147cebf53065a9fed2f0e" translate="yes" xml:space="preserve">
+          <source>How can I profile C++ code running on Linux</source>
+          <target state="translated">Linux에서 실행되는 C ++ 코드를 프로파일 링하는 방법</target>
+        </trans-unit>
+        <trans-unit id="e8d9679c58e452301713e88a029c43b1b26959f7" translate="yes" xml:space="preserve">
+          <source>However, if you're in a hurry and you can manually interrupt your program under the debugger while it's being subjectively slow, there's a simple way to find performance problems.</source>
+          <target state="translated">그러나 서두르고 주관적으로 느리게 진행되는 동안 디버거에서 프로그램을 수동으로 중단 할 수있는 경우 성능 문제를 찾는 간단한 방법이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="469ae7f984de3b3fd05c657ff55c2e05a4bb68f3" translate="yes" xml:space="preserve">
+          <source>I assume you're using GCC. The standard solution would be to profile with &lt;a href=&quot;http://www.math.utah.edu/docs/info/gprof_toc.html&quot;&gt;gprof&lt;/a&gt;.</source>
+          <target state="translated">GCC를 사용한다고 가정합니다. 표준 솔루션은 &lt;a href=&quot;http://www.math.utah.edu/docs/info/gprof_toc.html&quot;&gt;gprof&lt;/a&gt; 로 프로파일 링하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="2626ed11413be172901c236c0ce46711b1e4e409" translate="yes" xml:space="preserve">
+          <source>I choose SVG output instead of PNG because the SVG is searchable with Ctrl + F and the file size can be about 10x smaller. Also, the width and height of the generated image can be humoungous with tens of thousands of pixels for complex software, and GNOME &lt;code&gt;eog&lt;/code&gt; 3.28.1 bugs out in that case for PNGs, while SVGs get opened by my browser automatically. gimp 2.8 worked well though, see also:</source>
+          <target state="translated">SVG는 Ctrl + F로 검색 가능하고 파일 크기는 약 10 배 작을 수 있기 때문에 PNG 대신 SVG 출력을 선택합니다. 또한 생성 된 이미지의 너비와 높이는 복잡한 소프트웨어의 경우 수만 개의 픽셀로 가득 차 있으며 PNG의 경우 그놈 &lt;code&gt;eog&lt;/code&gt; 3.28.1 버그가 발생하지만 SVG는 브라우저에서 자동으로 열립니다. 김프 2.8은 잘 작동하지만 다음도 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="219d1034d60f6bcc0c754cc1eb67709e077e407e" translate="yes" xml:space="preserve">
+          <source>I enable &lt;code&gt;--dump-instr=yes --collect-jumps=yes&lt;/code&gt; because this also dumps information that enables us to view a per assembly line breakdown of performance, at a relatively small added overhead cost.</source>
+          <target state="translated">&lt;code&gt;--dump-instr=yes --collect-jumps=yes&lt;/code&gt; 를 사용하면 상대적으로 적은 추가 비용으로 조립 라인 당 성능 저하를 볼 수있는 정보도 덤프되기 때문에 사용합니다.</target>
+        </trans-unit>
+        <trans-unit id="161bfcf11ea394e1742c7e0a58a6044adc301c18" translate="yes" xml:space="preserve">
+          <source>I have a C++ application, running on Linux, which I'm in the process of optimizing. How can I pinpoint which areas of my code are running slowly?</source>
+          <target state="translated">Linux에서 실행되는 C ++ 응용 프로그램이 있는데 최적화 과정에 있습니다. 코드의 어느 영역이 느리게 실행되고 있는지 어떻게 알 수 있습니까?</target>
+        </trans-unit>
+        <trans-unit id="3fa235219dffe6626130e2fa7a49a904b35f5be5" translate="yes" xml:space="preserve">
+          <source>I have used HPCToolkit and VTune and they are very effective at finding the long pole in the tent and do not need your code to be recompiled (except that you have to use -g -O or RelWithDebInfo type build in CMake to get meaningful output). I have heard TAU is similar in capabilities.</source>
+          <target state="translated">HPCToolkit 및 VTune을 사용했으며 텐트에서 장대를 찾는 데 매우 효과적이며 코드를 다시 컴파일 할 필요가 없습니다 (의미있는 출력을 얻으려면 CMake에서 -g -O 또는 RelWithDebInfo 유형 빌드를 사용해야 함) . TAU의 기능이 비슷하다고 들었습니다.</target>
+        </trans-unit>
+        <trans-unit id="d652bdc8e2d715973adba2c14a8aeac6ea5b5520" translate="yes" xml:space="preserve">
+          <source>I haven't tried it yet but I've heard good things about &lt;a href=&quot;https://github.com/gperftools/gperftools&quot;&gt;google-perftools&lt;/a&gt;. It is definitely worth a try.</source>
+          <target state="translated">아직 시도하지는 않았지만 &lt;a href=&quot;https://github.com/gperftools/gperftools&quot;&gt;google-perftools&lt;/a&gt; 에 대한 좋은 소식을 들었습니다. 시도해 볼 가치가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="9adb36d7693cd006e9f81ed5125c898080cee016" translate="yes" xml:space="preserve">
+          <source>I recommend in next window to click on &quot;Self&quot; column header, otherwise it shows that &quot;main()&quot; is most time consuming task. &quot;Self&quot; shows how much each function itself took time, not together with dependents.</source>
+          <target state="translated">다음 창에서 &quot;Self&quot;열 머리글을 클릭하는 것이 좋습니다. 그렇지 않으면 &quot;main ()&quot;이 가장 많은 시간이 걸리는 작업임을 나타냅니다. &quot;자기&quot;는 각 기능 자체가 종속 자와 함께가 아니라 시간이 얼마나 걸렸는지를 보여줍니다.</target>
+        </trans-unit>
+        <trans-unit id="0f482aa371b33a0d0d5638abd01afc2e298063e0" translate="yes" xml:space="preserve">
+          <source>I think &lt;code&gt;fast&lt;/code&gt; is not showing on that graph because kcachegrind must have simplified the visualization because that call takes up too little time, this will likely be the behavior you want on a real program. The right click menu has some settings to control when to cull such nodes, but I couldn't get it to show such a short call after a quick attempt. If I click on &lt;code&gt;fast&lt;/code&gt; on the left window, it does show a call graph with &lt;code&gt;fast&lt;/code&gt;, so that stack was actually captured. No one had yet found a way to show the complete graph call graph: &lt;a href=&quot;https://stackoverflow.com/questions/33769323/make-callgrind-show-all-function-calls-in-the-kcachegrind-callgraph&quot;&gt;Make callgrind show all function calls in the kcachegrind callgraph&lt;/a&gt;</source>
+          <target state="translated">kcachegrind가 호출을 너무 적은 시간이 걸리기 때문에 시각화를 단순화해야했기 때문에 그래프에 &lt;code&gt;fast&lt;/code&gt; 표시되지 않는다고 생각합니다. 실제 프로그램에서 원하는 동작 일 것입니다. 마우스 오른쪽 버튼 메뉴에는 이러한 노드를 컬링하는시기를 제어하는 ​​몇 가지 설정이 있지만 빠른 시도 후 짧은 호출을 표시하지 못했습니다. 왼쪽 창에서 &lt;code&gt;fast&lt;/code&gt; 를 클릭하면 스택이 실제로 캡처되도록 &lt;code&gt;fast&lt;/code&gt; 와 함께 호출 그래프가 표시됩니다. 아직 완전한 그래프 호출 그래프를 표시하는 방법을 찾지 못했습니다. &lt;a href=&quot;https://stackoverflow.com/questions/33769323/make-callgrind-show-all-function-calls-in-the-kcachegrind-callgraph&quot;&gt;callgrind가 kcachegrind 호출 그래프에서 모든 함수 호출을 표시하도록하십시오.&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="9b793d633b0f9e951abdde18b8e2544cd6ea68b3" translate="yes" xml:space="preserve">
+          <source>I would use Valgrind and Callgrind as a base for my profiling tool suite. What is important to know is that Valgrind is basically a Virtual Machine:</source>
+          <target state="translated">Valgrind와 Callgrind를 프로파일 링 도구 모음의 기반으로 사용합니다. 알아야 할 중요한 것은 Valgrind가 기본적으로 가상 머신이라는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="6263011d671a27f31d355d03e88575c38e353dc8" translate="yes" xml:space="preserve">
+          <source>I'm not sure if there is a nice way to do line-by-line profiling with gprof: &lt;a href=&quot;https://stackoverflow.com/questions/9608949/gprof-time-spent-in-particular-lines-of-code&quot;&gt;`gprof` time spent in particular lines of code&lt;/a&gt;</source>
+          <target state="translated">gprof로 라인 별 프로파일 링을 수행하는 좋은 방법이 있는지 확실하지 않습니다. &lt;a href=&quot;https://stackoverflow.com/questions/9608949/gprof-time-spent-in-particular-lines-of-code&quot;&gt;특정 코드 라인에서 보낸 '&lt;/a&gt; gprof '시간</target>
+        </trans-unit>
+        <trans-unit id="bf065948e194a11f5b37f951703925e3fcde2b09" translate="yes" xml:space="preserve">
+          <source>I've been using Gprof the last couple of days and have already found three significant limitations, one of which I've not seen documented anywhere else (yet):</source>
+          <target state="translated">지난 며칠 동안 Gprof를 사용해 왔으며 이미 세 가지 중요한 제한 사항을 발견했습니다. 그 중 하나는 아직 다른 곳에서는 문서화되지 않은 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="9d8fb54a20b1fdf3a9f7cf18def00021f5a8cb9f" translate="yes" xml:space="preserve">
+          <source>IMHO identifying the piece that is causing bottleneck is the key here. I'd however try and answer the following questions first and choose tool based on that</source>
+          <target state="translated">병목 현상을 일으키는 부분을 식별하는 IMHO가 핵심입니다. 그러나 먼저 다음 질문에 답하고 그에 따라 도구를 선택합니다.</target>
+        </trans-unit>
+        <trans-unit id="dc4e7b05ff6973f04bea57e88cf21f888a6f86ea" translate="yes" xml:space="preserve">
+          <source>If you don't have a profiler, use the poor man's profiler. Hit pause while debugging your application. Most developer suites will break into assembly with commented line numbers. You're statistically likely to land in a region that is eating most of your CPU cycles.</source>
+          <target state="translated">프로파일 러가없는 경우 가난한 사람의 프로파일 러를 사용하십시오. 응용 프로그램을 디버깅하는 동안 일시 중지를 누르십시오. 대부분의 개발자 제품군은 주석이 달린 줄 번호로 조립됩니다. 통계적으로 대부분의 CPU 사이클을 먹는 지역에 착륙 할 가능성이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="41540dddcb3ba901435fd0caa48e769fcf817d8a" translate="yes" xml:space="preserve">
+          <source>If your goal is to use a profiler, use one of the suggested ones.</source>
+          <target state="translated">프로파일 러를 사용하는 것이 목표라면 제안 된 프로파일 러 중 하나를 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="be4b7a0ea0d89ea3adbdc8138fbc2d0f2de5e625" translate="yes" xml:space="preserve">
+          <source>In our example, outputs were for &lt;code&gt;-O0&lt;/code&gt;:</source>
+          <target state="translated">이 예에서 출력은 &lt;code&gt;-O0&lt;/code&gt; 입니다 .</target>
+        </trans-unit>
+        <trans-unit id="431412748fb4a5baa6b65245373a7cfce7f17b4e" translate="yes" xml:space="preserve">
+          <source>In this answer, I will use several different tools to a analyze a few very simple test programs, in order to concretely compare how those tools work.</source>
+          <target state="translated">이 답변에서는 여러 도구를 사용하여 몇 가지 매우 간단한 테스트 프로그램을 분석하여 해당 도구의 작동 방식을 구체적으로 비교합니다.</target>
+        </trans-unit>
+        <trans-unit id="635f12c9ec4169045833041b2619bfd5f883a755" translate="yes" xml:space="preserve">
+          <source>Intel VTune (&lt;a href=&quot;https://software.intel.com/en-us/vtune&quot;&gt;https://software.intel.com/en-us/vtune&lt;/a&gt;) - If you have intel compilers this is very good</source>
+          <target state="translated">Intel VTune ( &lt;a href=&quot;https://software.intel.com/en-us/vtune&quot;&gt;https://software.intel.com/en-us/vtune)-&lt;/a&gt; 인텔 컴파일러가있는 경우 매우 좋습니다</target>
+        </trans-unit>
+        <trans-unit id="4642763219e0fa4ea52daaf7bd5c245926adf1ae" translate="yes" xml:space="preserve">
+          <source>It doesn't work properly on multi-threaded code, unless you use a &lt;a href=&quot;http://sam.zoy.org/writings/programming/gprof.html&quot;&gt;workaround&lt;/a&gt;</source>
+          <target state="translated">&lt;a href=&quot;http://sam.zoy.org/writings/programming/gprof.html&quot;&gt;해결 방법&lt;/a&gt; 을 사용하지 않으면 멀티 스레드 코드에서 제대로 작동하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="0a9760c557903dfa3fa680464b187e1b7fe3f2d6" translate="yes" xml:space="preserve">
+          <source>It is a sampling profiler, along the lines of the... long... answer by Mike Dunlavey, which will gift wrap the results in a browsable call stack tree, annotated with the time or memory spent in each function, either cumulative or per-function.</source>
+          <target state="translated">Mike Dunlavey의 답변에 따라 샘플링 프로파일 러입니다. Mike Dunlavey의 답변은 탐색 가능한 호출 스택 트리로 결과를 래핑하여 각 함수에 소비 된 시간 또는 메모리가 주석 또는 누적으로 표시됩니다. 기능별.</target>
+        </trans-unit>
+        <trans-unit id="2ba19127395eb53bf0dd24f844c9a45fd905b0fe" translate="yes" xml:space="preserve">
+          <source>It says &lt;a href=&quot;http://www.cs.utah.edu/dept/old/texinfo/as/gprof.html&quot;&gt;here&lt;/a&gt; that &quot;... the number-of-calls figures are derived by counting, not sampling. They are completely accurate...&quot;. Yet I find my call graph giving me 5345859132+784984078 as call stats to my most-called function, where the first number is supposed to be direct calls, and the second recursive calls (which are all from itself). Since this implied I had a bug, I put in long (64-bit) counters into the code and did the same run again. My counts: 5345859132 direct, and 78094395406 self-recursive calls.  There are a lot of digits there, so I'll point out the recursive calls I measure are 78bn, versus 784m from Gprof: a factor of 100 different. Both runs were single threaded and unoptimised code, one compiled &lt;code&gt;-g&lt;/code&gt; and the other &lt;code&gt;-pg&lt;/code&gt;.</source>
+          <target state="translated">&lt;a href=&quot;http://www.cs.utah.edu/dept/old/texinfo/as/gprof.html&quot;&gt;여기서는&lt;/a&gt; &quot;... 통화 횟수 수치는 샘플링이 아니라 계산에 의해 도출됩니다. 완전히 정확합니다 ...&quot;라고 말합니다. 그러나 내 호출 그래프는 5345859132 + 784984078을 가장 많이 호출되는 함수에 대한 호출 통계로 제공합니다. 첫 번째 숫자는 직접 호출이고 두 번째 재귀 호출은 모두 자체 호출입니다. 이것은 버그가 있음을 암시했기 때문에 긴 (64 비트) 카운터를 코드에 넣고 다시 실행했습니다. 내 수 : 5345859132 직통 및 78094395406 자체 재귀 호출. 여기에는 많은 자릿수가 있으므로 Gprof의 784m에 비해 내가 측정하는 재귀 호출은 780 억입니다 .100 가지 요소입니다. 두 실행 모두 단일 스레드 및 최적화되지 않은 코드로, 하나는 컴파일 된 &lt;code&gt;-g&lt;/code&gt; 이고 다른 하나는 &lt;code&gt;-pg&lt;/code&gt; 입니다.</target>
+        </trans-unit>
+        <trans-unit id="7cb7e9d2c15a7ea8f0115ba5bd906e6333b013da" translate="yes" xml:space="preserve">
+          <source>It will generate a file called &lt;code&gt;callgrind.out.x&lt;/code&gt;. You can then use &lt;code&gt;kcachegrind&lt;/code&gt; tool to read this file. It will give you a graphical analysis of things with results like which lines cost how much.</source>
+          <target state="translated">&lt;code&gt;callgrind.out.x&lt;/code&gt; 라는 파일을 생성합니다. 그런 다음 &lt;code&gt;kcachegrind&lt;/code&gt; 도구를 사용하여이 파일을 읽을 수 있습니다. 어떤 라인에 얼마의 비용이 드는지와 같은 결과로 사물의 그래픽 분석을 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="76e28acade3cc2a27154df90bec362b0a631dfad" translate="yes" xml:space="preserve">
+          <source>It's cross-platform and allows you not to measure performance of your application also in real-time. You can even couple it with a live graph.
+Full disclaimer: I am the author.</source>
+          <target state="translated">크로스 플랫폼이며 애플리케이션 성능을 실시간으로 측정 할 수 없습니다. 라이브 그래프와 결합 할 수도 있습니다. 완전 면책 조항 : 나는 저자입니다.</target>
+        </trans-unit>
+        <trans-unit id="4b1a94bb5d0f0a36818c07bf5e21ac7db7f6e83a" translate="yes" xml:space="preserve">
+          <source>It's in C++ and must be customized to your needs. Unfortunately I can't share code, just concepts.
+You use a &quot;large&quot; &lt;code&gt;volatile&lt;/code&gt; buffer containing timestamps and event ID that you can dump post mortem or after stopping the logging system (and dump this into a file for example).</source>
+          <target state="translated">C ++로되어 있으며 필요에 따라 사용자 정의해야합니다. 불행히도 코드를 공유 할 수없고 개념 만 공유 할 수 있습니다. 타임 스탬프 및 이벤트 ID가 포함 된 &quot;대형&quot; &lt;code&gt;volatile&lt;/code&gt; 버퍼를 사용하여 사후에 또는 로깅 시스템을 중지 한 후 덤프 할 수 있습니다 (예 : 파일로 덤프).</target>
+        </trans-unit>
+        <trans-unit id="6866c589c53df9bdbafd58f6594aa3b9926e0556" translate="yes" xml:space="preserve">
+          <source>Just halt it several times, and each time look at the call stack. If there is some code that is wasting some percentage of the time, 20% or 50% or whatever, that is the probability that you will catch it in the act on each sample. So that is roughly the percentage of samples on which you will see it. There is no educated guesswork required.
+If you do have a guess as to what the problem is, this will prove or disprove it.</source>
+          <target state="translated">여러 번 중지하고 매번 호출 스택을보십시오. 20 % 또는 50 % 또는 시간의 일부를 낭비하는 코드가있는 경우 각 샘플의 동작에서 코드를 잡을 확률이 있습니다. 이것은 대략 샘플의 비율입니다. 교육받은 추측은 필요하지 않습니다. 문제가 무엇인지 추측하면 문제를 증명하거나 반증합니다.</target>
+        </trans-unit>
+        <trans-unit id="c54056bc2b49a6ba4b6c533b7638afae9a9d85da" translate="yes" xml:space="preserve">
+          <source>MAP is commercial software.</source>
+          <target state="translated">MAP는 상용 소프트웨어입니다.</target>
+        </trans-unit>
+        <trans-unit id="7f9d5d60edf957a9efb30c849d25e99af6c8e0ff" translate="yes" xml:space="preserve">
+          <source>Measurement is horizontal; it tells you what fraction of time specific routines take.
+Sampling is vertical.
+If there is any way to avoid what the whole program is doing at that moment, &lt;em&gt;and if you see it on a second sample&lt;/em&gt;, you've found the bottleneck.
+That's what makes the difference - seeing the whole reason for the time being spent, not just how much.</source>
+          <target state="translated">측정은 수평입니다. 특정 루틴에 소요되는 시간을 알려줍니다. 샘플링은 수직입니다. 전체 프로그램이 그 순간에 수행하는 작업을 피할 수있는 방법이 &lt;em&gt;있고 두 번째 샘플&lt;/em&gt; 에서 볼 경우 병목 현상을 발견 한 것입니다. 그것이 차이를 만드는 이유입니다. 시간이 얼마나 걸리는가에 대한 전체 이유를 보는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="477fe7fb42d087f23d433845410b477d61ad6d95" translate="yes" xml:space="preserve">
+          <source>N.B.</source>
+          <target state="translated">N.B.</target>
+        </trans-unit>
+        <trans-unit id="5f635737b21ddea700a64d9ba1681ee8be0ba798" translate="yes" xml:space="preserve">
+          <source>Newer kernels (e.g. the latest Ubuntu kernels) come with the new 'perf' tools (&lt;code&gt;apt-get install linux-tools&lt;/code&gt;) AKA &lt;a href=&quot;https://en.wikipedia.org/wiki/Perf_(Linux)&quot;&gt;perf_events&lt;/a&gt;.</source>
+          <target state="translated">최신 커널 (예 : 최신 Ubuntu 커널)에는 새로운 'perf'도구 ( &lt;code&gt;apt-get install linux-tools&lt;/code&gt; ) AKA &lt;a href=&quot;https://en.wikipedia.org/wiki/Perf_(Linux)&quot;&gt;perf_events가 포함되어&lt;/a&gt; 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="130b95199b8439c21a930c61f8c68941d88450a0" translate="yes" xml:space="preserve">
+          <source>Now it says P(f &amp;gt;= 0.5) is 26%, up from the prior assumption of 0.6%. So Bayes allows us to update our estimate of the probable cost of &lt;code&gt;I&lt;/code&gt;. If the amount of data is small, it doesn't tell us accurately what the cost is, only that it is big enough to be worth fixing.</source>
+          <target state="translated">이제 P (f&amp;gt; = 0.5)는 26 %로 이전의 0.6 % 가정보다 높아졌습니다. 따라서 Bayes를 사용하면 예상 비용 &lt;code&gt;I&lt;/code&gt; 의 추정치를 업데이트 할 수 있습니다. 데이터의 양이 적 으면 비용이 얼마인지 정확하게 알려주지 않고 수정해야 할만큼 큰 것만 알려줍니다.</target>
+        </trans-unit>
+        <trans-unit id="1cc1ff9a05639f9a0179486bc64f7be0e48efc59" translate="yes" xml:space="preserve">
+          <source>Now we have some files named callgrind.out.* in current directory. To see profiling results use:</source>
+          <target state="translated">이제 현재 디렉토리에 callgrind.out. *라는 파일이 있습니다. 프로파일 링 결과를 보려면 다음을 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="3440a6fe929867ee09b71eda8a51b92ff532c181" translate="yes" xml:space="preserve">
+          <source>Now when it works and we want to start profiling we should run in another window:</source>
+          <target state="translated">이제 작동하고 프로파일 링을 시작하려면 다른 창에서 실행해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="d3cb823c58e17cf865b583e5a20e385601ec48b1" translate="yes" xml:space="preserve">
+          <source>Off the bat, &lt;code&gt;time&lt;/code&gt; tells us that the program took 29.5 seconds to execute, so we had a slowdown of about 15x on this example. Clearly, this slowdown is going to be a serious limitation for larger workloads. On the &quot;real world software example&quot; &lt;a href=&quot;https://gem5.atlassian.net/browse/GEM5-337&quot;&gt;mentioned here&lt;/a&gt;, I observed a slowdown of 80x.</source>
+          <target state="translated">&lt;code&gt;time&lt;/code&gt; 프로그램이 실행하는 데 29.5 초가 걸렸다 고 알려주므로이 예제에서는 약 15 배의 속도가 느려졌습니다. 분명히이 둔화는 더 큰 워크로드에 심각한 제한이 될 것입니다. &lt;a href=&quot;https://gem5.atlassian.net/browse/GEM5-337&quot;&gt;여기&lt;/a&gt; 에 언급 된 &quot;실제 소프트웨어 예&quot;에서 80 배의 속도 저하를 관찰했습니다.</target>
+        </trans-unit>
+        <trans-unit id="a2a01fb750150dbf6d32038f978233485a2955b5" translate="yes" xml:space="preserve">
+          <source>On the a more complex example it becomes clear what the graph means:</source>
+          <target state="translated">보다 복잡한 예에서는 그래프의 의미가 분명해집니다.</target>
+        </trans-unit>
+        <trans-unit id="7ea07b1121db66a159bd732b96f60b6003126f27" translate="yes" xml:space="preserve">
+          <source>Once you have understood the data output format, you can reduce verbosity to show just the data without the tutorial with the &lt;code&gt;-b&lt;/code&gt; option:</source>
+          <target state="translated">데이터 출력 형식을 이해하면 &lt;code&gt;-b&lt;/code&gt; 옵션을 사용하여 학습서없이 데이터 만 표시하도록 상세도를 줄일 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="dbba8950c83f558b0a5b23878c05f60878612272" translate="yes" xml:space="preserve">
+          <source>One cool thing about &lt;code&gt;perf&lt;/code&gt; is the FlameGraph tool from Brendan Gregg which displays the call stack timings in a very neat way that allows you to quickly see the big calls. The tool is available at: &lt;a href=&quot;https://github.com/brendangregg/FlameGraph&quot;&gt;https://github.com/brendangregg/FlameGraph&lt;/a&gt; and is also mentioned on his perf tutorial at: &lt;a href=&quot;http://www.brendangregg.com/perf.html#FlameGraphs&quot;&gt;http://www.brendangregg.com/perf.html#FlameGraphs&lt;/a&gt; When I ran &lt;code&gt;perf&lt;/code&gt; without &lt;code&gt;sudo&lt;/code&gt; I got &lt;a href=&quot;https://github.com/brendangregg/FlameGraph/issues/132&quot;&gt;&lt;code&gt;ERROR: No stack counts found&lt;/code&gt;&lt;/a&gt; so for now I'll be doing it with &lt;code&gt;sudo&lt;/code&gt;:</source>
+          <target state="translated">&lt;code&gt;perf&lt;/code&gt; 의 멋진 점 중 하나는 Brendan Gregg의 FlameGraph 도구입니다.이 도구는 통화 스택 타이밍을 매우 깔끔하게 표시하여 큰 통화를 빠르게 볼 수 있도록합니다. 이 도구는 &lt;a href=&quot;https://github.com/brendangregg/FlameGraph&quot;&gt;https://github.com/brendangregg/FlameGraph&lt;/a&gt; 에서 사용할 수 있으며 그의 perf 튜토리얼에서 다음과 같이 언급됩니다. &lt;a href=&quot;https://github.com/brendangregg/FlameGraph/issues/132&quot;&gt; &lt;code&gt;ERROR: No stack counts found&lt;/code&gt; &lt;/a&gt; 없으므로 지금은 &lt;code&gt;sudo&lt;/code&gt; 로 수행합니다.</target>
+        </trans-unit>
+        <trans-unit id="e1e2d5fff1404430f80a9893a77239e1b369f4c6" translate="yes" xml:space="preserve">
+          <source>P.P.S As a rough generality, the more layers of abstraction you have in your software, the more likely you are to find that that is the cause of performance problems (and the opportunity to get speedup).</source>
+          <target state="translated">PPS 대략적으로, 소프트웨어에 추상화 계층이 많을수록 성능 문제의 원인이되고 속도를 높일 수있는 기회가 될 가능성이 높습니다.</target>
+        </trans-unit>
+        <trans-unit id="bbd10fe9dd107bcf29e061a1dbca691e2b9849ec" translate="yes" xml:space="preserve">
+          <source>P.S. This can also be done on multi-thread programs if there is a way to collect call-stack samples of the thread pool at a point in time, as there is in Java.</source>
+          <target state="translated">PS Java에서와 같이 특정 시점에 스레드 풀의 콜 스택 샘플을 수집하는 방법이있는 경우 멀티 스레드 프로그램에서도 수행 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="4d12df151686c7a7b5c9580f37caebf54fd9c01a" translate="yes" xml:space="preserve">
+          <source>Previously called &quot;Google Performance Tools&quot;, source: &lt;a href=&quot;https://github.com/gperftools/gperftools&quot;&gt;https://github.com/gperftools/gperftools&lt;/a&gt; Sample based.</source>
+          <target state="translated">이전에 &quot;Google 성능 도구&quot;라고하는 출처 : &lt;a href=&quot;https://github.com/gperftools/gperftools&quot;&gt;https://github.com/gperftools/gperftools&lt;/a&gt; 샘플 기반.</target>
+        </trans-unit>
+        <trans-unit id="4830d80b5bfe85f29931b456dde61e5a468406a7" translate="yes" xml:space="preserve">
+          <source>Related question &lt;a href=&quot;https://stackoverflow.com/questions/56672/how-do-you-profile-your-code&quot;&gt;here&lt;/a&gt;.</source>
+          <target state="translated">관련 질문은 &lt;a href=&quot;https://stackoverflow.com/questions/56672/how-do-you-profile-your-code&quot;&gt;여기에 있습니다&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="2577e776d1182d8b8493c8c47c6882960c233679" translate="yes" xml:space="preserve">
+          <source>See also: &lt;a href=&quot;https://stackoverflow.com/questions/10874308/how-to-use-google-perf-tools&quot;&gt;How to use google perf tools&lt;/a&gt;</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/questions/10874308/how-to-use-google-perf-tools&quot;&gt;구글 퍼프 툴 사용법&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="d6bdcd52d3599e74ca39aae086a3b346358703f1" translate="yes" xml:space="preserve">
+          <source>See also: &lt;a href=&quot;https://stackoverflow.com/questions/46949407/gperftools-profile-file-not-dumped&quot;&gt;gperftools - profile file not dumped&lt;/a&gt;</source>
+          <target state="translated">참조 : &lt;a href=&quot;https://stackoverflow.com/questions/46949407/gperftools-profile-file-not-dumped&quot;&gt;gperftools-덤프되지 않은 프로파일 파일&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="6298bf00768899707674b3da8584b8c3f21f0334" translate="yes" xml:space="preserve">
+          <source>So then I try to benchmark the &lt;code&gt;-O0&lt;/code&gt; program to see if that shows anything, and only now, at last, do I see a call graph:</source>
+          <target state="translated">그런 다음 &lt;code&gt;-O0&lt;/code&gt; 프로그램을 벤치마킹하여 그게 무엇이든 표시되는지 확인하고 마지막으로 콜 그래프가 표시됩니까?</target>
+        </trans-unit>
+        <trans-unit id="72cc02d3d1195fc59d61046450268e28e14c7f19" translate="yes" xml:space="preserve">
+          <source>So this is what I recommend. Run program first:</source>
+          <target state="translated">이것이 제가 추천하는 것입니다. 먼저 프로그램을 실행하십시오.</target>
+        </trans-unit>
+        <trans-unit id="f6772b5f69ff63328b7702c6bb60c75468582ac8" translate="yes" xml:space="preserve">
+          <source>So we compile and run as:</source>
+          <target state="translated">따라서 다음과 같이 컴파일하고 실행합니다.</target>
+        </trans-unit>
+        <trans-unit id="cd0d4cbba9f07fc22442ddaca962fad827eac83d" translate="yes" xml:space="preserve">
+          <source>So, even a very small number of samples can tell us a lot about the cost of instructions that it sees. (And it will see them with a frequency, on average, proportional to their cost. If &lt;code&gt;n&lt;/code&gt; samples are taken, and &lt;code&gt;f&lt;/code&gt; is the cost, then &lt;code&gt;I&lt;/code&gt; will appear on &lt;code&gt;nf+/-sqrt(nf(1-f))&lt;/code&gt; samples. Example, &lt;code&gt;n=10&lt;/code&gt;, &lt;code&gt;f=0.3&lt;/code&gt;, that is &lt;code&gt;3+/-1.4&lt;/code&gt; samples.)</source>
+          <target state="translated">따라서 아주 적은 수의 샘플조차도 지침 비용에 대해 많은 것을 알 수 있습니다. (그리고 그것들은 그들의 비용에 비례하여 평균적으로 빈도로 그것들을 볼 것입니다. &lt;code&gt;n&lt;/code&gt; 개의 샘플이 취해지고 &lt;code&gt;f&lt;/code&gt; 가 비용이면, &lt;code&gt;I&lt;/code&gt; &lt;code&gt;nf+/-sqrt(nf(1-f))&lt;/code&gt; 샘플에 나타날 것입니다. , &lt;code&gt;n=10&lt;/code&gt; , &lt;code&gt;f=0.3&lt;/code&gt; , 즉 &lt;code&gt;3+/-1.4&lt;/code&gt; 샘플입니다.)</target>
+        </trans-unit>
+        <trans-unit id="08239f177013e0b069b1f213aca8eed8d3e8fd03" translate="yes" xml:space="preserve">
+          <source>Suppose the prior assumptions are different. Suppose we assume P(f=0.1) is .991 (nearly certain), and all the other possibilities are almost impossible (0.001). In other words, our prior certainty is that &lt;code&gt;I&lt;/code&gt; is cheap. Then we get:</source>
+          <target state="translated">이전의 가정이 다르다고 가정하십시오. P (f = 0.1)가 .991 (거의 확실 함)이고 다른 모든 가능성이 거의 불가능하다고 가정합니다 (0.001). 다시 말해, 우리의 이전 확실성은 &lt;code&gt;I&lt;/code&gt; 싸다는 것입니다. 그러면 우리는 다음을 얻습니다.</target>
+        </trans-unit>
+        <trans-unit id="d3b210cd62d3d15648f1f008cbd6a6ff99536cd2" translate="yes" xml:space="preserve">
+          <source>TAU (&lt;a href=&quot;http://www.cs.uoregon.edu/research/tau/home.php&quot;&gt;http://www.cs.uoregon.edu/research/tau/home.php&lt;/a&gt;)</source>
+          <target state="translated">TAU ( &lt;a href=&quot;http://www.cs.uoregon.edu/research/tau/home.php&quot;&gt;http://www.cs.uoregon.edu/research/tau/home.php&lt;/a&gt; )</target>
+        </trans-unit>
+        <trans-unit id="ed5f5a3f654a364aa389b4161a87b5a87e7b8ec1" translate="yes" xml:space="preserve">
+          <source>TODO on complex C++ software, I see some entries of type &lt;code&gt;&amp;lt;cycle N&amp;gt;&lt;/code&gt;, e.g. &lt;code&gt;&amp;lt;cycle 11&amp;gt;&lt;/code&gt; where I'd expect function names, what does that mean? I noticed there is a &quot;Cycle Detection&quot; button to toggle that on and off, but what does it mean?</source>
+          <target state="translated">복잡한 C ++ 소프트웨어의 TODO에서 &lt;code&gt;&amp;lt;cycle N&amp;gt;&lt;/code&gt; 유형의 일부 항목을 볼 수 있습니다. 예를 들어 함수 이름을 기대하는 &lt;code&gt;&amp;lt;cycle 11&amp;gt;&lt;/code&gt; 은 무엇입니까? &quot;Cycle Detection (사이클 감지)&quot;버튼을 사용하여이 기능을 켜거나 끌 수 있지만 그 의미는 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="b13a96071f0d7fdcbc2465e3e45593db4c6ebbfd" translate="yes" xml:space="preserve">
+          <source>TODO there are a log of &lt;code&gt;[unknown]&lt;/code&gt; functions in that example, why is that?</source>
+          <target state="translated">TODO이 예제에는 &lt;code&gt;[unknown]&lt;/code&gt; 함수의 로그가 있습니다. 왜 그런가요?</target>
+        </trans-unit>
+        <trans-unit id="a19af3eb40fbc53ad472e0220f8b098385c16862" translate="yes" xml:space="preserve">
+          <source>TODO: what happened on the &lt;code&gt;-O3&lt;/code&gt; execution? Is it simply that &lt;code&gt;maybe_slow&lt;/code&gt; and &lt;code&gt;fast&lt;/code&gt; were too fast and did not get any samples? Does it work well with &lt;code&gt;-O3&lt;/code&gt; on larger programs that take longer to execute? Did I miss some CLI option? I found out about &lt;code&gt;-F&lt;/code&gt; to control the sample frequency in Hertz, but I turned it up to the max allowed by default of &lt;code&gt;-F 39500&lt;/code&gt; (could be increased with &lt;code&gt;sudo&lt;/code&gt;) and I still don't see clear calls.</source>
+          <target state="translated">TODO : &lt;code&gt;-O3&lt;/code&gt; 실행은 어떻게 되었습니까? 그것은 &lt;code&gt;maybe_slow&lt;/code&gt; 와 &lt;code&gt;fast&lt;/code&gt; 가 너무 빠르며 샘플을 얻지 못했다는 것입니까? 실행 시간이 더 긴 더 큰 프로그램에서 &lt;code&gt;-O3&lt;/code&gt; 과 잘 작동합니까? CLI 옵션이 누락 되었습니까? Hertz에서 샘플 주파수를 제어하기 위해 &lt;code&gt;-F&lt;/code&gt; 에 대해 알았지 만 기본값으로 허용되는 최대 &lt;code&gt;-F 39500&lt;/code&gt; ( &lt;code&gt;sudo&lt;/code&gt; 로 증가 할 수 있음)으로 설정했지만 여전히 명확한 호출이 표시되지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="6dc4e6a8f235d6662619c2b13f904dd1fd3359cb" translate="yes" xml:space="preserve">
+          <source>TODO: why is &lt;code&gt;main&lt;/code&gt; missing from the &lt;code&gt;-O3&lt;/code&gt; output, even though I can see it on a &lt;code&gt;bt&lt;/code&gt; in GDB? &lt;a href=&quot;https://stackoverflow.com/questions/39041871/missing-function-from-gprof-output&quot;&gt;Missing function from GProf output&lt;/a&gt; I think it is because gprof is also sampling based in addition to its compiled instrumentation, and the &lt;code&gt;-O3&lt;/code&gt;&lt;code&gt;main&lt;/code&gt; is just too fast and got no samples.</source>
+          <target state="translated">TODO : 왜 GDB의 &lt;code&gt;bt&lt;/code&gt; 에서 볼 수 있지만 &lt;code&gt;-O3&lt;/code&gt; 출력에서 &lt;code&gt;main&lt;/code&gt; 이 누락됩니까? &lt;a href=&quot;https://stackoverflow.com/questions/39041871/missing-function-from-gprof-output&quot;&gt;GProf 출력에서 ​​누락 된 기능&lt;/a&gt; 나는 gprof가 컴파일 된 계측 외에도 샘플링 기반이기 때문에 &lt;code&gt;-O3&lt;/code&gt; &lt;code&gt;main&lt;/code&gt; 이 너무 빠르며 샘플이 없기 때문이라고 생각합니다.</target>
+        </trans-unit>
+        <trans-unit id="6e53b60f1e0dfa855a4eef9b666d7279dabbee1a" translate="yes" xml:space="preserve">
+          <source>Tested in Ubuntu 18.04, gprof2dot 2019.11.30, valgrind 3.13.0, perf 4.15.18, Linux kernel 4.15.0, FLameGraph 1a0dc6985aad06e76857cf2a354bd5ba0c9ce96b, gperftools 2.5-2.</source>
+          <target state="translated">우분투 18.04, gprof2dot 2019.11.30, valgrind 3.13.0, perf 4.15.18, Linux 커널 4.15.0, FLameGraph 1a0dc6985aad06e76857cf2a354bd5ba0c9ce96b, gperftools 2.5-2에서 테스트되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="3a80a1a4fbc3469221b7d5afd5713915cd326c8f" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;-O0&lt;/code&gt; output is pretty much self-explanatory. For example, it shows that the 3 &lt;code&gt;maybe_slow&lt;/code&gt; calls and their child calls take up 97.56% of the total runtime, although execution of &lt;code&gt;maybe_slow&lt;/code&gt; itself without children accounts for 0.00% of the total execution time, i.e. almost all the time spent in that function was spent on child calls.</source>
+          <target state="translated">&lt;code&gt;-O0&lt;/code&gt; 출력은 설명이 거의 필요 없습니다 . 예를 들어, 세 개의 &lt;code&gt;maybe_slow&lt;/code&gt; 호출과 해당 자식 호출은 전체 런타임의 97.56 %를 차지하지만 자식없이 &lt;code&gt;maybe_slow&lt;/code&gt; 자체를 실행하면 총 실행 시간의 0.00 %를 차지합니다. 어린이 전화에 소비.</target>
+        </trans-unit>
+        <trans-unit id="e42365e1a6bff7fc2be05d355cadfefbdf5ea497" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;probe&lt;/code&gt; function uses a few assembly lines to retrieve the clock timestamp ASAP and then sets an entry in the buffer. We also have an atomic increment to safely find an index where to store the log event.
+Of course buffer is circular.</source>
+          <target state="translated">&lt;code&gt;probe&lt;/code&gt; 기능은 몇 개의 어셈블리 라인을 사용하여 클럭 타임 스탬프 ASAP를 검색 한 다음 버퍼에 항목을 설정합니다. 또한 로그 이벤트를 저장할 인덱스를 안전하게 찾기 위해 원자 단위로 증가합니다. 물론 버퍼는 원형입니다.</target>
+        </trans-unit>
+        <trans-unit id="f1066d2d94872d1ccbce2036cf5aac073098024e" translate="yes" xml:space="preserve">
+          <source>The answer to run &lt;code&gt;valgrind --tool=callgrind&lt;/code&gt; is not quite complete without some options. We usually do not want to profile 10 minutes of slow startup time under Valgrind and want to profile our program when it is doing some task.</source>
+          <target state="translated">&lt;code&gt;valgrind --tool=callgrind&lt;/code&gt; 를 실행하는 대답은 일부 옵션이 없으면 완전하지 않습니다. 우리는 일반적으로 Valgrind에서 10 분의 느린 시작 시간을 프로파일 링하고 싶지 않으며 어떤 작업을 수행 할 때 프로그램을 프로파일 링하고 싶습니다.</target>
+        </trans-unit>
+        <trans-unit id="36529a459a19fd1c86e51be05eccbd6859fb938f" translate="yes" xml:space="preserve">
+          <source>The call graph gets confused by function pointers. Example: I have a function called &lt;code&gt;multithread()&lt;/code&gt; which enables me to multi-thread a specified function over a specified array (both passed as arguments). Gprof however, views all calls to &lt;code&gt;multithread()&lt;/code&gt; as equivalent for the purposes of computing time spent in children. Since some functions I pass to &lt;code&gt;multithread()&lt;/code&gt; take much longer than others my call graphs are mostly useless. (To those wondering if threading is the issue here: no, &lt;code&gt;multithread()&lt;/code&gt; can optionally, and did in this case, run everything sequentially on the calling thread only).</source>
+          <target state="translated">함수 그래프에 의해 호출 그래프가 혼동됩니다. 예 : &lt;code&gt;multithread()&lt;/code&gt; 라는 함수가 있는데, 지정된 배열 (둘 다 인수로 전달됨)에서 지정된 함수를 멀티 스레드 할 수 있습니다. 그러나 Gprof는 &lt;code&gt;multithread()&lt;/code&gt; 대한 모든 호출을 자식에서 보낸 시간을 계산할 목적으로 동등한 것으로 간주합니다. &lt;code&gt;multithread()&lt;/code&gt; 전달하는 일부 함수는 다른 함수보다 훨씬 오래 걸리므로 호출 그래프는 대부분 쓸모가 없습니다. (스레딩이 문제인지 궁금해하는 사람들에게 &lt;code&gt;multithread()&lt;/code&gt; 아니오, multithread () 는 선택적으로 가능 하며이 경우에는 호출 스레드에서만 모든 것을 순차적으로 실행할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="a13b1906e442733e77eedc379dcc29d514b536bc" translate="yes" xml:space="preserve">
+          <source>The concept is to define events in &lt;code&gt;tool_events_id.hpp&lt;/code&gt; like that :</source>
+          <target state="translated">개념은 &lt;code&gt;tool_events_id.hpp&lt;/code&gt; 에서 다음 과 같이 이벤트를 정의하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="cdbc70168923d9d12dc32d25f0bf32b6568e5382" translate="yes" xml:space="preserve">
+          <source>The downside of this is that there seems to be no Ubuntu package, and building it requires Qt 5.10 while Ubuntu 18.04 is at Qt 5.9.</source>
+          <target state="translated">이것의 단점은 우분투 패키지가없는 것으로 보이며, 우분투 18.04가 Qt 5.9에있는 동안 Qt 5.10이 필요하다는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="9b0a146d516aab93931f86859127170f3626293f" translate="yes" xml:space="preserve">
+          <source>The following test program is very simple and does the following:</source>
+          <target state="translated">다음 테스트 프로그램은 매우 간단하며 다음을 수행합니다.</target>
+        </trans-unit>
+        <trans-unit id="c15b8d0e65310a3d3e9195caeac933a4e6e84c5b" translate="yes" xml:space="preserve">
+          <source>The important thing is that these tools can be &lt;strong&gt;system profiling&lt;/strong&gt; and not just process profiling - they can show the interaction between threads, processes and the kernel and let you understand the scheduling and I/O dependencies between processes.</source>
+          <target state="translated">중요한 것은 이러한 툴이 프로세스 프로파일 링이 아니라 &lt;strong&gt;시스템 프로파일 링&lt;/strong&gt; 이 될 수 있다는 것입니다. 스레드, 프로세스 및 커널 간의 상호 작용을 보여주고 프로세스 간의 스케줄링 및 I / O 종속성을 이해할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="b0d289675b93f88ef384de46c84952610710e353" translate="yes" xml:space="preserve">
+          <source>The last column says that, for example, the probability that &lt;code&gt;f&lt;/code&gt; &amp;gt;= 0.5 is 92%, up from the prior assumption of 60%.</source>
+          <target state="translated">마지막 열은 예를 들어 &lt;code&gt;f&lt;/code&gt; &amp;gt; = 0.5 일 확률이 이전 가정 60 %보다 92 % 높았다 고 말합니다.</target>
+        </trans-unit>
+        <trans-unit id="627640c346afb672f5025becd9584112a15ea55e" translate="yes" xml:space="preserve">
+          <source>The nicest way to view this data I've found so far is to make pprof output the same format that kcachegrind takes as input (yes, the Valgrind-project-viewer-tool) and use kcachegrind to view that:</source>
+          <target state="translated">내가 지금까지 찾은이 데이터를 보는 가장 좋은 방법은 pprof 출력을 kcachegrind가 입력 (예 : Valgrind-project-viewer-tool)과 동일한 형식으로 만들고 kcachegrind를 사용하여 다음을 확인하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="23eff0579ea840d749f7dacd94ef9acf84a98ca9" translate="yes" xml:space="preserve">
+          <source>The program interface is:</source>
+          <target state="translated">프로그램 인터페이스는 다음과 같습니다</target>
+        </trans-unit>
+        <trans-unit id="19c4249e44db6d866c57af334d73685ec61d153c" translate="yes" xml:space="preserve">
+          <source>The run generates a profile data file named &lt;code&gt;callgrind.out.&amp;lt;pid&amp;gt;&lt;/code&gt; e.g. &lt;code&gt;callgrind.out.8554&lt;/code&gt; in my case. We view that file with:</source>
+          <target state="translated">실행은 &lt;code&gt;callgrind.out.&amp;lt;pid&amp;gt;&lt;/code&gt; 라는 프로필 데이터 파일을 생성합니다 (예 : &lt;code&gt;callgrind.out.8554&lt;/code&gt; ) . 우리는 그 파일을 다음과 같이 봅니다 :</target>
+        </trans-unit>
+        <trans-unit id="ed9bf7107eccd71620c4c6d6bab4692580d8a7db" translate="yes" xml:space="preserve">
+          <source>The slow call of &lt;code&gt;maybe_slow&lt;/code&gt; is 10x longer, and dominates runtime if we consider calls to the child function &lt;code&gt;common&lt;/code&gt;. Ideally, the profiling tool will be able to point us to the specific slow call.</source>
+          <target state="translated">&lt;code&gt;maybe_slow&lt;/code&gt; 의 느린 호출은 10 배 더 길며, 자식 함수 &lt;code&gt;common&lt;/code&gt; 호출을 고려하면 런타임을 지배합니다. 이상적으로 프로파일 링 도구는 특정 느린 호출을 가리킬 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="b6c8bf98ecf41059e3237cb533da10773d9fb4c5" translate="yes" xml:space="preserve">
+          <source>The source for gprof2dot is at: &lt;a href=&quot;https://github.com/jrfonseca/gprof2dot&quot;&gt;https://github.com/jrfonseca/gprof2dot&lt;/a&gt;</source>
+          <target state="translated">gprof2dot의 출처는 &lt;a href=&quot;https://github.com/jrfonseca/gprof2dot&quot;&gt;https://github.com/jrfonseca/gprof2dot입니다.&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="769adfccf68fa21aab6b3394b205656f5dab0061" translate="yes" xml:space="preserve">
+          <source>Then suppose we take just 2 stack samples, and we see instruction &lt;code&gt;I&lt;/code&gt; on both samples, designated observation &lt;code&gt;o=2/2&lt;/code&gt;. This gives us new estimates of the frequency &lt;code&gt;f&lt;/code&gt; of &lt;code&gt;I&lt;/code&gt;, according to this:</source>
+          <target state="translated">그런 다음 스택 샘플을 2 개만 가져 와서 관찰 &lt;code&gt;o=2/2&lt;/code&gt; 로 지정된 두 샘플에 대한 명령어 &lt;code&gt;I&lt;/code&gt; 을 봅니다. 이것은 다음에 따라 주파수 &lt;code&gt;I&lt;/code&gt; 의 새로운 추정치를 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="7291eec49875f5d9df200c27efdf4f591116af3f" translate="yes" xml:space="preserve">
+          <source>Then switch to RELEASE mode and comment out the questionable sections of your code (stub it with nothing) until you see changes in performance.</source>
+          <target state="translated">그런 다음 RELEASE 모드로 전환하고 성능의 변화가 나타날 때까지 코드의 문제가있는 섹션을 주석 처리하십시오 (아무것도 스텁하지 않음).</target>
+        </trans-unit>
+        <trans-unit id="2e742db948961b9c3cb6ead916f107d3e8dda15c" translate="yes" xml:space="preserve">
+          <source>Then, we can enable the gperftools CPU profiler in two ways: at runtime, or at build time.</source>
+          <target state="translated">그런 다음 gperftools CPU 프로파일 러를 런타임 또는 빌드 타임의 두 가지 방법으로 활성화 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="924edd37a29a71ab9fe4c8baa007eb8497e44c49" translate="yes" xml:space="preserve">
+          <source>There are profilers now that sample the stack, even on wall-clock time, but &lt;em&gt;what comes out&lt;/em&gt; is measurements (or hot path, or hot spot, from which a &quot;bottleneck&quot; can easily hide). What they don't show you (and they easily could) is the actual samples themselves. And if your goal is to &lt;em&gt;find&lt;/em&gt; the bottleneck, the number of them you need to see is, &lt;em&gt;on average&lt;/em&gt;, 2 divided by the fraction of time it takes.
+So if it takes 30% of time, 2/.3 = 6.7 samples, on average, will show it, and the chance that 20 samples will show it is 99.2%.</source>
+          <target state="translated">이제 벽시계 시간에도 스택을 샘플링하는 프로파일 러가 있지만 측정 결과 (또는 &quot;병목 현상&quot;이 쉽게 숨길 수있는 핫 경로 또는 핫스팟)가 있습니다. 그들이 당신에게 보여주지 않는 (그리고 그들은 쉽게 할 수있는) 실제 샘플 자체입니다. 병목 현상을 &lt;em&gt;찾는&lt;/em&gt; 것이 목표라면 &lt;em&gt;평균적&lt;/em&gt; 으로 2를 소요 시간의 일부로 나눈 값을 볼 수 있습니다. 따라서 30 %의 시간이 걸리면 평균적으로 2 / .3 = 6.7 샘플이 표시되며 20 샘플이 표시 할 확률은 99.2 %입니다.</target>
+        </trans-unit>
+        <trans-unit id="7e09a7534638018a7af14062b8d9c917ce457a53" translate="yes" xml:space="preserve">
+          <source>There is two different type of profiling</source>
+          <target state="translated">프로파일 링에는 두 가지 유형이 있습니다</target>
+        </trans-unit>
+        <trans-unit id="571edc923bc5a6cee4f85a019f1c49bdbbf47a9d" translate="yes" xml:space="preserve">
+          <source>These are the two methods I use for speeding up my code:</source>
+          <target state="translated">다음은 코드 속도를 높이기 위해 사용하는 두 가지 방법입니다.</target>
+        </trans-unit>
+        <trans-unit id="8311f0252f91f1308742d21d20d0472314d898dd" translate="yes" xml:space="preserve">
+          <source>These come with classic sampling profilers (&lt;a href=&quot;http://manpages.ubuntu.com/manpages/trusty/man1/perf.1.html&quot;&gt;man-page&lt;/a&gt;) as well as the awesome &lt;a href=&quot;http://web.archive.org/web/20090922171904/http://blog.fenrus.org/?p=5&quot;&gt;timechart&lt;/a&gt;!</source>
+          <target state="translated">여기에는 멋진 &lt;a href=&quot;http://web.archive.org/web/20090922171904/http://blog.fenrus.org/?p=5&quot;&gt;타임 차트&lt;/a&gt; 뿐만 아니라 클래식 샘플링 프로파일 러 ( &lt;a href=&quot;http://manpages.ubuntu.com/manpages/trusty/man1/perf.1.html&quot;&gt;맨 페이지&lt;/a&gt; )가 함께 제공됩니다!</target>
+        </trans-unit>
+        <trans-unit id="e0c6e507414a31dbfe361257f83996883b16fb14" translate="yes" xml:space="preserve">
+          <source>They will also say it only works on toy programs, when actually it works on any program, and it seems to work better on bigger programs, because they tend to have more problems to find.
+They will say it sometimes finds things that aren't problems, but that is only true if you see something &lt;em&gt;once&lt;/em&gt;. If you see a problem on more than one sample, it is real.</source>
+          <target state="translated">또한 실제로는 어떤 프로그램에서도 작동 할 때 장난감 프로그램에서만 작동한다고 말하고 더 큰 프로그램에서 더 잘 작동하는 것 같습니다. 더 많은 문제를 찾는 경향이 있기 때문입니다. 그들은 때때로 문제가되지 않는 것을 발견한다고 말할 것입니다. 그러나 당신이 무언가를 &lt;em&gt;한 번&lt;/em&gt; 본다면 그것은 사실입니다. 둘 이상의 샘플에 문제가 있으면 실제로 발생합니다.</target>
+        </trans-unit>
+        <trans-unit id="83b6b75b50c6b06f6bb30d23afad367e7399b38c" translate="yes" xml:space="preserve">
+          <source>This added 0.2s to execution, so we are fine time-wise, but I still don't see much of interest, after expanding the &lt;code&gt;common&lt;/code&gt; node with the keyboard right arrow:</source>
+          <target state="translated">이것은 실행에 0.2 초를 추가 했으므로 시간별로 괜찮지 만 키보드 오른쪽 화살표로 &lt;code&gt;common&lt;/code&gt; 노드를 확장 한 후에도 여전히 관심이 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="6b876e96a3c3578737d673685356fe1f9dcb0ab6" translate="yes" xml:space="preserve">
+          <source>This is a response to &lt;a href=&quot;https://stackoverflow.com/a/375930/321731&quot;&gt;Nazgob's Gprof answer&lt;/a&gt;.</source>
+          <target state="translated">이것은 &lt;a href=&quot;https://stackoverflow.com/a/375930/321731&quot;&gt;Nazgob의 Gprof 답변에 대한 답변&lt;/a&gt; 입니다.</target>
+        </trans-unit>
+        <trans-unit id="b830cecda0a3aff113570c5b101b80608993a7f6" translate="yes" xml:space="preserve">
+          <source>This turns profiling on. To turn it off and stop whole task we might use:</source>
+          <target state="translated">프로파일 링이 켜집니다. 전원을 끄고 전체 작업을 중지하려면 다음을 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="ae3ef8d5cd3e8ccedaacfb1558e954d08cae24db" translate="yes" xml:space="preserve">
+          <source>This was GNU &lt;a href=&quot;https://en.wikipedia.org/wiki/Gprof&quot;&gt;Gprof&lt;/a&gt; (GNU Binutils for Debian) 2.18.0.20080103 running under 64-bit Debian Lenny, if that helps anyone.</source>
+          <target state="translated">이것은 64 비트 데비안 Lenny에서 실행되는 GNU &lt;a href=&quot;https://en.wikipedia.org/wiki/Gprof&quot;&gt;Gprof&lt;/a&gt; (GNU Binutils for Debian) 2.18.0.20080103입니다.</target>
+        </trans-unit>
+        <trans-unit id="4809190e35f35121b8cef92d7260543e2698ad83" translate="yes" xml:space="preserve">
+          <source>To get more info you can look in &lt;a href=&quot;https://sourceware.org/binutils/docs-2.32/gprof/&quot;&gt;https://sourceware.org/binutils/docs-2.32/gprof/&lt;/a&gt;</source>
+          <target state="translated">자세한 정보는 &lt;a href=&quot;https://sourceware.org/binutils/docs-2.32/gprof/&quot;&gt;https://sourceware.org/binutils/docs-2.32/gprof/를 참조하십시오.&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="9d1e75d21749779f1783a936e0318ab574c9bb06" translate="yes" xml:space="preserve">
+          <source>Use &lt;code&gt;-pg&lt;/code&gt; flag when compiling and linking the code and run the executable file. While this program is executed, profiling data is collected in the file a.out.</source>
+          <target state="translated">코드를 컴파일하고 링크 할 때 &lt;code&gt;-pg&lt;/code&gt; 플래그를 사용하고 실행 파일을 실행하십시오. 이 프로그램이 실행되는 동안 프로파일 링 데이터는 파일 a.out에 수집됩니다.</target>
+        </trans-unit>
+        <trans-unit id="74fa418da05131589c58de20bc5cd8a74884137e" translate="yes" xml:space="preserve">
+          <source>Use a profiler in DEBUG mode to identify questionable parts of your code</source>
+          <target state="translated">디버그 모드에서 프로파일 러를 사용하여 코드의 의심스러운 부분을 식별하십시오.</target>
+        </trans-unit>
+        <trans-unit id="5abe91df474f47b2ce52602a8d2c9a1a1dc9bcdb" translate="yes" xml:space="preserve">
+          <source>Use a profiler in RELEASE mode to identify questionable parts of your code.</source>
+          <target state="translated">RELEASE 모드에서 프로파일 러를 사용하여 코드의 의심스러운 부분을 식별하십시오.</target>
+        </trans-unit>
+        <trans-unit id="47e2b39318441908a26389043c5f493a08f3da25" translate="yes" xml:space="preserve">
+          <source>Uses time sampling, I/O and CPU bottlenecks are revealed.</source>
+          <target state="translated">시간 샘플링을 사용하여 I / O 및 CPU 병목 현상이 드러납니다.</target>
+        </trans-unit>
+        <trans-unit id="32ebf48279743cab72d7ff1b43c30c357fa0b5af" translate="yes" xml:space="preserve">
+          <source>View gprof output in kcachegrind</source>
+          <target state="translated">kcachegrind에서 gprof 출력보기</target>
+        </trans-unit>
+        <trans-unit id="90e10e752882a92276f4abc5b712de714bd30e0f" translate="yes" xml:space="preserve">
+          <source>We can observe that file graphically with &lt;code&gt;gprof2dot&lt;/code&gt; as asked at: &lt;a href=&quot;https://stackoverflow.com/questions/2439060/is-it-possible-to-get-a-graphical-representation-of-gprof-results&quot;&gt;Is it possible to get a graphical representation of gprof results?&lt;/a&gt;</source>
+          <target state="translated">&lt;code&gt;gprof2dot&lt;/code&gt; 를 사용하여 파일을 그래픽으로 관찰 할 수 있습니다. &lt;a href=&quot;https://stackoverflow.com/questions/2439060/is-it-possible-to-get-a-graphical-representation-of-gprof-results&quot;&gt;gprof 결과를 그래픽으로 표시 할 수 있습니까?&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="10445757607ecf8a1d5924c1e702bf14a1ff75d2" translate="yes" xml:space="preserve">
+          <source>We observe the following for the &lt;code&gt;-O0&lt;/code&gt; run:</source>
+          <target state="translated">&lt;code&gt;-O0&lt;/code&gt; 실행에 대해 다음을 관찰합니다.</target>
+        </trans-unit>
+        <trans-unit id="9844986bd80729d071e13db938133404d11ba09f" translate="yes" xml:space="preserve">
+          <source>Wherever in you code you can use :</source>
+          <target state="translated">코드 어디에서나 사용할 수 있습니다 :</target>
+        </trans-unit>
+        <trans-unit id="674dfbcd4d095f0cd2550aa16069c396575c13ec" translate="yes" xml:space="preserve">
+          <source>Which is the best replacement for KProf?</source>
+          <target state="translated">KProf를 대체 할 최고의 제품은 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="9f5da50867e51ac3a771fd9c2dea086874d61262" translate="yes" xml:space="preserve">
+          <source>Yet another way to look at it is called the &lt;a href=&quot;http://en.wikipedia.org/wiki/Rule_of_succession&quot;&gt;Rule Of Succession&lt;/a&gt;.
+If you flip a coin 2 times, and it comes up heads both times, what does that tell you about the probable weighting of the coin?
+The respected way to answer is to say that it's a Beta distribution, with average value (number of hits + 1) / (number of tries + 2) = (2+1)/(2+2) = 75%.</source>
+          <target state="translated">그것을 보는 또 다른 방법은 &lt;a href=&quot;http://en.wikipedia.org/wiki/Rule_of_succession&quot;&gt;승계 규칙&lt;/a&gt; 이라고합니다. 동전을 두 번 뒤집어 두 번 두 번 올리면 동전의 무게에 대해 무엇을 알려 줍니까? 대답하는 존경받는 방법은 평균 값 (적중 횟수 + 1) / (시도 횟수 + 2) = (2 + 1) / (2 + 2) = 75 % 인 베타 분포라고 말하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="e477d44b67435b4f2a51bec584b8c8b5c70e29d8" translate="yes" xml:space="preserve">
+          <source>You also define a few functions in &lt;code&gt;toolname.hpp&lt;/code&gt; :</source>
+          <target state="translated">&lt;code&gt;toolname.hpp&lt;/code&gt; 에 몇 가지 함수를 정의 할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="d06ead62c5754d4f55d6c94097738323320c25d0" translate="yes" xml:space="preserve">
+          <source>You can however use the color map to mitigate those problems a bit. For example, on the previous huge image, I finally managed to find the critical path on the left when I made the brilliant deduction that green comes after red, followed finally by darker and darker blue.</source>
+          <target state="translated">그러나 색상 맵을 사용하여 이러한 문제를 약간 완화 할 수 있습니다. 예를 들어, 이전의 거대한 이미지에서 녹색이 빨간색을 쫓고 눈이 어둡고 진한 파란색으로 눈부신 공제를 할 때 마침내 왼쪽에서 중요한 경로를 찾았습니다.</target>
+        </trans-unit>
+        <trans-unit id="ff319bc3545afd5e52b97cb66321e2f3c78b6c30" translate="yes" xml:space="preserve">
+          <source>You can use &lt;a href=&quot;http://en.wikipedia.org/wiki/Valgrind&quot;&gt;Valgrind&lt;/a&gt; with the following options</source>
+          <target state="translated">다음 옵션과 함께 &lt;a href=&quot;http://en.wikipedia.org/wiki/Valgrind&quot;&gt;Valgrind&lt;/a&gt; 를 사용할 수 있습니다</target>
+        </trans-unit>
+        <trans-unit id="eff4537042a246b1bfc5a7ac9053825ab352cfb3" translate="yes" xml:space="preserve">
+          <source>You can use a logging framework like &lt;a href=&quot;https://github.com/emilk/loguru&quot;&gt;&lt;code&gt;loguru&lt;/code&gt;&lt;/a&gt; since it includes timestamps and total uptime which can be used nicely for profiling:</source>
+          <target state="translated">&lt;a href=&quot;https://github.com/emilk/loguru&quot;&gt; &lt;code&gt;loguru&lt;/code&gt; &lt;/a&gt; 와 같은 로깅 프레임 워크에는 타임 스탬프와 전체 가동 시간이 포함되어 있으므로 프로파일 링에 유용하게 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="57bb7c327c284cab00d7dbfef1ffa24df1be7086" translate="yes" xml:space="preserve">
+          <source>You can use the iprof library:</source>
+          <target state="translated">iprof 라이브러리를 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="09eee30b7f6c8d8c09d32bfa040a796ee7c00fe5" translate="yes" xml:space="preserve">
+          <source>You customize the amount of events generated to focus solely on what you desire. It helped us a lot for scheduling issues while consuming the amount of CPU we wanted based on the amount of logged events per second.</source>
+          <target state="translated">원하는 것에 전적으로 집중하도록 생성 된 이벤트 양을 사용자 정의합니다. 초당 기록 된 이벤트 수에 따라 원하는 CPU 양을 소비하면서 문제를 예약하는 데 많은 도움이되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="5885a798125a50436ce410ba3e52f4fbdf4173ce" translate="yes" xml:space="preserve">
+          <source>You may have multiple performance problems of different sizes. If you clean out any one of them, the remaining ones will take a larger percentage, and be easier to spot, on subsequent passes.
+This &lt;em&gt;magnification effect&lt;/em&gt;, when compounded over multiple problems, can lead to truly massive speedup factors.</source>
+          <target state="translated">크기가 다른 여러 성능 문제가있을 수 있습니다. 그중 하나를 청소하면 나머지 패스는 나머지 패스에서 더 큰 비율을 차지하고 쉽게 찾을 수 있습니다. 이 &lt;em&gt;확대 효과&lt;/em&gt; 는 여러 문제로 인해 복합화 될 때 실제로 막대한 속도 향상 요소로 이어질 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="016b297a8bba32365f38f766a39676ea6cbcfd2b" translate="yes" xml:space="preserve">
+          <source>You need 3 files :</source>
+          <target state="translated">3 개의 파일이 필요합니다.</target>
+        </trans-unit>
+        <trans-unit id="747c3ce81ca5b275ec245943d96de7239bf6b766" translate="yes" xml:space="preserve">
+          <source>You retrieve the so-called large buffer with all the data and a small interface parses it and shows events with name (up/down + value) like an oscilloscope does with colors (configured in &lt;code&gt;.hpp&lt;/code&gt; file).</source>
+          <target state="translated">모든 데이터가 포함 된 이른바 큰 버퍼를 검색하고 작은 인터페이스가이를 구문 분석하고 오실로스코프가 색상 ( &lt;code&gt;.hpp&lt;/code&gt; 파일로 구성)과 같이 이름 (위 / 아래 + 값)으로 이벤트를 표시합니다.</target>
+        </trans-unit>
+        <trans-unit id="2922e093bcf4e627dba20bdf0f73a9644a37a709" translate="yes" xml:space="preserve">
+          <source>and for &lt;code&gt;-O3&lt;/code&gt;:</source>
+          <target state="translated">&lt;code&gt;-O3&lt;/code&gt; 의 경우 :</target>
+        </trans-unit>
+        <trans-unit id="2a5be5a09792a69cac7d084de41932a15ba3728f" translate="yes" xml:space="preserve">
+          <source>and for the &lt;code&gt;-O3&lt;/code&gt; run:</source>
+          <target state="translated">&lt;code&gt;-O3&lt;/code&gt; 실행의 경우 :</target>
+        </trans-unit>
+        <trans-unit id="faa969782037f341d207ee39f51209d6317fc20e" translate="yes" xml:space="preserve">
+          <source>and the program does &lt;code&gt;O(n^2)&lt;/code&gt; loops in total. &lt;code&gt;seed&lt;/code&gt; is just to get different output without affecting runtime.</source>
+          <target state="translated">프로그램은 총 &lt;code&gt;O(n^2)&lt;/code&gt; 루프를 수행합니다. &lt;code&gt;seed&lt;/code&gt; 는 런타임에 영향을 미치지 않고 다른 출력을 얻는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="ce2455b67d76414f51f9fe06a8ce80817a3d7dbb" translate="yes" xml:space="preserve">
+          <source>are there locks that are proving to be bottle necks ?</source>
+          <target state="translated">병목으로 증명 된 자물쇠가 있습니까?</target>
+        </trans-unit>
+        <trans-unit id="a6f071b118d3c8c52f2a76d5173897fc74f14d94" translate="yes" xml:space="preserve">
+          <source>both &lt;code&gt;fast&lt;/code&gt; and &lt;code&gt;maybe_slow&lt;/code&gt; call &lt;code&gt;common&lt;/code&gt;, which accounts for the bulk of the program execution</source>
+          <target state="translated">&lt;code&gt;fast&lt;/code&gt; 및 &lt;code&gt;maybe_slow&lt;/code&gt; 호출 &lt;code&gt;common&lt;/code&gt; 은 프로그램 실행의 대부분을 설명합니다.</target>
+        </trans-unit>
+        <trans-unit id="9684498d10b2a6f3e91e84082350f59fe31df044" translate="yes" xml:space="preserve">
+          <source>but even then, you will be dragging the image around a lot to find what you want, see e.g. this image from a &quot;real&quot; software example taken from &lt;a href=&quot;https://gem5.atlassian.net/browse/GEM5-337&quot;&gt;this ticket&lt;/a&gt;:</source>
+          <target state="translated">그러나 그 후에도 원하는 것을 찾기 위해 이미지를 많이 드래그 할 것입니다. 예를 들어이 &lt;a href=&quot;https://gem5.atlassian.net/browse/GEM5-337&quot;&gt;티켓&lt;/a&gt; 에서 가져온 &quot;실제&quot;소프트웨어 예의 이미지를 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="3af4c4be531f706f742d60135390bd70be4af5f9" translate="yes" xml:space="preserve">
+          <source>but in such a simple program the output is not very easy to understand, since we can't easily see neither &lt;code&gt;maybe_slow&lt;/code&gt; nor &lt;code&gt;fast&lt;/code&gt; on that graph:</source>
+          <target state="translated">그러나 이러한 간단한 프로그램에서는 출력을 이해하기가 쉽지 않습니다. 그래프에서 &lt;code&gt;maybe_slow&lt;/code&gt; 도 쉽게 볼 수 없기 때문입니다.</target>
+        </trans-unit>
+        <trans-unit id="a7dd0b976062c449381eb00b3b4071e2c243cb98" translate="yes" xml:space="preserve">
+          <source>by running the command &lt;code&gt;gprog --flat-profile a.out&lt;/code&gt; you got the following data</source>
+          <target state="translated">&lt;code&gt;gprog --flat-profile a.out&lt;/code&gt; 명령을 실행하여 다음 데이터를 얻 습니다.</target>
+        </trans-unit>
+        <trans-unit id="4ad25e6079270f854bc1ab4b0f5c15dda777da63" translate="yes" xml:space="preserve">
+          <source>callgrind is the valgrind's tool to profile code and kcachegrind is a KDE program that can visualize cachegrind output.</source>
+          <target state="translated">callgrind는 코드를 프로파일 링하는 valgrind의 도구이고 kcachegrind는 cachegrind 출력을 시각화 할 수있는 KDE 프로그램입니다.</target>
+        </trans-unit>
+        <trans-unit id="fdde301a4277b76ba71eeffc0b565064e8e3eb36" translate="yes" xml:space="preserve">
+          <source>centers around the function that is left indented (&lt;code&gt;maybe_flow&lt;/code&gt;). &lt;code&gt;[3]&lt;/code&gt; is the ID of that function. Above the function, are its callers, and below it the callees.</source>
+          <target state="translated">들여 쓰기 된 함수 주위를 중심으로합니다 ( &lt;code&gt;maybe_flow&lt;/code&gt; ). &lt;code&gt;[3]&lt;/code&gt; 은 해당 기능의 ID입니다. 함수 위에는 호출자가 있고 그 아래에는 호출자가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="c86da089418268adb10c8acdbbba40db282822e6" translate="yes" xml:space="preserve">
+          <source>generates callgrind.out.x. Read it using kcachegrind.</source>
+          <target state="translated">callgrind.out.x를 생성합니다. kcachegrind를 사용하여 읽으십시오.</target>
+        </trans-unit>
+        <trans-unit id="b03467560afe04df21ced900b226b5f9dadcb62d" translate="yes" xml:space="preserve">
+          <source>gprof is built-into GCC/binutils, so all we have to do is to compile with the &lt;code&gt;-pg&lt;/code&gt; option to enable gprof. We then run the program normally with a size CLI parameter that produces a run of reasonable duration of a few seconds (&lt;code&gt;10000&lt;/code&gt;):</source>
+          <target state="translated">gprof는 GCC / binutils에 내장되어 있으므로 gprof를 활성화하려면 &lt;code&gt;-pg&lt;/code&gt; 옵션을 사용하여 컴파일 하면됩니다. 그런 다음 몇 초 ( &lt;code&gt;10000&lt;/code&gt; )의 적당한 기간 동안 실행되는 size CLI 매개 변수를 사용하여 프로그램을 정상적으로 실행합니다.</target>
+        </trans-unit>
+        <trans-unit id="9cb1273641689838d08c035718b933b581323243" translate="yes" xml:space="preserve">
+          <source>gprof requires recompiling the software with instrumentation, and it also uses a sampling approach together with that instrumentation. It therefore strikes a balance between accuracy (sampling is not always fully accurate and can skip functions) and execution slowdown (instrumentation and sampling are relatively fast techniques that don't slow down execution very much).</source>
+          <target state="translated">gprof는 계측을 통해 소프트웨어를 다시 컴파일해야하며, 계측과 함께 샘플링 방식도 사용합니다. 따라서 정확도 (샘플링이 항상 정확하지는 않으며 기능을 건너 뛸 수 있음)와 실행 속도 저하 (계측 및 샘플링은 실행 속도를 크게 저하시키지 않는 비교적 빠른 기술) 사이의 균형을 유지합니다.</target>
+        </trans-unit>
+        <trans-unit id="6c20dbe559048f4187157de781dccf6f5ba1544e" translate="yes" xml:space="preserve">
+          <source>how about IO, handled and optimized ?</source>
+          <target state="translated">처리, 최적화 된 IO는 어떻습니까?</target>
+        </trans-unit>
+        <trans-unit id="8ad78a2d8b81d1f48b603777d625c316ec818e1d" translate="yes" xml:space="preserve">
+          <source>is my algorithm correct ?</source>
+          <target state="translated">내 알고리즘이 맞습니까?</target>
+        </trans-unit>
+        <trans-unit id="3a13f69d29ec474c66705e3aaadaa6bf50574a2c" translate="yes" xml:space="preserve">
+          <source>is there a specific section of code that's proving to be a culprit ?</source>
+          <target state="translated">범인으로 입증되는 특정 코드 섹션이 있습니까?</target>
+        </trans-unit>
+        <trans-unit id="406e031b8824ea26ae0bf4d7579a1d89e3fb5906" translate="yes" xml:space="preserve">
+          <source>main.c</source>
+          <target state="translated">main.c</target>
+        </trans-unit>
+        <trans-unit id="d72ae9adcbb77a799278937f8a9954bf7d5fee38" translate="yes" xml:space="preserve">
+          <source>they don't summarize at the instruction level, and</source>
+          <target state="translated">그들은 수업 수준에서 요약하지 않으며,</target>
+        </trans-unit>
+        <trans-unit id="813d13060cfdfe274f9dedbcdaad7e87361c8245" translate="yes" xml:space="preserve">
+          <source>they give confusing summaries in the presence of recursion.</source>
+          <target state="translated">재귀가있을 때 혼란스러운 요약을 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="b38e2cc31a913ba13d49dd56d1a341b5650300c3" translate="yes" xml:space="preserve">
+          <source>us the command &lt;code&gt;gprof --graph a.out&lt;/code&gt; to get the following data for each function which includes</source>
+          <target state="translated">&lt;code&gt;gprof --graph a.out&lt;/code&gt; 명령을 사용하여 다음과 같은 각 함수에 대한 다음 데이터를 얻습니다.</target>
+        </trans-unit>
+        <trans-unit id="5e1acf1cde93e84e5121533952a55ce3fcfa7a9a" translate="yes" xml:space="preserve">
+          <source>valgrind runs the program through the valgrind virtual machine. This makes the profiling very accurate, but it also produces a very large slowdown of the program. I have also mentioned kcachegrind previously at: &lt;a href=&quot;https://stackoverflow.com/questions/517589/tools-to-get-a-pictorial-function-call-graph-of-code/31190167#31190167&quot;&gt;Tools to get a pictorial function call graph of code&lt;/a&gt;</source>
+          <target state="translated">valgrind는 valgrind 가상 머신을 통해 프로그램을 실행합니다. 이렇게하면 프로파일 링이 매우 정확 해지지 만 프로그램 속도가 크게 느려집니다. 나는 또한 kcachegrind에 대해 언급했다 : &lt;a href=&quot;https://stackoverflow.com/questions/517589/tools-to-get-a-pictorial-function-call-graph-of-code/31190167#31190167&quot;&gt;코드의 그림 함수 호출 그래프를 얻는 도구&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="5572540656d11e87dd5bd966d28d6665bd7fe5af" translate="yes" xml:space="preserve">
+          <source>which gives as a familiar call graph like other tools, but with the clunky unit of number of samples rather than seconds.</source>
+          <target state="translated">다른 도구와 마찬가지로 친숙한 콜 그래프를 제공하지만 초 단위가 아닌 복잡한 샘플 수 단위를 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="88dc6e662ab6827a52e6b9e9027101485ddfb787" translate="yes" xml:space="preserve">
+          <source>which gives:</source>
+          <target state="translated">이것은 다음을 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="6e4de60efe1156a81e465d013cb2669ea775fcd4" translate="yes" xml:space="preserve">
+          <source>which shows a GUI that contains data similar to the textual gprof output:</source>
+          <target state="translated">텍스트 gprof 출력과 유사한 데이터를 포함하는 GUI를 보여줍니다.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

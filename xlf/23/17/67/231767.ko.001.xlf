@@ -1,0 +1,1419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/231767">
+    <body>
+      <group id="231767">
+        <trans-unit id="3ab3cb492545479a81b590f95c9c450455ddcdb4" translate="yes" xml:space="preserve">
+          <source>&quot;&lt;em&gt;next&lt;/em&gt;&quot; is a message sent to a closure, created by the &quot;&lt;em&gt;iter&lt;/em&gt;&quot; call.</source>
+          <target state="translated">&quot; &lt;em&gt;next&lt;/em&gt; &quot;는 &quot; &lt;em&gt;iter&lt;/em&gt; &quot;호출에 의해 작성된 클로저로 전송 된 메시지입니다.</target>
+        </trans-unit>
+        <trans-unit id="1c0a4cfbcf63e8fb4ae3a319aeb3fe7f9e9106c2" translate="yes" xml:space="preserve">
+          <source>&amp;hellip; repeat previous step, until&amp;hellip;</source>
+          <target state="translated">&amp;hellip; 이전 단계를 반복 할 때까지&amp;hellip;</target>
+        </trans-unit>
+        <trans-unit id="a6bd3f8f802396a1fb3f884b82392e785e8a7356" translate="yes" xml:space="preserve">
+          <source>(Appendix critiques a couple of answers, including the top one, and discusses the use of &lt;code&gt;return&lt;/code&gt; in a generator.)</source>
+          <target state="translated">(부록은 상위 답변을 포함하여 두 가지 답변을 비판하고 발전기에서의 &lt;code&gt;return&lt;/code&gt; 사용에 대해 설명합니다.)</target>
+        </trans-unit>
+        <trans-unit id="911bcad209bd54af6df884267feb81dcf90ade83" translate="yes" xml:space="preserve">
+          <source>(My below answer only speaks from the perspective of using Python generator, not the &lt;a href=&quot;https://stackoverflow.com/questions/8389812/how-are-generators-and-coroutines-implemented-in-cpython&quot;&gt;underlying implementation of generator mechanism&lt;/a&gt;, which involves some tricks of stack and heap manipulation.)</source>
+          <target state="translated">(아래 답변은 스택 및 힙 조작의 일부 트릭을 포함하는 &lt;a href=&quot;https://stackoverflow.com/questions/8389812/how-are-generators-and-coroutines-implemented-in-cpython&quot;&gt;생성기 메커니즘&lt;/a&gt; 의 기본 구현이 아닌 Python 생성기 사용 관점에서만 이야기합니다.)</target>
+        </trans-unit>
+        <trans-unit id="afb37c24b5b881de80de7247dc75c21ceafe07ec" translate="yes" xml:space="preserve">
+          <source>(Now I want to talk about the rationale behind &lt;code&gt;generator&lt;/code&gt;, and the &lt;code&gt;iterator&lt;/code&gt; based on my own understanding. I hope this can help you grasp the &lt;strong&gt;&lt;em&gt;essential motivation&lt;/em&gt;&lt;/strong&gt; of iterator and generator. Such concept shows up in other languages as well such as C#.)</source>
+          <target state="translated">(이제 &lt;code&gt;generator&lt;/code&gt; 의 이론적 근거와 내 자신의 이해에 기반한 &lt;code&gt;iterator&lt;/code&gt; 에 대해 이야기하고 싶습니다. 반복자와 생성기의 &lt;strong&gt;&lt;em&gt;본질적 동기&lt;/em&gt;&lt;/strong&gt; 를 파악하는 데 도움이되기를 바랍니다. 이러한 개념은 C #과 같은 다른 언어로 표시됩니다.)</target>
+        </trans-unit>
+        <trans-unit id="adc9c0af7e633a543a37a61fedbb4daccf85e945" translate="yes" xml:space="preserve">
+          <source>(and specifically a type of coroutine, but continuations represent the more general mechanism to understand what is going on).</source>
+          <target state="translated">(특히 코 루틴 유형이지만 연속은 진행 상황을 이해하는 더 일반적인 메커니즘을 나타냅니다).</target>
+        </trans-unit>
+        <trans-unit id="5375d7ac510abd4ae6e424a7dc969f2441dd692e" translate="yes" xml:space="preserve">
+          <source>--  Nick Coghlan   |   ncoghlan at gmail.com   |   Brisbane, Australia</source>
+          <target state="translated">-닉 코 글란 | gmail.com에서 ncoghlan | 브리즈번, 오스트레일리아</target>
+        </trans-unit>
+        <trans-unit id="62855b351e703dcbddfc4ef993d2891ccb386e20" translate="yes" xml:space="preserve">
+          <source>... then remember that a generator is an &lt;em&gt;iterator&lt;/em&gt;; that is, it is one-time-use. If you want to reuse it, you should call &lt;code&gt;myRange(...)&lt;/code&gt; again. If you need to use the result twice, convert the result to a list and store it in a variable &lt;code&gt;x = list(myRange(5))&lt;/code&gt;. Those who absolutely need to clone a generator (for example, who are doing terrifyingly hackish metaprogramming) can use &lt;a href=&quot;https://docs.python.org/2/library/itertools.html#itertools.tee&quot;&gt;&lt;code&gt;itertools.tee&lt;/code&gt;&lt;/a&gt; if absolutely necessary, since the copyable iterator Python &lt;a href=&quot;http://en.wikipedia.org/wiki/Python_Enhancement_Proposal#Development&quot;&gt;PEP&lt;/a&gt; standards proposal has been deferred.</source>
+          <target state="translated">... 제너레이터가 &lt;em&gt;이터레이터&lt;/em&gt; 임을 기억하십시오. 즉, 일회용입니다. 재사용하려면 &lt;code&gt;myRange(...)&lt;/code&gt; 다시 호출해야합니다. 결과를 두 번 사용해야하는 경우 결과를 목록으로 변환하고 변수 &lt;code&gt;x = list(myRange(5))&lt;/code&gt; . 생성기를 복제해야하는 사람들 (예를 들어, 끔찍한 해킹 메타 프로그래밍을 수행하는 사람)은 복사 가능한 반복자 Python &lt;a href=&quot;http://en.wikipedia.org/wiki/Python_Enhancement_Proposal#Development&quot;&gt;PEP&lt;/a&gt; 표준 제안이 연기 되었기 때문에 절대적으로 필요한 경우 &lt;a href=&quot;https://docs.python.org/2/library/itertools.html#itertools.tee&quot;&gt; &lt;code&gt;itertools.tee&lt;/code&gt; &lt;/a&gt; 를 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="164d0459345ae6f00bc812c7394f8917ff09c4bc" translate="yes" xml:space="preserve">
+          <source>...provide the next data in the series.</source>
+          <target state="translated">... 시리즈의 다음 데이터를 제공하십시오.</target>
+        </trans-unit>
+        <trans-unit id="391e35abadb8cf99afd59f9fdc30216a58ce407f" translate="yes" xml:space="preserve">
+          <source>...relinquish CPU execution until the iterator advances.</source>
+          <target state="translated">... 반복기가 진행될 때까지 CPU 실행을 포기합니다.</target>
+        </trans-unit>
+        <trans-unit id="1827a89fdabc2940a265095fb52eea3cd75fc746" translate="yes" xml:space="preserve">
+          <source>&lt;b&gt;This step corresponds to &lt;code&gt;def&lt;/code&gt;ining the generator function, i.e. the function containing a &lt;code&gt;yield&lt;/code&gt;.&lt;/b&gt;</source>
+          <target state="translated">&lt;b&gt;이 단계는 생성기 함수, 즉 &lt;code&gt;yield&lt;/code&gt; 를 포함하는 함수를 정의하는 것에 해당합니다.&lt;/b&gt;</target>
+        </trans-unit>
+        <trans-unit id="22db8f278d2cf3273c51bb64d7f5260d4584c88d" translate="yes" xml:space="preserve">
+          <source>&lt;b&gt;This step corresponds to calling &lt;code&gt;.next()&lt;/code&gt; on the generator object.&lt;/b&gt;</source>
+          <target state="translated">&lt;b&gt;이 단계는 생성기 객체에서 &lt;code&gt;.next()&lt;/code&gt; 호출에 해당합니다.&lt;/b&gt;</target>
+        </trans-unit>
+        <trans-unit id="721dffe48ec31d738fb17ec67ecedf85cc9ef1cd" translate="yes" xml:space="preserve">
+          <source>&lt;b&gt;This step corresponds to calling the generator function which returns a generator object.&lt;/b&gt; Note that you don't tell me any numbers yet; you just grab your paper and pencil.</source>
+          <target state="translated">&lt;b&gt;이 단계는 생성기 객체를 반환하는 생성기 함수 호출에 해당합니다.&lt;/b&gt; 아직 숫자를 말하지 마십시오. 당신은 당신의 종이와 연필을 잡아.</target>
+        </trans-unit>
+        <trans-unit id="b9a955eec36cf4b6c9a4e64ce4bf09d433135e6a" translate="yes" xml:space="preserve">
+          <source>&lt;b&gt;This step corresponds to the generator object ending its job, and raising a &lt;code&gt;StopIteration&lt;/code&gt; exception&lt;/b&gt; The generator function does not need to raise the exception. It's raised automatically when the function ends or issues a &lt;code&gt;return&lt;/code&gt;.</source>
+          <target state="translated">&lt;b&gt;이 단계는 작업을 종료하고 &lt;code&gt;StopIteration&lt;/code&gt; 예외 발생 생성기 오브젝트에 해당합니다&lt;/b&gt; . 생성기 기능은 예외를 발생시킬 필요가 없습니다. 함수가 종료되거나 &lt;code&gt;return&lt;/code&gt; 을 발행하면 자동으로 발생합니다.</target>
+        </trans-unit>
+        <trans-unit id="f08ebcf021089bec1572b041eac525a374a0d033" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;list.extend&lt;/code&gt; calls an iterator until it's exhausted. In the case of the code sample you posted, it would be much clearer to just return a tuple and append that to the list.</source>
+          <target state="translated">&lt;code&gt;list.extend&lt;/code&gt; 는 소모 될 때까지 반복자를 호출합니다. 게시 한 코드 샘플의 경우 튜플을 반환하고 목록에 추가하는 것이 훨씬 명확합니다.</target>
+        </trans-unit>
+        <trans-unit id="5fea5fac7cbf1b26fe6763d6386ee47d486dbda6" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;list&lt;/code&gt; and &lt;code&gt;generator&lt;/code&gt; are twins</source>
+          <target state="translated">&lt;code&gt;list&lt;/code&gt; 과 &lt;code&gt;generator&lt;/code&gt; 는 쌍둥이입니다</target>
+        </trans-unit>
+        <trans-unit id="9902af71eb478ea1b302fe4da1da7cf183f39ef8" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;mylist&lt;/code&gt; is an &lt;em&gt;iterable&lt;/em&gt;. When you use a list comprehension, you create a list, and so an iterable:</source>
+          <target state="translated">&lt;code&gt;mylist&lt;/code&gt; 는 &lt;em&gt;iterable&lt;/em&gt; 입니다. 리스트 이해를 사용하면리스트를 작성하므로 반복 가능합니다.</target>
+        </trans-unit>
+        <trans-unit id="38f4e38094ba58e67ca37899086f5ea94d637159" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;return&lt;/code&gt; and &lt;code&gt;yield&lt;/code&gt; are twins</source>
+          <target state="translated">&lt;code&gt;return&lt;/code&gt; 과 &lt;code&gt;yield&lt;/code&gt; 은 쌍둥이입니다</target>
+        </trans-unit>
+        <trans-unit id="7b01d9479576f8dc8ce3cf24ecbd8c38827200bf" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;yield&lt;/code&gt; forms an expression that allows data to be sent into the generator (see footnote 3)</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 는 데이터를 생성기로 보낼 수있는 표현식을 형성합니다 (각주 3 참조)</target>
+        </trans-unit>
+        <trans-unit id="393afd38f0f130b369c23e78f4c43a313a970250" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;yield&lt;/code&gt; is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Syntactic_sugar&quot;&gt;sugary&lt;/a&gt; way to say</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 은 말하는 &lt;a href=&quot;https://en.wikipedia.org/wiki/Syntactic_sugar&quot;&gt;달콤한&lt;/a&gt; 방법입니다</target>
+        </trans-unit>
+        <trans-unit id="f0678b46e10ca9ffeda185128b6349088f185f67" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;yield&lt;/code&gt; is a keyword that is used like &lt;code&gt;return&lt;/code&gt;, except the function will return a generator.</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 는 함수가 제너레이터를 반환한다는 점을 제외하고 &lt;code&gt;return&lt;/code&gt; 과 같은 키워드입니다.</target>
+        </trans-unit>
+        <trans-unit id="d4184f15f233616d72aa7e7ca25ec3a4265c4298" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;yield&lt;/code&gt; is just like &lt;code&gt;return&lt;/code&gt; - it returns whatever you tell it to (as a generator). The difference is that the next time you call the generator, execution starts from the last call to the &lt;code&gt;yield&lt;/code&gt; statement. Unlike return, &lt;strong&gt;the stack frame is not cleaned up when a yield occurs, however control is transferred back to the caller, so its state will resume the next time the function is called.&lt;/strong&gt;</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 는 &lt;code&gt;return&lt;/code&gt; 과 같습니다.-생성자에게 알려주는 것을 반환합니다. 차이점은 다음에 생성기를 호출 할 때 마지막 호출에서 &lt;code&gt;yield&lt;/code&gt; 문에 대한 실행이 시작된다는 것입니다. 반환과 달리 &lt;strong&gt;스택 프레임은 수율이 발생할 때 정리되지 않지만 제어가 호출자에게 다시 전송되므로 다음에 함수가 호출 될 때 상태가 다시 시작됩니다.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7f48e19febbab48404940d230045aa3e927e5e30" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;yield&lt;/code&gt; is like a return element for a function. The difference is, that the &lt;code&gt;yield&lt;/code&gt; element turns a function into a generator. A generator behaves just like a function until something is 'yielded'. The generator stops until it is next called, and continues from exactly the same point as it started. You can get a sequence of all the 'yielded' values in one, by calling &lt;code&gt;list(generator())&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 는 함수의 반환 요소와 같습니다. 차이점은 &lt;code&gt;yield&lt;/code&gt; 요소가 함수를 생성기로 변환한다는 것입니다. 생성기는 무언가가 '항복'될 때까지 함수처럼 작동합니다. 생성기는 다음에 호출 될 때까지 중지하고 시작과 정확히 같은 지점에서 계속됩니다. &lt;code&gt;list(generator())&lt;/code&gt; 호출하여 모든 '수율'값의 시퀀스를 하나로 얻을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="ce79dbc24d94277033832b51d011f10c74c51c55" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;yield&lt;/code&gt; provides an 
+easy way of &lt;a href=&quot;https://docs.python.org/2/library/stdtypes.html#generator-types&quot;&gt;implementing the iterator protocol&lt;/a&gt;, defined by the following two methods: 
+&lt;code&gt;__iter__&lt;/code&gt; and &lt;code&gt;next&lt;/code&gt; (Python 2) or &lt;code&gt;__next__&lt;/code&gt; (Python 3).  Both of those methods
+make an object an iterator that you could type-check with the &lt;code&gt;Iterator&lt;/code&gt; Abstract Base 
+Class from the &lt;code&gt;collections&lt;/code&gt; module.</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 는 &lt;a href=&quot;https://docs.python.org/2/library/stdtypes.html#generator-types&quot;&gt;반복자 프로토콜&lt;/a&gt; 을 구현 하는 쉬운 방법을 제공합니다. &lt;code&gt;__iter__&lt;/code&gt; 및 &lt;code&gt;next&lt;/code&gt; (Python 2) 또는 &lt;code&gt;__next__&lt;/code&gt; (Python 3)의 두 가지 방법으로 정의됩니다. 이러한 두 가지 방법 모두 &lt;code&gt;collections&lt;/code&gt; 모듈에서 &lt;code&gt;Iterator&lt;/code&gt; Abstract Base Class로 유형을 확인할 수있는 객체를 반복자로 만듭니다.</target>
+        </trans-unit>
+        <trans-unit id="72b1d67b42a7bcd2f82b7a63ae89928f2425a004" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Caller:&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Caller:&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="cff026d6f9aa06262d0a44145fc01e31f8076361" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Generator:&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Generator:&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="c38bed66dadc73d83b4620730a13bb214521445c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;yield&lt;/code&gt;&lt;/strong&gt; is only legal inside of a function definition, and &lt;strong&gt;the inclusion of &lt;code&gt;yield&lt;/code&gt; in a function definition makes it return a generator.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;yield&lt;/code&gt; &lt;/strong&gt; 는 함수 정의 내에서만 합법적이며 함수 정의 &lt;strong&gt;에 &lt;code&gt;yield&lt;/code&gt; 를 포함하면 생성기를 반환합니다.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="229ca9910a03e900f64ebcb32c51dbc86e43eacf" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;Execution Control Transfer gotcha&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;실행 제어 전송&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="653263d633592b8035eb87354035a2aedee82289" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;As a Python generator:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;파이썬 생성기 :&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="daa7df2500b97f81040621f58d60cce72d811842" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Calling functions&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;함수 호출&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6b934a0ad7383658a04e1dbb7356e9f956f6fa54" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Note:&lt;/strong&gt; For Python 3, use&lt;code&gt;print(corner_street_atm.__next__())&lt;/code&gt; or &lt;code&gt;print(next(corner_street_atm))&lt;/code&gt;</source>
+          <target state="translated">&lt;strong&gt;참고 :&lt;/strong&gt; Python 3의 경우 &lt;code&gt;print(corner_street_atm.__next__())&lt;/code&gt; 또는 &lt;code&gt;print(next(corner_street_atm))&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="284c0cc1c16634ee278d62d9da4d70563394d278" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;TL;DR&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;TL;DR&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="867dc1e5830b6274ed3a21ce05e3f7d42fcc32aa" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;This is the result from the code:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;이것은 코드의 결과입니다.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="57c3f7ae705716465207e976c5f8b4654e8b8e23" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Using lexical closures instead of generators&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;생성기 대신 어휘 폐쇄 사용&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="fb818cdf73632877fa6680be81278640e6f5f261" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Using object closures instead of generators&lt;/strong&gt; (because &lt;a href=&quot;http://c2.com/cgi/wiki?ClosuresAndObjectsAreEquivalent&quot;&gt;ClosuresAndObjectsAreEquivalent&lt;/a&gt;)</source>
+          <target state="translated">&lt;strong&gt;생성기 대신 객체 클로저 사용&lt;/strong&gt; ( &lt;a href=&quot;http://c2.com/cgi/wiki?ClosuresAndObjectsAreEquivalent&quot;&gt;CursuresAndObjectsAreEquivalent&lt;/a&gt; )</target>
+        </trans-unit>
+        <trans-unit id="6cd1618b874d384cc3e5eb172422b1adea86fbd2" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What does the &lt;code&gt;yield&lt;/code&gt; keyword do in Python?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;yield&lt;/code&gt; 키워드는 파이썬에서 무엇을합니까?&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="cf577700a9ff9e3f004ffc00209080b9c3eba6b7" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Yield is an object&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;수확량은 물체입니다&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5bb3a856024a662b96de26aecfd9bd37f19227ac" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;return&lt;/strong&gt; (in function)</source>
+          <target state="translated">&lt;strong&gt;반환&lt;/strong&gt; (함수에서)</target>
+        </trans-unit>
+        <trans-unit id="9a40ecb26c7c8562eed416b67a93ab45567e9bd8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;yield&lt;/strong&gt; &amp;mdash; give way or relinquish (as in political power)</source>
+          <target state="translated">&lt;strong&gt;수확량&lt;/strong&gt; &amp;mdash; 정치 권력에서와 같이 길을 포기하거나 포기 함</target>
+        </trans-unit>
+        <trans-unit id="bccdd99e0ed80b5b71ebb537cdf27634a356412a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;yield&lt;/strong&gt; &amp;mdash; produce or provide (as in agriculture)</source>
+          <target state="translated">&lt;strong&gt;수확량&lt;/strong&gt; &amp;mdash; 생산 또는 제공 (농업에서와 같이)</target>
+        </trans-unit>
+        <trans-unit id="2c3677668ae12b29cf20934e6d983bdb8043dd08" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;yield&lt;/strong&gt; (in function)</source>
+          <target state="translated">&lt;strong&gt;수율&lt;/strong&gt; (기능)</target>
+        </trans-unit>
+        <trans-unit id="26de2c12b563c2f9a7febaaeb02a1b7ff942e453" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt;
+1. This piece of code was written by Jochen Schulz (jrschulz), who made a great Python library for metric spaces. This is the link to the complete source: &lt;a href=&quot;http://well-adjusted.de/~jrschulz/mspace/&quot;&gt;Module mspace&lt;/a&gt;.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt;1.이 코드는 미터법 공간을위한 훌륭한 파이썬 라이브러리를 만든 Jochen Schulz (jrschulz)가 작성했습니다.&lt;/sub&gt; &lt;sub&gt;이것은 완전한 소스에 대한 링크입니다 : &lt;a href=&quot;http://well-adjusted.de/~jrschulz/mspace/&quot;&gt;Module mspace&lt;/a&gt; .&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="f79576b025501c7eb386682a764849f89c207838" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt;
+&lt;code&gt;yield&lt;/code&gt; was originally introduced as a statement, meaning that it 
+could only appear at the beginning of a line in a code block. 
+Now &lt;code&gt;yield&lt;/code&gt; creates a yield expression. 
+&lt;a href=&quot;https://docs.python.org/2/reference/simple_stmts.html#grammar-token-yield_stmt&quot;&gt;https://docs.python.org/2/reference/simple_stmts.html#grammar-token-yield_stmt&lt;/a&gt; 
+This change was &lt;a href=&quot;https://www.python.org/dev/peps/pep-0342/#specification-sending-values-into-generators&quot;&gt;proposed&lt;/a&gt; to allow a user to send data into the generator just as
+one might receive it. To send data, one must be able to assign it to something, and
+for that, a statement just won't work.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt; &lt;code&gt;yield&lt;/code&gt; 는 원래 명령문으로 도입되었으므로 코드 블록에서 줄의 시작 부분에만 나타날 수 있습니다.&lt;/sub&gt; &lt;sub&gt;이제 &lt;code&gt;yield&lt;/code&gt; 는 yield 표현식을 만듭니다.&lt;/sub&gt; &lt;sub&gt;&lt;a href=&quot;https://docs.python.org/2/reference/simple_stmts.html#grammar-token-yield_stmt&quot;&gt;https://docs.python.org/2/reference/simple_stmts.html#grammar-token-yield_stmt&lt;/a&gt; 이 변경은 사용자가 데이터를 수신하는 것처럼 생성기로 데이터를 보낼 수 있도록 &lt;a href=&quot;https://www.python.org/dev/peps/pep-0342/#specification-sending-values-into-generators&quot;&gt;제안&lt;/a&gt; 되었습니다.&lt;/sub&gt; &lt;sub&gt;데이터를 보내려면 무언가에 데이터를 할당 할 수 있어야하며, 그 때문에 명세서는 작동하지 않습니다.&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="3ecaefffce9acc4aec2e8eb1485d8144441fb64a" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt; This means, for example, that &lt;code&gt;xrange&lt;/code&gt; objects (&lt;code&gt;range&lt;/code&gt; in Python 3) aren't &lt;code&gt;Iterator&lt;/code&gt;s, even though they are iterable, because they can be reused. Like lists, their &lt;code&gt;__iter__&lt;/code&gt; methods return iterator objects.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt;예를 들어, &lt;code&gt;xrange&lt;/code&gt; 객체 (파이썬 3의 &lt;code&gt;range&lt;/code&gt; )는 재사용 할 수 있기 때문에 반복 가능하지만 &lt;code&gt;Iterator&lt;/code&gt; 가 아닙니다.&lt;/sub&gt; &lt;sub&gt;목록과 마찬가지로 &lt;code&gt;__iter__&lt;/code&gt; 메소드는 반복자 객체를 반환합니다.&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="6d4047120e95ed7d93b8ea0918529c67a9bc43e4" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt;The languages CLU, Sather, and Icon were referenced in the proposal
+to introduce the concept of generators to Python. The general idea is
+that a function can maintain internal state and yield intermediate 
+data points on demand by the user. This promised to be &lt;a href=&quot;https://www.python.org/dev/peps/pep-0255/&quot;&gt;superior in performance 
+to other approaches, including Python threading&lt;/a&gt;, which isn't even available on some systems.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt;CLU, Sather 및 Icon 언어는 제안서에서 생성기 개념을 Python에 도입하기 위해 참조되었습니다.&lt;/sub&gt; &lt;sub&gt;일반적인 아이디어는 함수가 내부 상태를 유지하고 사용자의 요청에 따라 중간 데이터 포인트를 생성 할 수 있다는 것입니다.&lt;/sub&gt; &lt;sub&gt;이것은 일부 시스템에서는 사용할 수없는 &lt;a href=&quot;https://www.python.org/dev/peps/pep-0255/&quot;&gt;Python threading&lt;/a&gt; 과 같은 다른 접근 방식보다 성능 이 우수하다는 것을 약속했습니다.&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="45728cd7c825dedfa1bf52fd66ed620c707bd5e8" translate="yes" xml:space="preserve">
+          <source>A &lt;code&gt;return&lt;/code&gt; in a function will return a single value.</source>
+          <target state="translated">함수의 반환은 단일 값을 반환합니다.</target>
+        </trans-unit>
+        <trans-unit id="f4dca203541c03ec91c7704f277f8cc1b514af3a" translate="yes" xml:space="preserve">
+          <source>A feature of an &lt;code&gt;Iterator&lt;/code&gt;&lt;a href=&quot;https://docs.python.org/2/glossary.html#term-iterator&quot;&gt;is that once exhausted&lt;/a&gt;, you can't reuse or reset it:</source>
+          <target state="translated">&lt;code&gt;Iterator&lt;/code&gt; 의 기능은 &lt;a href=&quot;https://docs.python.org/2/glossary.html#term-iterator&quot;&gt;일단 소진되면&lt;/a&gt; 재사용하거나 재설정 할 수 없다는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="bc88bfb2c2db80515dc1ecb96783382a954c2f20" translate="yes" xml:space="preserve">
+          <source>A function with &lt;a href=&quot;https://docs.python.org/reference/expressions.html#yieldexpr&quot;&gt;&lt;strong&gt;&lt;code&gt;yield&lt;/code&gt;&lt;/strong&gt;&lt;/a&gt;, when called, &lt;strong&gt;returns a &lt;a href=&quot;https://docs.python.org/2/tutorial/classes.html#generators&quot;&gt;Generator&lt;/a&gt;.&lt;/strong&gt;</source>
+          <target state="translated">&lt;a href=&quot;https://docs.python.org/reference/expressions.html#yieldexpr&quot;&gt;&lt;strong&gt; &lt;code&gt;yield&lt;/code&gt; 가&lt;/strong&gt;&lt;/a&gt; 있는 함수는 호출 될 때 &lt;strong&gt;&lt;a href=&quot;https://docs.python.org/2/tutorial/classes.html#generators&quot;&gt;Generator를&lt;/a&gt; 반환합니다.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="897499bfe1868bc9f693489cbbf23e92d00c56ab" translate="yes" xml:space="preserve">
+          <source>A generator can also be &lt;strong&gt;sent information&lt;/strong&gt;, making it conceptually a &lt;strong&gt;coroutine&lt;/strong&gt;.</source>
+          <target state="translated">또한 생성기는 &lt;strong&gt;정보를 전송&lt;/strong&gt; 하여 개념적으로 &lt;strong&gt;코 루틴으로&lt;/strong&gt; 만들 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="9738265b02043df1ee0a4dc75d4ad9e6a30481dd" translate="yes" xml:space="preserve">
+          <source>A generator differs from a function in the sense that it is lazy. It accomplishes this by maintaining it's local state and allowing you to resume whenever you need to.</source>
+          <target state="translated">발생기는 게으른 기능이라는 점에서 기능과 다릅니다. 로컬 상태를 유지하고 필요할 때마다 다시 시작할 수 있도록하여이를 수행합니다.</target>
+        </trans-unit>
+        <trans-unit id="1f888f43eb25e3718593933b4335447760fb8473" translate="yes" xml:space="preserve">
+          <source>A generator is iterable. What is an &lt;em&gt;iterable&lt;/em&gt;? It's anything like a &lt;code&gt;list&lt;/code&gt; or &lt;code&gt;set&lt;/code&gt; or &lt;code&gt;range&lt;/code&gt; or dict-view, with a &lt;em&gt;built-in protocol for visiting each element in a certain order&lt;/em&gt;.</source>
+          <target state="translated">생성기는 반복 가능합니다. &lt;em&gt;iterable&lt;/em&gt; 은 무엇입니까? &lt;em&gt;특정 순서로 각 요소를 방문하기위한 내장 프로토콜을 사용하여&lt;/em&gt; &lt;code&gt;list&lt;/code&gt; , &lt;code&gt;set&lt;/code&gt; 또는 &lt;code&gt;range&lt;/code&gt; 또는 dict-view와 같은 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="40806863ce6fa16185eff4ee6a143d5d9c549f75" translate="yes" xml:space="preserve">
+          <source>A real life example would be something like reading a file line by line or if you just want to make a generator.</source>
+          <target state="translated">실제 예제는 파일을 한 줄씩 읽거나 생성기를 만들고 싶은 경우와 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="44cb9a9a8788c105610a9684a6bc2a2b8a67003f" translate="yes" xml:space="preserve">
+          <source>A syntax is proposed for a generator to delegate part of its operations to another generator. This allows a section of code containing 'yield' to be factored out and placed in another generator. Additionally, the subgenerator is allowed to return with a value, and the value is made available to the delegating generator.</source>
+          <target state="translated">생성기가 작업의 일부를 다른 생성기로 위임하기위한 구문이 제안됩니다. 이를 통해 '수율'을 포함하는 코드 섹션을 분해하여 다른 생성기에 배치 할 수 있습니다. 또한 하위 생성기는 값과 함께 반환 될 수 있으며 해당 값은 위임 생성기에 제공됩니다.</target>
+        </trans-unit>
+        <trans-unit id="74447fa535e8bb207f72d52e27e00da4cbc34ba7" translate="yes" xml:space="preserve">
+          <source>Again, this is a pretty contrived example, you probably would use itertools if you really wanted to count to 50 billion. :)</source>
+          <target state="translated">다시 말하지만, 이것은 꽤 고안된 예입니다. 실제로 500 억에 달하고 싶다면 itertools를 사용할 것입니다. :)</target>
+        </trans-unit>
+        <trans-unit id="bd27eb03f93b277d1b217b449e15ffaa08956520" translate="yes" xml:space="preserve">
+          <source>All great answers, however a bit difficult for newbies.</source>
+          <target state="translated">모든 훌륭한 답변이지만 초보자에게는 조금 어렵습니다.</target>
+        </trans-unit>
+        <trans-unit id="2fab016fc71934fbba31dba4e6e38ca3818acafb" translate="yes" xml:space="preserve">
+          <source>Also, note that &lt;code&gt;yield&lt;/code&gt; can be used in coroutines as the dual of their use in generator functions.  Although it isn't the same use as your code snippet, &lt;code&gt;(yield)&lt;/code&gt; can be used as an expression in a function.  When a caller sends a value to the method using the &lt;code&gt;send()&lt;/code&gt; method, then the coroutine will execute until the next &lt;code&gt;(yield)&lt;/code&gt; statement is encountered.</source>
+          <target state="translated">또한 &lt;code&gt;yield&lt;/code&gt; 은 코 루틴에서 발전기 기능에 사용되는 이중으로 사용할 수 있습니다. 코드 스 니펫과 동일하지는 않지만 &lt;code&gt;(yield)&lt;/code&gt; 은 함수의 표현식으로 사용할 수 있습니다. 호출자가 &lt;code&gt;send()&lt;/code&gt; 메소드를 사용하여 메소드에 값을 보내면 코 루틴은 다음 &lt;code&gt;(yield)&lt;/code&gt; 명령문이 발생할 때까지 실행됩니다.</target>
+        </trans-unit>
+        <trans-unit id="c56156759c86e1fd4089d77e11250c9e375078a7" translate="yes" xml:space="preserve">
+          <source>An &lt;code&gt;expression_list&lt;/code&gt; is basically any number of expressions separated by commas - essentially, in Python 2, you can stop the generator with &lt;code&gt;return&lt;/code&gt;, but you can't return a value.</source>
+          <target state="translated">&lt;code&gt;expression_list&lt;/code&gt; 는 기본적으로 쉼표로 구분 된 많은 수의 표현식 입니다. 기본적으로 Python 2에서는 &lt;code&gt;return&lt;/code&gt; 으로 생성기를 중지 할 수 있지만 값을 반환 할 수는 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="81d45d4bfb0fa5b224eac8c43cc82a19dfb43fe4" translate="yes" xml:space="preserve">
+          <source>An easy example to understand what it is: &lt;code&gt;yield&lt;/code&gt;</source>
+          <target state="translated">그것이 무엇인지 이해하는 쉬운 예 : &lt;code&gt;yield&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="cdd85aeb410d39ea117f7d9f6130e19b2898ccdb" translate="yes" xml:space="preserve">
+          <source>An example? Let's see the possible orders of arrival for a four-horse race:</source>
+          <target state="translated">예를 들어? 4 마리 경주에 가능한 도착 순서를 보자.</target>
+        </trans-unit>
+        <trans-unit id="29b15a5d175843895768eba634b31bff250c477b" translate="yes" xml:space="preserve">
+          <source>An iterable is the last part of a list comprehension, and all generators are iterable, so they're often used like so:</source>
+          <target state="translated">iterable은 목록 이해의 마지막 부분이며 모든 생성기는 iterable이므로 종종 다음과 같이 사용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="81d8a56bb9735baf48091b3e5b5e287b1b2e4127" translate="yes" xml:space="preserve">
+          <source>An iterator is just a fancy sounding term for an object that has a &lt;code&gt;next()&lt;/code&gt; method.  So a yield-ed function ends up being something like this:</source>
+          <target state="translated">이터레이터는 &lt;code&gt;next()&lt;/code&gt; 메소드를 가진 객체를 가리키는 멋진 용어입니다. 따라서 항복 함수는 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="d914dca0e9f94be2a010606114630680fc2fbce8" translate="yes" xml:space="preserve">
+          <source>And if necessary, we can type-check like this:</source>
+          <target state="translated">필요한 경우 다음과 같이 유형을 확인할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="8b152c57dd4e6896c2e2d3a2c969268781a04e11" translate="yes" xml:space="preserve">
+          <source>And it works because Python does not care if the argument of a method is a list or not. Python expects iterables so it will work with strings, lists, tuples, and generators! This is called duck typing and is one of the reasons why Python is so cool. But this is another story, for another question...</source>
+          <target state="translated">그리고 파이썬은 메소드의 인수가 목록인지 아닌지 신경 쓰지 않기 때문에 작동합니다. 파이썬은 이터 러블을 기대하므로 문자열,리스트, 튜플 및 생성기에서 작동합니다! 이것을 오리 타이핑이라고하며 파이썬이 그렇게 멋진 이유 중 하나입니다. 그러나 이것은 또 다른 질문입니다. 또 다른 질문입니다 ...</target>
+        </trans-unit>
+        <trans-unit id="97fbec56b74d699d8da84f4466277b6823b52c60" translate="yes" xml:space="preserve">
+          <source>And now we can delegate functionality to a sub-generator and it can be used
+by a generator just as above:</source>
+          <target state="translated">이제 하위 생성기에 기능을 위임 할 수 있으며 위와 같이 생성기에서 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="bdec22c07b1756ea41e55aa6af803ad40c179f4d" translate="yes" xml:space="preserve">
+          <source>And now we can send data into the generator. (&lt;a href=&quot;https://www.python.org/dev/peps/pep-0342/#specification-sending-values-into-generators&quot;&gt;Sending &lt;code&gt;None&lt;/code&gt; is 
+the same as calling &lt;code&gt;next&lt;/code&gt;&lt;/a&gt;.) :</source>
+          <target state="translated">이제 생성기로 데이터를 보낼 수 있습니다. ( &lt;a href=&quot;https://www.python.org/dev/peps/pep-0342/#specification-sending-values-into-generators&quot;&gt; &lt;code&gt;None&lt;/code&gt; 전송은 &lt;code&gt;next&lt;/code&gt; 호출과 동일&lt;/a&gt; 합니다.) :</target>
+        </trans-unit>
+        <trans-unit id="df8f95772f413efb0c2dbf265ff4862fae1c7bc4" translate="yes" xml:space="preserve">
+          <source>And this is the caller:</source>
+          <target state="translated">그리고 이것은 발신자입니다.</target>
+        </trans-unit>
+        <trans-unit id="3b57182086d6c04e166187f3787e8d917fd59442" translate="yes" xml:space="preserve">
+          <source>Answer Outline/Summary</source>
+          <target state="translated">답변 개요 / 요약</target>
+        </trans-unit>
+        <trans-unit id="c3c07bbc3573c4c760856487909b704db42f46ae" translate="yes" xml:space="preserve">
+          <source>Appendix:</source>
+          <target state="translated">Appendix:</target>
+        </trans-unit>
+        <trans-unit id="f7153a3ed77229b8ef3f57eb201522d76e468e8a" translate="yes" xml:space="preserve">
+          <source>As I understand, when we want to process a bunch of data, we usually first store the data somewhere and then process it one by one. But this &lt;em&gt;naive&lt;/em&gt; approach is problematic. If the data volume is huge, it's expensive to store them as a whole beforehand. &lt;strong&gt;So instead of storing the &lt;code&gt;data&lt;/code&gt; itself directly, why not store some kind of &lt;code&gt;metadata&lt;/code&gt; indirectly, i.e. &lt;code&gt;the logic how the data is computed&lt;/code&gt;&lt;/strong&gt;.</source>
+          <target state="translated">내가 알다시피, 많은 데이터를 처리하고 싶을 때, 보통 데이터를 어딘가에 저장 한 다음 하나씩 처리합니다. 그러나이 &lt;em&gt;순진한&lt;/em&gt; 접근 방식은 문제가 있습니다. 데이터 볼륨이 크면 미리 전체를 저장하는 데 비용이 많이 듭니다. &lt;strong&gt;따라서 &lt;code&gt;data&lt;/code&gt; 자체를 직접 저장하는 대신 일종의 &lt;code&gt;metadata&lt;/code&gt; 간접적으로 저장하지 않는 것이 좋습니다 (예 : &lt;code&gt;the logic how the data is computed&lt;/code&gt; &lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="71b8419f2c05a320eab84f0ff210eed5a7aa3f59" translate="yes" xml:space="preserve">
+          <source>As an analogy, &lt;code&gt;return&lt;/code&gt; and &lt;code&gt;yield&lt;/code&gt; are twins. &lt;code&gt;return&lt;/code&gt; means 'return and stop' whereas 'yield` means 'return, but continue'</source>
+          <target state="translated">비유로, &lt;code&gt;return&lt;/code&gt; 과 &lt;code&gt;yield&lt;/code&gt; 은 쌍둥이입니다. &lt;code&gt;return&lt;/code&gt; 은 'return and stop'을 의미하고, 'yield'는 'return, but continue'를 의미합니다</target>
+        </trans-unit>
+        <trans-unit id="9399c22507893ea92efd2d3d7bd85d4924662fa9" translate="yes" xml:space="preserve">
+          <source>As you can see both functions do the same thing. The only difference is &lt;code&gt;return_dates()&lt;/code&gt; gives a list and &lt;code&gt;yield_dates()&lt;/code&gt; gives a generator.</source>
+          <target state="translated">보시다시피 두 기능은 모두 같은 일을합니다. 유일한 차이점은 &lt;code&gt;return_dates()&lt;/code&gt; 가 목록을 제공하고 &lt;code&gt;yield_dates()&lt;/code&gt; 가 생성기를 제공한다는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="135740deb1c52c950dd9825f622468250cfec310" translate="yes" xml:space="preserve">
+          <source>As you can see, in the first case &lt;code&gt;foo&lt;/code&gt; holds the entire list in memory at once. It's not a big deal for a list with 5 elements, but what if you want a list of 5 million? Not only is this a huge memory eater, it also costs a lot of time to build at the time that the function is called.</source>
+          <target state="translated">보시다시피, 첫 번째 경우 &lt;code&gt;foo&lt;/code&gt; 는 전체 목록을 한 번에 메모리에 보유합니다. 5 개의 요소가있는 목록에는 별 문제가되지 않지만 5 백만 개의 목록을 원한다면 어떻게해야합니까? 이것은 거대한 메모리 소비 기일뿐만 아니라 함수가 호출 될 때 빌드하는 데 많은 시간이 소요됩니다.</target>
+        </trans-unit>
+        <trans-unit id="5bbe3ddff5d188e8a248228bc2152ed147d1b379" translate="yes" xml:space="preserve">
+          <source>Behind the scenes</source>
+          <target state="translated">무대 뒤에서</target>
+        </trans-unit>
+        <trans-unit id="5b6a80379109f3fc6042e0737cbf5d072100c51f" translate="yes" xml:space="preserve">
+          <source>Both functions do the same thing, but &lt;code&gt;yield&lt;/code&gt; uses three lines instead of five and has one less variable to worry about.</source>
+          <target state="translated">두 함수 모두 동일한 기능을 수행하지만 &lt;code&gt;yield&lt;/code&gt; 는 5 개 대신 3 개 라인을 사용하며 걱정할 변수가 하나 줄었습니다.</target>
+        </trans-unit>
+        <trans-unit id="cca4c988c7e1babe71c97f7849efb9f46f5d36d6" translate="yes" xml:space="preserve">
+          <source>Bottom line, until the developers of CPython tell us otherwise: &lt;strong&gt;Don't put &lt;code&gt;yield&lt;/code&gt; in a generator expression or comprehension.&lt;/strong&gt;</source>
+          <target state="translated">결론은 CPython 개발자가 달리 말할 때까지 &lt;strong&gt;입니다. 생성기 표현이나 이해에 &lt;code&gt;yield&lt;/code&gt; 을 두지 마십시오.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d08cdf468566d1e5880decf4e3f20a483dff611f" translate="yes" xml:space="preserve">
+          <source>Brilliant choice of the word &lt;code&gt;yield&lt;/code&gt; because &lt;a href=&quot;https://www.google.com/search?q=yield+meaning&quot;&gt;both meanings&lt;/a&gt; apply:</source>
+          <target state="translated">&lt;a href=&quot;https://www.google.com/search?q=yield+meaning&quot;&gt;두 가지 의미가 모두&lt;/a&gt; 적용되므로 단어 &lt;code&gt;yield&lt;/code&gt; 훌륭하게 선택합니다.</target>
+        </trans-unit>
+        <trans-unit id="18cf04f82308b4c79617d9344cd8cccedc5948df" translate="yes" xml:space="preserve">
+          <source>Built-in lists, dictionaries, tuples, sets, files.</source>
+          <target state="translated">내장 목록, 사전, 튜플, 세트, ​​파일.</target>
+        </trans-unit>
+        <trans-unit id="ace5b94af148161c793a05983917f7f7008ae80a" translate="yes" xml:space="preserve">
+          <source>But in your code, it gets a generator, which is good because:</source>
+          <target state="translated">그러나 코드에서 생성기를 얻습니다.</target>
+        </trans-unit>
+        <trans-unit id="e41053f2e7b7818b717e108be50e7b8bc56bf7fd" translate="yes" xml:space="preserve">
+          <source>But this is inefficient because</source>
+          <target state="translated">그러나 이것은 비효율적입니다.</target>
+        </trans-unit>
+        <trans-unit id="112200cd9ac4f291717eeda13db581f83c118af7" translate="yes" xml:space="preserve">
+          <source>But you could easily implement (and conceptualize) generators as a simple, specific case of continuation passing style:</source>
+          <target state="translated">그러나 연속 전달 스타일의 단순하고 구체적인 사례로 생성기를 쉽게 구현하고 개념화 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="224ba6c7dc6ef4515b36b8503f362933f7f951ca" translate="yes" xml:space="preserve">
+          <source>Call &lt;code&gt;iter(mylist)&lt;/code&gt; -&amp;gt; this returns an object with a &lt;code&gt;next()&lt;/code&gt; method (or &lt;code&gt;__next__()&lt;/code&gt; in Python 3).</source>
+          <target state="translated">&lt;code&gt;iter(mylist)&lt;/code&gt; -&amp;gt; 호출하면 &lt;code&gt;next()&lt;/code&gt; 메소드 (또는 Python 3의 &lt;code&gt;__next__()&lt;/code&gt; 가있는 객체가 반환됩니다.</target>
+        </trans-unit>
+        <trans-unit id="4fdabc45b3bad82e2c9c7d5aa68f04b364ec25ac" translate="yes" xml:space="preserve">
+          <source>Calling &lt;code&gt;yielderFunction()&lt;/code&gt; doesn't run its code, but makes a generator out of the code. (Maybe it's a good idea to name such things with the &lt;code&gt;yielder&lt;/code&gt; prefix for readability.)</source>
+          <target state="translated">&lt;code&gt;yielderFunction()&lt;/code&gt; 호출하면 코드가 실행되지 않지만 생성기가 코드에서 생성됩니다. (가독성을 &lt;code&gt;yielder&lt;/code&gt; 위해 접두사 접두어로 이름을 지정하는 것이 좋습니다.)</target>
+        </trans-unit>
+        <trans-unit id="d4e40bacc080c668ae12d6659592822c4592d6dc" translate="yes" xml:space="preserve">
+          <source>Cheers, Nick.</source>
+          <target state="translated">건배, 닉</target>
+        </trans-unit>
+        <trans-unit id="fa1fe25132badc6a4700de54339362efef6cccf3" translate="yes" xml:space="preserve">
+          <source>Compare function to the original definition.</source>
+          <target state="translated">기능을 원래 정의와 비교하십시오.</target>
+        </trans-unit>
+        <trans-unit id="422466cb355bfaa6b435c10bfd2011e9037906cc" translate="yes" xml:space="preserve">
+          <source>Compare the following examples:</source>
+          <target state="translated">다음 예제를 비교하십시오.</target>
+        </trans-unit>
+        <trans-unit id="23177d88df5aa8c7d73ae1fbc8fbc37e2afda7be" translate="yes" xml:space="preserve">
+          <source>Comparing example to &quot;just returning a list&quot;</source>
+          <target state="translated">&quot;목록 만 리턴&quot;하는 예제 비교</target>
+        </trans-unit>
+        <trans-unit id="13ee7709c64ae8875430c0fce8f630d0fd20adab" translate="yes" xml:space="preserve">
+          <source>Comparing to &lt;code&gt;return&lt;/code&gt; which runs once and stops, &lt;code&gt;yield&lt;/code&gt; runs times you planed.
+You can interpret &lt;code&gt;return&lt;/code&gt; as &lt;code&gt;return one of them&lt;/code&gt;, and &lt;code&gt;yield&lt;/code&gt; as &lt;code&gt;return all of them&lt;/code&gt;. This is called &lt;code&gt;iterable&lt;/code&gt;.</source>
+          <target state="translated">한 번 실행하고 중지하는 것을 &lt;code&gt;return&lt;/code&gt; 하는 것과 비교하여 계획 한 실행 시간을 반환 합니다. &lt;code&gt;return one of them&lt;/code&gt; &lt;code&gt;return&lt;/code&gt; 으로 해석하고 &lt;code&gt;yield&lt;/code&gt; 를 &lt;code&gt;return all of them&lt;/code&gt; 리턴 으로 해석 할 수 있습니다. 이것을 &lt;code&gt;iterable&lt;/code&gt; 이라고합니다.</target>
+        </trans-unit>
+        <trans-unit id="e39262defe80a83fac1b793497417432c8b1a879" translate="yes" xml:space="preserve">
+          <source>Conclusion</source>
+          <target state="translated">Conclusion</target>
+        </trans-unit>
+        <trans-unit id="d93505eddd729749377d3ebb203709c807a5b6b0" translate="yes" xml:space="preserve">
+          <source>Continuations in programming languages theory are a much more fundamental kind of computation, but they are not often used, because they are extremely hard to reason about and also very difficult to implement. But the idea of what a continuation is, is straightforward: it is the state of a computation that has not yet finished. In this state, the current values of variables, the operations that have yet to be performed, and so on, are saved. Then at some point later in the program the continuation can be invoked, such that the program's variables are reset to that state and the operations that were saved are carried out.</source>
+          <target state="translated">프로그래밍 언어 이론의 연속은 훨씬 더 기본적인 종류의 계산이지만 추론하기가 매우 어렵고 구현하기가 어렵 기 때문에 자주 사용되지는 않습니다. 그러나 연속이 무엇인지에 대한 아이디어는 간단합니다. 아직 완료되지 않은 계산 상태입니다. 이 상태에서 변수의 현재 값, 아직 수행하지 않은 작업 등이 저장됩니다. 그런 다음 프로그램의 어느 시점에서 연속을 호출하여 프로그램 변수가 해당 상태로 재설정되고 저장된 작업이 수행되도록 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="b72e044549c84a332ce620bd9e0a6adabcb6a3af" translate="yes" xml:space="preserve">
+          <source>Continuations, in this more general form, can be implemented in two ways. In the &lt;code&gt;call/cc&lt;/code&gt; way, the program's stack is literally saved and then when the continuation is invoked, the stack is restored.</source>
+          <target state="translated">보다 일반적인 형태의 연속은 두 가지 방식으로 구현 될 수 있습니다. &lt;code&gt;call/cc&lt;/code&gt; 방식으로 프로그램 스택이 그대로 저장되고 연속이 호출되면 스택이 복원됩니다.</target>
+        </trans-unit>
+        <trans-unit id="2c47bc7e9e1cccd861bf2f12386c3a01928597e8" translate="yes" xml:space="preserve">
+          <source>Controlling a generator exhaustion</source>
+          <target state="translated">발전기 피로 제어</target>
+        </trans-unit>
+        <trans-unit id="fe65bca192a86197c66d7cf330e1537caa61c387" translate="yes" xml:space="preserve">
+          <source>Cooperative Delegation to Sub-Coroutine with &lt;code&gt;yield from&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;yield from&lt;/code&gt; 로 하위 코 루틴에 대한 협력 위임</target>
+        </trans-unit>
+        <trans-unit id="33163af7bd841f674f77c35298225e94a5016009" translate="yes" xml:space="preserve">
+          <source>Coroutines:</source>
+          <target state="translated">Coroutines:</target>
+        </trans-unit>
+        <trans-unit id="abfb94ac57644f17a8adf8955a59558bd94c3b33" translate="yes" xml:space="preserve">
+          <source>Critique of answer suggesting &lt;code&gt;yield&lt;/code&gt; in a generator expression or comprehension.</source>
+          <target state="translated">제너레이터 표현 또는 이해에서 &lt;code&gt;yield&lt;/code&gt; 을 제안하는 비판.</target>
+        </trans-unit>
+        <trans-unit id="a9c0621bff7dcefce6457fdee9b6bcef2e0f3d8a" translate="yes" xml:space="preserve">
+          <source>Critique of the Top/Accepted Answer**</source>
+          <target state="translated">최고 / 허용 된 답변의 비판 **</target>
+        </trans-unit>
+        <trans-unit id="391058e00a0cf1fea23f9021af0e6821cda75f41" translate="yes" xml:space="preserve">
+          <source>Different behavior:</source>
+          <target state="translated">다른 행동 :</target>
+        </trans-unit>
+        <trans-unit id="4beaba95c78d5c63061a997dcde838cb3d1a985b" translate="yes" xml:space="preserve">
+          <source>Does that make more sense or just confuse you more?  :)</source>
+          <target state="translated">더 이해가 되나요? 아니면 더 혼란 스럽습니까? :)</target>
+        </trans-unit>
+        <trans-unit id="478cc5edb794118536367238291728364671b4c5" translate="yes" xml:space="preserve">
+          <source>Don't confuse your Iterables, Iterators, and Generators</source>
+          <target state="translated">Iterables, Iterators 및 Generators를 혼동하지 마십시오</target>
+        </trans-unit>
+        <trans-unit id="c5ebf51ae7871d62102efa654179e7b2cbd98826" translate="yes" xml:space="preserve">
+          <source>Either way, an iterator is created, i.e. some object that can give you the data you want. The OO approach may be a bit complex. Anyway, which one to use is up to you.</source>
+          <target state="translated">어느 쪽이든, 반복자가 만들어집니다. 즉, 원하는 데이터를 제공 할 수있는 객체입니다. OO 접근 방식은 약간 복잡 할 수 있습니다. 어쨌든 어느 것을 사용할지는 당신에게 달려 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="17dcf8ce994111b56509be2581c55631ea92717d" translate="yes" xml:space="preserve">
+          <source>Everything you can use &quot;&lt;code&gt;for... in...&lt;/code&gt;&quot; on is an iterable; &lt;code&gt;lists&lt;/code&gt;, &lt;code&gt;strings&lt;/code&gt;, files...</source>
+          <target state="translated">&quot; &lt;code&gt;for... in...&lt;/code&gt; &quot;에 사용할 수있는 모든 것은 반복 가능합니다. &lt;code&gt;lists&lt;/code&gt; , &lt;code&gt;strings&lt;/code&gt; , 파일 ...</target>
+        </trans-unit>
+        <trans-unit id="0f01ed56a1e32a05e5ef96e4d779f34784af9a96" translate="yes" xml:space="preserve">
+          <source>Example</source>
+          <target state="translated">Example</target>
+        </trans-unit>
+        <trans-unit id="a58924e6ca70e15697b41c0fd8af77f8e3655bd0" translate="yes" xml:space="preserve">
+          <source>First, the &lt;strong&gt;iterator protocol&lt;/strong&gt; - when you write</source>
+          <target state="translated">먼저 &lt;strong&gt;반복자 프로토콜&lt;/strong&gt; -쓸 때</target>
+        </trans-unit>
+        <trans-unit id="ab464772e390ee8b69cf6e6fbb14dd8f889ce77c" translate="yes" xml:space="preserve">
+          <source>First, we must queue up the generator with the builtin function, &lt;a href=&quot;https://docs.python.org/2/library/functions.html#next&quot;&gt;&lt;code&gt;next&lt;/code&gt;&lt;/a&gt;. It will 
+call the appropriate &lt;code&gt;next&lt;/code&gt; or &lt;code&gt;__next__&lt;/code&gt; method, depending on the version of
+Python you are using:</source>
+          <target state="translated">먼저 내장 함수 인 &lt;a href=&quot;https://docs.python.org/2/library/functions.html#next&quot;&gt; &lt;code&gt;next&lt;/code&gt; 를 사용&lt;/a&gt; 하여 생성기를 큐잉해야합니다. 사용중인 Python 버전에 따라 적절한 &lt;code&gt;next&lt;/code&gt; 또는 &lt;code&gt;__next__&lt;/code&gt; 메소드를 호출합니다.</target>
+        </trans-unit>
+        <trans-unit id="ec0c3b76630fd745381cc215a284820af75a683a" translate="yes" xml:space="preserve">
+          <source>Footnotes</source>
+          <target state="translated">Footnotes</target>
+        </trans-unit>
+        <trans-unit id="87881092dde77e187d0bf9cb4e0f744846b558a8" translate="yes" xml:space="preserve">
+          <source>For example, I'm trying to understand this code&lt;sup&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/sup&gt;:</source>
+          <target state="translated">예를 들어,이 코드 &lt;sup&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/sup&gt; 을 이해하려고합니다.</target>
+        </trans-unit>
+        <trans-unit id="059c3e8cce263b2945a18ac90b2637e10a8026b1" translate="yes" xml:space="preserve">
+          <source>For example:</source>
+          <target state="translated">예를 들면 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="4359df1244f408dd74c85feea20108563cf47ea0" translate="yes" xml:space="preserve">
+          <source>For more accurate information, read about &lt;a href=&quot;http://docs.python.org/library/stdtypes.html#iterator-types&quot;&gt;iterator types&lt;/a&gt;, the &lt;a href=&quot;http://docs.python.org/reference/simple_stmts.html#yield&quot;&gt;yield statement&lt;/a&gt; and &lt;a href=&quot;http://docs.python.org/glossary.html#term-generator&quot;&gt;generators&lt;/a&gt; in the Python documentation.</source>
+          <target state="translated">보다 정확한 정보는 파이썬 문서에서 &lt;a href=&quot;http://docs.python.org/library/stdtypes.html#iterator-types&quot;&gt;iterator types&lt;/a&gt; , &lt;a href=&quot;http://docs.python.org/reference/simple_stmts.html#yield&quot;&gt;yield 문&lt;/a&gt; 및 &lt;a href=&quot;http://docs.python.org/glossary.html#term-generator&quot;&gt;생성기&lt;/a&gt; 에 대해 읽으십시오.</target>
+        </trans-unit>
+        <trans-unit id="ab34884b9c5a1c376f359e896bfa36ac9404ee1e" translate="yes" xml:space="preserve">
+          <source>For more insight as to what's happening behind the scenes, the &lt;code&gt;for&lt;/code&gt; loop can be rewritten to this:</source>
+          <target state="translated">장면 뒤에서 일어나는 일에 대한 더 많은 통찰력을 얻으려면 &lt;code&gt;for&lt;/code&gt; 루프를 다음과 같이 다시 작성할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="b3b09a14c47c5a101227ecf4d23816285925f6d5" translate="yes" xml:space="preserve">
+          <source>For those who prefer a minimal working example, meditate on this interactive Python session:</source>
+          <target state="translated">최소한의 예제를 선호하는 사람들을 위해이 대화 형 Python 세션을 묵상하십시오.</target>
+        </trans-unit>
+        <trans-unit id="50c79418c72adb6d21a9a53d6133434acd4b25f6" translate="yes" xml:space="preserve">
+          <source>From &lt;em&gt;&lt;a href=&quot;http://www.python.org/dev/peps/pep-0380/&quot;&gt;PEP 380 -- Syntax for Delegating to a Subgenerator&lt;/a&gt;&lt;/em&gt;:</source>
+          <target state="translated">&lt;em&gt;&lt;a href=&quot;http://www.python.org/dev/peps/pep-0380/&quot;&gt;PEP 380&lt;/a&gt;&lt;/em&gt; 부터 &lt;em&gt;-서브 제너레이터에 위임하기위한 구문&lt;/em&gt; :</target>
+        </trans-unit>
+        <trans-unit id="12e842703e6cd07e003a70536ed53b1cad820600" translate="yes" xml:space="preserve">
+          <source>From a programming viewpoint, the iterators are implemented as &lt;a href=&quot;http://en.wikipedia.org/wiki/Thunk_(functional_programming)&quot;&gt;thunks&lt;/a&gt;.</source>
+          <target state="translated">프로그래밍 관점에서 이터레이터는 &lt;a href=&quot;http://en.wikipedia.org/wiki/Thunk_(functional_programming)&quot;&gt;thunks&lt;/a&gt; 로 구현됩니다.</target>
+        </trans-unit>
+        <trans-unit id="c04b84b0d27f22df1bc44e709e3324e4728e5047" translate="yes" xml:space="preserve">
+          <source>Further, there is an &lt;a href=&quot;http://bugs.python.org/issue10544&quot;&gt;outstanding issue (10544)&lt;/a&gt; which seems to be pointing in the direction of this &lt;em&gt;never&lt;/em&gt; being a good idea (PyPy, a Python implementation written in Python, is already raising syntax warnings.)</source>
+          <target state="translated">또한, 이것이 &lt;em&gt;결코&lt;/em&gt; 좋은 생각이 아니라는 방향으로 지적하고있는 &lt;a href=&quot;http://bugs.python.org/issue10544&quot;&gt;뛰어난 문제 (10544)&lt;/a&gt; 가 있습니다 (PyPy, Python으로 작성된 Python 구현은 이미 구문 경고를 발생시킵니다).</target>
+        </trans-unit>
+        <trans-unit id="a3e705cc61a19f33d7c9c030f107a70569966485" translate="yes" xml:space="preserve">
+          <source>Generators</source>
+          <target state="translated">Generators</target>
+        </trans-unit>
+        <trans-unit id="ea270aafef5ea2be7a50c15d8f3cf44425aa37b7" translate="yes" xml:space="preserve">
+          <source>Generators and coroutines are a cool way to set up data-flow type applications.  I thought it would be worthwhile knowing about the other use of the &lt;code&gt;yield&lt;/code&gt; statement in functions.</source>
+          <target state="translated">생성기 및 코 루틴은 데이터 흐름 유형 응용 프로그램을 설정하는 멋진 방법입니다. 함수에서 &lt;code&gt;yield&lt;/code&gt; 문의 다른 사용법에 대해 아는 것이 가치가 있다고 생각했습니다.</target>
+        </trans-unit>
+        <trans-unit id="179018c67d6955b4f49df82ba24dc3b04e776679" translate="yes" xml:space="preserve">
+          <source>Generators are iterators because they implement the &lt;a href=&quot;https://docs.python.org/2/library/stdtypes.html#iterator-types&quot;&gt;&lt;strong&gt;iterator protocol&lt;/strong&gt;&lt;/a&gt;, so you can iterate over them.</source>
+          <target state="translated">생성기는 반복자 &lt;a href=&quot;https://docs.python.org/2/library/stdtypes.html#iterator-types&quot;&gt;&lt;strong&gt;프로토콜&lt;/strong&gt;&lt;/a&gt; 을 구현하므로 반복자이므로 &lt;strong&gt;반복자&lt;/strong&gt; 를 반복 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="a5e08e7b38a556477cdbe545a9f764632125d102" translate="yes" xml:space="preserve">
+          <source>Generators are iterators, a kind of iterable &lt;strong&gt;you can only iterate over once&lt;/strong&gt;. Generators do not store all the values in memory, &lt;strong&gt;they generate the values on the fly&lt;/strong&gt;:</source>
+          <target state="translated">제너레이터는 반복자입니다. 반복자는 &lt;strong&gt;한 번만&lt;/strong&gt; 반복 &lt;strong&gt;할 수 있습니다&lt;/strong&gt; . 생성기는 메모리에 모든 값을 저장하지 않고 &lt;strong&gt;값을 즉시 생성합니다&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="682b0796dd83f3fd0ad45f54f168909fac114df8" translate="yes" xml:space="preserve">
+          <source>Generators.</source>
+          <target state="translated">Generators.</target>
+        </trans-unit>
+        <trans-unit id="30755c71dba128a057a2e8b31c452388bed51a8e" translate="yes" xml:space="preserve">
+          <source>Generators:</source>
+          <target state="translated">Generators:</target>
+        </trans-unit>
+        <trans-unit id="d054231a90af4e28b960cfe94d5c8186673ab51e" translate="yes" xml:space="preserve">
+          <source>Gets an iterator for &lt;code&gt;mylist&lt;/code&gt;:</source>
+          <target state="translated">&lt;code&gt;mylist&lt;/code&gt; 에 대한 반복자를 가져 옵니다 .</target>
+        </trans-unit>
+        <trans-unit id="c8a20bbe7bfc35516518ea627afd092d0e96e4cc" translate="yes" xml:space="preserve">
+          <source>Here &lt;code&gt;mylist&lt;/code&gt; is an &lt;em&gt;iterable&lt;/em&gt; because it implements the iterator protocol. In a user-defined class, you can implement the &lt;code&gt;__iter__()&lt;/code&gt; method to make instances of your class iterable. This method should return an &lt;em&gt;iterator&lt;/em&gt;. An iterator is an object with a &lt;code&gt;next()&lt;/code&gt; method. It is possible to implement both &lt;code&gt;__iter__()&lt;/code&gt; and &lt;code&gt;next()&lt;/code&gt; on the same class, and have &lt;code&gt;__iter__()&lt;/code&gt; return &lt;code&gt;self&lt;/code&gt;. This will work for simple cases, but not when you want two iterators looping over the same object at the same time.</source>
+          <target state="translated">&lt;code&gt;mylist&lt;/code&gt; 는 iterator 프로토콜을 구현하기 때문에 &lt;em&gt;iterable&lt;/em&gt; 입니다. 사용자 정의 클래스에서 &lt;code&gt;__iter__()&lt;/code&gt; 메서드를 구현하여 클래스의 인스턴스를 반복 가능하게 만들 수 있습니다. 이 메소드는 &lt;em&gt;반복자를&lt;/em&gt; 리턴해야 &lt;em&gt;합니다&lt;/em&gt; . 반복자는 &lt;code&gt;next()&lt;/code&gt; 메소드가있는 객체입니다. 동일한 클래스에서 &lt;code&gt;__iter__()&lt;/code&gt; 및 &lt;code&gt;next()&lt;/code&gt; 를 모두 구현하고 __iter __ () 가 &lt;code&gt;self&lt;/code&gt; 를 반환하도록 할 수 있습니다. 간단한 경우에는 작동하지만 두 개의 반복자가 동일한 객체에서 동시에 반복되도록하려는 경우에는 그렇지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="0e79b5d88ed3c6e491dd1236e901c3ae33f6911d" translate="yes" xml:space="preserve">
+          <source>Here are some Python examples of how to actually implement generators as if Python did not provide syntactic sugar for them:</source>
+          <target state="translated">다음은 파이썬이 구문 설탕을 제공하지 않은 것처럼 생성기를 실제로 구현하는 방법에 대한 몇 가지 Python 예제입니다.</target>
+        </trans-unit>
+        <trans-unit id="a3efbd24d9780439598b7e67d051e0a6314b264c" translate="yes" xml:space="preserve">
+          <source>Here is a demonstration which uses the structure of R6RS, but the semantics is absolutely identical to Python's. It's the same model of computation, and only a change in syntax is required to rewrite it in Python.</source>
+          <target state="translated">다음은 R6RS의 구조를 사용하는 데모이지만 시맨틱은 Python과 완전히 동일합니다. 동일한 계산 모델이며 파이썬에서 다시 작성하려면 구문 변경 만 필요합니다.</target>
+        </trans-unit>
+        <trans-unit id="5172df8a142b5de0fd37381a2dbff76cdb21ea9b" translate="yes" xml:space="preserve">
+          <source>Here is a mental image of what &lt;code&gt;yield&lt;/code&gt; does.</source>
+          <target state="translated">다음은 &lt;code&gt;yield&lt;/code&gt; 대한 정신적 인 이미지입니다.</target>
+        </trans-unit>
+        <trans-unit id="ea724b816190320574ae29c6484ba706b02e562b" translate="yes" xml:space="preserve">
+          <source>Here is a simple example:</source>
+          <target state="translated">다음은 간단한 예입니다.</target>
+        </trans-unit>
+        <trans-unit id="823fc4d20942e0533416446349c24b8a063855e9" translate="yes" xml:space="preserve">
+          <source>Here is an example in plain language. I will provide a correspondence between high-level human concepts to low-level Python concepts.</source>
+          <target state="translated">다음은 평범한 언어의 예입니다. 고급 인간 개념과 저수준 파이썬 개념 사이의 대응 관계를 제공 할 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="c4be0889ef73ed93c610ebfab505f5cb8fc53788" translate="yes" xml:space="preserve">
+          <source>Here is an example which &lt;code&gt;yield&lt;/code&gt; is definitely best for:</source>
+          <target state="translated">다음은 &lt;code&gt;yield&lt;/code&gt; 이 확실히 가장 좋은 예입니다.</target>
+        </trans-unit>
+        <trans-unit id="6617e5991223485f0a00e8961fec1ddd85153c85" translate="yes" xml:space="preserve">
+          <source>Here is an example, take note of the &lt;code&gt;received&lt;/code&gt; variable, which will point to the data that is sent to the generator:</source>
+          <target state="translated">다음은 생성 된 변수를 기록하는 예입니다. &lt;code&gt;received&lt;/code&gt; 변수는 생성기로 전송되는 데이터를 가리 킵니다.</target>
+        </trans-unit>
+        <trans-unit id="89aa700446679e9b8d5b65f7b661f79a7e178b5e" translate="yes" xml:space="preserve">
+          <source>Here it's a useless example, but it's handy when you know your function will return a huge set of values that you will only need to read once.</source>
+          <target state="translated">여기서는 쓸모없는 예제이지만 함수가 한 번만 읽어야 할 거대한 값 집합을 반환한다는 것을 알면 편리합니다.</target>
+        </trans-unit>
+        <trans-unit id="eeb09fb712bc1579dd70a54645ad53925ce84c23" translate="yes" xml:space="preserve">
+          <source>Here's a simple &lt;code&gt;yield&lt;/code&gt; based approach, to compute the fibonacci series, explained:</source>
+          <target state="translated">피보나치 계열을 계산하는 간단한 &lt;code&gt;yield&lt;/code&gt; 기반 접근 방식은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="d5531c22206a07d82c2ec43020b326ceb13fdc0a" translate="yes" xml:space="preserve">
+          <source>How you might use generators</source>
+          <target state="translated">생성기를 사용하는 방법</target>
+        </trans-unit>
+        <trans-unit id="d332df6254754940f55d36631c669c40c1993a88" translate="yes" xml:space="preserve">
+          <source>However, &lt;code&gt;yield from&lt;/code&gt; also allows for delegation to subgenerators, 
+which will be explained in the following section on cooperative delegation with sub-coroutines.</source>
+          <target state="translated">그러나 &lt;code&gt;yield from&lt;/code&gt; 하위 생성자에게 위임을 허용하며, 이는 하위 코 루틴과의 협력 위임에 대한 다음 섹션에서 설명됩니다.</target>
+        </trans-unit>
+        <trans-unit id="f7b0cdd1500200d6f1d896513a1bb21305470aa6" translate="yes" xml:space="preserve">
+          <source>I am not a Python developer, but it looks to me &lt;code&gt;yield&lt;/code&gt; holds the position of program flow and the next loop start from &quot;yield&quot; position. It seems like it is waiting at that position, and just before that, returning a value outside, and next time continues to work.</source>
+          <target state="translated">저는 파이썬 개발자는 아니지만 &lt;code&gt;yield&lt;/code&gt; 는 프로그램 흐름의 위치를 ​​유지하고 다음 루프는 &quot;수율&quot;위치에서 시작합니다. 그것은 그 위치에서 기다리고있는 것처럼 보이며 그 직전에 값을 외부로 반환하고 다음에는 계속 작동합니다.</target>
+        </trans-unit>
+        <trans-unit id="7e9ed01bd64f5c7896a84a3e0de95a03f1c43874" translate="yes" xml:space="preserve">
+          <source>I ask you, &quot;tell me the next number&quot;, and you tell me the first number; after that, you wait for me to ask you for the next number. It's your job to remember where you were, what numbers you have already said, and what is the next number. I don't care about the details.</source>
+          <target state="translated">나는 당신에게 &quot;다음 번호를 말해줘&quot;라고 물으면 첫 번째 번호를 말해줍니다. 그 후, 당신은 내가 당신에게 다음 번호를 요구하기를 기다립니다. 현재 위치, 이미 말한 숫자 및 다음 숫자는 무엇인지 기억하는 것이 귀하의 임무입니다. 나는 세부 사항에 관심이 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="ae297b474260c70e731c6a136da6c3a9aef2dfb5" translate="yes" xml:space="preserve">
+          <source>I assume you have learned the &lt;code&gt;return&lt;/code&gt; statement.</source>
+          <target state="translated">나는 당신이 &lt;code&gt;return&lt;/code&gt; 진술을 배웠다고 가정합니다.</target>
+        </trans-unit>
+        <trans-unit id="5bff8648a9749f500c9b8ad13ccf39b8881ec210" translate="yes" xml:space="preserve">
+          <source>I believe I have covered all aspects of the following question:</source>
+          <target state="translated">다음 질문의 모든 측면을 다루었다고 생각합니다.</target>
+        </trans-unit>
+        <trans-unit id="a679dadd1d940ee0fc56a1b939523e2268a7d0ab" translate="yes" xml:space="preserve">
+          <source>I call you and tell you that I want a sequence of numbers which is produced in a specific way, and I let you know what the algorithm is.</source>
+          <target state="translated">나는 당신에게 전화를 걸고 특정 방식으로 생성 된 일련의 숫자를 원한다고 말하고 알고리즘이 무엇인지 알려줍니다.</target>
+        </trans-unit>
+        <trans-unit id="b123a6615d9a46f5c9c87bd3114b75d2fd201567" translate="yes" xml:space="preserve">
+          <source>I like to think of a thread as having a stack (even when it's not implemented that way).</source>
+          <target state="translated">스레드가 스택을 갖는 것으로 생각하고 싶습니다 (그런 식으로 구현되지 않은 경우에도).</target>
+        </trans-unit>
+        <trans-unit id="776c90801148362b805a9659dc082980e40d4245" translate="yes" xml:space="preserve">
+          <source>I should note that this &lt;em&gt;is&lt;/em&gt; an oversimplification for illustrative purposes. :)</source>
+          <target state="translated">이것은 설명 목적으로 지나치게 단순화 된 것입니다. :)</target>
+        </trans-unit>
+        <trans-unit id="cb5a08e181cbeb658f35df743832a692b6761240" translate="yes" xml:space="preserve">
+          <source>I want to operate on a sequence of numbers, but I don't want to bother my self with the creation of that sequence, I want only to focus on the operation I want to do. So, I do the following:</source>
+          <target state="translated">나는 일련의 숫자로 작업하고 싶지만, 그 시퀀스의 생성으로 내 자신을 귀찮게하고 싶지 않고, 내가하고 싶은 작업에만 집중하고 싶습니다. 그래서 나는 다음을 수행합니다.</target>
+        </trans-unit>
+        <trans-unit id="a3a2a857bfdd4d4fc3add0498fdaf773cfe37b55" translate="yes" xml:space="preserve">
+          <source>I was going to post &quot;read page 19 of Beazley's 'Python: Essential Reference' for a quick description of generators&quot;, but so many others have posted good descriptions already.</source>
+          <target state="translated">&quot;제너레이터에 대한 빠른 설명을 보려면 Beazley의 'Python : Essential Reference'19 페이지를 읽으십시오.&quot;</target>
+        </trans-unit>
+        <trans-unit id="a101ee9df37442be51ecc059a7eaa91d1dd5f763" translate="yes" xml:space="preserve">
+          <source>I'd agree that's a sensible place for us to end up, as any code
+  relying on the current behaviour is really too clever to be
+  maintainable.</source>
+          <target state="translated">현재 행동에 의존하는 코드가 실제로 유지하기에는 너무 영리하기 때문에 우리가 끝내기에 합리적인 장소라는 데 동의합니다.</target>
+        </trans-unit>
+        <trans-unit id="1f609c272028fe91fcfd70e16ea920d4901be9b2" translate="yes" xml:space="preserve">
+          <source>I'm OK with either approach.  Leaving things the way they are in Python 3
+      is no good, IMHO.</source>
+          <target state="translated">어느 쪽이든 접근해도 괜찮습니다. 파이썬 3에서와 같은 방식으로 떠나는 것은 좋지 않습니다 .IMHO.</target>
+        </trans-unit>
+        <trans-unit id="f3a52ccfeb39b7c960e43a846a1980250d8002bd" translate="yes" xml:space="preserve">
+          <source>If the compiler detects the &lt;code&gt;yield&lt;/code&gt; keyword &lt;em&gt;anywhere&lt;/em&gt; inside a function, that function no longer returns via the &lt;code&gt;return&lt;/code&gt; statement. &lt;strong&gt;&lt;em&gt;Instead&lt;/em&gt;&lt;/strong&gt;, it &lt;strong&gt;immediately&lt;/strong&gt; returns a &lt;strong&gt;lazy &quot;pending list&quot; object&lt;/strong&gt; called a generator</source>
+          <target state="translated">컴파일러가 함수 내부의 &lt;code&gt;yield&lt;/code&gt; 키워드를 감지하면 해당 함수는 더 이상 &lt;code&gt;return&lt;/code&gt; 문을 통해 반환되지 않습니다. &lt;strong&gt;&lt;em&gt;대신&lt;/em&gt;&lt;/strong&gt; , &lt;strong&gt;즉시&lt;/strong&gt; 생성기라는 &lt;strong&gt;게으른 &quot;보류중인 목록&quot;개체를&lt;/strong&gt; 반환합니다.</target>
+        </trans-unit>
+        <trans-unit id="863b82de998a8840db9f970356b780625e865e98" translate="yes" xml:space="preserve">
+          <source>If you need &lt;strong&gt;multiple passes&lt;/strong&gt; and the series isn't too long, just call &lt;code&gt;list()&lt;/code&gt; on it:</source>
+          <target state="translated">&lt;strong&gt;여러 패스&lt;/strong&gt; 가 필요하고 시리즈가 너무 길지 않으면 &lt;code&gt;list()&lt;/code&gt; 를 호출 하십시오 .</target>
+        </trans-unit>
+        <trans-unit id="8e81f608f52f839d0787e210b24258db0ad4019d" translate="yes" xml:space="preserve">
+          <source>If you want &lt;strong&gt;a function to return a huge set of values&lt;/strong&gt;, use &lt;code&gt;yield&lt;/code&gt;.</source>
+          <target state="translated">&lt;strong&gt;함수가 거대한 값 집합을 반환하도록&lt;/strong&gt; 하려면 &lt;code&gt;yield&lt;/code&gt; 를 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="9e30ae315ff14bf5d22d79d19890817eba23a8df" translate="yes" xml:space="preserve">
+          <source>In &lt;a href=&quot;https://docs.python.org/2/reference/simple_stmts.html#the-return-statement&quot;&gt;Python 2&lt;/a&gt;:</source>
+          <target state="translated">&lt;a href=&quot;https://docs.python.org/2/reference/simple_stmts.html#the-return-statement&quot;&gt;파이썬 2에서&lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="ff77817e2891cf318ae9092b17aa58414c356493" translate="yes" xml:space="preserve">
+          <source>In &lt;a href=&quot;https://docs.python.org/3/reference/simple_stmts.html#the-return-statement&quot;&gt;Python 3&lt;/a&gt;:</source>
+          <target state="translated">&lt;a href=&quot;https://docs.python.org/3/reference/simple_stmts.html#the-return-statement&quot;&gt;파이썬 3에서&lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="01f20dd2f471369e8b09d4eee95c6fa431042ca7" translate="yes" xml:space="preserve">
+          <source>In &lt;strong&gt;Controlling a generator exhaustion&lt;/strong&gt; he calls the &lt;code&gt;.next&lt;/code&gt; method, when instead he should use the builtin function, &lt;code&gt;next&lt;/code&gt;. It would be an appropriate layer of indirection, because his code does not work in Python 3.</source>
+          <target state="translated">&lt;strong&gt;발전기 고갈 제어에서&lt;/strong&gt; 그는 &lt;code&gt;.next&lt;/code&gt; 메소드를 호출하고 대신 내장 함수 &lt;code&gt;next&lt;/code&gt; 를 사용해야합니다. 그의 코드는 Python 3에서 작동하지 않기 때문에 적절한 간접 계층이 될 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="9d6c893042f47fbe024cf470eea2e0d66f65c064" translate="yes" xml:space="preserve">
+          <source>In Python 3, you can &lt;strong&gt;delegate&lt;/strong&gt; from one generator to another in both directions with &lt;strong&gt;&lt;code&gt;yield from&lt;/code&gt;&lt;/strong&gt;.</source>
+          <target state="translated">Python 3에서는에서 &lt;strong&gt; &lt;code&gt;yield from&lt;/code&gt; &lt;/strong&gt; 사용 &lt;strong&gt;하여&lt;/strong&gt; 한 생성기에서 다른 생성기로 양방향으로 &lt;strong&gt;위임&lt;/strong&gt; 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="8ddb3a147bbf4149f8203b3ca2fa59434dcfe553" translate="yes" xml:space="preserve">
+          <source>In Python-speak, an &lt;em&gt;iterable&lt;/em&gt; is any object which &quot;understands the concept of a for-loop&quot; like a list &lt;code&gt;[1,2,3]&lt;/code&gt;, and an &lt;em&gt;iterator&lt;/em&gt; is a specific instance of the requested for-loop like &lt;code&gt;[1,2,3].__iter__()&lt;/code&gt;. A &lt;em&gt;generator&lt;/em&gt; is exactly the same as any iterator, except for the way it was written (with function syntax).</source>
+          <target state="translated">Python-speak에서 &lt;em&gt;iterable&lt;/em&gt; 은 목록 &lt;code&gt;[1,2,3]&lt;/code&gt; 과 같이 &quot;for-loop의 개념을 이해하는&quot;객체이고 &lt;em&gt;반복자&lt;/em&gt; 는 &lt;code&gt;[1,2,3].__iter__()&lt;/code&gt; 와 같은 요청 된 for-loop의 특정 인스턴스입니다. , 3] .__ iter __ () . &lt;em&gt;생성기&lt;/em&gt; 는 함수 구문을 사용하여 작성된 방식을 제외하고 모든 반복기와 동일합니다.</target>
+        </trans-unit>
+        <trans-unit id="174c5ef25999552b6ac3e98b79e66dc670f6ce7e" translate="yes" xml:space="preserve">
+          <source>In a generator function, the &lt;code&gt;return&lt;/code&gt; statement indicates that the generator is done and will cause &lt;code&gt;StopIteration&lt;/code&gt; to be raised. The returned value (if any) is used as an argument to construct &lt;code&gt;StopIteration&lt;/code&gt; and becomes the &lt;code&gt;StopIteration.value&lt;/code&gt; attribute.</source>
+          <target state="translated">생성기 함수에서 &lt;code&gt;return&lt;/code&gt; 문은 생성기가 완료되었음을 나타내며 &lt;code&gt;StopIteration&lt;/code&gt; 이 발생합니다. 리턴 된 값 (있는 경우)은 &lt;code&gt;StopIteration&lt;/code&gt; 을 구성하는 인수로 사용되며 &lt;code&gt;StopIteration.value&lt;/code&gt; 속성이됩니다.</target>
+        </trans-unit>
+        <trans-unit id="a40ea84cb1072d7d399fbe3b382af1883bc53737" translate="yes" xml:space="preserve">
+          <source>In a generator function, the &lt;code&gt;return&lt;/code&gt; statement is not allowed to include an &lt;code&gt;expression_list&lt;/code&gt;. In that context, a bare &lt;code&gt;return&lt;/code&gt; indicates that the generator is done and will cause &lt;code&gt;StopIteration&lt;/code&gt; to be raised.</source>
+          <target state="translated">생성기 함수에서 &lt;code&gt;return&lt;/code&gt; 문은 &lt;code&gt;expression_list&lt;/code&gt; 를 포함 할 수 없습니다. 이러한 상황에서 베어 &lt;code&gt;return&lt;/code&gt; 은 생성기가 완료되었으며 &lt;code&gt;StopIteration&lt;/code&gt; 이 발생 함을 나타냅니다.</target>
+        </trans-unit>
+        <trans-unit id="fe5f6300dd7512030712c12beefa508ff061926a" translate="yes" xml:space="preserve">
+          <source>In a nutshell: &lt;strong&gt;a generator is a lazy, incrementally-pending list&lt;/strong&gt;, and &lt;strong&gt;&lt;code&gt;yield&lt;/code&gt; statements allow you to use function notation to program the list values&lt;/strong&gt; the generator should incrementally spit out.</source>
+          <target state="translated">간단히 말해서 : &lt;strong&gt;생성기는 게으르고 점증 적으로 보류중인 목록&lt;/strong&gt; 이며 &lt;strong&gt; &lt;code&gt;yield&lt;/code&gt; 문을 사용하면 함수 표기법을 사용&lt;/strong&gt; 하여 생성기가 점차적으로 뱉어 져야 &lt;strong&gt;하는 목록 값을 프로그래밍 할 수 있습니다&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="a0169a7972621076b895fe9b5351a9c054ff5aa8" translate="yes" xml:space="preserve">
+          <source>In conclusion, as a metaphor to grok it:</source>
+          <target state="translated">결론적으로, 은유에 대한 은유로 :</target>
+        </trans-unit>
+        <trans-unit id="65df69d0bd87c71c73d55034f2acb57286f92bd2" translate="yes" xml:space="preserve">
+          <source>In continuation passing style (CPS), continuations are just normal functions (only in languages where functions are first class) which the programmer explicitly manages and passes around to subroutines. In this style, program state is represented by closures (and the variables that happen to be encoded in them) rather than variables that reside somewhere on the stack. Functions that manage control flow accept continuation as arguments (in some variations of CPS, functions may accept multiple continuations) and manipulate control flow by invoking them by simply calling them and returning afterwards. A very simple example of continuation passing style is as follows:</source>
+          <target state="translated">연속 전달 스타일 (CPS)에서 연속은 프로그래머가 명시 적으로 관리하고 서브 루틴으로 전달하는 일반 함수 (함수가 클래스 인 언어에서만)입니다. 이 스타일에서 프로그램 상태는 스택의 어딘가에있는 변수가 아니라 클로저 (및 그 안에 인코딩되는 변수)로 표시됩니다. 제어 흐름을 관리하는 함수는 연속을 인수로 받아들이고 (CPS의 일부 변형에서는 함수가 여러 개의 연속을 허용 할 수 있음) 단순히 호출 한 후 나중에 반환하여 제어 흐름을 호출하여 제어 흐름을 조작합니다. 연속 전달 스타일의 매우 간단한 예는 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="f90a21a794093245566d4b9689b0360b69b80989" translate="yes" xml:space="preserve">
+          <source>In summary, the &lt;code&gt;yield&lt;/code&gt; statement transforms your function into a factory that produces a special object called a &lt;code&gt;generator&lt;/code&gt; which wraps around the body of your original function. When the &lt;code&gt;generator&lt;/code&gt; is iterated, it executes your function  until it reaches the next &lt;code&gt;yield&lt;/code&gt; then suspends execution and evaluates to the value passed to &lt;code&gt;yield&lt;/code&gt;. It repeats this process on each iteration until the path of execution exits the function. For instance,</source>
+          <target state="translated">요약하면 &lt;code&gt;yield&lt;/code&gt; 문은 함수를 팩토리로 변환하여 원래 함수의 본문을 감싸는 &lt;code&gt;generator&lt;/code&gt; 라는 특수 객체를 생성합니다. &lt;code&gt;generator&lt;/code&gt; 가 반복 될 때, 다음 &lt;code&gt;yield&lt;/code&gt; 도달 할 때까지 함수를 실행 한 다음 실행을 일시 중단하고 &lt;code&gt;yield&lt;/code&gt; 에 전달 된 값으로 평가됩니다. 실행 경로가 함수를 종료 할 때까지 각 반복에서이 프로세스를 반복합니다. 예를 들어</target>
+        </trans-unit>
+        <trans-unit id="dbb3601dd734c0edf841aa944a55cbabed686850" translate="yes" xml:space="preserve">
+          <source>In terms of getting there, we'll likely want:</source>
+          <target state="translated">도착하는 관점에서 우리는 다음을 원할 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="af70c38bd0efc99a5d44a07df4047e8a92d9ae06" translate="yes" xml:space="preserve">
+          <source>In the case of your code, the function &lt;code&gt;get_child_candidates&lt;/code&gt; is acting like an iterator so that when you extend your list, it adds one element at a time to the new list.</source>
+          <target state="translated">코드의 경우 &lt;code&gt;get_child_candidates&lt;/code&gt; 함수는 반복자처럼 작동하므로 목록을 확장 할 때 한 번에 하나의 요소를 새 목록에 추가합니다.</target>
+        </trans-unit>
+        <trans-unit id="791078267dbf81f5f1c3cf2eb3971161ef95c26f" translate="yes" xml:space="preserve">
+          <source>In the second case, &lt;code&gt;bar&lt;/code&gt; just gives you a generator. A generator is an iterable--which means you can use it in a &lt;code&gt;for&lt;/code&gt; loop, etc, but each value can only be accessed once. All the values are also not stored in memory at the same time; the generator object &quot;remembers&quot; where it was in the looping the last time you called it--this way, if you're using an iterable to (say) count to 50 billion, you don't have to count to 50 billion all at once and store the 50 billion numbers to count through.</source>
+          <target state="translated">두 번째 경우 &lt;code&gt;bar&lt;/code&gt; 는 발전기를 제공합니다. 생성기는 반복 가능하므로 &lt;code&gt;for&lt;/code&gt; 루프 등에서 사용할 수 있지만 각 값은 한 번만 액세스 할 수 있습니다. 모든 값은 동시에 메모리에 저장되지 않습니다. 생성자 객체는 마지막으로 호출했을 때 반복 된 위치를 &quot;기억&quot;합니다. 이렇게하면 반복 가능한 것을 사용하여 500 억까지 계산할 경우 500 억까지 계산할 필요가 없습니다. 한 번에 500 억 개의 숫자를 저장하여 계산합니다.</target>
+        </trans-unit>
+        <trans-unit id="bd951975204b594b5a324c588bdc33476765e99f" translate="yes" xml:space="preserve">
+          <source>In this (very simplistic) example, the programmer saves the operation of actually writing the file into a continuation (which can potentially be a very complex operation with many details to write out), and then passes that continuation (i.e, as a first-class closure) to another operator which does some more processing, and then calls it if necessary. (I use this design pattern a lot in actual GUI programming, either because it saves me lines of code or, more importantly, to manage control flow after GUI events trigger.)</source>
+          <target state="translated">이 (매우 간단한) 예제에서 프로그래머는 실제로 파일을 연속으로 작성하는 작업을 저장하고 (이는 잠재적으로 많은 세부 사항을 기록하는 매우 복잡한 작업 일 수 있음) 해당 연속을 전달합니다 (예 : 첫 번째 더 많은 처리를 수행 한 다음 필요한 경우 호출하는 다른 연산자에게 클래스 폐쇄). (이 디자인 패턴은 실제 GUI 프로그래밍에서 많은 코드를 사용하거나 GUI 이벤트 트리거 후 제어 흐름을 관리하기 위해 많이 사용하기 때문에 많이 사용합니다.)</target>
+        </trans-unit>
+        <trans-unit id="d137b802f3a324a2d71f425b20cbe30685de8a31" translate="yes" xml:space="preserve">
+          <source>Indirectly, if you provide &lt;code&gt;fib&lt;/code&gt; to a &lt;code&gt;for&lt;/code&gt; loop, a &lt;code&gt;list&lt;/code&gt; initializer, a &lt;code&gt;tuple&lt;/code&gt; initializer, or anything else that expects an object that generates/produces values, you'll &quot;consume&quot; the generator until no more values can be produced by it (and it returns):</source>
+          <target state="translated">간접적으로, &lt;code&gt;for&lt;/code&gt; 루프, &lt;code&gt;list&lt;/code&gt; 이니셜 라이저, &lt;code&gt;tuple&lt;/code&gt; 이니셜 라이저 또는 값을 생성 / 생성하는 객체를 기대하는 다른 것에 &lt;code&gt;fib&lt;/code&gt; 를 제공하면 더 이상 값을 생성 할 수 없을 때까지 생성기를 &quot;소비&quot;합니다 ( 그리고 그것은 반환) :</target>
+        </trans-unit>
+        <trans-unit id="1484d552dab70171147c52a184472f4c770e78cd" translate="yes" xml:space="preserve">
+          <source>Insert a line &lt;code&gt;result = []&lt;/code&gt; at the start of the function.</source>
+          <target state="translated">함수 시작시 줄 &lt;code&gt;result = []&lt;/code&gt; 를 삽입하십시오.</target>
+        </trans-unit>
+        <trans-unit id="f65bc680a718b8079e23b9ac8d4b6ee9a4e7033d" translate="yes" xml:space="preserve">
+          <source>Insert a line &lt;code&gt;return result&lt;/code&gt; at the bottom of the function.</source>
+          <target state="translated">함수의 맨 아래에 줄 &lt;code&gt;return result&lt;/code&gt; 를 삽입하십시오.</target>
+        </trans-unit>
+        <trans-unit id="ddae4c2e0ba5c800a528da8a2d033235effb5bce" translate="yes" xml:space="preserve">
+          <source>Instead of &lt;code&gt;yield&lt;/code&gt; statements, if you had three &lt;code&gt;return&lt;/code&gt; statements in &lt;code&gt;f123()&lt;/code&gt; only the first would get executed, and the function would exit. But &lt;code&gt;f123()&lt;/code&gt; is no ordinary function. When &lt;code&gt;f123()&lt;/code&gt; is called, it &lt;em&gt;does not&lt;/em&gt; return any of the values in the yield statements! It returns a generator object. Also, the function does not really exit - it goes into a suspended state. When the &lt;code&gt;for&lt;/code&gt; loop tries to loop over the generator object, the function resumes from its suspended state at the very next line after the &lt;code&gt;yield&lt;/code&gt; it previously returned from, executes the next line of code, in this case, a &lt;code&gt;yield&lt;/code&gt; statement, and returns that as the next item. This happens until the function exits, at which point the generator raises &lt;code&gt;StopIteration&lt;/code&gt;, and the loop exits.</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 문 대신 &lt;code&gt;f123()&lt;/code&gt; 에 세 개의 &lt;code&gt;return&lt;/code&gt; 문이 있으면 첫 번째 문만 실행되고 함수는 종료됩니다. 그러나 &lt;code&gt;f123()&lt;/code&gt; 은 일반적인 기능이 아닙니다. &lt;code&gt;f123()&lt;/code&gt; 이 호출되면 yield 문에 값을 반환 &lt;em&gt;하지 않습니다&lt;/em&gt; ! 생성기 객체를 반환합니다. 또한 함수는 실제로 종료되지 않으며 일시 중단 상태가됩니다. &lt;code&gt;for&lt;/code&gt; 루프가 생성기 객체 를 반복하려고 할 때, 함수는 이전에 반환 된 &lt;code&gt;yield&lt;/code&gt; 후 바로 다음 줄에서 일시 중단 상태에서 다시 시작하고 다음 코드 줄 (이 경우 &lt;code&gt;yield&lt;/code&gt; 문)을 실행하고 다음을 반환합니다. 다음 항목으로. 이것은 함수가 종료 될 때까지 발생하며,이 시점에서 생성기가 &lt;code&gt;StopIteration&lt;/code&gt; 을 발생시키고 루프가 종료됩니다.</target>
+        </trans-unit>
+        <trans-unit id="6ba67eec9e92df05acdf46af85244d2e3cb47ac2" translate="yes" xml:space="preserve">
+          <source>Instead of this:</source>
+          <target state="translated">이 대신에 :</target>
+        </trans-unit>
+        <trans-unit id="a2128e769c0a333306ebd59207294d6e72de5845" translate="yes" xml:space="preserve">
+          <source>It can be useful for various things like controlling access to a resource.</source>
+          <target state="translated">리소스에 대한 액세스 제어와 같은 다양한 작업에 유용 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="815bab4f701d81dd1ca8739066ea47b1ea845181" translate="yes" xml:space="preserve">
+          <source>It is confused on what makes an &lt;strong&gt;iterable&lt;/strong&gt;, just using a list as an example. See my references above, but in summary: an iterable has an &lt;code&gt;__iter__&lt;/code&gt; method returning an &lt;strong&gt;iterator&lt;/strong&gt;. An &lt;strong&gt;iterator&lt;/strong&gt; provides a &lt;code&gt;.next&lt;/code&gt; (Python 2 or &lt;code&gt;.__next__&lt;/code&gt; (Python 3) method, which is implicitly called by &lt;code&gt;for&lt;/code&gt; loops until it raises &lt;code&gt;StopIteration&lt;/code&gt;, and once it does, it will continue to do so.</source>
+          <target state="translated">목록을 예제로 사용하여 &lt;strong&gt;iterable이&lt;/strong&gt; 무엇인지 혼동됩니다. 위의 내 참조를 참조하지만 요약하면 iterable은 &lt;strong&gt;iterator를&lt;/strong&gt; 반환하는 &lt;code&gt;__iter__&lt;/code&gt; 메소드가 있습니다. &lt;strong&gt;반복자&lt;/strong&gt; 는 &lt;code&gt;.next&lt;/code&gt; (Python 2 또는 &lt;code&gt;.__next__&lt;/code&gt; (Python 3)) 메소드를 제공합니다.이 메소드는 &lt;code&gt;StopIteration&lt;/code&gt; 을 발생시킬 때까지 &lt;code&gt;for&lt;/code&gt; 루프에 의해 암시 적으로 호출됩니다.</target>
+        </trans-unit>
+        <trans-unit id="d0e5a74aff1c87c165974074b746e9b876037387" translate="yes" xml:space="preserve">
+          <source>It is just the same except you used &lt;code&gt;()&lt;/code&gt; instead of &lt;code&gt;[]&lt;/code&gt;. BUT, you &lt;strong&gt;cannot&lt;/strong&gt; perform &lt;code&gt;for i in mygenerator&lt;/code&gt; a second time since generators can only be used once: they calculate 0, then forget about it and calculate 1, and end calculating 4, one by one.</source>
+          <target state="translated">&lt;code&gt;[]&lt;/code&gt; 대신 &lt;code&gt;()&lt;/code&gt; 을 사용한 것을 제외하고는 동일합니다. 그러나 발전기는 한 번만 사용할 수 있기 때문에 &lt;code&gt;for i in mygenerator&lt;/code&gt; 에서 i를 두 번째로 수행 할 &lt;strong&gt;수 없습니다&lt;/strong&gt; . 제로 는 0을 계산 한 다음 잊어 버리고 1을 계산하고 4를 하나씩 계산하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="05428c01ccee190c5ac8f4e2b026d5698fe85729" translate="yes" xml:space="preserve">
+          <source>It really helps simplify some problems, and makes some things easier to work with.</source>
+          <target state="translated">실제로 일부 문제를 단순화하고 작업하기가 더 쉽습니다.</target>
+        </trans-unit>
+        <trans-unit id="ce1006cada79cecc9b2fc03861f35b39cd056555" translate="yes" xml:space="preserve">
+          <source>It seems to be an interesting and nice ability :D</source>
+          <target state="translated">흥미롭고 좋은 능력 인 것 같습니다 : D</target>
+        </trans-unit>
+        <trans-unit id="a4c8c5a8330bec1551d58ebddad1eca41f75c743" translate="yes" xml:space="preserve">
+          <source>It then uses a generator expression to describe what a generator is. Since a generator is simply a convenient way to create an &lt;strong&gt;iterator&lt;/strong&gt;, it only confuses the matter, and we still have not yet gotten to the &lt;code&gt;yield&lt;/code&gt; part.</source>
+          <target state="translated">그런 다음 생성기 표현식을 사용하여 생성기가 무엇인지 설명합니다. 제너레이터는 단순히 &lt;strong&gt;이터레이터&lt;/strong&gt; 를 만드는 편리한 방법이기 때문에 문제를 혼동하기 만하므로 아직 &lt;code&gt;yield&lt;/code&gt; 부분에 도달하지 못했습니다.</target>
+        </trans-unit>
+        <trans-unit id="2b525c9fdafab13df3793783112dad0c5e7c47f0" translate="yes" xml:space="preserve">
+          <source>It turns out that &lt;code&gt;yield&lt;/code&gt; does a lot. I'm sure I could add even more 
+thorough examples to this. If you want more or have some constructive criticism, let me know by commenting
+below.</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 이 많은 것으로 나타났습니다. 나는 이것에 더 철저한 예를 추가 할 수 있다고 확신합니다. 더 많은 것을 원하거나 건설적인 비판이 필요한 경우 아래에 의견을 보내 알려주십시오.</target>
+        </trans-unit>
+        <trans-unit id="bedfd4c2b8ac96435e9dab026a1ad6ca9d8e9595" translate="yes" xml:space="preserve">
+          <source>It's returning a generator. I'm not particularly familiar with Python, but I believe it's the same kind of thing as &lt;a href=&quot;http://csharpindepth.com/Articles/Chapter11/StreamingAndIterators.aspx&quot;&gt;C#'s iterator blocks&lt;/a&gt; if you're familiar with those.</source>
+          <target state="translated">발전기를 반환합니다. 필자는 파이썬에 익숙하지 않지만 &lt;a href=&quot;http://csharpindepth.com/Articles/Chapter11/StreamingAndIterators.aspx&quot;&gt;C #의 반복자 블록&lt;/a&gt; 과 같은 종류라고 생각합니다.</target>
+        </trans-unit>
+        <trans-unit id="b62a14283b71537aa375bb5504d321c2fa6f966c" translate="yes" xml:space="preserve">
+          <source>It's the core about &lt;code&gt;yield&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 의 핵심입니다.</target>
+        </trans-unit>
+        <trans-unit id="4dd80eea3f6c51bf5b9c13a8a47609bd55b30e0e" translate="yes" xml:space="preserve">
+          <source>Iterables</source>
+          <target state="translated">Iterables</target>
+        </trans-unit>
+        <trans-unit id="d8b8f9a4e83121e284417429816033e650e4b4db" translate="yes" xml:space="preserve">
+          <source>Iteration is a process implying iterables (implementing the &lt;code&gt;__iter__()&lt;/code&gt; method) and iterators (implementing the &lt;code&gt;__next__()&lt;/code&gt; method).
+Iterables are any objects you can get an iterator from. Iterators are objects that let you iterate on iterables.</source>
+          <target state="translated">반복은 iterables ( &lt;code&gt;__iter__()&lt;/code&gt; 메소드 구현)와 반복자 ( &lt;code&gt;__next__()&lt;/code&gt; 메소드 구현)를 암시하는 프로세스입니다. 이터 러블은 이터레이터를 얻을 수있는 객체입니다. 이터레이터는 이터 러블을 반복 할 수있는 객체입니다.</target>
+        </trans-unit>
+        <trans-unit id="0ae5cba6a7258c212d3cd38a207c7e9817fe838e" translate="yes" xml:space="preserve">
+          <source>Itertools, your best friend</source>
+          <target state="translated">Itertools, 가장 친한 친구</target>
+        </trans-unit>
+        <trans-unit id="45989d87a7cb5c27f41e09694e3e18fcead4c711" translate="yes" xml:space="preserve">
+          <source>Itertools? This was not relevant to what &lt;code&gt;yield&lt;/code&gt; does at all.</source>
+          <target state="translated">Itertools? 이것은 &lt;code&gt;yield&lt;/code&gt; 전혀 관련이 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="4092678f14b36035b0f14d72fd89eede06817d6a" translate="yes" xml:space="preserve">
+          <source>Keep calling the &lt;code&gt;next()&lt;/code&gt; method on the iterator returned from step 1. The return value from &lt;code&gt;next()&lt;/code&gt; is assigned to &lt;code&gt;x&lt;/code&gt; and the loop body is executed. If an exception &lt;code&gt;StopIteration&lt;/code&gt; is raised from within &lt;code&gt;next()&lt;/code&gt;, it means there are no more values in the iterator and the loop is exited.</source>
+          <target state="translated">1 단계에서 리턴 된 반복자에서 &lt;code&gt;next()&lt;/code&gt; 메소드를 계속 호출하십시오. next () 의 리턴 값이 &lt;code&gt;x&lt;/code&gt; 에 지정되고 루프 본문이 실행됩니다. &lt;code&gt;next()&lt;/code&gt; 내에서 &lt;code&gt;StopIteration&lt;/code&gt; 예외가 발생하면 반복기에 더 이상 값이없고 루프가 종료 된 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="02ece3e82c3cc947abccfde61ed0ddf58d180562" translate="yes" xml:space="preserve">
+          <source>Let's define a function &lt;code&gt;makeRange&lt;/code&gt; that's just like Python's &lt;code&gt;range&lt;/code&gt;. Calling &lt;code&gt;makeRange(n)&lt;/code&gt; RETURNS A GENERATOR:</source>
+          <target state="translated">파이썬의 &lt;code&gt;range&lt;/code&gt; 와 같은 &lt;code&gt;makeRange&lt;/code&gt; 함수를 정의 해 봅시다. &lt;code&gt;makeRange(n)&lt;/code&gt; 호출하면 생성자를 반환합니다.</target>
+        </trans-unit>
+        <trans-unit id="17e789352f0c8efe4814e81b930cce60ca106303" translate="yes" xml:space="preserve">
+          <source>Like every answer suggests, &lt;code&gt;yield&lt;/code&gt; is used for creating a sequence generator. It's used for generating some sequence dynamically. For example, while reading a file line by line on a network, you can use the &lt;code&gt;yield&lt;/code&gt; function as follows:</source>
+          <target state="translated">모든 대답에서 알 수 있듯이 &lt;code&gt;yield&lt;/code&gt; 은 시퀀스 생성기를 만드는 데 사용됩니다. 일부 시퀀스를 동적으로 생성하는 데 사용됩니다. 예를 들어, 네트워크에서 파일을 한 줄씩 읽는 동안 다음과 같이 &lt;code&gt;yield&lt;/code&gt; 함수를 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="f1e0ba1d127fcef46948db3881dab6eede1ff0a8" translate="yes" xml:space="preserve">
+          <source>Luckily Guido and his team were generous enough to develop generators so we could just do this;</source>
+          <target state="translated">운 좋게 Guido와 그의 팀은 발전기를 개발할 수있을만큼 관 대해서 우리는 이것을 할 수있었습니다.</target>
+        </trans-unit>
+        <trans-unit id="ea2bbc6304080fdb00b621f7aa3245c1e64e92e2" translate="yes" xml:space="preserve">
+          <source>Many people use &lt;code&gt;return&lt;/code&gt; rather than &lt;code&gt;yield&lt;/code&gt;, but in some cases &lt;code&gt;yield&lt;/code&gt; can be more efficient and easier to work with.</source>
+          <target state="translated">많은 사람들이 &lt;code&gt;return&lt;/code&gt; 대신 &lt;code&gt;yield&lt;/code&gt; 을 사용하지만 경우에 따라 &lt;code&gt;yield&lt;/code&gt; 이 더 효율적이고 다루기 쉬울 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="f1ecc57d869eaa2aeb4f14bb021fbf641a09a4cf" translate="yes" xml:space="preserve">
+          <source>Minutiae</source>
+          <target state="translated">Minutiae</target>
+        </trans-unit>
+        <trans-unit id="63298b940ce76e1f6554f705d9938c3451b0daf7" translate="yes" xml:space="preserve">
+          <source>More importantly, &lt;code&gt;yield&lt;/code&gt; is a &lt;strong&gt;barrier&lt;/strong&gt;.</source>
+          <target state="translated">더 중요한 것은 &lt;code&gt;yield&lt;/code&gt; 이 &lt;strong&gt;장벽&lt;/strong&gt; 입니다.</target>
+        </trans-unit>
+        <trans-unit id="260be5bd97364077b3283e9557a7cf6fccbc23dd" translate="yes" xml:space="preserve">
+          <source>Moreover &lt;a href=&quot;https://www.python.org/dev/peps/pep-0492/&quot;&gt;this&lt;/a&gt; will introduce (since Python 3.5):</source>
+          <target state="translated">또한 &lt;a href=&quot;https://www.python.org/dev/peps/pep-0492/&quot;&gt;이것은&lt;/a&gt; (Python 3.5부터) 소개합니다.</target>
+        </trans-unit>
+        <trans-unit id="f90dd4485580d3bdc59a261e1ec77656145f7983" translate="yes" xml:space="preserve">
+          <source>My vote is it be a SyntaxError since you're not getting what you expect from
+    the syntax.</source>
+          <target state="translated">내 투표는 구문에서 기대하는 것을 얻지 못하기 때문에 SyntaxError입니다.</target>
+        </trans-unit>
+        <trans-unit id="6d2a636bd1ba1e865b86d549524144e1fe118a22" translate="yes" xml:space="preserve">
+          <source>No discussion of the methods that &lt;code&gt;yield&lt;/code&gt; provides along with the new functionality &lt;code&gt;yield from&lt;/code&gt; in Python 3. &lt;strong&gt;The top/accepted answer is a very incomplete answer.&lt;/strong&gt;</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 3이 제공하는 메소드에 대한 논의는 Python 3 &lt;strong&gt;의&lt;/strong&gt; 새로운 기능과 관련이 없습니다 &lt;strong&gt;. 최고 / 허용 답변은 매우 불완전한 답변입니다.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="957edece43529861540ff3f36e5e7a2451ec8ff3" translate="yes" xml:space="preserve">
+          <source>Normally, most people would not care about the following distinctions and probably want to stop reading here.</source>
+          <target state="translated">일반적으로 대부분의 사람들은 다음과 같은 차이점에 신경 쓰지 않으며 여기에서 읽기를 중단하려고합니다.</target>
+        </trans-unit>
+        <trans-unit id="f8c793e525ecfff42fd9cd9042640febe5190bea" translate="yes" xml:space="preserve">
+          <source>Note that &lt;code&gt;def&lt;/code&gt;ining a function which contains a &lt;code&gt;yield&lt;/code&gt; keyword is not the only way to create a generator; it's just the easiest way to create one.</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 키워드를 포함하는 함수를 정의하는 것이 제너레이터를 만드는 유일한 방법은 아닙니다. 가장 쉬운 방법입니다.</target>
+        </trans-unit>
+        <trans-unit id="c9d2501fc158d349dfef0af0d5919d70d9574d6f" translate="yes" xml:space="preserve">
+          <source>Note that a &lt;code&gt;for&lt;/code&gt; loop doesn't know what kind of object it's dealing with - it just follows the iterator protocol, and is happy to get item after item as it calls &lt;code&gt;next()&lt;/code&gt;. Built-in lists return their items one by one, dictionaries return the &lt;em&gt;keys&lt;/em&gt; one by one, files return the &lt;em&gt;lines&lt;/em&gt; one by one, etc. And generators return... well that's where &lt;code&gt;yield&lt;/code&gt; comes in:</source>
+          <target state="translated">&lt;code&gt;for&lt;/code&gt; 루프는 처리하는 객체의 종류를 알지 못합니다. 반복자 프로토콜을 따르기 만하면 &lt;code&gt;next()&lt;/code&gt; 호출 할 때 item 다음에 item을 가져옵니다. 내장 목록은 항목을 하나씩 반환하고, 사전은 &lt;em&gt;키를&lt;/em&gt; 하나씩 반환하고, 파일은 &lt;em&gt;줄을&lt;/em&gt; 하나씩 반환합니다. 생성기는 반환합니다.</target>
+        </trans-unit>
+        <trans-unit id="d0983c67f73b9198117de75714eca1653ab0ab62" translate="yes" xml:space="preserve">
+          <source>Now let's talk about generators in Python. Generators are a specific subtype of continuation. Whereas &lt;strong&gt;continuations are able in general to save the state of a &lt;em&gt;computation&lt;/em&gt;&lt;/strong&gt; (i.e., the program's call stack), &lt;strong&gt;generators are only able to save the state of iteration over an &lt;em&gt;iterator&lt;/em&gt;&lt;/strong&gt;. Although, this definition is slightly misleading for certain use cases of generators. For instance:</source>
+          <target state="translated">이제 파이썬에서 생성기에 대해 이야기 해 봅시다. 생성기는 연속의 특정 하위 유형입니다. &lt;strong&gt;연속은 일반적으로 &lt;em&gt;계산&lt;/em&gt; 상태&lt;/strong&gt; (예 : 프로그램의 호출 스택) &lt;strong&gt;를 저장할 수있는&lt;/strong&gt; 반면, &lt;strong&gt;생성기는 &lt;em&gt;반복자&lt;/em&gt; 에 대한 반복 상태 만 저장할 수&lt;/strong&gt; 있습니다. 그러나이 정의는 생성기의 특정 사용 사례에서 약간 오해의 소지가 있습니다. 예를 들어 :</target>
+        </trans-unit>
+        <trans-unit id="cbea0f398a5f710fc8e5fc5cc6c1aa916df7b9fc" translate="yes" xml:space="preserve">
+          <source>Now the hard part:</source>
+          <target state="translated">이제 어려운 부분 :</target>
+        </trans-unit>
+        <trans-unit id="96065685d9b9c8665dca19ef4217583b206991ad" translate="yes" xml:space="preserve">
+          <source>Now upon each iteration a function on the generator called &lt;code&gt;next()&lt;/code&gt; executes the function until it either reaches a 'yield' statement in which it stops and  'yields' the value or reaches the end of the function. In this case on the first call, &lt;code&gt;next()&lt;/code&gt; executes up to the yield statement and yield 'n', on the next call it will execute the  increment statement, jump back to the 'while', evaluate it, and if true, it will stop and yield 'n' again, it will continue that way until the while condition returns false and the generator jumps to the end of the function.</source>
+          <target state="translated">이제 각 반복마다 &lt;code&gt;next()&lt;/code&gt; 라는 생성기의 함수는 'yield'문에 도달하여 값을 중지하고 'yield'하거나 함수의 끝에 도달 할 때까지 함수를 실행합니다. 이 경우 첫 번째 호출에서 &lt;code&gt;next()&lt;/code&gt; 는 yield 문까지 실행하고 yield 'n'을 수행합니다. 다음 호출에서는 증가 명령문을 실행하고 'while'로 건너 뛰고 평가 한 다음 true 인 경우 는 중지하고 'n'을 다시 생성하며, while 조건이 false를 반환하고 생성기가 함수의 끝으로 점프 할 때까지 계속 진행됩니다.</target>
+        </trans-unit>
+        <trans-unit id="6f591e3f872109c5472337a1e87fe9e3bcde0a83" translate="yes" xml:space="preserve">
+          <source>Now, enter in the REPL:</source>
+          <target state="translated">이제 REPL을 입력하십시오 :</target>
+        </trans-unit>
+        <trans-unit id="e92a9d3b2c29a2e3bc4353c33fa7bff82dd4846f" translate="yes" xml:space="preserve">
+          <source>Now, recall that &lt;code&gt;yield from&lt;/code&gt; is available in Python 3. This allows us to delegate
+coroutines to a subcoroutine:</source>
+          <target state="translated">이제 파이썬 3에서 &lt;code&gt;yield from&lt;/code&gt; 사용할 수 있다는 것을 기억하십시오.이를 통해 코 루틴을 서브 코 루틴에 위임 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="5a307763317a3a7bc6e71bc9264167d7ad80a27e" translate="yes" xml:space="preserve">
+          <source>Now, you win to get all the numbers.</source>
+          <target state="translated">이제 모든 숫자를 얻습니다.</target>
+        </trans-unit>
+        <trans-unit id="b6987f5b93c9acf22eca3106831b92a972ad34e6" translate="yes" xml:space="preserve">
+          <source>On 30 January 2017 at 19:05, Brett Cannon  wrote:</source>
+          <target state="translated">Brett Cannon은 2017 년 1 월 30 일 19:05에 다음과 같이 썼습니다.</target>
+        </trans-unit>
+        <trans-unit id="85c98d1e4740c518785320f781b5df7464816e4c" translate="yes" xml:space="preserve">
+          <source>On Sun, 29 Jan 2017 at 16:39 Craig Rodrigues  wrote:</source>
+          <target state="translated">2017 년 1 월 29 일 16시 39 일 Sun에서 Craig Rodrigues는 다음과 같이 썼습니다.</target>
+        </trans-unit>
+        <trans-unit id="effbc2c26171feae094bbbc8c2b18c68368e591a" translate="yes" xml:space="preserve">
+          <source>One can yield data programmatically, for example:</source>
+          <target state="translated">다음과 같이 프로그래밍 방식으로 데이터를 생성 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="8ec523094d69740bf96305160c0edf4de24e608c" translate="yes" xml:space="preserve">
+          <source>One more step we can rewrite &lt;code&gt;yield&lt;/code&gt; statement with &lt;code&gt;return&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;return&lt;/code&gt; 문으로 &lt;code&gt;yield&lt;/code&gt; 문을 다시 작성할 수있는 또 하나의 단계</target>
+        </trans-unit>
+        <trans-unit id="b31a591d4d9d64b9d692dc2c86bc55fc3a7bde29" translate="yes" xml:space="preserve">
+          <source>Original version:</source>
+          <target state="translated">원본 버전 :</target>
+        </trans-unit>
+        <trans-unit id="bee143e2a96019cef9b2e3c68a2e94c347f68a59" translate="yes" xml:space="preserve">
+          <source>Other Methods: close and throw</source>
+          <target state="translated">다른 방법 : 닫기 및 던지기</target>
+        </trans-unit>
+        <trans-unit id="f3c8c95c5e534bcd2ea0034a0d83177efa6923f4" translate="yes" xml:space="preserve">
+          <source>Output:</source>
+          <target state="translated">Output:</target>
+        </trans-unit>
+        <trans-unit id="5f07ef89f002df2bf1789a1e70ac0785b82990f2" translate="yes" xml:space="preserve">
+          <source>Please note: generators can actually be used for many more things, such as &lt;a href=&quot;http://www.dabeaz.com/coroutines/index.html&quot;&gt;implementing coroutines&lt;/a&gt; or non-deterministic programming or other elegant things. However, the &quot;lazy lists&quot; viewpoint I present here is the most common use you will find.</source>
+          <target state="translated">참고 : 생성기는 실제로 &lt;a href=&quot;http://www.dabeaz.com/coroutines/index.html&quot;&gt;코 루틴&lt;/a&gt; 또는 비 결정적 프로그래밍 또는 기타 우아한 것들을 구현하는 등 더 많은 용도로 사용될 수 있습니다. 그러나 여기에 제시된 &quot;게으른 목록&quot;관점은 가장 일반적인 용도입니다.</target>
+        </trans-unit>
+        <trans-unit id="00d9b100b9bcc674781b9766a8e6870f8757ebdd" translate="yes" xml:space="preserve">
+          <source>Py3k warning in 2.7.x</source>
+          <target state="translated">2.7.x의 Py3k 경고</target>
+        </trans-unit>
+        <trans-unit id="cef032cf531f21b2c9cdf6eb64b001d4fb256c9b" translate="yes" xml:space="preserve">
+          <source>Python compiles the function, encounters the &lt;code&gt;yield&lt;/code&gt; keyword and simply returns a generator object back at you. Not very helpful it seems.</source>
+          <target state="translated">파이썬은 함수를 컴파일하고 &lt;code&gt;yield&lt;/code&gt; 키워드를 만나고 단순히 생성자 객체를 반환합니다. 별로 도움이되지 않는 것 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="c0e695374f96756b35fdfe22b9dbb044371df33d" translate="yes" xml:space="preserve">
+          <source>Python performs the following two steps:</source>
+          <target state="translated">파이썬은 다음 두 단계를 수행합니다.</target>
+        </trans-unit>
+        <trans-unit id="c35284ab3425210def57302b5a65e2b0a11149ab" translate="yes" xml:space="preserve">
+          <source>Remember that this is just pseudocode and the actual implementation of generators in Python is more complex. But as an exercise to understand what is going on, try to use continuation passing style to implement generator objects without use of the &lt;code&gt;yield&lt;/code&gt; keyword.</source>
+          <target state="translated">이것은 의사 코드 일 뿐이며 실제 파이썬 생성기 구현은 더 복잡합니다. 그러나 무슨 일이 일어나고 있는지 이해하기위한 연습으로, 연속 키워드를 사용하여 &lt;code&gt;yield&lt;/code&gt; 키워드를 사용하지 않고 생성기 객체를 구현하십시오.</target>
+        </trans-unit>
+        <trans-unit id="1ac5b61c45f411038301d2404cf4fec54441c6ad" translate="yes" xml:space="preserve">
+          <source>Replace &lt;code&gt;return&lt;/code&gt; with &lt;code&gt;yield&lt;/code&gt;:</source>
+          <target state="translated">&lt;code&gt;return&lt;/code&gt; 로 &lt;code&gt;yield&lt;/code&gt; 대체합니다.</target>
+        </trans-unit>
+        <trans-unit id="d3afd790e348a0c26c0be34d40ecc9f41e19d26d" translate="yes" xml:space="preserve">
+          <source>Replace each &lt;code&gt;yield expr&lt;/code&gt; with &lt;code&gt;result.append(expr)&lt;/code&gt;.</source>
+          <target state="translated">각 &lt;code&gt;yield expr&lt;/code&gt; 을 &lt;code&gt;result.append(expr)&lt;/code&gt; 로 바꾸십시오 .</target>
+        </trans-unit>
+        <trans-unit id="25e781fe1df53bae8a289d02fbdb77ae6469547c" translate="yes" xml:space="preserve">
+          <source>Run it:</source>
+          <target state="translated">그것을 실행 :</target>
+        </trans-unit>
+        <trans-unit id="97dadded1b9f2fcec4b19ca00a996516c8982a2c" translate="yes" xml:space="preserve">
+          <source>Same behavior:</source>
+          <target state="translated">같은 행동 :</target>
+        </trans-unit>
+        <trans-unit id="5a97a974883d7bcd43990ce0a93d8ca9aa864bfd" translate="yes" xml:space="preserve">
+          <source>Say you wanted to create a your own &lt;code&gt;range&lt;/code&gt; function that produces an iterable range of numbers, you could do it like so,</source>
+          <target state="translated">반복 가능한 숫자 범위를 생성하는 자체 &lt;code&gt;range&lt;/code&gt; 함수를 만들고 싶다고 가정 해보십시오.</target>
+        </trans-unit>
+        <trans-unit id="2ab0369f1d5983f084d45c352d30c1446684eceb" translate="yes" xml:space="preserve">
+          <source>See, you get only a single number rather than a list of them. &lt;code&gt;return&lt;/code&gt; never allows you prevail happily, just implements once and quit.</source>
+          <target state="translated">참조, 당신은 그것들의 목록이 아닌 하나의 숫자 만 얻습니다. &lt;code&gt;return&lt;/code&gt; 은 결코 행복하게 우위를 차지하지 않으며 한 번만 구현하고 종료합니다.</target>
+        </trans-unit>
+        <trans-unit id="010b0672dea78d8c4aa4f2420058adae5991abbe" translate="yes" xml:space="preserve">
+          <source>Shortcut to understanding &lt;code&gt;yield&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 이해를위한 지름길</target>
+        </trans-unit>
+        <trans-unit id="a7942e6cc5e90e1d35d5f04820acc2b178f0f857" translate="yes" xml:space="preserve">
+          <source>Similarly, with a &lt;code&gt;tuple&lt;/code&gt; initializer:</source>
+          <target state="translated">마찬가지로 &lt;code&gt;tuple&lt;/code&gt; 초기화 프로그램을 사용하면 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="b2196b60ca80d641d8c512b27441745d29a9bae0" translate="yes" xml:space="preserve">
+          <source>Since yield is an expression, it has been touted by some as interesting to use it in comprehensions or generator expression - in spite of citing no particularly good use-case.</source>
+          <target state="translated">수율은 표현이기 때문에, 특히 좋은 유스 케이스를 언급하지는 않았지만 이해력이나 생성기 표현에 사용하는 것이 흥미로 웠습니다.</target>
+        </trans-unit>
+        <trans-unit id="eb2327b341cffc04d124fdbbf7357dcf2a6b1dc4" translate="yes" xml:space="preserve">
+          <source>So it's a kind of a frozen function that the generator is hanging onto.</source>
+          <target state="translated">따라서 발전기가 걸려있는 일종의 정지 된 기능입니다.</target>
+        </trans-unit>
+        <trans-unit id="19673e758686be33a34cf32a2f95654be99c541b" translate="yes" xml:space="preserve">
+          <source>So that's the iterator protocol, many objects implement this protocol:</source>
+          <target state="translated">이것이 반복자 프로토콜이므로 많은 객체가이 프로토콜을 구현합니다.</target>
+        </trans-unit>
+        <trans-unit id="9bd6893f306954b22b5c6d426e694f0b79db960f" translate="yes" xml:space="preserve">
+          <source>So the generator object is sort of like an adapter - at one end it exhibits the iterator protocol, by exposing &lt;code&gt;__iter__()&lt;/code&gt; and &lt;code&gt;next()&lt;/code&gt; methods to keep the &lt;code&gt;for&lt;/code&gt; loop happy. At the other end, however, it runs the function just enough to get the next value out of it, and puts it back in suspended mode.</source>
+          <target state="translated">따라서 생성기 객체는 일종의 어댑터와 비슷합니다. 한 번에 &lt;code&gt;__iter__()&lt;/code&gt; 및 &lt;code&gt;next()&lt;/code&gt; 메서드를 노출 &lt;code&gt;for&lt;/code&gt; 반복문을 행복하게 유지함으로써 반복기 프로토콜을 나타냅니다. 그러나 다른 쪽 끝에서는 다음 값을 가져 오기에 충분할 정도로 함수를 실행하고 일시 중단 모드로 되돌립니다.</target>
+        </trans-unit>
+        <trans-unit id="0846a1b0282a9b40bd6407dbf79fde868f3d33b4" translate="yes" xml:space="preserve">
+          <source>So, how do you generate these values? This can either be done directly by using the built-in function &lt;code&gt;next&lt;/code&gt;, or, indirectly by feeding it to a construct that consumes values.</source>
+          <target state="translated">그렇다면 이러한 값을 어떻게 생성합니까? 내장 함수 &lt;code&gt;next&lt;/code&gt; 를 사용하여 직접 수행하거나 값을 소비하는 구문에 직접 제공하여 수행 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="5a9e453ff9384952ce4f468ed81ccbae376c01b4" translate="yes" xml:space="preserve">
+          <source>Sometime later, I tell you, &quot;OK, get ready to tell me the sequence of numbers&quot;.</source>
+          <target state="translated">나중에, 나는 당신에게 &quot;알겠습니다, 일련의 숫자를 말해 줄 준비를하세요&quot;라고 말합니다.</target>
+        </trans-unit>
+        <trans-unit id="f19056e03502445791c22a8e19229c5e20a55381" translate="yes" xml:space="preserve">
+          <source>SyntaxError in 3.8</source>
+          <target state="translated">3.8의 구문 오류</target>
+        </trans-unit>
+        <trans-unit id="567e7ba961e72df760eb88d4a21163100151b70e" translate="yes" xml:space="preserve">
+          <source>SyntaxWarning or DeprecationWarning in 3.7</source>
+          <target state="translated">3.7의 구문 경고 또는 사용 중단 경고</target>
+        </trans-unit>
+        <trans-unit id="9ab0a0362c832896068559a5fa49081174de2ddf" translate="yes" xml:space="preserve">
+          <source>That is, it will run the code in your function from the beginning until it hits &lt;code&gt;yield&lt;/code&gt;. Then, it&amp;rsquo;ll return the first value of the loop.</source>
+          <target state="translated">즉, 처음부터 &lt;code&gt;yield&lt;/code&gt; 에 도달 할 때까지 함수에서 코드를 실행합니다. 그런 다음 루프의 첫 번째 값을 반환합니다.</target>
+        </trans-unit>
+        <trans-unit id="838208781647d2859f5be9f1f69a5eae0736b9bf" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;close&lt;/code&gt; method raises &lt;code&gt;GeneratorExit&lt;/code&gt; at the point the function 
+execution was frozen. This will also be called by &lt;code&gt;__del__&lt;/code&gt; so you 
+can put any cleanup code where you handle the &lt;code&gt;GeneratorExit&lt;/code&gt;:</source>
+          <target state="translated">&lt;code&gt;close&lt;/code&gt; 메소드는 함수 실행이 정지 된 시점에서 &lt;code&gt;GeneratorExit&lt;/code&gt; 를 발생시킵니다. &lt;code&gt;__del__&lt;/code&gt; 에 의해 호출되므로 &lt;code&gt;GeneratorExit&lt;/code&gt; 를 처리하는 곳에 정리 코드를 넣을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="a3d45fcf0497296d8e1482b4554df59b5eedf048" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;extend()&lt;/code&gt; method is a list object method that expects an iterable and adds its values to the list.</source>
+          <target state="translated">&lt;code&gt;extend()&lt;/code&gt; 메소드는 iterable을 예상하고 해당 값을 목록에 추가하는 목록 오브젝트 메소드입니다.</target>
+        </trans-unit>
+        <trans-unit id="29609fb0ada2ba2818fb2a90a695577b51e87c1d" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;gi_code&lt;/code&gt; and &lt;code&gt;gi_frame&lt;/code&gt; fields are where the frozen state is stored. Exploring them with &lt;code&gt;dir(..)&lt;/code&gt;, we can confirm that our mental model above is credible.</source>
+          <target state="translated">&lt;code&gt;gi_code&lt;/code&gt; 및 &lt;code&gt;gi_frame&lt;/code&gt; 필드는 고정 상태가 저장되는 위치입니다. &lt;code&gt;dir(..)&lt;/code&gt; 탐색하면 위의 정신 모델이 신뢰할 수 있음을 확인할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="d96f54e7ea72522d78f3384a3336d7ad5556bc22" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;return&lt;/code&gt; statement in a generator</source>
+          <target state="translated">생성기의 &lt;code&gt;return&lt;/code&gt; 문</target>
+        </trans-unit>
+        <trans-unit id="77154ad361e61b0b0ba81607182893014c0d1a34" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;yield&lt;/code&gt; keyword is reduced to two simple facts:</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 키워드는 두 가지 간단한 사실로 축소됩니다.</target>
+        </trans-unit>
+        <trans-unit id="dc5a0f0208c180c85b5d0c4f32b9d8172d5659ac" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;yield&lt;/code&gt; keyword simply collects returning results. Think of &lt;code&gt;yield&lt;/code&gt; like &lt;code&gt;return +=&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 키워드는 단순히 반환 결과를 수집합니다. &lt;code&gt;yield&lt;/code&gt; 과 같은 &lt;code&gt;return +=&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="569b8a7334a018ddbbd0be69dd1861bc7484befb" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;yield&lt;/code&gt; statement in Python returns a generator. A generator in Python is a function that returns</source>
+          <target state="translated">Python의 &lt;code&gt;yield&lt;/code&gt; 문은 생성기를 반환합니다. 파이썬의 생성기는 다음을 반환하는 함수입니다.</target>
+        </trans-unit>
+        <trans-unit id="286c50d08b635ef15bfeee9cc3db60c93c6ad474" translate="yes" xml:space="preserve">
+          <source>The CPython core developers are &lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2017-January/147301.html&quot;&gt;discussing deprecating its allowance&lt;/a&gt;.
+Here's a relevant post from the mailing list:</source>
+          <target state="translated">CPython의 핵심 개발자들은 &lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2017-January/147301.html&quot;&gt;허용되지 않는 것에 대해 논의하고&lt;/a&gt; 있습니다. 메일 링리스트의 관련 게시물은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="4e3fe55c48ec33c0b2a6787983638ea6d62f5711" translate="yes" xml:space="preserve">
+          <source>The OO approach, we wrap the metadata &lt;code&gt;as a class&lt;/code&gt;. This is the so-called &lt;code&gt;iterator&lt;/code&gt; who implements the iterator protocol (i.e. the &lt;code&gt;__next__()&lt;/code&gt;, and &lt;code&gt;__iter__()&lt;/code&gt; methods). This is also the commonly seen &lt;a href=&quot;https://en.wikipedia.org/wiki/Iterator_pattern#Python&quot;&gt;iterator design pattern&lt;/a&gt;.</source>
+          <target state="translated">OO 방식에서는 메타 데이터 &lt;code&gt;as a class&lt;/code&gt; 래핑합니다. 이것은 반복자 프로토콜을 구현하는 소위 &lt;code&gt;iterator&lt;/code&gt; 입니다 (예 : &lt;code&gt;__next__()&lt;/code&gt; 및 &lt;code&gt;__iter__()&lt;/code&gt; 메서드). 이것은 일반적으로 보이는 &lt;a href=&quot;https://en.wikipedia.org/wiki/Iterator_pattern#Python&quot;&gt;반복자 디자인 패턴&lt;/a&gt; 입니다.</target>
+        </trans-unit>
+        <trans-unit id="b36d36ae5461cd703d79e055f55c9ebb36c41eab" translate="yes" xml:space="preserve">
+          <source>The above example can be thought of as merely creating a list which you append to and return:</source>
+          <target state="translated">위의 예는 단순히 추가하고 반환하는 목록을 만드는 것으로 생각할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="384fee2b6ad3d7469cdf79c4d54b9d63ea5ae224" translate="yes" xml:space="preserve">
+          <source>The above simple generator is also equivalent to the below - as of Python 3.3 (and not available in Python 2), you can use &lt;a href=&quot;https://www.python.org/dev/peps/pep-0380/&quot;&gt;&lt;code&gt;yield from&lt;/code&gt;&lt;/a&gt;:</source>
+          <target state="translated">위의 간단한 생성기는 다음과 같습니다 .Python 3.3 (Python 2에서는 사용할 &lt;a href=&quot;https://www.python.org/dev/peps/pep-0380/&quot;&gt; &lt;code&gt;yield from&lt;/code&gt; &lt;/a&gt; 다음 에서 yield를 사용할 수 있습니다 .</target>
+        </trans-unit>
+        <trans-unit id="e62f3d84017118479b990b0d86c245c11aa0d847" translate="yes" xml:space="preserve">
+          <source>The built-in function &lt;code&gt;next()&lt;/code&gt; just calls the objects &lt;code&gt;.next()&lt;/code&gt; function, which is a part of the &quot;iteration protocol&quot; and is found on all iterators. You can manually use the &lt;code&gt;next()&lt;/code&gt; function (and other parts of the iteration protocol) to implement fancy things, usually at the expense of readability, so try to avoid doing that...</source>
+          <target state="translated">내장 함수 &lt;code&gt;next()&lt;/code&gt; 는 &quot;iteration protocol&quot;의 일부이며 모든 반복자에서 발견되는 objects &lt;code&gt;.next()&lt;/code&gt; 함수를 호출합니다. &lt;code&gt;next()&lt;/code&gt; 함수 (및 반복 프로토콜의 다른 부분 )를 수동으로 사용하여 일반적으로 가독성을 희생하면서 멋진 것을 구현할 수 있으므로 그렇게하지 마십시오 ...</target>
+        </trans-unit>
+        <trans-unit id="7de99b1c48ee10b1bddb666e63ca36fa1bf9d357" translate="yes" xml:space="preserve">
+          <source>The difference between a list &lt;code&gt;return&lt;/code&gt; outputs and the object &lt;code&gt;yield&lt;/code&gt; output is:</source>
+          <target state="translated">리스트 &lt;code&gt;return&lt;/code&gt; 출력과 오브젝트 &lt;code&gt;yield&lt;/code&gt; 출력의 차이점은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="bb49489746a020a2dc0a0d8886122c8ac1c8272f" translate="yes" xml:space="preserve">
+          <source>The execution control will be transferred from getNextLines() to the &lt;code&gt;for&lt;/code&gt; loop when yield is executed. Thus, every time getNextLines() is invoked, execution begins from the point where it was paused last time.</source>
+          <target state="translated">yield가 실행될 때 실행 제어가 getNextLines ()에서 &lt;code&gt;for&lt;/code&gt; 루프로 전송됩니다. 따라서 getNextLines ()가 호출 될 때마다 마지막으로 일시 정지 된 지점부터 실행이 시작됩니다.</target>
+        </trans-unit>
+        <trans-unit id="9574ade792214860025139f4da109ddb0dd74095" translate="yes" xml:space="preserve">
+          <source>The first time the &lt;code&gt;for&lt;/code&gt; calls the generator object created from your function, it will run the code in your function from the beginning until it hits &lt;code&gt;yield&lt;/code&gt;, then it'll return the first value of the loop. Then, each subsequent call will run another iteration of the loop you have written in the function and return the next value. This will continue until the generator is considered empty, which happens when the function runs without hitting &lt;code&gt;yield&lt;/code&gt;. That can be because the loop has come to an end, or because you no longer satisfy an &lt;code&gt;&quot;if/else&quot;&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;for&lt;/code&gt; 가 함수에서 생성 된 생성기 객체 를 처음 호출 할 때 함수는 처음부터 &lt;code&gt;yield&lt;/code&gt; 에 도달 할 때까지 함수의 코드를 실행 한 다음 루프의 첫 번째 값을 반환합니다. 그런 다음 각 호출은 함수에 작성한 루프의 다른 반복을 실행하고 다음 값을 반환합니다. 이것은 생성기가 비어있는 것으로 간주 될 때까지 계속되며, &lt;code&gt;yield&lt;/code&gt; 를 누르지 않고 함수가 실행될 때 발생합니다. 루프가 종료되었거나 더 이상 &lt;code&gt;&quot;if/else&quot;&lt;/code&gt; 를 만족하지 않기 때문일 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="55b6d1db997b3f1403e7e44c2927b50a091ed779" translate="yes" xml:space="preserve">
+          <source>The functional approach, we wrap the metadata &lt;code&gt;as a function&lt;/code&gt;. This is
+the so-called &lt;code&gt;generator function&lt;/code&gt;. But under the hood, the returned &lt;code&gt;generator object&lt;/code&gt; still &lt;code&gt;IS-A&lt;/code&gt; iterator because it also implements the iterator protocol.</source>
+          <target state="translated">기능적 접근 방식에서는 메타 데이터 &lt;code&gt;as a function&lt;/code&gt; 래핑합니다. 소위 &lt;code&gt;generator function&lt;/code&gt; 입니다. 그러나 후드에서 반환 된 &lt;code&gt;generator object&lt;/code&gt; 여전히 반복자 프로토콜을 구현하기 때문에 &lt;code&gt;IS-A&lt;/code&gt; 반복자입니다.</target>
+        </trans-unit>
+        <trans-unit id="ad5e73ec25fc40ac5fd2ca20c474cd6986e30ab3" translate="yes" xml:space="preserve">
+          <source>The generator remembers it was paused at &lt;code&gt;yield value&lt;/code&gt; and resumes from there. The next message is printed and the search for the &lt;code&gt;yield&lt;/code&gt; statement to pause at it performed again (due to the &lt;code&gt;while&lt;/code&gt; loop).</source>
+          <target state="translated">생성기는 &lt;code&gt;yield value&lt;/code&gt; 에서 일시 중지 된 것을 기억하고 거기서부터 다시 시작합니다. 다음 메시지가 인쇄되고 &lt;code&gt;while&lt;/code&gt; 루프로 인해 다시 수행 할 때 &lt;code&gt;yield&lt;/code&gt; 문에 대한 검색이 일시 중지됩니다.</target>
+        </trans-unit>
+        <trans-unit id="956ec5707ad9efc1beeb86871d9e095c1cace192" translate="yes" xml:space="preserve">
+          <source>The generator type is a sub-type of iterator:</source>
+          <target state="translated">생성기 유형은 반복기의 하위 유형입니다.</target>
+        </trans-unit>
+        <trans-unit id="89f016e32a8da16e8af307b674da7c0f4716f8a7" translate="yes" xml:space="preserve">
+          <source>The grammar currently allows any expression in a list comprehension.</source>
+          <target state="translated">문법은 현재 목록 이해의 표현을 허용합니다.</target>
+        </trans-unit>
+        <trans-unit id="edf75537a05166775dfd15ba5c8a40896c6f403e" translate="yes" xml:space="preserve">
+          <source>The idea for generators comes from other languages (see footnote 1) with varying implementations. In Python's Generators, the execution of the code is &lt;a href=&quot;https://docs.python.org/3.5/glossary.html#term-generator-iterator&quot;&gt;frozen&lt;/a&gt; at the point of the yield. When the generator is called (methods are discussed below) execution resumes and then freezes at the next yield.</source>
+          <target state="translated">생성기의 아이디어는 다양한 구현으로 다른 언어 (각주 1 참조)에서 나옵니다. Python 's Generators에서 코드 실행은 수율 시점에서 &lt;a href=&quot;https://docs.python.org/3.5/glossary.html#term-generator-iterator&quot;&gt;고정&lt;/a&gt; 됩니다. 생성기가 호출되면 (방법에 대해서는 아래에서 설명) 실행이 재개 된 후 다음 수율로 정지됩니다.</target>
+        </trans-unit>
+        <trans-unit id="305c568102291c5cb1ca7281807fa2c9a3b573fc" translate="yes" xml:space="preserve">
+          <source>The itertools module contains special functions to manipulate iterables. Ever wish to duplicate a generator?
+Chain two generators? Group values in a nested list with a one-liner? &lt;code&gt;Map / Zip&lt;/code&gt; without creating another list?</source>
+          <target state="translated">itertools 모듈에는 iterable을 조작하는 특수 함수가 포함되어 있습니다. 발전기를 복제하고 싶습니까? 두 발전기를 연결? 하나의 라이너로 중첩 목록의 값을 그룹화합니까? 다른 목록을 만들지 않고 &lt;code&gt;Map / Zip&lt;/code&gt; ?</target>
+        </trans-unit>
+        <trans-unit id="6f58a19a2dd95bc1b3cbfc74f010f82f5559c58c" translate="yes" xml:space="preserve">
+          <source>The key idea is that the compiler/interpreter/whatever does some trickery so that as far as the caller is concerned, they can keep calling next() and it will keep returning values - &lt;em&gt;as if the generator method was paused&lt;/em&gt;. Now obviously you can't really &quot;pause&quot; a method, so the compiler builds a state machine for you to remember where you currently are and what the local variables etc look like. This is much easier than writing an iterator yourself.</source>
+          <target state="translated">핵심 아이디어는 컴파일러 / 인터프리터 / 어떤 트릭을 수행하여 호출자가 관심이있는 한 계속 next ()를 호출 할 수 &lt;em&gt;있으며 생성기 메서드가 일시 중지 된 것처럼&lt;/em&gt; 값을 계속 반환한다는 것입니다. 이제는 실제로 메소드를 &quot;일시 정지&quot;할 수 없으므로 컴파일러는 현재 위치와 로컬 변수 등이 무엇인지 기억하기 위해 상태 머신을 빌드합니다. 이터레이터를 직접 작성하는 것보다 훨씬 쉽습니다.</target>
+        </trans-unit>
+        <trans-unit id="92d79cb061c23c0b97be5b3c6bcac7a9343bbb0e" translate="yes" xml:space="preserve">
+          <source>The loop iterates on a list, but the list expands while the loop is being iterated :-) It's a concise way to go through all these nested data even if it's a bit dangerous since you can end up with an infinite loop. In this case, &lt;code&gt;candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))&lt;/code&gt; exhaust all the values of the generator, but &lt;code&gt;while&lt;/code&gt; keeps creating new generator objects which will produce different values from the previous ones since it's not applied on the same node.</source>
+          <target state="translated">루프는 목록에서 반복되지만 루프가 반복되는 동안 목록이 확장됩니다. :-) 무한 루프로 끝날 수 있기 때문에 약간 위험하지만 중첩 된 모든 데이터를 통과하는 간결한 방법입니다. 이 경우, &lt;code&gt;candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))&lt;/code&gt; 는 생성기의 모든 값을 소진하지만 동일한 생성기에 적용되지 않으므로 이전 생성기와 다른 값을 생성하는 새로운 생성기 객체를 계속 생성합니다. 마디.</target>
+        </trans-unit>
+        <trans-unit id="fa326100d98f456e392b2f2fad538e2c0e77b226" translate="yes" xml:space="preserve">
+          <source>The most famous user of the iterator protocol is the &lt;code&gt;for&lt;/code&gt; command in Python. So, whenever you do a:</source>
+          <target state="translated">반복자 프로토콜의 가장 유명한 사용자는 Python의 &lt;code&gt;for&lt;/code&gt; 명령입니다. 따라서 할 때마다 :</target>
+        </trans-unit>
+        <trans-unit id="db347df1c70b1f578850ca66fe264ef9284adcde" translate="yes" xml:space="preserve">
+          <source>The new syntax also opens up some opportunities for optimisation when one generator re-yields values produced by another.</source>
+          <target state="translated">새로운 구문은 또한 한 발전기가 다른 발전기가 생산 한 값을 다시 산출 할 때 최적화 할 수있는 기회를 열어줍니다.</target>
+        </trans-unit>
+        <trans-unit id="b74ff8ee45b0b8f3cea227a5cb8b0ca2512e0fa1" translate="yes" xml:space="preserve">
+          <source>The output is:</source>
+          <target state="translated">출력은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="65c10c8b7349834a5510a50665946231ee354c64" translate="yes" xml:space="preserve">
+          <source>The power comes from using the generator with a loop that calculates a sequence, the generator executes the loop stopping each time to 'yield' the next result of the calculation, in this way it calculates a list on the fly, the benefit being the memory saved for especially large calculations</source>
+          <target state="translated">전력은 시퀀스를 계산하는 루프와 함께 생성기를 사용하여 생성되며, 생성기는 다음 계산 결과를 '수율'로 매번 루프 정지를 실행합니다.이 방법으로 즉시 목록을 계산합니다. 이점은 메모리입니다. 특히 큰 계산을 위해 저장</target>
+        </trans-unit>
+        <trans-unit id="fc99ade7c7b098191b4ad77e911e56c56415f9b0" translate="yes" xml:space="preserve">
+          <source>The rest of this post will, without loss of generality, conceptualize continuations as CPS, because it is a hell of a lot easier to understand and read.</source>
+          <target state="translated">이 게시물의 나머지 부분은 일반성을 잃지 않고 CPS로 연속을 개념화합니다. 이해하기 쉽고 읽기가 쉽지 않기 때문입니다.</target>
+        </trans-unit>
+        <trans-unit id="a8c92b7c9011965f168156df7f932f40277a20fa" translate="yes" xml:space="preserve">
+          <source>The truth is Python performs the above two steps anytime it wants to &lt;em&gt;loop over&lt;/em&gt; the contents of an object - so it could be a for loop, but it could also be code like &lt;code&gt;otherlist.extend(mylist)&lt;/code&gt; (where &lt;code&gt;otherlist&lt;/code&gt; is a Python list).</source>
+          <target state="translated">진실은 파이썬이 객체의 내용을 &lt;em&gt;반복&lt;/em&gt; 하고 싶을 때마다 위의 두 단계를 수행한다는 것입니다. 따라서 for 루프 일 수 있지만 &lt;code&gt;otherlist.extend(mylist)&lt;/code&gt; 와 같은 코드 일 수도 있습니다 (여기서 &lt;code&gt;otherlist&lt;/code&gt; 는 Python 목록입니다) .</target>
+        </trans-unit>
+        <trans-unit id="02672c2bae3577e3b6b8642a622474b7f6f3b750" translate="yes" xml:space="preserve">
+          <source>The unquoted results are what's printed. The quoted result is what is returned from &lt;code&gt;yield&lt;/code&gt;. Call &lt;code&gt;next&lt;/code&gt; again now:</source>
+          <target state="translated">인용되지 않은 결과가 인쇄됩니다. 인용 된 결과는 &lt;code&gt;yield&lt;/code&gt; 에서 반환되는 것입니다. &lt;code&gt;next&lt;/code&gt; 다시 전화하십시오 :</target>
+        </trans-unit>
+        <trans-unit id="b738047d593c9d45f3f7f40a6e4eb41f8b25d5d8" translate="yes" xml:space="preserve">
+          <source>Then I can use it in other code like this:</source>
+          <target state="translated">그런 다음 다른 코드에서 다음과 같이 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="22b87c58846e1f25413204d0a0b8a1d8ed0faa70" translate="yes" xml:space="preserve">
+          <source>Then just &lt;code&gt;import itertools&lt;/code&gt;.</source>
+          <target state="translated">그런 다음 &lt;code&gt;import itertools&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="68d7286f8dc4f85d70f3ddd2982d475286c52f12" translate="yes" xml:space="preserve">
+          <source>Then, every other call will run the loop you have written in the function one more time, returning the next value until there isn't any value to return.</source>
+          <target state="translated">그런 다음 다른 모든 호출은 함수에 작성한 루프를 한 번 더 실행하여 반환 할 값이 없을 때까지 다음 값을 반환합니다.</target>
+        </trans-unit>
+        <trans-unit id="3bb53270d0d4b4b1c8ffaa313d2acf3c3c850136" translate="yes" xml:space="preserve">
+          <source>Then, your code will continue from where it left off each time &lt;code&gt;for&lt;/code&gt; uses the generator.</source>
+          <target state="translated">그런 다음 생성기 &lt;code&gt;for&lt;/code&gt; 사용할 때마다 중단 된 지점부터 코드가 계속됩니다.</target>
+        </trans-unit>
+        <trans-unit id="959039a43531d3c4457a69589ed899271db1489a" translate="yes" xml:space="preserve">
+          <source>There are 2 approaches to wrap such metadata.</source>
+          <target state="translated">이러한 메타 데이터를 래핑하는 두 가지 방법이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="1e019b6ab061a03c5c91f64a23063b53844dc5f0" translate="yes" xml:space="preserve">
+          <source>There are lots of ways to implement this computation. I used mutation, but it is easy to do it without mutation, by returning the current value and the next yielder.</source>
+          <target state="translated">이 계산을 구현하는 방법에는 여러 가지가 있습니다. 나는 돌연변이를 사용했지만 현재 가치와 다음 생산자를 반환함으로써 돌연변이없이 쉽게 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="2d7b67871d58c1c22337093d7853eafa16e73e0b" translate="yes" xml:space="preserve">
+          <source>There comes &lt;code&gt;yield&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 이 온다</target>
+        </trans-unit>
+        <trans-unit id="b0a32cb8e02d7bb4ce6cf72881e646c325fc9731" translate="yes" xml:space="preserve">
+          <source>There is another &lt;code&gt;yield&lt;/code&gt; use and meaning (since Python 3.3):</source>
+          <target state="translated">파이썬 3.3부터 다른 &lt;code&gt;yield&lt;/code&gt; 사용과 의미가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="3efe40491ef4b5d01abc9316e30e10c965a4a4c9" translate="yes" xml:space="preserve">
+          <source>There is more about it in this article about &lt;a href=&quot;http://effbot.org/zone/python-for-statement.htm&quot;&gt;how &lt;code&gt;for&lt;/code&gt; loops work&lt;/a&gt;.</source>
+          <target state="translated">이 기사에서는 &lt;a href=&quot;http://effbot.org/zone/python-for-statement.htm&quot;&gt; &lt;code&gt;for&lt;/code&gt; 루프 작동 방식 에&lt;/a&gt; 대해 자세히 설명합니다 .</target>
+        </trans-unit>
+        <trans-unit id="6f47398ac35d029b6377a0b4ddaede2532b3994a" translate="yes" xml:space="preserve">
+          <source>There is one major difference, though; see the last section.</source>
+          <target state="translated">그러나 한 가지 중요한 차이점이 있습니다. 마지막 섹션을 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="dfe628b44e21e48a9a1638275ee2cab7d93e4a99" translate="yes" xml:space="preserve">
+          <source>There is one type of answer that I don't feel has been given yet, among the many great answers that describe how to use generators. Here is the programming language theory answer:</source>
+          <target state="translated">생성기를 사용하는 방법을 설명하는 많은 훌륭한 답변 중에 아직 느끼지 못한 한 가지 유형의 답변이 있습니다. 프로그래밍 언어 이론 답변은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="869f60d5d93fd508128a38611098256c7978879c" translate="yes" xml:space="preserve">
+          <source>There's one extra thing to mention: a function that yields doesn't actually have to terminate. I've written code like this:</source>
+          <target state="translated">언급해야 할 것이 하나 더 있습니다. 수율 함수는 실제로 종료 할 필요가 없습니다. 다음과 같은 코드를 작성했습니다.</target>
+        </trans-unit>
+        <trans-unit id="761653d5f6ddfd0071e0c9f8287f586c348d08cd" translate="yes" xml:space="preserve">
+          <source>These iterables are handy because you can read them as much as you wish, but you store all the values in memory and this is not always what you want when you have a lot of values.</source>
+          <target state="translated">이 iterable은 원하는만큼 읽을 수 있기 때문에 편리하지만 모든 값을 메모리에 저장하므로 많은 값을 가질 때 항상 원하는 것은 아닙니다.</target>
+        </trans-unit>
+        <trans-unit id="847e29854b26173ea7127ee888f4830e76ab29e1" translate="yes" xml:space="preserve">
+          <source>Think of it this way:</source>
+          <target state="translated">이런 식으로 생각하십시오 :</target>
+        </trans-unit>
+        <trans-unit id="ccd34f995b2f074874396138bbe200b9f454f73e" translate="yes" xml:space="preserve">
+          <source>This code actually loops over that array twice! :(</source>
+          <target state="translated">이 코드는 실제로 해당 배열을 두 번 반복합니다! :(</target>
+        </trans-unit>
+        <trans-unit id="8d161d7ff1bebc685509da31091434ec70757135" translate="yes" xml:space="preserve">
+          <source>This code contains several smart parts:</source>
+          <target state="translated">이 코드에는 여러 가지 스마트 한 부분이 포함되어 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="95d467a037a72f1d404c008c65683f34bbcb709d" translate="yes" xml:space="preserve">
+          <source>This is basically what the Python interpreter does with the above code:</source>
+          <target state="translated">이것은 기본적으로 파이썬 인터프리터가 위의 코드로 수행하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="ea2ea6265215d15078974a1d7665827ca856c901" translate="yes" xml:space="preserve">
+          <source>This is because the presence of &lt;code&gt;yield&lt;/code&gt; signaled to Python that you want to create a &lt;em&gt;generator&lt;/em&gt;, that is, an object that generates values on demand.</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 이 존재하면 &lt;em&gt;생성기&lt;/em&gt; , 즉 요청시 값을 생성하는 객체를 생성하려는 Python에 신호를 보냈기 때문입니다.</target>
+        </trans-unit>
+        <trans-unit id="54444ced92aaabea39a670c4bad4931fb55ea203" translate="yes" xml:space="preserve">
+          <source>This is clearly a reasonable iterable whose behavior is well defined -- each time the generator iterates over it, it returns 4 (and does so forever). But it isn't probably the prototypical type of iterable that comes to mind when thinking of iterators (i.e., &lt;code&gt;for x in collection: do_something(x)&lt;/code&gt;). This example illustrates the power of generators: if anything is an iterator, a generator can save the state of its iteration.</source>
+          <target state="translated">이것은 동작이 잘 정의 된 합리적인 반복 가능한 것입니다. 제너레이터가 반복 할 때마다 4를 반환합니다 (그리고 영원히). 그러나 반복자를 생각할 때 떠오를 수있는 프로토 타입 유형의 반복 가능한 것은 아닙니다 (예 &lt;code&gt;for x in collection: do_something(x)&lt;/code&gt; ). 이 예제는 생성기의 힘을 보여줍니다. 반복자 인 경우 생성기가 반복 상태를 저장할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="6b729e4e5167e0f6ea0ad29b09ff6d8212c4d8e9" translate="yes" xml:space="preserve">
+          <source>This is how the &quot;Python iteration protocol&quot; works. That is, what is going on when you do &lt;code&gt;list(makeRange(5))&lt;/code&gt;. This is what I describe earlier as a &quot;lazy, incremental list&quot;.</source>
+          <target state="translated">이것이 &quot;Python iteration protocol&quot;의 작동 방식입니다. 즉, &lt;code&gt;list(makeRange(5))&lt;/code&gt; 할 때 일어나는 일입니다. 이것이 내가 이전에 &quot;게으른 증분 목록&quot;으로 묘사 한 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="d3493820819de86b02fd63f645e29ae4e0b50631" translate="yes" xml:space="preserve">
+          <source>This is the most simple use case of generators. As you said, it can be used to write efficient permutations, using yield to push things up through the call stack instead of using some sort of stack variable. Generators can also be used for specialized tree traversal, and all manner of other things.</source>
+          <target state="translated">이것은 발전기의 가장 간단한 사용 사례입니다. 말했듯이, 일종의 스택 변수를 사용하는 대신 yield를 사용하여 호출 스택을 통해 물건을 밀어 넣는 효율적인 순열을 작성하는 데 사용할 수 있습니다. 제너레이터는 특수 트리 탐색 및 다른 모든 방식에도 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="f172eb1953bc01c27cabdd6f9c836e9c3d1d5872" translate="yes" xml:space="preserve">
+          <source>This is what a generator does (a function that contains a &lt;code&gt;yield&lt;/code&gt;); it starts executing, pauses whenever it does a &lt;code&gt;yield&lt;/code&gt;, and when asked for a &lt;code&gt;.next()&lt;/code&gt; value it continues from the point it was last. It fits perfectly by design with the iterator protocol of Python, which describes how to sequentially request values.</source>
+          <target state="translated">이것은 제너레이터가하는 일입니다 ( &lt;code&gt;yield&lt;/code&gt; 을 포함하는 함수). 실행을 시작하고 &lt;code&gt;yield&lt;/code&gt; 를 수행 할 때마다 일시 중지되며 &lt;code&gt;.next()&lt;/code&gt; 값을 요청하면 마지막 시점부터 계속됩니다. 순차적으로 값을 요청하는 방법을 설명하는 Python의 반복자 프로토콜을 통해 설계에 완벽하게 맞습니다.</target>
+        </trans-unit>
+        <trans-unit id="c64469b38e358bb60db655f2f7dead53a870f525" translate="yes" xml:space="preserve">
+          <source>This trick may give you an idea of the logic behind the function, but what actually happens with &lt;code&gt;yield&lt;/code&gt; is significantly different than what happens in the list based approach. In many cases, the yield approach will be a lot more memory efficient and faster too. In other cases, this trick will get you stuck in an infinite loop, even though the original function works just fine. Read on to learn more...</source>
+          <target state="translated">이 트릭은 함수의 논리에 대한 아이디어를 제공 할 수 있지만 실제로 &lt;code&gt;yield&lt;/code&gt; 로 발생하는 것은 목록 기반 접근법에서 발생하는 것과 크게 다릅니다. 많은 경우 수율 접근 방식은 훨씬 더 효율적이고 빠른 메모리입니다. 다른 경우에는 원래 함수가 제대로 작동 하더라도이 트릭으로 인해 무한 루프에 빠질 수 있습니다. 자세한 내용은 계속 읽으십시오 ...</target>
+        </trans-unit>
+        <trans-unit id="fe901acdbaffa726773d1aa79c953022a37c87a8" translate="yes" xml:space="preserve">
+          <source>This was my first &quot;aha&quot; moment with yield.</source>
+          <target state="translated">이것은 수확량을 가진 나의 첫번째 &quot;aha&quot;순간이었다.</target>
+        </trans-unit>
+        <trans-unit id="06ea075137bd0bbc68755225020ab2be38ff24de" translate="yes" xml:space="preserve">
+          <source>Thus in short, a function with the following code</source>
+          <target state="translated">즉, 다음 코드를 가진 함수</target>
+        </trans-unit>
+        <trans-unit id="5d4b050e5c318bdd9abdf7fc385ecbec5643af7f" translate="yes" xml:space="preserve">
+          <source>Thus, in the unlikely event that you are failing to do something like this...</source>
+          <target state="translated">따라서, 당신이 이런 일을하지 못하는 경우에는 ...</target>
+        </trans-unit>
+        <trans-unit id="af7dabd9ee0abc1597b9509efda1778a58b95bbe" translate="yes" xml:space="preserve">
+          <source>To force the generator to immediately return its pending values, you can pass it into &lt;code&gt;list()&lt;/code&gt; (just like you could any iterable):</source>
+          <target state="translated">생성기가 보류중인 값을 즉시 반환하도록하려면 반복 가능한 것처럼 &lt;code&gt;list()&lt;/code&gt; 로 전달할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="c0114d7058a0e2d82c0d2df0bb48add203549c89" translate="yes" xml:space="preserve">
+          <source>To get a better feel for generators, you can play around with the &lt;code&gt;itertools&lt;/code&gt; module (be sure to use &lt;code&gt;chain.from_iterable&lt;/code&gt; rather than &lt;code&gt;chain&lt;/code&gt; when warranted). For example, you might even use generators to implement infinitely-long lazy lists like &lt;code&gt;itertools.count()&lt;/code&gt;. You could implement your own &lt;code&gt;def enumerate(iterable): zip(count(), iterable)&lt;/code&gt;, or alternatively do so with the &lt;code&gt;yield&lt;/code&gt; keyword in a while-loop.</source>
+          <target state="translated">발전기에 대해 더 나은 느낌을 얻으려면 &lt;code&gt;itertools&lt;/code&gt; 모듈을 가지고 놀 수 있습니다 (필요할 때 &lt;code&gt;chain&lt;/code&gt; 대신 &lt;code&gt;chain.from_iterable&lt;/code&gt; 을 사용하십시오). 예를 들어, 생성기를 사용하여 &lt;code&gt;itertools.count()&lt;/code&gt; 와 같이 무한히 긴 지연 목록을 구현할 수도 있습니다. &lt;code&gt;def enumerate(iterable): zip(count(), iterable)&lt;/code&gt; 을 구현하거나 while 루프에서 &lt;code&gt;yield&lt;/code&gt; 키워드를 사용하여 구현할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="47ee4ff7a14b54f8654a7b96763d1d5353cfb7c7" translate="yes" xml:space="preserve">
+          <source>To help understand what a &lt;code&gt;yield&lt;/code&gt; does in the following code, you can use your finger to trace the cycle through any code that has a &lt;code&gt;yield&lt;/code&gt;.  Every time your finger hits the &lt;code&gt;yield&lt;/code&gt;, you have to wait for a &lt;code&gt;next&lt;/code&gt; or a &lt;code&gt;send&lt;/code&gt; to be entered.  When a &lt;code&gt;next&lt;/code&gt; is called, you trace through the code until you hit the &lt;code&gt;yield&lt;/code&gt;&amp;hellip; the code on the right of the &lt;code&gt;yield&lt;/code&gt; is evaluated and returned to the caller&amp;hellip; then you wait.  When &lt;code&gt;next&lt;/code&gt; is called again, you perform another loop through the code.  However, you'll note that in a coroutine, &lt;code&gt;yield&lt;/code&gt; can also be used with a &lt;code&gt;send&lt;/code&gt;&amp;hellip; which will send a value from the caller &lt;em&gt;into&lt;/em&gt; the yielding function. If a &lt;code&gt;send&lt;/code&gt; is given, then &lt;code&gt;yield&lt;/code&gt; receives the value sent, and spits it out the left hand side&amp;hellip; then the trace through the code progresses until you hit the &lt;code&gt;yield&lt;/code&gt; again (returning the value at the end, as if &lt;code&gt;next&lt;/code&gt; was called).</source>
+          <target state="translated">다음 코드에서 &lt;code&gt;yield&lt;/code&gt; 이 수행하는 작업을 이해하려면 손가락을 사용하여 &lt;code&gt;yield&lt;/code&gt; 이있는 코드를 통해주기를 추적 할 수 있습니다. 손가락이 &lt;code&gt;yield&lt;/code&gt; 도달 할 때마다 &lt;code&gt;next&lt;/code&gt; 또는 &lt;code&gt;send&lt;/code&gt; 이 입력 될 때까지 기다려야합니다. &lt;code&gt;next&lt;/code&gt; 가 호출되면 &lt;code&gt;yield&lt;/code&gt; 도달 할 때까지 코드를 추적합니다. 수율 오른쪽에있는 코드가 평가되어 호출자에게 반환됩니다. 그러면 대기합니다. &lt;code&gt;next&lt;/code&gt; 가 다시 호출되면 코드를 통해 다른 루프를 수행합니다. 그러나 코 루틴에서는 &lt;code&gt;yield&lt;/code&gt; 를 &lt;code&gt;send&lt;/code&gt; 와 함께 사용할 수도 있습니다. 그러면 sender에서 yielding 함수 &lt;em&gt;로&lt;/em&gt; 값을 보냅니다. &lt;code&gt;send&lt;/code&gt; 가 주어지면 &lt;code&gt;yield&lt;/code&gt; 는 전송 된 값을 받아 왼쪽으로 뱉어냅니다. 그러면 코드를 통한 트레이스가 다시 &lt;code&gt;yield&lt;/code&gt; 에 도달 할 때까지 진행됩니다 ( &lt;code&gt;next&lt;/code&gt; 이 호출 된 것처럼 끝에 값을 반환 함).</target>
+        </trans-unit>
+        <trans-unit id="b2f6f90d2c166bfe4363d100db6a325bd8c53d50" translate="yes" xml:space="preserve">
+          <source>To implement iterators, generators, and thread pools for concurrent execution, etc. as thunks (also called anonymous functions), one uses messages sent to a closure object, which has a dispatcher, and the dispatcher answers to &quot;messages&quot;.</source>
+          <target state="translated">동시 실행을위한 반복자, 생성기 및 스레드 풀 등을 썽크 (익명 함수라고도 함)로 구현하기 위해 디스패처가있는 클로저 오브젝트에 전송 된 메시지를 사용하고 디스패처는 &quot;메시지&quot;에 응답합니다.</target>
+        </trans-unit>
+        <trans-unit id="9115b0a8c20c76763e2640100aa35118070b6a7e" translate="yes" xml:space="preserve">
+          <source>To master &lt;code&gt;yield&lt;/code&gt;, you must understand that &lt;strong&gt;when you call the function, the code you have written in the function body does not run.&lt;/strong&gt; The function only returns the generator object, this is a bit tricky :-)</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 를 마스터하려면 &lt;strong&gt;함수를 호출 할 때 함수 본문에 작성한 코드가 실행되지 않는다는&lt;/strong&gt; 것을 이해해야 &lt;strong&gt;합니다.&lt;/strong&gt; 이 함수는 생성기 객체 만 반환합니다.</target>
+        </trans-unit>
+        <trans-unit id="7b9662418d3af2db32eb7c9811a63029be459951" translate="yes" xml:space="preserve">
+          <source>To reiterate: Continuations can save the state of a program's stack and generators can save the state of iteration. This means that continuations are more a lot powerful than generators, but also that generators are a lot, lot easier. They are easier for the language designer to implement, and they are easier for the programmer to use (if you have some time to burn, try to read and understand &lt;a href=&quot;http://www.madore.org/~david/computers/callcc.html&quot;&gt;this page about continuations and call/cc&lt;/a&gt;).</source>
+          <target state="translated">반복 : 연속은 프로그램의 스택 상태를 저장할 수 있으며 생성기는 반복 상태를 저장할 수 있습니다. 즉, 연속성이 생성기보다 훨씬 강력하지만 생성기가 훨씬 더 쉽습니다. 언어 디자이너가 구현하기가 쉽고 프로그래머가 사용하기가 더 쉽습니다 (구울 시간이 있으면 &lt;a href=&quot;http://www.madore.org/~david/computers/callcc.html&quot;&gt;연속 및 call / cc에&lt;/a&gt; 대한 이 페이지 를 읽고 이해 하십시오 ).</target>
+        </trans-unit>
+        <trans-unit id="855f35ae228f90d1d655b0f84b71dcd8c195b750" translate="yes" xml:space="preserve">
+          <source>To understand what &lt;code&gt;yield&lt;/code&gt; does, you must understand what &lt;em&gt;generators&lt;/em&gt; are. And before you can understand generators, you must understand &lt;em&gt;iterables&lt;/em&gt;.</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 이 무엇인지 이해하려면 &lt;em&gt;생성기&lt;/em&gt; 가 무엇인지 이해해야합니다. 그리고 생성기를 이해하기 전에 &lt;em&gt;반복 가능한 것을&lt;/em&gt; 이해해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="3e68d29cff9fbdfeadc382da40caa5670dec8b66" translate="yes" xml:space="preserve">
+          <source>Try to get a num_list with &lt;code&gt;return&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;return&lt;/code&gt; 으로 num_list를 얻으십시오.</target>
+        </trans-unit>
+        <trans-unit id="3eb3e1a1dbeab210622a6dce745b27ec3fd6ceec" translate="yes" xml:space="preserve">
+          <source>Understanding the inner mechanisms of iteration</source>
+          <target state="translated">반복의 내부 메커니즘 이해</target>
+        </trans-unit>
+        <trans-unit id="4965a83c485d39c529c9df84037bbc4eae475d84" translate="yes" xml:space="preserve">
+          <source>User-defined classes that implement &lt;code&gt;__iter__()&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;__iter__()&lt;/code&gt; 를 구현하는 사용자 정의 클래스</target>
+        </trans-unit>
+        <trans-unit id="68ac05f8fef6cd332ab57a59a59a7b6765c2f5ba" translate="yes" xml:space="preserve">
+          <source>Uses the iterator to loop over items:</source>
+          <target state="translated">반복자를 사용하여 항목을 반복합니다.</target>
+        </trans-unit>
+        <trans-unit id="9bbf05762b1e4da7eb5da4e2336f231ae41d9fab" translate="yes" xml:space="preserve">
+          <source>Using the built-in &lt;code&gt;next()&lt;/code&gt; function, you directly invoke &lt;code&gt;.next&lt;/code&gt;/&lt;code&gt;__next__&lt;/code&gt;, forcing the generator to produce a value:</source>
+          <target state="translated">내장 &lt;code&gt;next()&lt;/code&gt; 함수를 사용하면 &lt;code&gt;.next&lt;/code&gt; / &lt;code&gt;__next__&lt;/code&gt; 를 직접 호출하여 생성기가 값을 생성하도록합니다.</target>
+        </trans-unit>
+        <trans-unit id="bcee0bd785aa39b558b7c8bc31ae6f288f6986a3" translate="yes" xml:space="preserve">
+          <source>Usually we pass a list to it:</source>
+          <target state="translated">일반적으로 목록을 전달합니다.</target>
+        </trans-unit>
+        <trans-unit id="3e5ea4b6c7fb3c82481552aaaf2cefbefc296023" translate="yes" xml:space="preserve">
+          <source>Usually, you can write code that doesn't use generators but implements the same logic. One option is to use the temporary list 'trick' I mentioned before. That will not work in all cases, for e.g. if you have infinite loops, or it may make inefficient use of memory when you have a really long list. The other approach is to implement a new iterable class SomethingIter that keeps the state in instance members and performs the next logical step in it's next() (or &lt;strong&gt;next&lt;/strong&gt;() in Python 3) method. Depending on the logic, the code inside the next() method may end up looking very complex and be prone to bugs. Here generators provide a clean and easy solution.</source>
+          <target state="translated">일반적으로 생성기를 사용하지 않지만 동일한 논리를 구현하는 코드를 작성할 수 있습니다. 한 가지 옵션은 앞에서 언급 한 임시 목록 '트릭'을 사용하는 것입니다. 무한 루프가 있거나 목록이 길면 메모리를 비효율적으로 사용할 수있는 경우와 같이 모든 경우에 작동하지는 않습니다. 다른 접근법은 인스턴스 멤버의 상태를 유지하고 next () (또는 Python 3의 &lt;strong&gt;next&lt;/strong&gt; ()) 메소드에서 다음 논리적 단계를 수행하는 새로운 반복 가능한 클래스 SomethingIter를 구현하는 것입니다. 논리에 따라 next () 메서드 내부의 코드는 매우 복잡해 보이고 버그가 발생하기 쉽습니다. 여기서 발전기는 깨끗하고 쉬운 솔루션을 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="b60b494a256a412f7ab8c496c30174516878d2d5" translate="yes" xml:space="preserve">
+          <source>What does the “yield” keyword do</source>
+          <target state="translated">&amp;ldquo;yield&amp;rdquo;키워드의 기능</target>
+        </trans-unit>
+        <trans-unit id="8564153bf26487e9c47a7a365dd4a37cb1949c87" translate="yes" xml:space="preserve">
+          <source>What happens when the method &lt;code&gt;_get_child_candidates&lt;/code&gt; is called?
+Is a list returned? A single element? Is it called again? When will subsequent calls stop?</source>
+          <target state="translated">&lt;code&gt;_get_child_candidates&lt;/code&gt; 메소드가 호출되면 어떻게됩니까? 목록이 반환됩니까? 단일 요소? 다시 호출 되나요? 후속 통화는 언제 중단됩니까?</target>
+        </trans-unit>
+        <trans-unit id="1b4f84d352af15ddc950c1b08d4d361ed4f38885" translate="yes" xml:space="preserve">
+          <source>What is the use of the &lt;code&gt;yield&lt;/code&gt; keyword in Python, and what does it do?</source>
+          <target state="translated">파이썬에서 &lt;code&gt;yield&lt;/code&gt; 키워드는 무엇이며 어떤 역할을합니까?</target>
+        </trans-unit>
+        <trans-unit id="a3a6372570b3576b2b5dd78ff44c4dd57682334c" translate="yes" xml:space="preserve">
+          <source>When &lt;code&gt;next()&lt;/code&gt; is called subsequently, it retrieves the function's belongings onto the stack and re-animates it. The function continues to compute from where it left off, oblivious to the fact that it had just spent an eternity in cold storage.</source>
+          <target state="translated">&lt;code&gt;next()&lt;/code&gt; 를 호출하면 스택에서 함수의 소지품을 검색하고 다시 애니메이션합니다. 이 기능은 중단 된 곳부터 계속 계산하여 냉장 보관에서 영원을 보냈다는 사실을 알지 못합니다.</target>
+        </trans-unit>
+        <trans-unit id="0aca1dde96511b6083cb83899e9046f371ad1461" translate="yes" xml:space="preserve">
+          <source>When &lt;code&gt;yield&lt;/code&gt; is used instead of a &lt;code&gt;return&lt;/code&gt; in a python function, that function is turned into something special called &lt;code&gt;generator function&lt;/code&gt;. That function will return an object of &lt;code&gt;generator&lt;/code&gt; type. &lt;strong&gt;The &lt;code&gt;yield&lt;/code&gt; keyword is a flag to notify the python compiler to treat such function specially.&lt;/strong&gt; Normal functions will terminate once some value is returned from it. But with the help of the compiler, the generator function &lt;strong&gt;can be thought of&lt;/strong&gt; as resumable. That is, the execution context will be restored and the execution will continue from last run. Until you explicitly call return, which will raise a &lt;code&gt;StopIteration&lt;/code&gt; exception (which is also part of the iterator protocol), or reach the end of the function. I found a lot of references about &lt;code&gt;generator&lt;/code&gt; but this &lt;a href=&quot;https://docs.python.org/dev/howto/functional.html#generators&quot;&gt;one&lt;/a&gt; from the &lt;code&gt;functional programming perspective&lt;/code&gt; is the most digestable.</source>
+          <target state="translated">파이썬 함수에서 &lt;code&gt;return&lt;/code&gt; 대신 &lt;code&gt;yield&lt;/code&gt; 를 사용하면 해당 함수는 &lt;code&gt;generator function&lt;/code&gt; 이라는 특수 함수로 바뀝니다. 이 함수는 &lt;code&gt;generator&lt;/code&gt; 유형의 객체를 반환합니다. &lt;strong&gt; &lt;code&gt;yield&lt;/code&gt; 키워드는 파이썬 컴파일러에게 이러한 기능을 특별하게 처리하도록 알리는 플래그입니다.&lt;/strong&gt; 정상적인 기능은 값이 반환되면 종료됩니다. 그러나 컴파일러의 도움으로 생성기 함수 &lt;strong&gt;는&lt;/strong&gt; 재개 가능한 &lt;strong&gt;것으로 생각할 수 있습니다&lt;/strong&gt; . 즉, 실행 컨텍스트가 복원되고 마지막 실행부터 실행이 계속됩니다. 명시 적으로 return을 호출 할 때까지 &lt;code&gt;StopIteration&lt;/code&gt; 예외 (반복자 프로토콜의 일부이기도 함)가 발생하거나 함수의 끝에 도달합니다. &lt;code&gt;generator&lt;/code&gt; 에 대한 많은 참조를 찾았지만 &lt;code&gt;functional programming perspective&lt;/code&gt; 에서 가장 많이 참조 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="b4956520f1ca1888af160527fdbeadaee79d2a28" translate="yes" xml:space="preserve">
+          <source>When a normal function is called, it puts its local variables on the stack, does some computation, then clears the stack and returns. The values of its local variables are never seen again.</source>
+          <target state="translated">일반 함수가 호출되면 로컬 변수를 스택에 놓고 계산을 한 다음 스택을 지우고 반환합니다. 지역 변수의 값은 다시 표시되지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="958c8511d450491ba26702ca0bd0c2811dde47aa" translate="yes" xml:space="preserve">
+          <source>When we call the second function, it behaves very differently to the first. The &lt;code&gt;yield&lt;/code&gt; statement might be unreachable, but if it's present anywhere, it changes the nature of what we're dealing with.</source>
+          <target state="translated">두 번째 함수를 호출하면 첫 번째 함수와 매우 다르게 동작합니다. &lt;code&gt;yield&lt;/code&gt; 명세서에 도달 할 수 없지만, 어디에나 존재하면 처리 대상의 성격이 바뀝니다.</target>
+        </trans-unit>
+        <trans-unit id="550768170ef01550f901dfdde3779cde4dea9c6b" translate="yes" xml:space="preserve">
+          <source>When you create a list, you can read its items one by one. Reading its items one by one is called iteration:</source>
+          <target state="translated">목록을 만들면 항목을 하나씩 읽을 수 있습니다. 항목을 하나씩 읽는 것을 반복이라고합니다.</target>
+        </trans-unit>
+        <trans-unit id="3b7f697cea53ab4cee00328eb8586bf8e9cddc3b" translate="yes" xml:space="preserve">
+          <source>When you enter this into your REPL and then try and call it, you'll get a mystifying result:</source>
+          <target state="translated">이것을 REPL에 입력 한 다음 전화를 걸면 신비로운 결과를 얻을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="0e20678b0bb4c25b8fa4c7b3b518c72e5245ebc8" translate="yes" xml:space="preserve">
+          <source>When you first invoke &lt;code&gt;fib&lt;/code&gt; by calling it:</source>
+          <target state="translated">&lt;code&gt;fib&lt;/code&gt; 를 처음 호출하여 호출 할 때 :</target>
+        </trans-unit>
+        <trans-unit id="b514c61a51b4ead83e3fa823a9f1c657b29464d0" translate="yes" xml:space="preserve">
+          <source>When you request an iterator from a list, it creates a new iterator. However, when you request an iterator from an iterator (which you would rarely do), it just gives you a copy of itself.</source>
+          <target state="translated">목록에서 반복자를 요청하면 새 반복자가 작성됩니다. 그러나 반복자에게 반복자를 요청하면 (거의 수행하지는 않음) 자체 사본을 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="b7cc0f0bf3ed5fc052470ce219aa6f3e30a8013e" translate="yes" xml:space="preserve">
+          <source>When you see a function with &lt;code&gt;yield&lt;/code&gt; statements, apply this easy trick to understand what will happen:</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 문이있는 함수가 표시되면 다음과 같은 간단한 트릭을 적용하여 발생하는 상황을 이해하십시오.</target>
+        </trans-unit>
+        <trans-unit id="2f6c491a0995ee077800eec24720b11c6e7f2988" translate="yes" xml:space="preserve">
+          <source>When you then request it generates the first value, directly or indirectly, it executes all statements that it finds, until it encounters a &lt;code&gt;yield&lt;/code&gt;, it then yields back the value you supplied to &lt;code&gt;yield&lt;/code&gt; and pauses. For an example that better demonstrates this, let's use some &lt;code&gt;print&lt;/code&gt; calls (replace with &lt;code&gt;print &quot;text&quot;&lt;/code&gt; if on Python 2):</source>
+          <target state="translated">그런 다음 요청하면 첫 번째 값을 직접 또는 간접적으로 생성하여 &lt;code&gt;yield&lt;/code&gt; 를 만날 때까지 찾은 모든 명령문을 실행 한 다음 수율을 제공하고 일시 중지하기 &lt;code&gt;yield&lt;/code&gt; 제공 한 값을 반환합니다. 이것을 더 잘 보여주는 예제를 위해, &lt;code&gt;print&lt;/code&gt; 호출을 사용하자 (Python 2의 경우 &lt;code&gt;print &quot;text&quot;&lt;/code&gt; 로 대체) :</target>
+        </trans-unit>
+        <trans-unit id="224be01d8e5c7c05d7fa83727c243ea08c1b6325" translate="yes" xml:space="preserve">
+          <source>Whenever &lt;code&gt;yield&lt;/code&gt; is called, it tells the function to return a continuation.  When the function is called again, it starts from wherever it left off. So, in pseudo-pseudocode (i.e., not pseudocode, but not code) the generator's &lt;code&gt;next&lt;/code&gt; method is basically as follows:</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 가 호출 될 때마다 함수에 연속을 반환하도록 지시합니다. 함수가 다시 호출되면 중단 된 위치부터 시작합니다. 따라서 의사 의사 코드 (의사 코드가 아니라 코드가 아닌)에서 생성기의 &lt;code&gt;next&lt;/code&gt; 방법은 기본적으로 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="f26fb14b01ccba778163556c3df5281b63e8507c" translate="yes" xml:space="preserve">
+          <source>Whenever you find yourself building a list from scratch, &lt;code&gt;yield&lt;/code&gt; each piece instead.</source>
+          <target state="translated">처음부터 목록을 작성하는 것을 발견 할 때마다 각 조각을 &lt;code&gt;yield&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="365379f34df99ca9b0a193c6b7d8ec4a2986c91d" translate="yes" xml:space="preserve">
+          <source>While a lot of answers show why you'd use a &lt;code&gt;yield&lt;/code&gt; to create a generator, there are more uses for &lt;code&gt;yield&lt;/code&gt;.  It's quite easy to make a coroutine, which enables the passing of information between two blocks of code.  I won't repeat any of the fine examples that have already been given about using &lt;code&gt;yield&lt;/code&gt; to create a generator.</source>
+          <target state="translated">많은 답변이 생성기를 생성하기 위해 &lt;code&gt;yield&lt;/code&gt; 를 사용하는 이유를 보여 주지만 yield 에는 더 많은 용도가 있습니다. 두 코드 블록간에 정보를 전달할 수있는 코 루틴을 만드는 것은 매우 쉽습니다. 생성기를 생성하기 위해 &lt;code&gt;yield&lt;/code&gt; 를 사용하는 것에 대해 이미 주어진 훌륭한 예제는 반복하지 않을 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="08166f360bf5ae486bc24968f9bf3f260bd29d10" translate="yes" xml:space="preserve">
+          <source>Why Use Generators?</source>
+          <target state="translated">왜 발전기를 사용해야합니까?</target>
+        </trans-unit>
+        <trans-unit id="2bba704c3c5538921356a3f491c4600284327828" translate="yes" xml:space="preserve">
+          <source>With a &lt;code&gt;yield&lt;/code&gt; function, when its code begins to run (i.e. after the function is called, returning a generator object, whose &lt;code&gt;next()&lt;/code&gt; method is then invoked), it similarly puts its local variables onto the stack and computes for a while. But then, when it hits the &lt;code&gt;yield&lt;/code&gt; statement, before clearing its part of the stack and returning, it takes a snapshot of its local variables and stores them in the generator object. It also writes down the place where it's currently up to in its code (i.e. the particular &lt;code&gt;yield&lt;/code&gt; statement).</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 함수를 사용하면 코드 실행이 시작되면 (즉, 함수가 호출 된 후 &lt;code&gt;next()&lt;/code&gt; 메서드가 호출 된 생성기 객체를 반환 한 후) 로컬 변수를 스택에 배치하고 잠시 동안 계산합니다. 그러나 &lt;code&gt;yield&lt;/code&gt; 문에 도달하면 스택의 일부를 지우고 반환하기 전에 로컬 변수의 스냅 샷을 생성하여 생성기 객체에 저장합니다. 또한 현재 코드의 현재 위치 (예 : 특정 &lt;code&gt;yield&lt;/code&gt; 문)를 기록합니다.</target>
+        </trans-unit>
+        <trans-unit id="8425e30a55cb65d01335e276892c145cda45d14d" translate="yes" xml:space="preserve">
+          <source>Yay - no more &lt;code&gt;yield&lt;/code&gt; statements! Read and figure out code.</source>
+          <target state="translated">예, 더 이상 &lt;code&gt;yield&lt;/code&gt; 진술이 없습니다! 코드를 읽고 파악하십시오.</target>
+        </trans-unit>
+        <trans-unit id="33b0fd0f74faa27daf44c1c690d408e467aa0dd1" translate="yes" xml:space="preserve">
+          <source>Yield</source>
+          <target state="translated">Yield</target>
+        </trans-unit>
+        <trans-unit id="48f955098d7be7968cf5c16d1f085bb59f48b670" translate="yes" xml:space="preserve">
+          <source>Yield gives you a generator.</source>
+          <target state="translated">수확량은 발전기를 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="cacdcd91fde152ba93b046096635f8dd9f810e6b" translate="yes" xml:space="preserve">
+          <source>Yield is &lt;strong&gt;lazy&lt;/strong&gt;, it puts off computation. A function with a yield in it &lt;em&gt;doesn't actually execute at all when you call it.&lt;/em&gt; It returns an &lt;a href=&quot;https://docs.python.org/3/reference/expressions.html#yieldexpr&quot;&gt;iterator object&lt;/a&gt; that remembers where it left off. Each time you call &lt;code&gt;next()&lt;/code&gt; on the iterator (this happens in a for-loop) execution inches forward to the next yield. &lt;code&gt;return&lt;/code&gt; raises StopIteration and ends the series (this is the natural end of a for-loop).</source>
+          <target state="translated">수율이 &lt;strong&gt;게으 르며&lt;/strong&gt; 계산이 중단됩니다. 수율이있는 함수는 &lt;em&gt;실제로 호출 할 때 전혀 실행되지 않습니다.&lt;/em&gt; 중단 된 위치를 기억하는 &lt;a href=&quot;https://docs.python.org/3/reference/expressions.html#yieldexpr&quot;&gt;반복자 객체&lt;/a&gt; 를 반환합니다. 반복자에서 &lt;code&gt;next()&lt;/code&gt; 를 호출 할 때마다 (이것은 for-loop에서 실행 됨) 실행은 다음 수율로 이동합니다. &lt;code&gt;return&lt;/code&gt; 은 StopIteration을 발생시키고 시리즈를 종료합니다 (이것은 for-loop의 자연스러운 끝입니다).</target>
+        </trans-unit>
+        <trans-unit id="ba1346186897dbbfeb506927791cbf680a8824df" translate="yes" xml:space="preserve">
+          <source>Yield is &lt;strong&gt;single-pass&lt;/strong&gt;: you can only iterate through once. When a function has a yield in it we call it a &lt;a href=&quot;https://stackoverflow.com/a/1756342/673991&quot;&gt;generator function&lt;/a&gt;. And an &lt;a href=&quot;https://stackoverflow.com/a/9884501/673991&quot;&gt;iterator&lt;/a&gt; is what it returns. Those terms are revealing. We lose the convenience of a container, but gain the power of a series that's computed as needed, and arbitrarily long.</source>
+          <target state="translated">수율은 &lt;strong&gt;단일 패스입니다&lt;/strong&gt; . 한 번만 반복 할 수 있습니다. 함수가 수율을 가지면 &lt;a href=&quot;https://stackoverflow.com/a/1756342/673991&quot;&gt;생성기 함수&lt;/a&gt; 라고 부릅니다. 그리고 &lt;a href=&quot;https://stackoverflow.com/a/9884501/673991&quot;&gt;반복자&lt;/a&gt; 는 그것이 반환하는 것입니다. 그 용어가 드러납니다. 우리는 컨테이너의 편의성을 잃지 만 필요에 따라 계산되고 임의로 긴 시리즈의 성능을 얻습니다.</target>
+        </trans-unit>
+        <trans-unit id="8eb3142ec6ce40811e7cb41ff05374c2da24d165" translate="yes" xml:space="preserve">
+          <source>Yield is &lt;strong&gt;versatile&lt;/strong&gt;. Data doesn't have to be stored all together, it can be made available one at a time. It can be infinite.</source>
+          <target state="translated">수확량은 &lt;strong&gt;다양&lt;/strong&gt; 합니다. 데이터를 모두 함께 저장할 필요는 없으며 한 번에 하나씩 사용할 수 있습니다. 무한 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="42e3a00c8f296b5fa17180ed67b9949807587502" translate="yes" xml:space="preserve">
+          <source>You can also throw an exception which can be handled in the generator
+or propagated back to the user:</source>
+          <target state="translated">생성기에서 처리하거나 사용자에게 다시 전파 할 수있는 예외를 throw 할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="3ad9323c26f58229cc6c89459957a3157bf59a21" translate="yes" xml:space="preserve">
+          <source>You can read more about the precise semantics of &lt;code&gt;yield from&lt;/code&gt; in &lt;a href=&quot;https://www.python.org/dev/peps/pep-0380/#formal-semantics&quot;&gt;PEP 380.&lt;/a&gt;</source>
+          <target state="translated">&lt;a href=&quot;https://www.python.org/dev/peps/pep-0380/#formal-semantics&quot;&gt;PEP 380&lt;/a&gt; &lt;code&gt;yield from&lt;/code&gt; 정확한 수율 의미에 대해 자세히 읽을 수 있습니다 .</target>
+        </trans-unit>
+        <trans-unit id="170b20ccfec99da9235a6ef28068af3e2591fc27" translate="yes" xml:space="preserve">
+          <source>You can stop here, or read a little bit to see an advanced use of a generator:</source>
+          <target state="translated">여기에서 멈추거나 약간만 읽으면 발전기의 고급 사용법을 볼 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="56ff330d6def0407146a91a863f8fc2587a5c6d6" translate="yes" xml:space="preserve">
+          <source>You can use it in your code as follows:</source>
+          <target state="translated">다음과 같이 코드에서 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="82929aa8decc455ab58ff5e64314ac91e1a3d659" translate="yes" xml:space="preserve">
+          <source>You create an array that you only use once (this wastes memory)</source>
+          <target state="translated">한 번만 사용하는 배열을 만듭니다 (메모리가 낭비 됨)</target>
+        </trans-unit>
+        <trans-unit id="e5238c336d39149ce635875c88df949f1a84273e" translate="yes" xml:space="preserve">
+          <source>You don't need to read the values twice.</source>
+          <target state="translated">값을 두 번 읽을 필요는 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="02fbf8c8568af6ce36580f6ee74a1c505f605eb0" translate="yes" xml:space="preserve">
+          <source>You may have a lot of children and you don't want them all stored in memory.</source>
+          <target state="translated">자녀가 많을 수 있으며 자녀가 모두 메모리에 저장되는 것을 원하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="e5126053bf6eeea52bae61ffbf604541a9b1ae8d" translate="yes" xml:space="preserve">
+          <source>You will always get [0, 1, 2] from a list object but only could retrieve them from 'the object &lt;code&gt;yield&lt;/code&gt; output' once. So, it has a new name &lt;code&gt;generator&lt;/code&gt; object as displayed in &lt;code&gt;Out[11]: &amp;lt;generator object num_list at 0x10327c990&amp;gt;&lt;/code&gt;.</source>
+          <target state="translated">리스트 객체에서 항상 [0, 1, 2]를 얻을 수 있지만 '객체 &lt;code&gt;yield&lt;/code&gt; 출력'에서 한 번만 검색 할 수 있습니다. 따라서 &lt;code&gt;Out[11]: &amp;lt;generator object num_list at 0x10327c990&amp;gt;&lt;/code&gt; 과 같이 새로운 이름 &lt;code&gt;generator&lt;/code&gt; 객체가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="2f8b14bde35e7bc3becf466f732823047f257702" translate="yes" xml:space="preserve">
+          <source>You'll have to make another if you want to use its functionality again (see footnote 2):</source>
+          <target state="translated">기능을 다시 사용하려면 다른 것을 만들어야합니다 (각주 2 참조).</target>
+        </trans-unit>
+        <trans-unit id="7ea7dca3eb3be682f93182ec4cb7bfa2d14d36ad" translate="yes" xml:space="preserve">
+          <source>Your code explained</source>
+          <target state="translated">코드 설명</target>
+        </trans-unit>
+        <trans-unit id="4c58039107bd67500d2d3318769f8f423735fd2d" translate="yes" xml:space="preserve">
+          <source>[This is the step most people forget to tell you about]</source>
+          <target state="translated">[이것은 대부분의 사람들이 당신에게 말하지 않는 단계입니다]</target>
+        </trans-unit>
+        <trans-unit id="822a8e24b36ceb4904c03d9fb614f6c229c4b157" translate="yes" xml:space="preserve">
+          <source>and use it like this;</source>
+          <target state="translated">이렇게 사용하십시오;</target>
+        </trans-unit>
+        <trans-unit id="a77a5320b0aaedb8d68bfda55fda0542b3d92a2f" translate="yes" xml:space="preserve">
+          <source>build a series of stuff</source>
+          <target state="translated">일련의 물건을 만들다</target>
+        </trans-unit>
+        <trans-unit id="d3e0b619b3729b20359ab7068cacec3bc130b31e" translate="yes" xml:space="preserve">
+          <source>continuations</source>
+          <target state="translated">continuations</target>
+        </trans-unit>
+        <trans-unit id="8225801242495db96d7b6f7c5559aeb4cf7bcbd2" translate="yes" xml:space="preserve">
+          <source>do this:</source>
+          <target state="translated">이 작업을 수행:</target>
+        </trans-unit>
+        <trans-unit id="70098eefec2efcfcd1042865cc5c5b7d99f6abcc" translate="yes" xml:space="preserve">
+          <source>eventually, you might come to an end. You don't tell me a number; you just shout, &quot;hold your horses! I'm done! No more numbers!&quot;</source>
+          <target state="translated">결국, 당신은 끝날 수 있습니다. 당신은 나에게 숫자를 말하지 않습니다; &quot;말을 잡아라! 끝났어! 더 이상 숫자가 없어!&quot;</target>
+        </trans-unit>
+        <trans-unit id="4920bb1daf53da0a3e71fa2a9e6eb26483536f6d" translate="yes" xml:space="preserve">
+          <source>it doesn't matter if &lt;code&gt;sequence&lt;/code&gt; is a list, a string, a dictionary or a generator &lt;em&gt;object&lt;/em&gt; like described above; the result is the same: you read items off a sequence one by one.</source>
+          <target state="translated">&lt;code&gt;sequence&lt;/code&gt; 가 위에서 설명한 목록, 문자열, 사전 또는 생성기 &lt;em&gt;개체&lt;/em&gt; 인지는 중요하지 않습니다. 결과는 동일합니다. 순서대로 항목을 하나씩 읽습니다.</target>
+        </trans-unit>
+        <trans-unit id="3fc77b0bc00895bd9fb6a9b4c27987e556677c13" translate="yes" xml:space="preserve">
+          <source>like barrier in the CUDA language, it will not transfer control until it gets
+  completed.</source>
+          <target state="translated">CUDA 언어의 장벽과 같이 완료 될 때까지 제어를 이전하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="75e2309b5e1075332554d77f44b43d1c7f6a103e" translate="yes" xml:space="preserve">
+          <source>simply outputs</source>
+          <target state="translated">단순히 출력</target>
+        </trans-unit>
+        <trans-unit id="7f9590246b59001286048a3a2c09550745ee2ab7" translate="yes" xml:space="preserve">
+          <source>to avoid coroutines being confused with a regular generator (today &lt;code&gt;yield&lt;/code&gt; is used in both).</source>
+          <target state="translated">코 루틴이 일반 발전기와 혼동되는 것을 피하기 위해 (오늘날 &lt;code&gt;yield&lt;/code&gt; 은 둘 다에 사용됩니다).</target>
+        </trans-unit>
+        <trans-unit id="2c520454aaae8b0b40814f37e538a2a4da92490e" translate="yes" xml:space="preserve">
+          <source>where the &lt;code&gt;yield&lt;/code&gt; keyword is actually syntactic sugar for the real generator function, basically something like:</source>
+          <target state="translated">여기서 &lt;code&gt;yield&lt;/code&gt; 키워드는 실제로 실제 생성기 함수의 구문 설탕이며 기본적으로 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="d893c24989b32aee817b8346e7ad376f369b2d24" translate="yes" xml:space="preserve">
+          <source>will print</source>
+          <target state="translated">인쇄합니다</target>
+        </trans-unit>
+        <trans-unit id="4ebe44985fd81b0255b36a096600873c8ed8bf99" translate="yes" xml:space="preserve">
+          <source>you have a generator object now waiting for a command for it to generate a value. Use &lt;code&gt;next&lt;/code&gt; and see what get's printed:</source>
+          <target state="translated">이제 값을 생성하기위한 명령을 기다리는 생성기 오브젝트가 있습니다. &lt;code&gt;next&lt;/code&gt; 사용하여 인쇄 내용을 확인하십시오.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

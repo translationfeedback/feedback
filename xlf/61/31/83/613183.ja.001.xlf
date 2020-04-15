@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/613183">
+    <body>
+      <group id="613183">
+        <trans-unit id="9c483d4be3d8a08fe699e69d364c831b1987c127" translate="yes" xml:space="preserve">
+          <source>(People who answer &quot;It is not possible to sort a dict&quot; did not read the question! In fact, &quot;I can sort on the keys, but how can I sort based on the values?&quot; clearly means that he wants a list of the keys sorted according to the value of their values.)</source>
+          <target state="translated">(「ディクトのソートはできません」と答える人は、質問を読んでいませんでした! 実際、「キーでソートはできるが、値でソートするにはどうすればいいのか」というのは、明らかにキーの値でソートされたリストが欲しいということを意味しています)。</target>
+        </trans-unit>
+        <trans-unit id="b1358a83c4ca5eecd5ab1c3e7cf5a028aa3553a7" translate="yes" xml:space="preserve">
+          <source>(intermediate) dict storage</source>
+          <target state="translated">ちゅうかんきおくそうち</target>
+        </trans-unit>
+        <trans-unit id="9fcd9b557aa59a50157b86092b80c7bc909d1021" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://docs.python.org/3.7/library/stdtypes.html#typesmapping&quot;&gt;Python 3.7 documentation&lt;/a&gt; says:</source>
+          <target state="translated">&lt;a href=&quot;https://docs.python.org/3.7/library/stdtypes.html#typesmapping&quot;&gt;Python 3.7ドキュメント&lt;/a&gt;は言う：</target>
+        </trans-unit>
+        <trans-unit id="ec74c54e590b420a7a62f35e5c578e1cc0ca18c2" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://stackoverflow.com/a/39424969/1150683&quot;&gt;As pointed out by Dilettant&lt;/a&gt;, Python 3.6 will now &lt;em&gt;keep the order&lt;/em&gt;! I thought I'd share a function I wrote that eases the sorting of an iterable (tuple, list, dict). In the latter case, you can sort either on keys or values, and it can take numeric comparison into account. &lt;strong&gt;Only for &amp;gt;= 3.6!&lt;/strong&gt;</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/a/39424969/1150683&quot;&gt;Dilettantによって指摘されたように&lt;/a&gt; 、Python 3.6は今&lt;em&gt;でも順序を維持します&lt;/em&gt; ！ イテラブル（タプル、リスト、dict）のソートを容易にするために私が書いた関数を共有したいと思いました。 後者の場合、キーまたは値のいずれかで並べ替えることができ、数値比較を考慮に入れることができます。 &lt;strong&gt;&amp;gt; = 3.6のみ！&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="dce9fb42cf4701d0a8578100bb0321f09d9a70e8" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;sorted_x&lt;/code&gt; will be a list of tuples sorted by the second element in each tuple. &lt;code&gt;dict(sorted_x) == x&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;sorted_x&lt;/code&gt; は、各タプルの2番目の要素でソートされたタプルのリストです。 &lt;code&gt;dict(sorted_x) == x&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="d8ff1f9032591ebf283b62753a8815882b515c8d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Input:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Input:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="37368c978ce40b2560ff00ceca4687bf96ce3bd6" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Original&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Original&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3ccfff51da82250c6945871fe29c0806ff574c48" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Output:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Output:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="c6c60fe6197fe2f878be54d673aa3230c819f6f7" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Rank&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Rank&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="afec97a1228becf6dc3f7caaba4540623d2dacc9" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Rofl&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Rofl&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a80eb2aafbfee5e5c21e788960a022e85cd6810f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;UPDATE: 5 DECEMBER 2015 using Python 3.5&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;更新：Python 3.5を使用した2015年12月5日&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="df65358c803c76e910ef5a42fb0381d832b1aef5" translate="yes" xml:space="preserve">
+          <source>A list of (key, value) pairs, sorted by value:</source>
+          <target state="translated">値でソートされた(キー、値)ペアのリスト。</target>
+        </trans-unit>
+        <trans-unit id="e4a4442862fdde43439113daa15c8e9e7f080fc7" translate="yes" xml:space="preserve">
+          <source>A sorted list of dict values:</source>
+          <target state="translated">dict値のソートされたリスト。</target>
+        </trans-unit>
+        <trans-unit id="dbf5dda7d52d885540366a1275464bf6e980627a" translate="yes" xml:space="preserve">
+          <source>Allow to output later as:</source>
+          <target state="translated">後で出力できるようにします。</target>
+        </trans-unit>
+        <trans-unit id="ed0bb813561a8bed524a958aa483b8946fbe8eb3" translate="yes" xml:space="preserve">
+          <source>And for those wishing to sort on keys instead of values:</source>
+          <target state="translated">また、値ではなくキーでソートしたい人のために。</target>
+        </trans-unit>
+        <trans-unit id="c486114656207e7446a90c8489bb1e93c51430c1" translate="yes" xml:space="preserve">
+          <source>And maybe quite some Stack Overflow high decorated question and answer pages will receive variants of this information and many high quality answers will require a per version update too.</source>
+          <target state="translated">そして多分かなりいくつかのStack Overflowの高装飾の質問と回答のページは、この情報の亜種を受信し、多くの高品質の回答は、あまりにもバージョンごとの更新が必要になります。</target>
+        </trans-unit>
+        <trans-unit id="e69da0f4d69493d55947edf4eaa20f30d8100c29" translate="yes" xml:space="preserve">
+          <source>As @ajcr rightfully notes: &quot;The order-preserving aspect of this new implementation is considered an implementation detail and should not be relied upon.&quot; (from the &lt;a href=&quot;https://docs.python.org/3.6/whatsnew/3.6.html&quot;&gt;whatsnew36&lt;/a&gt;) not nit picking, &lt;strong&gt;but&lt;/strong&gt; the citation was cut a bit pessimistic ;-). It continues as &quot; (this may change in the future, but it is desired to have this new dict implementation in the language for a few releases before changing the language spec to mandate order-preserving semantics for all current and future Python implementations; this also helps preserve backwards-compatibility with older versions of the language where random iteration order is still in effect, e.g. Python 3.5).&quot;</source>
+          <target state="translated">@ajcrが正しく述べているように、「この新しい実装の順序を維持する側面は、実装の詳細と見なされ、信頼すべきではありません。」 （ &lt;a href=&quot;https://docs.python.org/3.6/whatsnew/3.6.html&quot;&gt;whatsnew36&lt;/a&gt;から） 単純なピッキングでは&lt;strong&gt;なく&lt;/strong&gt; 、引用は少し悲観的になりました;-)。 「これは今後も変更される可能性がありますが、現在および将来のすべてのPython実装で順序を維持するセマンティクスを要求するように言語仕様を変更する前に、この新しいdict実装をいくつかのリリースでこの言語で実装することが望まれます。これもランダムな反復順序がまだ有効である古いバージョンの言語（Python 3.5など）との下位互換性を維持するのに役立ちます。」</target>
+        </trans-unit>
+        <trans-unit id="52a47b1fdea635ca499ca1d09f0662aef883df43" translate="yes" xml:space="preserve">
+          <source>As of &lt;a href=&quot;https://docs.python.org/3.6/whatsnew/3.6.html&quot;&gt;Python 3.6&lt;/a&gt; the built-in dict will be ordered</source>
+          <target state="translated">&lt;a href=&quot;https://docs.python.org/3.6/whatsnew/3.6.html&quot;&gt;Python 3.6以降&lt;/a&gt; 、組み込みのdictが注文されます</target>
+        </trans-unit>
+        <trans-unit id="b972899164820b6c0f7e9accaf856a4a0929888a" translate="yes" xml:space="preserve">
+          <source>As proposed in 2012 by Raymond Hettinger (cf. mail on python-dev with subject &lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2012-December/123028.html&quot;&gt;&quot;More compact dictionaries with faster iteration&quot;&lt;/a&gt;) and now (in 2016) announced in a mail by Victor Stinner to python-dev with subject &lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2016-September/146327.html&quot;&gt;&quot;Python 3.6 dict becomes compact and gets a private version; and keywords become ordered&quot;&lt;/a&gt; due to the fix/implementation of issue 27350 &lt;a href=&quot;http://bugs.python.org/issue27350&quot;&gt;&quot;Compact and ordered dict&quot;&lt;/a&gt; in Python 3.6 we will now be able, to use a built-in dict to maintain insert order!!</source>
+          <target state="translated">レイモンドヘッティンガーによって2012年に提案されたように（件名&lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2012-December/123028.html&quot;&gt;「高速な反復によるよりコンパクトな辞書」&lt;/a&gt;を含むpython-devのメールを参照）、現在（2016年に）件名が&lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2016-September/146327.html&quot;&gt;「Python 3.6 dictである&lt;/a&gt; python-devへのビクタースタナーによるメールで発表されています。コンパクトになり、プライベートバージョンを取得します。キーワードは順序付けされます。Python3.6での問題27350 &lt;a href=&quot;http://bugs.python.org/issue27350&quot;&gt;「コンパクトで順序付けられた&lt;/a&gt;辞書」の修正/実装により、組み込みの辞書を使用して挿入順序を維持できるようになります。</target>
+        </trans-unit>
+        <trans-unit id="6d5547254dcda0df07510d9309cd9159871a8adf" translate="yes" xml:space="preserve">
+          <source>As simple as: &lt;code&gt;sorted(dict1, key=dict1.get)&lt;/code&gt;</source>
+          <target state="translated">単純なもの： &lt;code&gt;sorted(dict1, key=dict1.get)&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="3797b807b9516560409c121ec971d9566f354ad2" translate="yes" xml:space="preserve">
+          <source>Because of requirements to retain backward compatability with older versions of &lt;a href=&quot;http://en.wikipedia.org/wiki/Python_%28programming_language%29&quot;&gt;Python&lt;/a&gt; I think the OrderedDict solution is very unwise. You want something that works with Python 2.7 and older versions.</source>
+          <target state="translated">古いバージョンの&lt;a href=&quot;http://en.wikipedia.org/wiki/Python_%28programming_language%29&quot;&gt;Python&lt;/a&gt;との下位互換性を維持する必要があるため、OrderedDictソリューションは非常に賢明ではないと思います。 Python 2.7以前のバージョンで動作するものが必要です。</target>
+        </trans-unit>
+        <trans-unit id="7fc0dc1f68f48edeb0f785abf10d372c5da7884d" translate="yes" xml:space="preserve">
+          <source>Before that, you had to use &lt;code&gt;OrderedDict&lt;/code&gt;.</source>
+          <target state="translated">その前に、 &lt;code&gt;OrderedDict&lt;/code&gt; を使用する必要がありました 。</target>
+        </trans-unit>
+        <trans-unit id="c22208bb5913ba1a21ed0fce5cb62a82702ac8b4" translate="yes" xml:space="preserve">
+          <source>But the collections solution mentioned in another answer is absolutely superb, because you retrain a connection between the key and value which in the case of dictionaries is extremely important.</source>
+          <target state="translated">しかし、別の回答で述べられているコレクションのソリューションは、辞書の場合には非常に重要なキーと値の間の接続を再教育するので、絶対に優れています。</target>
+        </trans-unit>
+        <trans-unit id="fbb0426e443446e34151108776c55c22e8257235" translate="yes" xml:space="preserve">
+          <source>Caveat Emptor (but also see below update 2017-12-15):</source>
+          <target state="translated">Caveat Emptor(ただし、以下のアップデート2017-12-15も参照)。</target>
+        </trans-unit>
+        <trans-unit id="9d115d8ada0328183de02344f8802046071e08b4" translate="yes" xml:space="preserve">
+          <source>Changed in version 3.7: Dictionary order is guaranteed to be insertion
+  order. This behavior was implementation detail of CPython from 3.6.</source>
+          <target state="translated">バージョン3.7での変更点:辞書の順番は挿入順であることが保証されるようになりました。この動作は3.6からのCPythonの実装の詳細です。</target>
+        </trans-unit>
+        <trans-unit id="e19c1b8f3367d6bb8589ba3ddc967d6571b2adc1" translate="yes" xml:space="preserve">
+          <source>Comments for improvement or &lt;a href=&quot;https://github.com/BramVanroy/PyLT3/blob/master/pylt3/type_helpers.py#L68-L100&quot;&gt;push requests&lt;/a&gt; welcome.</source>
+          <target state="translated">改善や&lt;a href=&quot;https://github.com/BramVanroy/PyLT3/blob/master/pylt3/type_helpers.py#L68-L100&quot;&gt;プッシュリクエストの&lt;/a&gt;コメントを歓迎します。</target>
+        </trans-unit>
+        <trans-unit id="1daaad0084c2604185e45c5a29dc6efeff0b7fce" translate="yes" xml:space="preserve">
+          <source>Details:</source>
+          <target state="translated">Details:</target>
+        </trans-unit>
+        <trans-unit id="5c1aa5fb50c6465a7277ccfd74b178f413c8e493" translate="yes" xml:space="preserve">
+          <source>Dicts can't be sorted, but you can build a sorted list from them.</source>
+          <target state="translated">辞書はソートできませんが、そこからソートされたリストを作ることができます。</target>
+        </trans-unit>
+        <trans-unit id="e40a7426836a868eacaad97b0d412b7ea487114e" translate="yes" xml:space="preserve">
+          <source>Enjoy ;-)</source>
+          <target state="translated">楽しんでください。)</target>
+        </trans-unit>
+        <trans-unit id="23b7041567e33cbc564ac905e83c0e92b5fee08b" translate="yes" xml:space="preserve">
+          <source>For instance,</source>
+          <target state="translated">例えば</target>
+        </trans-unit>
+        <trans-unit id="65d36a01a8f6776edbd6f75366a05b8607d1280b" translate="yes" xml:space="preserve">
+          <source>For the sake of completeness, I am posting a solution using &lt;a href=&quot;http://docs.python.org/2/library/heapq.html&quot;&gt;heapq&lt;/a&gt;. Note, this method will work for both numeric and non-numeric values</source>
+          <target state="translated">完全を期すために、私は&lt;a href=&quot;http://docs.python.org/2/library/heapq.html&quot;&gt;heapq&lt;/a&gt;を使用してソリューションを投稿しています 。 このメソッドは、数値と非数値の両方で機能することに注意してください</target>
+        </trans-unit>
+        <trans-unit id="db399e651953ade9b57a32080de18963dee9ed23" translate="yes" xml:space="preserve">
+          <source>Good news, so the OP's original use case of mapping pairs retrieved from a database with unique string ids as keys and numeric values as values into a built-in Python v3.6+ dict, should now respect the insert order.</source>
+          <target state="translated">良いニュースです。OPのオリジナルのユースケースである、ユニークな文字列IDをキー、数値を値としてデータベースから取得したペアをビルトインのPython v3.6+ディクトにマッピングすることで、挿入順序を尊重するようになりました。</target>
+        </trans-unit>
+        <trans-unit id="4806c2364021b8f8145a30057c39a5142245883f" translate="yes" xml:space="preserve">
+          <source>Here are the results:</source>
+          <target state="translated">その結果をご紹介します。</target>
+        </trans-unit>
+        <trans-unit id="adf960a8b8a857e77270fac2da0ca550459a93d2" translate="yes" xml:space="preserve">
+          <source>Here is a solution using zip on &lt;a href=&quot;https://docs.python.org/2/library/stdtypes.html#dictionary-view-objects&quot;&gt;&lt;code&gt;d.values()&lt;/code&gt; and &lt;code&gt;d.keys()&lt;/code&gt;&lt;/a&gt;.  A few lines down this link (on Dictionary view objects) is:</source>
+          <target state="translated">&lt;a href=&quot;https://docs.python.org/2/library/stdtypes.html#dictionary-view-objects&quot;&gt; &lt;code&gt;d.values()&lt;/code&gt; と &lt;code&gt;d.keys()&lt;/code&gt; で&lt;/a&gt; zipを使用するソリューションは次のとおりです。 このリンクの下の数行（辞書ビューオブジェクト上）は次のとおりです。</target>
+        </trans-unit>
+        <trans-unit id="5553fa99d7898bf6baf1ed473e20967f3ae88ecc" translate="yes" xml:space="preserve">
+          <source>Hopefully this will lead to a thin layer OrderedDict implementation as a first step. As @JimFasarakis-Hilliard indicated, some see use cases for the OrderedDict type also in the future. I think the Python community at large will carefully inspect, if this will stand the test of time, and what the next steps will be.</source>
+          <target state="translated">願わくば、これが最初のステップとして、薄層のOrderedDictの実装につながることを願っています。JimFasarakis-Hilliard氏が指摘したように、将来的にはOrderedDict型のユースケースも考えられています。これが時間のテストに耐えられるかどうか、そして次のステップはどうなるのか、Pythonコミュニティ全体が注意深く調査すると思います。</target>
+        </trans-unit>
+        <trans-unit id="ec1e4c7c724bb8bea9c23a91011113e2f2dce7c1" translate="yes" xml:space="preserve">
+          <source>How do I sort a dictionary by value</source>
+          <target state="translated">辞書を値でソートするには</target>
+        </trans-unit>
+        <trans-unit id="2d20e1f4226bf31aba118ac772dcfafec34c1b21" translate="yes" xml:space="preserve">
+          <source>I am writing this detailed explanation to illustrate what people often mean by &quot;I can easily sort a dictionary by key, but how do I sort by value&quot; - and I think the original post was trying to address such an issue. And the solution is to do sort of list of the keys, based on the values, as shown above.</source>
+          <target state="translated">辞書をキーでソートするのは簡単だけど、値でソートするにはどうすればいいのか」ということを説明するために、このような詳細な説明を書いているのですが、元の投稿はこのような問題に対処しようとしたものだと思います。そして、解決策としては、上記のように、値を基準にして、キーのリストのソートを行うことです。</target>
+        </trans-unit>
+        <trans-unit id="959049e8c5547d2bb3753b623ed264edbbd9fda4" translate="yes" xml:space="preserve">
+          <source>I can sort on the keys, but how can I sort based on the values?</source>
+          <target state="translated">キーでソートできますが、値でソートするにはどうすればいいですか?</target>
+        </trans-unit>
+        <trans-unit id="cf03fa7d7a1dff31b72cb2e6339b0dd11fe1316e" translate="yes" xml:space="preserve">
+          <source>I don't agree with the number one choice presented in another answer, because it throws away the keys.</source>
+          <target state="translated">別の答えで提示されたナンバーワンの選択肢は、鍵を捨ててしまうので納得できません。</target>
+        </trans-unit>
+        <trans-unit id="19d2cfeb8686f9f94ff3c5c212c2fbe9482cc5a3" translate="yes" xml:space="preserve">
+          <source>I had the same problem, and I solved it like this:</source>
+          <target state="translated">私も同じ問題を抱えていて、こんな感じで解決しました。</target>
+        </trans-unit>
+        <trans-unit id="5f8dfb8ec29a9b594931275862920fe35c9006d5" translate="yes" xml:space="preserve">
+          <source>I have a dictionary of values read from two fields in a database: a string field and a numeric field. The string field is unique, so that is the key of the dictionary.</source>
+          <target state="translated">私は、データベース内の2つのフィールド(文字列フィールドと数値フィールド)から読み取った値の辞書を持っています。文字列フィールドは一意なので、それが辞書のキーになります。</target>
+        </trans-unit>
+        <trans-unit id="efe53f30fe5f776e51a72b8489c53c1531183537" translate="yes" xml:space="preserve">
+          <source>I used the solution mentioned above (code shown below) and retained access to both keys and values and in my case the ordering was on the values, but the importance was the ordering of the keys after ordering the values.</source>
+          <target state="translated">私は上記のソリューション(以下に示すコード)を使用して、キーと値の両方へのアクセスを保持し、私の場合、順序は値の上にありましたが、重要なのは、値を順序付けした後にキーを順序付けすることでした。</target>
+        </trans-unit>
+        <trans-unit id="4c8d9aebfdbaa5e8996cdbcb84a465efd240499e" translate="yes" xml:space="preserve">
+          <source>If one wanted to sort the dictionary by keys, one could do something like:</source>
+          <target state="translated">辞書をキーでソートしたい場合は、次のようにします。</target>
+        </trans-unit>
+        <trans-unit id="886372b4f6517e74b41633e914f09cd361177499" translate="yes" xml:space="preserve">
+          <source>If say the resulting two column table expressions from a database query like:</source>
+          <target state="translated">のようなデータベースクエリの結果の2つのカラムテーブル式があるとします。</target>
+        </trans-unit>
+        <trans-unit id="530ba384f53db272ae78357967535136cbbecd05" translate="yes" xml:space="preserve">
+          <source>If values are numeric you may also use &lt;a href=&quot;https://docs.python.org/library/collections.html#collections.Counter&quot;&gt;&lt;code&gt;Counter&lt;/code&gt;&lt;/a&gt; from &lt;a href=&quot;https://docs.python.org/library/collections.html&quot;&gt;collections&lt;/a&gt;.</source>
+          <target state="translated">値が数値の場合は、 &lt;a href=&quot;https://docs.python.org/library/collections.html&quot;&gt;コレクションの&lt;/a&gt; &lt;a href=&quot;https://docs.python.org/library/collections.html#collections.Counter&quot;&gt; &lt;code&gt;Counter&lt;/code&gt; &lt;/a&gt;を使用することもできます。</target>
+        </trans-unit>
+        <trans-unit id="fbd7b56508ceabc7a444b4cb44034103a8911da3" translate="yes" xml:space="preserve">
+          <source>If you construct a dictionary with the words as keys and the number of occurrences of each word as value, simplified here as:</source>
+          <target state="translated">単語をキー、各単語の出現回数を値として辞書を構築すると、ここでは簡略化して以下のようになります。</target>
+        </trans-unit>
+        <trans-unit id="64ecdba5412ab42f84a81d39f72e0dd53bd25575" translate="yes" xml:space="preserve">
+          <source>If you do not have Python 2.7 or higher, the best you can do is iterate over the values in a generator function. (There is an &lt;code&gt;OrderedDict&lt;/code&gt; for 2.4 and 2.6  &lt;a href=&quot;https://pypi.python.org/pypi/ordereddict&quot;&gt;here&lt;/a&gt;, but</source>
+          <target state="translated">Python 2.7以降がない場合は、ジェネレーター関数の値を反復するのが最善の方法です。 （ここには2.4と2.6の &lt;code&gt;OrderedDict&lt;/code&gt; がありますが、</target>
+        </trans-unit>
+        <trans-unit id="278b19d2370d44e002afe3c1fc6c079884600a72" translate="yes" xml:space="preserve">
+          <source>If you use &lt;code&gt;keys()&lt;/code&gt;, &lt;code&gt;values()&lt;/code&gt; or &lt;code&gt;items()&lt;/code&gt; then you'll iterate in sorted order by value.</source>
+          <target state="translated">&lt;code&gt;keys()&lt;/code&gt; 、 &lt;code&gt;values()&lt;/code&gt; 、または &lt;code&gt;items()&lt;/code&gt; を使用する場合は、 値でソートされた順序で反復します。</target>
+        </trans-unit>
+        <trans-unit id="8f399ae9716bd20bde525346fde7a8b306b49128" translate="yes" xml:space="preserve">
+          <source>If you want the output as a dict, you can use &lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.OrderedDict&quot;&gt;&lt;code&gt;collections.OrderedDict&lt;/code&gt;&lt;/a&gt;:</source>
+          <target state="translated">出力を辞書として使用したい場合は、 &lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.OrderedDict&quot;&gt; &lt;code&gt;collections.OrderedDict&lt;/code&gt; &lt;/a&gt;を使用できます。</target>
+        </trans-unit>
+        <trans-unit id="352391901b326f70d9722aa5957feff2e86c0255" translate="yes" xml:space="preserve">
+          <source>If you want to sort the list in descending order, simply change the original sorting line to:</source>
+          <target state="translated">リストを降順にソートしたい場合は、元のソート行を変更するだけです。</target>
+        </trans-unit>
+        <trans-unit id="2f715ec4093e301ad450a610b8ed97fa6928b100" translate="yes" xml:space="preserve">
+          <source>If your values are integers, and you use Python 2.7 or newer, you can use &lt;a href=&quot;http://docs.python.org/py3k/library/collections.html#collections.Counter&quot;&gt;&lt;code&gt;collections.Counter&lt;/code&gt;&lt;/a&gt; instead of &lt;code&gt;dict&lt;/code&gt;. The &lt;code&gt;most_common&lt;/code&gt; method will give you all items, sorted by the value.</source>
+          <target state="translated">値が整数で、Python 2.7以降を使用している場合は、 &lt;code&gt;dict&lt;/code&gt; の代わりに&lt;a href=&quot;http://docs.python.org/py3k/library/collections.html#collections.Counter&quot;&gt; &lt;code&gt;collections.Counter&lt;/code&gt; &lt;/a&gt;を使用できます。 &lt;code&gt;most_common&lt;/code&gt; メソッドは、値でソートされたすべてのアイテムを提供します。</target>
+        </trans-unit>
+        <trans-unit id="118f05d8a2e734939f5c9a87703990a72f3b370f" translate="yes" xml:space="preserve">
+          <source>In Python 2.7, simply do:</source>
+          <target state="translated">Python 2.7では、単純に実行します。</target>
+        </trans-unit>
+        <trans-unit id="290eeabec82e3c8aa1b1669ffc4f66d4350fb678" translate="yes" xml:space="preserve">
+          <source>In Python3 since unpacking is not allowed &lt;a href=&quot;https://stackoverflow.com/a/15712231/4293057&quot;&gt;[1]&lt;/a&gt; we can use</source>
+          <target state="translated">Python3では解凍が許可されていないため&lt;a href=&quot;https://stackoverflow.com/a/15712231/4293057&quot;&gt;[1]&lt;/a&gt;使用できます</target>
+        </trans-unit>
+        <trans-unit id="0ad5fc91cbcc7675741c91b9ee65980eb88733e8" translate="yes" xml:space="preserve">
+          <source>In a &lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2017-December/151283.html&quot;&gt;mail to the python-dev list&lt;/a&gt;, Guido van Rossum declared:</source>
+          <target state="translated">&lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2017-December/151283.html&quot;&gt;python-devリストへのメールで&lt;/a&gt; 、Guido van Rossumは次のように宣言しました。</target>
+        </trans-unit>
+        <trans-unit id="6c9df1b3e786b43b4e4309c26f53926445d92b86" translate="yes" xml:space="preserve">
+          <source>In recent Python 2.7, we have the new &lt;a href=&quot;http://docs.python.org/dev/whatsnew/2.7.html#pep-372-adding-an-ordered-dictionary-to-collections&quot;&gt;OrderedDict&lt;/a&gt; type, which remembers the order in which the items were added.</source>
+          <target state="translated">最近のPython 2.7では、項目が追加された順序を記憶する新しい&lt;a href=&quot;http://docs.python.org/dev/whatsnew/2.7.html#pep-372-adding-an-ordered-dictionary-to-collections&quot;&gt;OrderedDict&lt;/a&gt;型があります。</target>
+        </trans-unit>
+        <trans-unit id="f18ab52c8cda2aaae19915a2f953f63b9ac13f42" translate="yes" xml:space="preserve">
+          <source>It can often be very handy to use &lt;b&gt;&lt;a href=&quot;http://docs.python.org/library/collections.html#collections.namedtuple&quot;&gt;namedtuple&lt;/a&gt;&lt;/b&gt;. For example, you have a dictionary of 'name' as keys and 'score' as values and you want to sort on 'score':</source>
+          <target state="translated">&lt;b&gt;&lt;a href=&quot;http://docs.python.org/library/collections.html#collections.namedtuple&quot;&gt;namedtuple&lt;/a&gt;&lt;/b&gt;を使用すると非常に便利&lt;b&gt;です&lt;/b&gt; 。 たとえば、キーとして「名前」、値として「スコア」のディクショナリがあり、「スコア」でソートしたいとします。</target>
+        </trans-unit>
+        <trans-unit id="82dd0273930eeb8d0cded8bf90e4f5874908aa18" translate="yes" xml:space="preserve">
+          <source>It is not possible to sort a dictionary, only to get a representation of a dictionary that is sorted. Dictionaries are inherently orderless, but other types, such as lists and tuples, are not. So you need an ordered data type to represent sorted values, which will be a list&amp;mdash;probably a list of tuples.</source>
+          <target state="translated">辞書をソートすることはできません。ソートされた辞書の表現を取得するためだけです。 辞書は本質的に順序がありませんが、リストやタプルなどの他のタイプはそうではありません。 したがって、並べ替えられた値を表すために順序付けられたデータ型が必要です。これはリスト、おそらくタプルのリストになります。</target>
+        </trans-unit>
+        <trans-unit id="f53089c5025a300c1602674ee911b01272ddb1ee" translate="yes" xml:space="preserve">
+          <source>It's implemented using the &lt;a href=&quot;http://en.wikipedia.org/wiki/Skip_list&quot;&gt;skip list&lt;/a&gt; datastructure.</source>
+          <target state="translated">&lt;a href=&quot;http://en.wikipedia.org/wiki/Skip_list&quot;&gt;スキップリストの&lt;/a&gt;データ構造を使用して実装されています。</target>
+        </trans-unit>
+        <trans-unit id="8b093c2d7de28dc502a20988fff41ea9dee79fd6" translate="yes" xml:space="preserve">
+          <source>Iterate through a dict and sort it by its values in descending order:</source>
+          <target state="translated">ディクトを反復処理し、その値を降順に並べ替えます。</target>
+        </trans-unit>
+        <trans-unit id="9a488d8b77c5a82e14ad0a8c7d6cee2e732d7f98" translate="yes" xml:space="preserve">
+          <source>Just learned relevant skill from &lt;a href=&quot;https://www.coursera.org/learn/python-data/lecture/0ou0N/10-tuples&quot;&gt;Python for Everybody&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;https://www.coursera.org/learn/python-data/lecture/0ou0N/10-tuples&quot;&gt;Python for Everybody&lt;/a&gt;から関連するスキルを学びました。</target>
+        </trans-unit>
+        <trans-unit id="821370123a14fead9d0d998f6afbf1d874bf9980" translate="yes" xml:space="preserve">
+          <source>Keyword arguments and</source>
+          <target state="translated">キーワードの引数と</target>
+        </trans-unit>
+        <trans-unit id="cc7cd315f64ab61fd5470b91dda121152e14fc52" translate="yes" xml:space="preserve">
+          <source>Make it so. &quot;Dict keeps insertion order&quot; is the ruling. Thanks!</source>
+          <target state="translated">そうしてください。&quot;Dict keeps insertion order &quot;が裁定です ありがとうございます!</target>
+        </trans-unit>
+        <trans-unit id="bfd1a90c4dbeb10c0b403fd2a2ae1866b05e4cb7" translate="yes" xml:space="preserve">
+          <source>Note: I have read Stack Overflow question here &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/72899&quot;&gt;How do I sort a list of dictionaries by a value of the dictionary?&lt;/a&gt;&lt;/em&gt; and probably could change my code to have a list of dictionaries, but since I do not really need a list of dictionaries I wanted to know if there is a simpler solution to sort either in ascending or descending order.</source>
+          <target state="translated">注：ここでスタックオーバーフローの質問を読みまし&lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/72899&quot;&gt;た。辞書の値で辞書のリストを並べ替える方法を教えてください。&lt;/a&gt;&lt;/em&gt; おそらく、コードを変更して辞書のリストを作成することもできますが、辞書のリストは実際には必要ないので、昇順または降順で並べ替える簡単な解決策があるかどうかを知りたいと思いました。</target>
+        </trans-unit>
+        <trans-unit id="408819897473bfb77d3c516efbbf8f673579b385" translate="yes" xml:space="preserve">
+          <source>Now you can get the name and score of, let's say the second-best player (index=1) very Pythonically like this:</source>
+          <target state="translated">これで、2 番目に良いプレイヤーの名前とスコアを取得することができます。</target>
+        </trans-unit>
+        <trans-unit id="ae7aa805565edd7a15a84a8e18ac219891280628" translate="yes" xml:space="preserve">
+          <source>Now your inverse has the values; each value has a list of applicable keys.</source>
+          <target state="translated">これで、あなたの逆行列は値を持ち、各値は適用可能なキーのリストを持っています。</target>
+        </trans-unit>
+        <trans-unit id="aeca9101b56210db3d315f390311767a2bd5c775" translate="yes" xml:space="preserve">
+          <source>Of course, remember, you need to use &lt;code&gt;OrderedDict&lt;/code&gt; because regular Python dictionaries don't keep the original order.</source>
+          <target state="translated">もちろん、通常のPython辞書では元の順序が維持されないため、 &lt;code&gt;OrderedDict&lt;/code&gt; を使用する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="ae09513ad49cfb20804117b7bfc30c26d62fef6a" translate="yes" xml:space="preserve">
+          <source>Older Python</source>
+          <target state="translated">古い Python</target>
+        </trans-unit>
+        <trans-unit id="002e9cd3e1b3bb58104645872a489641ac847e35" translate="yes" xml:space="preserve">
+          <source>On the other hand, if one wanted to sort a dictionary by value (as is asked in the question), one could do the following:</source>
+          <target state="translated">一方、辞書を値でソートしたい場合(質問にあるように)、次のようにすることができます。</target>
+        </trans-unit>
+        <trans-unit id="670cf440797c924695825d054613bf9413218498" translate="yes" xml:space="preserve">
+          <source>Or optimized slightly as suggested by John Fouhy:</source>
+          <target state="translated">あるいは、ジョン・フーイが提案したようにわずかに最適化されています。</target>
+        </trans-unit>
+        <trans-unit id="53f109972bb7b732efeb6a6602aaa8aef220fa7b" translate="yes" xml:space="preserve">
+          <source>Please notice that the order is not well defined (keys with the same value will be in an arbitrary order in the output list).</source>
+          <target state="translated">順番がうまく定義されていないことに注意してください(同じ値を持つキーは出力リストの中で任意の順番になってしまいます)。</target>
+        </trans-unit>
+        <trans-unit id="3a83a5eb1861a79fd19fdd1708ed0b22c0422daa" translate="yes" xml:space="preserve">
+          <source>Please remember to remove the parentheses after print if not using Python 3.0 or above</source>
+          <target state="translated">Python 3.0以上を使用していない場合は、印刷後に括弧を削除することを忘れないでください。</target>
+        </trans-unit>
+        <trans-unit id="c9ac9fb5a20750664c01162949392db65e25b3e8" translate="yes" xml:space="preserve">
+          <source>Pretty much the same as &lt;a href=&quot;https://stackoverflow.com/a/613207/11044033&quot;&gt;Hank Gay's answer&lt;/a&gt;:</source>
+          <target state="translated">ハンクゲイ&lt;a href=&quot;https://stackoverflow.com/a/613207/11044033&quot;&gt;の答え&lt;/a&gt;とほとんど同じです：</target>
+        </trans-unit>
+        <trans-unit id="e377e89cbd81cf623683d9ae7e1b9fe1cc7f52b8" translate="yes" xml:space="preserve">
+          <source>Python 3.6+</source>
+          <target state="translated">Python 3.6以上</target>
+        </trans-unit>
+        <trans-unit id="bb66b974fdf0f8c8b76ea5f069cb666f826a5ccd" translate="yes" xml:space="preserve">
+          <source>Raymond Hettinger kindly provided documentation explaining &quot;&lt;a href=&quot;https://dl.dropboxusercontent.com/u/3967849/sfmu2/_build/html/goal.html&quot;&gt;The Tech Behind Python 3.6 Dictionaries&lt;/a&gt;&quot; - from his San Francisco Python Meetup Group presentation 2016-DEC-08.</source>
+          <target state="translated">レイモンドヘッティンガーは、サンフランシスコのPython Meetup Groupプレゼンテーション2016-DEC-08から、「 &lt;a href=&quot;https://dl.dropboxusercontent.com/u/3967849/sfmu2/_build/html/goal.html&quot;&gt;The Tech Behind Python 3.6 Dictionaries&lt;/a&gt; 」を説明するドキュメントを提供してくれました。</target>
+        </trans-unit>
+        <trans-unit id="b570bc1342430b1e36419ee96aa70709a1110b76" translate="yes" xml:space="preserve">
+          <source>Sample Output:</source>
+          <target state="translated">サンプル出力。</target>
+        </trans-unit>
+        <trans-unit id="2778bde47201833596adec771077116147fdf473" translate="yes" xml:space="preserve">
+          <source>So as in some human languages (e.g. German), usage shapes the language, and the will now has been declared ... in &lt;a href=&quot;https://docs.python.org/3.6/whatsnew/3.6.html&quot;&gt;whatsnew36&lt;/a&gt;.</source>
+          <target state="translated">したがって、一部の人間の言語（ドイツ語など）と同様に、使用法が言語を形成し、willが宣言されました... &lt;a href=&quot;https://docs.python.org/3.6/whatsnew/3.6.html&quot;&gt;whatsnew36で&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="6ee20f02ce5e51093230a6605abb3ba0ef24c9f3" translate="yes" xml:space="preserve">
+          <source>So we can do the following:</source>
+          <target state="translated">ということで、次のようなことができます。</target>
+        </trans-unit>
+        <trans-unit id="acda178446821b9b982130e1c2eae479224cee3a" translate="yes" xml:space="preserve">
+          <source>So, the version 3.6 CPython side-effect of dict insertion ordering is now becoming part of the language spec (and not anymore only an implementation detail). That mail thread also surfaced some distinguishing design goals for &lt;code&gt;collections.OrderedDict&lt;/code&gt; as reminded by Raymond Hettinger during discussion.</source>
+          <target state="translated">したがって、dict挿入順序付けのバージョン3.6 CPython副作用は、言語仕様の一部になりました（実装の詳細だけではなくなりました）。 そのメールスレッドは、 &lt;code&gt;collections.OrderedDict&lt;/code&gt; のいくつかの際立った設計目標も表面化しました。</target>
+        </trans-unit>
+        <trans-unit id="e2ff0f9716602bfb0c7c228362251926e175097d" translate="yes" xml:space="preserve">
+          <source>Starting from Python 3.6, &lt;code&gt;dict&lt;/code&gt; objects are now ordered by insertion order. It's officially in the specs of Python 3.7.</source>
+          <target state="translated">Python 3.6から、 &lt;code&gt;dict&lt;/code&gt; オブジェクトは挿入順に並べ替えられるようになりました。 Python 3.7の仕様に正式に準拠しています。</target>
+        </trans-unit>
+        <trans-unit id="dd8309c1cbeeadfa4af4a1ccec904172f1e80356" translate="yes" xml:space="preserve">
+          <source>The OrderedDict behaves like a normal dict:</source>
+          <target state="translated">OrderedDictは通常のdictのように振る舞います。</target>
+        </trans-unit>
+        <trans-unit id="ebb83272d2dce81b6717969dfc804bf50bb3e4a4" translate="yes" xml:space="preserve">
+          <source>The first because it eases dispatch in the implementation of functions and methods in some cases.</source>
+          <target state="translated">1つ目は、場合によっては関数やメソッドの実装におけるディスパッチを容易にするためです。</target>
+        </trans-unit>
+        <trans-unit id="9d68e429e033414d865fbebd4cbdb4fe0e6b5fa4" translate="yes" xml:space="preserve">
+          <source>The official &lt;strong&gt;&lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.OrderedDict&quot;&gt;OrderedDict&lt;/a&gt;&lt;/strong&gt; documentation offers a very similar example too, but using a lambda for the sort function:</source>
+          <target state="translated">公式の&lt;strong&gt;&lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.OrderedDict&quot;&gt;OrderedDict&lt;/a&gt;&lt;/strong&gt;ドキュメントも非常によく似た例を提供していますが、並べ替え関数にラムダを使用しています。</target>
+        </trans-unit>
+        <trans-unit id="eedd59787f2bab4913748421a0efb5693512979e" translate="yes" xml:space="preserve">
+          <source>The result of this command (sorting the dictionary by value) should return the following:</source>
+          <target state="translated">このコマンドの結果(辞書を値でソートする)は、以下のように返されるはずです。</target>
+        </trans-unit>
+        <trans-unit id="4a73820a1781f576a897d199aa316d1226e59174" translate="yes" xml:space="preserve">
+          <source>The second as it encourages to more easily use &lt;code&gt;dict&lt;/code&gt;s as intermediate storage in processing pipelines.</source>
+          <target state="translated">2つ目は、 &lt;code&gt;dict&lt;/code&gt; を処理パイプラインの中間ストレージとしてより簡単に使用できるようにするためです。</target>
+        </trans-unit>
+        <trans-unit id="a48bd8b6729e278c7c49e866644b5cf1f3d55550" translate="yes" xml:space="preserve">
+          <source>This allows the creation of (value, key) pairs using zip(): pairs = zip(d.values(), d.keys()).</source>
+          <target state="translated">これにより、zip()を使用して (value,key)のペアを作成することができます:pairs=zip(d.value(),d.key())。</target>
+        </trans-unit>
+        <trans-unit id="5a337b8a023f3824abade0a69a5fe8f99c3fed0e" translate="yes" xml:space="preserve">
+          <source>This is the code:</source>
+          <target state="translated">これがコードです。</target>
+        </trans-unit>
+        <trans-unit id="6eae14349c019a73b4592f1376a60662768f3a3d" translate="yes" xml:space="preserve">
+          <source>This should return the following output:</source>
+          <target state="translated">これは以下のような出力を返すはずです。</target>
+        </trans-unit>
+        <trans-unit id="76ba6dd4c54ccf5824f678894b125a4864da152a" translate="yes" xml:space="preserve">
+          <source>This will sort the dictionary by the values of each entry within the dictionary from smallest to largest.</source>
+          <target state="translated">これは、辞書内の各エントリの値によって、最小から最大まで辞書をソートします。</target>
+        </trans-unit>
+        <trans-unit id="e0f74d83524194ea3290a4eb0ac96ada5160edc7" translate="yes" xml:space="preserve">
+          <source>This works in 3.1.x:</source>
+          <target state="translated">これは3.1.xで動作します。</target>
+        </trans-unit>
+        <trans-unit id="34a8b500ccfc2f1b0ebeb977ab6c04c06d1e9ee0" translate="yes" xml:space="preserve">
+          <source>Time to rethink our coding habits to not miss the possibilities opened by stable ordering of:</source>
+          <target state="translated">安定した順序付けによって開かれた可能性を見逃さないために、コーディングの習慣を見直す時が来ました。</target>
+        </trans-unit>
+        <trans-unit id="28c712ef2c672e8ba1a4fa22afc4900e8b5c7733" translate="yes" xml:space="preserve">
+          <source>To make a new ordered dictionary from the original, sorting by the values:</source>
+          <target state="translated">元の辞書から、値でソートして新しい順序付き辞書を作成します。</target>
+        </trans-unit>
+        <trans-unit id="6d74adb4cde790b0ee66979c3f2e6cc10a1451b8" translate="yes" xml:space="preserve">
+          <source>To sort it in descending order just add &lt;code&gt;reverse=True&lt;/code&gt;:</source>
+          <target state="translated">降順に並べ替えるには、 &lt;code&gt;reverse=True&lt;/code&gt; を追加します 。</target>
+        </trans-unit>
+        <trans-unit id="155819aadfeae59cb9cfcd9499a8ee68174a11b1" translate="yes" xml:space="preserve">
+          <source>Try the following approach. Let us define a dictionary called mydict with the following data:</source>
+          <target state="translated">次のようなアプローチを試してみてください。以下のデータでmydictという辞書を定義してみましょう。</target>
+        </trans-unit>
+        <trans-unit id="4b2f710b6a34ed5590747fa3bd39096cb443feca" translate="yes" xml:space="preserve">
+          <source>Update 2017-12-15:</source>
+          <target state="translated">2017-12-15を更新しました。</target>
+        </trans-unit>
+        <trans-unit id="fdb4a2ce501dfc70684af85d988bb2e653d52a95" translate="yes" xml:space="preserve">
+          <source>Use &lt;strong&gt;ValueSortedDict&lt;/strong&gt; from &lt;a href=&quot;http://pypi.python.org/pypi/dicts&quot;&gt;dicts&lt;/a&gt;:</source>
+          <target state="translated">&lt;a href=&quot;http://pypi.python.org/pypi/dicts&quot;&gt;dicts&lt;/a&gt;から&lt;strong&gt;ValueSortedDict&lt;/strong&gt;を使用します 。</target>
+        </trans-unit>
+        <trans-unit id="62b01fe66c6a8fecf8cce532d69c410e89bbbdc8" translate="yes" xml:space="preserve">
+          <source>Using list comprehension, the one liner would be:</source>
+          <target state="translated">リスト理解力を使うと、ワンライナーになります。</target>
+        </trans-unit>
+        <trans-unit id="b7fb9b44a3d850e5978f0baf1c7d4eaf10d6ddb7" translate="yes" xml:space="preserve">
+          <source>Well, it is actually possible to do a &quot;sort by dictionary values&quot;. Recently I had to do that in a Code Golf (Stack Overflow question &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/3169051/code-golf-word-frequency-chart#3170549&quot;&gt;Code golf: Word frequency chart&lt;/a&gt;&lt;/em&gt;). Abridged, the problem was of the kind: given a text, count how often each word is encountered and display a list of the top words, sorted by decreasing frequency.</source>
+          <target state="translated">まあ、実際には「ディクショナリ値によるソート」が可能です。 最近、私はコードゴルフでそれをしなければなりませんでした（スタックオーバーフローの質問&lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/3169051/code-golf-word-frequency-chart#3170549&quot;&gt;コードゴルフ：ワード頻度チャート&lt;/a&gt;&lt;/em&gt; ）。 要約すると、問題はそのようなものでした。テキストを指定して、各単語が出現する頻度を数え、頻度の高い順にソートされた上位の単語のリストを表示します。</target>
+        </trans-unit>
+        <trans-unit id="e541adc2d674900aa8e312e0e2e441fb8add2fc4" translate="yes" xml:space="preserve">
+          <source>When you try using sorted on an iterable that holds e.g. strings as well as ints, sorted() will fail. Of course you can force string comparison with str(). However, in some cases you want to do &lt;em&gt;actual&lt;/em&gt; numeric comparison where &lt;code&gt;12&lt;/code&gt; is smaller than &lt;code&gt;20&lt;/code&gt; (which is not the case in string comparison). So I came up with the following. When you want explicit numeric comparison you can use the flag &lt;code&gt;num_as_num&lt;/code&gt; which will try to do explicit numeric sorting by trying to convert all values to floats. If that succeeds, it will do numeric sorting, otherwise it'll resort to string comparison.</source>
+          <target state="translated">たとえば、intと同様に文字列を保持するイテラブルでソートを使用しようとすると、sorted（）は失敗します。 もちろんstr（）で文字列比較を強制できます。 ただし、場合によっては、 &lt;code&gt;12&lt;/code&gt; が &lt;code&gt;20&lt;/code&gt; より小さい&lt;em&gt;実際の&lt;/em&gt;数値比較を実行する必要があります（これは文字列比較の場合は異なります）。 だから私は次のことを思いつきました。 明示的な数値比較が必要な場合は、 &lt;code&gt;num_as_num&lt;/code&gt; フラグを使用して、すべての値を浮動小数点数に変換しようとすることにより、明示的な数値ソートを試みます。 それが成功した場合は、数値の並べ替えを行います。それ以外の場合は、文字列の比較に頼ります。</target>
+        </trans-unit>
+        <trans-unit id="0ff5b485b3755e485f0f27c0455e42a1a34a5121" translate="yes" xml:space="preserve">
+          <source>Where in the Python 3.5 install on my machine it currently yields:</source>
+          <target state="translated">私のマシンにインストールされているPython 3.5のどこでそれは現在生成されます。</target>
+        </trans-unit>
+        <trans-unit id="0dcd2e6a720561c1df622e730734fb59ebbdb067" translate="yes" xml:space="preserve">
+          <source>Whilst I found the accepted answer useful, I was also surprised that it hasn't been updated to reference &lt;strong&gt;&lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.OrderedDict&quot;&gt;OrderedDict&lt;/a&gt;&lt;/strong&gt; from the standard library &lt;strong&gt;collections&lt;/strong&gt; module as a viable, modern alternative - designed to solve exactly this type of problem.</source>
+          <target state="translated">受け入れられた回答は有用であると思いましたが、このタイプの問題を正確に解決するために設計された、実行可能な最新の代替手段として標準ライブラリ&lt;strong&gt;コレクション&lt;/strong&gt;モジュールの&lt;strong&gt;&lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.OrderedDict&quot;&gt;OrderedDict&lt;/a&gt;&lt;/strong&gt;を参照する&lt;strong&gt;ように&lt;/strong&gt;更新されていないことにも驚きました。</target>
+        </trans-unit>
+        <trans-unit id="1059a59367f309b4b55f78865a999cb543a1f136" translate="yes" xml:space="preserve">
+          <source>You can also print out every value</source>
+          <target state="translated">また、すべての値を印刷することもできます。</target>
+        </trans-unit>
+        <trans-unit id="3151f5944b8d3d80e7f39e73c10b03122061a488" translate="yes" xml:space="preserve">
+          <source>You can also use custom function that can be passed to key.</source>
+          <target state="translated">また、キーに渡すことができるカスタム関数を利用することもできます。</target>
+        </trans-unit>
+        <trans-unit id="27bd46eb9cb8a0d3c801a01821b192486f2c5fd0" translate="yes" xml:space="preserve">
+          <source>You can create an &quot;inverted index&quot;, also</source>
+          <target state="translated">転置インデックス」を作成することもできます。</target>
+        </trans-unit>
+        <trans-unit id="007ab6aff38cfad02f1f3c6d815d226b5bf12b3f" translate="yes" xml:space="preserve">
+          <source>You can use a &lt;a href=&quot;https://pypi.python.org/pypi/skipdict/1.0&quot;&gt;skip dict&lt;/a&gt; which is a dictionary that's permanently sorted by value.</source>
+          <target state="translated">値で永続的にソートされる辞書である&lt;a href=&quot;https://pypi.python.org/pypi/skipdict/1.0&quot;&gt;スキップディクテーション&lt;/a&gt;を使用できます。</target>
+        </trans-unit>
+        <trans-unit id="3108b3a9adc0f05687add83a67ccd81aacce791b" translate="yes" xml:space="preserve">
+          <source>You can use the &lt;a href=&quot;http://docs.python.org/2/library/collections.html#collections.Counter&quot;&gt;collections.Counter&lt;/a&gt;. Note, this will work for both numeric and non-numeric values.</source>
+          <target state="translated">&lt;a href=&quot;http://docs.python.org/2/library/collections.html#collections.Counter&quot;&gt;collections.Counter&lt;/a&gt;を使用できます。 これは数値と非数値の両方で機能することに注意してください。</target>
+        </trans-unit>
+        <trans-unit id="c532773b5fa5995d94c7324ea49825da9f88b956" translate="yes" xml:space="preserve">
+          <source>You could use:</source>
+          <target state="translated">使えますよ。</target>
+        </trans-unit>
+        <trans-unit id="6df57e615bb0295e689e6bd74bbb12cbca93f286" translate="yes" xml:space="preserve">
+          <source>You may use a temporary list to help you to sort the dictionary:</source>
+          <target state="translated">辞書の並び替えには一時的なリストを使うと良いでしょう。</target>
+        </trans-unit>
+        <trans-unit id="ff9ad3134a5822c19feae380c1e7d9d5fa9876c7" translate="yes" xml:space="preserve">
+          <source>a) I don't know about how well it works</source>
+          <target state="translated">a)どの程度の効果があるのかわからない</target>
+        </trans-unit>
+        <trans-unit id="cffa50a32cb13a240d705317bcec65dd1f31b6ad" translate="yes" xml:space="preserve">
+          <source>and</source>
+          <target state="translated">and</target>
+        </trans-unit>
+        <trans-unit id="d1a8efb81673d316b32cbbe97f95b76ebfdf49bc" translate="yes" xml:space="preserve">
+          <source>b) You have to download and install it of course. If you do not have administrative access, then I'm afraid the option's out.)</source>
+          <target state="translated">b)もちろんダウンロードしてインストールする必要があります。管理者権限を持っていない場合は、このオプションは使えません)</target>
+        </trans-unit>
+        <trans-unit id="74178a464783731b5d38fbd4adc3bae7678fe329" translate="yes" xml:space="preserve">
+          <source>copy-paste from : &lt;a href=&quot;http://docs.python.org/dev/library/collections.html#ordereddict-examples-and-recipes&quot;&gt;http://docs.python.org/dev/library/collections.html#ordereddict-examples-and-recipes&lt;/a&gt;</source>
+          <target state="translated">コピーして貼り付け： &lt;a href=&quot;http://docs.python.org/dev/library/collections.html#ordereddict-examples-and-recipes&quot;&gt;http&lt;/a&gt; : //docs.python.org/dev/library/collections.html#ordereddict-examples-and-recipes</target>
+        </trans-unit>
+        <trans-unit id="c798e426037d4b494533e05c7688caa4c6717921" translate="yes" xml:space="preserve">
+          <source>in the same ordering per value of v.</source>
+          <target state="translated">を v の値ごとに同じ順序で指定します。</target>
+        </trans-unit>
+        <trans-unit id="e410766845cb84b4856929c8042ce3f998f22bde" translate="yes" xml:space="preserve">
+          <source>sorting with highest score first:</source>
+          <target state="translated">最高のスコアから順にソートします。</target>
+        </trans-unit>
+        <trans-unit id="39d011e92a95017607a9554d19f2a6ae86c40008" translate="yes" xml:space="preserve">
+          <source>sorting with lowest score first:</source>
+          <target state="translated">スコアの低い方から順にソートしていきます。</target>
+        </trans-unit>
+        <trans-unit id="92d9544b873d56bf9d3c07f1386ce6f039a937a0" translate="yes" xml:space="preserve">
+          <source>then you can get a list of the words, ordered by frequency of use with &lt;a href=&quot;https://docs.python.org/library/functions.html#sorted&quot;&gt;&lt;code&gt;sorted(d, key=d.get)&lt;/code&gt;&lt;/a&gt; - the sort iterates over the dictionary keys, using the number of word occurrences as a sort key .</source>
+          <target state="translated">次に、 &lt;a href=&quot;https://docs.python.org/library/functions.html#sorted&quot;&gt; &lt;code&gt;sorted(d, key=d.get)&lt;/code&gt; &lt;/a&gt;を使用して、使用頻度で並べ替えられた単語のリストを取得できます。ソートは、出現する単語の数をソートキーとして使用して、辞書キーを反復処理します。</target>
+        </trans-unit>
+        <trans-unit id="1e480c669a446cd2cfa32c42668447a5643e9435" translate="yes" xml:space="preserve">
+          <source>would be stored in two Python tuples, k_seq and v_seq (aligned by numerical index and with the same length of course), then:</source>
+          <target state="translated">は、k_seqとv_seqという2つのPythonタプルに格納されます(数値インデックスで整列され、もちろん長さは同じです)。</target>
+        </trans-unit>
+        <trans-unit id="979077738bfbc204b3c1724499e5c0b8eb3586f4" translate="yes" xml:space="preserve">
+          <source>yielding in this case (for the new Python 3.6+ built-in dict!):</source>
+          <target state="translated">この場合は、(新しいPython 3.6+の組み込みdictのために!)</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

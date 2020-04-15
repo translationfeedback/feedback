@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/5605125">
+    <body>
+      <group id="5605125">
+        <trans-unit id="661ce7de198e19441a19b098dbeac4e977f1bc20" translate="yes" xml:space="preserve">
+          <source>(&lt;em&gt;Thanks Tony D for the suggestion to highlight the answer. See his comment below for an example to why this is more robust.&lt;/em&gt;)</source>
+          <target state="translated">（ &lt;em&gt;答えを強調する提案をしてくれたTony Dに感謝します。これがより堅牢である理由の例については、以下の彼のコメントを参照してください。&lt;/em&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="bdeb93d3b21a2f1ee66d1a9cc57336514109d702" translate="yes" xml:space="preserve">
+          <source>(If your standard library conforms to C++11, things are a bit different now: A failed &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; now sets numeric variables to &lt;code&gt;0&lt;/code&gt; instead of leaving them uninitialized (except for &lt;code&gt;char&lt;/code&gt;s).)</source>
+          <target state="translated">（標準ライブラリがC ++ 11に準拠している場合、状況は少し異なります。失敗した &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; は、数値変数を初期化しないでおく代わりに &lt;code&gt;0&lt;/code&gt; に設定します（ &lt;code&gt;char&lt;/code&gt; を除く）。）</target>
+        </trans-unit>
+        <trans-unit id="bfed0edb8bb8a64f36a16149180d9b008cb1856f" translate="yes" xml:space="preserve">
+          <source>(This should manifest a bit differently since C++11 (see above): Now you get a &quot;phantom record&quot; of zeroes instead of a repeated last line.)</source>
+          <target state="translated">(これは C++11 (上記を参照)からは少し違った形で現れるはずです。これで、最後の行が繰り返される代わりにゼロの「幻のレコード」が得られるようになりました)。</target>
+        </trans-unit>
+        <trans-unit id="aea9f8f8cc2b79c630130289b0b320297ff84039" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;std::ws&lt;/code&gt; skips any potential (zero or more) trailing space in the stream while setting the &lt;code&gt;eofbit&lt;/code&gt;, and &lt;strong&gt;not the &lt;code&gt;failbit&lt;/code&gt;&lt;/strong&gt;.  So, &lt;code&gt;in.fail()&lt;/code&gt; works as expected, as long as there is at least one data to read. If all-blank streams are also acceptable, then the correct form is:</source>
+          <target state="translated">&lt;code&gt;std::ws&lt;/code&gt; は、 &lt;code&gt;eofbit&lt;/code&gt; では&lt;strong&gt;なく&lt;/strong&gt; eofbitを設定するときに 、ストリーム内の潜在的な（ゼロ以上の）後続スペースを&lt;strong&gt; &lt;code&gt;failbit&lt;/code&gt; &lt;/strong&gt;ます。 したがって、読み取るデータが少なくとも1つある限り、 &lt;code&gt;in.fail()&lt;/code&gt; は期待どおりに動作します。 すべて空白のストリームも許容できる場合、正しい形式は次のとおりです。</target>
+        </trans-unit>
+        <trans-unit id="1110bde66c337dedaa84d48c940085fb7ceb4c66" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;while(in&amp;gt;&amp;gt;data)&lt;/code&gt; terminates with a set &lt;code&gt;failbit&lt;/code&gt; for &lt;em&gt;all&lt;/em&gt; three input. In the first and third, &lt;code&gt;eofbit&lt;/code&gt; is also set. So past the loop one needs very ugly extra logic to distinguish a proper input (1st) from improper ones (2nd and 3rd).</source>
+          <target state="translated">&lt;code&gt;while(in&amp;gt;&amp;gt;data)&lt;/code&gt; は、3つの入力&lt;em&gt;すべて&lt;/em&gt;に対して設定された &lt;code&gt;failbit&lt;/code&gt; で終了します。 1番目と3番目では、 &lt;code&gt;eofbit&lt;/code&gt; も設定されています。 したがって、ループを過ぎると、適切な入力（1番目）と不適切な入力（2番目と3番目）を区別するために、非常に醜い追加のロジックが必要になります。</target>
+        </trans-unit>
+        <trans-unit id="cda43a337ae2b88b70fccea1970b67cae8752489" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Bottom-line top:&lt;/strong&gt;  With proper handling of white-space, the following is how &lt;code&gt;eof&lt;/code&gt; can be used (and even, be more reliable than &lt;code&gt;fail()&lt;/code&gt; for error checking):</source>
+          <target state="translated">&lt;strong&gt;結論：&lt;/strong&gt;空白を適切に処理すると、次のように &lt;code&gt;eof&lt;/code&gt; を使用できます（エラーチェックでは &lt;code&gt;fail()&lt;/code&gt; よりも信頼性が高くなります）。</target>
+        </trans-unit>
+        <trans-unit id="6224ae8773663a9e9b39ea4cbccdebcbc585b4fb" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Summary:&lt;/strong&gt; A properly constructed &lt;code&gt;while(!eof)&lt;/code&gt; is not only possible and not wrong, but allows data to be localized within scope, and provides a cleaner separation of error checking from business as usual.  That being said, &lt;code&gt;while(!fail)&lt;/code&gt; is inarguably a more common and terse idiom, and may be preferred in simple (single data per read type of) scenarios.</source>
+          <target state="translated">&lt;strong&gt;概要：&lt;/strong&gt;正しく構築された &lt;code&gt;while(!eof)&lt;/code&gt; は、可能で間違っていないだけでなく、スコープ内でデータをローカライズできるようにし、通常どおりエラーチェックをビジネスから明確に分離します。 そうは言っても、 &lt;code&gt;while(!fail)&lt;/code&gt; は間違いなくより一般的で簡潔なイディオムであり、単純な（読み取りタイプごとに単一のデータ）シナリオで好まれます。</target>
+        </trans-unit>
+        <trans-unit id="302941c5face0f4ff83c4b75c867c630511d9839" translate="yes" xml:space="preserve">
+          <source>Against this:</source>
+          <target state="translated">これに対抗して</target>
+        </trans-unit>
+        <trans-unit id="deaeba5ed1d27aaeac8cbcfa1b876c87be3613a9" translate="yes" xml:space="preserve">
+          <source>And on your second question: Because</source>
+          <target state="translated">2つ目の質問の件ですが なぜなら</target>
+        </trans-unit>
+        <trans-unit id="3cc54ced6af94de91efda0240caaeacbb7adb4fd" translate="yes" xml:space="preserve">
+          <source>Because &lt;code&gt;iostream::eof&lt;/code&gt; will only return &lt;code&gt;true&lt;/code&gt;&lt;em&gt;after&lt;/em&gt; reading the end of the stream. It does &lt;em&gt;not&lt;/em&gt; indicate, that the next read will be the end of the stream.</source>
+          <target state="translated">&lt;code&gt;iostream::eof&lt;/code&gt; は、ストリームの最後を読み取った&lt;em&gt;後に&lt;/em&gt;のみ &lt;code&gt;true&lt;/code&gt; &lt;em&gt;を&lt;/em&gt;返すためです。 次の読み取りがストリームの終わりになることは示していませ&lt;em&gt;ん&lt;/em&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="029a9b58857b6cb4dccf290c680b582cc8b10e1d" translate="yes" xml:space="preserve">
+          <source>Because if programmers don't write &lt;code&gt;while(stream &amp;gt;&amp;gt; n)&lt;/code&gt;, they possibly write this:</source>
+          <target state="translated">プログラマが &lt;code&gt;while(stream &amp;gt;&amp;gt; n)&lt;/code&gt; 書かない場合、おそらくこれを書くでしょう：</target>
+        </trans-unit>
+        <trans-unit id="db1a45ba8ad69aed79f15f7cdd8a34abf03fdf66" translate="yes" xml:space="preserve">
+          <source>Consider this (and assume then next read will be at the end of the stream):</source>
+          <target state="translated">これを考えてみてください(そして、次の読み取りはストリームの最後にあると仮定してください)。</target>
+        </trans-unit>
+        <trans-unit id="a0e2c9f5f889a9844d021059c48bcc4f2ba4f4bb" translate="yes" xml:space="preserve">
+          <source>Here the problem is, you cannot do &lt;code&gt;some work on n&lt;/code&gt; without first checking if the stream read was successful, because if it was unsuccessful, your &lt;code&gt;some work on n&lt;/code&gt; would produce undesired result.</source>
+          <target state="translated">ここでの問題は、ストリームの読み取りが成功したかどうかを最初に確認せず &lt;code&gt;some work on n&lt;/code&gt; 行うことはできません。失敗した場合 &lt;code&gt;some work on n&lt;/code&gt; によって望ましくない結果が生じるためです。</target>
+        </trans-unit>
+        <trans-unit id="ef6e2fba7528594341d24a51147b987e7bf8953c" translate="yes" xml:space="preserve">
+          <source>Here, &lt;code&gt;in.fail()&lt;/code&gt; verifies that as long as there is something to read, it is the correct one. It's purpose is not a mere while-loop terminator.</source>
+          <target state="translated">ここで、 &lt;code&gt;in.fail()&lt;/code&gt; は、読み取るものがある限り、それが正しいものであることを確認します。 その目的は単なるwhileループのターミネーターではありません。</target>
+        </trans-unit>
+        <trans-unit id="517b5da4da10a404eacedc6ab8641d5d46a6eaaf" translate="yes" xml:space="preserve">
+          <source>How is it different from using &lt;code&gt;scanf(&quot;...&quot;,...)!=EOF&lt;/code&gt; in C (which I often use with no problems)?</source>
+          <target state="translated">&lt;code&gt;scanf(&quot;...&quot;,...)!=EOF&lt;/code&gt; をCで使用する場合とはどう違うのですか（私はよく問題なく使用しています）？</target>
+        </trans-unit>
+        <trans-unit id="81edff2ea8409d76e3dac457474cc9d6ff5b73df" translate="yes" xml:space="preserve">
+          <source>I just found a comment in &lt;a href=&quot;https://stackoverflow.com/questions/5578631/c-how-do-you-stop-reading-integer-from-text-file-when-encounter-negative-intege/5578649#5578649&quot;&gt;this&lt;/a&gt; answer saying that using &lt;code&gt;iostream::eof&lt;/code&gt; in a loop condition is &quot;almost certainly wrong&quot;. I generally use something like &lt;code&gt;while(cin&amp;gt;&amp;gt;n)&lt;/code&gt; - which I guess implicitly checks for EOF.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/questions/5578631/c-how-do-you-stop-reading-integer-from-text-file-when-encounter-negative-intege/5578649#5578649&quot;&gt;この&lt;/a&gt;回答で、ループ条件で &lt;code&gt;iostream::eof&lt;/code&gt; を使用することは「ほぼ間違いなく」間違っているというコメントを見つけました。 私は一般的に &lt;code&gt;while(cin&amp;gt;&amp;gt;n)&lt;/code&gt; ようなものを使用します-これは暗黙的にEOFをチェックしていると思います。</target>
+        </trans-unit>
+        <trans-unit id="f2d38ded8a136d73a71ea12c4ddac0f42576c411" translate="yes" xml:space="preserve">
+          <source>If the stream contains malformed data but you only check for &lt;code&gt;.eof&lt;/code&gt;, you end up with an infinite loop. &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; will fail to extract any data from the stream, so the loop spins in place without ever reaching the end.</source>
+          <target state="translated">ストリームに不正な形式のデータが含まれているが、 &lt;code&gt;.eof&lt;/code&gt; のみをチェックする場合、無限ループに陥ります。 &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; はストリームからのデータの抽出に失敗するため、ループは最後まで到達せずに所定の位置でスピンします。</target>
+        </trans-unit>
+        <trans-unit id="8e0381511e6677cd720a12eb832a1867f5700871" translate="yes" xml:space="preserve">
+          <source>If the stream is empty, the loop will run once. &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; will fail (there is no input to be read) and all variables that were supposed to be set (by &lt;code&gt;stream &amp;gt;&amp;gt; x&lt;/code&gt;) are actually uninitialized. This leads to garbage data being processed, which can manifest as nonsensical results (often huge numbers).</source>
+          <target state="translated">ストリームが空の場合、ループは1回実行されます。 &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; は失敗し（読み込まれる入力はありません）、（ &lt;code&gt;stream &amp;gt;&amp;gt; x&lt;/code&gt; によって）設定されることになっていたすべての変数は実際には初期化されていません。 これにより、処理されているガーベッジデータが、無意味な結果（多くの場合、膨大な数）として現れる可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="12591e2b26e7f20426a17ba90718891826abf5c3" translate="yes" xml:space="preserve">
+          <source>If the stream is not empty, the loop will run again after the last valid input. Since in the last iteration all &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; operations fail, variables are likely to keep their value from the previous iteration. This can manifest as &quot;the last line is printed twice&quot; or &quot;the last input record is processed twice&quot;.</source>
+          <target state="translated">ストリームが空でない場合、ループは最後の有効な入力の後に再度実行されます。 最後の反復ではすべての &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; 操作が失敗するため、変数は前の反復の値を維持する可能性があります。 これは、「最後の行が2回印刷される」、または「最後の入力レコードが2回処理される」として現れる可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="dcf488991d737575ffc6d155244c2b5f7c4bff6e" translate="yes" xml:space="preserve">
+          <source>In general terms, checking for &lt;code&gt;eof&lt;/code&gt;&lt;em&gt;only&lt;/em&gt; is wrong because stream extraction (&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;) can fail without hitting the end of the file. If you have e.g. &lt;code&gt;int n; cin &amp;gt;&amp;gt; n;&lt;/code&gt; and the stream contains &lt;code&gt;hello&lt;/code&gt;, then &lt;code&gt;h&lt;/code&gt; is not a valid digit, so extraction will fail without reaching the end of the input.</source>
+          <target state="translated">一般的に言えば、ストリームの抽出（ &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; ）はファイルの終わりに達することなく失敗する可能性があるため、 &lt;code&gt;eof&lt;/code&gt; &lt;em&gt;のみの&lt;/em&gt;チェックは間違っています。 たとえば &lt;code&gt;int n; cin &amp;gt;&amp;gt; n;&lt;/code&gt; cin &amp;gt;&amp;gt; n; ストリームに &lt;code&gt;hello&lt;/code&gt; が含まれている場合、 &lt;code&gt;h&lt;/code&gt; は有効な数字ではないため、入力の最後に到達しないと抽出は失敗します。</target>
+        </trans-unit>
+        <trans-unit id="e5cb725cb30b80fd47d08c987da533cdb5bfd4d8" translate="yes" xml:space="preserve">
+          <source>So far so good, but what happens if there is trailing space in the stream -- what sounds like the major concern against &lt;code&gt;eof()&lt;/code&gt; as terminator?</source>
+          <target state="translated">これまでのところ良いですが、ストリームに末尾のスペースがある場合はどうなりますか？ターミネータとしての &lt;code&gt;eof()&lt;/code&gt; に対する主な懸念のように聞こえますか？</target>
+        </trans-unit>
+        <trans-unit id="2bc7cd9ab0a7c989dc4a625e4cb86cc64e908ed2" translate="yes" xml:space="preserve">
+          <source>The failure due to read attempt beyond eof is taken as the termination condition.  This means is that there is no easy way to distinguish between a successful stream and one that really fails for reasons other than eof. Take the following streams:</source>
+          <target state="translated">eofを超えた読み込み試行による失敗を終了条件とします。つまり、成功したストリームとEOF以外の理由で本当に失敗したストリームを簡単に区別する方法がないということです。以下のストリームを考えてみましょう。</target>
+        </trans-unit>
+        <trans-unit id="da040a0d800cccfdae77e8ce179c432eea02d925" translate="yes" xml:space="preserve">
+          <source>The main argument against using &lt;code&gt;eof()&lt;/code&gt; seems to be missing an important subtlety about the role of white space. My proposition is that, checking &lt;code&gt;eof()&lt;/code&gt; explicitly is not only not &quot;&lt;em&gt;always wrong&lt;/em&gt;&quot; -- which seems to be an overriding opinion in this and similar SO threads --, but with proper handling of white-space, it provides for a cleaner and more reliable error handling, and is the &lt;em&gt;always correct&lt;/em&gt; solution (although, not necessarily the tersest).</source>
+          <target state="translated">&lt;code&gt;eof()&lt;/code&gt; の使用に対する主な議論は、空白の役割に関する重要な微妙な点を見落としているようです。 私の命題は、 &lt;code&gt;eof()&lt;/code&gt; を明示的にチェックすることは、「 &lt;em&gt;常に間違っている&lt;/em&gt; 」だけではなく、これと同様のSOスレッドで最も重要な意見であるように見えるだけでなく、空白を適切に処理することで、よりクリーンになるということです。より信頼性の高いエラー処理であり、 &lt;em&gt;常に正しい&lt;/em&gt;ソリューションです（ただし、必ずしも最も簡潔ではありません）。</target>
+        </trans-unit>
+        <trans-unit id="ca5e6735dd0f12cd493f7a626298dc902793f9f2" translate="yes" xml:space="preserve">
+          <source>The other answers have explained why the logic is wrong in &lt;code&gt;while (!stream.eof())&lt;/code&gt; and how to fix it. I want to focus on something different:</source>
+          <target state="translated">他の答えは、ロジックが &lt;code&gt;while (!stream.eof())&lt;/code&gt; 間違っている理由（！stream.eof（））とそれを修正する方法を説明しています。 別のことに焦点を当てたい：</target>
+        </trans-unit>
+        <trans-unit id="ab684f64f3ea61af87e7c27a9dd94156d187cfa5" translate="yes" xml:space="preserve">
+          <source>The whole point is that, &lt;code&gt;eofbit&lt;/code&gt;, &lt;code&gt;badbit&lt;/code&gt;, or &lt;code&gt;failbit&lt;/code&gt; are set &lt;strong&gt;after an attempt is made to read from the stream.&lt;/strong&gt; So if &lt;code&gt;stream &amp;gt;&amp;gt; n&lt;/code&gt; fails, then &lt;code&gt;eofbit&lt;/code&gt;, &lt;code&gt;badbit&lt;/code&gt;, or &lt;code&gt;failbit&lt;/code&gt; is set immediately, so its more idiomatic if you write &lt;code&gt;while (stream &amp;gt;&amp;gt; n)&lt;/code&gt;, because the returned object &lt;code&gt;stream&lt;/code&gt; converts to &lt;code&gt;false&lt;/code&gt; if there was some failure in reading from the stream and consequently the loop stops. And it converts to &lt;code&gt;true&lt;/code&gt; if the read was successful and the loop continues.</source>
+          <target state="translated">重要なのは&lt;strong&gt;、ストリームからの読み取りが試行&lt;/strong&gt;された&lt;strong&gt;後に&lt;/strong&gt; 、 &lt;code&gt;eofbit&lt;/code&gt; 、 &lt;code&gt;badbit&lt;/code&gt; 、または &lt;code&gt;failbit&lt;/code&gt; が設定さ&lt;strong&gt;れるということです。&lt;/strong&gt; したがって、 &lt;code&gt;stream &amp;gt;&amp;gt; n&lt;/code&gt; が失敗すると、 &lt;code&gt;eofbit&lt;/code&gt; 、 &lt;code&gt;badbit&lt;/code&gt; 、または &lt;code&gt;failbit&lt;/code&gt; がすぐに設定されます。そのため、 &lt;code&gt;while (stream &amp;gt;&amp;gt; n)&lt;/code&gt; を書き込むと、より慣用的になります。これは、からの読み取りに失敗した場合、返されたオブジェクト &lt;code&gt;stream&lt;/code&gt; が &lt;code&gt;false&lt;/code&gt; に変換されるためです。ストリームとその結果としてループが停止します。 そして、読み取りが成功し、ループが継続する場合は、 &lt;code&gt;true&lt;/code&gt; に変換されます 。</target>
+        </trans-unit>
+        <trans-unit id="0fb4eee4ccb5789e369fe19eb73ae1d7d1775fc0" translate="yes" xml:space="preserve">
+          <source>This issue, combined with the general logic error of checking the stream state &lt;em&gt;before&lt;/em&gt; attempting to read from it, which means for N input items the loop will run N+1 times, leads to the following symptoms:</source>
+          <target state="translated">この問題と、読み取りを試みる&lt;em&gt;前に&lt;/em&gt;ストリームの状態を確認するという一般的な論理エラーが組み合わさると、N個の入力項目に対してループがN + 1回実行され、次の症状が発生します。</target>
+        </trans-unit>
+        <trans-unit id="102e51fea7eb97a272da36cb2c7e2a57a5c244fe" translate="yes" xml:space="preserve">
+          <source>To recap: The solution is to test the success of the &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; operation itself, not to use a separate &lt;code&gt;.eof()&lt;/code&gt; method: &lt;code&gt;while (stream &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m) { ... }&lt;/code&gt;, just as in C you test the success of the &lt;code&gt;scanf&lt;/code&gt; call itself: &lt;code&gt;while (scanf(&quot;%d%d&quot;, &amp;amp;n, &amp;amp;m) == 2) { ... }&lt;/code&gt;.</source>
+          <target state="translated">要約すると：解決策は、 &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; オペレーション自体の成功をテストすることであり、個別の &lt;code&gt;.eof()&lt;/code&gt; メソッドを使用しないことです。while &lt;code&gt;while (stream &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m) { ... }&lt;/code&gt; 、Cと同様にテスト &lt;code&gt;scanf&lt;/code&gt; 呼び出し自体の成功： &lt;code&gt;while (scanf(&quot;%d%d&quot;, &amp;amp;n, &amp;amp;m) == 2) { ... }&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="a0a66347155573856fc34cd9f2b691d806d1bd86" translate="yes" xml:space="preserve">
+          <source>To summarize what is being suggested as the &quot;proper&quot; termination and read order is the following:</source>
+          <target state="translated">何が「適切な」終了・読み順として提案されているのかをまとめると、以下のようになります。</target>
+        </trans-unit>
+        <trans-unit id="7cf3e4722ba563bbda6ba8cfb53eb3b231719e72" translate="yes" xml:space="preserve">
+          <source>We don't need to surrender our error handling; just eat up the white-space:</source>
+          <target state="translated">エラー処理を放棄する必要はありません。</target>
+        </trans-unit>
+        <trans-unit id="57b964f16fd66b0cc1636e997cff4f85d4db8e43" translate="yes" xml:space="preserve">
+          <source>Whereas, take the following:</source>
+          <target state="translated">一方、次のようにしてください。</target>
+        </trans-unit>
+        <trans-unit id="ef382a38a7856bd8bf85dfd3439fccee1001bcb5" translate="yes" xml:space="preserve">
+          <source>Why is checking for eof explicitly using &lt;code&gt;while (!cin.eof())&lt;/code&gt; wrong?</source>
+          <target state="translated">&lt;code&gt;while (!cin.eof())&lt;/code&gt; 明示的に使用してeofをチェックするのはなぜ間違っているのですか？</target>
+        </trans-unit>
+        <trans-unit id="65e37296903ebefe24b34f25aed499c27dcd18c1" translate="yes" xml:space="preserve">
+          <source>Why is iostream::eof inside a loop condition (i.e. `while (!stream.eof())`) considered wrong</source>
+          <target state="translated">ループ条件 (すなわち `while (!stream.eof()`)`)の中の iostream::eof が間違っているとみなされるのはなぜですか?</target>
+        </trans-unit>
+        <trans-unit id="326edd5c80ebc0f3eed90198b18fad934d7e092a" translate="yes" xml:space="preserve">
+          <source>and &lt;strong&gt;not&lt;/strong&gt; the same as</source>
+          <target state="translated">と同じではあり&lt;strong&gt;ません&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="841108c86e9fbb4edafbf1fc269ca06fbd9c2aa7" translate="yes" xml:space="preserve">
+          <source>is the same as</source>
+          <target state="translated">と同じです。</target>
+        </trans-unit>
+        <trans-unit id="43f5cc089c9cf89e7f51720154dc51a4bce278f4" translate="yes" xml:space="preserve">
+          <source>why is checking for eof explicitly using &lt;code&gt;iostream::eof&lt;/code&gt; wrong?</source>
+          <target state="translated">&lt;code&gt;iostream::eof&lt;/code&gt; を使用して明示的にeofをチェックするのはなぜ間違っているのですか？</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

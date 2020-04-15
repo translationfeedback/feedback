@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/274626">
+    <body>
+      <group id="274626">
+        <trans-unit id="96f7b3f0b27529cd69b835183a3b452d7422b38f" translate="yes" xml:space="preserve">
+          <source>&quot;Slicing&quot; is where you assign an object of a derived class to an instance of a base class, thereby losing part of the information - some of it is &quot;sliced&quot; away.</source>
+          <target state="translated">&quot;スライシング &quot;とは、派生クラスのオブジェクトを基底クラスのインスタンスに代入することで、情報の一部を失うことです。</target>
+        </trans-unit>
+        <trans-unit id="ee068c25670c4260986c5bab8691b86a82b69cd0" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;EXAMPLE&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;EXAMPLE&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="ef5d3a89514f059cc62b4e047d5d2ce433c1ac44" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;1. THE DEFINITION OF SLICING PROBLEM&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;1.スライシング問題の定義&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5ffd540cc6bd87896a53692fe449010e960a05fe" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;2. HOW TO FIX THE SLICING PROBLEM&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;2.スライスの問題を修正する方法&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="c07c3b4c60b8ba66c8f4595e6416f9a07a097cc1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Explanation:&lt;/strong&gt;
+Consider the following class declaration:</source>
+          <target state="translated">&lt;strong&gt;説明：&lt;/strong&gt;次のクラス宣言を検討してください。</target>
+        </trans-unit>
+        <trans-unit id="c2866978e9f8a2f17b06bdc707c7050d6a196064" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Here is an Example:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;次に例を示します。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="442e03b7709e1e9794eaab012b8f14bc626c5003" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;It will generate:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;それは生成されます：&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="89b8bfb208bba534eb5ce49bf615a8936ec87816" translate="yes" xml:space="preserve">
+          <source>A solution</source>
+          <target state="translated">解決策</target>
+        </trans-unit>
+        <trans-unit id="84c46ee208f7ba0372b29ac5df262f9846bee999" translate="yes" xml:space="preserve">
+          <source>Also thought someone should also mention what you should do to avoid slicing...
+Get a copy of C++ Coding Standards, 101 rules guidlines, and best practices.  Dealing with slicing is #54.</source>
+          <target state="translated">また、誰かがスライスを避けるために何をすべきかにも言及すべきだと思った...C++Coding Standards,101 rules guidlines,and best practicesのコピーを入手してください。スライシングの対処法は#54です。</target>
+        </trans-unit>
+        <trans-unit id="7d4895f678a2681f309c8b96b11e3b7adee9a087" translate="yes" xml:space="preserve">
+          <source>Although the above assignment is allowed, the value that is assigned to the variable pet loses its breed field. This is called the &lt;strong&gt;slicing problem&lt;/strong&gt;.</source>
+          <target state="translated">上記の割り当ては許可されていますが、変数petに割り当てられた値はブリードフィールドを失います。 これは&lt;strong&gt;スライス問題&lt;/strong&gt;と呼ばれ&lt;strong&gt;ます&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="4790faee95ffb6e6b57d91d1825335fa81937c0f" translate="yes" xml:space="preserve">
+          <source>As baseclass copy functions don't know anything about the derived only the base part of the derived is copied. This is commonly referred to as slicing.</source>
+          <target state="translated">baseclassのコピー関数は派生物について何も知らないので、派生物の基底部分だけがコピーされます。これは一般的にスライスと呼ばれています。</target>
+        </trans-unit>
+        <trans-unit id="232ea33869a0451a48895451cf591143de4b287f" translate="yes" xml:space="preserve">
+          <source>As you &lt;em&gt;might&lt;/em&gt; have guessed: the object has been sliced.</source>
+          <target state="translated">ご想像のとおり、オブジェクトはスライスされています。</target>
+        </trans-unit>
+        <trans-unit id="3377a71b1c4aaabe0ec4693f3e6795aab5fde707" translate="yes" xml:space="preserve">
+          <source>Assigning only to parts of an object usually makes little sense, yet C++, unfortunately, provides no built-in way to forbid this. You can, however, roll your own. The first step is making the assignment operator &lt;em&gt;virtual&lt;/em&gt;. This will guarantee that it's always the &lt;strong&gt;actual&lt;/strong&gt; type's assignment operator which is called, not the &lt;strong&gt;declared&lt;/strong&gt; type's. The second step is to use &lt;code&gt;dynamic_cast&lt;/code&gt; to verify that the assigned object has a compatible type. The third step is to do the actual assignment in a (protected!) member &lt;code&gt;assign()&lt;/code&gt;, since &lt;code&gt;B&lt;/code&gt;'s &lt;code&gt;assign()&lt;/code&gt; will probably want to use &lt;code&gt;A&lt;/code&gt;'s &lt;code&gt;assign()&lt;/code&gt; to copy &lt;code&gt;A&lt;/code&gt;'s, members.</source>
+          <target state="translated">オブジェクトの一部のみに割り当てることは通常ほとんど意味がありませんが、C ++には残念ながら、これを禁止する組み込みの方法がありません。 ただし、自分でロールすることはできます。 最初のステップは、代入演算子を&lt;em&gt;virtualにすること&lt;/em&gt;です。 これにより、 &lt;strong&gt;宣言された&lt;/strong&gt;型ではなく、常に&lt;strong&gt;実際の&lt;/strong&gt;型の代入演算子が呼び出されることが保証されます。 2番目のステップは、 &lt;code&gt;dynamic_cast&lt;/code&gt; を使用して、割り当てられたオブジェクトに互換性のあるタイプがあることを確認することです。 &lt;code&gt;B&lt;/code&gt; の &lt;code&gt;assign()&lt;/code&gt; はおそらく &lt;code&gt;A&lt;/code&gt; の &lt;code&gt;assign()&lt;/code&gt; を使用してAのメンバーをコピーするため、3番目のステップは（保護された！）メンバーの &lt;code&gt;assign()&lt;/code&gt; で実際の割り当てを行うことです。</target>
+        </trans-unit>
+        <trans-unit id="b1ada17148e1e233404b966a641e77c2376bd0b2" translate="yes" xml:space="preserve">
+          <source>Class provides (accidentally, possibly compiler-generated) assignment on a polymorphic base class.</source>
+          <target state="translated">クラスは多相基底クラスに(偶然にもコンパイラが生成した)代入を提供します。</target>
+        </trans-unit>
+        <trans-unit id="83dc4ee1104f8d5e9f703018d2d2b6b502938300" translate="yes" xml:space="preserve">
+          <source>Client calls a virtual member function that accesses the sliced-off state.</source>
+          <target state="translated">クライアントは、スライスオフ状態にアクセスする仮想メンバ関数を呼び出します。</target>
+        </trans-unit>
+        <trans-unit id="974a91f56d4cd2aed2a1105b95619948eb415e28" translate="yes" xml:space="preserve">
+          <source>Client copies and slices an instance of a derived class.</source>
+          <target state="translated">クライアントは、派生クラスのインスタンスをコピーしてスライスします。</target>
+        </trans-unit>
+        <trans-unit id="2d038661c48cc8fa189c28d51e0abc29577d5660" translate="yes" xml:space="preserve">
+          <source>Consider class A, and class B derived from A. Memory corruption can happen if the A part has a pointer p, and a B instance that points p to B's additional data. Then, when the additional data gets sliced off, p is pointing to garbage.</source>
+          <target state="translated">A の部分にポインタ p があり、B の追加データに p を指す B のインスタンスがある場合、メモリの破損が起こる可能性があります。そして、追加データが切り離されると、pはゴミを指していることになります。</target>
+        </trans-unit>
+        <trans-unit id="6db6725e9e7d5c088630e348048d1e73fc7657d3" translate="yes" xml:space="preserve">
+          <source>For example,</source>
+          <target state="translated">例えば</target>
+        </trans-unit>
+        <trans-unit id="46053037889f11e4ba1e79417655c2250a17ba1e" translate="yes" xml:space="preserve">
+          <source>He passes an instance of his home-brewed class to the &lt;code&gt;push_back&lt;/code&gt; but then the program goes haywire.</source>
+          <target state="translated">彼は &lt;code&gt;push_back&lt;/code&gt; クラスのインスタンスをpush_backに渡しますが、プログラムは問題を起こします。</target>
+        </trans-unit>
+        <trans-unit id="fb9d634e48590cd163aafc973458162dac92008c" translate="yes" xml:space="preserve">
+          <source>I hope this example brings light about for those people who can't really imagine things when talking about &lt;code&gt;A&lt;/code&gt;s and &lt;code&gt;B&lt;/code&gt;s being derived in some manner.</source>
+          <target state="translated">この例が、なんらかの方法で &lt;code&gt;A&lt;/code&gt; と &lt;code&gt;B&lt;/code&gt; が導出されていることについて話しているときに、物事を想像することができない人々に光をもたらすことを願っています。</target>
+        </trans-unit>
+        <trans-unit id="85e83faab852b9a32b586876a340271f1e596eb5" translate="yes" xml:space="preserve">
+          <source>I just ran across the slicing problem and promptly landed here. So let me add my two cents to this.</source>
+          <target state="translated">私はスライスの問題に出くわして、すぐにここにたどり着きました。だから、これに私の2セントを追加させてください。</target>
+        </trans-unit>
+        <trans-unit id="93013b7742a645ec3d25d9b48cfb99929695ef8b" translate="yes" xml:space="preserve">
+          <source>If D is a derived class of the base class B, then you can assign an object of type Derived to a variable (or parameter) of type Base.</source>
+          <target state="translated">Dが基底クラスBの派生クラスである場合、Derived型のオブジェクトをBase型の変数(またはパラメータ)に代入することができます。</target>
+        </trans-unit>
+        <trans-unit id="f195d53fd3def730550d718c6c9f9658e3676862" translate="yes" xml:space="preserve">
+          <source>If I pass a subclass object in as a parameter to a method, which takes a parameter of type superclass, I should certainly be aware of that and know the internally, the called method will be working with the superclass (aka baseclass) object only.</source>
+          <target state="translated">サブクラスオブジェクトをメソッドのパラメータとして渡す場合、スーパークラス型のパラメータを取るので、そのことを知っていて、内部的には、呼び出されたメソッドはスーパークラス (別名 baseclass)オブジェクトのみで動作することを知っている必要があります。</target>
+        </trans-unit>
+        <trans-unit id="fb22970eec781b22051dd8ff19d02ffefae76c1a" translate="yes" xml:space="preserve">
+          <source>If You have a base class &lt;code&gt;A&lt;/code&gt; and a derived class &lt;code&gt;B&lt;/code&gt;, then You can do the following.</source>
+          <target state="translated">基本クラス &lt;code&gt;A&lt;/code&gt; と派生クラス &lt;code&gt;B&lt;/code&gt; がある場合、次のことができます。</target>
+        </trans-unit>
+        <trans-unit id="689f952136930a7ed064aafe697ec6ce9fce025d" translate="yes" xml:space="preserve">
+          <source>If those links don't give enough info for a &quot;good answer&quot; please edit your question to let us know what more you're looking for.</source>
+          <target state="translated">これらのリンクが「良い答え」のための十分な情報を与えていない場合は、あなたの質問を編集して、さらに何を探しているのかを教えてください。</target>
+        </trans-unit>
+        <trans-unit id="c20839b8bed4fbc54e56454bc66175198301dfcf" translate="yes" xml:space="preserve">
+          <source>In C++, a derived class object can be assigned to a base class object, but the other way is not possible.</source>
+          <target state="translated">C++では、派生クラスオブジェクトを基底クラスオブジェクトに代入することができますが、その逆はできません。</target>
+        </trans-unit>
+        <trans-unit id="c38ead1b6706d1b10a8421bddcacf5eaf4bd90bc" translate="yes" xml:space="preserve">
+          <source>In this case, none of the data members or member functions of the dynamic variable
+being pointed to by ptrD (descendant class object) will be lost. In addition,  if you need to use functions, the function must be a virtual function.</source>
+          <target state="translated">この場合、ptrD(子孫クラスオブジェクト)が指す動的変数のデータメンバやメンバ関数はいずれも失われません。また、関数を使用する必要がある場合は、その関数は仮想関数でなければなりません。</target>
+        </trans-unit>
+        <trans-unit id="fc0b49a0164b222cecf4c176a63574ecd921aa98" translate="yes" xml:space="preserve">
+          <source>In this situation, C++ lets you pass an instance of &lt;code&gt;B&lt;/code&gt; to  &lt;code&gt;A&lt;/code&gt;'s assignment operator (and also to the copy constructor). This works because an instance of &lt;code&gt;B&lt;/code&gt; can be converted to a &lt;code&gt;const A&amp;amp;&lt;/code&gt;, which is what assignment operators and copy-constructors expect their arguments to be.</source>
+          <target state="translated">この状況では、C ++では &lt;code&gt;B&lt;/code&gt; のインスタンスを &lt;code&gt;A&lt;/code&gt; の代入演算子（およびコピーコンストラクター）に渡すことができます。 これが機能するのは、 &lt;code&gt;B&lt;/code&gt; のインスタンスを &lt;code&gt;const A&amp;amp;&lt;/code&gt; に変換できるためです。これは、代入演算子とコピーコンストラクターが引数を期待しているものです。</target>
+        </trans-unit>
+        <trans-unit id="ae67144a22cc1e129cb43bcf76007148f1821dbe" translate="yes" xml:space="preserve">
+          <source>It seems to me only the unreasonable expectation that providing a subclass where a baseclass is requested, would somehow result in subclass specific results, would cause slicing to be a problem.  Its either poor design in the use of the method or a poor subclass implementation.  I'm guessing its usually the result of sacrificing good OOP design in favor of expediency or performance gains.</source>
+          <target state="translated">ベースクラスが要求されたサブクラスを提供することで、何らかの形でサブクラス固有の結果が得られるという不合理な期待だけが、スライスを問題にしているように思えます。それは、メソッドの使い方の設計が悪いか、サブクラスの実装が悪いかのどちらかです。通常は、利便性やパフォーマンスの向上のために良いOOPデザインを犠牲にした結果だと思います。</target>
+        </trans-unit>
+        <trans-unit id="4ea02cdc39f10956300111973911bc6cdd6b9ea7" translate="yes" xml:space="preserve">
+          <source>It seems to me, that slicing isn't so much a problem other than when your own classes and program are poorly architected/designed.</source>
+          <target state="translated">自分のクラスやプログラムの設計が下手な場合以外は、スライスしてもそれほど問題にならないように思えます。</target>
+        </trans-unit>
+        <trans-unit id="a3b13fdda77749958ecc4ce3613a917ec161dafd" translate="yes" xml:space="preserve">
+          <source>It suggests a somewhat sophisticated pattern to fully deal with the issue:  have a protected copy constructor, a protected pure virtual DoClone, and a public Clone with an assert which will tell you if a (further) derived class failed to implement DoClone correctly.  (The Clone method makes a proper deep copy of the polymorphic object.)</source>
+          <target state="translated">保護されたコピーコンストラクタ、保護された純粋な仮想DoClone、そして(さらに)派生クラスがDoCloneを正しく実装できなかった場合に教えてくれるアサート付きのパブリックCloneを持っています。(Cloneメソッドはポリモーフィックオブジェクトの適切なディープコピーを作成します)。</target>
+        </trans-unit>
+        <trans-unit id="08009f0d2f588ed82d0e84e8667066234ba6ee27" translate="yes" xml:space="preserve">
+          <source>Let's have an example from &quot;production code&quot; (or something that comes kind of close):</source>
+          <target state="translated">本番用のコード」(もしくはそれに近いもの)を例にしてみましょう。</target>
+        </trans-unit>
+        <trans-unit id="236527dc0874d02dd5d7ceecb15eceaaa482557c" translate="yes" xml:space="preserve">
+          <source>Let's say we have something that dispatches actions. A control center UI for example.</source>
+          <target state="translated">アクションをディスパッチするものがあるとしましょう。例えばコントロールセンターのUI。</target>
+        </trans-unit>
+        <trans-unit id="e13f0710c1e483d21ae7cbd772cc5dece2fd8f55" translate="yes" xml:space="preserve">
+          <source>Most answers here fail to explain what the actual problem with slicing is. They only explain the benign cases of slicing, not the treacherous ones. Assume, like the other answers, that you're dealing with two classes &lt;code&gt;A&lt;/code&gt; and &lt;code&gt;B&lt;/code&gt;, where &lt;code&gt;B&lt;/code&gt; derives (publicly) from &lt;code&gt;A&lt;/code&gt;.</source>
+          <target state="translated">ここでのほとんどの回答は、スライスの実際の問題が何であるかを説明できません。 彼らはスライスの良性のケースのみを説明し、危険なケースは説明しません。 他の回答と同様に、 &lt;code&gt;B&lt;/code&gt; が（パブリックに） &lt;code&gt;A&lt;/code&gt; から派生した2つのクラス &lt;code&gt;A&lt;/code&gt; および &lt;code&gt;B&lt;/code&gt; を扱っていると想定します。</target>
+        </trans-unit>
+        <trans-unit id="719db0c99ee0441d6b479abf270a523016554d7c" translate="yes" xml:space="preserve">
+          <source>Note that, for pure convenience, &lt;code&gt;B&lt;/code&gt;'s &lt;code&gt;operator=&lt;/code&gt; covariantly overrides the return type, since it &lt;strong&gt;knows&lt;/strong&gt; that it's returning an instance of &lt;code&gt;B&lt;/code&gt;.</source>
+          <target state="translated">便宜上、 &lt;code&gt;B&lt;/code&gt; の &lt;code&gt;operator=&lt;/code&gt; は &lt;code&gt;B&lt;/code&gt; のインスタンスを返すことが&lt;strong&gt;わかっ&lt;/strong&gt;ているため、戻り値の型を共変的にオーバーライドすることに注意してください。</target>
+        </trans-unit>
+        <trans-unit id="732d97c69c5f70f887b60e1c0384ce3d5087b2cc" translate="yes" xml:space="preserve">
+          <source>Nothing bad happens there - you asked for an instance of &lt;code&gt;A&lt;/code&gt; which is a copy of &lt;code&gt;B&lt;/code&gt;, and that's exactly what you get. Sure, &lt;code&gt;a&lt;/code&gt; won't contain some of &lt;code&gt;b&lt;/code&gt;'s members, but how should it? It's an &lt;code&gt;A&lt;/code&gt;, after all, not a &lt;code&gt;B&lt;/code&gt;, so it hasn't even &lt;em&gt;heard&lt;/em&gt; about these members, let alone would be able to store them.</source>
+          <target state="translated">そこでは何も悪いことが起こりません-あなたは &lt;code&gt;B&lt;/code&gt; のコピーである &lt;code&gt;A&lt;/code&gt; のインスタンスを要求しました、 そしてそれはまさにあなたが得るものです。 確かに、 &lt;code&gt;a&lt;/code&gt; には &lt;code&gt;b&lt;/code&gt; のメンバーの一部は含まれませんが、どのようにすべきですか？ 結局のところ、これは &lt;code&gt;A&lt;/code&gt; ではなく、 &lt;code&gt;B&lt;/code&gt; ではないため、これらのメンバーについて&lt;em&gt;聞いた&lt;/em&gt;こともありません。</target>
+        </trans-unit>
+        <trans-unit id="5e46f87edfe58bab858453c3d93fc576b5f4b914" translate="yes" xml:space="preserve">
+          <source>Now the method &lt;code&gt;wantAnA&lt;/code&gt; needs a copy of &lt;code&gt;derived&lt;/code&gt;. However, the object &lt;code&gt;derived&lt;/code&gt; cannot be copied completely, as the class &lt;code&gt;B&lt;/code&gt; could invent additional member variables which are not in its base class &lt;code&gt;A&lt;/code&gt;.</source>
+          <target state="translated">これで、メソッド &lt;code&gt;wantAnA&lt;/code&gt; には &lt;code&gt;derived&lt;/code&gt; コピーが必要になります。 ただし、クラス &lt;code&gt;B&lt;/code&gt; がその基本クラス &lt;code&gt;A&lt;/code&gt; にない追加のメンバー変数を発明する可能性があるため、 &lt;code&gt;derived&lt;/code&gt; オブジェクトを完全にコピーすることはできません。</target>
+        </trans-unit>
+        <trans-unit id="caae1329d8af58dcad82134397a8943be46a5f69" translate="yes" xml:space="preserve">
+          <source>Now we have established how it looks from the UI's perspective. No problem so far. But some other guy who works on this project suddenly decides that there are specialized actions that need more information in the &lt;code&gt;Action&lt;/code&gt; object. For what reason ever. That could also be solved with lambda captures.  This example is not taken 1-1 from the code.</source>
+          <target state="translated">これで、UIの観点から見た外観を確立しました。 今のところ問題ありません。 しかし、このプロジェクトに取り組んでいる他の人が突然、 &lt;code&gt;Action&lt;/code&gt; オブジェクトに詳細情報を必要とする特殊なアクションがあると判断しました。 どんな理由で。 これはラムダキャプチャでも解決できます。 この例は、コードから1-1で取得されたものではありません。</target>
+        </trans-unit>
+        <trans-unit id="e0e71bd05c604f9e5482ba1b4784d0451a14dca4" translate="yes" xml:space="preserve">
+          <source>OK, I'll give it a try after reading many posts explaining object slicing but not how it becomes problematic.</source>
+          <target state="translated">OK、オブジェクトのスライスを説明している書き込みをたくさん読んでから試してみますが、どうやって問題になるのかはわかりません。</target>
+        </trans-unit>
+        <trans-unit id="9002eb67a255da386f8896a6d49539ddfeed3eca" translate="yes" xml:space="preserve">
+          <source>Object slicing happens when a derived class object is assigned to a base class object, additional attributes of a derived class object are sliced off to form the base class object.</source>
+          <target state="translated">オブジェクトのスライスは、派生クラス・オブジェクトがベース・クラス・オブジェクトに割り当てられたときに発生し、派生クラス・オブジェクトの追加属性がベース・クラス・オブジェクトを形成するためにスライスされます。</target>
+        </trans-unit>
+        <trans-unit id="50898f71166704d72332d693caefb3d03a0dfabd" translate="yes" xml:space="preserve">
+          <source>Slicing means that the data added by a subclass are discarded when an object of the subclass is passed or returned by value or from a function expecting a base class object.</source>
+          <target state="translated">スライシングとは、サブクラスのオブジェクトが値で渡されたり返されたりしたときや、基底クラスのオブジェクトを期待した関数から、サブクラスのオブジェクトが渡されたり返されたりしたときに、サブクラスで追加されたデータが破棄されることを意味します。</target>
+        </trans-unit>
+        <trans-unit id="1ffaa953719f39c660e8b91f324eefc0cb44027a" translate="yes" xml:space="preserve">
+          <source>So ... Why is losing the derived information bad? ... because the author of the derived class may have changed the representation such that slicing off the extra information changes the value being represented by the object.  This can happen if the derived class if used to cache a representation that is more efficient for certain operations, but expensive to transform back to the base representation.</source>
+          <target state="translated">では...なぜ派生情報を失うことは悪いことなのでしょうか? ...それは派生クラスの作者が、余分な情報を切り取ることでオブジェクトによって表現される値が変わるように表現を変更している可能性があるからです。これは、派生クラスをキャッシュするために使用した場合に、特定の操作に対してはより効率的ですが、ベースの表現に戻すにはコストがかかる表現をキャッシュするために使用した場合に起こり得ます。</target>
+        </trans-unit>
+        <trans-unit id="67da6e9fc08116b45e5de7c309437931d5054895" translate="yes" xml:space="preserve">
+          <source>So an object of type &lt;code&gt;B&lt;/code&gt; has two data members, &lt;code&gt;foo&lt;/code&gt; and &lt;code&gt;bar&lt;/code&gt;.</source>
+          <target state="translated">したがって、タイプ &lt;code&gt;B&lt;/code&gt; のオブジェクトには、 &lt;code&gt;foo&lt;/code&gt; と &lt;code&gt;bar&lt;/code&gt; の 2つのデータメンバーがあります 。</target>
+        </trans-unit>
+        <trans-unit id="5576c771bb07143c60f3e0e3aa22ee9a4d4a3fd1" translate="yes" xml:space="preserve">
+          <source>So it's when you assign an object of a subclass to the super class. The superclass knows nothing of the additional information in the subclass, and hasn't got room to store it, so the additional information gets &quot;sliced off&quot;.</source>
+          <target state="translated">サブクラスのオブジェクトをスーパークラスに代入したときのことです。スーパークラスはサブクラスの追加情報を何も知らないし、それを保存するスペースもないので、追加情報は「切り取られてしまう」のです。</target>
+        </trans-unit>
+        <trans-unit id="53f4d7a32d19a1c0fe9135470dc1d40d622b6f39" translate="yes" xml:space="preserve">
+          <source>So the UI gets a &lt;code&gt;std::vector&amp;lt;Action&amp;gt;&lt;/code&gt; supplied. Imagine some functions like:</source>
+          <target state="translated">したがって、UIは &lt;code&gt;std::vector&amp;lt;Action&amp;gt;&lt;/code&gt; 提供します。 次のような関数を想像してみてください。</target>
+        </trans-unit>
+        <trans-unit id="e4a930b6204d89a4fe5c0162bdb1611385af40d3" translate="yes" xml:space="preserve">
+          <source>So the guy derives from &lt;code&gt;Action&lt;/code&gt; to add his own flavour.</source>
+          <target state="translated">その男は &lt;code&gt;Action&lt;/code&gt; から派生し、自分の味を追加します。</target>
+        </trans-unit>
+        <trans-unit id="312069c9e501c1ac64e803e6fdab5307267739fa" translate="yes" xml:space="preserve">
+          <source>So what happened?</source>
+          <target state="translated">で、何があったの?</target>
+        </trans-unit>
+        <trans-unit id="94801b98814e71ff839015a3a53197592219b407" translate="yes" xml:space="preserve">
+          <source>Someone mentioned it in the IRC as the slicing problem.</source>
+          <target state="translated">誰かがIRCでスライス問題として言及していました。</target>
+        </trans-unit>
+        <trans-unit id="baeeb7a29450d80f0ad8595dd8d3e4bcc16943b9" translate="yes" xml:space="preserve">
+          <source>The benign case</source>
+          <target state="translated">良性のケース</target>
+        </trans-unit>
+        <trans-unit id="63684884292dbed35dceaf9970d215608feaa7df" translate="yes" xml:space="preserve">
+          <source>The extra information from the instance has been lost, and &lt;code&gt;f&lt;/code&gt; is now prone to undefined behaviour.</source>
+          <target state="translated">インスタンスからの追加情報が失われ、 &lt;code&gt;f&lt;/code&gt; は未定義の動作をする傾向にあります。</target>
+        </trans-unit>
+        <trans-unit id="b74ff8ee45b0b8f3cea227a5cb8b0ca2512e0fa1" translate="yes" xml:space="preserve">
+          <source>The output is:</source>
+          <target state="translated">出力されます。</target>
+        </trans-unit>
+        <trans-unit id="f9b829cde2335dc12ea816064752c0be0bbc8cbc" translate="yes" xml:space="preserve">
+          <source>The short answers is that you slice the object by assigning a derived object to a base object &lt;em&gt;by value&lt;/em&gt;, i.e. the remaining object is only a part of the derived object. In order to preserve value semantics, slicing is a reasonable behavior and has its relatively rare uses, which doesn't exist in most other languages. Some people consider it a feature of C++, while many considered it one of the quirks/misfeatures of C++.</source>
+          <target state="translated">短い答えは、派生オブジェクトを基本オブジェクト&lt;em&gt;に値&lt;/em&gt;で割り当てることによってオブジェクトをスライスすることです。つまり、残りのオブジェクトは派生オブジェクトの一部にすぎません。 値のセマンティクスを維持するために、スライスは妥当な動作であり、他のほとんどの言語には存在しない比較的まれな用途があります。 一部の人々はそれをC ++の機能であると考えていますが、多くの人はそれをC ++の奇妙な機能/誤機能の1つであると考えています。</target>
+        </trans-unit>
+        <trans-unit id="dd82002ff948b24d6107ece53db19ed50003be81" translate="yes" xml:space="preserve">
+          <source>The slicing problem in C++ arises from the value semantics of its objects, which remained mostly due to compatibility with C structs. You need to use explicit reference or pointer syntax to achieve &quot;normal&quot; object behavior found in most other languages that do objects, i.e., objects are always passed around by reference.</source>
+          <target state="translated">C++におけるスライスの問題は、そのオブジェクトの値のセマンティクスに起因しており、これは主にC構造体との互換性のために残っていました。オブジェクトを実行する他のほとんどの言語で見られる「通常の」オブジェクトの動作を実現するには、明示的な参照またはポインタ構文を使用する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="43ba9549013d5f73b5a2c8783b4aea4338a8a2f8" translate="yes" xml:space="preserve">
+          <source>The slicing problem is serious because it can result in memory corruption, and it is very difficult to guarantee a program does not suffer from it. To design it out of the language, classes that support inheritance should be accessible by reference only (not by value). The D programming language has this property.</source>
+          <target state="translated">スライス問題はメモリ破壊を引き起こす可能性があるため深刻であり、プログラムがこの問題に悩まされないことを保証するのは非常に困難です。これを言語から設計するためには、継承をサポートするクラスは、参照のみでアクセスできるようにしなければなりません(値ではなく)。プログラミング言語Dはこの性質を持っています。</target>
+        </trans-unit>
+        <trans-unit id="50db936e092a460d4926d6fbfb2ff0e11f3315fa" translate="yes" xml:space="preserve">
+          <source>The treacherous case</source>
+          <target state="translated">裏切り者の事件</target>
+        </trans-unit>
+        <trans-unit id="d9370a40dcdd656762e9b518e64889d3090a3d67" translate="yes" xml:space="preserve">
+          <source>The vicious scenario that can result in memory corruption is the following:</source>
+          <target state="translated">メモリの破損につながる悪質なシナリオは</target>
+        </trans-unit>
+        <trans-unit id="b54458e98c708f4219d77f2af0aca693f0d1862d" translate="yes" xml:space="preserve">
+          <source>Then if you were to write this:</source>
+          <target state="translated">では、これを書くとしたら</target>
+        </trans-unit>
+        <trans-unit id="8aae35e2eebae7ab19a6cb8b47f5df262f52f622" translate="yes" xml:space="preserve">
+          <source>Then the information in &lt;code&gt;b&lt;/code&gt; about member &lt;code&gt;bar&lt;/code&gt; is lost in &lt;code&gt;a&lt;/code&gt;.</source>
+          <target state="translated">次に、メンバー &lt;code&gt;bar&lt;/code&gt; に関する &lt;code&gt;b&lt;/code&gt; の情報がaで失われ &lt;code&gt;a&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="331a1e0260486237ecd3902be6663d06751c6d80" translate="yes" xml:space="preserve">
+          <source>Therefore, to call &lt;code&gt;wantAnA&lt;/code&gt;, the compiler will &quot;slice off&quot; all additional members of the derived class. The result might be an object you did not want to create, because</source>
+          <target state="translated">したがって、 &lt;code&gt;wantAnA&lt;/code&gt; を呼び出すために、コンパイラーは派生クラスのすべての追加メンバーを「スライス」します。 結果は、作成したくないオブジェクトになる可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="83a3562f52501c4eb5425a01f442e1c15fd73132" translate="yes" xml:space="preserve">
+          <source>These are all good answers. I would just like to add an execution example when passing objects by value vs by reference:</source>
+          <target state="translated">これらはすべて良い回答です。ただ、オブジェクトを値で渡す場合と参照で渡す場合の実行例を追加したいと思います。</target>
+        </trans-unit>
+        <trans-unit id="0e951a20d40826080d18427519cb8a5edd5c4e41" translate="yes" xml:space="preserve">
+          <source>Third match in google for &quot;C++ slicing&quot; gives me this Wikipedia article &lt;a href=&quot;http://en.wikipedia.org/wiki/Object_slicing&quot;&gt;http://en.wikipedia.org/wiki/Object_slicing&lt;/a&gt; and this (heated, but the first few posts define the problem) : &lt;a href=&quot;http://bytes.com/forum/thread163565.html&quot;&gt;http://bytes.com/forum/thread163565.html&lt;/a&gt;</source>
+          <target state="translated">グーグルで「C ++スライシング」の3番目の一致により、このWikipediaの記事&lt;a href=&quot;http://en.wikipedia.org/wiki/Object_slicing&quot;&gt;http://en.wikipedia.org/wiki/Object_slicing&lt;/a&gt;が得られます。 &lt;a href=&quot;http://bytes.com/forum/thread163565.html&quot;&gt;forum / thread163565.html&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="b3490f2ce357da06fe3a4eb047d61de5e156e219" translate="yes" xml:space="preserve">
+          <source>This UI needs to get a list of things that are currently able to be dispatched. So we define a class that contains the dispatch-information. Let's call it &lt;code&gt;Action&lt;/code&gt;. So an &lt;code&gt;Action&lt;/code&gt; has some member variables. For simplicity we just have 2, being a &lt;code&gt;std::string name&lt;/code&gt; and a &lt;code&gt;std::function&amp;lt;void()&amp;gt; f&lt;/code&gt;. Then it has an &lt;code&gt;void activate()&lt;/code&gt; which just executes the &lt;code&gt;f&lt;/code&gt; member.</source>
+          <target state="translated">このUIは、現在ディスパッチ可能なもののリストを取得する必要があります。 したがって、ディスパッチ情報を含むクラスを定義します。 それを &lt;code&gt;Action&lt;/code&gt; と呼びましょう。 したがって、 &lt;code&gt;Action&lt;/code&gt; はいくつかのメンバー変数があります。 簡単にするために、 &lt;code&gt;std::string name&lt;/code&gt; と &lt;code&gt;std::function&amp;lt;void()&amp;gt; f&lt;/code&gt; 2つだけがあります。 次に、 &lt;code&gt;f&lt;/code&gt; メンバーを実行するだけの &lt;code&gt;void activate()&lt;/code&gt; があります。</target>
+        </trans-unit>
+        <trans-unit id="cdf5b524fd6d02ab284fc74f757fadd7c2a81b09" translate="yes" xml:space="preserve">
+          <source>To defeat the problem, we use pointers to dynamic variables.</source>
+          <target state="translated">この問題を解決するために、動的変数へのポインタを使用します。</target>
+        </trans-unit>
+        <trans-unit id="f0f39a47361de0eb57b43d1232d22d288fb9b176" translate="yes" xml:space="preserve">
+          <source>What happened? Well, C++ by default doesn't treat assignment operators as &lt;code&gt;virtual&lt;/code&gt;. Thus, the line &lt;code&gt;a_ref = b1&lt;/code&gt; will call the assignment operator of &lt;code&gt;A&lt;/code&gt;, not that of &lt;code&gt;B&lt;/code&gt;. This is because, for non-virtual functions, the &lt;strong&gt;declared&lt;/strong&gt; (formally: &lt;em&gt;static&lt;/em&gt;) type (which is &lt;code&gt;A&amp;amp;&lt;/code&gt;) determines which function is called, as opposed to the &lt;strong&gt;actual&lt;/strong&gt; (formally: &lt;em&gt;dynamic&lt;/em&gt;) type (which would be &lt;code&gt;B&lt;/code&gt;, since &lt;code&gt;a_ref&lt;/code&gt; references an instance of &lt;code&gt;B&lt;/code&gt;). Now, &lt;code&gt;A&lt;/code&gt;'s assignment operator obviously knows only about the members declared in &lt;code&gt;A&lt;/code&gt;, so it will copy only those, leaving the members added in &lt;code&gt;B&lt;/code&gt; unchanged.</source>
+          <target state="translated">どうした？ まあ、デフォルトではC ++は代入演算子を &lt;code&gt;virtual&lt;/code&gt; として扱いません。 したがって、行 &lt;code&gt;a_ref = b1&lt;/code&gt; は、 &lt;code&gt;B&lt;/code&gt; の代入演算子ではなく、 &lt;code&gt;A&lt;/code&gt; の代入演算子を呼び出します。 これは、非仮想関数の場合、 &lt;strong&gt;宣言された&lt;/strong&gt; （正式には&lt;em&gt;static&lt;/em&gt; ）型（ &lt;code&gt;A&amp;amp;&lt;/code&gt; ）が呼び出される関数を決定するためです。これに対して、 &lt;strong&gt;実際の&lt;/strong&gt; （正式には&lt;em&gt;動的&lt;/em&gt; ）型（ &lt;code&gt;B&lt;/code&gt; になります）とは対照的です。 &lt;code&gt;B&lt;/code&gt; のインスタンス）。 これで、 &lt;code&gt;A&lt;/code&gt; の代入演算子は &lt;code&gt;A&lt;/code&gt; で宣言されたメンバーのみを認識しているため、それらのみをコピーし、 &lt;code&gt;B&lt;/code&gt; に追加されたメンバーは変更しません。</target>
+        </trans-unit>
+        <trans-unit id="4dd739c564654f16bef20fea762e39dd16ff22ed" translate="yes" xml:space="preserve">
+          <source>What is object slicing</source>
+          <target state="translated">オブジェクトスライシングとは</target>
+        </trans-unit>
+        <trans-unit id="5f307ba956aa9318084c729d9e0b4ed1c890ae99" translate="yes" xml:space="preserve">
+          <source>When a Derived class Object is assigned to Base class Object, all the members of derived class object is copied to base class object except the members which are not present in the base class. These members are Sliced away by the compiler.
+This is called Object Slicing.</source>
+          <target state="translated">派生クラス・オブジェクトがベース・クラス・オブジェクトに割り当てられると、派生クラス・オブジェクトのすべてのメンバは、ベース・クラスに存在しないメンバを除いてベース・クラス・オブジェクトにコピーされます。これらのメンバはコンパイラによってスライスされます。これをオブジェクトスライシングといいます。</target>
+        </trans-unit>
+        <trans-unit id="d72ede022bbe7ab8af001c0bdbe63a215020ce04" translate="yes" xml:space="preserve">
+          <source>You can also mark the copy constructor on the base explicit which allows for explicit slicing if it is desired.</source>
+          <target state="translated">また、ベース上のコピーコンストラクタを明示的にマークすることもできます。</target>
+        </trans-unit>
+        <trans-unit id="67dd54dbbbe60a55354560fe6b83d81e0acab546" translate="yes" xml:space="preserve">
+          <source>You might think that &lt;code&gt;b2&lt;/code&gt; will be a copy of &lt;code&gt;b1&lt;/code&gt; afterward. But, alas, it's &lt;strong&gt;not&lt;/strong&gt;! If you inspect it, you'll discover that &lt;code&gt;b2&lt;/code&gt; is a Frankensteinian creature, made from some chunks of &lt;code&gt;b1&lt;/code&gt; (the chunks that &lt;code&gt;B&lt;/code&gt; inherits from &lt;code&gt;A&lt;/code&gt;), and some chunks of &lt;code&gt;b2&lt;/code&gt; (the chunks that only &lt;code&gt;B&lt;/code&gt; contains). Ouch!</source>
+          <target state="translated">後で &lt;code&gt;b2&lt;/code&gt; が &lt;code&gt;b1&lt;/code&gt; のコピーになると思うかもしれません。 しかし、悲しいかな、そうで&lt;strong&gt;はありません&lt;/strong&gt; ！ 調べてみると、 &lt;code&gt;b2&lt;/code&gt; が &lt;code&gt;b1&lt;/code&gt; のいくつかのチャンク（ &lt;code&gt;B&lt;/code&gt; が &lt;code&gt;A&lt;/code&gt; から継承するチャンク）といくつかの &lt;code&gt;b2&lt;/code&gt; のチャンク（ &lt;code&gt;B&lt;/code&gt; だけに含まれるチャンク）から作成されたフランケンシュタインの生き物であることがわかります。 痛い！</target>
+        </trans-unit>
+        <trans-unit id="caa7ab5b89b1d461f77ff932bb8c215a2ad0c121" translate="yes" xml:space="preserve">
+          <source>it behaves like an &lt;code&gt;A&lt;/code&gt;-object (all special behaviour of the class &lt;code&gt;B&lt;/code&gt; is lost).</source>
+          <target state="translated">&lt;code&gt;A&lt;/code&gt; オブジェクトのように動作します（クラス &lt;code&gt;B&lt;/code&gt; の特別な動作はすべて失われます）。</target>
+        </trans-unit>
+        <trans-unit id="0e4b5f39331f766abe0b42f591f9a7990190d1e7" translate="yes" xml:space="preserve">
+          <source>it may be incomplete,</source>
+          <target state="translated">不完全かもしれません。</target>
+        </trans-unit>
+        <trans-unit id="3f62ee0ef207332e73fb923b4003d3d9e9e87c14" translate="yes" xml:space="preserve">
+          <source>when a derived class object is assigned to a base class object, additional attributes of a derived class object are sliced off (discard)  form the base class object.</source>
+          <target state="translated">派生クラスオブジェクトが基底クラスオブジェクトに代入されると、派生クラスオブジェクトの追加属性が基底クラスオブジェクトから切り離される(破棄される)。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

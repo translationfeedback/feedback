@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="htmlbody" original="https://stackoverflow.com/questions/237104">
+    <body>
+      <group id="237104">
+        <trans-unit id="fa1fddf27a8bbd3e6a51595070fec2ffdda0cba8" translate="yes" xml:space="preserve">
+          <source>$.inArray works fine for determining whether a &lt;em&gt;scalar&lt;/em&gt; value exists in an array of scalars...</source>
+          <target state="translated">$ .inArray отлично работает для определения, существует ли &lt;em&gt;скалярное&lt;/em&gt; значение в массиве скаляров ...</target>
+        </trans-unit>
+        <trans-unit id="e979338f8a2f2e59abc9249af3190ebc03ad8b13" translate="yes" xml:space="preserve">
+          <source>(Unfortunately, while you can create an Array.prototype.contains to &quot;freeze&quot; an array and store a hashtable in this._cache in two lines, this would give wrong results if you chose to edit your array later. JavaScript has insufficient hooks to let you keep this state, unlike Python for example.)</source>
+          <target state="translated">(К сожалению,если создать Array.prototype.contains,чтобы &quot;заморозить&quot; массив и сохранить хэш-таблицу в этом._cache в две строки,то это дало бы неверный результат,если бы вы позже решили отредактировать массив.В JavaScript недостаточно крючков,чтобы сохранить это состояние,в отличие,например,от Python).</target>
+        </trans-unit>
+        <trans-unit id="666a1d7cd2502c4f03da17df37ee0d8e05fc9ce7" translate="yes" xml:space="preserve">
+          <source>* As jamess pointed out in the comment, at the time of this answer, September 2018, &lt;code&gt;Array.prototype.some()&lt;/code&gt; is fully supported: &lt;a href=&quot;http://kangax.github.io/compat-table/es5/#test-Array_methods_Array.prototype.some_a_href=_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some_title=_MDN_documentation_img_src=_../mdn.png_alt=_MDN_(Mozilla_Development_Network)_logo_width=_15_height=_13_/_/a_nbsp;&quot;&gt;caniuse.com support table&lt;/a&gt;</source>
+          <target state="translated">* Как отметил в комментарии jamess, во время этого ответа, сентябрь 2018 года, &lt;code&gt;Array.prototype.some()&lt;/code&gt; полностью поддерживается: &lt;a href=&quot;http://kangax.github.io/compat-table/es5/#test-Array_methods_Array.prototype.some_a_href=_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some_title=_MDN_documentation_img_src=_../mdn.png_alt=_MDN_(Mozilla_Development_Network)_logo_width=_15_height=_13_/_/a_nbsp;&quot;&gt;таблица поддержки caniuse.com&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="ff01b541f233e095936ed95fd600d53d0d50e8cd" translate="yes" xml:space="preserve">
+          <source>... but the question clearly asks for an efficient way to determine if an &lt;em&gt;object&lt;/em&gt; is contained in an array.</source>
+          <target state="translated">... но вопрос явно требует эффективного способа определить, содержится ли &lt;em&gt;объект&lt;/em&gt; в массиве.</target>
+        </trans-unit>
+        <trans-unit id="82ba87f801a9d4855c22108ef67433ef0a8af8b2" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some&quot;&gt;Array.prototype.some()&lt;/a&gt; was added to the ECMA-262 standard in the 5th edition</source>
+          <target state="translated">&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some&quot;&gt;Array.prototype.some ()&lt;/a&gt; был добавлен к стандарту ECMA-262 в 5-м издании</target>
+        </trans-unit>
+        <trans-unit id="b1af03410872d22aa090478ca85044102ca7e787" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/indexOf&quot;&gt;&lt;code&gt;indexOf&lt;/code&gt;&lt;/a&gt; maybe, but it's a &quot;JavaScript extension to the ECMA-262 standard; as such it may not be present in other implementations of the standard.&quot;</source>
+          <target state="translated">&lt;a href=&quot;https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/indexOf&quot;&gt; &lt;code&gt;indexOf&lt;/code&gt; &lt;/a&gt; может быть, но это &amp;laquo;расширение JavaScript к стандарту ECMA-262; как таковое оно может отсутствовать в других реализациях стандарта&amp;raquo;.</target>
+        </trans-unit>
+        <trans-unit id="bffcb9f337378974e8b34966a149dbbb68e52188" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Array.indexOf&lt;/code&gt; and &lt;code&gt;Array.includes&lt;/code&gt; (as well as most of the answers here) only compare by reference and not by value.</source>
+          <target state="translated">&lt;code&gt;Array.indexOf&lt;/code&gt; и &lt;code&gt;Array.includes&lt;/code&gt; (а также большинство ответов здесь) сравниваются только по ссылке, а не по значению.</target>
+        </trans-unit>
+        <trans-unit id="0c67478f11e2e78d248d12730af40590e49d8d53" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Requirements:&lt;/em&gt; Recommend most concise and efficient way to find out if a JavaScript array contains an object.</source>
+          <target state="translated">&lt;em&gt;Требования:&lt;/em&gt; Рекомендовать наиболее краткий и эффективный способ выяснить, содержит ли массив JavaScript объект.</target>
+        </trans-unit>
+        <trans-unit id="3328e402eaab9fa9ffa2904507ac1e15deedaa9a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;A hopefully faster bidirectional &lt;code&gt;indexOf&lt;/code&gt; / &lt;code&gt;lastIndexOf&lt;/code&gt; alternative&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;indexOf&lt;/code&gt; более быстрая двунаправленная альтернатива indexOf / &lt;code&gt;lastIndexOf&lt;/code&gt; &lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="8d78a67732f4c0a40bd987aec69c5f5c06ced172" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Accepted Answer:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Принятый ответ:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2dca58c8f007a19a8c485db3191ee67d50e382e1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Array big - 1.000.000 elements&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Массив большой - 1.000.000 элементов&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="bcb9db629c9a0558ab47a317e2d8b485d0969128" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Array small - 10 elements&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Массив малый - 10 элементов&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2550bdae36c113e4a47d24b4ea74558c357b9dd0" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Bidirectional indexOf/lastIndexOf&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Двунаправленный indexOf / lastIndexOf&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="0dca676a8af0cab5dcd796ab1ed5917f8c1ae0c9" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;My recommendation:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Моя рекомендация:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="da2dcdbcfc4b0fe47450de9fb9a98320068c3e91" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Update from 2019: This answer is from 2008 (11 years old!) and is not relevant for modern JS usage. The promised performance improvement was based on a benchmark done in browsers of that time. It might not be relevant to modern JS execution contexts. If you need an easy solution, look for other answers. If you need the best performance, benchmark for yourself in the relevant execution environments.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Обновление с 2019 года: Этот ответ с 2008 года (11 лет!) И не имеет отношения к современному использованию JS.&lt;/strong&gt; &lt;strong&gt;Обещанное улучшение производительности было основано на тесте, сделанном в браузерах того времени.&lt;/strong&gt; &lt;strong&gt;Это может не относиться к современным контекстам выполнения JS.&lt;/strong&gt; &lt;strong&gt;Если вам нужно простое решение, поищите другие ответы.&lt;/strong&gt; &lt;strong&gt;Если вам нужна лучшая производительность, оцените себя в соответствующих средах исполнения.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="9188873b53a0860b8d45c86992acf0ce33ebbec3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Usage:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Usage:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3dd7f728110b6212e76f1f99084dfc27e75be15a" translate="yes" xml:space="preserve">
+          <source>A performant way has already been found, looking at the top answers. From those I chose the &lt;code&gt;contains&lt;/code&gt; function posted by @Damir Zekic which should be the fastest one. But it also states that the benchmarks are from 2008 and so are outdated.</source>
+          <target state="translated">Эффективный путь уже найден, глядя на топовые ответы. Из тех, что я выбрал, функция &lt;code&gt;contains&lt;/code&gt; @Damir Zekic, которая должна быть самой быстрой. Но в нем также говорится, что показатели взяты с 2008 года и поэтому устарели.</target>
+        </trans-unit>
+        <trans-unit id="3fea7bc0c9c385deaf9e732da8ef43205ce4079c" translate="yes" xml:space="preserve">
+          <source>AFAICS &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/k4h76zbx%5C%28VS.85%5C%29.aspx&quot;&gt;Microsoft does &lt;em&gt;not&lt;/em&gt; offer some kind of alternative&lt;/a&gt; to this, but you can add similar functionality to arrays in Internet Explorer (and other browsers that don't support &lt;code&gt;indexOf&lt;/code&gt;) if you want to, as a &lt;a href=&quot;http://google.com/search?q=indexof%20internet%20explorer&quot;&gt;quick Google search reveals&lt;/a&gt; (for example, &lt;a href=&quot;http://soledadpenades.com/2007/05/17/arrayindexof-in-internet-explorer/&quot;&gt;this one&lt;/a&gt;).</source>
+          <target state="translated">AFAICS &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/k4h76zbx%5C%28VS.85%5C%29.aspx&quot;&gt;Microsoft &lt;em&gt;не&lt;/em&gt; предлагает какой-либо альтернативы&lt;/a&gt; этому, но вы можете добавить аналогичные функции для массивов в Internet Explorer (и других браузерах, которые не поддерживают &lt;code&gt;indexOf&lt;/code&gt; ), если хотите, как показывает &lt;a href=&quot;http://google.com/search?q=indexof%20internet%20explorer&quot;&gt;быстрый поиск в Google&lt;/a&gt; (например, &lt;a href=&quot;http://soledadpenades.com/2007/05/17/arrayindexof-in-internet-explorer/&quot;&gt;это один&lt;/a&gt; )</target>
+        </trans-unit>
+        <trans-unit id="2e1a21db865a12dc215cd0757653828363ce0b37" translate="yes" xml:space="preserve">
+          <source>Also see &lt;a href=&quot;http://github.com/sstephenson/prototype/blob/f405b2c510e09b55d08c926a9e1a5c2e2d0a1834/src/lang/array.js#L364-365&quot;&gt;here&lt;/a&gt; for how they hook it up.</source>
+          <target state="translated">Также посмотрите &lt;a href=&quot;http://github.com/sstephenson/prototype/blob/f405b2c510e09b55d08c926a9e1a5c2e2d0a1834/src/lang/array.js#L364-365&quot;&gt;здесь,&lt;/a&gt; как они это подключают.</target>
+        </trans-unit>
+        <trans-unit id="ef2cd47054f7c2e7287dcdcf3389cdb38c008c53" translate="yes" xml:space="preserve">
+          <source>Also unlike &lt;code&gt;indexOf&lt;/code&gt;, &lt;code&gt;includes&lt;/code&gt; does not skip missing indices:</source>
+          <target state="translated">Также в отличие от &lt;code&gt;indexOf&lt;/code&gt; , include не пропускает отсутствующие индексы:</target>
+        </trans-unit>
+        <trans-unit id="fe1263bbb735fe48bd1e929be3a7542be2dfbbe3" translate="yes" xml:space="preserve">
+          <source>Also, it fits nicely in an &lt;code&gt;if&lt;/code&gt; statement since it returns a boolean:</source>
+          <target state="translated">Кроме того, он хорошо вписывается в оператор &lt;code&gt;if&lt;/code&gt; , поскольку возвращает логическое значение:</target>
+        </trans-unit>
+        <trans-unit id="fd49cf48d65e8591372b9ab2e58ef2862979ec3c" translate="yes" xml:space="preserve">
+          <source>And here is the &lt;code&gt;while&lt;/code&gt; variant:</source>
+          <target state="translated">А вот вариант &lt;code&gt;while&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="e9e912c3f4aaddf36a551e9a19f1b31785ce824c" translate="yes" xml:space="preserve">
+          <source>And now you can simply use the following:</source>
+          <target state="translated">А теперь ты можешь просто использовать следующее:</target>
+        </trans-unit>
+        <trans-unit id="28746dfd1b61ed6d0a8ada4c2b2b65c189a03dc0" translate="yes" xml:space="preserve">
+          <source>Array.prototype.&lt;strong&gt;find&lt;/strong&gt; -&amp;gt; (takes callback, returns first &lt;strong&gt;value/object&lt;/strong&gt; that returns true in CB).</source>
+          <target state="translated">Array.prototype. &lt;strong&gt;find&lt;/strong&gt; -&amp;gt; (принимает обратный вызов, возвращает первое &lt;strong&gt;значение / объект,&lt;/strong&gt; который возвращает true в CB).</target>
+        </trans-unit>
+        <trans-unit id="2a2ae4f8c0c85f5dda2d7c7b158b42785c2c9b38" translate="yes" xml:space="preserve">
+          <source>Array.prototype.&lt;strong&gt;findIndex&lt;/strong&gt; -&amp;gt; (takes callback, returns &lt;strong&gt;index&lt;/strong&gt; of first value/object that returns true in CB).</source>
+          <target state="translated">Array.prototype. &lt;strong&gt;findIndex&lt;/strong&gt; -&amp;gt; (принимает обратный вызов, возвращает &lt;strong&gt;индекс&lt;/strong&gt; первого значения / объекта, который возвращает true в CB).</target>
+        </trans-unit>
+        <trans-unit id="13774ea8043b54624cbe8f2322d27cbd49c3f695" translate="yes" xml:space="preserve">
+          <source>Array.prototype.&lt;strong&gt;includes&lt;/strong&gt; -&amp;gt; (returns &lt;strong&gt;true&lt;/strong&gt; or &lt;strong&gt;false&lt;/strong&gt;)</source>
+          <target state="translated">Array.prototype. &lt;strong&gt;включает в себя&lt;/strong&gt; -&amp;gt; (возвращает &lt;strong&gt;true&lt;/strong&gt; или &lt;strong&gt;false&lt;/strong&gt; )</target>
+        </trans-unit>
+        <trans-unit id="159144824cccf4c9146f260d2d0aec916594f068" translate="yes" xml:space="preserve">
+          <source>Array.prototype.&lt;strong&gt;indexOf&lt;/strong&gt; -&amp;gt; (returns &lt;strong&gt;index or -1&lt;/strong&gt;) is generally used for finding index of element in array.
+This can also be used for searching object but only works if you are passing reference to same object.</source>
+          <target state="translated">Array.prototype. &lt;strong&gt;indexOf&lt;/strong&gt; -&amp;gt; (возвращает &lt;strong&gt;индекс или -1&lt;/strong&gt; ) обычно используется для поиска индекса элемента в массиве. Это также может быть использовано для поиска объекта, но работает, только если вы передаете ссылку на тот же объект.</target>
+        </trans-unit>
+        <trans-unit id="ee6d18b2067d77f05479b33415bea0665938366f" translate="yes" xml:space="preserve">
+          <source>As custom Array method (pre ES2016)</source>
+          <target state="translated">Как пользовательский метод массива (до ES2016)</target>
+        </trans-unit>
+        <trans-unit id="820471fc96bdf044cac7a71fa7e5925072bd7715" translate="yes" xml:space="preserve">
+          <source>As others have said, the iteration through the array is probably the best way, but it &lt;a href=&quot;http://blogs.oracle.com/greimer/entry/best_way_to_code_a&quot;&gt;has been proven&lt;/a&gt; that a decreasing &lt;code&gt;while&lt;/code&gt; loop is the fastest way to iterate in JavaScript. So you may want to rewrite your code as follows:</source>
+          <target state="translated">Как уже говорили другие, итерация по массиву, вероятно, является наилучшим способом, но &lt;a href=&quot;http://blogs.oracle.com/greimer/entry/best_way_to_code_a&quot;&gt;было доказано,&lt;/a&gt; что уменьшение цикла while является самым быстрым способом итерации в JavaScript. Поэтому вы можете переписать свой код следующим образом:</target>
+        </trans-unit>
+        <trans-unit id="a183a9029e6053aa206bd8f78fb63e1bcdddaac1" translate="yes" xml:space="preserve">
+          <source>As test I created an array with 100k entries.</source>
+          <target state="translated">В качестве теста я создал массив из 100k записей.</target>
+        </trans-unit>
+        <trans-unit id="9d7e7c087b4bd3ac73364918b2ee9cb9c1799676" translate="yes" xml:space="preserve">
+          <source>Below are three ways of checking whether there is a &lt;code&gt;3&lt;/code&gt; in there. All of them return either &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt;.</source>
+          <target state="translated">Ниже приведены три способа проверить, есть ли там &lt;code&gt;3&lt;/code&gt; . Все они возвращают либо &lt;code&gt;true&lt;/code&gt; , либо &lt;code&gt;false&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="4d963cfab70d8c850b1221649bcc7b4d96d558d3" translate="yes" xml:space="preserve">
+          <source>Bonus</source>
+          <target state="translated">Bonus</target>
+        </trans-unit>
+        <trans-unit id="00d426145cd70803b163fe1889541e0436672a9b" translate="yes" xml:space="preserve">
+          <source>Currently it's still a draft but can be &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Polyfill&quot;&gt;polyfilled&lt;/a&gt; to make it work on all browsers.</source>
+          <target state="translated">В настоящее время это все еще черновик, но его можно &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Polyfill&quot;&gt;заполнить,&lt;/a&gt; чтобы он работал во всех браузерах.</target>
+        </trans-unit>
+        <trans-unit id="e52c854d5631eec7468ba4727b4c77eb745f2965" translate="yes" xml:space="preserve">
+          <source>Demo</source>
+          <target state="translated">Demo</target>
+        </trans-unit>
+        <trans-unit id="83d36288b5c8873730d74ec2bee7f0a6e4883b2f" translate="yes" xml:space="preserve">
+          <source>Demo:</source>
+          <target state="translated">Demo:</target>
+        </trans-unit>
+        <trans-unit id="dc3decbb93847518f1a049dcf49d0d7c6560bcc6" translate="yes" xml:space="preserve">
+          <source>Details</source>
+          <target state="translated">Details</target>
+        </trans-unit>
+        <trans-unit id="b75e71a9c0a73c636523fc12a59e51c67115ee2c" translate="yes" xml:space="preserve">
+          <source>Dojo Toolkit: &lt;a href=&quot;http://dojotoolkit.org/reference-guide/dojo/indexOf.html&quot;&gt;&lt;code&gt;dojo.indexOf(array, value, [fromIndex, findLast])&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">Dojo Toolkit: &lt;a href=&quot;http://dojotoolkit.org/reference-guide/dojo/indexOf.html&quot;&gt; &lt;code&gt;dojo.indexOf(array, value, [fromIndex, findLast])&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="d7eb5e66ccf7ff4b0c3e12f9b838e3c060dbe7ab" translate="yes" xml:space="preserve">
+          <source>ECMAScript 6 has an elegant proposal on find.</source>
+          <target state="translated">ECMAScript 6 имеет элегантное предложение в поиске.</target>
+        </trans-unit>
+        <trans-unit id="b288b702748358f62fc1dabe0b0e9ae73618544c" translate="yes" xml:space="preserve">
+          <source>ECMAScript 7 introduces &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes&quot;&gt;&lt;code&gt;Array.prototype.includes&lt;/code&gt;&lt;/a&gt;.</source>
+          <target state="translated">ECMAScript 7 представляет &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes&quot;&gt; &lt;code&gt;Array.prototype.includes&lt;/code&gt; &lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="c63737abd7347a7ae582cb9fbdf37d6c0e5b251e" translate="yes" xml:space="preserve">
+          <source>Example:</source>
+          <target state="translated">Example:</target>
+        </trans-unit>
+        <trans-unit id="49c2bd6aa6f23d62660e81e7508644de0747ce48" translate="yes" xml:space="preserve">
+          <source>Expand snippet</source>
+          <target state="translated">Расширить фрагмент</target>
+        </trans-unit>
+        <trans-unit id="ac15517e284529ed9d77b5e4ab5790a55e8af0bf" translate="yes" xml:space="preserve">
+          <source>Ext: &lt;a href=&quot;http://docs.sencha.com/extjs/4.0.0/#/api/Ext.Array-method-contains&quot;&gt;&lt;code&gt;Ext.Array.contains(array, value)&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">Ext: &lt;a href=&quot;http://docs.sencha.com/extjs/4.0.0/#/api/Ext.Array-method-contains&quot;&gt; &lt;code&gt;Ext.Array.contains(array, value)&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="eb68107e5febdf35eea1d01bad4984345866f1fd" translate="yes" xml:space="preserve">
+          <source>Extending the JavaScript &lt;code&gt;Array&lt;/code&gt; object is a really bad idea because you introduce new properties (your custom methods) into &lt;code&gt;for-in&lt;/code&gt; loops which can break existing scripts. A few years ago the authors of the &lt;a href=&quot;http://en.wikipedia.org/wiki/Prototype_JavaScript_Framework&quot;&gt;Prototype&lt;/a&gt; library had to re-engineer their library implementation to remove just this kind of thing.</source>
+          <target state="translated">Расширение объекта JavaScript &lt;code&gt;Array&lt;/code&gt; - очень плохая идея, потому что вы вводите новые свойства (ваши пользовательские методы) &lt;code&gt;for-in&lt;/code&gt; циклы for-in, которые могут нарушать существующие сценарии. Несколько лет назад авторам библиотеки &lt;a href=&quot;http://en.wikipedia.org/wiki/Prototype_JavaScript_Framework&quot;&gt;Prototype&lt;/a&gt; пришлось перестроить свою библиотечную реализацию, чтобы удалить именно такие вещи.</target>
+        </trans-unit>
+        <trans-unit id="f5ec22899f4427f21921edbbd5e8fb8dcb009ec9" translate="yes" xml:space="preserve">
+          <source>Here is a complex example doing three checks per iteration, but this is only possible with a longer calculation which causes the slowdown of the code.</source>
+          <target state="translated">Приведем сложный пример выполнения трех проверок за одну итерацию,но это возможно только при более длительном вычислении,что приводит к замедлению работы кода.</target>
+        </trans-unit>
+        <trans-unit id="32a46c0daf7a31dffc5357242054af1019b73d24" translate="yes" xml:space="preserve">
+          <source>Here is the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find&quot;&gt;MDN documentation&lt;/a&gt; on that.</source>
+          <target state="translated">Вот &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find&quot;&gt;документация MDN&lt;/a&gt; по этому вопросу.</target>
+        </trans-unit>
+        <trans-unit id="f73591287f9a256c22a935074fa54f1b4edc5742" translate="yes" xml:space="preserve">
+          <source>Here's a &lt;a href=&quot;https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/indexOf&quot;&gt;JavaScript 1.6 compatible&lt;/a&gt; implementation of &lt;code&gt;Array.indexOf&lt;/code&gt;:</source>
+          <target state="translated">Вот &lt;a href=&quot;https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/indexOf&quot;&gt;совместимая&lt;/a&gt; с JavaScript 1.6 реализация &lt;code&gt;Array.indexOf&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="73ddb6b3efa49acc39d3b80f97da9706b3ea2e7a" translate="yes" xml:space="preserve">
+          <source>Here's how &lt;a href=&quot;http://github.com/sstephenson/prototype/blob/f405b2c510e09b55d08c926a9e1a5c2e2d0a1834/src/lang/array.js#L286-302&quot;&gt;Prototype does it&lt;/a&gt;:</source>
+          <target state="translated">Вот как &lt;a href=&quot;http://github.com/sstephenson/prototype/blob/f405b2c510e09b55d08c926a9e1a5c2e2d0a1834/src/lang/array.js#L286-302&quot;&gt;это делает Prototype&lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="20ae8e0c00b1fa1a1071d47bdb057532c38b84b1" translate="yes" xml:space="preserve">
+          <source>How do I check if an array includes a value in JavaScript</source>
+          <target state="translated">Как проверить,включает ли массив значение в JavaScript</target>
+        </trans-unit>
+        <trans-unit id="2494e96cd66323400e7154384c7f185dc839ebd1" translate="yes" xml:space="preserve">
+          <source>How is this possible?</source>
+          <target state="translated">Как такое возможно?</target>
+        </trans-unit>
+        <trans-unit id="c99fe5750c3181f3859af356a418988a87310708" translate="yes" xml:space="preserve">
+          <source>I also prefer &lt;code&gt;while&lt;/code&gt; over &lt;code&gt;for&lt;/code&gt;, but for not a specific reason I ended writing the function with a for loop. It could be also done with a &lt;code&gt;while --&lt;/code&gt;.</source>
+          <target state="translated">Я также предпочитаю &lt;code&gt;while&lt;/code&gt; &lt;code&gt;for&lt;/code&gt; , но не по конкретной причине я закончил написание функции с помощью цикла for. Это также может быть сделано через некоторое &lt;code&gt;while --&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="4e7f926e0198c33afed235e77fff45b62d69efaf" translate="yes" xml:space="preserve">
+          <source>I also run test for big array when searched element was on position 66% of array length, and solutions based on &lt;code&gt;for&lt;/code&gt; (C,D,E) gives similar results (~630 ops/sec - but the E on safari and firefox was 10-20% slower than C and D)</source>
+          <target state="translated">Я также запускаю тест для большого массива, когда искомый элемент находился в позиции 66% длины массива, и решения, основанные на (C, D, E), дают аналогичные результаты (~ 630 операций в секунду - но E на safari и firefox было 10 -20% медленнее, чем C и D)</target>
+        </trans-unit>
+        <trans-unit id="84464b4ca7dfa8c6d4801774a3135af233b2ebac" translate="yes" xml:space="preserve">
+          <source>I hope you also find this interesting and test the performance.</source>
+          <target state="translated">Надеюсь,вы также сочтете это интересным и проверите работоспособность.</target>
+        </trans-unit>
+        <trans-unit id="9dcc9d0305378204bf3ede8b2618fed0eb90649c" translate="yes" xml:space="preserve">
+          <source>I perform 2 tests cases: for array with 10 elements, and array with 1 milion elements. In both cases we put searched element in the array middle.</source>
+          <target state="translated">Я выполняю 2 тестовых случая:для массива с 10 элементами и для массива с 1 миллионными элементами.В обоих случаях мы помещаем искомый элемент в середину массива.</target>
+        </trans-unit>
+        <trans-unit id="0b8a1c5b70eefb3d48daa75b54a499297c28805a" translate="yes" xml:space="preserve">
+          <source>I think that the simple calculation to get the reflected index in an array is so simple that it's two times faster than doing an actual loop iteration.</source>
+          <target state="translated">Я думаю,что простое вычисление для получения отраженного индекса в массиве настолько просто,что оно в два раза быстрее,чем реальная итерация цикла.</target>
+        </trans-unit>
+        <trans-unit id="c9fe622e69b560ae352d96f8ff0fcf61e9c7bed2" translate="yes" xml:space="preserve">
+          <source>I use the following:</source>
+          <target state="translated">Я использую следующее:</target>
+        </trans-unit>
+        <trans-unit id="28e4ffc52f1e8141f4b7d43d5c75f149bcd5dfc8" translate="yes" xml:space="preserve">
+          <source>I was curious if the iteration was much slower if I check both sides of the array while doing it. Apparently no, and so this function is around two times faster than the top voted ones. Obviously it's also faster than the native one. This in a real world environment, where you never know if the value you are searching is at the beginning or at the end of the array.</source>
+          <target state="translated">Мне было любопытно,будет ли итерация намного медленнее,если я проверю обе стороны массива во время ее выполнения.Очевидно,что нет,и поэтому эта функция примерно в два раза быстрее,чем проголосовавшие сверху.Очевидно,что она также быстрее,чем родная.Это в реальном мире,где никогда не знаешь,находится ли искомое значение в начале или в конце массива.</target>
+        </trans-unit>
+        <trans-unit id="b9f22fd83bdf3e491fb6e80ec269fbb800d6ee83" translate="yes" xml:space="preserve">
+          <source>IE6+ solution:</source>
+          <target state="translated">Решение IE6+:</target>
+        </trans-unit>
+        <trans-unit id="e2c5590817181cc7e7c8909b5f1ca3dd5150eaf6" translate="yes" xml:space="preserve">
+          <source>If you are checking repeatedly for existence of an object in an array you should maybe look into</source>
+          <target state="translated">Если вы многократно проверяете существование объекта в массиве,то,возможно,вам стоит обратить внимание на следующие моменты</target>
+        </trans-unit>
+        <trans-unit id="625b41de336989cef496844e1118db8209392193" translate="yes" xml:space="preserve">
+          <source>If you are using JavaScript 1.6 or later (Firefox 1.5 or later) you can use &lt;a href=&quot;https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/indexOf&quot;&gt;Array.indexOf&lt;/a&gt;.  Otherwise, I think you are going to end up with something similar to your original code.</source>
+          <target state="translated">Если вы используете JavaScript 1.6 или новее (Firefox 1.5 или новее), вы можете использовать &lt;a href=&quot;https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/indexOf&quot;&gt;Array.indexOf&lt;/a&gt; . В противном случае, я думаю, вы получите что-то похожее на ваш оригинальный код.</target>
+        </trans-unit>
+        <trans-unit id="3ee6e017af8f89d3d12e3d78389bb4add3cf2317" translate="yes" xml:space="preserve">
+          <source>If you don't need to worry about compatibility with other JavaScript running on your page, go for it, otherwise, I'd recommend the more awkward, but safer free-standing function solution.</source>
+          <target state="translated">Если вам не нужно беспокоиться о совместимости с другими JavaScript,запущенными на вашей странице,то вперед,в противном случае,я бы порекомендовал более неудобное,но более безопасное решение с автономными функциями.</target>
+        </trans-unit>
+        <trans-unit id="2daaa05340a4a5fbf45632f41108223c525f42cf" translate="yes" xml:space="preserve">
+          <source>If you're having array of objects like below,</source>
+          <target state="translated">Если у вас есть массив объектов,как показано ниже,</target>
+        </trans-unit>
+        <trans-unit id="d2da7e5fc690c05c7dd880dab7d51eecaf495e88" translate="yes" xml:space="preserve">
+          <source>In order to handle both scalars and objects, you could do this:</source>
+          <target state="translated">Для того,чтобы работать как со скалярами,так и с объектами,это можно сделать:</target>
+        </trans-unit>
+        <trans-unit id="fbb0ba0cb144ea9ec30e8a02f59189cac1e0fd83" translate="yes" xml:space="preserve">
+          <source>Is there a better and more concise way to accomplish this?</source>
+          <target state="translated">Есть ли лучший и более лаконичный способ сделать это?</target>
+        </trans-unit>
+        <trans-unit id="96524039763060c62193d4b3f2e8e0aeb1a9c048" translate="yes" xml:space="preserve">
+          <source>It also accepts an optional second argument &lt;code&gt;fromIndex&lt;/code&gt;:</source>
+          <target state="translated">Он также принимает необязательный второй аргумент &lt;code&gt;fromIndex&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="7957cdd685e55b0659e0f881b1501d7538cec20a" translate="yes" xml:space="preserve">
+          <source>It can be used like this:</source>
+          <target state="translated">Его можно использовать вот так:</target>
+        </trans-unit>
+        <trans-unit id="dec9bd251fe067dfc0548c5c6f8d543981f5dc35" translate="yes" xml:space="preserve">
+          <source>It's concise, accurate and has great cross platform support.</source>
+          <target state="translated">Она лаконична,точна и имеет отличную кросс-платформенную поддержку.</target>
+        </trans-unit>
+        <trans-unit id="d7b1386bed9cbbf81dba8983bdb2c019db7c6ebc" translate="yes" xml:space="preserve">
+          <source>It's long time that I was thinking of way to replace the slow indexOf/lastIndexOf functions.</source>
+          <target state="translated">Я долго думал о том,как заменить медленные функции indexOflastIndexOf.</target>
+        </trans-unit>
+        <trans-unit id="25b2e1835d0c0287f224776b63a40c7d557a0824" translate="yes" xml:space="preserve">
+          <source>Keeping the array sorted at all times by doing &lt;a href=&quot;http://en.wikipedia.org/wiki/Insertion_sort&quot;&gt;insertion sort&lt;/a&gt; in your array (put new objects in on the right place)</source>
+          <target state="translated">Поддержание сортировки массива всегда путем &lt;a href=&quot;http://en.wikipedia.org/wiki/Insertion_sort&quot;&gt;вставки сортировки&lt;/a&gt; в ваш массив (поместите новые объекты в нужное место)</target>
+        </trans-unit>
+        <trans-unit id="fc09e2e02a3b9b59afbbd4c12fd5ae7cc7d86edf" translate="yes" xml:space="preserve">
+          <source>Let's say we have array of Objects arrObj and we want to search obj in it.</source>
+          <target state="translated">Допустим,у нас есть массив Objects arrObj и мы хотим искать в нем объекты.</target>
+        </trans-unit>
+        <trans-unit id="5dcdd6376733383c88fb8505f672ce2c465e3ee7" translate="yes" xml:space="preserve">
+          <source>Let's say you've defined an array like so:</source>
+          <target state="translated">Скажем так,вы определили массив:</target>
+        </trans-unit>
+        <trans-unit id="1133d8a8268183b654cc15e962adec1905def045" translate="yes" xml:space="preserve">
+          <source>Lodash: &lt;a href=&quot;https://lodash.com/docs#includes&quot;&gt;&lt;code&gt;_.includes(array, value, [from])&lt;/code&gt;&lt;/a&gt; (is &lt;code&gt;_.contains&lt;/code&gt; prior 4.0.0)</source>
+          <target state="translated">Lodash: &lt;a href=&quot;https://lodash.com/docs#includes&quot;&gt; &lt;code&gt;_.includes(array, value, [from])&lt;/code&gt; &lt;/a&gt; (является &lt;code&gt;_.contains&lt;/code&gt; предыдущих 4.0.0)</target>
+        </trans-unit>
+        <trans-unit id="15ad60cdf54e6bc76cdd4462ba0c40f97badfa2d" translate="yes" xml:space="preserve">
+          <source>MS Ajax: &lt;a href=&quot;http://www.asp.net/ajaxlibrary/Reference.Array-indexOf-Function.ashx&quot;&gt;&lt;code&gt;array.indexOf(value)&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">MS Ajax: &lt;a href=&quot;http://www.asp.net/ajaxlibrary/Reference.Array-indexOf-Function.ashx&quot;&gt; &lt;code&gt;array.indexOf(value)&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="84984b49ae654a77558f7a39ed56f68055a47884" translate="yes" xml:space="preserve">
+          <source>Make updating objects as remove+sorted insert operation and</source>
+          <target state="translated">Обновление объектов выполняется как операция удаления+сортировки вставки и</target>
+        </trans-unit>
+        <trans-unit id="13f96a3206465a40fdd57b0c45a1c47a96492ce3" translate="yes" xml:space="preserve">
+          <source>Many frameworks also offer similar methods:</source>
+          <target state="translated">Многие рамочные программы также предлагают аналогичные методы:</target>
+        </trans-unit>
+        <trans-unit id="34b498db5861179f4d01de30ad382c1c99d173a6" translate="yes" xml:space="preserve">
+          <source>MochiKit: &lt;a href=&quot;http://mochi.github.io/mochikit/doc/html/MochiKit/Base.html#fn-findvalue&quot;&gt;&lt;code&gt;findValue(array, value)&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">MochiKit: &lt;a href=&quot;http://mochi.github.io/mochikit/doc/html/MochiKit/Base.html#fn-findvalue&quot;&gt; &lt;code&gt;findValue(array, value)&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="11bd5cb3c081453f6118ff4b291498d2d7511e0d" translate="yes" xml:space="preserve">
+          <source>Modern browsers have &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Browser_compatibility&quot;&gt;&lt;code&gt;Array#includes&lt;/code&gt;&lt;/a&gt;, which does &lt;em&gt;exactly&lt;/em&gt; that and &lt;a href=&quot;https://kangax.github.io/compat-table/es2016plus/#test-Array.prototype.includes&quot;&gt;is widely supported&lt;/a&gt; by everyone except IE:</source>
+          <target state="translated">Современные браузеры имеют &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Browser_compatibility&quot;&gt; &lt;code&gt;Array#includes&lt;/code&gt; &lt;/a&gt; , который делает &lt;em&gt;именно&lt;/em&gt; это и &lt;a href=&quot;https://kangax.github.io/compat-table/es2016plus/#test-Array.prototype.includes&quot;&gt;широко поддерживается&lt;/a&gt; всеми, кроме IE:</target>
+        </trans-unit>
+        <trans-unit id="ac5f3f86aeba412f6c7300de9ded324b814b2be2" translate="yes" xml:space="preserve">
+          <source>MooTools: &lt;a href=&quot;https://mootools.net/core/docs/1.6.0/Types/Array#Array:indexOf&quot;&gt;&lt;code&gt;array.indexOf(value)&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">MooTools: &lt;a href=&quot;https://mootools.net/core/docs/1.6.0/Types/Array#Array:indexOf&quot;&gt; &lt;code&gt;array.indexOf(value)&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="1f9f5580daea7b8f13b0defea3a5dc9f8652aa84" translate="yes" xml:space="preserve">
+          <source>Native Array method (since ES2016) (&lt;a href=&quot;https://caniuse.com/#feat=array-includes&quot;&gt;compatibility table&lt;/a&gt;)</source>
+          <target state="translated">Метод Native Array (начиная с ES2016) ( &lt;a href=&quot;https://caniuse.com/#feat=array-includes&quot;&gt;таблица совместимости&lt;/a&gt; )</target>
+        </trans-unit>
+        <trans-unit id="697f83c56e4af8a3d870ae1c1d3850dac14005f4" translate="yes" xml:space="preserve">
+          <source>Non-optimized ES6 one-liner:</source>
+          <target state="translated">Оптимизированный однолинейный ES6:</target>
+        </trans-unit>
+        <trans-unit id="cf369e9f80a3aee5118b14ec07f5711bfcb6fc0f" translate="yes" xml:space="preserve">
+          <source>Note:
+Comparing objects by value will work better if the keys are in the same order, so to be safe you might sort the keys first with a package like this one: &lt;a href=&quot;https://www.npmjs.com/package/sort-keys&quot;&gt;https://www.npmjs.com/package/sort-keys&lt;/a&gt;</source>
+          <target state="translated">Примечание. Сравнение объектов по значению будет работать лучше, если ключи расположены в одном и том же порядке, поэтому для безопасности можно сначала отсортировать ключи с помощью следующего пакета: &lt;a href=&quot;https://www.npmjs.com/package/sort-keys&quot;&gt;https://www.npmjs.com/package/sort-keys&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="11415b96e3d11a9e4bc779554b10a502ba013727" translate="yes" xml:space="preserve">
+          <source>Note: As you can see I slightly modified the &lt;code&gt;contains&lt;/code&gt; function to reflect the indexOf &amp;amp; lastIndexOf output (so basically &lt;code&gt;true&lt;/code&gt; with the &lt;code&gt;index&lt;/code&gt; and &lt;code&gt;false&lt;/code&gt; with &lt;code&gt;-1&lt;/code&gt;). That shouldn't harm it.</source>
+          <target state="translated">Примечание. Как вы можете видеть, я немного изменил функцию &lt;code&gt;contains&lt;/code&gt; , чтобы отразить выходные данные indexOf &amp;amp; lastIndexOf (так что в основном это &lt;code&gt;true&lt;/code&gt; для &lt;code&gt;index&lt;/code&gt; и &lt;code&gt;false&lt;/code&gt; для &lt;code&gt;-1&lt;/code&gt; ). Это не должно причинить вреда.</target>
+        </trans-unit>
+        <trans-unit id="9c3befe7e22c8667bc957541f49b0ee79970b588" translate="yes" xml:space="preserve">
+          <source>Notes:</source>
+          <target state="translated">Notes:</target>
+        </trans-unit>
+        <trans-unit id="f625fa0058ddfcc2adcd5b53ac3bb76651142210" translate="yes" xml:space="preserve">
+          <source>Notice that some frameworks implement this as a function, while others add the function to the array prototype.</source>
+          <target state="translated">Обратите внимание,что некоторые каркасы реализуют это как функцию,в то время как другие добавляют функцию в прототип массива.</target>
+        </trans-unit>
+        <trans-unit id="40a0fca5b4ff80b27dceac44499b495cb11b44ad" translate="yes" xml:space="preserve">
+          <source>OK, you can just &lt;strong&gt;optimise your&lt;/strong&gt; code to get the result!</source>
+          <target state="translated">ОК, вы можете просто &lt;strong&gt;оптимизировать свой&lt;/strong&gt; код, чтобы получить результат!</target>
+        </trans-unit>
+        <trans-unit id="c6004473778dc819accd15d1a64aa218f11402d1" translate="yes" xml:space="preserve">
+          <source>Of course, you may as well extend Array prototype:</source>
+          <target state="translated">Конечно,вы можете расширить прототип Мэррей:</target>
+        </trans-unit>
+        <trans-unit id="f479744c024205bcadceb234c72adf9ccab6115d" translate="yes" xml:space="preserve">
+          <source>One can use &lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set&quot;&gt;Set&lt;/a&gt; that has the method &quot;has()&quot;:</source>
+          <target state="translated">Можно использовать &lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set&quot;&gt;Set&lt;/a&gt; , у которого есть метод &quot;has ()&quot;:</target>
+        </trans-unit>
+        <trans-unit id="825581b147d158d0a4fcbad34b8422e021ee90b1" translate="yes" xml:space="preserve">
+          <source>One-liner:</source>
+          <target state="translated">One-liner:</target>
+        </trans-unit>
+        <trans-unit id="63c904559993935c470f516c8b549ca7f3640dbb" translate="yes" xml:space="preserve">
+          <source>Performance</source>
+          <target state="translated">Performance</target>
+        </trans-unit>
+        <trans-unit id="68c145e8a882446ce410a8fffbfe92a5b1901acc" translate="yes" xml:space="preserve">
+          <source>Performance test</source>
+          <target state="translated">Тест производительности</target>
+        </trans-unit>
+        <trans-unit id="14af93ac2aa339aa659d1348d1120c589b66f432" translate="yes" xml:space="preserve">
+          <source>Prototype: &lt;a href=&quot;http://api.prototypejs.org/language/Array/prototype/indexOf/&quot;&gt;&lt;code&gt;array.indexOf(value)&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">Прототип: &lt;a href=&quot;http://api.prototypejs.org/language/Array/prototype/indexOf/&quot;&gt; &lt;code&gt;array.indexOf(value)&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="b7effb1c9ae5bdca656da5f4d5ba15d3df67f272" translate="yes" xml:space="preserve">
+          <source>Ramda: &lt;a href=&quot;https://ramdajs.com/docs/#includes&quot;&gt;&lt;code&gt;R.includes(value, array)&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">Рамда: &lt;a href=&quot;https://ramdajs.com/docs/#includes&quot;&gt; &lt;code&gt;R.includes(value, array)&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="612e12d29278b5519294bc25cdaddffec6d0f1c6" translate="yes" xml:space="preserve">
+          <source>Results</source>
+          <target state="translated">Results</target>
+        </trans-unit>
+        <trans-unit id="e8323adb0162f1ecb663442b5fcc7ca8dcc10b18" translate="yes" xml:space="preserve">
+          <source>Returns array index if found, or -1 if not found</source>
+          <target state="translated">Возвращает индекс массива,если найден,или -1,если не найден.</target>
+        </trans-unit>
+        <trans-unit id="4bcb4e163bf193fe874c35e7a1a754e4ed2bd51c" translate="yes" xml:space="preserve">
+          <source>Show code snippet</source>
+          <target state="translated">Показать фрагмент кода</target>
+        </trans-unit>
+        <trans-unit id="cde8d71a70567d48dd01952e68d8fa1e0ed18bca" translate="yes" xml:space="preserve">
+          <source>Simple function</source>
+          <target state="translated">Простая функция</target>
+        </trans-unit>
+        <trans-unit id="0e9d5dfd8c62d9bd7b04e68e33d6289e0216ca1f" translate="yes" xml:space="preserve">
+          <source>Simple solution for this requirement is using &lt;code&gt;find()&lt;/code&gt;</source>
+          <target state="translated">Простое решение для этого требования использует &lt;code&gt;find()&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="cba0b4c636764d40e59c45dfcbeaff8fd15c2f2f" translate="yes" xml:space="preserve">
+          <source>Since find and findIndex takes a callback, we can be fetch any object(even if we don't have the reference) from array by creatively setting the true condition.</source>
+          <target state="translated">Так как find и findIndex принимает обратный вызов,мы можем получить любой объект (даже если у нас нет ссылки)из массива,творчески установив условие true.</target>
+        </trans-unit>
+        <trans-unit id="e8120e70e781059a2250649e3a26d1ef79737908" translate="yes" xml:space="preserve">
+          <source>Solution that works in all modern browsers:</source>
+          <target state="translated">Решение,которое работает во всех современных браузерах:</target>
+        </trans-unit>
+        <trans-unit id="c76563a98a925864b596ec5d5c1c427850c1e563" translate="yes" xml:space="preserve">
+          <source>Surprised that this question still doesn't have latest syntax added, adding my 2 cents.</source>
+          <target state="translated">Удивлен,что в этом вопросе до сих пор не добавлен последний синтаксис,добавив мои 2 цента.</target>
+        </trans-unit>
+        <trans-unit id="e32c19490d0541d3cf19e6edf0e601f2c55e35c0" translate="yes" xml:space="preserve">
+          <source>The accepted answer does not even meet the requirements.</source>
+          <target state="translated">Принятый ответ даже не отвечает требованиям.</target>
+        </trans-unit>
+        <trans-unit id="6e76714ac550731d4df9f2f4c7278a064a84b068" translate="yes" xml:space="preserve">
+          <source>The array prototype variant</source>
+          <target state="translated">Вариант прототипа массива</target>
+        </trans-unit>
+        <trans-unit id="fbe496135ed624dc79a7b415841f95f2535966fe" translate="yes" xml:space="preserve">
+          <source>The find functionality works like this.</source>
+          <target state="translated">Функция поиска работает вот так.</target>
+        </trans-unit>
+        <trans-unit id="abb94027a4ec61a730cdc8afd975bf908ce25a48" translate="yes" xml:space="preserve">
+          <source>The find method executes the callback function once for each element
+  present in the array until it finds one where callback returns a true
+  value. If such an element is found, find immediately returns the value
+  of that element. Otherwise, find returns undefined. callback is
+  invoked only for indexes of the array which have assigned values; it
+  is not invoked for indexes which have been deleted or which have never
+  been assigned values.</source>
+          <target state="translated">Метод find выполняет функцию обратного вызова один раз для каждого элемента,присутствующего в массиве,до тех пор,пока не найдет тот,где обратный вызов возвращает истинное значение.Если такой элемент найден,функция find немедленно возвращает значение этого элемента.В противном случае,find возвращает неопределенное значение.Обратный вызов вызывается только для индексов массива,которым присвоены значения;он не вызывается для индексов,которые были удалены или которым никогда не присваивались значения.</target>
+        </trans-unit>
+        <trans-unit id="5b756913fa20f5856e97197d8d0fda4fbf36c558" translate="yes" xml:space="preserve">
+          <source>The function can also be easily modified to return true or false or even the object, string or whatever it is.</source>
+          <target state="translated">Функцию также можно легко модифицировать,чтобы она возвращала true или false или даже объект,строку или что бы то ни было.</target>
+        </trans-unit>
+        <trans-unit id="42cafc36913e43d0dc7e04557d3be49392edb70e" translate="yes" xml:space="preserve">
+          <source>The nice thing about it is that the iteration is aborted once the element is found so unnecessary iteration cycles are spared.</source>
+          <target state="translated">Самое приятное в этом то,что итерация прерывается,как только элемент найден,поэтому ненужные циклы итераций избавлены.</target>
+        </trans-unit>
+        <trans-unit id="c57bb5822f56318aa1093c9fd0bde5d8e450f3af" translate="yes" xml:space="preserve">
+          <source>The top answers assume primitive types but if you want to find out if an array contains an &lt;strong&gt;object&lt;/strong&gt; with some trait, &lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some&quot;&gt;Array.prototype.some()&lt;/a&gt; is a very elegant solution:</source>
+          <target state="translated">Верхние ответы предполагают примитивные типы, но если вы хотите выяснить, содержит ли массив &lt;strong&gt;объект&lt;/strong&gt; с некоторой чертой, &lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some&quot;&gt;Array.prototype.some ()&lt;/a&gt; - очень элегантное решение:</target>
+        </trans-unit>
+        <trans-unit id="8745427232de5b90792b54c573542edc52081778" translate="yes" xml:space="preserve">
+          <source>Then you can check whether the object with your value is already present or not</source>
+          <target state="translated">Затем вы можете проверить,присутствует ли объект с вашей ценностью или нет</target>
+        </trans-unit>
+        <trans-unit id="5e5170b7a4ad0e560f4e4f174f48e9a7abcbf1da" translate="yes" xml:space="preserve">
+          <source>Then you can find the index of that object in the array and replace the object using below code.</source>
+          <target state="translated">Затем вы можете найти индекс этого объекта в массиве и заменить этот объект,используя приведенный ниже код.</target>
+        </trans-unit>
+        <trans-unit id="c9fd6f4ab61b50813778042886300ccd0e83bc2c" translate="yes" xml:space="preserve">
+          <source>There are many ways to do this which are cleaner and better, but I just wanted to get your pattern and apply to that using &lt;code&gt;JSON.stringify&lt;/code&gt;, just simply do something like this in your case:</source>
+          <target state="translated">Есть много способов сделать это, которые будут чище и лучше, но я просто хотел получить ваш шаблон и применить к нему, используя &lt;code&gt;JSON.stringify&lt;/code&gt; , просто сделайте что-то подобное в вашем случае:</target>
+        </trans-unit>
+        <trans-unit id="cc16540816c436314b02d39733fbde781a2be92d" translate="yes" xml:space="preserve">
+          <source>Thinking out of the box for a second, if you are making this call many many times, it is vastly more efficient to use &lt;strike&gt;an associative array&lt;/strike&gt; a Map to do lookups using a hash function.</source>
+          <target state="translated">Подумав на секунду, если вы делаете этот вызов много раз, гораздо эффективнее использовать &lt;strike&gt;ассоциативный массив&lt;/strike&gt; Map для поиска с использованием хеш-функции.</target>
+        </trans-unit>
+        <trans-unit id="c90ebff9b8cace224a8ac140604be3b76e23637d" translate="yes" xml:space="preserve">
+          <source>This is the only way I know to do it:</source>
+          <target state="translated">Это единственный способ,который я знаю:</target>
+        </trans-unit>
+        <trans-unit id="9fec1e19841ff4041bd895c4395ba1d97e9718e9" translate="yes" xml:space="preserve">
+          <source>This is very closely related to Stack Overflow question &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/143847/best-way-to-find-an-item-in-a-javascript-array&quot;&gt;Best way to find an item in a JavaScript Array?&lt;/a&gt;&lt;/em&gt; which addresses finding objects in an array using &lt;code&gt;indexOf&lt;/code&gt;.</source>
+          <target state="translated">Это очень тесно связано с вопросом переполнения стека. &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/143847/best-way-to-find-an-item-in-a-javascript-array&quot;&gt;Лучший способ найти элемент в массиве JavaScript?&lt;/a&gt;&lt;/em&gt; который обращается к поиску объектов в массиве, используя &lt;code&gt;indexOf&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="2b20c684ba339a0aa8fa186e3bd452c5a2f3f3d9" translate="yes" xml:space="preserve">
+          <source>Three queries: at the beginning, in the middle &amp;amp; at the end of the array.</source>
+          <target state="translated">Три запроса: в начале, в середине и в конце массива.</target>
+        </trans-unit>
+        <trans-unit id="5e26c8bf03eec1969b324604b86cbc899b237577" translate="yes" xml:space="preserve">
+          <source>To know exactly what the &lt;code&gt;tilde&lt;/code&gt;&lt;code&gt;~&lt;/code&gt; do at this point, refer to this question &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/12299665/what-does-a-tilde-do-when-it-precedes-an-expression&quot;&gt;What does a tilde do when it precedes an expression?&lt;/a&gt;&lt;/em&gt;.</source>
+          <target state="translated">Чтобы точно знать, что &lt;code&gt;tilde&lt;/code&gt; &lt;code&gt;~&lt;/code&gt; делает в этой точке, обратитесь к этому вопросу. &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/12299665/what-does-a-tilde-do-when-it-precedes-an-expression&quot;&gt;Что делает тильда, когда она предшествует выражению?&lt;/a&gt;&lt;/em&gt; ,</target>
+        </trans-unit>
+        <trans-unit id="48cd98f9836826608a5509761b5545dff093468c" translate="yes" xml:space="preserve">
+          <source>Today 2020.01.07 I perform tests on MacOs HighSierra 10.13.6 on Chrome v78.0.0, Safari v13.0.4 and Firefox v71.0.0 for 15 chosen solutions. Conclusions</source>
+          <target state="translated">Сегодня 2020.01.07 я провожу тесты на MacOs HighSierra 10.13.6 на Chrome v78.0.0,Safari v13.0.4 и Firefox v71.0.0 для 15 выбранных решений.Выводы</target>
+        </trans-unit>
+        <trans-unit id="49294c55abc80cbff078b924b2c630ec220213bf" translate="yes" xml:space="preserve">
+          <source>Underscore.js: &lt;a href=&quot;http://underscorejs.org/#contains&quot;&gt;&lt;code&gt;_.contains(array, value)&lt;/code&gt;&lt;/a&gt; (also aliased as &lt;code&gt;_.include&lt;/code&gt; and &lt;code&gt;_.includes&lt;/code&gt;)</source>
+          <target state="translated">Underscore.js: &lt;a href=&quot;http://underscorejs.org/#contains&quot;&gt; &lt;code&gt;_.contains(array, value)&lt;/code&gt; &lt;/a&gt; (также &lt;code&gt;_.include&lt;/code&gt; как _.include и &lt;code&gt;_.includes&lt;/code&gt; )</target>
+        </trans-unit>
+        <trans-unit id="f3d059b896de2ed3d87cd30f8be35c02ffb5fc69" translate="yes" xml:space="preserve">
+          <source>Unlike &lt;code&gt;indexOf&lt;/code&gt;, which uses &lt;a href=&quot;http://www.ecma-international.org/ecma-262/6.0/#sec-strict-equality-comparison&quot;&gt;Strict Equality Comparison&lt;/a&gt;, &lt;code&gt;includes&lt;/code&gt; compares using &lt;a href=&quot;http://www.ecma-international.org/ecma-262/6.0/#sec-samevaluezero&quot;&gt;SameValueZero&lt;/a&gt; equality algorithm. That means that you can detect if an array includes a &lt;code&gt;NaN&lt;/code&gt;:</source>
+          <target state="translated">В отличие от &lt;code&gt;indexOf&lt;/code&gt; , который использует &lt;a href=&quot;http://www.ecma-international.org/ecma-262/6.0/#sec-strict-equality-comparison&quot;&gt;строгое сравнение по равенству&lt;/a&gt; , &lt;code&gt;includes&lt;/code&gt; сравнения с использованием алгоритма равенства &lt;a href=&quot;http://www.ecma-international.org/ecma-262/6.0/#sec-samevaluezero&quot;&gt;SameValueZero&lt;/a&gt; . Это означает, что вы можете определить, содержит ли массив &lt;code&gt;NaN&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="28771587e0631fb484f44d7bb44cf48c63b7758f" translate="yes" xml:space="preserve">
+          <source>Updated the &lt;code&gt;contains&lt;/code&gt; function with a perf optimization. Thanks &lt;a href=&quot;https://stackoverflow.com/users/1397160/itinance&quot;&gt;itinance&lt;/a&gt; for pointing it out.</source>
+          <target state="translated">Обновлена ​​функция &lt;code&gt;contains&lt;/code&gt; оптимизацию перфорации. Спасибо, что &lt;a href=&quot;https://stackoverflow.com/users/1397160/itinance&quot;&gt;указали&lt;/a&gt; на это.</target>
+        </trans-unit>
+        <trans-unit id="861a0e430ffac5e4ae6e11b7a947f2c32d388cf4" translate="yes" xml:space="preserve">
+          <source>Usage:</source>
+          <target state="translated">Usage:</target>
+        </trans-unit>
+        <trans-unit id="f0228254bb4ff82bb180b380d25a7ac8da7e9b8c" translate="yes" xml:space="preserve">
+          <source>Use a &lt;a href=&quot;http://en.wikipedia.org/wiki/Binary_search_algorithm&quot;&gt;binary search&lt;/a&gt; lookup in your &lt;code&gt;contains(a, obj)&lt;/code&gt;.</source>
+          <target state="translated">Используйте &lt;a href=&quot;http://en.wikipedia.org/wiki/Binary_search_algorithm&quot;&gt;бинарный&lt;/a&gt; поиск в вашем &lt;code&gt;contains(a, obj)&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="7db1625c0ecb79fc25336042f3620583672ba039" translate="yes" xml:space="preserve">
+          <source>Use lodash's &lt;a href=&quot;https://lodash.com/docs#some&quot;&gt;some&lt;/a&gt; function.</source>
+          <target state="translated">Используйте функцию Лодаша.</target>
+        </trans-unit>
+        <trans-unit id="bc0e34154d952ed72b15f5d9618112640d548177" translate="yes" xml:space="preserve">
+          <source>Use:</source>
+          <target state="translated">Use:</target>
+        </trans-unit>
+        <trans-unit id="99d49a545e16e15fde40c6d01e8df0374271fbf3" translate="yes" xml:space="preserve">
+          <source>We use this snippet (works with objects, arrays, strings):</source>
+          <target state="translated">Мы используем этот фрагмент (работает с объектами,массивами,строками):</target>
+        </trans-unit>
+        <trans-unit id="e5a8bfa78b6cc841ae306aa109c2288f80d1bcad" translate="yes" xml:space="preserve">
+          <source>What is the most concise and efficient way to find out if a JavaScript array contains a value?</source>
+          <target state="translated">Какой самый лаконичный и эффективный способ узнать,содержит ли массив JavaScript значение?</target>
+        </trans-unit>
+        <trans-unit id="8703cf29cfa5ac185fce8c1dec2a01c5c3eb839d" translate="yes" xml:space="preserve">
+          <source>When you know you just pushed an array with a value, using lastIndexOf remains probably the best solution, but if you have to travel through big arrays and the result could be everywhere, this could be a solid solution to make things faster.</source>
+          <target state="translated">Когда вы знаете,что только что нажали на массив со значением,использование lastIndexOf остается,пожалуй,лучшим решением,но если вам приходится перемещаться по большим массивам,и результат может быть везде,это может быть надежным решением,чтобы сделать вещи быстрее.</target>
+        </trans-unit>
+        <trans-unit id="f11390c7b08f5438453c92d12de28409182c4947" translate="yes" xml:space="preserve">
+          <source>While &lt;code&gt;array.indexOf(x)!=-1&lt;/code&gt; is the most concise way to do this (and has been supported by non-Internet&amp;nbsp;Explorer browsers for over decade...), it is not O(1), but rather O(N), which is terrible. If your array will not be changing, you can convert your array to a hashtable, then do &lt;code&gt;table[x]!==undefined&lt;/code&gt; or &lt;code&gt;===undefined&lt;/code&gt;:</source>
+          <target state="translated">Хотя &lt;code&gt;array.indexOf(x)!=-1&lt;/code&gt; является наиболее лаконичным способом сделать это (и поддерживается браузерами без Internet Explorer более десяти лет ...), это не O (1), а O ( N), что ужасно. Если ваш массив не изменится, вы можете преобразовать его в хеш- &lt;code&gt;table[x]!==undefined&lt;/code&gt; , а затем выполнить таблицу [x]! == undefined или &lt;code&gt;===undefined&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="b01c71c2892eac27aa9d47b7b2460c3ca6b6002f" translate="yes" xml:space="preserve">
+          <source>While the new method &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes&quot;&gt;includes&lt;/a&gt; is very nice, the support is basically zero for now.</source>
+          <target state="translated">В то время как новый метод &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes&quot;&gt;включает в себя&lt;/a&gt; очень хорошо, поддержка пока практически нулевая.</target>
+        </trans-unit>
+        <trans-unit id="66a9a0ebce37ca21a36fa25294dd0f724d8af682" translate="yes" xml:space="preserve">
+          <source>Why to use &lt;code&gt;JSON.stringify&lt;/code&gt;?</source>
+          <target state="translated">Зачем использовать &lt;code&gt;JSON.stringify&lt;/code&gt; ?</target>
+        </trans-unit>
+        <trans-unit id="710e9393126b52a4f0c439a6f12859ff0112353e" translate="yes" xml:space="preserve">
+          <source>You can also use &lt;a href=&quot;https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/indexOf&quot;&gt;&lt;code&gt;Array#indexOf&lt;/code&gt;&lt;/a&gt;, which is less direct, but doesn't require polyfills for outdated browsers.</source>
+          <target state="translated">Вы также можете использовать &lt;a href=&quot;https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/indexOf&quot;&gt; &lt;code&gt;Array#indexOf&lt;/code&gt; &lt;/a&gt; , который менее прямой, но не требует многозаполнения для устаревших браузеров.</target>
+        </trans-unit>
+        <trans-unit id="5d307aa6a64cce35bbe21c4e01d8d6639b51bbad" translate="yes" xml:space="preserve">
+          <source>You can perform tests in your machine &lt;a href=&quot;https://jsperf.com/array-big-exist-element/1&quot;&gt;HERE&lt;/a&gt;</source>
+          <target state="translated">Вы можете выполнить тесты на своем компьютере &lt;a href=&quot;https://jsperf.com/array-big-exist-element/1&quot;&gt;ЗДЕСЬ&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="c452231ce645912ee34b17df9db70ba167c4c874" translate="yes" xml:space="preserve">
+          <source>You can perform tests in your machine &lt;a href=&quot;https://jsperf.com/array-exist-element/1&quot;&gt;HERE&lt;/a&gt;</source>
+          <target state="translated">Вы можете выполнить тесты на своем компьютере &lt;a href=&quot;https://jsperf.com/array-exist-element/1&quot;&gt;ЗДЕСЬ&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="4cffa6d9408268dd04c67fe0e590fb87b7066b9c" translate="yes" xml:space="preserve">
+          <source>You can use this in ECMAScript 5 and below by &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find#Polyfill&quot;&gt;defining the function&lt;/a&gt;.</source>
+          <target state="translated">Вы можете использовать это в ECMAScript 5 и ниже, &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find#Polyfill&quot;&gt;определив функцию&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="8a8b0fcd60b778db319e070da9ab5bd99a70551d" translate="yes" xml:space="preserve">
+          <source>hope this will help anyone.</source>
+          <target state="translated">надеюсь,это кому-нибудь поможет.</target>
+        </trans-unit>
+        <trans-unit id="f4b7e9b9241515996b32e009d8f7fee6dcf4fc80" translate="yes" xml:space="preserve">
+          <source>if data is null then no admin, else it will return the existing object like below.</source>
+          <target state="translated">если данные нулевые,то никакой администратор,иначе он вернет существующий объект,как показано ниже.</target>
+        </trans-unit>
+        <trans-unit id="12c167eda8182142022b2a92450f25c79b0bcb8b" translate="yes" xml:space="preserve">
+          <source>jQuery: &lt;a href=&quot;http://api.jquery.com/jquery.inarray/&quot;&gt;&lt;code&gt;$.inArray(value, array, [fromIndex])&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">jQuery: &lt;a href=&quot;http://api.jquery.com/jquery.inarray/&quot;&gt; &lt;code&gt;$.inArray(value, array, [fromIndex])&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="6101b8b106bb34aa75ee0814071b80c3bd5855d4" translate="yes" xml:space="preserve">
+          <source>solutions based on &lt;code&gt;JSON&lt;/code&gt;, &lt;code&gt;Set&lt;/code&gt; and surprisingly &lt;code&gt;find&lt;/code&gt; (K,N,O) are slowest on all browsers</source>
+          <target state="translated">Решения, основанные на &lt;code&gt;JSON&lt;/code&gt; , &lt;code&gt;Set&lt;/code&gt; и удивительно &lt;code&gt;find&lt;/code&gt; (K, N, O), являются самыми медленными во всех браузерах</target>
+        </trans-unit>
+        <trans-unit id="a11a1beae753e81ce95402eff46f26a927ec2374" translate="yes" xml:space="preserve">
+          <source>the es6 &lt;code&gt;includes&lt;/code&gt; (F) is fast only on chrome</source>
+          <target state="translated">es6 &lt;code&gt;includes&lt;/code&gt; (F) быстро только на хром</target>
+        </trans-unit>
+        <trans-unit id="7ec7950d04195293692d83e333f6cef03db4144a" translate="yes" xml:space="preserve">
+          <source>the solutions based on &lt;code&gt;for&lt;/code&gt; (C,D) and &lt;code&gt;indexOf&lt;/code&gt; (G,H) are quite-fast on all browsers on small and big arrays so probably they are best choice for efficient solution</source>
+          <target state="translated">Решения, основанные на &lt;code&gt;for&lt;/code&gt; (C, D) и &lt;code&gt;indexOf&lt;/code&gt; (G, H), достаточно быстры во всех браузерах для маленьких и больших массивов, поэтому, вероятно, они являются лучшим выбором для эффективного решения.</target>
+        </trans-unit>
+        <trans-unit id="289945786f0df06cde96642e167bcc38037aa002" translate="yes" xml:space="preserve">
+          <source>the solutions where index decrease during loop, (B) is slower probably because the way of &lt;a href=&quot;https://stackoverflow.com/questions/1950878/c-for-loop-indexing-is-forward-indexing-faster-in-new-cpus&quot;&gt;CPU cache works&lt;/a&gt;.</source>
+          <target state="translated">Решения, в которых индекс уменьшается во время цикла, (B) медленнее, вероятно, потому, что &lt;a href=&quot;https://stackoverflow.com/questions/1950878/c-for-loop-indexing-is-forward-indexing-faster-in-new-cpus&quot;&gt;работает кеш процессора&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="798bc4d228938e571a6eb1d95ec4af0226cad052" translate="yes" xml:space="preserve">
+          <source>you will get value like below</source>
+          <target state="translated">вы получите значение,как показано ниже</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

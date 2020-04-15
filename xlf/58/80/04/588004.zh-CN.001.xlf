@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/588004">
+    <body>
+      <group id="588004">
+        <trans-unit id="9a77327f76e62f6925f45c2be16539ae6c9d0041" translate="yes" xml:space="preserve">
+          <source>(Skip to the bottom for the TL;DR version)</source>
+          <target state="translated">(跳到底部的TL;DR版本)</target>
+        </trans-unit>
+        <trans-unit id="84f229d061d11f481f1f19df8986961ca0da2d64" translate="yes" xml:space="preserve">
+          <source>(The difference between those two numbers is the &quot;smallest slice&quot; that we must decide to either include, which introduces an upward bias, or exclude, which introduces a downward bias. The technical term for that smallest slice is an &lt;a href=&quot;https://en.wikipedia.org/wiki/Unit_in_the_last_place&quot;&gt;ulp&lt;/a&gt;.)</source>
+          <target state="translated">（这两个数字之间的差是我们必须决定包括在内的&amp;ldquo;最小片段&amp;rdquo;，它引入了向上的偏差，或者排除了它引入了向下的偏差。最小的切片的技术术语是&lt;a href=&quot;https://en.wikipedia.org/wiki/Unit_in_the_last_place&quot;&gt;ulp&lt;/a&gt; 。）</target>
+        </trans-unit>
+        <trans-unit id="9b6d1bf18ecd6ade5e73ff28141534f5496bb1f2" translate="yes" xml:space="preserve">
+          <source>** Of course, that's not exactly how floating-point numbers are stored in memory (they use a form of scientific notation). However, it does illustrate the point that binary floating-point precision errors tend to crop up because the &quot;real world&quot; numbers we are usually interested in working with are so often powers of ten - but only because we use a decimal number system day-to-day. This is also why we'll say things like 71% instead of &quot;5 out of every 7&quot; (71% is an approximation, since 5/7 can't be represented exactly with any decimal number).</source>
+          <target state="translated">**当然,这并不是浮点数字在内存中的存储方式(它们使用的是一种科学符号)。然而,它确实说明了一个问题,即二进制浮点数的精度误差往往会出现,因为我们通常感兴趣的 &quot;真实世界 &quot;数字往往是十的次方,但这只是因为我们每天都在使用小数系统。这也是为什么我们会说71%,而不是 &quot;每7个中的5个&quot;(71%是一个近似值,因为57不可能用任何十进制数来精确表示)。</target>
+        </trans-unit>
+        <trans-unit id="46c3af8134de9a9765655ad80ac49c39423553fd" translate="yes" xml:space="preserve">
+          <source>*15% and 34% are indeed huge, so always use BigDecimal when precision is of big importance. With 2 decimal digits (step 0.01) the situation worsens a bit more (18% and 36%).</source>
+          <target state="translated">*15%和34%确实很大,所以在精度很重要的情况下,一定要用BigDecimal。如果是2位小数(0.01级),情况会更糟糕一些(18%和36%)。</target>
+        </trans-unit>
+        <trans-unit id="5b2e8d72a1ce0dbc9f2e00162aba5643d6cfbaec" translate="yes" xml:space="preserve">
+          <source>... instead of:</source>
+          <target state="translated">...而不是</target>
+        </trans-unit>
+        <trans-unit id="8d173aa16ecb116af67a70b11ccf3319c4101b1a" translate="yes" xml:space="preserve">
+          <source>0.1 converts to 0.1000000000000000055511151231257827021181583404541015625,</source>
+          <target state="translated">0.1换算成0.100000000000055511151231257827021181583404541015625。</target>
+        </trans-unit>
+        <trans-unit id="fc11127f4be6e6f34950718f135c62cf3c856839" translate="yes" xml:space="preserve">
+          <source>0.2 converts to 0.200000000000000011102230246251565404236316680908203125,</source>
+          <target state="translated">0.2换算成0.200000000000000011102230246251565404236316680908203125。</target>
+        </trans-unit>
+        <trans-unit id="dd51d97fda6bb2ff93baf6b6621a7896bd5958f5" translate="yes" xml:space="preserve">
+          <source>0.3 converts to 0.299999999999999988897769753748434595763683319091796875, and</source>
+          <target state="translated">0.3换算成0.299999999999998889776975374843454595763683319091796875,和</target>
+        </trans-unit>
+        <trans-unit id="b16b3417bc17ee7e5d7eb955c6af5486031aa6cc" translate="yes" xml:space="preserve">
+          <source>0.30000000000000004 converts to 0.3000000000000000444089209850062616169452667236328125.</source>
+          <target state="translated">0.300000000000000000004换算成0.30000000000000000000444089209850062616169452667236328125。</target>
+        </trans-unit>
+        <trans-unit id="4a0ab3bf371766a011aeec8dab96140796667719" translate="yes" xml:space="preserve">
+          <source>1. Overview</source>
+          <target state="translated">1.讎りｦ</target>
+        </trans-unit>
+        <trans-unit id="280ddd4621ebc589f7f4d720fc9808f147099965" translate="yes" xml:space="preserve">
+          <source>2. Standards</source>
+          <target state="translated">2.标准</target>
+        </trans-unit>
+        <trans-unit id="f78082cab95c63bf0ca557926b7ee9c2fb55cdbf" translate="yes" xml:space="preserve">
+          <source>3. Cause of Rounding Error in Division</source>
+          <target state="translated">3.除法中四舍五入错误的原因</target>
+        </trans-unit>
+        <trans-unit id="2224e1de8ddee1360d6dbff9997ab8effced5fe5" translate="yes" xml:space="preserve">
+          <source>4. Rounding Errors in Other Operations: Truncation</source>
+          <target state="translated">4.4.其他操作中的四舍五入错误。截断</target>
+        </trans-unit>
+        <trans-unit id="983153e4c20b316f5664ccc0384312b6738b022a" translate="yes" xml:space="preserve">
+          <source>5. Repeated Operations</source>
+          <target state="translated">5.重复作业</target>
+        </trans-unit>
+        <trans-unit id="8b9a12652ebaf55470a7b2d8569d105d465e8862" translate="yes" xml:space="preserve">
+          <source>6. Summary</source>
+          <target state="translated">6.摘要</target>
+        </trans-unit>
+        <trans-unit id="7de70e9b0e9505394d0b85bbae95dc555ccf5cac" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://stackoverflow.com/users/62118/cato-johnston&quot;&gt;Cato Johnston&lt;/a&gt; (the question asker) asked why 0.1 + 0.2 != 0.3.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/users/62118/cato-johnston&quot;&gt;Cato Johnston&lt;/a&gt; （提问者）问为什么0.1 + 0.2！= 0.3。</target>
+        </trans-unit>
+        <trans-unit id="2d2e7cb5a614c281b71ef36c79d5cb65b4ba2509" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://www.python.org/dev/peps/pep-0485/&quot;&gt;Since Python 3.5&lt;/a&gt; you can use &lt;code&gt;math.isclose()&lt;/code&gt; function for testing approximate equality:</source>
+          <target state="translated">&lt;a href=&quot;https://www.python.org/dev/peps/pep-0485/&quot;&gt;从Python 3.5开始，&lt;/a&gt;您可以使用 &lt;code&gt;math.isclose()&lt;/code&gt; 函数测试近似相等性：</target>
+        </trans-unit>
+        <trans-unit id="401d8936879d8ca8394aee47a4c1ff1c1a185d3b" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;0.1000000000000000055511151231257827021181583404541015625&lt;/code&gt; in decimal, or</source>
+          <target state="translated">以十进制表示的 &lt;code&gt;0.1000000000000000055511151231257827021181583404541015625&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="9ae555a82a2e499fc6d7d060a859ab15f217f180" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;0.1&lt;/code&gt; in decimal, or</source>
+          <target state="translated">十进制的 &lt;code&gt;0.1&lt;/code&gt; ，或者</target>
+        </trans-unit>
+        <trans-unit id="938bfc27c36837e08b1fe976025499db2a6ca7de" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;0x1.99999999999999...p-4&lt;/code&gt; in an analogue of C99 hexfloat notation, where the &lt;code&gt;...&lt;/code&gt; represents an unending sequence of 9's.</source>
+          <target state="translated">&lt;code&gt;0x1.99999999999999...p-4&lt;/code&gt; ，类似于C99十六进制表示法，其中 &lt;code&gt;...&lt;/code&gt; 表示9的无休止序列。</target>
+        </trans-unit>
+        <trans-unit id="89651913f83ecb14efed483cec782827a6bc114c" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;0x1.999999999999ap-4&lt;/code&gt; in &lt;a href=&quot;http://www.exploringbinary.com/hexadecimal-floating-point-constants/&quot;&gt;C99 hexfloat notation&lt;/a&gt;.</source>
+          <target state="translated">&lt;code&gt;0x1.999999999999ap-4&lt;/code&gt; &lt;a href=&quot;http://www.exploringbinary.com/hexadecimal-floating-point-constants/&quot;&gt;十六进制表示法中的&lt;/a&gt; 0x1.999999999999ap-4 。</target>
+        </trans-unit>
+        <trans-unit id="1e817d9c8c705bf74fdcfcbf1e77b875d1d9ad5d" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;(Originally posted on Quora.)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;（最初发布在Quora上。）&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="f786024ccd8f2f5e7d1892462aac5f45ffcefb9b" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;1/10 = 0.0001100110011001100... (base 2)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;1/10 = 0.0001100110011001100 ...（以2为基）&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="63b72feaf47b4ec3136591d2e2faba0c081c5044" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;1/3 = 0.333....&lt;/em&gt; and &lt;em&gt;2/3 = 0.666....&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;1/3 = 0.333 ....&lt;/em&gt;和&lt;em&gt;2/3 = 0.666 ....&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="b00475b1e86d24dc6b485e60d7c73b28919a7639" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;1/5 = 0.0011001100110011001... (base 2)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;1/5 = 0.0011001100110011001 ...（以2为底）&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="16b45f9e57fbd951f4deea5d5a84d2d6a2e244b1" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;3/10 = 0.01001100110011... (base 2)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;3/10 = 0.01001100110011 ...（以2为底）&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="8dcbfaacbdfbc6d2f50d8a56a068e40e1261d6e7" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Dealing with it&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;处理它&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="0c628db72c8314407e7db73c5c8d371039653296" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;How did this happen?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;这怎么发生的？&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="114257217f3e4024fab9c8d736f74795530ded13" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;In C++, why is the result of &lt;code&gt;cout &amp;lt;&amp;lt; x&lt;/code&gt; different from the value that a debugger is showing for &lt;code&gt;x&lt;/code&gt;?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;在C ++中，为什么 &lt;code&gt;cout &amp;lt;&amp;lt; x&lt;/code&gt; 的结果与调试器为 &lt;code&gt;x&lt;/code&gt; 显示的值不同？&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="fb29457a5c4a57bd14902466b53747ea1841155b" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Most answers here address this question in very dry, technical terms. I'd like to address this in terms that normal human beings can understand.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;这里的大多数答案都是用非常干燥的技术术语来解决这个问题。&lt;/em&gt; &lt;em&gt;我想以普通人可以理解的方式来解决这个问题。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="812dea3da634f1bfe85f35d342dfc49090ae7e35" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;My answer is quite long, so I've split it into three sections. Since the question is about floating point mathematics, I've put the emphasis on what the machine actually does. I've also made it specific to double (64 bit) precision, but the argument applies equally to any floating point arithmetic.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;我的答案很长，因此我将其分为三个部分。&lt;/em&gt; &lt;em&gt;由于问题是关于浮点数学的，因此我将重点放在机器的实际功能上。&lt;/em&gt; &lt;em&gt;我还专门针对双精度（64位）精度，但该参数同样适用于任何浮点运算。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="65bea6bb1ae17a4b9f7a3bd71f9fa6d20638dc20" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Summary&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Summary&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="410b8c8555b9687d089ded3e44b46bfe83e53270" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Thanks to @a_guest for pointing that out to me.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;感谢@a_guest向我指出这一点。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="419db0b8ed72e080cefb0589020b58af00048586" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;a / (2&lt;sup&gt;n&lt;/sup&gt; x 5&lt;sup&gt;m&lt;/sup&gt;)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;一个/（2 &lt;sup&gt;n&lt;/sup&gt; x 5 &lt;sup&gt;m&lt;/sup&gt; ）&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="03859a6a2231a6787e7d8d22083fb8ea3dd47552" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;a / 2&lt;sup&gt;n&lt;/sup&gt;&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;一/ 2 &lt;sup&gt;n&lt;/sup&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="d8490feafcf8730008f92d1c10a76f3c806c53c2" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;precision&lt;/em&gt; refers to the number of digits you want to preserve after the decimal point during addition.</source>
+          <target state="translated">&lt;em&gt;精度&lt;/em&gt;是指您要在加法期间保留小数点后的位数。</target>
+        </trans-unit>
+        <trans-unit id="1e3ee7af3fba4d45fa593681a54a346b038b05dd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;3.1 Division Rounding Error: Approximation of Reciprocal&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;3.1除法舍入误差：倒数的近似&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3e6bc1e3e005f88dbf93220a210a0fde73485d05" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;A Hardware Designer's Perspective&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;硬件设计师的观点&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a96efce74d6c9dba462233167c7749ee6864dd04" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Getting to the point: the original question&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;切入点：原始问题&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7791bf2ab0b52173b0ccf2e8bcaba860d7f299bd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Math.sum&lt;/strong&gt; ( javascript )     .... kind of operator replacement</source>
+          <target state="translated">&lt;strong&gt;Math.sum&lt;/strong&gt; （javascript）....种运算符替换</target>
+        </trans-unit>
+        <trans-unit id="991cc4a1d9e4964b8a4f30616ab0b042a2270ceb" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Preamble&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Preamble&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7c64deca575044ac6f1b7a2c724063d8e9be011c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Side Note: All positional (base-N) number systems share this problem with precision&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;旁注：所有位置（以N为底的）数字系统均会精确地共享此问题&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="42c15268639d23d22e1869e6bd3d9e33364a9ea3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Side Side Note: Working with Floats in Programming&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;侧面说明：在编程中使用浮点数&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="284c0cc1c16634ee278d62d9da4d70563394d278" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;TL;DR&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;TL;DR&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4f7a6a4259ba35f3a392f787d9eda8541de9ad1d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;This happens because of the double-precision binary: IEEE 754 double-precision binary floating-point format: binary64&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;发生这种情况的原因是双精度二进制：IEEE 754双精度二进制浮点格式：binary64&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a74449c94d4167a6330ce9884c610a9f3e63e10a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Turning a double precision number to binary&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;将双精度数转换为二进制&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="42704c7e9e47a44a6be48d355b7d236b9cd0b77f" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;1&lt;/sup&gt; - IEEE 754 allows for the concept of a &lt;a href=&quot;http://en.wikipedia.org/wiki/Signed_zero&quot;&gt;signed zero&lt;/a&gt; - &lt;code&gt;+0&lt;/code&gt; and &lt;code&gt;-0&lt;/code&gt; are treated differently: &lt;code&gt;1 / (+0)&lt;/code&gt; is positive infinity; &lt;code&gt;1 / (-0)&lt;/code&gt; is negative infinity. For zero values, the mantissa and exponent bits are all zero. Note: zero values (+0 and -0) are explicitly not classed as denormal&lt;sup&gt;2&lt;/sup&gt;.</source>
+          <target state="translated">&lt;sup&gt;1&lt;/sup&gt; -IEEE 754支持带&lt;a href=&quot;http://en.wikipedia.org/wiki/Signed_zero&quot;&gt;符号零&lt;/a&gt;的概念- &lt;code&gt;+0&lt;/code&gt; 和 &lt;code&gt;-0&lt;/code&gt; 的区别对待： &lt;code&gt;1 / (+0)&lt;/code&gt; 为正无穷大； &lt;code&gt;1 / (-0)&lt;/code&gt; 为负无穷大。 对于零值，尾数和指数位均为零。 注意：零值（+0和-0）没有明确地归类为非正规&lt;sup&gt;2&lt;/sup&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="1a547f62556031e29e245098a0954c909bff3ea3" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;1&lt;/sup&gt; Douglas Crockford: &lt;a href=&quot;http://books.google.com/books?id=PXa2bby0oQ0C&amp;amp;pg=PA105&amp;amp;dq=douglas+crockford+javascript+good+parts+dollar+values+can+be+converted&amp;amp;rview=1&amp;amp;cd=1#v=onepage&amp;amp;q=&amp;amp;f=false&quot;&gt;&lt;strong&gt;JavaScript: The Good Parts&lt;/strong&gt;: Appendix A - Awful Parts (page 105)&lt;/a&gt;.</source>
+          <target state="translated">&lt;sup&gt;1&lt;/sup&gt; Douglas Crockford： &lt;a href=&quot;http://books.google.com/books?id=PXa2bby0oQ0C&amp;amp;pg=PA105&amp;amp;dq=douglas+crockford+javascript+good+parts+dollar+values+can+be+converted&amp;amp;rview=1&amp;amp;cd=1#v=onepage&amp;amp;q=&amp;amp;f=false&quot;&gt;&lt;strong&gt;JavaScript：优秀部分&lt;/strong&gt; ：附录A-糟糕的部分（第105页）&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="5ee1c19795ff8f472035c1d76b8687b9760c48eb" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;2&lt;/sup&gt; - This is not the case for &lt;a href=&quot;http://en.wikipedia.org/wiki/Denormal_number&quot;&gt;denormal numbers&lt;/a&gt;, which have an offset exponent of zero (and an implied &lt;code&gt;0.&lt;/code&gt;). The range of denormal double precision numbers is d&lt;sub&gt;min&lt;/sub&gt; &amp;le; |x| &amp;le; d&lt;sub&gt;max&lt;/sub&gt;, where d&lt;sub&gt;min&lt;/sub&gt; (the smallest representable nonzero number) is 2&lt;sup&gt;-1023 - 51&lt;/sup&gt; (&amp;asymp; 4.94 * 10&lt;sup&gt;-324&lt;/sup&gt;) and d&lt;sub&gt;max&lt;/sub&gt; (the largest denormal number, for which the mantissa consists entirely of &lt;code&gt;1&lt;/code&gt;s) is 2&lt;sup&gt;-1023 + 1&lt;/sup&gt; - 2&lt;sup&gt;-1023 - 51&lt;/sup&gt; (&amp;asymp; 2.225 * 10&lt;sup&gt;-308&lt;/sup&gt;).</source>
+          <target state="translated">&lt;sup&gt;2-&lt;/sup&gt; &lt;a href=&quot;http://en.wikipedia.org/wiki/Denormal_number&quot;&gt;非正规数&lt;/a&gt;不是这种情况， 非正规数的偏移指数为零（隐含 &lt;code&gt;0.&lt;/code&gt; ）。 异常双精度数的范围是d min&amp;le;| x | &lt;sup&gt;&amp;le;d&lt;/sup&gt; &lt;sub&gt;max&lt;/sub&gt; ，其中d &lt;sub&gt;min&lt;/sub&gt; （最小的可表示非零数）是2 &lt;sup&gt;-1023-51&lt;/sup&gt; （ &lt;sup&gt;&amp;asymp;4.94&lt;/sup&gt; * 10 &lt;sup&gt;-324&lt;/sup&gt; ），而d &lt;sub&gt;max&lt;/sub&gt; （最大的非正规数，尾数全部由 &lt;code&gt;1&lt;/code&gt; s组成）是2- &lt;sup&gt;1023 +&lt;/sup&gt; 1-2 &lt;sup&gt;-1023-51&lt;/sup&gt; （&amp;asymp;2.225 * 10 &lt;sup&gt;-308&lt;/sup&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="e4b88838f3d945e3111f2ac846b7fe40186f08dc" translate="yes" xml:space="preserve">
+          <source>A different question has been named as a duplicate to this one:</source>
+          <target state="translated">一个不同的问题被命名为与本题重复。</target>
+        </trans-unit>
+        <trans-unit id="67d09660cb9d94f97c922d190c9da304946bbc56" translate="yes" xml:space="preserve">
+          <source>A fairly comprehensive treatment of floating-point arithmetic issues is &lt;a href=&quot;http://download.oracle.com/docs/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;&lt;em&gt;What Every Computer Scientist Should Know About Floating-Point Arithmetic&lt;/em&gt;&lt;/a&gt;. For an easier-to-digest explanation, see &lt;a href=&quot;http://floating-point-gui.de&quot;&gt;floating-point-gui.de&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;http://download.oracle.com/docs/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;&lt;em&gt;每个计算机科学家都应该对浮点算术了解什么&lt;/em&gt;&lt;/a&gt;是对浮点算术问题的相当全面的处理。 有关更容易理解的说明，请参见&lt;a href=&quot;http://floating-point-gui.de&quot;&gt;float-point-gui.de&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="292327f21cc858d8c2a42811ceaf2d0a17de5a22" translate="yes" xml:space="preserve">
+          <source>A lot of good answers have been posted, but I'd like to append one more.</source>
+          <target state="translated">贴了很多好的答案,但我想再附一个。</target>
+        </trans-unit>
+        <trans-unit id="87561d6f9557f1f5e17ba3afef835a06d4a73163" translate="yes" xml:space="preserve">
+          <source>Adding the first two numbers manually or in a decimal calculator such as &lt;a href=&quot;https://www.mathsisfun.com/calculator-precision.html&quot;&gt;Full Precision Calculator&lt;/a&gt;, shows the exact sum of the actual inputs is 0.3000000000000000166533453693773481063544750213623046875.</source>
+          <target state="translated">手动或使用十进制计算器（例如&lt;a href=&quot;https://www.mathsisfun.com/calculator-precision.html&quot;&gt;Full Precision Calculator）&lt;/a&gt;将前两个数字相加，将显示实际输入的确切总和为0.3000000000000000166533453693793781063544750213623046875。</target>
+        </trans-unit>
+        <trans-unit id="0a7ff54c3760c59eab90eb97d484608c8d05aaa7" translate="yes" xml:space="preserve">
+          <source>After the code I attach a console session, in which I compute the sum of terms for both constants (minus PI and 999999999) that really exists in hardware, inserted there by the compiler.</source>
+          <target state="translated">在代码之后,我附加了一个控制台会话,在这个会话中,我计算出硬件中真正存在的两个常量(减去PI和999999999999)的术语之和,由编译器插入那里。</target>
+        </trans-unit>
+        <trans-unit id="d6dc17a99e9f681bdfd19158552338365662636c" translate="yes" xml:space="preserve">
+          <source>Also note that we can decrease the power in the exponent by 52 and shift the point in the binary representation to the right by 52 places (much like 10&lt;sup&gt;-3&lt;/sup&gt; * 1.23 == 10&lt;sup&gt;-5&lt;/sup&gt; * 123). This then enables us to represent the binary representation as the exact value that it represents in the form a * 2&lt;sup&gt;p&lt;/sup&gt;. where 'a' is an integer.</source>
+          <target state="translated">还要注意，我们可以将指数的幂减小52，并将二进制表示形式的点向右移动52个位置（很像10 &lt;sup&gt;-3&lt;/sup&gt; * 1.23 == 10 &lt;sup&gt;-5&lt;/sup&gt; * 123）。 然后，这使我们能够将二进制表示形式表示为它以a * 2 &lt;sup&gt;p&lt;/sup&gt;形式表示的精确值。 其中&amp;ldquo; a&amp;rdquo;是整数。</target>
+        </trans-unit>
+        <trans-unit id="25c2f42952dddc1442cd3fea4ee45931c75bd99d" translate="yes" xml:space="preserve">
+          <source>Also, on real number-crunching problems (the problems that FP was invented for on early, frightfully expensive computers) the physical constants of the universe and all other measurements are only known to a relatively small number of significant figures, so the entire problem space was &quot;inexact&quot; anyway. FP &quot;accuracy&quot; isn't a problem in this kind of application.</source>
+          <target state="translated">而且,在真正的数字计算问题上(FP是在早期的、可怕的昂贵的计算机上发明的问题),宇宙的物理常数和所有其他的测量结果都只知道相对较少的显著数字,所以整个问题空间无论如何都是 &quot;不精确 &quot;的。FP的 &quot;准确度 &quot;在这种应用中不是问题。</target>
+        </trans-unit>
+        <trans-unit id="85160f78ccb1d3807347386aa0d2ca7539bc234b" translate="yes" xml:space="preserve">
+          <source>An &lt;a href=&quot;http://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;IEEE 754 double-precision binary floating-point format (binary64)&lt;/a&gt; number represents a number of the form</source>
+          <target state="translated">&lt;a href=&quot;http://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;IEEE 754双精度二进制浮点格式（binary64）&lt;/a&gt;数字表示以下形式的数字</target>
+        </trans-unit>
+        <trans-unit id="717a2779595b0983db47fc60af6d89e183d0f462" translate="yes" xml:space="preserve">
+          <source>Another cause of the rounding errors in all operations are the different modes of truncation of the final answer that IEEE-754 allows. There's truncate, round-towards-zero, &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;round-to-nearest (default),&lt;/a&gt; round-down, and round-up. All methods introduce an element of error of less than one unit in the last place for a single operation. Over time and repeated operations, truncation also adds cumulatively to the resultant error. This truncation error is especially problematic in exponentiation, which involves some form of repeated multiplication.</source>
+          <target state="translated">所有操作中舍入错误的另一个原因是IEEE-754允许的最终答案截断的不同模式。 有截断，向零&lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;舍入，最近舍入（默认），&lt;/a&gt;向下舍入和向上舍入。 对于单个操作，所有方法最后都会引入误差小于1个单位的元素。 随着时间的流逝和重复的操作，截断还会累积地导致错误。 截断误差在取幂时尤其成问题，涉及某种形式的重复乘法。</target>
+        </trans-unit>
+        <trans-unit id="9ead24f56ead1006e9506dd4e4f2be6e9b288737" translate="yes" xml:space="preserve">
+          <source>Another way to look at this: Used are 64 bits to represent numbers. As consequence there is no way more than 2**64 = 18,446,744,073,709,551,616 different numbers can be precisely represented.</source>
+          <target state="translated">另一种方式来看待这个问题。用64位来表示数字。因此,不可能有超过2**64=18,446,744,073,709,551,616个不同的数字可以精确地表示。</target>
+        </trans-unit>
+        <trans-unit id="197629060526b0bc6ba54e0d54e8621c108bd09e" translate="yes" xml:space="preserve">
+          <source>Applying it to the numbers in the question, treated as doubles:</source>
+          <target state="translated">套用到题中的数字,作为双倍数处理。</target>
+        </trans-unit>
+        <trans-unit id="acd3695ef743a5217426fec2538dd807e2248e19" translate="yes" xml:space="preserve">
+          <source>As &lt;a href=&quot;https://www.w3schools.com/js/js_numbers.asp&quot;&gt;W3SCHOOLS&lt;/a&gt; suggests there is another solution too, you can multiply and divide to solve the problem above:</source>
+          <target state="translated">正如&lt;a href=&quot;https://www.w3schools.com/js/js_numbers.asp&quot;&gt;W3SCHOOLS&lt;/a&gt;提出的还有另一种解决方案一样，您可以乘以除法来解决上述问题：</target>
+        </trans-unit>
+        <trans-unit id="5c873182ceb9b32f52a27c7ab3af44165c7183f5" translate="yes" xml:space="preserve">
+          <source>As a practical example, to avoid floating-point problems where accuracy is paramount, it is recommended&lt;sup&gt;1&lt;/sup&gt; to handle money as an integer representing the number of cents: &lt;code&gt;2550&lt;/code&gt; cents instead of &lt;code&gt;25.50&lt;/code&gt; dollars.</source>
+          <target state="translated">作为一个实际示例，为避免精度至关重要的浮点问题，建议&lt;sup&gt;1&lt;/sup&gt;以代表美分数的整数形式处理货币： &lt;code&gt;2550&lt;/code&gt; 美分而不是 &lt;code&gt;25.50&lt;/code&gt; 美元。</target>
+        </trans-unit>
+        <trans-unit id="14b3dd03f473733c807181d4f25005fdb4b3c92f" translate="yes" xml:space="preserve">
+          <source>Binary &lt;a href=&quot;https://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;floating point&lt;/a&gt; math is like this. In most programming languages, it is based on the &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_754#Basic_formats&quot;&gt;IEEE 754 standard&lt;/a&gt;. The crux of the problem is that numbers are represented in this format as a whole number times a power of two; rational numbers (such as &lt;code&gt;0.1&lt;/code&gt;, which is &lt;code&gt;1/10&lt;/code&gt;) whose denominator is not a power of two cannot be exactly represented.</source>
+          <target state="translated">二进制&lt;a href=&quot;https://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;浮点&lt;/a&gt;数学就是这样。 在大多数编程语言中，它是基于&lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_754#Basic_formats&quot;&gt;IEEE 754标准的&lt;/a&gt; 。 问题的症结在于数字以这种格式表示为整数乘以2的幂。 分母不是2的幂的有理数（例如 &lt;code&gt;0.1&lt;/code&gt; ，即 &lt;code&gt;1/10&lt;/code&gt; ）无法精确表示。</target>
+        </trans-unit>
+        <trans-unit id="7422ac70577b1628784c436e3c108b8f745d86f7" translate="yes" xml:space="preserve">
+          <source>But if you're okay with the idea that sometimes floating-point math is fuzzy in value and logic and errors can accumulate quickly, and you can write your requirements and tests to allow for that, then your code can frequently get by with what's in your FPU.</source>
+          <target state="translated">但是,如果你能接受这样的想法,即有时浮点数学在数值和逻辑上是模糊的,错误会很快积累起来,而且你可以写出你的需求和测试来允许这种情况,那么你的代码就可以经常性地通过你的FPU中的东西来完成。</target>
+        </trans-unit>
+        <trans-unit id="55a69cb7e5983987538ca8b12860d952d6b39dfb" translate="yes" xml:space="preserve">
+          <source>Can I just add; people always assume this to be a computer problem, but if you count with your hands (base 10), you can't get &lt;code&gt;(1/3+1/3=2/3)=true&lt;/code&gt; unless you have infinity to add 0.333... to 0.333... so just as with the &lt;code&gt;(1/10+2/10)!==3/10&lt;/code&gt; problem in base 2, you truncate it to 0.333 + 0.333 = 0.666 and probably round it to 0.667 which would be also be technically inaccurate.</source>
+          <target state="translated">我可以补充吗？ 人们总是认为这是计算机问题，但是如果您用手计数（以10为基数），则除非获得无穷大的0.333，否则无法获得 &lt;code&gt;(1/3+1/3=2/3)=true&lt;/code&gt; 。 ..到0.333 ...就像基数2中的 &lt;code&gt;(1/10+2/10)!==3/10&lt;/code&gt; 问题一样，您将其截断为0.333 + 0.333 = 0.666并可能将其舍入为0.667，这将是在技​​术上也是不准确的。</target>
+        </trans-unit>
+        <trans-unit id="82a3e020f14e0b35ca683a0e8ec46b87242aae47" translate="yes" xml:space="preserve">
+          <source>Comparing the last few bits of a floating point number is inherently dangerous, as anyone who reads the famous &quot;&lt;a href=&quot;http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;What Every Computer Scientist Should Know About Floating-Point Arithmetic&lt;/a&gt;&quot; (which covers all the major parts of this answer) will know.</source>
+          <target state="translated">比较浮点数的最后几位本质上是危险的，因为任何读过著名的《 &lt;a href=&quot;http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;每个计算机科学家应该知道的浮点算术&lt;/a&gt; 》（涵盖了该答案的所有主要部分）的人都将知道。</target>
+        </trans-unit>
+        <trans-unit id="7b9418257eb36cecc68969da2f0e00be78afe4f0" translate="yes" xml:space="preserve">
+          <source>Computers don't usually work in base 10, they work in base 2. You can still get exact results for some values, for example &lt;code&gt;0.5&lt;/code&gt; is &lt;code&gt;1 x 2⁻&amp;sup1;&lt;/code&gt; and &lt;code&gt;0.25&lt;/code&gt; is &lt;code&gt;1 x 2⁻&amp;sup2;&lt;/code&gt;, and adding them results in &lt;code&gt;3 x 2⁻&amp;sup2;&lt;/code&gt;, or &lt;code&gt;0.75&lt;/code&gt;. Exactly.</source>
+          <target state="translated">计算机通常不以10为基数工作，而是以2为基数。您仍然可以得到某些值的精确结果，例如 &lt;code&gt;0.5&lt;/code&gt; 是 &lt;code&gt;1 x 2⁻&amp;sup1;&lt;/code&gt; 而 &lt;code&gt;0.25&lt;/code&gt; 是 &lt;code&gt;1 x 2⁻&amp;sup2;&lt;/code&gt; ，并将结果相加为 &lt;code&gt;3 x 2⁻&amp;sup2;&lt;/code&gt; 或 &lt;code&gt;0.75&lt;/code&gt; 。 究竟。</target>
+        </trans-unit>
+        <trans-unit id="e39262defe80a83fac1b793497417432c8b1a879" translate="yes" xml:space="preserve">
+          <source>Conclusion</source>
+          <target state="translated">Conclusion</target>
+        </trans-unit>
+        <trans-unit id="4adddd0410090df891e6fa4925fe03ba5adb5c9d" translate="yes" xml:space="preserve">
+          <source>Consider the following code:</source>
+          <target state="translated">请考虑以下代码:</target>
+        </trans-unit>
+        <trans-unit id="e7f1f3b25b7e705aa363815a9723229ad35c0cc4" translate="yes" xml:space="preserve">
+          <source>Consider the following results:</source>
+          <target state="translated">请考虑以下结果:</target>
+        </trans-unit>
+        <trans-unit id="12b7b76dc8d2ea9eb4ff8748b10d88e4a85a6169" translate="yes" xml:space="preserve">
+          <source>Converted back to decimal, these values are:</source>
+          <target state="translated">换算成十进制,这些值是:</target>
+        </trans-unit>
+        <trans-unit id="aeb57143b3ba83c7c3b04839d7f666efe4124f05" translate="yes" xml:space="preserve">
+          <source>Converting the exponents to decimal, removing the offset, and re-adding the implied &lt;code&gt;1&lt;/code&gt; (in square brackets), 0.1 and 0.2 are:</source>
+          <target state="translated">将指数转换为十进制，除去偏移，然后重新添加隐含的 &lt;code&gt;1&lt;/code&gt; （在方括号中），0.1和0.2是：</target>
+        </trans-unit>
+        <trans-unit id="78e4c9a6d77baf375b421e266552930eb4f9337f" translate="yes" xml:space="preserve">
+          <source>Count in ternary, and thirds are not a problem though - maybe some race with 15 fingers on each hand would ask why your decimal math was broken...</source>
+          <target state="translated">用三分法计算,三分法也不是问题--也许有的种族每只手都有15个手指,会问为什么你的小数算术被破解了.....</target>
+        </trans-unit>
+        <trans-unit id="a3dd9179dce397e9e1b5fccb9b0cd27f6c3bd5cf" translate="yes" xml:space="preserve">
+          <source>Damn! What are you going to do with those unwanted zeros after 9?
+It's the time to convert it to float to make it as you desire:</source>
+          <target state="translated">该死的!你打算怎么处理9后面那些不需要的零?是时候把它转换为浮动,让它如你所愿。</target>
+        </trans-unit>
+        <trans-unit id="9e27f7f948ef21b303c1370a1dec7590701f7df7" translate="yes" xml:space="preserve">
+          <source>Decimal numbers such as &lt;code&gt;0.1&lt;/code&gt;, &lt;code&gt;0.2&lt;/code&gt;, and &lt;code&gt;0.3&lt;/code&gt; are not represented exactly in binary encoded floating point types. The sum of the approximations for &lt;code&gt;0.1&lt;/code&gt; and &lt;code&gt;0.2&lt;/code&gt; differs from the approximation used for &lt;code&gt;0.3&lt;/code&gt;, hence the falsehood of &lt;code&gt;0.1 + 0.2 == 0.3&lt;/code&gt; as can be seen more clearly here:</source>
+          <target state="translated">诸如 &lt;code&gt;0.1&lt;/code&gt; ,0.2和 &lt;code&gt;0.3&lt;/code&gt; 之类的十进制数未在二进制编码的浮点类型中准确表示。 &lt;code&gt;0.1&lt;/code&gt; 和 &lt;code&gt;0.2&lt;/code&gt; 的近似值之和不同于 &lt;code&gt;0.3&lt;/code&gt; 的近似值，因此 &lt;code&gt;0.1 + 0.2 == 0.3&lt;/code&gt; 的虚假性在这里可以更清楚地看出：</target>
+        </trans-unit>
+        <trans-unit id="6b03123e729e0d99d8829d657b6396043e2860f2" translate="yes" xml:space="preserve">
+          <source>Decimals are very nice when dealing with money: ten cents plus twenty cents are always exactly thirty cents:</source>
+          <target state="translated">在和钱打交道时,小数是非常好的:一毛钱加两毛钱总是正好三毛钱。</target>
+        </trans-unit>
+        <trans-unit id="343253c3ffda2f7f610024078888336d7bfcc2d8" translate="yes" xml:space="preserve">
+          <source>Developers are usually instructed to do &lt;em&gt;&amp;lt; epsilon&lt;/em&gt; comparisons, better advice might be to round to integral values (in the C library: round() and roundf(), i.e., stay in the FP format) and then compare. Rounding to a specific decimal fraction length solves most problems with output.</source>
+          <target state="translated">通常会指导开发人员进行&lt;em&gt;&amp;lt;epsilon&lt;/em&gt;比较，更好的建议可能是四舍五入为整数值（在C库中：round（）和roundf（），即保持FP格式），然后进行比较。 舍入到特定的小数部分长度可以解决大多数输出​​问题。</target>
+        </trans-unit>
+        <trans-unit id="dafd8ed5e4bb8b26b1f077f8e5b7a321cbc63112" translate="yes" xml:space="preserve">
+          <source>Did you try the duct tape solution?</source>
+          <target state="translated">你试过管道胶带的解决方案吗?</target>
+        </trans-unit>
+        <trans-unit id="a8c0d91bbd12171df34d46bb5ca5e22a008105f7" translate="yes" xml:space="preserve">
+          <source>Do &lt;em&gt;not&lt;/em&gt; do &lt;code&gt;if (x == y) { ... }&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;if (x == y) { ... }&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="49af704836c31c31268ad85bee269007d1863899" translate="yes" xml:space="preserve">
+          <source>Double-precision binary floating-point is a commonly used format on PCs, due to its wider range over single-precision floating point, in spite of its performance and bandwidth cost. As with single-precision floating-point format, it lacks precision on integer numbers when compared with an integer format of the same size. It is commonly known simply as double. The IEEE 754 standard specifies a binary64 as having:</source>
+          <target state="translated">双精度二进制浮点格式是PC机上常用的一种格式,由于它比单精度浮点格式的范围更广,尽管它的性能和带宽成本较高,但也是一种常用的格式。与单精度浮点格式一样,它与同样大小的整数格式相比,在整数上缺乏精度。它通常被简单地称为双精度。IEEE 754标准规定二进制64为具有。</target>
+        </trans-unit>
+        <trans-unit id="e94dc886af9a6005f7b61c7e670cccaf284c7871" translate="yes" xml:space="preserve">
+          <source>Even simple numbers like 0.01, 0.02, 0.03, 0.04 ... 0.24 are not representable exactly as binary fractions. If you count up 0.01, .02, .03 ..., not until you get to 0.25 will you get the first fraction representable in base&lt;sub&gt;2&lt;/sub&gt;.  If you tried that using FP, your 0.01 would have been slightly off, so the only way to add 25 of them up to a nice exact 0.25 would have required a long chain of causality involving guard bits and rounding. It's hard to predict so we throw up our hands and say &lt;em&gt;&quot;FP is inexact&quot;,&lt;/em&gt; but that's not really true.</source>
+          <target state="translated">即使简单的数字（如0.01、0.02、0.03、0.04 ... 0.24）也不能精确表示为二进制分数。 如果您将0.01，.02，.03 ...相加，则直到达到0.25时，您才能获得以&lt;sub&gt;2&lt;/sub&gt;为底的第一个可表示分数。 如果您尝试使用FP，则0.01的值会略有偏差，因此将25个值相加达到精确的0.25的唯一方法是，需要一长串因果关系，包括保护位和舍入。 很难预测，因此我们举起手来说&lt;em&gt;&amp;ldquo; FP不精确&amp;rdquo;，&lt;/em&gt;但这不是真的。</target>
+        </trans-unit>
+        <trans-unit id="bcc82060c0b5843a747559c24154d4b0cbe17504" translate="yes" xml:space="preserve">
+          <source>Even though you can type &lt;code&gt;0.2&lt;/code&gt; easily, &lt;code&gt;FLT_RADIX&lt;/code&gt; and &lt;code&gt;DBL_RADIX&lt;/code&gt; is 2; not 10 for a computer with FPU which uses &quot;IEEE Standard for Binary Floating-Point Arithmetic (ISO/IEEE Std 754-1985)&quot;.</source>
+          <target state="translated">即使可以轻松键入 &lt;code&gt;0.2&lt;/code&gt; ， &lt;code&gt;DBL_RADIX&lt;/code&gt; 和DBL_RADIX还是2； 对于使用FPU且使用&amp;ldquo; IEEE二进制浮点算术标准（ISO / IEEE Std 754-1985）&amp;rdquo;的计算机，不是10。</target>
+        </trans-unit>
+        <trans-unit id="49c2bd6aa6f23d62660e81e7508644de0747ce48" translate="yes" xml:space="preserve">
+          <source>Expand snippet</source>
+          <target state="translated">扩展片段</target>
+        </trans-unit>
+        <trans-unit id="f90ebb584a41f5789fdcea6141d54540d284f0c6" translate="yes" xml:space="preserve">
+          <source>Exponent: 11 bits</source>
+          <target state="translated">指数:11位</target>
+        </trans-unit>
+        <trans-unit id="119f8de999f99beecfdb18c6f4554359a130b523" translate="yes" xml:space="preserve">
+          <source>Floating point arithmetic &lt;em&gt;is&lt;/em&gt; exact, unfortunately, it doesn't match up well with our usual base-10 number representation, so it turns out we are often giving it input that is slightly off from what we wrote.</source>
+          <target state="translated">不幸的&lt;em&gt;是&lt;/em&gt; ，浮点运算&lt;em&gt;是&lt;/em&gt;精确的，与我们通常的以10为底的数字表示形式不匹配，因此事实证明，我们经常给它输入的内容与我们编写的内容略有出入。</target>
+        </trans-unit>
+        <trans-unit id="565fecd9d4386f3183fb30121458f3c6a47002c6" translate="yes" xml:space="preserve">
+          <source>Floating point numbers stored in the computer consist of two parts, an integer and an exponent that the base is taken to and multiplied by the integer part.</source>
+          <target state="translated">存储在计算机中的浮点数由两部分组成,一个整数和一个指数,基数被取到和乘以整数部分的指数。</target>
+        </trans-unit>
+        <trans-unit id="124150fb130cdf0860699c9a2d7daf578bd58ed1" translate="yes" xml:space="preserve">
+          <source>Floating point rounding error.  From &lt;a href=&quot;https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;What Every Computer Scientist Should Know About Floating-Point Arithmetic&lt;/a&gt;:</source>
+          <target state="translated">浮点舍入错误。 从&lt;a href=&quot;https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;每个计算机科学家应该了解的浮点算法中&lt;/a&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="027c694de6b12a19a2844cf999e923212e996491" translate="yes" xml:space="preserve">
+          <source>Floating point rounding errors. 0.1 cannot be represented as accurately in base-2 as in base-10 due to the missing prime factor of 5. Just as 1/3 takes an infinite number of digits to represent in decimal, but is &quot;0.1&quot; in base-3, 0.1 takes an infinite number of digits in base-2 where it does not in base-10. And computers don't have an infinite amount of memory.</source>
+          <target state="translated">浮点四舍五入误差。由于缺少5的素数因子,0.1在2号基数中不能像在10号基数中那样准确地表示0.1。就像13需要无数个数字来表示小数,但在3进制中是 &quot;0.1 &quot;一样,0.1在2进制中需要无数个数字来表示,而在10进制中则不需要。而计算机并没有无限量的内存。</target>
+        </trans-unit>
+        <trans-unit id="4448487d8eb4f64196dcf615ef11a481b88faaf8" translate="yes" xml:space="preserve">
+          <source>For &lt;code&gt;0.1&lt;/code&gt; in the standard &lt;code&gt;binary64&lt;/code&gt; format, the representation can be written exactly as</source>
+          <target state="translated">对于标准 &lt;code&gt;binary64&lt;/code&gt; 格式的 &lt;code&gt;0.1&lt;/code&gt; ，表示形式可以完全按照</target>
+        </trans-unit>
+        <trans-unit id="2eb8375a66f402510365e9906afeaf34cf9ace9f" translate="yes" xml:space="preserve">
+          <source>For double-precision numbers (which is the precision that allows you to halve your pizza 53 times), the numbers immediately less and greater than 0.1 are 0.09999999999999999167332731531132594682276248931884765625 and 0.1000000000000000055511151231257827021181583404541015625. The latter is quite a bit closer to 0.1 than the former, so a numeric parser will, given an input of 0.1, favour the latter.</source>
+          <target state="translated">对于双精度的数字(也就是可以将你的比萨饼减半53倍的精度),紧接着小于和大于0.1的数字分别是0.0999999999999167332731531132594682276248931884765625和0.100000000000000000055511151231257827021181583404541015625。后者比前者更接近于0.1,所以一个数值解析器,给定一个0.1的输入,会倾向于后者。</target>
+        </trans-unit>
+        <trans-unit id="059c3e8cce263b2945a18ac90b2637e10a8026b1" translate="yes" xml:space="preserve">
+          <source>For example:</source>
+          <target state="translated">例如:</target>
+        </trans-unit>
+        <trans-unit id="8977c37ba4ab06faaeb4917f5aef431002e8e3a1" translate="yes" xml:space="preserve">
+          <source>For these computations to be evaluated more reliably, you would need to use a decimal-based representation for floating point values. The C Standard does not specify such types by default but as an extension described in a &lt;a href=&quot;http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1312.pdf&quot;&gt;technical Report&lt;/a&gt;.</source>
+          <target state="translated">为了更可靠地评估这些计算，您需要对浮点值使用基于十进制的表示形式。 C标准默认没有指定此类类型，而是作为&lt;a href=&quot;http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1312.pdf&quot;&gt;技术报告中&lt;/a&gt;描述的扩展。</target>
+        </trans-unit>
+        <trans-unit id="438fbe9727771de7094dfe372c89a3c249901587" translate="yes" xml:space="preserve">
+          <source>From &lt;a href=&quot;https://0.30000000000000004.com/&quot;&gt;https://0.30000000000000004.com/&lt;/a&gt;</source>
+          <target state="translated">来自&lt;a href=&quot;https://0.30000000000000004.com/&quot;&gt;https://0.30000000000000004.com/&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="c2be387ecb7c744b80f6deca0a884e77b7dc5083" translate="yes" xml:space="preserve">
+          <source>From an engineering perspective, most floating point operations will have some element of error since the hardware that does the floating point computations is only required to have an error of less than one half of one unit in the last place. Therefore, much hardware will stop at a precision that's only necessary to yield an error of less than one half of one unit in the last place for a &lt;em&gt;single operation&lt;/em&gt; which is especially problematic in floating point division. What constitutes a single operation depends upon how many operands the unit takes. For most, it is two, but some units take 3 or more operands. Because of this, there is no guarantee that repeated operations will result in a desirable error since the errors add up over time.</source>
+          <target state="translated">从工程的角度来看，大多数浮点运算将具有一定的错误元素，因为进行浮点计算的硬件仅要求最后的误差小于一个单元的一半。 因此，许多硬件将停止在一个精度上，该精度仅对于&lt;em&gt;单次操作&lt;/em&gt;在最后一次产生的误差小于一个单元的一半是必要的，这在浮点除法中尤其成问题。 构成单个操作的要素取决于该单元采用的操作数。 对于大多数情况，它是两个，但是某些单位需要3个或更多操作数。 因此，不能保证重复操作会导致理想的错误，因为随着时间的推移这些错误加起来。</target>
+        </trans-unit>
+        <trans-unit id="71e6fce755adf54b2e2cee041a1ce78a23d295a2" translate="yes" xml:space="preserve">
+          <source>From the Wikipedia page for &lt;a href=&quot;https://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;Double-precision floating-point format&lt;/a&gt;:</source>
+          <target state="translated">从Wikipedia页面获取&lt;a href=&quot;https://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;双精度浮点格式&lt;/a&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="13c8d9d9bb5ff174c47e9c103abdfb35251afc02" translate="yes" xml:space="preserve">
+          <source>Given that nobody has mentioned this...</source>
+          <target state="translated">既然没人提过这个.....</target>
+        </trans-unit>
+        <trans-unit id="b98e9326cacd57433010c27db8d9ac95dd07cf4d" translate="yes" xml:space="preserve">
+          <source>Here is a console session in which I compute the real value of the float that exists in hardware.  I used &lt;code&gt;bc&lt;/code&gt; to print the sum of terms outputted by the main program.  One can insert that sum in python &lt;code&gt;repl&lt;/code&gt; or something similar also.</source>
+          <target state="translated">这是一个控制台会话，我在其中计算硬件中存在的float的实际值。 我用 &lt;code&gt;bc&lt;/code&gt; 打印主程序输出的项的总和。 可以在python &lt;code&gt;repl&lt;/code&gt; 或类似的东西中插入该和。</target>
+        </trans-unit>
+        <trans-unit id="2408136ec0c44b738b07e0b8bf11d10f475c0d40" translate="yes" xml:space="preserve">
+          <source>However, Math says there are already infinitely many decimals between 0 and 1. IEE 754 defines an encoding to use these 64 bits efficiently for a much larger number space plus NaN and +/- Infinity, so there are gaps between accurately represented numbers filled with numbers only approximated.</source>
+          <target state="translated">然而,Math说0到1之间已经有无限多的小数,IEE 754定义了一种编码,可以有效地使用这64位的编码,用于更大的数字空间加上NaN和+-无穷大,所以在准确表示的数字之间存在着只用近似的数字填充的空隙。</target>
+        </trans-unit>
+        <trans-unit id="46f05586e0302c09020d0bad2f9c90dcbc102d16" translate="yes" xml:space="preserve">
+          <source>I believe I should add a hardware designer&amp;rsquo;s perspective to this since I design and build floating point hardware. Knowing the origin of the error may help in understanding what is happening in the software, and ultimately, I hope this helps explain the reasons for why floating point errors happen and seem to accumulate over time.</source>
+          <target state="translated">我相信我应该为此添加硬件设计师的观点，因为我设计并构建了浮点硬件。 知道错误的来源可能有助于理解软件中发生的事情，并且最终，我希望这可以帮助解释为什么会出现浮点错误并随着时间的推移逐渐累积的原因。</target>
+        </trans-unit>
+        <trans-unit id="139c3720a5570c1cec83ed7a353859c0807f05fc" translate="yes" xml:space="preserve">
+          <source>I had the same problem in a scientific simulation project in c#, and I can tell you that if you ignore the butterfly effect it's gonna turn to a big fat dragon and bite you in the a**</source>
+          <target state="translated">我在C#的一个科学模拟项目中也遇到过同样的问题,我可以告诉你,如果你忽略了蝴蝶效应,它就会变成一条大肥龙,在你的头上咬你一口</target>
+        </trans-unit>
+        <trans-unit id="a07562d9120e098fcdb0a15f037dd208a8327be6" translate="yes" xml:space="preserve">
+          <source>I just saw this interesting issue around floating points:</source>
+          <target state="translated">我刚才看到这个围绕浮动点的问题很有意思。</target>
+        </trans-unit>
+        <trans-unit id="c7cb01d8032bc4b8a88bb1e2f14b9cea42ff093e" translate="yes" xml:space="preserve">
+          <source>I love the Pizza answer by &lt;a href=&quot;https://stackoverflow.com/users/13/chris-jester-young&quot;&gt;Chris&lt;/a&gt;, because it describes the actual problem, not just the usual handwaving about &quot;inaccuracy&quot;. If FP were simply &quot;inaccurate&quot;, we could &lt;em&gt;fix&lt;/em&gt; that and would have done it decades ago. The reason we haven't is because the FP format is compact and fast and it's the best way to crunch a lot of numbers. Also, it's a legacy from the space age and arms race and early attempts to solve big problems with very slow computers using small memory systems. (Sometimes, individual &lt;em&gt;magnetic cores&lt;/em&gt; for 1-bit storage, but that's &lt;a href=&quot;https://en.wikipedia.org/wiki/Magnetic-core_memory&quot;&gt;another story.&lt;/a&gt;)</source>
+          <target state="translated">我喜欢&lt;a href=&quot;https://stackoverflow.com/users/13/chris-jester-young&quot;&gt;Chris&lt;/a&gt;的Pizza回答，因为它描述了实际问题，而不仅仅是描述&amp;ldquo;不准确性&amp;rdquo;的惯常做法。 如果FP只是&amp;ldquo;不准确&amp;rdquo;，我们可以&lt;em&gt;解决&lt;/em&gt;这个&lt;em&gt;问题&lt;/em&gt; ，几十年前就可以做到。 我们之所以没有这个原因，是因为FP格式紧凑，快速，并且是处理大量数字的最佳方法。 而且，这是航天时代和军备竞赛的遗留下来的，也是早期尝试解决使用小型内存系统的非常慢的计算机来解决大问题的尝试。 （有时，单个&lt;em&gt;磁芯&lt;/em&gt;用于1位存储，但这是&lt;a href=&quot;https://en.wikipedia.org/wiki/Magnetic-core_memory&quot;&gt;另一回事了。&lt;/a&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="086419f7e4f00c4240acc2a8cf8724a0a0440d52" translate="yes" xml:space="preserve">
+          <source>If it were rounded down to the equivalent of 0.3 the rounding error would be 0.0000000000000000277555756156289135105907917022705078125. Rounding up to the equivalent of 0.30000000000000004 also gives rounding error 0.0000000000000000277555756156289135105907917022705078125. The round-to-even tie breaker applies.</source>
+          <target state="translated">如果将其四舍五入到相当于0.3,则四舍五入误差为0.000000000000000000000000277555756156289135105907917022705078125。四舍五入相当于0.30000000000000000000000000004也会得到四舍五入误差0.00000000000000000000000000277555756156289135105907917022705078125。4.四舍五入平分法适用。</target>
+        </trans-unit>
+        <trans-unit id="fccfcfa3bf25426d4d6621dd068fd42d65e9ed23" translate="yes" xml:space="preserve">
+          <source>If the computer were working in base 10, &lt;code&gt;0.1&lt;/code&gt; would be &lt;code&gt;1 x 10⁻&amp;sup1;&lt;/code&gt;, &lt;code&gt;0.2&lt;/code&gt; would be &lt;code&gt;2 x 10⁻&amp;sup1;&lt;/code&gt;, and &lt;code&gt;0.3&lt;/code&gt; would be &lt;code&gt;3 x 10⁻&amp;sup1;&lt;/code&gt;. Integer math is easy and exact, so adding &lt;code&gt;0.1 + 0.2&lt;/code&gt; will obviously result in &lt;code&gt;0.3&lt;/code&gt;.</source>
+          <target state="translated">如果计算机以10 &lt;code&gt;0.1&lt;/code&gt; 底数工作，则0.1为 &lt;code&gt;1 x 10⁻&amp;sup1;&lt;/code&gt; 为 &lt;code&gt;2 x 10⁻&amp;sup1;&lt;/code&gt; ，而 &lt;code&gt;0.3&lt;/code&gt; 为 &lt;code&gt;3 x 10⁻&amp;sup1;&lt;/code&gt; 。 整数数学既简单又精确，因此添加 &lt;code&gt;0.1 + 0.2&lt;/code&gt; 显然会得出 &lt;code&gt;0.3&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="ee2e12a76bfd81d38307a18631db4c3240b59b5c" translate="yes" xml:space="preserve">
+          <source>If we truncated these to, say, seven bits, then we'd get</source>
+          <target state="translated">如果我们把这些截断成七位,比如说,七位,那么我们就可以得到</target>
+        </trans-unit>
+        <trans-unit id="57680ac773e9bbe3d4b63cff8433ef37f4eccd11" translate="yes" xml:space="preserve">
+          <source>If you are just counting beans at a bank, software solutions that use decimal string representations in the first place work perfectly well. But you can't do quantum chromodynamics or aerodynamics that way.</source>
+          <target state="translated">如果你只是在银行里数豆子,那么首先使用十进制字符串表示的软件解决方案就能很好地完成。但你不能用这种方法来做量子色动力学或空气动力学。</target>
+        </trans-unit>
+        <trans-unit id="5271cb4c5315d5f9a2c1b7d2e6439177b9ed5f51" translate="yes" xml:space="preserve">
+          <source>If you need infinite precision (using the number &amp;pi;, for example, instead of one of its many shorter stand-ins), you should write or use a symbolic math program instead.</source>
+          <target state="translated">如果需要无限精度（例如，使用数字&amp;pi;代替许多更短的替代之一），则应编写或使用符号数学程序。</target>
+        </trans-unit>
+        <trans-unit id="aa080c09b62ae1dce37814f75cd51aab41b3d4c1" translate="yes" xml:space="preserve">
+          <source>Imagine that you are trying to slice up pizzas. You have a robotic pizza cutter that can cut pizza slices &lt;em&gt;exactly&lt;/em&gt; in half. It can halve a whole pizza, or it can halve an existing slice, but in any case, the halving is always exact.</source>
+          <target state="translated">想象一下，您正在尝试切比萨饼。 您有一个自动比萨饼切割器，可以将比萨饼切成两半。 它可以将整个披萨减半，也可以将现有的薄片减半，但是无论如何，减半总是精确的。</target>
+        </trans-unit>
+        <trans-unit id="23fd14fd5cc6f36afaf62617f86f1c6323f8f5d0" translate="yes" xml:space="preserve">
+          <source>Imagine working in base ten with, say, 8 digits of accuracy.  You check whether</source>
+          <target state="translated">想象一下,以10为基数的工作,例如,8位数的准确度。你检查一下是否</target>
+        </trans-unit>
+        <trans-unit id="99cb5d12f8afe87e5f2199dd7832164a30028595" translate="yes" xml:space="preserve">
+          <source>Imagine you are going to add up two float numbers like &lt;code&gt;0.2&lt;/code&gt; and &lt;code&gt;0.7&lt;/code&gt; here it is: &lt;code&gt;0.2 + 0.7 = 0.8999999999999999&lt;/code&gt;.</source>
+          <target state="translated">假设您要将两个浮点数相加，例如 &lt;code&gt;0.2&lt;/code&gt; 和 &lt;code&gt;0.7&lt;/code&gt; ,这里是： &lt;code&gt;0.2 + 0.7 = 0.8999999999999999&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="a2b1148919cbaacaaf9135169d3d2fdb6dafcf25" translate="yes" xml:space="preserve">
+          <source>In addition to the other correct answers, you may want to consider scaling your values to avoid problems with floating-point arithmetic.</source>
+          <target state="translated">除了其他正确答案外,还可以考虑按比例取值,避免浮点运算的问题。</target>
+        </trans-unit>
+        <trans-unit id="d2b3c535762ccb723471ca3d19c266d59819e435" translate="yes" xml:space="preserve">
+          <source>In base&lt;sub&gt;10&lt;/sub&gt; we can't represent &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;3&lt;/sub&gt;. But in binary, we can't do &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;10&lt;/sub&gt;&lt;em&gt;or&lt;/em&gt;&lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;3&lt;/sub&gt;.</source>
+          <target state="translated">以&lt;sub&gt;10&lt;/sub&gt;为底的我们不能代表&lt;sub&gt;1/3&lt;/sub&gt; 。 但是用二进制，我们不能做&lt;sub&gt;1/10&lt;/sub&gt; &lt;em&gt;或&lt;/em&gt; &lt;sub&gt;1/3&lt;/sub&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="8f38a9914f49411cfba349dfdb8630e09f562340" translate="yes" xml:space="preserve">
+          <source>In binary, we only get the &lt;em&gt;2&lt;sup&gt;n&lt;/sup&gt;&lt;/em&gt; term, that is:</source>
+          <target state="translated">用二进制，我们只得到&lt;em&gt;2 &lt;sup&gt;n&lt;/sup&gt;&lt;/em&gt;项，即：</target>
+        </trans-unit>
+        <trans-unit id="4ef2cdaba6d234b05bee8a68976633267a094852" translate="yes" xml:space="preserve">
+          <source>In contrast, the rational number &lt;code&gt;0.1&lt;/code&gt;, which is &lt;code&gt;1/10&lt;/code&gt;, can be written exactly as</source>
+          <target state="translated">相反，有理数 &lt;code&gt;0.1&lt;/code&gt; ，即 &lt;code&gt;1/10&lt;/code&gt; ，可以完全写为</target>
+        </trans-unit>
+        <trans-unit id="b961be3443aab68ceeec29a5220e6f9ed3ea8cb9" translate="yes" xml:space="preserve">
+          <source>In order to offer The &lt;strong&gt;best solution&lt;/strong&gt; I can say I discovered following method:</source>
+          <target state="translated">为了提供&lt;strong&gt;最佳解决方案，&lt;/strong&gt;我可以说我发现了以下方法：</target>
+        </trans-unit>
+        <trans-unit id="2e914e63df1d23846968db54c322cfcde5d441c1" translate="yes" xml:space="preserve">
+          <source>In particular, 0.1 + 0.2 is really 0.1000000000000000055511151231257827021181583404541015625 + 0.200000000000000011102230246251565404236316680908203125 = 0.3000000000000000444089209850062616169452667236328125, whereas the number closest to 0.3 is actually 0.299999999999999988897769753748434595763683319091796875.</source>
+          <target state="translated">其中,0.1+0.2实际上是0.100000000000000000055511151231257827021181583404541015625+0.200000000000000011102230246251565404236316680908203125=0。 30000000000000000000444089209850062616169452667236328125,而最接近0.3的数字实际上是0.29999999999999999988897769753748434595763683319091796875。</target>
+        </trans-unit>
+        <trans-unit id="4228e410bba6241e580bda13c93c5be682de4fe0" translate="yes" xml:space="preserve">
+          <source>In practice, this problem of precision means you need to use rounding functions to round your floating point numbers off to however many decimal places you're interested in before you display them.</source>
+          <target state="translated">在实践中,这个精度问题意味着你需要使用四舍五入函数将浮点数四舍五入到你感兴趣的小数点后再显示。</target>
+        </trans-unit>
+        <trans-unit id="ac42fff92fa17be820acdfc20ad21aaa24d67e47" translate="yes" xml:space="preserve">
+          <source>In reality, this sum is only an approximation.  For the number 999,999,999  the compiler will insert in bit representation of the float the number 1,000,000,000</source>
+          <target state="translated">实际上,这个总和只是一个近似值。对于999,999,999,999,999,999,999,999这个数字,编译器会在位表示的浮点数中插入1,000,000,000,000,000,000这个数字。</target>
+        </trans-unit>
+        <trans-unit id="d361ff6e0befd1e900ea2d2a691af9c88a12a12e" translate="yes" xml:space="preserve">
+          <source>In short, the fundamental reason for the errors in floating point operations is a combination of the truncation in hardware, and the truncation of a reciprocal in the case of division. Since the IEEE-754 standard only requires an error of less than one half of one unit in the last place for a single operation, the floating point errors over repeated operations will add up unless corrected.</source>
+          <target state="translated">总之,浮点运算中出现误差的根本原因是硬件中的截断,以及除法时的倒数的截断。由于IEEE-754标准只要求单次操作的误差在最后一位的误差不超过二分之一,所以重复操作的浮点误差如果不改正的话,重复操作的浮点误差就会加起来。</target>
+        </trans-unit>
+        <trans-unit id="e5fabd55d2fd5b1b6baf316413574a320dcf8783" translate="yes" xml:space="preserve">
+          <source>In the IEEE-754 standard, hardware designers are allowed any value of error/epsilon as long as it's less than one half of one unit in the last place, and the result only has to be less than one half of one unit in the last place for one operation. This explains why when there are repeated operations, the errors add up. For IEEE-754 double precision, this is the 54th bit, since 53 bits are used to represent the numeric part (normalized), also called the mantissa, of the floating point number (e.g. the 5.3 in 5.3e5). The next sections go into more detail on the causes of hardware error on various floating point operations.</source>
+          <target state="translated">在IEEE-754标准中,硬件设计者允许errorepsilon的任意值,只要小于最后一个单位的二分之一,结果只需小于最后一个单位的二分之一就可以进行一次操作。这也就解释了为什么当有重复操作时,误差会增加。对于IEEE-754的双精度,这就是第54位,因为53位是用来表示浮点数的数字部分(归一化),也叫曼陀螺,比如5.3e5中的5.3。接下来的章节将详细介绍各种浮点运算的硬件错误原因。</target>
+        </trans-unit>
+        <trans-unit id="d2adcf90f9007e61cdec953379088b5fa66be386" translate="yes" xml:space="preserve">
+          <source>In the case of 0.2, the numbers are all the same, just scaled up by a factor of 2. Again, we favour the value that's slightly higher than 0.2.</source>
+          <target state="translated">同样,在0.2的情况下,数字都是一样的,只是放大了2的系数而已。 同样,我们倾向于选择略高于0.2的值。</target>
+        </trans-unit>
+        <trans-unit id="e4922ee598bf50ce8a8aa97294d719a5f025128d" translate="yes" xml:space="preserve">
+          <source>In this example you need 2 digits precision so it should be &lt;code&gt;toFixed(2)&lt;/code&gt;, so what should be the paramter to fit every given float number?</source>
+          <target state="translated">在此示例中，您需要2位数的精度，所以它应该是 &lt;code&gt;toFixed(2)&lt;/code&gt; ，那么适合每个给定的浮点数的参数应该是什么？</target>
+        </trans-unit>
+        <trans-unit id="d307899e3a9faf88be765042e4c814a072993a93" translate="yes" xml:space="preserve">
+          <source>Instead do &lt;code&gt;if (abs(x - y) &amp;lt; myToleranceValue) { ... }&lt;/code&gt;.</source>
+          <target state="translated">相反， &lt;code&gt;if (abs(x - y) &amp;lt; myToleranceValue) { ... }&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="af2d9d553cd8ff9919717f84680c53a32ea7fd20" translate="yes" xml:space="preserve">
+          <source>Is floating point math broken</source>
+          <target state="translated">浮点数学是不是坏了</target>
+        </trans-unit>
+        <trans-unit id="7ae4f138c29e2b8ddf6d3e604ad8ec17b30e1885" translate="yes" xml:space="preserve">
+          <source>It's actually pretty simple. When you have a base 10 system (like ours), it can only express fractions that use a prime factor of the base. The prime factors of 10 are 2 and 5. So 1/2, 1/4, 1/5, 1/8, and 1/10 can all be expressed cleanly because the denominators all use prime factors of 10. In contrast, 1/3, 1/6, and 1/7 are all repeating decimals because their denominators use a prime factor of 3 or 7. In binary (or base 2), the only prime factor is 2. So you can only express fractions cleanly which only contain 2 as a prime factor. In binary, 1/2, 1/4, 1/8 would all be expressed cleanly as decimals. While, 1/5 or 1/10 would be repeating decimals. So 0.1 and 0.2 (1/10 and 1/5) while clean decimals in a base 10 system, are repeating decimals in the base 2 system the computer is operating in. When you do math on these repeating decimals, you end up with leftovers which carry over when you convert the computer's base 2 (binary) number into a more human readable base 10 number.</source>
+          <target state="translated">这其实很简单。当你有一个10为基数的系统(比如我们的系统),它只能表示使用基数的质因数的分数。10的质数因数是2和5。所以12、14、15、18和110都可以表达得很干净,因为分母都使用10的质因数。相反,13、16和17都是重复的小数,因为它们的分母都使用3或7的质因数。在二进制(或基数2)中,唯一的质因数是2,所以你只能用只包含2作为质因数的分数来表达。在二进制中,12、14、18都可以用小数来表示。而15或110将是重复的小数。因此,0.1和0.2(110和15)在10为基数的系统中是干净的小数,而在2为基数的系统中是重复的小数。当你在这些重复的小数上做数学运算时,你最终会有剩余的小数,当你把计算机的2基数(二进制)转换为更易读的10基数时,这些小数就会被遗留下来。</target>
+        </trans-unit>
+        <trans-unit id="9bedf433c947094cc3f7cbfb70b1b08a6b15157f" translate="yes" xml:space="preserve">
+          <source>Just for fun, I played with the representation of floats, following the definitions from the Standard C99 and I wrote the code below.</source>
+          <target state="translated">只是为了好玩,我按照标准C99中的定义,玩了一下浮子的表示方法,写了下面的代码。</target>
+        </trans-unit>
+        <trans-unit id="132f6e2254fa1dd608decdd2acee6a977411ff01" translate="yes" xml:space="preserve">
+          <source>Keep in mind that &lt;code&gt;(0.2 + 0.1) * 10 / 10&lt;/code&gt; won't work at all although it seems the same!
+I prefer the first solution since I can apply it as a function which converts the input float to accurate output float.</source>
+          <target state="translated">请记住， &lt;code&gt;(0.2 + 0.1) * 10 / 10&lt;/code&gt; 根本不起作用，尽管看起来一样！ 我更喜欢第一个解决方案，因为我可以将其用作将输入浮点数转换为准确的输出浮点数的函数。</target>
+        </trans-unit>
+        <trans-unit id="2799ad7660549a72b5a827dbb592f0ec6f37f29b" translate="yes" xml:space="preserve">
+          <source>Let me explain why it's the best solution.
+As others mentioned in above answers it's a good idea to use ready to use Javascript toFixed() function to solve the problem. But most likely you'll encounter with some problems.</source>
+          <target state="translated">让我解释一下为什么这是最好的解决方案。就像上面的答案中提到的其他人一样,使用准备好的Javascript toFixed()函数来解决这个问题是个好主意。但很可能你会遇到一些问题。</target>
+        </trans-unit>
+        <trans-unit id="a86e0321652ded6bea22752519aa3d0aa14fe1fd" translate="yes" xml:space="preserve">
+          <source>Let's try it yourself:</source>
+          <target state="translated">我们自己来试试吧。</target>
+        </trans-unit>
+        <trans-unit id="71a6be33e3fd9f8758c62adc390facaf65d03f2f" translate="yes" xml:space="preserve">
+          <source>Many of this question's numerous duplicates ask about the effects of floating point rounding on specific numbers. In practice, it is easier to get a feeling for how it works by looking at exact results of calculations of interest rather than by just reading about it. Some languages provide ways of doing that - such as converting a &lt;code&gt;float&lt;/code&gt; or &lt;code&gt;double&lt;/code&gt; to &lt;code&gt;BigDecimal&lt;/code&gt; in Java.</source>
+          <target state="translated">这个问题的许多重复项中有许多都询问浮点舍入对特定数字的影响。 在实践中，通过查看感兴趣的计算的确切结果而不是仅仅阅读它，会更容易感觉到它是如何工作的。 某些语言提供了实现此目的的方法-例如在Java中将 &lt;code&gt;float&lt;/code&gt; 或 &lt;code&gt;double&lt;/code&gt; 转换为 &lt;code&gt;BigDecimal&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="8934b0ad8a8f5b6d10b480c6e3fb04ebd566c062" translate="yes" xml:space="preserve">
+          <source>Many online converters exist to convert a double precision floating point number to binary (e.g. at &lt;a href=&quot;http://www.binaryconvert.com/convert_double.html&quot;&gt;binaryconvert.com&lt;/a&gt;), but here is some sample C# code to obtain the IEEE 754 representation for a double precision number (I separate the three parts with colons (&lt;code&gt;:&lt;/code&gt;):</source>
+          <target state="translated">存在许多在线转换器，可以将双精度浮点数转换为二进制（例如，在&lt;a href=&quot;http://www.binaryconvert.com/convert_double.html&quot;&gt;binaryconvert.com上&lt;/a&gt; ），但是这里有一些示例C＃代码，用于获取双精度浮点数的IEEE 754表示形式（我用冒号将三个部分分开（ &lt;code&gt;:&lt;/code&gt; ）：</target>
+        </trans-unit>
+        <trans-unit id="5594903df7afb92532bede50aa19f8bc44b9b936" translate="yes" xml:space="preserve">
+          <source>Math.sum accepts any number of arguments</source>
+          <target state="translated">Math.sum可以接受任意数量的参数</target>
+        </trans-unit>
+        <trans-unit id="a7da8c89426f6244ba27410665d12c52debd6422" translate="yes" xml:space="preserve">
+          <source>Model for store real numbers under the hood represent float numbers as</source>
+          <target state="translated">在引擎盖下存储实数的模型表示浮动数为</target>
+        </trans-unit>
+        <trans-unit id="3c239885b8ff7c9107ab26b704ba9e20dc93111d" translate="yes" xml:space="preserve">
+          <source>Most calculators use additional &lt;a href=&quot;https://en.wikipedia.org/wiki/Guard_digit&quot;&gt;guard digits&lt;/a&gt; to get around this problem, which is how &lt;code&gt;0.1 + 0.2&lt;/code&gt; would give &lt;code&gt;0.3&lt;/code&gt;: the final few bits are rounded.</source>
+          <target state="translated">大多数计算器使用附加的&lt;a href=&quot;https://en.wikipedia.org/wiki/Guard_digit&quot;&gt;保护位&lt;/a&gt;来解决此问题，这就是 &lt;code&gt;0.1 + 0.2&lt;/code&gt; 给出 &lt;code&gt;0.3&lt;/code&gt; 的方式 ：最后几位是四舍五入的。</target>
+        </trans-unit>
+        <trans-unit id="b944713acbfeaefa185fd6b02b29866cbcd20f3a" translate="yes" xml:space="preserve">
+          <source>Most experienced programmers, of course, know the real answer, which is that there is no way to piece together an &lt;em&gt;exact&lt;/em&gt; tenth or fifth of the pizza using those slices, no matter how finely you slice them. You can do a pretty good approximation, and if you add up the approximation of 0.1 with the approximation of 0.2, you get a pretty good approximation of 0.3, but it's still just that, an approximation.</source>
+          <target state="translated">当然，大多数有经验的程序员都知道真正的答案，那就是，无论您将它们切成多么细的小段，都无法用它们&lt;em&gt;精确地&lt;/em&gt;将比萨饼的十分之一或五分之一拼在一起。 您可以做一个非常好的近似值，如果您将0.1的近似值与0.2的近似值相加，您会得到一个非常好的0.3的近似值，但是仍然只是一个近似值。</target>
+        </trans-unit>
+        <trans-unit id="db20f0baebe5ae74b4f5ca1ba310ce4d2dac041e" translate="yes" xml:space="preserve">
+          <source>Most processors follow the &lt;a href=&quot;http://en.wikipedia.org/wiki/IEEE_754-2008&quot;&gt;IEEE-754&lt;/a&gt; standard but some use denormalized, or different standards
+. For example, there is a denormalized mode in IEEE-754 which allows representation of very small floating point numbers at the expense of precision. The following, however, will cover the normalized mode of IEEE-754 which is the typical mode of operation.</source>
+          <target state="translated">大多数处理器遵循&lt;a href=&quot;http://en.wikipedia.org/wiki/IEEE_754-2008&quot;&gt;IEEE-754&lt;/a&gt;标准，但有些处理器使用非规范化或不同的标准。 例如，IEEE-754中存在一种非规范化模式，该模式允许以精度为代价表示非常小的浮点数。 但是，以下内容将涵盖IEEE-754的标准化模式，这是典型的操作模式。</target>
+        </trans-unit>
+        <trans-unit id="5cf99f8f009932fb02161551e41e5b27ef9ccc1d" translate="yes" xml:space="preserve">
+          <source>My workaround:</source>
+          <target state="translated">我的变通方法。</target>
+        </trans-unit>
+        <trans-unit id="fe2cee7e86246cc3c67f2c8393c324743271be71" translate="yes" xml:space="preserve">
+          <source>Neither of these solutions is perfect (especially if we look at performances, or if we require a very high precision), but still they solve a great number of problems with binary floating point arithmetic.</source>
+          <target state="translated">这两种方案都不是完美的(特别是当我们看性能,或者说当我们要求非常高的精度时),但它们仍然解决了大量的二进制浮点运算问题。</target>
+        </trans-unit>
+        <trans-unit id="2b33a1cd6bfe955729a61c6c2378164276c976df" translate="yes" xml:space="preserve">
+          <source>No, not broken, but most decimal fractions must be approximated</source>
+          <target state="translated">不,不破,但大多数小数分数必须是近似的。</target>
+        </trans-unit>
+        <trans-unit id="64a768dd81380b6d830fc7ba6f606946def99de5" translate="yes" xml:space="preserve">
+          <source>Not all numbers can be represented via &lt;strong&gt;floats&lt;/strong&gt;/&lt;strong&gt;doubles&lt;/strong&gt;
+For example, the number &quot;0.2&quot; will be represented as &quot;0.200000003&quot; in single precision in IEEE754 float point standard.</source>
+          <target state="translated">并非所有数字都可以通过&lt;strong&gt;浮点数&lt;/strong&gt; / &lt;strong&gt;双精度&lt;/strong&gt;数来表示。例如，在IEEE754浮点标准中，数字&amp;ldquo; 0.2&amp;rdquo;将以单精度表示为&amp;ldquo; 0.200000003&amp;rdquo;。</target>
+        </trans-unit>
+        <trans-unit id="173f07d87b229443d640ce3489ba411e8746ea11" translate="yes" xml:space="preserve">
+          <source>Note that &lt;em&gt;a&lt;/em&gt; and &lt;em&gt;b&lt;/em&gt; differ only in the last bit; &lt;code&gt;...0011&lt;/code&gt; + &lt;code&gt;1&lt;/code&gt; = &lt;code&gt;...0100&lt;/code&gt;. In this case, the value with the least significant bit of zero is &lt;em&gt;b&lt;/em&gt;, so the sum is:</source>
+          <target state="translated">请注意， &lt;em&gt;a&lt;/em&gt;和&lt;em&gt;b&lt;/em&gt;仅在最后一位不同。 &lt;code&gt;...0011&lt;/code&gt; +1 = &lt;code&gt;...0100&lt;/code&gt; 在这种情况下，最低有效位为零的值为&lt;em&gt;b&lt;/em&gt; ，因此总和为：</target>
+        </trans-unit>
+        <trans-unit id="fb1682df5506dc738031d2049d0fe97e609c88dc" translate="yes" xml:space="preserve">
+          <source>Note that the default rounding mode, round-to-nearest &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;even digit in the last place&lt;/a&gt;, guarantees an error of less than one half of one unit in the last place for one operation. Using the truncation, round-up, and round down alone may result in an error that is greater than one half of one unit in the last place, but less than one unit in the last place, so these modes are not recommended unless they are used in Interval Arithmetic.</source>
+          <target state="translated">请注意，默认的舍入模式（ &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;最后一位&lt;/a&gt;舍入到最接近的偶数位）保证一次操作的最后一位的误差小于一个单位的一半。 仅使用截断，向​​上舍入和向下舍入可能会导致错误，最后一个位置的误差大于一个单元的一半，但最后一个位置的误差小于一个单元，因此不建议使用这些模式，除非它们是在间隔算术中使用。</target>
+        </trans-unit>
+        <trans-unit id="e275cd62fb5f11144c70906280ad00b0caaae18d" translate="yes" xml:space="preserve">
+          <source>Note that the mantissa is composed of recurring digits of &lt;code&gt;0011&lt;/code&gt;. This is &lt;strong&gt;key&lt;/strong&gt; to why there is any error to the calculations - 0.1, 0.2 and 0.3 cannot be represented in binary &lt;strong&gt;precisely&lt;/strong&gt; in a &lt;em&gt;finite&lt;/em&gt; number of binary bits any more than 1/9, 1/3 or 1/7 can be represented precisely in &lt;em&gt;decimal digits&lt;/em&gt;.</source>
+          <target state="translated">请注意，尾数由 &lt;code&gt;0011&lt;/code&gt; 的重复数字组成。 这是为什么计算会出错的&lt;strong&gt;关键&lt;/strong&gt; -0.1、0.2和0.3不能以&lt;em&gt;有限&lt;/em&gt;数量的二进制位&lt;strong&gt;精确地&lt;/strong&gt;以二进制表示，而超过1 / 9、1 / 3或1/7则不能精确地表示为&lt;em&gt;十进制数字&lt;/em&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="d1e48ccd7591a347088699ef49149eac61dd4272" translate="yes" xml:space="preserve">
+          <source>Notice that in both cases, the approximations for 0.1 and 0.2 have a slight upward bias. If we add enough of these biases in, they will push the number further and further away from what we want, and in fact, in the case of 0.1 + 0.2, the bias is high enough that the resulting number is no longer the closest number to 0.3.</source>
+          <target state="translated">注意,在这两种情况下,0.1和0.2的近似值都有轻微的向上偏移。如果我们把这些偏差加进去足够多,它们会把这个数字离我们想要的越来越远,事实上,在0.1+0.2的情况下,这个偏差足够大,以至于得出的数字不再是最接近0.3的数字。</target>
+        </trans-unit>
+        <trans-unit id="9520be12da7f5411c118335231ed0c5f7a84ec09" translate="yes" xml:space="preserve">
+          <source>Now that you found the solution, it's better to offer it as a function like this:</source>
+          <target state="translated">既然已经找到了解决方案,那最好还是提供这样的功能。</target>
+        </trans-unit>
+        <trans-unit id="61b21a44286dfe92732888d44bc4a742729e3bcc" translate="yes" xml:space="preserve">
+          <source>Now, how would you piece all the slices in such a way that would add up to one-tenth (0.1) or one-fifth (0.2) of a pizza? Really think about it, and try working it out. You can even try to use a real pizza, if you have a mythical precision pizza cutter at hand. :-)</source>
+          <target state="translated">现在,你会如何把所有的薄片切成这样的方式,使其加起来相当于一个比萨饼的十分之一(0.1)或五分之一(0.2)?真的要想一想,并尝试着去做。你甚至可以尝试使用真正的披萨,如果你手边有一把神奇的精密披萨刀的话。)</target>
+        </trans-unit>
+        <trans-unit id="105e5e7696e347e9fea2b0bfb4ac95627ef03c36" translate="yes" xml:space="preserve">
+          <source>One example would be</source>
+          <target state="translated">一个例子是</target>
+        </trans-unit>
+        <trans-unit id="f3c8c95c5e534bcd2ea0034a0d83177efa6923f4" translate="yes" xml:space="preserve">
+          <source>Output:</source>
+          <target state="translated">Output:</target>
+        </trans-unit>
+        <trans-unit id="a96f5425027bc80f50fbfd4f9264ef5dadb0389c" translate="yes" xml:space="preserve">
+          <source>P.S. Some programming languages also provide pizza cutters that can &lt;a href=&quot;https://en.wikipedia.org/wiki/Decimal_floating_point&quot;&gt;split slices into exact tenths&lt;/a&gt;. Although such pizza cutters are uncommon, if you do have access to one, you should use it when it's important to be able to get exactly one-tenth or one-fifth of a slice.</source>
+          <target state="translated">PS一些编程语言还提供了比萨饼切割机，可以&lt;a href=&quot;https://en.wikipedia.org/wiki/Decimal_floating_point&quot;&gt;将切片切成十分之一&lt;/a&gt; 。 尽管这种披萨切刀并不常见，但是如果您确实有机会使用它，那么当重要的是能够精确地获得十分之一或五分之一的切片时，您应该使用它。</target>
+        </trans-unit>
+        <trans-unit id="29dfe574f408d995f2185483c55dbffde4813a84" translate="yes" xml:space="preserve">
+          <source>Plain old decimal (base 10) numbers have the same issues, which is why numbers like 1/3 end up as 0.333333333...</source>
+          <target state="translated">普通的小数(基数10)也有同样的问题,这就是为什么像13这样的数字最后会变成0.3333333333333.....</target>
+        </trans-unit>
+        <trans-unit id="27e3ae8dbaba8a0d1b82dbf5add12c954885d1e0" translate="yes" xml:space="preserve">
+          <source>Python's &lt;a href=&quot;https://docs.python.org/dev/library/decimal.html&quot;&gt;&lt;code&gt;decimal&lt;/code&gt; module&lt;/a&gt; and Java's &lt;a href=&quot;http://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html&quot;&gt;&lt;code&gt;BigDecimal&lt;/code&gt; class&lt;/a&gt;, that represent numbers internally with decimal notation (as opposed to binary notation). Both have limited precision, so they are still error prone, however they solve most common problems with binary floating point arithmetic.</source>
+          <target state="translated">Python的&lt;a href=&quot;https://docs.python.org/dev/library/decimal.html&quot;&gt; &lt;code&gt;decimal&lt;/code&gt; 模块&lt;/a&gt;和Java的&lt;a href=&quot;http://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html&quot;&gt; &lt;code&gt;BigDecimal&lt;/code&gt; 类&lt;/a&gt; ，它们在内部以十进制表示法表示数字（与二进制表示法相对）。 两者的精度都有限，因此它们仍然容易出错，但是它们使用二进制浮点算法解决了最常见的问题。</target>
+        </trans-unit>
+        <trans-unit id="eb619cf9a5eaa0e9433e5e33fece2c06bd48ff6d" translate="yes" xml:space="preserve">
+          <source>Python's &lt;a href=&quot;https://docs.python.org/dev/library/fractions.html&quot;&gt;&lt;code&gt;fractions&lt;/code&gt; module&lt;/a&gt; and Apache Common's &lt;a href=&quot;https://commons.apache.org/proper/commons-math/apidocs/org/apache/commons/math3/fraction/BigFraction.html&quot;&gt;&lt;code&gt;BigFraction&lt;/code&gt; class&lt;/a&gt;. Both represent rational numbers as &lt;code&gt;(numerator, denominator)&lt;/code&gt; pairs and they may give more accurate results than decimal floating point arithmetic.</source>
+          <target state="translated">Python的&lt;a href=&quot;https://docs.python.org/dev/library/fractions.html&quot;&gt; &lt;code&gt;fractions&lt;/code&gt; 模块&lt;/a&gt;和Apache Common的&lt;a href=&quot;https://commons.apache.org/proper/commons-math/apidocs/org/apache/commons/math3/fraction/BigFraction.html&quot;&gt; &lt;code&gt;BigFraction&lt;/code&gt; 类&lt;/a&gt; 。 两者都将有理数表示为 &lt;code&gt;(numerator, denominator)&lt;/code&gt; 对，并且它们给出的结果比十进制浮点算术更准确。</target>
+        </trans-unit>
+        <trans-unit id="3ac876068bdeda94095d3a7511721e8436f028d3" translate="yes" xml:space="preserve">
+          <source>Python's &lt;code&gt;decimal&lt;/code&gt; module is based on &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_854-1987&quot;&gt;IEEE standard 854-1987&lt;/a&gt;.</source>
+          <target state="translated">Python的 &lt;code&gt;decimal&lt;/code&gt; 模块基于&lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_854-1987&quot;&gt;IEEE标准854-1987&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="d9c70cbcdb978515e306b58ad0407fb758f03a30" translate="yes" xml:space="preserve">
+          <source>Returning to the floating point converter, the raw hexadecimal for 0.30000000000000004 is 3fd3333333333334, which ends in an even digit and therefore is the correct result.</source>
+          <target state="translated">返回到浮点转换器,0.300000000000000000004的原始十六进制是3fd3333333333333333334,以偶数结尾,因此是正确的结果。</target>
+        </trans-unit>
+        <trans-unit id="92b1e4641ea8b0a754e7afa9dfb128e28b38b3b3" translate="yes" xml:space="preserve">
+          <source>See &lt;a href=&quot;http://en.cppreference.com/w/cpp/io/basic_ios/init&quot;&gt;here&lt;/a&gt; for reference</source>
+          <target state="translated">请参阅&lt;a href=&quot;http://en.cppreference.com/w/cpp/io/basic_ios/init&quot;&gt;此处&lt;/a&gt;以供参考</target>
+        </trans-unit>
+        <trans-unit id="eb3bdffb7759683f4114fd367d5b967cb10277b0" translate="yes" xml:space="preserve">
+          <source>Sign bit: 1 bit</source>
+          <target state="translated">符号位:1位</target>
+        </trans-unit>
+        <trans-unit id="8b804a9ed868fea0acf8c3224434cb421a49c76d" translate="yes" xml:space="preserve">
+          <source>Significant precision: 53 bits (52 explicitly stored)</source>
+          <target state="translated">重要精度:53位(52位显式存储)</target>
+        </trans-unit>
+        <trans-unit id="b1ccc6268f35cc5a5baa2d8213bd1bff5a0a1766" translate="yes" xml:space="preserve">
+          <source>Since the hardware that does the floating point calculations only needs to yield a result with an error of less than one half of one unit in the last place for a single operation, the error will grow over repeated operations if not watched. This is the reason that in computations that require a bounded error, mathematicians use methods such as using the round-to-nearest &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;even digit in the last place&lt;/a&gt; of IEEE-754, because, over time, the errors are more likely to cancel each other out, and &lt;a href=&quot;http://en.wikipedia.org/wiki/Interval_arithmetic&quot;&gt;Interval Arithmetic&lt;/a&gt; combined with variations of the &lt;a href=&quot;http://en.wikipedia.org/wiki/IEEE_754-2008#Rounding_rules&quot;&gt;IEEE 754 rounding modes&lt;/a&gt; to predict rounding errors, and correct them. Because of its low relative error compared to other rounding modes, round to nearest even digit (in the last place), is the default rounding mode of IEEE-754.</source>
+          <target state="translated">由于执行浮点计算的硬件只需要产生一个结果，该结果的单个操作的最后一个位置的误差小于一个单元的一半，因此，如果不注意，该误差将随着重复的操作而扩大。 这就是为什么在需要有限误差的计算中，数学家会使用诸如&lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;在&lt;/a&gt; IEEE-754 的最后一位使用四舍五入到最接近的偶数之类的方法的原因，因为随着时间的流逝，误差更可能相互抵消。 &lt;a href=&quot;http://en.wikipedia.org/wiki/Interval_arithmetic&quot;&gt;间隔算法&lt;/a&gt;与&lt;a href=&quot;http://en.wikipedia.org/wiki/IEEE_754-2008#Rounding_rules&quot;&gt;IEEE 754舍入模式的&lt;/a&gt;变体相结合，以预测舍入误差并进行校正。 由于与其他舍入模式相比其相对误差较低，因此舍入到最接近的偶数位（最后一位）是IEEE-754的默认舍入模式。</target>
+        </trans-unit>
+        <trans-unit id="4264ec05ffbfc8a229c5efdd658651538e8f7d77" translate="yes" xml:space="preserve">
+          <source>Since the sum is not of the form 2&lt;sup&gt;n&lt;/sup&gt; * 1.{bbb} we increase the exponent by one and shift the decimal (&lt;em&gt;binary&lt;/em&gt;) point to get:</source>
+          <target state="translated">由于总和不是2 &lt;sup&gt;n&lt;/sup&gt; * 1. {bbb}的形式，因此我们将指数增加1并将小数点（ &lt;em&gt;二进制&lt;/em&gt; ）移至：</target>
+        </trans-unit>
+        <trans-unit id="8fe15c45bd8b7e17a57d9e6c07bb827360bf9a63" translate="yes" xml:space="preserve">
+          <source>Since this is a language-agnostic question, it needs language-agnostic tools, such as a &lt;a href=&quot;http://www.exploringbinary.com/floating-point-converter/&quot;&gt;Decimal to Floating-Point Converter&lt;/a&gt;.</source>
+          <target state="translated">由于这是与语言无关的问题，因此需要与语言无关的工具，例如&lt;a href=&quot;http://www.exploringbinary.com/floating-point-converter/&quot;&gt;小数到浮点转换器&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="5c9a3661043362988247e665a5ff40a889bcfbde" translate="yes" xml:space="preserve">
+          <source>Since this thread branched off a bit into a general discussion over current floating point implementations I'd add that there are projects on fixing their issues.</source>
+          <target state="translated">由于这条线程有点偏向于对当前浮点实现的一般性讨论,我想补充一下,现在有一些项目在解决它们的问题。</target>
+        </trans-unit>
+        <trans-unit id="8d7e45d0733415a3bee40ed99c227b8a4fcc55c9" translate="yes" xml:space="preserve">
+          <source>So in decimal, we can't represent &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;3&lt;/sub&gt;. Because base 10 includes 2 as a prime factor, every number we can write as a binary fraction &lt;em&gt;also&lt;/em&gt; can be written as a base 10 fraction. However, hardly anything we write as a base&lt;sub&gt;10&lt;/sub&gt; fraction is representable in binary. In the range from 0.01, 0.02, 0.03 ... 0.99, only &lt;em&gt;three&lt;/em&gt; numbers can be represented in our FP format: 0.25, 0.50, and 0.75, because they are 1/4, 1/2, and 3/4, all numbers with a prime factor using only the 2&lt;sup&gt;n&lt;/sup&gt; term.</source>
+          <target state="translated">因此，以十进制表示，我们不能表示&lt;sub&gt;1/3&lt;/sub&gt; 。 因为以10为底的素数包括2作为素数，所以我们可以写为二进制分数的每个数字&lt;em&gt;也&lt;/em&gt;可以被写为以10为底的分数。 但是，几乎所有我们以&lt;sub&gt;10&lt;/sub&gt;为基数的分数都不能用二进制表示。 在0.01、0.02、0.03 ... 0.99的范围内，我们的FP格式只能表示&lt;em&gt;三个&lt;/em&gt;数字：0.25、0.50和0.75，因为它们都是1 / 4、1 / 2和3/4，所有数字仅使用2 &lt;sup&gt;n&lt;/sup&gt;项的素数因子。</target>
+        </trans-unit>
+        <trans-unit id="f0b724f7d5e93bef7ba979ca2b6db6331ea8ad1c" translate="yes" xml:space="preserve">
+          <source>So it is a bit hard to represent such numbers exactly. Even if you specify this variable explicitly without any intermediate calculation.</source>
+          <target state="translated">所以要准确地表示这样的数字是有点难。即使你明文指定这个变量,也不需要任何中间计算。</target>
+        </trans-unit>
+        <trans-unit id="6d0912fcda429b68b9e0994a73b85abb7d8f001c" translate="yes" xml:space="preserve">
+          <source>So no: binary floating point numbers are not broken, they just happen to be as imperfect as every other base-N number system :)</source>
+          <target state="translated">所以,不:二进制浮点数并没有被破坏,它们只是和其他基数系统一样不完美。)</target>
+        </trans-unit>
+        <trans-unit id="38123450cd5a2b687471df50e3e3541c514a8630" translate="yes" xml:space="preserve">
+          <source>So when you write &lt;code&gt;float x = 999...&lt;/code&gt;, the compiler will transform that number in a bit representation printed by the function &lt;code&gt;xx&lt;/code&gt; such that the sum printed by the function &lt;code&gt;yy&lt;/code&gt; be equal to the given number.</source>
+          <target state="translated">因此，当您编写 &lt;code&gt;float x = 999...&lt;/code&gt; ，编译器将以函数 &lt;code&gt;xx&lt;/code&gt; 打印的位表示形式转换该数字，以使函数 &lt;code&gt;yy&lt;/code&gt; 打印的总和等于给定的数字。</target>
+        </trans-unit>
+        <trans-unit id="459b7f35474c9c93ae8fcd79868b828ff68a08ab" translate="yes" xml:space="preserve">
+          <source>So while every binary fraction can be written in decimal, the reverse is not true. And in fact most decimal fractions repeat in binary.</source>
+          <target state="translated">所以,虽然每一个二进制分数都可以用十进制写成,但反之则不然。而事实上,大多数十进制分数都是用二进制重复写的。</target>
+        </trans-unit>
+        <trans-unit id="0f7d8fe8c6fbc3cfacb76978a4bcc7cb719ecf0a" translate="yes" xml:space="preserve">
+          <source>Some high level languages such as Python and Java come with tools to overcome binary floating point limitations. For example:</source>
+          <target state="translated">一些高级别的语言如Python和Java自带工具来克服二进制浮点限制。比如说。</target>
+        </trans-unit>
+        <trans-unit id="791b5e413bc079e206d5f368f16ef6fac171632c" translate="yes" xml:space="preserve">
+          <source>Some statistics related to this famous double precision question.</source>
+          <target state="translated">与这个著名的双精度问题相关的一些统计资料。</target>
+        </trans-unit>
+        <trans-unit id="ec3fa9530fa475d8f36d0f7a062d084a2bb45c03" translate="yes" xml:space="preserve">
+          <source>Squeezing infinitely many real numbers into a finite number of bits requires an approximate representation. Although there are infinitely many integers, in most programs the result of integer computations can be stored in 32 bits. In contrast, given any fixed number of bits, most calculations with real numbers will produce quantities that cannot be exactly represented using that many bits. Therefore the result of a floating-point calculation must often be rounded in order to fit back into its finite representation. This rounding error is the characteristic feature of floating-point computation.</source>
+          <target state="translated">将无限多的实数挤进有限的位数中,需要一个近似的表示方式。虽然有无限多的整数,但在大多数程序中,整数计算的结果可以存储在32位中。相反,给定任何固定的位数,大多数实数的计算都会产生无法用这么多的位数精确表示的量。因此,浮点计算的结果必须经常被四舍五入,以适应它的有限表示。这种舍入误差是浮点计算的特点。</target>
+        </trans-unit>
+        <trans-unit id="c141085414843405292b7e3811baac9439881af4" translate="yes" xml:space="preserve">
+          <source>Take a look at &lt;a href=&quot;https://posithub.org/&quot;&gt;https://posithub.org/&lt;/a&gt; for example, which showcases a number type called posit (and its predecessor unum) that promises to offer better accuracy with fewer bits. If my understanding is correct, it also fixes the kind of problems in the question. Quite interesting project, the person behind it is a mathematician it &lt;a href=&quot;http://www.johngustafson.net/&quot;&gt;Dr. John Gustafson&lt;/a&gt;. The whole thing is open source, with many actual implementations in C/C++, Python, Julia and C# (&lt;a href=&quot;https://hastlayer.com/arithmetics&quot;&gt;https://hastlayer.com/arithmetics&lt;/a&gt;).</source>
+          <target state="translated">以&lt;a href=&quot;https://posithub.org/&quot;&gt;https://posithub.org/&lt;/a&gt;为例，该示例展示了一个称为posit（及其前身unum）的数字类型，该类型有望以更少的位数提供更高的准确性。 如果我的理解是正确的，那么它也可以解决问题中的这类问题。 非常有趣的项目，其背后的人是&lt;a href=&quot;http://www.johngustafson.net/&quot;&gt;约翰&amp;middot;古斯塔夫森博士（John Gustafson&lt;/a&gt; ）的数学家。 整个过程都是开源的，在C / C ++，Python，Julia和C＃（ &lt;a href=&quot;https://hastlayer.com/arithmetics&quot;&gt;https://hastlayer.com/arithmetics&lt;/a&gt; ）中有许多实际实现。</target>
+        </trans-unit>
+        <trans-unit id="f8995c49b038cd4a41a4b96a4e4e6ee914279da4" translate="yes" xml:space="preserve">
+          <source>That pizza cutter has very fine movements, and if you start with a whole pizza, then halve that, and continue halving the smallest slice each time, you can do the halving &lt;em&gt;53 times&lt;/em&gt; before the slice is too small for even its high-precision abilities. At that point, you can no longer halve that very thin slice, but must either include or exclude it as is.</source>
+          <target state="translated">比萨机的动作非常精细，如果您从整个比萨饼开始，然后将其减半，然后每次将最小的薄片减半，那么您就可以将薄片减半&lt;em&gt;53次&lt;/em&gt; ，直到薄片即使对于其高精度功能而言仍然太小。 此时，您不能再将这一薄片减半，而必须按原样包含或排除它。</target>
+        </trans-unit>
+        <trans-unit id="9521ab333644ac6fc5a178f9282365b2b72a2e19" translate="yes" xml:space="preserve">
+          <source>That's it.  The value of 999999999 is in fact</source>
+          <target state="translated">就是这样。9999999999999的值其实是</target>
+        </trans-unit>
+        <trans-unit id="37fd206bff80a7a4aad65b53473445ec4e6045d1" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;_Decimal32&lt;/code&gt;, &lt;code&gt;_Decimal64&lt;/code&gt; and &lt;code&gt;_Decimal128&lt;/code&gt; types might be available on your system (for example, &lt;a href=&quot;http://en.wikipedia.org/wiki/GNU_Compiler_Collection&quot;&gt;GCC&lt;/a&gt; supports them on &lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/Decimal-Float.html&quot;&gt;selected targets&lt;/a&gt;, but &lt;a href=&quot;http://en.wikipedia.org/wiki/Clang&quot;&gt;Clang&lt;/a&gt; does not support them on &lt;a href=&quot;http://en.wikipedia.org/wiki/OS_X&quot;&gt;OS&amp;nbsp;X&lt;/a&gt;).</source>
+          <target state="translated">&lt;code&gt;_Decimal32&lt;/code&gt; ， &lt;code&gt;_Decimal64&lt;/code&gt; 和 &lt;code&gt;_Decimal128&lt;/code&gt; 类型可能在您的系统上可用（例如， &lt;a href=&quot;http://en.wikipedia.org/wiki/GNU_Compiler_Collection&quot;&gt;GCC&lt;/a&gt;在&lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/Decimal-Float.html&quot;&gt;选定的目标&lt;/a&gt;上支持它们，但&lt;a href=&quot;http://en.wikipedia.org/wiki/Clang&quot;&gt;Clang&lt;/a&gt;在&lt;a href=&quot;http://en.wikipedia.org/wiki/OS_X&quot;&gt;OS X&lt;/a&gt;上不支持它们）。</target>
+        </trans-unit>
+        <trans-unit id="b8283a2be83322370e2eff49b9d2031176a2a623" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;x&lt;/code&gt; in the question is a &lt;code&gt;float&lt;/code&gt; variable.</source>
+          <target state="translated">问题中的 &lt;code&gt;x&lt;/code&gt; 是一个 &lt;code&gt;float&lt;/code&gt; 变量。</target>
+        </trans-unit>
+        <trans-unit id="b94d896b02c25729113497c920111423c44c9588" translate="yes" xml:space="preserve">
+          <source>The answer turns out to be that &lt;code&gt;cout&lt;/code&gt;'s default precision for &lt;code&gt;float&lt;/code&gt; is 6, so it rounds to 6 decimal digits.</source>
+          <target state="translated">答案是 &lt;code&gt;cout&lt;/code&gt; 的 &lt;code&gt;float&lt;/code&gt; 缺省精度为6，因此将其舍入为6个十进制数字。</target>
+        </trans-unit>
+        <trans-unit id="c1e1a2f14e6221a38e01e8ea88f8536a4a118f00" translate="yes" xml:space="preserve">
+          <source>The binary representation of 0.1 and 0.2 are the &lt;em&gt;most accurate&lt;/em&gt; representations of the numbers allowable by IEEE 754. The addition of these representation, due to the default rounding mode, results in a value which differs only in the least-significant-bit.</source>
+          <target state="translated">0.1和0.2的二进制表示形式是IEEE 754允许的&lt;em&gt;最准确&lt;/em&gt;的数字表示形式。由于默认的舍入模式，将这些表示形式相加会导致仅在最低有效位上有所不同的值。</target>
+        </trans-unit>
+        <trans-unit id="dc3714342c0c169296b30554e4c7240280cd30d7" translate="yes" xml:space="preserve">
+          <source>The code prints the binary representation of floats in 3 separated groups</source>
+          <target state="translated">该代码将浮点数的二进制表示法打印成3个分开的组别</target>
+        </trans-unit>
+        <trans-unit id="cb9787d2beabdc5d5af158f30db785c40d9c4be1" translate="yes" xml:space="preserve">
+          <source>The constants &lt;code&gt;0.2&lt;/code&gt; and &lt;code&gt;0.3&lt;/code&gt; in your program will also be approximations to their true values.  It happens that the closest &lt;code&gt;double&lt;/code&gt; to &lt;code&gt;0.2&lt;/code&gt; is larger than the rational number &lt;code&gt;0.2&lt;/code&gt; but that the closest &lt;code&gt;double&lt;/code&gt; to &lt;code&gt;0.3&lt;/code&gt; is smaller than the rational number &lt;code&gt;0.3&lt;/code&gt;.  The sum of &lt;code&gt;0.1&lt;/code&gt; and &lt;code&gt;0.2&lt;/code&gt; winds up being larger than the rational number &lt;code&gt;0.3&lt;/code&gt; and hence disagreeing with the constant in your code.</source>
+          <target state="translated">程序中的常数 &lt;code&gt;0.2&lt;/code&gt; 和 &lt;code&gt;0.3&lt;/code&gt; 也将接近其真实值。 碰巧，最接近 &lt;code&gt;0.2&lt;/code&gt; 的 &lt;code&gt;double&lt;/code&gt; 精度数大于有理数 &lt;code&gt;0.2&lt;/code&gt; ,但最接近 &lt;code&gt;0.3&lt;/code&gt; 的 &lt;code&gt;double&lt;/code&gt; 精度数却小于有理数 &lt;code&gt;0.3&lt;/code&gt; 。 &lt;code&gt;0.1&lt;/code&gt; 和 &lt;code&gt;0.2&lt;/code&gt; 之和最终大于有理数 &lt;code&gt;0.3&lt;/code&gt; ，因此与代码中的常数不一致。</target>
+        </trans-unit>
+        <trans-unit id="aa4988ab132f87fefeb86fd1af7dafa6f7833b5a" translate="yes" xml:space="preserve">
+          <source>The debugger shows &lt;code&gt;9.89999962&lt;/code&gt;, the output of &lt;code&gt;cout&lt;/code&gt; operation is &lt;code&gt;9.9&lt;/code&gt;.</source>
+          <target state="translated">调试器显示 &lt;code&gt;9.89999962&lt;/code&gt; ， &lt;code&gt;cout&lt;/code&gt; 操作的输出为 &lt;code&gt;9.9&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="217f6b6cf725f84a8efc542a480c3ef1cad6009d" translate="yes" xml:space="preserve">
+          <source>The difference is exactly 2&lt;sup&gt;-54&lt;/sup&gt;, which is ~5.5511151231258 &amp;times; 10&lt;sup&gt;-17&lt;/sup&gt; - insignificant (for many applications) when compared to the original values.</source>
+          <target state="translated">差异恰好是2 &lt;sup&gt;-54&lt;/sup&gt; ，约为5.5511151231258&amp;times;10 &lt;sup&gt;-17-&lt;/sup&gt;与原始值相比不重要（对于许多应用程序）。</target>
+        </trans-unit>
+        <trans-unit id="a43c42712f7d96522e8b0f31af33a5949c98d6ac" translate="yes" xml:space="preserve">
+          <source>The displayed sum is what inside the hardware.  The value you obtain by computing it depends on the scale you set.  I did set the &lt;code&gt;scale&lt;/code&gt; factor to 15.  Mathematically, with infinite precision, it seems it is 1,000,000,000.</source>
+          <target state="translated">显示的总和就是硬件内部的总和。 通过计算获得的值取决于您设置的比例。 我确实将 &lt;code&gt;scale&lt;/code&gt; 因子设置为15。在数学上，它具有无限的精度，似乎是1,000,000,000。</target>
+        </trans-unit>
+        <trans-unit id="a93b23943bc3274c1d99364225ccdea1ccea1185" translate="yes" xml:space="preserve">
+          <source>The exact situation is slightly more subtle because these numbers are typically stored in scientific notation.  So, for instance, instead of storing 1/10 as &lt;code&gt;0.0001100&lt;/code&gt; we may store it as something like &lt;code&gt;1.10011 * 2^-4&lt;/code&gt;, depending on how many bits we've allocated for the exponent and the mantissa.  This affects how many digits of precision you get for your calculations.</source>
+          <target state="translated">确切的情况稍微有些微妙，因为这些数字通常以科学计数法存储。 因此，例如，我们可以将其存储为指数和尾数，而不是将1/10存储为 &lt;code&gt;0.0001100&lt;/code&gt; ，而可以将其存储为 &lt;code&gt;1.10011 * 2^-4&lt;/code&gt; 类的东西。 这会影响您为计算获得的精度位数。</target>
+        </trans-unit>
+        <trans-unit id="de1b6c0fe71a68b90695b392838785ffd95aa6e3" translate="yes" xml:space="preserve">
+          <source>The expression &lt;code&gt;0.1 + 0.2 === 0.3&lt;/code&gt; returns &lt;code&gt;false&lt;/code&gt; in JavaScript, but fortunately integer arithmetic in floating-point is exact, so decimal representation errors can be avoided by scaling.</source>
+          <target state="translated">表达式 &lt;code&gt;0.1 + 0.2 === 0.3&lt;/code&gt; 在JavaScript中返回 &lt;code&gt;false&lt;/code&gt; ，但是幸运的是，浮点数中的整数运算是精确的，因此可以通过缩放避免十进制表示错误。</target>
+        </trans-unit>
+        <trans-unit id="429fc3ca14c02cbeba6e5198aedde1d7338c24e1" translate="yes" xml:space="preserve">
+          <source>The first bit is the &lt;a href=&quot;http://en.wikipedia.org/wiki/Sign_bit&quot;&gt;sign bit&lt;/a&gt;: &lt;code&gt;1&lt;/code&gt; if the number is negative, &lt;code&gt;0&lt;/code&gt; otherwise&lt;sup&gt;1&lt;/sup&gt;.</source>
+          <target state="translated">第一位是&lt;a href=&quot;http://en.wikipedia.org/wiki/Sign_bit&quot;&gt;符号位&lt;/a&gt; ：如果数字为负，则为&lt;sup&gt;1&lt;/sup&gt; ；否则为&lt;sup&gt;1&lt;/sup&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="069711b8888abcc0778a98d9c8f87b1230fc0f79" translate="yes" xml:space="preserve">
+          <source>The kind of floating-point math that can be implemented in a digital computer necessarily uses an approximation of the real numbers and operations on them. (The &lt;em&gt;standard&lt;/em&gt; version runs to over fifty pages of documentation and has a committee to deal with its errata and further refinement.)</source>
+          <target state="translated">可以在数字计算机中实现的那种浮点数学运算必须使用实数的近似值及其上的运算。 （ &lt;em&gt;标准&lt;/em&gt;版本运行多达五十页的文档，并设有一个委员会来处理其勘误表并作进一步完善。）</target>
+        </trans-unit>
+        <trans-unit id="5e8f519edb4b0ab1dc30849c2350c221631c53b5" translate="yes" xml:space="preserve">
+          <source>The main cause of the error in floating point division is the division algorithms used to calculate the quotient. Most computer systems calculate division using multiplication by an inverse, mainly in &lt;code&gt;Z=X/Y&lt;/code&gt;, &lt;code&gt;Z = X * (1/Y)&lt;/code&gt;.  A division is computed iteratively i.e. each cycle computes some bits of the quotient until the desired precision is reached, which for IEEE-754 is anything with an error of less than one unit in the last place. The table of reciprocals of Y (1/Y) is known as the quotient selection table (QST) in the slow division, and the size in bits of the quotient selection table is usually the width of the radix, or a number of bits of the quotient computed in each iteration,  plus a few guard bits. For the IEEE-754 standard, double precision (64-bit), it would be the size of the radix of the divider, plus a few guard bits k, where &lt;code&gt;k&amp;gt;=2&lt;/code&gt;. So for example, a typical Quotient Selection Table for a divider that computes 2 bits of the quotient at a time (radix 4) would be &lt;code&gt;2+2= 4&lt;/code&gt; bits (plus a few optional bits).</source>
+          <target state="translated">浮点除法错误的主要原因是用于计算商的除法算法。 大多数计算机系统主要使用 &lt;code&gt;Z=X/Y&lt;/code&gt; ， &lt;code&gt;Z = X * (1/Y)&lt;/code&gt; 乘以逆来计算除法。 迭代计算除法，即每个周期计算商的某些位，直到达到所需的精度为止，对于IEEE-754，这是最后一个误差小于一个单位的任何东西。 Y（1 / Y）的倒数表在慢除法中称为商选择表（QST），商选择表的位大小通常为基数的宽度，或者为每次迭代中计算出的商，加上一些保护位。 对于IEEE-754标准（双精度（64位）），它将是除法器基数的大小，加上几个保护位k，其中 &lt;code&gt;k&amp;gt;=2&lt;/code&gt; 。 因此，例如，用于一次计算商2位（基数4）的除法器的典型商选择表将是 &lt;code&gt;2+2= 4&lt;/code&gt; 位（加上一些可选位）。</target>
+        </trans-unit>
+        <trans-unit id="98a67d42a6af5d2090dc3a5053a67f6ad508ac3c" translate="yes" xml:space="preserve">
+          <source>The next 11 bits are the &lt;a href=&quot;http://en.wikipedia.org/wiki/Exponentiation&quot;&gt;exponent&lt;/a&gt;, which is &lt;a href=&quot;http://en.wikipedia.org/wiki/Offset_binary&quot;&gt;offset&lt;/a&gt; by 1023. In other words, after reading the exponent bits from a double-precision number, 1023 must be subtracted to obtain the power of two.</source>
+          <target state="translated">接下来的11位是&lt;a href=&quot;http://en.wikipedia.org/wiki/Exponentiation&quot;&gt;指数&lt;/a&gt; ，其&lt;a href=&quot;http://en.wikipedia.org/wiki/Offset_binary&quot;&gt;偏移量&lt;/a&gt;为1023。换句话说，从双精度数读取指数位后，必须减去1023以获得2的幂。</target>
+        </trans-unit>
+        <trans-unit id="7bd1be1af16864d63e8e4e2dd6cd731c917703fa" translate="yes" xml:space="preserve">
+          <source>The problem comes with numbers that can be represented exactly in base 10, but not in base 2. Those numbers need to be rounded to their closest equivalent. Assuming the very common IEEE 64-bit floating point format, the closest number to &lt;code&gt;0.1&lt;/code&gt; is &lt;code&gt;3602879701896397 x 2⁻⁵⁵&lt;/code&gt;, and the closest number to &lt;code&gt;0.2&lt;/code&gt; is &lt;code&gt;7205759403792794 x 2⁻⁵⁵&lt;/code&gt;; adding them together results in &lt;code&gt;10808639105689191 x 2⁻⁵⁵&lt;/code&gt;, or an exact decimal value of &lt;code&gt;0.3000000000000000444089209850062616169452667236328125&lt;/code&gt;. Floating point numbers are generally rounded for display.</source>
+          <target state="translated">问题在于数字可以精确地以10为底，而不能以2为底。这些数字需要四舍五入到最接近的等值。 假定非常常见的IEEE 64位浮点格式，最接近 &lt;code&gt;0.1&lt;/code&gt; 的数字是 &lt;code&gt;3602879701896397 x 2⁻⁵⁵&lt;/code&gt; ，最接近 &lt;code&gt;0.2&lt;/code&gt; 的数字是 &lt;code&gt;7205759403792794 x 2⁻⁵⁵&lt;/code&gt; ； 将它们加在一起将得到 &lt;code&gt;10808639105689191 x 2⁻⁵⁵&lt;/code&gt; 或精确的十进制值 &lt;code&gt;0.3000000000000000444089209850062616169452667236328125&lt;/code&gt; 。 浮点数通常会四舍五入以显示。</target>
+        </trans-unit>
+        <trans-unit id="fc15ca46635e5191a5253547d7e67b8dfff4d9d3" translate="yes" xml:space="preserve">
+          <source>The real value assumed by a given 64-bit double-precision datum with a given biased exponent and a 52-bit fraction is</source>
+          <target state="translated">一个给定的64位双精度数据、给定的偏向指数和52位分数的实值是</target>
+        </trans-unit>
+        <trans-unit id="6c48d666356850a34b3ed56a627c4baa4371b82e" translate="yes" xml:space="preserve">
+          <source>The remaining 52 bits are the &lt;a href=&quot;http://en.wikipedia.org/wiki/Significand&quot;&gt;significand&lt;/a&gt; (or mantissa). In the mantissa, an 'implied' &lt;code&gt;1.&lt;/code&gt; is always&lt;sup&gt;2&lt;/sup&gt; omitted since the most significant bit of any binary value is &lt;code&gt;1&lt;/code&gt;.</source>
+          <target state="translated">剩余的52位为&lt;a href=&quot;http://en.wikipedia.org/wiki/Significand&quot;&gt;有效数字&lt;/a&gt; （或尾数）。 在尾数中，&amp;ldquo;隐含&amp;rdquo; &lt;code&gt;1.&lt;/code&gt; 总是&lt;sup&gt;2，&lt;/sup&gt;因为任何二进制值的最高有效位是 &lt;code&gt;1&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="c619f9812cce49ddbec068ed67d1e31806109213" translate="yes" xml:space="preserve">
+          <source>The situation for binary numbers with a fixed number of bits is exactly analogous. As real numbers, we have</source>
+          <target state="translated">对于有固定位数的二进制数来说,情况完全类似。作为实数,我们有</target>
+        </trans-unit>
+        <trans-unit id="410bde0aed8816e1edf6c276a59f933a4741b733" translate="yes" xml:space="preserve">
+          <source>The upshot is that because of these rounding errors you essentially never want to use == on floating-point numbers.  Instead, you can check if the absolute value of their difference is smaller than some fixed small number.</source>
+          <target state="translated">其结果是,由于这些四舍五入的错误,你基本上永远不会想在浮点数上使用==。相反,你可以检查它们的差值的绝对值是否小于某个固定的小数。</target>
+        </trans-unit>
+        <trans-unit id="c3f1ba633847618bf6fb98771611c1a94db112dc" translate="yes" xml:space="preserve">
+          <source>The whole issue really arises when people try to use FP for bean counting. It does work for that, but only if you stick to integral values, which kind of defeats the point of using it. &lt;em&gt;This is why we have all those decimal fraction software libraries.&lt;/em&gt;</source>
+          <target state="translated">当人们尝试使用FP进行Bean计数时，确实会出现整个问题。 它确实可以做到这一点，但前提是您坚持使用整数值，这会破坏使用它的意义。 &lt;em&gt;这就是为什么我们拥有所有这些十进制小数软件库的原因。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="d808cc026a4e31fe6892bd37e2a4afe8b2d0a1c2" translate="yes" xml:space="preserve">
+          <source>There are a majority of fractional numbers that cannot be represented precisely either in binary or in decimal or both. Result - A rounded up (but precise) number results.</source>
+          <target state="translated">有大部分的小数不能精确地用二进制或十进制或两者都不能精确地表示。结果--四舍五入(但精确)的数的结果。</target>
+        </trans-unit>
+        <trans-unit id="8cb434dd902f101ef41bbec16086530ea8d35b0d" translate="yes" xml:space="preserve">
+          <source>There are now 53 bits in the mantissa (the 53rd is in square brackets in the line above). The default &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_754-1985#Rounding_floating-point_numbers&quot;&gt;rounding mode&lt;/a&gt; for IEEE 754 is '&lt;em&gt;Round to Nearest&lt;/em&gt;' - i.e. if a number &lt;em&gt;x&lt;/em&gt; falls between two values &lt;em&gt;a&lt;/em&gt; and &lt;em&gt;b&lt;/em&gt;, the value where the least significant bit is zero is chosen.</source>
+          <target state="translated">现在尾数中有53位（第53位在上一行的方括号中）。 IEEE 754的默认&lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_754-1985#Rounding_floating-point_numbers&quot;&gt;舍入模式&lt;/a&gt;为&amp;ldquo; 舍入 &lt;em&gt;到最近&lt;/em&gt; &amp;rdquo;-即，如果数字&lt;em&gt;x&lt;/em&gt;介于两个值&lt;em&gt;a&lt;/em&gt;和&lt;em&gt;b之间&lt;/em&gt; ，则选择最低有效位为零的值。</target>
+        </trans-unit>
+        <trans-unit id="8a5c579792acf30f381ea21b217f8f45dcbf2591" translate="yes" xml:space="preserve">
+          <source>This approximation is a mixture of approximations of different kinds, each of which can either be ignored or carefully accounted for due to its specific manner of deviation from exactitude. It also involves a number of explicit exceptional cases at both the hardware and software levels that most people walk right past while pretending not to notice.</source>
+          <target state="translated">这种近似是各种不同类型的近似,每一种近似都可以被忽略,或者由于其偏离精确性的特定方式而被仔细核算。它还涉及到一些硬件和软件层面上的显性例外情况,大多数人在假装没注意到的情况下直接走过。</target>
+        </trans-unit>
+        <trans-unit id="fa73b5a554bb0627f1ba0d745b75294785495d01" translate="yes" xml:space="preserve">
+          <source>Those weird numbers appear because computers use binary(base 2) number system for calculation purposes, while we use decimal(base 10).</source>
+          <target state="translated">这些奇怪的数字之所以会出现,是因为计算机使用二进制(二进制)数字系统进行计算,而我们使用十进制(十进制)。</target>
+        </trans-unit>
+        <trans-unit id="5181ccaf1ee2c8739257e60d503eec3d8be665e6" translate="yes" xml:space="preserve">
+          <source>To add two numbers, the exponent needs to be the same, i.e.:</source>
+          <target state="translated">要把两个数相加,指数需要相同,即.</target>
+        </trans-unit>
+        <trans-unit id="debb7281577780d4752f82cdabebcd636735a6dd" translate="yes" xml:space="preserve">
+          <source>Truncating at eight decimal places, we get</source>
+          <target state="translated">将小数点后八位截断,我们得到的是</target>
+        </trans-unit>
+        <trans-unit id="34cefea3b795b99cb53c238c42c45eca37fb7b1a" translate="yes" xml:space="preserve">
+          <source>Try to determine when errors occur and fix them with short if statements, it's not pretty but for some problems it is the only solution and this is one of them.</source>
+          <target state="translated">试着确定错误发生时,用简短的if语句来修复,这并不漂亮,但对于一些问题来说,这是唯一的解决办法,这也是其中之一。</target>
+        </trans-unit>
+        <trans-unit id="ac5454415e7599b3fa86d8e5365f65ffab330f36" translate="yes" xml:space="preserve">
+          <source>Unfortunately 0.3 sits in a gap.</source>
+          <target state="translated">不幸的是0.3坐在了一个空隙中。</target>
+        </trans-unit>
+        <trans-unit id="1496a09c9b892ec5642faa5112f45b0d303e2129" translate="yes" xml:space="preserve">
+          <source>We can clearly see a breakpoint when &lt;code&gt;2**53+1&lt;/code&gt; - all works fine until &lt;code&gt;2**53&lt;/code&gt;.</source>
+          <target state="translated">我们可以清楚地看到 &lt;code&gt;2**53+1&lt;/code&gt; 时的断点-直到 &lt;code&gt;2**53&lt;/code&gt; 都可以正常工作。</target>
+        </trans-unit>
+        <trans-unit id="a203fd809d4ad1cc5e5284e631e856900a9d174a" translate="yes" xml:space="preserve">
+          <source>We constantly give the FP hardware something that seems simple in base 10 but is a repeating fraction in base 2.</source>
+          <target state="translated">我们不断给FP硬件的东西,在基础10中看似简单,但在基础2中却是重复的分数。</target>
+        </trans-unit>
+        <trans-unit id="90bb045aec56dda5712dc977aa590d5634f9d4f3" translate="yes" xml:space="preserve">
+          <source>What reciprocals are in the quotient selection table depend on the &lt;a href=&quot;http://en.wikipedia.org/wiki/Division_%28digital%29&quot;&gt;division method&lt;/a&gt;: slow division such as SRT division, or fast division such as Goldschmidt division; each entry is modified according to the division algorithm in an attempt to yield the lowest possible error. In any case, though, all reciprocals are &lt;em&gt;approximations&lt;/em&gt; of the actual reciprocal and introduce some element of error. Both slow division and fast division methods calculate the quotient iteratively, i.e. some number of bits of the quotient are calculated each step, then the result is subtracted from the dividend, and the divider repeats the steps until the error is less than one half of one unit in the last place. Slow division methods calculate a fixed number of digits of the quotient in each step and are usually less expensive to build, and fast division methods calculate a variable number of digits per step and are usually more expensive to build. The most important part of the division methods is that most of them rely upon repeated multiplication by an &lt;em&gt;approximation&lt;/em&gt; of a reciprocal, so they are prone to error.</source>
+          <target state="translated">商选择表中的倒数取决于&lt;a href=&quot;http://en.wikipedia.org/wiki/Division_%28digital%29&quot;&gt;除法&lt;/a&gt; ：慢除法（例如SRT除法）或快速除法（例如Goldschmidt除法）； 根据划分算法修改每个条目，以尝试产生尽可能低的错误。 但是，在任何情况下，所有倒数都是实际倒数的&lt;em&gt;近似值&lt;/em&gt; ，并且会引入一些误差元素。 慢速除法和快速除法方法都是迭代计算商，即每步计算商的位数，然后从被除数中减去结果，然后除法器重复执行这些步骤，直到误差小于二分之一为止。单位放在最后。 慢除法在每个步骤中计算商的位数固定，通常构建成本较低，而快速除法在每步中计算可变数位数，通常构建成本较高。 除法中最重要的部分是，它们中的大多数依赖于重复乘以&lt;em&gt;近似&lt;/em&gt;的倒数，因此容易出错。</target>
+        </trans-unit>
+        <trans-unit id="9af6bd16dcbaed2435e0ad81259607a927b61175" translate="yes" xml:space="preserve">
+          <source>When adding all values (&lt;em&gt;a + b&lt;/em&gt;) using a step of 0.1 (from 0.1 to 100) we have &lt;strong&gt;~15% chance of precision error&lt;/strong&gt;. Note that the error could result in slightly bigger or smaller values.
+Here are some examples:</source>
+          <target state="translated">当以0.1（从0.1到100）的步长将所有值（ &lt;em&gt;a + b&lt;/em&gt; ）相加时，我们有&lt;strong&gt;〜15％的机会出现精度误差&lt;/strong&gt; 。 请注意，该错误可能导致值稍大或更小。 这里有些例子：</target>
+        </trans-unit>
+        <trans-unit id="d692b99fcf87e7edff857861503848f5a6fb925e" translate="yes" xml:space="preserve">
+          <source>When subtracting all values (&lt;em&gt;a - b&lt;/em&gt; where &lt;em&gt;a &amp;gt; b&lt;/em&gt;) using a step of 0.1 (from 100 to 0.1) we have &lt;strong&gt;~34% chance of precision error&lt;/strong&gt;.
+Here are some examples:</source>
+          <target state="translated">当以0.1（从100到0.1）的步长减去所有值（ &lt;em&gt;a-b&lt;/em&gt; ，其中&lt;em&gt;a&amp;gt; b&lt;/em&gt; ）时，我们有&lt;strong&gt;〜34％的机会出现精度误差&lt;/strong&gt; 。 这里有些例子：</target>
+        </trans-unit>
+        <trans-unit id="dad29e497d84d7d97e26e14b971f5527c35ad106" translate="yes" xml:space="preserve">
+          <source>When we write in decimal, every fraction (specifically, every &lt;em&gt;terminating decimal)&lt;/em&gt; is a rational number of the form</source>
+          <target state="translated">当我们用小数写时，每个分数（特别是每个&lt;em&gt;终止小数）&lt;/em&gt;都是形式的有理数</target>
+        </trans-unit>
+        <trans-unit id="cb40a8a2fcac0429d8dc60783983d5e8b6477e35" translate="yes" xml:space="preserve">
+          <source>When you convert .1 or 1/10 to base 2 (binary) you get a repeating pattern after the decimal point, just like trying to represent 1/3 in base 10.  The value is not exact, and therefore you can't do exact math with it using normal floating point methods.</source>
+          <target state="translated">当你将.1或110转换为2进制(二进制)时,你会得到一个重复的小数点后的模式,就像试图用10进制表示13一样。这个值是不精确的,因此你不能用普通的浮点方法进行精确的数学运算。</target>
+        </trans-unit>
+        <trans-unit id="d4a55fd6552568d32b38f3c40d30b4c2bc522d88" translate="yes" xml:space="preserve">
+          <source>Why do these inaccuracies happen?</source>
+          <target state="translated">为什么会出现这些不准确的情况?</target>
+        </trans-unit>
+        <trans-unit id="66881614284e2ba88332cf86401c026f9088c6ae" translate="yes" xml:space="preserve">
+          <source>Writing &lt;code&gt;0.1 + 0.2&lt;/code&gt; in a IEEE 754 binary representation (with colons separating the three parts) and comparing it to &lt;code&gt;0.3&lt;/code&gt;, this is (I've put the distinct bits in square brackets):</source>
+          <target state="translated">用IEEE 754二进制表示形式（用冒号分隔三个部分）编写 &lt;code&gt;0.1 + 0.2&lt;/code&gt; ，并将其与 &lt;code&gt;0.3&lt;/code&gt; 进行比较，这就是（我将不同的位放在方括号中）：</target>
+        </trans-unit>
+        <trans-unit id="24836426f0d15e21562f81deb9ad1c23bb7dfa13" translate="yes" xml:space="preserve">
+          <source>Written in binary (with colons separating the three parts), the IEEE 754 representations of the values are:</source>
+          <target state="translated">用二进制书写(用冒号隔开三部分),IEEE 754表示的值是。</target>
+        </trans-unit>
+        <trans-unit id="ff2de9d5beb4dd93e3d80141b6eae1dadd2675ee" translate="yes" xml:space="preserve">
+          <source>You also need to replace equality tests with comparisons that allow some amount of tolerance, which means:</source>
+          <target state="translated">你还需要用允许一定量的公差的比较来代替平等测试,这意味着。</target>
+        </trans-unit>
+        <trans-unit id="8a0f504f8802330bcd73041e639d23b64060aede" translate="yes" xml:space="preserve">
+          <source>You can also check with &lt;code&gt;bc&lt;/code&gt; that -3.14 is also perturbed.  Do not forget to set a &lt;code&gt;scale&lt;/code&gt; factor in &lt;code&gt;bc&lt;/code&gt;.</source>
+          <target state="translated">您也可以用 &lt;code&gt;bc&lt;/code&gt; 检查-3.14是否也受到干扰。 不要忘记在 &lt;code&gt;bc&lt;/code&gt; 中设置 &lt;code&gt;scale&lt;/code&gt; 因子。</target>
+        </trans-unit>
+        <trans-unit id="f8ff3e42e624592a61f01313f784d510526d8c60" translate="yes" xml:space="preserve">
+          <source>You can use it this way:</source>
+          <target state="translated">你可以这样使用。</target>
+        </trans-unit>
+        <trans-unit id="d5be9a6ea2f8a6e508af9e23eaa095f999692ed9" translate="yes" xml:space="preserve">
+          <source>You might say let it be 10 in every situation then:</source>
+          <target state="translated">你可能会说,那就让它在任何情况下都是10。</target>
+        </trans-unit>
+        <trans-unit id="0b6f6f83839ca8e821efbbb35c9e1e1b3662a91c" translate="yes" xml:space="preserve">
+          <source>You've just stumbled on a number (3/10) that happens to be easy to represent with the decimal system, but doesn't fit the binary system. It goes both ways (to some small degree) as well: 1/16 is an ugly number in decimal (0.0625), but in binary it looks as neat as a 10,000th does in decimal (0.0001)** - if we were in the habit of using a base-2 number system in our daily lives, you'd even look at that number and instinctively understand you could arrive there by halving something, halving it again, and again and again.</source>
+          <target state="translated">你刚刚偶然发现了一个数字(310),它很容易用十进制系统表示,但不适合二进制系统。它也是双向的(在某种程度上)。116在小数(0.0625)中是一个丑陋的数字,但在二进制中,它看起来就像小数(0.0001)**中的万分之一一样整洁--如果我们在日常生活中习惯于使用基数-2的数字系统,你甚至会看到这个数字,并本能地理解你可以通过将某物减半,再减半,再减半,再减半,再减半,再减半,再减半。</target>
+        </trans-unit>
+        <trans-unit id="ceb4d2a3636a0cc03450ad3fabafb42a06fc9c6a" translate="yes" xml:space="preserve">
+          <source>Your expected result was &lt;code&gt;0.9&lt;/code&gt; it means you need a result with 1 digit precision in this case.
+So you should have used &lt;code&gt;(0.2 + 0.7).tofixed(1)&lt;/code&gt;
+but you can't just give a certain parameter to toFixed() since it depends on the given number, for instance</source>
+          <target state="translated">您的预期结果是 &lt;code&gt;0.9&lt;/code&gt; ,这意味着在这种情况下您需要1位数精度的结果。 因此，您应该使用 &lt;code&gt;(0.2 + 0.7).tofixed(1)&lt;/code&gt; 但不能仅给toFixed（）一个参数，因为它取决于给定的数字，例如</target>
+        </trans-unit>
+        <trans-unit id="ff6c01e4df0a5ca8aefe0c40e07d5e4feff2abb7" translate="yes" xml:space="preserve">
+          <source>also note that Math.diff and Math.sum auto-detect the precision to use</source>
+          <target state="translated">还注意到Math.diff和Math.sum会自动检测到精度,所以要使用</target>
+        </trans-unit>
+        <trans-unit id="cffa50a32cb13a240d705317bcec65dd1f31b6ad" translate="yes" xml:space="preserve">
+          <source>and</source>
+          <target state="translated">and</target>
+        </trans-unit>
+        <trans-unit id="2cb33ad31829e0e19a43ec07f7a00e44d6300496" translate="yes" xml:space="preserve">
+          <source>and after that it prints a sum, that, when summed with enough precision, it will show the value that really exists in hardware.</source>
+          <target state="translated">之后,它打印出一个总和,当它以足够的精度求和时,它将显示出硬件中真实存在的值。</target>
+        </trans-unit>
+        <trans-unit id="2733dda989a75e652de2d2c22f2c0c6c32aceeee" translate="yes" xml:space="preserve">
+          <source>and learn that this returns &lt;code&gt;false&lt;/code&gt;.  Why?  Well, as real numbers we have</source>
+          <target state="translated">并得知这返回 &lt;code&gt;false&lt;/code&gt; 。 为什么？ 好吧，作为实数</target>
+        </trans-unit>
+        <trans-unit id="99e2d00acf76f763377d20265efa63bd193e4795" translate="yes" xml:space="preserve">
+          <source>in 64 bits:</source>
+          <target state="translated">在64位中。</target>
+        </trans-unit>
+        <trans-unit id="1758356db21759f7c5a0da9b4dd1db8fd6feab3f" translate="yes" xml:space="preserve">
+          <source>or</source>
+          <target state="translated">or</target>
+        </trans-unit>
+        <trans-unit id="efa695af86576c8d47d0d32b2fff911c6f442850" translate="yes" xml:space="preserve">
+          <source>the idea is to use Math instead operators to avoid float errors</source>
+          <target state="translated">的想法是用数学运算符代替运算符,以避免浮点错误。</target>
+        </trans-unit>
+        <trans-unit id="0b18dc6530e72b787150c3516e6eb9959c507b37" translate="yes" xml:space="preserve">
+          <source>value = (-1)^s * (1.m&lt;sub&gt;51&lt;/sub&gt;m&lt;sub&gt;50&lt;/sub&gt;...m&lt;sub&gt;2&lt;/sub&gt;m&lt;sub&gt;1&lt;/sub&gt;m&lt;sub&gt;0&lt;/sub&gt;)&lt;sub&gt;2&lt;/sub&gt; * 2&lt;sup&gt;e-1023&lt;/sup&gt;</source>
+          <target state="translated">值=（-1）^ s *（1.m &lt;sub&gt;51&lt;/sub&gt; m &lt;sub&gt;50&lt;/sub&gt; ... m &lt;sub&gt;2&lt;/sub&gt; m &lt;sub&gt;1&lt;/sub&gt; m &lt;sub&gt;0&lt;/sub&gt; ） &lt;sub&gt;2&lt;/sub&gt; * 2 &lt;sup&gt;e-1023&lt;/sup&gt;</target>
+        </trans-unit>
+        <trans-unit id="d39bd96be9502f3ebbfa8d63484dcd808be51d4c" translate="yes" xml:space="preserve">
+          <source>where &lt;code&gt;abs&lt;/code&gt; is the absolute value. &lt;code&gt;myToleranceValue&lt;/code&gt; needs to be chosen for your particular application - and it will have a lot to do with how much &quot;wiggle room&quot; you are prepared to allow, and what the largest number you are going to be comparing may be (due to loss of precision issues). Beware of &quot;epsilon&quot; style constants in your language of choice. These are &lt;em&gt;not&lt;/em&gt; to be used as tolerance values.</source>
+          <target state="translated">其中， &lt;code&gt;abs&lt;/code&gt; 是绝对值。 需要为您的特定应用选择 &lt;code&gt;myToleranceValue&lt;/code&gt; -这与您准备允许多少&amp;ldquo;摆动空间&amp;rdquo;以及要比较的最大数字有很大关系（由于精度下降）问题）。 当心所选语言中的&amp;ldquo; epsilon&amp;rdquo;样式常量。 这些&lt;em&gt;不得&lt;/em&gt;用作公差值。</target>
+        </trans-unit>
+        <trans-unit id="636e0e25e23956183d01befb3188bbeda7dd79ab" translate="yes" xml:space="preserve">
+          <source>whereas the binary representation of 0.3 is:</source>
+          <target state="translated">而0.3的二进制表示法是。</target>
+        </trans-unit>
+        <trans-unit id="a54c3657d718a97760530877785faf3f0af60915" translate="yes" xml:space="preserve">
+          <source>which is, of course, different from &lt;code&gt;1.00000000&lt;/code&gt; by exactly &lt;code&gt;0.00000001&lt;/code&gt;.</source>
+          <target state="translated">当然，这与 &lt;code&gt;1.00000000&lt;/code&gt; 相差恰好是 &lt;code&gt;0.00000001&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="df6fbb7d0f8bd941c592564fd908669aafff2758" translate="yes" xml:space="preserve">
+          <source>which only differs from the binary representation of the sum of 0.1 and 0.2 by 2&lt;sup&gt;-54&lt;/sup&gt;.</source>
+          <target state="translated">这仅与0.1和0.2之和的二进制表示形式不同，即2 &lt;sup&gt;-54&lt;/sup&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="054a411e4463eeebff1fb0a84361000a6d7e65a7" translate="yes" xml:space="preserve">
+          <source>which, truncated to seven bits, is &lt;code&gt;0.0100110&lt;/code&gt;, and these differ by exactly &lt;code&gt;0.0000001&lt;/code&gt;.</source>
+          <target state="translated">被截断为7位的是 &lt;code&gt;0.0100110&lt;/code&gt; ，并且它们之间相差 &lt;code&gt;0.0000001&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="8b30c99097f9b6a416b08022ec4f86195a695b8b" translate="yes" xml:space="preserve">
+          <source>while on the other hand,</source>
+          <target state="translated">而另一方面。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

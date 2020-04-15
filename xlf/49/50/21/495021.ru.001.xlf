@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="htmlbody" original="https://stackoverflow.com/questions/495021">
+    <body>
+      <group id="495021">
+        <trans-unit id="b035bf2cc167fd9eb1fa6ad4f75e65902c071b59" translate="yes" xml:space="preserve">
+          <source>&quot;Instantiation-style polymorphism&quot; means that the template &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; isn't really a generic class that can be compiled to code that can work for any value of &lt;code&gt;T&lt;/code&gt;. That would add overhead such as boxing, needing to pass function pointers to allocators and constructors, etc. The intention of C++ templates is to avoid having to write nearly identical &lt;code&gt;class MyClass_int&lt;/code&gt;, &lt;code&gt;class MyClass_float&lt;/code&gt;, etc, but to still be able to end up with compiled code that is mostly as if we &lt;em&gt;had&lt;/em&gt; written each version separately. So a template is &lt;em&gt;literally&lt;/em&gt; a template; a class template is &lt;em&gt;not&lt;/em&gt; a class, it's a recipe for creating a new class for each &lt;code&gt;T&lt;/code&gt; we encounter. A template cannot be compiled into code, only the result of instantiating the template can be compiled.</source>
+          <target state="translated">&amp;laquo;Полиморфизм стиля реализации&amp;raquo; означает, что шаблон &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; самом деле не является универсальным классом, который можно скомпилировать в код, который может работать для любого значения &lt;code&gt;T&lt;/code&gt; . Это добавило бы дополнительные издержки, такие как бокс, необходимость передавать указатели на функции для распределителей и конструкторов и т. Д. Цель шаблонов C ++ состоит в том, чтобы избежать необходимости писать почти идентичный &lt;code&gt;class MyClass_int&lt;/code&gt; , &lt;code&gt;class MyClass_float&lt;/code&gt; и т. Д., Но при этом иметь возможность завершать работу с скомпилированный код, который выглядит так, как будто мы написали каждую версию отдельно. Таким образом, шаблон &lt;em&gt;буквально&lt;/em&gt; шаблон; шаблон класса - это &lt;em&gt;не&lt;/em&gt; класс, это рецепт создания нового класса для каждого &lt;code&gt;T&lt;/code&gt; ,с которым мы сталкиваемся. Шаблон не может быть скомпилирован в код, может быть скомпилирован только результат создания шаблона.</target>
+        </trans-unit>
+        <trans-unit id="e9f8648e64f859e7cabf474d36d8473d6277cf09" translate="yes" xml:space="preserve">
+          <source>(Clarification: header files are not the &lt;em&gt;only&lt;/em&gt; portable solution. But they are the most convenient portable solution.)</source>
+          <target state="translated">(Пояснение: заголовочные файлы - не &lt;em&gt;единственное&lt;/em&gt; переносимое решение. Но это наиболее удобное переносимое решение.)</target>
+        </trans-unit>
+        <trans-unit id="5eea08821de446b9d5a28f7b7ec97da98d199f9f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;bar.cpp&lt;/strong&gt; doesn't even need to exist when I compile &lt;strong&gt;foo.cpp&lt;/strong&gt;, but I should still be able to link the &lt;strong&gt;foo.o&lt;/strong&gt; I already had together with the &lt;strong&gt;bar.o&lt;/strong&gt; I've only just produced, without needing to recompile &lt;strong&gt;foo.cpp&lt;/strong&gt;. &lt;strong&gt;foo.cpp&lt;/strong&gt; could even be compiled into a dynamic library, distributed somewhere else without &lt;strong&gt;foo.cpp&lt;/strong&gt;, and linked with code they write years after I wrote &lt;strong&gt;foo.cpp&lt;/strong&gt;.</source>
+          <target state="translated">&lt;strong&gt;bar.cpp&lt;/strong&gt; даже не должен существовать, когда я компилирую &lt;strong&gt;foo.cpp&lt;/strong&gt; , но я все еще должен иметь возможность связать &lt;strong&gt;foo.o, который&lt;/strong&gt; я уже имел вместе с &lt;strong&gt;bar.o,&lt;/strong&gt; который я только что произвел, без необходимости перекомпилировать &lt;strong&gt;foo .cpp&lt;/strong&gt; . &lt;strong&gt;foo.cpp&lt;/strong&gt; можно даже скомпилировать в динамическую библиотеку, распространять где-то еще без &lt;strong&gt;foo.cpp&lt;/strong&gt; и связывать с кодом, который они пишут спустя годы после того, как я написал &lt;strong&gt;foo.cpp&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="2fc371f446c0acfde57bd7659ead23b9112f8278" translate="yes" xml:space="preserve">
+          <source>A common solution to this is to write the template declaration in a header file, then implement the class in an implementation file (for example .tpp), and include this implementation file at the end of the header.</source>
+          <target state="translated">Общим решением является запись шаблонной декларации в заголовочный файл,затем реализация класса в реализационном файле (например,.tpp)и включение этого реализационного файла в конце заголовка.</target>
+        </trans-unit>
+        <trans-unit id="e57d0314403f00ceaaaa8428eba3e1aef96c93ae" translate="yes" xml:space="preserve">
+          <source>A schematic example:</source>
+          <target state="translated">Схематический пример:</target>
+        </trans-unit>
+        <trans-unit id="196609edf5fcabd3de77dfd3d5b00786d86be944" translate="yes" xml:space="preserve">
+          <source>A way to have separate implementation is as follows.</source>
+          <target state="translated">Способ отдельной реализации заключается в следующем.</target>
+        </trans-unit>
+        <trans-unit id="be5dd547c840410475dd23e56ea45e18c434e2ab" translate="yes" xml:space="preserve">
+          <source>Actually, prior to C++11 the standard defined the &lt;code&gt;export&lt;/code&gt; keyword that &lt;em&gt;would&lt;/em&gt; make it possible to declare templates in a header file and implement them elsewhere.</source>
+          <target state="translated">Фактически, до C ++ 11 стандарт определял ключевое слово &lt;code&gt;export&lt;/code&gt; , &lt;em&gt;которое&lt;/em&gt; позволяло бы объявлять шаблоны в заголовочном файле и реализовывать их в другом месте.</target>
+        </trans-unit>
+        <trans-unit id="3268f427c74032de655fa4e01528f44190c37aec" translate="yes" xml:space="preserve">
+          <source>Alternative solution</source>
+          <target state="translated">Альтернативное решение</target>
+        </trans-unit>
+        <trans-unit id="443f50703b7217e59b314d8938c59b61b0d3db20" translate="yes" xml:space="preserve">
+          <source>Although standard C++ has no such requirement, some compilers require that all function and class templates need to be made available in every translation unit they are used. In effect, for those compilers, the bodies of template functions must be made available in a header file. To repeat: that means those compilers won't allow them to be defined in non-header files such as .cpp files</source>
+          <target state="translated">Хотя в стандартном Си++такого требования нет,некоторые компиляторы требуют,чтобы все шаблоны функций и классов были доступны в каждой используемой единице трансляции.По сути,для этих компиляторов тела шаблонных функций должны быть доступны в заголовочном файле.Повторюсь:это означает,что эти компиляторы не позволят определять их в незаголовочных файлах,таких как .cpp-файлы.</target>
+        </trans-unit>
+        <trans-unit id="06fa10dc30994a0c1e4738b1af8fe281fe0f2079" translate="yes" xml:space="preserve">
+          <source>And in the Utility.cpp:</source>
+          <target state="translated">И в Утилите:</target>
+        </trans-unit>
+        <trans-unit id="cdab4bd0267850a1f73e501206add84b1278204d" translate="yes" xml:space="preserve">
+          <source>Another reason that it's a good idea to write both declarations and definitions in header files is for readability. Suppose there's such a template function in Utility.h:</source>
+          <target state="translated">Еще одна причина,по которой рекомендуется записывать как декларации,так и определения в заголовочные файлы,заключается в удобочитаемости.Предположим,что такая шаблонная функция есть в Utility.h:</target>
+        </trans-unit>
+        <trans-unit id="295b12e50623177c4327236e29b6ef8235275a3a" translate="yes" xml:space="preserve">
+          <source>Another solution is to keep the implementation separated, and explicitly instantiate all the template instances you'll need:</source>
+          <target state="translated">Другим решением является разделение реализации и явная инстанциация всех необходимых экземпляров шаблонов:</target>
+        </trans-unit>
+        <trans-unit id="c3fdc10777f128f761e03c874819811a55f60399" translate="yes" xml:space="preserve">
+          <source>Anyway, the reason your code is failing is that, when instantiating a template, the compiler creates a new class with the given template argument. For example:</source>
+          <target state="translated">Как бы то ни было,причина,по которой ваш код не работает,заключается в том,что при инициализации шаблона компилятор создает новый класс с заданным аргументом шаблона.Например:</target>
+        </trans-unit>
+        <trans-unit id="e4384f393f9a314fc52cf6be36242df62df17b5e" translate="yes" xml:space="preserve">
+          <source>As a result, the ISO C++ standard committee decided to remove the &lt;code&gt;export&lt;/code&gt; feature of templates with C++11.</source>
+          <target state="translated">В результате комитет по стандарту ISO C ++ решил удалить функцию &lt;code&gt;export&lt;/code&gt; шаблонов с C ++ 11.</target>
+        </trans-unit>
+        <trans-unit id="cc12f0b11ceb91fcc52e35983342499dacc9520a" translate="yes" xml:space="preserve">
+          <source>Caveat: It is &lt;em&gt;not&lt;/em&gt; necessary to put the implementation in the header file, see the alternative solution at the end of this answer.</source>
+          <target state="translated">Предостережение: &lt;em&gt;нет&lt;/em&gt; необходимости помещать реализацию в заголовочный файл, см. Альтернативное решение в конце этого ответа.</target>
+        </trans-unit>
+        <trans-unit id="714c7edcf9a6dfde043d41d403275de85af64e20" translate="yes" xml:space="preserve">
+          <source>Consequently, the compiler needs to have access to the implementation of the methods, to instantiate them with the template argument (in this case &lt;code&gt;int&lt;/code&gt;). If these implementations were not in the header, they wouldn't be accessible, and therefore the compiler wouldn't be able to instantiate the template.</source>
+          <target state="translated">Следовательно, компилятор должен иметь доступ к реализации методов, чтобы создавать их экземпляры с помощью аргумента шаблона (в данном случае &lt;code&gt;int&lt;/code&gt; ). Если бы эти реализации не были в заголовке, они не были бы доступны, и поэтому компилятор не смог бы создать экземпляр шаблона.</target>
+        </trans-unit>
+        <trans-unit id="66705bb389b50ec573981426b267ee96ef11ce15" translate="yes" xml:space="preserve">
+          <source>Don't forget to have your compiler treat your .template file as a c++ file to keep the intelli sense.</source>
+          <target state="translated">Не забудьте,чтобы ваш компилятор относился к вашему файлу .template как к файлу c++,чтобы сохранить смысл intelli.</target>
+        </trans-unit>
+        <trans-unit id="80ff8bad077219e5eb6d2824ef614f47f5e13f01" translate="yes" xml:space="preserve">
+          <source>Each user of the template includes that header file and uses the typedef.</source>
+          <target state="translated">Каждый пользователь шаблона включает этот заголовочный файл и использует typedef.</target>
+        </trans-unit>
+        <trans-unit id="cc94c8862d7b92a03b6b8a599fe014178a50d393" translate="yes" xml:space="preserve">
+          <source>Edit: Adding example of explicit template instantiation. Used after the template has been defined, and all member functions has been defined.</source>
+          <target state="translated">Правка:Добавление примера явной конкретизации шаблона.Используется после того,как шаблон определен,и все функции-членов определены.</target>
+        </trans-unit>
+        <trans-unit id="f95b23255b3aa50ef9fc041109ba878b6c2aa2b1" translate="yes" xml:space="preserve">
+          <source>Even though there are plenty of good explanations above, I'm missing a practical way to separate templates into header and body.</source>
+          <target state="translated">Несмотря на то,что выше приведено много хороших объяснений,мне не хватает практического способа разделить шаблоны на заголовок и тело.</target>
+        </trans-unit>
+        <trans-unit id="6cc307ede2a377f65c8c1c69348f06afd6a2e8c7" translate="yes" xml:space="preserve">
+          <source>Foo.cpp</source>
+          <target state="translated">Foo.cpp</target>
+        </trans-unit>
+        <trans-unit id="908239a07d276301afb988b50e7f6bb2d18d784d" translate="yes" xml:space="preserve">
+          <source>Foo.h</source>
+          <target state="translated">Foo.h</target>
+        </trans-unit>
+        <trans-unit id="4a7d5666a48d825ce85c0580fe4cc84bc378d8f3" translate="yes" xml:space="preserve">
+          <source>Foo.tpp</source>
+          <target state="translated">Foo.tpp</target>
+        </trans-unit>
+        <trans-unit id="82a77bbbd6668cf9c08fdbe5e3587d003efcd33a" translate="yes" xml:space="preserve">
+          <source>For each template usage there's a typedef in its own header file (generated from the UML model). Its body contains the instantiation (which ends up in a library which is linked in at the end).</source>
+          <target state="translated">Для каждого использования шаблона в собственном заголовочном файле (генерируемом по UML модели)имеется типовой текст.Его тело содержит инстанцирование (которое заканчивается в библиотеке,в конце которой находится ссылка).</target>
+        </trans-unit>
+        <trans-unit id="5b5fed325d16bdec5cc8b43d0474e826e2cf9b46" translate="yes" xml:space="preserve">
+          <source>For separate compilation to be achieved, separate template body checking must be possible. It seems that a solution is possible with concepts. Take a look at this &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3629.pdf&quot;&gt;paper&lt;/a&gt; recently presented at the 
+standards commitee meeting. I think this is not the only requirement, since you still need to instantiate code for the template code in user code.</source>
+          <target state="translated">Для отдельной компиляции должна быть возможна отдельная проверка тела шаблона. Кажется, что решение возможно с концепциями. Взгляните на этот &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3629.pdf&quot;&gt;документ,&lt;/a&gt; недавно представленный на заседании комитета по стандартам. Я думаю, что это не единственное требование, так как вам все еще нужно создать экземпляр кода для шаблона в пользовательском коде.</target>
+        </trans-unit>
+        <trans-unit id="64df38475feba828e0989613927f71a856e989b4" translate="yes" xml:space="preserve">
+          <source>Have to recompile &lt;strong&gt;foo.cpp&lt;/strong&gt; every time we change &lt;em&gt;any other file in the program&lt;/em&gt;, in case it added a new novel instantiation of &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">&lt;strong&gt;Приходится&lt;/strong&gt; перекомпилировать &lt;strong&gt;foo.cpp&lt;/strong&gt; каждый раз, когда мы меняем &lt;em&gt;любой другой файл в программе&lt;/em&gt; , на случай, если он добавит новый экземпляр &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="a9125e5f2cc07fe769d4b37e603b64292d0aba7b" translate="yes" xml:space="preserve">
+          <source>Having all template instantiations in the template body is not a viable solution for me, since the template author may not know all if its usage and the template user may not have the right to modify it.</source>
+          <target state="translated">Наличие всех инстанций шаблона в теле шаблона не является для меня жизнеспособным решением,так как автор шаблона может не знать всех,если его использование и пользователь шаблона может не иметь права изменять его.</target>
+        </trans-unit>
+        <trans-unit id="2fc1605804c6bc9c61485c59f3cb5aed20c0e151" translate="yes" xml:space="preserve">
+          <source>Here is an example of this for a dynamic array class.</source>
+          <target state="translated">Приведем пример для класса динамических массивов.</target>
+        </trans-unit>
+        <trans-unit id="facd6b7aac26f9ee87b6abf6cea13139dac87079" translate="yes" xml:space="preserve">
+          <source>However since templates need to be processed in the compilation step in order to generate code for each template instantiation that you define, so simply compiling a template separate from it's header file won't work because they always go hand and hand, for the very reason that each template instantiation is a whole new class literally. In a regular class you can separate .h and .cpp because .h is a blueprint of that class and the .cpp is the raw implementation so any implementation files can be compiled and linked regularly, however using templates .h is a blueprint of how the class should look not how the object should look meaning a template .cpp file isn't a raw regular implementation of a class, it's simply a blueprint for a class, so any implementation of a .h template file can't be compiled because you need something concrete to compile, templates are abstract in that sense.</source>
+          <target state="translated">Однако,поскольку шаблоны необходимо обрабатывать на этапе компиляции,чтобы сгенерировать код для каждого заданного вами инстанцирования шаблона,то простая компиляция шаблона отдельно от его заголовочного файла не сработает,потому что они всегда идут рука об руку,по той самой причине,что каждое инстанцирование шаблона-это совершенно новый класс в буквальном смысле слова.В обычном классе Вы можете разделить .h и .cpp,потому что .h-это чертеж этого класса,а .cpp-это сырая реализация,так что любые файлы реализации могут компилироваться и компоноваться регулярно,однако использование шаблонов .h-это чертеж того,как должен выглядеть класс,а не то,как должен выглядеть объект,что означает,что шаблонный .cpp файл-это не сырая обычная реализация класса,это просто чертеж класса,так что любая реализация .h шаблонного файла не может быть скомпилирована,потому что Вам нужно что-то конкретное для компиляции,шаблоны абстрактны в этом смысле.</target>
+        </trans-unit>
+        <trans-unit id="87f174db2809957fd6b6e355c08819c42e926f22" translate="yes" xml:space="preserve">
+          <source>I do this because static analyzers for the code break when it does not see the forward declarations of class in *.tpp. This is annoying when writing code in any IDE or using YouCompleteMe or others.</source>
+          <target state="translated">Я делаю это потому,что статические анализаторы кода ломаются,когда не видно прямых объявлений класса в *.tpp.Это раздражает при написании кода в любой IDE,использовании YouCompleteMe или других.</target>
+        </trans-unit>
+        <trans-unit id="a00573411f305b4648ab694f0a3f5eb5f85894a3" translate="yes" xml:space="preserve">
+          <source>I suggest looking at this gcc page which discusses the tradeoffs between the &quot;cfront&quot; and &quot;borland&quot; model for template instantiations.</source>
+          <target state="translated">Предлагаю взглянуть на эту страницу gcc,где обсуждаются компромиссы между моделью &quot;cfront&quot; и моделью &quot;borland&quot; для шаблонных инстанций.</target>
+        </trans-unit>
+        <trans-unit id="fd41fb7a1caa2b78e5d1a3e75ebe40ef63a19fc5" translate="yes" xml:space="preserve">
+          <source>I took the following approach, which works also for older compilers (gcc 4.3.4, aCC A.03.13).</source>
+          <target state="translated">Я использовал следующий подход,который работает и для более старых компиляторов (gcc 4.3.4,aCC A.03.13).</target>
+        </trans-unit>
+        <trans-unit id="3333e71f7edcca169894e1df3c21ed777965c2b5" translate="yes" xml:space="preserve">
+          <source>If &lt;strong&gt;foo.cpp&lt;/strong&gt; itself uses &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt;, then code for that will be generated while compiling &lt;strong&gt;foo.cpp&lt;/strong&gt;, so when &lt;strong&gt;bar.o&lt;/strong&gt; is linked to &lt;strong&gt;foo.o&lt;/strong&gt; they can be hooked up and will work. We can use that fact to allow a finite set of template instantiations to be implemented in a .cpp file by writing a single template. But there's no way for &lt;strong&gt;bar.cpp&lt;/strong&gt; to use the template &lt;em&gt;as a template&lt;/em&gt; and instantiate it on whatever types it likes; it can only use pre-existing versions of the templated class that the author of &lt;strong&gt;foo.cpp&lt;/strong&gt; thought to provide.</source>
+          <target state="translated">Если сам &lt;strong&gt;foo.cpp&lt;/strong&gt; использует &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt; , то код для этого будет сгенерирован при компиляции &lt;strong&gt;foo.cpp&lt;/strong&gt; , поэтому, когда &lt;strong&gt;bar.o&lt;/strong&gt; связан с &lt;strong&gt;foo.o,&lt;/strong&gt; они могут быть подключены и будут работать. Мы можем использовать этот факт, чтобы разрешить реализацию конечного набора шаблонов в файле .cpp, написав один шаблон. Но &lt;strong&gt;bar.cpp не&lt;/strong&gt; может использовать шаблон &lt;em&gt;в качестве шаблона&lt;/em&gt; и создавать его экземпляры для любых типов; он может использовать только существующие версии шаблонного класса, которые автор &lt;strong&gt;foo.cpp&lt;/strong&gt; решил предоставить.</target>
+        </trans-unit>
+        <trans-unit id="011a72a7f3dc5627b578590bd02a88adde7b305a" translate="yes" xml:space="preserve">
+          <source>If I was really worried about speed, I suppose I would explore using Precompiled Headers 
+&lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html&quot;&gt;https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html&lt;/a&gt;</source>
+          <target state="translated">Если бы я действительно беспокоился о скорости, я полагаю, что я бы изучил использование предварительно скомпилированных заголовков &lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html&quot;&gt;https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html.&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="7b87ff4c31fa3b95028236c600a2a6c3ac3da1e5" translate="yes" xml:space="preserve">
+          <source>If my explanation isn't clear enough, you can have a look at the &lt;a href=&quot;https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl&quot;&gt;C++ Super-FAQ on this subject&lt;/a&gt;.</source>
+          <target state="translated">Если мое объяснение недостаточно ясно, вы можете взглянуть на &lt;a href=&quot;https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl&quot;&gt;C ++ Super-FAQ по этому вопросу&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="0bf8cdd8be4fa175a80b68f8957e30eb7bb988c2" translate="yes" xml:space="preserve">
+          <source>If the concern is the extra compilation time and binary size bloat produced by compiling the .h as part of all the .cpp modules using it, in many cases what you can do is make the template class descend from a non-templatized base class for non type-dependent parts of the interface, and that base class can have its implementation in the .cpp file.</source>
+          <target state="translated">Если речь идет о дополнительном времени компиляции и раздувании бинарного размера при компиляции .h как части всех модулей .cpp,использующих его,то во многих случаях можно сделать так,чтобы базовый класс шаблона происходил от базового класса,не зависящего от типа,для не зависящих от типа частей интерфейса,и этот базовый класс может иметь свою реализацию в .cpp-файле.</target>
+        </trans-unit>
+        <trans-unit id="b9aeaa7ae46fee59a9175d2ea5a67ecb336c12cb" translate="yes" xml:space="preserve">
+          <source>If you, at the bottom of the implementation cpp file, do explicit instantiation of all the types the template will be used with, the linker will be able to find them as usual.</source>
+          <target state="translated">Если Вы,внизу реализации cpp файла,сделаете явное инстанцирование всех типов,с которыми будет использоваться шаблон,то компоновщик сможет найти их,как обычно.</target>
+        </trans-unit>
+        <trans-unit id="17b3a73d1735316997e49303704cf1f9e4bcf528" translate="yes" xml:space="preserve">
+          <source>In my experience, I rely on the C++ Standard Library and Boost templates being instantiated for each compilation unit (using a template library).  For my large template classes, I do manual template instantiation, once, for the types I need.</source>
+          <target state="translated">По своему опыту я полагаюсь на стандартную библиотеку C++и Boost шаблоны,инстанцируемые для каждой единицы компиляции (с использованием библиотеки шаблонов).Для моих больших классов шаблонов я делаю ручную инстанцификацию шаблонов,один раз,для тех типов,которые мне нужны.</target>
+        </trans-unit>
+        <trans-unit id="8c31ab53c2aa0f343fe425ec5ac5df36ee59ff73" translate="yes" xml:space="preserve">
+          <source>It contains explicit recommendations concerning using manual and automatic template instantiation.  For example, the &quot;-repo&quot; option can be used to collect templates which need to be instantiated.  Or another option is to disable automatic template instantiations using &quot;-fno-implicit-templates&quot; to force manual template instantiation.</source>
+          <target state="translated">В нем содержатся четкие рекомендации по использованию ручной и автоматической инстанцификации шаблонов.Например,опция &quot;-repo&quot; может быть использована для сбора шаблонов,которые необходимо инстанцировать.Или другая опция-отключить автоматическую инстанцирование шаблонов с помощью &quot;-fno-implicit-templates&quot; для принудительной ручной инстанцирования шаблона.</target>
+        </trans-unit>
+        <trans-unit id="d7fcfe322279aaaf6ecb382779c5e98a8fbcbd54" translate="yes" xml:space="preserve">
+          <source>It is technically possible to create some sort of functionality that will save the template.cpp file and switch out the types when it finds them in other sources, I think that the standard does have a keyword &lt;code&gt;export&lt;/code&gt; that will allow you to put templates in a separate cpp file but not that many compilers actually implement this.</source>
+          <target state="translated">Технически возможно создать какую-то функциональность, которая будет сохранять файл template.cpp и переключать типы, когда он находит их в других источниках. Я думаю, что в стандарте есть &lt;code&gt;export&lt;/code&gt; ключевых слов, который позволит вам помещать шаблоны в отдельный файл cpp, но не так много компиляторов фактически реализуют это.</target>
+        </trans-unit>
+        <trans-unit id="c4587d4599976fa42e1045afc20e1c648a79bff6" translate="yes" xml:space="preserve">
+          <source>It means that the most portable way to define method implementations of template classes is to define them inside the template class definition.</source>
+          <target state="translated">Это означает,что наиболее переносимым способом определения реализации методов шаблонных классов является их определение внутри определения шаблонного класса.</target>
+        </trans-unit>
+        <trans-unit id="465d68aca886e2ba0f6bc7c8e105292f938fcb0d" translate="yes" xml:space="preserve">
+          <source>It's because of the requirement for separate compilation and because templates are instantiation-style polymorphism.</source>
+          <target state="translated">Это связано с требованием отдельной компиляции,а также с тем,что шаблоны являются полиморфизмом в стиле инстанцирования.</target>
+        </trans-unit>
+        <trans-unit id="25dec0fc6c89b691f8f9a3e994c3ef5b0abc0fe8" translate="yes" xml:space="preserve">
+          <source>Just a side note, when making specializations for a template class, you can separate the header from the implementation because a specialization by definition means that I am specializing for a concrete type that can be compiled and linked individually.</source>
+          <target state="translated">Просто обратите внимание,что при создании специализации для класса шаблонов можно отделить заголовок от реализации,поскольку специализация по определению означает,что я специализируюсь на конкретном типе,который может быть скомпилирован и скомпонован по отдельности.</target>
+        </trans-unit>
+        <trans-unit id="90c0f03268a72533d3715fb1c3f04f17010fd4e8" translate="yes" xml:space="preserve">
+          <source>Just to add something noteworthy here. One can define methods of a templated class just fine in the implementation file when they are not function templates.</source>
+          <target state="translated">Просто добавлю кое-что примечательное.Методы класса с шаблонами можно просто отлично определить в файле реализации,когда они не являются шаблонами функций.</target>
+        </trans-unit>
+        <trans-unit id="888d48c5f6045b8a8e83ebd7c050f1a0853a2ae6" translate="yes" xml:space="preserve">
+          <source>Lets get a little closer to concrete for an explanation. Say I've got the following files:</source>
+          <target state="translated">Давайте подойдем немного ближе к бетону для объяснения.Скажем,у меня есть следующие файлы:</target>
+        </trans-unit>
+        <trans-unit id="874b2d856f83dc17aed9827ccbaf2c655bd10aef" translate="yes" xml:space="preserve">
+          <source>Meaning &lt;code&gt;typename T&lt;/code&gt; get's replaced during the compilation step not the linking step so if I try to compile a template without &lt;code&gt;T&lt;/code&gt; being replaced as a concrete value type that is completely meaningless to the compiler and as a result object code can't be created because it doesn't know what &lt;code&gt;T&lt;/code&gt; is.</source>
+          <target state="translated">Значение &lt;code&gt;typename T&lt;/code&gt; get заменено на этапе компиляции, а не на этапе компоновки, поэтому, если я попытаюсь скомпилировать шаблон без замены &lt;code&gt;T&lt;/code&gt; в качестве конкретного типа значения, который совершенно бессмыслен для компилятора и, как результат, код объекта не может быть создан, поскольку он не знает что такое &lt;code&gt;T&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="7fc9acfdc804197b314d8a24ba75469bacf7cd44" translate="yes" xml:space="preserve">
+          <source>My main concern is avoiding recompilation of all template users, when I change its definition.</source>
+          <target state="translated">Моя главная забота-избежать перекомпиляции всех пользователей шаблонов,когда я изменяю его определение.</target>
+        </trans-unit>
+        <trans-unit id="19e735f0ba4f7fedbf86a4d8db05ec2168dae756" translate="yes" xml:space="preserve">
+          <source>MyInstantiatedTemplate.cpp:</source>
+          <target state="translated">MyInstantiatedTemplate.cpp:</target>
+        </trans-unit>
+        <trans-unit id="fa356b6c6efa2ea6ff88305f59851d0e6a2e480e" translate="yes" xml:space="preserve">
+          <source>MyInstantiatedTemplate.h:</source>
+          <target state="translated">MyInstantiatedTemplate.h:</target>
+        </trans-unit>
+        <trans-unit id="8e34d8a24c57d38d429bde7fc7eceb8c00a41285" translate="yes" xml:space="preserve">
+          <source>MyTemplate.cpp:</source>
+          <target state="translated">MyTemplate.cpp:</target>
+        </trans-unit>
+        <trans-unit id="9dd5eb3e28a84b69814aa5d8085079ec0abf9aae" translate="yes" xml:space="preserve">
+          <source>MyTemplate.h:</source>
+          <target state="translated">MyTemplate.h:</target>
+        </trans-unit>
+        <trans-unit id="779855889bb02228386e15de72062da5af7cdbf1" translate="yes" xml:space="preserve">
+          <source>Nobody likes (1), because whole-program-analysis compilation systems take &lt;em&gt;forever&lt;/em&gt; to compile , and because it makes it impossible to distribute compiled libraries without the source code. So we have (2) instead.</source>
+          <target state="translated">Никому не нравится (1), потому что системам компиляции анализа целых программ требуется &lt;em&gt;вечность&lt;/em&gt; для компиляции, и потому что это делает невозможным распространение скомпилированных библиотек без исходного кода. Таким образом, мы имеем (2) вместо этого.</target>
+        </trans-unit>
+        <trans-unit id="8600908363c5763340849b73a07750b2fc8781dc" translate="yes" xml:space="preserve">
+          <source>None of the popular compilers implemented this keyword. The only one I know about is the frontend written by the Edison Design Group, which is used by the Comeau C++ compiler. All others required you to write templates in header files, because the compiler needs the template definition for proper instantiation (as others pointed out already).</source>
+          <target state="translated">Ни один из популярных компиляторов не реализовал это ключевое слово.Единственное,о котором я знаю,это фронтенд,написанный Edison Design Group,который используется компилятором Comeau C++.Все остальные требовали написания шаблонов в заголовочных файлах,потому что компилятору нужно определение шаблона для правильной инстанцирования (как уже указывали другие).</target>
+        </trans-unit>
+        <trans-unit id="d369389a12d35315051d668fcdde49164cea6c93" translate="yes" xml:space="preserve">
+          <source>Now inside you .template file you define your functions just how you normally would.</source>
+          <target state="translated">Теперь внутри вас .шаблонный файл вы определяете свои функции так,как вы обычно делаете.</target>
+        </trans-unit>
+        <trans-unit id="a4d3b6b3a919caaa1d049a3a1514e4b1e2c7dae8" translate="yes" xml:space="preserve">
+          <source>On compile time, contents of foo.h are copied to foo.tpp and then the whole file is copied to foo.h after which it compiles. This way, there is no limitations, and the naming is consistent, in exchange for one extra file.</source>
+          <target state="translated">Во время компиляции содержимое foo.h копируется в foo.tpp,а затем весь файл копируется в foo.h,после чего он компилируется.Таким образом,нет никаких ограничений,а именование является последовательным,в обмен на один дополнительный файл.</target>
+        </trans-unit>
+        <trans-unit id="17bbed3b3378d62cae5186ee6b302a66b4c7e881" translate="yes" xml:space="preserve">
+          <source>One can argue that compilers can be made smarter to &quot;look ahead&quot; for all uses of the template, but I'm sure that it wouldn't be difficult to create recursive or otherwise complicated scenarios. AFAIK, compilers don't do such look aheads.  As Anton pointed out, some compilers support explicit export declarations of template instantiations, but not all compilers support it (yet?).</source>
+          <target state="translated">Можно поспорить,что компиляторы можно сделать умнее,чтобы &quot;смотреть вперед&quot; при любом использовании шаблона,но я уверен,что не составит труда создать рекурсивные или иные сложные сценарии.AFAIK,компиляторы не смотрят в будущее.Как отметил Антон,некоторые компиляторы поддерживают явные экспортные декларации инстанцинаций шаблонов,но не все компиляторы это поддерживают (пока?).</target>
+        </trans-unit>
+        <trans-unit id="027b97136fa29f83fd726f6a8f31ab5c63fb0ccc" translate="yes" xml:space="preserve">
+          <source>Plenty correct answers here, but I wanted to add this (for completeness):</source>
+          <target state="translated">Здесь много правильных ответов,но я хотел бы добавить это (для полноты):</target>
+        </trans-unit>
+        <trans-unit id="1e3ccd72561a2cf529bc2692dc40f14a6b2e4173" translate="yes" xml:space="preserve">
+          <source>Quote from &lt;a href=&quot;http://books.google.com/books?id=n9VEG2Gp5pkC&amp;amp;pg=PA10&amp;amp;lpg=PA10&amp;amp;dq=%22The%20only%20portable%20way%20of%20using%20templates%20at%20the%20moment%20is%20to%20implement%20them%20in%20header%20files%20by%20using%20inline%20functions.%22&amp;amp;source=bl&amp;amp;ots=Ref8pl8dPX&amp;amp;sig=t4K5gvxtBblpcujNxodpwMfei8I&amp;amp;hl=en&amp;amp;ei=qkR6TvbiGojE0AHq4IzqAg&amp;amp;sa=X&amp;amp;oi=book_result&amp;amp;ct=result&amp;amp;resnum=3&amp;amp;ved=0CC8Q6AEwAg#v=onepage&amp;amp;q=%22The%20only%20portable%20way%20of%20using%20templates%20at%20the%20moment%20is%20to%20implement%20them%20in%20header%20files%20by%20using%20inline%20functions.%22&amp;amp;f=false&quot;&gt;The C++ standard library: a tutorial and handbook&lt;/a&gt;:</source>
+          <target state="translated">Цитата из &lt;a href=&quot;http://books.google.com/books?id=n9VEG2Gp5pkC&amp;amp;pg=PA10&amp;amp;lpg=PA10&amp;amp;dq=%22The%20only%20portable%20way%20of%20using%20templates%20at%20the%20moment%20is%20to%20implement%20them%20in%20header%20files%20by%20using%20inline%20functions.%22&amp;amp;source=bl&amp;amp;ots=Ref8pl8dPX&amp;amp;sig=t4K5gvxtBblpcujNxodpwMfei8I&amp;amp;hl=en&amp;amp;ei=qkR6TvbiGojE0AHq4IzqAg&amp;amp;sa=X&amp;amp;oi=book_result&amp;amp;ct=result&amp;amp;resnum=3&amp;amp;ved=0CC8Q6AEwAg#v=onepage&amp;amp;q=%22The%20only%20portable%20way%20of%20using%20templates%20at%20the%20moment%20is%20to%20implement%20them%20in%20header%20files%20by%20using%20inline%20functions.%22&amp;amp;f=false&quot;&gt;стандартной библиотеки C ++: учебное пособие и справочник&lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="f41f7caecccc6ad203c01fef0e084e8b1d92a5ec" translate="yes" xml:space="preserve">
+          <source>Require that &lt;strong&gt;baz.cpp&lt;/strong&gt; contains (possibly via header includes) the full template of &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt;, so that the compiler can generate &lt;code&gt;MyClass&amp;lt;BazPrivate&amp;gt;&lt;/code&gt; during compilation of &lt;strong&gt;baz.cpp&lt;/strong&gt;.</source>
+          <target state="translated">Требуется, чтобы &lt;strong&gt;baz.cpp&lt;/strong&gt; содержал (возможно, через заголовок) полный шаблон &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; , чтобы компилятор мог генерировать &lt;code&gt;MyClass&amp;lt;BazPrivate&amp;gt;&lt;/code&gt; во время компиляции &lt;strong&gt;baz.cpp&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="60a978398e64164bca212555aaa064c2a8b0b5ed" translate="yes" xml:space="preserve">
+          <source>Separate compilation means I should be able to compile &lt;strong&gt;foo.cpp&lt;/strong&gt; independently from &lt;strong&gt;bar.cpp&lt;/strong&gt;. The compiler does all the hard work of analysis, optimization, and code generation on each compilation unit completely independently; we don't need to do whole-program analysis. It's only the linker that needs to handle the entire program at once, and the linker's job is substantially easier.</source>
+          <target state="translated">Отдельная компиляция означает, что я должен иметь возможность компилировать &lt;strong&gt;foo.cpp&lt;/strong&gt; независимо от &lt;strong&gt;bar.cpp&lt;/strong&gt; . Компилятор выполняет всю тяжелую работу по анализу, оптимизации и генерации кода на каждом модуле компиляции полностью независимо; нам не нужно делать анализ всей программы. Только компоновщик должен обрабатывать всю программу одновременно, и работа компоновщика существенно проще.</target>
+        </trans-unit>
+        <trans-unit id="cf96ef776af92be9a3da407eefb0092aa784a378" translate="yes" xml:space="preserve">
+          <source>So when &lt;strong&gt;foo.cpp&lt;/strong&gt; is compiled, the compiler can't see &lt;strong&gt;bar.cpp&lt;/strong&gt; to know that &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt; is needed. It can see the template &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt;, but it can't emit code for that (it's a template, not a class). And when &lt;strong&gt;bar.cpp&lt;/strong&gt; is compiled, the compiler can see that it needs to create a &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt;, but it can't see the template &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; (only its interface in &lt;strong&gt;foo.h&lt;/strong&gt;) so it can't create it.</source>
+          <target state="translated">Поэтому, когда &lt;strong&gt;foo.cpp&lt;/strong&gt; компилируется, компилятор не может видеть &lt;strong&gt;bar.cpp,&lt;/strong&gt; чтобы знать, что &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt; необходим. Он может видеть шаблон &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; , но не может генерировать код для этого (это шаблон, а не класс). И когда &lt;strong&gt;bar.cpp&lt;/strong&gt; скомпилирован, компилятор может увидеть, что ему нужно создать &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt; , но он не может видеть шаблон &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; (только его интерфейс в &lt;strong&gt;foo.h&lt;/strong&gt; ), поэтому он не может создать Это.</target>
+        </trans-unit>
+        <trans-unit id="e7892a8d20de035b9b6701d9b3ebc8381493ee59" translate="yes" xml:space="preserve">
+          <source>Templates must be used in headers because the compiler needs to instantiate different versions of the code, depending on the parameters given/deduced for template parameters. Remember that a template doesn't represent code directly, but a template for several versions of that code. 
+When you compile a non-template function in a &lt;code&gt;.cpp&lt;/code&gt; file, you are compiling a concrete function/class. This is not the case for templates, which can be instantiated with different types, namely, concrete code must be emitted when replacing template parameters with concrete types.</source>
+          <target state="translated">Шаблоны должны использоваться в заголовках, потому что компилятор должен создавать различные версии кода в зависимости от параметров, заданных / выведенных для параметров шаблона. Помните, что шаблон не представляет код напрямую, а шаблон для нескольких версий этого кода. Когда вы компилируете не шаблонную функцию в файле &lt;code&gt;.cpp&lt;/code&gt; , вы компилируете конкретную функцию / класс. Это не относится к шаблонам, которые могут быть созданы с различными типами, а именно, конкретный код должен генерироваться при замене параметров шаблона на конкретные типы.</target>
+        </trans-unit>
+        <trans-unit id="07055fec01ec5ac6275859a7a311bf06f2c99470" translate="yes" xml:space="preserve">
+          <source>Templates need to be &lt;em&gt;instantiated&lt;/em&gt; by the compiler before actually compiling them into object code.  This instantiation can only be achieved if the template arguments are known. Now imagine a scenario where a template function is declared in &lt;code&gt;a.h&lt;/code&gt;, defined in &lt;code&gt;a.cpp&lt;/code&gt; and used in &lt;code&gt;b.cpp&lt;/code&gt;. When &lt;code&gt;a.cpp&lt;/code&gt; is compiled, it is not necessarily known that the upcoming compilation &lt;code&gt;b.cpp&lt;/code&gt; will require an instance of the template, let alone which specific instance would that be. For more header and source files, the situation can quickly get more complicated.</source>
+          <target state="translated">Шаблоны должны быть &lt;em&gt;созданы&lt;/em&gt; компилятором до фактической компиляции их в объектный код. Эта реализация может быть достигнута только в том случае, если известны аргументы шаблона. Теперь представьте сценарий, в котором функция шаблона объявляется в &lt;code&gt;a.h&lt;/code&gt; , определяется в &lt;code&gt;a.cpp&lt;/code&gt; и используется в &lt;code&gt;b.cpp&lt;/code&gt; . Когда &lt;code&gt;a.cpp&lt;/code&gt; компилируется, необязательно известно, что для предстоящей компиляции &lt;code&gt;b.cpp&lt;/code&gt; потребуется экземпляр шаблона, не говоря уже о том, какой конкретный экземпляр будет. Для большего количества заголовочных и исходных файлов ситуация может быстро усложниться.</target>
+        </trans-unit>
+        <trans-unit id="573267f5fdff7a38869f846560058a7991782d2f" translate="yes" xml:space="preserve">
+          <source>That is exactly correct because the compiler has to know what type it is for allocation. So template classes, functions, enums,etc.. must be implemented as well in the header file if it is to be made public or part of a library (static or dynamic) because header files are NOT compiled unlike the c/cpp files which are. If the compiler doesn't know the type is can't compile it. In .Net it can because all objects derive from the Object class. This is not .Net.</source>
+          <target state="translated">Это совершенно верно,так как компилятор должен знать,какой это тип для выделения.Поэтому шаблонные классы,функции,перечисления и т.д..должны быть реализованы и в заголовочном файле,если его нужно сделать публичным или частью библиотеки (статической или динамической),потому что заголовочные файлы НЕ компилируются в отличие от ccpp-файлов,которые являются таковыми.Если компилятор не знает тип не может его скомпилировать.В .Net это возможно потому,что все объекты происходят от класса Object.Это не .Net.</target>
+        </trans-unit>
+        <trans-unit id="9e58a81b20c16d22062ebf223f9ad4f4d3b4f677" translate="yes" xml:space="preserve">
+          <source>The &quot;borland&quot; model corresponds to what the author suggests, providing the full template definition, and having things compiled multiple times.</source>
+          <target state="translated">Модель &quot;Борланд&quot; соответствует тому,что предлагает автор,предоставляя полное определение шаблона и многократно компилируя вещи.</target>
+        </trans-unit>
+        <trans-unit id="58e8c1052ab3a21074d7cb8bccc45c2a6626437e" translate="yes" xml:space="preserve">
+          <source>The above example is fairly useless since vector is fully defined in headers, except when a common include file (precompiled header?) uses &lt;code&gt;extern template class vector&amp;lt;int&amp;gt;&lt;/code&gt; so as to keep it from instantiating it in all the &lt;em&gt;other&lt;/em&gt; (1000?) files that use vector.</source>
+          <target state="translated">Приведенный выше пример довольно бесполезен, так как вектор полностью определен в заголовках, за исключением случаев, когда общий включаемый файл (предварительно скомпилированный заголовок?) Использует &lt;code&gt;extern template class vector&amp;lt;int&amp;gt;&lt;/code&gt; чтобы не создавать его экземпляров во всех &lt;em&gt;других&lt;/em&gt; (1000?) Файлах. которые используют вектор.</target>
+        </trans-unit>
+        <trans-unit id="751e836bc3075952f979fef87738701137f3a956" translate="yes" xml:space="preserve">
+          <source>The compiler will generate code for each template instantiation when you use a template during the compilation step. 
+In the compilation and linking process .cpp files are converted to pure object or machine code which in them contains references or undefined symbols because the .h files that are included in your main.cpp have no implementation YET. These are ready to be linked with another object file that defines an implementation for your template and thus you have a full a.out executable.</source>
+          <target state="translated">Компилятор сгенерирует код для каждого инстанцирования шаблона при использовании шаблона на этапе компиляции.В процессе компиляции и компоновки .cpp файлы преобразуются в чистый объектный или машинный код,который в них содержит ссылки или неопределённые символы,потому что .h-файлы,которые включены в ваш main.cpp,не имеют реализации YET.Они готовы к компоновке с другим объектным файлом,который определяет реализацию вашего шаблона,и,таким образом,у вас есть полный исполняемый файл a.out.</target>
+        </trans-unit>
+        <trans-unit id="70e1a76050b751aa87f42fb2a3667367780128f9" translate="yes" xml:space="preserve">
+          <source>The only portable way of using templates at the moment is to implement them in header files by using inline functions.</source>
+          <target state="translated">На данный момент единственным портативным способом использования шаблонов является их реализация в заголовочных файлах с помощью встроенных функций.</target>
+        </trans-unit>
+        <trans-unit id="5a0f95b8ca2d9538f3bebbd2e52eab17be41473f" translate="yes" xml:space="preserve">
+          <source>The separate compilation problem for templates I guess it's also a problem that is arising with the migration to modules, which is currently being worked.</source>
+          <target state="translated">Проблема отдельной компиляции шаблонов,наверное,также возникает в связи с переходом на модули,который в настоящее время работает.</target>
+        </trans-unit>
+        <trans-unit id="c898a850ca6d8f4fa0a444f7353ad2e51c50f8b6" translate="yes" xml:space="preserve">
+          <source>There is an &lt;em&gt;export&lt;/em&gt; keyword which is supposed to mitigate this problem, but it's nowhere close to being portable.</source>
+          <target state="translated">Существует ключевое слово &lt;em&gt;экспорта,&lt;/em&gt; которое должно смягчить эту проблему, но оно далеко от того, чтобы быть переносимым.</target>
+        </trans-unit>
+        <trans-unit id="2392d1fe804bd11c9c1e2fe664277a9cea150dc6" translate="yes" xml:space="preserve">
+          <source>There is no possible way that this could work unless we either</source>
+          <target state="translated">Невозможно,чтобы это сработало,если только мы оба не</target>
+        </trans-unit>
+        <trans-unit id="9f0f3cb27a80c18b9106602e69afe581b1d5d1ac" translate="yes" xml:space="preserve">
+          <source>There was a feature with the &lt;code&gt;export&lt;/code&gt; keyword that was meant to be used for separate compilation.
+The &lt;code&gt;export&lt;/code&gt; feature is deprecated in &lt;code&gt;C++11&lt;/code&gt; and, AFAIK, only one compiler implemented it. You shouldn't make use of &lt;code&gt;export&lt;/code&gt;. Separate compilation is not possible in &lt;code&gt;C++&lt;/code&gt; or &lt;code&gt;C++11&lt;/code&gt; but maybe in &lt;code&gt;C++17&lt;/code&gt;, if concepts make it in, we could have some way of separate compilation.</source>
+          <target state="translated">Была функция с ключевым словом &lt;code&gt;export&lt;/code&gt; , предназначенная для отдельной компиляции. Функция &lt;code&gt;export&lt;/code&gt; устарела в &lt;code&gt;C++11&lt;/code&gt; и, AFAIK, ее реализовал только один компилятор. Вы не должны использовать &lt;code&gt;export&lt;/code&gt; . Раздельная компиляция невозможна в &lt;code&gt;C++&lt;/code&gt; или &lt;code&gt;C++11&lt;/code&gt; но, возможно, в &lt;code&gt;C++17&lt;/code&gt; , если концепции это делают, у нас может быть какой-то способ раздельной компиляции.</target>
+        </trans-unit>
+        <trans-unit id="ca26dec36ce34dee761b07dff18f299e91237c3d" translate="yes" xml:space="preserve">
+          <source>Therefore if you separate the template declaration and definition, you won't be able to only read the header file to see the ins and outs of this template in order to use this API on your own classes, though the compiler will tell you in this case about which operator needs to be overridden.</source>
+          <target state="translated">Поэтому,если разделить декларацию и определение шаблона,то вы не сможете только прочитать заголовочный файл,чтобы увидеть вхождения и выходы этого шаблона,чтобы использовать это API на своих классах,хотя компилятор в этом случае скажет вам,какой оператор нужно переопределить.</target>
+        </trans-unit>
+        <trans-unit id="a88a22ac4bcba82eae4ad56a83eb507a4312a8a0" translate="yes" xml:space="preserve">
+          <source>Therefore templates are never separately compiled and are only compiled wherever you have a concrete instantiation in some other source file. However, the concrete instantiation needs to know the implementation of the template file, because simply modifying the &lt;code&gt;typename T&lt;/code&gt; using a concrete type in the .h file is not going to do the job because what .cpp is there to link, I can't find it later on because remember templates are abstract and can't be compiled, so I'm forced to give the implementation right now so I know what to compile and link, and now that I have the implementation it gets linked into the enclosing source file. Basically, the moment I instantiate a template I need to create a whole new class, and I can't do that if I don't know how that class should look like when using the type I provide unless I make notice to the compiler of the template implementation, so now the compiler can replace &lt;code&gt;T&lt;/code&gt; with my type and create a concrete class that's ready to be compiled and linked.</source>
+          <target state="translated">Поэтому шаблоны никогда не компилируются отдельно, а компилируются только там, где у вас есть конкретный экземпляр в каком-либо другом исходном файле. Тем не менее, конкретный экземпляр должен знать реализацию файла шаблона, потому что простое изменение &lt;code&gt;typename T&lt;/code&gt; с использованием конкретного типа в файле .h не будет делать работу, потому что .cpp есть для ссылки, я не могу узнайте об этом позже, потому что помните, что шаблоны являются абстрактными и не могут быть скомпилированы, поэтому я вынужден дать реализацию прямо сейчас, чтобы я знал, что компилировать и ссылаться, и теперь, когда у меня есть реализация, она связана с исходным кодом файл. По сути, в тот момент, когда я создаю экземпляр шаблона, мне нужно создать целый новый класс, и я не могу этого сделать, если не знаю, как должен выглядеть этот класс при использовании предоставляемого мной типа, если я не сделаю уведомление компилятору реализация шаблона, так что теперь компилятор может заменить &lt;code&gt;T&lt;/code&gt; моим типом и создать конкретный класс, который будет готов к компиляции и компоновке.</target>
+        </trans-unit>
+        <trans-unit id="23a63b54ada9895386ea62c48cd3d7b7c294f6fe" translate="yes" xml:space="preserve">
+          <source>This is my approach because I am providing a working program, not a template library for use in other programs.  The author of the book, Josuttis, works a lot on template libraries.</source>
+          <target state="translated">Это мой подход,потому что я предоставляю рабочую программу,а не библиотеку шаблонов для использования в других программах.Автор книги,Йосуттис,много работает над библиотеками шаблонов.</target>
+        </trans-unit>
+        <trans-unit id="1994e35f7ee1b0488b7ab2d83998104be1a5a533" translate="yes" xml:space="preserve">
+          <source>This requires every T class here to implement the less than operator (&amp;lt;). It will throw a compiler error when you compare two class instances that haven't implemented the &quot;&amp;lt;&quot;.</source>
+          <target state="translated">Это требует, чтобы каждый класс T здесь реализовывал оператор less than (&amp;lt;). Он сгенерирует ошибку компилятора, когда вы сравните два экземпляра класса, которые не реализовали &amp;laquo;&amp;lt;&amp;raquo;.</target>
+        </trans-unit>
+        <trans-unit id="9c31f99a4d4893f55a1fc379d541ff802eb19e98" translate="yes" xml:space="preserve">
+          <source>This way only the template instantiations will need to be recompiled, not all template users (and dependencies).</source>
+          <target state="translated">Таким образом,необходимо будет перекомпилировать только инстанциии шаблонов,а не всех пользователей шаблонов (и зависимостей).</target>
+        </trans-unit>
+        <trans-unit id="5e7797397a628b0cc37c602183b6487c56a7909b" translate="yes" xml:space="preserve">
+          <source>This way, implementation is still separated from declaration, but is accessible to the compiler.</source>
+          <target state="translated">Таким образом,реализация все еще отделена от декларирования,но доступна компилятору.</target>
+        </trans-unit>
+        <trans-unit id="64b32d3878b4d863ed08ff59292c12d3efc96524" translate="yes" xml:space="preserve">
+          <source>This will instantiate (and thus make available to the linker) the class and all its member functions (only). Similar syntax works for template functions, so if you have non-member operator overloads you may need to do the same for those.</source>
+          <target state="translated">Это позволит инстанцировать (и тем самым сделать доступным для компоновщика)класс и все его функции-членов (только).Аналогичный синтаксис работает и для шаблонных функций,поэтому,если у вас перегрузки операторов,не являющихся членами,вам может понадобиться сделать то же самое для них.</target>
+        </trans-unit>
+        <trans-unit id="a2e4febc84235aa3945c67bda91b8350e52c0816" translate="yes" xml:space="preserve">
+          <source>To sum up, templates are blueprints for how classes should look, classes are blueprints for how an object should look.
+I can't compile templates separate from their concrete instantiation because the compiler only compiles concrete types, in other words, templates at least in C++, is pure language abstraction. We have to de-abstract templates so to speak, and we do so by giving them a concrete type to deal with so that our template abstraction can transform into a regular class file and in turn, it can be compiled normally. Separating the template .h file and the template .cpp file is meaningless. It is nonsensical because the separation of .cpp and .h only is only where the .cpp can be compiled individually and linked individually, with templates since we can't compile them separately, because templates are an abstraction, therefore we are always forced to put the abstraction always together with the concrete instantiation where the concrete instantiation always has to know about the type being used.</source>
+          <target state="translated">Подводя итог,можно сказать,что шаблоны-это чертежи того,как должны выглядеть классы,а классы-это чертежи того,как должен выглядеть объект.Я не могу компилировать шаблоны отдельно от их конкретной конкретизации,потому что компилятор компилирует только конкретные типы,то есть шаблоны хотя бы на Си++,это чистая языковая абстракция.Так сказать,нам приходится деабстрагировать шаблоны,и мы делаем это,давая им конкретный тип,чтобы наша абстракция шаблона могла трансформироваться в обычный файл класса и,в свою очередь,компилироваться нормально.Разделение шаблона .h файла и шаблона .cpp файла бессмысленно.Это бессмысленно,потому что разделение .cpp и .h только там,где .cpp может быть скомпилирован по отдельности и связан по отдельности с шаблонами,так как мы не можем скомпилировать их по отдельности,так как шаблоны-это абстракции,поэтому мы всегда вынуждены ставить абстракцию вместе с конкретной инстанцинацией,где конкретная инстанцинация всегда должна знать об используемом типе.</target>
+        </trans-unit>
+        <trans-unit id="8babc0d4da66cbd7109fa8d9a726d718a76ecfc1" translate="yes" xml:space="preserve">
+          <source>When reading this line, the compiler will create a new class (let's call it &lt;code&gt;FooInt&lt;/code&gt;), which is equivalent to the following:</source>
+          <target state="translated">При чтении этой строки компилятор создаст новый класс (назовем его &lt;code&gt;FooInt&lt;/code&gt; ), который эквивалентен следующему:</target>
+        </trans-unit>
+        <trans-unit id="b476e94c03f06628448dd244ac53118aacb69996" translate="yes" xml:space="preserve">
+          <source>Why can templates only be implemented in the header file</source>
+          <target state="translated">Почему шаблоны могут быть реализованы только в заголовочном файле.</target>
+        </trans-unit>
+        <trans-unit id="9d863fbd4a4b35d1abc87eb5fac9e58af686e66b" translate="yes" xml:space="preserve">
+          <source>Why is this?</source>
+          <target state="translated">Почему это?</target>
+        </trans-unit>
+        <trans-unit id="93a9a1e27d6f5ea86d321335fd4bdffa983cbc3e" translate="yes" xml:space="preserve">
+          <source>You can actually define your template class inside a .template file rather than a .cpp file. Whoever is saying you can only define it inside a header file is wrong. This is something that works all the way back to c++ 98.</source>
+          <target state="translated">Вы можете фактически определить свой класс шаблона внутри файла .template,а не файла .cpp.Кто бы ни говорил,что вы можете определить его только внутри заголовочного файла,он ошибается.Это что-то,что работает вплоть до c++98.</target>
+        </trans-unit>
+        <trans-unit id="a823daba893b149e44607d98fae24dda1422529b" translate="yes" xml:space="preserve">
+          <source>You might think that when compiling a template the compiler should &quot;generate all versions&quot;, with the ones that are never used being filtered out during linking. Aside from the huge overhead and the extreme difficulties such an approach would face because &quot;type modifier&quot; features like pointers and arrays allow even just the built-in types to give rise to an infinite number of types, what happens when I now extend my program by adding:</source>
+          <target state="translated">Можно подумать,что при компиляции шаблона компилятор должен &quot;сгенерировать все версии&quot;,при этом те,которые никогда не использовались,будут отфильтрованы при компоновке.Кроме огромных накладных расходов и экстремальных трудностей,с которыми может столкнуться такой подход,потому что возможности &quot;модификаторов типов&quot;,таких как указатели и массивы,позволяют даже просто встроенным типам давать бесконечное количество типов,что происходит,когда я сейчас расширяю свою программу путем добавления:</target>
+        </trans-unit>
+        <trans-unit id="1750a1b4ec7b68120fb74bc6447975a220440d61" translate="yes" xml:space="preserve">
+          <source>bar.cpp</source>
+          <target state="translated">bar.cpp</target>
+        </trans-unit>
+        <trans-unit id="782314c016bd8917ce979dc818a4fd7ac7ab7c91" translate="yes" xml:space="preserve">
+          <source>baz.cpp</source>
+          <target state="translated">baz.cpp</target>
+        </trans-unit>
+        <trans-unit id="10cb3d1898ec0f9b461c034465b3a25a5a0ce364" translate="yes" xml:space="preserve">
+          <source>declares and implements &lt;code&gt;class BazPrivate&lt;/code&gt;, and uses &lt;code&gt;MyClass&amp;lt;BazPrivate&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">объявляет и реализует &lt;code&gt;class BazPrivate&lt;/code&gt; и использует &lt;code&gt;MyClass&amp;lt;BazPrivate&amp;gt;&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="b8483342ec553e84a688884d513d4b7cc9f37f84" translate="yes" xml:space="preserve">
+          <source>declares the interface of &lt;code&gt;class MyClass&amp;lt;T&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">объявляет интерфейс &lt;code&gt;class MyClass&amp;lt;T&amp;gt;&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="cb4fdc80a04ae99261e64f95fee1e452c9f18025" translate="yes" xml:space="preserve">
+          <source>defines the implementation of &lt;code&gt;class MyClass&amp;lt;T&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">определяет реализацию &lt;code&gt;class MyClass&amp;lt;T&amp;gt;&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="7b3f4243ca82300fbaf70a60588d086a1fc4d8cc" translate="yes" xml:space="preserve">
+          <source>foo.cpp</source>
+          <target state="translated">foo.cpp</target>
+        </trans-unit>
+        <trans-unit id="dde724ad19815ae98cc695bb8a67aae7d2faa5e5" translate="yes" xml:space="preserve">
+          <source>foo.h</source>
+          <target state="translated">foo.h</target>
+        </trans-unit>
+        <trans-unit id="02637a26f8881bbb4079d37a0a539bc980568f9a" translate="yes" xml:space="preserve">
+          <source>inner_foo has the forward declarations. foo.tpp has the implementation and include inner_foo.h; and foo.h will have just one line, to include foo.tpp.</source>
+          <target state="translated">Internal_foo имеет прямые объявления.foo.tpp имеет реализацию и включает internal_foo.h;и foo.h будет иметь только одну строку,чтобы включить foo.tpp.</target>
+        </trans-unit>
+        <trans-unit id="b9ae663c6f99d0b5550468e0f718e2d689b19354" translate="yes" xml:space="preserve">
+          <source>main.cpp:</source>
+          <target state="translated">main.cpp:</target>
+        </trans-unit>
+        <trans-unit id="e4665c0718899ccbac4e58743355fb37a56287f0" translate="yes" xml:space="preserve">
+          <source>myQueue.cpp:</source>
+          <target state="translated">myQueue.cpp:</target>
+        </trans-unit>
+        <trans-unit id="561d0ea5d0c750aef414c6ce0bbefbc2c915c486" translate="yes" xml:space="preserve">
+          <source>myQueue.hpp:</source>
+          <target state="translated">myQueue.hpp:</target>
+        </trans-unit>
+        <trans-unit id="920571f4eeae7c8e9c9d5838050e2eb652c3bd9c" translate="yes" xml:space="preserve">
+          <source>uses &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">использует &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="93374352e9e105c91716fa4d811f0fe7be51fe7b" translate="yes" xml:space="preserve">
+          <source>which is gaining support in many compilers.  However, I think precompiled headers would be difficult with template header files.</source>
+          <target state="translated">которая получает поддержку во многих компиляторах.Однако,я думаю,что прекомпилированные заголовки будут сложны с шаблонными заголовочными файлами.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/767999">
+    <body>
+      <group id="767999">
+        <trans-unit id="4a854acb264c640bad8b85ad2804f32ea02e1ded" translate="yes" xml:space="preserve">
+          <source>1) As Marc Gravell said, try to use ONE random-generator. It's always cool to add this to the constructor: System.Environment.TickCount.</source>
+          <target state="translated">1)正如Marc Gravell所说,尽量使用一个随机生成器。在构造函数中添加这个东西总是很酷。System.Environment.TickCount.</target>
+        </trans-unit>
+        <trans-unit id="5f865b448736b0cfbbf3130df374f213ebc7de02" translate="yes" xml:space="preserve">
+          <source>2) One tip. Let's say you want to create 100 objects and suppose each of them should have its-own random-generator (handy if you calculate LOADS of random numbers in a very short period of time). If you would do this in a loop (generation of 100 objects), you could do this like that (to assure fully-randomness):</source>
+          <target state="translated">2)一个提示。假设你想创建100个对象,假设每个对象都有自己的随机生成器(如果你在很短的时间内计算出大量的随机数,那就很方便)。如果你想在一个循环中(生成100个对象),你可以这样做(保证完全随机性)。</target>
+        </trans-unit>
+        <trans-unit id="f288b7308c1b6ccf17b7ba15a6dbe5654dc26537" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;It's going to be a wee bit slower, but can be much more random&lt;/em&gt; than &lt;code&gt;Random.Next&lt;/code&gt;, at least from my experience.</source>
+          <target state="translated">&lt;em&gt;它将稍微慢一点，但是&lt;/em&gt;比 &lt;code&gt;Random.Next&lt;/code&gt; &lt;em&gt;随机&lt;/em&gt;得多，至少从我的经验来看。</target>
+        </trans-unit>
+        <trans-unit id="9cd2fb0e26bd324270042f00a02a39f5d6a0fad0" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;If you strictly need a true stateless static method&lt;/strong&gt; to generate random numbers, you can rely on a &lt;code&gt;Guid&lt;/code&gt;.</source>
+          <target state="translated">&lt;strong&gt;如果您严格需要真正的无状态静态方法&lt;/strong&gt;来生成随机数，则可以依赖 &lt;code&gt;Guid&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="8678c60f067b0302a61703d8729ac91bea3b16d0" translate="yes" xml:space="preserve">
+          <source>And &lt;strong&gt;never&lt;/strong&gt;:</source>
+          <target state="translated">而且&lt;strong&gt;永远不会&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="397dbbdfa117a47c87fd889b4b1236c0001cba41" translate="yes" xml:space="preserve">
+          <source>Basically, &lt;code&gt;Next&lt;/code&gt; is going to change the internal state of the &lt;code&gt;Random&lt;/code&gt; instance. If we do that at the same time from multiple threads, you &lt;em&gt;could&lt;/em&gt; argue &quot;we've just made the outcome even more random&quot;, but what we are &lt;em&gt;actually&lt;/em&gt; doing is potentially breaking the internal implementation, and we could also start getting the same numbers from different threads, which &lt;em&gt;might&lt;/em&gt; be a problem - and might not. The guarantee of what happens internally is the bigger issue, though; since &lt;code&gt;Random&lt;/code&gt; does &lt;strong&gt;not&lt;/strong&gt; make any guarantees of thread-safety. Thus there are two valid approaches:</source>
+          <target state="translated">基本上， &lt;code&gt;Next&lt;/code&gt; 将更改 &lt;code&gt;Random&lt;/code&gt; 实例的内部状态。 如果我们同时在多个线程中执行此操作，则&lt;em&gt;可能会&lt;/em&gt;争辩&amp;ldquo;我们只是使结果更加随机&amp;rdquo;，但&lt;em&gt;实际上&lt;/em&gt; ，我们正在做的事情有可能破坏内部实现，并且我们也可能开始获得相同的数字从不同的线程，这&lt;em&gt;可能&lt;/em&gt;是一个问题-可能不是。 但是，保证内部发生的事情是更大的问题。 因为 &lt;code&gt;Random&lt;/code&gt; &lt;strong&gt;不能&lt;/strong&gt;保证线程安全。 因此，有两种有效的方法：</target>
+        </trans-unit>
+        <trans-unit id="2ca257d36379ffcd8184cb7cb326bb1e48fb915e" translate="yes" xml:space="preserve">
+          <source>But &lt;strong&gt;not&lt;/strong&gt;:</source>
+          <target state="translated">但&lt;strong&gt;不是&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="f8eb3248811492e79afeba88e2112b19fd5e3085" translate="yes" xml:space="preserve">
+          <source>Cheers.</source>
+          <target state="translated">Cheers.</target>
+        </trans-unit>
+        <trans-unit id="fed398803d64816e344ed17a150bf0de6ebc2107" translate="yes" xml:space="preserve">
+          <source>Each time by declaring &lt;code&gt;Random r = new Random()&lt;/code&gt; once.</source>
+          <target state="translated">每次通过声明 &lt;code&gt;Random r = new Random()&lt;/code&gt; 一次。</target>
+        </trans-unit>
+        <trans-unit id="b1b66a5e2cc17580541e17ae5055c33718d48b2e" translate="yes" xml:space="preserve">
+          <source>Edit (see comments): why do we need a &lt;code&gt;lock&lt;/code&gt; here?</source>
+          <target state="translated">编辑（请参阅评论）：为什么在这里需要 &lt;code&gt;lock&lt;/code&gt; ？</target>
+        </trans-unit>
+        <trans-unit id="8d388ca2f605af32f365a40e0692f43c61df4b09" translate="yes" xml:space="preserve">
+          <source>Either can be fine; but mutexing a &lt;strong&gt;single&lt;/strong&gt; instance from multiple callers at the same time is just asking for trouble.</source>
+          <target state="translated">两者都可以。 但同时使多个调用者的&lt;strong&gt;单个&lt;/strong&gt;实例静音只会带来麻烦。</target>
+        </trans-unit>
+        <trans-unit id="c6bd12a6b28fab995ae459e75aa4c00e6c6da89a" translate="yes" xml:space="preserve">
+          <source>Every time you do &lt;code&gt;new Random()&lt;/code&gt; it is initialized using the clock. This means that in a tight loop you get the same value lots of times. You should keep a single &lt;code&gt;Random&lt;/code&gt; instance and keep using &lt;code&gt;Next&lt;/code&gt; on the &lt;strong&gt;same&lt;/strong&gt; instance.</source>
+          <target state="translated">每次执行 &lt;code&gt;new Random()&lt;/code&gt; 时 ，都会使用时钟对其进行初始化。 这意味着在紧密的循环中，您会多次获得相同的值。 您应该保留一个 &lt;code&gt;Random&lt;/code&gt; 实例，并在&lt;strong&gt;同一&lt;/strong&gt;实例上继续使用 &lt;code&gt;Next&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="c9b145920c802ff4d92706e6ab4fad1e6d818ab7" translate="yes" xml:space="preserve">
+          <source>Every time you execute</source>
+          <target state="translated">每次执行时</target>
+        </trans-unit>
+        <trans-unit id="ebca7d9a98ec5a331125ea641e474de0b50a48b1" translate="yes" xml:space="preserve">
+          <source>For ease of re-use throughout your application a static class may help.</source>
+          <target state="translated">为了便于在整个应用程序中重复使用,静态类可能会有帮助。</target>
+        </trans-unit>
+        <trans-unit id="82f14ed230b6fc4f0264b0217480af66d1254eeb" translate="yes" xml:space="preserve">
+          <source>How I call it:</source>
+          <target state="translated">我怎么叫它。</target>
+        </trans-unit>
+        <trans-unit id="ace1f27e6cdd380c9d9833987d0b8f04654e97c6" translate="yes" xml:space="preserve">
+          <source>I have the following function:</source>
+          <target state="translated">我有以下功能。</target>
+        </trans-unit>
+        <trans-unit id="c924c3e27261c2bccd38a423ace280f75d0519d6" translate="yes" xml:space="preserve">
+          <source>I would rather use the following class to generate random numbers:</source>
+          <target state="translated">我更愿意用下面的类来生成随机数。</target>
+        </trans-unit>
+        <trans-unit id="62c15f68a0c263e558fb112afe1f1465b117baf1" translate="yes" xml:space="preserve">
+          <source>If I step that loop with the debugger during runtime I get different values (which is what I want).
+However, if I put a breakpoint two lines below that code, all members of the &lt;code&gt;mac&lt;/code&gt; array have equal value.</source>
+          <target state="translated">如果在运行时与调试器一起执行该循环，则会得到不同的值（这是我想要的）。 但是，如果在该代码下两行放置一个断点，则 &lt;code&gt;mac&lt;/code&gt; 数组的所有成员都具有相等的值。</target>
+        </trans-unit>
+        <trans-unit id="f0388fc1051c0220fd283c15a9df548dd7e38c79" translate="yes" xml:space="preserve">
+          <source>If you need safe random numbers you must use the class</source>
+          <target state="translated">如果你需要安全的随机数字,你必须使用类</target>
+        </trans-unit>
+        <trans-unit id="41fb10bf832524090b9ab05176d0ed5567a508f5" translate="yes" xml:space="preserve">
+          <source>If you use</source>
+          <target state="translated">如果您使用的是</target>
+        </trans-unit>
+        <trans-unit id="d32559c7e6154e0ea310550867a04a3c350d6535" translate="yes" xml:space="preserve">
+          <source>It does not matter if you execute it millions of times, you will always use the same seed.</source>
+          <target state="translated">执行了几百万次也无所谓,你永远都会用同样的种子。</target>
+        </trans-unit>
+        <trans-unit id="65c9dead558ae9c58caeaac160b46c342e8ac841" translate="yes" xml:space="preserve">
+          <source>Just reiterating &lt;strong&gt;the right solution&lt;/strong&gt;:</source>
+          <target state="translated">只是重申&lt;strong&gt;正确的解决方案&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="9ef9ab9dbab2e8ec85ab5ade3a63fcb6d8313b05" translate="yes" xml:space="preserve">
+          <source>Mark's solution can be quite expensive since it needs to synchronize everytime.</source>
+          <target state="translated">马克的解决方案可能相当昂贵,因为它需要每次都要同步。</target>
+        </trans-unit>
+        <trans-unit id="19e93b55d9a8b7476b26c3dcc1e1fc2a216210ee" translate="yes" xml:space="preserve">
+          <source>Measure the two implementations and you should see a significant difference.</source>
+          <target state="translated">测量两个实现,你应该会看到明显的差异。</target>
+        </trans-unit>
+        <trans-unit id="7c51e0b1fa97b6bb02af2037046a4eb6cfbd13a1" translate="yes" xml:space="preserve">
+          <source>My answer from &lt;a href=&quot;https://stackoverflow.com/a/15729385/661933&quot;&gt;here&lt;/a&gt;:</source>
+          <target state="translated">我的回答是：</target>
+        </trans-unit>
+        <trans-unit id="d50300ff8266f5d8a7099c3db551ce788b886323" translate="yes" xml:space="preserve">
+          <source>Not only it's slower (inside a loop), its randomness is... well not really good according to me..</source>
+          <target state="translated">它不仅速度较慢(在一个循环中),它的随机性...........好吧,根据我的说法不是很好。</target>
+        </trans-unit>
+        <trans-unit id="f6b0fc0ce02a5e4d965d5c07c3861d1f368cc58a" translate="yes" xml:space="preserve">
+          <source>Random number generator only generating one random number</source>
+          <target state="translated">随机数发生器只产生一个随机数</target>
+        </trans-unit>
+        <trans-unit id="1abccb7b9a9594277dd9dea4b2764336885cbde6" translate="yes" xml:space="preserve">
+          <source>So you can call:</source>
+          <target state="translated">所以你可以打电话。</target>
+        </trans-unit>
+        <trans-unit id="c1f116a542144543cfd4c1ad2f1419276c6ad1a4" translate="yes" xml:space="preserve">
+          <source>Synchronize so that we don't access it at the same time from different threads</source>
+          <target state="translated">同步,这样我们就不会在同一时间从不同的线程访问它了</target>
+        </trans-unit>
+        <trans-unit id="14d4808d6267a01d9bb38132900a90ca7a75c642" translate="yes" xml:space="preserve">
+          <source>System.Security.Cryptography.RNGCryptoServiceProvider</source>
+          <target state="translated">System.Security.Cryptography.RNGCryptoServiceProvider</target>
+        </trans-unit>
+        <trans-unit id="52c8db0f9121292ccb0a64a7a7d58d6903465bee" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;lock&lt;/code&gt; achieves the first (and simpler) of these approaches; however, another approach might be:</source>
+          <target state="translated">&lt;code&gt;lock&lt;/code&gt; 实现了这些方法中的第一个（并且更简单）。 但是，另一种方法可能是：</target>
+        </trans-unit>
+        <trans-unit id="95d59715ee962deed722b5e2be5a7098005bd63c" translate="yes" xml:space="preserve">
+          <source>The unnecessary object creation is going to make it slower especially under a loop.</source>
+          <target state="translated">无谓的对象创建会让它的速度变慢,尤其是在循环之下。</target>
+        </trans-unit>
+        <trans-unit id="fe1a0536d60dc84767d2fa47e48fbf67d3f9007f" translate="yes" xml:space="preserve">
+          <source>There are a lot of solutions, here one: if you want only number erase the letters and the method receives a random and the result length.</source>
+          <target state="translated">解决办法有很多,这里有一个:如果你想只用数字擦除字母,方法接收到的是随机和结果长度。</target>
+        </trans-unit>
+        <trans-unit id="861a0e430ffac5e4ae6e11b7a947f2c32d388cf4" translate="yes" xml:space="preserve">
+          <source>Usage:</source>
+          <target state="translated">Usage:</target>
+        </trans-unit>
+        <trans-unit id="28aa344daf73822a6d7905baf5322ae3974f6e54" translate="yes" xml:space="preserve">
+          <source>Use different &lt;code&gt;Random&lt;/code&gt; instances per thread</source>
+          <target state="translated">每个线程使用不同的 &lt;code&gt;Random&lt;/code&gt; 实例</target>
+        </trans-unit>
+        <trans-unit id="65635588fd87538680a9895c3c69adfa27733f06" translate="yes" xml:space="preserve">
+          <source>We can get around the need for synchronization by using the thread-specific storage pattern:</source>
+          <target state="translated">我们可以通过使用特定线程的存储模式来绕过同步的需求。</target>
+        </trans-unit>
+        <trans-unit id="e1975024bdca5200036c0551672ee84de0ab2fa4" translate="yes" xml:space="preserve">
+          <source>Why does that happen?</source>
+          <target state="translated">为什么会出现这种情况?</target>
+        </trans-unit>
+        <trans-unit id="6fca0b3aa6c3546fbf1c0d3bac45eb9be08fa6d6" translate="yes" xml:space="preserve">
+          <source>You can use then use static random instance with code such as</source>
+          <target state="translated">你可以使用静态随机实例,然后使用静态随机实例与代码,如</target>
+        </trans-unit>
+        <trans-unit id="dffb6c35930116ef407c2c8344bb41caaf589d18" translate="yes" xml:space="preserve">
+          <source>You get different random number sequence, if a hacker guesses the seed and your algorithm is related to the security of your system - your algorithm is broken. I you execute mult. In this constructor the seed is specified by the system clock and if several instances are created in a very short period of time (milliseconds) it is possible that they may have the same seed.</source>
+          <target state="translated">你得到不同的随机数序列,如果黑客猜到了种子,你的算法与你的系统安全有关--你的算法就坏了。我你执行mult.在这个构造函数中,种子是由系统时钟指定的,如果在很短的时间内(毫秒)创建了几个实例,那么它们有可能会有相同的种子。</target>
+        </trans-unit>
+        <trans-unit id="33bba3d019e29cf97612c5dd97ca157cbe5b5be9" translate="yes" xml:space="preserve">
+          <source>all throughout.</source>
+          <target state="translated">贯穿始终。</target>
+        </trans-unit>
+        <trans-unit id="d11e620e252ce2d1a794942e391977743f703ad0" translate="yes" xml:space="preserve">
+          <source>if you want to get different random number each time from your list then use</source>
+          <target state="translated">如果你想每次从你的列表中得到不同的随机数,那就使用</target>
+        </trans-unit>
+        <trans-unit id="4081ba82df8b4cdc1ee838fbb899c4972dc2b05f" translate="yes" xml:space="preserve">
+          <source>just declare the Random class variable like this:</source>
+          <target state="translated">只需像这样声明Random类变量。</target>
+        </trans-unit>
+        <trans-unit id="33347abd47c2c65cccbef23156a5acdbb9a9883f" translate="yes" xml:space="preserve">
+          <source>this is then per-thread, so you don't need to synchronize.</source>
+          <target state="translated">然后是按线程,所以你不需要同步。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/237104">
+    <body>
+      <group id="237104">
+        <trans-unit id="fa1fddf27a8bbd3e6a51595070fec2ffdda0cba8" translate="yes" xml:space="preserve">
+          <source>$.inArray works fine for determining whether a &lt;em&gt;scalar&lt;/em&gt; value exists in an array of scalars...</source>
+          <target state="translated">$ .inArray는 &lt;em&gt;스칼라&lt;/em&gt; 배열에 스칼라 값이 있는지 여부를 결정하는 데 효과적입니다 ...</target>
+        </trans-unit>
+        <trans-unit id="e979338f8a2f2e59abc9249af3190ebc03ad8b13" translate="yes" xml:space="preserve">
+          <source>(Unfortunately, while you can create an Array.prototype.contains to &quot;freeze&quot; an array and store a hashtable in this._cache in two lines, this would give wrong results if you chose to edit your array later. JavaScript has insufficient hooks to let you keep this state, unlike Python for example.)</source>
+          <target state="translated">불행히도 Array.prototype.contains를 만들어 배열을 &quot;고정&quot;하고 해시 테이블을 this._cache에 두 줄로 저장할 수는 있지만 나중에 배열을 편집하도록 선택하면 잘못된 결과가 나타납니다. 예를 들어 파이썬과 달리이 상태를 유지하십시오.)</target>
+        </trans-unit>
+        <trans-unit id="666a1d7cd2502c4f03da17df37ee0d8e05fc9ce7" translate="yes" xml:space="preserve">
+          <source>* As jamess pointed out in the comment, at the time of this answer, September 2018, &lt;code&gt;Array.prototype.some()&lt;/code&gt; is fully supported: &lt;a href=&quot;http://kangax.github.io/compat-table/es5/#test-Array_methods_Array.prototype.some_a_href=_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some_title=_MDN_documentation_img_src=_../mdn.png_alt=_MDN_(Mozilla_Development_Network)_logo_width=_15_height=_13_/_/a_nbsp;&quot;&gt;caniuse.com support table&lt;/a&gt;</source>
+          <target state="translated">* 제임스가 의견에서 지적 했듯이이 답변 당시 2018 년 9 월 &lt;code&gt;Array.prototype.some()&lt;/code&gt; 은 완전히 지원됩니다 : &lt;a href=&quot;http://kangax.github.io/compat-table/es5/#test-Array_methods_Array.prototype.some_a_href=_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some_title=_MDN_documentation_img_src=_../mdn.png_alt=_MDN_(Mozilla_Development_Network)_logo_width=_15_height=_13_/_/a_nbsp;&quot;&gt;caniuse.com 지원 표&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="ff01b541f233e095936ed95fd600d53d0d50e8cd" translate="yes" xml:space="preserve">
+          <source>... but the question clearly asks for an efficient way to determine if an &lt;em&gt;object&lt;/em&gt; is contained in an array.</source>
+          <target state="translated">...하지만 질문은 분명히 &lt;em&gt;객체&lt;/em&gt; 가 배열에 포함되어 있는지 확인하는 효율적인 방법을 요구합니다.</target>
+        </trans-unit>
+        <trans-unit id="82ba87f801a9d4855c22108ef67433ef0a8af8b2" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some&quot;&gt;Array.prototype.some()&lt;/a&gt; was added to the ECMA-262 standard in the 5th edition</source>
+          <target state="translated">&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some&quot;&gt;Array.prototype.some ()&lt;/a&gt; 이 제 5 판 ECMA-262 표준에 추가되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="b1af03410872d22aa090478ca85044102ca7e787" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/indexOf&quot;&gt;&lt;code&gt;indexOf&lt;/code&gt;&lt;/a&gt; maybe, but it's a &quot;JavaScript extension to the ECMA-262 standard; as such it may not be present in other implementations of the standard.&quot;</source>
+          <target state="translated">&lt;a href=&quot;https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/indexOf&quot;&gt; &lt;code&gt;indexOf&lt;/code&gt; &lt;/a&gt; 일 수도 있지만 &quot;ECMA-262 표준에 대한 JavaScript 확장이므로 다른 표준 구현에는 없을 수 있습니다.&quot;</target>
+        </trans-unit>
+        <trans-unit id="bffcb9f337378974e8b34966a149dbbb68e52188" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Array.indexOf&lt;/code&gt; and &lt;code&gt;Array.includes&lt;/code&gt; (as well as most of the answers here) only compare by reference and not by value.</source>
+          <target state="translated">&lt;code&gt;Array.indexOf&lt;/code&gt; 및 &lt;code&gt;Array.includes&lt;/code&gt; (대부분의 대답은 물론)는 값이 아닌 참조로만 비교합니다.</target>
+        </trans-unit>
+        <trans-unit id="0c67478f11e2e78d248d12730af40590e49d8d53" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Requirements:&lt;/em&gt; Recommend most concise and efficient way to find out if a JavaScript array contains an object.</source>
+          <target state="translated">&lt;em&gt;요구 사항 :&lt;/em&gt; JavaScript 배열에 객체가 포함되어 있는지 확인하는 가장 간결하고 효율적인 방법을 권장합니다.</target>
+        </trans-unit>
+        <trans-unit id="3328e402eaab9fa9ffa2904507ac1e15deedaa9a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;A hopefully faster bidirectional &lt;code&gt;indexOf&lt;/code&gt; / &lt;code&gt;lastIndexOf&lt;/code&gt; alternative&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;희망적으로 더 빠른 양방향 &lt;code&gt;indexOf&lt;/code&gt; / &lt;code&gt;lastIndexOf&lt;/code&gt; 대안&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="8d78a67732f4c0a40bd987aec69c5f5c06ced172" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Accepted Answer:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;허용 된 답변 :&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2dca58c8f007a19a8c485db3191ee67d50e382e1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Array big - 1.000.000 elements&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;큰 배열-1.000.000 요소&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="bcb9db629c9a0558ab47a317e2d8b485d0969128" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Array small - 10 elements&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;작은 배열-10 개 요소&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2550bdae36c113e4a47d24b4ea74558c357b9dd0" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Bidirectional indexOf/lastIndexOf&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;양방향 indexOf / lastIndexOf&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="0dca676a8af0cab5dcd796ab1ed5917f8c1ae0c9" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;My recommendation:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;내 추천 :&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="da2dcdbcfc4b0fe47450de9fb9a98320068c3e91" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Update from 2019: This answer is from 2008 (11 years old!) and is not relevant for modern JS usage. The promised performance improvement was based on a benchmark done in browsers of that time. It might not be relevant to modern JS execution contexts. If you need an easy solution, look for other answers. If you need the best performance, benchmark for yourself in the relevant execution environments.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;2019 년 업데이트 :이 답변은 2008 년 (11 세)부터이며 최신 JS 사용과 관련이 없습니다.&lt;/strong&gt; &lt;strong&gt;약속 된 성능 향상은 당시의 브라우저에서 수행 된 벤치 마크를 기반으로했습니다.&lt;/strong&gt; &lt;strong&gt;최신 JS 실행 컨텍스트와 관련이 없을 수 있습니다.&lt;/strong&gt; &lt;strong&gt;쉬운 해결책이 필요하면 다른 답변을 찾으십시오.&lt;/strong&gt; &lt;strong&gt;최상의 성능이 필요한 경우 관련 실행 환경에서 벤치마킹하십시오.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="9188873b53a0860b8d45c86992acf0ce33ebbec3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Usage:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Usage:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3dd7f728110b6212e76f1f99084dfc27e75be15a" translate="yes" xml:space="preserve">
+          <source>A performant way has already been found, looking at the top answers. From those I chose the &lt;code&gt;contains&lt;/code&gt; function posted by @Damir Zekic which should be the fastest one. But it also states that the benchmarks are from 2008 and so are outdated.</source>
+          <target state="translated">가장 좋은 답변을 보면서 수행 가능한 방법이 이미 발견되었습니다. 내가 선택한 것 중에서 @Damir Zekic이 게시 한 &lt;code&gt;contains&lt;/code&gt; 함수가 가장 빠릅니다. 그러나 벤치 마크는 2008 년부터 시작되었으며 구식이기도합니다.</target>
+        </trans-unit>
+        <trans-unit id="3fea7bc0c9c385deaf9e732da8ef43205ce4079c" translate="yes" xml:space="preserve">
+          <source>AFAICS &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/k4h76zbx%5C%28VS.85%5C%29.aspx&quot;&gt;Microsoft does &lt;em&gt;not&lt;/em&gt; offer some kind of alternative&lt;/a&gt; to this, but you can add similar functionality to arrays in Internet Explorer (and other browsers that don't support &lt;code&gt;indexOf&lt;/code&gt;) if you want to, as a &lt;a href=&quot;http://google.com/search?q=indexof%20internet%20explorer&quot;&gt;quick Google search reveals&lt;/a&gt; (for example, &lt;a href=&quot;http://soledadpenades.com/2007/05/17/arrayindexof-in-internet-explorer/&quot;&gt;this one&lt;/a&gt;).</source>
+          <target state="translated">AFAICS &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/k4h76zbx%5C%28VS.85%5C%29.aspx&quot;&gt;Microsoft는 &lt;em&gt;이에 대한&lt;/em&gt; 몇 가지 대안&lt;/a&gt; 을 제공하지 &lt;em&gt;않지만&lt;/em&gt; 원하는 경우 Internet Explorer (및 &lt;code&gt;indexOf&lt;/code&gt; 를 지원하지 않는 다른 브라우저)의 배열에 유사한 기능을 추가 할 수 있습니다 (예 : &lt;a href=&quot;http://soledadpenades.com/2007/05/17/arrayindexof-in-internet-explorer/&quot;&gt;하나&lt;/a&gt; ).</target>
+        </trans-unit>
+        <trans-unit id="2e1a21db865a12dc215cd0757653828363ce0b37" translate="yes" xml:space="preserve">
+          <source>Also see &lt;a href=&quot;http://github.com/sstephenson/prototype/blob/f405b2c510e09b55d08c926a9e1a5c2e2d0a1834/src/lang/array.js#L364-365&quot;&gt;here&lt;/a&gt; for how they hook it up.</source>
+          <target state="translated">그들이 어떻게 연결하는지 &lt;a href=&quot;http://github.com/sstephenson/prototype/blob/f405b2c510e09b55d08c926a9e1a5c2e2d0a1834/src/lang/array.js#L364-365&quot;&gt;여기&lt;/a&gt; 를 참조 하십시오 .</target>
+        </trans-unit>
+        <trans-unit id="ef2cd47054f7c2e7287dcdcf3389cdb38c008c53" translate="yes" xml:space="preserve">
+          <source>Also unlike &lt;code&gt;indexOf&lt;/code&gt;, &lt;code&gt;includes&lt;/code&gt; does not skip missing indices:</source>
+          <target state="translated">또한 &lt;code&gt;indexOf&lt;/code&gt; 와 달리 &lt;code&gt;includes&lt;/code&gt; 는 누락 된 인덱스를 건너 뛰지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="fe1263bbb735fe48bd1e929be3a7542be2dfbbe3" translate="yes" xml:space="preserve">
+          <source>Also, it fits nicely in an &lt;code&gt;if&lt;/code&gt; statement since it returns a boolean:</source>
+          <target state="translated">또한 부울을 반환하므로 &lt;code&gt;if&lt;/code&gt; 문에 잘 맞습니다.</target>
+        </trans-unit>
+        <trans-unit id="fd49cf48d65e8591372b9ab2e58ef2862979ec3c" translate="yes" xml:space="preserve">
+          <source>And here is the &lt;code&gt;while&lt;/code&gt; variant:</source>
+          <target state="translated">그리고 여기 &lt;code&gt;while&lt;/code&gt; 변형이 있습니다 :</target>
+        </trans-unit>
+        <trans-unit id="e9e912c3f4aaddf36a551e9a19f1b31785ce824c" translate="yes" xml:space="preserve">
+          <source>And now you can simply use the following:</source>
+          <target state="translated">이제 다음을 간단히 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="28746dfd1b61ed6d0a8ada4c2b2b65c189a03dc0" translate="yes" xml:space="preserve">
+          <source>Array.prototype.&lt;strong&gt;find&lt;/strong&gt; -&amp;gt; (takes callback, returns first &lt;strong&gt;value/object&lt;/strong&gt; that returns true in CB).</source>
+          <target state="translated">Array.prototype. &lt;strong&gt;find-&lt;/strong&gt; &amp;gt; (콜백을 수행하고 CB에서 true를 리턴하는 첫 번째 &lt;strong&gt;값 / 객체&lt;/strong&gt; 를 리턴 함)</target>
+        </trans-unit>
+        <trans-unit id="2a2ae4f8c0c85f5dda2d7c7b158b42785c2c9b38" translate="yes" xml:space="preserve">
+          <source>Array.prototype.&lt;strong&gt;findIndex&lt;/strong&gt; -&amp;gt; (takes callback, returns &lt;strong&gt;index&lt;/strong&gt; of first value/object that returns true in CB).</source>
+          <target state="translated">Array.prototype. &lt;strong&gt;findIndex-&lt;/strong&gt; &amp;gt; (콜백을 수행하고 CB에서 true를 리턴하는 첫 번째 값 / 객체의 &lt;strong&gt;색인&lt;/strong&gt; 을 리턴 함)</target>
+        </trans-unit>
+        <trans-unit id="13774ea8043b54624cbe8f2322d27cbd49c3f695" translate="yes" xml:space="preserve">
+          <source>Array.prototype.&lt;strong&gt;includes&lt;/strong&gt; -&amp;gt; (returns &lt;strong&gt;true&lt;/strong&gt; or &lt;strong&gt;false&lt;/strong&gt;)</source>
+          <target state="translated">Array.prototype. &lt;strong&gt;포함&lt;/strong&gt; -&amp;gt; ( &lt;strong&gt;true&lt;/strong&gt; 또는 &lt;strong&gt;false&lt;/strong&gt; 반환)</target>
+        </trans-unit>
+        <trans-unit id="159144824cccf4c9146f260d2d0aec916594f068" translate="yes" xml:space="preserve">
+          <source>Array.prototype.&lt;strong&gt;indexOf&lt;/strong&gt; -&amp;gt; (returns &lt;strong&gt;index or -1&lt;/strong&gt;) is generally used for finding index of element in array.
+This can also be used for searching object but only works if you are passing reference to same object.</source>
+          <target state="translated">Array.prototype. &lt;strong&gt;indexOf-&lt;/strong&gt; &amp;gt; ( &lt;strong&gt;index 또는 -1&lt;/strong&gt; 반환)는 일반적으로 배열에서 요소의 인덱스를 찾는 데 사용됩니다. 객체 검색에도 사용할 수 있지만 동일한 객체에 대한 참조를 전달하는 경우에만 작동합니다.</target>
+        </trans-unit>
+        <trans-unit id="ee6d18b2067d77f05479b33415bea0665938366f" translate="yes" xml:space="preserve">
+          <source>As custom Array method (pre ES2016)</source>
+          <target state="translated">사용자 정의 배열 방법으로 (ES2016 이전)</target>
+        </trans-unit>
+        <trans-unit id="820471fc96bdf044cac7a71fa7e5925072bd7715" translate="yes" xml:space="preserve">
+          <source>As others have said, the iteration through the array is probably the best way, but it &lt;a href=&quot;http://blogs.oracle.com/greimer/entry/best_way_to_code_a&quot;&gt;has been proven&lt;/a&gt; that a decreasing &lt;code&gt;while&lt;/code&gt; loop is the fastest way to iterate in JavaScript. So you may want to rewrite your code as follows:</source>
+          <target state="translated">다른 사람들이 말했듯이 배열을 반복하는 것이 가장 좋은 방법 일 수 있지만 JavaScript에서 반복 루프를 줄이는 것이 가장 빠른 방법이라는 &lt;a href=&quot;http://blogs.oracle.com/greimer/entry/best_way_to_code_a&quot;&gt;것이 입증되었습니다&lt;/a&gt; . 따라서 다음과 같이 코드를 다시 작성하십시오.</target>
+        </trans-unit>
+        <trans-unit id="a183a9029e6053aa206bd8f78fb63e1bcdddaac1" translate="yes" xml:space="preserve">
+          <source>As test I created an array with 100k entries.</source>
+          <target state="translated">테스트로 100k 항목으로 배열을 만들었습니다.</target>
+        </trans-unit>
+        <trans-unit id="9d7e7c087b4bd3ac73364918b2ee9cb9c1799676" translate="yes" xml:space="preserve">
+          <source>Below are three ways of checking whether there is a &lt;code&gt;3&lt;/code&gt; in there. All of them return either &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt;.</source>
+          <target state="translated">아래에 3이 있는지 확인하는 세 가지 방법이 있습니다. 모두 &lt;code&gt;true&lt;/code&gt; 또는 &lt;code&gt;false&lt;/code&gt; 를 반환합니다.</target>
+        </trans-unit>
+        <trans-unit id="4d963cfab70d8c850b1221649bcc7b4d96d558d3" translate="yes" xml:space="preserve">
+          <source>Bonus</source>
+          <target state="translated">Bonus</target>
+        </trans-unit>
+        <trans-unit id="00d426145cd70803b163fe1889541e0436672a9b" translate="yes" xml:space="preserve">
+          <source>Currently it's still a draft but can be &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Polyfill&quot;&gt;polyfilled&lt;/a&gt; to make it work on all browsers.</source>
+          <target state="translated">현재 초안이지만 모든 브라우저에서 작동하도록 &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Polyfill&quot;&gt;폴리 필&lt;/a&gt; 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="e52c854d5631eec7468ba4727b4c77eb745f2965" translate="yes" xml:space="preserve">
+          <source>Demo</source>
+          <target state="translated">Demo</target>
+        </trans-unit>
+        <trans-unit id="83d36288b5c8873730d74ec2bee7f0a6e4883b2f" translate="yes" xml:space="preserve">
+          <source>Demo:</source>
+          <target state="translated">Demo:</target>
+        </trans-unit>
+        <trans-unit id="dc3decbb93847518f1a049dcf49d0d7c6560bcc6" translate="yes" xml:space="preserve">
+          <source>Details</source>
+          <target state="translated">Details</target>
+        </trans-unit>
+        <trans-unit id="b75e71a9c0a73c636523fc12a59e51c67115ee2c" translate="yes" xml:space="preserve">
+          <source>Dojo Toolkit: &lt;a href=&quot;http://dojotoolkit.org/reference-guide/dojo/indexOf.html&quot;&gt;&lt;code&gt;dojo.indexOf(array, value, [fromIndex, findLast])&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">Dojo 툴킷 : &lt;a href=&quot;http://dojotoolkit.org/reference-guide/dojo/indexOf.html&quot;&gt; &lt;code&gt;dojo.indexOf(array, value, [fromIndex, findLast])&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="d7eb5e66ccf7ff4b0c3e12f9b838e3c060dbe7ab" translate="yes" xml:space="preserve">
+          <source>ECMAScript 6 has an elegant proposal on find.</source>
+          <target state="translated">ECMAScript 6에는 찾기에 대한 훌륭한 제안이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="b288b702748358f62fc1dabe0b0e9ae73618544c" translate="yes" xml:space="preserve">
+          <source>ECMAScript 7 introduces &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes&quot;&gt;&lt;code&gt;Array.prototype.includes&lt;/code&gt;&lt;/a&gt;.</source>
+          <target state="translated">ECMAScript 7에는 &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes&quot;&gt; &lt;code&gt;Array.prototype.includes&lt;/code&gt; 가&lt;/a&gt; 도입되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="c63737abd7347a7ae582cb9fbdf37d6c0e5b251e" translate="yes" xml:space="preserve">
+          <source>Example:</source>
+          <target state="translated">Example:</target>
+        </trans-unit>
+        <trans-unit id="49c2bd6aa6f23d62660e81e7508644de0747ce48" translate="yes" xml:space="preserve">
+          <source>Expand snippet</source>
+          <target state="translated">스 니펫 확장</target>
+        </trans-unit>
+        <trans-unit id="ac15517e284529ed9d77b5e4ab5790a55e8af0bf" translate="yes" xml:space="preserve">
+          <source>Ext: &lt;a href=&quot;http://docs.sencha.com/extjs/4.0.0/#/api/Ext.Array-method-contains&quot;&gt;&lt;code&gt;Ext.Array.contains(array, value)&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">Ext : &lt;a href=&quot;http://docs.sencha.com/extjs/4.0.0/#/api/Ext.Array-method-contains&quot;&gt; &lt;code&gt;Ext.Array.contains(array, value)&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="eb68107e5febdf35eea1d01bad4984345866f1fd" translate="yes" xml:space="preserve">
+          <source>Extending the JavaScript &lt;code&gt;Array&lt;/code&gt; object is a really bad idea because you introduce new properties (your custom methods) into &lt;code&gt;for-in&lt;/code&gt; loops which can break existing scripts. A few years ago the authors of the &lt;a href=&quot;http://en.wikipedia.org/wiki/Prototype_JavaScript_Framework&quot;&gt;Prototype&lt;/a&gt; library had to re-engineer their library implementation to remove just this kind of thing.</source>
+          <target state="translated">JavaScript &lt;code&gt;Array&lt;/code&gt; 객체를 확장하는 것은 기존 스크립트를 손상시킬 수있는 &lt;code&gt;for-in&lt;/code&gt; 루프에 새로운 속성 (사용자 정의 메서드)을 도입하기 때문에 정말 좋지 않습니다. 몇 년 전 &lt;a href=&quot;http://en.wikipedia.org/wiki/Prototype_JavaScript_Framework&quot;&gt;프로토 타입&lt;/a&gt; 라이브러리의 저자는 이런 종류의 것을 제거하기 위해 라이브러리 구현을 리엔지니어링해야했습니다.</target>
+        </trans-unit>
+        <trans-unit id="f5ec22899f4427f21921edbbd5e8fb8dcb009ec9" translate="yes" xml:space="preserve">
+          <source>Here is a complex example doing three checks per iteration, but this is only possible with a longer calculation which causes the slowdown of the code.</source>
+          <target state="translated">반복 당 세 번의 검사를 수행하는 복잡한 예는 다음과 같지만 계산이 길면 코드 속도가 느려지는 경우에만 가능합니다.</target>
+        </trans-unit>
+        <trans-unit id="32a46c0daf7a31dffc5357242054af1019b73d24" translate="yes" xml:space="preserve">
+          <source>Here is the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find&quot;&gt;MDN documentation&lt;/a&gt; on that.</source>
+          <target state="translated">여기에 &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find&quot;&gt;MDN 문서&lt;/a&gt; 가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="f73591287f9a256c22a935074fa54f1b4edc5742" translate="yes" xml:space="preserve">
+          <source>Here's a &lt;a href=&quot;https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/indexOf&quot;&gt;JavaScript 1.6 compatible&lt;/a&gt; implementation of &lt;code&gt;Array.indexOf&lt;/code&gt;:</source>
+          <target state="translated">&lt;code&gt;Array.indexOf&lt;/code&gt; 의 &lt;a href=&quot;https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/indexOf&quot;&gt;JavaScript 1.6 호환&lt;/a&gt; 구현은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="73ddb6b3efa49acc39d3b80f97da9706b3ea2e7a" translate="yes" xml:space="preserve">
+          <source>Here's how &lt;a href=&quot;http://github.com/sstephenson/prototype/blob/f405b2c510e09b55d08c926a9e1a5c2e2d0a1834/src/lang/array.js#L286-302&quot;&gt;Prototype does it&lt;/a&gt;:</source>
+          <target state="translated">&lt;a href=&quot;http://github.com/sstephenson/prototype/blob/f405b2c510e09b55d08c926a9e1a5c2e2d0a1834/src/lang/array.js#L286-302&quot;&gt;프로토 타입이 수행&lt;/a&gt; 하는 방법 은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="20ae8e0c00b1fa1a1071d47bdb057532c38b84b1" translate="yes" xml:space="preserve">
+          <source>How do I check if an array includes a value in JavaScript</source>
+          <target state="translated">배열에 JavaScript의 값이 포함되어 있는지 확인하는 방법</target>
+        </trans-unit>
+        <trans-unit id="2494e96cd66323400e7154384c7f185dc839ebd1" translate="yes" xml:space="preserve">
+          <source>How is this possible?</source>
+          <target state="translated">이것이 어떻게 가능한지?</target>
+        </trans-unit>
+        <trans-unit id="c99fe5750c3181f3859af356a418988a87310708" translate="yes" xml:space="preserve">
+          <source>I also prefer &lt;code&gt;while&lt;/code&gt; over &lt;code&gt;for&lt;/code&gt;, but for not a specific reason I ended writing the function with a for loop. It could be also done with a &lt;code&gt;while --&lt;/code&gt;.</source>
+          <target state="translated">또한 &lt;code&gt;for&lt;/code&gt; &lt;code&gt;while&lt;/code&gt; 오버 를 선호하지만 특별한 이유로 for 루프를 사용하여 함수 작성을 종료했습니다. 또한 &lt;code&gt;while --&lt;/code&gt; 수행 할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="4e7f926e0198c33afed235e77fff45b62d69efaf" translate="yes" xml:space="preserve">
+          <source>I also run test for big array when searched element was on position 66% of array length, and solutions based on &lt;code&gt;for&lt;/code&gt; (C,D,E) gives similar results (~630 ops/sec - but the E on safari and firefox was 10-20% slower than C and D)</source>
+          <target state="translated">또한 검색 된 요소가 배열 길이의 66 % 위치에있을 때 큰 배열에 대한 테스트를 실행 &lt;code&gt;for&lt;/code&gt; (C, D, E) 기반 솔루션은 비슷한 결과를 제공합니다 (~ 630 ops / sec-사파리 및 파이어 폭스의 E는 10 C 및 D보다 -20 % 느림)</target>
+        </trans-unit>
+        <trans-unit id="84464b4ca7dfa8c6d4801774a3135af233b2ebac" translate="yes" xml:space="preserve">
+          <source>I hope you also find this interesting and test the performance.</source>
+          <target state="translated">나는 당신이 이것도 흥미롭고 성능을 테스트하기를 바랍니다.</target>
+        </trans-unit>
+        <trans-unit id="9dcc9d0305378204bf3ede8b2618fed0eb90649c" translate="yes" xml:space="preserve">
+          <source>I perform 2 tests cases: for array with 10 elements, and array with 1 milion elements. In both cases we put searched element in the array middle.</source>
+          <target state="translated">10 가지 요소가있는 배열과 1 개의 요소가있는 배열의 경우 두 가지 테스트 사례를 수행합니다. 두 경우 모두 검색된 요소를 배열 중간에 넣습니다.</target>
+        </trans-unit>
+        <trans-unit id="0b8a1c5b70eefb3d48daa75b54a499297c28805a" translate="yes" xml:space="preserve">
+          <source>I think that the simple calculation to get the reflected index in an array is so simple that it's two times faster than doing an actual loop iteration.</source>
+          <target state="translated">배열에서 반사 된 인덱스를 얻는 간단한 계산은 너무 간단하여 실제 루프 반복을 수행하는 것보다 두 배 빠릅니다.</target>
+        </trans-unit>
+        <trans-unit id="c9fe622e69b560ae352d96f8ff0fcf61e9c7bed2" translate="yes" xml:space="preserve">
+          <source>I use the following:</source>
+          <target state="translated">나는 다음을 사용한다 :</target>
+        </trans-unit>
+        <trans-unit id="28e4ffc52f1e8141f4b7d43d5c75f149bcd5dfc8" translate="yes" xml:space="preserve">
+          <source>I was curious if the iteration was much slower if I check both sides of the array while doing it. Apparently no, and so this function is around two times faster than the top voted ones. Obviously it's also faster than the native one. This in a real world environment, where you never know if the value you are searching is at the beginning or at the end of the array.</source>
+          <target state="translated">배열을 수행하는 동안 배열의 양쪽을 확인하면 반복이 훨씬 느리면 궁금합니다. 분명히 아니요. 따라서이 기능은 가장 많이 뽑힌 투표보다 2 배 정도 빠릅니다. 분명히 그것은 또한 네이티브보다 빠릅니다. 실제 환경에서 검색하는 값이 배열의 시작 또는 끝에 있는지 알 수없는 환경입니다.</target>
+        </trans-unit>
+        <trans-unit id="b9f22fd83bdf3e491fb6e80ec269fbb800d6ee83" translate="yes" xml:space="preserve">
+          <source>IE6+ solution:</source>
+          <target state="translated">IE6 + 솔루션 :</target>
+        </trans-unit>
+        <trans-unit id="e2c5590817181cc7e7c8909b5f1ca3dd5150eaf6" translate="yes" xml:space="preserve">
+          <source>If you are checking repeatedly for existence of an object in an array you should maybe look into</source>
+          <target state="translated">배열에 객체가 있는지 반복적으로 확인하는 경우 조사해야 할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="625b41de336989cef496844e1118db8209392193" translate="yes" xml:space="preserve">
+          <source>If you are using JavaScript 1.6 or later (Firefox 1.5 or later) you can use &lt;a href=&quot;https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/indexOf&quot;&gt;Array.indexOf&lt;/a&gt;.  Otherwise, I think you are going to end up with something similar to your original code.</source>
+          <target state="translated">JavaScript 1.6 이상 (Firefox 1.5 이상)을 사용하는 경우 &lt;a href=&quot;https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/indexOf&quot;&gt;Array.indexOf&lt;/a&gt; 를 사용할 수 있습니다. 그렇지 않으면 원래 코드와 비슷한 것으로 끝날 것이라고 생각합니다.</target>
+        </trans-unit>
+        <trans-unit id="3ee6e017af8f89d3d12e3d78389bb4add3cf2317" translate="yes" xml:space="preserve">
+          <source>If you don't need to worry about compatibility with other JavaScript running on your page, go for it, otherwise, I'd recommend the more awkward, but safer free-standing function solution.</source>
+          <target state="translated">페이지에서 실행되는 다른 JavaScript와의 호환성에 대해 걱정할 필요가 없다면 계속하십시오. 그렇지 않으면 더 어색하지만 더 안전한 독립형 기능 솔루션을 사용하는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="2daaa05340a4a5fbf45632f41108223c525f42cf" translate="yes" xml:space="preserve">
+          <source>If you're having array of objects like below,</source>
+          <target state="translated">아래와 같은 객체 배열이 있다면</target>
+        </trans-unit>
+        <trans-unit id="d2da7e5fc690c05c7dd880dab7d51eecaf495e88" translate="yes" xml:space="preserve">
+          <source>In order to handle both scalars and objects, you could do this:</source>
+          <target state="translated">스칼라와 객체를 모두 처리하기 위해 다음을 수행 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="fbb0ba0cb144ea9ec30e8a02f59189cac1e0fd83" translate="yes" xml:space="preserve">
+          <source>Is there a better and more concise way to accomplish this?</source>
+          <target state="translated">이것을 달성하는 더 좋고 간결한 방법이 있습니까?</target>
+        </trans-unit>
+        <trans-unit id="96524039763060c62193d4b3f2e8e0aeb1a9c048" translate="yes" xml:space="preserve">
+          <source>It also accepts an optional second argument &lt;code&gt;fromIndex&lt;/code&gt;:</source>
+          <target state="translated">또한 인덱스에서 선택적 두 번째 인수를 허용합니다.</target>
+        </trans-unit>
+        <trans-unit id="7957cdd685e55b0659e0f881b1501d7538cec20a" translate="yes" xml:space="preserve">
+          <source>It can be used like this:</source>
+          <target state="translated">다음과 같이 사용할 수 있습니다 :</target>
+        </trans-unit>
+        <trans-unit id="dec9bd251fe067dfc0548c5c6f8d543981f5dc35" translate="yes" xml:space="preserve">
+          <source>It's concise, accurate and has great cross platform support.</source>
+          <target state="translated">간결하고 정확하며 뛰어난 크로스 플랫폼 지원을 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="d7b1386bed9cbbf81dba8983bdb2c019db7c6ebc" translate="yes" xml:space="preserve">
+          <source>It's long time that I was thinking of way to replace the slow indexOf/lastIndexOf functions.</source>
+          <target state="translated">느린 indexOf / lastIndexOf 함수를 대체하는 방법을 생각한 지 오래되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="25b2e1835d0c0287f224776b63a40c7d557a0824" translate="yes" xml:space="preserve">
+          <source>Keeping the array sorted at all times by doing &lt;a href=&quot;http://en.wikipedia.org/wiki/Insertion_sort&quot;&gt;insertion sort&lt;/a&gt; in your array (put new objects in on the right place)</source>
+          <target state="translated">배열에서 &lt;a href=&quot;http://en.wikipedia.org/wiki/Insertion_sort&quot;&gt;삽입 정렬&lt;/a&gt; 을 수행하여 배열을 항상 정렬 상태 유지 (새 개체를 올바른 위치에 배치)</target>
+        </trans-unit>
+        <trans-unit id="fc09e2e02a3b9b59afbbd4c12fd5ae7cc7d86edf" translate="yes" xml:space="preserve">
+          <source>Let's say we have array of Objects arrObj and we want to search obj in it.</source>
+          <target state="translated">Objects arrObj 배열이 있고 그 안에서 obj를 찾고 싶다고 가정 해 봅시다.</target>
+        </trans-unit>
+        <trans-unit id="5dcdd6376733383c88fb8505f672ce2c465e3ee7" translate="yes" xml:space="preserve">
+          <source>Let's say you've defined an array like so:</source>
+          <target state="translated">다음과 같이 배열을 정의했다고 가정 해 봅시다.</target>
+        </trans-unit>
+        <trans-unit id="1133d8a8268183b654cc15e962adec1905def045" translate="yes" xml:space="preserve">
+          <source>Lodash: &lt;a href=&quot;https://lodash.com/docs#includes&quot;&gt;&lt;code&gt;_.includes(array, value, [from])&lt;/code&gt;&lt;/a&gt; (is &lt;code&gt;_.contains&lt;/code&gt; prior 4.0.0)</source>
+          <target state="translated">Lodash : &lt;a href=&quot;https://lodash.com/docs#includes&quot;&gt; &lt;code&gt;_.includes(array, value, [from])&lt;/code&gt; &lt;/a&gt; ( &lt;code&gt;_.contains&lt;/code&gt; 은 4.0.0 이전 버전 포함)</target>
+        </trans-unit>
+        <trans-unit id="15ad60cdf54e6bc76cdd4462ba0c40f97badfa2d" translate="yes" xml:space="preserve">
+          <source>MS Ajax: &lt;a href=&quot;http://www.asp.net/ajaxlibrary/Reference.Array-indexOf-Function.ashx&quot;&gt;&lt;code&gt;array.indexOf(value)&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">MS Ajax : &lt;a href=&quot;http://www.asp.net/ajaxlibrary/Reference.Array-indexOf-Function.ashx&quot;&gt; &lt;code&gt;array.indexOf(value)&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="84984b49ae654a77558f7a39ed56f68055a47884" translate="yes" xml:space="preserve">
+          <source>Make updating objects as remove+sorted insert operation and</source>
+          <target state="translated">개체를 제거 + 정렬 된 삽입 작업으로 업데이트하고</target>
+        </trans-unit>
+        <trans-unit id="13f96a3206465a40fdd57b0c45a1c47a96492ce3" translate="yes" xml:space="preserve">
+          <source>Many frameworks also offer similar methods:</source>
+          <target state="translated">많은 프레임 워크에서도 비슷한 방법을 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="34b498db5861179f4d01de30ad382c1c99d173a6" translate="yes" xml:space="preserve">
+          <source>MochiKit: &lt;a href=&quot;http://mochi.github.io/mochikit/doc/html/MochiKit/Base.html#fn-findvalue&quot;&gt;&lt;code&gt;findValue(array, value)&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">MochiKit : &lt;a href=&quot;http://mochi.github.io/mochikit/doc/html/MochiKit/Base.html#fn-findvalue&quot;&gt; &lt;code&gt;findValue(array, value)&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="11bd5cb3c081453f6118ff4b291498d2d7511e0d" translate="yes" xml:space="preserve">
+          <source>Modern browsers have &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Browser_compatibility&quot;&gt;&lt;code&gt;Array#includes&lt;/code&gt;&lt;/a&gt;, which does &lt;em&gt;exactly&lt;/em&gt; that and &lt;a href=&quot;https://kangax.github.io/compat-table/es2016plus/#test-Array.prototype.includes&quot;&gt;is widely supported&lt;/a&gt; by everyone except IE:</source>
+          <target state="translated">최신 브라우저에는 &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Browser_compatibility&quot;&gt; &lt;code&gt;Array#includes&lt;/code&gt; &lt;/a&gt; 가 있습니다. Array # includes 는 &lt;em&gt;정확히 수행&lt;/em&gt; 하며 IE를 제외한 모든 사람 &lt;a href=&quot;https://kangax.github.io/compat-table/es2016plus/#test-Array.prototype.includes&quot;&gt;이 널리 지원&lt;/a&gt; 합니다.</target>
+        </trans-unit>
+        <trans-unit id="ac5f3f86aeba412f6c7300de9ded324b814b2be2" translate="yes" xml:space="preserve">
+          <source>MooTools: &lt;a href=&quot;https://mootools.net/core/docs/1.6.0/Types/Array#Array:indexOf&quot;&gt;&lt;code&gt;array.indexOf(value)&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">MooTools : &lt;a href=&quot;https://mootools.net/core/docs/1.6.0/Types/Array#Array:indexOf&quot;&gt; &lt;code&gt;array.indexOf(value)&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="1f9f5580daea7b8f13b0defea3a5dc9f8652aa84" translate="yes" xml:space="preserve">
+          <source>Native Array method (since ES2016) (&lt;a href=&quot;https://caniuse.com/#feat=array-includes&quot;&gt;compatibility table&lt;/a&gt;)</source>
+          <target state="translated">기본 배열 방법 (ES2016부터) ( &lt;a href=&quot;https://caniuse.com/#feat=array-includes&quot;&gt;호환성 표&lt;/a&gt; )</target>
+        </trans-unit>
+        <trans-unit id="697f83c56e4af8a3d870ae1c1d3850dac14005f4" translate="yes" xml:space="preserve">
+          <source>Non-optimized ES6 one-liner:</source>
+          <target state="translated">최적화되지 않은 ES6 원 라이너 :</target>
+        </trans-unit>
+        <trans-unit id="cf369e9f80a3aee5118b14ec07f5711bfcb6fc0f" translate="yes" xml:space="preserve">
+          <source>Note:
+Comparing objects by value will work better if the keys are in the same order, so to be safe you might sort the keys first with a package like this one: &lt;a href=&quot;https://www.npmjs.com/package/sort-keys&quot;&gt;https://www.npmjs.com/package/sort-keys&lt;/a&gt;</source>
+          <target state="translated">참고 : 키의 순서가 동일한 경우 값을 기준으로 개체를 비교하는 것이 더 좋으므로 다음과 같은 패키지를 사용하여 키를 먼저 정렬 할 수 있습니다. &lt;a href=&quot;https://www.npmjs.com/package/sort-keys&quot;&gt;https://www.npmjs.com/package/sort-keys&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="11415b96e3d11a9e4bc779554b10a502ba013727" translate="yes" xml:space="preserve">
+          <source>Note: As you can see I slightly modified the &lt;code&gt;contains&lt;/code&gt; function to reflect the indexOf &amp;amp; lastIndexOf output (so basically &lt;code&gt;true&lt;/code&gt; with the &lt;code&gt;index&lt;/code&gt; and &lt;code&gt;false&lt;/code&gt; with &lt;code&gt;-1&lt;/code&gt;). That shouldn't harm it.</source>
+          <target state="translated">참고 : 알 수 있듯이 indexOf &amp;amp; lastIndexOf 출력을 반영하기 위해 &lt;code&gt;contains&lt;/code&gt; 함수를 약간 수정했습니다. 그것은 해를 끼치 지 않아야합니다.</target>
+        </trans-unit>
+        <trans-unit id="9c3befe7e22c8667bc957541f49b0ee79970b588" translate="yes" xml:space="preserve">
+          <source>Notes:</source>
+          <target state="translated">Notes:</target>
+        </trans-unit>
+        <trans-unit id="f625fa0058ddfcc2adcd5b53ac3bb76651142210" translate="yes" xml:space="preserve">
+          <source>Notice that some frameworks implement this as a function, while others add the function to the array prototype.</source>
+          <target state="translated">일부 프레임 워크에서는이를 함수로 구현하고 다른 프레임 워크는 함수를 배열 프로토 타입에 추가합니다.</target>
+        </trans-unit>
+        <trans-unit id="40a0fca5b4ff80b27dceac44499b495cb11b44ad" translate="yes" xml:space="preserve">
+          <source>OK, you can just &lt;strong&gt;optimise your&lt;/strong&gt; code to get the result!</source>
+          <target state="translated">좋아, 당신은 결과를 얻기 위해 코드를 &lt;strong&gt;최적화&lt;/strong&gt; 할 수 있습니다!</target>
+        </trans-unit>
+        <trans-unit id="c6004473778dc819accd15d1a64aa218f11402d1" translate="yes" xml:space="preserve">
+          <source>Of course, you may as well extend Array prototype:</source>
+          <target state="translated">물론 Array 프로토 타입을 확장 할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="f479744c024205bcadceb234c72adf9ccab6115d" translate="yes" xml:space="preserve">
+          <source>One can use &lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set&quot;&gt;Set&lt;/a&gt; that has the method &quot;has()&quot;:</source>
+          <target state="translated">&quot;has ()&quot;메소드가있는 &lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set&quot;&gt;Set&lt;/a&gt; 을 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="825581b147d158d0a4fcbad34b8422e021ee90b1" translate="yes" xml:space="preserve">
+          <source>One-liner:</source>
+          <target state="translated">One-liner:</target>
+        </trans-unit>
+        <trans-unit id="63c904559993935c470f516c8b549ca7f3640dbb" translate="yes" xml:space="preserve">
+          <source>Performance</source>
+          <target state="translated">Performance</target>
+        </trans-unit>
+        <trans-unit id="68c145e8a882446ce410a8fffbfe92a5b1901acc" translate="yes" xml:space="preserve">
+          <source>Performance test</source>
+          <target state="translated">성능 검사</target>
+        </trans-unit>
+        <trans-unit id="14af93ac2aa339aa659d1348d1120c589b66f432" translate="yes" xml:space="preserve">
+          <source>Prototype: &lt;a href=&quot;http://api.prototypejs.org/language/Array/prototype/indexOf/&quot;&gt;&lt;code&gt;array.indexOf(value)&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">프로토 타입 : &lt;a href=&quot;http://api.prototypejs.org/language/Array/prototype/indexOf/&quot;&gt; &lt;code&gt;array.indexOf(value)&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="b7effb1c9ae5bdca656da5f4d5ba15d3df67f272" translate="yes" xml:space="preserve">
+          <source>Ramda: &lt;a href=&quot;https://ramdajs.com/docs/#includes&quot;&gt;&lt;code&gt;R.includes(value, array)&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">Ramda : &lt;a href=&quot;https://ramdajs.com/docs/#includes&quot;&gt; &lt;code&gt;R.includes(value, array)&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="612e12d29278b5519294bc25cdaddffec6d0f1c6" translate="yes" xml:space="preserve">
+          <source>Results</source>
+          <target state="translated">Results</target>
+        </trans-unit>
+        <trans-unit id="e8323adb0162f1ecb663442b5fcc7ca8dcc10b18" translate="yes" xml:space="preserve">
+          <source>Returns array index if found, or -1 if not found</source>
+          <target state="translated">배열 인덱스가있는 경우, 또는 -1이없는 경우 -1을 반환합니다</target>
+        </trans-unit>
+        <trans-unit id="4bcb4e163bf193fe874c35e7a1a754e4ed2bd51c" translate="yes" xml:space="preserve">
+          <source>Show code snippet</source>
+          <target state="translated">코드 스 니펫 표시</target>
+        </trans-unit>
+        <trans-unit id="cde8d71a70567d48dd01952e68d8fa1e0ed18bca" translate="yes" xml:space="preserve">
+          <source>Simple function</source>
+          <target state="translated">간단한 기능</target>
+        </trans-unit>
+        <trans-unit id="0e9d5dfd8c62d9bd7b04e68e33d6289e0216ca1f" translate="yes" xml:space="preserve">
+          <source>Simple solution for this requirement is using &lt;code&gt;find()&lt;/code&gt;</source>
+          <target state="translated">이 요구 사항에 대한 간단한 해결책은 &lt;code&gt;find()&lt;/code&gt; 사용하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="cba0b4c636764d40e59c45dfcbeaff8fd15c2f2f" translate="yes" xml:space="preserve">
+          <source>Since find and findIndex takes a callback, we can be fetch any object(even if we don't have the reference) from array by creatively setting the true condition.</source>
+          <target state="translated">find와 findIndex는 콜백을 취하기 때문에 참 조건을 창의적으로 설정하여 배열에서 객체를 가져올 수 있습니다 (참조가없는 경우에도).</target>
+        </trans-unit>
+        <trans-unit id="e8120e70e781059a2250649e3a26d1ef79737908" translate="yes" xml:space="preserve">
+          <source>Solution that works in all modern browsers:</source>
+          <target state="translated">모든 최신 브라우저에서 작동하는 솔루션 :</target>
+        </trans-unit>
+        <trans-unit id="c76563a98a925864b596ec5d5c1c427850c1e563" translate="yes" xml:space="preserve">
+          <source>Surprised that this question still doesn't have latest syntax added, adding my 2 cents.</source>
+          <target state="translated">이 질문에 여전히 최신 구문이 추가되지 않아서 2 센트를 추가 한 것에 놀랐습니다.</target>
+        </trans-unit>
+        <trans-unit id="e32c19490d0541d3cf19e6edf0e601f2c55e35c0" translate="yes" xml:space="preserve">
+          <source>The accepted answer does not even meet the requirements.</source>
+          <target state="translated">허용 된 답변은 요구 사항을 충족하지도 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="6e76714ac550731d4df9f2f4c7278a064a84b068" translate="yes" xml:space="preserve">
+          <source>The array prototype variant</source>
+          <target state="translated">배열 프로토 타입 변형</target>
+        </trans-unit>
+        <trans-unit id="fbe496135ed624dc79a7b415841f95f2535966fe" translate="yes" xml:space="preserve">
+          <source>The find functionality works like this.</source>
+          <target state="translated">찾기 기능은 다음과 같이 작동합니다.</target>
+        </trans-unit>
+        <trans-unit id="abb94027a4ec61a730cdc8afd975bf908ce25a48" translate="yes" xml:space="preserve">
+          <source>The find method executes the callback function once for each element
+  present in the array until it finds one where callback returns a true
+  value. If such an element is found, find immediately returns the value
+  of that element. Otherwise, find returns undefined. callback is
+  invoked only for indexes of the array which have assigned values; it
+  is not invoked for indexes which have been deleted or which have never
+  been assigned values.</source>
+          <target state="translated">find 메소드는 콜백이 참 값을 리턴하는 요소를 찾을 때까지 배열에있는 각 요소에 대해 콜백 함수를 한 번 실행합니다. 이러한 요소를 찾으면 find는 해당 요소의 값을 즉시 리턴합니다. 그렇지 않으면 find는 정의되지 않은 리턴을 리턴합니다. 콜백은 값이 할당 된 배열의 인덱스에 대해서만 호출됩니다. 삭제되었거나 값이 할당되지 않은 인덱스에 대해서는 호출되지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="5b756913fa20f5856e97197d8d0fda4fbf36c558" translate="yes" xml:space="preserve">
+          <source>The function can also be easily modified to return true or false or even the object, string or whatever it is.</source>
+          <target state="translated">이 함수는 true 또는 false 또는 객체, 문자열 또는 그 밖의 것을 반환하도록 쉽게 수정할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="42cafc36913e43d0dc7e04557d3be49392edb70e" translate="yes" xml:space="preserve">
+          <source>The nice thing about it is that the iteration is aborted once the element is found so unnecessary iteration cycles are spared.</source>
+          <target state="translated">그것에 대한 좋은 점은 요소가 발견되면 반복이 중단되어 불필요한 반복 사이클이 절약된다는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="c57bb5822f56318aa1093c9fd0bde5d8e450f3af" translate="yes" xml:space="preserve">
+          <source>The top answers assume primitive types but if you want to find out if an array contains an &lt;strong&gt;object&lt;/strong&gt; with some trait, &lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some&quot;&gt;Array.prototype.some()&lt;/a&gt; is a very elegant solution:</source>
+          <target state="translated">상단 답변은 기본 유형을 가정하지만 배열에 특성이있는 &lt;strong&gt;객체&lt;/strong&gt; 가 있는지 확인하려면 &lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some&quot;&gt;Array.prototype.some ()&lt;/a&gt; 은 매우 우아한 솔루션입니다.</target>
+        </trans-unit>
+        <trans-unit id="8745427232de5b90792b54c573542edc52081778" translate="yes" xml:space="preserve">
+          <source>Then you can check whether the object with your value is already present or not</source>
+          <target state="translated">그런 다음 값이있는 객체가 이미 있는지 여부를 확인할 수 있습니다</target>
+        </trans-unit>
+        <trans-unit id="5e5170b7a4ad0e560f4e4f174f48e9a7abcbf1da" translate="yes" xml:space="preserve">
+          <source>Then you can find the index of that object in the array and replace the object using below code.</source>
+          <target state="translated">그런 다음 배열에서 해당 객체의 색인을 찾아 아래 코드를 사용하여 객체를 교체 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="c9fd6f4ab61b50813778042886300ccd0e83bc2c" translate="yes" xml:space="preserve">
+          <source>There are many ways to do this which are cleaner and better, but I just wanted to get your pattern and apply to that using &lt;code&gt;JSON.stringify&lt;/code&gt;, just simply do something like this in your case:</source>
+          <target state="translated">더 깨끗하고 더 나은 방법에는 여러 가지가 있지만 &lt;code&gt;JSON.stringify&lt;/code&gt; 를 사용하여 패턴을 적용하고 적용하고 싶을 때 단순히 다음과 같이하면됩니다.</target>
+        </trans-unit>
+        <trans-unit id="cc16540816c436314b02d39733fbde781a2be92d" translate="yes" xml:space="preserve">
+          <source>Thinking out of the box for a second, if you are making this call many many times, it is vastly more efficient to use &lt;strike&gt;an associative array&lt;/strike&gt; a Map to do lookups using a hash function.</source>
+          <target state="translated">이 콜을 여러 번 수행하는 경우 즉시 사용하면 해시 함수를 사용하여 조회를 수행하기 위해 맵을 &lt;strike&gt;연관 배열&lt;/strike&gt; 로 사용 &lt;strike&gt;하는&lt;/strike&gt; 것이 훨씬 더 효율적입니다.</target>
+        </trans-unit>
+        <trans-unit id="c90ebff9b8cace224a8ac140604be3b76e23637d" translate="yes" xml:space="preserve">
+          <source>This is the only way I know to do it:</source>
+          <target state="translated">이것이 내가 아는 유일한 방법입니다.</target>
+        </trans-unit>
+        <trans-unit id="9fec1e19841ff4041bd895c4395ba1d97e9718e9" translate="yes" xml:space="preserve">
+          <source>This is very closely related to Stack Overflow question &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/143847/best-way-to-find-an-item-in-a-javascript-array&quot;&gt;Best way to find an item in a JavaScript Array?&lt;/a&gt;&lt;/em&gt; which addresses finding objects in an array using &lt;code&gt;indexOf&lt;/code&gt;.</source>
+          <target state="translated">이것은 스택 오버플로 질문과 밀접한 관련이 있습니다 &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/143847/best-way-to-find-an-item-in-a-javascript-array&quot;&gt;. JavaScript 배열에서 항목을 찾는 가장 좋은 방법은 무엇입니까?&lt;/a&gt;&lt;/em&gt; &lt;code&gt;indexOf&lt;/code&gt; 를 사용하여 배열에서 객체 찾기를 처리합니다.</target>
+        </trans-unit>
+        <trans-unit id="2b20c684ba339a0aa8fa186e3bd452c5a2f3f3d9" translate="yes" xml:space="preserve">
+          <source>Three queries: at the beginning, in the middle &amp;amp; at the end of the array.</source>
+          <target state="translated">세 가지 쿼리 : 배열의 시작, 중간 및 끝.</target>
+        </trans-unit>
+        <trans-unit id="5e26c8bf03eec1969b324604b86cbc899b237577" translate="yes" xml:space="preserve">
+          <source>To know exactly what the &lt;code&gt;tilde&lt;/code&gt;&lt;code&gt;~&lt;/code&gt; do at this point, refer to this question &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/12299665/what-does-a-tilde-do-when-it-precedes-an-expression&quot;&gt;What does a tilde do when it precedes an expression?&lt;/a&gt;&lt;/em&gt;.</source>
+          <target state="translated">이 시점에서 &lt;code&gt;tilde&lt;/code&gt; 무엇을하는지 정확히 알기 위해서는이 질문을 참고하십시오 &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/12299665/what-does-a-tilde-do-when-it-precedes-an-expression&quot;&gt;. 물결표가 식 앞에있을 때 어떤 역할을합니까?&lt;/a&gt;&lt;/em&gt; .</target>
+        </trans-unit>
+        <trans-unit id="48cd98f9836826608a5509761b5545dff093468c" translate="yes" xml:space="preserve">
+          <source>Today 2020.01.07 I perform tests on MacOs HighSierra 10.13.6 on Chrome v78.0.0, Safari v13.0.4 and Firefox v71.0.0 for 15 chosen solutions. Conclusions</source>
+          <target state="translated">오늘 2020.01.07 저는 Chrome v78.0.0의 MacOs HighSierra 10.13.6, Safari v13.0.4 및 Firefox v71.0.0에서 15 개의 선택된 솔루션에 대한 테스트를 수행합니다. 결론</target>
+        </trans-unit>
+        <trans-unit id="49294c55abc80cbff078b924b2c630ec220213bf" translate="yes" xml:space="preserve">
+          <source>Underscore.js: &lt;a href=&quot;http://underscorejs.org/#contains&quot;&gt;&lt;code&gt;_.contains(array, value)&lt;/code&gt;&lt;/a&gt; (also aliased as &lt;code&gt;_.include&lt;/code&gt; and &lt;code&gt;_.includes&lt;/code&gt;)</source>
+          <target state="translated">Underscore.js : &lt;a href=&quot;http://underscorejs.org/#contains&quot;&gt; &lt;code&gt;_.contains(array, value)&lt;/code&gt; &lt;/a&gt; ( &lt;code&gt;_.include&lt;/code&gt; 및 &lt;code&gt;_.includes&lt;/code&gt; 라고도 함 )</target>
+        </trans-unit>
+        <trans-unit id="f3d059b896de2ed3d87cd30f8be35c02ffb5fc69" translate="yes" xml:space="preserve">
+          <source>Unlike &lt;code&gt;indexOf&lt;/code&gt;, which uses &lt;a href=&quot;http://www.ecma-international.org/ecma-262/6.0/#sec-strict-equality-comparison&quot;&gt;Strict Equality Comparison&lt;/a&gt;, &lt;code&gt;includes&lt;/code&gt; compares using &lt;a href=&quot;http://www.ecma-international.org/ecma-262/6.0/#sec-samevaluezero&quot;&gt;SameValueZero&lt;/a&gt; equality algorithm. That means that you can detect if an array includes a &lt;code&gt;NaN&lt;/code&gt;:</source>
+          <target state="translated">&lt;a href=&quot;http://www.ecma-international.org/ecma-262/6.0/#sec-strict-equality-comparison&quot;&gt;Strict Equality Comparison&lt;/a&gt; 을 사용하는 &lt;code&gt;indexOf&lt;/code&gt; 와 달리 &lt;a href=&quot;http://www.ecma-international.org/ecma-262/6.0/#sec-samevaluezero&quot;&gt;SameValueZero&lt;/a&gt; 동등 알고리즘을 사용한 비교 가 &lt;code&gt;includes&lt;/code&gt; . 즉, 배열에 &lt;code&gt;NaN&lt;/code&gt; 이 포함되어 있는지 감지 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="28771587e0631fb484f44d7bb44cf48c63b7758f" translate="yes" xml:space="preserve">
+          <source>Updated the &lt;code&gt;contains&lt;/code&gt; function with a perf optimization. Thanks &lt;a href=&quot;https://stackoverflow.com/users/1397160/itinance&quot;&gt;itinance&lt;/a&gt; for pointing it out.</source>
+          <target state="translated">성능 최적화로 &lt;code&gt;contains&lt;/code&gt; 기능을 업데이트했습니다. 지적 해 주셔서 감사합니다.</target>
+        </trans-unit>
+        <trans-unit id="861a0e430ffac5e4ae6e11b7a947f2c32d388cf4" translate="yes" xml:space="preserve">
+          <source>Usage:</source>
+          <target state="translated">Usage:</target>
+        </trans-unit>
+        <trans-unit id="f0228254bb4ff82bb180b380d25a7ac8da7e9b8c" translate="yes" xml:space="preserve">
+          <source>Use a &lt;a href=&quot;http://en.wikipedia.org/wiki/Binary_search_algorithm&quot;&gt;binary search&lt;/a&gt; lookup in your &lt;code&gt;contains(a, obj)&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;contains(a, obj)&lt;/code&gt; 에서 &lt;a href=&quot;http://en.wikipedia.org/wiki/Binary_search_algorithm&quot;&gt;이진 검색&lt;/a&gt; 조회를 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="7db1625c0ecb79fc25336042f3620583672ba039" translate="yes" xml:space="preserve">
+          <source>Use lodash's &lt;a href=&quot;https://lodash.com/docs#some&quot;&gt;some&lt;/a&gt; function.</source>
+          <target state="translated">lodash의 &lt;a href=&quot;https://lodash.com/docs#some&quot;&gt;일부&lt;/a&gt; 기능을 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="bc0e34154d952ed72b15f5d9618112640d548177" translate="yes" xml:space="preserve">
+          <source>Use:</source>
+          <target state="translated">Use:</target>
+        </trans-unit>
+        <trans-unit id="99d49a545e16e15fde40c6d01e8df0374271fbf3" translate="yes" xml:space="preserve">
+          <source>We use this snippet (works with objects, arrays, strings):</source>
+          <target state="translated">이 스 니펫을 사용합니다 (객체, 배열, 문자열과 함께 작동).</target>
+        </trans-unit>
+        <trans-unit id="e5a8bfa78b6cc841ae306aa109c2288f80d1bcad" translate="yes" xml:space="preserve">
+          <source>What is the most concise and efficient way to find out if a JavaScript array contains a value?</source>
+          <target state="translated">JavaScript 배열에 값이 포함되어 있는지 확인하는 가장 간결하고 효율적인 방법은 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="8703cf29cfa5ac185fce8c1dec2a01c5c3eb839d" translate="yes" xml:space="preserve">
+          <source>When you know you just pushed an array with a value, using lastIndexOf remains probably the best solution, but if you have to travel through big arrays and the result could be everywhere, this could be a solid solution to make things faster.</source>
+          <target state="translated">방금 값으로 배열을 푸시했다는 것을 알면 lastIndexOf를 사용하는 것이 가장 좋은 해결책 일 수 있지만 큰 배열을 통과해야하고 결과가 어디에나있을 수있는 경우 상황을 더 빠르게 만들 수있는 견고한 솔루션 일 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="f11390c7b08f5438453c92d12de28409182c4947" translate="yes" xml:space="preserve">
+          <source>While &lt;code&gt;array.indexOf(x)!=-1&lt;/code&gt; is the most concise way to do this (and has been supported by non-Internet&amp;nbsp;Explorer browsers for over decade...), it is not O(1), but rather O(N), which is terrible. If your array will not be changing, you can convert your array to a hashtable, then do &lt;code&gt;table[x]!==undefined&lt;/code&gt; or &lt;code&gt;===undefined&lt;/code&gt;:</source>
+          <target state="translated">&lt;code&gt;array.indexOf(x)!=-1&lt;/code&gt; 이 작업을 수행하는 가장 간결한 방법이지만 (Internet Explorer 이외의 브라우저에서 10 년 이상 지원되었습니다 ...) O (1)가 아니라 오히려 O ( N) 끔찍하다. 배열이 변경되지 않으면 배열을 해시 테이블로 변환 한 다음 &lt;code&gt;table[x]!==undefined&lt;/code&gt; 또는 &lt;code&gt;===undefined&lt;/code&gt; 를 수행하십시오 .</target>
+        </trans-unit>
+        <trans-unit id="b01c71c2892eac27aa9d47b7b2460c3ca6b6002f" translate="yes" xml:space="preserve">
+          <source>While the new method &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes&quot;&gt;includes&lt;/a&gt; is very nice, the support is basically zero for now.</source>
+          <target state="translated">새로운 메소드 &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes&quot;&gt;include&lt;/a&gt; 는 매우 훌륭하지만, 현재는 기본적으로 지원이 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="66a9a0ebce37ca21a36fa25294dd0f724d8af682" translate="yes" xml:space="preserve">
+          <source>Why to use &lt;code&gt;JSON.stringify&lt;/code&gt;?</source>
+          <target state="translated">&lt;code&gt;JSON.stringify&lt;/code&gt; 를 사용하는 이유는 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="710e9393126b52a4f0c439a6f12859ff0112353e" translate="yes" xml:space="preserve">
+          <source>You can also use &lt;a href=&quot;https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/indexOf&quot;&gt;&lt;code&gt;Array#indexOf&lt;/code&gt;&lt;/a&gt;, which is less direct, but doesn't require polyfills for outdated browsers.</source>
+          <target state="translated">직접적이지 않지만 오래된 브라우저에는 폴리 필이 필요하지 않은 &lt;a href=&quot;https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/indexOf&quot;&gt; &lt;code&gt;Array#indexOf&lt;/code&gt; 를&lt;/a&gt; 사용할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="5d307aa6a64cce35bbe21c4e01d8d6639b51bbad" translate="yes" xml:space="preserve">
+          <source>You can perform tests in your machine &lt;a href=&quot;https://jsperf.com/array-big-exist-element/1&quot;&gt;HERE&lt;/a&gt;</source>
+          <target state="translated">기계에서 테스트를 수행 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="c452231ce645912ee34b17df9db70ba167c4c874" translate="yes" xml:space="preserve">
+          <source>You can perform tests in your machine &lt;a href=&quot;https://jsperf.com/array-exist-element/1&quot;&gt;HERE&lt;/a&gt;</source>
+          <target state="translated">기계에서 테스트를 수행 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="4cffa6d9408268dd04c67fe0e590fb87b7066b9c" translate="yes" xml:space="preserve">
+          <source>You can use this in ECMAScript 5 and below by &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find#Polyfill&quot;&gt;defining the function&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find#Polyfill&quot;&gt;함수&lt;/a&gt; 를 정의하여 ECMAScript 5 이하에서이를 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="8a8b0fcd60b778db319e070da9ab5bd99a70551d" translate="yes" xml:space="preserve">
+          <source>hope this will help anyone.</source>
+          <target state="translated">이것이 누군가를 도울 수 있기를 바랍니다.</target>
+        </trans-unit>
+        <trans-unit id="f4b7e9b9241515996b32e009d8f7fee6dcf4fc80" translate="yes" xml:space="preserve">
+          <source>if data is null then no admin, else it will return the existing object like below.</source>
+          <target state="translated">data가 null이면 admin이 없으면 아래처럼 기존 객체를 반환합니다.</target>
+        </trans-unit>
+        <trans-unit id="12c167eda8182142022b2a92450f25c79b0bcb8b" translate="yes" xml:space="preserve">
+          <source>jQuery: &lt;a href=&quot;http://api.jquery.com/jquery.inarray/&quot;&gt;&lt;code&gt;$.inArray(value, array, [fromIndex])&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">jQuery : &lt;a href=&quot;http://api.jquery.com/jquery.inarray/&quot;&gt; &lt;code&gt;$.inArray(value, array, [fromIndex])&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="6101b8b106bb34aa75ee0814071b80c3bd5855d4" translate="yes" xml:space="preserve">
+          <source>solutions based on &lt;code&gt;JSON&lt;/code&gt;, &lt;code&gt;Set&lt;/code&gt; and surprisingly &lt;code&gt;find&lt;/code&gt; (K,N,O) are slowest on all browsers</source>
+          <target state="translated">&lt;code&gt;JSON&lt;/code&gt; 기반의 솔루션, &lt;code&gt;Set&lt;/code&gt; 및 놀랍게도 &lt;code&gt;find&lt;/code&gt; (K, N, O)는 모든 브라우저에서 가장 느립니다.</target>
+        </trans-unit>
+        <trans-unit id="a11a1beae753e81ce95402eff46f26a927ec2374" translate="yes" xml:space="preserve">
+          <source>the es6 &lt;code&gt;includes&lt;/code&gt; (F) is fast only on chrome</source>
+          <target state="translated">es6 &lt;code&gt;includes&lt;/code&gt; (F)는 크롬에서만 빠릅니다.</target>
+        </trans-unit>
+        <trans-unit id="7ec7950d04195293692d83e333f6cef03db4144a" translate="yes" xml:space="preserve">
+          <source>the solutions based on &lt;code&gt;for&lt;/code&gt; (C,D) and &lt;code&gt;indexOf&lt;/code&gt; (G,H) are quite-fast on all browsers on small and big arrays so probably they are best choice for efficient solution</source>
+          <target state="translated">(C, D) 및 &lt;code&gt;indexOf&lt;/code&gt; (G, H) 기반 솔루션은 크고 작은 어레이의 모든 브라우저에서 매우 빠르므로 효율적인 솔루션을위한 최상의 선택 일 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="289945786f0df06cde96642e167bcc38037aa002" translate="yes" xml:space="preserve">
+          <source>the solutions where index decrease during loop, (B) is slower probably because the way of &lt;a href=&quot;https://stackoverflow.com/questions/1950878/c-for-loop-indexing-is-forward-indexing-faster-in-new-cpus&quot;&gt;CPU cache works&lt;/a&gt;.</source>
+          <target state="translated">루프 동안 인덱스가 감소하는 솔루션 (B)은 아마도 &lt;a href=&quot;https://stackoverflow.com/questions/1950878/c-for-loop-indexing-is-forward-indexing-faster-in-new-cpus&quot;&gt;CPU 캐시가 작동&lt;/a&gt; 하는 방식 때문에 느려질 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="798bc4d228938e571a6eb1d95ec4af0226cad052" translate="yes" xml:space="preserve">
+          <source>you will get value like below</source>
+          <target state="translated">당신은 아래와 같은 가치를 얻을 것입니다</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

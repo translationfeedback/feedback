@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/495021">
+    <body>
+      <group id="495021">
+        <trans-unit id="b035bf2cc167fd9eb1fa6ad4f75e65902c071b59" translate="yes" xml:space="preserve">
+          <source>&quot;Instantiation-style polymorphism&quot; means that the template &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; isn't really a generic class that can be compiled to code that can work for any value of &lt;code&gt;T&lt;/code&gt;. That would add overhead such as boxing, needing to pass function pointers to allocators and constructors, etc. The intention of C++ templates is to avoid having to write nearly identical &lt;code&gt;class MyClass_int&lt;/code&gt;, &lt;code&gt;class MyClass_float&lt;/code&gt;, etc, but to still be able to end up with compiled code that is mostly as if we &lt;em&gt;had&lt;/em&gt; written each version separately. So a template is &lt;em&gt;literally&lt;/em&gt; a template; a class template is &lt;em&gt;not&lt;/em&gt; a class, it's a recipe for creating a new class for each &lt;code&gt;T&lt;/code&gt; we encounter. A template cannot be compiled into code, only the result of instantiating the template can be compiled.</source>
+          <target state="translated">&quot;Instantiation-style polymorphism&quot;은 &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; 템플릿이 &lt;code&gt;T&lt;/code&gt; 의 모든 값에 대해 작동 할 수있는 코드로 컴파일 될 수있는 일반 클래스가 아니라는 것을 의미합니다. 이것은 boxing과 같은 오버 헤드를 추가하고 할당 자와 생성자에 함수 포인터를 전달할 필요가 있습니다. C ++ 템플릿의 의도는 거의 동일한 &lt;code&gt;class MyClass_int&lt;/code&gt; , &lt;code&gt;class MyClass_float&lt;/code&gt; 등을 작성하지 않아도되지만 여전히 끝날 수 있습니다. 각 버전을 개별적으로 작성한 것처럼 대부분 컴파일 된 코드. 따라서 템플릿은 &lt;em&gt;말 그대로&lt;/em&gt; 템플릿입니다. 클래스 템플릿은 클래스가 &lt;em&gt;아니며&lt;/em&gt; , 우리가 만나는 각각의 &lt;code&gt;T&lt;/code&gt; 에 대해 새로운 클래스를 만들기위한 레시피입니다. 템플릿은 코드로 컴파일 할 수 없으며 템플릿 인스턴스화 결과 만 컴파일 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="e9f8648e64f859e7cabf474d36d8473d6277cf09" translate="yes" xml:space="preserve">
+          <source>(Clarification: header files are not the &lt;em&gt;only&lt;/em&gt; portable solution. But they are the most convenient portable solution.)</source>
+          <target state="translated">(설명 : 헤더 파일이 &lt;em&gt;유일한&lt;/em&gt; 휴대용 솔루션은 아니지만 가장 편리한 휴대용 솔루션입니다.)</target>
+        </trans-unit>
+        <trans-unit id="5eea08821de446b9d5a28f7b7ec97da98d199f9f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;bar.cpp&lt;/strong&gt; doesn't even need to exist when I compile &lt;strong&gt;foo.cpp&lt;/strong&gt;, but I should still be able to link the &lt;strong&gt;foo.o&lt;/strong&gt; I already had together with the &lt;strong&gt;bar.o&lt;/strong&gt; I've only just produced, without needing to recompile &lt;strong&gt;foo.cpp&lt;/strong&gt;. &lt;strong&gt;foo.cpp&lt;/strong&gt; could even be compiled into a dynamic library, distributed somewhere else without &lt;strong&gt;foo.cpp&lt;/strong&gt;, and linked with code they write years after I wrote &lt;strong&gt;foo.cpp&lt;/strong&gt;.</source>
+          <target state="translated">&lt;strong&gt;foo.cpp를&lt;/strong&gt; 컴파일 할 때 &lt;strong&gt;bar.cpp&lt;/strong&gt; 가 존재할 필요조차 없지만, 나는 이미 &lt;strong&gt;foo.o를&lt;/strong&gt; 이미 &lt;strong&gt;bar&lt;/strong&gt; 와 함께 연결할 수 있어야합니다 &lt;strong&gt;.o&lt;/strong&gt; &lt;strong&gt;foo&lt;/strong&gt; 를 다시 컴파일 할 필요없이 방금 생성했습니다. &lt;strong&gt;.cpp&lt;/strong&gt; . &lt;strong&gt;foo.cpp&lt;/strong&gt; 는 동적 라이브러리로 컴파일하고 &lt;strong&gt;foo.cpp&lt;/strong&gt; 없이 다른 곳에 배포하고 &lt;strong&gt;foo.cpp를&lt;/strong&gt; 쓴 후 몇 년 동안 작성한 코드와 연결할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="2fc371f446c0acfde57bd7659ead23b9112f8278" translate="yes" xml:space="preserve">
+          <source>A common solution to this is to write the template declaration in a header file, then implement the class in an implementation file (for example .tpp), and include this implementation file at the end of the header.</source>
+          <target state="translated">이에 대한 일반적인 해결책은 헤더 파일에 템플릿 선언을 작성한 다음 구현 파일 (예 : .tpp)에서 클래스를 구현하고이 구현 파일을 헤더 끝에 포함시키는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="e57d0314403f00ceaaaa8428eba3e1aef96c93ae" translate="yes" xml:space="preserve">
+          <source>A schematic example:</source>
+          <target state="translated">개략적 인 예 :</target>
+        </trans-unit>
+        <trans-unit id="196609edf5fcabd3de77dfd3d5b00786d86be944" translate="yes" xml:space="preserve">
+          <source>A way to have separate implementation is as follows.</source>
+          <target state="translated">별도의 구현 방법은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="be5dd547c840410475dd23e56ea45e18c434e2ab" translate="yes" xml:space="preserve">
+          <source>Actually, prior to C++11 the standard defined the &lt;code&gt;export&lt;/code&gt; keyword that &lt;em&gt;would&lt;/em&gt; make it possible to declare templates in a header file and implement them elsewhere.</source>
+          <target state="translated">실제로 C ++ 11 이전에는 표준에서 &lt;code&gt;export&lt;/code&gt; 키워드를 정의하여 헤더 파일에서 템플릿을 선언하고 다른 곳에서 구현할 수있게했습니다.</target>
+        </trans-unit>
+        <trans-unit id="3268f427c74032de655fa4e01528f44190c37aec" translate="yes" xml:space="preserve">
+          <source>Alternative solution</source>
+          <target state="translated">대체 솔루션</target>
+        </trans-unit>
+        <trans-unit id="443f50703b7217e59b314d8938c59b61b0d3db20" translate="yes" xml:space="preserve">
+          <source>Although standard C++ has no such requirement, some compilers require that all function and class templates need to be made available in every translation unit they are used. In effect, for those compilers, the bodies of template functions must be made available in a header file. To repeat: that means those compilers won't allow them to be defined in non-header files such as .cpp files</source>
+          <target state="translated">표준 C ++에는 이러한 요구 사항이 없지만 일부 컴파일러에서는 사용되는 모든 변환 단위에서 모든 함수 및 클래스 템플릿을 사용할 수 있어야합니다. 실제로 이러한 컴파일러의 경우 템플릿 함수 본문을 헤더 파일에서 사용할 수 있어야합니다. 반복 : 즉, 해당 컴파일러는 .cpp 파일과 같은 헤더가 아닌 파일에서 정의 할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="06fa10dc30994a0c1e4738b1af8fe281fe0f2079" translate="yes" xml:space="preserve">
+          <source>And in the Utility.cpp:</source>
+          <target state="translated">그리고 Utility.cpp에서 :</target>
+        </trans-unit>
+        <trans-unit id="cdab4bd0267850a1f73e501206add84b1278204d" translate="yes" xml:space="preserve">
+          <source>Another reason that it's a good idea to write both declarations and definitions in header files is for readability. Suppose there's such a template function in Utility.h:</source>
+          <target state="translated">헤더 파일에 선언과 정의를 모두 작성하는 것이 좋은 이유는 읽기 쉽기 때문입니다. Utility.h에 이러한 템플릿 기능이 있다고 가정합니다.</target>
+        </trans-unit>
+        <trans-unit id="295b12e50623177c4327236e29b6ef8235275a3a" translate="yes" xml:space="preserve">
+          <source>Another solution is to keep the implementation separated, and explicitly instantiate all the template instances you'll need:</source>
+          <target state="translated">또 다른 해결책은 구현을 분리하여 유지하고 필요한 모든 템플릿 인스턴스를 명시 적으로 인스턴스화하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="c3fdc10777f128f761e03c874819811a55f60399" translate="yes" xml:space="preserve">
+          <source>Anyway, the reason your code is failing is that, when instantiating a template, the compiler creates a new class with the given template argument. For example:</source>
+          <target state="translated">어쨌든 코드가 실패하는 이유는 템플릿을 인스턴스화 할 때 컴파일러가 주어진 템플릿 인수로 새 클래스를 생성하기 때문입니다. 예를 들면 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="e4384f393f9a314fc52cf6be36242df62df17b5e" translate="yes" xml:space="preserve">
+          <source>As a result, the ISO C++ standard committee decided to remove the &lt;code&gt;export&lt;/code&gt; feature of templates with C++11.</source>
+          <target state="translated">결과적으로 ISO C ++ 표준위원회는 C ++ 11을 사용하여 템플릿의 &lt;code&gt;export&lt;/code&gt; 기능을 제거하기로 결정했습니다.</target>
+        </trans-unit>
+        <trans-unit id="cc12f0b11ceb91fcc52e35983342499dacc9520a" translate="yes" xml:space="preserve">
+          <source>Caveat: It is &lt;em&gt;not&lt;/em&gt; necessary to put the implementation in the header file, see the alternative solution at the end of this answer.</source>
+          <target state="translated">주의 사항 : 구현을 헤더 파일에 넣을 필요는 &lt;em&gt;없습니다&lt;/em&gt; .이 답변 끝에있는 대체 솔루션을 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="714c7edcf9a6dfde043d41d403275de85af64e20" translate="yes" xml:space="preserve">
+          <source>Consequently, the compiler needs to have access to the implementation of the methods, to instantiate them with the template argument (in this case &lt;code&gt;int&lt;/code&gt;). If these implementations were not in the header, they wouldn't be accessible, and therefore the compiler wouldn't be able to instantiate the template.</source>
+          <target state="translated">따라서 컴파일러는 메소드의 구현에 액세스하여 템플리트 인수 (이 경우 &lt;code&gt;int&lt;/code&gt; )로 메소드를 인스턴스화해야합니다. 이러한 구현이 헤더에 없으면 액세스 할 수 없으므로 컴파일러에서 템플릿을 인스턴스화 할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="66705bb389b50ec573981426b267ee96ef11ce15" translate="yes" xml:space="preserve">
+          <source>Don't forget to have your compiler treat your .template file as a c++ file to keep the intelli sense.</source>
+          <target state="translated">컴파일러가 지능적으로 .template 파일을 c ++ 파일로 처리하도록하는 것을 잊지 마십시오.</target>
+        </trans-unit>
+        <trans-unit id="80ff8bad077219e5eb6d2824ef614f47f5e13f01" translate="yes" xml:space="preserve">
+          <source>Each user of the template includes that header file and uses the typedef.</source>
+          <target state="translated">템플릿의 각 사용자는 해당 헤더 파일을 포함하고 typedef를 사용합니다.</target>
+        </trans-unit>
+        <trans-unit id="cc94c8862d7b92a03b6b8a599fe014178a50d393" translate="yes" xml:space="preserve">
+          <source>Edit: Adding example of explicit template instantiation. Used after the template has been defined, and all member functions has been defined.</source>
+          <target state="translated">편집 : 명시 적 템플릿 인스턴스화 예제 추가. 템플릿이 정의되고 모든 멤버 함수가 정의 된 후에 사용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="f95b23255b3aa50ef9fc041109ba878b6c2aa2b1" translate="yes" xml:space="preserve">
+          <source>Even though there are plenty of good explanations above, I'm missing a practical way to separate templates into header and body.</source>
+          <target state="translated">위에 좋은 설명이 많이 있지만 템플릿을 머리글과 본문으로 분리하는 실용적인 방법이 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="6cc307ede2a377f65c8c1c69348f06afd6a2e8c7" translate="yes" xml:space="preserve">
+          <source>Foo.cpp</source>
+          <target state="translated">Foo.cpp</target>
+        </trans-unit>
+        <trans-unit id="908239a07d276301afb988b50e7f6bb2d18d784d" translate="yes" xml:space="preserve">
+          <source>Foo.h</source>
+          <target state="translated">Foo.h</target>
+        </trans-unit>
+        <trans-unit id="4a7d5666a48d825ce85c0580fe4cc84bc378d8f3" translate="yes" xml:space="preserve">
+          <source>Foo.tpp</source>
+          <target state="translated">Foo.tpp</target>
+        </trans-unit>
+        <trans-unit id="82a77bbbd6668cf9c08fdbe5e3587d003efcd33a" translate="yes" xml:space="preserve">
+          <source>For each template usage there's a typedef in its own header file (generated from the UML model). Its body contains the instantiation (which ends up in a library which is linked in at the end).</source>
+          <target state="translated">각 템플리트 사용법마다 자체 헤더 파일 (UML 모델에서 생성)에 typedef가 있습니다. 그 본문에는 인스턴스화가 포함되어 있습니다 (마지막에 연결된 라이브러리에서 끝납니다).</target>
+        </trans-unit>
+        <trans-unit id="5b5fed325d16bdec5cc8b43d0474e826e2cf9b46" translate="yes" xml:space="preserve">
+          <source>For separate compilation to be achieved, separate template body checking must be possible. It seems that a solution is possible with concepts. Take a look at this &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3629.pdf&quot;&gt;paper&lt;/a&gt; recently presented at the 
+standards commitee meeting. I think this is not the only requirement, since you still need to instantiate code for the template code in user code.</source>
+          <target state="translated">별도의 컴파일을 수행하려면 별도의 템플릿 본문 검사가 가능해야합니다. 개념으로 해결책이 가능한 것 같습니다. 최근 표준위원회 회의에서 발표 된이 &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3629.pdf&quot;&gt;문서를&lt;/a&gt; 살펴보십시오. 사용자 코드에서 템플릿 코드의 코드를 인스턴스화해야하기 때문에 이것이 유일한 요구 사항은 아니라고 생각합니다.</target>
+        </trans-unit>
+        <trans-unit id="64df38475feba828e0989613927f71a856e989b4" translate="yes" xml:space="preserve">
+          <source>Have to recompile &lt;strong&gt;foo.cpp&lt;/strong&gt; every time we change &lt;em&gt;any other file in the program&lt;/em&gt;, in case it added a new novel instantiation of &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; 의 새로운 인스턴스화를 추가 한 경우 &lt;em&gt;프로그램에서 다른 파일을&lt;/em&gt; 변경할 때마다 &lt;strong&gt;foo.cpp&lt;/strong&gt; 를 다시 컴파일해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="a9125e5f2cc07fe769d4b37e603b64292d0aba7b" translate="yes" xml:space="preserve">
+          <source>Having all template instantiations in the template body is not a viable solution for me, since the template author may not know all if its usage and the template user may not have the right to modify it.</source>
+          <target state="translated">템플릿 작성자가 사용법과 템플릿 사용자가 템플릿을 수정할 수있는 권한이 없을 경우 템플릿 작성자가 모든 것을 알 수 없기 때문에 템플릿 본문에 모든 템플릿 인스턴스를 갖는 것은 실용적이지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="2fc1605804c6bc9c61485c59f3cb5aed20c0e151" translate="yes" xml:space="preserve">
+          <source>Here is an example of this for a dynamic array class.</source>
+          <target state="translated">다음은 동적 배열 클래스에 대한 예입니다.</target>
+        </trans-unit>
+        <trans-unit id="facd6b7aac26f9ee87b6abf6cea13139dac87079" translate="yes" xml:space="preserve">
+          <source>However since templates need to be processed in the compilation step in order to generate code for each template instantiation that you define, so simply compiling a template separate from it's header file won't work because they always go hand and hand, for the very reason that each template instantiation is a whole new class literally. In a regular class you can separate .h and .cpp because .h is a blueprint of that class and the .cpp is the raw implementation so any implementation files can be compiled and linked regularly, however using templates .h is a blueprint of how the class should look not how the object should look meaning a template .cpp file isn't a raw regular implementation of a class, it's simply a blueprint for a class, so any implementation of a .h template file can't be compiled because you need something concrete to compile, templates are abstract in that sense.</source>
+          <target state="translated">그러나 정의한 각 템플릿 인스턴스화에 대한 코드를 생성하기 위해 컴파일 단계에서 템플릿을 처리해야하므로 헤더 파일과 별도의 템플릿을 컴파일하는 것은 항상 손을 잡고 이동하기 때문에 작동하지 않습니다. 각 템플릿 인스턴스화는 문자 그대로 완전히 새로운 클래스입니다. 일반 클래스에서는 .h가 해당 클래스의 청사진이고 .cpp가 원시 구현이므로 .h와 .cpp를 분리 할 수 ​​있습니다. 따라서 구현 파일을 정기적으로 컴파일하고 링크 할 수 있지만 템플릿을 사용하면 .h는 클래스는 객체가 템플릿 .cpp 파일이 클래스의 원시 일반 구현이 아니라 단순히 클래스의 청사진 일 뿐이므로 .h 템플릿 파일의 구현을 컴파일 할 수 없기 때문에 객체가 어떻게 보이는지 보여서는 안됩니다. 컴파일하려면 구체적인 내용이 필요합니다. 템플릿은 그런 의미에서 추상적입니다.</target>
+        </trans-unit>
+        <trans-unit id="87f174db2809957fd6b6e355c08819c42e926f22" translate="yes" xml:space="preserve">
+          <source>I do this because static analyzers for the code break when it does not see the forward declarations of class in *.tpp. This is annoying when writing code in any IDE or using YouCompleteMe or others.</source>
+          <target state="translated">코드의 정적 분석기가 * .tpp에서 클래스의 전달 선언을 볼 수 없을 때 중단되기 때문에이 작업을 수행합니다. IDE에서 코드를 작성하거나 YouCompleteMe 또는 기타를 사용할 때 성가신 일입니다.</target>
+        </trans-unit>
+        <trans-unit id="a00573411f305b4648ab694f0a3f5eb5f85894a3" translate="yes" xml:space="preserve">
+          <source>I suggest looking at this gcc page which discusses the tradeoffs between the &quot;cfront&quot; and &quot;borland&quot; model for template instantiations.</source>
+          <target state="translated">템플릿 인스턴스화를위한 &quot;cfront&quot;모델과 &quot;borland&quot;모델 간의 장단점을 설명하는이 gcc 페이지를 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="fd41fb7a1caa2b78e5d1a3e75ebe40ef63a19fc5" translate="yes" xml:space="preserve">
+          <source>I took the following approach, which works also for older compilers (gcc 4.3.4, aCC A.03.13).</source>
+          <target state="translated">이전 컴파일러 (gcc 4.3.4, aCC A.03.13)에서도 작동하는 다음과 같은 접근 방식을 취했습니다.</target>
+        </trans-unit>
+        <trans-unit id="3333e71f7edcca169894e1df3c21ed777965c2b5" translate="yes" xml:space="preserve">
+          <source>If &lt;strong&gt;foo.cpp&lt;/strong&gt; itself uses &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt;, then code for that will be generated while compiling &lt;strong&gt;foo.cpp&lt;/strong&gt;, so when &lt;strong&gt;bar.o&lt;/strong&gt; is linked to &lt;strong&gt;foo.o&lt;/strong&gt; they can be hooked up and will work. We can use that fact to allow a finite set of template instantiations to be implemented in a .cpp file by writing a single template. But there's no way for &lt;strong&gt;bar.cpp&lt;/strong&gt; to use the template &lt;em&gt;as a template&lt;/em&gt; and instantiate it on whatever types it likes; it can only use pre-existing versions of the templated class that the author of &lt;strong&gt;foo.cpp&lt;/strong&gt; thought to provide.</source>
+          <target state="translated">&lt;strong&gt;foo.cpp&lt;/strong&gt; 자체가 &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt; 사용하는 경우 &lt;strong&gt;foo.cpp&lt;/strong&gt; 를 컴파일하는 동안 해당 코드가 생성되므로 &lt;strong&gt;bar.o&lt;/strong&gt; 가 &lt;strong&gt;foo.o에&lt;/strong&gt; 연결되면 연결되어 작동합니다. 이 사실을 사용하여 단일 템플릿을 작성하여 유한 템플릿 인스턴스화를 .cpp 파일로 구현할 수 있습니다. 그러나 &lt;strong&gt;bar.cpp&lt;/strong&gt; 가 템플릿을 템플릿 &lt;em&gt;으로&lt;/em&gt; 사용하고 원하는 형식으로 인스턴스화하는 방법은 없습니다. &lt;strong&gt;foo.cpp&lt;/strong&gt; 작성자가 제공 한 템플릿 클래스의 기존 버전 만 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="011a72a7f3dc5627b578590bd02a88adde7b305a" translate="yes" xml:space="preserve">
+          <source>If I was really worried about speed, I suppose I would explore using Precompiled Headers 
+&lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html&quot;&gt;https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html&lt;/a&gt;</source>
+          <target state="translated">속도가 정말 걱정된다면 미리 컴파일 된 헤더를 사용하여 탐색한다고 가정합니다 &lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html&quot;&gt;https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="7b87ff4c31fa3b95028236c600a2a6c3ac3da1e5" translate="yes" xml:space="preserve">
+          <source>If my explanation isn't clear enough, you can have a look at the &lt;a href=&quot;https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl&quot;&gt;C++ Super-FAQ on this subject&lt;/a&gt;.</source>
+          <target state="translated">내 설명이 명확하지 않으면 &lt;a href=&quot;https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl&quot;&gt;이 주제에&lt;/a&gt; 대한 C ++ Super-FAQ을 살펴볼 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="0bf8cdd8be4fa175a80b68f8957e30eb7bb988c2" translate="yes" xml:space="preserve">
+          <source>If the concern is the extra compilation time and binary size bloat produced by compiling the .h as part of all the .cpp modules using it, in many cases what you can do is make the template class descend from a non-templatized base class for non type-dependent parts of the interface, and that base class can have its implementation in the .cpp file.</source>
+          <target state="translated">.h를 사용하여 모든 .cpp 모듈의 일부로 .h를 컴파일하여 생성되는 추가 컴파일 시간과 이진 크기 팽창이 우려되는 경우, 템플릿 클래스가 템플릿 화되지 않은 기본 클래스에서 내려 오는 것입니다. 인터페이스의 유형에 의존하지 않는 부분과 해당 기본 클래스는 .cpp 파일에서 구현할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="b9aeaa7ae46fee59a9175d2ea5a67ecb336c12cb" translate="yes" xml:space="preserve">
+          <source>If you, at the bottom of the implementation cpp file, do explicit instantiation of all the types the template will be used with, the linker will be able to find them as usual.</source>
+          <target state="translated">구현 cpp 파일의 맨 아래에서 템플릿에 사용될 모든 유형을 명시 적으로 인스턴스화하면 링커에서 평소처럼 찾을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="17b3a73d1735316997e49303704cf1f9e4bcf528" translate="yes" xml:space="preserve">
+          <source>In my experience, I rely on the C++ Standard Library and Boost templates being instantiated for each compilation unit (using a template library).  For my large template classes, I do manual template instantiation, once, for the types I need.</source>
+          <target state="translated">필자는 경험에 따라 C ++ 표준 라이브러리 및 부스트 템플릿을 사용하여 각 컴파일 단위마다 인스턴스화되고 있습니다 (템플릿 라이브러리 사용). 큰 템플릿 클래스의 경우 필요한 유형에 대해 수동 템플릿 인스턴스화를 한 번 수행합니다.</target>
+        </trans-unit>
+        <trans-unit id="8c31ab53c2aa0f343fe425ec5ac5df36ee59ff73" translate="yes" xml:space="preserve">
+          <source>It contains explicit recommendations concerning using manual and automatic template instantiation.  For example, the &quot;-repo&quot; option can be used to collect templates which need to be instantiated.  Or another option is to disable automatic template instantiations using &quot;-fno-implicit-templates&quot; to force manual template instantiation.</source>
+          <target state="translated">수동 및 자동 템플릿 인스턴스화 사용과 관련된 명시적인 권장 사항이 포함되어 있습니다. 예를 들어, &quot;-repo&quot;옵션을 사용하여 인스턴스화해야하는 템플릿을 수집 할 수 있습니다. 또는 다른 옵션은 &quot;-fno-implicit-templates&quot;를 사용하여 자동 템플릿 인스턴스화를 비활성화하여 수동 템플릿 인스턴스화를 강제하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="d7fcfe322279aaaf6ecb382779c5e98a8fbcbd54" translate="yes" xml:space="preserve">
+          <source>It is technically possible to create some sort of functionality that will save the template.cpp file and switch out the types when it finds them in other sources, I think that the standard does have a keyword &lt;code&gt;export&lt;/code&gt; that will allow you to put templates in a separate cpp file but not that many compilers actually implement this.</source>
+          <target state="translated">기술적으로 template.cpp 파일을 저장하고 다른 소스에서 찾을 때 유형을 전환하는 일종의 기능을 만들 수 있습니다. 표준에는 템플릿을 파일에 넣을 수있는 키워드 &lt;code&gt;export&lt;/code&gt; 가 있다고 생각합니다 별도의 cpp 파일이지만 많은 컴파일러가 실제로 이것을 구현하지는 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="c4587d4599976fa42e1045afc20e1c648a79bff6" translate="yes" xml:space="preserve">
+          <source>It means that the most portable way to define method implementations of template classes is to define them inside the template class definition.</source>
+          <target state="translated">템플릿 클래스의 메소드 구현을 정의하는 가장 이식 가능한 방법은 템플릿 클래스 정의 내에서 정의하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="465d68aca886e2ba0f6bc7c8e105292f938fcb0d" translate="yes" xml:space="preserve">
+          <source>It's because of the requirement for separate compilation and because templates are instantiation-style polymorphism.</source>
+          <target state="translated">별도의 컴파일이 필요하고 템플릿이 인스턴스화 스타일의 다형성이기 때문입니다.</target>
+        </trans-unit>
+        <trans-unit id="25dec0fc6c89b691f8f9a3e994c3ef5b0abc0fe8" translate="yes" xml:space="preserve">
+          <source>Just a side note, when making specializations for a template class, you can separate the header from the implementation because a specialization by definition means that I am specializing for a concrete type that can be compiled and linked individually.</source>
+          <target state="translated">참고로 템플릿 클래스에 대한 전문화를 수행 할 때 헤더를 구현에서 분리 할 수 ​​있습니다. 정의에 의한 전문화는 개별적으로 컴파일하고 링크 할 수있는 구체적 유형을 전문화한다는 의미이기 때문입니다.</target>
+        </trans-unit>
+        <trans-unit id="90c0f03268a72533d3715fb1c3f04f17010fd4e8" translate="yes" xml:space="preserve">
+          <source>Just to add something noteworthy here. One can define methods of a templated class just fine in the implementation file when they are not function templates.</source>
+          <target state="translated">여기에 주목할만한 것을 추가하십시오. 함수 템플릿이 아닌 경우 구현 파일에서 템플릿 클래스의 메서드를 잘 정의 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="888d48c5f6045b8a8e83ebd7c050f1a0853a2ae6" translate="yes" xml:space="preserve">
+          <source>Lets get a little closer to concrete for an explanation. Say I've got the following files:</source>
+          <target state="translated">설명을 위해 콘크리트에 조금 더 가까워집니다. 다음 파일이 있다고 가정 해보십시오.</target>
+        </trans-unit>
+        <trans-unit id="874b2d856f83dc17aed9827ccbaf2c655bd10aef" translate="yes" xml:space="preserve">
+          <source>Meaning &lt;code&gt;typename T&lt;/code&gt; get's replaced during the compilation step not the linking step so if I try to compile a template without &lt;code&gt;T&lt;/code&gt; being replaced as a concrete value type that is completely meaningless to the compiler and as a result object code can't be created because it doesn't know what &lt;code&gt;T&lt;/code&gt; is.</source>
+          <target state="translated">의미 &lt;code&gt;typename T&lt;/code&gt; 는 링크 단계가 아닌 컴파일 단계에서 대체되므로 &lt;code&gt;T&lt;/code&gt; 를 사용하지 않고 템플릿을 컴파일하려고하면 컴파일러에 완전히 의미가없는 구체적인 값 유형으로 결과 객체 코드를 작성할 수 없으므로 &lt;code&gt;T&lt;/code&gt; 가 무엇인지 모릅니다.</target>
+        </trans-unit>
+        <trans-unit id="7fc9acfdc804197b314d8a24ba75469bacf7cd44" translate="yes" xml:space="preserve">
+          <source>My main concern is avoiding recompilation of all template users, when I change its definition.</source>
+          <target state="translated">저의 주요 관심사는 정의를 변경할 때 모든 템플릿 사용자의 재 컴파일을 피하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="19e735f0ba4f7fedbf86a4d8db05ec2168dae756" translate="yes" xml:space="preserve">
+          <source>MyInstantiatedTemplate.cpp:</source>
+          <target state="translated">MyInstantiatedTemplate.cpp:</target>
+        </trans-unit>
+        <trans-unit id="fa356b6c6efa2ea6ff88305f59851d0e6a2e480e" translate="yes" xml:space="preserve">
+          <source>MyInstantiatedTemplate.h:</source>
+          <target state="translated">MyInstantiatedTemplate.h:</target>
+        </trans-unit>
+        <trans-unit id="8e34d8a24c57d38d429bde7fc7eceb8c00a41285" translate="yes" xml:space="preserve">
+          <source>MyTemplate.cpp:</source>
+          <target state="translated">MyTemplate.cpp:</target>
+        </trans-unit>
+        <trans-unit id="9dd5eb3e28a84b69814aa5d8085079ec0abf9aae" translate="yes" xml:space="preserve">
+          <source>MyTemplate.h:</source>
+          <target state="translated">MyTemplate.h:</target>
+        </trans-unit>
+        <trans-unit id="779855889bb02228386e15de72062da5af7cdbf1" translate="yes" xml:space="preserve">
+          <source>Nobody likes (1), because whole-program-analysis compilation systems take &lt;em&gt;forever&lt;/em&gt; to compile , and because it makes it impossible to distribute compiled libraries without the source code. So we have (2) instead.</source>
+          <target state="translated">전체 프로그램 분석 컴파일 시스템은 컴파일하는 데 시간이 &lt;em&gt;오래&lt;/em&gt; 걸리고 소스 코드없이 컴파일 된 라이브러리를 배포 할 수 없기 때문에 아무도 (1)을 좋아하지 않습니다. 그래서 우리는 (2)를 가지고 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="8600908363c5763340849b73a07750b2fc8781dc" translate="yes" xml:space="preserve">
+          <source>None of the popular compilers implemented this keyword. The only one I know about is the frontend written by the Edison Design Group, which is used by the Comeau C++ compiler. All others required you to write templates in header files, because the compiler needs the template definition for proper instantiation (as others pointed out already).</source>
+          <target state="translated">인기있는 컴파일러는이 키워드를 구현하지 않았습니다. 내가 아는 유일한 것은 Edison Design Group이 작성한 프론트 엔드이며 Comeau C ++ 컴파일러가 사용합니다. 컴파일러는 적절한 인스턴스화를 위해 템플릿 정의가 필요하기 때문에 헤더 파일에 템플릿을 작성해야했습니다 (다른 사람들이 이미 지적했듯이).</target>
+        </trans-unit>
+        <trans-unit id="d369389a12d35315051d668fcdde49164cea6c93" translate="yes" xml:space="preserve">
+          <source>Now inside you .template file you define your functions just how you normally would.</source>
+          <target state="translated">이제 .template 파일 내부에서 평소와 같이 함수를 정의합니다.</target>
+        </trans-unit>
+        <trans-unit id="a4d3b6b3a919caaa1d049a3a1514e4b1e2c7dae8" translate="yes" xml:space="preserve">
+          <source>On compile time, contents of foo.h are copied to foo.tpp and then the whole file is copied to foo.h after which it compiles. This way, there is no limitations, and the naming is consistent, in exchange for one extra file.</source>
+          <target state="translated">컴파일 타임에 foo.h의 내용은 foo.tpp에 복사 된 다음 전체 파일이 foo.h에 복사 된 후 컴파일됩니다. 이런 식으로, 하나의 추가 파일과 교환 할 때 제한이 없으며 이름이 일관됩니다.</target>
+        </trans-unit>
+        <trans-unit id="17bbed3b3378d62cae5186ee6b302a66b4c7e881" translate="yes" xml:space="preserve">
+          <source>One can argue that compilers can be made smarter to &quot;look ahead&quot; for all uses of the template, but I'm sure that it wouldn't be difficult to create recursive or otherwise complicated scenarios. AFAIK, compilers don't do such look aheads.  As Anton pointed out, some compilers support explicit export declarations of template instantiations, but not all compilers support it (yet?).</source>
+          <target state="translated">템플릿의 모든 용도에 대해 컴파일러가 더 똑똑해 보일 수 있다고 주장 할 수 있지만 재귀 적이거나 복잡한 시나리오를 만드는 것은 어렵지 않을 것이라고 확신합니다. AFAIK, 컴파일러는 그러한 전망을하지 않습니다. Anton이 지적한 것처럼 일부 컴파일러는 템플릿 인스턴스화의 명시 적 내보내기 선언을 지원하지만 모든 컴파일러가이를 지원하지는 않습니다 (아직?).</target>
+        </trans-unit>
+        <trans-unit id="027b97136fa29f83fd726f6a8f31ab5c63fb0ccc" translate="yes" xml:space="preserve">
+          <source>Plenty correct answers here, but I wanted to add this (for completeness):</source>
+          <target state="translated">여기에 많은 정답이 있지만 (완전하게) 이것을 추가하고 싶었습니다.</target>
+        </trans-unit>
+        <trans-unit id="1e3ccd72561a2cf529bc2692dc40f14a6b2e4173" translate="yes" xml:space="preserve">
+          <source>Quote from &lt;a href=&quot;http://books.google.com/books?id=n9VEG2Gp5pkC&amp;amp;pg=PA10&amp;amp;lpg=PA10&amp;amp;dq=%22The%20only%20portable%20way%20of%20using%20templates%20at%20the%20moment%20is%20to%20implement%20them%20in%20header%20files%20by%20using%20inline%20functions.%22&amp;amp;source=bl&amp;amp;ots=Ref8pl8dPX&amp;amp;sig=t4K5gvxtBblpcujNxodpwMfei8I&amp;amp;hl=en&amp;amp;ei=qkR6TvbiGojE0AHq4IzqAg&amp;amp;sa=X&amp;amp;oi=book_result&amp;amp;ct=result&amp;amp;resnum=3&amp;amp;ved=0CC8Q6AEwAg#v=onepage&amp;amp;q=%22The%20only%20portable%20way%20of%20using%20templates%20at%20the%20moment%20is%20to%20implement%20them%20in%20header%20files%20by%20using%20inline%20functions.%22&amp;amp;f=false&quot;&gt;The C++ standard library: a tutorial and handbook&lt;/a&gt;:</source>
+          <target state="translated">&lt;a href=&quot;http://books.google.com/books?id=n9VEG2Gp5pkC&amp;amp;pg=PA10&amp;amp;lpg=PA10&amp;amp;dq=%22The%20only%20portable%20way%20of%20using%20templates%20at%20the%20moment%20is%20to%20implement%20them%20in%20header%20files%20by%20using%20inline%20functions.%22&amp;amp;source=bl&amp;amp;ots=Ref8pl8dPX&amp;amp;sig=t4K5gvxtBblpcujNxodpwMfei8I&amp;amp;hl=en&amp;amp;ei=qkR6TvbiGojE0AHq4IzqAg&amp;amp;sa=X&amp;amp;oi=book_result&amp;amp;ct=result&amp;amp;resnum=3&amp;amp;ved=0CC8Q6AEwAg#v=onepage&amp;amp;q=%22The%20only%20portable%20way%20of%20using%20templates%20at%20the%20moment%20is%20to%20implement%20them%20in%20header%20files%20by%20using%20inline%20functions.%22&amp;amp;f=false&quot;&gt;C ++ 표준 라이브러리&lt;/a&gt; 에서 인용 : 튜토리얼 및 핸드북 :</target>
+        </trans-unit>
+        <trans-unit id="f41f7caecccc6ad203c01fef0e084e8b1d92a5ec" translate="yes" xml:space="preserve">
+          <source>Require that &lt;strong&gt;baz.cpp&lt;/strong&gt; contains (possibly via header includes) the full template of &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt;, so that the compiler can generate &lt;code&gt;MyClass&amp;lt;BazPrivate&amp;gt;&lt;/code&gt; during compilation of &lt;strong&gt;baz.cpp&lt;/strong&gt;.</source>
+          <target state="translated">&lt;strong&gt;baz.cpp&lt;/strong&gt; 컴파일시 컴파일러가 &lt;code&gt;MyClass&amp;lt;BazPrivate&amp;gt;&lt;/code&gt; 생성 할 수 있도록 baz.cpp 에 &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; 의 전체 템플리트가 포함되어 &lt;strong&gt;있어야&lt;/strong&gt; 합니다 (헤더 포함을 통해).</target>
+        </trans-unit>
+        <trans-unit id="60a978398e64164bca212555aaa064c2a8b0b5ed" translate="yes" xml:space="preserve">
+          <source>Separate compilation means I should be able to compile &lt;strong&gt;foo.cpp&lt;/strong&gt; independently from &lt;strong&gt;bar.cpp&lt;/strong&gt;. The compiler does all the hard work of analysis, optimization, and code generation on each compilation unit completely independently; we don't need to do whole-program analysis. It's only the linker that needs to handle the entire program at once, and the linker's job is substantially easier.</source>
+          <target state="translated">별도의 컴파일은 &lt;strong&gt;bar.cpp와&lt;/strong&gt; 독립적으로 &lt;strong&gt;foo.cpp&lt;/strong&gt; 를 컴파일 할 수 있어야 함을 의미합니다. 컴파일러는 각 컴파일 단위에서 분석, 최적화 및 코드 생성의 모든 어려운 작업을 완전히 독립적으로 수행합니다. 전체 프로그램 분석을 수행 할 필요가 없습니다. 전체 프로그램을 한 번에 처리해야하는 것은 링커 일 뿐이며 링커의 작업이 훨씬 쉽습니다.</target>
+        </trans-unit>
+        <trans-unit id="cf96ef776af92be9a3da407eefb0092aa784a378" translate="yes" xml:space="preserve">
+          <source>So when &lt;strong&gt;foo.cpp&lt;/strong&gt; is compiled, the compiler can't see &lt;strong&gt;bar.cpp&lt;/strong&gt; to know that &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt; is needed. It can see the template &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt;, but it can't emit code for that (it's a template, not a class). And when &lt;strong&gt;bar.cpp&lt;/strong&gt; is compiled, the compiler can see that it needs to create a &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt;, but it can't see the template &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; (only its interface in &lt;strong&gt;foo.h&lt;/strong&gt;) so it can't create it.</source>
+          <target state="translated">따라서 &lt;strong&gt;foo.cpp&lt;/strong&gt; 가 컴파일되면 컴파일러는 &lt;strong&gt;bar.cpp&lt;/strong&gt; 에서 &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt; 가 필요하다는 것을 알 수 없습니다. &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; 템플릿을 볼 수 있지만 코드를 생성 할 수는 없습니다 (클래스가 아니라 템플릿 임). 그리고 &lt;strong&gt;bar.cpp&lt;/strong&gt; 가 컴파일되면 컴파일러는 &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt; 생성이 필요하다는 것을 알 수 있지만 &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; 템플릿 ( &lt;strong&gt;foo.h&lt;/strong&gt; 의 인터페이스 만)을 볼 수 없으므로 생성 할 수 없습니다. 그것.</target>
+        </trans-unit>
+        <trans-unit id="e7892a8d20de035b9b6701d9b3ebc8381493ee59" translate="yes" xml:space="preserve">
+          <source>Templates must be used in headers because the compiler needs to instantiate different versions of the code, depending on the parameters given/deduced for template parameters. Remember that a template doesn't represent code directly, but a template for several versions of that code. 
+When you compile a non-template function in a &lt;code&gt;.cpp&lt;/code&gt; file, you are compiling a concrete function/class. This is not the case for templates, which can be instantiated with different types, namely, concrete code must be emitted when replacing template parameters with concrete types.</source>
+          <target state="translated">컴파일러는 템플릿 매개 변수에 대해 주어진 / 제거 된 매개 변수에 따라 다른 버전의 코드를 인스턴스화해야하므로 템플릿을 헤더에 사용해야합니다. 템플릿은 코드를 직접 나타내는 것이 아니라 해당 코드의 여러 버전에 대한 템플릿입니다. 템플릿이 아닌 함수를 &lt;code&gt;.cpp&lt;/code&gt; 파일로 컴파일하면 구체적인 함수 / 클래스가 컴파일됩니다. 템플릿의 경우에는 다른 유형으로 인스턴스화 할 수 있습니다. 즉, 템플릿 매개 변수를 콘크리트 유형으로 바꿀 때 콘크리트 코드가 생성되어야합니다.</target>
+        </trans-unit>
+        <trans-unit id="07055fec01ec5ac6275859a7a311bf06f2c99470" translate="yes" xml:space="preserve">
+          <source>Templates need to be &lt;em&gt;instantiated&lt;/em&gt; by the compiler before actually compiling them into object code.  This instantiation can only be achieved if the template arguments are known. Now imagine a scenario where a template function is declared in &lt;code&gt;a.h&lt;/code&gt;, defined in &lt;code&gt;a.cpp&lt;/code&gt; and used in &lt;code&gt;b.cpp&lt;/code&gt;. When &lt;code&gt;a.cpp&lt;/code&gt; is compiled, it is not necessarily known that the upcoming compilation &lt;code&gt;b.cpp&lt;/code&gt; will require an instance of the template, let alone which specific instance would that be. For more header and source files, the situation can quickly get more complicated.</source>
+          <target state="translated">템플릿은 실제로 객체 코드로 컴파일하기 전에 컴파일러에서 &lt;em&gt;인스턴스화&lt;/em&gt; 해야합니다. 이 인스턴스화는 템플릿 인수가 알려진 경우에만 달성 할 수 있습니다. 이제 &lt;code&gt;a.cpp&lt;/code&gt; 에 정의되고 b.cpp 에 사용되는 템플릿 함수가 &lt;code&gt;a.h&lt;/code&gt; 로 선언 된 시나리오를 상상해보십시오. &lt;code&gt;a.cpp&lt;/code&gt; 가 컴파일 될 때 다가오는 컴파일 &lt;code&gt;b.cpp&lt;/code&gt; 가 특정 인스턴스가 아닌 템플릿의 인스턴스가 필요하다는 것을 반드시 알 필요는 없습니다. 더 많은 헤더 및 소스 파일의 경우 상황이 더 복잡해질 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="573267f5fdff7a38869f846560058a7991782d2f" translate="yes" xml:space="preserve">
+          <source>That is exactly correct because the compiler has to know what type it is for allocation. So template classes, functions, enums,etc.. must be implemented as well in the header file if it is to be made public or part of a library (static or dynamic) because header files are NOT compiled unlike the c/cpp files which are. If the compiler doesn't know the type is can't compile it. In .Net it can because all objects derive from the Object class. This is not .Net.</source>
+          <target state="translated">컴파일러가 할당 유형을 알아야하기 때문에 정확히 맞습니다. 따라서 헤더 파일은 c / cpp 파일과 달리 컴파일되지 않기 때문에 템플릿 클래스, 함수, 열거 형 등을 헤더 파일에서 공개하거나 라이브러리의 일부 (정적 또는 동적)로 만들려면 헤더 파일에서도 구현해야합니다. 아르. 컴파일러가 타입을 모른다면 컴파일 할 수 없습니다. .Net에서는 모든 객체가 Object 클래스에서 파생되기 때문에 가능합니다. 이것은 .Net이 아닙니다.</target>
+        </trans-unit>
+        <trans-unit id="9e58a81b20c16d22062ebf223f9ad4f4d3b4f677" translate="yes" xml:space="preserve">
+          <source>The &quot;borland&quot; model corresponds to what the author suggests, providing the full template definition, and having things compiled multiple times.</source>
+          <target state="translated">&quot;borland&quot;모델은 저자가 제안한 것과 일치하며, 완전한 템플릿 정의를 제공하고 여러 번 컴파일 된 것들을 갖습니다.</target>
+        </trans-unit>
+        <trans-unit id="58e8c1052ab3a21074d7cb8bccc45c2a6626437e" translate="yes" xml:space="preserve">
+          <source>The above example is fairly useless since vector is fully defined in headers, except when a common include file (precompiled header?) uses &lt;code&gt;extern template class vector&amp;lt;int&amp;gt;&lt;/code&gt; so as to keep it from instantiating it in all the &lt;em&gt;other&lt;/em&gt; (1000?) files that use vector.</source>
+          <target state="translated">일반적인 포함 파일 (사전 컴파일 된 헤더?)이 &lt;code&gt;extern template class vector&amp;lt;int&amp;gt;&lt;/code&gt; 하여 &lt;em&gt;다른&lt;/em&gt; 모든 (1000?) 파일에서 인스턴스화하지 못하도록하는 경우를 제외하고는 벡터가 헤더에 완전히 정의되어 있으므로 위 예제는 상당히 쓸모가 없습니다. 벡터를 사용합니다.</target>
+        </trans-unit>
+        <trans-unit id="751e836bc3075952f979fef87738701137f3a956" translate="yes" xml:space="preserve">
+          <source>The compiler will generate code for each template instantiation when you use a template during the compilation step. 
+In the compilation and linking process .cpp files are converted to pure object or machine code which in them contains references or undefined symbols because the .h files that are included in your main.cpp have no implementation YET. These are ready to be linked with another object file that defines an implementation for your template and thus you have a full a.out executable.</source>
+          <target state="translated">컴파일러는 컴파일 단계에서 템플릿을 사용할 때 각 템플릿 인스턴스화에 대한 코드를 생성합니다. 컴파일 및 연결 프로세스에서 .cpp 파일은 main.cpp에 포함 된 .h 파일에 YET 구현이 없기 때문에 참조 또는 정의되지 않은 기호가 포함 된 순수 객체 또는 기계 코드로 변환됩니다. 이들은 템플릿의 구현을 정의하는 다른 객체 파일과 연결될 준비가되어 있으므로 전체 a.out 실행 파일이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="70e1a76050b751aa87f42fb2a3667367780128f9" translate="yes" xml:space="preserve">
+          <source>The only portable way of using templates at the moment is to implement them in header files by using inline functions.</source>
+          <target state="translated">현재 템플릿을 사용하는 유일한 이식 방법은 인라인 함수를 사용하여 헤더 파일로 템플릿을 구현하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="5a0f95b8ca2d9538f3bebbd2e52eab17be41473f" translate="yes" xml:space="preserve">
+          <source>The separate compilation problem for templates I guess it's also a problem that is arising with the migration to modules, which is currently being worked.</source>
+          <target state="translated">템플릿에 대한 별도의 컴파일 문제 또한 현재 작동중인 모듈로의 마이그레이션으로 인해 발생하는 문제라고 생각합니다.</target>
+        </trans-unit>
+        <trans-unit id="c898a850ca6d8f4fa0a444f7353ad2e51c50f8b6" translate="yes" xml:space="preserve">
+          <source>There is an &lt;em&gt;export&lt;/em&gt; keyword which is supposed to mitigate this problem, but it's nowhere close to being portable.</source>
+          <target state="translated">이 문제를 완화시키기위한 &lt;em&gt;내보내기&lt;/em&gt; 키워드가 있지만 이식성이 거의 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="2392d1fe804bd11c9c1e2fe664277a9cea150dc6" translate="yes" xml:space="preserve">
+          <source>There is no possible way that this could work unless we either</source>
+          <target state="translated">우리가 아니면 이것이 작동 할 수있는 가능한 방법은 없습니다</target>
+        </trans-unit>
+        <trans-unit id="9f0f3cb27a80c18b9106602e69afe581b1d5d1ac" translate="yes" xml:space="preserve">
+          <source>There was a feature with the &lt;code&gt;export&lt;/code&gt; keyword that was meant to be used for separate compilation.
+The &lt;code&gt;export&lt;/code&gt; feature is deprecated in &lt;code&gt;C++11&lt;/code&gt; and, AFAIK, only one compiler implemented it. You shouldn't make use of &lt;code&gt;export&lt;/code&gt;. Separate compilation is not possible in &lt;code&gt;C++&lt;/code&gt; or &lt;code&gt;C++11&lt;/code&gt; but maybe in &lt;code&gt;C++17&lt;/code&gt;, if concepts make it in, we could have some way of separate compilation.</source>
+          <target state="translated">별도의 컴파일에 사용되는 &lt;code&gt;export&lt;/code&gt; 키워드 기능이있었습니다. &lt;code&gt;export&lt;/code&gt; 기능은 &lt;code&gt;C++11&lt;/code&gt; 에서 더 이상 사용되지 않으며 AFAIK에서는 하나의 컴파일러 만 구현했습니다. &lt;code&gt;export&lt;/code&gt; 를 사용해서는 안됩니다. &lt;code&gt;C++&lt;/code&gt; 또는 &lt;code&gt;C++11&lt;/code&gt; 에서는 별도의 컴파일이 불가능하지만 &lt;code&gt;C++17&lt;/code&gt; 에서는 개념이 적용되는 경우 별도의 컴파일 방법이있을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="ca26dec36ce34dee761b07dff18f299e91237c3d" translate="yes" xml:space="preserve">
+          <source>Therefore if you separate the template declaration and definition, you won't be able to only read the header file to see the ins and outs of this template in order to use this API on your own classes, though the compiler will tell you in this case about which operator needs to be overridden.</source>
+          <target state="translated">따라서 템플릿 선언과 정의를 분리하면 자신의 클래스에서이 API를 사용하기 위해 헤더 파일을 읽고이 템플릿의 내용을 볼 수 없으며 컴파일러에서 어떤 연산자를 재정의해야하는지에 대한 사례입니다.</target>
+        </trans-unit>
+        <trans-unit id="a88a22ac4bcba82eae4ad56a83eb507a4312a8a0" translate="yes" xml:space="preserve">
+          <source>Therefore templates are never separately compiled and are only compiled wherever you have a concrete instantiation in some other source file. However, the concrete instantiation needs to know the implementation of the template file, because simply modifying the &lt;code&gt;typename T&lt;/code&gt; using a concrete type in the .h file is not going to do the job because what .cpp is there to link, I can't find it later on because remember templates are abstract and can't be compiled, so I'm forced to give the implementation right now so I know what to compile and link, and now that I have the implementation it gets linked into the enclosing source file. Basically, the moment I instantiate a template I need to create a whole new class, and I can't do that if I don't know how that class should look like when using the type I provide unless I make notice to the compiler of the template implementation, so now the compiler can replace &lt;code&gt;T&lt;/code&gt; with my type and create a concrete class that's ready to be compiled and linked.</source>
+          <target state="translated">따라서 템플릿은 개별적으로 컴파일되지 않으며 다른 소스 파일에서 구체적인 인스턴스가있는 경우에만 컴파일됩니다. 그러나 구체적인 인스턴스화는 템플릿 파일의 구현을 알아야합니다. .h 파일에서 구체적인 유형을 사용하여 &lt;code&gt;typename T&lt;/code&gt; 를 수정하는 것만으로는 .cpp가 링크 할 수 없기 때문에 작업을 수행하지 않기 때문에 기억하십시오 템플릿은 추상적이며 컴파일 할 수 없기 때문에 나중에 찾으십시오. 지금 구현을 제공해야하므로 컴파일하고 링크 할 것을 알고 이제 구현 소스를 묶는 소스에 연결했습니다. 파일. 기본적으로 템플릿을 인스턴스화하는 순간 완전히 새로운 클래스를 만들어야하며, 컴파일러에 통지하지 않으면 제공하는 형식을 사용할 때 해당 클래스가 어떻게 표시되는지 알 수없는 경우 그렇게 할 수 없습니다 템플릿 구현이므로 이제 컴파일러는 &lt;code&gt;T&lt;/code&gt; 를 내 유형으로 바꾸고 컴파일 및 링크 준비가 된 구체적인 클래스를 만들 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="23a63b54ada9895386ea62c48cd3d7b7c294f6fe" translate="yes" xml:space="preserve">
+          <source>This is my approach because I am providing a working program, not a template library for use in other programs.  The author of the book, Josuttis, works a lot on template libraries.</source>
+          <target state="translated">다른 프로그램에서 사용할 템플릿 라이브러리가 아닌 작업 프로그램을 제공하고 있기 때문에 이것은 나의 접근 방식입니다. 이 책의 저자 인 Josuttis는 템플릿 라이브러리에서 많은 작업을 수행합니다.</target>
+        </trans-unit>
+        <trans-unit id="1994e35f7ee1b0488b7ab2d83998104be1a5a533" translate="yes" xml:space="preserve">
+          <source>This requires every T class here to implement the less than operator (&amp;lt;). It will throw a compiler error when you compare two class instances that haven't implemented the &quot;&amp;lt;&quot;.</source>
+          <target state="translated">여기에서는 모든 T 클래스에서보다 작음 연산자 (&amp;lt;)를 구현해야합니다. &quot;&amp;lt;&quot;를 구현하지 않은 두 개의 클래스 인스턴스를 비교하면 컴파일러 오류가 발생합니다.</target>
+        </trans-unit>
+        <trans-unit id="9c31f99a4d4893f55a1fc379d541ff802eb19e98" translate="yes" xml:space="preserve">
+          <source>This way only the template instantiations will need to be recompiled, not all template users (and dependencies).</source>
+          <target state="translated">이 방법으로 모든 템플릿 사용자 (및 종속성)가 아니라 템플릿 인스턴스화 만 다시 컴파일하면됩니다.</target>
+        </trans-unit>
+        <trans-unit id="5e7797397a628b0cc37c602183b6487c56a7909b" translate="yes" xml:space="preserve">
+          <source>This way, implementation is still separated from declaration, but is accessible to the compiler.</source>
+          <target state="translated">이런 식으로 구현은 여전히 ​​선언과 분리되어 있지만 컴파일러가 액세스 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="64b32d3878b4d863ed08ff59292c12d3efc96524" translate="yes" xml:space="preserve">
+          <source>This will instantiate (and thus make available to the linker) the class and all its member functions (only). Similar syntax works for template functions, so if you have non-member operator overloads you may need to do the same for those.</source>
+          <target state="translated">이렇게하면 클래스와 모든 멤버 함수가 인스턴스화되어 (링커가 사용할 수있게됩니다) 전용입니다. 템플릿 함수에도 비슷한 구문이 적용되므로 비 멤버 연산자 오버로드가있는 경우 이와 동일한 구문을 수행해야 할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="a2e4febc84235aa3945c67bda91b8350e52c0816" translate="yes" xml:space="preserve">
+          <source>To sum up, templates are blueprints for how classes should look, classes are blueprints for how an object should look.
+I can't compile templates separate from their concrete instantiation because the compiler only compiles concrete types, in other words, templates at least in C++, is pure language abstraction. We have to de-abstract templates so to speak, and we do so by giving them a concrete type to deal with so that our template abstraction can transform into a regular class file and in turn, it can be compiled normally. Separating the template .h file and the template .cpp file is meaningless. It is nonsensical because the separation of .cpp and .h only is only where the .cpp can be compiled individually and linked individually, with templates since we can't compile them separately, because templates are an abstraction, therefore we are always forced to put the abstraction always together with the concrete instantiation where the concrete instantiation always has to know about the type being used.</source>
+          <target state="translated">요약하면 템플릿은 클래스의 모양을 나타내는 청사진이고 클래스는 객체의 모양을 나타내는 청사진입니다. 컴파일러는 구체적인 유형 만 컴파일합니다. 즉, 적어도 C ++의 템플릿은 순수한 언어 추상화이기 때문에 템플릿을 구체적인 인스턴스화와 별도로 컴파일 할 수 없습니다. 우리는 말을하기 위해 템플릿의 추상을 제거해야하며, 템플릿 추상화가 정규 클래스 파일로 변환 될 수 있고, 정상적으로 컴파일 될 수 있도록 구체적인 유형을 제공함으로써 그렇게합니다. 템플릿 .h 파일과 템플릿 .cpp 파일을 분리하는 것은 의미가 없습니다. .cpp와 .h의 구분은 .cpp를 개별적으로 컴파일하고 개별적으로 링크 할 수있는 곳에서만 가능하기 때문에 의미가 없습니다. 템플릿은 추상화이기 때문에 템플릿을 따로 컴파일 할 수 없기 때문에 템플릿과 추상화해야하기 때문에 항상 구체적인 인스턴스화는 항상 사용되는 유형에 대해 알아야하는 구체적인 인스턴스화와 추상화를 함께 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="8babc0d4da66cbd7109fa8d9a726d718a76ecfc1" translate="yes" xml:space="preserve">
+          <source>When reading this line, the compiler will create a new class (let's call it &lt;code&gt;FooInt&lt;/code&gt;), which is equivalent to the following:</source>
+          <target state="translated">이 줄을 읽을 때 컴파일러는 다음과 같은 새 클래스를 만듭니다 ( &lt;code&gt;FooInt&lt;/code&gt; 라고 함 ).</target>
+        </trans-unit>
+        <trans-unit id="b476e94c03f06628448dd244ac53118aacb69996" translate="yes" xml:space="preserve">
+          <source>Why can templates only be implemented in the header file</source>
+          <target state="translated">헤더 파일에서만 템플릿을 구현할 수있는 이유</target>
+        </trans-unit>
+        <trans-unit id="9d863fbd4a4b35d1abc87eb5fac9e58af686e66b" translate="yes" xml:space="preserve">
+          <source>Why is this?</source>
+          <target state="translated">왜 이런거야?</target>
+        </trans-unit>
+        <trans-unit id="93a9a1e27d6f5ea86d321335fd4bdffa983cbc3e" translate="yes" xml:space="preserve">
+          <source>You can actually define your template class inside a .template file rather than a .cpp file. Whoever is saying you can only define it inside a header file is wrong. This is something that works all the way back to c++ 98.</source>
+          <target state="translated">실제로 템플릿 클래스를 .cpp 파일이 아닌 .template 파일 내에 정의 할 수 있습니다. 헤더 파일 내에서만 정의 할 수 있다고 말하는 사람은 잘못되었습니다. 이것은 C ++ 98로 거슬러 올라가는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="a823daba893b149e44607d98fae24dda1422529b" translate="yes" xml:space="preserve">
+          <source>You might think that when compiling a template the compiler should &quot;generate all versions&quot;, with the ones that are never used being filtered out during linking. Aside from the huge overhead and the extreme difficulties such an approach would face because &quot;type modifier&quot; features like pointers and arrays allow even just the built-in types to give rise to an infinite number of types, what happens when I now extend my program by adding:</source>
+          <target state="translated">템플릿을 컴파일 할 때 컴파일러는 &quot;모든 버전을 생성&quot;해야하며, 링크하는 동안 사용되지 않은 버전을 필터링해야한다고 생각할 수 있습니다. 포인터 및 배열과 같은 &quot;유형 수정 자&quot;기능을 사용하면 내장 유형만으로도 무한한 유형의 유형을 생성 할 수 있기 때문에 엄청난 오버 헤드와 이러한 접근 방식이 직면하는 극심한 어려움 외에도 이제 프로그램을 확장하면 어떻게됩니까? 추가하여:</target>
+        </trans-unit>
+        <trans-unit id="1750a1b4ec7b68120fb74bc6447975a220440d61" translate="yes" xml:space="preserve">
+          <source>bar.cpp</source>
+          <target state="translated">bar.cpp</target>
+        </trans-unit>
+        <trans-unit id="782314c016bd8917ce979dc818a4fd7ac7ab7c91" translate="yes" xml:space="preserve">
+          <source>baz.cpp</source>
+          <target state="translated">baz.cpp</target>
+        </trans-unit>
+        <trans-unit id="10cb3d1898ec0f9b461c034465b3a25a5a0ce364" translate="yes" xml:space="preserve">
+          <source>declares and implements &lt;code&gt;class BazPrivate&lt;/code&gt;, and uses &lt;code&gt;MyClass&amp;lt;BazPrivate&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;class BazPrivate&lt;/code&gt; 선언하고 구현하며 &lt;code&gt;MyClass&amp;lt;BazPrivate&amp;gt;&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="b8483342ec553e84a688884d513d4b7cc9f37f84" translate="yes" xml:space="preserve">
+          <source>declares the interface of &lt;code&gt;class MyClass&amp;lt;T&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;class MyClass&amp;lt;T&amp;gt;&lt;/code&gt; 의 인터페이스를 선언합니다.</target>
+        </trans-unit>
+        <trans-unit id="cb4fdc80a04ae99261e64f95fee1e452c9f18025" translate="yes" xml:space="preserve">
+          <source>defines the implementation of &lt;code&gt;class MyClass&amp;lt;T&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;class MyClass&amp;lt;T&amp;gt;&lt;/code&gt; 의 구현을 정의</target>
+        </trans-unit>
+        <trans-unit id="7b3f4243ca82300fbaf70a60588d086a1fc4d8cc" translate="yes" xml:space="preserve">
+          <source>foo.cpp</source>
+          <target state="translated">foo.cpp</target>
+        </trans-unit>
+        <trans-unit id="dde724ad19815ae98cc695bb8a67aae7d2faa5e5" translate="yes" xml:space="preserve">
+          <source>foo.h</source>
+          <target state="translated">foo.h</target>
+        </trans-unit>
+        <trans-unit id="02637a26f8881bbb4079d37a0a539bc980568f9a" translate="yes" xml:space="preserve">
+          <source>inner_foo has the forward declarations. foo.tpp has the implementation and include inner_foo.h; and foo.h will have just one line, to include foo.tpp.</source>
+          <target state="translated">inner_foo에는 forward 선언이 있습니다. foo.tpp는 구현이 있으며 inner_foo.h를 포함합니다. foo.h는 foo.tpp를 포함하기 위해 한 줄만 가질 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="b9ae663c6f99d0b5550468e0f718e2d689b19354" translate="yes" xml:space="preserve">
+          <source>main.cpp:</source>
+          <target state="translated">main.cpp:</target>
+        </trans-unit>
+        <trans-unit id="e4665c0718899ccbac4e58743355fb37a56287f0" translate="yes" xml:space="preserve">
+          <source>myQueue.cpp:</source>
+          <target state="translated">myQueue.cpp:</target>
+        </trans-unit>
+        <trans-unit id="561d0ea5d0c750aef414c6ce0bbefbc2c915c486" translate="yes" xml:space="preserve">
+          <source>myQueue.hpp:</source>
+          <target state="translated">myQueue.hpp:</target>
+        </trans-unit>
+        <trans-unit id="920571f4eeae7c8e9c9d5838050e2eb652c3bd9c" translate="yes" xml:space="preserve">
+          <source>uses &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="93374352e9e105c91716fa4d811f0fe7be51fe7b" translate="yes" xml:space="preserve">
+          <source>which is gaining support in many compilers.  However, I think precompiled headers would be difficult with template header files.</source>
+          <target state="translated">많은 컴파일러에서 지원을 받고 있습니다. 그러나 템플릿 헤더 파일로는 사전 컴파일 된 헤더가 어려울 것이라고 생각합니다.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="htmlbody" original="https://stackoverflow.com/questions/5605125">
+    <body>
+      <group id="5605125">
+        <trans-unit id="661ce7de198e19441a19b098dbeac4e977f1bc20" translate="yes" xml:space="preserve">
+          <source>(&lt;em&gt;Thanks Tony D for the suggestion to highlight the answer. See his comment below for an example to why this is more robust.&lt;/em&gt;)</source>
+          <target state="translated">( &lt;em&gt;Спасибо Тони Д. за предложение выделить ответ. См. Его комментарий ниже для примера, почему это более надежно.&lt;/em&gt; )</target>
+        </trans-unit>
+        <trans-unit id="bdeb93d3b21a2f1ee66d1a9cc57336514109d702" translate="yes" xml:space="preserve">
+          <source>(If your standard library conforms to C++11, things are a bit different now: A failed &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; now sets numeric variables to &lt;code&gt;0&lt;/code&gt; instead of leaving them uninitialized (except for &lt;code&gt;char&lt;/code&gt;s).)</source>
+          <target state="translated">(Если ваша стандартная библиотека соответствует C ++ 11, сейчас все немного по-другому: сбой &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; теперь устанавливает числовые переменные в &lt;code&gt;0&lt;/code&gt; , а не оставляет их неинициализированными (кроме &lt;code&gt;char&lt;/code&gt; ).)</target>
+        </trans-unit>
+        <trans-unit id="bfed0edb8bb8a64f36a16149180d9b008cb1856f" translate="yes" xml:space="preserve">
+          <source>(This should manifest a bit differently since C++11 (see above): Now you get a &quot;phantom record&quot; of zeroes instead of a repeated last line.)</source>
+          <target state="translated">(Это должно проявляться немного иначе,чем в C++11 (см.выше):Теперь вы получаете &quot;фантомную запись&quot; нулей вместо повторяющейся последней строки).</target>
+        </trans-unit>
+        <trans-unit id="aea9f8f8cc2b79c630130289b0b320297ff84039" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;std::ws&lt;/code&gt; skips any potential (zero or more) trailing space in the stream while setting the &lt;code&gt;eofbit&lt;/code&gt;, and &lt;strong&gt;not the &lt;code&gt;failbit&lt;/code&gt;&lt;/strong&gt;.  So, &lt;code&gt;in.fail()&lt;/code&gt; works as expected, as long as there is at least one data to read. If all-blank streams are also acceptable, then the correct form is:</source>
+          <target state="translated">&lt;code&gt;std::ws&lt;/code&gt; пропускает любое потенциальное (ноль или более) конечное пространство в потоке при установке &lt;code&gt;eofbit&lt;/code&gt; , а &lt;strong&gt;не &lt;code&gt;failbit&lt;/code&gt; &lt;/strong&gt; . Таким образом, &lt;code&gt;in.fail()&lt;/code&gt; работает, как и ожидалось, при условии, что есть хотя бы одна информация для чтения. Если все пустые потоки также приемлемы, тогда правильная форма:</target>
+        </trans-unit>
+        <trans-unit id="1110bde66c337dedaa84d48c940085fb7ceb4c66" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;while(in&amp;gt;&amp;gt;data)&lt;/code&gt; terminates with a set &lt;code&gt;failbit&lt;/code&gt; for &lt;em&gt;all&lt;/em&gt; three input. In the first and third, &lt;code&gt;eofbit&lt;/code&gt; is also set. So past the loop one needs very ugly extra logic to distinguish a proper input (1st) from improper ones (2nd and 3rd).</source>
+          <target state="translated">&lt;code&gt;while(in&amp;gt;&amp;gt;data)&lt;/code&gt; завершается с &lt;code&gt;failbit&lt;/code&gt; набора для &lt;em&gt;всех&lt;/em&gt; трех входов. В первом и третьем, &lt;code&gt;eofbit&lt;/code&gt; также установлен. Таким образом, после цикла нужна очень уродливая дополнительная логика, чтобы отличить правильный ввод (1-й) от неправильного (2-й и 3-й).</target>
+        </trans-unit>
+        <trans-unit id="cda43a337ae2b88b70fccea1970b67cae8752489" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Bottom-line top:&lt;/strong&gt;  With proper handling of white-space, the following is how &lt;code&gt;eof&lt;/code&gt; can be used (and even, be more reliable than &lt;code&gt;fail()&lt;/code&gt; for error checking):</source>
+          <target state="translated">&lt;strong&gt;Итог:&lt;/strong&gt; при правильной обработке пробелов, вот как можно использовать &lt;code&gt;eof&lt;/code&gt; (и даже быть более надежным, чем &lt;code&gt;fail()&lt;/code&gt; для проверки ошибок):</target>
+        </trans-unit>
+        <trans-unit id="6224ae8773663a9e9b39ea4cbccdebcbc585b4fb" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Summary:&lt;/strong&gt; A properly constructed &lt;code&gt;while(!eof)&lt;/code&gt; is not only possible and not wrong, but allows data to be localized within scope, and provides a cleaner separation of error checking from business as usual.  That being said, &lt;code&gt;while(!fail)&lt;/code&gt; is inarguably a more common and terse idiom, and may be preferred in simple (single data per read type of) scenarios.</source>
+          <target state="translated">&lt;strong&gt;Описание:&lt;/strong&gt; Правильно построенное &lt;code&gt;while(!eof)&lt;/code&gt; не только возможно и не неправильно, но позволяет локализовать данные в пределах области и обеспечивает более четкое отделение проверки ошибок от обычного бизнеса. При этом, &lt;code&gt;while(!fail)&lt;/code&gt; , несомненно, является более распространенной и краткой идиомой и может быть предпочтительным в простых (один тип данных на тип чтения) сценарии.</target>
+        </trans-unit>
+        <trans-unit id="302941c5face0f4ff83c4b75c867c630511d9839" translate="yes" xml:space="preserve">
+          <source>Against this:</source>
+          <target state="translated">Против этого:</target>
+        </trans-unit>
+        <trans-unit id="deaeba5ed1d27aaeac8cbcfa1b876c87be3613a9" translate="yes" xml:space="preserve">
+          <source>And on your second question: Because</source>
+          <target state="translated">И на ваш второй вопрос:Потому что</target>
+        </trans-unit>
+        <trans-unit id="3cc54ced6af94de91efda0240caaeacbb7adb4fd" translate="yes" xml:space="preserve">
+          <source>Because &lt;code&gt;iostream::eof&lt;/code&gt; will only return &lt;code&gt;true&lt;/code&gt;&lt;em&gt;after&lt;/em&gt; reading the end of the stream. It does &lt;em&gt;not&lt;/em&gt; indicate, that the next read will be the end of the stream.</source>
+          <target state="translated">Потому что &lt;code&gt;iostream::eof&lt;/code&gt; вернет &lt;code&gt;true&lt;/code&gt; только &lt;em&gt;после&lt;/em&gt; прочтения конца потока. Это &lt;em&gt;не&lt;/em&gt; означает, что следующее чтение будет концом потока.</target>
+        </trans-unit>
+        <trans-unit id="029a9b58857b6cb4dccf290c680b582cc8b10e1d" translate="yes" xml:space="preserve">
+          <source>Because if programmers don't write &lt;code&gt;while(stream &amp;gt;&amp;gt; n)&lt;/code&gt;, they possibly write this:</source>
+          <target state="translated">Потому что, если программисты не пишут &lt;code&gt;while(stream &amp;gt;&amp;gt; n)&lt;/code&gt; , они, возможно, напишут это:</target>
+        </trans-unit>
+        <trans-unit id="db1a45ba8ad69aed79f15f7cdd8a34abf03fdf66" translate="yes" xml:space="preserve">
+          <source>Consider this (and assume then next read will be at the end of the stream):</source>
+          <target state="translated">Рассмотрим это (и предположим,что следующее чтение будет в конце потока):</target>
+        </trans-unit>
+        <trans-unit id="a0e2c9f5f889a9844d021059c48bcc4f2ba4f4bb" translate="yes" xml:space="preserve">
+          <source>Here the problem is, you cannot do &lt;code&gt;some work on n&lt;/code&gt; without first checking if the stream read was successful, because if it was unsuccessful, your &lt;code&gt;some work on n&lt;/code&gt; would produce undesired result.</source>
+          <target state="translated">Здесь проблема в том, что вы не можете выполнить &lt;code&gt;some work on n&lt;/code&gt; без предварительной проверки, было ли чтение потока успешным, потому что, если бы оно было неудачным, ваша &lt;code&gt;some work on n&lt;/code&gt; вызвала бы нежелательный результат.</target>
+        </trans-unit>
+        <trans-unit id="ef6e2fba7528594341d24a51147b987e7bf8953c" translate="yes" xml:space="preserve">
+          <source>Here, &lt;code&gt;in.fail()&lt;/code&gt; verifies that as long as there is something to read, it is the correct one. It's purpose is not a mere while-loop terminator.</source>
+          <target state="translated">Здесь &lt;code&gt;in.fail()&lt;/code&gt; проверяет, что, если есть, что читать, оно является правильным. Это не просто терминатор цикла while.</target>
+        </trans-unit>
+        <trans-unit id="517b5da4da10a404eacedc6ab8641d5d46a6eaaf" translate="yes" xml:space="preserve">
+          <source>How is it different from using &lt;code&gt;scanf(&quot;...&quot;,...)!=EOF&lt;/code&gt; in C (which I often use with no problems)?</source>
+          <target state="translated">Чем он отличается от использования &lt;code&gt;scanf(&quot;...&quot;,...)!=EOF&lt;/code&gt; в C (который я часто использую без проблем)?</target>
+        </trans-unit>
+        <trans-unit id="81edff2ea8409d76e3dac457474cc9d6ff5b73df" translate="yes" xml:space="preserve">
+          <source>I just found a comment in &lt;a href=&quot;https://stackoverflow.com/questions/5578631/c-how-do-you-stop-reading-integer-from-text-file-when-encounter-negative-intege/5578649#5578649&quot;&gt;this&lt;/a&gt; answer saying that using &lt;code&gt;iostream::eof&lt;/code&gt; in a loop condition is &quot;almost certainly wrong&quot;. I generally use something like &lt;code&gt;while(cin&amp;gt;&amp;gt;n)&lt;/code&gt; - which I guess implicitly checks for EOF.</source>
+          <target state="translated">Я только что нашел комментарий в &lt;a href=&quot;https://stackoverflow.com/questions/5578631/c-how-do-you-stop-reading-integer-from-text-file-when-encounter-negative-intege/5578649#5578649&quot;&gt;этом&lt;/a&gt; ответе о том, что использование &lt;code&gt;iostream::eof&lt;/code&gt; в условии цикла &amp;laquo;почти наверняка неправильно&amp;raquo;. Я обычно использую что-то вроде &lt;code&gt;while(cin&amp;gt;&amp;gt;n)&lt;/code&gt; - которое, я думаю, неявно проверяет EOF.</target>
+        </trans-unit>
+        <trans-unit id="f2d38ded8a136d73a71ea12c4ddac0f42576c411" translate="yes" xml:space="preserve">
+          <source>If the stream contains malformed data but you only check for &lt;code&gt;.eof&lt;/code&gt;, you end up with an infinite loop. &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; will fail to extract any data from the stream, so the loop spins in place without ever reaching the end.</source>
+          <target state="translated">Если поток содержит искаженные данные, но вы проверяете только &lt;code&gt;.eof&lt;/code&gt; , вы получаете бесконечный цикл. &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; не удастся извлечь какие-либо данные из потока, поэтому цикл вращается, даже не достигнув конца.</target>
+        </trans-unit>
+        <trans-unit id="8e0381511e6677cd720a12eb832a1867f5700871" translate="yes" xml:space="preserve">
+          <source>If the stream is empty, the loop will run once. &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; will fail (there is no input to be read) and all variables that were supposed to be set (by &lt;code&gt;stream &amp;gt;&amp;gt; x&lt;/code&gt;) are actually uninitialized. This leads to garbage data being processed, which can manifest as nonsensical results (often huge numbers).</source>
+          <target state="translated">Если поток пуст, цикл будет запущен один раз. &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; потерпит неудачу (нет входных данных для чтения), и все переменные, которые должны были быть установлены ( &lt;code&gt;stream &amp;gt;&amp;gt; x&lt;/code&gt; ), фактически неинициализированы. Это приводит к обработке данных мусора, которые могут проявляться как бессмысленные результаты (часто огромные числа).</target>
+        </trans-unit>
+        <trans-unit id="12591e2b26e7f20426a17ba90718891826abf5c3" translate="yes" xml:space="preserve">
+          <source>If the stream is not empty, the loop will run again after the last valid input. Since in the last iteration all &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; operations fail, variables are likely to keep their value from the previous iteration. This can manifest as &quot;the last line is printed twice&quot; or &quot;the last input record is processed twice&quot;.</source>
+          <target state="translated">Если поток не пустой, цикл будет запущен снова после последнего допустимого ввода. Поскольку в последней итерации все &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; операции завершаются неудачно, переменные, скорее всего, сохранят свое значение из предыдущей итерации. Это может проявляться как &amp;laquo;последняя строка печатается дважды&amp;raquo; или &amp;laquo;последняя входная запись обрабатывается дважды&amp;raquo;.</target>
+        </trans-unit>
+        <trans-unit id="dcf488991d737575ffc6d155244c2b5f7c4bff6e" translate="yes" xml:space="preserve">
+          <source>In general terms, checking for &lt;code&gt;eof&lt;/code&gt;&lt;em&gt;only&lt;/em&gt; is wrong because stream extraction (&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;) can fail without hitting the end of the file. If you have e.g. &lt;code&gt;int n; cin &amp;gt;&amp;gt; n;&lt;/code&gt; and the stream contains &lt;code&gt;hello&lt;/code&gt;, then &lt;code&gt;h&lt;/code&gt; is not a valid digit, so extraction will fail without reaching the end of the input.</source>
+          <target state="translated">В общих чертах, проверка &lt;em&gt;только&lt;/em&gt; на &lt;code&gt;eof&lt;/code&gt; является неправильной, поскольку извлечение потока ( &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; ) может завершиться неудачно, не попав в конец файла. Если у вас есть, например, &lt;code&gt;int n; cin &amp;gt;&amp;gt; n;&lt;/code&gt; cin &amp;gt;&amp;gt; n; и поток содержит &lt;code&gt;hello&lt;/code&gt; , тогда &lt;code&gt;h&lt;/code&gt; не является допустимой цифрой, поэтому извлечение не удастся, не достигнув конца ввода.</target>
+        </trans-unit>
+        <trans-unit id="e5cb725cb30b80fd47d08c987da533cdb5bfd4d8" translate="yes" xml:space="preserve">
+          <source>So far so good, but what happens if there is trailing space in the stream -- what sounds like the major concern against &lt;code&gt;eof()&lt;/code&gt; as terminator?</source>
+          <target state="translated">Пока все хорошо, но что произойдет, если в потоке есть конечный пробел - что звучит как основная проблема с &lt;code&gt;eof()&lt;/code&gt; как терминатором?</target>
+        </trans-unit>
+        <trans-unit id="2bc7cd9ab0a7c989dc4a625e4cb86cc64e908ed2" translate="yes" xml:space="preserve">
+          <source>The failure due to read attempt beyond eof is taken as the termination condition.  This means is that there is no easy way to distinguish between a successful stream and one that really fails for reasons other than eof. Take the following streams:</source>
+          <target state="translated">Неисправность,вызванная попыткой чтения после eof,рассматривается как условие прекращения действия.Это означает,что нет простого способа отличить успешный поток от потока,который действительно терпит неудачу по причинам,отличным от eof.Возьмите следующие потоки:</target>
+        </trans-unit>
+        <trans-unit id="da040a0d800cccfdae77e8ce179c432eea02d925" translate="yes" xml:space="preserve">
+          <source>The main argument against using &lt;code&gt;eof()&lt;/code&gt; seems to be missing an important subtlety about the role of white space. My proposition is that, checking &lt;code&gt;eof()&lt;/code&gt; explicitly is not only not &quot;&lt;em&gt;always wrong&lt;/em&gt;&quot; -- which seems to be an overriding opinion in this and similar SO threads --, but with proper handling of white-space, it provides for a cleaner and more reliable error handling, and is the &lt;em&gt;always correct&lt;/em&gt; solution (although, not necessarily the tersest).</source>
+          <target state="translated">Главный аргумент против использования &lt;code&gt;eof()&lt;/code&gt; , по-видимому, упускает важную тонкость в отношении роли пробела. Мое предложение состоит в том, что &lt;code&gt;eof()&lt;/code&gt; проверка eof () не только не &amp;laquo; &lt;em&gt;всегда неправильна&lt;/em&gt; &amp;raquo; - что, по-видимому, является основным мнением в этом и аналогичных потоках SO, - но при правильной обработке пробелов она обеспечивает более чистую очистку. и более надежная обработка ошибок, и это &lt;em&gt;всегда правильное&lt;/em&gt; решение (хотя и не обязательно самое короткое).</target>
+        </trans-unit>
+        <trans-unit id="ca5e6735dd0f12cd493f7a626298dc902793f9f2" translate="yes" xml:space="preserve">
+          <source>The other answers have explained why the logic is wrong in &lt;code&gt;while (!stream.eof())&lt;/code&gt; and how to fix it. I want to focus on something different:</source>
+          <target state="translated">Другие ответы объяснили, почему логика неверна в &lt;code&gt;while (!stream.eof())&lt;/code&gt; и как это исправить. Я хочу сосредоточиться на чем-то другом:</target>
+        </trans-unit>
+        <trans-unit id="ab684f64f3ea61af87e7c27a9dd94156d187cfa5" translate="yes" xml:space="preserve">
+          <source>The whole point is that, &lt;code&gt;eofbit&lt;/code&gt;, &lt;code&gt;badbit&lt;/code&gt;, or &lt;code&gt;failbit&lt;/code&gt; are set &lt;strong&gt;after an attempt is made to read from the stream.&lt;/strong&gt; So if &lt;code&gt;stream &amp;gt;&amp;gt; n&lt;/code&gt; fails, then &lt;code&gt;eofbit&lt;/code&gt;, &lt;code&gt;badbit&lt;/code&gt;, or &lt;code&gt;failbit&lt;/code&gt; is set immediately, so its more idiomatic if you write &lt;code&gt;while (stream &amp;gt;&amp;gt; n)&lt;/code&gt;, because the returned object &lt;code&gt;stream&lt;/code&gt; converts to &lt;code&gt;false&lt;/code&gt; if there was some failure in reading from the stream and consequently the loop stops. And it converts to &lt;code&gt;true&lt;/code&gt; if the read was successful and the loop continues.</source>
+          <target state="translated">Все дело в том, что &lt;code&gt;eofbit&lt;/code&gt; , &lt;code&gt;badbit&lt;/code&gt; или &lt;code&gt;failbit&lt;/code&gt; устанавливаются &lt;strong&gt;после попытки чтения из потока.&lt;/strong&gt; Таким образом, если &lt;code&gt;stream &amp;gt;&amp;gt; n&lt;/code&gt; терпит неудачу, тогда &lt;code&gt;eofbit&lt;/code&gt; , &lt;code&gt;badbit&lt;/code&gt; или &lt;code&gt;failbit&lt;/code&gt; устанавливаются немедленно, так что это более идиоматично, если вы пишете &lt;code&gt;while (stream &amp;gt;&amp;gt; n)&lt;/code&gt; , потому что возвращенный &lt;code&gt;stream&lt;/code&gt; объекта преобразуется в &lt;code&gt;false&lt;/code&gt; , если произошла ошибка при чтении из поток и, следовательно, цикл останавливается. И он преобразуется в &lt;code&gt;true&lt;/code&gt; если чтение было успешным и цикл продолжается.</target>
+        </trans-unit>
+        <trans-unit id="0fb4eee4ccb5789e369fe19eb73ae1d7d1775fc0" translate="yes" xml:space="preserve">
+          <source>This issue, combined with the general logic error of checking the stream state &lt;em&gt;before&lt;/em&gt; attempting to read from it, which means for N input items the loop will run N+1 times, leads to the following symptoms:</source>
+          <target state="translated">Эта проблема в сочетании с общей логической ошибкой проверки состояния потока &lt;em&gt;перед&lt;/em&gt; попыткой чтения из него, что означает, что для N входных элементов цикл будет выполняться N + 1 раз, приводит к следующим симптомам:</target>
+        </trans-unit>
+        <trans-unit id="102e51fea7eb97a272da36cb2c7e2a57a5c244fe" translate="yes" xml:space="preserve">
+          <source>To recap: The solution is to test the success of the &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; operation itself, not to use a separate &lt;code&gt;.eof()&lt;/code&gt; method: &lt;code&gt;while (stream &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m) { ... }&lt;/code&gt;, just as in C you test the success of the &lt;code&gt;scanf&lt;/code&gt; call itself: &lt;code&gt;while (scanf(&quot;%d%d&quot;, &amp;amp;n, &amp;amp;m) == 2) { ... }&lt;/code&gt;.</source>
+          <target state="translated">Напомним: решение состоит в том, чтобы проверить успешность самой операции &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; , а не использовать отдельный &lt;code&gt;.eof()&lt;/code&gt; : &lt;code&gt;while (stream &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m) { ... }&lt;/code&gt; , как в C, который вы тестируете успешность самого вызова &lt;code&gt;scanf&lt;/code&gt; : &lt;code&gt;while (scanf(&quot;%d%d&quot;, &amp;amp;n, &amp;amp;m) == 2) { ... }&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="a0a66347155573856fc34cd9f2b691d806d1bd86" translate="yes" xml:space="preserve">
+          <source>To summarize what is being suggested as the &quot;proper&quot; termination and read order is the following:</source>
+          <target state="translated">Подводя итог тому,что предлагается в качестве &quot;правильного&quot; прекращения и порядка прочтения,можно сказать следующее:</target>
+        </trans-unit>
+        <trans-unit id="7cf3e4722ba563bbda6ba8cfb53eb3b231719e72" translate="yes" xml:space="preserve">
+          <source>We don't need to surrender our error handling; just eat up the white-space:</source>
+          <target state="translated">Нам не нужно сдаваться в обработке ошибок,просто съешь белый пробел:</target>
+        </trans-unit>
+        <trans-unit id="57b964f16fd66b0cc1636e997cff4f85d4db8e43" translate="yes" xml:space="preserve">
+          <source>Whereas, take the following:</source>
+          <target state="translated">В то время как,возьмите следующее:</target>
+        </trans-unit>
+        <trans-unit id="ef382a38a7856bd8bf85dfd3439fccee1001bcb5" translate="yes" xml:space="preserve">
+          <source>Why is checking for eof explicitly using &lt;code&gt;while (!cin.eof())&lt;/code&gt; wrong?</source>
+          <target state="translated">Почему проверка eof явно использует &lt;code&gt;while (!cin.eof())&lt;/code&gt; неправильно?</target>
+        </trans-unit>
+        <trans-unit id="65e37296903ebefe24b34f25aed499c27dcd18c1" translate="yes" xml:space="preserve">
+          <source>Why is iostream::eof inside a loop condition (i.e. `while (!stream.eof())`) considered wrong</source>
+          <target state="translated">Почему iostream::eof внутри условия цикла (т.е.`while (!stream.eof())`)считается неправильным</target>
+        </trans-unit>
+        <trans-unit id="326edd5c80ebc0f3eed90198b18fad934d7e092a" translate="yes" xml:space="preserve">
+          <source>and &lt;strong&gt;not&lt;/strong&gt; the same as</source>
+          <target state="translated">и &lt;strong&gt;не&lt;/strong&gt; такой как</target>
+        </trans-unit>
+        <trans-unit id="841108c86e9fbb4edafbf1fc269ca06fbd9c2aa7" translate="yes" xml:space="preserve">
+          <source>is the same as</source>
+          <target state="translated">такой же,как</target>
+        </trans-unit>
+        <trans-unit id="43f5cc089c9cf89e7f51720154dc51a4bce278f4" translate="yes" xml:space="preserve">
+          <source>why is checking for eof explicitly using &lt;code&gt;iostream::eof&lt;/code&gt; wrong?</source>
+          <target state="translated">почему проверка eof явно использует &lt;code&gt;iostream::eof&lt;/code&gt; неправильно?</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

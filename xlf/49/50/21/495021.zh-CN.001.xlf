@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/495021">
+    <body>
+      <group id="495021">
+        <trans-unit id="b035bf2cc167fd9eb1fa6ad4f75e65902c071b59" translate="yes" xml:space="preserve">
+          <source>&quot;Instantiation-style polymorphism&quot; means that the template &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; isn't really a generic class that can be compiled to code that can work for any value of &lt;code&gt;T&lt;/code&gt;. That would add overhead such as boxing, needing to pass function pointers to allocators and constructors, etc. The intention of C++ templates is to avoid having to write nearly identical &lt;code&gt;class MyClass_int&lt;/code&gt;, &lt;code&gt;class MyClass_float&lt;/code&gt;, etc, but to still be able to end up with compiled code that is mostly as if we &lt;em&gt;had&lt;/em&gt; written each version separately. So a template is &lt;em&gt;literally&lt;/em&gt; a template; a class template is &lt;em&gt;not&lt;/em&gt; a class, it's a recipe for creating a new class for each &lt;code&gt;T&lt;/code&gt; we encounter. A template cannot be compiled into code, only the result of instantiating the template can be compiled.</source>
+          <target state="translated">&amp;ldquo;实例化样式多态性&amp;rdquo;意味着模板 &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; 并不是真正的泛型类，可以将其编译为可用于任何 &lt;code&gt;T&lt;/code&gt; 值的代码。 这将增加诸如装箱之类的开销，需要将函数指针传递给分配器和构造函数等。C++模板的目的是避免不得不编写几乎相同的 &lt;code&gt;class MyClass_int&lt;/code&gt; ， &lt;code&gt;class MyClass_float&lt;/code&gt; 等，但最终仍可以编译后的代码，就像我们&lt;em&gt;分别&lt;/em&gt;编写每个版本一样。 因此，模板&lt;em&gt;实际上&lt;/em&gt;就是模板。 类模板&lt;em&gt;不是&lt;/em&gt;类，而是为我们遇到的每个 &lt;code&gt;T&lt;/code&gt; 创建一个新类的秘诀。 模板不能编译成代码，只能实例化模板的结果。</target>
+        </trans-unit>
+        <trans-unit id="e9f8648e64f859e7cabf474d36d8473d6277cf09" translate="yes" xml:space="preserve">
+          <source>(Clarification: header files are not the &lt;em&gt;only&lt;/em&gt; portable solution. But they are the most convenient portable solution.)</source>
+          <target state="translated">（澄清：头文件不是&lt;em&gt;唯一的&lt;/em&gt;可移植解决方案。但是它们是最方便的可移植解决方案。）</target>
+        </trans-unit>
+        <trans-unit id="5eea08821de446b9d5a28f7b7ec97da98d199f9f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;bar.cpp&lt;/strong&gt; doesn't even need to exist when I compile &lt;strong&gt;foo.cpp&lt;/strong&gt;, but I should still be able to link the &lt;strong&gt;foo.o&lt;/strong&gt; I already had together with the &lt;strong&gt;bar.o&lt;/strong&gt; I've only just produced, without needing to recompile &lt;strong&gt;foo.cpp&lt;/strong&gt;. &lt;strong&gt;foo.cpp&lt;/strong&gt; could even be compiled into a dynamic library, distributed somewhere else without &lt;strong&gt;foo.cpp&lt;/strong&gt;, and linked with code they write years after I wrote &lt;strong&gt;foo.cpp&lt;/strong&gt;.</source>
+          <target state="translated">当我编译&lt;strong&gt;foo.cpp时&lt;/strong&gt; ， &lt;strong&gt;bar.cpp&lt;/strong&gt;甚至不需要存在，但我仍然应该可以将&lt;strong&gt;foo.o&lt;/strong&gt;与&lt;strong&gt;bar.o&lt;/strong&gt;一起使用&lt;strong&gt;。o&lt;/strong&gt;我刚刚生成的文件，而无需重新编译&lt;strong&gt;foo .cpp&lt;/strong&gt; 。 甚至可以将&lt;strong&gt;foo.cpp&lt;/strong&gt;编译成动态库，而无需&lt;strong&gt;foo.cpp&lt;/strong&gt;即可将&lt;strong&gt;其&lt;/strong&gt;分发到其他地方，并与他们在我编写&lt;strong&gt;foo.cpp&lt;/strong&gt;之后数年编写的代码链接。</target>
+        </trans-unit>
+        <trans-unit id="2fc371f446c0acfde57bd7659ead23b9112f8278" translate="yes" xml:space="preserve">
+          <source>A common solution to this is to write the template declaration in a header file, then implement the class in an implementation file (for example .tpp), and include this implementation file at the end of the header.</source>
+          <target state="translated">一个常见的解决方案是将模板声明写在头文件中,然后在一个实现文件(例如.tpp)中实现该类,并在头文件的末尾包含该实现文件。</target>
+        </trans-unit>
+        <trans-unit id="e57d0314403f00ceaaaa8428eba3e1aef96c93ae" translate="yes" xml:space="preserve">
+          <source>A schematic example:</source>
+          <target state="translated">一个原理图的例子。</target>
+        </trans-unit>
+        <trans-unit id="196609edf5fcabd3de77dfd3d5b00786d86be944" translate="yes" xml:space="preserve">
+          <source>A way to have separate implementation is as follows.</source>
+          <target state="translated">分开实施的方法如下:</target>
+        </trans-unit>
+        <trans-unit id="be5dd547c840410475dd23e56ea45e18c434e2ab" translate="yes" xml:space="preserve">
+          <source>Actually, prior to C++11 the standard defined the &lt;code&gt;export&lt;/code&gt; keyword that &lt;em&gt;would&lt;/em&gt; make it possible to declare templates in a header file and implement them elsewhere.</source>
+          <target state="translated">实际上，在C ++ 11之前，该标准定义了 &lt;code&gt;export&lt;/code&gt; 关键字， &lt;em&gt;这&lt;/em&gt;使得可以在头文件中声明模板并在其他地方实现它们。</target>
+        </trans-unit>
+        <trans-unit id="3268f427c74032de655fa4e01528f44190c37aec" translate="yes" xml:space="preserve">
+          <source>Alternative solution</source>
+          <target state="translated">替代性解决方案</target>
+        </trans-unit>
+        <trans-unit id="443f50703b7217e59b314d8938c59b61b0d3db20" translate="yes" xml:space="preserve">
+          <source>Although standard C++ has no such requirement, some compilers require that all function and class templates need to be made available in every translation unit they are used. In effect, for those compilers, the bodies of template functions must be made available in a header file. To repeat: that means those compilers won't allow them to be defined in non-header files such as .cpp files</source>
+          <target state="translated">虽然标准的C++没有这样的要求,但有些编译器要求所有的函数和类模板都需要在每个翻译单元中提供。实际上,对于这些编译器来说,模板函数的体必须在头文件中提供。重复一下:这意味着这些编译器不允许在非头文件中定义函数,如.cpp文件。</target>
+        </trans-unit>
+        <trans-unit id="06fa10dc30994a0c1e4738b1af8fe281fe0f2079" translate="yes" xml:space="preserve">
+          <source>And in the Utility.cpp:</source>
+          <target state="translated">而在Utility.cpp中。</target>
+        </trans-unit>
+        <trans-unit id="cdab4bd0267850a1f73e501206add84b1278204d" translate="yes" xml:space="preserve">
+          <source>Another reason that it's a good idea to write both declarations and definitions in header files is for readability. Suppose there's such a template function in Utility.h:</source>
+          <target state="translated">在头文件中同时写声明和定义的另一个原因是为了可读性。假设在 Utility.h 中有这样一个模板函数。</target>
+        </trans-unit>
+        <trans-unit id="295b12e50623177c4327236e29b6ef8235275a3a" translate="yes" xml:space="preserve">
+          <source>Another solution is to keep the implementation separated, and explicitly instantiate all the template instances you'll need:</source>
+          <target state="translated">另一个解决方案是将实现分开,明确地实例化所有你需要的模板实例。</target>
+        </trans-unit>
+        <trans-unit id="c3fdc10777f128f761e03c874819811a55f60399" translate="yes" xml:space="preserve">
+          <source>Anyway, the reason your code is failing is that, when instantiating a template, the compiler creates a new class with the given template argument. For example:</source>
+          <target state="translated">总之,你的代码失败的原因是,在实例化一个模板时,编译器会用给定的模板参数创建一个新的类。比如说</target>
+        </trans-unit>
+        <trans-unit id="e4384f393f9a314fc52cf6be36242df62df17b5e" translate="yes" xml:space="preserve">
+          <source>As a result, the ISO C++ standard committee decided to remove the &lt;code&gt;export&lt;/code&gt; feature of templates with C++11.</source>
+          <target state="translated">结果，ISO C ++标准委员会决定删除具有C ++ 11的模板的 &lt;code&gt;export&lt;/code&gt; 功能。</target>
+        </trans-unit>
+        <trans-unit id="cc12f0b11ceb91fcc52e35983342499dacc9520a" translate="yes" xml:space="preserve">
+          <source>Caveat: It is &lt;em&gt;not&lt;/em&gt; necessary to put the implementation in the header file, see the alternative solution at the end of this answer.</source>
+          <target state="translated">注意：不必将实现放在头文件中，请参阅此答案末尾的替代解决方案。</target>
+        </trans-unit>
+        <trans-unit id="714c7edcf9a6dfde043d41d403275de85af64e20" translate="yes" xml:space="preserve">
+          <source>Consequently, the compiler needs to have access to the implementation of the methods, to instantiate them with the template argument (in this case &lt;code&gt;int&lt;/code&gt;). If these implementations were not in the header, they wouldn't be accessible, and therefore the compiler wouldn't be able to instantiate the template.</source>
+          <target state="translated">因此，编译器需要访问方法的实现，以使用模板参数（在本例中为 &lt;code&gt;int&lt;/code&gt; ）实例化它们。 如果这些实现不在头文件中，则将无法访问它们，因此编译器将无法实例化模板。</target>
+        </trans-unit>
+        <trans-unit id="66705bb389b50ec573981426b267ee96ef11ce15" translate="yes" xml:space="preserve">
+          <source>Don't forget to have your compiler treat your .template file as a c++ file to keep the intelli sense.</source>
+          <target state="translated">不要忘记让你的编译器把你的.template文件当作一个c++文件来处理,以保持intelli的意义。</target>
+        </trans-unit>
+        <trans-unit id="80ff8bad077219e5eb6d2824ef614f47f5e13f01" translate="yes" xml:space="preserve">
+          <source>Each user of the template includes that header file and uses the typedef.</source>
+          <target state="translated">模板的每个用户都包含了那个头文件,并使用类型化的ef。</target>
+        </trans-unit>
+        <trans-unit id="cc94c8862d7b92a03b6b8a599fe014178a50d393" translate="yes" xml:space="preserve">
+          <source>Edit: Adding example of explicit template instantiation. Used after the template has been defined, and all member functions has been defined.</source>
+          <target state="translated">编辑:增加了显式模板实例化的例子。在模板已经定义好了,并且所有成员函数都定义好了之后使用。</target>
+        </trans-unit>
+        <trans-unit id="f95b23255b3aa50ef9fc041109ba878b6c2aa2b1" translate="yes" xml:space="preserve">
+          <source>Even though there are plenty of good explanations above, I'm missing a practical way to separate templates into header and body.</source>
+          <target state="translated">虽然上面有很多很好的解释,但我还是缺少一个实用的方法,将模板分为页眉和正文。</target>
+        </trans-unit>
+        <trans-unit id="6cc307ede2a377f65c8c1c69348f06afd6a2e8c7" translate="yes" xml:space="preserve">
+          <source>Foo.cpp</source>
+          <target state="translated">Foo.cpp</target>
+        </trans-unit>
+        <trans-unit id="908239a07d276301afb988b50e7f6bb2d18d784d" translate="yes" xml:space="preserve">
+          <source>Foo.h</source>
+          <target state="translated">Foo.h</target>
+        </trans-unit>
+        <trans-unit id="4a7d5666a48d825ce85c0580fe4cc84bc378d8f3" translate="yes" xml:space="preserve">
+          <source>Foo.tpp</source>
+          <target state="translated">Foo.tpp</target>
+        </trans-unit>
+        <trans-unit id="82a77bbbd6668cf9c08fdbe5e3587d003efcd33a" translate="yes" xml:space="preserve">
+          <source>For each template usage there's a typedef in its own header file (generated from the UML model). Its body contains the instantiation (which ends up in a library which is linked in at the end).</source>
+          <target state="translated">对于每一个模板的使用,都有一个类型化的ef在它自己的头文件中(由UML模型生成)。它的正文包含了实例化(最后在库中链接的库中)。</target>
+        </trans-unit>
+        <trans-unit id="5b5fed325d16bdec5cc8b43d0474e826e2cf9b46" translate="yes" xml:space="preserve">
+          <source>For separate compilation to be achieved, separate template body checking must be possible. It seems that a solution is possible with concepts. Take a look at this &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3629.pdf&quot;&gt;paper&lt;/a&gt; recently presented at the 
+standards commitee meeting. I think this is not the only requirement, since you still need to instantiate code for the template code in user code.</source>
+          <target state="translated">为了实现单独的编译，必须可以进行单独的模板主体检查。 似乎可以通过概念来解决。 看一下最近在标准委员会会议上发表的这篇&lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3629.pdf&quot;&gt;论文&lt;/a&gt; 。 我认为这不是唯一的要求，因为您仍然需要为用户代码中的模板代码实例化代码。</target>
+        </trans-unit>
+        <trans-unit id="64df38475feba828e0989613927f71a856e989b4" translate="yes" xml:space="preserve">
+          <source>Have to recompile &lt;strong&gt;foo.cpp&lt;/strong&gt; every time we change &lt;em&gt;any other file in the program&lt;/em&gt;, in case it added a new novel instantiation of &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">每次更改程序中的&lt;em&gt;任何其他文件时，&lt;/em&gt;都必须重新编译&lt;strong&gt;foo.cpp&lt;/strong&gt; ，以防它添加了 &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; 的新的新颖实例。</target>
+        </trans-unit>
+        <trans-unit id="a9125e5f2cc07fe769d4b37e603b64292d0aba7b" translate="yes" xml:space="preserve">
+          <source>Having all template instantiations in the template body is not a viable solution for me, since the template author may not know all if its usage and the template user may not have the right to modify it.</source>
+          <target state="translated">让所有的模板实例都在模板正文中,对我来说并不是一个可行的解决方案,因为模板作者可能不知道它的所有用途,而且模板用户可能没有权利修改它。</target>
+        </trans-unit>
+        <trans-unit id="2fc1605804c6bc9c61485c59f3cb5aed20c0e151" translate="yes" xml:space="preserve">
+          <source>Here is an example of this for a dynamic array class.</source>
+          <target state="translated">下面是一个动态数组类的例子。</target>
+        </trans-unit>
+        <trans-unit id="facd6b7aac26f9ee87b6abf6cea13139dac87079" translate="yes" xml:space="preserve">
+          <source>However since templates need to be processed in the compilation step in order to generate code for each template instantiation that you define, so simply compiling a template separate from it's header file won't work because they always go hand and hand, for the very reason that each template instantiation is a whole new class literally. In a regular class you can separate .h and .cpp because .h is a blueprint of that class and the .cpp is the raw implementation so any implementation files can be compiled and linked regularly, however using templates .h is a blueprint of how the class should look not how the object should look meaning a template .cpp file isn't a raw regular implementation of a class, it's simply a blueprint for a class, so any implementation of a .h template file can't be compiled because you need something concrete to compile, templates are abstract in that sense.</source>
+          <target state="translated">然而,由于模板需要在编译步骤中处理,以便为你定义的每一个模板实例生成代码,所以简单地将模板与头文件分开编译是行不通的,因为它们总是相辅相成的,因为每个模板实例都是一个全新的类。在一个常规类中,你可以把.h和.cpp分开,因为.h是该类的蓝图,而.cpp是原始的实现,所以任何实现文件都可以被编译和链接,但是使用模板.h是一个蓝图,它是类应该如何看的蓝图,而不是对象应该如何看的蓝图,也就是说模板.cpp文件不是一个类的原始常规实现,它只是一个类的蓝图,所以任何实现.h模板文件都不能被编译,因为你需要具体的东西来编译,模板在这个意义上是抽象的。</target>
+        </trans-unit>
+        <trans-unit id="87f174db2809957fd6b6e355c08819c42e926f22" translate="yes" xml:space="preserve">
+          <source>I do this because static analyzers for the code break when it does not see the forward declarations of class in *.tpp. This is annoying when writing code in any IDE or using YouCompleteMe or others.</source>
+          <target state="translated">我这样做是因为当静态分析器的代码没有看到*.tpp中的类的前向声明时,静态分析器就会崩溃。当在任何IDE中写代码或使用YouCompleteMe或其他的代码时,这很烦人。</target>
+        </trans-unit>
+        <trans-unit id="a00573411f305b4648ab694f0a3f5eb5f85894a3" translate="yes" xml:space="preserve">
+          <source>I suggest looking at this gcc page which discusses the tradeoffs between the &quot;cfront&quot; and &quot;borland&quot; model for template instantiations.</source>
+          <target state="translated">我建议看看这个gcc页面,它讨论了 &quot;cfront &quot;和 &quot;borland &quot;模板实例化模型之间的权衡。</target>
+        </trans-unit>
+        <trans-unit id="fd41fb7a1caa2b78e5d1a3e75ebe40ef63a19fc5" translate="yes" xml:space="preserve">
+          <source>I took the following approach, which works also for older compilers (gcc 4.3.4, aCC A.03.13).</source>
+          <target state="translated">我采取了以下方法,这对老的编译器(gcc 4.3.4,aCC A.03.13)也是有效的。</target>
+        </trans-unit>
+        <trans-unit id="3333e71f7edcca169894e1df3c21ed777965c2b5" translate="yes" xml:space="preserve">
+          <source>If &lt;strong&gt;foo.cpp&lt;/strong&gt; itself uses &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt;, then code for that will be generated while compiling &lt;strong&gt;foo.cpp&lt;/strong&gt;, so when &lt;strong&gt;bar.o&lt;/strong&gt; is linked to &lt;strong&gt;foo.o&lt;/strong&gt; they can be hooked up and will work. We can use that fact to allow a finite set of template instantiations to be implemented in a .cpp file by writing a single template. But there's no way for &lt;strong&gt;bar.cpp&lt;/strong&gt; to use the template &lt;em&gt;as a template&lt;/em&gt; and instantiate it on whatever types it likes; it can only use pre-existing versions of the templated class that the author of &lt;strong&gt;foo.cpp&lt;/strong&gt; thought to provide.</source>
+          <target state="translated">如果&lt;strong&gt;foo.cpp&lt;/strong&gt;本身使用 &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt; ，则将在编译&lt;strong&gt;foo.cpp&lt;/strong&gt;时生成该代码，因此，当&lt;strong&gt;bar.o&lt;/strong&gt;与&lt;strong&gt;foo.o&lt;/strong&gt;链接时，它们可以被连接起来并可以正常工作。 我们可以利用这一事实，通过编写单个模板，在.cpp文件中实现一组有限的模板实例化。 但是， &lt;strong&gt;bar.cpp&lt;/strong&gt;无法将模板&lt;em&gt;用作模板&lt;/em&gt; ，并在所需的任何类型上实例化它。 它只能使用&lt;strong&gt;foo.cpp&lt;/strong&gt;的作者认为提供的模板化类的现有版本。</target>
+        </trans-unit>
+        <trans-unit id="011a72a7f3dc5627b578590bd02a88adde7b305a" translate="yes" xml:space="preserve">
+          <source>If I was really worried about speed, I suppose I would explore using Precompiled Headers 
+&lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html&quot;&gt;https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html&lt;/a&gt;</source>
+          <target state="translated">如果我真的担心速度，我想我会探索使用预编译头&lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html&quot;&gt;https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="7b87ff4c31fa3b95028236c600a2a6c3ac3da1e5" translate="yes" xml:space="preserve">
+          <source>If my explanation isn't clear enough, you can have a look at the &lt;a href=&quot;https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl&quot;&gt;C++ Super-FAQ on this subject&lt;/a&gt;.</source>
+          <target state="translated">如果我的解释不够清楚，您可以查看&lt;a href=&quot;https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl&quot;&gt;有关此主题&lt;/a&gt;的C ++ Super-FAQ 。</target>
+        </trans-unit>
+        <trans-unit id="0bf8cdd8be4fa175a80b68f8957e30eb7bb988c2" translate="yes" xml:space="preserve">
+          <source>If the concern is the extra compilation time and binary size bloat produced by compiling the .h as part of all the .cpp modules using it, in many cases what you can do is make the template class descend from a non-templatized base class for non type-dependent parts of the interface, and that base class can have its implementation in the .cpp file.</source>
+          <target state="translated">如果你担心的是将.h作为所有使用.cpp模块的一部分来编译.h所产生的额外的编译时间和二进制大小的臃肿,那么在很多情况下,你可以做的是让模板类从一个非模板化的基类中降生出来,用于接口的非类型依赖部分,而这个基类可以在.cpp文件中实现。</target>
+        </trans-unit>
+        <trans-unit id="b9aeaa7ae46fee59a9175d2ea5a67ecb336c12cb" translate="yes" xml:space="preserve">
+          <source>If you, at the bottom of the implementation cpp file, do explicit instantiation of all the types the template will be used with, the linker will be able to find them as usual.</source>
+          <target state="translated">如果你在实现cpp文件的底部,对模板要使用的所有类型做了显式实例化,链接器就能像往常一样找到它们。</target>
+        </trans-unit>
+        <trans-unit id="17b3a73d1735316997e49303704cf1f9e4bcf528" translate="yes" xml:space="preserve">
+          <source>In my experience, I rely on the C++ Standard Library and Boost templates being instantiated for each compilation unit (using a template library).  For my large template classes, I do manual template instantiation, once, for the types I need.</source>
+          <target state="translated">根据我的经验,我依靠C++标准库和Boost模板为每个编译单元实例化(使用模板库)。对于我的大型模板类,我对我需要的类型进行手动模板实例化,一次就完成了。</target>
+        </trans-unit>
+        <trans-unit id="8c31ab53c2aa0f343fe425ec5ac5df36ee59ff73" translate="yes" xml:space="preserve">
+          <source>It contains explicit recommendations concerning using manual and automatic template instantiation.  For example, the &quot;-repo&quot; option can be used to collect templates which need to be instantiated.  Or another option is to disable automatic template instantiations using &quot;-fno-implicit-templates&quot; to force manual template instantiation.</source>
+          <target state="translated">它包含了关于使用手动和自动模板实例化的明确建议。例如,可以使用&quot;-repo &quot;选项来收集需要实例化的模板。或者另一个选项是使用&quot;-fno-implicit-templates &quot;禁用自动模板实例化,强制手动模板实例化。</target>
+        </trans-unit>
+        <trans-unit id="d7fcfe322279aaaf6ecb382779c5e98a8fbcbd54" translate="yes" xml:space="preserve">
+          <source>It is technically possible to create some sort of functionality that will save the template.cpp file and switch out the types when it finds them in other sources, I think that the standard does have a keyword &lt;code&gt;export&lt;/code&gt; that will allow you to put templates in a separate cpp file but not that many compilers actually implement this.</source>
+          <target state="translated">从技术上讲，可以创建某种功能来保存template.cpp文件，并在其他来源中找到它们时切换出类型，我认为该标准确实具有关键字 &lt;code&gt;export&lt;/code&gt; ，可将模板放入一个单独的cpp文件，但实际上并没有很多编译器实现。</target>
+        </trans-unit>
+        <trans-unit id="c4587d4599976fa42e1045afc20e1c648a79bff6" translate="yes" xml:space="preserve">
+          <source>It means that the most portable way to define method implementations of template classes is to define them inside the template class definition.</source>
+          <target state="translated">这意味着,定义模板类的方法实现,最可移植的方式是在模板类定义中定义方法实现。</target>
+        </trans-unit>
+        <trans-unit id="465d68aca886e2ba0f6bc7c8e105292f938fcb0d" translate="yes" xml:space="preserve">
+          <source>It's because of the requirement for separate compilation and because templates are instantiation-style polymorphism.</source>
+          <target state="translated">这是因为要求单独编译,也是因为模板是实例化式的多态性。</target>
+        </trans-unit>
+        <trans-unit id="25dec0fc6c89b691f8f9a3e994c3ef5b0abc0fe8" translate="yes" xml:space="preserve">
+          <source>Just a side note, when making specializations for a template class, you can separate the header from the implementation because a specialization by definition means that I am specializing for a concrete type that can be compiled and linked individually.</source>
+          <target state="translated">只是从侧面说明一下,在给模板类做专门化的时候,可以把头像和实现分开,因为从定义上看,专门化就意味着我是针对一个具体的类型进行专门化,可以单独编译和链接。</target>
+        </trans-unit>
+        <trans-unit id="90c0f03268a72533d3715fb1c3f04f17010fd4e8" translate="yes" xml:space="preserve">
+          <source>Just to add something noteworthy here. One can define methods of a templated class just fine in the implementation file when they are not function templates.</source>
+          <target state="translated">只是在这里补充一点值得注意的地方。当一个模板化类的方法不是函数模板时,可以在实现文件中定义这些方法。</target>
+        </trans-unit>
+        <trans-unit id="888d48c5f6045b8a8e83ebd7c050f1a0853a2ae6" translate="yes" xml:space="preserve">
+          <source>Lets get a little closer to concrete for an explanation. Say I've got the following files:</source>
+          <target state="translated">让我们再来具体的解释一下。说我有以下几个文件。</target>
+        </trans-unit>
+        <trans-unit id="874b2d856f83dc17aed9827ccbaf2c655bd10aef" translate="yes" xml:space="preserve">
+          <source>Meaning &lt;code&gt;typename T&lt;/code&gt; get's replaced during the compilation step not the linking step so if I try to compile a template without &lt;code&gt;T&lt;/code&gt; being replaced as a concrete value type that is completely meaningless to the compiler and as a result object code can't be created because it doesn't know what &lt;code&gt;T&lt;/code&gt; is.</source>
+          <target state="translated">含义是在编译步骤而不是链接步骤期间替换了 &lt;code&gt;typename T&lt;/code&gt; get，因此，如果我尝试编译模板而没有将 &lt;code&gt;T&lt;/code&gt; 替换为对编译器完全没有意义的具体值类型，则由于它不能创建目标代码不知道 &lt;code&gt;T&lt;/code&gt; 是什么</target>
+        </trans-unit>
+        <trans-unit id="7fc9acfdc804197b314d8a24ba75469bacf7cd44" translate="yes" xml:space="preserve">
+          <source>My main concern is avoiding recompilation of all template users, when I change its definition.</source>
+          <target state="translated">我主要关心的是,当我改变它的定义时,避免对所有模板用户进行重新编译。</target>
+        </trans-unit>
+        <trans-unit id="19e735f0ba4f7fedbf86a4d8db05ec2168dae756" translate="yes" xml:space="preserve">
+          <source>MyInstantiatedTemplate.cpp:</source>
+          <target state="translated">MyInstantiatedTemplate.cpp:</target>
+        </trans-unit>
+        <trans-unit id="fa356b6c6efa2ea6ff88305f59851d0e6a2e480e" translate="yes" xml:space="preserve">
+          <source>MyInstantiatedTemplate.h:</source>
+          <target state="translated">MyInstantiatedTemplate.h:</target>
+        </trans-unit>
+        <trans-unit id="8e34d8a24c57d38d429bde7fc7eceb8c00a41285" translate="yes" xml:space="preserve">
+          <source>MyTemplate.cpp:</source>
+          <target state="translated">MyTemplate.cpp:</target>
+        </trans-unit>
+        <trans-unit id="9dd5eb3e28a84b69814aa5d8085079ec0abf9aae" translate="yes" xml:space="preserve">
+          <source>MyTemplate.h:</source>
+          <target state="translated">MyTemplate.h:</target>
+        </trans-unit>
+        <trans-unit id="779855889bb02228386e15de72062da5af7cdbf1" translate="yes" xml:space="preserve">
+          <source>Nobody likes (1), because whole-program-analysis compilation systems take &lt;em&gt;forever&lt;/em&gt; to compile , and because it makes it impossible to distribute compiled libraries without the source code. So we have (2) instead.</source>
+          <target state="translated">没有人喜欢（1），因为整个程序分析编译系统需要花费大量的时间进行编译，并且由于没有源代码就无法分发已编译的库。 因此，我们改为（2）。</target>
+        </trans-unit>
+        <trans-unit id="8600908363c5763340849b73a07750b2fc8781dc" translate="yes" xml:space="preserve">
+          <source>None of the popular compilers implemented this keyword. The only one I know about is the frontend written by the Edison Design Group, which is used by the Comeau C++ compiler. All others required you to write templates in header files, because the compiler needs the template definition for proper instantiation (as others pointed out already).</source>
+          <target state="translated">流行的编译器都没有实现这个关键字。我所知道的唯一一个是Edison Design Group写的前端,它被Comeau C++编译器使用。其他的都要求你在头文件中写模板,因为编译器需要模板定义来进行正确的实例化(其他人已经指出了)。</target>
+        </trans-unit>
+        <trans-unit id="d369389a12d35315051d668fcdde49164cea6c93" translate="yes" xml:space="preserve">
+          <source>Now inside you .template file you define your functions just how you normally would.</source>
+          <target state="translated">现在,在你的.模板文件中,你定义了你的功能,就像你通常所说的那样。</target>
+        </trans-unit>
+        <trans-unit id="a4d3b6b3a919caaa1d049a3a1514e4b1e2c7dae8" translate="yes" xml:space="preserve">
+          <source>On compile time, contents of foo.h are copied to foo.tpp and then the whole file is copied to foo.h after which it compiles. This way, there is no limitations, and the naming is consistent, in exchange for one extra file.</source>
+          <target state="translated">在编译时,foo.h的内容会被复制到foo.tpp,然后整个文件被复制到foo.h中,然后再编译。这样一来,没有任何限制,而且命名也是一致的,只是多了一个文件。</target>
+        </trans-unit>
+        <trans-unit id="17bbed3b3378d62cae5186ee6b302a66b4c7e881" translate="yes" xml:space="preserve">
+          <source>One can argue that compilers can be made smarter to &quot;look ahead&quot; for all uses of the template, but I'm sure that it wouldn't be difficult to create recursive or otherwise complicated scenarios. AFAIK, compilers don't do such look aheads.  As Anton pointed out, some compilers support explicit export declarations of template instantiations, but not all compilers support it (yet?).</source>
+          <target state="translated">人们可以争辩说,编译器可以更聪明地对模板的所有用途进行 &quot;超前展望&quot;,但我相信创建递归或其他复杂的场景并不难。AFAIK,编译器不做这样的超前展望。正如Anton所指出的,有些编译器支持模板实例的显式导出声明,但并不是所有的编译器都支持(还没有?</target>
+        </trans-unit>
+        <trans-unit id="027b97136fa29f83fd726f6a8f31ab5c63fb0ccc" translate="yes" xml:space="preserve">
+          <source>Plenty correct answers here, but I wanted to add this (for completeness):</source>
+          <target state="translated">这里有很多正确的答案,但我想在此补充一下(为了完整)。</target>
+        </trans-unit>
+        <trans-unit id="1e3ccd72561a2cf529bc2692dc40f14a6b2e4173" translate="yes" xml:space="preserve">
+          <source>Quote from &lt;a href=&quot;http://books.google.com/books?id=n9VEG2Gp5pkC&amp;amp;pg=PA10&amp;amp;lpg=PA10&amp;amp;dq=%22The%20only%20portable%20way%20of%20using%20templates%20at%20the%20moment%20is%20to%20implement%20them%20in%20header%20files%20by%20using%20inline%20functions.%22&amp;amp;source=bl&amp;amp;ots=Ref8pl8dPX&amp;amp;sig=t4K5gvxtBblpcujNxodpwMfei8I&amp;amp;hl=en&amp;amp;ei=qkR6TvbiGojE0AHq4IzqAg&amp;amp;sa=X&amp;amp;oi=book_result&amp;amp;ct=result&amp;amp;resnum=3&amp;amp;ved=0CC8Q6AEwAg#v=onepage&amp;amp;q=%22The%20only%20portable%20way%20of%20using%20templates%20at%20the%20moment%20is%20to%20implement%20them%20in%20header%20files%20by%20using%20inline%20functions.%22&amp;amp;f=false&quot;&gt;The C++ standard library: a tutorial and handbook&lt;/a&gt;:</source>
+          <target state="translated">引用来自&lt;a href=&quot;http://books.google.com/books?id=n9VEG2Gp5pkC&amp;amp;pg=PA10&amp;amp;lpg=PA10&amp;amp;dq=%22The%20only%20portable%20way%20of%20using%20templates%20at%20the%20moment%20is%20to%20implement%20them%20in%20header%20files%20by%20using%20inline%20functions.%22&amp;amp;source=bl&amp;amp;ots=Ref8pl8dPX&amp;amp;sig=t4K5gvxtBblpcujNxodpwMfei8I&amp;amp;hl=en&amp;amp;ei=qkR6TvbiGojE0AHq4IzqAg&amp;amp;sa=X&amp;amp;oi=book_result&amp;amp;ct=result&amp;amp;resnum=3&amp;amp;ved=0CC8Q6AEwAg#v=onepage&amp;amp;q=%22The%20only%20portable%20way%20of%20using%20templates%20at%20the%20moment%20is%20to%20implement%20them%20in%20header%20files%20by%20using%20inline%20functions.%22&amp;amp;f=false&quot;&gt;C ++标准库：教程和手册&lt;/a&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="f41f7caecccc6ad203c01fef0e084e8b1d92a5ec" translate="yes" xml:space="preserve">
+          <source>Require that &lt;strong&gt;baz.cpp&lt;/strong&gt; contains (possibly via header includes) the full template of &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt;, so that the compiler can generate &lt;code&gt;MyClass&amp;lt;BazPrivate&amp;gt;&lt;/code&gt; during compilation of &lt;strong&gt;baz.cpp&lt;/strong&gt;.</source>
+          <target state="translated">要求&lt;strong&gt;baz.cpp&lt;/strong&gt;包含（可能通过标头包含） &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; 的完整模板，以便编译器可以在&lt;strong&gt;baz.cpp&lt;/strong&gt;编译期间生成 &lt;code&gt;MyClass&amp;lt;BazPrivate&amp;gt;&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="60a978398e64164bca212555aaa064c2a8b0b5ed" translate="yes" xml:space="preserve">
+          <source>Separate compilation means I should be able to compile &lt;strong&gt;foo.cpp&lt;/strong&gt; independently from &lt;strong&gt;bar.cpp&lt;/strong&gt;. The compiler does all the hard work of analysis, optimization, and code generation on each compilation unit completely independently; we don't need to do whole-program analysis. It's only the linker that needs to handle the entire program at once, and the linker's job is substantially easier.</source>
+          <target state="translated">单独的编译意味着我应该能够独立于&lt;strong&gt;bar.cpp&lt;/strong&gt;来编译&lt;strong&gt;foo.cpp&lt;/strong&gt; 。 编译器完全独立地在每个编译单元上进行分析，优化和代码生成的所有艰苦工作。 我们不需要进行整个程序分析。 只是链接程序需要立即处理整个程序，因此链接程序的工作实际上要容易得多。</target>
+        </trans-unit>
+        <trans-unit id="cf96ef776af92be9a3da407eefb0092aa784a378" translate="yes" xml:space="preserve">
+          <source>So when &lt;strong&gt;foo.cpp&lt;/strong&gt; is compiled, the compiler can't see &lt;strong&gt;bar.cpp&lt;/strong&gt; to know that &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt; is needed. It can see the template &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt;, but it can't emit code for that (it's a template, not a class). And when &lt;strong&gt;bar.cpp&lt;/strong&gt; is compiled, the compiler can see that it needs to create a &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt;, but it can't see the template &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; (only its interface in &lt;strong&gt;foo.h&lt;/strong&gt;) so it can't create it.</source>
+          <target state="translated">因此，在编译&lt;strong&gt;foo.cpp&lt;/strong&gt;时，编译器看不到&lt;strong&gt;bar.cpp&lt;/strong&gt;来知道需要 &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt; 。 它可以看到模板 &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; ，但不能为此发出代码（它是模板，而不是类）。 并且在编译&lt;strong&gt;bar.cpp&lt;/strong&gt;时，编译器可以看到它需要创建 &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt; ，但是它看不到模板 &lt;code&gt;MyClass&amp;lt;T&amp;gt;&lt;/code&gt; （仅其在&lt;strong&gt;foo.h中的&lt;/strong&gt;接口），因此无法创建它。</target>
+        </trans-unit>
+        <trans-unit id="e7892a8d20de035b9b6701d9b3ebc8381493ee59" translate="yes" xml:space="preserve">
+          <source>Templates must be used in headers because the compiler needs to instantiate different versions of the code, depending on the parameters given/deduced for template parameters. Remember that a template doesn't represent code directly, but a template for several versions of that code. 
+When you compile a non-template function in a &lt;code&gt;.cpp&lt;/code&gt; file, you are compiling a concrete function/class. This is not the case for templates, which can be instantiated with different types, namely, concrete code must be emitted when replacing template parameters with concrete types.</source>
+          <target state="translated">必须在标头中使用模板，因为编译器需要根据给定/推导的模板参数实例化不同版本的代码。 请记住，模板并不直接代表代码，而是代表该代码的多个版本的模板。 当您在 &lt;code&gt;.cpp&lt;/code&gt; 文件中编译一个非模板函数时，您正在编译一个具体的函数/类。 模板不是这种情况，可以用不同的类型实例化模板，即，用具体类型替换模板参数时必须发出具体代码。</target>
+        </trans-unit>
+        <trans-unit id="07055fec01ec5ac6275859a7a311bf06f2c99470" translate="yes" xml:space="preserve">
+          <source>Templates need to be &lt;em&gt;instantiated&lt;/em&gt; by the compiler before actually compiling them into object code.  This instantiation can only be achieved if the template arguments are known. Now imagine a scenario where a template function is declared in &lt;code&gt;a.h&lt;/code&gt;, defined in &lt;code&gt;a.cpp&lt;/code&gt; and used in &lt;code&gt;b.cpp&lt;/code&gt;. When &lt;code&gt;a.cpp&lt;/code&gt; is compiled, it is not necessarily known that the upcoming compilation &lt;code&gt;b.cpp&lt;/code&gt; will require an instance of the template, let alone which specific instance would that be. For more header and source files, the situation can quickly get more complicated.</source>
+          <target state="translated">模板需要&lt;em&gt;先由&lt;/em&gt;编译器&lt;em&gt;实例化&lt;/em&gt; ，然后才能将其实际编译为目标代码。 仅在知道模板参数的情况下才能实现此实例化。 现在想象一个场景，其中在 &lt;code&gt;a.h&lt;/code&gt; 声明了模板函数，在 &lt;code&gt;a.cpp&lt;/code&gt; 中定义了该模板函数，并在 &lt;code&gt;b.cpp&lt;/code&gt; 中使用了该模板函数。 编译 &lt;code&gt;a.cpp&lt;/code&gt; 时 ，不一定要知道即将进行的编译 &lt;code&gt;b.cpp&lt;/code&gt; 将需要模板的实例，更不用说那个具体实例了。 对于更多的头文件和源文件，情况可能很快变得更加复杂。</target>
+        </trans-unit>
+        <trans-unit id="573267f5fdff7a38869f846560058a7991782d2f" translate="yes" xml:space="preserve">
+          <source>That is exactly correct because the compiler has to know what type it is for allocation. So template classes, functions, enums,etc.. must be implemented as well in the header file if it is to be made public or part of a library (static or dynamic) because header files are NOT compiled unlike the c/cpp files which are. If the compiler doesn't know the type is can't compile it. In .Net it can because all objects derive from the Object class. This is not .Net.</source>
+          <target state="translated">这是完全正确的,因为编译器必须知道它是什么类型的分配。所以模板类、函数、enums等必须在头文件中实现,如果它是公开的或者是库的一部分(静态或动态),因为头文件是不像ccpp文件那样被编译的。如果编译器不知道类型是什么,就不能编译它。在.Net中,它可以,因为所有的对象都来自于Object类。这与.Net不同。</target>
+        </trans-unit>
+        <trans-unit id="9e58a81b20c16d22062ebf223f9ad4f4d3b4f677" translate="yes" xml:space="preserve">
+          <source>The &quot;borland&quot; model corresponds to what the author suggests, providing the full template definition, and having things compiled multiple times.</source>
+          <target state="translated">&quot;borland &quot;模式对应的是笔者的建议,提供完整的模板定义,并让事情多次编译。</target>
+        </trans-unit>
+        <trans-unit id="58e8c1052ab3a21074d7cb8bccc45c2a6626437e" translate="yes" xml:space="preserve">
+          <source>The above example is fairly useless since vector is fully defined in headers, except when a common include file (precompiled header?) uses &lt;code&gt;extern template class vector&amp;lt;int&amp;gt;&lt;/code&gt; so as to keep it from instantiating it in all the &lt;em&gt;other&lt;/em&gt; (1000?) files that use vector.</source>
+          <target state="translated">上面的示例是没有用的，因为矢量完全在标头中定义，除非通用的包含文件（预编译的标头？）使用 &lt;code&gt;extern template class vector&amp;lt;int&amp;gt;&lt;/code&gt; 以避免在所有&lt;em&gt;其他&lt;/em&gt; （1000？）文件中实例化它时除外使用向量。</target>
+        </trans-unit>
+        <trans-unit id="751e836bc3075952f979fef87738701137f3a956" translate="yes" xml:space="preserve">
+          <source>The compiler will generate code for each template instantiation when you use a template during the compilation step. 
+In the compilation and linking process .cpp files are converted to pure object or machine code which in them contains references or undefined symbols because the .h files that are included in your main.cpp have no implementation YET. These are ready to be linked with another object file that defines an implementation for your template and thus you have a full a.out executable.</source>
+          <target state="translated">当你在编译步骤中使用模板时,编译器会为每个模板实例化生成代码。在编译和链接的过程中,.cpp文件会被转换为纯对象或机器代码,其中包含引用或未定义的符号,因为main.cpp中包含的.h文件没有实现YET。这些文件可以与另一个定义了模板实现的对象文件链接,这样你就有了一个完整的a.out可执行文件。</target>
+        </trans-unit>
+        <trans-unit id="70e1a76050b751aa87f42fb2a3667367780128f9" translate="yes" xml:space="preserve">
+          <source>The only portable way of using templates at the moment is to implement them in header files by using inline functions.</source>
+          <target state="translated">目前使用模板的唯一可移植的方式是通过使用内嵌函数在头文件中实现模板。</target>
+        </trans-unit>
+        <trans-unit id="5a0f95b8ca2d9538f3bebbd2e52eab17be41473f" translate="yes" xml:space="preserve">
+          <source>The separate compilation problem for templates I guess it's also a problem that is arising with the migration to modules, which is currently being worked.</source>
+          <target state="translated">模板单独编译的问题,我猜想这也是目前正在做模板迁移到模块的时候出现的问题。</target>
+        </trans-unit>
+        <trans-unit id="c898a850ca6d8f4fa0a444f7353ad2e51c50f8b6" translate="yes" xml:space="preserve">
+          <source>There is an &lt;em&gt;export&lt;/em&gt; keyword which is supposed to mitigate this problem, but it's nowhere close to being portable.</source>
+          <target state="translated">有一个&lt;em&gt;export&lt;/em&gt;关键字可以缓解此问题，但是它几乎没有可移植性。</target>
+        </trans-unit>
+        <trans-unit id="2392d1fe804bd11c9c1e2fe664277a9cea150dc6" translate="yes" xml:space="preserve">
+          <source>There is no possible way that this could work unless we either</source>
+          <target state="translated">没有任何可能的办法,除非我们要么</target>
+        </trans-unit>
+        <trans-unit id="9f0f3cb27a80c18b9106602e69afe581b1d5d1ac" translate="yes" xml:space="preserve">
+          <source>There was a feature with the &lt;code&gt;export&lt;/code&gt; keyword that was meant to be used for separate compilation.
+The &lt;code&gt;export&lt;/code&gt; feature is deprecated in &lt;code&gt;C++11&lt;/code&gt; and, AFAIK, only one compiler implemented it. You shouldn't make use of &lt;code&gt;export&lt;/code&gt;. Separate compilation is not possible in &lt;code&gt;C++&lt;/code&gt; or &lt;code&gt;C++11&lt;/code&gt; but maybe in &lt;code&gt;C++17&lt;/code&gt;, if concepts make it in, we could have some way of separate compilation.</source>
+          <target state="translated">带有 &lt;code&gt;export&lt;/code&gt; 关键字的功能旨在用于单独的编译。 &lt;code&gt;export&lt;/code&gt; 功能在 &lt;code&gt;C++11&lt;/code&gt; 和AFAIK中已弃用，只有一个编译器实现了该功能。 您不应该利用 &lt;code&gt;export&lt;/code&gt; 。 在 &lt;code&gt;C++&lt;/code&gt; 或 &lt;code&gt;C++11&lt;/code&gt; 不可能进行单独的编译，但是在 &lt;code&gt;C++17&lt;/code&gt; 中可能无法进行单独的编译，如果有概念的话，我们可以采用某种方式进行单独的编译。</target>
+        </trans-unit>
+        <trans-unit id="ca26dec36ce34dee761b07dff18f299e91237c3d" translate="yes" xml:space="preserve">
+          <source>Therefore if you separate the template declaration and definition, you won't be able to only read the header file to see the ins and outs of this template in order to use this API on your own classes, though the compiler will tell you in this case about which operator needs to be overridden.</source>
+          <target state="translated">因此,如果你把模板声明和定义分开,你就不能只读取头文件来查看这个模板的来龙去脉,以便在你自己的类上使用这个API,尽管编译器会在这种情况下告诉你需要重写哪个操作符。</target>
+        </trans-unit>
+        <trans-unit id="a88a22ac4bcba82eae4ad56a83eb507a4312a8a0" translate="yes" xml:space="preserve">
+          <source>Therefore templates are never separately compiled and are only compiled wherever you have a concrete instantiation in some other source file. However, the concrete instantiation needs to know the implementation of the template file, because simply modifying the &lt;code&gt;typename T&lt;/code&gt; using a concrete type in the .h file is not going to do the job because what .cpp is there to link, I can't find it later on because remember templates are abstract and can't be compiled, so I'm forced to give the implementation right now so I know what to compile and link, and now that I have the implementation it gets linked into the enclosing source file. Basically, the moment I instantiate a template I need to create a whole new class, and I can't do that if I don't know how that class should look like when using the type I provide unless I make notice to the compiler of the template implementation, so now the compiler can replace &lt;code&gt;T&lt;/code&gt; with my type and create a concrete class that's ready to be compiled and linked.</source>
+          <target state="translated">因此，模板永远不会单独编译，仅在其他源文件中有具体实例化的位置才编译。 但是，具体的实例化需要知道模板文件的实现，因为仅使用.h文件中的具体类型修改类型名 &lt;code&gt;typename T&lt;/code&gt; 并不能完成工作，因为要链接的是什么.cpp，我无法稍后找到它，因为记住模板是抽象的并且无法编译，所以我被迫现在提供实现，所以我知道要编译和链接的内容，现在有了实现，它就被链接到随附的源代码中文件。 基本上，实例化模板的那一刻，我需要创建一个全新的类，并且如果不知道使用所提供的类型时该类的外观，则无法这样做，除非我通知编译器模板实现，因此现在编译器可以用我的类型替换 &lt;code&gt;T&lt;/code&gt; 并创建一个准备好进行编译和链接的具体类。</target>
+        </trans-unit>
+        <trans-unit id="23a63b54ada9895386ea62c48cd3d7b7c294f6fe" translate="yes" xml:space="preserve">
+          <source>This is my approach because I am providing a working program, not a template library for use in other programs.  The author of the book, Josuttis, works a lot on template libraries.</source>
+          <target state="translated">这是我的做法,因为我提供的是一个工作程序,而不是模板库供其他程序使用。这本书的作者Josuttis在模板库方面做了很多工作。</target>
+        </trans-unit>
+        <trans-unit id="1994e35f7ee1b0488b7ab2d83998104be1a5a533" translate="yes" xml:space="preserve">
+          <source>This requires every T class here to implement the less than operator (&amp;lt;). It will throw a compiler error when you compare two class instances that haven't implemented the &quot;&amp;lt;&quot;.</source>
+          <target state="translated">这要求这里的每个T类都实现小于运算符（&amp;lt;）。 当您比较尚未实现&amp;ldquo; &amp;lt;&amp;rdquo;的两个类实例时，它将引发编译器错误。</target>
+        </trans-unit>
+        <trans-unit id="9c31f99a4d4893f55a1fc379d541ff802eb19e98" translate="yes" xml:space="preserve">
+          <source>This way only the template instantiations will need to be recompiled, not all template users (and dependencies).</source>
+          <target state="translated">这样只需要对模板实例进行重新编译,而不是所有的模板用户(和依赖关系)。</target>
+        </trans-unit>
+        <trans-unit id="5e7797397a628b0cc37c602183b6487c56a7909b" translate="yes" xml:space="preserve">
+          <source>This way, implementation is still separated from declaration, but is accessible to the compiler.</source>
+          <target state="translated">这样一来,实现与声明仍然是分开的,但对编译器来说是可以访问的。</target>
+        </trans-unit>
+        <trans-unit id="64b32d3878b4d863ed08ff59292c12d3efc96524" translate="yes" xml:space="preserve">
+          <source>This will instantiate (and thus make available to the linker) the class and all its member functions (only). Similar syntax works for template functions, so if you have non-member operator overloads you may need to do the same for those.</source>
+          <target state="translated">这将实例化(从而使链接器可用)类和它的所有成员函数(仅)。类似的语法也适用于模板函数,所以如果你有非成员操作符重载,你可能需要对这些函数做同样的操作。</target>
+        </trans-unit>
+        <trans-unit id="a2e4febc84235aa3945c67bda91b8350e52c0816" translate="yes" xml:space="preserve">
+          <source>To sum up, templates are blueprints for how classes should look, classes are blueprints for how an object should look.
+I can't compile templates separate from their concrete instantiation because the compiler only compiles concrete types, in other words, templates at least in C++, is pure language abstraction. We have to de-abstract templates so to speak, and we do so by giving them a concrete type to deal with so that our template abstraction can transform into a regular class file and in turn, it can be compiled normally. Separating the template .h file and the template .cpp file is meaningless. It is nonsensical because the separation of .cpp and .h only is only where the .cpp can be compiled individually and linked individually, with templates since we can't compile them separately, because templates are an abstraction, therefore we are always forced to put the abstraction always together with the concrete instantiation where the concrete instantiation always has to know about the type being used.</source>
+          <target state="translated">总结一下,模板是类应该怎么看的蓝图,类是对象应该怎么看的蓝图。我不能把模板与具体的实例化分开编译,因为编译器只编译具体的类型,换句话说,模板至少在C++中,是纯粹的语言抽象。我们要对模板进行去抽象化,可以说,我们要做的就是给模板一个具体的类型来处理,这样,我们的模板抽象就可以转化成一个普通的类文件,反过来,它也可以正常编译。把模板.h文件和模板.cpp文件分开是没有意义的。这是没有意义的,因为只有在.cpp和.h分离的情况下才可以单独编译.cpp,并与模板分开,因为我们不能单独编译,因为模板是一个抽象,所以我们总是被迫把抽象总是和具体的实例放在一起,其中具体的实例总是要知道正在使用的类型。</target>
+        </trans-unit>
+        <trans-unit id="8babc0d4da66cbd7109fa8d9a726d718a76ecfc1" translate="yes" xml:space="preserve">
+          <source>When reading this line, the compiler will create a new class (let's call it &lt;code&gt;FooInt&lt;/code&gt;), which is equivalent to the following:</source>
+          <target state="translated">阅读此行时，编译器将创建一个新类（我们将其 &lt;code&gt;FooInt&lt;/code&gt; ），其等效于以下内容：</target>
+        </trans-unit>
+        <trans-unit id="b476e94c03f06628448dd244ac53118aacb69996" translate="yes" xml:space="preserve">
+          <source>Why can templates only be implemented in the header file</source>
+          <target state="translated">为什么模板只能在标题文件中实现?</target>
+        </trans-unit>
+        <trans-unit id="9d863fbd4a4b35d1abc87eb5fac9e58af686e66b" translate="yes" xml:space="preserve">
+          <source>Why is this?</source>
+          <target state="translated">为什么会这样?</target>
+        </trans-unit>
+        <trans-unit id="93a9a1e27d6f5ea86d321335fd4bdffa983cbc3e" translate="yes" xml:space="preserve">
+          <source>You can actually define your template class inside a .template file rather than a .cpp file. Whoever is saying you can only define it inside a header file is wrong. This is something that works all the way back to c++ 98.</source>
+          <target state="translated">实际上,你可以在.template文件中定义你的模板类,而不是在.cpp文件中定义。无论谁说你只能在头文件中定义它,都是错误的。这种情况可以追溯到C++98年的时候。</target>
+        </trans-unit>
+        <trans-unit id="a823daba893b149e44607d98fae24dda1422529b" translate="yes" xml:space="preserve">
+          <source>You might think that when compiling a template the compiler should &quot;generate all versions&quot;, with the ones that are never used being filtered out during linking. Aside from the huge overhead and the extreme difficulties such an approach would face because &quot;type modifier&quot; features like pointers and arrays allow even just the built-in types to give rise to an infinite number of types, what happens when I now extend my program by adding:</source>
+          <target state="translated">你可能会认为,在编译模板时,编译器应该 &quot;生成所有的版本&quot;,在链接过程中过滤掉那些从未被使用过的类型。除了巨大的开销和这样的方法会面临巨大的困难,因为像指针和数组这样的 &quot;类型修改器 &quot;特性允许即使只是内置的类型,也可以产生无限多的类型,那么当我现在通过添加的方式扩展我的程序时,会发生什么呢?</target>
+        </trans-unit>
+        <trans-unit id="1750a1b4ec7b68120fb74bc6447975a220440d61" translate="yes" xml:space="preserve">
+          <source>bar.cpp</source>
+          <target state="translated">bar.cpp</target>
+        </trans-unit>
+        <trans-unit id="782314c016bd8917ce979dc818a4fd7ac7ab7c91" translate="yes" xml:space="preserve">
+          <source>baz.cpp</source>
+          <target state="translated">baz.cpp</target>
+        </trans-unit>
+        <trans-unit id="10cb3d1898ec0f9b461c034465b3a25a5a0ce364" translate="yes" xml:space="preserve">
+          <source>declares and implements &lt;code&gt;class BazPrivate&lt;/code&gt;, and uses &lt;code&gt;MyClass&amp;lt;BazPrivate&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">声明并实现 &lt;code&gt;class BazPrivate&lt;/code&gt; ，并使用 &lt;code&gt;MyClass&amp;lt;BazPrivate&amp;gt;&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="b8483342ec553e84a688884d513d4b7cc9f37f84" translate="yes" xml:space="preserve">
+          <source>declares the interface of &lt;code&gt;class MyClass&amp;lt;T&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">声明 &lt;code&gt;class MyClass&amp;lt;T&amp;gt;&lt;/code&gt; 的接口</target>
+        </trans-unit>
+        <trans-unit id="cb4fdc80a04ae99261e64f95fee1e452c9f18025" translate="yes" xml:space="preserve">
+          <source>defines the implementation of &lt;code&gt;class MyClass&amp;lt;T&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">定义 &lt;code&gt;class MyClass&amp;lt;T&amp;gt;&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="7b3f4243ca82300fbaf70a60588d086a1fc4d8cc" translate="yes" xml:space="preserve">
+          <source>foo.cpp</source>
+          <target state="translated">foo.cpp</target>
+        </trans-unit>
+        <trans-unit id="dde724ad19815ae98cc695bb8a67aae7d2faa5e5" translate="yes" xml:space="preserve">
+          <source>foo.h</source>
+          <target state="translated">foo.h</target>
+        </trans-unit>
+        <trans-unit id="02637a26f8881bbb4079d37a0a539bc980568f9a" translate="yes" xml:space="preserve">
+          <source>inner_foo has the forward declarations. foo.tpp has the implementation and include inner_foo.h; and foo.h will have just one line, to include foo.tpp.</source>
+          <target state="translated">inner_foo.tpp有前向声明,foo.tpp有实现和包含 inner_foo.h;而foo.h只有一行,要包含foo.tpp。</target>
+        </trans-unit>
+        <trans-unit id="b9ae663c6f99d0b5550468e0f718e2d689b19354" translate="yes" xml:space="preserve">
+          <source>main.cpp:</source>
+          <target state="translated">main.cpp:</target>
+        </trans-unit>
+        <trans-unit id="e4665c0718899ccbac4e58743355fb37a56287f0" translate="yes" xml:space="preserve">
+          <source>myQueue.cpp:</source>
+          <target state="translated">myQueue.cpp:</target>
+        </trans-unit>
+        <trans-unit id="561d0ea5d0c750aef414c6ce0bbefbc2c915c486" translate="yes" xml:space="preserve">
+          <source>myQueue.hpp:</source>
+          <target state="translated">myQueue.hpp:</target>
+        </trans-unit>
+        <trans-unit id="920571f4eeae7c8e9c9d5838050e2eb652c3bd9c" translate="yes" xml:space="preserve">
+          <source>uses &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt;</source>
+          <target state="translated">使用 &lt;code&gt;MyClass&amp;lt;int&amp;gt;&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="93374352e9e105c91716fa4d811f0fe7be51fe7b" translate="yes" xml:space="preserve">
+          <source>which is gaining support in many compilers.  However, I think precompiled headers would be difficult with template header files.</source>
+          <target state="translated">这在许多编译器中越来越得到支持。然而,我认为预编译的头文件将很难使用模板头文件。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="htmlbody" original="https://stackoverflow.com/questions/16047306">
+    <body>
+      <group id="16047306">
+        <trans-unit id="1542e91684ce086bf89edc832e9a12e68917d0bd" translate="yes" xml:space="preserve">
+          <source>&quot;Why is deploying software to a docker image easier than simply
+  deploying to a consistent production environment ?&quot;</source>
+          <target state="translated">&quot;Почему развертывание программного обеспечения на докерном образе проще,чем простое развертывание в последовательной производственной среде?&quot;</target>
+        </trans-unit>
+        <trans-unit id="1d737b3b8cc6837fe64e3c75b0a1c0df5030c48c" translate="yes" xml:space="preserve">
+          <source>1) &lt;strong&gt;Traditional server&lt;/strong&gt; stack consist of a physical server that runs an operating system and your application.</source>
+          <target state="translated">1) &lt;strong&gt;Традиционный&lt;/strong&gt; стек &lt;strong&gt;серверов&lt;/strong&gt; состоит из физического сервера, на котором работает операционная система и ваше приложение.</target>
+        </trans-unit>
+        <trans-unit id="077bf232fbda32be3b9c0ab79f72fec0ccb8d9e3" translate="yes" xml:space="preserve">
+          <source>1. Lightweight</source>
+          <target state="translated">1.Легкий вес</target>
+        </trans-unit>
+        <trans-unit id="71d09371a22fe78dc0de04cc920e874384c82810" translate="yes" xml:space="preserve">
+          <source>2) The &lt;strong&gt;VM stack&lt;/strong&gt; consist of a physical server which runs an operating system and a hypervisor that manages your virtual machine, shared resources, and networking interface. Each Vm runs a Guest Operating System, an application or set of applications.</source>
+          <target state="translated">2) &lt;strong&gt;Стек&lt;/strong&gt; виртуальных машин состоит из физического сервера, на котором работает операционная система, и гипервизора, который управляет вашей виртуальной машиной, общими ресурсами и сетевым интерфейсом. Каждый Vm запускает гостевую операционную систему, приложение или набор приложений.</target>
+        </trans-unit>
+        <trans-unit id="f4d7c4a101bb829d6ed36e595aa3142e9a5ffa6b" translate="yes" xml:space="preserve">
+          <source>2. Layered File System</source>
+          <target state="translated">2.Слоистая файловая система</target>
+        </trans-unit>
+        <trans-unit id="8770d6a677830b5217dd912f5ec099a51998f621" translate="yes" xml:space="preserve">
+          <source>3) The &lt;strong&gt;Container Setup&lt;/strong&gt;, the key difference with other stack is container-based virtualization uses the kernel of the host OS to rum multiple isolated guest instances. These guest instances are called as containers. The host can be either a physical server or VM.</source>
+          <target state="translated">3) &lt;strong&gt;Настройка контейнера&lt;/strong&gt; , ключевое отличие от другого стека заключается в том, что виртуализация на основе контейнеров использует ядро ​​операционной системы хоста для поиска нескольких изолированных гостевых экземпляров. Эти гостевые экземпляры называются контейнерами. Хост может быть физическим сервером или виртуальной машиной.</target>
+        </trans-unit>
+        <trans-unit id="89f675ab8f3566b687071343481ea9fc44b56715" translate="yes" xml:space="preserve">
+          <source>3. Shared OS Kernel</source>
+          <target state="translated">3.Общее ядро ОС</target>
+        </trans-unit>
+        <trans-unit id="31685e3d48621a28b58dd2cd05e5db872f4854fe" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;# uname -a
+Linux linuxkit-025000000001 4.9.93-linuxkit-aufs #1 SMP Wed Jun 6 16:86_64 Linux&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;# uname -a Linux linuxkit-025000000001 4.9.93-linuxkit-aufs #1 SMP Wed Jun 6 16:86_64 Linux&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="db614d06449b37f5ad288477a28799e03dc9b933" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="142e735c59804464a6da15ca8105687fa120d79a" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;P.S. Meanwhile Docker uses its own implementation &quot;libcontainer&quot; instead of LXC. But LXC is still usable.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;PS Между тем Docker использует собственную реализацию &quot;libcontainer&quot; вместо LXC.&lt;/em&gt; &lt;em&gt;Но LXC все еще можно использовать.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="96829e303b9c7ac4c207907619fd8a78876e2fb9" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Advantages:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Advantages:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="32eaa8b2035633536d9f24ca2887aff163749024" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Container-based Virtualization&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Контейнерная виртуализация&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="db5599f735e2a2500c32124da79ac1b874f9d81e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Containers vs Virtual Machines&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Контейнеры против виртуальных машин&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="22a17ffbbec3938d78f7dede48285ca33d145bb4" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Disadvantages:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Disadvantages:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="1210c3169b4fa074a2e3c489001d1a1b1d8641ed" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Docker containers&lt;/strong&gt; on the other hand, are slightly different. We have the server. We have the host operating system. But &lt;strong&gt;instead a hypervisor&lt;/strong&gt;, we have the &lt;strong&gt;Docker engine&lt;/strong&gt;, in this case. In this case, we're not bringing a whole guest operating system with us. &lt;strong&gt;We're bringing a very thin layer of the operating system&lt;/strong&gt;, and the container can talk down into the host OS in order to get to the kernel functionality there. And that allows us to have a very lightweight container.</source>
+          <target state="translated">&lt;strong&gt;Контейнеры Docker,&lt;/strong&gt; с другой стороны, немного отличаются. У нас есть сервер. У нас есть операционная система хоста. Но &lt;strong&gt;вместо гипервизора&lt;/strong&gt; у нас есть &lt;strong&gt;механизм Docker&lt;/strong&gt; , в данном случае. В этом случае мы не будем брать с собой целую гостевую операционную систему. &lt;strong&gt;Мы представляем очень тонкий слой операционной системы&lt;/strong&gt; , и контейнер может связываться с хост-ОС, чтобы получить доступ к функциональности ядра. И это позволяет нам иметь очень легкий контейнер.</target>
+        </trans-unit>
+        <trans-unit id="5a8ae3356972a5874b5d32602a6ac41e683d87a3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Emulation&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Emulation&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="ae64e762702e7238eb615f129fe6646d7df6d223" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;How containers works at low level?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Как контейнеры работают на низком уровне?&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="8cba3211b30b4294611bb6ea91489a1d00653523" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;How does Docker run containers in non-Linux systems?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Как Docker запускает контейнеры в системах, отличных от Linux?&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="041068c8237a3813ea49d52d6e51404b0e89980d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;How virtualization works at low level?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Как работает виртуализация на низком уровне?&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6e0bc44a9e608ef3585c6d58d928f09910c03729" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Hypervisor&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Hypervisor&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7372d7558096b8ae97739046d3fde3ac50229425" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;In Docker, the containers share the kernel&lt;/strong&gt; with the host; hence it is lightweight and can start and stop quickly.</source>
+          <target state="translated">&lt;strong&gt;В Docker контейнеры делят ядро&lt;/strong&gt; с хостом; следовательно, он легкий и может быстро запускаться и останавливаться.</target>
+        </trans-unit>
+        <trans-unit id="9fdf40f7f0dc77381f5f20369656158a3494158f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;LXC&lt;/strong&gt;s:</source>
+          <target state="translated">&lt;strong&gt;LXC&lt;/strong&gt;s:</target>
+        </trans-unit>
+        <trans-unit id="c3dedd742cecc6cd5d1a8cbac5f59953031f91af" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Paravirtualization&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Paravirtualization&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b21d70651265dcd079d0ebae89422c38b3fd9409" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Think of containers as processes!&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Думайте о контейнерах как о процессах!&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="94c76a69be324057355bbf0c801aa45a367c1705" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Types of Virtualization&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Типы виртуализации&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="0635560c3d8658f5a265d9aaa0a2b08757d22a59" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;VM&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;VM&lt;/strong&gt;:</target>
+        </trans-unit>
+        <trans-unit id="04abd370cd085bed90eeed217f1681cbd37bf6a1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Virtualization&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Virtualization&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4d578b69a5047755d5db94a2927a4a2b1fc905cf" translate="yes" xml:space="preserve">
+          <source>A Docker container is just a process (and its children) that is compartmentalized using &lt;a href=&quot;https://en.wikipedia.org/wiki/Cgroups&quot;&gt;cgroups&lt;/a&gt; inside the host system's kernel from the rest of the processes. You can actually see your Docker container processes by running &lt;code&gt;ps aux&lt;/code&gt; on the host. For example, starting &lt;code&gt;apache2&lt;/code&gt; &quot;in a container&quot; is just starting &lt;code&gt;apache2&lt;/code&gt; as a special process on the host. It's just been compartmentalized from other processes on the machine. It is important to note that your containers do not exist outside of your containerized process' lifetime. When your process dies, your container dies. That's because Docker replaces &lt;code&gt;pid 1&lt;/code&gt; inside your container with your application (&lt;code&gt;pid 1&lt;/code&gt; is normally the init system). This last point about &lt;code&gt;pid 1&lt;/code&gt; is very important.</source>
+          <target state="translated">Контейнер Docker - это просто процесс (и его дочерние &lt;a href=&quot;https://en.wikipedia.org/wiki/Cgroups&quot;&gt;элементы&lt;/a&gt; ), который отделен с помощью cgroups в ядре хост-системы от остальных процессов. На самом деле вы можете видеть процессы контейнера Docker, запустив &lt;code&gt;ps aux&lt;/code&gt; на хосте. Например, запуск &lt;code&gt;apache2&lt;/code&gt; &amp;laquo;в контейнере&amp;raquo; - это просто запуск &lt;code&gt;apache2&lt;/code&gt; как специального процесса на хосте. Он просто отделен от других процессов на машине. Важно отметить, что ваши контейнеры не существуют вне времени жизни вашего контейнерного процесса. Когда ваш процесс умирает, ваш контейнер умирает. Это связано с тем, что Docker заменяет &lt;code&gt;pid 1&lt;/code&gt; внутри вашего контейнера вашим приложением ( &lt;code&gt;pid 1&lt;/code&gt; обычно является системой init). Последний пункт о &lt;code&gt;pid 1&lt;/code&gt; очень важен.</target>
+        </trans-unit>
+        <trans-unit id="78eeb92cd87dde74faca433458994016f4decd02" translate="yes" xml:space="preserve">
+          <source>A container image is a lightweight, stand-alone, executable package of
+  a piece of software that includes everything needed to run it: code,
+  runtime, system tools, system libraries, settings. Available for both
+  Linux and Windows based apps, containerized software will always run
+  the same, regardless of the environment. Containers isolate software
+  from its surroundings, for example differences between development and
+  staging environments and help reduce conflicts between teams running
+  different software on the same infrastructure.</source>
+          <target state="translated">Образ контейнера-это легкий,автономный,исполняемый пакет программного обеспечения,включающий в себя все необходимое для его запуска:код,время выполнения,системные инструменты,системные библиотеки,настройки.Доступное как для приложений на базе Linux,так и Windows,контейнеризованное программное обеспечение всегда будет работать одинаково,независимо от среды.Контейнеры изолируют программное обеспечение от окружающей среды,например,различия между средой разработки и сценической средой и помогают уменьшить конфликты между командами,выполняющими различное программное обеспечение в одной инфраструктуре.</target>
+        </trans-unit>
+        <trans-unit id="7be30e300596f0ba9bc71be0ee7f62418bc87c8b" translate="yes" xml:space="preserve">
+          <source>A full virtualized system gets its own set of resources allocated to it, and does minimal sharing. You get more isolation, but it is much heavier (requires more resources). With Docker you get less isolation, but the containers are lightweight (require fewer resources). So you could easily run thousands of containers on a host, and it won't even blink. Try doing that with Xen, and unless you have a really big host, I don't think it is possible.</source>
+          <target state="translated">Полноценная виртуализированная система получает собственный набор выделенных ей ресурсов и делает минимальное совместное использование.Вы получаете больше изоляции,но она намного тяжелее (требует больше ресурсов).С Docker вы получаете меньше изоляции,но контейнеры легкие (требуют меньше ресурсов).Поэтому вы можете легко запускать тысячи контейнеров на хосте,и он даже не моргнет.Попробуйте сделать это с Xen,и если у вас нет действительно большого хоста,я не думаю,что это возможно.</target>
+        </trans-unit>
+        <trans-unit id="608fbdee4c4148887ee88283fec33bc794754b17" translate="yes" xml:space="preserve">
+          <source>A full virtualized system usually takes minutes to start, whereas Docker/LXC/runC containers take seconds, and often even less than a second.</source>
+          <target state="translated">На запуск полной виртуализированной системы обычно уходит несколько минут,в то время как на запуск контейнеров DockerLXCrunC уходит несколько секунд,а зачастую даже меньше секунды.</target>
+        </trans-unit>
+        <trans-unit id="a4b2e429639e6886f8411056dda3847c82546562" translate="yes" xml:space="preserve">
+          <source>A normal VM (for example, VirtualBox and VMware) uses a hypervisor, and related technologies either have dedicated firmware that becomes the first layer for the first OS (host OS, or guest OS 0) or a software that runs on the host OS to provide hardware emulation such as CPU, USB/accessories, memory, network, etc., to the guest OSes. VMs are still (as of 2015) popular in high security multi-tenant environment.</source>
+          <target state="translated">Обычная ВМ (например,VirtualBox и VMware)использует гипервизор,и связанные с ним технологии либо имеют специальную прошивку,которая становится первым уровнем для первой ОС (хост-операционная система или гостевая ОС 0),либо программное обеспечение,которое запускается на хост-операционной системе для обеспечения аппаратной эмуляции,такой как процессор,USB-аксессуары,память,сеть и т.д.,для гостевых ОС.ВМ по-прежнему (по состоянию на 2015 год)популярны в многопользовательской среде с высоким уровнем безопасности.</target>
+        </trans-unit>
+        <trans-unit id="94101e1c748c27249505148a47df8530a21b42ed" translate="yes" xml:space="preserve">
+          <source>A virtual machine emulates a physical computing environment, but requests for CPU, memory, hard disk, network and other hardware resources are managed by a virtualization layer which translates these requests to the underlying physical hardware.</source>
+          <target state="translated">Виртуальная машина эмулирует физическую вычислительную среду,но запросы на CPU,память,жесткий диск,сеть и другие аппаратные ресурсы управляются уровнем виртуализации,который транслирует эти запросы на основное физическое аппаратное обеспечение.</target>
+        </trans-unit>
+        <trans-unit id="d923b7473237dcd6ea141e8da0b0dc01d79023e1" translate="yes" xml:space="preserve">
+          <source>A virtualizer encapsulates an OS that can run any applications it can normally run on a bare metal machine.</source>
+          <target state="translated">Виртуализатор инкапсулирует ОС,которая может выполнять любые приложения,которые она обычно может запустить на пустой машине.</target>
+        </trans-unit>
+        <trans-unit id="6d59a769d8037c795aa06bba1ef20f7fb8148382" translate="yes" xml:space="preserve">
+          <source>Abandoning VMs is not practical as of now. So both VMs and LXCs have their own individual existence and importance.</source>
+          <target state="translated">Бросить ВМ сейчас непрактично.Поэтому как ВМ,так и LXC имеют свое собственное индивидуальное существование и значение.</target>
+        </trans-unit>
+        <trans-unit id="9b9f1e587c930b5eec7c7112c3c5c48f8660cb1e" translate="yes" xml:space="preserve">
+          <source>All containers on a host machine share the scheduler of the host machine saving need of extra resources.</source>
+          <target state="translated">Все контейнеры на хост-машине совместно используют планировщик хост-машины,что позволяет экономить дополнительные ресурсы.</target>
+        </trans-unit>
+        <trans-unit id="12541b433287714758ede775818e5b65a743a10e" translate="yes" xml:space="preserve">
+          <source>All containers run inside this VM.</source>
+          <target state="translated">Все контейнеры проходят внутри этой ВМ.</target>
+        </trans-unit>
+        <trans-unit id="54b4b640aadb7cfc9c96aa084587f5b6a81007c9" translate="yes" xml:space="preserve">
+          <source>All containers running on a host is indeed a bunch of processes with different file systems. They share the same OS kernel, only encapsulates system library and dependencies.</source>
+          <target state="translated">Все контейнеры,работающие на хосте,действительно представляют собой кучу процессов с разными файловыми системами.Они используют одно и то же ядро ОС,инкапсулируют только системные библиотеки и зависимости.</target>
+        </trans-unit>
+        <trans-unit id="1242f984643238195d2560e484817f61f78a1183" translate="yes" xml:space="preserve">
+          <source>All it has in there is the application code and any binaries and libraries that it requires. And those binaries and libraries can actually be shared across different containers if you want them to be as well. And what this enables us to do, is a number of things. They have &lt;strong&gt;much faster startup time&lt;/strong&gt;. You can't stand up a single VM in a few seconds like that. And equally, taking them down as quickly.. so we can scale up and down very quickly and we'll look at that later on.</source>
+          <target state="translated">Все, что у него есть, - это код приложения и все необходимые ему двоичные файлы и библиотеки. И эти двоичные файлы и библиотеки могут фактически использоваться в разных контейнерах, если вы хотите, чтобы они тоже были. И что это позволяет нам делать, это ряд вещей. У них &lt;strong&gt;намного быстрее время запуска&lt;/strong&gt; . Вы не можете встать ни одной виртуальной машины в течение нескольких секунд, как это. И в равной степени, убирая их так же быстро ... так что мы можем очень быстро увеличивать и уменьшать, и мы посмотрим на это позже.</target>
+        </trans-unit>
+        <trans-unit id="f836b6bbddefb5d4fc7275c8e4836939cd0b1d3c" translate="yes" xml:space="preserve">
+          <source>All these seem like improvements, not revolution. Well, &lt;em&gt;quantitative accumulation leads to qualitative transformation&lt;/em&gt;.</source>
+          <target state="translated">Все это похоже на улучшение, а не революцию. Что ж, &lt;em&gt;количественное накопление ведет к качественному преобразованию&lt;/em&gt; .</target>
+        </trans-unit>
+        <trans-unit id="a3b5f0368363469d9d80cc687e706a23e041424b" translate="yes" xml:space="preserve">
+          <source>And finally you will even often be able to reproduce complex production environments even on your Linux laptop (don't call me if doesn't work in your case ;))</source>
+          <target state="translated">И,наконец,Вы даже часто сможете воспроизводить сложные производственные среды даже на своем ноутбуке под управлением Linux (не звоните мне,если в Вашем случае это не сработает ;)).</target>
+        </trans-unit>
+        <trans-unit id="4f108d5a48660532c28d2ad4f3d3edba0268d0ae" translate="yes" xml:space="preserve">
+          <source>And of course you can start Docker containers in VMs (it's a good idea). Reduce your server provisioning on the VM level. All the above could be managed by Docker.</source>
+          <target state="translated">И,конечно же,вы можете запускать контейнеры Docker в ВМ (это хорошая идея).Сократите время инициализации сервера на уровне ВМ.Все вышеперечисленное может управляться Docker.</target>
+        </trans-unit>
+        <trans-unit id="ad81be781ce70f499768e24f3435d23637132329" translate="yes" xml:space="preserve">
+          <source>And yes there are issues with containers including managing them although tools like Kubernetes or Docker Swarm greatly simplify the task.</source>
+          <target state="translated">И да,есть проблемы с контейнерами,в том числе с их управлением,хотя такие инструменты,как Kubernetes или Docker Swarm значительно упрощают задачу.</target>
+        </trans-unit>
+        <trans-unit id="72a1b17c5906a7f20ce9ae99d036afd244eb15c1" translate="yes" xml:space="preserve">
+          <source>Another important issue regarding Docker is Docker Hub and its community.
+For example, I implemented an ecosystem for monitoring kafka using Prometheus, Grafana, Prometheus-JMX-Exporter, and Docker.</source>
+          <target state="translated">Другой важный вопрос,касающийся Докер хаба и его сообщества.Например,я внедрил экосистему для мониторинга кафки,используя &quot;Прометей&quot;,&quot;Графана&quot;,&quot;Прометей-JMX-Экспортер&quot; и &quot;Докер&quot;.</target>
+        </trans-unit>
+        <trans-unit id="2621c6fd51a58e1d1d5c491aac71488647b20224" translate="yes" xml:space="preserve">
+          <source>Archive</source>
+          <target state="translated">Archive</target>
+        </trans-unit>
+        <trans-unit id="57f80354947d66e1556a5eca93c5ebe70343ca99" translate="yes" xml:space="preserve">
+          <source>Around &lt;a href=&quot;http://blog.differential.com/the-story-behind-meteors-next-big-move/&quot;&gt;2006&lt;/a&gt;, people including some of the employees at Google implemented new kernel level feature called &lt;em&gt;namespaces&lt;/em&gt; (however the idea &lt;a href=&quot;http://rhelblog.redhat.com/2015/08/28/the-history-of-containers/&quot;&gt;long&lt;/a&gt; before &lt;a href=&quot;https://www.linux.com/component/content/article/186-virtualization/300057-containers-vs-hypervisors-choosing-the-best-virtualization-technology-&quot;&gt;existed in FreeBSD&lt;/a&gt;). One function of the OS is to allow sharing of global resources like network and disk to processes. What if these global resources were wrapped in namespaces so that they are visible only to those processes that run in the same namespace? Say, you can get a chunk of disk and put that in namespace X and then processes running in namespace Y can't see or access it. Similarly, processes in namespace X can't access anything in memory that is allocated to namespace Y. Of course, processes in X can't see or talk to processes in namespace Y. This provides kind of virtualization and isolation for global resources. This is how docker works: Each container runs in its own namespace but uses exactly the &lt;em&gt;same&lt;/em&gt; kernel as all other containers. The isolation happens because kernel knows the namespace that was assigned to the process and during API calls it makes sure that process can only access resources in its own namespace.</source>
+          <target state="translated">Примерно в &lt;a href=&quot;http://blog.differential.com/the-story-behind-meteors-next-big-move/&quot;&gt;2006&lt;/a&gt; году люди, в том числе некоторые сотрудники Google, внедрили новую функцию уровня ядра, называемую &lt;em&gt;пространствами имен&lt;/em&gt; (однако эта идея &lt;a href=&quot;https://www.linux.com/component/content/article/186-virtualization/300057-containers-vs-hypervisors-choosing-the-best-virtualization-technology-&quot;&gt;существовала&lt;/a&gt; &lt;a href=&quot;http://rhelblog.redhat.com/2015/08/28/the-history-of-containers/&quot;&gt;задолго&lt;/a&gt; до того, как существовала во FreeBSD ). Одной из функций ОС является обеспечение совместного использования глобальных ресурсов, таких как сеть и диск, процессам. Что если эти глобальные ресурсы были обернуты в пространства имен, чтобы они были видны только тем процессам, которые выполняются в одном и том же пространстве имен? Скажем, вы можете получить кусок диска и поместить его в пространство имен X, а затем процессы, выполняющиеся в пространстве имен Y, не смогут увидеть или получить к нему доступ. Точно так же процессы в пространстве имен X не могут получить доступ к чему-либо в памяти, выделенному для пространства имен Y. Конечно, процессы в X не могут видеть или общаться с процессами в пространстве имен Y. Это обеспечивает своего рода виртуализацию и изоляцию для глобальных ресурсов. Вот как работает Docker: каждый контейнер работает в своем собственном пространстве имен, но использует точно такое &lt;em&gt;же&lt;/em&gt; ядро, как и все другие контейнеры. Изоляция происходит потому, что ядру известно пространство имен, которое было назначено процессу, и во время вызовов API оно обеспечивает доступ к ресурсам только в своем собственном пространстве имен.</target>
+        </trans-unit>
+        <trans-unit id="5d01eda27cef34d23b355ad375a9bb0b4eb5ebbb" translate="yes" xml:space="preserve">
+          <source>As a general rule there is only one application per container which simplifies configuration.</source>
+          <target state="translated">Как правило,на один контейнер приходится только одно приложение,что упрощает настройку.</target>
+        </trans-unit>
+        <trans-unit id="598b72a60140d7f35d63c4ce17f4d2a21404bafd" translate="yes" xml:space="preserve">
+          <source>As far as the filesystem used by each of those container processes, Docker uses &lt;a href=&quot;https://en.wikipedia.org/wiki/UnionFS&quot;&gt;UnionFS&lt;/a&gt;-backed images, which is what you're downloading when you do a &lt;code&gt;docker pull ubuntu&lt;/code&gt;. Each &quot;image&quot; is just a series of layers and related metadata. The concept of layering is very important here. Each layer is just a change from the layer underneath it. For example, when you delete a file in your Dockerfile while building a Docker container, you're actually just creating a layer on top of the last layer which says &quot;this file has been deleted&quot;. Incidentally, this is why you can delete a big file from your filesystem, but the image still takes up the same amount of disk space. The file is still there, in the layers underneath the current one. Layers themselves are just tarballs of files. You can test this out with &lt;code&gt;docker save --output /tmp/ubuntu.tar ubuntu&lt;/code&gt; and then &lt;code&gt;cd /tmp &amp;amp;&amp;amp; tar xvf ubuntu.tar&lt;/code&gt;. Then you can take a look around. All those directories that look like long hashes are actually the individual layers. Each one contains files (&lt;code&gt;layer.tar&lt;/code&gt;) and metadata (&lt;code&gt;json&lt;/code&gt;) with information about that particular layer. Those layers just describe changes to the filesystem which are saved as a layer &quot;on top of&quot; its original state. When reading the &quot;current&quot; data, the filesystem reads data as though it were looking only at the top-most layers of changes. That's why the file appears to be deleted, even though it still exists in &quot;previous&quot; layers, because the filesystem is only looking at the top-most layers. This allows completely different containers to share their filesystem layers, even though some significant changes may have happened to the filesystem on the top-most layers in each container. This can save you a ton of disk space, when your containers share their base image layers. However, when you mount directories and files from the host system into your container by way of volumes, those volumes &quot;bypass&quot; the UnionFS, so changes are not stored in layers.</source>
+          <target state="translated">Что касается файловой системы, используемой каждым из этих процессов-контейнеров, Docker использует образы с поддержкой &lt;a href=&quot;https://en.wikipedia.org/wiki/UnionFS&quot;&gt;UnionFS&lt;/a&gt; , которые вы загружаете, когда выполняете Docker &lt;code&gt;docker pull ubuntu&lt;/code&gt; . Каждое &amp;laquo;изображение&amp;raquo; - это просто серия слоев и связанных метаданных. Концепция наслоения здесь очень важна. Каждый слой - это просто изменение слоя под ним. Например, когда вы удаляете файл в своем Dockerfile при создании контейнера Docker, вы фактически просто создаете слой поверх последнего слоя, который говорит &amp;laquo;этот файл был удален&amp;raquo;. Кстати, именно поэтому вы можете удалить большой файл из вашей файловой системы, но образ все равно занимает тот же объем дискового пространства. Файл все еще там, в слоях под текущим. Сами слои - это просто архивы файлов. Вы можете проверить это с помощью &lt;code&gt;docker save --output /tmp/ubuntu.tar ubuntu&lt;/code&gt; , а затем &lt;code&gt;cd /tmp &amp;amp;&amp;amp; tar xvf ubuntu.tar&lt;/code&gt; . Тогда вы можете осмотреться. Все эти каталоги, которые выглядят как длинные хеши, на самом деле являются отдельными слоями. Каждый из них содержит файлы ( &lt;code&gt;layer.tar&lt;/code&gt; ) и метаданные ( &lt;code&gt;json&lt;/code&gt; ) с информацией об этом конкретном слое. Эти слои просто описывают изменения в файловой системе, которые сохраняются как слой &amp;laquo;поверх&amp;raquo; его первоначального состояния. При чтении &amp;laquo;текущих&amp;raquo; данных файловая система считывает данные так, как будто она просматривает только самые верхние слои изменений. Вот почему файл кажется удаленным, даже если он все еще существует в &amp;laquo;предыдущих&amp;raquo; слоях, потому что файловая система просматривает только самые верхние слои. Это позволяет совершенно разным контейнерам совместно использовать свои слои файловой системы, даже если некоторые существенные изменения могли произойти с файловой системой на верхних слоях в каждом контейнере. Это может сэкономить вам массу дискового пространства, когда ваши контейнеры совместно используют свои базовые слои изображений. Однако, когда вы монтируете каталоги и файлы из хост-системы в свой контейнер с помощью томов, эти тома &amp;laquo;обходят&amp;raquo; UnionFS, поэтому изменения не сохраняются в слоях.</target>
+        </trans-unit>
+        <trans-unit id="5a90c96cd22c443750dcd37a720eff4fed88c89c" translate="yes" xml:space="preserve">
+          <source>As you can see the extrapolated total number of servers for an organisation is rarely in single figures, is very often in triple figures and can easily be significantly higher still.</source>
+          <target state="translated">Как вы видите,экстраполированное общее количество серверов в организации редко выражается единичными цифрами,очень часто-тройными цифрами,и легко может быть значительно больше.</target>
+        </trans-unit>
+        <trans-unit id="81f5b5d7fb019e7f4ae5f8b5f55e80d3576c41bd" translate="yes" xml:space="preserve">
+          <source>AuFS is a layered file system, so you can have a read only part and a write part which are merged together. One could have the common parts of the operating system as read only (and shared amongst all of your containers) and then give each container its own mount for writing.</source>
+          <target state="translated">AuFS является многоуровневой файловой системой,так что вы можете иметь часть только для чтения и часть для записи,которые объединены вместе.Можно иметь общие части операционной системы только для чтения (и разделить их между всеми контейнерами),а затем дать каждому контейнеру свою собственную монтировку для записи.</target>
+        </trans-unit>
+        <trans-unit id="4cfd99ba34f608f70161df11d9d7991016760ff2" translate="yes" xml:space="preserve">
+          <source>Backout consists of stopping and deleting the container.</source>
+          <target state="translated">Обратный ход состоит из остановки и удаления контейнера.</target>
+        </trans-unit>
+        <trans-unit id="351e46cacb0525510c6af44a48e0b695b9063feb" translate="yes" xml:space="preserve">
+          <source>Backout requires undoing changes in the VM. Or restoring it if possible.</source>
+          <target state="translated">Для выполнения резервного копирования необходимо отменить изменения в виртуальной машине.Или восстановление,если это возможно.</target>
+        </trans-unit>
+        <trans-unit id="d851c9a4f97cb1a71d6b2be6463bab52ea582fa4" translate="yes" xml:space="preserve">
+          <source>Besides that, they are very light-weight and flexible thanks to the dockerFile configuration.</source>
+          <target state="translated">Кроме того,они очень легкие и гибкие благодаря конфигурации dockerFile.</target>
+        </trans-unit>
+        <trans-unit id="e9df9aab39e6b2e3d5e433a04b4d06ee5e827531" translate="yes" xml:space="preserve">
+          <source>Besides the Docker Hub site there is another site called quay.io that you can use to have your own Docker images dashboard there and pull/push to/from it. You can even import Docker images from Docker Hub to quay then running them from quay on your own machine.</source>
+          <target state="translated">Помимо сайта Докер концентратор есть еще один сайт под названием quay.io,что вы можете использовать,чтобы иметь свой собственный приборной панели изображений Докер там и пуллпаш тоф из него.Вы даже можете импортировать изображения из Docker Hub на набережную,а затем запустить их с набережной на собственной машине.</target>
+        </trans-unit>
+        <trans-unit id="00f47b682df45612c96346dc99122be39bdc7654" translate="yes" xml:space="preserve">
+          <source>But I want to add additional point of view, not covered in detail here. In my opinion Docker differs also in whole process. In contrast to VMs, Docker is not (only) about optimal resource sharing of hardware, moreover it provides a &quot;system&quot; for packaging application (preferable, but not a must, as a set of microservices).</source>
+          <target state="translated">Но я хочу добавить дополнительную точку зрения,не описанную здесь подробно.На мой взгляд,Докер отличается и в целом.В отличие от ВМ,Docker-это не (только)оптимальное разделение ресурсов на оборудование,более того,он предоставляет &quot;систему&quot; для упаковочного применения (предпочтительнее,но не обязательнее,как набор микроуслуг).</target>
+        </trans-unit>
+        <trans-unit id="2246070647f40bdc0a60270679c1fd264e82ae9e" translate="yes" xml:space="preserve">
+          <source>But the big question is, is it feasible?, will it be sensible?</source>
+          <target state="translated">Но главный вопрос в том,возможно ли это? Будет ли это разумно?</target>
+        </trans-unit>
+        <trans-unit id="467036aef2189670c83d3de39dc33422063e461b" translate="yes" xml:space="preserve">
+          <source>By comparing the container setup with its predecessors, we can conclude that containerization is the fastest, most resource effective, and most secure setup we know to date. Containers are isolated instances that run your application. &lt;strong&gt;Docker spin up the container in a way, layers get run time memory with default storage drivers(Overlay drivers) those run within seconds and copy-on-write layer created on top of it once we commit into the container, that powers the execution of containers.&lt;/strong&gt; In case of VM's that will take around a minute to load everything into the virtualize environment. These lightweight instances can be replaced, rebuild, and moved around easily. This allows us to mirror the production and development environment and is tremendous help in CI/CD processes. The advantages containers can provide are so compelling that they're definitely here to stay.</source>
+          <target state="translated">Сравнивая настройку контейнера с его предшественниками, мы можем сделать вывод, что контейнеризация - самая быстрая, наиболее эффективная и наиболее безопасная установка, которую мы знаем на сегодняшний день. Контейнеры - это изолированные экземпляры, которые запускают ваше приложение. &lt;strong&gt;Docker каким-то образом раскручивает контейнер, слои получают оперативную память с драйверами хранилища по умолчанию (драйверы оверлеев), которые запускаются в течение нескольких секунд, и слоем копирования при записи, создаваемым поверх него после фиксации в контейнере, который обеспечивает выполнение контейнеры.&lt;/strong&gt; В случае виртуальных машин это займет около минуты, чтобы загрузить все в среду виртуализации. Эти легкие экземпляры можно легко заменять, перестраивать и перемещать. Это позволяет нам отражать среду производства и разработки и является огромной помощью в процессах CI / CD. Преимущества, которые могут предоставить контейнеры, настолько убедительны, что они определенно здесь, чтобы остаться.</target>
+        </trans-unit>
+        <trans-unit id="2218fd115399d11f4e43b078ba742fac667ff0de" translate="yes" xml:space="preserve">
+          <source>Complex configuration</source>
+          <target state="translated">Сложная конфигурация</target>
+        </trans-unit>
+        <trans-unit id="ba8780a743531027156a18a445e7af93055ec46f" translate="yes" xml:space="preserve">
+          <source>Container states (Docker or LXC images) are small in size compared to virtual machine images, so container images are easy to distribute.</source>
+          <target state="translated">Состояния контейнеров (изображения докера или LXC)имеют небольшой размер по сравнению с изображениями виртуальных машин,поэтому изображения контейнеров легко распространять.</target>
+        </trans-unit>
+        <trans-unit id="25ce7e45cb65773b9965d5fad315cc3119faab36" translate="yes" xml:space="preserve">
+          <source>Container-based virtualization</source>
+          <target state="translated">Виртуализация на базе контейнеров</target>
+        </trans-unit>
+        <trans-unit id="598df2f164e7aaa8e067a8c319cc0e57e541f468" translate="yes" xml:space="preserve">
+          <source>Container-based virtualization, also known as operating system-level virtualization, enables multiple isolated executions within a single operating system kernel. It has the best possible performance and density and features dynamic resource management. The isolated virtual execution environment provided by this type of virtualization is called a container and can be viewed as a traced group of processes.</source>
+          <target state="translated">Контейнерная виртуализация,также известная как виртуализация на уровне операционной системы,позволяет выполнять несколько изолированных операций в пределах одного ядра операционной системы.Она имеет наилучшую возможную производительность и плотность и обладает функциями динамического управления ресурсами.Изолированная виртуальная среда выполнения,предоставляемая этим типом виртуализации,называется контейнером и может рассматриваться как трассируемая группа процессов.</target>
+        </trans-unit>
+        <trans-unit id="5d4c3cdeb8073372b70957b9b2f3cd7fe34f32eb" translate="yes" xml:space="preserve">
+          <source>Cost efficiency</source>
+          <target state="translated">Экономическая эффективность</target>
+        </trans-unit>
+        <trans-unit id="735a54b02db689eb4f4e57bf659a737787c87afb" translate="yes" xml:space="preserve">
+          <source>Deploying a consistent production environment is easier said than done. Even if you use tools like &lt;a href=&quot;https://en.wikipedia.org/wiki/Chef_%28software%29&quot;&gt;Chef&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Puppet_%28software%29&quot;&gt;Puppet&lt;/a&gt;, there are always OS updates and other things that change between hosts and environments.</source>
+          <target state="translated">Развертывание согласованной производственной среды легче сказать, чем сделать. Даже если вы используете такие инструменты, как &lt;a href=&quot;https://en.wikipedia.org/wiki/Chef_%28software%29&quot;&gt;Chef&lt;/a&gt; и &lt;a href=&quot;https://en.wikipedia.org/wiki/Puppet_%28software%29&quot;&gt;Puppet&lt;/a&gt; , всегда есть обновления ОС и другие вещи, которые меняются между хостами и средами.</target>
+        </trans-unit>
+        <trans-unit id="943c1d3d450b735a762475a53fbc3f3845e18058" translate="yes" xml:space="preserve">
+          <source>Developers can often develop on PCs beyond the control of corporate or business standardisation rules (e.g. freelancers who develop on their own machines (often remotely) or contributors to open source projects who are not 'employed' or 'contracted' to configure their PCs a certain way)</source>
+          <target state="translated">Разработчики часто могут развиваться на ПК вне контроля корпоративных или бизнес-правил стандартизации (например,фрилансеры,которые разрабатывают на своих собственных машинах (часто удаленно)или участники проектов с открытым исходным кодом,которые не &quot;трудоустроены&quot; или &quot;не заключили контракт&quot; на настройку своих ПК определенным образом).</target>
+        </trans-unit>
+        <trans-unit id="648c9952f3e90ecd09eb98e62fc5b9803514288d" translate="yes" xml:space="preserve">
+          <source>Developers, and indeed testers, will all have either subtlely or vastly different PC configurations, by the very nature of the job</source>
+          <target state="translated">Разработчики,и,по сути,тестеры,будут иметь либо тонкие,либо сильно отличающиеся друг от друга конфигурации ПК,по самой природе своей работы.</target>
+        </trans-unit>
+        <trans-unit id="d58e3f21c27fd593809010f14d9f9baa0486da85" translate="yes" xml:space="preserve">
+          <source>Difficult to migrate</source>
+          <target state="translated">Трудно мигрировать</target>
+        </trans-unit>
+        <trans-unit id="02c9786ecd26345d0f7e906cc555a19e98790432" translate="yes" xml:space="preserve">
+          <source>Difficult to scale</source>
+          <target state="translated">Трудно масштабировать</target>
+        </trans-unit>
+        <trans-unit id="2437715c53b48152d323d9cdffd1153b925cb3c8" translate="yes" xml:space="preserve">
+          <source>Docker and LXC is meant more for sandboxing, containerization, and resource isolation. It uses the host OS's (currently only Linux kernel) clone API which provides namespacing for IPC, NS (mount), network, PID, UTS, etc.</source>
+          <target state="translated">Докер и LXC больше предназначены для песочницы,контейнеризации и изоляции ресурсов.Он использует API клонирования операционной системы хоста (в настоящее время только ядро Linux),который обеспечивает интервал имён для IPC,NS (mount),сети,PID,UTS и т.д.</target>
+        </trans-unit>
+        <trans-unit id="0670367a7dd49858e74261aabd50689718ce92d8" translate="yes" xml:space="preserve">
+          <source>Docker containers are isolated environments. You can see it when you issue the &lt;code&gt;top&lt;/code&gt; command in a Docker container that has been created from a Docker image.</source>
+          <target state="translated">Контейнеры Docker являются изолированной средой. Это можно увидеть, когда вы вводите команду &lt;code&gt;top&lt;/code&gt; в контейнере Docker, который был создан из образа Docker.</target>
+        </trans-unit>
+        <trans-unit id="39db408285c6798b78a9365ee4e90c59857f3a5e" translate="yes" xml:space="preserve">
+          <source>Docker encapsulates an application with all its dependencies.</source>
+          <target state="translated">Докер инкапсулирует приложение со всеми его зависимостями.</target>
+        </trans-unit>
+        <trans-unit id="973f8f76caeb9718bdc472542aacfb07e2e84af9" translate="yes" xml:space="preserve">
+          <source>Docker for Mac uses &lt;a href=&quot;https://github.com/moby/hyperkit&quot;&gt;https://github.com/moby/hyperkit&lt;/a&gt; to emulate the hypervisor capabilities and Hyperkit uses hypervisor.framework in its core. Hypervisor.framework is Mac's native hypervisor solution. Hyperkit also uses VPNKit and DataKit to namespace network and filesystem respectively.</source>
+          <target state="translated">Docker для Mac использует &lt;a href=&quot;https://github.com/moby/hyperkit&quot;&gt;https://github.com/moby/hyperkit&lt;/a&gt; для эмуляции возможностей гипервизора, а Hyperkit использует hypervisor.framework в своей основе. Hypervisor.framework - это родное гипервизорное решение для Mac. Hyperkit также использует VPNKit и DataKit для пространства имен сети и файловой системы соответственно.</target>
+        </trans-unit>
+        <trans-unit id="3414abcd2e979a63ae859b5dbc68d077ef1b7ab6" translate="yes" xml:space="preserve">
+          <source>Docker gives you the ability to snapshot the OS into a shared image, and makes it easy to deploy on other Docker hosts. Locally, dev, qa, prod, etc.: all the same image. Sure you can do this with other tools, but not nearly as easily or fast.</source>
+          <target state="translated">Docker дает вам возможность создавать снимки ОС в общий образ,а также упрощает развертывание на других хостах Docker.Локально,dev,qa,prod и т.д.:все один и тот же образ.Конечно,вы можете сделать это с помощью других инструментов,но не так просто и быстро.</target>
+        </trans-unit>
+        <trans-unit id="8d5d7812c058dbb0c86c05605da9d9d304ccab2a" translate="yes" xml:space="preserve">
+          <source>Docker has been developed based on LXC (Linux Container) and works perfectly in many Linux distributions, especially Ubuntu.</source>
+          <target state="translated">Докер разработан на основе LXC (Linux Container)и прекрасно работает во многих дистрибутивах Linux,особенно в Ubuntu.</target>
+        </trans-unit>
+        <trans-unit id="e635f7c85d8f012e88161b22bf2e6522d0f921ac" translate="yes" xml:space="preserve">
+          <source>Docker is container based technology and containers are just user space of the operating system. 
+1:At the low level, a container is just a set of processes that are isolated from the rest of the system, running from a distinct image that provides all files necessary to support the processes.
+2: It is built for running applications. In Docker, the containers running share the host OS kernel.
+&lt;strong&gt;VIRTUAL MACHINE&lt;/strong&gt;
+a:A Virtual Machine, on the other hand, is not based on container technology. They are made up of user space plus kernel space of an operating system.
+b: Under VMs, server hardware is virtualized. Each VM has Operating system (OS) &amp;amp; apps. It shares hardware resource from the host.
+&lt;strong&gt;VM &amp;amp; DOCKER&lt;/strong&gt;
+A: VMs &amp;amp; Docker &amp;ndash; each comes with benefits and demerits. Under a VM environment, each workload needs a complete OS.
+B: But with a container environment, multiple workloads can run with 1 OS. The bigger the OS footprint, the more environment benefits from containers. With this, it brings further benefits like Reduced IT management resources, reduced size of snapshots, quicker spinning up apps, reduced &amp;amp; simplified security updates, less code to transfer, migrate and upload workloads.</source>
+          <target state="translated">Docker - это технология, основанная на контейнерах, а контейнеры - это всего лишь пространство пользователя операционной системы. 1. На низком уровне контейнер - это просто набор процессов, которые изолированы от остальной части системы и выполняются из отдельного образа, который предоставляет все файлы, необходимые для поддержки процессов. 2: Он создан для запуска приложений. В Docker работающие контейнеры совместно используют ядро ​​ОС хоста. &lt;strong&gt;ВИРТУАЛЬНАЯ МАШИНА&lt;/strong&gt; a: Виртуальная машина, с другой стороны, не основана на технологии контейнеров. Они состоят из пространства пользователя плюс пространство ядра операционной системы. b: под виртуальными машинами серверное оборудование виртуализировано. Каждая виртуальная машина имеет операционную систему (ОС) и приложения. Он разделяет аппаратный ресурс с хоста. &lt;strong&gt;VM &amp;amp; DOCKER&lt;/strong&gt; A: VM &amp;amp; Docker - у каждого есть свои преимущества и недостатки. В среде виртуальных машин для каждой рабочей нагрузки требуется полная ОС. B: Но в контейнерной среде несколько рабочих нагрузок могут работать с 1 ОС. Чем больше занимаемая ОС, тем больше преимуществ от контейнеров для среды. Это дает дополнительные преимущества, такие как сокращение ресурсов управления ИТ, уменьшение размера моментальных снимков, ускорение раскрутки приложений, уменьшение и упрощение обновлений безопасности, уменьшение объема кода для передачи, миграции и загрузки рабочих нагрузок.</target>
+        </trans-unit>
+        <trans-unit id="7b421c171d242c8170806930398752966ab85b44" translate="yes" xml:space="preserve">
+          <source>Docker is just a fancy way to run a process, not a virtual machine.</source>
+          <target state="translated">Докер-это просто причудливый способ запуска процесса,а не виртуальной машины.</target>
+        </trans-unit>
+        <trans-unit id="c84bdd2076394c3c27e65f730787ccf2624b38d1" translate="yes" xml:space="preserve">
+          <source>Docker is moving very fast. Its &lt;a href=&quot;https://docs.docker.com/&quot;&gt;documentation&lt;/a&gt; is some of the best documentation I've ever seen. It is generally well-written, concise, and accurate. I recommend you check the documentation available for more information, and trust the documentation over anything else you read online, including Stack Overflow. If you have specific questions, I highly recommend joining &lt;code&gt;#docker&lt;/code&gt; on Freenode IRC and asking there (you can even use Freenode's &lt;a href=&quot;https://webchat.freenode.net/&quot;&gt;webchat&lt;/a&gt; for that!).</source>
+          <target state="translated">Докер движется очень быстро. Его &lt;a href=&quot;https://docs.docker.com/&quot;&gt;документация&lt;/a&gt; - одна из лучших, которые я когда-либо видел. Как правило, оно хорошо написано, сжато и точно. Я рекомендую вам проверить доступную документацию для получения дополнительной информации и доверять документации всему, что вы читаете в Интернете, включая переполнение стека. Если у вас есть конкретные вопросы, я настоятельно рекомендую присоединиться к &lt;code&gt;#docker&lt;/code&gt; в Freenode IRC и задавать там вопросы (вы даже можете использовать &lt;a href=&quot;https://webchat.freenode.net/&quot;&gt;веб-чат&lt;/a&gt; Freenode для этого!).</target>
+        </trans-unit>
+        <trans-unit id="73b8cae18034650b6584789ec0b6826a36a4969b" translate="yes" xml:space="preserve">
+          <source>Docker is the company driving the container movement and the only
+  container platform provider to address every application across the
+  hybrid cloud. Today&amp;rsquo;s businesses are under pressure to digitally
+  transform but are constrained by existing applications and
+  infrastructure while rationalizing an increasingly diverse portfolio
+  of clouds, datacenters and application architectures. Docker enables
+  true independence between applications and infrastructure and
+  developers and IT ops to unlock their potential and creates a model
+  for better collaboration and innovation.</source>
+          <target state="translated">Docker - это компания, управляющая движением контейнеров, и единственный поставщик контейнерных платформ, который занимается всеми приложениями в гибридном облаке. Современные предприятия испытывают трудности с цифровым преобразованием, но ограничены существующими приложениями и инфраструктурой, рационализируя все более разнообразный портфель облаков, центров обработки данных и архитектур приложений. Docker обеспечивает подлинную независимость между приложениями и инфраструктурой, а также разработчиками и ИТ-специалистами, чтобы раскрыть их потенциал и создает модель для улучшения сотрудничества и инноваций.</target>
+        </trans-unit>
+        <trans-unit id="4ac745d6259187beaf5143c3a366b5e962516e92" translate="yes" xml:space="preserve">
+          <source>Docker isn't a virtualization methodology. It relies on other tools that actually implement container-based virtualization or operating system level virtualization. For that, Docker was initially using LXC driver, then moved to libcontainer which is now renamed as runc. Docker primarily focuses on automating the deployment of applications inside application containers. Application containers are designed to package and run a single service, whereas system containers are designed to run multiple processes, like virtual machines. So, Docker is considered as a container management or application deployment tool on containerized systems.</source>
+          <target state="translated">Докер-это не методология виртуализации.Он полагается на другие инструменты,которые на самом деле реализуют виртуализацию на базе контейнеров или на уровне операционной системы.Для этого Docker изначально использовал LXC драйвер,а затем перешел на libcontainer,который теперь переименован в runc.В основном Docker концентрируется на автоматизации развертывания приложений внутри контейнеров приложений.Контейнеры приложений предназначены для упаковки и запуска одной службы,в то время как системные контейнеры предназначены для запуска нескольких процессов,таких как виртуальные машины.Таким образом,Docker рассматривается в качестве инструмента управления контейнерами или развертывания приложений на контейнерных системах.</target>
+        </trans-unit>
+        <trans-unit id="50c82cb7fe6266a82e2fb9c3452a93b0098b144f" translate="yes" xml:space="preserve">
+          <source>Docker originally used &lt;a href=&quot;https://linuxcontainers.org/lxc/&quot;&gt;LinuX Containers&lt;/a&gt; (LXC), but later switched to &lt;a href=&quot;https://github.com/opencontainers/runc&quot;&gt;runC&lt;/a&gt; (formerly known as &lt;strong&gt;libcontainer&lt;/strong&gt;), which runs in the same operating system as its host. This allows it to share a lot of the host operating system resources. Also, it uses a layered filesystem (&lt;a href=&quot;http://aufs.sourceforge.net/&quot;&gt;AuFS&lt;/a&gt;) and manages networking.</source>
+          <target state="translated">Изначально Docker использовал &lt;a href=&quot;https://linuxcontainers.org/lxc/&quot;&gt;контейнеры LinuX&lt;/a&gt; (LXC), но позже переключился на &lt;a href=&quot;https://github.com/opencontainers/runc&quot;&gt;runC&lt;/a&gt; (ранее известный как &lt;strong&gt;libcontainer&lt;/strong&gt; ), который работает в той же операционной системе, что и его хост. Это позволяет ему совместно использовать много ресурсов операционной системы хоста. Кроме того, он использует многоуровневую файловую систему ( &lt;a href=&quot;http://aufs.sourceforge.net/&quot;&gt;AuFS&lt;/a&gt; ) и управляет сетью.</target>
+        </trans-unit>
+        <trans-unit id="41fa7729ec5381ee8638f255f1cb4f7a87c60789" translate="yes" xml:space="preserve">
+          <source>Docker uses &lt;strong&gt;UNION File system&lt;/strong&gt; .. Docker uses a copy-on-write technology to reduce the memory space consumed by containers. &lt;a href=&quot;https://medium.com/@nagarwal/docker-containers-filesystem-demystified-b6ed8112a04a&quot;&gt;Read more here&lt;/a&gt;</source>
+          <target state="translated">Docker использует &lt;strong&gt;файловую систему UNION&lt;/strong&gt; . Docker использует технологию копирования при записи, чтобы уменьшить объем памяти, занимаемый контейнерами. &lt;a href=&quot;https://medium.com/@nagarwal/docker-containers-filesystem-demystified-b6ed8112a04a&quot;&gt;Узнайте больше здесь&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="b7a3c15391c182ccba309a3b738b4b90db0a222a" translate="yes" xml:space="preserve">
+          <source>Docker, basically containers, supports &lt;strong&gt;OS virtualization&lt;/strong&gt; i.e. your application feels that it has a complete instance of an OS whereas VM supports &lt;strong&gt;hardware virtualization&lt;/strong&gt;. You feel like it is a physical machine in which you can boot any OS.</source>
+          <target state="translated">Docker, в основном контейнеры, поддерживает &lt;strong&gt;виртуализацию ОС,&lt;/strong&gt; т.е. ваше приложение чувствует, что оно имеет полный экземпляр ОС, тогда как виртуальная машина поддерживает &lt;strong&gt;аппаратную виртуализацию&lt;/strong&gt; . Вы чувствуете, что это физическая машина, на которой вы можете загрузить любую ОС.</target>
+        </trans-unit>
+        <trans-unit id="d01409177152f353bc55c371b17b74ce19db744e" translate="yes" xml:space="preserve">
+          <source>Docker/LXC can almost be run on any cheap hardware (less than 1&amp;nbsp;GB of memory is also OK as long as you have newer kernel) vs. normal VMs need at least 2&amp;nbsp;GB of memory, etc., to do anything meaningful with it. But Docker support on the host OS is not available in OS such as Windows (as of Nov 2014) where as may types of VMs can be run on windows, Linux, and Macs.</source>
+          <target state="translated">Docker / LXC практически можно запустить на любом дешевом оборудовании (если у вас более новое ядро, можно использовать и менее 1 ГБ памяти), тогда как нормальным виртуальным машинам требуется как минимум 2 ГБ памяти и т. Д., Чтобы сделать что-то значимое с ней , Но поддержка Docker на хост-ОС недоступна в таких ОС, как Windows (по состоянию на ноябрь 2014 г.), где могут работать типы виртуальных машин в Windows, Linux и Mac.</target>
+        </trans-unit>
+        <trans-unit id="ebfbe47546638c4d6b8bdeb4c1ec1c246b7d5294" translate="yes" xml:space="preserve">
+          <source>Easy to backup and migrate</source>
+          <target state="translated">Простота резервного копирования и миграции</target>
+        </trans-unit>
+        <trans-unit id="0c1056b52b083ad21229bce5ba26be5a9f188426" translate="yes" xml:space="preserve">
+          <source>Easy to migrate</source>
+          <target state="translated">Легко мигрировать</target>
+        </trans-unit>
+        <trans-unit id="eb1268b1c2d91c12e10a36edb55ad7aef75453d5" translate="yes" xml:space="preserve">
+          <source>Easy to scale</source>
+          <target state="translated">Легко масштабируемый</target>
+        </trans-unit>
+        <trans-unit id="3a0cc42ee3658aa395a2138d4f579703ec830c67" translate="yes" xml:space="preserve">
+          <source>Emulation</source>
+          <target state="translated">Emulation</target>
+        </trans-unit>
+        <trans-unit id="3dd6632b998842cf74b5b1b92cd5f5820e9f7c7a" translate="yes" xml:space="preserve">
+          <source>Emulation, also known as full virtualization runs the virtual machine OS kernel entirely in software. The hypervisor used in this type is known as Type 2 hypervisor. It is installed on the top of the host operating system which is responsible for translating guest OS kernel code to software instructions. The translation is done entirely in software and requires no hardware involvement. Emulation makes it possible to run any non-modified operating system that supports the environment being emulated.  The downside of this type of virtualization is an additional system resource overhead that leads to a decrease in performance compared to other types of virtualizations.</source>
+          <target state="translated">Эмуляция,также известная как полная виртуализация,запускает ядро ОС виртуальной машины полностью в программном обеспечении.Гипервизор,используемый в этом типе,известен как гипервизор типа 2.Он устанавливается в верхней части операционной системы хоста,которая отвечает за трансляцию кода гостевого ядра ОС в инструкции к программному обеспечению.Перевод осуществляется полностью в программном обеспечении и не требует аппаратного обеспечения.Эмуляция позволяет запустить любую немодифицированную операционную систему,поддерживающую эмулируемое окружение.Недостатком такого типа виртуализации является дополнительная нагрузка на системные ресурсы,что приводит к снижению производительности по сравнению с другими типами виртуализации.</target>
+        </trans-unit>
+        <trans-unit id="ebd505d115bab776dbdc74d1e0b12be11fd82172" translate="yes" xml:space="preserve">
+          <source>Every container thinks that it&amp;rsquo;s running on its own copy of the operating system. It&amp;rsquo;s got its own file system, own registry, etc. which is a kind of a lie. It&amp;rsquo;s actually being virtualized.</source>
+          <target state="translated">Каждый контейнер считает, что он работает в своей собственной копии операционной системы. У него есть собственная файловая система, собственный реестр и т. Д., Что является своего рода ложью. Это на самом деле виртуализировано.</target>
+        </trans-unit>
+        <trans-unit id="831cc80cb718c03f5246360107237ef746f0d7b0" translate="yes" xml:space="preserve">
+          <source>Examples in this category include VMware Player, VirtualBox, QEMU, Bochs, Parallels, etc.</source>
+          <target state="translated">Примеры в этой категории включают VMware Player,VirtualBox,QEMU,Bochs,Parallels и др.</target>
+        </trans-unit>
+        <trans-unit id="1ccb86e59e4fe3bd2ef073e88fbef7553e61cfd6" translate="yes" xml:space="preserve">
+          <source>Examples in this category include Xen, KVM, etc.</source>
+          <target state="translated">Примеры в этой категории включают Xen,KVM и т.д.</target>
+        </trans-unit>
+        <trans-unit id="06c824bd1974bf568c9573060edb42e84b34bdb2" translate="yes" xml:space="preserve">
+          <source>Except for the kernel the patches and libraries are identical.</source>
+          <target state="translated">За исключением ядра,патчи и библиотеки идентичны.</target>
+        </trans-unit>
+        <trans-unit id="b0a3481e61f709c1e0d790c0b774bd27b9d58b69" translate="yes" xml:space="preserve">
+          <source>Expensive</source>
+          <target state="translated">Expensive</target>
+        </trans-unit>
+        <trans-unit id="7619f9abbfa1d6d7042c32f920ff5830700c00a0" translate="yes" xml:space="preserve">
+          <source>First, docker images are usually smaller than VM images, makes it easy to build, copy, share.</source>
+          <target state="translated">Во-первых,изображения докера,как правило,меньше,чем изображения VM,что облегчает сборку,копирование,обмен.</target>
+        </trans-unit>
+        <trans-unit id="1ef8e6da45d2dd081d16f57b855fc793cd8acd72" translate="yes" xml:space="preserve">
+          <source>Flexibility</source>
+          <target state="translated">Flexibility</target>
+        </trans-unit>
+        <trans-unit id="f074c945bdbec9e8558ac4215dcfd8927703d79f" translate="yes" xml:space="preserve">
+          <source>For container-based virtualization, no additional software is required, unlike other virtualizations.</source>
+          <target state="translated">Для контейнерной виртуализации,в отличие от других виртуализаций,не требуется никакого дополнительного программного обеспечения.</target>
+        </trans-unit>
+        <trans-unit id="cca4ac54f6253ba97d3664e73ad0e4adc922b5c9" translate="yes" xml:space="preserve">
+          <source>For doing that, I downloaded configured Docker containers for zookeeper, kafka, Prometheus, Grafana and jmx-collector then mounted my own configuration for some of them using YAML files, or for others, I changed some files and configuration in the Docker container and I build a whole system for monitoring kafka using multi-container Dockers on a single machine with isolation and scalability and resiliency that this architecture can be easily moved into multiple servers.</source>
+          <target state="translated">Для этого я скачал сконфигурированные контейнеры Docker для зоопарка,kafka,Prometheus,Grafana и jmx-коллектора,затем смонтировал свою собственную конфигурацию для некоторых из них с помощью YAML-файлов,а для других я изменил некоторые файлы и конфигурацию в контейнере Docker и построил целую систему для мониторинга kafka с помощью многоконтейнерных докеров на одной машине с изоляцией и масштабируемостью и отказоустойчивостью,которые эта архитектура может быть легко перенесена на несколько серверов.</target>
+        </trans-unit>
+        <trans-unit id="a16d59c76a3c563866745fba874d4ab0bc26bd0d" translate="yes" xml:space="preserve">
+          <source>For example, if you develop a web server that runs on port 4000, when you deploy it to your &quot;testing&quot; environment, that port is already used by some other program, so it stops working. In containers there are layers; all the changes you have made to the OS would be saved in one or more layers and those layers would be part of image, so wherever the image goes the dependencies would be present as well.</source>
+          <target state="translated">Например,если вы разрабатываете веб-сервер,который работает на порту 4000,то при развертывании его в &quot;тестовом&quot; окружении этот порт уже используется какой-нибудь другой программой,поэтому он перестает работать.В контейнерах есть уровни;все изменения,которые вы внесли в ОС,будут сохранены на одном или нескольких уровнях,и эти уровни будут частью образа,так что куда бы ни пошел образ,будут присутствовать и зависимости.</target>
+        </trans-unit>
+        <trans-unit id="8fd88484152d1d51a4c2b9238da4fbff000d9c47" translate="yes" xml:space="preserve">
+          <source>For example, you can create a Docker image and configure a DockerFile and tell that for example when it is running then wget 'this', apt-get 'that', run 'some shell script', setting environment variables and so on.</source>
+          <target state="translated">Например,вы можете создать образ Docker,настроить DockerFile и сказать,что,например,когда он запущен,wget 'this',apt-get 'that',запустить 'какой-нибудь сценарий оболочки',задать переменные окружения и так далее.</target>
+        </trans-unit>
+        <trans-unit id="35ccf43916b47b800017e7e72b2ae9d3454e3634" translate="yes" xml:space="preserve">
+          <source>For me the fundamental difference between VMs and Docker is how you manage the promotion of your application.</source>
+          <target state="translated">Для меня принципиальная разница между VM и Docker заключается в том,как вы управляете продвижением вашего приложения.</target>
+        </trans-unit>
+        <trans-unit id="776e7b08ef6cc416f71526ab137e5b888e2ab3f4" translate="yes" xml:space="preserve">
+          <source>For more information, check out &lt;a href=&quot;http://web.archive.org/web/20150326185901/http://blog.dotcloud.com/under-the-hood-linux-kernels-on-dotcloud-part&quot;&gt;this set of blog posts&lt;/a&gt; which do a good job of explaining how LXC works.</source>
+          <target state="translated">Для получения дополнительной информации, ознакомьтесь с &lt;a href=&quot;http://web.archive.org/web/20150326185901/http://blog.dotcloud.com/under-the-hood-linux-kernels-on-dotcloud-part&quot;&gt;этим набором постов в блоге,&lt;/a&gt; которые хорошо объясняют, как работает LXC.</target>
+        </trans-unit>
+        <trans-unit id="207193724c4e247fd644cf605f559f47a466119b" translate="yes" xml:space="preserve">
+          <source>From comments...</source>
+          <target state="translated">Из комментариев...</target>
+        </trans-unit>
+        <trans-unit id="b06a12c7f453ec1b3e1d2a287db5fb38b0d6cf5d" translate="yes" xml:space="preserve">
+          <source>Good answers. Just to get an image representation of container vs VM, have a look at the one below.</source>
+          <target state="translated">Хорошие ответы.Просто чтобы получить изображение представления контейнера против VM,посмотрите на изображение ниже.</target>
+        </trans-unit>
+        <trans-unit id="8e3f53c59ab99fe6412b74f105c5c18faeaa1818" translate="yes" xml:space="preserve">
+          <source>Good use of resources</source>
+          <target state="translated">Хорошее использование ресурсов</target>
+        </trans-unit>
+        <trans-unit id="08a92012d1091230dec3a68bf46755967d46a604" translate="yes" xml:space="preserve">
+          <source>Here is a pic from docker/rightscale :</source>
+          <target state="translated">Ниже приведены данные по шкале докеррайтинга:</target>
+        </trans-unit>
+        <trans-unit id="3fff53bba4a212150784b2d3bc45d5918d2667bb" translate="yes" xml:space="preserve">
+          <source>How is Docker different from a virtual machine</source>
+          <target state="translated">Чем Docker отличается от виртуальной машины.</target>
+        </trans-unit>
+        <trans-unit id="01e97b6e84b72f7278d2e92841cdf0e0b3dea0d1" translate="yes" xml:space="preserve">
+          <source>Hyper-v is the native hypervisor in Windows. They are also trying to leverage Windows 10's capabilities to run Linux systems natively.</source>
+          <target state="translated">Hyper-v-это встроенный гипервизор в Windows.Они также пытаются использовать возможности Windows 10 для естественного запуска систем Linux.</target>
+        </trans-unit>
+        <trans-unit id="a670e3e7b00b3a4ef5c8133d5ecd66b4bfeeef4d" translate="yes" xml:space="preserve">
+          <source>I have used Docker in production environments and staging very much. When you get used to it you will find it very powerful for building a multi container and isolated environments.</source>
+          <target state="translated">Я очень много использовал Docker на производстве и в инсценировках.Когда вы привыкнете к нему,вы обнаружите,что он очень мощный для создания многоконтейнерных и изолированных сред.</target>
+        </trans-unit>
+        <trans-unit id="efcbb2db7ed5cea3f886bf3b808eaf0e3defaa70" translate="yes" xml:space="preserve">
+          <source>I keep rereading &lt;a href=&quot;https://docs.docker.com/&quot;&gt;the Docker documentation&lt;/a&gt; to try to understand the difference between Docker and a full VM. How does it manage to provide a full filesystem, isolated networking environment, etc. without being as heavy?</source>
+          <target state="translated">Я продолжаю перечитывать &lt;a href=&quot;https://docs.docker.com/&quot;&gt;документацию Docker,&lt;/a&gt; чтобы попытаться понять разницу между Docker и полной виртуальной машиной. Как ему удается обеспечить полную файловую систему, изолированную сетевую среду и т. Д., Не будучи таким тяжелым?</target>
+        </trans-unit>
+        <trans-unit id="093768d5bf451d254a63bac21dc211f910523f56" translate="yes" xml:space="preserve">
+          <source>I like Ken Cochrane's answer.</source>
+          <target state="translated">Мне нравится ответ Кена Кокрейна.</target>
+        </trans-unit>
+        <trans-unit id="4bb2f313e29c46ff50d3965c64f2fe9b6022da18" translate="yes" xml:space="preserve">
+          <source>I remember the first days of working with Docker when I issued the wrong commands or removing my containers and all of data and configurations mistakenly.</source>
+          <target state="translated">Я помню первые дни работы с Docker,когда я издавал неправильные команды или удалял контейнеры и все данные и конфигурации по ошибке.</target>
+        </trans-unit>
+        <trans-unit id="403c51801e9b7a0dc50d8fe7fa451ec8a190d37e" translate="yes" xml:space="preserve">
+          <source>If all containers use Ubuntu as their base images, not every image has its own file system, but share the same underline ubuntu files, and only differs in their own application data.</source>
+          <target state="translated">Если все контейнеры используют Ubuntu в качестве базовых изображений,то не каждое изображение имеет свою собственную файловую систему,а разделяет файлы ubuntu с одинаковыми подчеркиваниями,и отличается только собственными прикладными данными.</target>
+        </trans-unit>
+        <trans-unit id="c2cbe8ffc804cbfc335c751353c0f43e1aee5926" translate="yes" xml:space="preserve">
+          <source>If containers are possible because of the features available in the Linux kernel, then the obvious question is how do non-Linux systems run containers. Both Docker for Mac and Windows use Linux VMs to run the containers. Docker Toolbox used to run containers in Virtual Box VMs. But, the latest Docker uses Hyper-V in Windows and Hypervisor.framework in Mac.</source>
+          <target state="translated">Если контейнеры возможны благодаря возможностям,имеющимся в ядре Linux,то очевидным вопросом является то,как не-Linux системы запускают контейнеры.И в Docker'е для Mac,и в Windows для запуска контейнеров используются Linux VM.Docker Toolbox используется для запуска контейнеров на виртуальных ВМ.Но последний Docker использует Hyper-V в Windows и Hypervisor.framework в Mac.</target>
+        </trans-unit>
+        <trans-unit id="bcd1a4739b8857179aa5e6b1af17202af30a8962" translate="yes" xml:space="preserve">
+          <source>If you understand containers, you get what Docker is and how it's different from &lt;strong&gt;VM&lt;/strong&gt;s...</source>
+          <target state="translated">Если вы понимаете контейнеры, вы получите, что такое Docker и чем он отличается от &lt;strong&gt;виртуальных&lt;/strong&gt; машин ...</target>
+        </trans-unit>
+        <trans-unit id="9a0091353dc39035f55d81e29dc485c96d1a5e17" translate="yes" xml:space="preserve">
+          <source>In Docker, the containers running share the host OS kernel, whereas in VMs they have their own OS files. The environment (the OS) in which you develop an application would be same when you deploy it to various serving environments, such as &quot;testing&quot; or &quot;production&quot;.</source>
+          <target state="translated">В Docker контейнеры,работающие совместно с ядром ОС хоста,в то время как в виртуальных машинах у них есть свои собственные файлы ОС.Среда (ОС),в которой вы разрабатываете приложение,будет одинаковой,когда вы разворачиваете его в различных средах обслуживания,таких как &quot;тестовая&quot; или &quot;производственная&quot;.</target>
+        </trans-unit>
+        <trans-unit id="6deaafede88ba1c4b8741704f71788bd3ac121a1" translate="yes" xml:space="preserve">
+          <source>In Virtualization, the resources are allocated in the beginning of set up and hence the resources are not fully utilized when the virtual machine is idle during many of the times. 
+In Docker, the containers are not allocated with fixed amount of hardware resources and is free to use the resources depending on the requirements and hence it is highly scalable.</source>
+          <target state="translated">В виртуализации ресурсы выделяются в начале установки и,следовательно,ресурсы не используются полностью,когда виртуальная машина много раз простаивает.В Docker,контейнеры не выделяются с фиксированным количеством аппаратных ресурсов и свободны в использовании ресурсов в зависимости от требований,и,следовательно,он является высоко масштабируемым.</target>
+        </trans-unit>
+        <trans-unit id="a36afb4e82e762415de7cc7df8fe48984cdb88af" translate="yes" xml:space="preserve">
+          <source>In its conceived form, it was considered a method of logically dividing mainframes to allow multiple applications to run simultaneously. However, the scenario drastically changed when companies and open source communities were able to provide a method of handling the privileged instructions in one way or another and allow for multiple operating systems to be run simultaneously on a single x86 based system.</source>
+          <target state="translated">В своей задуманном виде он рассматривался как метод логического разделения мейнфреймов,позволяющий одновременно запускать несколько приложений.Однако,сценарий кардинально изменился,когда компании и сообщества с открытым исходным кодом смогли предоставить метод обработки привилегированных инструкций тем или иным способом и разрешить одновременный запуск нескольких операционных систем на одной системе на базе x86.</target>
+        </trans-unit>
+        <trans-unit id="95a26c3741ab3acfcb8e62da771360a922f4e4a5" translate="yes" xml:space="preserve">
+          <source>In micro-services projects and architecture Docker is a very viable asset. You can achieve scalability, resiliency and elasticity with Docker, Docker swarm, Kubernetes and Docker Compose.</source>
+          <target state="translated">В проектах микро-услуг и архитектуры Докер является очень жизнеспособным активом.Вы можете достичь масштабируемости,упругости и эластичности с помощью Docker,Docker swarm,Kubernetes и Docker Compose.</target>
+        </trans-unit>
+        <trans-unit id="fd3d8676713c9b794181157ecb2b5681479e937a" translate="yes" xml:space="preserve">
+          <source>In order to know how it is different from other virtualizations, let's go through virtualization and its types. Then, it would be easier to understand what's the difference there.</source>
+          <target state="translated">Чтобы узнать,чем она отличается от других виртуализаций,давайте рассмотрим виртуализацию и ее типы.Тогда будет проще понять,в чем разница.</target>
+        </trans-unit>
+        <trans-unit id="7444a60831088da7523f35412aa42209e5751c6f" translate="yes" xml:space="preserve">
+          <source>In relation to:-</source>
+          <target state="translated">По отношению к:-</target>
+        </trans-unit>
+        <trans-unit id="2c53360e73a433169fe66dad84215306aea76ab4" translate="yes" xml:space="preserve">
+          <source>In the example shown below, the host machine has three VMs. In order to provide the applications in the VMs complete isolation, they each have their own copies of OS files, libraries and application code, along with a full in-memory instance of an OS. 
+Whereas the figure below shows the same scenario with containers. Here, containers simply share the host operating system, including the kernel and libraries, so they don&amp;rsquo;t need to boot an OS, load libraries or pay a private memory cost for those files. The only incremental space they take is any memory and disk space necessary for the application to run in the container. While the application&amp;rsquo;s environment feels like a dedicated OS, the application deploys just like it would onto a dedicated host. The containerized application starts in seconds and many more instances of the application can fit onto the machine than in the VM case.</source>
+          <target state="translated">В приведенном ниже примере хост-машина имеет три виртуальные машины. Чтобы обеспечить полную изоляцию приложений в виртуальных машинах, у каждого из них есть свои копии файлов ОС, библиотек и кода приложения, а также полный экземпляр ОС в памяти. Принимая во внимание, что на рисунке ниже показан тот же сценарий с контейнерами. Здесь контейнеры просто совместно используют операционную систему хоста, включая ядро ​​и библиотеки, поэтому им не нужно загружать ОС, загружать библиотеки или оплачивать стоимость отдельной памяти для этих файлов. Единственное добавочное пространство, которое они занимают, - это любая память и дисковое пространство, необходимые для запуска приложения в контейнере. Хотя среда приложения выглядит как выделенная ОС, приложение развертывается так же, как и на выделенном хосте. Контейнерное приложение запускается за считанные секунды, и на машине может поместиться гораздо больше экземпляров приложения, чем в случае с виртуальной машиной.</target>
+        </trans-unit>
+        <trans-unit id="0a02c937cff75730610767b134b6093b42b4a323" translate="yes" xml:space="preserve">
+          <source>In this case VM manager takes over the CPU ring 0 (or the &quot;root mode&quot; in newer CPUs) and intercepts all privileged calls made by guest OS to create illusion that guest OS has its own hardware. Fun fact: Before 1998 it was thought to be impossible to achieve this in x86 architecture because there was no way to do this kind of interception. The folks at VMWare &lt;a href=&quot;http://web.archive.org/web/20160324005530/https://www.vmware.com/files/pdf/VMware_paravirtualization.pdf&quot;&gt;were the first&lt;/a&gt; who had an idea to rewrite the executable bytes in memory for privileged calls of guest OS to achieve this.</source>
+          <target state="translated">В этом случае диспетчер виртуальных машин захватывает кольцо ЦП 0 (или &amp;laquo;корневой режим&amp;raquo; в более новых процессорах) и перехватывает все привилегированные вызовы, сделанные гостевой ОС, чтобы создать иллюзию, что гостевая ОС имеет свое собственное оборудование. Интересный факт: до 1998 года считалось невозможным достичь этого в архитектуре x86, потому что такого перехвата не было. Люди в VMWare &lt;a href=&quot;http://web.archive.org/web/20160324005530/https://www.vmware.com/files/pdf/VMware_paravirtualization.pdf&quot;&gt;были первыми,&lt;/a&gt; кому пришла в голову идея переписать исполняемые байты в памяти для привилегированных вызовов гостевой ОС, чтобы добиться этого.</target>
+        </trans-unit>
+        <trans-unit id="cd2aef3c71aeb2c97a66235336032b37b431c611" translate="yes" xml:space="preserve">
+          <source>In this context the VM is called as the Guest while the environment it runs on is called the host.</source>
+          <target state="translated">В этом контексте ВМ называется Гостем,в то время как среда,на которой она работает,называется хостом.</target>
+        </trans-unit>
+        <trans-unit id="82a4c2503fc2e5f7a632dc3f96dfb783c40b9f38" translate="yes" xml:space="preserve">
+          <source>Individual developer PC(s)</source>
+          <target state="translated">ПК(ы)индивидуального разработчика</target>
+        </trans-unit>
+        <trans-unit id="27fc6b21a62b9c0827a8225ea34de499da6cbcef" translate="yes" xml:space="preserve">
+          <source>Individual tester PC(s)</source>
+          <target state="translated">Индивидуальный ПК(ы)тестера</target>
+        </trans-unit>
+        <trans-unit id="b56d385feffaad558cd2b71a3f57768499156008" translate="yes" xml:space="preserve">
+          <source>Interesting! I suppose I'm still confused by the notion of &quot;snapshot[ting] the OS&quot;. How does one do that without, well, making an image of the OS?</source>
+          <target state="translated">Интересно! Полагаю,меня все еще смущает понятие &quot;моментальный снимок[ting]операционной системы&quot;.Как это сделать без,ну,создания образа ОС?</target>
+        </trans-unit>
+        <trans-unit id="616318d9db61d03876a33f8c27e6df459bd2eff6" translate="yes" xml:space="preserve">
+          <source>Isolation</source>
+          <target state="translated">Isolation</target>
+        </trans-unit>
+        <trans-unit id="6517c7a6e6193973c0f8ab38bf987e800ec76e5b" translate="yes" xml:space="preserve">
+          <source>It is not uncommon for multiple applications to share a VM. This requires managing configuration and dependencies for all the applications.</source>
+          <target state="translated">Нередки случаи,когда несколько приложений совместно используют виртуальную машину.Это требует управления конфигурацией и зависимостями для всех приложений.</target>
+        </trans-unit>
+        <trans-unit id="53435c6c21589588f560d23914d042b67451eac0" translate="yes" xml:space="preserve">
+          <source>It might be helpful to understand how virtualization and containers work at low level. That will clear up lot of things.</source>
+          <target state="translated">Было бы полезно понять,как виртуализация и контейнеры работают на низком уровне.Это многое прояснит.</target>
+        </trans-unit>
+        <trans-unit id="f5fddae4874740f164d9fcc188953498de0b99dc" translate="yes" xml:space="preserve">
+          <source>It transforms how services are delivered. We want applications, but have to maintain VMs(which is a pain and has little to do with our applications). Docker makes you focus on applications and smooths everything.</source>
+          <target state="translated">Это меняет способ предоставления услуг.Нам нужны приложения,но мы должны поддерживать VM (что очень больно и имеет мало общего с нашими приложениями).Docker заставляет вас сосредоточиться на приложениях и сглаживает все.</target>
+        </trans-unit>
+        <trans-unit id="7e704fdab84afa725450d8c5989d78446095b4fa" translate="yes" xml:space="preserve">
+          <source>Lightweight</source>
+          <target state="translated">Lightweight</target>
+        </trans-unit>
+        <trans-unit id="9c36a1882d9df03003965a7776f2968d11b22b1d" translate="yes" xml:space="preserve">
+          <source>Linux Containers (LXC) are operating system-level capabilities that make it possible to run multiple isolated Linux containers, on one control host (the LXC host). Linux Containers serve as a lightweight alternative to VMs as they don&amp;rsquo;t require the hypervisors viz. Virtualbox, KVM, Xen, etc.</source>
+          <target state="translated">Контейнеры Linux (LXC) - это возможности уровня операционной системы, которые позволяют запускать несколько изолированных контейнеров Linux на одном управляющем хосте (хосте LXC). Контейнеры Linux служат легкой альтернативой виртуальным машинам, поскольку они не требуют наличия гипервизоров. Virtualbox, KVM, Xen и др.</target>
+        </trans-unit>
+        <trans-unit id="5a7b9cdeda076b8b5cdbf26437184f641208efe6" translate="yes" xml:space="preserve">
+          <source>Live staging</source>
+          <target state="translated">Живая постановка</target>
+        </trans-unit>
+        <trans-unit id="093da4223ce1c3507aba3a3ccde4d3735447aaff" translate="yes" xml:space="preserve">
+          <source>Load / performance testing</source>
+          <target state="translated">Нагрузочное тестирование производительности</target>
+        </trans-unit>
+        <trans-unit id="3105c333e001f39668ce814586d31eef54a76c34" translate="yes" xml:space="preserve">
+          <source>Low overhead</source>
+          <target state="translated">Низкие накладные расходы</target>
+        </trans-unit>
+        <trans-unit id="af2e2a00277338f6ad4722a9a32d84ecb974e9e9" translate="yes" xml:space="preserve">
+          <source>Many production environments will have cloud-based servers dynamically (or 'elastically') created and destroyed depending on traffic levels</source>
+          <target state="translated">Во многих производственных средах серверы на базе облака будут создаваться и разрушаться динамически (или 'эластично')в зависимости от уровня трафика</target>
+        </trans-unit>
+        <trans-unit id="13266882dcd8e5ddad5d2a8b2d17cb63fe5b62a8" translate="yes" xml:space="preserve">
+          <source>Mirror production and development environment</source>
+          <target state="translated">Среда производства и разработки зеркал</target>
+        </trans-unit>
+        <trans-unit id="9c4e706d04054700b966e6ff5969974a660024f7" translate="yes" xml:space="preserve">
+          <source>Most of the answers here talk about virtual machines. I'm going to give you a one-liner response to this question that has helped me the most over the last couple years of using Docker. It's this:</source>
+          <target state="translated">Большинство ответов здесь говорят о виртуальных машинах.Я дам вам односложный ответ на этот вопрос,который помог мне больше всего за последние пару лет использовать Docker.Вот это:</target>
+        </trans-unit>
+        <trans-unit id="e30e5ce298639ebdf7ed418d577fdba1453de3e9" translate="yes" xml:space="preserve">
+          <source>Most software is deployed to many environments, typically a minimum of three of the following:</source>
+          <target state="translated">Большинство программного обеспечения развертывается во многих средах,как правило,не менее трех из следующих:</target>
+        </trans-unit>
+        <trans-unit id="b938883ea89a8af2b42e1f7fa1fcb02625173674" translate="yes" xml:space="preserve">
+          <source>Namespaces can be used in many different ways, but the most common approach is to create an isolated container that has no visibility or access to objects outside the container. Processes running inside the container appear to be running on a normal Linux system although they are sharing the underlying kernel with processes located in other namespaces, same for other kinds of objects. For instance, when using namespaces, the root user inside the container is not treated as root outside the container, adding additional security.</source>
+          <target state="translated">Пространства имен могут использоваться различными способами,но наиболее распространенным подходом является создание изолированного контейнера,не имеющего видимости или доступа к объектам вне контейнера.Процессы,запущенные внутри контейнера,кажутся запущенными на обычной системе Linux,хотя они разделяют базовое ядро с процессами,расположенными в других пространствах имен,то же самое происходит и с другими типами объектов.Например,при использовании пространств имен,пользователь root внутри контейнера не рассматривается как пользователь root вне контейнера,добавляя дополнительную безопасность.</target>
+        </trans-unit>
+        <trans-unit id="2c18158689f952c79b7e5a35cdb844ea37ad2a0c" translate="yes" xml:space="preserve">
+          <source>Networking and security issues.</source>
+          <target state="translated">Вопросы сетевого взаимодействия и безопасности.</target>
+        </trans-unit>
+        <trans-unit id="09a3a2ea2407302c3e099a5cfd61ce10c643c0b2" translate="yes" xml:space="preserve">
+          <source>Networking in Docker is achieved by using an ethernet bridge (called &lt;code&gt;docker0&lt;/code&gt; on the host), and virtual interfaces for every container on the host. It creates a virtual subnet in &lt;code&gt;docker0&lt;/code&gt; for your containers to communicate &quot;between&quot; one another. There are many options for networking here, including creating custom subnets for your containers, and the ability to &quot;share&quot; your host's networking stack for your container to access directly.</source>
+          <target state="translated">Работа в сети в Docker достигается с помощью сетевого моста (называемого &lt;code&gt;docker0&lt;/code&gt; на хосте) и виртуальных интерфейсов для каждого контейнера на хосте. Он создает виртуальную подсеть в &lt;code&gt;docker0&lt;/code&gt; , чтобы ваши контейнеры могли общаться между собой. Здесь есть много вариантов сетевого взаимодействия, включая создание пользовательских подсетей для ваших контейнеров и возможность &amp;laquo;поделиться&amp;raquo; сетевым стеком вашего хоста, чтобы ваш контейнер имел прямой доступ.</target>
+        </trans-unit>
+        <trans-unit id="a0a854b60507a34251037996f11a19fa6b85b4fc" translate="yes" xml:space="preserve">
+          <source>Note: I'm simplifying a bit in describing below. See references for more information.</source>
+          <target state="translated">Примечание:Я немного упрощаю описание ниже.См.ссылки для получения дополнительной информации.</target>
+        </trans-unit>
+        <trans-unit id="e227acd21027a7bfb5a25200ef887511d8c3044f" translate="yes" xml:space="preserve">
+          <source>Note: Learning Docker in the first place seems complex and hard, but when you get used to it then you can not work without it.</source>
+          <target state="translated">Примечание:Обучение Docker в первую очередь кажется сложным и трудным,но когда вы привыкнете к нему,вы не сможете работать без него.</target>
+        </trans-unit>
+        <trans-unit id="0b35f91a80d652f56b4de5cd1f0c19e887566e0f" translate="yes" xml:space="preserve">
+          <source>Now unless you were drugged by Alan (Zach Galifianakis- from the Hangover series) and have been in Vegas for the last year, you will be pretty aware about the tremendous spurt of interest for Linux containers technology, and if I will be specific one container project which has created a buzz around the world in last few months is &amp;ndash; Docker leading to some echoing opinions that cloud computing environments should abandon virtual machines (VMs) and replace them with containers due to their lower overhead and potentially better performance.</source>
+          <target state="translated">Теперь, если вы не были одурманены Аланом (Заком Галифианакисом - из серии &amp;laquo;Похмелье&amp;raquo;) и не были в Вегасе в течение последнего года, вы будете в курсе огромного всплеска интереса к технологии контейнеров Linux, и если я буду конкретен для одного контейнера Проект, который за последние несколько месяцев вызвал оживление во всем мире, - это докер, который привел к некоторому повторяющемуся мнению, что средам облачных вычислений следует отказаться от виртуальных машин (ВМ) и заменить их контейнерами из-за их меньших издержек и потенциально лучшей производительности.</target>
+        </trans-unit>
+        <trans-unit id="1cc4dd6084579a024d65281292fa705d78118079" translate="yes" xml:space="preserve">
+          <source>Now, let me describe how Docker for Mac runs containers in detail.</source>
+          <target state="translated">Теперь позвольте мне подробно описать,как Docker for Mac управляет контейнерами.</target>
+        </trans-unit>
+        <trans-unit id="d95736c0ea29fafbe8447df33be6ba007df4db2e" translate="yes" xml:space="preserve">
+          <source>Now, let me explain a bit more about what that means. Virtual machines are their own beast. I feel like explaining what &lt;em&gt;Docker&lt;/em&gt; is will help you understand this more than explaining what a virtual machine is. Especially because there are many fine answers here telling you exactly what someone means when they say &quot;virtual machine&quot;. So...</source>
+          <target state="translated">Теперь позвольте мне объяснить немного больше о том, что это значит. Виртуальные машины - это их собственные звери. Я чувствую, что объяснение того, что такое &lt;em&gt;Docker&lt;/em&gt; , поможет вам понять это больше, чем объяснение, что такое виртуальная машина. Тем более, что здесь есть много хороших ответов, в которых точно сказано, что кто-то имеет в виду, когда говорит &amp;laquo;виртуальная машина&amp;raquo;. Так...</target>
+        </trans-unit>
+        <trans-unit id="f9c01df341a52960ca7d89828bb10132f64f1861" translate="yes" xml:space="preserve">
+          <source>Now, we can even check the Kernel version of this VM:</source>
+          <target state="translated">Теперь мы даже можем проверить версию ядра этой ВМ:</target>
+        </trans-unit>
+        <trans-unit id="da8e0058a0738225418564045636c65cb055e65e" translate="yes" xml:space="preserve">
+          <source>Often these VM's will have different patches and libraries.</source>
+          <target state="translated">Часто эти ВМ будут иметь различные патчи и библиотеки.</target>
+        </trans-unit>
+        <trans-unit id="e71ee38b37eca2eb89212fc31c65b9278bf446b5" translate="yes" xml:space="preserve">
+          <source>One important difference is that &lt;strong&gt;VMs use a separate kernel to run the OS&lt;/strong&gt;. That's the reason it is heavy and takes time to boot, consuming more system resources.</source>
+          <target state="translated">Одно важное отличие состоит в том, что &lt;strong&gt;виртуальные машины используют отдельное ядро ​​для запуска ОС&lt;/strong&gt; . Вот почему он тяжелый и требует времени для загрузки, потребляя больше системных ресурсов.</target>
+        </trans-unit>
+        <trans-unit id="7a8dd4987551f233b360a5fc92cb1bb1746b7917" translate="yes" xml:space="preserve">
+          <source>Paravirtualization</source>
+          <target state="translated">Paravirtualization</target>
+        </trans-unit>
+        <trans-unit id="adce3fd9cada4bbcbaf7cc96e519bf01a1c74244" translate="yes" xml:space="preserve">
+          <source>Paravirtualization, also known as Type 1 hypervisor, runs directly on the hardware, or &amp;ldquo;bare-metal&amp;rdquo;, and provides virtualization services directly to the virtual machines running on it. It helps the operating system, the virtualized hardware, and the real hardware to collaborate to achieve optimal performance. These hypervisors typically have a rather small footprint and do not, themselves, require extensive resources.</source>
+          <target state="translated">Паравиртуализация, также известная как гипервизор 1-го типа, выполняется непосредственно на аппаратном уровне или &amp;laquo;голым железом&amp;raquo; и предоставляет услуги виртуализации непосредственно для виртуальных машин, работающих на нем. Это помогает операционной системе, виртуализированному оборудованию и реальному оборудованию сотрудничать для достижения оптимальной производительности. Эти гипервизоры, как правило, занимают довольно мало места и сами по себе не требуют обширных ресурсов.</target>
+        </trans-unit>
+        <trans-unit id="df70fc7991d3f1476ee9b62f9991c5a0f2c589e0" translate="yes" xml:space="preserve">
+          <source>Production</source>
+          <target state="translated">Production</target>
+        </trans-unit>
+        <trans-unit id="5967e86a2955722a7f8ed81334c26c41f18d6224" translate="yes" xml:space="preserve">
+          <source>QA environment</source>
+          <target state="translated">среда контроля качества</target>
+        </trans-unit>
+        <trans-unit id="0c9cc3ad60910561ffeb418bc8d54f5af0b9a011" translate="yes" xml:space="preserve">
+          <source>Resource allocation is problematic</source>
+          <target state="translated">Распределение ресурсов проблематично</target>
+        </trans-unit>
+        <trans-unit id="77c420eb32b9c8491f76038181f5b86a3e24e538" translate="yes" xml:space="preserve">
+          <source>Resource effective</source>
+          <target state="translated">Эффективное использование ресурсов</target>
+        </trans-unit>
+        <trans-unit id="608c40f49e84a55f3c9bf3ec53b700f446d8db26" translate="yes" xml:space="preserve">
+          <source>Resource heavy apps</source>
+          <target state="translated">Ресурсные тяжелые приложения</target>
+        </trans-unit>
+        <trans-unit id="116306d52eca48b72c61412f9a8a3bf366f2ef97" translate="yes" xml:space="preserve">
+          <source>Resource management in containers is achieved through cgroups. Cgroups does not allow containers to consume more resources than allocated to them. However, as of now, all resources of host machine are visible in virtual machines, but can't be used. This can be realized by running &lt;code&gt;top&lt;/code&gt; or &lt;code&gt;htop&lt;/code&gt; on containers and host machine at the same time. The output across all environments will look similar.</source>
+          <target state="translated">Управление ресурсами в контейнерах осуществляется через cgroups. Cgroups не позволяет контейнерам потреблять больше ресурсов, чем выделено им. Однако на данный момент все ресурсы хост-машины видны в виртуальных машинах, но не могут быть использованы. Это можно реализовать, запустив &lt;code&gt;top&lt;/code&gt; или &lt;code&gt;htop&lt;/code&gt; одновременно на контейнерах и хост-машине. Вывод во всех средах будет выглядеть одинаково.</target>
+        </trans-unit>
+        <trans-unit id="6b18033d6dea5b85354c3d03959788e129270bf4" translate="yes" xml:space="preserve">
+          <source>Same Architecture</source>
+          <target state="translated">Та же архитектура</target>
+        </trans-unit>
+        <trans-unit id="46a5925b85bd943c275f26f441853ee795bed5f3" translate="yes" xml:space="preserve">
+          <source>Second, Docker containers can start in several milliseconds, while VM starts in seconds.</source>
+          <target state="translated">Во-вторых,контейнеры Docker могут стартовать за несколько миллисекунд,в то время как VM стартует за несколько секунд.</target>
+        </trans-unit>
+        <trans-unit id="f25ce1b8a399bd8621a57427a20039b4b13935db" translate="yes" xml:space="preserve">
+          <source>Security</source>
+          <target state="translated">Security</target>
+        </trans-unit>
+        <trans-unit id="e4ebdf5ee0ef67069c239e4fb3c830a512c382fb" translate="yes" xml:space="preserve">
+          <source>Several management tools are available for Linux containers, including LXC, LXD, systemd-nspawn, lmctfy, Warden, Linux-VServer, OpenVZ, Docker, etc.</source>
+          <target state="translated">Для контейнеров Linux доступно несколько инструментов управления,в том числе LXC,LXD,systemd-nspawn,lmctfy,Warden,Linux-VServer,OpenVZ,Docker и др.</target>
+        </trans-unit>
+        <trans-unit id="570ab3452aa5a143cf20e06ea321480b66db25c3" translate="yes" xml:space="preserve">
+          <source>Shared developer environment</source>
+          <target state="translated">Общая среда разработки</target>
+        </trans-unit>
+        <trans-unit id="61bedc66f5a3328063134c8ea3e6e152aaef9029" translate="yes" xml:space="preserve">
+          <source>Shared test environment</source>
+          <target state="translated">Общая тестовая среда</target>
+        </trans-unit>
+        <trans-unit id="7354636285d06d12dea48164a79d3d742fc7c195" translate="yes" xml:space="preserve">
+          <source>Since container-based virtualization adds little or no overhead to the host machine, container-based virtualization has near-native performance</source>
+          <target state="translated">Так как виртуализация на базе контейнеров практически не вносит никаких накладных расходов в работу хост-машины,виртуализация на базе контейнеров имеет практически собственную производительность.</target>
+        </trans-unit>
+        <trans-unit id="8b693b9c5091d8989c71e9ec8d579006be287551" translate="yes" xml:space="preserve">
+          <source>So &lt;strong&gt;Docker&lt;/strong&gt; is container based, meaning you have images and containers which can be run on your current machine. It's not including the operating system like &lt;strong&gt;VM&lt;/strong&gt;s, but like a pack of different working packs like Java, Tomcat, etc.</source>
+          <target state="translated">Итак, &lt;strong&gt;Docker&lt;/strong&gt; основан на контейнерах, то есть у вас есть образы и контейнеры, которые можно запустить на вашем текущем компьютере. Он не включает в себя операционную систему, такую ​​как &lt;strong&gt;виртуальные машины&lt;/strong&gt; , но как пакет различных рабочих пакетов, таких как Java, Tomcat и т. Д.</target>
+        </trans-unit>
+        <trans-unit id="1f629b2b816b977719f8c2fb6bff1b98fcde405a" translate="yes" xml:space="preserve">
+          <source>So as you see in the image below, each container has a separate pack and running on a single machine share that machine's operating system... They are secure and easy to ship...</source>
+          <target state="translated">Таким образом,как вы видите на рисунке ниже,каждый контейнер имеет отдельный пакет и работает на одной машине общего пользования операционной системы этой машины ...Они безопасны и просты в транспортировке...</target>
+        </trans-unit>
+        <trans-unit id="227609777cb955b8caea44cd8f88d923f1796181" translate="yes" xml:space="preserve">
+          <source>So at the most fundamental level with VMs you promote the application and its dependencies as discrete components whereas with Docker you promote everything in one hit.</source>
+          <target state="translated">Таким образом,на самом фундаментальном уровне с ВМ вы продвигаете приложение и его зависимости как дискретные компоненты,в то время как с Docker вы продвигаете все в одном хите.</target>
+        </trans-unit>
+        <trans-unit id="ff915c53a18d5d8d6016816967896435630356c6" translate="yes" xml:space="preserve">
+          <source>So the best approach is the cloud infrastructure providers should advocate an appropriate use of the VMs and LXC, as they are each suited to handle specific workloads and scenarios.</source>
+          <target state="translated">Поэтому лучшим подходом является то,что провайдеры облачной инфраструктуры должны выступать за надлежащее использование ВМ и LXC,так как каждый из них подходит для работы с определенными рабочими нагрузками и сценариями.</target>
+        </trans-unit>
+        <trans-unit id="08008913ec3ffaa51bf434648223231d2fc4660c" translate="yes" xml:space="preserve">
+          <source>So there is a known pattern to avoid this, the so called &lt;strong&gt;&lt;a href=&quot;http://martinfowler.com/bliki/ImmutableServer.html&quot;&gt;immutable server&lt;/a&gt;&lt;/strong&gt;. But the immutable server pattern was not loved. Mostly because of the limitations of VMs that were used before Docker. Dealing with several gigabytes big images, moving those big images around, just to change some fields in the application, was very very laborious. Understandable...</source>
+          <target state="translated">Таким образом, существует известный способ избежать этого, так называемый &lt;strong&gt;&lt;a href=&quot;http://martinfowler.com/bliki/ImmutableServer.html&quot;&gt;неизменный сервер&lt;/a&gt;&lt;/strong&gt; . Но неизменный шаблон сервера не был любим. Главным образом из-за ограничений виртуальных машин, которые использовались до Docker. Работа с большими изображениями в несколько гигабайт, перемещение этих больших изображений, просто чтобы изменить некоторые области в приложении, было очень и очень трудоемким. Понятный ...</target>
+        </trans-unit>
+        <trans-unit id="5c86260516f20093dca5e32f9125464a1baa7668" translate="yes" xml:space="preserve">
+          <source>So think of your question more like this &lt;em&gt;&quot;Given the extreme difficulty of keeping all environments consistent, is it easier to deploying software to a docker image, even when taking the learning curve into account ?&quot;&lt;/em&gt;. I think you'll find the answer will invariably be &quot;yes&quot; - but there's only one way to find out, post this new question on Stack Overflow.</source>
+          <target state="translated">Поэтому задумайтесь над своим вопросом следующим образом: &lt;em&gt;&amp;laquo;Учитывая чрезвычайную сложность поддержания согласованности всех сред, проще ли развертывать программное обеспечение в образ докера, даже если принять во внимание кривую обучения?&amp;raquo;&lt;/em&gt; , Я думаю, вы найдете, что ответ неизменно будет &amp;laquo;да&amp;raquo; - но есть только один способ узнать это, разместите этот новый вопрос в переполнении стека.</target>
+        </trans-unit>
+        <trans-unit id="9326b586a7a12df9aff5d242d06b41b390d95f84" translate="yes" xml:space="preserve">
+          <source>So, let's say you have a 1&amp;nbsp;GB container image; if you wanted to use a full VM, you would need to have 1&amp;nbsp;GB x number of VMs you want. With Docker and AuFS you can share the bulk of the 1&amp;nbsp;GB between all the containers and if you have 1000 containers you still might only have a little over 1&amp;nbsp;GB of space for the containers OS (assuming they are all running the same OS image).</source>
+          <target state="translated">Итак, допустим, у вас есть изображение контейнера в 1 ГБ; если вы хотите использовать полную виртуальную машину, вам потребуется 1 ГБ x количество виртуальных машин, которое вы хотите. С Docker и AuFS вы можете разделить большую часть 1 ГБ между всеми контейнерами, и если у вас есть 1000 контейнеров, у вас все еще может быть только чуть более 1 ГБ пространства для ОС контейнеров (при условии, что все они работают под одним и тем же образом ОС) ,</target>
+        </trans-unit>
+        <trans-unit id="c4b2519a746129c9e47ca0cef9cadb6c9f7e5df6" translate="yes" xml:space="preserve">
+          <source>So, what's a container?</source>
+          <target state="translated">Итак,что такое контейнер?</target>
+        </trans-unit>
+        <trans-unit id="7845675b0fb1d13fc83e85f884c455a9662b5aca" translate="yes" xml:space="preserve">
+          <source>Some environments will consist of a fixed number of multiple machines in a load balanced configuration</source>
+          <target state="translated">Некоторые среды будут состоять из фиксированного числа нескольких машин в конфигурации балансировки нагрузки</target>
+        </trans-unit>
+        <trans-unit id="6da13addb000b67d42a6d66391713819e634149f" translate="yes" xml:space="preserve">
+          <source>Source</source>
+          <target state="translated">Source</target>
+        </trans-unit>
+        <trans-unit id="7f45e2789d413f8919ac75cdce2d0fbf3782d453" translate="yes" xml:space="preserve">
+          <source>Source:  Kubernetes in Action.</source>
+          <target state="translated">Источник:Kubernetes в действии.</target>
+        </trans-unit>
+        <trans-unit id="17a6edd967825b56170eea6956f4662a04ce71a3" translate="yes" xml:space="preserve">
+          <source>Source: &lt;a href=&quot;https://azure.microsoft.com/en-us/blog/containers-docker-windows-and-trends/&quot;&gt;https://azure.microsoft.com/en-us/blog/containers-docker-windows-and-trends/&lt;/a&gt;</source>
+          <target state="translated">Источник: &lt;a href=&quot;https://azure.microsoft.com/en-us/blog/containers-docker-windows-and-trends/&quot;&gt;https://azure.microsoft.com/en-us/blog/containers-docker-windows-and-trends/&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="bbcc415ac4b86e9e443eaba129d222639a5d0758" translate="yes" xml:space="preserve">
+          <source>The Linux Control Groups (cgroups) subsystem, the next major component to enable container-based virtualization, is used to group processes and manage their aggregate resource consumption. It is commonly used to limit the memory and CPU consumption of containers.  Since a containerized Linux system has only one kernel and the kernel has full visibility into the containers, there is only one level of resource allocation and scheduling.</source>
+          <target state="translated">Подсистема Linux Control Groups (cgroups),следующий основной компонент для обеспечения виртуализации на основе контейнеров,используется для группировки процессов и управления их совокупным потреблением ресурсов.Она обычно используется для ограничения потребления памяти и процессора контейнеров.Так как контейнерная система Linux имеет только одно ядро и ядро имеет полную видимость контейнеров,существует только один уровень выделения и планирования ресурсов.</target>
+        </trans-unit>
+        <trans-unit id="1ce96b44823b14e37c5df5e5f90416de0de743cb" translate="yes" xml:space="preserve">
+          <source>The Linux VM that Docker runs in Mac is read-only. However, you can bash into it by running:</source>
+          <target state="translated">Linux VM,которую Docker запускает на Mac,доступна только для чтения.Тем не менее,вы можете использовать ее,запустив:</target>
+        </trans-unit>
+        <trans-unit id="5e43599638071b0ea790ce9862f106845b607e30" translate="yes" xml:space="preserve">
+          <source>The concept of a container is made possible by the namespaces feature added to Linux kernel version 2.6.24. The container adds its ID to every process and adding new access control checks to every system call. It is accessed by the &lt;em&gt;clone()&lt;/em&gt; system call that allows creating separate instances of previously-global namespaces.</source>
+          <target state="translated">Концепция контейнера стала возможной благодаря функции пространств имен, добавленной в ядро ​​Linux версии 2.6.24. Контейнер добавляет свой идентификатор для каждого процесса и добавляет новые проверки контроля доступа к каждому системному вызову. Доступ к нему осуществляется с помощью системного вызова &lt;em&gt;clone (),&lt;/em&gt; который позволяет создавать отдельные экземпляры ранее глобальных пространств имен.</target>
+        </trans-unit>
+        <trans-unit id="9f78c499ac4ec737f9afafb8130b0e54fbeb1e6b" translate="yes" xml:space="preserve">
+          <source>The hypervisor handles creating the virtual environment on which the guest virtual machines operate. It supervises the guest systems and makes sure that resources are allocated to the guests as necessary. The hypervisor sits in between the physical machine and virtual machines and provides virtualization services to the virtual machines. To realize it, it intercepts the guest operating system operations on the virtual machines and emulates the operation on the host machine's operating system.</source>
+          <target state="translated">Гипервизор управляет созданием виртуальной среды,в которой работают гостевые виртуальные машины.Он контролирует гостевые системы и следит за тем,чтобы ресурсы выделялись гостям по мере необходимости.Гипервизор располагается между физической машиной и виртуальными машинами и предоставляет виртуальным машинам услуги по виртуализации.Для его реализации он перехватывает операции гостевой операционной системы на виртуальных машинах и эмулирует работу операционной системы машины хозяина.</target>
+        </trans-unit>
+        <trans-unit id="5db2da245693c67f36d9159ddb40dedcbe69437d" translate="yes" xml:space="preserve">
+          <source>The limitations of containers vs VM should be obvious now: You can't run completely different OS in containers like in VMs. However you &lt;em&gt;can&lt;/em&gt; run different distros of Linux because they do share the same kernel. The isolation level is not as strong as in VM. In fact, there was a way for &quot;guest&quot; container to take over host in early implementations. Also you can see that when you load new container, the entire new copy of OS doesn't start like it does in VM. All containers &lt;a href=&quot;https://stackoverflow.com/questions/25444099/why-docker-has-ability-to-run-different-linux-distribution&quot;&gt;share same kernel&lt;/a&gt;. This is why containers are light weight. Also unlike VM, you don't have to pre-allocate significant chunk of memory to containers because we are not running new copy of OS. This enables to run thousands of containers on one OS while sandboxing them which might not be possible to do if we were running separate copy of OS in its own VM.</source>
+          <target state="translated">Теперь ограничения контейнеров и виртуальных машин должны быть очевидны: вы не можете запускать совершенно разные ОС в контейнерах, как в виртуальных машинах. Однако вы &lt;em&gt;можете&lt;/em&gt; использовать разные дистрибутивы Linux, потому что они используют одно и то же ядро. Уровень изоляции не такой сильный, как в ВМ. На самом деле, в ранних реализациях для гостевого контейнера был способ получить хост. Также вы можете видеть, что при загрузке нового контейнера вся новая копия ОС запускается не так, как в VM. Все контейнеры &lt;a href=&quot;https://stackoverflow.com/questions/25444099/why-docker-has-ability-to-run-different-linux-distribution&quot;&gt;имеют одно и то же ядро&lt;/a&gt; . Вот почему контейнеры имеют легкий вес. Кроме того, в отличие от ВМ, вам не нужно предварительно выделять значительный кусок памяти для контейнеров, потому что мы не запускаем новую копию ОС. Это позволяет запускать тысячи контейнеров в одной ОС, в то же время помещая их в &amp;laquo;песочницу&amp;raquo;, что может быть невозможно, если бы мы работали с отдельной копией ОС на собственной виртуальной машине.</target>
+        </trans-unit>
+        <trans-unit id="2d20ba5621c8e203d326e322bfc921c09b73e08c" translate="yes" xml:space="preserve">
+          <source>The net effect is that virtualization allows you to run two completely different OS on same hardware. Each guest OS goes through all the process of bootstrapping, loading kernel etc. You can have very tight security, for example, guest OS can't get full access to host OS or other guests and mess things up.</source>
+          <target state="translated">Сетевым эффектом является то,что виртуализация позволяет вам запускать две совершенно разные ОС на одном и том же аппаратном обеспечении.Каждая гостевая ОС проходит весь процесс загрузки,загрузки ядра и т.д.Вы можете иметь очень жесткую безопасность,например,гостевая ОС не может получить полный доступ к хостовой ОС или другим гостевым ОС и все испортить.</target>
+        </trans-unit>
+        <trans-unit id="f0f1a43bc5e4e52d6c576f48ac9f9fc0fe34ba83" translate="yes" xml:space="preserve">
+          <source>The rapid development of virtualization technologies, primarily in cloud, has driven the use of virtualization further by allowing multiple virtual servers to be created on a single physical server with the help of hypervisors, such as Xen, VMware Player, KVM, etc., and incorporation of hardware support in commodity processors, such as Intel VT and AMD-V.</source>
+          <target state="translated">Стремительное развитие технологий виртуализации,в первую очередь в облаке,привело к дальнейшему использованию виртуализации,позволив создать несколько виртуальных серверов на одном физическом сервере с помощью гипервизоров,таких как Xen,VMware Player,KVM и т.д.,а также включить поддержку аппаратного обеспечения в товарные процессоры,такие как Intel VT и AMD-V.</target>
+        </trans-unit>
+        <trans-unit id="e3ca9c66efd7b9b6e24c69bfb9517fc0ceb4f39e" translate="yes" xml:space="preserve">
+          <source>The virtualization method can be categorized based on how it mimics hardware to a guest operating system and emulates a guest operating environment. Primarily, there are three types of virtualization:</source>
+          <target state="translated">Метод виртуализации можно разделить на категории в зависимости от того,как он имитирует аппаратное обеспечение гостевой операционной системы и эмулирует гостевую операционную среду.В основном,существует три типа виртуализации:</target>
+        </trans-unit>
+        <trans-unit id="17d15b32708f824d9d732b4782c422545cf7355f" translate="yes" xml:space="preserve">
+          <source>There are a lot of nice technical answers here that clearly discuss the differences between VMs and containers as well as the origins of Docker.</source>
+          <target state="translated">Здесь есть много хороших технических ответов,в которых четко обсуждаются различия между ВМ и контейнерами,а также происхождение Docker.</target>
+        </trans-unit>
+        <trans-unit id="f210a60c1f7d3832db36975249cfff8562fb7e57" translate="yes" xml:space="preserve">
+          <source>There are also the following factors to consider:</source>
+          <target state="translated">Также необходимо учитывать следующие факторы:</target>
+        </trans-unit>
+        <trans-unit id="e2770cedf26cf0e5354ae03381bebad859035e4c" translate="yes" xml:space="preserve">
+          <source>There are many answers which explain more detailed on the differences, but here is my very brief explanation.</source>
+          <target state="translated">Есть много ответов,которые более подробно объясняют различия,но вот мое очень краткое объяснение.</target>
+        </trans-unit>
+        <trans-unit id="33c9370d40a8245a0298684bdaa2bd8a89c0e765" translate="yes" xml:space="preserve">
+          <source>There are pros and cons for each type of virtualized system. If you want full isolation with guaranteed resources, a full VM is the way to go. If you just want to isolate processes from each other and want to run a ton of them on a reasonably sized host, then Docker/LXC/runC seems to be the way to go.</source>
+          <target state="translated">Для каждого типа виртуализированных систем есть свои плюсы и минусы.Если вы хотите полную изоляцию с гарантированными ресурсами,то полная ВМ-это то,что нужно.Если вы просто хотите изолировать процессы друг от друга и хотите запустить тонну процессов на хосте разумного размера,то DockerLXCrunC,похоже,будет правильным решением.</target>
+        </trans-unit>
+        <trans-unit id="195131b2f88fc1d6c353a7dfa429c08668a79774" translate="yes" xml:space="preserve">
+          <source>There are some limitations to hypervisor.framework. Because of that Docker doesn't expose &lt;code&gt;docker0&lt;/code&gt; network interface in Mac. So, you can't access containers from the host. As of now, &lt;code&gt;docker0&lt;/code&gt; is only available inside the VM.</source>
+          <target state="translated">Есть некоторые ограничения для hypervisor.framework. Из-за этого Docker не предоставляет сетевой интерфейс &lt;code&gt;docker0&lt;/code&gt; в Mac. Таким образом, вы не можете получить доступ к контейнерам с хоста. На данный момент &lt;code&gt;docker0&lt;/code&gt; доступен только внутри виртуальной машины.</target>
+        </trans-unit>
+        <trans-unit id="ed5a00b08e8dc5b45bb77295463740b58d4846f5" translate="yes" xml:space="preserve">
+          <source>There are three different setups that providing a stack to run an application on (This will help us to recognize what a container is and what makes it so much powerful than other solutions):</source>
+          <target state="translated">Есть три различных установки,которые обеспечивают стек для запуска приложения (Это поможет нам распознать,что такое контейнер и что делает его настолько мощным,что он не уступает другим решениям):</target>
+        </trans-unit>
+        <trans-unit id="57d7d07e5e5a197279c393db8c8a7bf936c4f254" translate="yes" xml:space="preserve">
+          <source>They both are very different. Docker is lightweight and uses LXC/libcontainer (which relies on kernel namespacing and cgroups) and does not have machine/hardware emulation such as hypervisor, KVM. Xen which are heavy.</source>
+          <target state="translated">Они оба очень разные.Докер легковесен и использует LXClibcontainer (который полагается на интервал имён ядра и cgroups)и не имеет эмуляции машинного оборудования,такого как гипервизор,KVM.Xen,которые являются тяжелыми.</target>
+        </trans-unit>
+        <trans-unit id="e7721054f84b71ff4a04f7fe87da45240450c562" translate="yes" xml:space="preserve">
+          <source>Think about application deployment. If we want to deploy a new software(service) or upgrade one, it is better to change the config files and processes instead of creating a new VM. Because Creating a VM with updated service, testing it(share between Dev &amp;amp; QA), deploying to production takes hours, even days. If anything goes wrong, you got to start again, wasting even more time. So, use configuration management tool(puppet, saltstack, chef etc.) to install new software, download new files is preferred.</source>
+          <target state="translated">Подумайте о развертывании приложения. Если мы хотим развернуть новое программное обеспечение (сервис) или обновить его, лучше изменить файлы конфигурации и процессы, а не создавать новую виртуальную машину. Поскольку создание виртуальной машины с обновленным сервисом, ее тестирование (совместное использование между Dev &amp;amp; QA), развертывание в производство занимает часы, даже дни. Если что-то пойдет не так, вы должны начать все заново, тратя еще больше времени. Таким образом, используйте инструмент управления конфигурацией (puppet, salttack, chef и т. Д.) Для установки нового программного обеспечения, загрузка новых файлов предпочтительнее</target>
+        </trans-unit>
+        <trans-unit id="04b9cd989db4ab4d1dc8d3dcfd400f18f4b8c3ec" translate="yes" xml:space="preserve">
+          <source>This all means that creating consistent environments in the first place is hard enough just because of sheer volume (even in a green field scenario), but &lt;strong&gt;keeping them consistent is all but impossible&lt;/strong&gt; given the high number of servers, addition of new servers (dynamically or manually), automatic updates from o/s vendors, anti-virus vendors, browser vendors and the like, manual software installs or configuration changes performed by developers or server technicians, etc. Let me repeat that - it's virtually (no pun intended) impossible to keep environments consistent (okay, for the purist, it can be done, but it involves a huge amount of time, effort and discipline, which is precisely why VMs and containers (e.g. Docker) were devised in the first place).</source>
+          <target state="translated">Все это означает, что создание согласованных сред в первую очередь достаточно сложно только из-за большого объема (даже в сценарии &amp;laquo;зеленого поля&amp;raquo;), но &lt;strong&gt;поддерживать их согласованность практически невозможно,&lt;/strong&gt; учитывая большое количество серверов, добавление новых серверов (динамически или вручную), автоматические обновления от поставщиков операционной системы, антивирусных программ, поставщиков браузеров и т. п., ручная установка программного обеспечения или изменения конфигурации, выполненные разработчиками или специалистами по серверам и т. д. Позвольте мне повторить, что это практически (без каламбура) невозможно поддерживать согласованность окружения (хорошо, для пуриста это можно сделать, но это требует огромного количества времени, усилий и дисциплины, именно поэтому в первую очередь были разработаны виртуальные машины и контейнеры (например, Docker)).</target>
+        </trans-unit>
+        <trans-unit id="ca19d7c471047ac8eb382f2e9dcc26820a0be902" translate="yes" xml:space="preserve">
+          <source>This is a powerful feature where the base images are typically readonly and only when the container modifies something in the layer will it write something to read-write partition (a.k.a. copy on write). It also provides many other wrappers such as registry and versioning of images.</source>
+          <target state="translated">Это мощная функция,где базовые образы обычно доступны только для чтения,и только когда контейнер изменяет что-то в слое,он записывает что-то для чтения-записи раздела (так называемая копия на записи).Она также предоставляет много других обёртки,таких как реестр и версионирование образов.</target>
+        </trans-unit>
+        <trans-unit id="1317aef78ad8c3de842b2ef9be30259400a3f9ad" translate="yes" xml:space="preserve">
+          <source>This is another key feature of Docker. Images have layers, and different images can share layers, make it even more space-saving and faster to build.</source>
+          <target state="translated">Это еще одна ключевая особенность Докер.Изображения имеют слои,и различные изображения могут совместно использовать слои,что делает его еще более компактным и быстрым в построении.</target>
+        </trans-unit>
+        <trans-unit id="5310e23583447dfd453271c88af2f6fed24876c8" translate="yes" xml:space="preserve">
+          <source>This is good for most cases(no extra OS kernel maintains) but can be a problem if strict isolations are necessary between containers.</source>
+          <target state="translated">Это хорошо для большинства случаев (без дополнительных сопровождений ядра ОС),но может быть проблемой,если между контейнерами необходимы строгие изоляции.</target>
+        </trans-unit>
+        <trans-unit id="b171c2b5faed3f4d2aeebc48f92139a7b66526fa" translate="yes" xml:space="preserve">
+          <source>This is great for testing; let's say you have thousands of tests that need to connect to a database, and each test needs a pristine copy of the database and will make changes to the data. The classic approach to this is to reset the database after every test either with custom code or with tools like &lt;a href=&quot;https://flywaydb.org/&quot;&gt;Flyway&lt;/a&gt; - this can be very time-consuming and means that tests must be run serially. However, with Docker you could create an image of your database and run up one instance per test, and then run all the tests in parallel since you know they will all be running against the same snapshot of the database. Since the tests are running in parallel and in Docker containers they could run all on the same box at the same time and should finish much faster. Try doing that with a full VM.</source>
+          <target state="translated">Это отлично подходит для тестирования; Допустим, у вас есть тысячи тестов, которые необходимо подключить к базе данных, и каждый тест требует первоначальной копии базы данных и внесет изменения в данные. Классический подход к этому - сбросить базу данных после каждого теста либо с помощью пользовательского кода, либо с помощью таких инструментов, как &lt;a href=&quot;https://flywaydb.org/&quot;&gt;Flyway&lt;/a&gt; - это может занять очень много времени и означает, что тесты должны запускаться последовательно. Однако с помощью Docker вы можете создать образ вашей базы данных и запускать один экземпляр для каждого теста, а затем запускать все тесты параллельно, поскольку вы знаете, что все они будут работать с одним и тем же снимком базы данных. Поскольку тесты выполняются параллельно и в контейнерах Docker, они могут выполняться одновременно на одном и том же блоке и должны заканчиваться намного быстрее. Попробуйте сделать это с полной виртуальной машиной.</target>
+        </trans-unit>
+        <trans-unit id="7d04a3f43a0c2b52ecde6a7b7f97a221a6a3bf98" translate="yes" xml:space="preserve">
+          <source>This is how &lt;strong&gt;Docker&lt;/strong&gt; introduces itself:</source>
+          <target state="translated">Вот как &lt;strong&gt;Docker&lt;/strong&gt; представляет себя:</target>
+        </trans-unit>
+        <trans-unit id="7afd8335fea67bc51f7938e0f38757c976265b55" translate="yes" xml:space="preserve">
+          <source>This is probably the first impression for many docker learners.</source>
+          <target state="translated">Наверное,это первое впечатление для многих докеров-студентов.</target>
+        </trans-unit>
+        <trans-unit id="02c4ced0e5d01676f226fba6cc68700d33c41832" translate="yes" xml:space="preserve">
+          <source>Through this post we are going to draw some lines of differences between VMs and LXCs. Let's first define them.</source>
+          <target state="translated">В этом посте мы проведем некоторые линии различий между ВМ и LXC.Сначала определим их.</target>
+        </trans-unit>
+        <trans-unit id="a15a4722078ffc617f05f86021440c12e51d4b45" translate="yes" xml:space="preserve">
+          <source>To keep this in sync you'll start to use something like Puppet, &lt;a href=&quot;https://en.wikipedia.org/wiki/Chef_(software)&quot;&gt;Chef&lt;/a&gt; or your own provisioning scripts, unpublished rules and/or lot of documentation... In theory servers can run indefinitely, and be kept completely consistent and up to date. Practice fails to manage a server's configuration completely, so there is considerable scope for configuration drift, and unexpected changes to running servers.</source>
+          <target state="translated">Чтобы синхронизировать это, вы начнете использовать что-то вроде Puppet, &lt;a href=&quot;https://en.wikipedia.org/wiki/Chef_(software)&quot;&gt;Chef&lt;/a&gt; или ваших собственных сценариев инициализации, неопубликованных правил и / или большого количества документации ... Теоретически серверы могут работать неограниченное время и быть полностью согласованными и актуальными. Практика не позволяет полностью управлять конфигурацией сервера, поэтому существуют значительные возможности для отклонения конфигурации и неожиданных изменений в работающих серверах.</target>
+        </trans-unit>
+        <trans-unit id="e8ea3f21662e019eb1e5105bae6861333f3ab291" translate="yes" xml:space="preserve">
+          <source>To me it fits in the gap between developer-oriented tools like rpm, &lt;a href=&quot;http://en.wikipedia.org/wiki/Debian&quot;&gt;Debian&lt;/a&gt; packages, &lt;a href=&quot;http://en.wikipedia.org/wiki/Apache_Maven&quot;&gt;Maven&lt;/a&gt;, npm + Git on one side and ops tools like &lt;a href=&quot;http://en.wikipedia.org/wiki/Puppet_%28software%29&quot;&gt;Puppet&lt;/a&gt;, VMware, Xen, you name it...</source>
+          <target state="translated">Для меня это вписывается в разрыв между инструментами, ориентированными на разработчика, такими как rpm, пакеты &lt;a href=&quot;http://en.wikipedia.org/wiki/Debian&quot;&gt;Debian&lt;/a&gt; , &lt;a href=&quot;http://en.wikipedia.org/wiki/Apache_Maven&quot;&gt;Maven&lt;/a&gt; , npm + Git с одной стороны, и инструментами ops, такими как &lt;a href=&quot;http://en.wikipedia.org/wiki/Puppet_%28software%29&quot;&gt;Puppet&lt;/a&gt; , VMware, Xen, вы называете это ...</target>
+        </trans-unit>
+        <trans-unit id="5889b10f645756a05ce05d3b6d6208500c002851" translate="yes" xml:space="preserve">
+          <source>UAT environment</source>
+          <target state="translated">среда UAT</target>
+        </trans-unit>
+        <trans-unit id="3181001e23737667962f1fc2a88fdb8fffabc3a6" translate="yes" xml:space="preserve">
+          <source>Unlike a virtual machine, a container does not need to boot the operating system kernel, so containers can be created in less than a second. This feature makes container-based virtualization unique and desirable than other virtualization approaches.</source>
+          <target state="translated">В отличие от виртуальной машины,контейнеру не нужно загружать ядро операционной системы,поэтому контейнеры могут быть созданы менее чем за секунду.Эта особенность делает контейнерную виртуализацию уникальной и желательной по сравнению с другими подходами к виртуализации.</target>
+        </trans-unit>
+        <trans-unit id="acf72ff8536cb7c07913f02c5d05cbe20402fc3e" translate="yes" xml:space="preserve">
+          <source>Update:</source>
+          <target state="translated">Update:</target>
+        </trans-unit>
+        <trans-unit id="b0ebc020284774b80187ae89c024cbc009582af0" translate="yes" xml:space="preserve">
+          <source>Utilization of raw resources</source>
+          <target state="translated">Использование сырьевых ресурсов</target>
+        </trans-unit>
+        <trans-unit id="77b0430e1891dadfc3b08483480a6f1953f57349" translate="yes" xml:space="preserve">
+          <source>Vendor lockin</source>
+          <target state="translated">Замок поставщика</target>
+        </trans-unit>
+        <trans-unit id="6bb2ba4c680f5e6a3053c09883389d034fc8f0ce" translate="yes" xml:space="preserve">
+          <source>Very slow deployment time</source>
+          <target state="translated">Очень медленное время развертывания</target>
+        </trans-unit>
+        <trans-unit id="3a92642eb344d1e06c9e86038a0d64c11c33d1fa" translate="yes" xml:space="preserve">
+          <source>Wasted resources</source>
+          <target state="translated">растраченные ресурсы</target>
+        </trans-unit>
+        <trans-unit id="bf8ef838532e25fda6b4e3a08fa9f32dcc1f7e04" translate="yes" xml:space="preserve">
+          <source>Well, let's see if I can explain. You start with a base image, and then make your changes, and commit those changes using docker, and it creates an image. This image contains only the differences from the base. When you want to run your image, you also need the base, and it layers your image on top of the base using a layered file system: as mentioned above, Docker uses AuFS. AuFS merges the different layers together and you get what you want; you just need to run it. You can keep adding more and more images (layers) and it will continue to only save the diffs. Since Docker typically builds on top of ready-made images from a &lt;a href=&quot;https://registry.hub.docker.com/&quot;&gt;registry&lt;/a&gt;, you rarely have to &quot;snapshot&quot; the whole OS yourself.</source>
+          <target state="translated">Что ж, посмотрим, смогу ли я объяснить. Вы начинаете с базового образа, затем вносите свои изменения и фиксируете эти изменения с помощью Docker, и он создает изображение. Это изображение содержит только отличия от базы. Когда вы хотите запустить свое изображение, вам также нужна база, и она накладывает ваше изображение поверх базы, используя многоуровневую файловую систему: как упоминалось выше, Docker использует AuFS. AuFS объединяет разные слои, и вы получаете то, что хотите; вам просто нужно запустить его. Вы можете продолжать добавлять все больше и больше изображений (слоев), и он будет продолжать сохранять только различия. Поскольку Docker обычно строится поверх готовых образов из &lt;a href=&quot;https://registry.hub.docker.com/&quot;&gt;реестра&lt;/a&gt; , вам редко приходится &amp;laquo;снимать&amp;raquo; всю ОС самостоятельно.</target>
+        </trans-unit>
+        <trans-unit id="fad0b8f4568c8371bb2c483d1a404dc95e0c664a" translate="yes" xml:space="preserve">
+          <source>What about memory, I/O, CPU, etc.? That is controlled using cgroups where you can create groups with certain resource (CPU, memory, etc.) specification/restriction and put your processes in there. On top of LXC, Docker provides a storage backend (&lt;a href=&quot;http://www.projectatomic.io/docs/filesystems/&quot;&gt;http://www.projectatomic.io/docs/filesystems/&lt;/a&gt;) e.g., union mount filesystem where you can add layers and share layers between different mount namespaces.</source>
+          <target state="translated">А как насчет памяти, ввода-вывода, процессора и т. Д.? Это контролируется с помощью cgroups, где вы можете создавать группы с определенными ресурсами / ресурсами, памятью и т. Д. / Ограничивать свои процессы. Помимо LXC, Docker предоставляет серверную часть хранилища ( &lt;a href=&quot;http://www.projectatomic.io/docs/filesystems/&quot;&gt;http://www.projectatomic.io/docs/filesystems/&lt;/a&gt; ), например, объединяющую файловую систему, где вы можете добавлять слои и обмениваться слоями между различными пространствами имен монтирования.</target>
+        </trans-unit>
+        <trans-unit id="06378e98591d7039cf2647e79565650d0d5d78a4" translate="yes" xml:space="preserve">
+          <source>When it comes to docker, it's impossible to use a newly created docker container to replace the old one. Maintainance is much easier!Building a new image, share it with QA, testing it, deploying it only takes minutes(if everything is automated), hours in the worst case. This is called &lt;strong&gt;immutable infrastructure&lt;/strong&gt;: do not maintain(upgrade) software, create a new one instead.</source>
+          <target state="translated">Когда дело доходит до докера, невозможно использовать вновь созданный контейнер докера для замены старого. Сопровождение намного проще! Создание нового образа, предоставление его в QA, тестирование, развертывание занимает всего несколько минут (если все автоматизировано), в худшем случае - часы. Это называется &lt;strong&gt;неизменной инфраструктурой&lt;/strong&gt; : не поддерживайте (обновляйте) программное обеспечение, вместо этого создайте новое.</target>
+        </trans-unit>
+        <trans-unit id="0d6d6cf1b29e9134acdcff3a62facc67c9694493" translate="yes" xml:space="preserve">
+          <source>Why is deploying software to a Docker image (if that's the right term) easier than simply deploying to a consistent production environment?</source>
+          <target state="translated">Почему развертывание ПО на образ Docker (если это правильный термин)проще,чем простое развертывание в последовательной производственной среде?</target>
+        </trans-unit>
+        <trans-unit id="76737419ccfacbafbd0f525710c6a3a42ae7dd7b" translate="yes" xml:space="preserve">
+          <source>Why is deploying software to a docker image (if that's the right term) easier than simply deploying to a consistent production environment?</source>
+          <target state="translated">Почему развертывание программного обеспечения на образ докеров (если это правильный термин)проще,чем простое развертывание в последовательной производственной среде?</target>
+        </trans-unit>
+        <trans-unit id="f9cdfffebc66514c02f674beb799818dedbc3a6f" translate="yes" xml:space="preserve">
+          <source>Why it matters?</source>
+          <target state="translated">Почему это важно?</target>
+        </trans-unit>
+        <trans-unit id="99b4b35b78f8a91f025d97adbdc54bc7764bd29d" translate="yes" xml:space="preserve">
+          <source>With Docker the idea is that you bundle up your application inside its own container along with the libraries it needs and then promote the &lt;strong&gt;whole&lt;/strong&gt; container as a single unit.</source>
+          <target state="translated">Идея Docker заключается в том, что вы упаковываете свое приложение в собственный контейнер вместе с необходимыми библиотеками, а затем рекламируете &lt;strong&gt;весь&lt;/strong&gt; контейнер как единое целое.</target>
+        </trans-unit>
+        <trans-unit id="9093ae28c2ccd6692d394066fe08bfdc8d561258" translate="yes" xml:space="preserve">
+          <source>With VMs you promote your application and its dependencies from one VM to the next DEV to UAT to PRD.</source>
+          <target state="translated">С помощью ВМ вы продвигаете ваше приложение и его зависимость от одной ВМ к следующей ВМ,от DEV к UAT к PRD.</target>
+        </trans-unit>
+        <trans-unit id="a6cfb5ab13b910e2d7461b73b8aacfb4481e486d" translate="yes" xml:space="preserve">
+          <source>With a &lt;strong&gt;virtual machine&lt;/strong&gt;, we have a server, we have a host operating system on that server, and then we have a hypervisor. And then running on top of that hypervisor, we have any number of guest operating systems with an application and its dependent binaries, and libraries on that server. It brings a whole guest operating system with it. It's quite heavyweight. Also there's a limit to how much you can actually put on each physical machine.</source>
+          <target state="translated">С &lt;strong&gt;виртуальной машиной&lt;/strong&gt; у нас есть сервер, у нас есть хост-операционная система на этом сервере, а затем у нас есть гипервизор. И затем, работая поверх этого гипервизора, у нас есть любое количество гостевых операционных систем с приложением и его зависимыми двоичными файлами, а также библиотеками на этом сервере. Это приносит целую гостевую операционную систему с этим. Это довольно тяжеловес. Также есть ограничение на то, сколько вы на самом деле можете поставить на каждую физическую машину.</target>
+        </trans-unit>
+        <trans-unit id="a45beaa5cc8f09acdd19ce70bb6c9300c62eddcc" translate="yes" xml:space="preserve">
+          <source>With a Docker ecosystem, you will never need to move around gigabytes on &quot;small changes&quot; (thanks aufs and Registry) and you don't need to worry about losing performance by packaging applications into a Docker container at runtime. You don't need to worry about versions of that image.</source>
+          <target state="translated">С экосистемой Docker вам никогда не придется перемещаться по гигабайтам при &quot;небольших изменениях&quot; (спасибо aufs и Registry),и вам не придется беспокоиться о потере производительности при упаковке приложений в контейнер Docker во время работы.Вам не нужно беспокоиться о версиях этого образа.</target>
+        </trans-unit>
+        <trans-unit id="1e3c7818924ae9d8fcbb0934d2f7637cfd7088fd" translate="yes" xml:space="preserve">
+          <source>With normal LXC you need to come with some rootfs or share the rootfs and when shared, and the changes are reflected on other containers. Due to lot of these added features, Docker is more popular than LXC. LXC is popular in embedded environments for implementing security around processes exposed to external entities such as network and UI. Docker is popular in cloud multi-tenancy environment where consistent production environment is expected.</source>
+          <target state="translated">С обычным LXC вам нужно приходить с некоторыми корневыми файлами или совместно использовать корневые файлы и когда они совместно используются,а изменения отражаются на других контейнерах.Благодаря большому количеству этих добавленных функций,Docker более популярен,чем LXC.LXC популярен во встраиваемых средах для реализации безопасности вокруг процессов,подверженных внешним воздействиям,таким как сеть и пользовательский интерфейс.Докер популярен в облачной среде с несколькими арендаторами,где ожидается согласованная производственная среда.</target>
+        </trans-unit>
+        <trans-unit id="7972c83547259b5e2dd725e515d3075919647cbe" translate="yes" xml:space="preserve">
+          <source>Your question assumes some consistent production environment. &lt;em&gt;But how to keep it consistent?&lt;/em&gt;
+Consider some amount (&amp;gt;10) of servers and applications, stages in the pipeline.</source>
+          <target state="translated">Ваш вопрос предполагает некоторую непротиворечивую производственную среду. &lt;em&gt;Но как сохранить это последовательным?&lt;/em&gt; Рассмотрим некоторое количество (&amp;gt; 10) серверов и приложений, этапов в конвейере.</target>
+        </trans-unit>
+        <trans-unit id="a08d179e776e577daf8ff6f5c184b673a0bb8d8d" translate="yes" xml:space="preserve">
+          <source>a. LXCs are scoped to an instance of Linux. It might be different flavors of Linux (e.g. a Ubuntu container on a CentOS host but it&amp;rsquo;s still Linux.) Similarly, Windows-based containers are scoped to an instance of Windows now if we look at VMs they have a pretty broader scope and using the hypervisors you are not limited to operating systems Linux or Windows.</source>
+          <target state="translated">а. LXC относятся к экземпляру Linux. Это могут быть разные варианты Linux (например, контейнер Ubuntu на хосте CentOS, но это все-таки Linux.) Точно так же контейнеры на основе Windows теперь относятся к экземпляру Windows, если мы посмотрим на виртуальные машины, они имеют более широкую область применения и используют Гипервизоры не ограничиваются операционными системами Linux или Windows.</target>
+        </trans-unit>
+        <trans-unit id="df46babbf9059013283e3dd3304e2a5f7fa7aa93" translate="yes" xml:space="preserve">
+          <source>b. LXCs have low overheads and have better performance as compared to VMs. Tools viz. Docker which are built on the shoulders of LXC technology have provided developers with a platform to run their applications and at the same time have empowered operations people with a tool that will allow them to deploy the same container on production servers or data centers. It tries to make the experience between a developer running an application, booting and testing an application and an operations person deploying that application seamless, because this is where all the friction lies in and purpose of DevOps is to break down those silos.</source>
+          <target state="translated">b.LXC имеют низкие накладные расходы и более высокую производительность по сравнению с виртуальными машинами.Инструменты в лице Docker,которые построены на плечах технологии LXC,предоставили разработчикам платформу для запуска своих приложений и в то же время наделилили операционных людей инструментом,который позволит им развернуть такой же контейнер на производственных серверах или в центрах обработки данных.Она пытается сделать опыт между разработчиком,выполняющим приложение,загружающим и тестирующим его,и операционистом,развертывающим это приложение,бесшовным,потому что именно в этом заключается все трения и цель DevOps-разрушить эти бункеры.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

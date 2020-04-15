@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/477572">
+    <body>
+      <group id="477572">
+        <trans-unit id="e38d004047cde5eb417d48832f1998c8472bba00" translate="yes" xml:space="preserve">
+          <source>1) Every time you do &lt;code&gt;BitmapFactory.decodeXYZ()&lt;/code&gt;, make sure to pass in a &lt;code&gt;BitmapFactory.Options&lt;/code&gt; with &lt;code&gt;inPurgeable&lt;/code&gt; set to &lt;code&gt;true&lt;/code&gt; (and preferably with &lt;code&gt;inInputShareable&lt;/code&gt; also set to &lt;code&gt;true&lt;/code&gt;).</source>
+          <target state="translated">1） &lt;code&gt;BitmapFactory.decodeXYZ()&lt;/code&gt; を実行するたびに、必ず &lt;code&gt;BitmapFactory.Options&lt;/code&gt; を &lt;code&gt;inPurgeable&lt;/code&gt; 設定して（できれば &lt;code&gt;inInputShareable&lt;/code&gt; も &lt;code&gt;true&lt;/code&gt; に設定して）、 BitmapFactory.Optionsを渡してください 。</target>
+        </trans-unit>
+        <trans-unit id="8782c067eeb1c1f90f926f8b5ee08512104fefc2" translate="yes" xml:space="preserve">
+          <source>2) NEVER use &lt;code&gt;Bitmap.createBitmap(width, height, Config.ARGB_8888)&lt;/code&gt;. I mean NEVER! I've never had that thing not raise memory error after few passes. No amount of &lt;code&gt;recycle()&lt;/code&gt;, &lt;code&gt;System.gc()&lt;/code&gt;, whatever helped. It always raised exception. The one other way that actually works is to have a dummy image in your drawables (or another Bitmap that you decoded using step 1 above), rescale that to whatever you want, then manipulate the resulting Bitmap (such as passing it on to a Canvas for more fun). So, what you should use instead is: &lt;code&gt;Bitmap.createScaledBitmap(srcBitmap, width, height, false)&lt;/code&gt;. If for whatever reason you MUST use the brute force create method, then at least pass &lt;code&gt;Config.ARGB_4444&lt;/code&gt;.</source>
+          <target state="translated">2） &lt;code&gt;Bitmap.createBitmap(width, height, Config.ARGB_8888)&lt;/code&gt; 使用しないでください 。 私は絶対に意味しません！ 何回かパスした後、メモリエラーが発生しないことはありません。 どんな助けでも、 &lt;code&gt;recycle()&lt;/code&gt; 、 &lt;code&gt;System.gc()&lt;/code&gt; の量はありません。 常に例外が発生しました。 実際に機能するもう1つの方法は、ドローアブルにダミー画像（または上記の手順1を使用してデコードした別のビットマップ）を用意し、それを必要に応じて再スケーリングして、結果のビットマップを操作する（キャンバスに渡すなど）ことです。もっと楽しくするために）。 したがって、代わりに使用する必要があるのは &lt;code&gt;Bitmap.createScaledBitmap(srcBitmap, width, height, false)&lt;/code&gt; です。 &lt;code&gt;Config.ARGB_4444&lt;/code&gt; 理由でブルートフォースのcreateメソッドを使用する必要がある場合は、少なくともConfig.ARGB_4444を渡します。</target>
+        </trans-unit>
+        <trans-unit id="562263b1466294b7de472ca74c4560bbeb477dfe" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;decodeFileDescriptor&lt;/code&gt; looks like it calls different native methods than the decodeStream/decodeFile.</source>
+          <target state="translated">&lt;code&gt;decodeFileDescriptor&lt;/code&gt; は、decodeStream / decodeFileとは異なるネイティブメソッドを呼び出すように見えます。</target>
+        </trans-unit>
+        <trans-unit id="c0119b41f35b7e464151bc4394e0148b6c7c4fa0" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;getView()&lt;/code&gt; gets called very often. It's normally not a good idea to download images there if we haven't implemented a check that ensure us that we won't start an infinite amount of threads per row. Cache.java checks whether the &lt;code&gt;rowObject.mBitmapUrl&lt;/code&gt; already is in a task and if it is, it won't start another. Therefore, we are most likely not exceeding the work queue restriction from the &lt;code&gt;AsyncTask&lt;/code&gt; pool.</source>
+          <target state="translated">&lt;code&gt;getView()&lt;/code&gt; は非常に頻繁に呼び出されます。 行ごとに無限のスレッドを開始しないことを保証するチェックを実装していない場合、通常、そこに画像をダウンロードすることはお勧めできません。 Cache.javaは、 &lt;code&gt;rowObject.mBitmapUrl&lt;/code&gt; がすでにタスク内にあるかどうかをチェックし、ある場合は別のタスクを開始しません。 したがって、 &lt;code&gt;AsyncTask&lt;/code&gt; プールからの作業キュー制限を超えていない可能性が高いです。</target>
+        </trans-unit>
+        <trans-unit id="5a2a7862a6c547b2e092e4cf80ae9639f368585c" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Retains the cache if there is an orientation change&lt;/em&gt;, using a singleton</source>
+          <target state="translated">シングルトンを使用して&lt;em&gt;、向きが変更された場合にキャッシュを保持します&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="7baa5dc9710205332e50f61e26eb82dfa968082b" translate="yes" xml:space="preserve">
+          <source>&lt;strike&gt;By referring to the &lt;a href=&quot;http://techpalle.com/blog/wp-content/uploads/2012/03/activity_lifecycle.png&quot;&gt;Activity Life Cycle&lt;/a&gt;&lt;/strike&gt;</source>
+          <target state="translated">&lt;strike&gt;&lt;a href=&quot;http://techpalle.com/blog/wp-content/uploads/2012/03/activity_lifecycle.png&quot;&gt;アクティビティのライフサイクル&lt;/a&gt;を参照して&lt;/strike&gt;</target>
+        </trans-unit>
+        <trans-unit id="738f489e8fcc88ac9846e9e94707b826be87e80a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Note&lt;/strong&gt;: A power of two value is calculated because the decoder uses a
+  final value by rounding down to the nearest power of two, as per the
+  &lt;code&gt;inSampleSize&lt;/code&gt; documentation.</source>
+          <target state="translated">&lt;strong&gt;注&lt;/strong&gt; ：デコーダーは、 &lt;code&gt;inSampleSize&lt;/code&gt; のドキュメントにあるように、最も近い2の累乗に切り捨てて最終値を使用するため、2の累乗の値が計算されます。</target>
+        </trans-unit>
+        <trans-unit id="3f154f989c2982b44c304392cc3fc4749629e582" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Solution&lt;/strong&gt;:
+Move the images to &quot;assets&quot; folder and use the following function to get BitmapDrawable:</source>
+          <target state="translated">&lt;strong&gt;解決策&lt;/strong&gt; ：画像を「assets」フォルダに移動し、次の関数を使用してBitmapDrawableを取得します。</target>
+        </trans-unit>
+        <trans-unit id="27301bb33e9a932b41cd4ef280ed71c4ba67d620" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;unfortunately&lt;/strong&gt; if None of the Above works, then Add this to your &lt;strong&gt;Manifest&lt;/strong&gt; file. Inside &lt;em&gt;application&lt;/em&gt; tag</source>
+          <target state="translated">&lt;strong&gt;残念ながら&lt;/strong&gt;上記のどれ&lt;strong&gt;も機能し&lt;/strong&gt;ない場合は、 &lt;strong&gt;マニフェスト&lt;/strong&gt;ファイルに追加してください。 &lt;em&gt;アプリケーション&lt;/em&gt;タグの内側</target>
+        </trans-unit>
+        <trans-unit id="0ec8b07a0031298ce5bcdcf2e906e88cf818b728" translate="yes" xml:space="preserve">
+          <source>After I've done a lot of experiments with this App, I've got the following conclusions:</source>
+          <target state="translated">このアプリを使って色々と実験してみた結果、以下のような結論に至りました。</target>
+        </trans-unit>
+        <trans-unit id="5d9f33ceb54e285b1f0f546fa5ae5441f81cf547" translate="yes" xml:space="preserve">
+          <source>All the solutions here require setting a IMAGE_MAX_SIZE. This limits devices with more powerful hardware and if the image size is too low it looks ugly on the HD screen.</source>
+          <target state="translated">ここでの解決策はすべてIMAGE_MAX_SIZEを設定する必要があります。これは、より強力なハードウェアを搭載したデバイスを制限し、画像サイズが低すぎるとHD画面では醜く見えます。</target>
+        </trans-unit>
+        <trans-unit id="1884733a3c481df7c2074ade429f3a9f9686109c" translate="yes" xml:space="preserve">
+          <source>Android API 2.1 or higher (I simply could not manage to get the available memory for an application in API 1.6 - that is the only piece of code that doesn't work in API 1.6)</source>
+          <target state="translated">Android API 2.1 以上 (API 1.6 でアプリケーションの利用可能なメモリを取得することができませんでした-API 1.6 で動作しない唯一のコードです)</target>
+        </trans-unit>
+        <trans-unit id="c852378f8fd87cb6e98eea9753b7acf9191bc79d" translate="yes" xml:space="preserve">
+          <source>Android support package</source>
+          <target state="translated">アンドロイドサポートパッケージ</target>
+        </trans-unit>
+        <trans-unit id="15f9db5a119d042a2a0dbcd8e7a20a243027d043" translate="yes" xml:space="preserve">
+          <source>Anyways, what worked was this (note that I added some options as some had above, but that's not what made the difference. What is critical is the call to &lt;strong&gt;BitmapFactory.decodeFileDescriptor&lt;/strong&gt; instead of &lt;strong&gt;decodeStream&lt;/strong&gt; or &lt;strong&gt;decodeFile&lt;/strong&gt;):</source>
+          <target state="translated">とにかく、これはうまくいきました（上記のようにいくつかのオプションを追加しましたが、それが違いを&lt;strong&gt;生ん&lt;/strong&gt;だわけではないことに注意してください。重要なのは、 &lt;strong&gt;decodeStream&lt;/strong&gt;または&lt;strong&gt;decodeFileの&lt;/strong&gt;代わりに&lt;strong&gt;BitmapFactory.decodeFileDescriptorを&lt;/strong&gt;呼び出すこと&lt;strong&gt;です&lt;/strong&gt; ）：</target>
+        </trans-unit>
+        <trans-unit id="2a639f00f36e3a3df1f8a5ce44c1eba66c427656" translate="yes" xml:space="preserve">
+          <source>As soon as I disabled the image on the list view it worked fine again.</source>
+          <target state="translated">リストビューの画像を無効にすると、すぐに正常に動作しました。</target>
+        </trans-unit>
+        <trans-unit id="e04f7f19db81d0bbf4b2eaf9335fc544b05da2a3" translate="yes" xml:space="preserve">
+          <source>Because of this I wrote an example application that demonstrates caching in an Android environment. This implementation has not yet gotten an OOM.</source>
+          <target state="translated">そのため、Android環境でのキャッシングを実演するアプリケーションの例を書いてみました。この実装はまだOOMを取得していません。</target>
+        </trans-unit>
+        <trans-unit id="ee849ef8bc77f61c239846c451384637a9839373" translate="yes" xml:space="preserve">
+          <source>Bitmap is stored in VM heap, Native memory is not counted for OOM.</source>
+          <target state="translated">ビットマップはVMヒープに格納され、ネイティブメモリはOOMにはカウントされない。</target>
+        </trans-unit>
+        <trans-unit id="88672ca86836327b9dde502c2e5829f39cc85ff3" translate="yes" xml:space="preserve">
+          <source>Bitmap is stored in native heap, but it will get garbage collected automatically, calling recycle() is needless.</source>
+          <target state="translated">ビットマップはネイティブヒープに格納されていますが、自動的にガベージコレクションされてしまうので、recycle()を呼ぶ必要はありません。</target>
+        </trans-unit>
+        <trans-unit id="205a822cd5bbafed369318fc3a950d9a83784750" translate="yes" xml:space="preserve">
+          <source>Bitmap memory isn't in the VM heap but rather in the native heap - see &lt;a href=&quot;https://stackoverflow.com/questions/1955410/bitmapfactory-oom-driving-me-nuts/5493182#5493182&quot;&gt;BitmapFactory OOM driving me nuts&lt;/a&gt;</source>
+          <target state="translated">ビットマップメモリ​​はVMヒープ内ではなく、ネイティブヒープ内にあります&lt;a href=&quot;https://stackoverflow.com/questions/1955410/bitmapfactory-oom-driving-me-nuts/5493182#5493182&quot;&gt;-BitmapFactory OOMが私&lt;/a&gt;を混乱させているのを参照してください</target>
+        </trans-unit>
+        <trans-unit id="2850c6f9080f7ab7710c811fdf37a52b2390e539" translate="yes" xml:space="preserve">
+          <source>Cache.java's critical stuff (the &lt;code&gt;loadBitmap()&lt;/code&gt; method is the most important):</source>
+          <target state="translated">Cache.javaの重要なもの（ &lt;code&gt;loadBitmap()&lt;/code&gt; メソッドが最も重要です）：</target>
+        </trans-unit>
+        <trans-unit id="9c7abf0da6a58cae788ad7565b643389edaee688" translate="yes" xml:space="preserve">
+          <source>Callbacks are anonymous inner classes too, so if a static instance in your project holds them and do not release them, memory would be leaked.</source>
+          <target state="translated">コールバックは匿名の内部クラスでもあるので、プロジェクト内の静的インスタンスがコールバックを保持していて、それを解放しないとメモリが漏れてしまいます。</target>
+        </trans-unit>
+        <trans-unit id="5328b687344df73f23830a73eb9346cab386ef68" translate="yes" xml:space="preserve">
+          <source>Calling AsyncTask.cancel(true) will not stop the execution if the task is blocked in an IO operation in background thread.</source>
+          <target state="translated">AsyncTask.cancel(true)を呼び出すと、バックグラウンドスレッドのIO操作でタスクがブロックされても実行を停止しません。</target>
+        </trans-unit>
+        <trans-unit id="671599bc1a399d2611080b182c6ec309dceb993f" translate="yes" xml:space="preserve">
+          <source>Controls &lt;em&gt;that there is an internet connection available&lt;/em&gt; before downloading the bitmaps</source>
+          <target state="translated">ビットマップをダウンロードする前に&lt;em&gt;インターネット接続が利用可能であることを&lt;/em&gt;制御&lt;em&gt;し&lt;/em&gt;ます</target>
+        </trans-unit>
+        <trans-unit id="db6569c7a3ae973546f496a86ab5b9b206ec95a5" translate="yes" xml:space="preserve">
+          <source>Dimensions of the target ImageView or UI component that the image is to be loaded into.</source>
+          <target state="translated">画像が読み込まれる対象のImageViewまたはUIコンポーネントの寸法。</target>
+        </trans-unit>
+        <trans-unit id="f5a62978708306f9ae8db3e77eb70b18a55e42a7" translate="yes" xml:space="preserve">
+          <source>Disk caching. This should be easy to implement anyway - just point to a different task that grabs the bitmaps from the disk</source>
+          <target state="translated">ディスクキャッシング。ディスクからビットマップを取得する別のタスクを指定するだけです。</target>
+        </trans-unit>
+        <trans-unit id="d41afcdf06f873159a02f2c71ff9d4ff63760f01" translate="yes" xml:space="preserve">
+          <source>Download:</source>
+          <target state="translated">Download:</target>
+        </trans-unit>
+        <trans-unit id="53a6f94106746c28ba76a2b35fa9813bee528f13" translate="yes" xml:space="preserve">
+          <source>Estimated memory usage of loading the full image in memory.</source>
+          <target state="translated">フル画像をメモリにロードする際のメモリ使用量の目安。</target>
+        </trans-unit>
+        <trans-unit id="b09f2105d1275959687cbd96020e7a8cd8eed874" translate="yes" xml:space="preserve">
+          <source>FYI: This is how I was doing it:</source>
+          <target state="translated">FYI:こんな感じでやっていました。</target>
+        </trans-unit>
+        <trans-unit id="5df81ffa82179b458e1d55e350db9d88805a69b2" translate="yes" xml:space="preserve">
+          <source>Features:</source>
+          <target state="translated">Features:</target>
+        </trans-unit>
+        <trans-unit id="50966d4fa4bd11157f2c78c84f8e32c94e4dc8a1" translate="yes" xml:space="preserve">
+          <source>For example, it&amp;rsquo;s not worth loading a 1024x768 pixel image into memory if it will eventually be displayed in a 128x96 pixel thumbnail in an &lt;code&gt;ImageView&lt;/code&gt;.</source>
+          <target state="translated">たとえば、最終的に &lt;code&gt;ImageView&lt;/code&gt; の 128x96ピクセルのサムネイルに表示される場合、1024x768ピクセルの画像をメモリにロードする価値はありません。</target>
+        </trans-unit>
+        <trans-unit id="08ffb9f14d4f90d0318cfb08c98680be308359bf" translate="yes" xml:space="preserve">
+          <source>Garbage collection for the native heap is lazier than the VM heap - so you need to be quite aggressive about doing bitmap.recycle and bitmap =null every time you go through an Activity's onPause or onDestroy</source>
+          <target state="translated">ネイティブヒープのゴミ収集は、VMヒープよりも緩いので、アクティビティのonPauseやonDestroyを通過するたびに、bitmap.recycleやbitmap =nullを実行するように、かなり積極的にする必要があります。</target>
+        </trans-unit>
+        <trans-unit id="72d5be6ec911bd80fb8bae74de3673d72fff4bcd" translate="yes" xml:space="preserve">
+          <source>Generally android device heap size is only 16MB (varies from device/OS see post &lt;a href=&quot;https://stackoverflow.com/a/9940415/1053097&quot;&gt;Heap Sizes&lt;/a&gt;), if you are loading the images and it crosses the size of 16MB , it will throw out of memory exception, instead of using the Bitmap for , loading images from SD card or from resources or even from network try to using &lt;strong&gt;getImageUri&lt;/strong&gt; , loading bitmap require more memory , or you can set bitmap to null if your work done with that bitmap.</source>
+          <target state="translated">一般に、Androidデバイスのヒープサイズはわずか16 MBです（デバイス/ OSによって異なります。ポスト&lt;a href=&quot;https://stackoverflow.com/a/9940415/1053097&quot;&gt;ヒープサイズを&lt;/a&gt;参照してください）。画像をロードしていて16 MBのサイズを超える場合、ビットマップを使用する代わりに、メモリの例外がスローされます。 SDカードまたはリソースから、さらにはネットワークからの画像でも&lt;strong&gt;getImageUri&lt;/strong&gt;を使用してみてください。ビットマップのロードにはより多くのメモリが必要です。または、ビットマップを使用して作業を行っている場合は、ビットマップをnullに設定できます。</target>
+        </trans-unit>
+        <trans-unit id="1a06d0f015483587699b8a176995e7382555aa09" translate="yes" xml:space="preserve">
+          <source>Great answers here, but I wanted a &lt;strong&gt;fully usable class&lt;/strong&gt; to address this problem.. so I did one.</source>
+          <target state="translated">ここでは素晴らしい答えですが、この問題に対処するために&lt;strong&gt;完全に使用可能なクラスが&lt;/strong&gt;必要でした。</target>
+        </trans-unit>
+        <trans-unit id="3ac2685d8968e5ce7bf1f958f25f0955c33e1786" translate="yes" xml:space="preserve">
+          <source>Here is my &lt;strong&gt;BitmapHelper class&lt;/strong&gt; that is OutOfMemoryError proof :-)</source>
+          <target state="translated">これがOutOfMemoryErrorの証明である私の&lt;strong&gt;BitmapHelperクラス&lt;/strong&gt;です:-)</target>
+        </trans-unit>
+        <trans-unit id="19cb376555018e8823eaa695a9df2f1af042d562" translate="yes" xml:space="preserve">
+          <source>Here is my LogCat:</source>
+          <target state="translated">これが私のLogCatです。</target>
+        </trans-unit>
+        <trans-unit id="cffa2bc53f11363125136f8a2ab820dca37158cd" translate="yes" xml:space="preserve">
+          <source>Here is some of my observations about Garbage Collection and Memory Leak.</source>
+          <target state="translated">ここでは、ゴミ収集とメモリーリークについての私の見解を紹介します。</target>
+        </trans-unit>
+        <trans-unit id="0a02f56ef5eb139e6928484a85c5a047ddea1327" translate="yes" xml:space="preserve">
+          <source>Here's a complete method. First it reads image size without decoding the content itself. Then it finds the best &lt;code&gt;inSampleSize&lt;/code&gt; value, it should be a power of 2, and finally the image is decoded.</source>
+          <target state="translated">これが完全なメソッドです。 まず、コンテンツ自体をデコードせずに画像サイズを読み取ります。 次に、最適な &lt;code&gt;inSampleSize&lt;/code&gt; 値を見つけます。2の累乗である必要があり、最後に画像がデコードされます。</target>
+        </trans-unit>
+        <trans-unit id="808a8de8725ef3f0318a54ee708ab3155fc4418f" translate="yes" xml:space="preserve">
+          <source>Hope this helps someone out there..</source>
+          <target state="translated">これが誰かの助けになることを願って...</target>
+        </trans-unit>
+        <trans-unit id="a6a0ce9031e0776d5fc6120b3023d51bccf114f1" translate="yes" xml:space="preserve">
+          <source>Hope this helps.</source>
+          <target state="translated">これが助けになることを願っています。</target>
+        </trans-unit>
+        <trans-unit id="68dbf58b4d75dc4e6d3fcbae5f5cb30a0e0c723d" translate="yes" xml:space="preserve">
+          <source>I also have a new error when displaying an image:</source>
+          <target state="translated">また、画像を表示するときにエラーが出るようになりました。</target>
+        </trans-unit>
+        <trans-unit id="d707934563266af24417ef00ad34c82d947bec0e" translate="yes" xml:space="preserve">
+          <source>I came out with a solution that works with my Samsung Galaxy S3 and several other devices including less powerful ones, with better image quality when a more powerful device is used.</source>
+          <target state="translated">私は、より強力なデバイスを使用すると、より良い画像品質で、私のサムスンギャラクシーS3と、より強力ではないものを含む他のいくつかのデバイスで動作するソリューションが出てきました。</target>
+        </trans-unit>
+        <trans-unit id="ac38569581f05208050b75097c3c346aaabe9718" translate="yes" xml:space="preserve">
+          <source>I come from iOS experience and I was frustrated to discover an issue with something so basic as loading and showing an image. After all, everyone that is having this issue is trying to display reasonably sized images. Anyway, here are the two changes that fixed my problem (and made my app very responsive).</source>
+          <target state="translated">私はiOSの経験から来ていますが、画像を読み込んで表示するという非常に基本的なことで問題を発見してイライラしました。結局のところ、この問題を抱えている誰もが合理的なサイズの画像を表示しようとしています。とにかく、ここに私の問題を修正した(そして私のアプリを非常に反応の良いものにした)2つの変更点があります。</target>
+        </trans-unit>
+        <trans-unit id="41042d10893fe7f9878c2ee20b4903eaec26fdc6" translate="yes" xml:space="preserve">
+          <source>I did the following to take the image and resize it on the fly. Hope this helps</source>
+          <target state="translated">私は以下のようにして画像を撮影し、その場でサイズを変更しました。これが役立つことを願って</target>
+        </trans-unit>
+        <trans-unit id="70963af00b7f5a5eee53277c66e3856a91f2891c" translate="yes" xml:space="preserve">
+          <source>I had this same issue and solved it by avoiding the BitmapFactory.decodeStream or decodeFile functions and instead used &lt;code&gt;BitmapFactory.decodeFileDescriptor&lt;/code&gt;</source>
+          <target state="translated">私はこれと同じ問題を抱えており、BitmapFactory.decodeStreamまたはdecodeFile関数を回避することで解決し、代わりに &lt;code&gt;BitmapFactory.decodeFileDescriptor&lt;/code&gt; を使用しました</target>
+        </trans-unit>
+        <trans-unit id="dcefbefe16ed45ee1a19ad421413e07c13b85e21" translate="yes" xml:space="preserve">
+          <source>I have a list view with a couple of image buttons on each row. When you click the list row, it launches a new activity. I have had to build my own tabs because of an issue with the camera layout. The activity that gets launched for the result is a map. If I click on my button to launch the image preview (load an image off the SD card) the application returns from the activity back to the &lt;code&gt;listview&lt;/code&gt; activity to the result handler to relaunch my new activity which is nothing more than an image widget.</source>
+          <target state="translated">各行にいくつかの画像ボタンがあるリストビューがあります。 リストの行をクリックすると、新しいアクティビティが起動します。 カメラのレイアウトに問題があるため、独自のタブを作成する必要がありました。 結果に対して起動されるアクティビティはマップです。 ボタンをクリックして画像プレビューを起動する（SDカードから画像をロードする）と、アプリケーションはアクティビティから &lt;code&gt;listview&lt;/code&gt; アクティビティに戻り、結果ハンドラーに戻り、画像ウィジェットにすぎない新しいアクティビティを再起動します。</target>
+        </trans-unit>
+        <trans-unit id="3f3b7b996420d046d3c3706a4043539fc317ca2b" translate="yes" xml:space="preserve">
+          <source>I have a much more effective solution which does not need scaling of any sort. Simply decode your bitmap only once and then cache it in a map against its name. Then simply retrieve the bitmap against the name and set it in the ImageView. There is nothing more that needs to be done.</source>
+          <target state="translated">スケーリングを必要としない、もっと効果的なソリューションがあります。ビットマップを一度だけデコードして、その名前に対応するマップにキャッシュします。そして、その名前に対応するビットマップを取得してImageViewに設定するだけです。これ以上何もする必要はありません。</target>
+        </trans-unit>
+        <trans-unit id="80c98ac37ad76002dab413e284d77bc9b5b987a9" translate="yes" xml:space="preserve">
+          <source>I have resolved the same issue in the following manner.</source>
+          <target state="translated">以下の方法で同じ問題を解決しました。</target>
+        </trans-unit>
+        <trans-unit id="90e8def22b8526c77f4a89a6e67c5c7f7892ca05" translate="yes" xml:space="preserve">
+          <source>I have seen a lot of questions about OOM exceptions and caching lately. The developer guide has &lt;a href=&quot;http://developer.android.com/training/displaying-bitmaps/cache-bitmap.html&quot;&gt;a really good article&lt;/a&gt; on this, but some tends to fail on implementing it in a suitable way.</source>
+          <target state="translated">最近、OOMの例外とキャッシングに関する多くの質問を見てきました。 開発者ガイドには&lt;a href=&quot;http://developer.android.com/training/displaying-bitmaps/cache-bitmap.html&quot;&gt;、&lt;/a&gt;これに関する非常に優れた記事がありますが、適切な方法で実装できない場合もあります。</target>
+        </trans-unit>
+        <trans-unit id="a92ba1c9a91a190d24c060f9480a125fd5d7a703" translate="yes" xml:space="preserve">
+          <source>I have tested this for a few weeks now, I haven't gotten a single OOM exception yet. I have tested this on the emulator, on my Nexus One and on my Nexus S. I have tested image urls that contain images that were in HD quality. The only bottleneck is that it takes more time to download.</source>
+          <target state="translated">数週間前からテストしていますが、まだ一度もOOM例外は発生していません。エミュレータ、Nexus One、Nexus Sでテストしました。唯一のネックは、ダウンロードに時間がかかることです。</target>
+        </trans-unit>
+        <trans-unit id="bd3a2038e0a415d454b2b7282e042b09784ff570" translate="yes" xml:space="preserve">
+          <source>I hope this will help the buddies facing the same problem!</source>
+          <target state="translated">同じ問題に直面している仲間の助けになればいいな!と思います。</target>
+        </trans-unit>
+        <trans-unit id="ef445c286efa75adce24bdec51eab0b63f0b80ee" translate="yes" xml:space="preserve">
+          <source>I just ran into this issue a couple minutes ago. I solved it by doing a better job at managing my listview adapter. I thought it was an issue with the hundreds of 50x50px images I was using, turns out I was trying to inflate my custom view each time the row was being shown. Simply by testing to see if the row had been inflated I eliminated this error, and I am using hundreds of bitmaps. This is actually for a Spinner, but the base adapter works all the same for a ListView. This simple fix also greatly improved the performance of the adapter.</source>
+          <target state="translated">数分前にこの問題に遭遇しました。私はリストビューアダプタの管理を改善することで解決しました。何百枚もの 50x50px の画像を使用していたために問題があると思っていたのですが、行が表示されるたびにカスタムビューを膨らませようとしていたことがわかりました。行が膨らんでいるかどうかをテストするだけで、このエラーは解消されました。これは実際にはスピナーのためのものですが、ベースアダプタはListViewでも同じように動作します。この簡単な修正により、アダプタのパフォーマンスも大幅に向上しました。</target>
+        </trans-unit>
+        <trans-unit id="cc69206e5815e05d21981036e91bc0bb1b830920" translate="yes" xml:space="preserve">
+          <source>I know I can do an out of band resize and save of my image, but that is not really what I want to do, but some sample code for that would be nice.</source>
+          <target state="translated">画像のサイズ変更や保存ができることは知っていますが、それは私がやりたいことではないのですが、そのためのサンプルコードがあるといいですね。</target>
+        </trans-unit>
+        <trans-unit id="f1a21cccc75a4df422b282e20e780ffcfefd2ba8" translate="yes" xml:space="preserve">
+          <source>I made an &lt;a href=&quot;https://play.google.com/store/apps/details?id=net.coocood.oomresearch&quot;&gt;app&lt;/a&gt; to intentionally cause &lt;code&gt;OutOfMemoryError&lt;/code&gt;, and monitor memory usage.</source>
+          <target state="translated">意図的に &lt;code&gt;OutOfMemoryError&lt;/code&gt; を発生させ、メモリ使用量を監視する&lt;a href=&quot;https://play.google.com/store/apps/details?id=net.coocood.oomresearch&quot;&gt;アプリ&lt;/a&gt;を作成しました。</target>
+        </trans-unit>
+        <trans-unit id="cfd9d3246806c0d0544d387ca159b2f1de0c5464" translate="yes" xml:space="preserve">
+          <source>I set the maximum memory used by this bitmap to be 25% of maximum allocated memory, you may need to adjust this to your needs and make sure this bitmap is cleaned up and don't stay in memory when you've finished using it. Typically I use this code to perform image rotation (source and destination bitmap) so my app needs to load 2 bitmaps in memory at the same time, and 25% gives me a good buffer without running out of memory when performing image rotation.</source>
+          <target state="translated">このビットマップが使用する最大メモリは、割り当てられた最大メモリの25%に設定しました。通常、私はこのコードを使って画像の回転(ソースとデスティネーションのビットマップ)を実行しています。</target>
+        </trans-unit>
+        <trans-unit id="be1ebee6d533ac5f91df22838053b293abd1093c" translate="yes" xml:space="preserve">
+          <source>I think best way to avoid the &lt;code&gt;OutOfMemoryError&lt;/code&gt; is to face it and understand it.</source>
+          <target state="translated">&lt;code&gt;OutOfMemoryError&lt;/code&gt; を回避する最善の方法は、それに直面してそれを理解することです。</target>
+        </trans-unit>
+        <trans-unit id="fb7fdde6f7588fa4661d28589535e5ae66450cc5" translate="yes" xml:space="preserve">
+          <source>I think there is a problem with the native function used in decodeStream/decodeFile. I have confirmed that a different native method is called when using decodeFileDescriptor.  Also what I've read is &quot;that Images (Bitmaps) are not allocated in a standard Java way but via native calls; the allocations are done outside of the virtual heap, but are
+&lt;strong&gt;&lt;em&gt;counted against it!&lt;/em&gt;&lt;/strong&gt;&quot;</source>
+          <target state="translated">decodeStream / decodeFileで使用されるネイティブ関数に問題があると思います。 decodeFileDescriptorを使用すると、別のネイティブメソッドが呼び出されることを確認しました。 また、私が読んだのは、「イメージ（ビットマップ）は標準のJavaの方法ではなくネイティブ呼び出しを介して割り当てられることです。割り当ては仮想ヒープの外部で行われますが、それに対して&lt;strong&gt;&lt;em&gt;カウントされます！&lt;/em&gt;&lt;/strong&gt; 」</target>
+        </trans-unit>
+        <trans-unit id="89d03da63fffe99b55265fa19e6085ce6f7c68b9" translate="yes" xml:space="preserve">
+          <source>I'm gonna talk about SDK versions before Honey Comb first.</source>
+          <target state="translated">ハニカムより先にSDKのバージョンの話をします。</target>
+        </trans-unit>
+        <trans-unit id="949b7e396b503afc7e60ed24080a292eb274cd8c" translate="yes" xml:space="preserve">
+          <source>I've made a small improvement to Fedor's code. It basically does the same, but without the (in my opinion) ugly while loop and it always results in a power of two. Kudos to Fedor for making the original solution, I was stuck until I found his, and then I was able to make this one :)</source>
+          <target state="translated">Fedorのコードを少し改良しました。基本的には同じことをしていますが、(私の意見では)醜いwhileループがなく、常に2の累乗になります。私は彼のコードを見つけるまで行き詰っていたので、これを作ることができました :)</target>
+        </trans-unit>
+        <trans-unit id="f572a323e69f42f2995af8376e6833205e919d12" translate="yes" xml:space="preserve">
+          <source>I've spent the entire day testing these solutions and the only thing that worked for me is the above approaches for getting the image and manually calling the GC, which I know is not supposed to be necessary, but it is the only thing that worked when I put my app under heavy load testing switching between activities.  My app has a list of thumbnail images in a listview in (lets say activity A) and when you click on one of those images it takes you to another activity (lets say activity B) that shows a main image for that item.  When I would switch back and forth between the two activities, I would eventually get the OOM error and the app would force close.</source>
+          <target state="translated">これらのソリューションをテストするのに丸一日を費やしましたが、私のために機能した唯一のものは、画像を取得し、手動でGCを呼び出すための上記のアプローチです。私のアプリは、リストビューにサムネイル画像のリストを持っています(アクティビティAとします)、それらの画像の1つをクリックすると、そのアイテムのメイン画像を表示する別のアクティビティ(アクティビティBとします)に移動します。私は2つのアクティビティの間で前後に切り替えるとき、私は最終的にOOMエラーを取得し、アプリが強制的に終了します。</target>
+        </trans-unit>
+        <trans-unit id="6d49a2855b498c0fef974a894bdc320dc6145acf" translate="yes" xml:space="preserve">
+          <source>If &lt;em&gt;you are flinging&lt;/em&gt; the &lt;code&gt;ListView&lt;/code&gt; away, it simply won't download the bitmaps between</source>
+          <target state="translated">&lt;code&gt;ListView&lt;/code&gt; を使用しない場合、ビットマップはダウンロードされません。</target>
+        </trans-unit>
+        <trans-unit id="aae26a8106e5c91b33735bff022f3cde761adb3a" translate="yes" xml:space="preserve">
+          <source>If you scheduled a repeating or delayed task, for example a Timer, and you do not call cancel() and purge() in onPause(), memory would be leaked.</source>
+          <target state="translated">繰り返しタスクや遅延タスク、例えばTimerなどをスケジュールしていて、onPause()でcancel()やpurge()を呼ばないとメモリが漏れてしまいます。</target>
+        </trans-unit>
+        <trans-unit id="8b45d3552db7a9f1666671b53d59f302a103fcd8" translate="yes" xml:space="preserve">
+          <source>If {VM heap size} + {allocated native heap memory} &amp;gt;= {VM heap size limit for the device}, and you are trying to create bitmap, OOM will be thrown.</source>
+          <target state="translated">{VMヒープサイズ} + {割り当てられたネイティブヒープメモリ}&amp;gt; = {デバイスのVMヒープサイズ制限}で、ビットマップを作成しようとすると、OOMがスローされます。</target>
+        </trans-unit>
+        <trans-unit id="49e7f074b8cc99d872d2d1216825c26fffff2a73" translate="yes" xml:space="preserve">
+          <source>In one of my application i need to take picture either from &lt;code&gt;Camera/Gallery&lt;/code&gt;. If user click image from Camera(may be 2MP, 5MP or 8MP), image size varies from &lt;code&gt;kB&lt;/code&gt;s to &lt;code&gt;MB&lt;/code&gt;s. If image size is less(or up to 1-2MB) above code working fine but if i have image of size above 4MB or 5MB then &lt;code&gt;OOM&lt;/code&gt; comes in frame :(</source>
+          <target state="translated">私のアプリケーションの1つで、 &lt;code&gt;Camera/Gallery&lt;/code&gt; から写真を撮る必要があります 。 ユーザーがカメラから画像をクリックすると（2MP、5MP、8MPの場合があります）、画像サイズは &lt;code&gt;kB&lt;/code&gt; 秒から &lt;code&gt;MB&lt;/code&gt; 秒まで変化します。 画像サイズがコードよりも小さい（または最大1〜2MB）場合は問題なく機能しますが、4MBまたは5MBを超えるサイズの画像がある場合、 &lt;code&gt;OOM&lt;/code&gt; はフレームに含まれます:(</target>
+        </trans-unit>
+        <trans-unit id="dd98994863f2d2fdf584dc5c4b2152d193280740" translate="yes" xml:space="preserve">
+          <source>Is there a way I can build the list adapter easily row by row, where I can resize on the fly (&lt;em&gt;bit wise&lt;/em&gt;)?</source>
+          <target state="translated">行&lt;em&gt;ごとに&lt;/em&gt;簡単にサイズを変更できるリストアダプターを行&lt;em&gt;ごとに&lt;/em&gt;簡単に作成できる方法はありますか（ &lt;em&gt;ビット単位&lt;/em&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="c3345639637ff08fe7c9ede8ee3564a6b1257d50" translate="yes" xml:space="preserve">
+          <source>It seems that this is a very long running problem, with a lot of differing explanations.  I took the advice of the two most common presented answers here, but neither one of these solved my problems of the VM claiming it couldn't afford the bytes to perform the &lt;strong&gt;decoding&lt;/strong&gt; part of the process.  After some digging I learned that the real problem here is the decoding process taking away from the &lt;strong&gt;NATIVE&lt;/strong&gt; heap.</source>
+          <target state="translated">これは非常に長時間にわたる問題であり、さまざまな説明が含まれているようです。 ここで最も一般的な2つの回答をアドバイスしましたが、どちらも、プロセスの&lt;strong&gt;デコード&lt;/strong&gt;部分を実行するためのバイトを確保できないというVMの問題を解決しませんでした。 掘り下げた後、ここでの本当の問題は、 &lt;strong&gt;ネイティブ&lt;/strong&gt;ヒープから奪うデコードプロセスにあることが&lt;strong&gt;わかりました&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="212e829919910956b61b83294caa292f0c725558" translate="yes" xml:space="preserve">
+          <source>It's a &lt;a href=&quot;http://code.google.com/p/android/issues/detail?id=8488&quot;&gt;known bug&lt;/a&gt;, it's not because of large files. Since Android Caches the Drawables, it's going out of memory after using few images. But I've found an alternate way for it, by skipping the android default cache system.</source>
+          <target state="translated">これは&lt;a href=&quot;http://code.google.com/p/android/issues/detail?id=8488&quot;&gt;既知のバグであり&lt;/a&gt; 、大きなファイルが原因ではありません。 AndroidはDrawableをキャッシュするため、いくつかの画像を使用した後、メモリ不足になります。 しかし、Androidのデフォルトのキャッシュシステムをスキップすることで、別の方法を見つけました。</target>
+        </trans-unit>
+        <trans-unit id="87c40bac9ed5b0407f1d8f530751ca38621a14df" translate="yes" xml:space="preserve">
+          <source>Large bitmaps &lt;em&gt;gets scaled&lt;/em&gt; (you can define the maximum pixels that you want to allow)</source>
+          <target state="translated">大きなビットマップ&lt;em&gt;がスケーリングされます&lt;/em&gt; （許可する最大ピクセルを定義できます）</target>
+        </trans-unit>
+        <trans-unit id="8678809351d8e9e866f9fb346e60b5b2ea5382df" translate="yes" xml:space="preserve">
+          <source>Last words:</source>
+          <target state="translated">最後の言葉。</target>
+        </trans-unit>
+        <trans-unit id="32aee2a63bf12b3e42d6f178b7670e25eb19b3af" translate="yes" xml:space="preserve">
+          <source>Load a scaled down version into Memory</source>
+          <target state="translated">スケールダウンしたバージョンをメモリにロード</target>
+        </trans-unit>
+        <trans-unit id="59d71b903d7086e09cd387175e346c3f8a597a02" translate="yes" xml:space="preserve">
+          <source>Look at the end of this answer for a link to the source code.</source>
+          <target state="translated">この回答の最後にソースコードへのリンクがあります。</target>
+        </trans-unit>
+        <trans-unit id="0c2bdc40e8343d1d94d6a69dc85aeca934ae99de" translate="yes" xml:space="preserve">
+          <source>MainActivity.java's critical stuff:</source>
+          <target state="translated">MainActivity.javaの重要なもの。</target>
+        </trans-unit>
+        <trans-unit id="83a207a33592bbc545cc207ae6453335028a666e" translate="yes" xml:space="preserve">
+          <source>Makes sure that you are only instantiating &lt;em&gt;one task&lt;/em&gt; per row</source>
+          <target state="translated">行ごとに1 &lt;em&gt;つのタスク&lt;/em&gt;のみをインスタンス化していることを確認します</target>
+        </trans-unit>
+        <trans-unit id="95b33b353acf294ef83e9aa5fea20dcd94f0383c" translate="yes" xml:space="preserve">
+          <source>Manually call System.gc() is meaningless, the system will call it first before trying to grow the heap size.</source>
+          <target state="translated">手動で System.gc()を呼び出しても意味がありません。</target>
+        </trans-unit>
+        <trans-unit id="fad3a84456f058bb312145ad5ce97cf5778734fb" translate="yes" xml:space="preserve">
+          <source>More on that topic here: &lt;a href=&quot;http://groups.google.com/group/android-developers/browse_thread/thread/146a3a354ce3e8e3/61e113036089d696&quot;&gt;Is the limit of memory heap only 6M? &lt;/a&gt;</source>
+          <target state="translated">ここでそのトピックの詳細： &lt;a href=&quot;http://groups.google.com/group/android-developers/browse_thread/thread/146a3a354ce3e8e3/61e113036089d696&quot;&gt;メモリヒープの制限は6Mだけですか？&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="6a9f9d53cd957a664f586e1fac925b35dac68f30" translate="yes" xml:space="preserve">
+          <source>My 2 cents: i solved my OOM errors with bitmaps by:</source>
+          <target state="translated">私の2セント:私はビットマップを使ってOOMエラーを解決しました。</target>
+        </trans-unit>
+        <trans-unit id="b3a39586148364aa68cde4adff75f273148bbe39" translate="yes" xml:space="preserve">
+          <source>NOTICE: VM HEAP SIZE is counted rather than VM ALLOCATED MEMORY.</source>
+          <target state="translated">注意:VM ALLOCATED MEMORYではなくVM HEAP SIZEがカウントされます。</target>
+        </trans-unit>
+        <trans-unit id="d9a2f4e5272d151e35ec41d7fe1283ecec32b9fb" translate="yes" xml:space="preserve">
+          <source>Native Heap Size will never shrink too, but it's not counted for OOM, so no need to worry about it.</source>
+          <target state="translated">Native Heap Sizeも縮むことはありませんが、OOMにはカウントされませんので、気にする必要はありません。</target>
+        </trans-unit>
+        <trans-unit id="54879c96b74bbe786d1bd7159a8b0599d4c321f0" translate="yes" xml:space="preserve">
+          <source>None of the answers above worked for me, but I did come up with a horribly ugly workaround that solved the problem. I added a very small, 1x1 pixel image to my project as a resource, and loaded it into my ImageView before calling into garbage collection. I think it might be that the ImageView was not releasing the Bitmap, so GC never picked it up. It's ugly, but it seems to be working for now.</source>
+          <target state="translated">上記の答えはどれも私には効きませんでしたが、問題を解決するための恐ろしいほど醜い回避策を思いつきました。リソースとしてプロジェクトに非常に小さな1x1ピクセルの画像を追加し、ガベージコレクションを呼び出す前にImageViewにロードしました。私は、ImageViewがビットマップを解放していなかったので、GCがそれを拾わなかったのかもしれないと思います。醜いですが、今のところはうまくいっているようです。</target>
+        </trans-unit>
+        <trans-unit id="6f8894f2abf440bb9aeea96c883d859a08c12297" translate="yes" xml:space="preserve">
+          <source>Now since your image is in a file somewhere (or may even be coming from an external server), it is YOUR responsibility to cache the decoded bitmap instance to be reused any where it is needed.</source>
+          <target state="translated">画像はどこかのファイルに保存されている(あるいは外部サーバーから送られてくる可能性もある)ので、デコードされたビットマップのインスタンスをキャッシュして、必要な場所で再利用できるようにするのはあなたの責任です。</target>
+        </trans-unit>
+        <trans-unit id="ad220e4cd6cb224186c1ca16f667ece57dba20f3" translate="yes" xml:space="preserve">
+          <source>Now that the image dimensions are known, they can be used to decide if the full image should be loaded into memory or if a subsampled version should be loaded instead. Here are some factors to consider:</source>
+          <target state="translated">画像の寸法がわかったので、この寸法を使って、完全な画像をメモリにロードするか、サブサンプル版をロードするかを決めることができます。考慮すべき要素をいくつか挙げます。</target>
+        </trans-unit>
+        <trans-unit id="c2a795044eb263e6638bc4149db07fd71cd76aac" translate="yes" xml:space="preserve">
+          <source>Now when I implement the following in activity B, I can go through the entire listview with no issue and keep going and going and going...and its plenty fast.</source>
+          <target state="translated">今、私は活動Bで次のことを実装するとき、私は何の問題もなく全体のリストビューを通過することができますし、行って行って行って行って行って...そして、それは十分に高速です。</target>
+        </trans-unit>
+        <trans-unit id="902e1f686c28630c2a04528f7d145b6094c53aba" translate="yes" xml:space="preserve">
+          <source>Now, having said all of this, I am a complete dunce with Java and Android too.  So if you think this is a terrible way to solve this problem, you are probably right.  ;-)  But this has worked wonders for me, and I have found it impossible to run the VM out of heap cache now.  The only drawback I can find is that you are trashing your cached drawn image.  Which means if you go RIGHT back to that image, you are redrawing it each and every time.  In the case of how my application works, that is not really a problem.  Your mileage may vary.</source>
+          <target state="translated">さて、これだけのことを言っておくと、私はJavaとAndroidについても全くのド素人です。だから、この問題を解決するためのひどい方法だと思うなら、おそらくその通りだと思います。)しかし、これは私にとっては驚異的な働きをしており、今ではヒープキャッシュからVMを実行することは不可能であることがわかりました。唯一の欠点は、キャッシュされた描画イメージを破棄してしまうことです。つまり、もしそのイメージに右に戻ると、毎回再描画していることになります。私のアプリケーションがどのように動作するかについては、それは本当に問題ではありません。あなたのマイルは異なるかもしれません。</target>
+        </trans-unit>
+        <trans-unit id="035dbf096a64f11fe2822c4a18f107046d3f5703" translate="yes" xml:space="preserve">
+          <source>Read Bitmap Dimensions and Type</source>
+          <target state="translated">ビットマップの寸法と種類を読み取る</target>
+        </trans-unit>
+        <trans-unit id="ab9146b1673102ddbc5c7115d7b318805bd47098" translate="yes" xml:space="preserve">
+          <source>Report errors in the comments! :-)</source>
+          <target state="translated">コメントでエラーを報告してください! :-)</target>
+        </trans-unit>
+        <trans-unit id="475ffa14014bb463965306813410e4afd01a7039" translate="yes" xml:space="preserve">
+          <source>Requirements:</source>
+          <target state="translated">Requirements:</target>
+        </trans-unit>
+        <trans-unit id="bbd19d7653cc08e0948d447b0d060fac147cb4d7" translate="yes" xml:space="preserve">
+          <source>Sample code:</source>
+          <target state="translated">サンプルコード。</target>
+        </trans-unit>
+        <trans-unit id="ce7e680b40c93d87fca537a049ec0c6773e8cc78" translate="yes" xml:space="preserve">
+          <source>Screen size and density of the current device.</source>
+          <target state="translated">現在のデバイスの画面サイズと密度。</target>
+        </trans-unit>
+        <trans-unit id="202c0c493954cb7331141e65ff5574bc316f7006" translate="yes" xml:space="preserve">
+          <source>See here: &lt;a href=&quot;https://stackoverflow.com/questions/1955410/bitmapfactory-oom-driving-me-nuts/5493182#5493182&quot;&gt;BitmapFactory OOM driving me nuts&lt;/a&gt;</source>
+          <target state="translated">ここを参照してください： &lt;a href=&quot;https://stackoverflow.com/questions/1955410/bitmapfactory-oom-driving-me-nuts/5493182#5493182&quot;&gt;BitmapFactory OOMが私を運転しています&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="34f1933bc01cc5bf7557f841a052257210fb860e" translate="yes" xml:space="preserve">
+          <source>So please check in a device. It may be run in device.</source>
+          <target state="translated">そのため、端末で確認してください。デバイス内で動作する可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="1664354fdd92ce3acf492010afdff1a0f35d11b7" translate="yes" xml:space="preserve">
+          <source>So you have more available memory to create bitmap with the same heap size limit,  OOM is less likely to be thrown.</source>
+          <target state="translated">そのため、同じヒープサイズ制限でビットマップを作成するために利用可能なメモリが増え、OOMがスローされる可能性が低くなります。</target>
+        </trans-unit>
+        <trans-unit id="8e003454e74d8952ecfc04329daac1b2362fc26b" translate="yes" xml:space="preserve">
+          <source>So you have to keep the peak VM memory as low as possible to keep VM Heap Size from growing too big to save available memory for Bitmaps.</source>
+          <target state="translated">そのため、VMのヒープサイズが大きくなりすぎないように、VMのピークメモリをできるだけ小さくして、Bitmapsの利用可能なメモリを節約する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="0b66c6e8db0c80867e9069f6c30289a860680ca4" translate="yes" xml:space="preserve">
+          <source>Strange out of memory issue while loading an image to a Bitmap object</source>
+          <target state="translated">ビットマップオブジェクトに画像をロードする際のメモリ不足の問題</target>
+        </trans-unit>
+        <trans-unit id="72f1f2daff69d0af1a894aec65d8485be42e1160" translate="yes" xml:space="preserve">
+          <source>Such &lt;code&gt;OutofMemoryException&lt;/code&gt; cannot be totally resolved by calling the &lt;code&gt;System.gc()&lt;/code&gt; and so on .</source>
+          <target state="translated">このような &lt;code&gt;OutofMemoryException&lt;/code&gt; は、 &lt;code&gt;System.gc()&lt;/code&gt; などを呼び出して完全に解決することはできません。</target>
+        </trans-unit>
+        <trans-unit id="37a396c052474568e5e78e72fcb66454313d2c6e" translate="yes" xml:space="preserve">
+          <source>That lead me to another discussion thread where I found a couple more solutions to this problem.  One is to call&lt;code&gt;System.gc();&lt;/code&gt; manually after your image is displayed.  But that actually makes your app use MORE memory, in an effort to reduce the native heap.  The better solution as of the release of 2.0 (Donut) is to use the BitmapFactory option &quot;inPurgeable&quot;.  So I simply added &lt;code&gt;o2.inPurgeable=true;&lt;/code&gt; just after &lt;code&gt;o2.inSampleSize=scale;&lt;/code&gt;.</source>
+          <target state="translated">そのため、別のディスカッションスレッドに進み、この問題の解決策をいくつか見つけました。 1つは &lt;code&gt;System.gc();&lt;/code&gt; を呼び出すことです。 画像が表示された後、手動で。 しかし実際には、ネイティブヒープを減らすために、アプリはより多くのメモリを使用します。 2.0（Donut）のリリースでのより良い解決策は、BitmapFactoryオプション &quot;inPurgeable&quot;を使用することです。 したがって、単に &lt;code&gt;o2.inPurgeable=true;&lt;/code&gt; 追加しました。 &lt;code&gt;o2.inSampleSize=scale;&lt;/code&gt; 直後; 。</target>
+        </trans-unit>
+        <trans-unit id="9ff6aebc5a428a3373320888b302b859e74ecd31" translate="yes" xml:space="preserve">
+          <source>The &lt;a href=&quot;http://developer.android.com/reference/android/util/LruCache.html&quot;&gt;&lt;code&gt;LruCache&lt;/code&gt;&lt;/a&gt; has a good way to deal with bitmaps. However, in this application I put an instance of an &lt;code&gt;LruCache&lt;/code&gt; inside another cache class that I created in order to get the application more feasible.</source>
+          <target state="translated">&lt;a href=&quot;http://developer.android.com/reference/android/util/LruCache.html&quot;&gt; &lt;code&gt;LruCache&lt;/code&gt; に&lt;/a&gt;は、ビットマップを処理するための優れた方法があります。 ただし、このアプリケーションでは、アプリケーションをより実現可能にするために、 &lt;code&gt;LruCache&lt;/code&gt; のインスタンスを、作成した別のキャッシュクラス内に配置しました。</target>
+        </trans-unit>
+        <trans-unit id="64f673a944a2cbfbb517a096df3685f58f381856" translate="yes" xml:space="preserve">
+          <source>The &lt;a href=&quot;http://developer.android.com/training/index.html&quot;&gt;Android Training&lt;/a&gt; class, &quot;&lt;a href=&quot;http://developer.android.com/training/displaying-bitmaps/index.html&quot;&gt;Displaying Bitmaps Efficiently&lt;/a&gt;&quot;, offers some great information for understanding and dealing with the exception &lt;code&gt;java.lang.OutOfMemoryError: bitmap size exceeds VM budget&lt;/code&gt; when loading Bitmaps.</source>
+          <target state="translated">&lt;a href=&quot;http://developer.android.com/training/index.html&quot;&gt;Androidトレーニング&lt;/a&gt;クラスの「 &lt;a href=&quot;http://developer.android.com/training/displaying-bitmaps/index.html&quot;&gt;ビットマップを効率的に表示する&lt;/a&gt; 」は、例外 &lt;code&gt;java.lang.OutOfMemoryError: bitmap size exceeds VM budget&lt;/code&gt; ビットマップのロード時にVMの予算を超えていることを理解して処理するための優れた情報を提供します。</target>
+        </trans-unit>
+        <trans-unit id="6e661b93c0459b86a470bf78ee4b300cf5c24057" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;BitmapFactory&lt;/code&gt; class provides several decoding methods (&lt;code&gt;decodeByteArray()&lt;/code&gt;, &lt;code&gt;decodeFile()&lt;/code&gt;, &lt;code&gt;decodeResource()&lt;/code&gt;, etc.) for creating a &lt;code&gt;Bitmap&lt;/code&gt; from various sources. Choose the most appropriate decode method based on your image data source. These methods attempt to allocate memory for the constructed bitmap and therefore can easily result in an &lt;code&gt;OutOfMemory&lt;/code&gt; exception. Each type of decode method has additional signatures that let you specify decoding options via the &lt;code&gt;BitmapFactory.Options&lt;/code&gt; class. Setting the &lt;code&gt;inJustDecodeBounds&lt;/code&gt; property to &lt;code&gt;true&lt;/code&gt; while decoding avoids memory allocation, returning &lt;code&gt;null&lt;/code&gt; for the bitmap object but setting &lt;code&gt;outWidth&lt;/code&gt;, &lt;code&gt;outHeight&lt;/code&gt; and &lt;code&gt;outMimeType&lt;/code&gt;. This technique allows you to read the dimensions and type of the image data prior to construction (and memory allocation) of the bitmap.</source>
+          <target state="translated">&lt;code&gt;BitmapFactory&lt;/code&gt; クラスは、さまざまなソースから &lt;code&gt;Bitmap&lt;/code&gt; を作成するためのいくつかのデコードメソッド（ &lt;code&gt;decodeByteArray()&lt;/code&gt; 、 &lt;code&gt;decodeFile()&lt;/code&gt; 、 &lt;code&gt;decodeResource()&lt;/code&gt; など）を提供します。 画像データソースに基づいて、最も適切なデコード方法を選択します。 これらのメソッドは、構築されたビットマップにメモリを &lt;code&gt;OutOfMemory&lt;/code&gt; うとするため、簡単にOutOfMemory例外が発生する可能性があります。 デコードメソッドの各タイプには、 &lt;code&gt;BitmapFactory.Options&lt;/code&gt; クラスを介してデコードオプションを指定できる追加のシグネチャがあります。 デコード中に &lt;code&gt;inJustDecodeBounds&lt;/code&gt; プロパティを &lt;code&gt;true&lt;/code&gt; に設定すると、メモリ割り当てが回避され、ビットマップオブジェクトに対して &lt;code&gt;null&lt;/code&gt; が返されますが、 &lt;code&gt;outWidth&lt;/code&gt; 、 &lt;code&gt;outHeight&lt;/code&gt; 、および &lt;code&gt;outMimeType&lt;/code&gt; が設定されます。 この手法により、ビットマップの構築（およびメモリ割り当て）の前に、画像データのサイズとタイプを読み取ることができます。</target>
+        </trans-unit>
+        <trans-unit id="617f4327d13a0a613a5190e16101142d1b68a40b" translate="yes" xml:space="preserve">
+          <source>The Activity States are determined by the OS itself subject to the memory usage for each process and the priority of each process.</source>
+          <target state="translated">アクティビティ状態は、各プロセスのメモリ使用量と各プロセスの優先度に応じて、OS自身が決定します。</target>
+        </trans-unit>
+        <trans-unit id="417869f28c90577e509bcf77a07d44d70fbf0454" translate="yes" xml:space="preserve">
+          <source>The amount of memory you are willing to commit to loading this image given any other memory requirements of your application.</source>
+          <target state="translated">アプリケーションの他のメモリ要件を考慮して、この画像をロードするためにコミットしたいメモリの量。</target>
+        </trans-unit>
+        <trans-unit id="1a9e27d3055bbb1d01dcb44e5f8b8bb80b139083" translate="yes" xml:space="preserve">
+          <source>The condition for OOM is much simpler: {VM heap size} &amp;gt;= {VM heap size limit for the device}.</source>
+          <target state="translated">OOMの条件ははるかに単純です：{VMヒープサイズ}&amp;gt; = {デバイスのVMヒープサイズ制限}。</target>
+        </trans-unit>
+        <trans-unit id="5c046e88d1a921489d9dffe41d8908c149e21116" translate="yes" xml:space="preserve">
+          <source>The gist of it is to calculate the maximum memory allocated for the app on a particular device, then set the scale to be lowest possible without exceeding this memory. Here's the code:</source>
+          <target state="translated">要は、特定のデバイス上のアプリに割り当てられている最大メモリを計算して、このメモリを超えないように最小のスケールに設定するというものです。以下がそのコードです。</target>
+        </trans-unit>
+        <trans-unit id="c7906221e833c9985371afb28753819159d2d104" translate="yes" xml:space="preserve">
+          <source>The image preview on the list view is being done with the cursor and &lt;code&gt;ListAdapter&lt;/code&gt;. This makes it pretty simple, but I am not sure how I can put a resized image (I.e. Smaller bit size not pixel as the &lt;code&gt;src&lt;/code&gt; for the image button on the fly. So I just resized the image that came off the phone camera.</source>
+          <target state="translated">リストビューの画像プレビューは、カーソルと &lt;code&gt;ListAdapter&lt;/code&gt; を使用して行われます。 これでかなり簡単になりますが、サイズ変更した画像を配置する方法がわかりません（つまり、オンザフライで画像ボタンの &lt;code&gt;src&lt;/code&gt; としてピクセルではなくビットサイズを小さくします。したがって、電話のカメラから出た画像のサイズを変更しました。</target>
+        </trans-unit>
+        <trans-unit id="881de785d39773ca03137cf7aaf2b8fb8fbc92b5" translate="yes" xml:space="preserve">
+          <source>The images that are being downloaded are images (75x75) from Flickr. However, put whatever image urls you want to be processed, and the application will scale it down if it exceeds the maximum. In this application the urls are simply in a &lt;code&gt;String&lt;/code&gt; array.</source>
+          <target state="translated">ダウンロードされる画像は、Flickrからの画像（75x75）です。 ただし、処理する画像のURLは何でも入れてください。最大値を超えると、アプリケーションによって縮小されます。 このアプリケーションでは、URLは単に &lt;code&gt;String&lt;/code&gt; 配列になっています。</target>
+        </trans-unit>
+        <trans-unit id="8f9a96a13ca2ff8309b627254b404a92c7ccfb45" translate="yes" xml:space="preserve">
+          <source>The issue is that I get an out of memory error when it tries to go back and re-launch the 2nd activity.</source>
+          <target state="translated">問題は、それが戻って2番目のアクティビティを再起動しようとすると、メモリ切れのエラーが発生することです。</target>
+        </trans-unit>
+        <trans-unit id="1b3fe0b14ae50ce78dc0f11e36bb1bbae4dceb35" translate="yes" xml:space="preserve">
+          <source>Then, let's talk about SDK Starts from Honey Comb.</source>
+          <target state="translated">続いて、ハニカムからのSDKスタートの話をしましょう。</target>
+        </trans-unit>
+        <trans-unit id="7eb770ec595c754acc60ae25455a0c3d685c99f7" translate="yes" xml:space="preserve">
+          <source>There are two issues here....</source>
+          <target state="translated">ここには2つの問題があります...。</target>
+        </trans-unit>
+        <trans-unit id="92a822662c6a874d0c9af95dec02a3a2fec8f74d" translate="yes" xml:space="preserve">
+          <source>There is only one possible scenario where I can imagine that the OOM will appear, and that is if we download many, really big images, and before they get scaled and put into cache, will simultaneously take up more memory and cause an OOM. But that isn't even an ideal situation anyway and it most likely won't be possible to solve in a more feasible way.</source>
+          <target state="translated">それは、本当に大きな画像をたくさんダウンロードして、それらがスケーリングされてキャッシュに入る前に、同時により多くのメモリを消費して、OOMが発生するということです。しかし、それはいずれにせよ理想的な状況ではありませんし、最も可能性の高い方法で解決することは不可能でしょう。</target>
+        </trans-unit>
+        <trans-unit id="00d9ad0894bf0c0ece2432d8d50bce27ee712197" translate="yes" xml:space="preserve">
+          <source>This &lt;code&gt;inSampleSize&lt;/code&gt; option reduces memory consumption.</source>
+          <target state="translated">この &lt;code&gt;inSampleSize&lt;/code&gt; オプションは、メモリ消費を削減します。</target>
+        </trans-unit>
+        <trans-unit id="68151546c4f61ab7739aaa7c622046933070f857" translate="yes" xml:space="preserve">
+          <source>This code will help to load large bitmap from drawable</source>
+          <target state="translated">このコードは、描画可能なビットマップから大きなビットマップをロードするのに役立ちます。</target>
+        </trans-unit>
+        <trans-unit id="fc774592f32c7c998ede5a84451cdc61ee17210b" translate="yes" xml:space="preserve">
+          <source>This does not include:</source>
+          <target state="translated">これには含まれません。</target>
+        </trans-unit>
+        <trans-unit id="49741fc52da958e447dcb1d70d7f5bc8545bbfc3" translate="yes" xml:space="preserve">
+          <source>This is almost guaranteed to save you hours if not days. All that talk about scaling the image, etc. does not really work (unless you consider getting wrong size or degraded image a solution).</source>
+          <target state="translated">これは、数日ではないにしても数時間の節約になることがほぼ保証されています。画像の拡大縮小などの話は、実際には動作しません(間違ったサイズや劣化した画像を取得することを考慮しない限り)。</target>
+        </trans-unit>
+        <trans-unit id="1adf5fc889e0ac6a44110a0c1935d18af31dbcd2" translate="yes" xml:space="preserve">
+          <source>This is because AsyncTask is an instance of an anonymous inner class, it holds a reference of the Activity.</source>
+          <target state="translated">これは、AsyncTaskが匿名のインナークラスのインスタンスであるため、アクティビティの参照を保持しているからです。</target>
+        </trans-unit>
+        <trans-unit id="31c9695f6e300ed35b6c8a9e69cc4b8ae89fc837" translate="yes" xml:space="preserve">
+          <source>This issue only happens in Android emulators. I also faced this issue in an emulator but when I checked in a device then it worked fine.</source>
+          <target state="translated">この問題はAndroidエミュレータでのみ発生します。私もエミュレータでこの問題に直面しましたが、デバイスを確認したところ、問題なく動作しました。</target>
+        </trans-unit>
+        <trans-unit id="25fa0ce83b96a1bf53c72341f7de9287e367373c" translate="yes" xml:space="preserve">
+          <source>This method makes it easy to load a bitmap of arbitrarily large size into an &lt;code&gt;ImageView&lt;/code&gt; that displays a 100x100 pixel thumbnail, as shown in the following example code:</source>
+          <target state="translated">このメソッドを使用すると、次のコード例に示すように、100x100ピクセルのサムネイルを表示する任意のサイズのビットマップを &lt;code&gt;ImageView&lt;/code&gt; に簡単にロードできます。</target>
+        </trans-unit>
+        <trans-unit id="b412b9ffc3f40429c9fd4b3c3a6e26c29f0579ef" translate="yes" xml:space="preserve">
+          <source>This seems like the appropriate place to share my utility class for loading and processing images with the community, you are welcome to use it and modify it freely.</source>
+          <target state="translated">ここは、画像を読み込んで処理するための私のユーティリティクラスをコミュニティで共有するのに適した場所のように思えます。</target>
+        </trans-unit>
+        <trans-unit id="3c22f297ce30d1437a3a031b9295e728495fda9d" translate="yes" xml:space="preserve">
+          <source>This will work because the actual binary data of the decoded bitmap is not stored within the dalvik VM heap. It is stored externally. So every time you decode a bitmap, it allocates memory outside of VM heap which is never reclaimed by GC</source>
+          <target state="translated">これは、デコードされたビットマップの実際のバイナリデータがdalvik VMヒープ内に格納されていないために動作します。外部に格納されています。そのため、ビットマップをデコードするたびに、VM ヒープの外側にメモリを割り当てます。</target>
+        </trans-unit>
+        <trans-unit id="083571b73e7037527d98deb441337ef37561d9e3" translate="yes" xml:space="preserve">
+          <source>This worked for me!</source>
+          <target state="translated">これは私には効果がありました!</target>
+        </trans-unit>
+        <trans-unit id="ff3cc37ab695a425aff6adea4152c406e697b6ca" translate="yes" xml:space="preserve">
+          <source>This works for me.</source>
+          <target state="translated">これは私には効き目があります。</target>
+        </trans-unit>
+        <trans-unit id="b83a9cea18feba16553b9bcfb40c0d66a03ef1d7" translate="yes" xml:space="preserve">
+          <source>This would be preferable as I also need to make some changes to the properties of the widgets/elements in each row as I am unable to select a row with the touch screen because of the focus issue. (&lt;em&gt;I can use roller ball.&lt;/em&gt;)</source>
+          <target state="translated">フォーカスの問題のためにタッチスクリーンで行を選択できないため、各行のウィジェット/要素のプロパティにも変更を加える必要があるため、これは望ましい方法です。 （ &lt;em&gt;ローラーボールが使用できます。&lt;/em&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="d1c0eb4e84c2af1b6622c8a4e7d4606247637ac5" translate="yes" xml:space="preserve">
+          <source>To avoid &lt;code&gt;java.lang.OutOfMemory&lt;/code&gt; exceptions, check the dimensions of a bitmap before decoding it, unless you absolutely trust the source to provide you with predictably sized image data that comfortably fits within the available memory.</source>
+          <target state="translated">&lt;code&gt;java.lang.OutOfMemory&lt;/code&gt; 例外を回避するには、デコードする前にビットマップのサイズを確認します。ただし、利用可能なメモリ内に快適に収まる予測可能なサイズの画像データを提供することがソースから完全に信頼されている場合を除きます。</target>
+        </trans-unit>
+        <trans-unit id="48d70a72fc4b6b1e69ce7fd5a7aec59543dba56c" translate="yes" xml:space="preserve">
+          <source>To fix the OutOfMemory error, you should do something like this:</source>
+          <target state="translated">OutOfMemoryエラーを修正するには、次のようにします。</target>
+        </trans-unit>
+        <trans-unit id="65b13cbd1e14b5560d947288d163d6c54a93a42b" translate="yes" xml:space="preserve">
+          <source>To help you better appreciate this, imagine you have kept ur image in the drawable folder. You just get the image by doing a getResources().getDrwable(R.drawable.). This will NOT decode your image everytime but re-use an already decoded instance everytime you call it. So in essence it is cached.</source>
+          <target state="translated">これをよりよく理解するために、あなたが画像をdrawableフォルダに保存していると想像してみてください。画像は getResources().getDrwable(R.drawable.)で取得します。これは毎回画像をデコードするのではなく、呼び出すたびに既にデコードされたインスタンスを再利用します。つまり、本質的にはキャッシュされているということです。</target>
+        </trans-unit>
+        <trans-unit id="71eb65994b8a42ceb4636801be75eb60cea6fbf4" translate="yes" xml:space="preserve">
+          <source>To tell the decoder to subsample the image, loading a smaller version into memory, set &lt;code&gt;inSampleSize&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; in your &lt;code&gt;BitmapFactory.Options&lt;/code&gt; object. For example, an image with resolution 2048x1536 that is decoded with an &lt;code&gt;inSampleSize&lt;/code&gt; of 4 produces a bitmap of approximately 512x384. Loading this into memory uses 0.75MB rather than 12MB for the full image (assuming a bitmap configuration of &lt;code&gt;ARGB_8888&lt;/code&gt;). Here&amp;rsquo;s a method to calculate a sample size value that is a power of two based on a target width and height:</source>
+          <target state="translated">デコーダーにイメージをサブサンプリングして、より小さいバージョンをメモリにロードするように &lt;code&gt;inSampleSize&lt;/code&gt; するには、 &lt;code&gt;BitmapFactory.Options&lt;/code&gt; オブジェクトでinSampleSizeを &lt;code&gt;true&lt;/code&gt; に設定します。 たとえば、 &lt;code&gt;inSampleSize&lt;/code&gt; が4でデコードされた解像度2048x1536の画像は、約512x384のビットマップを生成します。 これをメモリにロードすると、フルイメージに12MBではなく0.75MBが使用されます（ &lt;code&gt;ARGB_8888&lt;/code&gt; のビットマップ構成を想定 ）。 ターゲットの幅と高さに基づいて2の累乗であるサンプルサイズ値を計算する方法を次に示します。</target>
+        </trans-unit>
+        <trans-unit id="df352c8e2d07bd2d7dbdef1797f9c0346e5ecc46" translate="yes" xml:space="preserve">
+          <source>To use this method, first decode with &lt;code&gt;inJustDecodeBounds&lt;/code&gt; set to &lt;code&gt;true&lt;/code&gt;, pass the options through and then decode again using the new &lt;code&gt;inSampleSize&lt;/code&gt; value and &lt;code&gt;inJustDecodeBounds&lt;/code&gt; set to &lt;code&gt;false&lt;/code&gt;:</source>
+          <target state="translated">このメソッドを使用するには、最初に &lt;code&gt;inJustDecodeBounds&lt;/code&gt; を &lt;code&gt;true&lt;/code&gt; に設定してデコードし、オプションを通過させてから、新しい &lt;code&gt;inSampleSize&lt;/code&gt; 値と &lt;code&gt;inJustDecodeBounds&lt;/code&gt; を &lt;code&gt;false&lt;/code&gt; に設定してもう一度デコードします 。</target>
+        </trans-unit>
+        <trans-unit id="9749e1bdd9779ff26905faf23b25fa0ee6ff24a1" translate="yes" xml:space="preserve">
+          <source>Use &lt;em&gt;one eighth&lt;/em&gt; of the assigned application memory to the cache (modify if you want)</source>
+          <target state="translated">割り当てられたアプリケーションメモリの&lt;em&gt;8分&lt;/em&gt;の&lt;em&gt;1を&lt;/em&gt;キャッシュに使用する（必要に応じて変更）</target>
+        </trans-unit>
+        <trans-unit id="086b109c2c71c8a21f0af357fec8c21ffee53f19" translate="yes" xml:space="preserve">
+          <source>Use this &lt;code&gt;bitmap.recycle();&lt;/code&gt; This helps without any image quality issue.</source>
+          <target state="translated">この &lt;code&gt;bitmap.recycle();&lt;/code&gt; 使用してください。 これにより、画質の問題がなくなります。</target>
+        </trans-unit>
+        <trans-unit id="9b4efae91171efc758e907e192f453bd7adb8a6a" translate="yes" xml:space="preserve">
+          <source>VM Heap size will never shrink after grown, even if the allocated VM memory is shrinked.</source>
+          <target state="translated">割り当てられたVMメモリが縮小されても、VMヒープサイズは成長した後も縮小しません。</target>
+        </trans-unit>
+        <trans-unit id="5e5a09a5ae7dbdb06951a426b6cf158547b19325" translate="yes" xml:space="preserve">
+          <source>When I would get half way down the listview it would crash.</source>
+          <target state="translated">リストビューの途中でクラッシュしてしまった。</target>
+        </trans-unit>
+        <trans-unit id="c945a308d354091e2330620c81c8a0b0221e3e9f" translate="yes" xml:space="preserve">
+          <source>Where &lt;code&gt;R.id.imagefilename&lt;/code&gt; is a &lt;code&gt;ButtonImage&lt;/code&gt;.</source>
+          <target state="translated">ここで、 &lt;code&gt;R.id.imagefilename&lt;/code&gt; は &lt;code&gt;ButtonImage&lt;/code&gt; です。</target>
+        </trans-unit>
+        <trans-unit id="684e0710b7cc05acc8e388e5c53bb6116373051f" translate="yes" xml:space="preserve">
+          <source>You can download the source code from &lt;a href=&quot;https://www.dropbox.com/s/pvr9zyl811tfeem/ListViewImageCache.zip&quot;&gt;https://www.dropbox.com/s/pvr9zyl811tfeem/ListViewImageCache.zip&lt;/a&gt;.</source>
+          <target state="translated">ソースコードは&lt;a href=&quot;https://www.dropbox.com/s/pvr9zyl811tfeem/ListViewImageCache.zip&quot;&gt;https://www.dropbox.com/s/pvr9zyl811tfeem/ListViewImageCache.zip&lt;/a&gt;からダウンロードできます。</target>
+        </trans-unit>
+        <trans-unit id="73628b41fb9b25c155a21421306fbcce58da58cd" translate="yes" xml:space="preserve">
+          <source>You can follow a similar process to decode bitmaps from other sources, by substituting the appropriate &lt;code&gt;BitmapFactory.decode*&lt;/code&gt; method as needed.</source>
+          <target state="translated">同様のプロセスに従って、必要に応じて適切な &lt;code&gt;BitmapFactory.decode*&lt;/code&gt; メソッドを置き換えることにより、他のソースからのビットマップをデコードできます。</target>
+        </trans-unit>
+        <trans-unit id="d794139a87d2b32089b831dc7c4fa49a35269032" translate="yes" xml:space="preserve">
+          <source>You can see it yourself in the App. If an Activity executed an AsyncTask that was still running after the Activity was destroyed, the Activity will not get garbage collected until the AsyncTask finish.</source>
+          <target state="translated">アプリを見ればわかると思います。Activityが破棄された後も実行中のAsyncTaskを実行した場合、AsyncTaskが終了するまでそのActivityはガベージコレクタを取得しません。</target>
+        </trans-unit>
+        <trans-unit id="356ca3448e5ea9eaa98cc0e959d7e34c0f22fa35" translate="yes" xml:space="preserve">
+          <source>You may consider the size and the resolution for each of the bitmap pictures used. I recommend to reduce the size ,resample to lower resolution , refer to the design of galleries (one small picture PNG , and one original picture.)</source>
+          <target state="translated">使用するビットマップ画像は、それぞれのサイズや解像度を考慮する必要があります。サイズを小さくしたり、低解像度にリサンプルしたり、ギャラリーのデザインを参考にすることをお勧めします。</target>
+        </trans-unit>
+        <trans-unit id="bc28a9e5ebe1b3b73a20e45e1b52656870567674" translate="yes" xml:space="preserve">
+          <source>You shouldn't need to edit anything in the Cache.java file unless you want to implement disk caching.</source>
+          <target state="translated">ディスク・キャッシングを実装する場合を除き、Cache.java ファイル内の何も編集する必要はありません。</target>
+        </trans-unit>
+        <trans-unit id="0dd213f54445d617f4d98ac140097719d49229b9" translate="yes" xml:space="preserve">
+          <source>a) scaling my images by a factor of 2</source>
+          <target state="translated">a)画像を2倍に拡大縮小する</target>
+        </trans-unit>
+        <trans-unit id="72edad72ee3b57cafab52ff580d94c36c4e6e792" translate="yes" xml:space="preserve">
+          <source>and this is on C# monodroid.
+you can easily change the path of the image. what important here is the options to be set.</source>
+          <target state="translated">そして、これはC#のmonodroid上にあります。あなたは簡単に画像のパスを変更することができます。ここで重要なのは、設定するオプションです。</target>
+        </trans-unit>
+        <trans-unit id="06449e6b2554561f87ea44d1680df513c4824509" translate="yes" xml:space="preserve">
+          <source>b) using &lt;a href=&quot;http://square.github.io/picasso/&quot;&gt;Picasso&lt;/a&gt; library in my custom Adapter for a ListView, with a one-call in getView like this: &lt;code&gt;Picasso.with(context).load(R.id.myImage).into(R.id.myImageView);&lt;/code&gt;</source>
+          <target state="translated">b）ListViewのカスタムアダプタで&lt;a href=&quot;http://square.github.io/picasso/&quot;&gt;Picasso&lt;/a&gt;ライブラリを使用し、次のように &lt;code&gt;Picasso.with(context).load(R.id.myImage).into(R.id.myImageView);&lt;/code&gt; で1回の呼び出しを行う： Picasso.with（context）.load（R.id.myImage）.into（R.id.myImageView）;</target>
+        </trans-unit>
+        <trans-unit id="960910ee56ce1c0c3410dd1ea2d9f24f2b9318b6" translate="yes" xml:space="preserve">
+          <source>for more please refer &lt;a href=&quot;http://developer.android.com/training/displaying-bitmaps/load-bitmap.html&quot;&gt;&lt;em&gt;this&lt;/em&gt;&lt;/a&gt;</source>
+          <target state="translated">詳しくはこちらをご覧ください</target>
+        </trans-unit>
+        <trans-unit id="fe3747eb4c904bbf243426b3a4782c70145ee206" translate="yes" xml:space="preserve">
+          <source>then i have worked to solve this issue &amp;amp; finally i've made the below improvement to Fedor's(All Credit to Fedor for making such a nice solution) code :)</source>
+          <target state="translated">それから私はこの問題を解決するために取り組んだ＆最後に私はFedorの（そのような素晴らしい解決策を作るためのFedorへのすべての信用）コードに以下の改善をしました:)</target>
+        </trans-unit>
+        <trans-unit id="5f200676e9d06c0a40c448510bed16ff1a13ccc7" translate="yes" xml:space="preserve">
+          <source>use these code for every image in select from SdCard or drewable to convert bitmap object.</source>
+          <target state="translated">これらのコードは、SdCardから選択した画像やdrewableから選択した画像に対して、ビットマップオブジェクトを変換するために使用します。</target>
+        </trans-unit>
+        <trans-unit id="beaddbd6b6bb9f62d2328be436e8d976a5b4fe6e" translate="yes" xml:space="preserve">
+          <source>use your image path instend of &lt;strong&gt;ImageData_Path.get(img_pos).getPath()&lt;/strong&gt; .</source>
+          <target state="translated">&lt;strong&gt;ImageData_Path.get（img_pos）.getPath（）の&lt;/strong&gt;イメージパスインスタンスを使用します。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

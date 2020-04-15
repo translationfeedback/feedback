@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/136097">
+    <body>
+      <group id="136097">
+        <trans-unit id="aa144f0df0c14097f3b8e4a435d288dd748a60f2" translate="yes" xml:space="preserve">
+          <source>1 - we can directly call static and classmethods without initializing</source>
+          <target state="translated">1-我们可以直接调用static和classmethods,而不需要初始化</target>
+        </trans-unit>
+        <trans-unit id="0a9d3e4d0a97cf241ef520fe2f9fed00affd565a" translate="yes" xml:space="preserve">
+          <source>2- Static method cannot call self method but can call other static and classmethod</source>
+          <target state="translated">2-static方法不能调用self方法,但可以调用其他static和classmethod。</target>
+        </trans-unit>
+        <trans-unit id="ba80ec9d2d639befa7d404721881b5c7d98cdae9" translate="yes" xml:space="preserve">
+          <source>3- Static method belong to class and will not use object at all.</source>
+          <target state="translated">3-静态方法属于类,完全不会使用对象。</target>
+        </trans-unit>
+        <trans-unit id="e8c0b69e76c3b6c611154e992cff7ec6523a7c8d" translate="yes" xml:space="preserve">
+          <source>4- Class method are not bound to an object but to a class.</source>
+          <target state="translated">4-类方法不是与对象绑定,而是与类绑定。</target>
+        </trans-unit>
+        <trans-unit id="2c410662ef68a73ded71a185123e3a9bdd483a53" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://rapd.wordpress.com/2008/07/02/python-staticmethod-vs-classmethod/&quot;&gt;Here&lt;/a&gt; is a short article on this question</source>
+          <target state="translated">&lt;a href=&quot;http://rapd.wordpress.com/2008/07/02/python-staticmethod-vs-classmethod/&quot;&gt;这&lt;/a&gt;是关于这个问题的简短文章</target>
+        </trans-unit>
+        <trans-unit id="ecef4db1810048a106a04d647a7cecab4f8eae51" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://julien.danjou.info/blog/2013/guide-python-static-class-abstract-methods&quot;&gt;The definitive guide on how to use static, class or abstract methods in Python&lt;/a&gt; is one good link for this topic, and summary it as following.</source>
+          <target state="translated">&lt;a href=&quot;https://julien.danjou.info/blog/2013/guide-python-static-class-abstract-methods&quot;&gt;关于如何在Python中使用静态，类或抽象方法的权威指南&lt;/a&gt;是该主题的一个很好的链接，并总结如下。</target>
+        </trans-unit>
+        <trans-unit id="666e477109d5e8dbab875d1af9b39529b55a2804" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;@staticmethod&lt;/code&gt; just disables the default function as method descriptor.  classmethod wraps your function in a container callable that passes a reference to the owning class as first argument:</source>
+          <target state="translated">&lt;code&gt;@staticmethod&lt;/code&gt; 只是禁用默认函数作为方法描述符。 classmethod将函数包装在可调用的容器中，该容器将对拥有类的引用作为第一个参数传递：</target>
+        </trans-unit>
+        <trans-unit id="9f1da008aee7e1bacb91f2808d9ff3a6fe24d3c6" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;a&lt;/code&gt; is bound to &lt;code&gt;foo&lt;/code&gt;. That is what is meant by the term &quot;bound&quot; below:</source>
+          <target state="translated">&lt;code&gt;a&lt;/code&gt; 绑定到 &lt;code&gt;foo&lt;/code&gt; 。 这就是下面的术语&amp;ldquo;绑定&amp;rdquo;的含义：</target>
+        </trans-unit>
+        <trans-unit id="63e351f5e858a7fd0d48a6e4d6759d19a111bf63" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;classmethod&lt;/code&gt; is mostly used for alternative constructors.</source>
+          <target state="translated">&lt;code&gt;classmethod&lt;/code&gt; 主要用于替代构造函数。</target>
+        </trans-unit>
+        <trans-unit id="7f77acaab87e00fe6a0a1c10f99432922bf13570" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;foo&lt;/code&gt; is just a function, but when you call &lt;code&gt;a.foo&lt;/code&gt; you don't just get the function,
+you get a &quot;partially applied&quot; version of the function with the object instance &lt;code&gt;a&lt;/code&gt; bound as the first argument to the function. &lt;code&gt;foo&lt;/code&gt; expects 2 arguments, while &lt;code&gt;a.foo&lt;/code&gt; only expects 1 argument.</source>
+          <target state="translated">&lt;code&gt;foo&lt;/code&gt; 只是一个函数，但是当您调用 &lt;code&gt;a.foo&lt;/code&gt; 时，您不仅会得到函数，还会得到函数的&amp;ldquo;部分应用&amp;rdquo;版本，其中对象实例绑定为函数的第一个参数。 &lt;code&gt;foo&lt;/code&gt; 需要2个参数，而 &lt;code&gt;a.foo&lt;/code&gt; 仅需要1个参数。</target>
+        </trans-unit>
+        <trans-unit id="4c7321399c70f406d6b983cba08f69f8710b39a6" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;staticmethod&lt;/code&gt; does not use the state of the object. It could be a function external to a class. It only put inside the class for grouping functions with similar functionality (for example, like Java's &lt;code&gt;Math&lt;/code&gt; class static methods)</source>
+          <target state="translated">&lt;code&gt;staticmethod&lt;/code&gt; 不使用对象的状态。 它可能是类外部的函数。 它仅放在类中以对具有相似功能的函数进行分组（例如，类似于Java的 &lt;code&gt;Math&lt;/code&gt; 类静态方法）</target>
+        </trans-unit>
+        <trans-unit id="70ebfa84e6baeaba89a1999620a95d79a3a014c4" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Factory methods&lt;/em&gt;, that are used to create an instance for a class using for example some sort of pre-processing.</source>
+          <target state="translated">&lt;em&gt;工厂方法&lt;/em&gt; ，用于使用例如某种预处理为类创建实例。</target>
+        </trans-unit>
+        <trans-unit id="19768dccc2b9e420935daf19e8803203ed16eed2" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Static methods calling static methods&lt;/em&gt;: if you split a static methods in several static methods, you shouldn't hard-code the class name but use class methods</source>
+          <target state="translated">&lt;em&gt;静态方法调用静态方法&lt;/em&gt; ：如果将静态方法拆分为多个静态方法，则不应硬编码类名，而应使用类方法</target>
+        </trans-unit>
+        <trans-unit id="3d87acdab3eddbb193a6102f1a2534880a4189a4" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;@classmethod&lt;/code&gt;&lt;/strong&gt; function also callable without instantiating the class, but its definition follows Sub class, not Parent class, via inheritance, can be overridden by subclass. That&amp;rsquo;s because the first argument for &lt;code&gt;@classmethod&lt;/code&gt; function must always be &lt;em&gt;cls&lt;/em&gt; (class).</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;@classmethod&lt;/code&gt; &lt;/strong&gt;函数也可以在不实例化类的情况下调用，但是其定义遵循子类，而不是父类，通过继承可以被子类覆盖。 这是因为 &lt;code&gt;@classmethod&lt;/code&gt; 函数的第一个参数必须始终为&lt;em&gt;cls&lt;/em&gt; （类）。</target>
+        </trans-unit>
+        <trans-unit id="07183b14ce2b254988723cad943c35fde62379ba" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;@staticmethod&lt;/code&gt;&lt;/strong&gt; function is nothing more than a function defined inside a class. It is callable without instantiating the class first. It&amp;rsquo;s definition is immutable via inheritance.</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;@staticmethod&lt;/code&gt; &lt;/strong&gt;函数不过是在类内部定义的函数。 可调用而无需先实例化该类。 它的定义通过继承是不可变的。</target>
+        </trans-unit>
+        <trans-unit id="2b6a30c8a4feebc05c4e9619c9402923e2918c46" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Benefits of Static Methods:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;静态方法的好处：&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4541e7106f30501f486b234e7f532b33217c8233" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Class Method:&lt;/strong&gt; Python unlike Java and C++ doesn't have constructor overloading.  And so to achieve this you could use &lt;code&gt;classmethod&lt;/code&gt;. Following example will explain this</source>
+          <target state="translated">&lt;strong&gt;类方法：&lt;/strong&gt;与Java和C ++不同，Python没有构造函数重载。 因此，可以使用 &lt;code&gt;classmethod&lt;/code&gt; 实现此目的。 以下示例将对此进行解释</target>
+        </trans-unit>
+        <trans-unit id="477db5eb89c8f164a4c2adb5b5140970f46c9422" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Class Methods:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;类方法：&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="230a3084a5494570dbc2dcf3a00d2e16eaa9ab0a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Difference:&lt;/strong&gt; A classmethod will receive the class itself as the first argument, while a staticmethod does not.</source>
+          <target state="translated">&lt;strong&gt;区别：&lt;/strong&gt;类方法将接收类本身作为第一个参数，而静态方法则不接收。</target>
+        </trans-unit>
+        <trans-unit id="cb38e8b8db4a863b4a43406d1c1edbe185ca4988" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Official python docs:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;官方python文档：&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f8000d9e43119e78c3dc28894c99b6e45fdf6129" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Only the first argument differs&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;只有第一个参数不同&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="f9f5eb385e646bdeefe41d0134d9298e151d0ad6" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Similarity:&lt;/strong&gt; Both of them can be called on the &lt;em&gt;Class&lt;/em&gt; itself, rather than just the &lt;em&gt;instance&lt;/em&gt; of the class. So, both of them in a sense are &lt;em&gt;Class's methods&lt;/em&gt;.</source>
+          <target state="translated">&lt;strong&gt;相似：&lt;/strong&gt;两者都可以在&lt;em&gt;类&lt;/em&gt;本身上调用，而不仅仅是类的&lt;em&gt;实例&lt;/em&gt; 。 因此，从某种意义上来说，它们都是&lt;em&gt;Class的方法&lt;/em&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="13b294aa2a66fd79cfa2fa74b88dff29e3a58028" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Static Method:&lt;/strong&gt; This is rather simple, it's not bound to instance or class and you can simply call that using class name.</source>
+          <target state="translated">&lt;strong&gt;静态方法：&lt;/strong&gt;这很简单，它不受实例或类的约束，您可以使用类名简单地调用它。</target>
+        </trans-unit>
+        <trans-unit id="e01b6d5fbe10be46aaf391a840622400eeaba30e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Static Methods:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;静态方法：&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5e7552d839770842e4bdc41f92fe9f44d288df33" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;With classmethods&lt;/strong&gt;, the class of the object instance is implicitly passed as the first argument instead of &lt;code&gt;self&lt;/code&gt;.</source>
+          <target state="translated">&lt;strong&gt;使用classmethods时&lt;/strong&gt; ，对象实例的类作为第一个参数而不是 &lt;code&gt;self&lt;/code&gt; 隐式传递。</target>
+        </trans-unit>
+        <trans-unit id="a432d953e1017402a8688be133f46b1f6662056f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;With staticmethods&lt;/strong&gt;, neither &lt;code&gt;self&lt;/code&gt; (the object instance) nor  &lt;code&gt;cls&lt;/code&gt; (the class) is implicitly passed as the first argument. They behave like plain functions except that you can call them from an instance or the class:</source>
+          <target state="translated">&lt;strong&gt;使用staticmethods时&lt;/strong&gt; ， &lt;code&gt;self&lt;/code&gt; （对象实例）和 &lt;code&gt;cls&lt;/code&gt; （类）都不会隐式传递为第一个参数。 它们的行为类似于普通函数，只是您可以从实例或类中调用它们：</target>
+        </trans-unit>
+        <trans-unit id="90bbd0ef7a61c3f762a030a3fabe6121f8aa5f09" translate="yes" xml:space="preserve">
+          <source>@classmethod</source>
+          <target state="translated">@classmethod</target>
+        </trans-unit>
+        <trans-unit id="1b87c7f5dd2ac6a4b5c6f0928185ece8eefb7bfa" translate="yes" xml:space="preserve">
+          <source>@classmethod : can be used to create a shared global access to all the instances created of that class..... like updating a record by multiple users....
+I particulary found it use ful when creating singletons as well..:)</source>
+          <target state="translated">@classmethod:可以用来创建一个共享的全局访问该类的所有实例...........就像多个用户更新记录一样.........。我特别发现它在创建singlelet时也很有用.....:)</target>
+        </trans-unit>
+        <trans-unit id="44ef4b40d79513b33f7f9ae604039ccb1774d51f" translate="yes" xml:space="preserve">
+          <source>@classmethod allows you easy access to private members that are associated to the class definition. this is a great way to do singletons, or factory classes that control the number of instances of the created objects exist.</source>
+          <target state="translated">@classmethod允许你轻松地访问与类定义相关联的私有成员,这是一个很好的方法来做单子类或工厂类,控制所创建对象的实例数量。</target>
+        </trans-unit>
+        <trans-unit id="cd8d342a5b4d72e4e7a0daeb849290be2f41e7e1" translate="yes" xml:space="preserve">
+          <source>@classmethod function also callable without instantiating the class, but its definition follows Sub class, not Parent class, via inheritance. That&amp;rsquo;s because the first argument for @classmethod function must always be cls (class).</source>
+          <target state="translated">@classmethod函数也可以在不实例化类的情况下调用，但其定义是通过继承遵循Sub类而不是Parent类。 这是因为@classmethod函数的第一个参数必须始终为cls（类）。</target>
+        </trans-unit>
+        <trans-unit id="1800b3976c1e687a9ed79d2d3b2072083ebcd591" translate="yes" xml:space="preserve">
+          <source>@decorators were added in python 2.4 If you're using python &amp;lt; 2.4 you can use the classmethod() and staticmethod() function.</source>
+          <target state="translated">@decorators是在python 2.4中添加的。如果您使用的是python &amp;lt;2.4，则可以使用classmethod（）和staticmethod（）函数。</target>
+        </trans-unit>
+        <trans-unit id="f7625edc6b9228ed3988e14a71b1981c5ed03102" translate="yes" xml:space="preserve">
+          <source>@static method:  has nothing to do with the class or instance being associated with ...but for readability can use static method</source>
+          <target state="translated">@static方法:与类或实例无关....但为了可读性,可以使用static方法。</target>
+        </trans-unit>
+        <trans-unit id="a7e9e685ffa9bc2ea7a32b2ca97495fffb98da72" translate="yes" xml:space="preserve">
+          <source>@staticmethod</source>
+          <target state="translated">@staticmethod</target>
+        </trans-unit>
+        <trans-unit id="316937114375aa711e02d313c11e07624f951988" translate="yes" xml:space="preserve">
+          <source>@staticmethod function is nothing more than a function defined inside a class. It is callable without instantiating the class first. It&amp;rsquo;s definition is immutable via inheritance.</source>
+          <target state="translated">@staticmethod函数不过是在类内部定义的函数。 可调用而无需先实例化该类。 它的定义通过继承是不可变的。</target>
+        </trans-unit>
+        <trans-unit id="07d2b2c31d4856ae66f1901996734386b80a1c1e" translate="yes" xml:space="preserve">
+          <source>@staticmethod provides marginal performance gains, but I have yet to see a productive use of a static method within a class that couldn't be achieved as a standalone function outside the class.</source>
+          <target state="translated">@staticmethod提供了边际上的性能提升,但我还没有看到一个类内的静态方法在类外作为一个独立的函数无法实现的有效使用。</target>
+        </trans-unit>
+        <trans-unit id="43b64154609a96d68266675199015630093e6d25" translate="yes" xml:space="preserve">
+          <source>A &lt;strong&gt;classmethod&lt;/strong&gt;, on the other hand, is a method that gets passed the class it was called on, or the class of the instance it was called on, as first argument. This is useful when you want the method to be a factory for the class: since it gets the actual class it was called on as first argument, you can always instantiate the right class, even when subclasses are involved. Observe for instance how &lt;code&gt;dict.fromkeys()&lt;/code&gt;, a classmethod, returns an instance of the subclass when called on a subclass:</source>
+          <target state="translated">另一方面， &lt;strong&gt;classmethod&lt;/strong&gt;是一种方法，它会将调用它的类或调用它的实例的类作为第一个参数传递。 当您希望该方法成为类的工厂时，这很有用：由于它获得了作为第一个参数调用的实际类，因此即使涉及子类，也始终可以实例化正确的类。 例如，观察当调用子类时，类方法 &lt;code&gt;dict.fromkeys()&lt;/code&gt; 如何返回子类的实例：</target>
+        </trans-unit>
+        <trans-unit id="ea9ca6bfe7447631d34a67f0f001a61c11f0d90e" translate="yes" xml:space="preserve">
+          <source>A &lt;strong&gt;staticmethod&lt;/strong&gt; is a method that knows nothing about the class or instance it was called on. It just gets the arguments that were passed, no implicit first argument. It is basically useless in Python -- you can just use a module function instead of a staticmethod.</source>
+          <target state="translated">&lt;strong&gt;静态&lt;/strong&gt;方法是一种对所调用的类或实例一无所知的方法。 它只是获取传递的参数，没有隐式的第一个参数。 它在Python中基本上是没有用的-您可以只使用模块函数而不是静态方法。</target>
+        </trans-unit>
+        <trans-unit id="fdf2945b9c4df3d30c98cd6d026d7f48f4cc3d83" translate="yes" xml:space="preserve">
+          <source>A class method is a similar to an instance method in that it takes an implicit first argument, but instead of taking the instance, it takes the class. Frequently these are used as alternative constructors for better semantic usage and it will support inheritance.</source>
+          <target state="translated">类方法类似于实例方法,它接受一个隐含的第一个参数,但它不接受实例,而是接受类。通常情况下,为了更好的语义使用,这些方法被用作替代构造函数,它将支持继承。</target>
+        </trans-unit>
+        <trans-unit id="7bcf63323ea71d67fbe14ff17405e56e9914d012" translate="yes" xml:space="preserve">
+          <source>A class method receives the class as
+  implicit first argument, just like an
+  instance method receives the instance.
+  To declare a class method, use this
+  idiom:</source>
+          <target state="translated">类方法接收类作为隐式的第一个参数,就像实例方法接收实例一样。要声明一个类方法,可以使用这个成语。</target>
+        </trans-unit>
+        <trans-unit id="3d92730dcf5e8db0d25f10bd3fd12e7e4523c413" translate="yes" xml:space="preserve">
+          <source>A class method receives the class as implicit first argument, just like an instance method receives the instance. It is a method which is bound to the class and not the object of the class.It has access to the state of the class as it takes a class parameter that points to the class and not the object instance. It can modify a class state that would apply across all the instances of the class. For example it can modify a class variable that will be applicable to all the instances.</source>
+          <target state="translated">类方法接收类作为隐式的第一个参数,就像实例方法接收实例一样。它是一个被绑定到类而不是类的对象的方法,它可以访问类的状态,因为它接受了一个指向类而不是对象实例的类参数。它可以修改一个类的状态,这个状态将适用于该类的所有实例。例如,它可以修改一个类的变量,该变量将适用于所有的实例。</target>
+        </trans-unit>
+        <trans-unit id="4f544cf2ef41a072f58086b28f8ecb1cc39d4746" translate="yes" xml:space="preserve">
+          <source>A normal method of a class is an implicit &lt;strong&gt;dynamic&lt;/strong&gt; method which takes the instance as first argument.</source>
+          <target state="translated">类的常规方法是将实例作为第一个参数的隐式&lt;strong&gt;动态&lt;/strong&gt;方法。</target>
+        </trans-unit>
+        <trans-unit id="2b07004d7733b00054b2d72c8854d6ba07c831e3" translate="yes" xml:space="preserve">
+          <source>A quick hack-up ofotherwise identical methods in iPython reveals that &lt;code&gt;@staticmethod&lt;/code&gt; yields marginal performance gains (in the nanoseconds), but otherwise it seems to serve no function. Also, any performance gains will probably be wiped out by the additional work of processing the method through &lt;code&gt;staticmethod()&lt;/code&gt; during compilation (which happens prior to any code execution when you run a script).</source>
+          <target state="translated">在iPython中快速对其他相同方法进行了分析，结果表明 &lt;code&gt;@staticmethod&lt;/code&gt; 会产生少量的性能提升（以纳秒为单位），但否则似乎无法起作用。 另外，在编译过程中通过 &lt;code&gt;staticmethod()&lt;/code&gt; 处理该方法的其他工作（在运行脚本的任何代码执行之前都会发生）的其他工作可能会抹掉任何性能提升。</target>
+        </trans-unit>
+        <trans-unit id="174b86cd307a93d7ede9985e59dfb55608a534c0" translate="yes" xml:space="preserve">
+          <source>A static method does not receive an
+  implicit first argument. To declare a
+  static method, use this idiom:</source>
+          <target state="translated">静态方法不接受隐式的第一个参数。要声明一个静态方法,请使用这个成语。</target>
+        </trans-unit>
+        <trans-unit id="d1a64bfff8220829f5366f3b2a593cfff2896ad2" translate="yes" xml:space="preserve">
+          <source>A staticmethod is indeed such a normal function the same as those outside a class definition.</source>
+          <target state="translated">staticmethod确实是这样一个正常的函数,和类定义之外的函数是一样的。</target>
+        </trans-unit>
+        <trans-unit id="d402c4c27f3621c9392d6c31422a842c2a7bd1bf" translate="yes" xml:space="preserve">
+          <source>Also observe that this is a good example for using a classmethod and a static method,
+The static method clearly belongs to the class, since it uses the class Cluster internally.
+The classmethod only needs information about the class, and no instance of the object.</source>
+          <target state="translated">另外观察一下,这是一个很好的使用类方法和静态方法的例子,静态方法显然是属于类的,因为它内部使用类Cluster。classmethod只需要类的信息,而不需要对象的实例。</target>
+        </trans-unit>
+        <trans-unit id="caa569c9ae472a87f325f4b599c69c6baca55fad" translate="yes" xml:space="preserve">
+          <source>An example of a static method is &lt;code&gt;str.maketrans&lt;/code&gt;, moved from the &lt;code&gt;string&lt;/code&gt; module in Python 3.  It makes a translation table suitable for consumption by &lt;code&gt;str.translate&lt;/code&gt;. It does seem rather silly when used from an instance of a string, as demonstrated below, but importing the function from the &lt;code&gt;string&lt;/code&gt; module is rather clumsy, and it's nice to be able to call it from the class, as in &lt;code&gt;str.maketrans&lt;/code&gt;</source>
+          <target state="translated">静态方法的一个示例是 &lt;code&gt;str.maketrans&lt;/code&gt; ，它从Python 3中的 &lt;code&gt;string&lt;/code&gt; 模块移出。它使转换表适合 &lt;code&gt;str.translate&lt;/code&gt; 使用 。 如下所示，从 &lt;code&gt;string&lt;/code&gt; 实例中使用它似乎很愚蠢，但是从字符串模块导入函数相当笨拙，并且能够从类中调用它（如在 &lt;code&gt;str.maketrans&lt;/code&gt; 中)是一件很不错的事情。</target>
+        </trans-unit>
+        <trans-unit id="4016333d9516bf49e82568ddb25694c7dab41ec1" translate="yes" xml:space="preserve">
+          <source>Analyze @staticmethod &lt;strong&gt;literally&lt;/strong&gt; providing different insights.</source>
+          <target state="translated">&lt;strong&gt;从字面上&lt;/strong&gt;分析@staticmethod可以提供不同的见解。</target>
+        </trans-unit>
+        <trans-unit id="46dc7b6eec81baff58dad68305e781177e5e36b4" translate="yes" xml:space="preserve">
+          <source>And later we can use this as a function that already has the first argument bound to it. In this way, it works like a partial function on the instance:</source>
+          <target state="translated">而以后我们可以把它作为一个已经绑定了第一个参数的函数来使用。这样一来,它的工作原理就像实例上的部分函数一样。</target>
+        </trans-unit>
+        <trans-unit id="8de9d2abf5cd59c945e75988adc6ab4ac9e4ae20" translate="yes" xml:space="preserve">
+          <source>And of course the same thing happens when you call &lt;code&gt;static_foo&lt;/code&gt; with the class &lt;code&gt;A&lt;/code&gt; instead.</source>
+          <target state="translated">当然，当您用类 &lt;code&gt;A&lt;/code&gt; 调用 &lt;code&gt;static_foo&lt;/code&gt; 时， 也会发生同样的事情。</target>
+        </trans-unit>
+        <trans-unit id="0f24da3f406bdcbf3cbb1052ac539ab58118e8b9" translate="yes" xml:space="preserve">
+          <source>And you then want to override &lt;code&gt;bar()&lt;/code&gt; in a child class:</source>
+          <target state="translated">然后，您想在子类中覆盖 &lt;code&gt;bar()&lt;/code&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="1e36acde21e68ba316af8bc3e870c4b88751f9d9" translate="yes" xml:space="preserve">
+          <source>Another benefit of making the &lt;code&gt;_is_cluster_for&lt;/code&gt; method a classmethod is so a subclass can decide to change it's implementation, maybe because it is pretty generic and can handle more than one type of cluster, so just checking the name of the class would not be enough.</source>
+          <target state="translated">使 &lt;code&gt;_is_cluster_for&lt;/code&gt; 方法成为类方法的另一个好处是，子类可以决定更改其实现，这可能是因为它非常通用并且可以处理多种类型的集群，因此仅检查类的名称是不够的。</target>
+        </trans-unit>
+        <trans-unit id="7dab70172b4929776efda7b5da9421027c390a28" translate="yes" xml:space="preserve">
+          <source>Another consideration with respect to staticmethod vs classmethod comes up with inheritance.  Say you have the following class:</source>
+          <target state="translated">关于staticmethod vs classmethod的另一个考虑是继承。假设你有下面这个类。</target>
+        </trans-unit>
+        <trans-unit id="5e28a0e57c66449c767e62be787a89c79b95f964" translate="yes" xml:space="preserve">
+          <source>As a matter of fact, &lt;code&gt;classmethod&lt;/code&gt; has a runtime overhead but makes it possible to access the owning class.  Alternatively I recommend using a metaclass and putting the class methods on that metaclass:</source>
+          <target state="translated">实际上， &lt;code&gt;classmethod&lt;/code&gt; 具有运行时开销，但可以访问拥有的类。 另外，我建议使用元类并将类方法放在该元类上：</target>
+        </trans-unit>
+        <trans-unit id="0d849f64698b3cf225429211c021d253be4d70d2" translate="yes" xml:space="preserve">
+          <source>Basically &lt;code&gt;@classmethod&lt;/code&gt; makes a method whose first argument is the class it's called from (rather than the class instance), &lt;code&gt;@staticmethod&lt;/code&gt; does not have any implicit arguments.</source>
+          <target state="translated">基本上 &lt;code&gt;@classmethod&lt;/code&gt; 会创建一个方法，其第一个参数是从其调用的类（而不是类实例）， &lt;code&gt;@staticmethod&lt;/code&gt; 没有任何隐式参数。</target>
+        </trans-unit>
+        <trans-unit id="7a9e8fbf97ca31874aa69d63a389a951865d7274" translate="yes" xml:space="preserve">
+          <source>Below is the usual way an object instance calls a method. The object instance, &lt;code&gt;a&lt;/code&gt;, is implicitly passed as the first argument.</source>
+          <target state="translated">以下是对象实例调用方法的常用方法。 对象实例 &lt;code&gt;a&lt;/code&gt; 作为第一个参数隐式传递。</target>
+        </trans-unit>
+        <trans-unit id="558943de44a405cf7f92076e794bfab4df9297b3" translate="yes" xml:space="preserve">
+          <source>Both of them are non-data descriptors (It would be easier to understand them if you are familiar with &lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#implementing-descriptors&quot;&gt;descriptors&lt;/a&gt; first).</source>
+          <target state="translated">它们都是非数据描述符（如果您先熟悉&lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#implementing-descriptors&quot;&gt;描述&lt;/a&gt;符，将会更容易理解它们）。</target>
+        </trans-unit>
+        <trans-unit id="96cb4b862bfd721769fe8f3891a2750e3f0d62bb" translate="yes" xml:space="preserve">
+          <source>Bound methods</source>
+          <target state="translated">捆绑方法</target>
+        </trans-unit>
+        <trans-unit id="485f0584baedc52a76dddcbdc5a384a621979991" translate="yes" xml:space="preserve">
+          <source>Can be called through both class and instance.</source>
+          <target state="translated">可以通过类和实例调用。</target>
+        </trans-unit>
+        <trans-unit id="267824910c5cace5b6b1cc20f56a51bf416793ea" translate="yes" xml:space="preserve">
+          <source>Class Method</source>
+          <target state="translated">类方法</target>
+        </trans-unit>
+        <trans-unit id="96aa2b8b1142697d7bff0fdb46efcf730f9fcac9" translate="yes" xml:space="preserve">
+          <source>Class methods are different than C++
+  or Java static methods. If you want
+  those, see &lt;a href=&quot;http://docs.python.org/2/library/functions.html#staticmethod&quot;&gt;&lt;code&gt;staticmethod()&lt;/code&gt;&lt;/a&gt; in this
+  section.</source>
+          <target state="translated">类方法不同于C ++或Java静态方法。 如果需要这些，请参阅本节中的&lt;a href=&quot;http://docs.python.org/2/library/functions.html#staticmethod&quot;&gt; &lt;code&gt;staticmethod()&lt;/code&gt; &lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="80672eaa5ba6013d2c0fa4f9eca5fccf474819ff" translate="yes" xml:space="preserve">
+          <source>Class methods, as the name suggests, are used to make changes to classes and not the objects. To make changes to classes, they will modify the class attributes(not object attributes), since that is how you update classes.
+This is the reason that class methods take the class(conventionally denoted by 'cls') as the first argument.</source>
+          <target state="translated">类方法,顾名思义,是用来对类进行修改,而不是对对象进行修改。要对类进行修改,它们会修改类的属性(而不是对象的属性),因为这就是更新类的方法。这就是为什么类方法会把类(通常用'cls'表示)作为第一个参数的原因。</target>
+        </trans-unit>
+        <trans-unit id="b35b086653d69dfdfe1042ce78c4bcdb48c3d279" translate="yes" xml:space="preserve">
+          <source>Difference between staticmethod and classmethod</source>
+          <target state="translated">staticmethod和classmethod的区别</target>
+        </trans-unit>
+        <trans-unit id="164607916d6ea823ef7c78eb0833afe38bf3630f" translate="yes" xml:space="preserve">
+          <source>First I'll explain &lt;code&gt;a_normal_instance_method&lt;/code&gt;. This is precisely called an &quot;&lt;strong&gt;instance method&lt;/strong&gt;&quot;. When an instance method is used, it is used as a partial function (as opposed to a total function, defined for all values when viewed in source code) that is, when used, the first of the arguments is predefined as the instance of the object, with all of its given attributes. It has the instance of the object bound to it, and it must be called from an instance of the object. Typically, it will access various attributes of the instance.</source>
+          <target state="translated">首先，我将解释 &lt;code&gt;a_normal_instance_method&lt;/code&gt; 。 这就是所谓的&amp;ldquo; &lt;strong&gt;实例方法&lt;/strong&gt; &amp;rdquo;。 使用实例方法时，它用作部分函数（与总函数相反，在源代码中查看时为所有值定义的总函数），即在使用时将第一个参数预定义为具有所有给定属性的对象。 它绑定了对象的实例，并且必须从对象的实例调用它。 通常，它将访问实例的各种属性。</target>
+        </trans-unit>
+        <trans-unit id="0f7fb90238ae76c6afb80f76159dd7556d88d38f" translate="yes" xml:space="preserve">
+          <source>For example, if you want to create a factory method (A function returning an instance of a different implementation of a class depending on what argument it gets) you can do something like:</source>
+          <target state="translated">例如,如果你想创建一个工厂方法(一个函数根据得到的参数返回不同的类的实现的实例),你可以这样做。</target>
+        </trans-unit>
+        <trans-unit id="06ec4552ced78aea82f7ba25beef8c69e6f4a32a" translate="yes" xml:space="preserve">
+          <source>For example, this binds the &lt;code&gt;str.join&lt;/code&gt; method to the &lt;code&gt;':'&lt;/code&gt; instance:</source>
+          <target state="translated">例如，这将 &lt;code&gt;str.join&lt;/code&gt; 方法绑定到 &lt;code&gt;':'&lt;/code&gt; 实例：</target>
+        </trans-unit>
+        <trans-unit id="e14341dc4aa4a22660bb62e64b2a9ec3f3217718" translate="yes" xml:space="preserve">
+          <source>For example, this is an instance of a string:</source>
+          <target state="translated">比如说,这是一个字符串的例子。</target>
+        </trans-unit>
+        <trans-unit id="90faa00926d9e27636891da919e5733d1122d8b2" translate="yes" xml:space="preserve">
+          <source>For the sake of code readability I'd avoid &lt;code&gt;@staticmethod&lt;/code&gt; unless your method will be used for loads of work, where the nanoseconds count.</source>
+          <target state="translated">出于代码可读性的 &lt;code&gt;@staticmethod&lt;/code&gt; 除非您的方法将用于纳秒级的工作负载，否则我将避免使用@staticmethod 。</target>
+        </trans-unit>
+        <trans-unit id="9a2b129313b892462b40ddd6c79d0af830dea9c8" translate="yes" xml:space="preserve">
+          <source>Functions that have first argument as classname.</source>
+          <target state="translated">具有第一个参数为类名的函数。</target>
+        </trans-unit>
+        <trans-unit id="807d50dce55b514a4fba42b13f8002d515f8a71b" translate="yes" xml:space="preserve">
+          <source>Gives: &lt;code&gt;In Foo2 MAGIC&lt;/code&gt;</source>
+          <target state="translated">给： &lt;code&gt;In Foo2 MAGIC&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="2860e65bbc0758e8d4d475d85f1680dabe52e6a1" translate="yes" xml:space="preserve">
+          <source>Here, with a staticmethod, even though it is a method, &lt;code&gt;a.static_foo&lt;/code&gt; just returns
+a good 'ole function with no arguments bound. &lt;code&gt;static_foo&lt;/code&gt; expects 1 argument, and
+&lt;code&gt;a.static_foo&lt;/code&gt; expects 1 argument too.</source>
+          <target state="translated">在这里，即使使用静态方法，即使它是一种方法， &lt;code&gt;a.static_foo&lt;/code&gt; 都将返回一个很好的'ole函数，且不带任何参数。 &lt;code&gt;static_foo&lt;/code&gt; 需要1个参数，而 &lt;code&gt;a.static_foo&lt;/code&gt; 也需要1个参数。</target>
+        </trans-unit>
+        <trans-unit id="ce0274e0663be4ad665ddb61fc313fc1346d7b03" translate="yes" xml:space="preserve">
+          <source>Hope I was clear !</source>
+          <target state="translated">希望我说的很清楚!</target>
+        </trans-unit>
+        <trans-unit id="536783112e18b97571f614392a4dc28b80515954" translate="yes" xml:space="preserve">
+          <source>However, a module level function must live in the module and be specially imported to other places where it is used.</source>
+          <target state="translated">但是,一个模块级的功能必须住在模块中,并且要专门导入到其他地方使用。</target>
+        </trans-unit>
+        <trans-unit id="8f6343acac6bb042a0e1759058bfdad64fdb5e56" translate="yes" xml:space="preserve">
+          <source>However, you could achieve the same thing using &lt;code&gt;@classmethod&lt;/code&gt; as mentioned below</source>
+          <target state="translated">但是，您可以使用 &lt;code&gt;@classmethod&lt;/code&gt; 实现相同的功能 ，如下所述</target>
+        </trans-unit>
+        <trans-unit id="fe663cfec4745cf0ea4c84d7a734da467f0e2ce4" translate="yes" xml:space="preserve">
+          <source>I started learning programming language with C++ and then Java and then Python and so this question bothered me a lot as well, until I understood the simple usage of each.</source>
+          <target state="translated">我从C++开始学编程语言,然后是Java,然后是Python,所以这个问题也困扰了我很多,直到我明白了每一种语言的简单用法之后,我才明白了。</target>
+        </trans-unit>
+        <trans-unit id="5ab2de0b5f9aebcc8092bd625d4e80db8214b56e" translate="yes" xml:space="preserve">
+          <source>I think a better question is &quot;When would you use @classmethod vs @staticmethod?&quot;</source>
+          <target state="translated">我认为一个更好的问题是 &quot;你什么时候会使用@classmethod vs @staticmethod?&quot;</target>
+        </trans-unit>
+        <trans-unit id="e03cea799789ab3a8ab2445c8c76ff25537711d7" translate="yes" xml:space="preserve">
+          <source>I think giving a purely Python version of &lt;code&gt;staticmethod&lt;/code&gt; and &lt;code&gt;classmethod&lt;/code&gt; would help to understand the difference between them at language level.</source>
+          <target state="translated">我认为提供纯Python版本的 &lt;code&gt;staticmethod&lt;/code&gt; 和 &lt;code&gt;classmethod&lt;/code&gt; 将有助于理解它们在语言级别上的区别。</target>
+        </trans-unit>
+        <trans-unit id="69a1c0771c12086dd4b452a55dc59cc30ff19aca" translate="yes" xml:space="preserve">
+          <source>I will try to explain the basic difference using an example.</source>
+          <target state="translated">我试着用一个例子来解释一下基本的区别。</target>
+        </trans-unit>
+        <trans-unit id="1bf6e736cb87adbab8ee43c998f8352378eb5f99" translate="yes" xml:space="preserve">
+          <source>If it is attached to the object, however, it will follow the object conveniently through importing and inheritance as well.</source>
+          <target state="translated">但是,如果它附加在对象上,那么它也会方便地跟随对象进行导入和继承。</target>
+        </trans-unit>
+        <trans-unit id="b6064776a38f8588bf3204f57e4defc4d6b48090" translate="yes" xml:space="preserve">
+          <source>In contrast, a staticmethod does not take the instance as first argument, so is called &lt;strong&gt;'static'&lt;/strong&gt;.</source>
+          <target state="translated">相反，静态方法不将实例作为第一个参数，因此称为&lt;strong&gt;&amp;ldquo;静态&amp;rdquo;&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="418e1f592595199710930f400b12c6648ac41d0d" translate="yes" xml:space="preserve">
+          <source>In more detail...</source>
+          <target state="translated">更详细的是.....</target>
+        </trans-unit>
+        <trans-unit id="ce1dc58e2832295d9371005f7e0507920675bea9" translate="yes" xml:space="preserve">
+          <source>In python 2, you have to import this function from the increasingly less useful string module:</source>
+          <target state="translated">在python 2中,你必须从越来越少用的字符串模块中导入这个函数。</target>
+        </trans-unit>
+        <trans-unit id="f6b415ed12f65f9bbf40b9142a369fba8072e05c" translate="yes" xml:space="preserve">
+          <source>Instance methods can be bound via a dotted lookup for use later.</source>
+          <target state="translated">实例方法可以通过点状查找绑定,供以后使用。</target>
+        </trans-unit>
+        <trans-unit id="fe77d4b7f35bb53ca43fe505597fa8fc7799f6f4" translate="yes" xml:space="preserve">
+          <source>It can be called either on the class
+  (such as &lt;code&gt;C.f()&lt;/code&gt;) or on an instance
+  (such as &lt;code&gt;C().f()&lt;/code&gt;). The instance is
+  ignored except for its class.</source>
+          <target state="translated">可以在类（例如 &lt;code&gt;C.f()&lt;/code&gt; ）或实例（例如 &lt;code&gt;C().f()&lt;/code&gt; ）上调用它。 该实例除其类外均被忽略。</target>
+        </trans-unit>
+        <trans-unit id="c2c132e491d3b48b18fe928903a3b9627a4b7db6" translate="yes" xml:space="preserve">
+          <source>It can be called either on the class
+  (such as &lt;code&gt;C.f()&lt;/code&gt;) or on an instance
+  (such as &lt;code&gt;C().f()&lt;/code&gt;). The instance is
+  ignored except for its class. If a
+  class method is called for a derived
+  class, the derived class object is
+  passed as the implied first argument.</source>
+          <target state="translated">可以在类（例如 &lt;code&gt;C.f()&lt;/code&gt; ）或实例（例如 &lt;code&gt;C().f()&lt;/code&gt; ）上调用它。 该实例除其类外均被忽略。 如果为派生类调用类方法，则派生类对象作为隐式第一个参数传递。</target>
+        </trans-unit>
+        <trans-unit id="bab5a5442633b80e598ccbf398e186dbd8ee95fb" translate="yes" xml:space="preserve">
+          <source>It eases the readability of the code, and it does not depend on the state of object itself;</source>
+          <target state="translated">它简化了代码的可读性,而且它不依赖于对象本身的状态。</target>
+        </trans-unit>
+        <trans-unit id="939616480d0a5694951a8e24ef3733c4dcbedd3d" translate="yes" xml:space="preserve">
+          <source>It is luckily grouped into the class just in order to stand closer where it is applied, or you might scroll around to find it.</source>
+          <target state="translated">幸运的是,它被编入班级,只是为了站在更近的地方应用,或者你可能会滚动找到它。</target>
+        </trans-unit>
+        <trans-unit id="230b0bc30ac33392bc5367bb425ea96b284d2e75" translate="yes" xml:space="preserve">
+          <source>It is very similar to a module level function.</source>
+          <target state="translated">它与模块级功能非常相似。</target>
+        </trans-unit>
+        <trans-unit id="bdaab6a3bf7746bf4181f9f1669e8524b277ed65" translate="yes" xml:space="preserve">
+          <source>It localizes the function name in the classscope</source>
+          <target state="translated">它将函数名称本地化,在classscope中的函数名称</target>
+        </trans-unit>
+        <trans-unit id="f21f6aa25b5c058c5e292d885804e6cf2b2ef443" translate="yes" xml:space="preserve">
+          <source>It moves the function code closer to where it is used</source>
+          <target state="translated">它使函数代码更接近于它所使用的地方。</target>
+        </trans-unit>
+        <trans-unit id="faebdc4b4a231fbaedbee2f66d2684f878485f0d" translate="yes" xml:space="preserve">
+          <source>Let me tell the similarity between a method decorated with @classmethod vs @staticmethod first.</source>
+          <target state="translated">让我先来说说用@classmethod装饰的方法与@staticmethod的相似之处。</target>
+        </trans-unit>
+        <trans-unit id="2b2aa4f3e36c9530575f19c9f0598e540f26891d" translate="yes" xml:space="preserve">
+          <source>Let's consider we have a &lt;code&gt;Person&lt;/code&gt; class which takes two arguments &lt;code&gt;first_name&lt;/code&gt; and &lt;code&gt;last_name&lt;/code&gt; and creates the instance of &lt;code&gt;Person&lt;/code&gt;.</source>
+          <target state="translated">让我们考虑一下，我们有一个 &lt;code&gt;Person&lt;/code&gt; 类，它接受两个参数 &lt;code&gt;first_name&lt;/code&gt; 和 &lt;code&gt;last_name&lt;/code&gt; 并创建 &lt;code&gt;Person&lt;/code&gt; 的实例。</target>
+        </trans-unit>
+        <trans-unit id="a9b10a40e3f747fcf229fa77c0fa98a6c253c3a2" translate="yes" xml:space="preserve">
+          <source>Maybe a bit of example code will help: Notice the difference in the call signatures of &lt;code&gt;foo&lt;/code&gt;, &lt;code&gt;class_foo&lt;/code&gt; and &lt;code&gt;static_foo&lt;/code&gt;:</source>
+          <target state="translated">也许有一些示例代码会有所帮助：注意 &lt;code&gt;foo&lt;/code&gt; ， &lt;code&gt;class_foo&lt;/code&gt; 和 &lt;code&gt;static_foo&lt;/code&gt; 的调用签名之间的差异 ：</target>
+        </trans-unit>
+        <trans-unit id="7122abd306cee02d99048842c405d1b59faf3176" translate="yes" xml:space="preserve">
+          <source>More convenient to import versus module-level functions since each method does not have to be specially imported</source>
+          <target state="translated">相对于模块级的函数,导入更方便,因为每个方法都不需要特别导入</target>
+        </trans-unit>
+        <trans-unit id="baee456d57820da13b11bc2426c66fd95bd49685" translate="yes" xml:space="preserve">
+          <source>My contribution demonstrates the difference amongst &lt;code&gt;@classmethod&lt;/code&gt;, &lt;code&gt;@staticmethod&lt;/code&gt;, and instance methods, including how an instance can indirectly call a &lt;code&gt;@staticmethod&lt;/code&gt;. But instead of indirectly calling a &lt;code&gt;@staticmethod&lt;/code&gt; from an instance, making it private may be more &quot;pythonic.&quot; Getting something from a private method isn't demonstrated here but it's basically the same concept.</source>
+          <target state="translated">我的贡献展示了 &lt;code&gt;@classmethod&lt;/code&gt; ， &lt;code&gt;@staticmethod&lt;/code&gt; 和实例方法之间的区别，包括实例如何间接调用 &lt;code&gt;@staticmethod&lt;/code&gt; 。 但是， &lt;code&gt;@staticmethod&lt;/code&gt; 从实例中间接调用@static方法 ， 不如将其设置为私有，可能更像是&amp;ldquo; pythonic &amp;rdquo;。 这里没有演示从私有方法获取某些东西，但是基本上是相同的概念。</target>
+        </trans-unit>
+        <trans-unit id="06bdb3d7b2f194e09ab0a51f0107d3fa31a0f2c6" translate="yes" xml:space="preserve">
+          <source>Now, if the requirement comes where you need to create a class using a single name only, just a &lt;code&gt;first_name&lt;/code&gt;, you &lt;strong&gt;can't&lt;/strong&gt; do something like this in Python.</source>
+          <target state="translated">现在，如果要求只需要使用一个名字（仅是 &lt;code&gt;first_name&lt;/code&gt; )来创建类，那么您&lt;strong&gt;就无法&lt;/strong&gt;在Python中执行类似的操作。</target>
+        </trans-unit>
+        <trans-unit id="c446d44cb0d9ce8db33e3b393ea1f71b690bad22" translate="yes" xml:space="preserve">
+          <source>On the other hand, a static method does not receive an implicit first argument, compared to class methods or instance methods. And can&amp;rsquo;t access or modify class state. It only belongs to the class because from design point of view that is the correct way. But in terms of functionality is not bound, at runtime, to the class.</source>
+          <target state="translated">另一方面，与类方法或实例方法相比，静态方法不接收隐式的第一个参数。 并且无法访问或修改类状态。 它仅属于该类，因为从设计的角度来看这是正确的方法。 但是就功能而言，在运行时并不局限于该类。</target>
+        </trans-unit>
+        <trans-unit id="0601259c1a596a32a613d81d7b9416a72f1706e5" translate="yes" xml:space="preserve">
+          <source>One use people have found for class methods is to create &lt;a href=&quot;https://stackoverflow.com/a/1950927/190597&quot;&gt;inheritable alternative constructors&lt;/a&gt;.</source>
+          <target state="translated">人们发现类方法的一种用途是创建&lt;a href=&quot;https://stackoverflow.com/a/1950927/190597&quot;&gt;可继承的替代构造函数&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="3e6e99fe2ce49b8e8aed43869178d41b3d185e3f" translate="yes" xml:space="preserve">
+          <source>Python does not have to instantiate a bound-method for object.</source>
+          <target state="translated">Python 不需要为对象实例化一个 bound-method。</target>
+        </trans-unit>
+        <trans-unit id="f24b1de7ff195e42428cd5db28a36a5b118842b9" translate="yes" xml:space="preserve">
+          <source>See the &lt;a href=&quot;https://github.com/pydata/pandas/blob/master/pandas/core/frame.py&quot;&gt;pandas source code&lt;/a&gt; for other similar examples of alternative constructors, and see also the official Python documentation on &lt;a href=&quot;https://docs.python.org/library/functions.html#classmethod&quot;&gt;&lt;code&gt;classmethod&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;https://docs.python.org/library/functions.html#staticmethod&quot;&gt;&lt;code&gt;staticmethod&lt;/code&gt;&lt;/a&gt;.</source>
+          <target state="translated">有关替代构造函数的其他类似示例，请参见&lt;a href=&quot;https://github.com/pydata/pandas/blob/master/pandas/core/frame.py&quot;&gt;pandas源代码&lt;/a&gt; ，另请参见有关&lt;a href=&quot;https://docs.python.org/library/functions.html#classmethod&quot;&gt; &lt;code&gt;classmethod&lt;/code&gt; &lt;/a&gt;和&lt;a href=&quot;https://docs.python.org/library/functions.html#staticmethod&quot;&gt; &lt;code&gt;staticmethod&lt;/code&gt; &lt;/a&gt;的官方Python文档。</target>
+        </trans-unit>
+        <trans-unit id="f01d0a8ab6576c208384ec02c477895fb03fdd00" translate="yes" xml:space="preserve">
+          <source>Simple functions with no self argument.</source>
+          <target state="translated">没有自我参数的简单函数。</target>
+        </trans-unit>
+        <trans-unit id="94dd432a314d7dfb9142b28cff141918df0ee440" translate="yes" xml:space="preserve">
+          <source>So a static method is, in a sense, not bound to the Class itself and is just hanging in there just because it may have a related functionality.</source>
+          <target state="translated">所以,静态方法从某种意义上说,是不与类本身绑定的,只是因为它可能有相关的功能而挂在那里。</target>
+        </trans-unit>
+        <trans-unit id="65363de032aba81ff598ab4d63be7b2e577f8cb9" translate="yes" xml:space="preserve">
+          <source>So let's say in above example you need a validation that &lt;code&gt;first_name&lt;/code&gt; should not exceed 20 characters, you can simply do this.</source>
+          <target state="translated">因此，假设在上面的示例中，您需要验证 &lt;code&gt;first_name&lt;/code&gt; 不应超过20个字符，您可以简单地执行此操作。</target>
+        </trans-unit>
+        <trans-unit id="182c8c616107a2457bad4250829c2d737ac45ed3" translate="yes" xml:space="preserve">
+          <source>So using  &lt;code&gt;@staticmethod&lt;/code&gt; for methods only called directly from the class has become optional in python3. If you want to call them from both class and instance, you still need to use the &lt;code&gt;@staticmethod&lt;/code&gt; decorator.</source>
+          <target state="translated">因此，对仅直接从类调用的方法使用 &lt;code&gt;@staticmethod&lt;/code&gt; 在python3中已成为可选方法。 如果要从类和实例中调用它们，则仍需要使用 &lt;code&gt;@staticmethod&lt;/code&gt; 装饰器。</target>
+        </trans-unit>
+        <trans-unit id="9e7b56ba099663ac3dac80d5ad3bbee9b28e3d48" translate="yes" xml:space="preserve">
+          <source>Static Method</source>
+          <target state="translated">静态法</target>
+        </trans-unit>
+        <trans-unit id="f4eea620f6c60864e8c46d16abb4c687e8c6331d" translate="yes" xml:space="preserve">
+          <source>Static methods in Python are similar
+  to those found in Java or C++. For a
+  more advanced concept, see
+  &lt;a href=&quot;http://docs.python.org/2/library/functions.html#classmethod&quot;&gt;&lt;code&gt;classmethod()&lt;/code&gt;&lt;/a&gt; in this section.</source>
+          <target state="translated">Python中的静态方法类似于Java或C ++中的静态方法。 有关更高级的概念，请参见本节中的&lt;a href=&quot;http://docs.python.org/2/library/functions.html#classmethod&quot;&gt; &lt;code&gt;classmethod()&lt;/code&gt; &lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="e562c390a784edf0b3feb04ea00ba8e2392d8d34" translate="yes" xml:space="preserve">
+          <source>Static methods on the other hand, are used to perform functionalities that are not bound to the class i.e. they will not read or write class variables. Hence, static methods do not take classes as arguments. They are used so that classes can perform functionalities that are not directly related to the purpose of the class.</source>
+          <target state="translated">另一方面,静态方法用于执行不与类绑定的功能,也就是说,它们不会读取或写入类的变量。因此,静态方法不把类作为参数。它们的使用是为了使类能够执行与类的目的没有直接关系的功能。</target>
+        </trans-unit>
+        <trans-unit id="5ffe8a646ab05acaf25f6688924681394d7f4b50" translate="yes" xml:space="preserve">
+          <source>Staticmethods are used to group functions which have some logical connection with a class to the class.</source>
+          <target state="translated">Staticmethods用于将与类有一定逻辑联系的函数分组到类中。</target>
+        </trans-unit>
+        <trans-unit id="ce6f2467322be66f2c66550f026cdbdd30261e17" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;@classmethod&lt;/code&gt; form is a function
+  &lt;a href=&quot;http://docs.python.org/2/glossary.html#term-decorator&quot;&gt;&lt;em&gt;decorator&lt;/em&gt;&lt;/a&gt; &amp;ndash; see the description of
+  function definitions in &lt;a href=&quot;http://docs.python.org/2/reference/compound_stmts.html#function&quot;&gt;&lt;em&gt;Function
+  definitions&lt;/em&gt;&lt;/a&gt; for details.</source>
+          <target state="translated">&lt;code&gt;@classmethod&lt;/code&gt; 形式是一个函数&lt;a href=&quot;http://docs.python.org/2/glossary.html#term-decorator&quot;&gt;&lt;em&gt;装饰器&lt;/em&gt;&lt;/a&gt; &amp;ndash;有关详细信息，请参见函数定义中的&lt;a href=&quot;http://docs.python.org/2/reference/compound_stmts.html#function&quot;&gt;&lt;em&gt;函数定义&lt;/em&gt;&lt;/a&gt;说明。</target>
+        </trans-unit>
+        <trans-unit id="9055ab2b4172076d48e20f45dc0229a7e5605442" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;@staticmethod&lt;/code&gt; form is a function
+  &lt;a href=&quot;http://docs.python.org/2/glossary.html#term-decorator&quot;&gt;&lt;em&gt;decorator&lt;/em&gt;&lt;/a&gt; &amp;ndash; see the description of
+  function definitions in &lt;a href=&quot;http://docs.python.org/2/reference/compound_stmts.html#function&quot;&gt;&lt;em&gt;Function
+  definitions&lt;/em&gt;&lt;/a&gt; for details.</source>
+          <target state="translated">&lt;code&gt;@staticmethod&lt;/code&gt; 形式是一个函数&lt;a href=&quot;http://docs.python.org/2/glossary.html#term-decorator&quot;&gt;&lt;em&gt;装饰器&lt;/em&gt;&lt;/a&gt; &amp;ndash;有关详细信息，请参见函数定义中的&lt;a href=&quot;http://docs.python.org/2/reference/compound_stmts.html#function&quot;&gt;&lt;em&gt;函数定义&lt;/em&gt;&lt;/a&gt;说明。</target>
+        </trans-unit>
+        <trans-unit id="8f0986b5efbab0453d76f7f6ca9ae170f03a69d9" translate="yes" xml:space="preserve">
+          <source>The Normal Instance Method</source>
+          <target state="translated">普通实例法</target>
+        </trans-unit>
+        <trans-unit id="bd04489a697867005e789fddc84ebc4dd500b1ba" translate="yes" xml:space="preserve">
+          <source>The built-in function staticmethod()is used to create them.</source>
+          <target state="translated">内置函数staticmethod()用于创建它们。</target>
+        </trans-unit>
+        <trans-unit id="6421f9367c3ff555773546cfcde71ec15b8c1b25" translate="yes" xml:space="preserve">
+          <source>The most canonical example of a builtin classmethod is &lt;code&gt;dict.fromkeys&lt;/code&gt;. It is used as an alternative constructor of dict, (well suited for when you know what your keys are and want a default value for them.)</source>
+          <target state="translated">内建类方法的最典型示例是 &lt;code&gt;dict.fromkeys&lt;/code&gt; 。 它用作dict的替代构造函数（非常适合当您知道键是什么并且想要它们的默认值时）。</target>
+        </trans-unit>
+        <trans-unit id="5944b31af7aa8a97f6f73cdc54e88234802fe3f1" translate="yes" xml:space="preserve">
+          <source>The other cases have been well covered by unutbus answer.</source>
+          <target state="translated">其他的情况,unutbus的回答已经很好地涵盖了。</target>
+        </trans-unit>
+        <trans-unit id="d9dcfa9ec5bb063d28e1a65b69d5c1996c83cf8c" translate="yes" xml:space="preserve">
+          <source>The static method does &lt;em&gt;not&lt;/em&gt; take the instance as an argument.</source>
+          <target state="translated">静态方法不将实例作为参数。</target>
+        </trans-unit>
+        <trans-unit id="af7cb13e62642ee499a113906d710325fb97372a" translate="yes" xml:space="preserve">
+          <source>The workaround here would be to call &lt;code&gt;Foo2.magic()&lt;/code&gt; in &lt;code&gt;bar()&lt;/code&gt;, but then you're repeating yourself (if the name of &lt;code&gt;Foo2&lt;/code&gt; changes, you'll have to remember to update that &lt;code&gt;bar()&lt;/code&gt; method).</source>
+          <target state="translated">此处的解决方法是在 &lt;code&gt;bar()&lt;/code&gt; 中调用 &lt;code&gt;Foo2.magic()&lt;/code&gt; ，但是您要重复一次（如果 &lt;code&gt;Foo2&lt;/code&gt; 的名称发生更改，则必须记住更新该 &lt;code&gt;bar()&lt;/code&gt; 方法）。</target>
+        </trans-unit>
+        <trans-unit id="d75be3892212a0b3d72aa89d5805947b4703d4c3" translate="yes" xml:space="preserve">
+          <source>These are created with classmethod in-built function.</source>
+          <target state="translated">这些都是通过内置的classmethod功能创建的。</target>
+        </trans-unit>
+        <trans-unit id="f15cd3ae0b92af773354fba252df6a2f9c169e4b" translate="yes" xml:space="preserve">
+          <source>Think we have a class with &lt;code&gt;b=2&lt;/code&gt;, we will create an object and re-set this to &lt;code&gt;b=4&lt;/code&gt; in it.
+Staticmethod cannot access nothing from previous.
+Classmethod can access &lt;code&gt;.b==2&lt;/code&gt; only, via &lt;code&gt;cls.b&lt;/code&gt;.
+Normal method can access both: &lt;code&gt;.b==4&lt;/code&gt; via &lt;code&gt;self.b&lt;/code&gt; and &lt;code&gt;.b==2&lt;/code&gt; via &lt;code&gt;self.__class__.b&lt;/code&gt;.</source>
+          <target state="translated">认为我们有一个 &lt;code&gt;b=2&lt;/code&gt; 的类，我们将创建一个对象并将其重新设置为 &lt;code&gt;b=4&lt;/code&gt; 。 静态方法无法访问以前的任何内容。 Classmethod只能通过 &lt;code&gt;cls.b&lt;/code&gt; 访问 &lt;code&gt;.b==2&lt;/code&gt; 。 普通方法可以访问以下两者： &lt;code&gt;.b==4&lt;/code&gt; 通过 &lt;code&gt;self.b&lt;/code&gt; 和 &lt;code&gt;.b==2&lt;/code&gt; 通过 &lt;code&gt;self.__class__.b&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="80280e49a1f8353c5b3bba30201343e829087168" translate="yes" xml:space="preserve">
+          <source>This has changed between python2 and python3:</source>
+          <target state="translated">这在python2和python3之间发生了变化。</target>
+        </trans-unit>
+        <trans-unit id="258f0cf75229fbcab6f2fd1285ff5938bf4aeca7" translate="yes" xml:space="preserve">
+          <source>This will give you an error when you will try to create an object (instance).</source>
+          <target state="translated">当你尝试创建一个对象(实例)时,这将给你一个错误。</target>
+        </trans-unit>
+        <trans-unit id="4adbdfc052a06d13f49928019797c091206b0882" translate="yes" xml:space="preserve">
+          <source>This works, but note that now the &lt;code&gt;bar()&lt;/code&gt; implementation in the child class (&lt;code&gt;Foo2&lt;/code&gt;) can no longer take advantage of anything specific to that class.  For example, say &lt;code&gt;Foo2&lt;/code&gt; had a method called &lt;code&gt;magic()&lt;/code&gt; that you want to use in the &lt;code&gt;Foo2&lt;/code&gt; implementation of &lt;code&gt;bar()&lt;/code&gt;:</source>
+          <target state="translated">这是 &lt;code&gt;Foo2&lt;/code&gt; ，但是请注意，现在子类（ Foo2 ）中的 &lt;code&gt;bar()&lt;/code&gt; 实现不再可以利用该类的任何特定优势。 例如，假设 &lt;code&gt;Foo2&lt;/code&gt; 有一个名为 &lt;code&gt;magic()&lt;/code&gt; 的方法要在 &lt;code&gt;bar()&lt;/code&gt; 的 &lt;code&gt;Foo2&lt;/code&gt; 实现中使用：</target>
+        </trans-unit>
+        <trans-unit id="79477ed5dad94d6833e83e3a8699a0463de9de85" translate="yes" xml:space="preserve">
+          <source>To decide whether to use &lt;a href=&quot;https://docs.python.org/3/library/functions.html?highlight=staticmethod#staticmethod&quot;&gt;@staticmethod&lt;/a&gt; or &lt;a href=&quot;https://docs.python.org/3.5/library/functions.html?highlight=classmethod#classmethod&quot;&gt;@classmethod&lt;/a&gt; you have to look inside your method. &lt;strong&gt;If your method accesses other variables/methods in your class then use @classmethod&lt;/strong&gt;. On the other hand, if your method does not touches any other parts of the class then use @staticmethod.</source>
+          <target state="translated">要决定使用&lt;a href=&quot;https://docs.python.org/3/library/functions.html?highlight=staticmethod#staticmethod&quot;&gt;@staticmethod&lt;/a&gt;还是&lt;a href=&quot;https://docs.python.org/3.5/library/functions.html?highlight=classmethod#classmethod&quot;&gt;@classmethod，&lt;/a&gt;您必须查看方法内部。 &lt;strong&gt;如果您的方法访问类中的其他变量/方法，请使用@classmethod&lt;/strong&gt; 。 另一方面，如果您的方法未触及类的其他任何部分，请使用@staticmethod。</target>
+        </trans-unit>
+        <trans-unit id="41c4939ed15126e325624c1d7f0ae8e61154e275" translate="yes" xml:space="preserve">
+          <source>To me, this is a slight violation of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Open/closed_principle&quot;&gt;open/closed principle&lt;/a&gt;, since a decision made in &lt;code&gt;Foo&lt;/code&gt; is impacting your ability to refactor common code in a derived class (ie it's less open to extension).  If &lt;code&gt;bar()&lt;/code&gt; were a &lt;code&gt;classmethod&lt;/code&gt; we'd be fine:</source>
+          <target state="translated">对我来说，这有点违反&lt;a href=&quot;https://en.wikipedia.org/wiki/Open/closed_principle&quot;&gt;开放式/封闭式原则&lt;/a&gt; ，因为 &lt;code&gt;Foo&lt;/code&gt; 中的决定会影响您重构派生类中通用代码的能力（即，对扩展的开放性较小）。 如果 &lt;code&gt;bar()&lt;/code&gt; 是一种 &lt;code&gt;classmethod&lt;/code&gt; 我们可以：</target>
+        </trans-unit>
+        <trans-unit id="8a5223e4291f77ecc334b5a5bbcbdaa187282c18" translate="yes" xml:space="preserve">
+          <source>We could follow the KISS style (keep it simple, stupid): Don't use staticmethods and classmethods, don't use classes without instantiating them, access only the object's attributes &lt;code&gt;self.attribute(s)&lt;/code&gt;. There are languages where the OOP is implemented that way and I think it is not bad idea. :)</source>
+          <target state="translated">我们可以遵循KISS风格（保持简单，愚蠢）：不要使用静态方法和类方法，不要在未实例化它们的情况下使用类，仅访问对象的属性 &lt;code&gt;self.attribute(s)&lt;/code&gt; 。 在某些语言中，以这种方式实现了OOP，我认为这不是一个坏主意。 :)</target>
+        </trans-unit>
+        <trans-unit id="fcbb519e378d850b1b68ca11bf02470e1595d064" translate="yes" xml:space="preserve">
+          <source>What is the difference between @staticmethod and @classmethod in Python?</source>
+          <target state="translated">Python中的@staticmethod和@classmethod有什么区别?</target>
+        </trans-unit>
+        <trans-unit id="eb4e5926c4dc5d5f3bc9f05359bd22b70d529258" translate="yes" xml:space="preserve">
+          <source>What is the difference between a function decorated with &lt;a href=&quot;http://docs.python.org/library/functions.html#staticmethod&quot;&gt;&lt;code&gt;@staticmethod&lt;/code&gt;&lt;/a&gt; and one decorated with &lt;a href=&quot;http://docs.python.org/library/functions.html#classmethod&quot;&gt;&lt;code&gt;@classmethod&lt;/code&gt;&lt;/a&gt;?</source>
+          <target state="translated">用&lt;a href=&quot;http://docs.python.org/library/functions.html#staticmethod&quot;&gt; &lt;code&gt;@staticmethod&lt;/code&gt; &lt;/a&gt;装饰的函数和用@classmethod装饰的函数有什么 &lt;a href=&quot;http://docs.python.org/library/functions.html#classmethod&quot;&gt; &lt;code&gt;@classmethod&lt;/code&gt; &lt;/a&gt; ？</target>
+        </trans-unit>
+        <trans-unit id="2e5c6569bb706d28e402587b1466ff95d88243e1" translate="yes" xml:space="preserve">
+          <source>When an object's method is called, it is automatically given an extra argument &lt;code&gt;self&lt;/code&gt; as its first argument. That is, method</source>
+          <target state="translated">调用对象的方法时，它会自动获得一个额外的参数 &lt;code&gt;self&lt;/code&gt; 作为其第一个参数。 即方法</target>
+        </trans-unit>
+        <trans-unit id="829e8b693aed55e8328e8d5d8439f95ac3af86b9" translate="yes" xml:space="preserve">
+          <source>When the method is decorated</source>
+          <target state="translated">当方法被修饰时</target>
+        </trans-unit>
+        <trans-unit id="341319811e49792c2c672aa7a5e85c27a7f50380" translate="yes" xml:space="preserve">
+          <source>When we subclass dict, we can use the same constructor, which creates an instance of the subclass.</source>
+          <target state="translated">当我们对dict进行子类化的时候,我们可以使用相同的构造函数,创建一个子类的实例。</target>
+        </trans-unit>
+        <trans-unit id="68ae0e89977a649bad665ad27c89cbedc3a29ee1" translate="yes" xml:space="preserve">
+          <source>With &lt;code&gt;a.class_foo&lt;/code&gt;, &lt;code&gt;a&lt;/code&gt; is not bound to &lt;code&gt;class_foo&lt;/code&gt;, rather the class &lt;code&gt;A&lt;/code&gt; is bound to &lt;code&gt;class_foo&lt;/code&gt;.</source>
+          <target state="translated">使用 &lt;code&gt;a.class_foo&lt;/code&gt; ， &lt;code&gt;a&lt;/code&gt; 不会绑定到 &lt;code&gt;class_foo&lt;/code&gt; ，而类 &lt;code&gt;A&lt;/code&gt; 会绑定到 &lt;code&gt;class_foo&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="e91195e59505ea892019be8785a88af1bd3c3f6f" translate="yes" xml:space="preserve">
+          <source>Work on class attributes; not on instance attributes.</source>
+          <target state="translated">在类属性上下功夫;不在实例属性上下功夫。</target>
+        </trans-unit>
+        <trans-unit id="adebd78a8dd903e227a396616541192276725be4" translate="yes" xml:space="preserve">
+          <source>You can also call &lt;code&gt;class_foo&lt;/code&gt; using the class. In fact, if you define something to be
+a classmethod, it is probably because you intend to call it from the class rather than from a class instance. &lt;code&gt;A.foo(1)&lt;/code&gt; would have raised a TypeError, but &lt;code&gt;A.class_foo(1)&lt;/code&gt; works just fine:</source>
+          <target state="translated">您也可以使用该类来调用 &lt;code&gt;class_foo&lt;/code&gt; 。 实际上，如果您将某些东西定义为类方法，则可能是因为您打算从类而不是从类实例调用它。 &lt;code&gt;A.foo(1)&lt;/code&gt; 会引发TypeError，但是 &lt;code&gt;A.class_foo(1)&lt;/code&gt; 可以正常工作：</target>
+        </trans-unit>
+        <trans-unit id="3ffe0412197d5a8f4286d21ec5576d1cbd38ecf0" translate="yes" xml:space="preserve">
+          <source>You may have seen Python code like this pseudocode, which demonstrates the signatures of the various method types and provides a docstring to explain each:</source>
+          <target state="translated">你可能已经看到过像这样的Python代码,它展示了各种方法类型的签名,并提供了一个docstring来解释每一种方法。</target>
+        </trans-unit>
+        <trans-unit id="aa25ff3c9b231e9b99c6cece2313f1a161111d45" translate="yes" xml:space="preserve">
+          <source>You might want to consider the difference between:</source>
+          <target state="translated">你可能要考虑一下两者的区别。</target>
+        </trans-unit>
+        <trans-unit id="cffa50a32cb13a240d705317bcec65dd1f31b6ad" translate="yes" xml:space="preserve">
+          <source>and</source>
+          <target state="translated">and</target>
+        </trans-unit>
+        <trans-unit id="9d508031d4e84b7cc27af600bec98b3141da798e" translate="yes" xml:space="preserve">
+          <source>and you could simply call using &lt;code&gt;class name&lt;/code&gt;</source>
+          <target state="translated">你可以简单地使用 &lt;code&gt;class name&lt;/code&gt; 来调用</target>
+        </trans-unit>
+        <trans-unit id="d49b88615309e95621c35de40da5fe92499b533d" translate="yes" xml:space="preserve">
+          <source>as a guideline, use static methods as utilities, use class methods for example as factory . Or maybe to define a singleton. And use instance methods to model the state and behavior of instances.</source>
+          <target state="translated">作为指导原则,使用静态方法作为实用程序,使用类方法作为工厂。或者是定义一个单体。并使用实例方法来模拟实例的状态和行为。</target>
+        </trans-unit>
+        <trans-unit id="d52a33eead97a71117a46cf4e95a8a4ce30467f3" translate="yes" xml:space="preserve">
+          <source>class method</source>
+          <target state="translated">类方法</target>
+        </trans-unit>
+        <trans-unit id="52f372dd7e7596da7a6a95d387e97222b81d84c7" translate="yes" xml:space="preserve">
+          <source>classmethod has no access to attributes of the object. It however can access attributes of the class and of parent classes in the inheritance hierarchy.
+It can be called at the class directly (without creating an object). If called at the object then it is the same as normal method which doesn't access &lt;code&gt;self.&amp;lt;attribute(s)&amp;gt;&lt;/code&gt; and accesses &lt;code&gt;self.__class__.&amp;lt;attribute(s)&amp;gt;&lt;/code&gt; only.</source>
+          <target state="translated">classmethod不能访问对象的属性。 但是，它可以访问继承层次结构中的类和父类的属性。 可以直接在类上调用它（无需创建对象）。 如果在对象上调用，则它与不访问 &lt;code&gt;self.&amp;lt;attribute(s)&amp;gt;&lt;/code&gt; 且仅访问 &lt;code&gt;self.__class__.&amp;lt;attribute(s)&amp;gt;&lt;/code&gt; 普通方法相同。</target>
+        </trans-unit>
+        <trans-unit id="7948ad16ed2603a6348a81efc5083231e6e99599" translate="yes" xml:space="preserve">
+          <source>classmethod: &lt;strong&gt;the class of the current object&lt;/strong&gt; is automatically passed as an (additional) fist argument</source>
+          <target state="translated">classmethod： &lt;strong&gt;当前对象的类&lt;/strong&gt;作为（附加）fist参数自动传递</target>
+        </trans-unit>
+        <trans-unit id="040092959b9872d342ec8835eaf66a5912667aab" translate="yes" xml:space="preserve">
+          <source>if we use the instance method, &lt;code&gt;join&lt;/code&gt; on this string, to join another iterable,
+it quite obviously is a function of the instance, in addition to being a function of the iterable list, &lt;code&gt;['a', 'b', 'c']&lt;/code&gt;:</source>
+          <target state="translated">如果我们使用实例方法，在该字符串上进行连接，以连接另一个可迭代对象，则很明显，它是实例的函数，除了是可迭代列表 &lt;code&gt;['a', 'b', 'c']&lt;/code&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="458d61efa24b172ec0fd06ca32a179e50bd11ce5" translate="yes" xml:space="preserve">
+          <source>must be called with 2 arguments. &lt;code&gt;self&lt;/code&gt; is automatically passed, and it is &lt;em&gt;the object itself&lt;/em&gt;.</source>
+          <target state="translated">必须使用2个参数调用。 &lt;code&gt;self&lt;/code&gt; 是自动传递的，它是&lt;em&gt;对象本身&lt;/em&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="708f8989ac21092a5c5d8c983540d9bb44c48d11" translate="yes" xml:space="preserve">
+          <source>normal method</source>
+          <target state="translated">常态法</target>
+        </trans-unit>
+        <trans-unit id="feaabadfa899129cb55b2beee5ee0ea7aabdd795" translate="yes" xml:space="preserve">
+          <source>normal method: &lt;strong&gt;the current object&lt;/strong&gt; if automatically passed as an (additional) first argument</source>
+          <target state="translated">普通方法： &lt;strong&gt;当前对象（&lt;/strong&gt;如果自动作为（附加）第一个参数传递）</target>
+        </trans-unit>
+        <trans-unit id="bced6a1cd17696e1d77254556ccfcc9c6ad98d6a" translate="yes" xml:space="preserve">
+          <source>python2:</source>
+          <target state="translated">python2:</target>
+        </trans-unit>
+        <trans-unit id="e174fa5929995f67b31815ee0e9bd6d2d9fd8564" translate="yes" xml:space="preserve">
+          <source>python3:</source>
+          <target state="translated">python3:</target>
+        </trans-unit>
+        <trans-unit id="75d198e754da69d735666ee31a24c9846f114435" translate="yes" xml:space="preserve">
+          <source>static method</source>
+          <target state="translated">静态法</target>
+        </trans-unit>
+        <trans-unit id="6acd42d6636986fd7c20f9eddf725cc1b2a99a5e" translate="yes" xml:space="preserve">
+          <source>staticmethod has no access to attibutes of the object, of the class, or of parent classes in the inheritance hierarchy.
+It can be called at the class directly (without creating an object).</source>
+          <target state="translated">staticmethod不能访问对象、类或继承层次结构中的父类的attibutes。它可以直接在类中调用(不创建对象)。</target>
+        </trans-unit>
+        <trans-unit id="7ac95df276e52f37bfcb52496e9992dd99c61d05" translate="yes" xml:space="preserve">
+          <source>staticmethod: &lt;strong&gt;no extra arguments&lt;/strong&gt; are automatically passed. What you passed to the function is what you get.</source>
+          <target state="translated">staticmethod： &lt;strong&gt;不会&lt;/strong&gt;自动传递其他&lt;strong&gt;参数&lt;/strong&gt; 。 传递给函数的就是所得到的。</target>
+        </trans-unit>
+        <trans-unit id="2fa2da2994698860ee444ff57aadffe1813adf65" translate="yes" xml:space="preserve">
+          <source>the automatically provided argument &lt;em&gt;is not&lt;/em&gt;&lt;code&gt;self&lt;/code&gt;, but &lt;em&gt;the class of&lt;/em&gt;&lt;code&gt;self&lt;/code&gt;.</source>
+          <target state="translated">自动提供的参数&lt;em&gt;不是&lt;/em&gt; &lt;code&gt;self&lt;/code&gt; ，而是self &lt;em&gt;的类&lt;/em&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="0fbfad97aa3528afd3e7b36e34de780b77e439c1" translate="yes" xml:space="preserve">
+          <source>the method &lt;em&gt;is not given&lt;/em&gt; any automatic argument at all. It is only given the parameters that it is called with.</source>
+          <target state="translated">该方法&lt;em&gt;根本没有&lt;/em&gt;任何自动参数。 仅提供调用它的参数。</target>
+        </trans-unit>
+        <trans-unit id="2e0f976fbe142678d71e6f50a7587ee622db8c82" translate="yes" xml:space="preserve">
+          <source>usages</source>
+          <target state="translated">usages</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

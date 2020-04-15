@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="htmlbody" original="https://stackoverflow.com/questions/5741187">
+    <body>
+      <group id="5741187">
+        <trans-unit id="1f2c2f49ed53d271ef6cdcf6885e1ffa495ab73c" translate="yes" xml:space="preserve">
+          <source>&amp;nbsp;Note</source>
+          <target state="translated">&amp;nbsp;Note</target>
+        </trans-unit>
+        <trans-unit id="0137511bc1081a6efb0613748b98bd9d5f5c275a" translate="yes" xml:space="preserve">
+          <source>...because MySQLi prepared statements are safe.</source>
+          <target state="translated">...потому что подготовленные MySQLi заявления безопасны.</target>
+        </trans-unit>
+        <trans-unit id="1b1f4e147f6e802158503b43d1ca60cd81f26fbd" translate="yes" xml:space="preserve">
+          <source>...because PDO prepared statements are immune from this vulnerability (and ircmaxell's too, provided either that you're using PHP&amp;ge;5.3.6 and the character set has been correctly set in the DSN; or that prepared statement emulation has been disabled).</source>
+          <target state="translated">... потому что подготовленные операторы PDO защищены от этой уязвимости (и ircmaxell также, при условии, что вы используете PHP&amp;ge;5.3.6 и набор символов был правильно задан в DSN; или эмуляция подготовленных операторов была отключена) ,</target>
+        </trans-unit>
+        <trans-unit id="6ac78ecd1f7c67c942cb53726daa7a0efbc22871" translate="yes" xml:space="preserve">
+          <source>...because PDO's &lt;code&gt;quote()&lt;/code&gt; function not only escapes the literal, but also quotes it (in single-quote &lt;code&gt;'&lt;/code&gt; characters); note that to avoid ircmaxell's bug in this case, you &lt;em&gt;must&lt;/em&gt; be using PHP&amp;ge;5.3.6 &lt;em&gt;and&lt;/em&gt; have correctly set the character set in the DSN.</source>
+          <target state="translated">... потому что функция &lt;code&gt;quote()&lt;/code&gt; PDO не только экранирует литерал, но и заключает его в кавычки (в одинарных кавычках); обратите внимание, что во избежание ошибки ircmaxell в этом случае вы &lt;em&gt;должны&lt;/em&gt; использовать PHP&amp;ge;5.3.6 &lt;em&gt;и&lt;/em&gt; правильно установить набор символов в DSN.</target>
+        </trans-unit>
+        <trans-unit id="35754c4370182141eab5ee14a96666c610708eea" translate="yes" xml:space="preserve">
+          <source>...because we're quoting our string literal with single-quotes.</source>
+          <target state="translated">...потому что мы цитируем наш строковый литерал с одиночными кавычками.</target>
+        </trans-unit>
+        <trans-unit id="3c9a307826c8b7b69feae594532b8aa3104762de" translate="yes" xml:space="preserve">
+          <source>...because we've explicitly selected an SQL mode that doesn't include &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt;.</source>
+          <target state="translated">... потому что мы явно выбрали режим SQL, который не включает &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="715bf0ad0483cee36e2352e88d118cd45e4a12fd" translate="yes" xml:space="preserve">
+          <source>...then you &lt;em&gt;should&lt;/em&gt; be completely safe (vulnerabilities outside the scope of string escaping aside).</source>
+          <target state="translated">... тогда вы &lt;em&gt;должны&lt;/em&gt; быть полностью в безопасности (уязвимости выходят за рамки выхода строки).</target>
+        </trans-unit>
+        <trans-unit id="1652c3eb8f0740d7a95a22464a97e4d1d57d3195" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://www.php.net/manual/en/function.mysql-set-charset.php&quot;&gt;&lt;code&gt;mysql_set_charset()&lt;/code&gt;&lt;/a&gt; cannot help, as this has nothing to do with character sets; nor can &lt;a href=&quot;http://www.php.net/manual/en/mysqli.real-escape-string.php&quot;&gt;&lt;code&gt;mysqli::real_escape_string()&lt;/code&gt;&lt;/a&gt;, since that's just a different wrapper around this same function.</source>
+          <target state="translated">&lt;a href=&quot;http://www.php.net/manual/en/function.mysql-set-charset.php&quot;&gt; &lt;code&gt;mysql_set_charset()&lt;/code&gt; &lt;/a&gt; не может помочь, так как это не имеет ничего общего с наборами символов; также не может &lt;a href=&quot;http://www.php.net/manual/en/mysqli.real-escape-string.php&quot;&gt; &lt;code&gt;mysqli::real_escape_string()&lt;/code&gt; &lt;/a&gt; , так как это просто другая оболочка для этой же функции.</target>
+        </trans-unit>
+        <trans-unit id="40b79d311fd549f7a602061aab4c7e939b44bb05" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;mysql_real_escape_string()&lt;/code&gt; will &lt;strong&gt;provide no protection whatsoever&lt;/strong&gt; (and could furthermore munge your data) if:</source>
+          <target state="translated">&lt;code&gt;mysql_real_escape_string()&lt;/code&gt; не &lt;strong&gt;обеспечит никакой защиты&lt;/strong&gt; (и, кроме того, может испортить ваши данные), если:</target>
+        </trans-unit>
+        <trans-unit id="704e1ed694481558f32fc9a1901b8ba42b49d1dd" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;mysql_real_escape_string()&lt;/code&gt; will not protect you against this.
+&lt;strong&gt;The fact that you use single quotes (&lt;code&gt;' '&lt;/code&gt;) around your variables inside your query is what protects you against this.&lt;/strong&gt; The following is also an option:</source>
+          <target state="translated">&lt;code&gt;mysql_real_escape_string()&lt;/code&gt; не защитит вас от этого. &lt;strong&gt;Тот факт, что вы используете одинарные кавычки ( &lt;code&gt;' '&lt;/code&gt; ) вокруг переменных внутри запроса, защищает вас от этого.&lt;/strong&gt; Следующее также вариант:</target>
+        </trans-unit>
+        <trans-unit id="2a3d913309b6e70d8a4eaffa142ac0f8fa0b10d9" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;Incompatible Change:&lt;/em&gt;&lt;/strong&gt; A new C API function, &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string-quote.html&quot;&gt;&lt;code&gt;mysql_real_escape_string_quote()&lt;/code&gt;&lt;/a&gt;, has been implemented as a replacement for &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string.html&quot;&gt;&lt;code&gt;mysql_real_escape_string()&lt;/code&gt;&lt;/a&gt; because the latter function can fail to properly encode characters when the &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_no_backslash_escapes&quot;&gt;&lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt;&lt;/a&gt; SQL mode is enabled. In this case, &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string.html&quot;&gt;&lt;code&gt;mysql_real_escape_string()&lt;/code&gt;&lt;/a&gt; cannot escape quote characters except by doubling them, and to do this properly, it must know more information about the quoting context than is available. &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string-quote.html&quot;&gt;&lt;code&gt;mysql_real_escape_string_quote()&lt;/code&gt;&lt;/a&gt; takes an extra argument for specifying the quoting context. For usage details, see &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string-quote.html&quot;&gt;mysql_real_escape_string_quote()&lt;/a&gt;.</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;Несовместимое изменение:&lt;/em&gt;&lt;/strong&gt; новая функция C API, &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string-quote.html&quot;&gt; &lt;code&gt;mysql_real_escape_string_quote()&lt;/code&gt; &lt;/a&gt; , была реализована в качестве замены для &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string.html&quot;&gt; &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; &lt;/a&gt; поскольку последняя функция может не в состоянии правильно кодировать символы при &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_no_backslash_escapes&quot;&gt; &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; &lt;/a&gt; режиме SQL NO_BACKSLASH_ESCAPES . В этом случае &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string.html&quot;&gt; &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; &lt;/a&gt; не может экранировать символы кавычек, кроме как путем их удвоения, и для правильного выполнения она должна знать больше информации о контексте цитирования, чем доступно. &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string-quote.html&quot;&gt; &lt;code&gt;mysql_real_escape_string_quote()&lt;/code&gt; &lt;/a&gt; принимает дополнительный аргумент для указания контекста цитирования. Подробнее об использовании см. &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string-quote.html&quot;&gt;Mysql_real_escape_string_quote ()&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="f8e01739d5b6815e58b82ad6033855dbc821cb51" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;OR&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;OR&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="1417fe321e66a2f2b24276e42fbf203a5473bd74" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Selecting a Character Set&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Выбор набора символов&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7ac289cd5eeccb9543f356cfaa7dd434e4716155" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Selecting an SQL Mode&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Выбор режима SQL&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="1de1e668bd6f39316609cb114d142b1d2a27d5e2" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Payload&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Полезная нагрузка&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2d3170421e2d93af1294eb6a67b1040b5fa48891" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Query&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Запрос&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="326f3c54f3b107c6ae380d9464c1fb003c7f9d68" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;mysql_real_escape_string()&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;mysql_real_escape_string()&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="73322f37c52dd54895c5ee09cec4154d749ff948" translate="yes" xml:space="preserve">
+          <source>A &amp;ldquo;&lt;code&gt;&quot;&lt;/code&gt;&amp;rdquo; inside a string quoted with &amp;ldquo;&lt;code&gt;&quot;&lt;/code&gt;&amp;rdquo; may be written as &amp;ldquo;&lt;code&gt;&quot;&quot;&lt;/code&gt;&amp;rdquo;.</source>
+          <target state="translated">&amp;laquo; &lt;code&gt;&quot;&lt;/code&gt; &amp;raquo;Внутри строки, заключенной в&amp;laquo; &lt;code&gt;&quot;&lt;/code&gt; &amp;raquo;, может быть написано как &lt;code&gt;&quot;&quot;&lt;/code&gt; &amp;raquo;.</target>
+        </trans-unit>
+        <trans-unit id="866f8889f57f2afeeb461f2dc9e8e2edf5ccb4f7" translate="yes" xml:space="preserve">
+          <source>A &amp;ldquo;&lt;code&gt;'&lt;/code&gt;&amp;rdquo; inside a string quoted with &amp;ldquo;&lt;code&gt;&quot;&lt;/code&gt;&amp;rdquo; needs no special treatment and need not be doubled or escaped. In the same way, &amp;ldquo;&lt;code&gt;&quot;&lt;/code&gt;&amp;rdquo; inside a string quoted with &amp;ldquo;&lt;code&gt;'&lt;/code&gt;&amp;rdquo; needs no special treatment.</source>
+          <target state="translated">&amp;laquo;&amp;raquo; Внутри строки, заключенной в &lt;code&gt;&quot;&lt;/code&gt; &amp;raquo;, не требует специальной обработки и не нуждается в удвоении или экранировании. Точно так же &amp;laquo; &lt;code&gt;&quot;&lt;/code&gt; &amp;raquo;в строке, заключенной в&amp;laquo; &amp;raquo;, не требует специальной обработки.</target>
+        </trans-unit>
+        <trans-unit id="bc1a943df8c2823554d30c748a3335dc2a943b47" translate="yes" xml:space="preserve">
+          <source>A &amp;ldquo;&lt;code&gt;'&lt;/code&gt;&amp;rdquo; inside a string quoted with &amp;ldquo;&lt;code&gt;'&lt;/code&gt;&amp;rdquo; may be written as &amp;ldquo;&lt;code&gt;''&lt;/code&gt;&amp;rdquo;.</source>
+          <target state="translated">&amp;laquo;&amp;raquo; Внутри строки, заключенной в &amp;laquo;&amp;raquo;, может быть написано как &amp;laquo;&amp;raquo;.</target>
+        </trans-unit>
+        <trans-unit id="a5ed5417d8347bd101a3334daed119b0bde1f39d" translate="yes" xml:space="preserve">
+          <source>Also, the &lt;a href=&quot;http://dev.mysql.com/doc/en/sql-mode.html#sql-mode-setting&quot;&gt;SQL mode of a new connection&lt;/a&gt; is set by the server according to its configuration (which a &lt;code&gt;SUPER&lt;/code&gt; user can change at any time); thus, to be certain of the server's behaviour, you must &lt;em&gt;always&lt;/em&gt; explicitly specify your desired mode after connecting.</source>
+          <target state="translated">Кроме того, &lt;a href=&quot;http://dev.mysql.com/doc/en/sql-mode.html#sql-mode-setting&quot;&gt;режим SQL для нового соединения&lt;/a&gt; устанавливается сервером в соответствии с его конфигурацией (которую &lt;code&gt;SUPER&lt;/code&gt; пользователь может изменить в любое время); таким образом, чтобы быть уверенным в поведении сервера, вы &lt;em&gt;всегда&lt;/em&gt; должны явно указывать желаемый режим после подключения.</target>
+        </trans-unit>
+        <trans-unit id="684a9120a373e354d932d00139cf2545e5e3998c" translate="yes" xml:space="preserve">
+          <source>Alternatively, you can enable the &lt;a href=&quot;http://dev.mysql.com/doc/en/sql-mode.html#sqlmode_no_backslash_escapes&quot;&gt;&lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt;&lt;/a&gt; SQL mode, which (amongst other things) alters the operation of &lt;code&gt;mysql_real_escape_string()&lt;/code&gt;.  With this mode enabled, &lt;code&gt;0x27&lt;/code&gt; will be replaced with &lt;code&gt;0x2727&lt;/code&gt; rather than &lt;code&gt;0x5c27&lt;/code&gt; and thus the escaping process &lt;em&gt;cannot&lt;/em&gt; create valid characters in any of the vulnerable encodings where they did not exist previously (i.e. &lt;code&gt;0xbf27&lt;/code&gt; is still &lt;code&gt;0xbf27&lt;/code&gt; etc.)&amp;mdash;so the server will still reject the string as invalid.  However, see &lt;a href=&quot;https://stackoverflow.com/a/23277864/623041&quot;&gt;@eggyal's answer&lt;/a&gt; for a different vulnerability that can arise from using this SQL mode.</source>
+          <target state="translated">В качестве альтернативы вы можете включить &lt;a href=&quot;http://dev.mysql.com/doc/en/sql-mode.html#sqlmode_no_backslash_escapes&quot;&gt; &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; &lt;/a&gt; SQL NO_BACKSLASH_ESCAPES , который (среди прочего) изменяет работу &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; . Если этот режим включен, &lt;code&gt;0x27&lt;/code&gt; будет заменен на &lt;code&gt;0x2727&lt;/code&gt; , а не на &lt;code&gt;0x5c27&lt;/code&gt; , и, таким образом, процесс экранирования &lt;em&gt;не может&lt;/em&gt; создать допустимые символы ни в одном из уязвимых кодировок, где они ранее не существовали (т. &lt;code&gt;0xbf27&lt;/code&gt; по-прежнему &lt;code&gt;0xbf27&lt;/code&gt; и т. Д.), Поэтому сервер все равно будет отклонить строку как недействительную. Однако см &lt;a href=&quot;https://stackoverflow.com/a/23277864/623041&quot;&gt;. Ответ @ eggyal о&lt;/a&gt; другой уязвимости, которая может возникнуть при использовании этого режима SQL.</target>
+        </trans-unit>
+        <trans-unit id="0125850d3c197e91fbcdcb6a03bc380d4cbce4d0" translate="yes" xml:space="preserve">
+          <source>Applications should be modified to use &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string-quote.html&quot;&gt;&lt;code&gt;mysql_real_escape_string_quote()&lt;/code&gt;&lt;/a&gt;, instead of &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string.html&quot;&gt;&lt;code&gt;mysql_real_escape_string()&lt;/code&gt;&lt;/a&gt;, which now fails and produces an &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/error-messages-client.html#error_cr_insecure_api_err&quot;&gt;&lt;code&gt;CR_INSECURE_API_ERR&lt;/code&gt;&lt;/a&gt; error if &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_no_backslash_escapes&quot;&gt;&lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt;&lt;/a&gt; is enabled.</source>
+          <target state="translated">Приложения должны быть изменены, чтобы использовать &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string-quote.html&quot;&gt; &lt;code&gt;mysql_real_escape_string_quote()&lt;/code&gt; &lt;/a&gt; вместо &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/mysql-real-escape-string.html&quot;&gt; &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; &lt;/a&gt; , которая теперь завершается ошибкой и выдает ошибку &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sqlmode_no_backslash_escapes&quot;&gt; &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; &lt;/a&gt; если NO_BACKSLASH_ESCAPES включен.</target>
+        </trans-unit>
+        <trans-unit id="88e7dae832f3deb235d5883959ac5722693a0716" translate="yes" xml:space="preserve">
+          <source>As documented under &lt;a href=&quot;http://dev.mysql.com/doc/en/string-literals.html&quot;&gt;String Literals&lt;/a&gt;:</source>
+          <target state="translated">Как &lt;a href=&quot;http://dev.mysql.com/doc/en/string-literals.html&quot;&gt;описано в строковых литералах&lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="e89e6c65011e8a4d7c5bfa8b0caf77e515bc1d13" translate="yes" xml:space="preserve">
+          <source>As my learned friend put it: congratulations, you just successfully attacked a program using &lt;code&gt;mysql_real_escape_string()&lt;/code&gt;...</source>
+          <target state="translated">Как сказал мой знакомый друг: поздравляю, вы только что успешно атаковали программу, используя &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; ...</target>
+        </trans-unit>
+        <trans-unit id="860271aa1a26075ad9948f5113f8863be3598b03" translate="yes" xml:space="preserve">
+          <source>As of MySQL v5.7.6, this bug has been fixed.  See &lt;a href=&quot;http://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-6.html&quot;&gt;change log&lt;/a&gt;:</source>
+          <target state="translated">В MySQL v5.7.6 эта ошибка была исправлена. Смотрите &lt;a href=&quot;http://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-6.html&quot;&gt;журнал изменений&lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="f518e314fb42235c4f3d6cbb119a3ec1d5e226f3" translate="yes" xml:space="preserve">
+          <source>As we said at the outset, for this attack to work the database connection must be encoded using a vulnerable character set.  &lt;a href=&quot;http://dev.mysql.com/doc/en/charset-unicode-utf8mb4.html&quot;&gt;&lt;code&gt;utf8mb4&lt;/code&gt;&lt;/a&gt; is &lt;em&gt;not vulnerable&lt;/em&gt; and yet can support &lt;em&gt;every&lt;/em&gt; Unicode character: so you could elect to use that instead&amp;mdash;but it has only been available since MySQL 5.5.3.  An alternative is &lt;a href=&quot;http://dev.mysql.com/doc/en/charset-unicode-utf8.html&quot;&gt;&lt;code&gt;utf8&lt;/code&gt;&lt;/a&gt;, which is also &lt;em&gt;not vulnerable&lt;/em&gt; and can support the whole of the Unicode &lt;a href=&quot;http://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane&quot;&gt;Basic Multilingual Plane&lt;/a&gt;.</source>
+          <target state="translated">Как мы уже говорили, чтобы атака работала, соединение с базой данных должно быть закодировано с использованием уязвимого набора символов. &lt;a href=&quot;http://dev.mysql.com/doc/en/charset-unicode-utf8mb4.html&quot;&gt; &lt;code&gt;utf8mb4&lt;/code&gt; &lt;/a&gt; &lt;em&gt;не уязвим&lt;/em&gt; и все же может поддерживать &lt;em&gt;каждый&lt;/em&gt; символ Unicode: так что вы можете использовать его вместо этого - но он был доступен только с MySQL 5.5.3. Альтернативой является &lt;a href=&quot;http://dev.mysql.com/doc/en/charset-unicode-utf8.html&quot;&gt; &lt;code&gt;utf8&lt;/code&gt; &lt;/a&gt; , который также &lt;em&gt;не уязвим&lt;/em&gt; и может поддерживать всю &lt;a href=&quot;http://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane&quot;&gt;базовую многоязычную плоскость&lt;/a&gt; Unicode.</target>
+        </trans-unit>
+        <trans-unit id="51c588b6a3c0b164ad3d10434a89c0efb53c9e05" translate="yes" xml:space="preserve">
+          <source>Because MySQLi does true prepared statements all the time.</source>
+          <target state="translated">Потому что MySQLi постоянно делает правдивые подготовленные заявления.</target>
+        </trans-unit>
+        <trans-unit id="ab3ccc3774a15cad2838d17bc59cee25b4efaa02" translate="yes" xml:space="preserve">
+          <source>Because the server's expecting &lt;code&gt;utf8&lt;/code&gt;...</source>
+          <target state="translated">Потому что сервер ожидает &lt;code&gt;utf8&lt;/code&gt; ...</target>
+        </trans-unit>
+        <trans-unit id="9aa08df54ae5ee77bc5745d59edc07d0e6d4425b" translate="yes" xml:space="preserve">
+          <source>Because we've properly set the character set so the client and the server match.</source>
+          <target state="translated">Потому что мы правильно настроили набор символов,чтобы клиент и сервер соответствовали друг другу.</target>
+        </trans-unit>
+        <trans-unit id="e6e40fafb086150124f1ba46290255cea1c1778d" translate="yes" xml:space="preserve">
+          <source>Because we've set the character set properly.</source>
+          <target state="translated">Потому что мы правильно настроили набор символов.</target>
+        </trans-unit>
+        <trans-unit id="5ae657eb67501e49fa6473576ab76846e01342a4" translate="yes" xml:space="preserve">
+          <source>Because we've turned off emulated prepared statements.</source>
+          <target state="translated">Потому что мы отключили подражание подготовленным заявлениям.</target>
+        </trans-unit>
+        <trans-unit id="0eb8065189a48cf2287262d0ed3cfc832ded631c" translate="yes" xml:space="preserve">
+          <source>But the worst part is that &lt;code&gt;PDO&lt;/code&gt; didn't expose the C API for &lt;code&gt;mysql_set_charset()&lt;/code&gt; until 5.3.6, so in prior versions it &lt;strong&gt;cannot&lt;/strong&gt; prevent this attack for every possible command!
+ It's now exposed as a &lt;a href=&quot;http://www.php.net/manual/en/ref.pdo-mysql.connection.php&quot;&gt;DSN parameter&lt;/a&gt;.</source>
+          <target state="translated">Но хуже всего то, что &lt;code&gt;PDO&lt;/code&gt; не представлял C API для &lt;code&gt;mysql_set_charset()&lt;/code&gt; до 5.3.6, поэтому в предыдущих версиях он &lt;strong&gt;не мог&lt;/strong&gt; предотвратить эту атаку для всех возможных команд! Это теперь выставлено как &lt;a href=&quot;http://www.php.net/manual/en/ref.pdo-mysql.connection.php&quot;&gt;параметр DSN&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="f025296c14b5fc464e225ba32792e8b977855f7b" translate="yes" xml:space="preserve">
+          <source>Classic injections like this:</source>
+          <target state="translated">Классические инъекции вроде этой:</target>
+        </trans-unit>
+        <trans-unit id="64a02599a21321950d895b4a71792c50295ebd34" translate="yes" xml:space="preserve">
+          <source>Congratulations, you just successfully attacked a program using &lt;code&gt;mysql_real_escape_string()&lt;/code&gt;...</source>
+          <target state="translated">Поздравляем, вы только что успешно атаковали программу, используя &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; ...</target>
+        </trans-unit>
+        <trans-unit id="1e6f64ab75678829dd084a6595e2b0ae29ecddec" translate="yes" xml:space="preserve">
+          <source>Consider the following query:</source>
+          <target state="translated">Рассмотрим следующий вопрос:</target>
+        </trans-unit>
+        <trans-unit id="86b6f0784f01b0f24e5cd431494b3c0712fbc9e4" translate="yes" xml:space="preserve">
+          <source>Consider this sample situation. SQL is constructed in PHP like this:</source>
+          <target state="translated">Рассмотрим эту примерную ситуацию.SQL построен в PHP таким образом:</target>
+        </trans-unit>
+        <trans-unit id="57b1a7674ba21811ac4ac6555e0308ab61bf2a2f" translate="yes" xml:space="preserve">
+          <source>Do you know of any possible injection that would get through the PHP code above?</source>
+          <target state="translated">Знаете ли вы о возможной инъекции,которая могла бы пройти через PHP-код выше?</target>
+        </trans-unit>
+        <trans-unit id="803967a50e0348bca88eff4b61af251e5d520585" translate="yes" xml:space="preserve">
+          <source>Don't use a vulnerable character set for connection encoding (you only use &lt;code&gt;utf8&lt;/code&gt; / &lt;code&gt;latin1&lt;/code&gt; / &lt;code&gt;ascii&lt;/code&gt; / etc)</source>
+          <target state="translated">Не используйте уязвимый набор символов для кодирования соединения (вы используете только &lt;code&gt;utf8&lt;/code&gt; / &lt;code&gt;latin1&lt;/code&gt; / &lt;code&gt;ascii&lt;/code&gt; / etc)</target>
+        </trans-unit>
+        <trans-unit id="2318c4b0b2488cce207802b573caaf58285428bb" translate="yes" xml:space="preserve">
+          <source>For Very OBSCURE EDGE CASES!!!</source>
+          <target state="translated">Для ОЧЕНЬ ОБЩЕСТВЕННЫХ ДЕЙСТВИЙ!!!!</target>
+        </trans-unit>
+        <trans-unit id="d015ba7528fb1eb280c5a43556bdaab371f6ef49" translate="yes" xml:space="preserve">
+          <source>For this attack to work, we need the encoding that the server's expecting on the connection both to encode &lt;code&gt;'&lt;/code&gt; as in ASCII i.e. &lt;code&gt;0x27&lt;/code&gt;&lt;em&gt;and&lt;/em&gt; to have some character whose final byte is an ASCII &lt;code&gt;\&lt;/code&gt; i.e. &lt;code&gt;0x5c&lt;/code&gt;.  As it turns out, there are 5 such encodings supported in MySQL 5.6 by default: &lt;code&gt;big5&lt;/code&gt;, &lt;code&gt;cp932&lt;/code&gt;, &lt;code&gt;gb2312&lt;/code&gt;, &lt;code&gt;gbk&lt;/code&gt; and &lt;code&gt;sjis&lt;/code&gt;.  We'll select &lt;code&gt;gbk&lt;/code&gt; here.</source>
+          <target state="translated">Чтобы эта атака работала, нам нужна кодировка, которую сервер ожидает в соединении, чтобы она кодировала &lt;code&gt;'&lt;/code&gt; , как в ASCII, то есть &lt;code&gt;0x27&lt;/code&gt; , &lt;em&gt;и&lt;/em&gt; чтобы иметь некоторый символ, конечный байт которого ASCII &lt;code&gt;\&lt;/code&gt; т.е. &lt;code&gt;0x5c&lt;/code&gt; . Как оказалось, в MySQL 5.6 по умолчанию поддерживается 5 таких кодировок: &lt;code&gt;big5&lt;/code&gt; , &lt;code&gt;cp932&lt;/code&gt; , &lt;code&gt;gb2312&lt;/code&gt; , &lt;code&gt;gbk&lt;/code&gt; и &lt;code&gt;sjis&lt;/code&gt; . Мы выберем &lt;code&gt;gbk&lt;/code&gt; здесь.</target>
+        </trans-unit>
+        <trans-unit id="aa1fdb589fc94178b8e4146e0b68fb9f46b62bc9" translate="yes" xml:space="preserve">
+          <source>For this reason, I recommend that anyone using &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; also enables &lt;a href=&quot;http://dev.mysql.com/doc/en/sql-mode.html#sqlmode_ansi_quotes&quot;&gt;&lt;code&gt;ANSI_QUOTES&lt;/code&gt;&lt;/a&gt; mode, as it will force habitual use of single-quoted string literals.  Note that this does not prevent SQL injection in the event that double-quoted literals happen to be used&amp;mdash;it merely reduces the likelihood of that happening (because normal, non-malicious queries would fail).</source>
+          <target state="translated">По этой причине я рекомендую, чтобы любой, кто использует &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; , также &lt;a href=&quot;http://dev.mysql.com/doc/en/sql-mode.html#sqlmode_ansi_quotes&quot;&gt; &lt;code&gt;ANSI_QUOTES&lt;/code&gt; &lt;/a&gt; режим ANSI_QUOTES , поскольку он будет вызывать обычное использование строковых литералов в одинарных кавычках. Обратите внимание, что это не предотвращает внедрение SQL в случае использования литералов в двойных кавычках - это просто уменьшает вероятность этого (поскольку нормальные, не злонамеренные запросы не будут работать).</target>
+        </trans-unit>
+        <trans-unit id="9b63e3ab0f3f3c328e5af9e1da909b50f98ce45d" translate="yes" xml:space="preserve">
+          <source>Fortunately, &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; does check the SQL mode and adjust its behaviour accordingly.  See &lt;a href=&quot;http://bazaar.launchpad.net/~mysql/libmysql/1.0/view/head:/libmysql/libmysql.c#L1267&quot;&gt;&lt;code&gt;libmysql.c&lt;/code&gt;&lt;/a&gt;:</source>
+          <target state="translated">К счастью, &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; проверяет режим SQL и соответственно корректирует его поведение. Смотрите &lt;a href=&quot;http://bazaar.launchpad.net/~mysql/libmysql/1.0/view/head:/libmysql/libmysql.c#L1267&quot;&gt; &lt;code&gt;libmysql.c&lt;/code&gt; &lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="b2d00fd64fccabbd0f52bf8ac63661bfa39008be" translate="yes" xml:space="preserve">
+          <source>Functionality Added or Changed</source>
+          <target state="translated">Функциональность Добавлено или изменено</target>
+        </trans-unit>
+        <trans-unit id="8cad1370c5af86b04374fcbfdbe5fc2dcb0f2116" translate="yes" xml:space="preserve">
+          <source>However, this function arbitrarily &lt;em&gt;assumes&lt;/em&gt; that the string will be quoted using the single-quote &lt;code&gt;'&lt;/code&gt; character.  See &lt;a href=&quot;http://bazaar.launchpad.net/~mysql/libmysql/1.0/view/head:/mysys/charset.c#L836&quot;&gt;&lt;code&gt;charset.c&lt;/code&gt;&lt;/a&gt;:</source>
+          <target state="translated">Однако эта функция произвольно &lt;em&gt;предполагает,&lt;/em&gt; что строка будет заключена в кавычки с использованием символа одинарных кавычек. Смотрите &lt;a href=&quot;http://bazaar.launchpad.net/~mysql/libmysql/1.0/view/head:/mysys/charset.c#L836&quot;&gt; &lt;code&gt;charset.c&lt;/code&gt; &lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="36e26f357c029b64a1fb331af707285d8e5bd0dd" translate="yes" xml:space="preserve">
+          <source>I have heard numerous people say to me that code like that is still dangerous and possible to hack even with &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; function used. But I cannot think of any possible exploit?</source>
+          <target state="translated">Я слышал, как многие люди говорят мне, что подобный код все еще опасен и его можно взломать даже с &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; функции mysql_real_escape_string () . Но я не могу думать ни о каком возможном подвиге?</target>
+        </trans-unit>
+        <trans-unit id="0b1b883f0b54b49d027a8f5fb5694058665c68be" translate="yes" xml:space="preserve">
+          <source>I said at the very beginning that we could have prevented all of this if we had used &lt;code&gt;mysql_set_charset('gbk')&lt;/code&gt; instead of &lt;code&gt;SET NAMES gbk&lt;/code&gt;. And that's true provided you are using a MySQL release since 2006.</source>
+          <target state="translated">Я сказал в самом начале, что мы могли бы предотвратить все это, если бы использовали &lt;code&gt;mysql_set_charset('gbk')&lt;/code&gt; вместо &lt;code&gt;SET NAMES gbk&lt;/code&gt; . И это правда, если вы используете версию MySQL с 2006 года.</target>
+        </trans-unit>
+        <trans-unit id="81f0dc176701bfda65f13b7c9a46ab6048a4e039" translate="yes" xml:space="preserve">
+          <source>If the server's SQL mode includes &lt;a href=&quot;http://dev.mysql.com/doc/en/sql-mode.html#sqlmode_no_backslash_escapes&quot;&gt;&lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt;&lt;/a&gt;, then the third of these options&amp;mdash;which is the usual approach adopted by &lt;code&gt;mysql_real_escape_string()&lt;/code&gt;&amp;mdash;is not available: one of the first two options must be used instead.  Note that the effect of the fourth bullet is that one must necessarily know the character that will be used to quote the literal in order to avoid munging one's data.</source>
+          <target state="translated">Если режим SQL сервера включает &lt;a href=&quot;http://dev.mysql.com/doc/en/sql-mode.html#sqlmode_no_backslash_escapes&quot;&gt; &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; &lt;/a&gt; , то третий из этих параметров, который является обычным подходом, принятым в &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; , недоступен: вместо него следует использовать один из первых двух параметров. Обратите внимание, что эффект четвертого маркера заключается в том, что нужно обязательно знать символ, который будет использоваться для цитирования литерала, чтобы избежать манипулирования данными.</target>
+        </trans-unit>
+        <trans-unit id="86ab0b4c0397c452e673ed3642be48e6fdfe8342" translate="yes" xml:space="preserve">
+          <source>If you're using an earlier MySQL release, then a &lt;a href=&quot;http://bugs.mysql.com/bug.php?id=8378&quot;&gt;bug&lt;/a&gt; in &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; meant that invalid multibyte characters such as those in our payload were treated as single bytes for escaping purposes &lt;em&gt;even if the client had been correctly informed of the connection encoding&lt;/em&gt; and so this attack would still succeed.  The bug was fixed in MySQL &lt;a href=&quot;http://dev.mysql.com/doc/refman/4.1/en/news-4-1-20.html&quot;&gt;4.1.20&lt;/a&gt;, &lt;a href=&quot;http://dev.mysql.com/doc/relnotes/mysql/5.0/en/news-5-0-22.html&quot;&gt;5.0.22&lt;/a&gt; and &lt;a href=&quot;http://dev.mysql.com/doc/relnotes/mysql/5.1/en/news-5-1-11.html&quot;&gt;5.1.11&lt;/a&gt;.</source>
+          <target state="translated">Если вы используете более раннюю версию MySQL, то &lt;a href=&quot;http://bugs.mysql.com/bug.php?id=8378&quot;&gt;ошибка&lt;/a&gt; в &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; означала, что недопустимые многобайтовые символы, такие как наши полезные данные, обрабатывались как одиночные байты для экранирования, &lt;em&gt;даже если клиент был правильно проинформирован о кодировке соединения&lt;/em&gt; и т. Д. эта атака все равно будет успешной. Ошибка была исправлена ​​в MySQL &lt;a href=&quot;http://dev.mysql.com/doc/refman/4.1/en/news-4-1-20.html&quot;&gt;4.1.20&lt;/a&gt; , &lt;a href=&quot;http://dev.mysql.com/doc/relnotes/mysql/5.0/en/news-5-0-22.html&quot;&gt;5.0.22&lt;/a&gt; и &lt;a href=&quot;http://dev.mysql.com/doc/relnotes/mysql/5.1/en/news-5-1-11.html&quot;&gt;5.1.11&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="235aa4b0c2bc1b8d4771ded0fab393b955216156" translate="yes" xml:space="preserve">
+          <source>If you:</source>
+          <target state="translated">Если ты:</target>
+        </trans-unit>
+        <trans-unit id="78e7eaa8d236315c8fb69481369755a898a61600" translate="yes" xml:space="preserve">
+          <source>In PDO, both its equivalent function &lt;a href=&quot;http://www.php.net/manual/en/pdo.quote.php&quot;&gt;&lt;code&gt;PDO::quote()&lt;/code&gt;&lt;/a&gt; and its prepared statement emulator call upon &lt;a href=&quot;https://github.com/php/php-src/blob/af6c11c5f060870d052a2b765dc634d9e47d0f18/ext/pdo_mysql/mysql_driver.c#L302&quot;&gt;&lt;code&gt;mysql_handle_quoter()&lt;/code&gt;&lt;/a&gt;&amp;mdash;which does exactly this: it ensures that the escaped literal is quoted in single-quotes, so you can be certain that PDO is always immune from this bug.</source>
+          <target state="translated">В PDO и его эквивалентная функция &lt;a href=&quot;http://www.php.net/manual/en/pdo.quote.php&quot;&gt; &lt;code&gt;PDO::quote()&lt;/code&gt; &lt;/a&gt; и его подготовленный эмулятор операторов вызывают &lt;a href=&quot;https://github.com/php/php-src/blob/af6c11c5f060870d052a2b765dc634d9e47d0f18/ext/pdo_mysql/mysql_driver.c#L302&quot;&gt; &lt;code&gt;mysql_handle_quoter()&lt;/code&gt; &lt;/a&gt; что делает именно это: он гарантирует, что экранированный литерал заключен в одинарные кавычки, поэтому вы можете быть уверены, что PDO всегда невосприимчив к этой ошибке.</target>
+        </trans-unit>
+        <trans-unit id="9d385aaa3b30c1b6d51bc5a5eecd64a89068cd9c" translate="yes" xml:space="preserve">
+          <source>In certain circumstances, that will return more than 1 row. Let's dissect what's going on here:</source>
+          <target state="translated">При определенных обстоятельствах,это вернётся более чем в 1 ряд.Давайте проанализируем,что здесь происходит:</target>
+        </trans-unit>
+        <trans-unit id="fca7d62fc26dfbdd5bd711892d63ed4d75cd8722" translate="yes" xml:space="preserve">
+          <source>In homage to &lt;a href=&quot;https://stackoverflow.com/a/12118602&quot;&gt;@ircmaxell's excellent answer&lt;/a&gt; (really, this is supposed to be flattery and not plagiarism!), I will adopt his format:</source>
+          <target state="translated">В знак уважения к &lt;a href=&quot;https://stackoverflow.com/a/12118602&quot;&gt;превосходному ответу @ ircmaxell&lt;/a&gt; (на самом деле это должна быть лесть, а не плагиат!), Я приму его формат:</target>
+        </trans-unit>
+        <trans-unit id="cd215dc2b2ecbacd3fd36421b3a2fba7cb5bfacc" translate="yes" xml:space="preserve">
+          <source>Is there an SQL injection possibility even when using &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; function?</source>
+          <target state="translated">Есть ли возможность внедрения SQL-кода даже при использовании функции &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; ?</target>
+        </trans-unit>
+        <trans-unit id="a01adb93bc3b6fc2e61af0b19dd2925d0e9c9ad7" translate="yes" xml:space="preserve">
+          <source>It gets worse.  &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; may not be all that uncommon in the wild owing to the necessity of its use for compatibility with standard SQL (e.g. see section 5.3 of the &lt;a href=&quot;http://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt&quot;&gt;SQL-92 specification&lt;/a&gt;, namely the &lt;code&gt;&amp;lt;quote symbol&amp;gt; ::= &amp;lt;quote&amp;gt;&amp;lt;quote&amp;gt;&lt;/code&gt; grammar production and lack of any special meaning given to backslash).  Furthermore, its use was explicitly &lt;a href=&quot;http://dev.mysql.com/doc/relnotes/mysql/5.1/en/news-5-1-11.html&quot;&gt;recommended as a workaround&lt;/a&gt; to the (long since fixed) &lt;a href=&quot;http://bugs.mysql.com/bug.php?id=8378&quot;&gt;bug&lt;/a&gt; that ircmaxell's post describes.  Who knows, some DBAs might even configure it to be on by default as means of discouraging use of incorrect escaping methods like &lt;a href=&quot;http://www.php.net/manual/en/function.addslashes.php&quot;&gt;&lt;code&gt;addslashes()&lt;/code&gt;&lt;/a&gt;.</source>
+          <target state="translated">Становится хуже. &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; может быть не таким уж редким явлением из-за необходимости его использования для совместимости со стандартным SQL (например, см. Раздел 5.3 &lt;a href=&quot;http://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt&quot;&gt;спецификации SQL-92&lt;/a&gt; , а именно грамматику &lt;code&gt;&amp;lt;quote symbol&amp;gt; ::= &amp;lt;quote&amp;gt;&amp;lt;quote&amp;gt;&lt;/code&gt; производство и отсутствие какого-либо особого значения, придаваемого обратной косой черты). Кроме того, его использование было явно &lt;a href=&quot;http://dev.mysql.com/doc/relnotes/mysql/5.1/en/news-5-1-11.html&quot;&gt;рекомендовано в качестве обходного пути&lt;/a&gt; к (давно исправленной) &lt;a href=&quot;http://bugs.mysql.com/bug.php?id=8378&quot;&gt;ошибке&lt;/a&gt; , описанной в посте ircmaxell. Кто знает, некоторые администраторы БД могут даже настроить его на включение по умолчанию, чтобы не использовать неправильные методы экранирования, такие как &lt;a href=&quot;http://www.php.net/manual/en/function.addslashes.php&quot;&gt; &lt;code&gt;addslashes()&lt;/code&gt; &lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="6fa30bd77891dfa8c42dc41c3dd05d912df41b95" translate="yes" xml:space="preserve">
+          <source>It gets worse. &lt;code&gt;PDO&lt;/code&gt; defaults to &lt;em&gt;emulating&lt;/em&gt; prepared statements with MySQL. That means that on the client side, it basically does a sprintf through &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; (in the C library), which means the following will result in a successful injection:</source>
+          <target state="translated">Становится хуже. &lt;code&gt;PDO&lt;/code&gt; умолчанию PDO &lt;em&gt;эмулирует&lt;/em&gt; подготовленные операторы с MySQL. Это означает, что на стороне клиента он в основном выполняет sprintf через &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; (в библиотеке C), что означает, что следующее приведет к успешному внедрению:</target>
+        </trans-unit>
+        <trans-unit id="89cfd0b4b9c37c369d254688a7865cee4b004e34" translate="yes" xml:space="preserve">
+          <source>MySQL's &lt;a href=&quot;http://dev.mysql.com/doc/en/sql-mode.html#sqlmode_no_backslash_escapes&quot;&gt;&lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt;&lt;/a&gt; SQL mode is enabled (which it &lt;em&gt;might&lt;/em&gt; be, unless you &lt;em&gt;explicitly&lt;/em&gt; select another SQL mode &lt;em&gt;every time you connect&lt;/em&gt;); and</source>
+          <target state="translated">&lt;a href=&quot;http://dev.mysql.com/doc/en/sql-mode.html#sqlmode_no_backslash_escapes&quot;&gt; &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; &lt;/a&gt; SQL NO_BACKSLASH_ESCAPES в MySQL включен (что &lt;em&gt;может&lt;/em&gt; быть, если вы &lt;em&gt;не&lt;/em&gt; выберете другой режим SQL при &lt;em&gt;каждом подключении&lt;/em&gt; ); и</target>
+        </trans-unit>
+        <trans-unit id="0d560a10506f0b7ef8adddb39825d6e51880d891" translate="yes" xml:space="preserve">
+          <source>Now, it's very important to note the use of &lt;code&gt;SET NAMES&lt;/code&gt; here. This sets the character set &lt;strong&gt;ON THE SERVER&lt;/strong&gt;. If we used the call to the C API function &lt;code&gt;mysql_set_charset()&lt;/code&gt;, we'd be fine (on MySQL releases since 2006). But more on why in a minute...</source>
+          <target state="translated">Теперь очень важно отметить использование &lt;code&gt;SET NAMES&lt;/code&gt; здесь. Это устанавливает набор символов на &lt;strong&gt;сервере&lt;/strong&gt; . Если бы мы использовали вызов функции C API &lt;code&gt;mysql_set_charset()&lt;/code&gt; , все было бы в порядке (в версиях MySQL с 2006 года). Но подробнее о том, почему через минуту ...</target>
+        </trans-unit>
+        <trans-unit id="ee2774f4a8600878360cd4aa4dec59819c4a2daf" translate="yes" xml:space="preserve">
+          <source>Now, it's worth noting that you can prevent this by disabling emulated prepared statements:</source>
+          <target state="translated">Стоит отметить,что вы можете предотвратить это,отключив эмулированные подготовленные заявления:</target>
+        </trans-unit>
+        <trans-unit id="37e3a83b6f32baf1ce3b99fb4397cb5192c677fd" translate="yes" xml:space="preserve">
+          <source>Otherwise, you're vulnerable &lt;strong&gt;even though you're using &lt;code&gt;mysql_real_escape_string()&lt;/code&gt;&lt;/strong&gt;...</source>
+          <target state="translated">В противном случае вы уязвимы, &lt;strong&gt;даже если вы используете &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; &lt;/strong&gt; ...</target>
+        </trans-unit>
+        <trans-unit id="8644422a5fd7bc5ab0faf2e95c0f80b5e0de76c0" translate="yes" xml:space="preserve">
+          <source>PDO;</source>
+          <target state="translated">PDO;</target>
+        </trans-unit>
+        <trans-unit id="12facaa5c4baa8dbe06d38af1db67cfb4618c3a7" translate="yes" xml:space="preserve">
+          <source>Precede the quote character by an escape character (&amp;ldquo;&lt;code&gt;\&lt;/code&gt;&amp;rdquo;).</source>
+          <target state="translated">Перед символом кавычки должен стоять символ перехода (&amp;laquo; &lt;code&gt;\&lt;/code&gt; &amp;raquo;).</target>
+        </trans-unit>
+        <trans-unit id="b447cf795752cf7900ede4f8d3cb07528cd44316" translate="yes" xml:space="preserve">
+          <source>References: See also Bug #19211994.</source>
+          <target state="translated">Ссылки:См.также ошибку #19211994.</target>
+        </trans-unit>
+        <trans-unit id="9464db2ea229e88ee8b162ca13c18fd0cd70c3b4" translate="yes" xml:space="preserve">
+          <source>SQL injection that gets around mysql_real_escape_string()</source>
+          <target state="translated">SQL инъекция,которая обходит mysql_real_escape_string()</target>
+        </trans-unit>
+        <trans-unit id="4bd13a83b5e3cd19475748abea0450580b208585" translate="yes" xml:space="preserve">
+          <source>Safe Examples</source>
+          <target state="translated">Безопасные примеры</target>
+        </trans-unit>
+        <trans-unit id="f3a1435b2a5f8c71ecc9887e736a3b6565908745" translate="yes" xml:space="preserve">
+          <source>So long as you always &lt;em&gt;explicitly&lt;/em&gt; set the SQL mode not to include &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt;, or quote MySQL string literals using the single-quote character, this bug cannot rear its ugly head: respectively &lt;code&gt;escape_quotes_for_mysql()&lt;/code&gt; will not be used, or its assumption about which quote characters require repeating will be correct.</source>
+          <target state="translated">До тех пор, пока вы всегда &lt;em&gt;явно&lt;/em&gt; устанавливаете режим SQL, чтобы он не включал &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; , или не цитировал строковые литералы MySQL, используя символ одинарных кавычек, эта ошибка не может &lt;code&gt;escape_quotes_for_mysql()&lt;/code&gt; уродливой головы: соответственно escape_quotes_for_mysql () не будет использоваться или ее предположение о том, какая цитата символы, требующие повторения, будут правильными.</target>
+        </trans-unit>
+        <trans-unit id="9c82cfcfd7c80f51a781706aa481de5181a2badb" translate="yes" xml:space="preserve">
+          <source>So, it leaves double-quote &lt;code&gt;&quot;&lt;/code&gt; characters untouched (and doubles all single-quote &lt;code&gt;'&lt;/code&gt; characters) &lt;em&gt;irrespective of the actual character that is used to quote the literal&lt;/em&gt;!  In our case &lt;code&gt;$var&lt;/code&gt; remains exactly the same as the argument that was provided to &lt;code&gt;mysql_real_escape_string()&lt;/code&gt;&amp;mdash;it's as though no escaping has taken place &lt;em&gt;at all&lt;/em&gt;.</source>
+          <target state="translated">Таким образом, он оставляет символы &lt;code&gt;&quot;&lt;/code&gt; двойные кавычки &amp;raquo; нетронутыми (и удваивает все символы одинарных кавычек) &lt;em&gt;независимо от фактического символа, который используется для кавычек литерала&lt;/em&gt; ! В нашем случае &lt;code&gt;$var&lt;/code&gt; остается точно таким же, как аргумент, который был предоставлен для &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; - как будто никакого побега не произошло &lt;em&gt;вообще&lt;/em&gt; .</target>
+        </trans-unit>
+        <trans-unit id="2bd3c2fbb16f38ebaca58d2e99147a45e4a33ffd" translate="yes" xml:space="preserve">
+          <source>So, let's start off by showing the attack...</source>
+          <target state="translated">Итак,давайте начнем с того,что покажем нападение...</target>
+        </trans-unit>
+        <trans-unit id="b94521d5250b6b4dcf2e2112579d8894701d0cb4" translate="yes" xml:space="preserve">
+          <source>Something of a formality, the rendered query is:</source>
+          <target state="translated">Что-то вроде формальности-это запрос:</target>
+        </trans-unit>
+        <trans-unit id="7cbb325b5206a8f47d212b34898e5c8169949014" translate="yes" xml:space="preserve">
+          <source>Starting off with a demonstration...</source>
+          <target state="translated">Начнем с демонстрации...</target>
+        </trans-unit>
+        <trans-unit id="5ff57f4185e884322f43c9c59da60f12f41285ea" translate="yes" xml:space="preserve">
+          <source>TL;DR</source>
+          <target state="translated">TL;DR</target>
+        </trans-unit>
+        <trans-unit id="25068c6d83c499102f62408ff3863a0136e28d48" translate="yes" xml:space="preserve">
+          <source>Taken together with the bug explained by ircmaxell, the following examples are entirely safe (assuming that one is either using MySQL later than 4.1.20, 5.0.22, 5.1.11; or that one is not using a GBK/Big5 connection encoding):</source>
+          <target state="translated">Вместе с ошибкой,объясненной ircmaxell,следующие примеры полностью безопасны (предполагая,что либо используется MySQL позже 4.1.20,5.0.22,5.1.11;либо не используется кодировка соединения GBKBig5):</target>
+        </trans-unit>
+        <trans-unit id="89bc52d9aa970eea662979097ac001b91d0a09c6" translate="yes" xml:space="preserve">
+          <source>The Attack</source>
+          <target state="translated">Атака</target>
+        </trans-unit>
+        <trans-unit id="f6211e866c7239c64ef20925a961bec5d73d25aa" translate="yes" xml:space="preserve">
+          <source>The Bad</source>
+          <target state="translated">Плохие</target>
+        </trans-unit>
+        <trans-unit id="e18ed415a8c62de74d72d0537889979e1e5ad61f" translate="yes" xml:space="preserve">
+          <source>The C API call to &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; differs from &lt;code&gt;addslashes()&lt;/code&gt; in that it knows the connection character set. So it can perform the escaping properly for the character set that the server is expecting. However, up to this point, the client thinks that we're still using &lt;code&gt;latin1&lt;/code&gt; for the connection, because we never told it otherwise. We did tell the &lt;em&gt;server&lt;/em&gt; we're using &lt;code&gt;gbk&lt;/code&gt;, but the &lt;em&gt;client&lt;/em&gt; still thinks it's &lt;code&gt;latin1&lt;/code&gt;.</source>
+          <target state="translated">Вызов API C &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; отличается от &lt;code&gt;addslashes()&lt;/code&gt; тем, что он знает набор символов соединения. Таким образом, он может выполнить экранирование правильно для набора символов, который ожидает сервер. Однако до этого момента клиент думал, что мы все еще используем &lt;code&gt;latin1&lt;/code&gt; для соединения, потому что мы никогда не говорили об этом иначе. Мы сказали &lt;em&gt;серверу,&lt;/em&gt; что используем &lt;code&gt;gbk&lt;/code&gt; , но &lt;em&gt;клиент&lt;/em&gt; все еще думает, что это &lt;code&gt;latin1&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="f719c4c198c8aa78f8261fc01cd90d7f870228d1" translate="yes" xml:space="preserve">
+          <source>The Saving Grace</source>
+          <target state="translated">Спасительная милость</target>
+        </trans-unit>
+        <trans-unit id="0adbabc52b10370afa8aa9ba0a194b758fcfc4a6" translate="yes" xml:space="preserve">
+          <source>The Ugly</source>
+          <target state="translated">Гадкий</target>
+        </trans-unit>
+        <trans-unit id="4ca7fcff8448ca54a794cc01a9233524ca077c37" translate="yes" xml:space="preserve">
+          <source>The following examples are safe:</source>
+          <target state="translated">Следующие примеры безопасны:</target>
+        </trans-unit>
+        <trans-unit id="84cd8937e1e420f026695377c299a003071b2509" translate="yes" xml:space="preserve">
+          <source>The long answer isn't so easy. It's based off an attack &lt;a href=&quot;http://shiflett.org/blog/2006/jan/addslashes-versus-mysql-real-escape-string&quot;&gt;demonstrated here&lt;/a&gt;.</source>
+          <target state="translated">Длинный ответ не так прост. Он основан на атаке, &lt;a href=&quot;http://shiflett.org/blog/2006/jan/addslashes-versus-mysql-real-escape-string&quot;&gt;продемонстрированной здесь&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="1165da1a5fb1e85299a86fab06d35f1c1da8af71" translate="yes" xml:space="preserve">
+          <source>The payload initiates this injection quite literally with the &lt;code&gt;&quot;&lt;/code&gt; character.  No particular encoding.  No special characters.  No weird bytes.</source>
+          <target state="translated">Полезная нагрузка инициирует эту инъекцию буквально с символом &amp;laquo;. Никакой конкретной кодировки. Никаких специальных символов. Никаких странных байтов.</target>
+        </trans-unit>
+        <trans-unit id="07aed08f014598f23f998bfbccd45201722e2fa4" translate="yes" xml:space="preserve">
+          <source>The payload we're going to use for this injection starts with the byte sequence &lt;code&gt;0xbf27&lt;/code&gt;.  In &lt;code&gt;gbk&lt;/code&gt;, that's an invalid multibyte character; in &lt;code&gt;latin1&lt;/code&gt;, it's the string &lt;code&gt;&amp;iquest;'&lt;/code&gt;.  Note that in &lt;code&gt;latin1&lt;/code&gt;&lt;strong&gt;and&lt;/strong&gt;&lt;code&gt;gbk&lt;/code&gt;, &lt;code&gt;0x27&lt;/code&gt; on its own is a literal &lt;code&gt;'&lt;/code&gt; character.</source>
+          <target state="translated">Полезная нагрузка, которую мы собираемся использовать для этой инъекции, начинается с последовательности байтов &lt;code&gt;0xbf27&lt;/code&gt; . В &lt;code&gt;gbk&lt;/code&gt; это недопустимый многобайтовый символ; в &lt;code&gt;latin1&lt;/code&gt; это строка &lt;code&gt;&amp;iquest;'&lt;/code&gt; . Обратите внимание, что в &lt;code&gt;latin1&lt;/code&gt; &lt;strong&gt;и&lt;/strong&gt; &lt;code&gt;gbk&lt;/code&gt; &lt;code&gt;0x27&lt;/code&gt; сам по себе является буквальным символом.</target>
+        </trans-unit>
+        <trans-unit id="85bd2888b9839820671225f5734478627dd03249" translate="yes" xml:space="preserve">
+          <source>The problem, if not already obvious, is that the call to &lt;code&gt;mysql_real_escape_string()&lt;/code&gt;&lt;strong&gt;cannot know&lt;/strong&gt; with which character the literal will be quoted, as that's left to the developer to decide at a later time.  So, in &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; mode, there is literally &lt;em&gt;no way&lt;/em&gt; that this function can safely escape every input for use with arbitrary quoting (at least, not without doubling characters that do not require doubling and thus munging your data).</source>
+          <target state="translated">Проблема, если она еще не очевидна, заключается в том, что вызов &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; &lt;strong&gt;не может узнать,&lt;/strong&gt; с каким символом будет заключен литерал в кавычки, поскольку разработчик может принять решение позже. Таким образом, в режиме &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; буквально &lt;em&gt;нет способа,&lt;/em&gt; которым эта функция могла бы безопасно экранировать каждый ввод для использования с произвольными кавычками (по крайней мере, не без удвоения символов, которые не требуют удвоения и, следовательно, манипулирования вашими данными).</target>
+        </trans-unit>
+        <trans-unit id="42547b0db8d37e67c49237fd41e6482b1196a721" translate="yes" xml:space="preserve">
+          <source>The short answer is &lt;strong&gt;yes, yes there is a way to get around &lt;code&gt;mysql_real_escape_string()&lt;/code&gt;&lt;/strong&gt;.</source>
+          <target state="translated">Краткий ответ - &lt;strong&gt;да, да, есть способ обойти &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; &lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="4b36b71f5cebbf3e5bb1fd67c6d133231f6b995c" translate="yes" xml:space="preserve">
+          <source>There are several ways to include quote characters within a string:</source>
+          <target state="translated">Существует несколько способов включения символов кавычек в строку:</target>
+        </trans-unit>
+        <trans-unit id="4b8d7f358d85c417e09e78e8cac811d79bc9e09f" translate="yes" xml:space="preserve">
+          <source>Therefore the call to &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; inserts the backslash, and we have a free hanging &lt;code&gt;'&lt;/code&gt; character in our &quot;escaped&quot; content! In fact, if we were to look at &lt;code&gt;$var&lt;/code&gt; in the &lt;code&gt;gbk&lt;/code&gt; character set, we'd see:</source>
+          <target state="translated">Поэтому вызов &lt;code&gt;mysql_real_escape_string()&lt;/code&gt; вставляет обратную косую черту, и в нашем &amp;laquo;экранированном&amp;raquo; контенте есть символ свободного зависания! Фактически, если бы мы взглянули на &lt;code&gt;$var&lt;/code&gt; в &lt;code&gt;gbk&lt;/code&gt; символов gbk , мы бы увидели:</target>
+        </trans-unit>
+        <trans-unit id="de3f27253dad909a6292065ce32ea790bbf0a14b" translate="yes" xml:space="preserve">
+          <source>This is another, (perhaps less?) obscure EDGE CASE!!!</source>
+          <target state="translated">Это еще один,(может быть,меньше?)непонятный EDGE CASE!!!!</target>
+        </trans-unit>
+        <trans-unit id="a6c89c13dcd4c5d68d0db7503c9622c5b9f6bea7" translate="yes" xml:space="preserve">
+          <source>This part is just a formality, but here's the rendered query:</source>
+          <target state="translated">Эта часть-всего лишь формальность,но вот запрос:</target>
+        </trans-unit>
+        <trans-unit id="6843dd3ca9404f6ea2c9c3ff1f6d3d8a330be1fa" translate="yes" xml:space="preserve">
+          <source>This was filed as &lt;a href=&quot;http://bugs.mysql.com/bug.php?id=72458&quot;&gt;bug #72458&lt;/a&gt; and has been fixed in MySQL v5.7.6 (see the section headed &quot;&lt;strong&gt;The Saving Grace&lt;/strong&gt;&quot;, below).</source>
+          <target state="translated">Это было зарегистрировано как &lt;a href=&quot;http://bugs.mysql.com/bug.php?id=72458&quot;&gt;ошибка # 72458&lt;/a&gt; и исправлено в MySQL v5.7.6 (см. Раздел &amp;laquo; &lt;strong&gt;Экономия&lt;/strong&gt; &amp;raquo; ниже).</target>
+        </trans-unit>
+        <trans-unit id="540c75deef36dee1b0a10012d512093062f3975e" translate="yes" xml:space="preserve">
+          <source>This will &lt;em&gt;usually&lt;/em&gt; result in a true prepared statement (i.e. the data being sent over in a separate packet from the query). However, be aware that PDO will silently &lt;a href=&quot;https://github.com/php/php-src/blob/master/ext/pdo_mysql/mysql_driver.c#L210&quot;&gt;fallback&lt;/a&gt; to emulating statements that MySQL can't prepare natively: those that it can are &lt;a href=&quot;http://dev.mysql.com/doc/en/sql-syntax-prepared-statements.html&quot;&gt;listed&lt;/a&gt; in the manual, but beware to select the appropriate server version).</source>
+          <target state="translated">Это &lt;em&gt;обычно&lt;/em&gt; приводит к истинно подготовленному утверждению (то есть данные отправляются в отдельном пакете от запроса). Однако имейте в виду, что PDO автоматически откажется от эмуляции операторов, которые MySQL не может подготовить изначально: те, которые могут быть &lt;a href=&quot;http://dev.mysql.com/doc/en/sql-syntax-prepared-statements.html&quot;&gt;указаны&lt;/a&gt; в руководстве, но будьте осторожны, чтобы выбрать соответствующую версию сервера).</target>
+        </trans-unit>
+        <trans-unit id="90d6fd21f00e277e8719aa42844f6aeaa43c8a99" translate="yes" xml:space="preserve">
+          <source>This will return all records from the &lt;code&gt;test&lt;/code&gt; table.  A dissection:</source>
+          <target state="translated">Это вернет все записи из &lt;code&gt;test&lt;/code&gt; таблицы. Расслоение:</target>
+        </trans-unit>
+        <trans-unit id="bdb8bf736b134dd49ab0915dcc3a725d69a44cc6" translate="yes" xml:space="preserve">
+          <source>Thus a different underlying function, &lt;code&gt;escape_quotes_for_mysql()&lt;/code&gt;, is invoked if the &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; SQL mode is in use.  As mentioned above, such a function needs to know which character will be used to quote the literal in order to repeat it without causing the other quotation character from being repeated literally.</source>
+          <target state="translated">Таким образом, другая базовая функция &lt;code&gt;escape_quotes_for_mysql()&lt;/code&gt; вызывается, если используется &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt; SQL NO_BACKSLASH_ESCAPES . Как упоминалось выше, такая функция должна знать, какой символ будет использоваться для кавычек литерала, чтобы повторять его, не вызывая повторения буквально другого символа кавычки.</target>
+        </trans-unit>
+        <trans-unit id="0806e20ed1459118ce9b52f165bc00868a177d26" translate="yes" xml:space="preserve">
+          <source>Thus, if you:</source>
+          <target state="translated">Так что,если ты:</target>
+        </trans-unit>
+        <trans-unit id="985e4313b4f69c20bac9a62ad436714ad736a0be" translate="yes" xml:space="preserve">
+          <source>Use Modern Versions of MySQL (late 5.1, all 5.5, 5.6, etc) &lt;strong&gt;AND&lt;/strong&gt;&lt;code&gt;mysql_set_charset()&lt;/code&gt; / &lt;code&gt;$mysqli-&amp;gt;set_charset()&lt;/code&gt; / PDO's DSN charset parameter (in PHP &amp;ge; 5.3.6)</source>
+          <target state="translated">Используйте современные версии MySQL ( &lt;code&gt;mysql_set_charset()&lt;/code&gt; 5.1, все версии 5.5, 5.6 и т. Д.) &lt;strong&gt;И&lt;/strong&gt; mysql_set_charset () / &lt;code&gt;$mysqli-&amp;gt;set_charset()&lt;/code&gt; / параметр charset DSN PDO (в PHP &amp;ge; 5.3.6)</target>
+        </trans-unit>
+        <trans-unit id="427ec19a36c3eadeeaa0cbf7051413a63eca61b8" translate="yes" xml:space="preserve">
+          <source>We have chosen this payload because, if we called &lt;code&gt;addslashes()&lt;/code&gt; on it, we'd insert an ASCII &lt;code&gt;\&lt;/code&gt; i.e. &lt;code&gt;0x5c&lt;/code&gt;, before the &lt;code&gt;'&lt;/code&gt; character. So we'd wind up with &lt;code&gt;0xbf5c27&lt;/code&gt;, which in &lt;code&gt;gbk&lt;/code&gt; is a two character sequence: &lt;code&gt;0xbf5c&lt;/code&gt; followed by &lt;code&gt;0x27&lt;/code&gt;. Or in other words, a &lt;em&gt;valid&lt;/em&gt; character followed by an unescaped &lt;code&gt;'&lt;/code&gt;. But we're not using &lt;code&gt;addslashes()&lt;/code&gt;. So on to the next step...</source>
+          <target state="translated">Мы выбрали эту полезную нагрузку, потому что, если бы мы вызвали &lt;code&gt;addslashes()&lt;/code&gt; , мы вставили бы ASCII &lt;code&gt;\&lt;/code&gt; т.е. &lt;code&gt;0x5c&lt;/code&gt; перед символом &lt;code&gt;'&lt;/code&gt; . Таким образом, мы получим &lt;code&gt;0xbf5c27&lt;/code&gt; , который в &lt;code&gt;gbk&lt;/code&gt; представляет собой последовательность из двух символов: &lt;code&gt;0xbf5c&lt;/code&gt; , за которой следует &lt;code&gt;0x27&lt;/code&gt; . Или, другими словами, &lt;em&gt;действительный&lt;/em&gt; символ, за которым следует неоткрытый &lt;code&gt;'&lt;/code&gt; . Но мы не используем &lt;code&gt;addslashes()&lt;/code&gt; . Итак, к следующему шагу ...</target>
+        </trans-unit>
+        <trans-unit id="4ea0cdc50b3e6c87d368d6f640192c16206f3e34" translate="yes" xml:space="preserve">
+          <source>Well, there's nothing really that can pass through that, other than &lt;code&gt;%&lt;/code&gt; wildcard. It could be dangerous if you were using &lt;code&gt;LIKE&lt;/code&gt; statement as attacker could put just &lt;code&gt;%&lt;/code&gt; as login if you don't filter that out, and would have to just bruteforce a password of any of your users.
+People often suggest using prepared statements to make it 100% safe, as data can't interfere with the query itself that way.
+But for such simple queries it probably would be more efficient to do something like &lt;code&gt;$login = preg_replace('/[^a-zA-Z0-9_]/', '', $login);&lt;/code&gt;</source>
+          <target state="translated">Ну, на самом деле нет ничего, что может пройти через это, кроме символа подстановки &lt;code&gt;%&lt;/code&gt; . Это может быть опасно, если вы используете оператор &lt;code&gt;LIKE&lt;/code&gt; , поскольку злоумышленник может указать только &lt;code&gt;%&lt;/code&gt; в качестве логина, если вы не отфильтруете его, и ему придется просто взломать пароль любого из ваших пользователей. Люди часто предлагают использовать подготовленные операторы, чтобы сделать их на 100% безопасными, поскольку данные не могут таким образом вмешиваться в сам запрос. Но для таких простых запросов, вероятно, было бы более эффективно сделать что-то вроде &lt;code&gt;$login = preg_replace('/[^a-zA-Z0-9_]/', '', $login);&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="d73739e8bcc2eca14c4e6ee94849b3f8eb574f29" translate="yes" xml:space="preserve">
+          <source>Which is &lt;a href=&quot;https://www.google.com/search?q=%E7%B8%97%27%20OR&amp;amp;oq=%E7%B8%97%27%20OR&amp;amp;aqs=chrome..69i57&amp;amp;sourceid=chrome&amp;amp;es_sm=122&amp;amp;ie=UTF-8&quot;&gt;exactly what&lt;/a&gt; the attack requires.</source>
+          <target state="translated">Что &lt;a href=&quot;https://www.google.com/search?q=%E7%B8%97%27%20OR&amp;amp;oq=%E7%B8%97%27%20OR&amp;amp;aqs=chrome..69i57&amp;amp;sourceid=chrome&amp;amp;es_sm=122&amp;amp;ie=UTF-8&quot;&gt;именно то,&lt;/a&gt; что требуется для атаки.</target>
+        </trans-unit>
+        <trans-unit id="6a67ed2b7ff7dba4ff8e1a412ae8d28fc8cd1aaa" translate="yes" xml:space="preserve">
+          <source>Wrapping Up</source>
+          <target state="translated">Завершение</target>
+        </trans-unit>
+        <trans-unit id="f5f39e69fe287172343d624554cae09348c5c8eb" translate="yes" xml:space="preserve">
+          <source>You're 100% safe.</source>
+          <target state="translated">Ты в безопасности на 100%.</target>
+        </trans-unit>
+        <trans-unit id="217320583edc38a0014a1114edbfde1025f77f58" translate="yes" xml:space="preserve">
+          <source>an explicitly set SQL mode that does not include &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt;</source>
+          <target state="translated">явно установленный режим SQL, который не включает &lt;code&gt;NO_BACKSLASH_ESCAPES&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="30de47e3fc63619fc4bb52553661d24fc277a5e9" translate="yes" xml:space="preserve">
+          <source>do not work.</source>
+          <target state="translated">не работают.</target>
+        </trans-unit>
+        <trans-unit id="9bb92a3071ca477f4a9ff10448279a15beeb7fc0" translate="yes" xml:space="preserve">
+          <source>in &lt;em&gt;addition&lt;/em&gt; to employing one of the solutions in ircmaxell's summary, use at least one of:</source>
+          <target state="translated">в &lt;em&gt;дополнение&lt;/em&gt; к использованию одного из решений в резюме ircmaxell, используйте по крайней мере одно из:</target>
+        </trans-unit>
+        <trans-unit id="c043e9c677741168021919c728f09616e78da5a8" translate="yes" xml:space="preserve">
+          <source>single-quoted string literals; or</source>
+          <target state="translated">одноцитарные строковые литералы;или</target>
+        </trans-unit>
+        <trans-unit id="47389f249f78a198fbfe6286d101664c76a37021" translate="yes" xml:space="preserve">
+          <source>use MySQL v5.7.6 or later</source>
+          <target state="translated">использовать MySQL v5.7.6 или более позднюю версию</target>
+        </trans-unit>
+        <trans-unit id="693e82b31d5c236212865ca0f15c27928ec99fd3" translate="yes" xml:space="preserve">
+          <source>use native prepared statements</source>
+          <target state="translated">использовать подготовленные заявления коренного населения</target>
+        </trans-unit>
+        <trans-unit id="2cf9beb50c22da78348a0f66f5b58ee7b6e3b96e" translate="yes" xml:space="preserve">
+          <source>your SQL string literals are quoted using double-quote &lt;code&gt;&quot;&lt;/code&gt; characters.</source>
+          <target state="translated">строковые литералы SQL заключаются в двойные кавычки.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

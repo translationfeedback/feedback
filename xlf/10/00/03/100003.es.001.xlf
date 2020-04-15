@@ -1,0 +1,1104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="es" datatype="htmlbody" original="https://stackoverflow.com/questions/100003">
+    <body>
+      <group id="100003">
+        <trans-unit id="75f904e8b7fedc01e237553e4c1e63dc973e6787" translate="yes" xml:space="preserve">
+          <source>(A side-note on the contents of the class &lt;code&gt;__dict__&lt;/code&gt;: &lt;code&gt;__module__&lt;/code&gt; is there because classes must know where they are defined, and  &lt;code&gt;__dict__&lt;/code&gt; and &lt;code&gt;__weakref__&lt;/code&gt; are there because we don't define &lt;code&gt;__slots__&lt;/code&gt; - if we &lt;a href=&quot;https://stackoverflow.com/q/472000/541136&quot;&gt;define &lt;code&gt;__slots__&lt;/code&gt;&lt;/a&gt; we'll save a bit of space in the instances, as we can disallow &lt;code&gt;__dict__&lt;/code&gt; and &lt;code&gt;__weakref__&lt;/code&gt; by excluding them. For example:</source>
+          <target state="translated">(Una nota al margen sobre el contenido de la clase &lt;code&gt;__dict__&lt;/code&gt; : &lt;code&gt;__module__&lt;/code&gt; est&amp;aacute; ah&amp;iacute; porque las clases deben saber d&amp;oacute;nde est&amp;aacute;n definidos, y &lt;code&gt;__dict__&lt;/code&gt; y &lt;code&gt;__weakref__&lt;/code&gt; est&amp;aacute;n ah&amp;iacute; porque no definimos &lt;code&gt;__slots__&lt;/code&gt; - si &lt;a href=&quot;https://stackoverflow.com/q/472000/541136&quot;&gt;definimos &lt;code&gt;__slots__&lt;/code&gt; ahorraremos&lt;/a&gt; un poco de espacio en las instancias, ya que podemos rechazar &lt;code&gt;__dict__&lt;/code&gt; y &lt;code&gt;__weakref__&lt;/code&gt; excluy&amp;eacute;ndolos. Por ejemplo:</target>
+        </trans-unit>
+        <trans-unit id="80ce04df15f97539136582b49b933ab604f9103b" translate="yes" xml:space="preserve">
+          <source>(I  know, it's silly that the same function can have two completely different uses according to the parameters you pass to it. It's an issue due to backwards
+compatibility in Python)</source>
+          <target state="translated">(Lo sé,es tonto que la misma función pueda tener dos usos completamente diferentes según los parámetros que le pases.Es un problema debido a la compatibilidad inversa en Python)</target>
+        </trans-unit>
+        <trans-unit id="2ac0d02e51ef16f7af8ae886bdf0e4fa530c5f5d" translate="yes" xml:space="preserve">
+          <source>... but I digress.)</source>
+          <target state="translated">...pero estoy divagando.)</target>
+        </trans-unit>
+        <trans-unit id="f6ebd068cb008bd8fb59b8b2729d85510c67060a" translate="yes" xml:space="preserve">
+          <source>99% of the time you need class alteration, you are better off using these.</source>
+          <target state="translated">El 99% de las veces que necesitas un cambio de clase,es mejor que uses esto.</target>
+        </trans-unit>
+        <trans-unit id="97c9f0c35f46135bb3f31b3babd294116e47cb9e" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://www.onlamp.com/pub/a/python/2003/04/17/metaclasses.html&quot;&gt;http://www.onlamp.com/pub/a/python/2003/04/17/metaclasses.html&lt;/a&gt; (archived at &lt;a href=&quot;https://web.archive.org/web/20080206005253/http://www.onlamp.com/pub/a/python/2003/04/17/metaclasses.html&quot;&gt;https://web.archive.org/web/20080206005253/http://www.onlamp.com/pub/a/python/2003/04/17/metaclasses.html&lt;/a&gt;)</source>
+          <target state="translated">&lt;a href=&quot;http://www.onlamp.com/pub/a/python/2003/04/17/metaclasses.html&quot;&gt;http://www.onlamp.com/pub/a/python/2003/04/17/metaclasses.html&lt;/a&gt; (archivado en &lt;a href=&quot;https://web.archive.org/web/20080206005253/http://www.onlamp.com/pub/a/python/2003/04/17/metaclasses.html&quot;&gt;https://web.archive.org/web/20080206005253/http://www.onlamp. com / pub / a / python / 2003/04/17 / metaclasses.html&lt;/a&gt; )</target>
+        </trans-unit>
+        <trans-unit id="3bdb50500a7c19592bda8809f1f54a3155b055d0" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#metaclasses&quot;&gt;Here&lt;/a&gt; you can read about how to use metaclasses to customize class construction.</source>
+          <target state="translated">&lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#metaclasses&quot;&gt;Aqu&amp;iacute;&lt;/a&gt; puede leer sobre c&amp;oacute;mo usar las metaclases para personalizar la construcci&amp;oacute;n de clases.</target>
+        </trans-unit>
+        <trans-unit id="a50fc3237b1a93efefaaf939cf45f327c9ed165c" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__new__&lt;/code&gt; is responsible for the actual creation/modification of the final class.</source>
+          <target state="translated">&lt;code&gt;__new__&lt;/code&gt; es responsable de la creaci&amp;oacute;n / modificaci&amp;oacute;n real de la clase final.</target>
+        </trans-unit>
+        <trans-unit id="1a0d6bf17eaa1810f965cf7374357b165ec381aa" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__prepare__&lt;/code&gt; lets you supply a custom mapping (such as an &lt;code&gt;OrderedDict&lt;/code&gt;) to be used as the namespace while the class is being created.  You must return an instance of whatever namespace you choose.  If you don't implement &lt;code&gt;__prepare__&lt;/code&gt; a normal &lt;code&gt;dict&lt;/code&gt; is used.</source>
+          <target state="translated">&lt;code&gt;__prepare__&lt;/code&gt; le permite proporcionar una asignaci&amp;oacute;n personalizada (como un &lt;code&gt;OrderedDict&lt;/code&gt; ) para utilizarla como espacio de nombres mientras se crea la clase. Debe devolver una instancia del espacio de nombres que elija. Si no implementa &lt;code&gt;__prepare__&lt;/code&gt; , se utiliza un &lt;code&gt;dict&lt;/code&gt; normal.</target>
+        </trans-unit>
+        <trans-unit id="023d195e822e75fe65a0924f1427b5fdf01fc5ac" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__prepare__&lt;/code&gt;, and</source>
+          <target state="translated">&lt;code&gt;__prepare__&lt;/code&gt; , y</target>
+        </trans-unit>
+        <trans-unit id="7d878c7158652444f7186704c3b33f7141e22209" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;type&lt;/code&gt; accepts a dictionary to define the attributes of the class. So:</source>
+          <target state="translated">&lt;code&gt;type&lt;/code&gt; acepta un diccionario para definir los atributos de la clase. Entonces:</target>
+        </trans-unit>
+        <trans-unit id="5d2e1c2d0bbec05a50948a1721fe99a3b39aa6b9" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;type&lt;/code&gt; is actually a &lt;code&gt;metaclass&lt;/code&gt; -- a class that creates another classes.
+Most &lt;code&gt;metaclass&lt;/code&gt; are the subclasses of &lt;code&gt;type&lt;/code&gt;. The &lt;code&gt;metaclass&lt;/code&gt; receives the &lt;code&gt;new&lt;/code&gt; class as its first argument and provide access to class object with details as mentioned below:</source>
+          <target state="translated">&lt;code&gt;type&lt;/code&gt; es en realidad una &lt;code&gt;metaclass&lt;/code&gt; , una clase que crea otras clases. La mayor&amp;iacute;a de las &lt;code&gt;metaclass&lt;/code&gt; son las subclases de &lt;code&gt;type&lt;/code&gt; . La &lt;code&gt;metaclass&lt;/code&gt; recibe la &lt;code&gt;new&lt;/code&gt; clase como primer argumento y proporciona acceso al objeto de clase con los detalles que se mencionan a continuaci&amp;oacute;n:</target>
+        </trans-unit>
+        <trans-unit id="d9eba8487bfc807b1b32e61a4fcc2b4d4099fc9b" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;type&lt;/code&gt; is actually its own metaclass. This is not something you could
+reproduce in pure Python, and is done by cheating a little bit at the implementation
+level.</source>
+          <target state="translated">&lt;code&gt;type&lt;/code&gt; es en realidad su propia metaclase. Esto no es algo que pueda reproducir en Python puro, y se hace haciendo trampa un poco a nivel de implementaci&amp;oacute;n.</target>
+        </trans-unit>
+        <trans-unit id="55ff24a1972577aa56cf45cfad50fad1fa3a38ef" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;type&lt;/code&gt; is its own metaclass. The class of a class is a metaclass-- the body of a class is the arguments passed to the metaclass that is used to construct the class.</source>
+          <target state="translated">&lt;code&gt;type&lt;/code&gt; es su propia metaclase. La clase de una clase es una metaclase: el cuerpo de una clase son los argumentos pasados ​​a la metaclase que se utiliza para construir la clase.</target>
+        </trans-unit>
+        <trans-unit id="b56139b823c7b0ae94bce907510423f13ee59acc" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;type&lt;/code&gt; is the built-in metaclass Python uses, but of course, you can create your
+own metaclass.</source>
+          <target state="translated">&lt;code&gt;type&lt;/code&gt; es la metaclase incorporada que utiliza Python, pero, por supuesto, puede crear su propia metaclase.</target>
+        </trans-unit>
+        <trans-unit id="2e9b06716bef6742d220da876612fb09c18a1de4" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;type&lt;/code&gt; works this way:</source>
+          <target state="translated">&lt;code&gt;type&lt;/code&gt; funciona de esta manera:</target>
+        </trans-unit>
+        <trans-unit id="a9b27deb1c48c1688dcbf6153f9703f0928f091b" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Note, this answer is for Python 2.x as it was written in 2008, metaclasses are slightly different in 3.x.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Tenga en cuenta que esta respuesta es para Python 2.x como se escribi&amp;oacute; en 2008, las metaclases son ligeramente diferentes en 3.x.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="90461ec79be347574dc9366bf79436c53a18378b" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Python Guru Tim Peters&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Python Guru Tim Peters&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="aaee62583d5533c9937128f100302a2beb82df5b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;attrs&lt;/code&gt;&lt;/strong&gt;: dictionary containing attributes names and values</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;attrs&lt;/code&gt; &lt;/strong&gt; : diccionario que contiene nombres y valores de atributos</target>
+        </trans-unit>
+        <trans-unit id="6b235afc3403ff79e2b3ea50c1ad732bc7d0bc59" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;bases&lt;/code&gt;&lt;/strong&gt;: tuple of the parent class (for inheritance, can be empty)</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;bases&lt;/code&gt; &lt;/strong&gt; : tupla de la clase padre (por herencia, puede estar vac&amp;iacute;a)</target>
+        </trans-unit>
+        <trans-unit id="f9b873798f48e29d3714485763a3478bb4a497d7" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;name&lt;/code&gt;&lt;/strong&gt;: name of the class</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;name&lt;/code&gt; &lt;/strong&gt; : nombre de la clase</target>
+        </trans-unit>
+        <trans-unit id="f7b324be8699a5976c969c726c75d9164d86dcb8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Note that the magic behaviour that &lt;code&gt;Initialised&lt;/code&gt; gains by having the metaclass &lt;code&gt;init_attributes&lt;/code&gt; is not passed onto a subclass of &lt;code&gt;Initialised&lt;/code&gt;.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Tenga en cuenta que el comportamiento m&amp;aacute;gico que &lt;code&gt;Initialised&lt;/code&gt; gana al tener la metaclase &lt;code&gt;init_attributes&lt;/code&gt; no se pasa a una subclase de &lt;code&gt;Initialised&lt;/code&gt; .&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="ac292049c7ca4650474b47279520a7d5fdba79f7" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Note&lt;/strong&gt;:  This example is simple enough it could have also been accomplished with a class decorator, but presumably an actual metaclass would be doing much more.</source>
+          <target state="translated">&lt;strong&gt;Nota&lt;/strong&gt; : Este ejemplo es bastante simple, tambi&amp;eacute;n podr&amp;iacute;a haberse logrado con un decorador de clase, pero presumiblemente una metaclase real estar&amp;iacute;a haciendo mucho m&amp;aacute;s.</target>
+        </trans-unit>
+        <trans-unit id="18064ffdb8c53a2819134a580d83cb2c5c9bab27" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Python 3 update&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Actualizaci&amp;oacute;n de Python 3&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6fd0a25468fd58988cf36428bbcb7968431bd58e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The &lt;code&gt;type()&lt;/code&gt; of a class is its &lt;em&gt;metaclass&lt;/em&gt;.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;El &lt;code&gt;type()&lt;/code&gt; de una clase es su &lt;em&gt;metaclase&lt;/em&gt; .&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7c766e32141cfa3130f81de60585eea6ff38f65d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;This object (the class) is itself capable of creating objects (the instances),
+and this is why it's a class&lt;/strong&gt;.</source>
+          <target state="translated">&lt;strong&gt;Este objeto (la clase) es capaz de crear objetos (las instancias), y es por eso que es una clase&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="6c248c325fb87b5d5270a24375d32cd2c9f65122" translate="yes" xml:space="preserve">
+          <source>A bare-bones, do-nothing-extra metaclass would like:</source>
+          <target state="translated">Una metaclase de &quot;no hacer nada más&quot; le gustaría:</target>
+        </trans-unit>
+        <trans-unit id="92b4c38772f64c8e05f839618ee864357a996cbf" translate="yes" xml:space="preserve">
+          <source>A class is to an instance as a metaclass is to a class.</source>
+          <target state="translated">Una clase es a una instancia como una metaclase es a una clase.</target>
+        </trans-unit>
+        <trans-unit id="0c27db643b5b5e645284c4cc80a9276398d074a2" translate="yes" xml:space="preserve">
+          <source>A class, in Python, is an object, and just like any other object, it is an instance of &quot;something&quot;. This &quot;something&quot; is what is termed as a Metaclass. This metaclass is a special type of class that creates other class's objects. Hence, metaclass is responsible for making new classes. This allows the programmer to customize the way classes are generated.</source>
+          <target state="translated">Una clase,en Python,es un objeto,y como cualquier otro objeto,es una instancia de &quot;algo&quot;.Este &quot;algo&quot; es lo que se denomina una Metaclase.Esta metaclase es un tipo especial de clase que crea objetos de otras clases.Por lo tanto,la metaclase es responsable de crear nuevas clases.Esto permite al programador personalizar la forma en que se generan las clases.</target>
+        </trans-unit>
+        <trans-unit id="98368b5bba9571afb40d6d81649f78ad6a167a0f" translate="yes" xml:space="preserve">
+          <source>A dictionary having all class methods and class variables</source>
+          <target state="translated">Un diccionario con todos los métodos y variables de clase</target>
+        </trans-unit>
+        <trans-unit id="07bad8c7f891539fd063eae960107658c65808db" translate="yes" xml:space="preserve">
+          <source>A metaclass is a class that tells how (some) other class should be created.</source>
+          <target state="translated">Una metaclase es una clase que dice cómo (alguna)otra clase debe ser creada.</target>
+        </trans-unit>
+        <trans-unit id="873c9fcb3efb256f101a6622b416b45f928aa997" translate="yes" xml:space="preserve">
+          <source>A metaclass is most commonly used as a class-factory. When you create an object by calling the class, Python creates a new class (when it executes the 'class' statement) by calling the metaclass. Combined with the normal &lt;code&gt;__init__&lt;/code&gt; and &lt;code&gt;__new__&lt;/code&gt; methods, metaclasses therefore allow you to do 'extra things' when creating a class, like registering the new class with some registry or replace the class with something else entirely.</source>
+          <target state="translated">Una metaclase se usa m&amp;aacute;s com&amp;uacute;nmente como una f&amp;aacute;brica de clases. Cuando crea un objeto llamando a la clase, Python crea una nueva clase (cuando ejecuta la instrucci&amp;oacute;n 'clase') llamando a la metaclase. En combinaci&amp;oacute;n con los &lt;code&gt;__init__&lt;/code&gt; normales __init__ y &lt;code&gt;__new__&lt;/code&gt; , las metaclases le permiten hacer 'cosas adicionales' al crear una clase, como registrar la nueva clase con alg&amp;uacute;n registro o reemplazar la clase con algo completamente diferente.</target>
+        </trans-unit>
+        <trans-unit id="3486e865599100d4c2f2690dc8d832dc90595e5c" translate="yes" xml:space="preserve">
+          <source>A metaclass is the class of a class. A class defines how an instance of the class (i.e. an object) behaves while a metaclass defines how a class behaves. A class is an instance of a metaclass.</source>
+          <target state="translated">Una metaclase es la clase de una clase.Una clase define cómo se comporta una instancia de la clase (es decir,un objeto)mientras que una metaclase define cómo se comporta una clase.Una clase es una instancia de una metaclase.</target>
+        </trans-unit>
+        <trans-unit id="4ea4880d366e98584d6186c7ff37dd31a7e3a934" translate="yes" xml:space="preserve">
+          <source>A sample run of:</source>
+          <target state="translated">Una muestra de:</target>
+        </trans-unit>
+        <trans-unit id="8e839688e01ba01e9dfe145feb09335f1aa963d0" translate="yes" xml:space="preserve">
+          <source>A simple example:</source>
+          <target state="translated">Un simple ejemplo:</target>
+        </trans-unit>
+        <trans-unit id="abaef223fba357f5e679cf230585920e62f69619" translate="yes" xml:space="preserve">
+          <source>A simple metaclass can address that problem:</source>
+          <target state="translated">Una simple metaclase puede abordar ese problema:</target>
+        </trans-unit>
+        <trans-unit id="f9675ef41670c1a7e08847654b4300f2976b5bd7" translate="yes" xml:space="preserve">
+          <source>According to the Python object model, the class is the object, so the class must be an instance of another certain class.
+By default, a Python class is instance of the type class. That is, type is metaclass of most of the built-in classes and metaclass of user-defined classes.</source>
+          <target state="translated">De acuerdo con el modelo del objeto Python,la clase es el objeto,por lo que la clase debe ser una instancia de otra clase determinada.Por defecto,una clase Python es una instancia del tipo clase.Es decir,el tipo es la metaclase de la mayoría de las clases incorporadas y la metaclase de las clases definidas por el usuario.</target>
+        </trans-unit>
+        <trans-unit id="4adff09b65f995e39fb598615865ea22fe246c14" translate="yes" xml:space="preserve">
+          <source>An expected usage: &lt;code&gt;__prepare__&lt;/code&gt; a namespace</source>
+          <target state="translated">Un uso esperado: &lt;code&gt;__prepare__&lt;/code&gt; un espacio de nombres</target>
+        </trans-unit>
+        <trans-unit id="53beca7540dd22467058afe2ce16662999fefed8" translate="yes" xml:space="preserve">
+          <source>And it has approximately the correct &lt;code&gt;repr&lt;/code&gt; (which we can no longer eval unless we can find a way to represent our functions.):</source>
+          <target state="translated">Y tiene aproximadamente la &lt;code&gt;repr&lt;/code&gt; correcta (que ya no podemos evaluar a menos que podamos encontrar una manera de representar nuestras funciones):</target>
+        </trans-unit>
+        <trans-unit id="ce4bfa8f5c082d4fff81df807663be51c7c917c2" translate="yes" xml:space="preserve">
+          <source>And now let's create an instance of &lt;code&gt;Class_1&lt;/code&gt;</source>
+          <target state="translated">Y ahora &lt;code&gt;Class_1&lt;/code&gt; una instancia de Class_1</target>
+        </trans-unit>
+        <trans-unit id="5bf68fb2be7839bf9d1dd84adfe71a7440908b18" translate="yes" xml:space="preserve">
+          <source>And now we have a record of the order in which these methods (and other class attributes) were created:</source>
+          <target state="translated">Y ahora tenemos un registro del orden en el que estos métodos (y otros atributos de clase)fueron creados:</target>
+        </trans-unit>
+        <trans-unit id="4ca06910faa36e6b2502325b8ed3b633d8e2df95" translate="yes" xml:space="preserve">
+          <source>And now, an example that actually means something, this will automatically make the variables in the list &quot;attributes&quot; set on the class, and set to None.</source>
+          <target state="translated">Y ahora,un ejemplo que realmente significa algo,esto hará que las variables de la lista de &quot;atributos&quot; se establezcan en la clase,y se fijen en Ninguno.</target>
+        </trans-unit>
+        <trans-unit id="9ab311e6c0f38e17cbdcfba4ac88667451f90d25" translate="yes" xml:space="preserve">
+          <source>And of course, you can inherit from it, so:</source>
+          <target state="translated">Y por supuesto,puedes heredar de él,así que:</target>
+        </trans-unit>
+        <trans-unit id="72e4dbbed8155cf6d13a6faec1d3c917549c55be" translate="yes" xml:space="preserve">
+          <source>And usage:</source>
+          <target state="translated">Y el uso:</target>
+        </trans-unit>
+        <trans-unit id="0d4a22c47e425bea8ea588e394d41d40ede76cb4" translate="yes" xml:space="preserve">
+          <source>And used as a normal class:</source>
+          <target state="translated">Y se usa como una clase normal:</target>
+        </trans-unit>
+        <trans-unit id="d11b95735f7ea9c7ca4cdd3c0cc7d13b93d2b46f" translate="yes" xml:space="preserve">
+          <source>And what can create a class? &lt;code&gt;type&lt;/code&gt;, or anything that subclasses or uses it.</source>
+          <target state="translated">&amp;iquest;Y qu&amp;eacute; puede crear una clase? &lt;code&gt;type&lt;/code&gt; , o cualquier cosa que lo subclasifique o lo use.</target>
+        </trans-unit>
+        <trans-unit id="649539847a08116b173bc0337d0fca037b42617c" translate="yes" xml:space="preserve">
+          <source>And you can add even more methods after you dynamically create the class, just like adding methods to a normally created class object.</source>
+          <target state="translated">Y puedes añadir aún más métodos después de crear dinámicamente la clase,igual que añadir métodos a un objeto de clase creado normalmente.</target>
+        </trans-unit>
+        <trans-unit id="530eddb18915c39bc5dcde4a3a20f4402846be8a" translate="yes" xml:space="preserve">
+          <source>And, of course, you can create your own &lt;code&gt;metaclass&lt;/code&gt; to define the behaviour of any class that are created using your class.</source>
+          <target state="translated">Y, por supuesto, puede crear su propia &lt;code&gt;metaclass&lt;/code&gt; para definir el comportamiento de cualquier clase que se cree usando su clase.</target>
+        </trans-unit>
+        <trans-unit id="65df52390d32d6445d153fc0a9ee8f28f45c2439" translate="yes" xml:space="preserve">
+          <source>Another way of creating a metaclass comprises of 'metaclass' keyword. Define the metaclass as a simple class. In the parameters of inherited class, pass metaclass=metaclass_name</source>
+          <target state="translated">Otra forma de crear una metaclase comprende la palabra clave &quot;metaclase&quot;.Define la metaclase como una clase simple.En los parámetros de la clase heredada,pasar metaclase=nombre_de_metaclase</target>
+        </trans-unit>
+        <trans-unit id="f4b130a19c5f693fbbf062ec80d3671ef783f1ea" translate="yes" xml:space="preserve">
+          <source>Anything that's a subclass of &lt;code&gt;MyType&lt;/code&gt; then gets a class attribute &lt;code&gt;_order&lt;/code&gt; that records the order in which the classes were defined.</source>
+          <target state="translated">Cualquier cosa que sea una subclase de &lt;code&gt;MyType&lt;/code&gt; obtiene un atributo de clase &lt;code&gt;_order&lt;/code&gt; que registra el orden en que se definieron las clases.</target>
+        </trans-unit>
+        <trans-unit id="39af72b7c646d137c090c578f75c34590856559b" translate="yes" xml:space="preserve">
+          <source>As soon as you use the keyword &lt;code&gt;class&lt;/code&gt;, Python executes it and creates
+an OBJECT. The instruction</source>
+          <target state="translated">Tan pronto como use la &lt;code&gt;class&lt;/code&gt; palabra clave, Python la ejecuta y crea un OBJETO. La instrucci&amp;oacute;n</target>
+        </trans-unit>
+        <trans-unit id="2bbce40d7b29697d5feb257ab36b2c9ef937448a" translate="yes" xml:space="preserve">
+          <source>As you can see, you have to repeat the name of the attribute twice.  This makes typos possible along with irritating bugs.</source>
+          <target state="translated">Como puedes ver,tienes que repetir el nombre del atributo dos veces.Esto hace que los errores de escritura sean posibles junto con los irritantes bichos.</target>
+        </trans-unit>
+        <trans-unit id="9956578f1491cba6ae62da4a5182369af56ec1ea" translate="yes" xml:space="preserve">
+          <source>Automatic change of class (on creation) is required</source>
+          <target state="translated">Se requiere un cambio de clase automático (en la creación)</target>
+        </trans-unit>
+        <trans-unit id="a0904b4d0a120872451f6708177857cd4876a29b" translate="yes" xml:space="preserve">
+          <source>Be careful here that the &lt;code&gt;__metaclass__&lt;/code&gt; attribute will not be inherited, the metaclass of the parent (&lt;code&gt;Bar.__class__&lt;/code&gt;) will be. If &lt;code&gt;Bar&lt;/code&gt; used a &lt;code&gt;__metaclass__&lt;/code&gt; attribute that created &lt;code&gt;Bar&lt;/code&gt; with &lt;code&gt;type()&lt;/code&gt; (and not &lt;code&gt;type.__new__()&lt;/code&gt;), the subclasses will not inherit that behavior.</source>
+          <target state="translated">Tenga cuidado aqu&amp;iacute; de que el atributo &lt;code&gt;__metaclass__&lt;/code&gt; no ser&amp;aacute; heredado, la metaclase del padre ( &lt;code&gt;Bar.__class__&lt;/code&gt; ) s&amp;iacute; lo ser&amp;aacute;. Si &lt;code&gt;Bar&lt;/code&gt; utiliz&amp;oacute; un atributo &lt;code&gt;__metaclass__&lt;/code&gt; que cre&amp;oacute; &lt;code&gt;Bar&lt;/code&gt; con &lt;code&gt;type()&lt;/code&gt; (y no &lt;code&gt;type.__new__()&lt;/code&gt; ), las subclases no heredar&amp;aacute;n ese comportamiento.</target>
+        </trans-unit>
+        <trans-unit id="80625100761a15802531450282948dc4d9d74c05" translate="yes" xml:space="preserve">
+          <source>Before understanding metaclasses, you need to master classes in Python. And Python has a very peculiar idea of what classes are, borrowed from the Smalltalk language.</source>
+          <target state="translated">Antes de entender las metaclases,hay que dominar las clases en Python.Y Python tiene una idea muy peculiar de lo que son las clases,tomada del lenguaje Smalltalk.</target>
+        </trans-unit>
+        <trans-unit id="6a2ed346f5d5ae803e927c67a0b729ccdfc1ac42" translate="yes" xml:space="preserve">
+          <source>But 98% of the time, you don't need class alteration at all.</source>
+          <target state="translated">Pero el 98% de las veces,no necesitas alterar la clase en absoluto.</target>
+        </trans-unit>
+        <trans-unit id="217006127ae3f18c4bd2c902e86bbb02d1e2be15" translate="yes" xml:space="preserve">
+          <source>But classes are more than that in Python. Classes are objects too.</source>
+          <target state="translated">Pero las clases son más que eso en Python.Las clases también son objetos.</target>
+        </trans-unit>
+        <trans-unit id="c6925819c7efe04fd6c3ab39f7eb68854e9cde4a" translate="yes" xml:space="preserve">
+          <source>But if you do this:</source>
+          <target state="translated">Pero si haces esto:</target>
+        </trans-unit>
+        <trans-unit id="ef4914127f447e16a1796467ee1b0bb970abd2e5" translate="yes" xml:space="preserve">
+          <source>But it's not so dynamic, since you still have to write the whole class yourself.</source>
+          <target state="translated">Pero no es tan dinámico,ya que todavía tienes que escribir toda la clase tú mismo.</target>
+        </trans-unit>
+        <trans-unit id="3f48f38ce849fd78c7a275acf29a06ca3a0397d9" translate="yes" xml:space="preserve">
+          <source>But still, it's an object, and therefore:</source>
+          <target state="translated">Pero aún así,es un objeto,y por lo tanto:</target>
+        </trans-unit>
+        <trans-unit id="3b16fb856b8f2d6a24ccdf8c533162de4f2a2b85" translate="yes" xml:space="preserve">
+          <source>But this is not proper OOP. We are calling &lt;code&gt;type&lt;/code&gt; directly and we aren't overriding or calling the parent's &lt;code&gt;__new__&lt;/code&gt;. Let's do that instead:</source>
+          <target state="translated">Pero esto no es una OOP adecuada. Estamos llamando al &lt;code&gt;type&lt;/code&gt; directamente y no estamos anulando o llamando al &lt;code&gt;__new__&lt;/code&gt; los padres. Hagamos eso en su lugar:</target>
+        </trans-unit>
+        <trans-unit id="bca74e7aa7842dd7785f6fa3e79fd35320fecfb0" translate="yes" xml:space="preserve">
+          <source>But we learned that Python classes are objects.</source>
+          <target state="translated">Pero aprendimos que las clases de pitón son objetos.</target>
+        </trans-unit>
+        <trans-unit id="9da0aa54f4f4de88a9f5b6ed8d8101a2c5efd27f" translate="yes" xml:space="preserve">
+          <source>By API developers</source>
+          <target state="translated">Por los desarrolladores de API</target>
+        </trans-unit>
+        <trans-unit id="b4df2ba03eab94130e4fd06a9c5054fa64ad06cd" translate="yes" xml:space="preserve">
+          <source>Can be translated to:</source>
+          <target state="translated">Puede ser traducido a:</target>
+        </trans-unit>
+        <trans-unit id="334466b784281739a3c38583b4c063fdc0aba559" translate="yes" xml:space="preserve">
+          <source>Careful, it's tricky.</source>
+          <target state="translated">Cuidado,es difícil.</target>
+        </trans-unit>
+        <trans-unit id="23e735f2e42f0ee01fd065b66b276180dd776b09" translate="yes" xml:space="preserve">
+          <source>Class Name</source>
+          <target state="translated">Nombre de la clase</target>
+        </trans-unit>
+        <trans-unit id="67581e4d912d7924cb46e54e6204e5fcc51399f9" translate="yes" xml:space="preserve">
+          <source>Classes as objects</source>
+          <target state="translated">Las clases como objetos</target>
+        </trans-unit>
+        <trans-unit id="2a6d4b43aad00a6ba23618dd38abe34e6ccdd450" translate="yes" xml:space="preserve">
+          <source>Creating a new model</source>
+          <target state="translated">Creando un nuevo modelo</target>
+        </trans-unit>
+        <trans-unit id="9d277645538f63f2b9666091e215ce0c2c94b67c" translate="yes" xml:space="preserve">
+          <source>Creating classes dynamically</source>
+          <target state="translated">Creando clases dinámicamente</target>
+        </trans-unit>
+        <trans-unit id="a5890931814483d070ece2ba611db02e74fa66fb" translate="yes" xml:space="preserve">
+          <source>Custom metaclasses</source>
+          <target state="translated">Metaclases personalizadas</target>
+        </trans-unit>
+        <trans-unit id="3583495fe771aa17938b325299e9568902990630" translate="yes" xml:space="preserve">
+          <source>Django makes something complex look simple by exposing a simple API
+and using metaclasses, recreating code from this API to do the real job
+behind the scenes.</source>
+          <target state="translated">Django hace que algo complejo parezca simple exponiendo una API simple y usando metaclases,recreando el código de esta API para hacer el verdadero trabajo entre bastidores.</target>
+        </trans-unit>
+        <trans-unit id="0c2efb2ec65dc0aa53f18cfb1abd5f87fcb64df6" translate="yes" xml:space="preserve">
+          <source>Eventually you'll want to add methods to your class. Just define a function
+with the proper signature and assign it as an attribute.</source>
+          <target state="translated">Eventualmente querrás añadir métodos a tu clase.Sólo tienes que definir una función con la firma adecuada y asignarla como un atributo.</target>
+        </trans-unit>
+        <trans-unit id="07cbe8c7c80e4f1f64a5bbbd7a413d143a41a369" translate="yes" xml:space="preserve">
+          <source>Everything is an object in Python, and they are all either instances of classes
+or instances of metaclasses.</source>
+          <target state="translated">Todo es un objeto en Python,y todos son instancias de clases o instancias de metaclases.</target>
+        </trans-unit>
+        <trans-unit id="8fd816dd026cb3639455418c4ec1f8fa0fe97cd2" translate="yes" xml:space="preserve">
+          <source>Everything, and I mean everything, is an object in Python. That includes ints,
+strings, functions and classes. All of them are objects. And all of them have
+been created from a class:</source>
+          <target state="translated">Todo,y me refiero a todo,es un objeto en Python.Eso incluye ints,cuerdas,funciones y clases.Todos ellos son objetos.Y todos ellos han sido creados a partir de una clase:</target>
+        </trans-unit>
+        <trans-unit id="673604a3dfb5c3ee8e65923cb90776673fb75935" translate="yes" xml:space="preserve">
+          <source>Except for &lt;code&gt;type&lt;/code&gt;.</source>
+          <target state="translated">Excepto por el &lt;code&gt;type&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="ff75c36a00faaeb29de73a493ffe4e766d3c9c95" translate="yes" xml:space="preserve">
+          <source>First, you can create a class in a function using &lt;code&gt;class&lt;/code&gt;:</source>
+          <target state="translated">Primero, puede crear una clase en una funci&amp;oacute;n usando &lt;code&gt;class&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="b279b3945b4d05b8b08bfb5dd600595061650654" translate="yes" xml:space="preserve">
+          <source>First, you know that classes are objects that can create instances.</source>
+          <target state="translated">Primero,sabes que las clases son objetos que pueden crear instancias.</target>
+        </trans-unit>
+        <trans-unit id="0afa5be4efcb2364e68a5fbe4c217e7cc8946f64" translate="yes" xml:space="preserve">
+          <source>For doing that, your default &lt;code&gt;metaclass&lt;/code&gt; type class must be inherited as this is the main &lt;code&gt;metaclass&lt;/code&gt;:</source>
+          <target state="translated">Para hacerlo, la clase de tipo de &lt;code&gt;metaclass&lt;/code&gt; predeterminada debe heredarse, ya que esta es la &lt;code&gt;metaclass&lt;/code&gt; principal:</target>
+        </trans-unit>
+        <trans-unit id="64d1e55feb37865331973d2697ad8c261c0e1af4" translate="yes" xml:space="preserve">
+          <source>For example, if you look at &lt;a href=&quot;http://docs.djangoproject.com/en/dev/topics/db/models/&quot;&gt;Django models&lt;/a&gt;, their definition looks a bit confusing. It looks as if you are only defining class properties:</source>
+          <target state="translated">Por ejemplo, si observa los &lt;a href=&quot;http://docs.djangoproject.com/en/dev/topics/db/models/&quot;&gt;modelos de Django&lt;/a&gt; , su definici&amp;oacute;n parece un poco confusa. Parece que solo est&amp;aacute; definiendo propiedades de clase:</target>
+        </trans-unit>
+        <trans-unit id="fe22872a0b690652860e20740774999a464ef779" translate="yes" xml:space="preserve">
+          <source>From the above it stems that the metaclass' &lt;code&gt;__call__()&lt;/code&gt; is also given the opportunity to decide whether or not a call to &lt;code&gt;Class_1.__new__()&lt;/code&gt; or &lt;code&gt;Class_1.__init__()&lt;/code&gt; will eventually be made. Over the course of its execution it could actually return an object that hasn't been touched by either of these methods. Take for example this approach to the singleton pattern:</source>
+          <target state="translated">De lo anterior se &lt;code&gt;__call__()&lt;/code&gt; que la metaclase ' __call __ () tambi&amp;eacute;n tiene la oportunidad de decidir si se realizar&amp;aacute; o no una llamada a &lt;code&gt;Class_1.__new__()&lt;/code&gt; o &lt;code&gt;Class_1.__init__()&lt;/code&gt; . En el transcurso de su ejecuci&amp;oacute;n, en realidad podr&amp;iacute;a devolver un objeto que no ha sido tocado por ninguno de estos m&amp;eacute;todos. Tomemos, por ejemplo, este enfoque del patr&amp;oacute;n singleton:</target>
+        </trans-unit>
+        <trans-unit id="019ad28a21f071a1a1c801c23bffdedde5c57127" translate="yes" xml:space="preserve">
+          <source>Here is an even more concrete example, showing how you can subclass 'type' to make a metaclass that performs an action when the class is created. This is quite tricky:</source>
+          <target state="translated">Aquí hay un ejemplo aún más concreto,que muestra cómo se puede subclasificar &quot;tipo&quot; para hacer una metaclase que realiza una acción cuando se crea la clase.Esto es bastante complicado:</target>
+        </trans-unit>
+        <trans-unit id="89a9dab91d6a0e821bd0d8857c7afd11ec41324d" translate="yes" xml:space="preserve">
+          <source>Here is where the secret starts. Look for where name, bases and the dict come from in this example class definition.</source>
+          <target state="translated">Aquí es donde comienza el secreto.Busca de dónde vienen el nombre,las bases y el dictado en este ejemplo de definición de clase.</target>
+        </trans-unit>
+        <trans-unit id="933820812619c6ea7008cbcf3a5bef8f52f428f5" translate="yes" xml:space="preserve">
+          <source>Here's an aggregated example of the bits and pieces:</source>
+          <target state="translated">Aquí hay un ejemplo agregado de los trozos y piezas:</target>
+        </trans-unit>
+        <trans-unit id="c7172cb8e50347e53ec2a1c70cf3f132135b13bb" translate="yes" xml:space="preserve">
+          <source>Here's another example of what it can be used for:</source>
+          <target state="translated">Aquí hay otro ejemplo de para qué se puede usar:</target>
+        </trans-unit>
+        <trans-unit id="b92f66963c22e5d12229c7c1ff474ff5ca10c558" translate="yes" xml:space="preserve">
+          <source>Here's the default &lt;code&gt;__repr__&lt;/code&gt; of classes:</source>
+          <target state="translated">Aqu&amp;iacute; est&amp;aacute; el &lt;code&gt;__repr__&lt;/code&gt; predeterminado de las clases:</target>
+        </trans-unit>
+        <trans-unit id="da679ef3b897db5427c2dd4128c089961c066bc2" translate="yes" xml:space="preserve">
+          <source>However, at runtime the Person objects are filled with all sorts of useful methods. See the &lt;a href=&quot;http://code.djangoproject.com/browser/django/trunk/django/db/models/base.py&quot;&gt;source&lt;/a&gt; for some amazing metaclassery.</source>
+          <target state="translated">Sin embargo, en tiempo de ejecuci&amp;oacute;n, los objetos Persona se llenan con todo tipo de m&amp;eacute;todos &amp;uacute;tiles. Vea la &lt;a href=&quot;http://code.djangoproject.com/browser/django/trunk/django/db/models/base.py&quot;&gt;fuente&lt;/a&gt; de algunos metaclassery incre&amp;iacute;bles.</target>
+        </trans-unit>
+        <trans-unit id="3687f11b0c4210b7d9c0b35a3e13741dc07a26f7" translate="yes" xml:space="preserve">
+          <source>However, metaclasses actually define the &lt;em&gt;type&lt;/em&gt; of a class, not just a factory for it, so you can do much more with them. You can, for instance, define normal methods on the metaclass. These metaclass-methods are like classmethods in that they can be called on the class without an instance, but they are also not like classmethods in that they cannot be called on an instance of the class. &lt;code&gt;type.__subclasses__()&lt;/code&gt; is an example of a method on the &lt;code&gt;type&lt;/code&gt; metaclass. You can also define the normal 'magic' methods, like &lt;code&gt;__add__&lt;/code&gt;, &lt;code&gt;__iter__&lt;/code&gt; and &lt;code&gt;__getattr__&lt;/code&gt;, to implement or change how the class behaves.</source>
+          <target state="translated">Sin embargo, las metaclases en realidad definen el &lt;em&gt;tipo&lt;/em&gt; de una clase, no solo una f&amp;aacute;brica para ella, por lo que puede hacer mucho m&amp;aacute;s con ellas. Puede, por ejemplo, definir m&amp;eacute;todos normales en la metaclase. Estos m&amp;eacute;todos de metaclase son como m&amp;eacute;todos de clase en el sentido de que se pueden invocar en la clase sin una instancia, pero tampoco son como los m&amp;eacute;todos de clase en que no se pueden invocar en una instancia de la clase. &lt;code&gt;type.__subclasses__()&lt;/code&gt; es un ejemplo de un m&amp;eacute;todo en la metaclase &lt;code&gt;type&lt;/code&gt; . Tambi&amp;eacute;n puede definir los m&amp;eacute;todos 'm&amp;aacute;gicos' normales, como &lt;code&gt;__add__&lt;/code&gt; , &lt;code&gt;__iter__&lt;/code&gt; y &lt;code&gt;__getattr__&lt;/code&gt; , para implementar o cambiar el comportamiento de la clase.</target>
+        </trans-unit>
+        <trans-unit id="4fa00b7305761f3d48d74e2fcaa87d88b46b8653" translate="yes" xml:space="preserve">
+          <source>I think the ONLamp introduction to metaclass programming is well written and gives a really good introduction to the topic despite being several years old already.</source>
+          <target state="translated">Creo que la introducción de ONLamp a la programación de metaclases está bien escrita y da una muy buena introducción al tema a pesar de tener ya varios años.</target>
+        </trans-unit>
+        <trans-unit id="5de71cb6474da6bbfd1892d86a39743c6e1f7a0d" translate="yes" xml:space="preserve">
+          <source>I've never written one myself, but I think one of the nicest uses of metaclasses can be seen in the &lt;a href=&quot;http://www.djangoproject.com/&quot;&gt;Django framework&lt;/a&gt;. The model classes use a metaclass approach to enable a declarative style of writing new models or form classes. While the metaclass is creating the class, all members get the possibility to customize the class itself.</source>
+          <target state="translated">Nunca he escrito uno yo mismo, pero creo que uno de los mejores usos de las metaclases se puede ver en el &lt;a href=&quot;http://www.djangoproject.com/&quot;&gt;marco de Django&lt;/a&gt; . Las clases de modelo utilizan un enfoque de metaclase para permitir un estilo declarativo de escribir nuevos modelos o clases de formulario. Mientras la metaclase est&amp;aacute; creando la clase, todos los miembros tienen la posibilidad de personalizar la clase en s&amp;iacute;.</target>
+        </trans-unit>
+        <trans-unit id="d4a30d2f2ca2899fa19429f58792d2d3e210fba9" translate="yes" xml:space="preserve">
+          <source>If Python can't find &lt;code&gt;__metaclass__&lt;/code&gt;, it will look for a &lt;code&gt;__metaclass__&lt;/code&gt; at the MODULE level, and try to do the same (but only for classes that don't inherit anything, basically old-style classes).</source>
+          <target state="translated">Si Python no puede encontrar &lt;code&gt;__metaclass__&lt;/code&gt; , buscar&amp;aacute; una &lt;code&gt;__metaclass__&lt;/code&gt; en el nivel MODULE e intentar&amp;aacute; hacer lo mismo (pero solo para las clases que no heredan nada, b&amp;aacute;sicamente las clases de estilo antiguo).</target>
+        </trans-unit>
+        <trans-unit id="b2c247f997e1856448d121b399db1ce401dfe052" translate="yes" xml:space="preserve">
+          <source>If yes, create in memory a class object (I said a class object, stay with me here), with the name &lt;code&gt;Foo&lt;/code&gt; by using what is in &lt;code&gt;__metaclass__&lt;/code&gt;.</source>
+          <target state="translated">En caso afirmativo, cree en la memoria un objeto de clase (dije un objeto de clase, qu&amp;eacute;dese aqu&amp;iacute; conmigo), con el nombre &lt;code&gt;Foo&lt;/code&gt; usando lo que est&amp;aacute; en &lt;code&gt;__metaclass__&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="1c4ed3e469d021631b88778db056f898cbd3075a" translate="yes" xml:space="preserve">
+          <source>If you do so, Python will use the metaclass to create the class &lt;code&gt;Foo&lt;/code&gt;.</source>
+          <target state="translated">Si lo hace, Python usar&amp;aacute; la metaclase para crear la clase &lt;code&gt;Foo&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="d569392d6709098664ec3f652636842d8ae2fd08" translate="yes" xml:space="preserve">
+          <source>If you've done Python programming for more than a few months you'll eventually stumble upon code that looks like this:</source>
+          <target state="translated">Si has programado en Python por más de unos pocos meses,eventualmente te encontrarás con un código que se ve así:</target>
+        </trans-unit>
+        <trans-unit id="8ffaab56641a084b45859b1b16c94f6d85871567" translate="yes" xml:space="preserve">
+          <source>If, for example, we want to know in what order a class's methods are created in, we could provide an ordered dict as the namespace of the class. We would do this with &lt;code&gt;__prepare__&lt;/code&gt; which &lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#preparing-the-class-namespace&quot;&gt;returns the namespace dict for the class if it is implemented in Python 3&lt;/a&gt;:</source>
+          <target state="translated">Si, por ejemplo, queremos saber en qu&amp;eacute; orden se crean los m&amp;eacute;todos de una clase, podr&amp;iacute;amos proporcionar un dict ordenado como el espacio de nombres de la clase. Haremos esto con &lt;code&gt;__prepare__&lt;/code&gt; que &lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#preparing-the-class-namespace&quot;&gt;devuelve el espacio de nombres dict para la clase si se implementa en Python 3&lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="0ddfbe7f84c69375a34cda89908ad9181be61fdd" translate="yes" xml:space="preserve">
+          <source>Imagine a stupid example, where you decide that all classes in your module
+should have their attributes written in uppercase. There are several ways to
+do this, but one way is to set &lt;code&gt;__metaclass__&lt;/code&gt; at the module level.</source>
+          <target state="translated">Imagine un ejemplo est&amp;uacute;pido, donde decide que todas las clases en su m&amp;oacute;dulo deben tener sus atributos escritos en may&amp;uacute;sculas. Hay varias maneras de hacer esto, pero una es establecer &lt;code&gt;__metaclass__&lt;/code&gt; en el nivel del m&amp;oacute;dulo.</target>
+        </trans-unit>
+        <trans-unit id="91a6aa8c8b6a75378372d8ea48354d684c37eb6b" translate="yes" xml:space="preserve">
+          <source>In Python 2, you can add a &lt;code&gt;__metaclass__&lt;/code&gt; attribute when you write a class (see next section for the Python 3 syntax):</source>
+          <target state="translated">En Python 2, puede agregar un atributo &lt;code&gt;__metaclass__&lt;/code&gt; cuando escribe una clase (consulte la siguiente secci&amp;oacute;n para la sintaxis de Python 3):</target>
+        </trans-unit>
+        <trans-unit id="7e651e9d51572a5346d5e0e8610271f23aa0d208" translate="yes" xml:space="preserve">
+          <source>In Python, what are metaclasses and what do we use them for?</source>
+          <target state="translated">En Python,¿qué son las metaclases y para qué las usamos?</target>
+        </trans-unit>
+        <trans-unit id="4650ac989c9d3329e40be1c6ab845b25d2070a47" translate="yes" xml:space="preserve">
+          <source>In addition to the published answers I can say that a &lt;code&gt;metaclass&lt;/code&gt; defines the behaviour for a class. So, you can explicitly set your metaclass. Whenever Python gets a keyword &lt;code&gt;class&lt;/code&gt; then it starts searching for the &lt;code&gt;metaclass&lt;/code&gt;. If it's not found &amp;ndash; the default metaclass type is used to create the class's object. Using the &lt;code&gt;__metaclass__&lt;/code&gt; attribute, you can set &lt;code&gt;metaclass&lt;/code&gt; of your class:</source>
+          <target state="translated">Adem&amp;aacute;s de las respuestas publicadas, puedo decir que una &lt;code&gt;metaclass&lt;/code&gt; define el comportamiento de una clase. Por lo tanto, puede establecer expl&amp;iacute;citamente su metaclase. Cada vez que Python obtiene una &lt;code&gt;class&lt;/code&gt; palabra clave, comienza a buscar la &lt;code&gt;metaclass&lt;/code&gt; . Si no se encuentra, el tipo de metaclase predeterminado se usa para crear el objeto de la clase. Usando el atributo &lt;code&gt;__metaclass__&lt;/code&gt; , puede establecer la &lt;code&gt;metaclass&lt;/code&gt; de su clase:</target>
+        </trans-unit>
+        <trans-unit id="c35d9935b1a444e907c91e37c19879d0759a37ba" translate="yes" xml:space="preserve">
+          <source>In addition to using type() to create classes dynamically, you can control creation behavior of class and use metaclass.</source>
+          <target state="translated">Además de usar type()para crear clases dinámicamente,puedes controlar el comportamiento de creación de la clase y usar la metaclase.</target>
+        </trans-unit>
+        <trans-unit id="4a7677010e3a9723dd238a2332a0b15302776bce" translate="yes" xml:space="preserve">
+          <source>In most languages, classes are just pieces of code that describe how to produce an object. That's kinda true in Python too:</source>
+          <target state="translated">En la mayoría de los idiomas,las clases son sólo piezas de código que describen cómo producir un objeto.Eso también es cierto en Python:</target>
+        </trans-unit>
+        <trans-unit id="fa72180e3995db72ed5f698c8ee07149c8c3a22b" translate="yes" xml:space="preserve">
+          <source>In object-oriented programming, a metaclass is a class whose instances are classes. Just as an ordinary class defines the behavior of certain objects, a metaclass defines the behavior of certain class and their instances
+The term metaclass simply means something used to create classes. In other words, it is the class of a class. The metaclass is used to create the class so like the object being an instance of a class, a class is an instance of a metaclass. In python classes are also considered objects.</source>
+          <target state="translated">En la programación orientada a objetos,una metaclase es una clase cuyas instancias son clases.Así como una clase ordinaria define el comportamiento de ciertos objetos,una metaclase define el comportamiento de cierta clase y sus instancias El término metaclase simplemente significa algo usado para crear clases.En otras palabras,es la clase de una clase.La metaclase se usa para crear la clase,así como el objeto es una instancia de una clase,una clase es una instancia de una metaclase.En la pitón las clases también se consideran objetos.</target>
+        </trans-unit>
+        <trans-unit id="2e61694f68b17195f1c41dbc03080f71c6ec3509" translate="yes" xml:space="preserve">
+          <source>In real code, we can pass the default metaclass, &lt;code&gt;type&lt;/code&gt;, everything we need to instantiate a class and we get a class:</source>
+          <target state="translated">En c&amp;oacute;digo real, podemos pasar la metaclase predeterminada, el &lt;code&gt;type&lt;/code&gt; , todo lo que necesitamos para instanciar una clase y obtenemos una clase:</target>
+        </trans-unit>
+        <trans-unit id="6cde1b05c392829cf0748f367e1a5f3cc79ef8e7" translate="yes" xml:space="preserve">
+          <source>In short: A class is a blueprint for the creation of an instance, a metaclass is a blueprint for the creation of a class. It can be easily seen that in Python classes need to be first-class objects too to enable this behavior.</source>
+          <target state="translated">En resumen:Una clase es un plano para la creación de una instancia,una metaclase es un plano para la creación de una clase.Se puede ver fácilmente que en Python las clases necesitan ser también objetos de primera clase para permitir este comportamiento.</target>
+        </trans-unit>
+        <trans-unit id="0dcf456ed380c367ea7337a047070feeb2404ac6" translate="yes" xml:space="preserve">
+          <source>Indeed, metaclasses are especially useful to do black magic, and therefore
+complicated stuff. But by themselves, they are simple:</source>
+          <target state="translated">De hecho,las metaclases son especialmente útiles para hacer magia negra,y por lo tanto cosas complicadas.Pero por sí mismas,son simples:</target>
+        </trans-unit>
+        <trans-unit id="e6acf61863b31d67d149b4e6ca40eee6b1199fa9" translate="yes" xml:space="preserve">
+          <source>Is there a &lt;code&gt;__metaclass__&lt;/code&gt; attribute in &lt;code&gt;Foo&lt;/code&gt;?</source>
+          <target state="translated">&amp;iquest;Hay un atributo &lt;code&gt;__metaclass__&lt;/code&gt; en &lt;code&gt;Foo&lt;/code&gt; ?</target>
+        </trans-unit>
+        <trans-unit id="8b238ceb9e5599e813e4358cf7862918d33b97b1" translate="yes" xml:space="preserve">
+          <source>It is the same as functionally calling &lt;code&gt;type&lt;/code&gt; with the appropriate arguments and assigning the result to a variable of that name:</source>
+          <target state="translated">Es lo mismo que llamar funcionalmente al &lt;code&gt;type&lt;/code&gt; con los argumentos apropiados y asignar el resultado a una variable con ese nombre:</target>
+        </trans-unit>
+        <trans-unit id="0f552d4e543041b1701247e77678f01050c07d0e" translate="yes" xml:space="preserve">
+          <source>It translates to this in the metaclass to use it:</source>
+          <target state="translated">Se traduce a esto en la metaclase para usarlo:</target>
+        </trans-unit>
+        <trans-unit id="c7ba3c56dd302201c8d63fd76926944ea19006b4" translate="yes" xml:space="preserve">
+          <source>It won't return an &lt;code&gt;IntegerField&lt;/code&gt; object. It will return an &lt;code&gt;int&lt;/code&gt;, and can even take it directly from the database.</source>
+          <target state="translated">No devolver&amp;aacute; un objeto &lt;code&gt;IntegerField&lt;/code&gt; . &lt;code&gt;int&lt;/code&gt; un int e incluso puede tomarlo directamente de la base de datos.</target>
+        </trans-unit>
+        <trans-unit id="d8d805048c69fa736de925d3367248b04c361716" translate="yes" xml:space="preserve">
+          <source>It'll produce the output like this:</source>
+          <target state="translated">Producirá la salida de esta manera:</target>
+        </trans-unit>
+        <trans-unit id="7cf1c9cf775a5387c4ff94bd47121db2b5c988dd" translate="yes" xml:space="preserve">
+          <source>It's because the function &lt;code&gt;type&lt;/code&gt; is in fact a metaclass. &lt;code&gt;type&lt;/code&gt; is the
+metaclass Python uses to create all classes behind the scenes.</source>
+          <target state="translated">Es porque el &lt;code&gt;type&lt;/code&gt; funci&amp;oacute;n es de hecho una metaclase. &lt;code&gt;type&lt;/code&gt; es la metaclase que Python usa para crear todas las clases detr&amp;aacute;s de escena.</target>
+        </trans-unit>
+        <trans-unit id="b762e9c56bf18ad7968cf2abfa72dfb4cd610a39" translate="yes" xml:space="preserve">
+          <source>Just as we can use class definitions to change how custom object instances behave, we can use a metaclass class definition to change the way a class object behaves.</source>
+          <target state="translated">De la misma manera que podemos usar definiciones de clase para cambiar la forma en que se comportan las instancias de los objetos personalizados,podemos usar una definición de clase de metaclase para cambiar la forma en que se comporta un objeto de clase.</target>
+        </trans-unit>
+        <trans-unit id="12861900e6ee5fc644f17e214205bf98f2b552b1" translate="yes" xml:space="preserve">
+          <source>Let's check:</source>
+          <target state="translated">Vamos a ver:</target>
+        </trans-unit>
+        <trans-unit id="e24b773897b7eab9e5ea3419aecc80a071b54a96" translate="yes" xml:space="preserve">
+          <source>Let's observe what happens when repeatedly trying to create an object of type &lt;code&gt;Class_2&lt;/code&gt;</source>
+          <target state="translated">Observemos lo que sucede cuando se intenta crear repetidamente un objeto de tipo &lt;code&gt;Class_2&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="0d3e22e4d5a330681408b9b810a86a368c8150f7" translate="yes" xml:space="preserve">
+          <source>Let's rewrite the above, but with shorter and more realistic variable names now that we know what they mean:</source>
+          <target state="translated">Reescribamos lo anterior,pero con nombres de variables más cortos y realistas ahora que sabemos lo que significan:</target>
+        </trans-unit>
+        <trans-unit id="bae90bb62607735e9b7e3a157dc8431c62f56161" translate="yes" xml:space="preserve">
+          <source>Let's study the method call chain from specifically the perspective of creating an instance of a class.</source>
+          <target state="translated">Estudiemos el método de la cadena de llamadas desde la perspectiva específica de crear una instancia de una clase.</target>
+        </trans-unit>
+        <trans-unit id="045e68d2ed13507db1ee3f048ec03ec22ab6a6b4" translate="yes" xml:space="preserve">
+          <source>Lets define a metaclass that will demonstrate how '&lt;strong&gt;class:&lt;/strong&gt;' calls it.</source>
+          <target state="translated">Vamos a definir una metaclase que demostrar&amp;aacute; c&amp;oacute;mo ' &lt;strong&gt;clase:&lt;/strong&gt; ' lo llama.</target>
+        </trans-unit>
+        <trans-unit id="320371557536a1d1e98f35433ae20c51e9eed7fc" translate="yes" xml:space="preserve">
+          <source>Likewise, when we define a class explicitly with the default metaclass, &lt;code&gt;type&lt;/code&gt;, we instantiate it:</source>
+          <target state="translated">Del mismo modo, cuando definimos una clase expl&amp;iacute;citamente con la metaclase predeterminada, &lt;code&gt;type&lt;/code&gt; , la instanciamos:</target>
+        </trans-unit>
+        <trans-unit id="dd4270596259e170c6cba8ca00280d127d29899d" translate="yes" xml:space="preserve">
+          <source>Luckily, &lt;code&gt;__metaclass__&lt;/code&gt; can actually be any callable, it doesn't need to be a
+formal class (I know, something with 'class' in its name doesn't need to be
+a class, go figure... but it's helpful).</source>
+          <target state="translated">Afortunadamente, &lt;code&gt;__metaclass__&lt;/code&gt; en realidad puede ser invocable, no necesita ser una clase formal (lo s&amp;eacute;, algo con 'clase' en su nombre no necesita ser una clase, imag&amp;iacute;nate ... pero es &amp;uacute;til).</target>
+        </trans-unit>
+        <trans-unit id="a84965b59c86adeaf5175c77b1367ae45a51beca" translate="yes" xml:space="preserve">
+          <source>Magic will take effect when we passed keyword arguments in metaclass, it indicates the Python interpreter to create the CustomList through ListMetaclass. &lt;strong&gt;new&lt;/strong&gt; (), at this point, we can modify the class definition, for example, and add a new method and then return the revised definition.</source>
+          <target state="translated">La magia tendr&amp;aacute; efecto cuando pasamos argumentos de palabras clave en metaclase, indica que el int&amp;eacute;rprete de Python crear&amp;aacute; la Lista personalizada a trav&amp;eacute;s de ListMetaclass. &lt;strong&gt;new&lt;/strong&gt; (), en este punto, podemos modificar la definici&amp;oacute;n de clase, por ejemplo, y agregar un nuevo m&amp;eacute;todo y luego devolver la definici&amp;oacute;n revisada.</target>
+        </trans-unit>
+        <trans-unit id="5fe9adb504d86047cca71de452afe1639b04cca8" translate="yes" xml:space="preserve">
+          <source>Metaclass can be specifically used in the following situations :-</source>
+          <target state="translated">La metaclase puede ser usada específicamente en las siguientes situaciones :-</target>
+        </trans-unit>
+        <trans-unit id="3af05144e3743c95c5ae229f63e24413fd772f08" translate="yes" xml:space="preserve">
+          <source>Metaclass is a kind of class which defines how the class will behave like or we can say that A class is itself an instance of a metaclass.</source>
+          <target state="translated">La metaclase es un tipo de clase que define cómo se comportará la clase o podemos decir que una clase es en sí misma una instancia de una metaclase.</target>
+        </trans-unit>
+        <trans-unit id="a4c7336a776a31b11543813110e2a48bdc565d93" translate="yes" xml:space="preserve">
+          <source>Metaclasses are deeper magic that
+  99% of users should never worry about.
+  If you wonder whether you need them,
+  you don't (the people who actually
+  need them know with certainty that
+  they need them, and don't need an
+  explanation about why).</source>
+          <target state="translated">Las metaclases son una magia más profunda de la que el 99% de los usuarios no deberían preocuparse.Si te preguntas si las necesitas,no lo haces (la gente que realmente las necesita sabe con certeza que las necesita,y no necesita una explicación del por qué).</target>
+        </trans-unit>
+        <trans-unit id="fcb03720145595ceaed2564444518a68539698a8" translate="yes" xml:space="preserve">
+          <source>Metaclasses are the 'stuff' that creates classes.</source>
+          <target state="translated">Las metaclases son las &quot;cosas&quot; que crean clases.</target>
+        </trans-unit>
+        <trans-unit id="347480dda5a48202f0a0a3b1b3be6014055c70c8" translate="yes" xml:space="preserve">
+          <source>Metaclasses are the secret sauce that make 'class' work. The default metaclass for a new style object is called 'type'.</source>
+          <target state="translated">Las metaclases son la salsa secreta que hace que la &quot;clase&quot; funcione.La metaclase por defecto para un objeto de un nuevo estilo se llama 'tipo'.</target>
+        </trans-unit>
+        <trans-unit id="b0d32362c1bfdecea091b0735835a3190f185e2b" translate="yes" xml:space="preserve">
+          <source>Metaclasses in Python 3</source>
+          <target state="translated">Metaclases en Python 3</target>
+        </trans-unit>
+        <trans-unit id="97071630fbed73be9de0cacbd51a241cef7bdfa8" translate="yes" xml:space="preserve">
+          <source>Metaclasses take 3 args. '&lt;strong&gt;name&lt;/strong&gt;', '&lt;strong&gt;bases&lt;/strong&gt;' and '&lt;strong&gt;dict&lt;/strong&gt;'</source>
+          <target state="translated">Las metaclases toman 3 args. ' &lt;strong&gt;nombre&lt;/strong&gt; ', ' &lt;strong&gt;bases&lt;/strong&gt; ' y ' &lt;strong&gt;dict&lt;/strong&gt; '</target>
+        </trans-unit>
+        <trans-unit id="8797caa69e6420c0f3bfebfa19ca4cdf0b6929f4" translate="yes" xml:space="preserve">
+          <source>Nevertheless, it is usually encouraged for users to avoid using metaclasses unless absolutely necessary.</source>
+          <target state="translated">No obstante,se suele recomendar a los usuarios que eviten el uso de las metaclases a menos que sea absolutamente necesario.</target>
+        </trans-unit>
+        <trans-unit id="4ad4b27bbadcdc0adcdbc297fc1201cb31705fca" translate="yes" xml:space="preserve">
+          <source>Note that in python 3.6 a new dunder method &lt;code&gt;__init_subclass__(cls, **kwargs)&lt;/code&gt; was introduced to replace a lot of common use cases for metaclasses. Is is called when a subclass of the defining class is created. See &lt;a href=&quot;https://docs.python.org/3.6/reference/datamodel.html&quot;&gt;python docs&lt;/a&gt;.</source>
+          <target state="translated">Tenga en cuenta que en Python 3.6 se introdujo un nuevo m&amp;eacute;todo dunder &lt;code&gt;__init_subclass__(cls, **kwargs)&lt;/code&gt; para reemplazar muchos casos de uso comunes para metaclases. Se llama cuando se crea una subclase de la clase definitoria. Ver &lt;a href=&quot;https://docs.python.org/3.6/reference/datamodel.html&quot;&gt;documentos de Python&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="06fe24108d0ae7b5ac24fe3074dd0a7cf192f87c" translate="yes" xml:space="preserve">
+          <source>Note, some things automatically get added to the &lt;code&gt;__dict__&lt;/code&gt;, i.e., the namespace:</source>
+          <target state="translated">Tenga en cuenta que algunas cosas se agregan autom&amp;aacute;ticamente al &lt;code&gt;__dict__&lt;/code&gt; , es decir, el espacio de nombres:</target>
+        </trans-unit>
+        <trans-unit id="fe5b2192b1a3dda71ee761442e7acc561c0dae83" translate="yes" xml:space="preserve">
+          <source>Note, this example was adapted from the &lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#metaclass-example&quot;&gt;documentation&lt;/a&gt; - the new &lt;a href=&quot;https://github.com/python/cpython/blob/master/Lib/enum.py&quot;&gt;enum in the standard library&lt;/a&gt; does this.</source>
+          <target state="translated">Tenga en cuenta que este ejemplo fue adaptado de la &lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#metaclass-example&quot;&gt;documentaci&amp;oacute;n&lt;/a&gt; : la nueva &lt;a href=&quot;https://github.com/python/cpython/blob/master/Lib/enum.py&quot;&gt;enumeraci&amp;oacute;n en la biblioteca est&amp;aacute;ndar&lt;/a&gt; hace esto.</target>
+        </trans-unit>
+        <trans-unit id="2e4afa936b2a2c77839b1cc61ded016a8418009e" translate="yes" xml:space="preserve">
+          <source>Notice that the class was not instantiated at any time; the simple act of creating the class triggered execution of the &lt;code&gt;metaclass&lt;/code&gt;.</source>
+          <target state="translated">Note que la clase no fue instanciada en ning&amp;uacute;n momento; El simple acto de crear la clase desencaden&amp;oacute; la ejecuci&amp;oacute;n de la &lt;code&gt;metaclass&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="e8092d965c6169ed84145f59ba7bbf9f5d4c853f" translate="yes" xml:space="preserve">
+          <source>Now the big question is, what can you put in &lt;code&gt;__metaclass__&lt;/code&gt; ?</source>
+          <target state="translated">Ahora la gran pregunta es, &amp;iquest;qu&amp;eacute; puedes poner en &lt;code&gt;__metaclass__&lt;/code&gt; ?</target>
+        </trans-unit>
+        <trans-unit id="d2dcde526fc4daaef6d655606e4496048204c05b" translate="yes" xml:space="preserve">
+          <source>Now the big question. Why would you use some obscure error prone feature?</source>
+          <target state="translated">Ahora la gran pregunta.¿Por qué usarías alguna oscura característica propensa a errores?</target>
+        </trans-unit>
+        <trans-unit id="1312ae6700f74e01674fc6c089a10ffa91f468b1" translate="yes" xml:space="preserve">
+          <source>Now you wonder why the heck is it written in lowercase, and not &lt;code&gt;Type&lt;/code&gt;?</source>
+          <target state="translated">Ahora te preguntas por qu&amp;eacute; diablos est&amp;aacute; escrito en min&amp;uacute;sculas y no en &lt;code&gt;Type&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="9e1ac6d44c14c13e117e5f981206e38957129c52" translate="yes" xml:space="preserve">
+          <source>Now, let's do exactly the same, but using a real class for a metaclass:</source>
+          <target state="translated">Ahora,hagamos exactamente lo mismo,pero usando una clase real para una metaclase:</target>
+        </trans-unit>
+        <trans-unit id="390ebafcf350ad02efb790f33b6aaead595c1109" translate="yes" xml:space="preserve">
+          <source>Now, what is the &lt;code&gt;__class__&lt;/code&gt; of any &lt;code&gt;__class__&lt;/code&gt; ?</source>
+          <target state="translated">Ahora, &amp;iquest;cu&amp;aacute;l es la &lt;code&gt;__class__&lt;/code&gt; de cualquier &lt;code&gt;__class__&lt;/code&gt; ?</target>
+        </trans-unit>
+        <trans-unit id="d1ac610b74a4f310bfc7d2292f70767803b25d13" translate="yes" xml:space="preserve">
+          <source>Observe that the code above doesn't actually do anything more than logging the tasks. Each method delegates the actual work to its parent's implementation, thus keeping the default behavior. Since &lt;code&gt;type&lt;/code&gt; is &lt;code&gt;Meta_1&lt;/code&gt;'s parent class (&lt;code&gt;type&lt;/code&gt; being the default parent metaclass) and considering the ordering sequence of the output above, we now have a clue as to what would be the pseudo implementation of &lt;code&gt;type.__call__()&lt;/code&gt;:</source>
+          <target state="translated">Observe que el c&amp;oacute;digo anterior en realidad no hace nada m&amp;aacute;s que registrar las tareas. Cada m&amp;eacute;todo delega el trabajo real a la implementaci&amp;oacute;n de su padre, manteniendo as&amp;iacute; el comportamiento predeterminado. Como &lt;code&gt;type&lt;/code&gt; es la clase padre de &lt;code&gt;Meta_1&lt;/code&gt; (el &lt;code&gt;type&lt;/code&gt; es la metaclase principal predeterminada) y teniendo en cuenta la secuencia de ordenaci&amp;oacute;n de la salida anterior, ahora tenemos una pista de cu&amp;aacute;l ser&amp;iacute;a la pseudo implementaci&amp;oacute;n del &lt;code&gt;type.__call__()&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="9d0d319c87f6fad802806c07bd7c51a428962ba2" translate="yes" xml:space="preserve">
+          <source>Oh, and in python 3 if you do this call with keyword arguments, like this:</source>
+          <target state="translated">Oh,y en pitón 3 si haces esta llamada con argumentos de palabras clave,así:</target>
+        </trans-unit>
+        <trans-unit id="7cfdd53a3948e13bf6052b4df361c602b9dadb4c" translate="yes" xml:space="preserve">
+          <source>One of the most valuable things we can do by default in writing a Python object is to provide it with a good &lt;code&gt;__repr__&lt;/code&gt;. When we call &lt;code&gt;help(repr)&lt;/code&gt; we learn that there's a good test for a &lt;code&gt;__repr__&lt;/code&gt; that also requires a test for equality - &lt;code&gt;obj == eval(repr(obj))&lt;/code&gt;. The following simple implementation of &lt;code&gt;__repr__&lt;/code&gt; and &lt;code&gt;__eq__&lt;/code&gt; for class instances of our type class provides us with a demonstration that may improve on the default &lt;code&gt;__repr__&lt;/code&gt; of classes:</source>
+          <target state="translated">Una de las cosas m&amp;aacute;s valiosas que podemos hacer de forma predeterminada al escribir un objeto Python es proporcionarle una buena &lt;code&gt;__repr__&lt;/code&gt; . Cuando llamamos a &lt;code&gt;help(repr)&lt;/code&gt; , aprendemos que hay una buena prueba para un &lt;code&gt;__repr__&lt;/code&gt; que tambi&amp;eacute;n requiere una prueba de igualdad: &lt;code&gt;obj == eval(repr(obj))&lt;/code&gt; . La siguiente implementaci&amp;oacute;n simple de &lt;code&gt;__repr__&lt;/code&gt; y &lt;code&gt;__eq__&lt;/code&gt; para las instancias de clase de nuestra clase de tipo nos proporciona una demostraci&amp;oacute;n que puede mejorar el &lt;code&gt;__repr__&lt;/code&gt; predeterminado de las clases:</target>
+        </trans-unit>
+        <trans-unit id="110c76ebedce2cc5ef80aca4ff4ae9ae674cabba" translate="yes" xml:space="preserve">
+          <source>One thing added to metaclasses in python 3 is that you can also pass attributes as keyword-arguments into a metaclass, like so:</source>
+          <target state="translated">Una cosa añadida a las metaclases de pitón 3 es que también se pueden pasar atributos como argumentos de palabras clave a una metaclase,así:</target>
+        </trans-unit>
+        <trans-unit id="34e532c0c60597f39dcc4f2a9b5f7a1d572c0614" translate="yes" xml:space="preserve">
+          <source>One use for metaclasses is adding new properties and methods to an instance automatically.</source>
+          <target state="translated">Un uso de las metaclases es añadir nuevas propiedades y métodos a una instancia automáticamente.</target>
+        </trans-unit>
+        <trans-unit id="ef268ec4d64e990e936a954651784766af9637be" translate="yes" xml:space="preserve">
+          <source>Others have explained how metaclasses work and how they fit into the Python type system. Here's an example of what they can be used for. In a testing framework I wrote, I wanted to keep track of the order in which classes were defined, so that I could later instantiate them in this order. I found it easiest to do this using a metaclass.</source>
+          <target state="translated">Otros han explicado cómo funcionan las metaclases y cómo encajan en el sistema de tipo Python.Aquí hay un ejemplo de para qué se pueden usar.En un marco de pruebas que escribí,quise llevar la cuenta del orden en que las clases fueron definidas,para luego poder instanciarlas en este orden.Me pareció que lo más fácil era hacer esto usando una metaclase.</target>
+        </trans-unit>
+        <trans-unit id="a1e368bcdd9e3ad64f80172f6605fff557c816ac" translate="yes" xml:space="preserve">
+          <source>Pseudocode:</source>
+          <target state="translated">Pseudocode:</target>
+        </trans-unit>
+        <trans-unit id="b046f20ec5ac77994d3cd2fa8b65aab70b67256f" translate="yes" xml:space="preserve">
+          <source>Put a third way, a metaclass is a class's class.</source>
+          <target state="translated">Dicho de otra manera,una metaclase es la clase de una clase.</target>
+        </trans-unit>
+        <trans-unit id="8d527c34e169c405cdbe5dedda08a7bde822577d" translate="yes" xml:space="preserve">
+          <source>Put another way, a class is an instance of a metaclass:</source>
+          <target state="translated">Dicho de otra manera,una clase es una instancia de una metaclase:</target>
+        </trans-unit>
+        <trans-unit id="57d1465b29ebaa761602dcd70cff407e53c47e35" translate="yes" xml:space="preserve">
+          <source>Putting it differently</source>
+          <target state="translated">Poniéndolo de otra manera</target>
+        </trans-unit>
+        <trans-unit id="ce9d464e6a7243401820e72c717964ac86dda8b2" translate="yes" xml:space="preserve">
+          <source>Python classes are themselves objects - as in instance - of their meta-class.</source>
+          <target state="translated">Las clases de pitón son en sí mismas objetos-como en el caso-de su meta-clase.</target>
+        </trans-unit>
+        <trans-unit id="47913b0ef43e652acfa0a6f76a38e652fae1a60c" translate="yes" xml:space="preserve">
+          <source>Python does the following:</source>
+          <target state="translated">Python hace lo siguiente:</target>
+        </trans-unit>
+        <trans-unit id="1cef07b48fc1a95aee7f514ccf91ce22d457b8f0" translate="yes" xml:space="preserve">
+          <source>Python will look for &lt;code&gt;__metaclass__&lt;/code&gt; in the class definition. If it finds it,
+it will use it to create the object class &lt;code&gt;Foo&lt;/code&gt;. If it doesn't, it will use
+&lt;code&gt;type&lt;/code&gt; to create the class.</source>
+          <target state="translated">Python buscar&amp;aacute; &lt;code&gt;__metaclass__&lt;/code&gt; en la definici&amp;oacute;n de clase. Si lo encuentra, lo usar&amp;aacute; para crear la clase de objeto &lt;code&gt;Foo&lt;/code&gt; . Si no lo hace, usar&amp;aacute; &lt;code&gt;type&lt;/code&gt; para crear la clase.</target>
+        </trans-unit>
+        <trans-unit id="c68f250ede1ff4f4e9314c1012a1057abd055fc7" translate="yes" xml:space="preserve">
+          <source>Read that several times.</source>
+          <target state="translated">Lee eso varias veces.</target>
+        </trans-unit>
+        <trans-unit id="10b8e71a62f5bb23590ad5fac72a1920c13c031d" translate="yes" xml:space="preserve">
+          <source>Read the section below for how python handles this.</source>
+          <target state="translated">Lee la sección de abajo para saber cómo maneja esto la pitón.</target>
+        </trans-unit>
+        <trans-unit id="363f6db0e6302144237a5fb8dc97f8c0bca8e69c" translate="yes" xml:space="preserve">
+          <source>Remember the function &lt;code&gt;type&lt;/code&gt;? The good old function that lets you know what
+type an object is:</source>
+          <target state="translated">&amp;iquest;Recuerdas el &lt;code&gt;type&lt;/code&gt; funci&amp;oacute;n? La funci&amp;oacute;n antigua que le permite saber de qu&amp;eacute; tipo es un objeto:</target>
+        </trans-unit>
+        <trans-unit id="cf75004630642fa532edd3e9852d9ebbd8dc3330" translate="yes" xml:space="preserve">
+          <source>Role of a metaclass' &lt;code&gt;__call__()&lt;/code&gt; method when creating a class instance</source>
+          <target state="translated">Rol del m&amp;eacute;todo de una metaclase ' &lt;code&gt;__call__()&lt;/code&gt; al crear una instancia de clase</target>
+        </trans-unit>
+        <trans-unit id="ab6d3b5b86935e5bb21ca62e95635f583fc6b80d" translate="yes" xml:space="preserve">
+          <source>Say you want some simple validation code to run on your attributes -- like it must always be an &lt;code&gt;int&lt;/code&gt; or a &lt;code&gt;str&lt;/code&gt;.  Without a metaclass, your class would look something like:</source>
+          <target state="translated">Supongamos que desea que se ejecute un c&amp;oacute;digo de validaci&amp;oacute;n simple en sus atributos, como si siempre fuera un &lt;code&gt;int&lt;/code&gt; o un &lt;code&gt;str&lt;/code&gt; . Sin una metaclase, su clase se ver&amp;iacute;a as&amp;iacute;:</target>
+        </trans-unit>
+        <trans-unit id="924f4a98a9789c119e7866bd528b9dbf5b11a53a" translate="yes" xml:space="preserve">
+          <source>Secondly, metaclasses are complicated. You may not want to use them for
+very simple class alterations. You can change classes by using two different techniques:</source>
+          <target state="translated">En segundo lugar,las metaclases son complicadas.Puede que no quieras usarlas para alteraciones de clase muy simples.Puedes cambiar de clase usando dos técnicas diferentes:</target>
+        </trans-unit>
+        <trans-unit id="4dfe816bf571911a330a66b6c754c40a58c06f42" translate="yes" xml:space="preserve">
+          <source>Since &lt;code&gt;__metaclass__&lt;/code&gt; can accept any callable, why would you use a class
+since it's obviously more complicated?</source>
+          <target state="translated">Dado que &lt;code&gt;__metaclass__&lt;/code&gt; puede aceptar cualquier llamada, &amp;iquest;por qu&amp;eacute; usar&amp;iacute;a una clase ya que obviamente es m&amp;aacute;s complicada?</target>
+        </trans-unit>
+        <trans-unit id="bac0117f2a38a17d034595eaa6fbc681396fe5b3" translate="yes" xml:space="preserve">
+          <source>Since classes are objects, they must be generated by something.</source>
+          <target state="translated">Como las clases son objetos,deben ser generadas por algo.</target>
+        </trans-unit>
+        <trans-unit id="760ecfb3930f9e09bb9d06c038adf0fa41b52fc4" translate="yes" xml:space="preserve">
+          <source>Since classes are objects, you can create them on the fly, like any object.</source>
+          <target state="translated">Como las clases son objetos,puedes crearlas sobre la marcha,como cualquier objeto.</target>
+        </trans-unit>
+        <trans-unit id="7922a02533e41a18df57099805414126241c109f" translate="yes" xml:space="preserve">
+          <source>So now when we create an object with this metaclass, the &lt;code&gt;__repr__&lt;/code&gt; echoed on the command line provides a much less ugly sight than the default:</source>
+          <target state="translated">Entonces, cuando creamos un objeto con esta metaclase, el &lt;code&gt;__repr__&lt;/code&gt; echo en la l&amp;iacute;nea de comando proporciona una vista mucho menos fea que la predeterminada:</target>
+        </trans-unit>
+        <trans-unit id="b3eadfdf1eb9197422100ebb25f09e54a92a4803" translate="yes" xml:space="preserve">
+          <source>So we will start with a simple example, by using a function.</source>
+          <target state="translated">Así que empezaremos con un simple ejemplo,usando una función.</target>
+        </trans-unit>
+        <trans-unit id="3baa5edda84402a64f5f0858188ef99b09a86284" translate="yes" xml:space="preserve">
+          <source>So what we did was instantiate a metaclass by creating a class. We can also treat the metaclass as we would any other class. It has a method resolution order:</source>
+          <target state="translated">Así que lo que hicimos fue instanciar una metaclase creando una clase.También podemos tratar la metaclase como lo haríamos con cualquier otra clase.Tiene un orden de resolución de métodos:</target>
+        </trans-unit>
+        <trans-unit id="787050e4deb5bdd8472bfd457a5d01da81c38749" translate="yes" xml:space="preserve">
+          <source>So, a metaclass is just the stuff that creates class objects.</source>
+          <target state="translated">Por lo tanto,una metaclase es sólo la materia que crea objetos de clase.</target>
+        </trans-unit>
+        <trans-unit id="2cdd6c8b1bfe3a886c05a5ee17876f43593f8214" translate="yes" xml:space="preserve">
+          <source>Subclasses of a class will be instances of its metaclass if you specified a metaclass-class, but not with a metaclass-function.</source>
+          <target state="translated">Las subclases de una clase serán instancias de su metaclase si especificó una metaclase,pero no con una función de metaclase.</target>
+        </trans-unit>
+        <trans-unit id="0e65e54eb14defefa9b23c03a66343a7b6f47568" translate="yes" xml:space="preserve">
+          <source>TLDR: A metaclass instantiates and defines behavior for a class just like a class instantiates and defines behavior for an instance.</source>
+          <target state="translated">TLDR:Una metaclase instanciando y definiendo el comportamiento de una clase como una clase instanciando y definiendo el comportamiento de una instancia.</target>
+        </trans-unit>
+        <trans-unit id="ed0c814a6c1a71ccfd0f078327070092fba4af8e" translate="yes" xml:space="preserve">
+          <source>That's it. There is really nothing more about metaclasses.</source>
+          <target state="translated">Eso es todo.Realmente no hay nada más sobre las metaclases.</target>
+        </trans-unit>
+        <trans-unit id="a4cdd3d253d3c4a2ec82a87618d1e84a1259cbb8" translate="yes" xml:space="preserve">
+          <source>The 'ValidateType' class for reference:</source>
+          <target state="translated">La clase &quot;ValidateType&quot; como referencia:</target>
+        </trans-unit>
+        <trans-unit id="604a85cd97fdfe89bc4bd3ea794f26e3143cb342" translate="yes" xml:space="preserve">
+          <source>The &lt;a href=&quot;http://docs.python.org/2/reference/datamodel.html?highlight=__metaclass__#__metaclass__&quot;&gt;&lt;code&gt;__metaclass__&lt;/code&gt;&lt;/a&gt; attribute</source>
+          <target state="translated">El atributo &lt;a href=&quot;http://docs.python.org/2/reference/datamodel.html?highlight=__metaclass__#__metaclass__&quot;&gt; &lt;code&gt;__metaclass__&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="b9bee8c22368a6bedc8cb2204d7e38427ec1a6fa" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;__call__()&lt;/code&gt; method is invoked when an instance of a class is used as a callable. But as we've seen from previous answers a class itself is an instance of a metaclass, so when we use the class as a callable (i.e. when we create an instance of it) we're actually calling its metaclass' &lt;code&gt;__call__()&lt;/code&gt; method. At this point most Python programmers are a bit confused because they've been told that when creating an instance like this &lt;code&gt;instance = SomeClass()&lt;/code&gt; you're calling its &lt;code&gt;__init__()&lt;/code&gt; method. Some who've dug a bit deeper know that before &lt;code&gt;__init__()&lt;/code&gt; there's &lt;code&gt;__new__()&lt;/code&gt;. Well, today another layer of truth is being revealed, before &lt;code&gt;__new__()&lt;/code&gt; there's the metaclass' &lt;code&gt;__call__()&lt;/code&gt;.</source>
+          <target state="translated">El &lt;code&gt;__call__()&lt;/code&gt; se invoca cuando una instancia de una clase se usa como invocable. Pero como hemos visto en las respuestas anteriores, una clase en s&amp;iacute; misma es una instancia de una metaclase, por lo que cuando usamos la clase como invocable (es decir, cuando creamos una instancia de ella) en realidad estamos llamando a su m&amp;eacute;todo de metaclase ' &lt;code&gt;__call__()&lt;/code&gt; . En este punto, la mayor&amp;iacute;a de los programadores de Python est&amp;aacute;n un poco confundidos porque les han dicho que al crear una instancia como esta &lt;code&gt;instance = SomeClass()&lt;/code&gt; est&amp;aacute; llamando a su &lt;code&gt;__init__()&lt;/code&gt; . Algunos que han profundizado un poco m&amp;aacute;s saben que antes de &lt;code&gt;__init__()&lt;/code&gt; hay &lt;code&gt;__new__()&lt;/code&gt; . Bueno, hoy se revela otra capa de verdad, antes de &lt;code&gt;__new__()&lt;/code&gt; est&amp;aacute; la metaclase ' &lt;code&gt;__call__()&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="bbdb757e7f3a0fd9bcff0fc938b6c42345b821ef" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;metaclass&lt;/code&gt; is powerful, there are many things (such as monkey magic) you can do with it, but be careful this may only be known to you.</source>
+          <target state="translated">La &lt;code&gt;metaclass&lt;/code&gt; es poderosa, hay muchas cosas (como la magia de los monos) que puedes hacer con ella, pero ten cuidado, esto solo puede ser conocido por ti.</target>
+        </trans-unit>
+        <trans-unit id="7ffedf4f89a6efcf7f214cee31b40dd5d82d9dd8" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;type(obj)&lt;/code&gt; function gets you the type of an object.</source>
+          <target state="translated">La funci&amp;oacute;n &lt;code&gt;type(obj)&lt;/code&gt; le da el tipo de un objeto.</target>
+        </trans-unit>
+        <trans-unit id="19c9cb1547b44911ff93834c533ce8c6106e48d5" translate="yes" xml:space="preserve">
+          <source>The &lt;em&gt;metaclass&lt;/em&gt; of the object we created, in both cases, is &lt;code&gt;type&lt;/code&gt;.</source>
+          <target state="translated">La &lt;em&gt;metaclase&lt;/em&gt; del objeto que creamos, en ambos casos, es &lt;code&gt;type&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="a1aa36bd31df16516299e0a9f975574341ae6676" translate="yes" xml:space="preserve">
+          <source>The above should look familiar. Well, where does &lt;code&gt;Class&lt;/code&gt; come from? It's an instance of a metaclass (also pseudocode):</source>
+          <target state="translated">Lo anterior deber&amp;iacute;a parecer familiar. Bueno, &amp;iquest;de d&amp;oacute;nde viene la &lt;code&gt;Class&lt;/code&gt; ? Es una instancia de una metaclase (tambi&amp;eacute;n pseudoc&amp;oacute;digo):</target>
+        </trans-unit>
+        <trans-unit id="a2875f88e41a0ad13dd2d5379ef6582ba0fb3dd7" translate="yes" xml:space="preserve">
+          <source>The answer is: something that can create a class.</source>
+          <target state="translated">La respuesta es:algo que pueda crear una clase.</target>
+        </trans-unit>
+        <trans-unit id="9a86d7001554378f3dcbce322b370aaa90ec530c" translate="yes" xml:space="preserve">
+          <source>The behaviour of metaclasses however stays &lt;a href=&quot;https://www.python.org/dev/peps/pep-3115/&quot;&gt;largely the same&lt;/a&gt;.</source>
+          <target state="translated">Sin embargo, el comportamiento de las metaclases se mantiene &lt;a href=&quot;https://www.python.org/dev/peps/pep-3115/&quot;&gt;pr&amp;aacute;cticamente igual&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="3f6d3b98cc17992d9030a84dca7f0f6a00ff380a" translate="yes" xml:space="preserve">
+          <source>The default metaclass, which is applied when when you determine classes as:</source>
+          <target state="translated">La metaclase por defecto,que se aplica cuando se determinan las clases como:</target>
+        </trans-unit>
+        <trans-unit id="29b56e4ed0cf2c522c5e5b6e0b098db30123e1fe" translate="yes" xml:space="preserve">
+          <source>The intention is clear. When you read &lt;code&gt;UpperAttrMetaclass(type)&lt;/code&gt;, you know
+what's going to follow</source>
+          <target state="translated">La intenci&amp;oacute;n es clara. Cuando lees &lt;code&gt;UpperAttrMetaclass(type)&lt;/code&gt; , sabes lo que va a seguir</target>
+        </trans-unit>
+        <trans-unit id="a6e5997843f57dcebc725e6a5762f1c51bce68a1" translate="yes" xml:space="preserve">
+          <source>The last word</source>
+          <target state="translated">La última palabra</target>
+        </trans-unit>
+        <trans-unit id="fde54b7f3e6afffc50941664e058311d935cae06" translate="yes" xml:space="preserve">
+          <source>The latter is possible when you implement the &lt;code&gt;__call__()&lt;/code&gt; magic method on the class.</source>
+          <target state="translated">Esto &amp;uacute;ltimo es posible cuando implementa el m&amp;eacute;todo m&amp;aacute;gico &lt;code&gt;__call__()&lt;/code&gt; en la clase.</target>
+        </trans-unit>
+        <trans-unit id="71bb84c4860a5a46695ab1e2438f2ed1d5a90d31" translate="yes" xml:space="preserve">
+          <source>The main purpose of a metaclass is to change the class automatically,
+when it's created.</source>
+          <target state="translated">El propósito principal de una metaclase es cambiar la clase automáticamente,cuando se crea.</target>
+        </trans-unit>
+        <trans-unit id="3c9b5afc7d5812bc24e508fdde2021ee24771b8d" translate="yes" xml:space="preserve">
+          <source>The main use case for a metaclass is creating an API. A typical example of this is the Django ORM. It allows you to define something like this:</source>
+          <target state="translated">El principal caso de uso de una metaclase es la creación de una API.Un ejemplo típico de esto es el ORM de Django.Permite definir algo como esto:</target>
+        </trans-unit>
+        <trans-unit id="7ed8ebb489915f332c0205bc56188ef3801ec4e9" translate="yes" xml:space="preserve">
+          <source>The metaclass enabling this</source>
+          <target state="translated">La metaclase que permite esto</target>
+        </trans-unit>
+        <trans-unit id="d7864ae5ef3f0b7a2f3aacd5831a1402dbade9c3" translate="yes" xml:space="preserve">
+          <source>The output will be:</source>
+          <target state="translated">La salida será:</target>
+        </trans-unit>
+        <trans-unit id="5268adb28d12d30ac6d135d5f75b63e9da11e68b" translate="yes" xml:space="preserve">
+          <source>The potential uses for metaclasses are boundless. Some ideas that have been explored include logging, interface checking, automatic delegation, automatic property creation, proxies, frameworks, and automatic resource locking/synchronization.</source>
+          <target state="translated">Los usos potenciales de las metaclases son ilimitados.Algunas ideas que se han explorado incluyen el registro,la comprobación de interfaces,la delegación automática,la creación automática de propiedades,los proxies,los marcos de trabajo y la sincronización automática de bloqueo de recursos.</target>
+        </trans-unit>
+        <trans-unit id="6907452e93a5a80f5c109418b9bf18c96cd67c09" translate="yes" xml:space="preserve">
+          <source>The reason behind the complexity of the code using metaclasses is not because
+of metaclasses, it's because you usually use metaclasses to do twisted stuff
+relying on introspection, manipulating inheritance, vars such as &lt;code&gt;__dict__&lt;/code&gt;, etc.</source>
+          <target state="translated">La raz&amp;oacute;n detr&amp;aacute;s de la complejidad del c&amp;oacute;digo que usa metaclases no se debe a las metaclases, es porque usualmente usas metaclases para hacer cosas retorcidas que dependen de la introspecci&amp;oacute;n, la manipulaci&amp;oacute;n de la herencia, &lt;code&gt;__dict__&lt;/code&gt; como __dict__ , etc.</target>
+        </trans-unit>
+        <trans-unit id="292b3d3fa44cb0944294ebc9a86345b3567f6d79" translate="yes" xml:space="preserve">
+          <source>The syntax to set the metaclass has been changed in Python 3:</source>
+          <target state="translated">La sintaxis para establecer la metaclase ha sido cambiada en Python 3:</target>
+        </trans-unit>
+        <trans-unit id="b4d33846e5640be4c1d9597eafdcc9bc72aceaf5" translate="yes" xml:space="preserve">
+          <source>The thing that's left to say is: If you don't know what metaclasses are, the probability that you &lt;strong&gt;will not need them&lt;/strong&gt; is 99%.</source>
+          <target state="translated">Lo que queda por decir es: si no sabe qu&amp;eacute; son las metaclases, la probabilidad de que &lt;strong&gt;no las necesite&lt;/strong&gt; es del 99%.</target>
+        </trans-unit>
+        <trans-unit id="959c3572d6d62fe879c68854fc146ad30c9bb8cd" translate="yes" xml:space="preserve">
+          <source>The tl;dr version</source>
+          <target state="translated">La versión tl;dr</target>
+        </trans-unit>
+        <trans-unit id="656d2c5fc9c081a8217d9d6a68f3f31fc9b34aef" translate="yes" xml:space="preserve">
+          <source>The type() function can return the type of an object or create a new type,</source>
+          <target state="translated">La función type()puede devolver el tipo de un objeto o crear un nuevo tipo,</target>
+        </trans-unit>
+        <trans-unit id="733141dd8934a1c4901342843517b7b8404b6323" translate="yes" xml:space="preserve">
+          <source>Then if it can't find any &lt;code&gt;__metaclass__&lt;/code&gt; at all, it will use the &lt;code&gt;Bar&lt;/code&gt;'s (the first parent) own metaclass (which might be the default &lt;code&gt;type&lt;/code&gt;) to create the class object.</source>
+          <target state="translated">Luego, si no puede encontrar ninguna &lt;code&gt;__metaclass__&lt;/code&gt; , usar&amp;aacute; la metaclase propia de la &lt;code&gt;Bar&lt;/code&gt; ra (el primer padre) (que podr&amp;iacute;a ser el &lt;code&gt;type&lt;/code&gt; predeterminado) para crear el objeto de clase.</target>
+        </trans-unit>
+        <trans-unit id="a771a2f9cc215079a67d4f526fd98ab5b55dcf1f" translate="yes" xml:space="preserve">
+          <source>There are (at this point) two key methods in a metaclass:</source>
+          <target state="translated">Hay (en este punto)dos métodos clave en una metaclase:</target>
+        </trans-unit>
+        <trans-unit id="40e0c7527fe508c7995960aaf38056900b9ff412" translate="yes" xml:space="preserve">
+          <source>There are several reasons to do so:</source>
+          <target state="translated">Hay varias razones para hacerlo:</target>
+        </trans-unit>
+        <trans-unit id="9e2063eee3f575331ddd73d7a81c2d318f5daa93" translate="yes" xml:space="preserve">
+          <source>These are called metaclasses, damn it! It must mean something!</source>
+          <target state="translated">Se llaman metaclases,¡maldita sea! ¡Debe significar algo!</target>
+        </trans-unit>
+        <trans-unit id="3b5c4cd62ac6b431a5176848fb6508cfa06be65a" translate="yes" xml:space="preserve">
+          <source>This is a case where I saw metaclass as a solution to my problem:
+I had a really complicated problem, that probably could have been solved differently, but I chose to solve it using a metaclass.  Because of the complexity, it is one of the few modules I have written where the comments in the module surpass the amount of code that has been written.  Here it is...</source>
+          <target state="translated">Este es un caso en el que vi la metaclase como una solución a mi problema:tenía un problema realmente complicado,que probablemente podría haberse resuelto de otra manera,pero elegí resolverlo usando una metaclase.Debido a la complejidad,es uno de los pocos módulos que he escrito donde los comentarios en el módulo superan la cantidad de código que se ha escrito.Aquí está...</target>
+        </trans-unit>
+        <trans-unit id="bd01e02e8d937d71c953efd2b047baa65d13a9d0" translate="yes" xml:space="preserve">
+          <source>This is a class that uses that metaclass</source>
+          <target state="translated">Esta es una clase que utiliza esa metaclase</target>
+        </trans-unit>
+        <trans-unit id="0eaab00f42bc385328b90e65be0df9fd3ce443e5" translate="yes" xml:space="preserve">
+          <source>This is a metaclass that logs exactly the moment before an instance is created and the moment it's about to return it.</source>
+          <target state="translated">Esta es una metaclase que registra exactamente el momento antes de que se cree una instancia y el momento en que está a punto de devolverla.</target>
+        </trans-unit>
+        <trans-unit id="a91ffeba7150d22f41622349f220dc2a7bd0941e" translate="yes" xml:space="preserve">
+          <source>This is possible because &lt;code&gt;models.Model&lt;/code&gt; defines &lt;code&gt;__metaclass__&lt;/code&gt; and
+it uses some magic that will turn the &lt;code&gt;Person&lt;/code&gt; you just defined with simple statements
+into a complex hook to a database field.</source>
+          <target state="translated">Esto es posible porque &lt;code&gt;models.Model&lt;/code&gt; define &lt;code&gt;__metaclass__&lt;/code&gt; y utiliza algo de magia que convertir&amp;aacute; a la &lt;code&gt;Person&lt;/code&gt; a que acaba de definir con declaraciones simples en un enlace complejo a un campo de base de datos.</target>
+        </trans-unit>
+        <trans-unit id="4f1bef529754046ab93614c707e29ea65f065a58" translate="yes" xml:space="preserve">
+          <source>This is what Python does when you use the keyword &lt;code&gt;class&lt;/code&gt;, and it does so by using a metaclass.</source>
+          <target state="translated">Esto es lo que hace Python cuando usa la &lt;code&gt;class&lt;/code&gt; palabra clave, y lo hace usando una metaclase.</target>
+        </trans-unit>
+        <trans-unit id="690dffa17d6286ca4b5f0d265293b3aba8dc9308" translate="yes" xml:space="preserve">
+          <source>This is what the metaclass would look like (not using &lt;code&gt;__prepare__&lt;/code&gt; since it is not needed):</source>
+          <target state="translated">As&amp;iacute; es como se ver&amp;iacute;a la metaclase (sin usar &lt;code&gt;__prepare__&lt;/code&gt; ya que no es necesaria):</target>
+        </trans-unit>
+        <trans-unit id="3a703a42ef6d26d4b5acc17812e989feee889a40" translate="yes" xml:space="preserve">
+          <source>This way, all classes of this module will be created using this metaclass,
+and we just have to tell the metaclass to turn all attributes to uppercase.</source>
+          <target state="translated">De esta manera,todas las clases de este módulo serán creadas usando esta metaclase,y sólo tenemos que decirle a la metaclase que ponga todos los atributos en mayúsculas.</target>
+        </trans-unit>
+        <trans-unit id="c8eb39184302c31569399fad3b80b08d690c761d" translate="yes" xml:space="preserve">
+          <source>To create a metaclass, overriding of &lt;strong&gt;new&lt;/strong&gt;() and &lt;strong&gt;init&lt;/strong&gt;() methods is usually done. &lt;strong&gt;new&lt;/strong&gt;() can be overridden to change the way objects are created, while &lt;strong&gt;init&lt;/strong&gt;() can be overridden to change the way of initializing the object. Metaclass can be created by a number of ways. One of the ways is to use type() function. type() function, when called with 3 parameters, creates a metaclass. The parameters are :-</source>
+          <target state="translated">Para crear una metaclase, generalmente se reemplaza los m&amp;eacute;todos &lt;strong&gt;new&lt;/strong&gt; () e &lt;strong&gt;init&lt;/strong&gt; (). &lt;strong&gt;new&lt;/strong&gt; () se puede reemplazar para cambiar la forma en que se crean los objetos, mientras que &lt;strong&gt;init&lt;/strong&gt; () se puede reemplazar para cambiar la forma de inicializar el objeto. Metaclass se puede crear de varias maneras. Una de las formas es usar la funci&amp;oacute;n type (). La funci&amp;oacute;n type (), cuando se llama con 3 par&amp;aacute;metros, crea una metaclase. Los par&amp;aacute;metros son: -</target>
+        </trans-unit>
+        <trans-unit id="7f66480aa700b9c3c9e3a6513f4f91ad438a6ac8" translate="yes" xml:space="preserve">
+          <source>To use a metaclass:</source>
+          <target state="translated">Para usar una metaclase:</target>
+        </trans-unit>
+        <trans-unit id="9d625953b8c96c50aabee6488063e1446a582041" translate="yes" xml:space="preserve">
+          <source>Tuple having base classes inherited by class</source>
+          <target state="translated">La tupla tiene clases base heredadas por clase</target>
+        </trans-unit>
+        <trans-unit id="d0594a199ce5d4ac41e3201736acd504b143394b" translate="yes" xml:space="preserve">
+          <source>We can extend &lt;code&gt;type&lt;/code&gt; just like any other class definition:</source>
+          <target state="translated">Podemos extender el &lt;code&gt;type&lt;/code&gt; como cualquier otra definici&amp;oacute;n de clase:</target>
+        </trans-unit>
+        <trans-unit id="d88182269b2e241ec478b27d4767550768772015" translate="yes" xml:space="preserve">
+          <source>We can make it even cleaner by using &lt;code&gt;super&lt;/code&gt;, which will ease inheritance (because yes, you can have metaclasses, inheriting from metaclasses, inheriting from type):</source>
+          <target state="translated">Podemos hacerlo a&amp;uacute;n m&amp;aacute;s limpio usando &lt;code&gt;super&lt;/code&gt; , que facilitar&amp;aacute; la herencia (porque s&amp;iacute;, puede tener metaclases, heredar de metaclases, heredar de tipo):</target>
+        </trans-unit>
+        <trans-unit id="92762df1c860bcdb2ae4c1a3bc542b57879d0959" translate="yes" xml:space="preserve">
+          <source>We can see that the metaclass' &lt;code&gt;__call__()&lt;/code&gt; method is the one that's called first. It then delegates creation of the instance to the class's &lt;code&gt;__new__()&lt;/code&gt; method and initialization to the instance's &lt;code&gt;__init__()&lt;/code&gt;. It's also the one that ultimately returns the instance.</source>
+          <target state="translated">Podemos ver que el m&amp;eacute;todo de la metaclase ' &lt;code&gt;__call__()&lt;/code&gt; es el que se llama primero. Luego delega la creaci&amp;oacute;n de la instancia al m&amp;eacute;todo &lt;code&gt;__new__()&lt;/code&gt; la clase y la inicializaci&amp;oacute;n al &lt;code&gt;__init__()&lt;/code&gt; la instancia. Tambi&amp;eacute;n es el que finalmente devuelve la instancia.</target>
+        </trans-unit>
+        <trans-unit id="16d288708e3034e3415f37e929abe09a44ae3d9f" translate="yes" xml:space="preserve">
+          <source>Well in fact, classes are themselves instances. Of metaclasses.</source>
+          <target state="translated">Bueno,de hecho,las clases son en sí mismas instancias.de metaclases.</target>
+        </trans-unit>
+        <trans-unit id="d278e4f17ef8ed67c2a22f4c32904a94d842130f" translate="yes" xml:space="preserve">
+          <source>Well, &lt;a href=&quot;http://docs.python.org/2/library/functions.html#type&quot;&gt;&lt;code&gt;type&lt;/code&gt;&lt;/a&gt; has a completely different ability, it can also create classes on the fly. &lt;code&gt;type&lt;/code&gt; can take the description of a class as parameters,
+and return a class.</source>
+          <target state="translated">Bueno, el &lt;a href=&quot;http://docs.python.org/2/library/functions.html#type&quot;&gt; &lt;code&gt;type&lt;/code&gt; &lt;/a&gt; tiene una habilidad completamente diferente, tambi&amp;eacute;n puede crear clases sobre la marcha. &lt;code&gt;type&lt;/code&gt; puede tomar la descripci&amp;oacute;n de una clase como par&amp;aacute;metros y devolver una clase.</target>
+        </trans-unit>
+        <trans-unit id="f58b345320ab6cedc6dd827175904f92af7b09a9" translate="yes" xml:space="preserve">
+          <source>Well, I guess it's a matter of consistency with &lt;code&gt;str&lt;/code&gt;, the class that creates
+strings objects, and &lt;code&gt;int&lt;/code&gt; the class that creates integer objects. &lt;code&gt;type&lt;/code&gt; is
+just the class that creates class objects.</source>
+          <target state="translated">Bueno, supongo que es una cuesti&amp;oacute;n de coherencia con &lt;code&gt;str&lt;/code&gt; , la clase que crea objetos de cadenas, e &lt;code&gt;int&lt;/code&gt; la clase que crea objetos enteros. &lt;code&gt;type&lt;/code&gt; es solo la clase que crea objetos de clase.</target>
+        </trans-unit>
+        <trans-unit id="a0696d6279da7380ed7a9d1f185eabd27a76e2f1" translate="yes" xml:space="preserve">
+          <source>Well, metaclasses are what create these objects. They are the classes' classes,
+you can picture them this way:</source>
+          <target state="translated">Bueno,las metaclases son las que crean estos objetos.Son las clases de las clases,puedes imaginarlas de esta manera:</target>
+        </trans-unit>
+        <trans-unit id="cd8f8377093c7a9f568847ac99d779518ff62c1b" translate="yes" xml:space="preserve">
+          <source>Well, usually you don't:</source>
+          <target state="translated">Bueno,normalmente no lo haces:</target>
+        </trans-unit>
+        <trans-unit id="464df4ba1017e09b5d8fcbcb6bc3f85fc5e4129e" translate="yes" xml:space="preserve">
+          <source>What are metaclasses (finally)</source>
+          <target state="translated">¿Qué son las metaclases (finalmente)</target>
+        </trans-unit>
+        <trans-unit id="7be40721cc8b807cb99d9d947eae9af189c69085" translate="yes" xml:space="preserve">
+          <source>What are metaclasses in Python</source>
+          <target state="translated">¿Qué son las metaclases en Python</target>
+        </trans-unit>
+        <trans-unit id="95ac2d20e8da72812ecb5a849d130ac5cab6552d" translate="yes" xml:space="preserve">
+          <source>What are metaclasses? What do you use them for?</source>
+          <target state="translated">¿Qué son las metaclases? ¿Para qué las usas?</target>
+        </trans-unit>
+        <trans-unit id="ca7233bf93e47a10f12eab5a25b942225351fd97" translate="yes" xml:space="preserve">
+          <source>What can they be used for? From the &lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#metaclass-example&quot;&gt;docs&lt;/a&gt;:</source>
+          <target state="translated">&amp;iquest;Para qu&amp;eacute; se pueden usar? De los &lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#metaclass-example&quot;&gt;documentos&lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="faccab95a2838e0f66852ca4a5c0f3a913942d90" translate="yes" xml:space="preserve">
+          <source>When the &lt;code&gt;class&lt;/code&gt; statement is executed, Python first executes the body of the &lt;code&gt;class&lt;/code&gt; statement as a normal block of code. The resulting namespace (a dict) holds the attributes of the class-to-be. The metaclass is determined by looking at the baseclasses of the class-to-be (metaclasses are inherited), at the &lt;code&gt;__metaclass__&lt;/code&gt; attribute of the class-to-be (if any) or the &lt;code&gt;__metaclass__&lt;/code&gt; global variable. The metaclass is then called with the name, bases and attributes of the class to instantiate it.</source>
+          <target state="translated">Cuando se ejecuta la instrucci&amp;oacute;n de &lt;code&gt;class&lt;/code&gt; , Python primero ejecuta el cuerpo de la instrucci&amp;oacute;n de &lt;code&gt;class&lt;/code&gt; como un bloque de c&amp;oacute;digo normal. El espacio de nombres resultante (un dict) contiene los atributos de la futura clase. La metaclase se determina al observar las clases base de la clase a ser (las metaclases se heredan), el atributo &lt;code&gt;__metaclass__&lt;/code&gt; de la clase a ser (si existe) o la variable global &lt;code&gt;__metaclass__&lt;/code&gt; . La metaclase se llama con el nombre, las bases y los atributos de la clase para instanciarla.</target>
+        </trans-unit>
+        <trans-unit id="0f703991c228a312fa1f4a4718f72097c5f38dc7" translate="yes" xml:space="preserve">
+          <source>When we instantiate an object, we get an instance:</source>
+          <target state="translated">Cuando instanciamos un objeto,obtenemos una instancia:</target>
+        </trans-unit>
+        <trans-unit id="2e8ee345e21d7df889e916663fa72306a26db891" translate="yes" xml:space="preserve">
+          <source>When you do:</source>
+          <target state="translated">Cuando lo hagas:</target>
+        </trans-unit>
+        <trans-unit id="8eadeed1a219183cc2c88f7ec677f6b2d5aec1aa" translate="yes" xml:space="preserve">
+          <source>When you use the &lt;code&gt;class&lt;/code&gt; keyword, Python creates this object automatically. But as
+with most things in Python, it gives you a way to do it manually.</source>
+          <target state="translated">Cuando usa la palabra clave de &lt;code&gt;class&lt;/code&gt; , Python crea este objeto autom&amp;aacute;ticamente. Pero como con la mayor&amp;iacute;a de las cosas en Python, le brinda una forma de hacerlo manualmente.</target>
+        </trans-unit>
+        <trans-unit id="ea3a686b188cb5fead0828deafd55680a345ac59" translate="yes" xml:space="preserve">
+          <source>When you write a class definition and Python executes it, it uses a metaclass to instantiate the class object (which will, in turn, be used to instantiate instances of that class).</source>
+          <target state="translated">Cuando escribes una definición de clase y Python la ejecuta,utiliza una metaclase para instanciar el objeto de la clase (que,a su vez,se utilizará para instanciar instancias de esa clase).</target>
+        </trans-unit>
+        <trans-unit id="0c3bff2984a4115df4dcc3bfb7149ff8691306a4" translate="yes" xml:space="preserve">
+          <source>When you write a class definition, for example, like this,</source>
+          <target state="translated">Cuando escribes una definición de clase,por ejemplo,como esta,</target>
+        </trans-unit>
+        <trans-unit id="7e741bc3dcef0123eeda11543758853be2aac149" translate="yes" xml:space="preserve">
+          <source>Where:</source>
+          <target state="translated">Where:</target>
+        </trans-unit>
+        <trans-unit id="8c962cb76a1933afc23c5280c46178cdc0963538" translate="yes" xml:space="preserve">
+          <source>While in Python you can use arbitrary callables for metaclasses (like &lt;a href=&quot;https://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python/100037#100037&quot;&gt;Jerub&lt;/a&gt; shows), the better approach is to make it an actual class itself. &lt;code&gt;type&lt;/code&gt; is the usual metaclass in Python. &lt;code&gt;type&lt;/code&gt; is itself a class, and it is its own type. You won't be able to recreate something like &lt;code&gt;type&lt;/code&gt; purely in Python, but Python cheats a little. To create your own metaclass in Python you really just want to subclass &lt;code&gt;type&lt;/code&gt;.</source>
+          <target state="translated">Mientras que en Python puede usar &lt;a href=&quot;https://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python/100037#100037&quot;&gt;callables&lt;/a&gt; arbitrarios para metaclases (como muestra Jerub ), el mejor enfoque es convertirlo en una clase real. &lt;code&gt;type&lt;/code&gt; es la metaclase habitual en Python. &lt;code&gt;type&lt;/code&gt; es en s&amp;iacute; mismo una clase, y es su propio tipo. No podr&amp;aacute;s recrear algo como el &lt;code&gt;type&lt;/code&gt; letra puramente en Python, pero Python hace un poco de trampa. Para crear su propia metaclase en Python, realmente solo desea subclasificar el &lt;code&gt;type&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="ff246de9114513e53dcf845cd6f5e43b2c9dffe8" translate="yes" xml:space="preserve">
+          <source>Why would you use metaclasses classes instead of functions?</source>
+          <target state="translated">¿Por qué usarías clases de metaclases en lugar de funciones?</target>
+        </trans-unit>
+        <trans-unit id="29f54ff47c50feb7cebfef143da1409f28cafef5" translate="yes" xml:space="preserve">
+          <source>Why would you use metaclasses?</source>
+          <target state="translated">¿Por qué usarías metaclases?</target>
+        </trans-unit>
+        <trans-unit id="70111da65d9e847b219ad4430cd1c1828a6ec8a3" translate="yes" xml:space="preserve">
+          <source>With a nice &lt;code&gt;__repr__&lt;/code&gt; defined for the class instance, we have a stronger ability to debug our code. However, much further checking with &lt;code&gt;eval(repr(Class))&lt;/code&gt; is unlikely (as functions would be rather impossible to eval from their default &lt;code&gt;__repr__&lt;/code&gt;'s).</source>
+          <target state="translated">Con un buen &lt;code&gt;__repr__&lt;/code&gt; definido para la instancia de clase, tenemos una mayor capacidad para depurar nuestro c&amp;oacute;digo. Sin embargo, es poco probable que se &lt;code&gt;__repr__&lt;/code&gt; mucho m&amp;aacute;s con &lt;code&gt;eval(repr(Class))&lt;/code&gt; (ya que las funciones ser&amp;iacute;an bastante imposibles de evaluar desde sus __repr__ 's predeterminadas)</target>
+        </trans-unit>
+        <trans-unit id="7e2b61a0c2abd2b5f5ed9ec2bcb225e75cc74640" translate="yes" xml:space="preserve">
+          <source>Yes, objects.</source>
+          <target state="translated">Sí,objetos.</target>
+        </trans-unit>
+        <trans-unit id="0ff433fbf5a657d09064a10812fe33b78649c66e" translate="yes" xml:space="preserve">
+          <source>You can call it a 'class factory' if you wish.</source>
+          <target state="translated">Puedes llamarlo &quot;fábrica de clases&quot; si lo deseas.</target>
+        </trans-unit>
+        <trans-unit id="315df7f70140693e8a8bc6a5c96aefabd150fb69" translate="yes" xml:space="preserve">
+          <source>You can hook on &lt;code&gt;__new__&lt;/code&gt;, &lt;code&gt;__init__&lt;/code&gt; and &lt;code&gt;__call__&lt;/code&gt;. Which will allow
+you to do different stuff. Even if usually you can do it all in &lt;code&gt;__new__&lt;/code&gt;,
+some people are just more comfortable using &lt;code&gt;__init__&lt;/code&gt;.</source>
+          <target state="translated">Puede conectar &lt;code&gt;__new__&lt;/code&gt; , &lt;code&gt;__init__&lt;/code&gt; y &lt;code&gt;__call__&lt;/code&gt; . Lo que te permitir&amp;aacute; hacer cosas diferentes. Incluso si generalmente puede hacerlo todo en &lt;code&gt;__new__&lt;/code&gt; , algunas personas se sienten m&amp;aacute;s c&amp;oacute;modas usando &lt;code&gt;__init__&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="58cba9a2524d4784e2abd94ecd3a9d0567aa5f1b" translate="yes" xml:space="preserve">
+          <source>You can structure your code better. You never use metaclasses for something as
+trivial as the above example. It's usually for something complicated. Having the
+ability to make several methods and group them in one class is very useful
+to make the code easier to read.</source>
+          <target state="translated">Puedes estructurar mejor tu código.Nunca usas metaclases para algo tan trivial como el ejemplo anterior.Normalmente es para algo complicado.Tener la capacidad de hacer varios métodos y agruparlos en una clase es muy útil para hacer el código más fácil de leer.</target>
+        </trans-unit>
+        <trans-unit id="64c7301b56292e883aabaa3c4edaf3cf8efc42f2" translate="yes" xml:space="preserve">
+          <source>You can use OOP. Metaclass can inherit from metaclass, override parent methods. Metaclasses can even use metaclasses.</source>
+          <target state="translated">Puedes usar OOP.La metaclase puede heredar de la metaclase,anular los métodos de los padres.Las metaclases pueden incluso utilizar las metaclases.</target>
+        </trans-unit>
+        <trans-unit id="fb6eb327fa8c07c0f464979436e448c8c249d0c5" translate="yes" xml:space="preserve">
+          <source>You can use the &lt;code&gt;metaclass&lt;/code&gt; to change the function of its instance (the class).</source>
+          <target state="translated">Puede usar la &lt;code&gt;metaclass&lt;/code&gt; para cambiar la funci&amp;oacute;n de su instancia (la clase).</target>
+        </trans-unit>
+        <trans-unit id="c4bc4a8b7d34394849ad10cef64e38894a0239e3" translate="yes" xml:space="preserve">
+          <source>You define classes in order to create objects, right?</source>
+          <target state="translated">Tú defines las clases para crear objetos,¿verdad?</target>
+        </trans-unit>
+        <trans-unit id="849b6a4a3ab49b1e6d5d5fb3aa2174a5dd045d4a" translate="yes" xml:space="preserve">
+          <source>You instantiate a class object.</source>
+          <target state="translated">Instantificas un objeto de clase.</target>
+        </trans-unit>
+        <trans-unit id="452647fa644731ccf4d36abe26b42b7338dc3ada" translate="yes" xml:space="preserve">
+          <source>You may have noticed the extra argument &lt;code&gt;cls&lt;/code&gt;. There is
+nothing special about it: &lt;code&gt;__new__&lt;/code&gt; always receives the class it's defined in, as first parameter. Just like you have &lt;code&gt;self&lt;/code&gt; for ordinary methods which receive the instance as first parameter, or the defining class for class methods.</source>
+          <target state="translated">Es posible que haya notado el argumento adicional &lt;code&gt;cls&lt;/code&gt; . No tiene nada de especial: &lt;code&gt;__new__&lt;/code&gt; siempre recibe la clase en la que se define, como primer par&amp;aacute;metro. Al igual que tiene &lt;code&gt;self&lt;/code&gt; para m&amp;eacute;todos ordinarios que reciben la instancia como primer par&amp;aacute;metro, o la clase definitoria para m&amp;eacute;todos de clase.</target>
+        </trans-unit>
+        <trans-unit id="22aa6e506f7cc49a7a64f3ca6d175caba8e4b9d1" translate="yes" xml:space="preserve">
+          <source>You see that by checking the &lt;code&gt;__class__&lt;/code&gt; attribute.</source>
+          <target state="translated">Puede ver eso marcando el atributo &lt;code&gt;__class__&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="cbebccfb501c9be50998ab8dec87986aaf76e78c" translate="yes" xml:space="preserve">
+          <source>You see where we are going: in Python, classes are objects, and you can create a class on the fly, dynamically.</source>
+          <target state="translated">Ya ves a dónde vamos:en Python,las clases son objetos,y puedes crear una clase sobre la marcha,de forma dinámica.</target>
+        </trans-unit>
+        <trans-unit id="33931bf86a8faf49146362a3955005056936d8f9" translate="yes" xml:space="preserve">
+          <source>You use a metaclass every time you create a class:</source>
+          <target state="translated">Usas una metaclase cada vez que creas una clase:</target>
+        </trans-unit>
+        <trans-unit id="892eaf1f9b8ad532b3d9e3281eddca7576cc2b2a" translate="yes" xml:space="preserve">
+          <source>You usually do this for APIs, where you want to create classes matching the
+current context.</source>
+          <target state="translated">Normalmente lo haces para las API,donde quieres crear clases que coincidan con el contexto actual.</target>
+        </trans-unit>
+        <trans-unit id="c865cc52046698fef0b1aa97a9a5a1e90813f189" translate="yes" xml:space="preserve">
+          <source>You write &lt;code&gt;class Foo(object)&lt;/code&gt; first, but the class object &lt;code&gt;Foo&lt;/code&gt; is not created
+in memory yet.</source>
+          <target state="translated">Primero escribe la &lt;code&gt;class Foo(object)&lt;/code&gt; , pero el objeto de clase &lt;code&gt;Foo&lt;/code&gt; a&amp;uacute;n no se ha creado en la memoria.</target>
+        </trans-unit>
+        <trans-unit id="fba87a7567989400ed959bfd1f57626604f0e103" translate="yes" xml:space="preserve">
+          <source>You'll notice that we use &quot;MyShinyClass&quot; as the name of the class
+and as the variable to hold the class reference. They can be different,
+but there is no reason to complicate things.</source>
+          <target state="translated">Notarán que usamos &quot;MyShinyClass&quot; como el nombre de la clase y como la variable para mantener la referencia de la clase.Pueden ser diferentes,pero no hay razón para complicar las cosas.</target>
+        </trans-unit>
+        <trans-unit id="468ec3a2130a90f33fbe9e9010d78aea548729a5" translate="yes" xml:space="preserve">
+          <source>You've seen that &lt;code&gt;type&lt;/code&gt; lets you do something like this:</source>
+          <target state="translated">Has visto que ese &lt;code&gt;type&lt;/code&gt; te permite hacer algo como esto:</target>
+        </trans-unit>
+        <trans-unit id="62dbbb0781988a55d8018a0fec2c8ecd07b793aa" translate="yes" xml:space="preserve">
+          <source>anyhow, those two are the most commonly used hooks. metaclassing is powerful, and above is nowhere near and exhaustive list of uses for metaclassing.</source>
+          <target state="translated">De todos modos,esos dos son los ganchos más utilizados.La metaclasificación es poderosa,y arriba no está ni cerca y la lista de usos de la metaclasificación es exhaustiva.</target>
+        </trans-unit>
+        <trans-unit id="b3505d90044ca3190f7e9581b12b5ae05136055b" translate="yes" xml:space="preserve">
+          <source>can be created manually this way:</source>
+          <target state="translated">puede ser creado manualmente de esta manera:</target>
+        </trans-unit>
+        <trans-unit id="6737e4457bda9ffaf5726333b2319e8722cf25b9" translate="yes" xml:space="preserve">
+          <source>class decorators</source>
+          <target state="translated">decoradores de clase</target>
+        </trans-unit>
+        <trans-unit id="44c4e8ef96ee00251b1324e275bce4fb98f44122" translate="yes" xml:space="preserve">
+          <source>creates in memory an object with the name &quot;ObjectCreator&quot;.</source>
+          <target state="translated">crea en la memoria un objeto con el nombre de &quot;ObjectCreator&quot;.</target>
+        </trans-unit>
+        <trans-unit id="4f7f64c1613218412d7173f07c7407d18b5776a8" translate="yes" xml:space="preserve">
+          <source>e.g.:</source>
+          <target state="translated">e.g.:</target>
+        </trans-unit>
+        <trans-unit id="7db9ff8b86f3d42798dfbf41b5e2001a92aac528" translate="yes" xml:space="preserve">
+          <source>for example, we can create a Hi class with the type() function and do not  need to use this way with class Hi(object):</source>
+          <target state="translated">por ejemplo,podemos crear una clase Hi con la función type()y no necesitamos usarla de esta manera con la clase Hi(object):</target>
+        </trans-unit>
+        <trans-unit id="760b292bf27a8fcf8c272fa886f3c465a88b9738" translate="yes" xml:space="preserve">
+          <source>i.e. the &lt;code&gt;__metaclass__&lt;/code&gt; attribute is no longer used, in favor of a keyword argument in the list of base classes.</source>
+          <target state="translated">es decir, el atributo &lt;code&gt;__metaclass__&lt;/code&gt; ya no se usa, a favor de un argumento de palabra clave en la lista de clases base.</target>
+        </trans-unit>
+        <trans-unit id="bebe93e3c9401a8e4b84a6e20e06834c7fbff805" translate="yes" xml:space="preserve">
+          <source>intercept a class creation</source>
+          <target state="translated">interceptar una creación de clase</target>
+        </trans-unit>
+        <trans-unit id="b6a7d03698a36198740b6b7e1269046f935e6ce5" translate="yes" xml:space="preserve">
+          <source>meta class are used to apply some rule to an entire set of classes. For example, suppose you're building an ORM to access a database, and you want records from each table to be of a class mapped to that table (based on fields, business rules, etc..,), a possible use of metaclass is for instance, connection pool logic, which is share by all classes of record from all tables. Another use is logic to to support foreign keys, which involves multiple classes of records.</source>
+          <target state="translated">meta clase se utilizan para aplicar alguna regla a un conjunto completo de clases.Por ejemplo,suponga que está construyendo un ORM para acceder a una base de datos,y quiere que los registros de cada tabla sean de una clase mapeada a esa tabla (basada en campos,reglas de negocio,etc.,),un posible uso de la metaclase es,por ejemplo,la lógica del pool de conexiones,que es compartida por todas las clases de registro de todas las tablas.Otro uso es la lógica de soporte de claves externas,que implica múltiples clases de registros.</target>
+        </trans-unit>
+        <trans-unit id="b24e026cd23631fc8326fba464790376a289820a" translate="yes" xml:space="preserve">
+          <source>modify the class</source>
+          <target state="translated">modificar la clase</target>
+        </trans-unit>
+        <trans-unit id="1123af1e86c1be3e13a73d667767a3eaa9fab222" translate="yes" xml:space="preserve">
+          <source>monkey patching</source>
+          <target state="translated">parches de mono</target>
+        </trans-unit>
+        <trans-unit id="2bcec56171df3c6150684b60fb0f16c51e1923ed" translate="yes" xml:space="preserve">
+          <source>produces:</source>
+          <target state="translated">produces:</target>
+        </trans-unit>
+        <trans-unit id="17156a7f53f004d6bfc86c20c78c7a60336f9799" translate="yes" xml:space="preserve">
+          <source>return the modified class</source>
+          <target state="translated">devolver la clase modificada</target>
+        </trans-unit>
+        <trans-unit id="f89967a1b044b115ecabfb714ba2baf9e25b3905" translate="yes" xml:space="preserve">
+          <source>when a particular effect has to be applied to all the subclasses</source>
+          <target state="translated">cuando un efecto particular tiene que ser aplicado a todas las subclases</target>
+        </trans-unit>
+        <trans-unit id="129a078ecb9597f440ced3af47b17543ec3a8923" translate="yes" xml:space="preserve">
+          <source>when you define metaclass, you subclass type, and can overrided the following magic methods to insert your logic.</source>
+          <target state="translated">cuando se define la metaclase,se tipifica la subclase,y se pueden anular los siguientes métodos mágicos para insertar su lógica.</target>
+        </trans-unit>
+        <trans-unit id="a0ebc00ce2803c4b05ae16c519fdb6afbeecd7c8" translate="yes" xml:space="preserve">
+          <source>would be:</source>
+          <target state="translated">sería:</target>
+        </trans-unit>
+        <trans-unit id="f00aae84260cf328c69240a8408c132eec41893a" translate="yes" xml:space="preserve">
+          <source>you can add attributes to it</source>
+          <target state="translated">puedes añadirle atributos</target>
+        </trans-unit>
+        <trans-unit id="7f5329be6ce9f06a3c0b500a9af459ec3e4c8730" translate="yes" xml:space="preserve">
+          <source>you can assign it to a variable</source>
+          <target state="translated">puedes asignarlo a una variable</target>
+        </trans-unit>
+        <trans-unit id="d5e1f2ccb7cae42051601ddb1f83165a911f6cab" translate="yes" xml:space="preserve">
+          <source>you can copy it</source>
+          <target state="translated">puedes copiarlo</target>
+        </trans-unit>
+        <trans-unit id="98b6e75ac98f8c1aab7ac264a673d0bea107ebd2" translate="yes" xml:space="preserve">
+          <source>you can pass it as a function parameter</source>
+          <target state="translated">puedes pasarlo como un parámetro de la función</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

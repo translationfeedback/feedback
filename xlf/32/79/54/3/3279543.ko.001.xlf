@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/3279543">
+    <body>
+      <group id="3279543">
+        <trans-unit id="6c226e8c6cc9d76ab83c602a00d6e4dc0fc4f9d3" translate="yes" xml:space="preserve">
+          <source>&amp;Dagger; assignment operator implementation that seems sane when assigning from a distinct object can easily fail for self-assignment.  While it might seem unimaginable that client code would even attempt self-assignment, it can happen relatively easily during algo operations on containers, with &lt;code&gt;x = f(x);&lt;/code&gt; code where &lt;code&gt;f&lt;/code&gt; is (perhaps only for some &lt;code&gt;#ifdef&lt;/code&gt; branches) a macro ala &lt;code&gt;#define f(x) x&lt;/code&gt; or a function returning a reference to &lt;code&gt;x&lt;/code&gt;, or even (likely inefficient but concise) code like &lt;code&gt;x = c1 ? x * 2 : c2 ? x / 2 : x;&lt;/code&gt;).  For example:</source>
+          <target state="translated">고유 한 개체에서 할당 할 때 제정신이 아닌 할당 연산자 구현은 자체 할당을 위해 쉽게 실패 할 수 있습니다. 클라이언트 코드가 자체 할당을 시도하는 것은 상상조차 할 수 없지만 &lt;code&gt;x = f(x);&lt;/code&gt; 컨테이너에서 알고리즘 작업 중에 비교적 쉽게 발생할 수 있습니다 . 여기서 &lt;code&gt;f&lt;/code&gt; 는 (어쩌면 일부 &lt;code&gt;#ifdef&lt;/code&gt; 분기에만 해당) 매크로 ala &lt;code&gt;#define f(x) x&lt;/code&gt; 또는 x에 대한 참조를 반환하는 함수 또는 &lt;code&gt;x = c1 ? x * 2 : c2 ? x / 2 : x;&lt;/code&gt; 과 같은 (비효율적이지만 간결한) 코드 입니까? x * 2 : c2? x / 2 : x; ). 예를 들면 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="bb7374700aafe18beca629b3c0f274d8e62aa193" translate="yes" xml:space="preserve">
+          <source>&amp;Dagger;The reason is simple: once you have the resource to yourself, you may swap and/or move it (C++11) anywhere it needs to be. And by making the copy in the parameter list, you maximize optimization.</source>
+          <target state="translated">&amp;Dagger; 이유는 간단합니다. 일단 리소스를 확보 한 후에는 필요할 때마다 리소스를 교환 및 / 또는 이동할 수 있습니다 (C ++ 11). 그리고 매개 변수 목록에 사본을 작성하여 최적화를 최대화합니다.</target>
+        </trans-unit>
+        <trans-unit id="163368ac3c34ec2c83983583f0414ca3308b0713" translate="yes" xml:space="preserve">
+          <source>&amp;dagger; &lt;code&gt;swap&lt;/code&gt; throwing: it's generally possible to reliably swap data members that the objects track by pointer, but non-pointer data members that don't have a throw-free swap, or for which swapping has to be implemented as &lt;code&gt;X tmp = lhs; lhs = rhs; rhs = tmp;&lt;/code&gt; and copy-construction or assignment may throw, still have the potential to fail leaving some data members swapped and others not.  This potential applies even to C++03 &lt;code&gt;std::string&lt;/code&gt;'s as James comments on another answer:</source>
+          <target state="translated">&amp;dagger; &lt;code&gt;swap&lt;/code&gt; 던지기 : 일반적으로 개체가 포인터로 추적하는 데이터 멤버를 안정적으로 스왑 할 수 있지만 스로 핑이없는 스왑이 없거나 스왑이 &lt;code&gt;X tmp = lhs; lhs = rhs; rhs = tmp;&lt;/code&gt; 로 구현되어야하는 비 포인터 데이터 멤버입니다 . lhs = rhs; rhs = tmp; 복사 구성 또는 할당이 발생할 수 있지만 여전히 일부 데이터 멤버를 교환하지 않고 다른 멤버는 교환하지 못할 가능성이 있습니다. 이 잠재력은 James가 다른 답변에 대해 언급 한 것처럼 C ++ 03 &lt;code&gt;std::string&lt;/code&gt; 에도 적용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="7f199a37b50d8112edd59b2da2ef5d80d8b29454" translate="yes" xml:space="preserve">
+          <source>&amp;dagger;&amp;dagger;The move constructor should generally be &lt;code&gt;noexcept&lt;/code&gt;, otherwise some code (e.g. &lt;code&gt;std::vector&lt;/code&gt; resizing logic) will use the copy constructor even when a move would make sense. Of course, only mark it noexcept if the code inside doesn't throw exceptions.</source>
+          <target state="translated">&amp;dagger;&amp;dagger; 이동 생성자는 일반적으로 &lt;code&gt;noexcept&lt;/code&gt; 이어야합니다 . 그렇지 않으면 이동이 의미가있는 경우에도 일부 코드 (예 : &lt;code&gt;std::vector&lt;/code&gt; resizing logic)가 복사 생성자를 사용합니다. 물론 내부 코드에서 예외가 발생하지 않는 경우에만 예외로 표시하십시오.</target>
+        </trans-unit>
+        <trans-unit id="75fc32cb0b6c21685002f255ba8bd3b417167a6f" translate="yes" xml:space="preserve">
+          <source>&amp;dagger;There are other claims that we should specialize &lt;code&gt;std::swap&lt;/code&gt; for our type, provide an in-class &lt;code&gt;swap&lt;/code&gt; along-side a free-function &lt;code&gt;swap&lt;/code&gt;, etc. But this is all unnecessary: any proper use of &lt;code&gt;swap&lt;/code&gt; will be through an unqualified call, and our function will be found through &lt;a href=&quot;http://en.wikipedia.org/wiki/Argument-dependent_name_lookup&quot;&gt;ADL&lt;/a&gt;. One function will do.</source>
+          <target state="translated">&amp;dagger; 우리 유형에 대해 &lt;code&gt;std::swap&lt;/code&gt; 을 전문화하고 자유 기능 &lt;code&gt;swap&lt;/code&gt; 과 함께 클래스 내 &lt;code&gt;swap&lt;/code&gt; 을 제공해야한다고 주장하는 다른 주장이 있습니다. 그러나 이것은 모두 불필요합니다. &lt;code&gt;swap&lt;/code&gt; 을 올바르게 사용하면 자격이 없습니다. 호출하면 &lt;a href=&quot;http://en.wikipedia.org/wiki/Argument-dependent_name_lookup&quot;&gt;ADL을&lt;/a&gt; 통해 함수를 찾을 수 있습니다. 하나의 기능이 수행됩니다.</target>
+        </trans-unit>
+        <trans-unit id="d2f8a6a9ff582b62e6b05e0ec952e18a7cba21f7" translate="yes" xml:space="preserve">
+          <source>(&lt;a href=&quot;https://stackoverflow.com/questions/5695548/public-friend-swap-member-function&quot;&gt;Here&lt;/a&gt; is the explanation why &lt;code&gt;public friend swap&lt;/code&gt;.) Now not only can we swap our &lt;code&gt;dumb_array&lt;/code&gt;'s, but swaps in general can be more efficient; it merely swaps pointers and sizes, rather than allocating and copying entire arrays. Aside from this bonus in functionality and efficiency, we are now ready to implement the copy-and-swap idiom.</source>
+          <target state="translated">( &lt;a href=&quot;https://stackoverflow.com/questions/5695548/public-friend-swap-member-function&quot;&gt;여기서&lt;/a&gt; &lt;code&gt;public friend swap&lt;/code&gt; 이 필요한 이유는 다음과 같습니다 .) 이제 &lt;code&gt;dumb_array&lt;/code&gt; 를 교환 할 수있을뿐만 아니라 일반적으로 교환이 더 효율적일 수 있습니다. 전체 배열을 할당하고 복사하는 대신 포인터와 크기 만 교환합니다. 기능 및 효율성의이 보너스 외에도 이제 복사 및 스왑 숙어를 구현할 준비가되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="e3d46a3ef24d9ab6012b40252b69014fa5aa5434" translate="yes" xml:space="preserve">
+          <source>(Not only that, but unqualified calls to &lt;code&gt;swap&lt;/code&gt; will use our custom swap operator, skipping over the unnecessary construction and destruction of our class that &lt;code&gt;std::swap&lt;/code&gt; would entail.)</source>
+          <target state="translated">(뿐만 아니라 &lt;code&gt;swap&lt;/code&gt; 자격이없는 호출은 사용자 정의 스왑 연산자를 사용하여 &lt;code&gt;std::swap&lt;/code&gt; 이 수반하는 클래스의 불필요한 구성 및 파괴를 건너 뜁니다.)</target>
+        </trans-unit>
+        <trans-unit id="fc5de9386b1a45a3cfcfa383e680e501a72d73b4" translate="yes" xml:space="preserve">
+          <source>(Note that some compilers do not support constructor delegation; in this case, we have to manually default construct the class. This is an unfortunate but luckily trivial task.)</source>
+          <target state="translated">(일부 컴파일러는 생성자 위임을 지원하지 않습니다.이 경우 클래스를 수동으로 기본 구성해야합니다. 불행히도 운이 좋지 않은 작업입니다.)</target>
+        </trans-unit>
+        <trans-unit id="5e19805a2e15f201ad87bd588181abb3d0cc728b" translate="yes" xml:space="preserve">
+          <source>(One might wonder: if this much code is needed to manage one resource correctly, what if my class manages more than one? While this may seem to be a valid concern, and indeed it requires non-trivial &lt;code&gt;try&lt;/code&gt;/&lt;code&gt;catch&lt;/code&gt; clauses, this is a non-issue. That's because a class should manage &lt;a href=&quot;http://en.wikipedia.org/wiki/Single_responsibility_principle&quot;&gt;&lt;em&gt;one resource only&lt;/em&gt;&lt;/a&gt;!)</source>
+          <target state="translated">(하나의 자원을 올바르게 관리하기 위해 많은 양의 코드가 필요한 경우 클래스가 둘 이상을 관리하는 경우 어떻게 될까요? 이것은 유효한 우려로 보일 수 있지만 실제로는 사소한 &lt;code&gt;try&lt;/code&gt; / &lt;code&gt;catch&lt;/code&gt; 절이 필요합니다. 문제는 클래스가 &lt;a href=&quot;http://en.wikipedia.org/wiki/Single_responsibility_principle&quot;&gt;&lt;em&gt;하나의 리소스 만&lt;/em&gt;&lt;/a&gt; 관리해야하기 때문입니다!)</target>
+        </trans-unit>
+        <trans-unit id="5f022b51a041ef6021d6448cd154d99898408496" translate="yes" xml:space="preserve">
+          <source>*Why do we set &lt;code&gt;mArray&lt;/code&gt; to null? Because if any further code in the operator throws, the destructor of &lt;code&gt;dumb_array&lt;/code&gt; might be called; and if that happens without setting it to null, we attempt to delete memory that's already been deleted! We avoid this by setting it to null, as deleting null is a no-operation.</source>
+          <target state="translated">* &lt;code&gt;mArray&lt;/code&gt; 를 null로 설정하는 이유는 무엇입니까? 연산자의 추가 코드가 발생하면 &lt;code&gt;dumb_array&lt;/code&gt; 의 소멸자가 호출 될 수 있습니다. 그리고 null로 설정하지 않고 발생하면 이미 삭제 된 메모리를 삭제하려고 시도합니다! null을 삭제하면 작동하지 않으므로 null로 설정하여이를 방지합니다.</target>
+        </trans-unit>
+        <trans-unit id="b66b8649c482abfc519d6e23ca6ba54f66162dcc" translate="yes" xml:space="preserve">
+          <source>... the compiler will yell at you when you call the &lt;code&gt;swap&lt;/code&gt; function:</source>
+          <target state="translated">... &lt;code&gt;swap&lt;/code&gt; 함수를 호출하면 컴파일러에서 소리를 지 릅니다.</target>
+        </trans-unit>
+        <trans-unit id="739480efc6308b236632d75a12d950aab5506d77" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom/3279616#3279616&quot;&gt;Conceptually&lt;/a&gt;, it works by using the copy-constructor's functionality to create a local copy of the data, then takes the copied data with a &lt;code&gt;swap&lt;/code&gt; function, swapping the old data with the new data. The temporary copy then destructs, taking the old data with it. We are left with a copy of the new data.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom/3279616#3279616&quot;&gt;개념적으로&lt;/a&gt; 복사 생성자의 기능을 사용하여 데이터의 로컬 사본을 작성한 다음 &lt;code&gt;swap&lt;/code&gt; 기능으로 복사 된 데이터를 가져 와서 기존 데이터를 새 데이터로 교체합니다. 그런 다음 임시 사본은 오래된 데이터를 가져 와서 폐기합니다. 새 데이터의 사본이 남았습니다.</target>
+        </trans-unit>
+        <trans-unit id="d8e39573869dabdfb98f89cc9b39812879c351fd" translate="yes" xml:space="preserve">
+          <source>@wilhelmtell: In C++03, there is no mention of exceptions potentially thrown by std::string::swap (which is called by std::swap). In C++0x, std::string::swap is noexcept and must not throw exceptions. &amp;ndash; James McNellis Dec 22 '10 at 15:24</source>
+          <target state="translated">@wilhelmtell : C ++ 03에는 std :: string :: swap (std :: swap에 의해 호출 됨)에 의해 발생할 수있는 예외에 대한 언급이 없습니다. C ++ 0x에서 std :: string :: swap은 예외가 아니며 예외를 발생시키지 않아야합니다. &amp;ndash; James McNellis 12 월 22 일 10시 15 분 24 초</target>
+        </trans-unit>
+        <trans-unit id="8a6f040aeb295117c1efb68678f192378c4a33b9" translate="yes" xml:space="preserve">
+          <source>A failed solution</source>
+          <target state="translated">실패한 솔루션</target>
+        </trans-unit>
+        <trans-unit id="1f123ac936e30fe0974c20eefdb479af236b59d9" translate="yes" xml:space="preserve">
+          <source>A successful solution</source>
+          <target state="translated">성공적인 솔루션</target>
+        </trans-unit>
+        <trans-unit id="0a8b69bb09bc2425818b674879026645aff63337" translate="yes" xml:space="preserve">
+          <source>A swap function is a &lt;em&gt;non-throwing&lt;/em&gt; function that swaps two objects of a class, member for member. We might be tempted to use &lt;code&gt;std::swap&lt;/code&gt; instead of providing our own, but this would be impossible; &lt;code&gt;std::swap&lt;/code&gt; uses the copy-constructor and copy-assignment operator within its implementation, and we'd ultimately be trying to define the assignment operator in terms of itself!</source>
+          <target state="translated">스왑 함수는 멤버의 멤버 인 클래스의 두 개체를 스왑하는 &lt;em&gt;비 투사&lt;/em&gt; 함수입니다. 우리는 우리 자신의 것을 제공하는 대신 &lt;code&gt;std::swap&lt;/code&gt; 을 사용하고 싶을 수도 있지만 이것은 불가능합니다. &lt;code&gt;std::swap&lt;/code&gt; 은 구현 내에서 copy-constructor 및 copy-assignment 연산자를 사용하며 궁극적으로 자체적으로 관점에서 할당 연산자를 정의하려고합니다!</target>
+        </trans-unit>
+        <trans-unit id="18c04be3fc2a0bcac1f0511d9edd72d5489a05de" translate="yes" xml:space="preserve">
+          <source>A way around this is to not use &lt;code&gt;friend&lt;/code&gt; keyword and redefine the &lt;code&gt;swap&lt;/code&gt; function:</source>
+          <target state="translated">이를 해결하는 방법은 &lt;code&gt;friend&lt;/code&gt; 키워드를 사용하지 않고 &lt;code&gt;swap&lt;/code&gt; 기능을 재정의하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="96739476d5a5d3d0fbe5f2e1e80ac733b38525c4" translate="yes" xml:space="preserve">
+          <source>A way of implementing the assignment operator in terms of a swap function:</source>
+          <target state="translated">스왑 기능으로 할당 연산자를 구현하는 방법 :</target>
+        </trans-unit>
+        <trans-unit id="099a6586cd9d3a08c5d495a2db19fa35488b71be" translate="yes" xml:space="preserve">
+          <source>After all, you don't &lt;em&gt;need&lt;/em&gt; to use a &lt;code&gt;friend&lt;/code&gt; function to swap 2 objects. It makes just as much sense to make &lt;code&gt;swap&lt;/code&gt; a member function that has one &lt;code&gt;other&lt;/code&gt; object as a parameter.</source>
+          <target state="translated">결국, &lt;code&gt;friend&lt;/code&gt; 기능을 사용하여 2 개의 객체를 바꿀 &lt;em&gt;필요&lt;/em&gt; 는 없습니다. &lt;code&gt;swap&lt;/code&gt; 을 하나의 &lt;code&gt;other&lt;/code&gt; 객체를 매개 변수로 갖는 멤버 함수로 만드는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="c864fce5142351dfaef1c82c9c081e821224b89b" translate="yes" xml:space="preserve">
+          <source>Although it's been mentioned in many places, we didn't have any singular &quot;what is it&quot; question and answer, so here it is. Here is a partial list of places where it was previously mentioned:</source>
+          <target state="translated">많은 곳에서 언급되었지만, &quot;무엇입니까&quot;라는 질문과 대답이 없었으므로 여기에 있습니다. 다음은 이전에 언급 한 장소의 일부 목록입니다.</target>
+        </trans-unit>
+        <trans-unit id="e9671eba126f32f76a109bf11cdbf7cf819ba06b" translate="yes" xml:space="preserve">
+          <source>An in-depth explanation</source>
+          <target state="translated">심층적 인 설명</target>
+        </trans-unit>
+        <trans-unit id="c73d2a01cb43ee42c7ec7bce3573c7cec34d6cdc" translate="yes" xml:space="preserve">
+          <source>And so concludes the copy-and-swap idiom.</source>
+          <target state="translated">그리고 복사 및 스왑 숙어를 마칩니다.</target>
+        </trans-unit>
+        <trans-unit id="9b5dace86273f14ab55c392c7b880a011ead98aa" translate="yes" xml:space="preserve">
+          <source>And that is the copy-and-swap idiom.</source>
+          <target state="translated">이것이 바로 복사 및 교환 관용구입니다.</target>
+        </trans-unit>
+        <trans-unit id="2c207f27020378f00a7220d5874fff08752c57e7" translate="yes" xml:space="preserve">
+          <source>And that's it! With one fell swoop, all three problems are elegantly tackled at once.</source>
+          <target state="translated">그리고 그게 다야! 한 번의 실패로 세 가지 문제가 모두 우아하게 해결되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="a253fea1b4ead859fd72efb21cf1f3617ee2fe71" translate="yes" xml:space="preserve">
+          <source>And we say we're finished; this now manages an array, without leaks. However, it suffers from three problems, marked sequentially in the code as &lt;code&gt;(n)&lt;/code&gt;.</source>
+          <target state="translated">그리고 우리는 우리가 끝났다고 말합니다. 이제 누출없이 어레이를 관리합니다. 그러나 코드에서 &lt;code&gt;(n)&lt;/code&gt; 으로 순차적으로 표시되는 세 가지 문제가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="46cb3e743fce8064b54f7c24bedac5fd2b065252" translate="yes" xml:space="preserve">
+          <source>Any class that manages a resource (a &lt;em&gt;wrapper&lt;/em&gt;, like a smart pointer) needs to implement &lt;a href=&quot;https://stackoverflow.com/questions/4172722/what-is-the-rule-of-three&quot;&gt;The Big Three&lt;/a&gt;. While the goals and implementation of the copy-constructor and destructor are straightforward, the copy-assignment operator is arguably the most nuanced and difficult. How should it be done? What pitfalls need to be avoided?</source>
+          <target state="translated">자원을 관리하는 모든 클래스 (스마트 포인터와 같은 &lt;em&gt;랩퍼&lt;/em&gt; )는 &lt;a href=&quot;https://stackoverflow.com/questions/4172722/what-is-the-rule-of-three&quot;&gt;The Big Three&lt;/a&gt; 를 구현해야합니다. 복사 생성자와 소멸자의 목표와 구현은 간단하지만 복사 할당 연산자는 가장 미묘하고 어렵다. 어떻게해야합니까? 어떤 함정을 피해야합니까?</target>
+        </trans-unit>
+        <trans-unit id="b5f0db215ce832cd77e56cc7229f8e1b22ecb595" translate="yes" xml:space="preserve">
+          <source>As mentioned, the copy-and-swap idiom will fix all these issues. But right now, we have all the requirements except one: a &lt;code&gt;swap&lt;/code&gt; function. While The Rule of Three successfully entails the existence of our copy-constructor, assignment operator, and destructor, it should really be called &quot;The Big Three and A Half&quot;: any time your class manages a resource it also makes sense to provide a &lt;code&gt;swap&lt;/code&gt; function.</source>
+          <target state="translated">언급했듯이 복사 및 스왑 숙어는 이러한 모든 문제를 해결합니다. 그러나 현재 &lt;code&gt;swap&lt;/code&gt; 기능을 제외한 모든 요구 사항이 있습니다. 3 규칙은 복사 생성자, 할당 연산자 및 소멸자의 존재를 성공적으로 수반하지만 실제로는 &quot;The Big Three and A Half&quot;라고합니다. 클래스가 자원을 관리 할 때마다 &lt;code&gt;swap&lt;/code&gt; 을 제공하는 것이 좋습니다. 함수.</target>
+        </trans-unit>
+        <trans-unit id="89e4ca10b74850fc9016dbb8310675a1462b938c" translate="yes" xml:space="preserve">
+          <source>Assignment, at its heart, is two steps: &lt;strong&gt;&lt;em&gt;tearing down the object's old state&lt;/em&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;em&gt;building its new state as a copy&lt;/em&gt;&lt;/strong&gt; of some other object's state.</source>
+          <target state="translated">과제의 핵심 &lt;strong&gt;&lt;em&gt;은 객체의 이전 상태를 해체하고&lt;/em&gt;&lt;/strong&gt; 다른 &lt;strong&gt;&lt;em&gt;상태의 복사본&lt;/em&gt;&lt;/strong&gt; 으로 &lt;strong&gt;&lt;em&gt;새로운 상태를 만드는&lt;/em&gt;&lt;/strong&gt; 두 단계입니다.</target>
+        </trans-unit>
+        <trans-unit id="d4de93db789fe9ea751b9c3c9f7efc0214b87843" translate="yes" xml:space="preserve">
+          <source>At this point we are home-free, because &lt;code&gt;swap&lt;/code&gt; is non-throwing. We swap our current data with the copied data, safely altering our state, and the old data gets put into the temporary. The old data is then released when the function returns. (Where upon the parameter's scope ends and its destructor is called.)</source>
+          <target state="translated">&lt;code&gt;swap&lt;/code&gt; 이 발생하지 않기 때문에이 시점에서 우리는 집에 무료입니다. 현재 데이터를 복사 된 데이터와 교체하여 상태를 안전하게 변경하면 기존 데이터가 임시로 저장됩니다. 그런 다음 함수가 반환되면 이전 데이터가 해제됩니다. (매개 변수의 범위가 끝나고 소멸자가 호출되는 위치)</target>
+        </trans-unit>
+        <trans-unit id="22b41cb12332be04aca21ea73d3c777d0bbc2bc4" translate="yes" xml:space="preserve">
+          <source>Basically, that's what the &lt;strong&gt;&lt;em&gt;destructor&lt;/em&gt;&lt;/strong&gt; and the &lt;strong&gt;&lt;em&gt;copy constructor&lt;/em&gt;&lt;/strong&gt; do, so the first idea would be to delegate the work to them. However, since destruction mustn't fail, while construction might, &lt;em&gt;we actually want to do it the other way around&lt;/em&gt;: &lt;strong&gt;&lt;em&gt;first perform the constructive part&lt;/em&gt;&lt;/strong&gt; and, if that succeeded, &lt;strong&gt;&lt;em&gt;then do the destructive part&lt;/em&gt;&lt;/strong&gt;. The copy-and-swap idiom is a way to do just that: It first calls a class' copy constructor to create a temporary object, then swaps its data with the temporary's, and then lets the temporary's destructor destroy the old state.</source>
+          <target state="translated">기본적으로 이것이 &lt;strong&gt;&lt;em&gt;소멸자&lt;/em&gt;&lt;/strong&gt; 와 &lt;strong&gt;&lt;em&gt;복사 생성자&lt;/em&gt;&lt;/strong&gt; 가하는 일이므로 첫 번째 아이디어는 작업을 위임하는 것입니다. 그러나, 파괴가 반드시 실패해서는 안되므로, 건설은 가능하지만, &lt;em&gt;우리는 실제로 다른 방법으로 해보고 싶어합니다&lt;/em&gt; . &lt;strong&gt;&lt;em&gt;먼저 건설적인 부분을 수행&lt;/em&gt;&lt;/strong&gt; 하고, 성공한 경우 &lt;strong&gt;&lt;em&gt;에는 파괴적인 부분을 수행하십시오&lt;/em&gt;&lt;/strong&gt; . copy-and-swap 이디엄은이를 수행하는 방법입니다. 먼저 클래스의 복사 생성자를 호출하여 임시 객체를 만든 다음 해당 데이터를 임시 객체와 교체 한 다음 임시 소멸자가 이전 상태를 파괴하도록합니다.</target>
+        </trans-unit>
+        <trans-unit id="21f3313cd21a2541f96630aa3e2a0cf47d569892" translate="yes" xml:space="preserve">
+          <source>Because the idiom repeats no code, we cannot introduce bugs within the operator. Note that this means we are rid of the need for a self-assignment check, allowing a single uniform implementation of &lt;code&gt;operator=&lt;/code&gt;. (Additionally, we no longer have a performance penalty on non-self-assignments.)</source>
+          <target state="translated">관용구는 코드를 반복하지 않기 때문에 연산자 내에 버그를 도입 할 수 없습니다. 이것은 우리가 &lt;code&gt;operator=&lt;/code&gt; 의 단일 균일 한 구현을 허용하는 자체 할당 점검의 필요성을 제거한다는 것을 의미한다. 또한 자체 할당이 아닌 경우 더 이상 성능이 저하되지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="ee86d87c6e42b253320f7528f74891164bb782f1" translate="yes" xml:space="preserve">
+          <source>C++: dynamically allocating an array of objects?</source>
+          <target state="translated">C ++ : 객체 배열을 동적으로 할당합니까?</target>
+        </trans-unit>
+        <trans-unit id="e729ebfbf18123cb9c8f157732414fc00291bf88" translate="yes" xml:space="preserve">
+          <source>Copy constructor and = operator overload in C++: is a common function possible?</source>
+          <target state="translated">C ++에서 생성자 및 = 연산자 오버로드 복사 : 일반적인 기능은 가능합니까?</target>
+        </trans-unit>
+        <trans-unit id="94f8c0f65181c1bf410e4113cb80538a2f639df0" translate="yes" xml:space="preserve">
+          <source>Either way, this method of obtaining our resource is the key to eliminating code duplication: we get to use the code from the copy-constructor to make the copy, and never need to repeat any bit of it. Now that the copy is made, we are ready to swap.</source>
+          <target state="translated">어느 쪽이든, 자원을 얻는이 방법은 코드 복제를 제거하는 열쇠입니다. 우리는 복사 생성자에서 코드를 사용하여 복사를 수행하며, 비트를 반복 할 필요가 없습니다. 이제 복사가 완료되었으므로 교체 할 준비가되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="ec0c3b76630fd745381cc215a284820af75a683a" translate="yes" xml:space="preserve">
+          <source>Footnotes</source>
+          <target state="translated">Footnotes</target>
+        </trans-unit>
+        <trans-unit id="79202c91683120bfb6ddb6c07a5bad7dc7c88c9b" translate="yes" xml:space="preserve">
+          <source>For concreteness, let us consider a container &lt;code&gt;std::vector&amp;lt;T, A&amp;gt;&lt;/code&gt;, where &lt;code&gt;A&lt;/code&gt; is some stateful allocator type, and we'll compare the following functions:</source>
+          <target state="translated">구체적으로 컨테이너 &lt;code&gt;std::vector&amp;lt;T, A&amp;gt;&lt;/code&gt; 고려해 봅시다. 여기서 &lt;code&gt;A&lt;/code&gt; 는 상태 저장 할당 자 유형이며 다음 함수를 비교합니다.</target>
+        </trans-unit>
+        <trans-unit id="f160b70becf0b5d89fbecbeb4ad05cafa0e60064" translate="yes" xml:space="preserve">
+          <source>Here's how a naive implementation might look:</source>
+          <target state="translated">순진한 구현 방식은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="bec44ad24b77ebad1653d346d85b618d564afd9f" translate="yes" xml:space="preserve">
+          <source>Here, a hand-written &lt;code&gt;Client::operator=&lt;/code&gt; might check if &lt;code&gt;*this&lt;/code&gt; is already connected to the same server as &lt;code&gt;rhs&lt;/code&gt; (perhaps sending a &quot;reset&quot; code if useful), whereas the copy-and-swap approach would invoke the copy-constructor which would likely be written to open a distinct socket connection then close the original one.  Not only could that mean a remote network interaction instead of a simple in-process variable copy, it could run afoul of client or server limits on socket resources or connections.  (Of course this class has a pretty horrid interface, but that's another matter ;-P).</source>
+          <target state="translated">여기서, 손으로 쓴 &lt;code&gt;Client::operator=&lt;/code&gt; 는 &lt;code&gt;*this&lt;/code&gt; 이미 &lt;code&gt;rhs&lt;/code&gt; 와 동일한 서버에 연결되어 있는지 (유용한 경우 아마도 &quot;재설정&quot;코드를 보내는 것임) 확인할 수 있지만, 복사 및 스왑 방식은 복사를 호출합니다. 별개의 소켓 연결을 열고 원래 연결을 닫도록 작성되었을 가능성이있는 생성자. 이는 단순한 in-process 변수 복사본 대신 원격 네트워크 상호 작용을 의미 할뿐만 아니라 소켓 리소스 또는 연결에 대한 클라이언트 또는 서버 제한을 ​​무시할 수 있습니다. (물론이 클래스는 꽤 ​​무시 무시한 인터페이스를 가지고 있지만 그것은 또 다른 문제입니다. ;-P).</target>
+        </trans-unit>
+        <trans-unit id="e21860bf37328b97ebb0ddd904694c78e4a7b382" translate="yes" xml:space="preserve">
+          <source>How does it work?</source>
+          <target state="translated">어떻게 작동합니까?</target>
+        </trans-unit>
+        <trans-unit id="fc088e1a9c9b7f4c8a1d611a7ecd41e9c5e1abfa" translate="yes" xml:space="preserve">
+          <source>However, if &lt;code&gt;a.get_allocator() != b.get_allocator()&lt;/code&gt;, the program has &lt;em&gt;undefined behaviour&lt;/em&gt; (cf. [container.requirements.general/8].</source>
+          <target state="translated">그러나 &lt;code&gt;a.get_allocator() != b.get_allocator()&lt;/code&gt; 인 경우 프로그램에 &lt;em&gt;정의되지 않은 동작이 있습니다&lt;/em&gt; ([container.requirements.general / 8] 참조).</target>
+        </trans-unit>
+        <trans-unit id="236be016134b3d1b54ff3ee12c4a2f9cc364e3e2" translate="yes" xml:space="preserve">
+          <source>I would like to add a word of warning when you are dealing with C++11-style allocator-aware containers. Swapping and assignment have subtly different semantics.</source>
+          <target state="translated">C ++ 11 스타일 할당 자 인식 컨테이너를 다룰 때 경고 단어를 추가하고 싶습니다. 스와핑과 할당은 미묘하게 다른 의미를 갖습니다.</target>
+        </trans-unit>
+        <trans-unit id="3f28ca2de2b68eac16c3d42e71f3ac049eaef11f" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;AT::propagate_on_container_move_assignment&lt;/code&gt; is &lt;code&gt;std::true_type&lt;/code&gt;, then &lt;code&gt;fm&lt;/code&gt; reassigns the allocator of &lt;code&gt;a&lt;/code&gt; with the value of &lt;code&gt;b.get_allocator()&lt;/code&gt;, otherwise it does not, and &lt;code&gt;a&lt;/code&gt; continues to use its original allocator. In that case, the data elements need to be swapped individually, since the storage of &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; is not compatible.</source>
+          <target state="translated">&lt;code&gt;AT::propagate_on_container_move_assignment&lt;/code&gt; 가 &lt;code&gt;std::true_type&lt;/code&gt; 인 경우 &lt;code&gt;fm&lt;/code&gt; 은 &lt;code&gt;a&lt;/code&gt; 의 할당자를 &lt;code&gt;b.get_allocator()&lt;/code&gt; 값으로 재 지정합니다. 그렇지 않으면 그렇지 않은 경우 원래 할당자를 계속 사용합니다. 이 경우 &lt;code&gt;a&lt;/code&gt; 와 &lt;code&gt;b&lt;/code&gt; 의 스토리지가 호환되지 않기 때문에 데이터 요소를 개별적으로 교체해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="4510757f293d56b7a112af8252c4984d58f759e4" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;AT::propagate_on_container_swap&lt;/code&gt; is &lt;code&gt;std::false_type&lt;/code&gt;, then we need a dynamic check.</source>
+          <target state="translated">&lt;code&gt;AT::propagate_on_container_swap&lt;/code&gt; 이 &lt;code&gt;std::false_type&lt;/code&gt; 인 경우 동적 검사가 필요합니다.</target>
+        </trans-unit>
+        <trans-unit id="b3573d07a320cef433ba754980663abfd331a87f" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;AT::propagate_on_container_swap&lt;/code&gt; is &lt;code&gt;std::true_type&lt;/code&gt;, then &lt;code&gt;fs&lt;/code&gt; swaps both data and allocators in the expected fashion.</source>
+          <target state="translated">&lt;code&gt;AT::propagate_on_container_swap&lt;/code&gt; 이 &lt;code&gt;std::true_type&lt;/code&gt; 인 경우 &lt;code&gt;fs&lt;/code&gt; 는 예상 방식으로 데이터와 할당자를 모두 교환합니다.</target>
+        </trans-unit>
+        <trans-unit id="73d3a4270600b651da25bd4b3260fe77df37829f" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;a.get_allocator() == b.get_allocator()&lt;/code&gt;, then the two containers use compatible storage, and swapping proceeds in the usual fashion.</source>
+          <target state="translated">&lt;code&gt;a.get_allocator() == b.get_allocator()&lt;/code&gt; 인 경우 두 컨테이너가 호환 가능한 스토리지를 사용하고 일반적인 방식으로 스와핑이 진행됩니다.</target>
+        </trans-unit>
+        <trans-unit id="b8d03c15d57131584a2028550fb794a9339e9cad" translate="yes" xml:space="preserve">
+          <source>In its refined form, copy-and-swap is implemented by having the copy performed by initializing the (non-reference) parameter of the assignment operator:</source>
+          <target state="translated">정제 된 형식으로 복사 및 스왑은 할당 연산자의 (비 참조) 매개 변수를 초기화하여 복사를 수행하여 구현됩니다.</target>
+        </trans-unit>
+        <trans-unit id="9f37decf779a75710e40ed5c33a2089302cd7911" translate="yes" xml:space="preserve">
+          <source>In order to use the copy-and-swap idiom, we need three things: a working copy-constructor, a working destructor (both are the basis of any wrapper, so should be complete anyway), and a &lt;code&gt;swap&lt;/code&gt; function.</source>
+          <target state="translated">복사 및 스왑 이디엄을 사용하려면 작업중인 복사 생성자, 작업중인 소멸자 (둘 다 래퍼의 기초이므로 어쨌든 완료해야 함)와 &lt;code&gt;swap&lt;/code&gt; 기능의 세 가지가 필요합니다.</target>
+        </trans-unit>
+        <trans-unit id="8c6f02b160b536e0af64d17d3f8eab3f4e9be471" translate="yes" xml:space="preserve">
+          <source>In our case, the core of it is only two lines (the allocation and the copy), but with more complex resources this code bloat can be quite a hassle. We should strive to never repeat ourselves.</source>
+          <target state="translated">우리의 경우 그 핵심은 두 줄 (할당 및 사본)이지만 더 복잡한 리소스를 사용하면이 코드 팽창이 번거로울 수 있습니다. 우리는 결코 반복하지 않기 위해 노력해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="41bf38d748ecfa54c2c45421d2ad416833ae458b" translate="yes" xml:space="preserve">
+          <source>In some versions of Visual Studio (and possibly other compilers) there is a bug that is really annoying and doesn't make sense. So if you declare/define your &lt;code&gt;swap&lt;/code&gt; function like this:</source>
+          <target state="translated">Visual Studio의 일부 버전 (및 다른 컴파일러)에는 실제로 성 가시고 의미가없는 버그가 있습니다. 따라서 다음과 같이 &lt;code&gt;swap&lt;/code&gt; 함수를 선언 / 정의하면</target>
+        </trans-unit>
+        <trans-unit id="a9821302f3683bd9875458d7b470497ba0484ef2" translate="yes" xml:space="preserve">
+          <source>Let's consider a concrete case. We want to manage, in an otherwise useless class, a dynamic array. We start with a working constructor, copy-constructor, and destructor:</source>
+          <target state="translated">구체적인 사례를 생각해 봅시다. 쓸모없는 클래스에서 동적 배열을 관리하려고합니다. 작업 생성자, 복사 생성자 및 소멸자로 시작합니다.</target>
+        </trans-unit>
+        <trans-unit id="27c808c7552dbd2cdeb49163a8d2a3c074f0dbac" translate="yes" xml:space="preserve">
+          <source>Luckily for us, this is easy:</source>
+          <target state="translated">운 좋게도 이것은 쉽다 :</target>
+        </trans-unit>
+        <trans-unit id="7402c1a7b7b4cd8a707b425e610cbcb74419bc20" translate="yes" xml:space="preserve">
+          <source>Now, if &lt;code&gt;other&lt;/code&gt; is being initialized with an rvalue, &lt;em&gt;it will be move-constructed&lt;/em&gt;. Perfect. In the same way C++03 let us re-use our copy-constructor functionality by taking the argument by-value, C++11 will &lt;em&gt;automatically&lt;/em&gt; pick the move-constructor when appropriate as well. (And, of course, as mentioned in previously linked article, the copying/moving of the value may simply be elided altogether.)</source>
+          <target state="translated">이제 &lt;code&gt;other&lt;/code&gt; 값을 rvalue로 초기화 &lt;em&gt;하면 이동 구성&lt;/em&gt; 됩니다. 완전한. C ++ 03과 마찬가지로 인수 값으로 인수를 복사하여 복사 생성자 기능을 재사용 할 수 있습니다. C ++ 11은 적절한 경우 이동 생성자를 &lt;em&gt;자동으로&lt;/em&gt; 선택합니다. (물론, 이전에 링크 된 기사에서 언급했듯이, 가치의 복사 / 이동은 단순히 제거 될 수 있습니다.)</target>
+        </trans-unit>
+        <trans-unit id="dcbeb7c58de6f8ef2e5b152493010bd5fba66a2c" translate="yes" xml:space="preserve">
+          <source>Observe that upon entering the function that all the new data is already allocated, copied, and ready to be used. This is what gives us a strong exception guarantee for free: we won't even enter the function if construction of the copy fails, and it's therefore not possible to alter the state of &lt;code&gt;*this&lt;/code&gt;. (What we did manually before for a strong exception guarantee, the compiler is doing for us now; how kind.)</source>
+          <target state="translated">함수를 입력 할 때 모든 새 데이터가 이미 할당, 복사 및 사용할 준비가되어 있는지 확인하십시오. 이것은 우리에게 무료로 강력한 예외 보장을 제공하는 것입니다. 복사 구성에 실패하면 함수에 들어 가지 않을 것이므로 &lt;code&gt;*this&lt;/code&gt; 상태를 변경할 수 없습니다. (강력한 예외 보장을 위해 이전에 수동으로 한 일, 컴파일러는 지금 우리를 위해하고 있습니다. 정말.)</target>
+        </trans-unit>
+        <trans-unit id="e6868ab3511bcd3b27c0685657d0cf94d4a5c6ed" translate="yes" xml:space="preserve">
+          <source>On self-assignment, the above code delete's &lt;code&gt;x.p_;&lt;/code&gt;, points &lt;code&gt;p_&lt;/code&gt; at a newly allocated heap region, then attempts to read the &lt;em&gt;uninitialised&lt;/em&gt; data therein (Undefined Behaviour), if that doesn't do anything too weird, &lt;code&gt;copy&lt;/code&gt; attempts a self-assignment to every just-destructed 'T'!</source>
+          <target state="translated">자체 할당시 위 코드는 &lt;code&gt;x.p_;&lt;/code&gt; 삭제합니다 . , &lt;code&gt;p_&lt;/code&gt; 가 새로 할당 된 힙 영역을 가리키고 그 안에 &lt;em&gt;초기화되지 않은&lt;/em&gt; 데이터 (정의되지 않은 동작)를 읽으려고 시도합니다. 너무 이상하지 않은 경우 &lt;code&gt;copy&lt;/code&gt; 는 방금 파괴 된 모든 'T'에 자체 할당을 시도합니다!</target>
+        </trans-unit>
+        <trans-unit id="0efc2e6be4c23b9a513d7ce0dcff8ed80e8912e7" translate="yes" xml:space="preserve">
+          <source>Overview</source>
+          <target state="translated">Overview</target>
+        </trans-unit>
+        <trans-unit id="9c234a83c1275c3ee466e4738c02c7633c54a69e" translate="yes" xml:space="preserve">
+          <source>Self-assignment done as a copy-and-swap avoids oft-overlooked edge cases.&amp;Dagger;</source>
+          <target state="translated">복사 및 스왑으로 수행되는 자체 할당 기능은 간과되는 간과를 피합니다. &amp;Dagger;</target>
+        </trans-unit>
+        <trans-unit id="6f659bc43bf7db07f752a5d1512e544f94e1af00" translate="yes" xml:space="preserve">
+          <source>Since &lt;code&gt;swap()&lt;/code&gt; is supposed to never fail, the only part which might fail is the copy-construction. That is performed first, and if it fails, nothing will be changed in the targeted object.</source>
+          <target state="translated">&lt;code&gt;swap()&lt;/code&gt; 은 절대 실패하지 않기 때문에 실패 할 수있는 유일한 부분은 복사 구성입니다. 먼저 수행되고 실패하면 대상 객체에서 아무것도 변경되지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="26f7740f7272c6a37203cde27ca0ef723ebbbf32" translate="yes" xml:space="preserve">
+          <source>So what we've done is simple: initialize via the default constructor (a C++11 feature), then swap with &lt;code&gt;other&lt;/code&gt;; we know a default constructed instance of our class can safely be assigned and destructed, so we know &lt;code&gt;other&lt;/code&gt; will be able to do the same, after swapping.</source>
+          <target state="translated">우리가 한 일은 간단합니다. 기본 생성자 (C ++ 11 기능)를 통해 초기화 한 다음 &lt;code&gt;other&lt;/code&gt; 와 교체하십시오. 우리는 클래스의 기본 생성 인스턴스가 안전하게 할당되고 소멸 될 수 있다는 것을 알고 있으므로 스왑 후 &lt;code&gt;other&lt;/code&gt; 클래스도 동일한 작업을 수행 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="2b5693bc5962ed6f9799bbcb35014ba8ea8fefd0" translate="yes" xml:space="preserve">
+          <source>That is the only change we need to make to our class, so why does it work? Remember the ever-important decision we made to make the parameter a value and not a reference:</source>
+          <target state="translated">그것이 우리 수업에 필요한 유일한 변화이므로 왜 효과가 있습니까? 매개 변수를 참조가 아닌 값으로 만들기 위해 결정한 가장 중요한 결정을 기억하십시오.</target>
+        </trans-unit>
+        <trans-unit id="9ef6aff2994558c1366be20966048a47a804bb07" translate="yes" xml:space="preserve">
+          <source>The &lt;em&gt;copy-and-swap idiom&lt;/em&gt; is the solution, and elegantly assists the assignment operator in achieving two things: avoiding &lt;a href=&quot;http://en.wikipedia.org/wiki/Don%27t_repeat_yourself&quot;&gt;code duplication&lt;/a&gt;, and providing a &lt;a href=&quot;http://en.wikipedia.org/wiki/Exception_guarantees&quot;&gt;strong exception guarantee&lt;/a&gt;.</source>
+          <target state="translated">&lt;em&gt;카피 앤 스왑 관용구&lt;/em&gt; 는 솔루션이며 할당 연산자가 &lt;a href=&quot;http://en.wikipedia.org/wiki/Don%27t_repeat_yourself&quot;&gt;코드 중복&lt;/a&gt; 방지 및 &lt;a href=&quot;http://en.wikipedia.org/wiki/Exception_guarantees&quot;&gt;강력한 예외 보장&lt;/a&gt; 제공이라는 두 가지 일을 우아하게 지원합니다.</target>
+        </trans-unit>
+        <trans-unit id="42e54c42a60d22bc2d5ac75e35558832e40d8bb3" translate="yes" xml:space="preserve">
+          <source>The code has expanded! Which leads us to the third problem: code duplication. Our assignment operator effectively duplicates all the code we've already written elsewhere, and that's a terrible thing.</source>
+          <target state="translated">코드가 확장되었습니다! 이는 코드 중복이라는 세 번째 문제로 이어집니다. 할당 연산자는 이미 다른 곳에 작성한 모든 코드를 효과적으로 복제하므로 끔찍한 일입니다.</target>
+        </trans-unit>
+        <trans-unit id="63d41c6ca1535180248065869d3328499b07b825" translate="yes" xml:space="preserve">
+          <source>The first  is the self-assignment test. This check serves two purposes: it's an easy way to prevent us from running needless code on self-assignment, and it protects us from subtle bugs (such as deleting the array only to try and copy it). But in all other cases it merely serves to slow the program down, and act as noise in the code; self-assignment rarely occurs, so most of the time this check is a waste. It would be better if the operator could work properly without it.</source>
+          <target state="translated">첫 번째는 자체 할당 테스트입니다. 이 검사는 두 가지 목적으로 사용됩니다. 자체 할당에서 불필요한 코드를 실행하지 못하게하는 쉬운 방법이며, 미묘한 버그 (예 : 배열을 삭제하여 복사하여 복사하는 것)로부터 보호합니다. 그러나 다른 모든 경우에는 단순히 프로그램 속도를 늦추고 코드에서 노이즈 역할을합니다. 자체 할당은 거의 발생하지 않으므로이 검사는 대부분 낭비입니다. 작업자가 없이도 제대로 작동 할 수 있다면 더 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="6f60ff23b795c7da205d246f356a1def07956d8e" translate="yes" xml:space="preserve">
+          <source>The fundamental idea is that:</source>
+          <target state="translated">기본 아이디어는 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="83588406b98957bd4b1f640c1bf0685f68308d07" translate="yes" xml:space="preserve">
+          <source>The goal</source>
+          <target state="translated">목표</target>
+        </trans-unit>
+        <trans-unit id="fd746b321830bfc8609d2fd310324c39c1c7bf04" translate="yes" xml:space="preserve">
+          <source>The next version of C++, C++11, makes one very important change to how we manage resources: the Rule of Three is now &lt;strong&gt;The Rule of Four&lt;/strong&gt; (and a half). Why? Because not only do we need to be able to copy-construct our resource, &lt;a href=&quot;https://stackoverflow.com/questions/3106110/can-someone-please-explain-move-semantics-to-me&quot;&gt;we need to move-construct it as well&lt;/a&gt;.</source>
+          <target state="translated">다음 버전의 C ++ 인 C ++ 11은 리소스 관리 방식을 매우 중요하게 변경합니다. 3 &lt;strong&gt;의 규칙&lt;/strong&gt; 은 이제 &lt;strong&gt;4의 규칙&lt;/strong&gt; (반)입니다. 왜? 리소스를 복사 구성 할 수 있어야 할 &lt;a href=&quot;https://stackoverflow.com/questions/3106110/can-someone-please-explain-move-semantics-to-me&quot;&gt;뿐만 아니라 이동 구성도해야합니다&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="150781c474b203c76af89ffc1927280c58bbd0ff" translate="yes" xml:space="preserve">
+          <source>The purpose of both functions &lt;code&gt;fs&lt;/code&gt; and &lt;code&gt;fm&lt;/code&gt; is to give &lt;code&gt;a&lt;/code&gt; the state that &lt;code&gt;b&lt;/code&gt; had initially. However, there is a hidden question: What happens if &lt;code&gt;a.get_allocator() != b.get_allocator()&lt;/code&gt;? The answer is: It depends. Let's write &lt;code&gt;AT = std::allocator_traits&amp;lt;A&amp;gt;&lt;/code&gt;.</source>
+          <target state="translated">함수 &lt;code&gt;fs&lt;/code&gt; 와 &lt;code&gt;fm&lt;/code&gt; 의 목적은 &lt;code&gt;b&lt;/code&gt; 에 초기 상태를 제공 &lt;code&gt;a&lt;/code&gt; 것입니다. 그러나 숨겨진 질문이 있습니다. &lt;code&gt;a.get_allocator() != b.get_allocator()&lt;/code&gt; 어떻게됩니까? 대답은 다음과 같습니다. &lt;code&gt;AT = std::allocator_traits&amp;lt;A&amp;gt;&lt;/code&gt; 작성해 봅시다.</target>
+        </trans-unit>
+        <trans-unit id="8e8b0eb32111093ee430fedf7a03880593d06a45" translate="yes" xml:space="preserve">
+          <source>The second is that it only provides a basic exception guarantee. If &lt;code&gt;new int[mSize]&lt;/code&gt; fails, &lt;code&gt;*this&lt;/code&gt; will have been modified. (Namely, the size is wrong and the data is gone!) For a strong exception guarantee, it would need to be something akin to:</source>
+          <target state="translated">두 번째는 기본적인 예외 보장 만 제공한다는 것입니다. &lt;code&gt;new int[mSize]&lt;/code&gt; 가 실패하면 &lt;code&gt;*this&lt;/code&gt; 수정됩니다. (즉, 크기가 잘못되었고 데이터가 사라졌습니다!) 강력한 예외 보장을 위해서는 다음과 비슷한 것이 필요합니다.</target>
+        </trans-unit>
+        <trans-unit id="2c6fcc3a8c5ecf729853f999132fcff2680df339" translate="yes" xml:space="preserve">
+          <source>The upshot is that swapping has become a non-trivial operation in C++11 as soon as your container starts supporting stateful allocators. That's a somewhat &quot;advanced use case&quot;, but it's not entirely unlikely, since move optimizations usually only become interesting once your class manages a resource, and memory is one of the most popular resources.</source>
+          <target state="translated">결론은 컨테이너가 상태 저장 할당자를 지원하기 시작하자마자 스왑이 C ++ 11에서 사소한 작업이되었다는 것입니다. 그것은 다소 &quot;고급 사용 사례&quot;이지만, 클래스가 리소스를 관리하고 메모리가 가장 인기있는 리소스 중 하나라면 이동 최적화가 일반적으로 흥미로워지기 때문에 전적으로 가능한 것은 아닙니다.</target>
+        </trans-unit>
+        <trans-unit id="388be71290411a46bfa3cef8cea4ebaa96d6633d" translate="yes" xml:space="preserve">
+          <source>There are some good answers already.  I'll focus &lt;em&gt;mainly&lt;/em&gt; on what I think they lack - an explanation of the &quot;cons&quot; with the copy-and-swap idiom....</source>
+          <target state="translated">이미 좋은 답변이 있습니다. 나는 그들이 부족하다고 생각하는 것에 &lt;em&gt;주로&lt;/em&gt; 초점을 맞출 것입니다-복사 및 스왑 숙어와 &quot;단점&quot;에 대한 설명 ....</target>
+        </trans-unit>
+        <trans-unit id="cbe63039ab446d86b4ac167fd16b3d3dadd41365" translate="yes" xml:space="preserve">
+          <source>This answer is more like an addition and a slight modification to the answers above.</source>
+          <target state="translated">이 답변은 위의 답변에 대한 추가 및 약간의 수정과 비슷합니다.</target>
+        </trans-unit>
+        <trans-unit id="c1083ee173869cd02574e5832d5f7c99145ada0e" translate="yes" xml:space="preserve">
+          <source>This class almost manages the array successfully, but it needs &lt;code&gt;operator=&lt;/code&gt; to work correctly.</source>
+          <target state="translated">이 클래스는 배열을 거의 성공적으로 관리하지만 올바르게 작동하려면 &lt;code&gt;operator=&lt;/code&gt; 가 필요합니다.</target>
+        </trans-unit>
+        <trans-unit id="29f80c1b07d0671e4a256b348ff66c1e913f3c22" translate="yes" xml:space="preserve">
+          <source>This has something to do with a &lt;code&gt;friend&lt;/code&gt; function being called and &lt;code&gt;this&lt;/code&gt; object being passed as a parameter.</source>
+          <target state="translated">이것은 &lt;code&gt;friend&lt;/code&gt; 함수가 호출 되고이 객체가 매개 변수로 전달되는 것과 관련이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="5aa765f67fd688a1ba7150d96a03c571fde7ba09" translate="yes" xml:space="preserve">
+          <source>This time, you can just call &lt;code&gt;swap&lt;/code&gt; and pass in &lt;code&gt;other&lt;/code&gt;, thus making the compiler happy:</source>
+          <target state="translated">이번에는 &lt;code&gt;swap&lt;/code&gt; 을 호출하고 &lt;code&gt;other&lt;/code&gt; 를 전달하면 컴파일러가 행복해집니다.</target>
+        </trans-unit>
+        <trans-unit id="633375af64a272c488ff9c504c74dbb8f98b646a" translate="yes" xml:space="preserve">
+          <source>We first notice an important choice: the parameter argument is taken &lt;em&gt;by-value&lt;/em&gt;. While one could just as easily do the following (and indeed, many naive implementations of the idiom do):</source>
+          <target state="translated">우리는 먼저 중요한 선택을 알아 냈습니다 : 매개 변수 인수는 &lt;em&gt;by-value&lt;/em&gt; 입니다. 다음과 같은 작업을 쉽게 수행 할 수 있지만 실제로는 많은 순진한 관용구 구현이 가능합니다.</target>
+        </trans-unit>
+        <trans-unit id="63217325aa31565f08b4e39b47c1e5fc48d70a30" translate="yes" xml:space="preserve">
+          <source>We lose an &lt;a href=&quot;https://web.archive.org/web/20140113221447/http://cpp-next.com/archive/2009/08/want-speed-pass-by-value/&quot;&gt;important optimization opportunity&lt;/a&gt;. Not only that, but this choice is critical in C++11, which is discussed later. (On a general note, a remarkably useful guideline is as follows: if you're going to make a copy of something in a function, let the compiler do it in the parameter list.&amp;Dagger;)</source>
+          <target state="translated">우리는 &lt;a href=&quot;https://web.archive.org/web/20140113221447/http://cpp-next.com/archive/2009/08/want-speed-pass-by-value/&quot;&gt;중요한 최적화 기회를&lt;/a&gt; 잃 습니다 . 뿐만 아니라이 선택은 C ++ 11에서 매우 중요합니다. (일반적으로 주목할만한 유용한 지침은 다음과 같습니다. 함수에서 무언가의 복사본을 만들려면 컴파일러가 매개 변수 목록에서 수행하게하십시오. &amp;Dagger;)</target>
+        </trans-unit>
+        <trans-unit id="9edc40ca06ad2a68fa87b0a4a4acc15e97ae9f73" translate="yes" xml:space="preserve">
+          <source>We need to add swap functionality to our class, and we do that as follows&amp;dagger;:</source>
+          <target state="translated">우리는 클래스에 스왑 기능을 추가해야하며 다음과 같이합니다. &amp;dagger; :</target>
+        </trans-unit>
+        <trans-unit id="c2edab5c5da4b7e0cb43225936cb000f569c92ee" translate="yes" xml:space="preserve">
+          <source>What about C++11?</source>
+          <target state="translated">C ++ 11은 어떻습니까?</target>
+        </trans-unit>
+        <trans-unit id="787ffecc94ae151e431f132b817ebb5ac7bd5b64" translate="yes" xml:space="preserve">
+          <source>What are your favorite C++ Coding Style idioms:  Copy-swap</source>
+          <target state="translated">가장 좋아하는 C ++ 코딩 스타일 관용구 : 복사 스왑</target>
+        </trans-unit>
+        <trans-unit id="6dc672ff6eb837cd0bbe834afc644c2d587d212d" translate="yes" xml:space="preserve">
+          <source>What is copy elision and how it optimizes copy-and-swap idiom</source>
+          <target state="translated">복사 제거 란 무엇이며 복사 및 스왑 숙어를 최적화하는 방법</target>
+        </trans-unit>
+        <trans-unit id="3f800a7430fd4c0527c40982197ac647fe2c18a0" translate="yes" xml:space="preserve">
+          <source>What is the copy-and-swap idiom</source>
+          <target state="translated">복사 및 교환 관용구는 무엇입니까</target>
+        </trans-unit>
+        <trans-unit id="a8f471015362e9a261fa62137612c1258db68efb" translate="yes" xml:space="preserve">
+          <source>What is the copy-and-swap idiom?</source>
+          <target state="translated">복사 및 교환 관용구는 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="ede6b7eaf3770f7b7b840f5f578c287f11e2cccd" translate="yes" xml:space="preserve">
+          <source>What is this idiom and when should it be used? Which problems does it solve? Does the idiom change when C++11 is used?</source>
+          <target state="translated">이 관용구는 무엇이며 언제 사용해야합니까? 어떤 문제가 해결됩니까? C ++ 11을 사용할 때 관용구가 변경됩니까?</target>
+        </trans-unit>
+        <trans-unit id="aa7922596966a3f09ff20d40921994a57ffd3b96" translate="yes" xml:space="preserve">
+          <source>What's going on here? Recall the goal of move-construction: to take the resources from another instance of the class, leaving it in a state guaranteed to be assignable and destructible.</source>
+          <target state="translated">무슨 일이야? 이동 구성의 목표를 기억하십시오. 클래스의 다른 인스턴스에서 자원을 가져 와서 할당 가능하고 파괴 가능한 상태로 유지하십시오.</target>
+        </trans-unit>
+        <trans-unit id="10170890d98f9c422d746d6a228ebc44fc0a6ee0" translate="yes" xml:space="preserve">
+          <source>When any performance penalty or momentarily higher resource usage created by having an extra temporary object during the assignment is not important to your application. ⁂</source>
+          <target state="translated">할당 중에 추가 임시 개체를 생성하여 생성 된 성능 저하 또는 일시적으로 더 높은 리소스 사용이 응용 프로그램에 중요하지 않은 경우 ⁂</target>
+        </trans-unit>
+        <trans-unit id="60f80e0ee25da3bc05679b2ff44dd7fcf6b5baef" translate="yes" xml:space="preserve">
+          <source>When should it be used?  (Which problems does it solve &lt;strong&gt;[/create]&lt;/strong&gt;?)</source>
+          <target state="translated">언제 사용해야합니까? (어떤 문제가 &lt;strong&gt;[/ create]를&lt;/strong&gt; 해결합니까?)</target>
+        </trans-unit>
+        <trans-unit id="2634e1acfb3bf9e69b4daa989e044e2431bc5a1b" translate="yes" xml:space="preserve">
+          <source>When you want a clean, easy to understand, robust way to define the assignment operator in terms of (simpler) copy constructor, &lt;code&gt;swap&lt;/code&gt; and destructor functions.</source>
+          <target state="translated">(더 간단한) 복사 생성자, &lt;code&gt;swap&lt;/code&gt; 및 소멸자 함수로 할당 연산자를 정의하는 깨끗하고 이해하기 쉽고 강력한 방법을 원할 때.</target>
+        </trans-unit>
+        <trans-unit id="29733bade5cab23e00e5d05e6412f95b30d5413f" translate="yes" xml:space="preserve">
+          <source>When you want the assigned-to objected unaffected by an assignment that throws an exception, assuming you have or can write a &lt;code&gt;swap&lt;/code&gt; with strong exception guarantee, and ideally one that can't fail/&lt;code&gt;throw&lt;/code&gt;..&amp;dagger;</source>
+          <target state="translated">강력한 예외 보증으로 &lt;code&gt;swap&lt;/code&gt; 을 작성하거나 작성할 수 있다고 가정하고 예외 / 실패 할 수없는 스왑 을 가정 할 때 예외를 던지는 지정의 영향을받지 않은 대상을 원할 때 .. &amp;dagger;</target>
+        </trans-unit>
+        <trans-unit id="62b4affc932ffa8cde8f9a8bc7cc83fb3e7fe0f0" translate="yes" xml:space="preserve">
+          <source>Why do we need the copy-and-swap idiom?</source>
+          <target state="translated">복사 및 교체 관용구가 필요한 이유는 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="d1974d73fa36fa9b1fe2996664091dd361d57f96" translate="yes" xml:space="preserve">
+          <source>Why does it work?</source>
+          <target state="translated">왜 작동합니까?</target>
+        </trans-unit>
+        <trans-unit id="9c9b118f04e39a7318e3a5798cdcb9006d842f63" translate="yes" xml:space="preserve">
+          <source>Why does that work?</source>
+          <target state="translated">왜 작동합니까?</target>
+        </trans-unit>
+        <trans-unit id="b2665c67e419327eea773cca5cbb1ebf91e5f8c3" translate="yes" xml:space="preserve">
+          <source>Without further ado, our assignment operator is:</source>
+          <target state="translated">더 이상 고민하지 않고 할당 연산자는 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="e464362a2570aee7cf3bb10e5f052520cacc687e" translate="yes" xml:space="preserve">
+          <source>You already have access to &lt;code&gt;this&lt;/code&gt; object, so passing it in as a parameter is technically redundant.</source>
+          <target state="translated">이미이 개체에 액세스 할 수 있으므로 매개 변수로 전달하면 기술적으로 중복됩니다.</target>
+        </trans-unit>
+        <trans-unit id="a945bce89ff4bd35449cef3d57b6ca6c27388c0e" translate="yes" xml:space="preserve">
+          <source>swapping the state of the local copy &lt;code&gt;rhs&lt;/code&gt; and &lt;code&gt;*this&lt;/code&gt; is &lt;em&gt;usually&lt;/em&gt; relatively easy to do without potential failure/exceptions, given the local copy doesn't need any particular state afterwards (just needs state fit for the destructor to run, much as for an object being &lt;em&gt;moved&lt;/em&gt; from in &amp;gt;= C++11)</source>
+          <target state="translated">로컬 복사본 &lt;code&gt;rhs&lt;/code&gt; 의 상태를 교환하고 &lt;code&gt;*this&lt;/code&gt; &lt;em&gt;일반적&lt;/em&gt; 으로 로컬 복사본이 특정 상태가 필요하지 않기 때문에 잠재적 인 실패 / 예외없이 비교적 상대적으로 쉽습니다 (소멸자가 실행하기에 적합한 상태가 필요합니다. &amp;gt; = C ++ 11에서 &lt;em&gt;이동&lt;/em&gt; 되는 객체)</target>
+        </trans-unit>
+        <trans-unit id="59f71233e3c4ef85ebf3d7a582670676fcefbffa" translate="yes" xml:space="preserve">
+          <source>that acquisition can be attempted &lt;em&gt;before&lt;/em&gt; modifying the current state of the object (i.e. &lt;code&gt;*this&lt;/code&gt;) if a copy of the new value is made, which is why &lt;code&gt;rhs&lt;/code&gt; is accepted &lt;em&gt;by value&lt;/em&gt; (i.e. copied) rather than &lt;em&gt;by reference&lt;/em&gt;</source>
+          <target state="translated">새로운 값의 사본이 만들어지면 객체의 현재 상태 (즉, &lt;code&gt;*this&lt;/code&gt; ) &lt;em&gt;를&lt;/em&gt; 수정 &lt;em&gt;하기 전에&lt;/em&gt; 획득을 시도 할 수 있습니다. 따라서 &lt;code&gt;rhs&lt;/code&gt; 는 &lt;em&gt;참조가&lt;/em&gt; 아닌 &lt;em&gt;값&lt;/em&gt; 으로 받아 &lt;em&gt;들입니다&lt;/em&gt; (즉, 복사 됨).</target>
+        </trans-unit>
+        <trans-unit id="325605391ecda9b9100aa948f683600e372575dc" translate="yes" xml:space="preserve">
+          <source>the most error-prone part of assigning to an object is ensuring any resources the new state needs are acquired (e.g. memory, descriptors)</source>
+          <target state="translated">객체에 할당 할 때 오류가 발생하기 쉬운 부분은 새로운 상태에 필요한 모든 리소스 (예 : 메모리, 설명자)를 확보하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="33fd9e929e77e0dfd3e85632f2f3ada808c62662" translate="yes" xml:space="preserve">
+          <source>⁂ The copy-and-swap idiom can introduce inefficiencies or limitations due to the use of an extra temporary (when the operator's parameter is copy-constructed):</source>
+          <target state="translated">copy 복사 및 교체 관용구는 여분의 임시 사용으로 인해 비 효율성이나 제한 사항이 발생할 수 있습니다 (운영자 매개 변수가 복사 구성되어있는 경우).</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

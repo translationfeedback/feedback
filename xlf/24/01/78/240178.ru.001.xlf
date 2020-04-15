@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="htmlbody" original="https://stackoverflow.com/questions/240178">
+    <body>
+      <group id="240178">
+        <trans-unit id="d432b26240dc597d0da2724076628c312f15638d" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;myList = [[1]*4] * 3&lt;/code&gt; creates one list object &lt;code&gt;[1,1,1,1]&lt;/code&gt; in memory and copies its reference 3 times over. This is equivalent to &lt;code&gt;obj = [1,1,1,1]; myList = [obj]*3&lt;/code&gt;. Any modification to &lt;code&gt;obj&lt;/code&gt; will be reflected at three places, wherever &lt;code&gt;obj&lt;/code&gt; is referenced in the list.
+The right statement would be:</source>
+          <target state="translated">&lt;code&gt;myList = [[1]*4] * 3&lt;/code&gt; создает один объект списка &lt;code&gt;[1,1,1,1]&lt;/code&gt; в памяти и 3 раза копирует его ссылку. Это эквивалентно &lt;code&gt;obj = [1,1,1,1]; myList = [obj]*3&lt;/code&gt; myList = [obj] * 3 . Любая модификация &lt;code&gt;obj&lt;/code&gt; будет отражена в трех местах, где бы ни упоминалась &lt;code&gt;obj&lt;/code&gt; в списке. Правильное утверждение будет:</target>
+        </trans-unit>
+        <trans-unit id="14a999c54d37488adf20c37f2a9243a619c30402" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Important thing to note here&lt;/strong&gt; is that &lt;code&gt;*&lt;/code&gt; operator is &lt;em&gt;mostly&lt;/em&gt; used to create a &lt;strong&gt;list of literals&lt;/strong&gt;. Although &lt;code&gt;1&lt;/code&gt; is immutable, &lt;code&gt;obj =[1]*4&lt;/code&gt; will still create a list of &lt;code&gt;1&lt;/code&gt; repeated 4 times over to form &lt;code&gt;[1,1,1,1]&lt;/code&gt;. But if any reference to immutable object is made, the object is overwritten with a new one, resulting in expected behaviour. This means if we do &lt;code&gt;obj[2]=42&lt;/code&gt;, then &lt;code&gt;obj&lt;/code&gt; will become &lt;code&gt;[1,1,42,1]&lt;/code&gt;&lt;strong&gt;not&lt;/strong&gt;&lt;strike&gt;&lt;code&gt;[42,42,42,42]&lt;/code&gt;&lt;/strike&gt; as some may assume. This can also be verified:</source>
+          <target state="translated">&lt;strong&gt;Здесь важно отметить,&lt;/strong&gt; что оператор &lt;code&gt;*&lt;/code&gt; в &lt;em&gt;основном&lt;/em&gt; используется для создания &lt;strong&gt;списка литералов&lt;/strong&gt; . Хотя &lt;code&gt;1&lt;/code&gt; является неизменным, &lt;code&gt;obj =[1]*4&lt;/code&gt; все равно создаст список из &lt;code&gt;1&lt;/code&gt; , повторенный 4 раза для формирования &lt;code&gt;[1,1,1,1]&lt;/code&gt; . Но если делается какая-либо ссылка на неизменяемый объект, объект перезаписывается новым, что приводит к ожидаемому поведению. Это означает, что если мы сделаем &lt;code&gt;obj[2]=42&lt;/code&gt; , то &lt;code&gt;obj&lt;/code&gt; станет &lt;code&gt;[1,1,42,1]&lt;/code&gt; ,а &lt;strong&gt;не&lt;/strong&gt; &lt;strike&gt; &lt;code&gt;[42,42,42,42]&lt;/code&gt; ,&lt;/strike&gt; как некоторые могут предположить. Это также можно проверить:</target>
+        </trans-unit>
+        <trans-unit id="b69bb96f6a1c611831f677783957c3699bd12e3b" translate="yes" xml:space="preserve">
+          <source>@spelchekr from &lt;a href=&quot;https://stackoverflow.com/questions/6688223/python-list-multiplication-3-makes-3-lists-which-mirror-each-other-when&quot;&gt;Python list multiplication: [[...]]*3 makes 3 lists which mirror each other when modified&lt;/a&gt; and I had the same question about
+&quot;Why does only the outer *3 create more references while the inner one doesn't? Why isn't it all 1s?&quot;</source>
+          <target state="translated">@spelchekr из &lt;a href=&quot;https://stackoverflow.com/questions/6688223/python-list-multiplication-3-makes-3-lists-which-mirror-each-other-when&quot;&gt;списка умножения Python: [[...]] * 3 создает 3 списка, которые отражают друг друга при изменении,&lt;/a&gt; и у меня возник тот же вопрос: &amp;laquo;Почему только внешний * 3 создает больше ссылок, а внутренний - нет? ? Почему не все 1? &quot;</target>
+        </trans-unit>
+        <trans-unit id="efc3258b21333c6582827d8fcfb8c37328e90aaf" translate="yes" xml:space="preserve">
+          <source>Actually, this is exactly what you would expect. Let's decompose what is happening here:</source>
+          <target state="translated">Вообще-то,это именно то,чего вы ожидали.Давайте разложим то,что здесь происходит:</target>
+        </trans-unit>
+        <trans-unit id="3699e26734311ea9a3f2364fb20cdee6723f0028" translate="yes" xml:space="preserve">
+          <source>Alongside the accepted answer that explained the problem correctly, within your list comprehension, if You are using python-2.x use &lt;code&gt;xrange()&lt;/code&gt; that returns a generator which is more efficient (&lt;code&gt;range()&lt;/code&gt; in python 3 does the same job) &lt;code&gt;_&lt;/code&gt; instead of the throwaway variable &lt;code&gt;n&lt;/code&gt;:</source>
+          <target state="translated">Наряду с принятым ответом, который правильно объяснил проблему, в вашем понимании списка, если вы используете python-2.x, используйте &lt;code&gt;xrange()&lt;/code&gt; который возвращает более эффективный генератор ( &lt;code&gt;range()&lt;/code&gt; в python 3 выполняет ту же работу) &lt;code&gt;_&lt;/code&gt; одноразовой переменной &lt;code&gt;n&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="7ecfbebcb9274ef38b75f783b12eb3913bcecc0d" translate="yes" xml:space="preserve">
+          <source>Also, as a much more &lt;em&gt;Pythonic&lt;/em&gt; way you can use &lt;a href=&quot;https://docs.python.org/2/library/itertools.html#itertools.repeat&quot;&gt;&lt;code&gt;itertools.repeat()&lt;/code&gt;&lt;/a&gt; to create an iterator object of repeated elements :</source>
+          <target state="translated">Кроме того, в качестве гораздо более &lt;em&gt;Pythonic-&lt;/em&gt; способа вы можете использовать &lt;a href=&quot;https://docs.python.org/2/library/itertools.html#itertools.repeat&quot;&gt; &lt;code&gt;itertools.repeat()&lt;/code&gt; &lt;/a&gt; для создания объекта итератора из повторяющихся элементов:</target>
+        </trans-unit>
+        <trans-unit id="a1e23f23b1baaba4774c48d79135c2e2b78615e6" translate="yes" xml:space="preserve">
+          <source>And then you have:</source>
+          <target state="translated">А потом ты:</target>
+        </trans-unit>
+        <trans-unit id="8fe026e0d205516b53b9a46caac1a591e512f5d5" translate="yes" xml:space="preserve">
+          <source>And you will get the following output:</source>
+          <target state="translated">И вы получите следующий результат:</target>
+        </trans-unit>
+        <trans-unit id="a7c33febf186e6bebc71cac17604935dbb813fe1" translate="yes" xml:space="preserve">
+          <source>As &lt;code&gt;lst[0]&lt;/code&gt; is nothing but &lt;code&gt;lst1&lt;/code&gt;.</source>
+          <target state="translated">Поскольку &lt;code&gt;lst[0]&lt;/code&gt; не что иное, как &lt;code&gt;lst1&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="d690971317990129be90e830d2e9d662cd061fb9" translate="yes" xml:space="preserve">
+          <source>By using the inbuilt list function you can do like this</source>
+          <target state="translated">Используя функцию встроенного списка,вы можете сделать так.</target>
+        </trans-unit>
+        <trans-unit id="b2dabe69c7320d96c0a364c187cf2b4fb9ffc815" translate="yes" xml:space="preserve">
+          <source>Creates a list that references the internal &lt;code&gt;[1,1,1,1]&lt;/code&gt; 3 times - not three copies of the inner list, so any time you modify the list (in any position), you'll see the change three times.</source>
+          <target state="translated">Создает список, который ссылается на внутренний &lt;code&gt;[1,1,1,1]&lt;/code&gt; 3 раза, а не на три копии внутреннего списка, поэтому каждый раз, когда вы изменяете список (в любой позиции), вы увидите изменение три раза.</target>
+        </trans-unit>
+        <trans-unit id="c03e56480cc91c295c1944db553322a843c06e5f" translate="yes" xml:space="preserve">
+          <source>Here is my explanation after trying the code above:</source>
+          <target state="translated">Вот моё объяснение,после того как я попробовал код выше:</target>
+        </trans-unit>
+        <trans-unit id="c3af64db63c607ccd5d7c0d0436dc3fe4e1836f6" translate="yes" xml:space="preserve">
+          <source>I guess everybody explain what is happening.
+I suggest one way to solve it:</source>
+          <target state="translated">Думаю,все объяснят,что происходит.Я предлагаю один способ решить это:</target>
+        </trans-unit>
+        <trans-unit id="8534fb9ce25dc7e289a38639c3ed101e6aca978f" translate="yes" xml:space="preserve">
+          <source>I needed to create a list of lists in Python, so I typed the following:</source>
+          <target state="translated">Мне нужно было создать список списков на Python,поэтому я набрал следующее:</target>
+        </trans-unit>
+        <trans-unit id="29f12a5fded06804ff7ad7371817747aa5824961" translate="yes" xml:space="preserve">
+          <source>If you want to create clone copies, try Operation 3:</source>
+          <target state="translated">Если вы хотите создать клонированные копии,попробуйте Операцию 3:</target>
+        </trans-unit>
+        <trans-unit id="bf5b32ba1138a48895509ec559db1478c1ce55fb" translate="yes" xml:space="preserve">
+          <source>In contrast, a list comprehension reevaluates the element expression on every iteration. &lt;code&gt;[[1] * 4 for n in range(3)]&lt;/code&gt; reevaluates &lt;code&gt;[1] * 4&lt;/code&gt; every time for the same reason &lt;code&gt;[x**2 for x in range(3)]&lt;/code&gt; reevaluates &lt;code&gt;x**2&lt;/code&gt; every time. Every evaluation of &lt;code&gt;[1] * 4&lt;/code&gt; generates a new list, so the list comprehension does what you wanted.</source>
+          <target state="translated">Напротив, понимание списка переоценивает выражение элемента на каждой итерации. &lt;code&gt;[[1] * 4 for n in range(3)]&lt;/code&gt; переоценивает &lt;code&gt;[1] * 4&lt;/code&gt; каждый раз по той же причине &lt;code&gt;[x**2 for x in range(3)]&lt;/code&gt; переоценивает &lt;code&gt;x**2&lt;/code&gt; каждый раз. Каждая оценка &lt;code&gt;[1] * 4&lt;/code&gt; генерирует новый список, поэтому понимание списка делает то, что вы хотели.</target>
+        </trans-unit>
+        <trans-unit id="e1025fd6605e46e51c5d31e907837bdec7c46791" translate="yes" xml:space="preserve">
+          <source>In simple words this is happening because in python everything works &lt;strong&gt;by reference&lt;/strong&gt;, so when you create a list of list that way you basically end up with such problems.</source>
+          <target state="translated">Проще говоря, это происходит потому, что в python все работает &lt;strong&gt;по ссылке&lt;/strong&gt; , поэтому, когда вы создаете список списков таким образом, вы в основном сталкиваетесь с такими проблемами.</target>
+        </trans-unit>
+        <trans-unit id="2ec51667de229ac720957f051485b8993667e491" translate="yes" xml:space="preserve">
+          <source>In this &lt;code&gt;b&lt;/code&gt; is a list that contains one item that is a reference to list &lt;code&gt;a&lt;/code&gt;. The list &lt;code&gt;a&lt;/code&gt; is mutable.</source>
+          <target state="translated">В этом &lt;code&gt;b&lt;/code&gt; находится список, который содержит один элемент, который является ссылкой на список &lt;code&gt;a&lt;/code&gt; . Список &lt;code&gt;a&lt;/code&gt; изменчив.</target>
+        </trans-unit>
+        <trans-unit id="9e15ff8f6022c12da30a2551fca354dddd0ec2ad" translate="yes" xml:space="preserve">
+          <source>In this case, the expression is re-evaluated for each n, leading to a different list.</source>
+          <target state="translated">В этом случае выражение переоценивается для каждого n,в результате чего получается разный список.</target>
+        </trans-unit>
+        <trans-unit id="c2cfaffaf44637181730ee74f7758a5df8e6c01f" translate="yes" xml:space="preserve">
+          <source>Incidentally, &lt;code&gt;[1] * 4&lt;/code&gt; also doesn't copy the elements of &lt;code&gt;[1]&lt;/code&gt;, but that doesn't matter, since integers are immutable. You can't do something like &lt;code&gt;1.value = 2&lt;/code&gt; and turn a 1 into a 2.</source>
+          <target state="translated">Кстати, &lt;code&gt;[1] * 4&lt;/code&gt; также не копирует элементы &lt;code&gt;[1]&lt;/code&gt; , но это не имеет значения, поскольку целые числа неизменны. Вы не можете сделать что-то вроде &lt;code&gt;1.value = 2&lt;/code&gt; и превратить 1 в 2.</target>
+        </trans-unit>
+        <trans-unit id="bb931edbb5ba27fe3d1a4cc5f512cecd66291618" translate="yes" xml:space="preserve">
+          <source>It's the same as this example:</source>
+          <target state="translated">Это то же самое,что и в этом примере:</target>
+        </trans-unit>
+        <trans-unit id="7abfe8c9be6efb6e7f7f5c3db09b78ad3c1f7e81" translate="yes" xml:space="preserve">
+          <source>Let us rewrite your code in the following way:</source>
+          <target state="translated">Давайте перепишем ваш код следующим образом:</target>
+        </trans-unit>
+        <trans-unit id="ef5dbe19e30b0f101fe9a74dc3be697dcc1e5457" translate="yes" xml:space="preserve">
+          <source>List of lists changes reflected across sublists unexpectedly</source>
+          <target state="translated">Список изменений списков,неожиданно отраженных в подлистах</target>
+        </trans-unit>
+        <trans-unit id="604284095b019eb3b156a44eb2b4f4d0b59e8bcf" translate="yes" xml:space="preserve">
+          <source>Live Python Tutor Visualize</source>
+          <target state="translated">Живой питон репетитор визуализировать</target>
+        </trans-unit>
+        <trans-unit id="0c1f8c70a502dfbbd9f21e1e3a035cc60e84d4c6" translate="yes" xml:space="preserve">
+          <source>Noticed why doesn't modifying the first element of the first list didn't modify the second element of each list? That's because &lt;code&gt;[0] * 2&lt;/code&gt; really is a list of two numbers, and a reference to 0 cannot be modified.</source>
+          <target state="translated">Заметил, почему изменение первого элемента первого списка не изменило второй элемент каждого списка? Это потому, что &lt;code&gt;[0] * 2&lt;/code&gt; действительно представляет собой список из двух чисел, и ссылка на 0 не может быть изменена.</target>
+        </trans-unit>
+        <trans-unit id="59988942bd554964f61c4101d7b04dcdc5895919" translate="yes" xml:space="preserve">
+          <source>Now my list looks like this:</source>
+          <target state="translated">Теперь мой список выглядит вот так:</target>
+        </trans-unit>
+        <trans-unit id="87109e3123a787b7086b1e0344a4853202f538af" translate="yes" xml:space="preserve">
+          <source>Operation 1:</source>
+          <target state="translated">Операция 1:</target>
+        </trans-unit>
+        <trans-unit id="6f9c1cd7e0d4ceee1c78fa45e1efc82fd65361e9" translate="yes" xml:space="preserve">
+          <source>Operation 2:</source>
+          <target state="translated">Операция 2:</target>
+        </trans-unit>
+        <trans-unit id="52db409e06d6cc67e16fef7ffb2ecb4c6ae58f7c" translate="yes" xml:space="preserve">
+          <source>P.S. Using numpy, if you only want to create an array of ones or zeroes you can use &lt;code&gt;np.ones&lt;/code&gt; and &lt;code&gt;np.zeros&lt;/code&gt; and/or for other number use &lt;code&gt;np.repeat()&lt;/code&gt;:</source>
+          <target state="translated">PS Используя numpy, если вы хотите создать массив единиц или нулей, вы можете использовать &lt;code&gt;np.ones&lt;/code&gt; и &lt;code&gt;np.zeros&lt;/code&gt; и / или для другого числа использовать &lt;code&gt;np.repeat()&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="b9fd941c35c7432025bdadebdb3df840dbb7a94a" translate="yes" xml:space="preserve">
+          <source>Python FAQ also contains explanation of this behavior: &lt;a href=&quot;https://docs.python.org/3/faq/programming.html#faq-multidimensional-list&quot;&gt;How do I create a multidimensional list?&lt;/a&gt;</source>
+          <target state="translated">Python FAQ также содержит объяснение этого поведения: &lt;a href=&quot;https://docs.python.org/3/faq/programming.html#faq-multidimensional-list&quot;&gt;Как мне создать многомерный список?&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="1e076f140f79a2376eb9183536edfc7846b67a3b" translate="yes" xml:space="preserve">
+          <source>Python containers contain references to other objects. See this example:</source>
+          <target state="translated">Питоновые контейнеры содержат ссылки на другие объекты.Смотрите этот пример:</target>
+        </trans-unit>
+        <trans-unit id="46b6f603ed59d8fb388ea56d4b8095f193990f60" translate="yes" xml:space="preserve">
+          <source>Return the &amp;ldquo;identity&amp;rdquo; of an object</source>
+          <target state="translated">Вернуть &amp;laquo;личность&amp;raquo; объекта</target>
+        </trans-unit>
+        <trans-unit id="7a0c42ad5524edf40be626c42536a2d1a4effe10" translate="yes" xml:space="preserve">
+          <source>So now let us go step-by-step. You have &lt;code&gt;x&lt;/code&gt; which is &lt;code&gt;1&lt;/code&gt;, and a single element list &lt;code&gt;y&lt;/code&gt; containing &lt;code&gt;x&lt;/code&gt;. Your first step is &lt;code&gt;y * 4&lt;/code&gt; which will get you a new list &lt;code&gt;z&lt;/code&gt;, which is basically &lt;code&gt;[x, x, x, x]&lt;/code&gt;, i.e. it creates a new list which will have 4 elements, which are references to the initial &lt;code&gt;x&lt;/code&gt; object. The net step is pretty similar. You basically do &lt;code&gt;z * 3&lt;/code&gt;, which is &lt;code&gt;[[x, x, x, x]] * 3&lt;/code&gt; and returns &lt;code&gt;[[x, x, x, x], [x, x, x, x], [x, x, x, x]]&lt;/code&gt;, for the same reason as for the first step.</source>
+          <target state="translated">Итак, давайте пойдем шаг за шагом. У вас есть &lt;code&gt;x&lt;/code&gt; , равный &lt;code&gt;1&lt;/code&gt; , и один список элементов &lt;code&gt;y&lt;/code&gt; , содержащий &lt;code&gt;x&lt;/code&gt; . Ваш первый шаг - &lt;code&gt;y * 4&lt;/code&gt; который даст вам новый список &lt;code&gt;z&lt;/code&gt; , который в основном &lt;code&gt;[x, x, x, x]&lt;/code&gt; , то есть он создает новый список, который будет иметь 4 элемента, которые являются ссылками на исходный объект &lt;code&gt;x&lt;/code&gt; . Чистый шаг очень похож. Вы в основном делаете &lt;code&gt;z * 3&lt;/code&gt; , который равен &lt;code&gt;[[x, x, x, x]] * 3&lt;/code&gt; и возвращает &lt;code&gt;[[x, x, x, x], [x, x, x, x], [x, x, x, x]]&lt;/code&gt; по той же причине, что и для первого шага.</target>
+        </trans-unit>
+        <trans-unit id="f93d5a3d809830ff27a1468fca3560e606a6e904" translate="yes" xml:space="preserve">
+          <source>The inner &lt;code&gt;*3&lt;/code&gt; also creates references, but it's references are immutable, something like &lt;code&gt;[&amp;amp;0, &amp;amp;0, &amp;amp;0]&lt;/code&gt;, then when to change &lt;code&gt;li[0]&lt;/code&gt;, you can't change any underlying reference of  const int &lt;code&gt;0&lt;/code&gt;, so you can just change the reference address into the new one &lt;code&gt;&amp;amp;1&lt;/code&gt;;</source>
+          <target state="translated">Внутренний &lt;code&gt;*3&lt;/code&gt; также создает ссылки, но его ссылки являются неизменяемыми, что-то вроде &lt;code&gt;[&amp;amp;0, &amp;amp;0, &amp;amp;0]&lt;/code&gt; , а затем, когда нужно изменить &lt;code&gt;li[0]&lt;/code&gt; , вы не можете изменить любую базовую ссылку на const int &lt;code&gt;0&lt;/code&gt; , поэтому вы можете просто изменить ссылочный адрес на новый &lt;code&gt;&amp;amp;1&lt;/code&gt; ;</target>
+        </trans-unit>
+        <trans-unit id="4739576a32845d6b51ea78b0c28e9d1450a698a9" translate="yes" xml:space="preserve">
+          <source>The list looked like this:</source>
+          <target state="translated">Список выглядел вот так:</target>
+        </trans-unit>
+        <trans-unit id="24b84a33f8e362f14a10eb125e9ff8cb39decbd8" translate="yes" xml:space="preserve">
+          <source>The multiplication of a list by an integer is equivalent to adding the list to itself multiple times (see &lt;a href=&quot;https://docs.python.org/3/library/stdtypes.html#typesseq-common&quot;&gt;common sequence operations&lt;/a&gt;). So continuing with the example:</source>
+          <target state="translated">Умножение списка на целое число эквивалентно добавлению списка к себе несколько раз (см. &lt;a href=&quot;https://docs.python.org/3/library/stdtypes.html#typesseq-common&quot;&gt;Общие операции с последовательностями&lt;/a&gt; ). Итак, продолжаем с примером:</target>
+        </trans-unit>
+        <trans-unit id="c3110260b0c6fa29b5da5eaf7aae20756591136b" translate="yes" xml:space="preserve">
+          <source>The only option &lt;code&gt;*&lt;/code&gt; has is to make new references to the existing sublist instead of trying to make new sublists. Anything else would be inconsistent or require major redesigning of fundamental language design decisions.</source>
+          <target state="translated">Единственная опция &lt;code&gt;*&lt;/code&gt; имеет возможность делать новые ссылки на существующий подсписок вместо того, чтобы пытаться создавать новые подсписки. Все остальное будет противоречивым или потребует серьезного изменения основных решений по языку.</target>
+        </trans-unit>
+        <trans-unit id="e8425035628e9bcd585010aad239f14d3e225dc1" translate="yes" xml:space="preserve">
+          <source>Then I changed one of the innermost values:</source>
+          <target state="translated">Потом я изменил одно из самых сокровенных значений:</target>
+        </trans-unit>
+        <trans-unit id="2a9208b32fe3c33e9f8809f33376f79b30f6d8d9" translate="yes" xml:space="preserve">
+          <source>Then having this, run the following code to make everything more clear. What the code does is basically print the &lt;a href=&quot;https://docs.python.org/2/library/functions.html#id&quot;&gt;&lt;code&gt;id&lt;/code&gt;&lt;/a&gt;s of the obtained objects, which</source>
+          <target state="translated">Затем, имея это, запустите следующий код, чтобы сделать все более понятным. То, что делает код, это в основном вывод &lt;a href=&quot;https://docs.python.org/2/library/functions.html#id&quot;&gt; &lt;code&gt;id&lt;/code&gt; &lt;/a&gt; полученных объектов, которые</target>
+        </trans-unit>
+        <trans-unit id="0c4a19f41f357e975c7ecf272280bda06a0a7837" translate="yes" xml:space="preserve">
+          <source>This is equivalent to:</source>
+          <target state="translated">Это эквивалентно:</target>
+        </trans-unit>
+        <trans-unit id="bf6643d9a3252e5fc74ee1c1c3b5de497efca9cb" translate="yes" xml:space="preserve">
+          <source>This means &lt;code&gt;lst&lt;/code&gt; is a list with 3 elements all pointing to &lt;code&gt;lst1&lt;/code&gt;. This means the two following lines are equivalent:</source>
+          <target state="translated">Это означает, что &lt;code&gt;lst&lt;/code&gt; является списком с 3 элементами, указывающими на &lt;code&gt;lst1&lt;/code&gt; . Это означает, что две следующие строки эквивалентны:</target>
+        </trans-unit>
+        <trans-unit id="3dd8e29b3ac3c6ef269ae676cafacbe21d228fa4" translate="yes" xml:space="preserve">
+          <source>To fix it, you need to make sure that you create a new list at each position. One way to do it is</source>
+          <target state="translated">Чтобы это исправить,необходимо создать новый список на каждой позиции.Один из способов сделать это</target>
+        </trans-unit>
+        <trans-unit id="41366f2f3f691d6e960037cbbf3029874e06249f" translate="yes" xml:space="preserve">
+          <source>To obtain the desired behavior, you can use list comprehension:</source>
+          <target state="translated">Чтобы получить желаемое поведение,можно воспользоваться понятием списка:</target>
+        </trans-unit>
+        <trans-unit id="f6012ff66876f35bf9ed7d47fbc5d81fd830a93a" translate="yes" xml:space="preserve">
+          <source>To solve your issue you can do either one of them:
+1. Use numpy array &lt;a href=&quot;http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.empty.html&quot;&gt;documentation for numpy.empty&lt;/a&gt;
+2. Append the list as you get to a list.
+3. You can also use dictionary if you want</source>
+          <target state="translated">Чтобы решить вашу проблему, вы можете сделать одно из них: 1. Используйте &lt;a href=&quot;http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.empty.html&quot;&gt;документацию по&lt;/a&gt; numpy array для numpy.empty 2. Добавьте список по мере поступления в список. 3. Вы также можете использовать словарь, если хотите</target>
+        </trans-unit>
+        <trans-unit id="bc4f66001e531189900b0cd046777ad1b64deee8" translate="yes" xml:space="preserve">
+          <source>Trying to explain it more descriptively,</source>
+          <target state="translated">Пытаюсь объяснить это более описательно,</target>
+        </trans-unit>
+        <trans-unit id="5adaf1f37f4e60784d899d34c40c6e33010d9e91" translate="yes" xml:space="preserve">
+          <source>We can see that the list &lt;code&gt;c&lt;/code&gt; now contains two references to list &lt;code&gt;a&lt;/code&gt; which is equivalent to &lt;code&gt;c = b * 2&lt;/code&gt;.</source>
+          <target state="translated">Мы можем видеть, что список &lt;code&gt;c&lt;/code&gt; теперь содержит две ссылки на список &lt;code&gt;a&lt;/code&gt; , который эквивалентен &lt;code&gt;c = b * 2&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="501474f83c13b6e53883b1c7e3f3a5ccbe6640da" translate="yes" xml:space="preserve">
+          <source>When you write &lt;code&gt;[x]*3&lt;/code&gt; you get, essentially, the list &lt;code&gt;[x, x, x]&lt;/code&gt;. That is, a list with 3 references to the same &lt;code&gt;x&lt;/code&gt;. When you then modify this single &lt;code&gt;x&lt;/code&gt; it is visible via all three references to it:</source>
+          <target state="translated">Когда вы пишете &lt;code&gt;[x]*3&lt;/code&gt; , вы получаете, по сути, список &lt;code&gt;[x, x, x]&lt;/code&gt; . То есть список с 3 ссылками на один и тот же &lt;code&gt;x&lt;/code&gt; . Когда вы затем изменяете этот единственный &lt;code&gt;x&lt;/code&gt; , он виден через все три ссылки на него:</target>
+        </trans-unit>
+        <trans-unit id="832e94d264b6641a04975b94bcfb71f2f9739daf" translate="yes" xml:space="preserve">
+          <source>You might wonder why &lt;code&gt;*&lt;/code&gt; can't make independent objects the way the list comprehension does. That's because the multiplication operator &lt;code&gt;*&lt;/code&gt; operates on objects, without seeing expressions. When you use &lt;code&gt;*&lt;/code&gt; to multiply &lt;code&gt;[[1] * 4]&lt;/code&gt; by 3, &lt;code&gt;*&lt;/code&gt; only sees the 1-element list &lt;code&gt;[[1] * 4]&lt;/code&gt; evaluates to, not the &lt;code&gt;[[1] * 4&lt;/code&gt; expression text. &lt;code&gt;*&lt;/code&gt; has no idea how to make copies of that element, no idea how to reevaluate &lt;code&gt;[[1] * 4]&lt;/code&gt;, and no idea you even want copies, and in general, there might not even be a way to copy the element.</source>
+          <target state="translated">Вы можете задаться вопросом, почему &lt;code&gt;*&lt;/code&gt; не может создавать независимые объекты так, как это делает понимание списка. Это потому, что оператор умножения &lt;code&gt;*&lt;/code&gt; работает с объектами, не видя выражений. Когда вы используете &lt;code&gt;*&lt;/code&gt; для умножения &lt;code&gt;[[1] * 4]&lt;/code&gt; на 3, &lt;code&gt;*&lt;/code&gt; видит только 1-элементный список, который оценивает &lt;code&gt;[[1] * 4]&lt;/code&gt; , а не &lt;code&gt;[[1] * 4&lt;/code&gt; текст выражения. &lt;code&gt;*&lt;/code&gt; не знает, как сделать копии этого элемента, не знает, как переоценить &lt;code&gt;[[1] * 4]&lt;/code&gt; , и даже не подозревает, что вам даже нужны копии, и вообще, может даже не быть способа скопировать элемент.</target>
+        </trans-unit>
+        <trans-unit id="2eb5b7fd5de753d92c63843e41bc009b96c28972" translate="yes" xml:space="preserve">
+          <source>You write</source>
+          <target state="translated">Ты пишешь</target>
+        </trans-unit>
+        <trans-unit id="42fb56c55709b77df51dc5570a1fd7066696c0d7" translate="yes" xml:space="preserve">
+          <source>and will help us identify them and analyse what happens:</source>
+          <target state="translated">и поможет нам идентифицировать их и проанализировать,что происходит:</target>
+        </trans-unit>
+        <trans-unit id="14a961e9db9747b20286372b24fe3a0e150259a7" translate="yes" xml:space="preserve">
+          <source>another interesting way to create clone copies, Operation 4:</source>
+          <target state="translated">еще один интересный способ создания клонированных копий,Операция 4:</target>
+        </trans-unit>
+        <trans-unit id="1758356db21759f7c5a0da9b4dd1db8fd6feab3f" translate="yes" xml:space="preserve">
+          <source>or</source>
+          <target state="translated">or</target>
+        </trans-unit>
+        <trans-unit id="7006b26f9c8f8d3e063ffcd613fdb2355cbc1ab6" translate="yes" xml:space="preserve">
+          <source>or even:</source>
+          <target state="translated">или даже:</target>
+        </trans-unit>
+        <trans-unit id="5747d5a219bdca8cc8a0afdab31683bbc104375e" translate="yes" xml:space="preserve">
+          <source>where it's probably a little less surprising.</source>
+          <target state="translated">где это,наверное,менее удивительно.</target>
+        </trans-unit>
+        <trans-unit id="79dae3ceff989b84d037b3e06690ddb0c7a533eb" translate="yes" xml:space="preserve">
+          <source>which is not what I wanted or expected. Can someone please explain what's going on, and how to get around it?</source>
+          <target state="translated">а это не то,чего я хотел и чего ожидал.Кто-нибудь может объяснить,что происходит и как это обойти?</target>
+        </trans-unit>
+        <trans-unit id="7e30c2eec07407bb0c7533db53a27b0460898989" translate="yes" xml:space="preserve">
+          <source>which will reevaluate &lt;code&gt;[1]*4&lt;/code&gt; each time instead of evaluating it once and making 3 references to 1 list.</source>
+          <target state="translated">который будет переоценивать &lt;code&gt;[1]*4&lt;/code&gt; каждый раз вместо того, чтобы оценивать его один раз и делать 3 ссылки на 1 список.</target>
+        </trans-unit>
+        <trans-unit id="f4a193e32bfbfcea1d0e06a73c863fe8dd677085" translate="yes" xml:space="preserve">
+          <source>while &lt;code&gt;ma=[&amp;amp;li, &amp;amp;li, &amp;amp;li]&lt;/code&gt; and &lt;code&gt;li&lt;/code&gt; is mutable, so when you call &lt;code&gt;ma[0][0]=1&lt;/code&gt;, ma[0][0] is equally to &lt;code&gt;&amp;amp;li[0]&lt;/code&gt;, so all the &lt;code&gt;&amp;amp;li&lt;/code&gt; instances will change its 1st address into &lt;code&gt;&amp;amp;1&lt;/code&gt;.</source>
+          <target state="translated">в то время как &lt;code&gt;ma=[&amp;amp;li, &amp;amp;li, &amp;amp;li]&lt;/code&gt; и &lt;code&gt;li&lt;/code&gt; изменяемы, поэтому, когда вы вызываете &lt;code&gt;ma[0][0]=1&lt;/code&gt; , ma [0] [0] равно &lt;code&gt;&amp;amp;li[0]&lt;/code&gt; , поэтому все экземпляры &lt;code&gt;&amp;amp;li&lt;/code&gt; будут измените его 1-й адрес на &lt;code&gt;&amp;amp;1&lt;/code&gt; .</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

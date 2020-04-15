@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="htmlbody" original="https://stackoverflow.com/questions/3279543">
+    <body>
+      <group id="3279543">
+        <trans-unit id="6c226e8c6cc9d76ab83c602a00d6e4dc0fc4f9d3" translate="yes" xml:space="preserve">
+          <source>&amp;Dagger; assignment operator implementation that seems sane when assigning from a distinct object can easily fail for self-assignment.  While it might seem unimaginable that client code would even attempt self-assignment, it can happen relatively easily during algo operations on containers, with &lt;code&gt;x = f(x);&lt;/code&gt; code where &lt;code&gt;f&lt;/code&gt; is (perhaps only for some &lt;code&gt;#ifdef&lt;/code&gt; branches) a macro ala &lt;code&gt;#define f(x) x&lt;/code&gt; or a function returning a reference to &lt;code&gt;x&lt;/code&gt;, or even (likely inefficient but concise) code like &lt;code&gt;x = c1 ? x * 2 : c2 ? x / 2 : x;&lt;/code&gt;).  For example:</source>
+          <target state="translated">&amp;Dagger; Реализация оператора присваивания, которая кажется разумной при назначении из отдельного объекта, может легко потерпеть неудачу для самостоятельного назначения. Хотя может показаться невообразимым, что клиентский код даже попытается выполнить самостоятельное назначение, это может относительно легко произойти во время операций algo над контейнерами с &lt;code&gt;x = f(x);&lt;/code&gt; код, где &lt;code&gt;f&lt;/code&gt; (возможно, только для некоторых веток &lt;code&gt;#ifdef&lt;/code&gt; ) макрос ala &lt;code&gt;#define f(x) x&lt;/code&gt; или функция, возвращающая ссылку на &lt;code&gt;x&lt;/code&gt; , или даже (вероятно, неэффективный, но сжатый) код, такой как &lt;code&gt;x = c1 ? x * 2 : c2 ? x / 2 : x;&lt;/code&gt; х * 2: с2? х / 2: х; ). Например:</target>
+        </trans-unit>
+        <trans-unit id="bb7374700aafe18beca629b3c0f274d8e62aa193" translate="yes" xml:space="preserve">
+          <source>&amp;Dagger;The reason is simple: once you have the resource to yourself, you may swap and/or move it (C++11) anywhere it needs to be. And by making the copy in the parameter list, you maximize optimization.</source>
+          <target state="translated">&amp;Dagger; Причина проста: если у вас есть ресурс для себя, вы можете поменять его и / или переместить (C ++ 11) куда угодно. А сделав копию в списке параметров, вы максимально оптимизируете.</target>
+        </trans-unit>
+        <trans-unit id="163368ac3c34ec2c83983583f0414ca3308b0713" translate="yes" xml:space="preserve">
+          <source>&amp;dagger; &lt;code&gt;swap&lt;/code&gt; throwing: it's generally possible to reliably swap data members that the objects track by pointer, but non-pointer data members that don't have a throw-free swap, or for which swapping has to be implemented as &lt;code&gt;X tmp = lhs; lhs = rhs; rhs = tmp;&lt;/code&gt; and copy-construction or assignment may throw, still have the potential to fail leaving some data members swapped and others not.  This potential applies even to C++03 &lt;code&gt;std::string&lt;/code&gt;'s as James comments on another answer:</source>
+          <target state="translated">&amp;dagger; &lt;code&gt;swap&lt;/code&gt; : как правило, можно надежно поменять элементы данных, которые объекты отслеживают по указателю, но элементы данных без указателя, у которых нет свопа без бросков или для которого свопинг должен быть реализован как &lt;code&gt;X tmp = lhs; lhs = rhs; rhs = tmp;&lt;/code&gt; lhs = rhs; rhs = tmp; и создание копии или назначение могут бросить, все еще есть потенциал, чтобы потерпеть неудачу, оставляя некоторые элементы данных замененными, а другие нет. Этот потенциал применим даже к C ++ 03 &lt;code&gt;std::string&lt;/code&gt; , поскольку Джеймс комментирует другой ответ:</target>
+        </trans-unit>
+        <trans-unit id="7f199a37b50d8112edd59b2da2ef5d80d8b29454" translate="yes" xml:space="preserve">
+          <source>&amp;dagger;&amp;dagger;The move constructor should generally be &lt;code&gt;noexcept&lt;/code&gt;, otherwise some code (e.g. &lt;code&gt;std::vector&lt;/code&gt; resizing logic) will use the copy constructor even when a move would make sense. Of course, only mark it noexcept if the code inside doesn't throw exceptions.</source>
+          <target state="translated">&amp;dagger;&amp;dagger; Конструктор перемещения обычно не должен быть &lt;code&gt;noexcept&lt;/code&gt; , в противном случае некоторый код (например, логика изменения размера &lt;code&gt;std::vector&lt;/code&gt; ) будет использовать конструктор копирования даже тогда, когда перемещение имеет смысл. Конечно, пометьте его только для тех случаев, когда код внутри не генерирует исключения.</target>
+        </trans-unit>
+        <trans-unit id="75fc32cb0b6c21685002f255ba8bd3b417167a6f" translate="yes" xml:space="preserve">
+          <source>&amp;dagger;There are other claims that we should specialize &lt;code&gt;std::swap&lt;/code&gt; for our type, provide an in-class &lt;code&gt;swap&lt;/code&gt; along-side a free-function &lt;code&gt;swap&lt;/code&gt;, etc. But this is all unnecessary: any proper use of &lt;code&gt;swap&lt;/code&gt; will be through an unqualified call, and our function will be found through &lt;a href=&quot;http://en.wikipedia.org/wiki/Argument-dependent_name_lookup&quot;&gt;ADL&lt;/a&gt;. One function will do.</source>
+          <target state="translated">&amp;dagger; Существуют и другие утверждения о том, что мы должны специализировать &lt;code&gt;std::swap&lt;/code&gt; для нашего типа, обеспечивать &lt;code&gt;swap&lt;/code&gt; в классе наряду со свободным &lt;code&gt;swap&lt;/code&gt; функций и т. Д. Но это все не нужно: любое правильное использование &lt;code&gt;swap&lt;/code&gt; будет осуществляться через неквалифицированное позвоните, и наша функция будет найдена через &lt;a href=&quot;http://en.wikipedia.org/wiki/Argument-dependent_name_lookup&quot;&gt;ADL&lt;/a&gt; . Одна функция будет делать.</target>
+        </trans-unit>
+        <trans-unit id="d2f8a6a9ff582b62e6b05e0ec952e18a7cba21f7" translate="yes" xml:space="preserve">
+          <source>(&lt;a href=&quot;https://stackoverflow.com/questions/5695548/public-friend-swap-member-function&quot;&gt;Here&lt;/a&gt; is the explanation why &lt;code&gt;public friend swap&lt;/code&gt;.) Now not only can we swap our &lt;code&gt;dumb_array&lt;/code&gt;'s, but swaps in general can be more efficient; it merely swaps pointers and sizes, rather than allocating and copying entire arrays. Aside from this bonus in functionality and efficiency, we are now ready to implement the copy-and-swap idiom.</source>
+          <target state="translated">( &lt;a href=&quot;https://stackoverflow.com/questions/5695548/public-friend-swap-member-function&quot;&gt;Вот&lt;/a&gt; объяснение, почему &lt;code&gt;public friend swap&lt;/code&gt; .) Теперь мы не только можем поменять местами наши &lt;code&gt;dumb_array&lt;/code&gt; , но и поменять местами в целом, может быть более эффективным; он просто меняет указатели и размеры, а не выделяет и копирует целые массивы. Помимо этого бонуса в функциональности и эффективности, мы теперь готовы реализовать идиому копирования и замены.</target>
+        </trans-unit>
+        <trans-unit id="e3d46a3ef24d9ab6012b40252b69014fa5aa5434" translate="yes" xml:space="preserve">
+          <source>(Not only that, but unqualified calls to &lt;code&gt;swap&lt;/code&gt; will use our custom swap operator, skipping over the unnecessary construction and destruction of our class that &lt;code&gt;std::swap&lt;/code&gt; would entail.)</source>
+          <target state="translated">(Не только это, но и неквалифицированные вызовы &lt;code&gt;swap&lt;/code&gt; будут использовать наш пользовательский оператор swap, пропуская ненужную конструкцию и разрушение нашего класса, что влечет за собой &lt;code&gt;std::swap&lt;/code&gt; .)</target>
+        </trans-unit>
+        <trans-unit id="fc5de9386b1a45a3cfcfa383e680e501a72d73b4" translate="yes" xml:space="preserve">
+          <source>(Note that some compilers do not support constructor delegation; in this case, we have to manually default construct the class. This is an unfortunate but luckily trivial task.)</source>
+          <target state="translated">(Заметим,что некоторые компиляторы не поддерживают делегирование конструкторов,в этом случае придется вручную строить класс по умолчанию.Это досадная,но к счастью тривиальная задача).</target>
+        </trans-unit>
+        <trans-unit id="5e19805a2e15f201ad87bd588181abb3d0cc728b" translate="yes" xml:space="preserve">
+          <source>(One might wonder: if this much code is needed to manage one resource correctly, what if my class manages more than one? While this may seem to be a valid concern, and indeed it requires non-trivial &lt;code&gt;try&lt;/code&gt;/&lt;code&gt;catch&lt;/code&gt; clauses, this is a non-issue. That's because a class should manage &lt;a href=&quot;http://en.wikipedia.org/wiki/Single_responsibility_principle&quot;&gt;&lt;em&gt;one resource only&lt;/em&gt;&lt;/a&gt;!)</source>
+          <target state="translated">(Можно задаться вопросом: если для правильного управления одним ресурсом требуется такой большой код, что если мой класс управляет более чем одним? Хотя это может показаться действительной проблемой и действительно требует нетривиальных предложений &lt;code&gt;try&lt;/code&gt; / &lt;code&gt;catch&lt;/code&gt; , это не проблема. Это потому, что класс должен управлять &lt;a href=&quot;http://en.wikipedia.org/wiki/Single_responsibility_principle&quot;&gt;&lt;em&gt;только одним ресурсом&lt;/em&gt;&lt;/a&gt; !)</target>
+        </trans-unit>
+        <trans-unit id="5f022b51a041ef6021d6448cd154d99898408496" translate="yes" xml:space="preserve">
+          <source>*Why do we set &lt;code&gt;mArray&lt;/code&gt; to null? Because if any further code in the operator throws, the destructor of &lt;code&gt;dumb_array&lt;/code&gt; might be called; and if that happens without setting it to null, we attempt to delete memory that's already been deleted! We avoid this by setting it to null, as deleting null is a no-operation.</source>
+          <target state="translated">* Почему мы устанавливаем &lt;code&gt;mArray&lt;/code&gt; на ноль ? Потому что, если какой-либо дополнительный код в операторе выдает, может быть вызван деструктор &lt;code&gt;dumb_array&lt;/code&gt; ; и если это происходит без установки значения null, мы пытаемся удалить уже удаленную память! Мы избегаем этого, устанавливая его в null, так как удаление null не является операцией.</target>
+        </trans-unit>
+        <trans-unit id="b66b8649c482abfc519d6e23ca6ba54f66162dcc" translate="yes" xml:space="preserve">
+          <source>... the compiler will yell at you when you call the &lt;code&gt;swap&lt;/code&gt; function:</source>
+          <target state="translated">... компилятор будет кричать на вас, когда вы вызываете функцию &lt;code&gt;swap&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="739480efc6308b236632d75a12d950aab5506d77" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom/3279616#3279616&quot;&gt;Conceptually&lt;/a&gt;, it works by using the copy-constructor's functionality to create a local copy of the data, then takes the copied data with a &lt;code&gt;swap&lt;/code&gt; function, swapping the old data with the new data. The temporary copy then destructs, taking the old data with it. We are left with a copy of the new data.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom/3279616#3279616&quot;&gt;Концептуально&lt;/a&gt; , он работает с использованием функциональности конструктора копирования для создания локальной копии данных, затем берет скопированные данные с помощью функции &lt;code&gt;swap&lt;/code&gt; , заменяя старые данные новыми. Затем временная копия разрушается, забирая старые данные. Нам остается копия новых данных.</target>
+        </trans-unit>
+        <trans-unit id="d8e39573869dabdfb98f89cc9b39812879c351fd" translate="yes" xml:space="preserve">
+          <source>@wilhelmtell: In C++03, there is no mention of exceptions potentially thrown by std::string::swap (which is called by std::swap). In C++0x, std::string::swap is noexcept and must not throw exceptions. &amp;ndash; James McNellis Dec 22 '10 at 15:24</source>
+          <target state="translated">@wilhelmtell: В C ++ 03 нет упоминаний об исключениях, которые могут быть вызваны std :: string :: swap (который вызывается std :: swap). В C ++ 0x std :: string :: swap не является исключением и не должен генерировать исключения. - Джеймс МакНеллис 22 декабря 2010 в 15:24</target>
+        </trans-unit>
+        <trans-unit id="8a6f040aeb295117c1efb68678f192378c4a33b9" translate="yes" xml:space="preserve">
+          <source>A failed solution</source>
+          <target state="translated">Неудачное решение</target>
+        </trans-unit>
+        <trans-unit id="1f123ac936e30fe0974c20eefdb479af236b59d9" translate="yes" xml:space="preserve">
+          <source>A successful solution</source>
+          <target state="translated">Успешное решение</target>
+        </trans-unit>
+        <trans-unit id="0a8b69bb09bc2425818b674879026645aff63337" translate="yes" xml:space="preserve">
+          <source>A swap function is a &lt;em&gt;non-throwing&lt;/em&gt; function that swaps two objects of a class, member for member. We might be tempted to use &lt;code&gt;std::swap&lt;/code&gt; instead of providing our own, but this would be impossible; &lt;code&gt;std::swap&lt;/code&gt; uses the copy-constructor and copy-assignment operator within its implementation, and we'd ultimately be trying to define the assignment operator in terms of itself!</source>
+          <target state="translated">Функция подкачки - это функция &lt;em&gt;без выбрасывания,&lt;/em&gt; которая меняет два объекта класса, член на член. У нас может возникнуть соблазн использовать &lt;code&gt;std::swap&lt;/code&gt; вместо предоставления собственного, но это было бы невозможно; &lt;code&gt;std::swap&lt;/code&gt; использует конструктор копирования и оператор копирования-присваивания в своей реализации, и мы в конечном итоге попытаемся определить оператор присваивания в терминах самого себя!</target>
+        </trans-unit>
+        <trans-unit id="18c04be3fc2a0bcac1f0511d9edd72d5489a05de" translate="yes" xml:space="preserve">
+          <source>A way around this is to not use &lt;code&gt;friend&lt;/code&gt; keyword and redefine the &lt;code&gt;swap&lt;/code&gt; function:</source>
+          <target state="translated">Чтобы обойти это, не используйте ключевое слово &lt;code&gt;friend&lt;/code&gt; и не переопределяйте функцию &lt;code&gt;swap&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="96739476d5a5d3d0fbe5f2e1e80ac733b38525c4" translate="yes" xml:space="preserve">
+          <source>A way of implementing the assignment operator in terms of a swap function:</source>
+          <target state="translated">Способ реализации оператора присваивания с точки зрения функции подкачки:</target>
+        </trans-unit>
+        <trans-unit id="099a6586cd9d3a08c5d495a2db19fa35488b71be" translate="yes" xml:space="preserve">
+          <source>After all, you don't &lt;em&gt;need&lt;/em&gt; to use a &lt;code&gt;friend&lt;/code&gt; function to swap 2 objects. It makes just as much sense to make &lt;code&gt;swap&lt;/code&gt; a member function that has one &lt;code&gt;other&lt;/code&gt; object as a parameter.</source>
+          <target state="translated">В конце концов, вам не &lt;em&gt;нужно&lt;/em&gt; использовать функцию &lt;code&gt;friend&lt;/code&gt; чтобы поменять 2 объекта. Также имеет смысл сделать &lt;code&gt;swap&lt;/code&gt; функцией-членом, у которой в качестве параметра есть еще один объект.</target>
+        </trans-unit>
+        <trans-unit id="c864fce5142351dfaef1c82c9c081e821224b89b" translate="yes" xml:space="preserve">
+          <source>Although it's been mentioned in many places, we didn't have any singular &quot;what is it&quot; question and answer, so here it is. Here is a partial list of places where it was previously mentioned:</source>
+          <target state="translated">Хотя об этом упоминалось во многих местах,у нас не было ни одного единственного вопроса и ответа &quot;что это&quot;,так что вот он.Вот неполный список мест,где он упоминался ранее:</target>
+        </trans-unit>
+        <trans-unit id="e9671eba126f32f76a109bf11cdbf7cf819ba06b" translate="yes" xml:space="preserve">
+          <source>An in-depth explanation</source>
+          <target state="translated">Глубокое объяснение</target>
+        </trans-unit>
+        <trans-unit id="c73d2a01cb43ee42c7ec7bce3573c7cec34d6cdc" translate="yes" xml:space="preserve">
+          <source>And so concludes the copy-and-swap idiom.</source>
+          <target state="translated">И так заканчивается идиома про копирование и замену.</target>
+        </trans-unit>
+        <trans-unit id="9b5dace86273f14ab55c392c7b880a011ead98aa" translate="yes" xml:space="preserve">
+          <source>And that is the copy-and-swap idiom.</source>
+          <target state="translated">А это идиома про копирование и обмен.</target>
+        </trans-unit>
+        <trans-unit id="2c207f27020378f00a7220d5874fff08752c57e7" translate="yes" xml:space="preserve">
+          <source>And that's it! With one fell swoop, all three problems are elegantly tackled at once.</source>
+          <target state="translated">И всё! Одним махом все три проблемы элегантно решаются одновременно.</target>
+        </trans-unit>
+        <trans-unit id="a253fea1b4ead859fd72efb21cf1f3617ee2fe71" translate="yes" xml:space="preserve">
+          <source>And we say we're finished; this now manages an array, without leaks. However, it suffers from three problems, marked sequentially in the code as &lt;code&gt;(n)&lt;/code&gt;.</source>
+          <target state="translated">И мы говорим, что мы закончили; это теперь управляет массивом, без утечек. Тем не менее, он страдает от трех проблем, помеченных последовательно в коде как &lt;code&gt;(n)&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="46cb3e743fce8064b54f7c24bedac5fd2b065252" translate="yes" xml:space="preserve">
+          <source>Any class that manages a resource (a &lt;em&gt;wrapper&lt;/em&gt;, like a smart pointer) needs to implement &lt;a href=&quot;https://stackoverflow.com/questions/4172722/what-is-the-rule-of-three&quot;&gt;The Big Three&lt;/a&gt;. While the goals and implementation of the copy-constructor and destructor are straightforward, the copy-assignment operator is arguably the most nuanced and difficult. How should it be done? What pitfalls need to be avoided?</source>
+          <target state="translated">Любой класс, который управляет ресурсом ( &lt;em&gt;обертка&lt;/em&gt; , как умный указатель), должен реализовать &lt;a href=&quot;https://stackoverflow.com/questions/4172722/what-is-the-rule-of-three&quot;&gt;Большую тройку&lt;/a&gt; . В то время как цели и реализация конструктора и деструктора копирования просты, оператор присвоения копии, пожалуй, самый нюансированный и сложный. Как это должно быть сделано? Какие подводные камни следует избегать?</target>
+        </trans-unit>
+        <trans-unit id="b5f0db215ce832cd77e56cc7229f8e1b22ecb595" translate="yes" xml:space="preserve">
+          <source>As mentioned, the copy-and-swap idiom will fix all these issues. But right now, we have all the requirements except one: a &lt;code&gt;swap&lt;/code&gt; function. While The Rule of Three successfully entails the existence of our copy-constructor, assignment operator, and destructor, it should really be called &quot;The Big Three and A Half&quot;: any time your class manages a resource it also makes sense to provide a &lt;code&gt;swap&lt;/code&gt; function.</source>
+          <target state="translated">Как уже упоминалось, идиома копирования и обмена исправит все эти проблемы. Но сейчас у нас есть все требования, кроме одного: функция &lt;code&gt;swap&lt;/code&gt; . Хотя правило трех успешно влечет за собой существование нашего конструктора копирования, оператора присваивания и деструктора, его на самом деле следует называть &amp;laquo;Большая тройка с половиной&amp;raquo;: всякий раз, когда ваш класс управляет ресурсом, имеет смысл также предоставить &lt;code&gt;swap&lt;/code&gt; функция.</target>
+        </trans-unit>
+        <trans-unit id="89e4ca10b74850fc9016dbb8310675a1462b938c" translate="yes" xml:space="preserve">
+          <source>Assignment, at its heart, is two steps: &lt;strong&gt;&lt;em&gt;tearing down the object's old state&lt;/em&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;em&gt;building its new state as a copy&lt;/em&gt;&lt;/strong&gt; of some other object's state.</source>
+          <target state="translated">Назначение в своей основе состоит из двух этапов: &lt;strong&gt;&lt;em&gt;разрушение старого состояния объекта&lt;/em&gt;&lt;/strong&gt; и &lt;strong&gt;&lt;em&gt;построение его нового состояния как копии&lt;/em&gt;&lt;/strong&gt; состояния какого-либо другого объекта.</target>
+        </trans-unit>
+        <trans-unit id="d4de93db789fe9ea751b9c3c9f7efc0214b87843" translate="yes" xml:space="preserve">
+          <source>At this point we are home-free, because &lt;code&gt;swap&lt;/code&gt; is non-throwing. We swap our current data with the copied data, safely altering our state, and the old data gets put into the temporary. The old data is then released when the function returns. (Where upon the parameter's scope ends and its destructor is called.)</source>
+          <target state="translated">На данный момент мы свободны от дома, потому что &lt;code&gt;swap&lt;/code&gt; является броском. Мы заменяем наши текущие данные на скопированные, безопасно изменяя наше состояние, и старые данные помещаются во временные. Старые данные затем освобождаются, когда функция возвращается. (Где заканчивается область действия параметра и вызывается его деструктор.)</target>
+        </trans-unit>
+        <trans-unit id="22b41cb12332be04aca21ea73d3c777d0bbc2bc4" translate="yes" xml:space="preserve">
+          <source>Basically, that's what the &lt;strong&gt;&lt;em&gt;destructor&lt;/em&gt;&lt;/strong&gt; and the &lt;strong&gt;&lt;em&gt;copy constructor&lt;/em&gt;&lt;/strong&gt; do, so the first idea would be to delegate the work to them. However, since destruction mustn't fail, while construction might, &lt;em&gt;we actually want to do it the other way around&lt;/em&gt;: &lt;strong&gt;&lt;em&gt;first perform the constructive part&lt;/em&gt;&lt;/strong&gt; and, if that succeeded, &lt;strong&gt;&lt;em&gt;then do the destructive part&lt;/em&gt;&lt;/strong&gt;. The copy-and-swap idiom is a way to do just that: It first calls a class' copy constructor to create a temporary object, then swaps its data with the temporary's, and then lets the temporary's destructor destroy the old state.</source>
+          <target state="translated">По сути, это то, что делают &lt;strong&gt;&lt;em&gt;деструктор&lt;/em&gt;&lt;/strong&gt; и &lt;strong&gt;&lt;em&gt;конструктор копирования&lt;/em&gt;&lt;/strong&gt; , поэтому первая идея заключается в том, чтобы передать им работу. Однако, поскольку разрушение не должно &lt;em&gt;заканчиваться&lt;/em&gt; неудачей, в то время как строительство может, &lt;em&gt;мы действительно хотим сделать это наоборот&lt;/em&gt; : &lt;strong&gt;&lt;em&gt;сначала выполнить конструктивную часть&lt;/em&gt;&lt;/strong&gt; и, если это удалось, &lt;strong&gt;&lt;em&gt;затем выполнить разрушительную часть&lt;/em&gt;&lt;/strong&gt; . Идиома копирования и замены - это способ сделать это: сначала он вызывает конструктор копирования класса для создания временного объекта, затем обменивает его данные с временным, а затем позволяет деструктору временного уничтожить старое состояние.</target>
+        </trans-unit>
+        <trans-unit id="21f3313cd21a2541f96630aa3e2a0cf47d569892" translate="yes" xml:space="preserve">
+          <source>Because the idiom repeats no code, we cannot introduce bugs within the operator. Note that this means we are rid of the need for a self-assignment check, allowing a single uniform implementation of &lt;code&gt;operator=&lt;/code&gt;. (Additionally, we no longer have a performance penalty on non-self-assignments.)</source>
+          <target state="translated">Поскольку идиома не повторяет код, мы не можем вводить ошибки в операторе. Обратите внимание, что это означает, что мы избавляемся от необходимости проверки самоназначения, позволяющей единую реализацию &lt;code&gt;operator=&lt;/code&gt; (Кроме того, у нас больше нет штрафа за невыполнение заданий.)</target>
+        </trans-unit>
+        <trans-unit id="ee86d87c6e42b253320f7528f74891164bb782f1" translate="yes" xml:space="preserve">
+          <source>C++: dynamically allocating an array of objects?</source>
+          <target state="translated">C++:динамическое выделение массива объектов?</target>
+        </trans-unit>
+        <trans-unit id="e729ebfbf18123cb9c8f157732414fc00291bf88" translate="yes" xml:space="preserve">
+          <source>Copy constructor and = operator overload in C++: is a common function possible?</source>
+          <target state="translated">Конструктор копирования и=перегрузка оператора в C++:возможна ли общая функция?</target>
+        </trans-unit>
+        <trans-unit id="94f8c0f65181c1bf410e4113cb80538a2f639df0" translate="yes" xml:space="preserve">
+          <source>Either way, this method of obtaining our resource is the key to eliminating code duplication: we get to use the code from the copy-constructor to make the copy, and never need to repeat any bit of it. Now that the copy is made, we are ready to swap.</source>
+          <target state="translated">В любом случае,этот способ получения нашего ресурса является ключом к устранению дублирования кода:мы получаем код из копировально-конструктора,чтобы сделать копию,и никогда не должны повторять ни одного его бита.Теперь,когда копия сделана,мы готовы к обмену.</target>
+        </trans-unit>
+        <trans-unit id="ec0c3b76630fd745381cc215a284820af75a683a" translate="yes" xml:space="preserve">
+          <source>Footnotes</source>
+          <target state="translated">Footnotes</target>
+        </trans-unit>
+        <trans-unit id="79202c91683120bfb6ddb6c07a5bad7dc7c88c9b" translate="yes" xml:space="preserve">
+          <source>For concreteness, let us consider a container &lt;code&gt;std::vector&amp;lt;T, A&amp;gt;&lt;/code&gt;, where &lt;code&gt;A&lt;/code&gt; is some stateful allocator type, and we'll compare the following functions:</source>
+          <target state="translated">Для конкретности рассмотрим контейнер &lt;code&gt;std::vector&amp;lt;T, A&amp;gt;&lt;/code&gt; , где &lt;code&gt;A&lt;/code&gt; - некоторый тип распределителя с сохранением состояния, и мы сравним следующие функции:</target>
+        </trans-unit>
+        <trans-unit id="f160b70becf0b5d89fbecbeb4ad05cafa0e60064" translate="yes" xml:space="preserve">
+          <source>Here's how a naive implementation might look:</source>
+          <target state="translated">Вот как может выглядеть наивная реализация:</target>
+        </trans-unit>
+        <trans-unit id="bec44ad24b77ebad1653d346d85b618d564afd9f" translate="yes" xml:space="preserve">
+          <source>Here, a hand-written &lt;code&gt;Client::operator=&lt;/code&gt; might check if &lt;code&gt;*this&lt;/code&gt; is already connected to the same server as &lt;code&gt;rhs&lt;/code&gt; (perhaps sending a &quot;reset&quot; code if useful), whereas the copy-and-swap approach would invoke the copy-constructor which would likely be written to open a distinct socket connection then close the original one.  Not only could that mean a remote network interaction instead of a simple in-process variable copy, it could run afoul of client or server limits on socket resources or connections.  (Of course this class has a pretty horrid interface, but that's another matter ;-P).</source>
+          <target state="translated">Здесь рукописный &lt;code&gt;Client::operator=&lt;/code&gt; может проверять, &lt;code&gt;*this&lt;/code&gt; подключен ли он к тому же серверу, что и &lt;code&gt;rhs&lt;/code&gt; (возможно, отправляя код сброса, если это полезно), тогда как метод копирования и замены будет вызывать функцию копирования конструктор, который, вероятно, будет написан, чтобы открыть отдельное соединение с сокетом, а затем закрыть исходное. Мало того, что это может означать удаленное сетевое взаимодействие вместо простой внутрипроцессной копии переменных, оно может нарушать ограничения клиента или сервера для ресурсов сокетов или соединений. (Конечно, у этого класса довольно ужасный интерфейс, но это другое дело ;-P).</target>
+        </trans-unit>
+        <trans-unit id="e21860bf37328b97ebb0ddd904694c78e4a7b382" translate="yes" xml:space="preserve">
+          <source>How does it work?</source>
+          <target state="translated">Как это работает?</target>
+        </trans-unit>
+        <trans-unit id="fc088e1a9c9b7f4c8a1d611a7ecd41e9c5e1abfa" translate="yes" xml:space="preserve">
+          <source>However, if &lt;code&gt;a.get_allocator() != b.get_allocator()&lt;/code&gt;, the program has &lt;em&gt;undefined behaviour&lt;/em&gt; (cf. [container.requirements.general/8].</source>
+          <target state="translated">Однако если &lt;code&gt;a.get_allocator() != b.get_allocator()&lt;/code&gt; , программа имеет &lt;em&gt;неопределенное поведение&lt;/em&gt; (см. [ Container.requirements.general / 8].</target>
+        </trans-unit>
+        <trans-unit id="236be016134b3d1b54ff3ee12c4a2f9cc364e3e2" translate="yes" xml:space="preserve">
+          <source>I would like to add a word of warning when you are dealing with C++11-style allocator-aware containers. Swapping and assignment have subtly different semantics.</source>
+          <target state="translated">Хотелось бы добавить слово предупреждения,когда вы имеете дело с контейнерами в стиле C++11,учитывающими аллокаторы.Смена и назначение имеют слегка различную семантику.</target>
+        </trans-unit>
+        <trans-unit id="3f28ca2de2b68eac16c3d42e71f3ac049eaef11f" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;AT::propagate_on_container_move_assignment&lt;/code&gt; is &lt;code&gt;std::true_type&lt;/code&gt;, then &lt;code&gt;fm&lt;/code&gt; reassigns the allocator of &lt;code&gt;a&lt;/code&gt; with the value of &lt;code&gt;b.get_allocator()&lt;/code&gt;, otherwise it does not, and &lt;code&gt;a&lt;/code&gt; continues to use its original allocator. In that case, the data elements need to be swapped individually, since the storage of &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; is not compatible.</source>
+          <target state="translated">Если &lt;code&gt;AT::propagate_on_container_move_assignment&lt;/code&gt; &lt;code&gt;std::true_type&lt;/code&gt; , то &lt;code&gt;fm&lt;/code&gt; переназначает распределитель &lt;code&gt;a&lt;/code&gt; значением &lt;code&gt;b.get_allocator()&lt;/code&gt; , в противном случае это не так, и &lt;code&gt;a&lt;/code&gt; продолжает использовать свой исходный распределитель. В этом случае элементы данных необходимо менять по отдельности, поскольку хранилище &lt;code&gt;a&lt;/code&gt; и &lt;code&gt;b&lt;/code&gt; несовместимо.</target>
+        </trans-unit>
+        <trans-unit id="4510757f293d56b7a112af8252c4984d58f759e4" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;AT::propagate_on_container_swap&lt;/code&gt; is &lt;code&gt;std::false_type&lt;/code&gt;, then we need a dynamic check.</source>
+          <target state="translated">Если &lt;code&gt;AT::propagate_on_container_swap&lt;/code&gt; &lt;code&gt;std::false_type&lt;/code&gt; , то нам нужна динамическая проверка.</target>
+        </trans-unit>
+        <trans-unit id="b3573d07a320cef433ba754980663abfd331a87f" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;AT::propagate_on_container_swap&lt;/code&gt; is &lt;code&gt;std::true_type&lt;/code&gt;, then &lt;code&gt;fs&lt;/code&gt; swaps both data and allocators in the expected fashion.</source>
+          <target state="translated">Если &lt;code&gt;AT::propagate_on_container_swap&lt;/code&gt; &lt;code&gt;std::true_type&lt;/code&gt; , то &lt;code&gt;fs&lt;/code&gt; меняет местами данные и распределители ожидаемым образом.</target>
+        </trans-unit>
+        <trans-unit id="73d3a4270600b651da25bd4b3260fe77df37829f" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;a.get_allocator() == b.get_allocator()&lt;/code&gt;, then the two containers use compatible storage, and swapping proceeds in the usual fashion.</source>
+          <target state="translated">Если &lt;code&gt;a.get_allocator() == b.get_allocator()&lt;/code&gt; , тогда два контейнера используют совместимое хранилище, и замена происходит обычным образом.</target>
+        </trans-unit>
+        <trans-unit id="b8d03c15d57131584a2028550fb794a9339e9cad" translate="yes" xml:space="preserve">
+          <source>In its refined form, copy-and-swap is implemented by having the copy performed by initializing the (non-reference) parameter of the assignment operator:</source>
+          <target state="translated">В его усовершенствованном виде копирование и замена выполняются путем инициализации (отсутствия ссылки)параметра оператора присваивания:</target>
+        </trans-unit>
+        <trans-unit id="9f37decf779a75710e40ed5c33a2089302cd7911" translate="yes" xml:space="preserve">
+          <source>In order to use the copy-and-swap idiom, we need three things: a working copy-constructor, a working destructor (both are the basis of any wrapper, so should be complete anyway), and a &lt;code&gt;swap&lt;/code&gt; function.</source>
+          <target state="translated">Чтобы использовать идиому копирования и замены, нам нужны три вещи: рабочий конструктор копирования, рабочий деструктор (оба являются основой любой оболочки, поэтому все равно должно быть завершено) и функция &lt;code&gt;swap&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="8c6f02b160b536e0af64d17d3f8eab3f4e9be471" translate="yes" xml:space="preserve">
+          <source>In our case, the core of it is only two lines (the allocation and the copy), but with more complex resources this code bloat can be quite a hassle. We should strive to never repeat ourselves.</source>
+          <target state="translated">В нашем случае ядро кода состоит всего из двух строк (выделение и копия),но с более сложными ресурсами этот раздувание кода может быть довольно хлопотным.Мы должны стремиться никогда не повторяться.</target>
+        </trans-unit>
+        <trans-unit id="41bf38d748ecfa54c2c45421d2ad416833ae458b" translate="yes" xml:space="preserve">
+          <source>In some versions of Visual Studio (and possibly other compilers) there is a bug that is really annoying and doesn't make sense. So if you declare/define your &lt;code&gt;swap&lt;/code&gt; function like this:</source>
+          <target state="translated">В некоторых версиях Visual Studio (и, возможно, в других компиляторах) есть ошибка, которая действительно раздражает и не имеет смысла. Так что если вы объявите / определите свою функцию &lt;code&gt;swap&lt;/code&gt; следующим образом:</target>
+        </trans-unit>
+        <trans-unit id="a9821302f3683bd9875458d7b470497ba0484ef2" translate="yes" xml:space="preserve">
+          <source>Let's consider a concrete case. We want to manage, in an otherwise useless class, a dynamic array. We start with a working constructor, copy-constructor, and destructor:</source>
+          <target state="translated">Давайте рассмотрим конкретный случай.Мы хотим управлять динамическим массивом в бесполезном в остальном классе.Начнем с работающего конструктора,копирования-конструктора и деструктора:</target>
+        </trans-unit>
+        <trans-unit id="27c808c7552dbd2cdeb49163a8d2a3c074f0dbac" translate="yes" xml:space="preserve">
+          <source>Luckily for us, this is easy:</source>
+          <target state="translated">К счастью для нас,это легко:</target>
+        </trans-unit>
+        <trans-unit id="7402c1a7b7b4cd8a707b425e610cbcb74419bc20" translate="yes" xml:space="preserve">
+          <source>Now, if &lt;code&gt;other&lt;/code&gt; is being initialized with an rvalue, &lt;em&gt;it will be move-constructed&lt;/em&gt;. Perfect. In the same way C++03 let us re-use our copy-constructor functionality by taking the argument by-value, C++11 will &lt;em&gt;automatically&lt;/em&gt; pick the move-constructor when appropriate as well. (And, of course, as mentioned in previously linked article, the copying/moving of the value may simply be elided altogether.)</source>
+          <target state="translated">Теперь, если &lt;code&gt;other&lt;/code&gt; инициализируется с помощью значения r, &lt;em&gt;оно будет сконструировано для перемещения&lt;/em&gt; . Отлично. Таким же образом C ++ 03 позволяет нам повторно использовать нашу функцию конструктора копирования, принимая аргумент по значению, C ++ 11 &lt;em&gt;автоматически&lt;/em&gt; выбирает конструктор перемещения, когда это уместно. (И, конечно, как упоминалось в ранее связанной статье, копирование / перемещение значения может быть просто полностью исключено.)</target>
+        </trans-unit>
+        <trans-unit id="dcbeb7c58de6f8ef2e5b152493010bd5fba66a2c" translate="yes" xml:space="preserve">
+          <source>Observe that upon entering the function that all the new data is already allocated, copied, and ready to be used. This is what gives us a strong exception guarantee for free: we won't even enter the function if construction of the copy fails, and it's therefore not possible to alter the state of &lt;code&gt;*this&lt;/code&gt;. (What we did manually before for a strong exception guarantee, the compiler is doing for us now; how kind.)</source>
+          <target state="translated">Обратите внимание, что после входа в функцию все новые данные уже распределены, скопированы и готовы к использованию. Это то, что дает нам полную гарантию исключения бесплатно: мы даже не войдем в функцию, если построение копии не удастся, и поэтому невозможно изменить состояние &lt;code&gt;*this&lt;/code&gt; . (То, что мы делали раньше вручную для гарантии исключений, компилятор делает для нас сейчас; как мило.)</target>
+        </trans-unit>
+        <trans-unit id="e6868ab3511bcd3b27c0685657d0cf94d4a5c6ed" translate="yes" xml:space="preserve">
+          <source>On self-assignment, the above code delete's &lt;code&gt;x.p_;&lt;/code&gt;, points &lt;code&gt;p_&lt;/code&gt; at a newly allocated heap region, then attempts to read the &lt;em&gt;uninitialised&lt;/em&gt; data therein (Undefined Behaviour), if that doesn't do anything too weird, &lt;code&gt;copy&lt;/code&gt; attempts a self-assignment to every just-destructed 'T'!</source>
+          <target state="translated">При самостоятельном назначении приведенный выше код удаляет &lt;code&gt;x.p_;&lt;/code&gt; , указывает &lt;code&gt;p_&lt;/code&gt; на недавно выделенную область кучи, затем пытается прочитать &lt;em&gt;неинициализированные&lt;/em&gt; данные в ней (неопределенное поведение), если это не делает ничего странного, &lt;code&gt;copy&lt;/code&gt; пытается выполнить самостоятельное назначение каждому только что разрушенному &amp;laquo;T&amp;raquo;!</target>
+        </trans-unit>
+        <trans-unit id="0efc2e6be4c23b9a513d7ce0dcff8ed80e8912e7" translate="yes" xml:space="preserve">
+          <source>Overview</source>
+          <target state="translated">Overview</target>
+        </trans-unit>
+        <trans-unit id="9c234a83c1275c3ee466e4738c02c7633c54a69e" translate="yes" xml:space="preserve">
+          <source>Self-assignment done as a copy-and-swap avoids oft-overlooked edge cases.&amp;Dagger;</source>
+          <target state="translated">Самоназначение, выполняемое как копирование и обмен, позволяет избежать часто пропускаемых крайних случаев. &amp;Dagger;</target>
+        </trans-unit>
+        <trans-unit id="6f659bc43bf7db07f752a5d1512e544f94e1af00" translate="yes" xml:space="preserve">
+          <source>Since &lt;code&gt;swap()&lt;/code&gt; is supposed to never fail, the only part which might fail is the copy-construction. That is performed first, and if it fails, nothing will be changed in the targeted object.</source>
+          <target state="translated">Поскольку предполагается, что &lt;code&gt;swap()&lt;/code&gt; никогда не завершится с ошибкой, единственная часть, которая может дать сбой, - это конструкция копирования. Это выполняется в первую очередь, и в случае неудачи ничего не будет изменено в целевом объекте.</target>
+        </trans-unit>
+        <trans-unit id="26f7740f7272c6a37203cde27ca0ef723ebbbf32" translate="yes" xml:space="preserve">
+          <source>So what we've done is simple: initialize via the default constructor (a C++11 feature), then swap with &lt;code&gt;other&lt;/code&gt;; we know a default constructed instance of our class can safely be assigned and destructed, so we know &lt;code&gt;other&lt;/code&gt; will be able to do the same, after swapping.</source>
+          <target state="translated">Итак, что мы сделали, это просто: инициализировать с помощью конструктора по умолчанию (функция C ++ 11), затем поменять местами с &lt;code&gt;other&lt;/code&gt; ; мы знаем, что созданный по умолчанию экземпляр нашего класса можно безопасно назначать и уничтожать, поэтому мы знаем, что &lt;code&gt;other&lt;/code&gt; смогут сделать то же самое после замены.</target>
+        </trans-unit>
+        <trans-unit id="2b5693bc5962ed6f9799bbcb35014ba8ea8fefd0" translate="yes" xml:space="preserve">
+          <source>That is the only change we need to make to our class, so why does it work? Remember the ever-important decision we made to make the parameter a value and not a reference:</source>
+          <target state="translated">Это единственное изменение,которое нам нужно внести в наш класс,так почему это работает? Вспомните,какое важное решение мы приняли,чтобы сделать параметр значением,а не ссылкой:</target>
+        </trans-unit>
+        <trans-unit id="9ef6aff2994558c1366be20966048a47a804bb07" translate="yes" xml:space="preserve">
+          <source>The &lt;em&gt;copy-and-swap idiom&lt;/em&gt; is the solution, and elegantly assists the assignment operator in achieving two things: avoiding &lt;a href=&quot;http://en.wikipedia.org/wiki/Don%27t_repeat_yourself&quot;&gt;code duplication&lt;/a&gt;, and providing a &lt;a href=&quot;http://en.wikipedia.org/wiki/Exception_guarantees&quot;&gt;strong exception guarantee&lt;/a&gt;.</source>
+          <target state="translated">&lt;em&gt;Идиома копирования и замены&lt;/em&gt; является решением и элегантно помогает оператору присваивания достичь двух целей: избежать &lt;a href=&quot;http://en.wikipedia.org/wiki/Don%27t_repeat_yourself&quot;&gt;дублирования кода&lt;/a&gt; и обеспечить &lt;a href=&quot;http://en.wikipedia.org/wiki/Exception_guarantees&quot;&gt;надежную гарантию исключений&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="42e54c42a60d22bc2d5ac75e35558832e40d8bb3" translate="yes" xml:space="preserve">
+          <source>The code has expanded! Which leads us to the third problem: code duplication. Our assignment operator effectively duplicates all the code we've already written elsewhere, and that's a terrible thing.</source>
+          <target state="translated">Код расширен! Что приводит нас к третьей проблеме:дублированию кода.Наш оператор присваивания эффективно дублирует весь код,который мы уже написали в другом месте,и это ужасно.</target>
+        </trans-unit>
+        <trans-unit id="63d41c6ca1535180248065869d3328499b07b825" translate="yes" xml:space="preserve">
+          <source>The first  is the self-assignment test. This check serves two purposes: it's an easy way to prevent us from running needless code on self-assignment, and it protects us from subtle bugs (such as deleting the array only to try and copy it). But in all other cases it merely serves to slow the program down, and act as noise in the code; self-assignment rarely occurs, so most of the time this check is a waste. It would be better if the operator could work properly without it.</source>
+          <target state="translated">Первый-тест на самоназначение.Эта проверка служит двум целям:это простой способ предотвратить запуск ненужного кода при самоназначении,и она защищает нас от тонких ошибок (таких как удаление массива только для того,чтобы попытаться скопировать его).Но во всех остальных случаях она просто служит для замедления работы программы и действует как шум в коде;самоназначение встречается редко,поэтому в большинстве случаев эта проверка является напрасной.Было бы лучше,если бы оператор корректно работал без него.</target>
+        </trans-unit>
+        <trans-unit id="6f60ff23b795c7da205d246f356a1def07956d8e" translate="yes" xml:space="preserve">
+          <source>The fundamental idea is that:</source>
+          <target state="translated">Фундаментальная идея в том:</target>
+        </trans-unit>
+        <trans-unit id="83588406b98957bd4b1f640c1bf0685f68308d07" translate="yes" xml:space="preserve">
+          <source>The goal</source>
+          <target state="translated">Цель</target>
+        </trans-unit>
+        <trans-unit id="fd746b321830bfc8609d2fd310324c39c1c7bf04" translate="yes" xml:space="preserve">
+          <source>The next version of C++, C++11, makes one very important change to how we manage resources: the Rule of Three is now &lt;strong&gt;The Rule of Four&lt;/strong&gt; (and a half). Why? Because not only do we need to be able to copy-construct our resource, &lt;a href=&quot;https://stackoverflow.com/questions/3106110/can-someone-please-explain-move-semantics-to-me&quot;&gt;we need to move-construct it as well&lt;/a&gt;.</source>
+          <target state="translated">Следующая версия C ++, C ++ 11, вносит одно очень важное изменение в то, как мы управляем ресурсами: Правило Трех теперь является &lt;strong&gt;Правилом Четырех&lt;/strong&gt; (с половиной). Почему? Поскольку нам нужно не только иметь возможность копировать-конструировать наш ресурс, &lt;a href=&quot;https://stackoverflow.com/questions/3106110/can-someone-please-explain-move-semantics-to-me&quot;&gt;мы также должны его перемещать-конструировать&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="150781c474b203c76af89ffc1927280c58bbd0ff" translate="yes" xml:space="preserve">
+          <source>The purpose of both functions &lt;code&gt;fs&lt;/code&gt; and &lt;code&gt;fm&lt;/code&gt; is to give &lt;code&gt;a&lt;/code&gt; the state that &lt;code&gt;b&lt;/code&gt; had initially. However, there is a hidden question: What happens if &lt;code&gt;a.get_allocator() != b.get_allocator()&lt;/code&gt;? The answer is: It depends. Let's write &lt;code&gt;AT = std::allocator_traits&amp;lt;A&amp;gt;&lt;/code&gt;.</source>
+          <target state="translated">Цель обеих функций &lt;code&gt;fs&lt;/code&gt; и &lt;code&gt;fm&lt;/code&gt; состоит в том, чтобы дать состояние, которое &lt;code&gt;b&lt;/code&gt; изначально имело. Однако есть скрытый вопрос: что произойдет, если &lt;code&gt;a.get_allocator() != b.get_allocator()&lt;/code&gt; ? Ответ: это зависит. Давайте напишем &lt;code&gt;AT = std::allocator_traits&amp;lt;A&amp;gt;&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="8e8b0eb32111093ee430fedf7a03880593d06a45" translate="yes" xml:space="preserve">
+          <source>The second is that it only provides a basic exception guarantee. If &lt;code&gt;new int[mSize]&lt;/code&gt; fails, &lt;code&gt;*this&lt;/code&gt; will have been modified. (Namely, the size is wrong and the data is gone!) For a strong exception guarantee, it would need to be something akin to:</source>
+          <target state="translated">Второе - это то, что он предоставляет только базовую гарантию исключения. Если &lt;code&gt;new int[mSize]&lt;/code&gt; завершится неудачно, &lt;code&gt;*this&lt;/code&gt; будет изменено. (А именно, размер неправильный, а данные пропали!) Для гарантии строгих исключений это должно быть чем-то вроде:</target>
+        </trans-unit>
+        <trans-unit id="2c6fcc3a8c5ecf729853f999132fcff2680df339" translate="yes" xml:space="preserve">
+          <source>The upshot is that swapping has become a non-trivial operation in C++11 as soon as your container starts supporting stateful allocators. That's a somewhat &quot;advanced use case&quot;, but it's not entirely unlikely, since move optimizations usually only become interesting once your class manages a resource, and memory is one of the most popular resources.</source>
+          <target state="translated">Вывод заключается в том,что замена стала нетривиальной операцией на C++11,как только ваш контейнер начинает поддерживать стабильные аллокаторы.Это несколько &quot;продвинутый вариант использования&quot;,но это не совсем маловероятно,так как оптимизация перемещения обычно становится интересной только после того,как ваш класс управляет ресурсом,а память является одним из самых популярных ресурсов.</target>
+        </trans-unit>
+        <trans-unit id="388be71290411a46bfa3cef8cea4ebaa96d6633d" translate="yes" xml:space="preserve">
+          <source>There are some good answers already.  I'll focus &lt;em&gt;mainly&lt;/em&gt; on what I think they lack - an explanation of the &quot;cons&quot; with the copy-and-swap idiom....</source>
+          <target state="translated">Уже есть несколько хороших ответов. Я сосредоточусь в &lt;em&gt;основном&lt;/em&gt; на том, что, как мне кажется, им не хватает - объяснение &quot;минусов&quot; с идиомой копирования и обмена ....</target>
+        </trans-unit>
+        <trans-unit id="cbe63039ab446d86b4ac167fd16b3d3dadd41365" translate="yes" xml:space="preserve">
+          <source>This answer is more like an addition and a slight modification to the answers above.</source>
+          <target state="translated">Этот ответ больше похож на дополнение и небольшое изменение ответов,приведенных выше.</target>
+        </trans-unit>
+        <trans-unit id="c1083ee173869cd02574e5832d5f7c99145ada0e" translate="yes" xml:space="preserve">
+          <source>This class almost manages the array successfully, but it needs &lt;code&gt;operator=&lt;/code&gt; to work correctly.</source>
+          <target state="translated">Этот класс почти успешно управляет массивом, но для его корректной работы требуется &lt;code&gt;operator=&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="29f80c1b07d0671e4a256b348ff66c1e913f3c22" translate="yes" xml:space="preserve">
+          <source>This has something to do with a &lt;code&gt;friend&lt;/code&gt; function being called and &lt;code&gt;this&lt;/code&gt; object being passed as a parameter.</source>
+          <target state="translated">Это как-то связано с вызываемой функцией- &lt;code&gt;friend&lt;/code&gt; и передачей &lt;code&gt;this&lt;/code&gt; объекта в качестве параметра.</target>
+        </trans-unit>
+        <trans-unit id="5aa765f67fd688a1ba7150d96a03c571fde7ba09" translate="yes" xml:space="preserve">
+          <source>This time, you can just call &lt;code&gt;swap&lt;/code&gt; and pass in &lt;code&gt;other&lt;/code&gt;, thus making the compiler happy:</source>
+          <target state="translated">На этот раз вы можете просто вызвать &lt;code&gt;swap&lt;/code&gt; и перейти в &lt;code&gt;other&lt;/code&gt; , что сделает компилятор счастливым:</target>
+        </trans-unit>
+        <trans-unit id="633375af64a272c488ff9c504c74dbb8f98b646a" translate="yes" xml:space="preserve">
+          <source>We first notice an important choice: the parameter argument is taken &lt;em&gt;by-value&lt;/em&gt;. While one could just as easily do the following (and indeed, many naive implementations of the idiom do):</source>
+          <target state="translated">Сначала отметим важный выбор: аргумент параметра принимается &lt;em&gt;по значению&lt;/em&gt; . Хотя с таким же успехом можно сделать следующее (и действительно, многие наивные реализации этой идиомы делают):</target>
+        </trans-unit>
+        <trans-unit id="63217325aa31565f08b4e39b47c1e5fc48d70a30" translate="yes" xml:space="preserve">
+          <source>We lose an &lt;a href=&quot;https://web.archive.org/web/20140113221447/http://cpp-next.com/archive/2009/08/want-speed-pass-by-value/&quot;&gt;important optimization opportunity&lt;/a&gt;. Not only that, but this choice is critical in C++11, which is discussed later. (On a general note, a remarkably useful guideline is as follows: if you're going to make a copy of something in a function, let the compiler do it in the parameter list.&amp;Dagger;)</source>
+          <target state="translated">Мы теряем &lt;a href=&quot;https://web.archive.org/web/20140113221447/http://cpp-next.com/archive/2009/08/want-speed-pass-by-value/&quot;&gt;важную возможность оптимизации&lt;/a&gt; . Не только это, но этот выбор имеет решающее значение в C ++ 11, который обсуждается позже. (В общем, замечательно полезный совет: если вы собираетесь сделать копию чего-либо в функции, пусть компилятор сделает это в списке параметров. &amp;Dagger;)</target>
+        </trans-unit>
+        <trans-unit id="9edc40ca06ad2a68fa87b0a4a4acc15e97ae9f73" translate="yes" xml:space="preserve">
+          <source>We need to add swap functionality to our class, and we do that as follows&amp;dagger;:</source>
+          <target state="translated">Нам нужно добавить функциональность подкачки в наш класс, и мы делаем это следующим образом &amp;dagger;:</target>
+        </trans-unit>
+        <trans-unit id="c2edab5c5da4b7e0cb43225936cb000f569c92ee" translate="yes" xml:space="preserve">
+          <source>What about C++11?</source>
+          <target state="translated">А как же С++11?</target>
+        </trans-unit>
+        <trans-unit id="787ffecc94ae151e431f132b817ebb5ac7bd5b64" translate="yes" xml:space="preserve">
+          <source>What are your favorite C++ Coding Style idioms:  Copy-swap</source>
+          <target state="translated">Какие твои любимые идиомы C++Coding Style:Copy-swap</target>
+        </trans-unit>
+        <trans-unit id="6dc672ff6eb837cd0bbe834afc644c2d587d212d" translate="yes" xml:space="preserve">
+          <source>What is copy elision and how it optimizes copy-and-swap idiom</source>
+          <target state="translated">Что такое копирование elision и как оно оптимизирует идиому копирования и замены.</target>
+        </trans-unit>
+        <trans-unit id="3f800a7430fd4c0527c40982197ac647fe2c18a0" translate="yes" xml:space="preserve">
+          <source>What is the copy-and-swap idiom</source>
+          <target state="translated">Что за идиома про копирование и замену.</target>
+        </trans-unit>
+        <trans-unit id="a8f471015362e9a261fa62137612c1258db68efb" translate="yes" xml:space="preserve">
+          <source>What is the copy-and-swap idiom?</source>
+          <target state="translated">Что за идиома про копирование и обмен?</target>
+        </trans-unit>
+        <trans-unit id="ede6b7eaf3770f7b7b840f5f578c287f11e2cccd" translate="yes" xml:space="preserve">
+          <source>What is this idiom and when should it be used? Which problems does it solve? Does the idiom change when C++11 is used?</source>
+          <target state="translated">Что это за идиома и когда ее следует использовать? Какие проблемы она решает? Меняется ли эта идиома при использовании C++11?</target>
+        </trans-unit>
+        <trans-unit id="aa7922596966a3f09ff20d40921994a57ffd3b96" translate="yes" xml:space="preserve">
+          <source>What's going on here? Recall the goal of move-construction: to take the resources from another instance of the class, leaving it in a state guaranteed to be assignable and destructible.</source>
+          <target state="translated">Что здесь происходит? Вспомните цель move-construction:взять ресурсы из другого экземпляра класса,оставив его в состоянии гарантированно присваиваемого и разрушаемого.</target>
+        </trans-unit>
+        <trans-unit id="10170890d98f9c422d746d6a228ebc44fc0a6ee0" translate="yes" xml:space="preserve">
+          <source>When any performance penalty or momentarily higher resource usage created by having an extra temporary object during the assignment is not important to your application. ⁂</source>
+          <target state="translated">Когда любой штраф за производительность или кратковременное увеличение использования ресурсов,созданное наличием дополнительного временного объекта во время выполнения задания,не имеет значения для вашего приложения.⁂</target>
+        </trans-unit>
+        <trans-unit id="60f80e0ee25da3bc05679b2ff44dd7fcf6b5baef" translate="yes" xml:space="preserve">
+          <source>When should it be used?  (Which problems does it solve &lt;strong&gt;[/create]&lt;/strong&gt;?)</source>
+          <target state="translated">Когда его следует использовать? (Какие проблемы это решает &lt;strong&gt;[/ create]&lt;/strong&gt; ?)</target>
+        </trans-unit>
+        <trans-unit id="2634e1acfb3bf9e69b4daa989e044e2431bc5a1b" translate="yes" xml:space="preserve">
+          <source>When you want a clean, easy to understand, robust way to define the assignment operator in terms of (simpler) copy constructor, &lt;code&gt;swap&lt;/code&gt; and destructor functions.</source>
+          <target state="translated">Если вам нужен простой, понятный и надежный способ определения оператора присваивания в терминах (более простых) функций конструктора копирования, &lt;code&gt;swap&lt;/code&gt; и деструктора.</target>
+        </trans-unit>
+        <trans-unit id="29733bade5cab23e00e5d05e6412f95b30d5413f" translate="yes" xml:space="preserve">
+          <source>When you want the assigned-to objected unaffected by an assignment that throws an exception, assuming you have or can write a &lt;code&gt;swap&lt;/code&gt; with strong exception guarantee, and ideally one that can't fail/&lt;code&gt;throw&lt;/code&gt;..&amp;dagger;</source>
+          <target state="translated">Если вы хотите, чтобы возражение, назначенное для, не было затронуто назначением, которое выдает исключение, при условии, что у вас есть или вы можете написать &lt;code&gt;swap&lt;/code&gt; с надежной гарантией исключения, и в идеале тот, который не может завершиться неудачей / &lt;code&gt;throw&lt;/code&gt; .. &amp;dagger;</target>
+        </trans-unit>
+        <trans-unit id="62b4affc932ffa8cde8f9a8bc7cc83fb3e7fe0f0" translate="yes" xml:space="preserve">
+          <source>Why do we need the copy-and-swap idiom?</source>
+          <target state="translated">Зачем нам нужна идиома про копирование и замену?</target>
+        </trans-unit>
+        <trans-unit id="d1974d73fa36fa9b1fe2996664091dd361d57f96" translate="yes" xml:space="preserve">
+          <source>Why does it work?</source>
+          <target state="translated">Почему это работает?</target>
+        </trans-unit>
+        <trans-unit id="9c9b118f04e39a7318e3a5798cdcb9006d842f63" translate="yes" xml:space="preserve">
+          <source>Why does that work?</source>
+          <target state="translated">Почему это работает?</target>
+        </trans-unit>
+        <trans-unit id="b2665c67e419327eea773cca5cbb1ebf91e5f8c3" translate="yes" xml:space="preserve">
+          <source>Without further ado, our assignment operator is:</source>
+          <target state="translated">Без лишних церемоний,наш оператор по заданиям:</target>
+        </trans-unit>
+        <trans-unit id="e464362a2570aee7cf3bb10e5f052520cacc687e" translate="yes" xml:space="preserve">
+          <source>You already have access to &lt;code&gt;this&lt;/code&gt; object, so passing it in as a parameter is technically redundant.</source>
+          <target state="translated">У вас уже есть доступ к &lt;code&gt;this&lt;/code&gt; объекту, поэтому передача его в качестве параметра технически избыточна.</target>
+        </trans-unit>
+        <trans-unit id="a945bce89ff4bd35449cef3d57b6ca6c27388c0e" translate="yes" xml:space="preserve">
+          <source>swapping the state of the local copy &lt;code&gt;rhs&lt;/code&gt; and &lt;code&gt;*this&lt;/code&gt; is &lt;em&gt;usually&lt;/em&gt; relatively easy to do without potential failure/exceptions, given the local copy doesn't need any particular state afterwards (just needs state fit for the destructor to run, much as for an object being &lt;em&gt;moved&lt;/em&gt; from in &amp;gt;= C++11)</source>
+          <target state="translated">поменять местами состояние локальной копии &lt;code&gt;rhs&lt;/code&gt; и &lt;code&gt;*this&lt;/code&gt; &lt;em&gt;обычно&lt;/em&gt; относительно легко сделать без потенциальных сбоев / исключений, поскольку локальная копия впоследствии не нуждается в каком-либо конкретном состоянии (просто требуется состояние, подходящее для запуска деструктора, как для объект &lt;em&gt;перемещается&lt;/em&gt; из&amp;gt; = C ++ 11)</target>
+        </trans-unit>
+        <trans-unit id="59f71233e3c4ef85ebf3d7a582670676fcefbffa" translate="yes" xml:space="preserve">
+          <source>that acquisition can be attempted &lt;em&gt;before&lt;/em&gt; modifying the current state of the object (i.e. &lt;code&gt;*this&lt;/code&gt;) if a copy of the new value is made, which is why &lt;code&gt;rhs&lt;/code&gt; is accepted &lt;em&gt;by value&lt;/em&gt; (i.e. copied) rather than &lt;em&gt;by reference&lt;/em&gt;</source>
+          <target state="translated">это обнаружение может быть предпринято &lt;em&gt;до&lt;/em&gt; изменения текущего состояния объекта (т.е. &lt;code&gt;*this&lt;/code&gt; ), если сделана копия нового значения, поэтому &lt;code&gt;rhs&lt;/code&gt; принимается &lt;em&gt;по значению&lt;/em&gt; (т.е. копируется), а не &lt;em&gt;по ссылке&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="325605391ecda9b9100aa948f683600e372575dc" translate="yes" xml:space="preserve">
+          <source>the most error-prone part of assigning to an object is ensuring any resources the new state needs are acquired (e.g. memory, descriptors)</source>
+          <target state="translated">наиболее подверженной ошибкам частью присвоения объекта является обеспечение любых ресурсов,необходимых для нового состояния (например,память,дескрипторы)</target>
+        </trans-unit>
+        <trans-unit id="33fd9e929e77e0dfd3e85632f2f3ada808c62662" translate="yes" xml:space="preserve">
+          <source>⁂ The copy-and-swap idiom can introduce inefficiencies or limitations due to the use of an extra temporary (when the operator's parameter is copy-constructed):</source>
+          <target state="translated">⁂ Идиома копирования и замены может вводить недостатки или ограничения,связанные с использованием дополнительного временного (когда параметр оператора скопирован):</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

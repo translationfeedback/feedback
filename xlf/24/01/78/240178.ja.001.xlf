@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/240178">
+    <body>
+      <group id="240178">
+        <trans-unit id="d432b26240dc597d0da2724076628c312f15638d" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;myList = [[1]*4] * 3&lt;/code&gt; creates one list object &lt;code&gt;[1,1,1,1]&lt;/code&gt; in memory and copies its reference 3 times over. This is equivalent to &lt;code&gt;obj = [1,1,1,1]; myList = [obj]*3&lt;/code&gt;. Any modification to &lt;code&gt;obj&lt;/code&gt; will be reflected at three places, wherever &lt;code&gt;obj&lt;/code&gt; is referenced in the list.
+The right statement would be:</source>
+          <target state="translated">&lt;code&gt;myList = [[1]*4] * 3&lt;/code&gt; は、メモリ内に1つのリストオブジェクト &lt;code&gt;[1,1,1,1]&lt;/code&gt; を作成し、その参照を3回コピーします。 これは、 &lt;code&gt;obj = [1,1,1,1]; myList = [obj]*3&lt;/code&gt; と同等です。 myList = [obj] * 3 。 &lt;code&gt;obj&lt;/code&gt; への変更は、 objがリストで参照されている場所の3つの場所で反映されます。 正しい説明は次のとおりです。</target>
+        </trans-unit>
+        <trans-unit id="14a999c54d37488adf20c37f2a9243a619c30402" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Important thing to note here&lt;/strong&gt; is that &lt;code&gt;*&lt;/code&gt; operator is &lt;em&gt;mostly&lt;/em&gt; used to create a &lt;strong&gt;list of literals&lt;/strong&gt;. Although &lt;code&gt;1&lt;/code&gt; is immutable, &lt;code&gt;obj =[1]*4&lt;/code&gt; will still create a list of &lt;code&gt;1&lt;/code&gt; repeated 4 times over to form &lt;code&gt;[1,1,1,1]&lt;/code&gt;. But if any reference to immutable object is made, the object is overwritten with a new one, resulting in expected behaviour. This means if we do &lt;code&gt;obj[2]=42&lt;/code&gt;, then &lt;code&gt;obj&lt;/code&gt; will become &lt;code&gt;[1,1,42,1]&lt;/code&gt;&lt;strong&gt;not&lt;/strong&gt;&lt;strike&gt;&lt;code&gt;[42,42,42,42]&lt;/code&gt;&lt;/strike&gt; as some may assume. This can also be verified:</source>
+          <target state="translated">&lt;strong&gt;ここ&lt;/strong&gt;で&lt;strong&gt;注意すべき重要な点&lt;/strong&gt;は、 &lt;code&gt;*&lt;/code&gt; 演算子は&lt;em&gt;ほとんど&lt;/em&gt; &lt;strong&gt;リテラルのリスト&lt;/strong&gt;を作成するために使用されるということです。 &lt;code&gt;1&lt;/code&gt; は不変ですが、 &lt;code&gt;obj =[1]*4&lt;/code&gt; は、 &lt;code&gt;[1,1,1,1]&lt;/code&gt; を形成するために4回繰り返される &lt;code&gt;1&lt;/code&gt; のリストを作成します。 ただし、不変オブジェクトへの参照が行われると、オブジェクトは新しいオブジェクトで上書きされ、予期された動作になります。 つまり、 &lt;code&gt;obj[2]=42&lt;/code&gt; を実行すると、 &lt;code&gt;obj&lt;/code&gt; は、 &lt;code&gt;[1,1,42,1]&lt;/code&gt; &lt;strong&gt;ではなく&lt;/strong&gt; &lt;strike&gt; &lt;code&gt;[42,42,42,42]&lt;/code&gt; &lt;/strike&gt;ます。 これも確認できます。</target>
+        </trans-unit>
+        <trans-unit id="b69bb96f6a1c611831f677783957c3699bd12e3b" translate="yes" xml:space="preserve">
+          <source>@spelchekr from &lt;a href=&quot;https://stackoverflow.com/questions/6688223/python-list-multiplication-3-makes-3-lists-which-mirror-each-other-when&quot;&gt;Python list multiplication: [[...]]*3 makes 3 lists which mirror each other when modified&lt;/a&gt; and I had the same question about
+&quot;Why does only the outer *3 create more references while the inner one doesn't? Why isn't it all 1s?&quot;</source>
+          <target state="translated">@spelchekr from &lt;a href=&quot;https://stackoverflow.com/questions/6688223/python-list-multiplication-3-makes-3-lists-which-mirror-each-other-when&quot;&gt;Pythonリストの乗算：[[...]] * 3は、変更時に互いにミラーリングする3つのリストを&lt;/a&gt;作成し、「なぜ外側の* 3だけがより多くの参照を作成し、内側のリストは作成しないのか」について同じ質問をしました？なぜすべて1でないのですか？」</target>
+        </trans-unit>
+        <trans-unit id="efc3258b21333c6582827d8fcfb8c37328e90aaf" translate="yes" xml:space="preserve">
+          <source>Actually, this is exactly what you would expect. Let's decompose what is happening here:</source>
+          <target state="translated">実際には、これはあなたが期待する通りのことです。ここで起きていることを分解してみましょう。</target>
+        </trans-unit>
+        <trans-unit id="3699e26734311ea9a3f2364fb20cdee6723f0028" translate="yes" xml:space="preserve">
+          <source>Alongside the accepted answer that explained the problem correctly, within your list comprehension, if You are using python-2.x use &lt;code&gt;xrange()&lt;/code&gt; that returns a generator which is more efficient (&lt;code&gt;range()&lt;/code&gt; in python 3 does the same job) &lt;code&gt;_&lt;/code&gt; instead of the throwaway variable &lt;code&gt;n&lt;/code&gt;:</source>
+          <target state="translated">python-2.xを使用している場合は、問題を正しく説明した受け入れられた回答に加えて、python-2.xを使用している場合、より効率的なジェネレータを返す &lt;code&gt;xrange()&lt;/code&gt; を使用します &lt;code&gt;range()&lt;/code&gt; python 3のrange（）は同じ仕事をします） &lt;code&gt;_&lt;/code&gt; 代わりに使い捨て変数 &lt;code&gt;n&lt;/code&gt; の</target>
+        </trans-unit>
+        <trans-unit id="7ecfbebcb9274ef38b75f783b12eb3913bcecc0d" translate="yes" xml:space="preserve">
+          <source>Also, as a much more &lt;em&gt;Pythonic&lt;/em&gt; way you can use &lt;a href=&quot;https://docs.python.org/2/library/itertools.html#itertools.repeat&quot;&gt;&lt;code&gt;itertools.repeat()&lt;/code&gt;&lt;/a&gt; to create an iterator object of repeated elements :</source>
+          <target state="translated">また、はるかに&lt;em&gt;Python&lt;/em&gt;的な方法として、 &lt;a href=&quot;https://docs.python.org/2/library/itertools.html#itertools.repeat&quot;&gt; &lt;code&gt;itertools.repeat()&lt;/code&gt; &lt;/a&gt;を使用して、繰り返し要素の反復子オブジェクトを作成できます。</target>
+        </trans-unit>
+        <trans-unit id="a1e23f23b1baaba4774c48d79135c2e2b78615e6" translate="yes" xml:space="preserve">
+          <source>And then you have:</source>
+          <target state="translated">そして、あなたは持っています。</target>
+        </trans-unit>
+        <trans-unit id="8fe026e0d205516b53b9a46caac1a591e512f5d5" translate="yes" xml:space="preserve">
+          <source>And you will get the following output:</source>
+          <target state="translated">そして、以下のような出力が出てきます。</target>
+        </trans-unit>
+        <trans-unit id="a7c33febf186e6bebc71cac17604935dbb813fe1" translate="yes" xml:space="preserve">
+          <source>As &lt;code&gt;lst[0]&lt;/code&gt; is nothing but &lt;code&gt;lst1&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;lst1&lt;/code&gt; &lt;code&gt;lst[0]&lt;/code&gt; はlst1に他ならないので 。</target>
+        </trans-unit>
+        <trans-unit id="d690971317990129be90e830d2e9d662cd061fb9" translate="yes" xml:space="preserve">
+          <source>By using the inbuilt list function you can do like this</source>
+          <target state="translated">内蔵のリスト関数を使用すると、次のようなことができます。</target>
+        </trans-unit>
+        <trans-unit id="b2dabe69c7320d96c0a364c187cf2b4fb9ffc815" translate="yes" xml:space="preserve">
+          <source>Creates a list that references the internal &lt;code&gt;[1,1,1,1]&lt;/code&gt; 3 times - not three copies of the inner list, so any time you modify the list (in any position), you'll see the change three times.</source>
+          <target state="translated">内部 &lt;code&gt;[1,1,1,1]&lt;/code&gt; を 3回参照するリストを作成します-内部リストの3つのコピーではないため、リストを（任意の位置で）変更するたびに、変更が3回表示されます。</target>
+        </trans-unit>
+        <trans-unit id="c03e56480cc91c295c1944db553322a843c06e5f" translate="yes" xml:space="preserve">
+          <source>Here is my explanation after trying the code above:</source>
+          <target state="translated">上記のコードを試した後の私の説明です。</target>
+        </trans-unit>
+        <trans-unit id="c3af64db63c607ccd5d7c0d0436dc3fe4e1836f6" translate="yes" xml:space="preserve">
+          <source>I guess everybody explain what is happening.
+I suggest one way to solve it:</source>
+          <target state="translated">何が起こっているのか説明してくれ 私はそれを解決する一つの方法を提案します</target>
+        </trans-unit>
+        <trans-unit id="8534fb9ce25dc7e289a38639c3ed101e6aca978f" translate="yes" xml:space="preserve">
+          <source>I needed to create a list of lists in Python, so I typed the following:</source>
+          <target state="translated">Pythonでリストのリストを作る必要があったので、以下のように入力してみました。</target>
+        </trans-unit>
+        <trans-unit id="29f12a5fded06804ff7ad7371817747aa5824961" translate="yes" xml:space="preserve">
+          <source>If you want to create clone copies, try Operation 3:</source>
+          <target state="translated">クローンコピーを作成したい場合は、操作3を試してみてください。</target>
+        </trans-unit>
+        <trans-unit id="bf5b32ba1138a48895509ec559db1478c1ce55fb" translate="yes" xml:space="preserve">
+          <source>In contrast, a list comprehension reevaluates the element expression on every iteration. &lt;code&gt;[[1] * 4 for n in range(3)]&lt;/code&gt; reevaluates &lt;code&gt;[1] * 4&lt;/code&gt; every time for the same reason &lt;code&gt;[x**2 for x in range(3)]&lt;/code&gt; reevaluates &lt;code&gt;x**2&lt;/code&gt; every time. Every evaluation of &lt;code&gt;[1] * 4&lt;/code&gt; generates a new list, so the list comprehension does what you wanted.</source>
+          <target state="translated">対照的に、リスト内包表記は、反復ごとに要素式を再評価します。 &lt;code&gt;[[1] * 4 for n in range(3)]&lt;/code&gt; は、同じ理由で &lt;code&gt;[x**2 for x in range(3)]&lt;/code&gt; &lt;code&gt;[1] * 4&lt;/code&gt; 毎回再評価します[x ** 2 for x in range（3）]は、 &lt;code&gt;x**2&lt;/code&gt; 毎回再評価します。 &lt;code&gt;[1] * 4&lt;/code&gt; 評価するたびに新しいリストが生成されるので、リスト内包表記は必要なことを行います。</target>
+        </trans-unit>
+        <trans-unit id="e1025fd6605e46e51c5d31e907837bdec7c46791" translate="yes" xml:space="preserve">
+          <source>In simple words this is happening because in python everything works &lt;strong&gt;by reference&lt;/strong&gt;, so when you create a list of list that way you basically end up with such problems.</source>
+          <target state="translated">簡単に言えば、これはpythonではすべて&lt;strong&gt;が参照によって&lt;/strong&gt;機能&lt;strong&gt;する&lt;/strong&gt;ために起こります。そのため、リストのリストを作成すると、基本的にそのような問題が発生します。</target>
+        </trans-unit>
+        <trans-unit id="2ec51667de229ac720957f051485b8993667e491" translate="yes" xml:space="preserve">
+          <source>In this &lt;code&gt;b&lt;/code&gt; is a list that contains one item that is a reference to list &lt;code&gt;a&lt;/code&gt;. The list &lt;code&gt;a&lt;/code&gt; is mutable.</source>
+          <target state="translated">この &lt;code&gt;b&lt;/code&gt; には、リストaへの参照である1つの項目を含むリストが &lt;code&gt;a&lt;/code&gt; ます。 リスト &lt;code&gt;a&lt;/code&gt; は変更可能です。</target>
+        </trans-unit>
+        <trans-unit id="9e15ff8f6022c12da30a2551fca354dddd0ec2ad" translate="yes" xml:space="preserve">
+          <source>In this case, the expression is re-evaluated for each n, leading to a different list.</source>
+          <target state="translated">この場合、式はn個ごとに再評価され、異なるリストになります。</target>
+        </trans-unit>
+        <trans-unit id="c2cfaffaf44637181730ee74f7758a5df8e6c01f" translate="yes" xml:space="preserve">
+          <source>Incidentally, &lt;code&gt;[1] * 4&lt;/code&gt; also doesn't copy the elements of &lt;code&gt;[1]&lt;/code&gt;, but that doesn't matter, since integers are immutable. You can't do something like &lt;code&gt;1.value = 2&lt;/code&gt; and turn a 1 into a 2.</source>
+          <target state="translated">ちなみに、 &lt;code&gt;[1] * 4&lt;/code&gt; も[1]の要素をコピーしませんが、整数は不変であるため、問題ではありません。 &lt;code&gt;1.value = 2&lt;/code&gt; ようなことをして、1を2に変えることはできません。</target>
+        </trans-unit>
+        <trans-unit id="bb931edbb5ba27fe3d1a4cc5f512cecd66291618" translate="yes" xml:space="preserve">
+          <source>It's the same as this example:</source>
+          <target state="translated">この例と同じです。</target>
+        </trans-unit>
+        <trans-unit id="7abfe8c9be6efb6e7f7f5c3db09b78ad3c1f7e81" translate="yes" xml:space="preserve">
+          <source>Let us rewrite your code in the following way:</source>
+          <target state="translated">以下のようにコードを書き換えてみましょう。</target>
+        </trans-unit>
+        <trans-unit id="ef5dbe19e30b0f101fe9a74dc3be697dcc1e5457" translate="yes" xml:space="preserve">
+          <source>List of lists changes reflected across sublists unexpectedly</source>
+          <target state="translated">リストの変更がサブリスト間で予期せず反映される</target>
+        </trans-unit>
+        <trans-unit id="604284095b019eb3b156a44eb2b4f4d0b59e8bcf" translate="yes" xml:space="preserve">
+          <source>Live Python Tutor Visualize</source>
+          <target state="translated">ライブPythonチューターVisualize</target>
+        </trans-unit>
+        <trans-unit id="0c1f8c70a502dfbbd9f21e1e3a035cc60e84d4c6" translate="yes" xml:space="preserve">
+          <source>Noticed why doesn't modifying the first element of the first list didn't modify the second element of each list? That's because &lt;code&gt;[0] * 2&lt;/code&gt; really is a list of two numbers, and a reference to 0 cannot be modified.</source>
+          <target state="translated">最初のリストの最初の要素を変更しなかったのに、各リストの2番目の要素が変更されなかったのはなぜですか。 &lt;code&gt;[0] * 2&lt;/code&gt; 実際には2つの数値のリストであり、0への参照は変更できないためです。</target>
+        </trans-unit>
+        <trans-unit id="59988942bd554964f61c4101d7b04dcdc5895919" translate="yes" xml:space="preserve">
+          <source>Now my list looks like this:</source>
+          <target state="translated">今、私のリストはこのようになっています。</target>
+        </trans-unit>
+        <trans-unit id="87109e3123a787b7086b1e0344a4853202f538af" translate="yes" xml:space="preserve">
+          <source>Operation 1:</source>
+          <target state="translated">操作1.</target>
+        </trans-unit>
+        <trans-unit id="6f9c1cd7e0d4ceee1c78fa45e1efc82fd65361e9" translate="yes" xml:space="preserve">
+          <source>Operation 2:</source>
+          <target state="translated">操作2.</target>
+        </trans-unit>
+        <trans-unit id="52db409e06d6cc67e16fef7ffb2ecb4c6ae58f7c" translate="yes" xml:space="preserve">
+          <source>P.S. Using numpy, if you only want to create an array of ones or zeroes you can use &lt;code&gt;np.ones&lt;/code&gt; and &lt;code&gt;np.zeros&lt;/code&gt; and/or for other number use &lt;code&gt;np.repeat()&lt;/code&gt;:</source>
+          <target state="translated">PS numpyを使用して、1または0の配列のみを作成する場合は、 &lt;code&gt;np.ones&lt;/code&gt; と &lt;code&gt;np.zeros&lt;/code&gt; を使用できます。また、他の数値には &lt;code&gt;np.repeat()&lt;/code&gt; を使用します。</target>
+        </trans-unit>
+        <trans-unit id="b9fd941c35c7432025bdadebdb3df840dbb7a94a" translate="yes" xml:space="preserve">
+          <source>Python FAQ also contains explanation of this behavior: &lt;a href=&quot;https://docs.python.org/3/faq/programming.html#faq-multidimensional-list&quot;&gt;How do I create a multidimensional list?&lt;/a&gt;</source>
+          <target state="translated">Python FAQにもこの動作の説明が含まれています： &lt;a href=&quot;https://docs.python.org/3/faq/programming.html#faq-multidimensional-list&quot;&gt;多次元リストを作成するにはどうすればよいですか？&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="1e076f140f79a2376eb9183536edfc7846b67a3b" translate="yes" xml:space="preserve">
+          <source>Python containers contain references to other objects. See this example:</source>
+          <target state="translated">Python のコンテナには、他のオブジェクトへの参照が含まれています。この例を参照してください。</target>
+        </trans-unit>
+        <trans-unit id="46b6f603ed59d8fb388ea56d4b8095f193990f60" translate="yes" xml:space="preserve">
+          <source>Return the &amp;ldquo;identity&amp;rdquo; of an object</source>
+          <target state="translated">オブジェクトの「アイデンティティ」を返す</target>
+        </trans-unit>
+        <trans-unit id="7a0c42ad5524edf40be626c42536a2d1a4effe10" translate="yes" xml:space="preserve">
+          <source>So now let us go step-by-step. You have &lt;code&gt;x&lt;/code&gt; which is &lt;code&gt;1&lt;/code&gt;, and a single element list &lt;code&gt;y&lt;/code&gt; containing &lt;code&gt;x&lt;/code&gt;. Your first step is &lt;code&gt;y * 4&lt;/code&gt; which will get you a new list &lt;code&gt;z&lt;/code&gt;, which is basically &lt;code&gt;[x, x, x, x]&lt;/code&gt;, i.e. it creates a new list which will have 4 elements, which are references to the initial &lt;code&gt;x&lt;/code&gt; object. The net step is pretty similar. You basically do &lt;code&gt;z * 3&lt;/code&gt;, which is &lt;code&gt;[[x, x, x, x]] * 3&lt;/code&gt; and returns &lt;code&gt;[[x, x, x, x], [x, x, x, x], [x, x, x, x]]&lt;/code&gt;, for the same reason as for the first step.</source>
+          <target state="translated">それでは、一歩ずつ進めていきましょう。 &lt;code&gt;1&lt;/code&gt; である &lt;code&gt;x&lt;/code&gt; と、 &lt;code&gt;x&lt;/code&gt; を含む単一の要素リスト &lt;code&gt;y&lt;/code&gt; があります。 最初のステップは &lt;code&gt;y * 4&lt;/code&gt; で、新しいリスト &lt;code&gt;z&lt;/code&gt; を取得します。これは基本的に &lt;code&gt;[x, x, x, x]&lt;/code&gt; 。つまり、最初の &lt;code&gt;x&lt;/code&gt; オブジェクトへの参照である4つの要素を持つ新しいリストを作成します。 正味のステップはかなり似ています。 基本的に &lt;code&gt;z * 3&lt;/code&gt; 行います。これは &lt;code&gt;[[x, x, x, x]] * 3&lt;/code&gt; あり、 &lt;code&gt;[[x, x, x, x], [x, x, x, x], [x, x, x, x]]&lt;/code&gt; 、最初のステップと同じ理由で。</target>
+        </trans-unit>
+        <trans-unit id="f93d5a3d809830ff27a1468fca3560e606a6e904" translate="yes" xml:space="preserve">
+          <source>The inner &lt;code&gt;*3&lt;/code&gt; also creates references, but it's references are immutable, something like &lt;code&gt;[&amp;amp;0, &amp;amp;0, &amp;amp;0]&lt;/code&gt;, then when to change &lt;code&gt;li[0]&lt;/code&gt;, you can't change any underlying reference of  const int &lt;code&gt;0&lt;/code&gt;, so you can just change the reference address into the new one &lt;code&gt;&amp;amp;1&lt;/code&gt;;</source>
+          <target state="translated">内部の &lt;code&gt;*3&lt;/code&gt; も参照を作成しますが、その参照は &lt;code&gt;[&amp;amp;0, &amp;amp;0, &amp;amp;0]&lt;/code&gt; ように不変であり、次に &lt;code&gt;li[0]&lt;/code&gt; 変更する場合、const int &lt;code&gt;0&lt;/code&gt; の基礎となる参照を変更できないため、単に参照アドレスを新しいアドレス &lt;code&gt;&amp;amp;1&lt;/code&gt; に変更します。</target>
+        </trans-unit>
+        <trans-unit id="4739576a32845d6b51ea78b0c28e9d1450a698a9" translate="yes" xml:space="preserve">
+          <source>The list looked like this:</source>
+          <target state="translated">リストはこんな感じでした。</target>
+        </trans-unit>
+        <trans-unit id="24b84a33f8e362f14a10eb125e9ff8cb39decbd8" translate="yes" xml:space="preserve">
+          <source>The multiplication of a list by an integer is equivalent to adding the list to itself multiple times (see &lt;a href=&quot;https://docs.python.org/3/library/stdtypes.html#typesseq-common&quot;&gt;common sequence operations&lt;/a&gt;). So continuing with the example:</source>
+          <target state="translated">リストと整数の乗算は、リストをそれ自体に複数回追加することと同じです（ &lt;a href=&quot;https://docs.python.org/3/library/stdtypes.html#typesseq-common&quot;&gt;一般的なシーケンス操作を&lt;/a&gt;参照）。 したがって、例を続けます：</target>
+        </trans-unit>
+        <trans-unit id="c3110260b0c6fa29b5da5eaf7aae20756591136b" translate="yes" xml:space="preserve">
+          <source>The only option &lt;code&gt;*&lt;/code&gt; has is to make new references to the existing sublist instead of trying to make new sublists. Anything else would be inconsistent or require major redesigning of fundamental language design decisions.</source>
+          <target state="translated">&lt;code&gt;*&lt;/code&gt; が持つ唯一のオプションは、新しいサブリストを作成する代わりに、既存のサブリストへの新しい参照を作成することです。 それ以外の場合は一貫性がないか、基本的な言語設計の決定を大幅に再設計する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="e8425035628e9bcd585010aad239f14d3e225dc1" translate="yes" xml:space="preserve">
+          <source>Then I changed one of the innermost values:</source>
+          <target state="translated">そして、一番内側の値の一つを変えてみました。</target>
+        </trans-unit>
+        <trans-unit id="2a9208b32fe3c33e9f8809f33376f79b30f6d8d9" translate="yes" xml:space="preserve">
+          <source>Then having this, run the following code to make everything more clear. What the code does is basically print the &lt;a href=&quot;https://docs.python.org/2/library/functions.html#id&quot;&gt;&lt;code&gt;id&lt;/code&gt;&lt;/a&gt;s of the obtained objects, which</source>
+          <target state="translated">次に、次のコードを実行して、すべてをより明確にします。 コードが行うことは、基本的に取得したオブジェクトの&lt;a href=&quot;https://docs.python.org/2/library/functions.html#id&quot;&gt; &lt;code&gt;id&lt;/code&gt; &lt;/a&gt;を出力することです。</target>
+        </trans-unit>
+        <trans-unit id="0c4a19f41f357e975c7ecf272280bda06a0a7837" translate="yes" xml:space="preserve">
+          <source>This is equivalent to:</source>
+          <target state="translated">に相当します。</target>
+        </trans-unit>
+        <trans-unit id="bf6643d9a3252e5fc74ee1c1c3b5de497efca9cb" translate="yes" xml:space="preserve">
+          <source>This means &lt;code&gt;lst&lt;/code&gt; is a list with 3 elements all pointing to &lt;code&gt;lst1&lt;/code&gt;. This means the two following lines are equivalent:</source>
+          <target state="translated">つまり、 &lt;code&gt;lst1&lt;/code&gt; は、すべてlst1を指す3つの要素を持つリストです 。 つまり、次の2行は同等です。</target>
+        </trans-unit>
+        <trans-unit id="3dd8e29b3ac3c6ef269ae676cafacbe21d228fa4" translate="yes" xml:space="preserve">
+          <source>To fix it, you need to make sure that you create a new list at each position. One way to do it is</source>
+          <target state="translated">これを修正するには、各位置に新しいリストを作成することを確認する必要があります。それを行う一つの方法は</target>
+        </trans-unit>
+        <trans-unit id="41366f2f3f691d6e960037cbbf3029874e06249f" translate="yes" xml:space="preserve">
+          <source>To obtain the desired behavior, you can use list comprehension:</source>
+          <target state="translated">所望の動作を得るためには、リスト理解を利用することができます。</target>
+        </trans-unit>
+        <trans-unit id="f6012ff66876f35bf9ed7d47fbc5d81fd830a93a" translate="yes" xml:space="preserve">
+          <source>To solve your issue you can do either one of them:
+1. Use numpy array &lt;a href=&quot;http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.empty.html&quot;&gt;documentation for numpy.empty&lt;/a&gt;
+2. Append the list as you get to a list.
+3. You can also use dictionary if you want</source>
+          <target state="translated">問題を解決するには、次のいずれかを実行します&lt;a href=&quot;http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.empty.html&quot;&gt;。1&lt;/a&gt; . numpy.emptyの numpy配列ドキュメントを使用します。2 .リストに到達したら、リストを追加します。 3.必要に応じて、辞書を使用することもできます</target>
+        </trans-unit>
+        <trans-unit id="bc4f66001e531189900b0cd046777ad1b64deee8" translate="yes" xml:space="preserve">
+          <source>Trying to explain it more descriptively,</source>
+          <target state="translated">もっと描写的に説明しようとしている。</target>
+        </trans-unit>
+        <trans-unit id="5adaf1f37f4e60784d899d34c40c6e33010d9e91" translate="yes" xml:space="preserve">
+          <source>We can see that the list &lt;code&gt;c&lt;/code&gt; now contains two references to list &lt;code&gt;a&lt;/code&gt; which is equivalent to &lt;code&gt;c = b * 2&lt;/code&gt;.</source>
+          <target state="translated">リスト &lt;code&gt;c&lt;/code&gt; には、リストaへの2つの参照が含まれていることがわかります。これは、 &lt;code&gt;c = b * 2&lt;/code&gt; と同等です。</target>
+        </trans-unit>
+        <trans-unit id="501474f83c13b6e53883b1c7e3f3a5ccbe6640da" translate="yes" xml:space="preserve">
+          <source>When you write &lt;code&gt;[x]*3&lt;/code&gt; you get, essentially, the list &lt;code&gt;[x, x, x]&lt;/code&gt;. That is, a list with 3 references to the same &lt;code&gt;x&lt;/code&gt;. When you then modify this single &lt;code&gt;x&lt;/code&gt; it is visible via all three references to it:</source>
+          <target state="translated">&lt;code&gt;[x]*3&lt;/code&gt; と書くと、基本的にリスト &lt;code&gt;[x, x, x]&lt;/code&gt; ます。 つまり、同じ &lt;code&gt;x&lt;/code&gt; への3つの参照を持つリストです。 次に、この1つの &lt;code&gt;x&lt;/code&gt; を変更すると、3つの参照すべてを介して表示されます。</target>
+        </trans-unit>
+        <trans-unit id="832e94d264b6641a04975b94bcfb71f2f9739daf" translate="yes" xml:space="preserve">
+          <source>You might wonder why &lt;code&gt;*&lt;/code&gt; can't make independent objects the way the list comprehension does. That's because the multiplication operator &lt;code&gt;*&lt;/code&gt; operates on objects, without seeing expressions. When you use &lt;code&gt;*&lt;/code&gt; to multiply &lt;code&gt;[[1] * 4]&lt;/code&gt; by 3, &lt;code&gt;*&lt;/code&gt; only sees the 1-element list &lt;code&gt;[[1] * 4]&lt;/code&gt; evaluates to, not the &lt;code&gt;[[1] * 4&lt;/code&gt; expression text. &lt;code&gt;*&lt;/code&gt; has no idea how to make copies of that element, no idea how to reevaluate &lt;code&gt;[[1] * 4]&lt;/code&gt;, and no idea you even want copies, and in general, there might not even be a way to copy the element.</source>
+          <target state="translated">リストの内包のように &lt;code&gt;*&lt;/code&gt; が独立したオブジェクトを作成できないのはなぜでしょうか。 これは、乗算演算子 &lt;code&gt;*&lt;/code&gt; が式を参照せずにオブジェクトを操作するためです。 &lt;code&gt;*&lt;/code&gt; を使用して &lt;code&gt;[[1] * 4]&lt;/code&gt; に3を乗算すると、 &lt;code&gt;*&lt;/code&gt; は &lt;code&gt;[[1] * 4]&lt;/code&gt; 評価する1要素リストのみを参照し、 &lt;code&gt;[[1] * 4&lt;/code&gt; 式テキストは参照しません。 &lt;code&gt;*&lt;/code&gt; には、その要素のコピーを作成する方法、 &lt;code&gt;[[1] * 4]&lt;/code&gt; を再評価する方法、およびコピーを作成する方法さえわからず、一般に、要素をコピーする方法さえない場合があります。</target>
+        </trans-unit>
+        <trans-unit id="2eb5b7fd5de753d92c63843e41bc009b96c28972" translate="yes" xml:space="preserve">
+          <source>You write</source>
+          <target state="translated">あなたが書く</target>
+        </trans-unit>
+        <trans-unit id="42fb56c55709b77df51dc5570a1fd7066696c0d7" translate="yes" xml:space="preserve">
+          <source>and will help us identify them and analyse what happens:</source>
+          <target state="translated">と、それらを特定し、何が起こっているのかを分析するのに役立ちます。</target>
+        </trans-unit>
+        <trans-unit id="14a961e9db9747b20286372b24fe3a0e150259a7" translate="yes" xml:space="preserve">
+          <source>another interesting way to create clone copies, Operation 4:</source>
+          <target state="translated">クローンコピーを作成するもう一つの面白い方法、オペレーション4。</target>
+        </trans-unit>
+        <trans-unit id="1758356db21759f7c5a0da9b4dd1db8fd6feab3f" translate="yes" xml:space="preserve">
+          <source>or</source>
+          <target state="translated">or</target>
+        </trans-unit>
+        <trans-unit id="7006b26f9c8f8d3e063ffcd613fdb2355cbc1ab6" translate="yes" xml:space="preserve">
+          <source>or even:</source>
+          <target state="translated">とかでもいい。</target>
+        </trans-unit>
+        <trans-unit id="5747d5a219bdca8cc8a0afdab31683bbc104375e" translate="yes" xml:space="preserve">
+          <source>where it's probably a little less surprising.</source>
+          <target state="translated">意外と少ないかもしれないところ。</target>
+        </trans-unit>
+        <trans-unit id="79dae3ceff989b84d037b3e06690ddb0c7a533eb" translate="yes" xml:space="preserve">
+          <source>which is not what I wanted or expected. Can someone please explain what's going on, and how to get around it?</source>
+          <target state="translated">これは私が望んでいたものでも 期待していたものでもありません 誰か説明してくれませんか?</target>
+        </trans-unit>
+        <trans-unit id="7e30c2eec07407bb0c7533db53a27b0460898989" translate="yes" xml:space="preserve">
+          <source>which will reevaluate &lt;code&gt;[1]*4&lt;/code&gt; each time instead of evaluating it once and making 3 references to 1 list.</source>
+          <target state="translated">&lt;code&gt;[1]*4&lt;/code&gt; を 1回評価して1つのリストを3回参照するのではなく、毎回[1] * 4を再評価します。</target>
+        </trans-unit>
+        <trans-unit id="f4a193e32bfbfcea1d0e06a73c863fe8dd677085" translate="yes" xml:space="preserve">
+          <source>while &lt;code&gt;ma=[&amp;amp;li, &amp;amp;li, &amp;amp;li]&lt;/code&gt; and &lt;code&gt;li&lt;/code&gt; is mutable, so when you call &lt;code&gt;ma[0][0]=1&lt;/code&gt;, ma[0][0] is equally to &lt;code&gt;&amp;amp;li[0]&lt;/code&gt;, so all the &lt;code&gt;&amp;amp;li&lt;/code&gt; instances will change its 1st address into &lt;code&gt;&amp;amp;1&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;ma=[&amp;amp;li, &amp;amp;li, &amp;amp;li]&lt;/code&gt; と &lt;code&gt;li&lt;/code&gt; は変更可能であるため、 &lt;code&gt;ma[0][0]=1&lt;/code&gt; を呼び出すと、ma [0] [0]は &lt;code&gt;&amp;amp;li[0]&lt;/code&gt; と等しくなるため、すべての &lt;code&gt;&amp;amp;li&lt;/code&gt; インスタンスは最初のアドレスを &lt;code&gt;&amp;amp;1&lt;/code&gt; に変更します。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

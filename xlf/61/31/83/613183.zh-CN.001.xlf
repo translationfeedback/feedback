@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/613183">
+    <body>
+      <group id="613183">
+        <trans-unit id="9c483d4be3d8a08fe699e69d364c831b1987c127" translate="yes" xml:space="preserve">
+          <source>(People who answer &quot;It is not possible to sort a dict&quot; did not read the question! In fact, &quot;I can sort on the keys, but how can I sort based on the values?&quot; clearly means that he wants a list of the keys sorted according to the value of their values.)</source>
+          <target state="translated">(回答 &quot;无法对dict进行排序 &quot;的人没有读过这个问题! 事实上,&quot;我可以按键排序,但如何根据值来排序? &quot;显然是说他希望根据值来排序的键的值来排序,他的意思是说,他要的是一个列表,按照键的值来排序)。</target>
+        </trans-unit>
+        <trans-unit id="b1358a83c4ca5eecd5ab1c3e7cf5a028aa3553a7" translate="yes" xml:space="preserve">
+          <source>(intermediate) dict storage</source>
+          <target state="translated">听写存储</target>
+        </trans-unit>
+        <trans-unit id="9fcd9b557aa59a50157b86092b80c7bc909d1021" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://docs.python.org/3.7/library/stdtypes.html#typesmapping&quot;&gt;Python 3.7 documentation&lt;/a&gt; says:</source>
+          <target state="translated">&lt;a href=&quot;https://docs.python.org/3.7/library/stdtypes.html#typesmapping&quot;&gt;Python 3.7文档&lt;/a&gt;说：</target>
+        </trans-unit>
+        <trans-unit id="ec74c54e590b420a7a62f35e5c578e1cc0ca18c2" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://stackoverflow.com/a/39424969/1150683&quot;&gt;As pointed out by Dilettant&lt;/a&gt;, Python 3.6 will now &lt;em&gt;keep the order&lt;/em&gt;! I thought I'd share a function I wrote that eases the sorting of an iterable (tuple, list, dict). In the latter case, you can sort either on keys or values, and it can take numeric comparison into account. &lt;strong&gt;Only for &amp;gt;= 3.6!&lt;/strong&gt;</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/a/39424969/1150683&quot;&gt;正如Dilettant指出的那样&lt;/a&gt; ，Python 3.6现在&lt;em&gt;将保持顺序&lt;/em&gt; ！ 我以为我会分享我编写的一个函数，该函数可以简化可迭代对象（元组，列表，字典）的排序。 在后一种情况下，您可以对键或值进行排序，并且可以考虑数字比较。 &lt;strong&gt;仅适用于&amp;gt; = 3.6！&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="dce9fb42cf4701d0a8578100bb0321f09d9a70e8" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;sorted_x&lt;/code&gt; will be a list of tuples sorted by the second element in each tuple. &lt;code&gt;dict(sorted_x) == x&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;sorted_x&lt;/code&gt; 将是一个元组列表，按每个元组中的第二个元素排序。 &lt;code&gt;dict(sorted_x) == x&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="d8ff1f9032591ebf283b62753a8815882b515c8d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Input:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Input:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="37368c978ce40b2560ff00ceca4687bf96ce3bd6" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Original&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Original&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3ccfff51da82250c6945871fe29c0806ff574c48" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Output:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Output:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="c6c60fe6197fe2f878be54d673aa3230c819f6f7" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Rank&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Rank&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="afec97a1228becf6dc3f7caaba4540623d2dacc9" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Rofl&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Rofl&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a80eb2aafbfee5e5c21e788960a022e85cd6810f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;UPDATE: 5 DECEMBER 2015 using Python 3.5&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;更新：2015年12月5日使用Python 3.5&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="df65358c803c76e910ef5a42fb0381d832b1aef5" translate="yes" xml:space="preserve">
+          <source>A list of (key, value) pairs, sorted by value:</source>
+          <target state="translated">按值排序的(键、值)对列表。</target>
+        </trans-unit>
+        <trans-unit id="e4a4442862fdde43439113daa15c8e9e7f080fc7" translate="yes" xml:space="preserve">
+          <source>A sorted list of dict values:</source>
+          <target state="translated">dict值的排序列表。</target>
+        </trans-unit>
+        <trans-unit id="dbf5dda7d52d885540366a1275464bf6e980627a" translate="yes" xml:space="preserve">
+          <source>Allow to output later as:</source>
+          <target state="translated">允许以后输出为:。</target>
+        </trans-unit>
+        <trans-unit id="ed0bb813561a8bed524a958aa483b8946fbe8eb3" translate="yes" xml:space="preserve">
+          <source>And for those wishing to sort on keys instead of values:</source>
+          <target state="translated">而对于那些希望用键来代替值来排序的人来说。</target>
+        </trans-unit>
+        <trans-unit id="c486114656207e7446a90c8489bb1e93c51430c1" translate="yes" xml:space="preserve">
+          <source>And maybe quite some Stack Overflow high decorated question and answer pages will receive variants of this information and many high quality answers will require a per version update too.</source>
+          <target state="translated">而且也许相当多的Stack Overflow高装饰的问答页面会收到这些信息的变体,很多高质量的答案也需要每版更新。</target>
+        </trans-unit>
+        <trans-unit id="e69da0f4d69493d55947edf4eaa20f30d8100c29" translate="yes" xml:space="preserve">
+          <source>As @ajcr rightfully notes: &quot;The order-preserving aspect of this new implementation is considered an implementation detail and should not be relied upon.&quot; (from the &lt;a href=&quot;https://docs.python.org/3.6/whatsnew/3.6.html&quot;&gt;whatsnew36&lt;/a&gt;) not nit picking, &lt;strong&gt;but&lt;/strong&gt; the citation was cut a bit pessimistic ;-). It continues as &quot; (this may change in the future, but it is desired to have this new dict implementation in the language for a few releases before changing the language spec to mandate order-preserving semantics for all current and future Python implementations; this also helps preserve backwards-compatibility with older versions of the language where random iteration order is still in effect, e.g. Python 3.5).&quot;</source>
+          <target state="translated">正如@ajcr正确指出的那样：&amp;ldquo;此新实现的顺序保留方面被认为是实现细节，因此不应依赖。&amp;rdquo; （摘自&lt;a href=&quot;https://docs.python.org/3.6/whatsnew/3.6.html&quot;&gt;whatsnew36&lt;/a&gt; ）不是一成不变的， &lt;strong&gt;但&lt;/strong&gt;引文有点悲观了；-)。 它继续显示为&amp;ldquo;（将来可能会改变，但是希望在更改语言规范以强制所有当前和将来的Python实现保留顺序语义之前，先在几个版本中使用该语言的新dict实现；有助于保持与旧版本的语言的向后兼容性，该旧版本的随机迭代顺序仍然有效，例如Python 3.5）。&amp;rdquo;</target>
+        </trans-unit>
+        <trans-unit id="52a47b1fdea635ca499ca1d09f0662aef883df43" translate="yes" xml:space="preserve">
+          <source>As of &lt;a href=&quot;https://docs.python.org/3.6/whatsnew/3.6.html&quot;&gt;Python 3.6&lt;/a&gt; the built-in dict will be ordered</source>
+          <target state="translated">从&lt;a href=&quot;https://docs.python.org/3.6/whatsnew/3.6.html&quot;&gt;Python 3.6开始，&lt;/a&gt;将对内置字典进行排序</target>
+        </trans-unit>
+        <trans-unit id="b972899164820b6c0f7e9accaf856a4a0929888a" translate="yes" xml:space="preserve">
+          <source>As proposed in 2012 by Raymond Hettinger (cf. mail on python-dev with subject &lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2012-December/123028.html&quot;&gt;&quot;More compact dictionaries with faster iteration&quot;&lt;/a&gt;) and now (in 2016) announced in a mail by Victor Stinner to python-dev with subject &lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2016-September/146327.html&quot;&gt;&quot;Python 3.6 dict becomes compact and gets a private version; and keywords become ordered&quot;&lt;/a&gt; due to the fix/implementation of issue 27350 &lt;a href=&quot;http://bugs.python.org/issue27350&quot;&gt;&quot;Compact and ordered dict&quot;&lt;/a&gt; in Python 3.6 we will now be able, to use a built-in dict to maintain insert order!!</source>
+          <target state="translated">正如Raymond Hettinger在2012年提出的（请参见python-dev上的邮件，主题为&lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2012-December/123028.html&quot;&gt;&amp;ldquo;更紧凑的字典，迭代速度更快&amp;rdquo;&lt;/a&gt; ），现在（2016年），Victor Stinner在给主题为&lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2016-September/146327.html&quot;&gt;&amp;ldquo; Python 3.6 dict的&lt;/a&gt; python-dev的邮件&amp;rdquo;中宣布紧凑并获得私有版本；由于在Python 3.6中已解决/实现了问题27350 &lt;a href=&quot;http://bugs.python.org/issue27350&quot;&gt;&amp;ldquo;紧凑且有序的字典&amp;rdquo;&lt;/a&gt; ，因此关键字变得有序&amp;rdquo; ，我们现在可以使用内置的字典来维护插入顺序！！</target>
+        </trans-unit>
+        <trans-unit id="6d5547254dcda0df07510d9309cd9159871a8adf" translate="yes" xml:space="preserve">
+          <source>As simple as: &lt;code&gt;sorted(dict1, key=dict1.get)&lt;/code&gt;</source>
+          <target state="translated">就像这样简单： &lt;code&gt;sorted(dict1, key=dict1.get)&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="3797b807b9516560409c121ec971d9566f354ad2" translate="yes" xml:space="preserve">
+          <source>Because of requirements to retain backward compatability with older versions of &lt;a href=&quot;http://en.wikipedia.org/wiki/Python_%28programming_language%29&quot;&gt;Python&lt;/a&gt; I think the OrderedDict solution is very unwise. You want something that works with Python 2.7 and older versions.</source>
+          <target state="translated">由于需要保持与旧版本&lt;a href=&quot;http://en.wikipedia.org/wiki/Python_%28programming_language%29&quot;&gt;Python的&lt;/a&gt;向后兼容性，我认为OrderedDict解决方案非常不明智。 您需要适用于Python 2.7和更早版本的工具。</target>
+        </trans-unit>
+        <trans-unit id="7fc0dc1f68f48edeb0f785abf10d372c5da7884d" translate="yes" xml:space="preserve">
+          <source>Before that, you had to use &lt;code&gt;OrderedDict&lt;/code&gt;.</source>
+          <target state="translated">在此之前，您必须使用 &lt;code&gt;OrderedDict&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="c22208bb5913ba1a21ed0fce5cb62a82702ac8b4" translate="yes" xml:space="preserve">
+          <source>But the collections solution mentioned in another answer is absolutely superb, because you retrain a connection between the key and value which in the case of dictionaries is extremely important.</source>
+          <target state="translated">但在另一个答案中提到的收藏方案绝对是极好的,因为你重新训练了一个键和值之间的联系,这在字典的情况下是极其重要的。</target>
+        </trans-unit>
+        <trans-unit id="fbb0426e443446e34151108776c55c22e8257235" translate="yes" xml:space="preserve">
+          <source>Caveat Emptor (but also see below update 2017-12-15):</source>
+          <target state="translated">洞悉者(但也见下文更新2017-12-15)。</target>
+        </trans-unit>
+        <trans-unit id="9d115d8ada0328183de02344f8802046071e08b4" translate="yes" xml:space="preserve">
+          <source>Changed in version 3.7: Dictionary order is guaranteed to be insertion
+  order. This behavior was implementation detail of CPython from 3.6.</source>
+          <target state="translated">3.7版本中的变化:字典顺序保证是插入顺序。这个行为是CPython从3.6版本开始的实现细节。</target>
+        </trans-unit>
+        <trans-unit id="e19c1b8f3367d6bb8589ba3ddc967d6571b2adc1" translate="yes" xml:space="preserve">
+          <source>Comments for improvement or &lt;a href=&quot;https://github.com/BramVanroy/PyLT3/blob/master/pylt3/type_helpers.py#L68-L100&quot;&gt;push requests&lt;/a&gt; welcome.</source>
+          <target state="translated">欢迎&lt;a href=&quot;https://github.com/BramVanroy/PyLT3/blob/master/pylt3/type_helpers.py#L68-L100&quot;&gt;提出&lt;/a&gt;改进或推送要求的评论。</target>
+        </trans-unit>
+        <trans-unit id="1daaad0084c2604185e45c5a29dc6efeff0b7fce" translate="yes" xml:space="preserve">
+          <source>Details:</source>
+          <target state="translated">Details:</target>
+        </trans-unit>
+        <trans-unit id="5c1aa5fb50c6465a7277ccfd74b178f413c8e493" translate="yes" xml:space="preserve">
+          <source>Dicts can't be sorted, but you can build a sorted list from them.</source>
+          <target state="translated">Dicts无法排序,但你可以从中建立一个排序列表。</target>
+        </trans-unit>
+        <trans-unit id="e40a7426836a868eacaad97b0d412b7ea487114e" translate="yes" xml:space="preserve">
+          <source>Enjoy ;-)</source>
+          <target state="translated">好好享受;-)</target>
+        </trans-unit>
+        <trans-unit id="23b7041567e33cbc564ac905e83c0e92b5fee08b" translate="yes" xml:space="preserve">
+          <source>For instance,</source>
+          <target state="translated">比如说:</target>
+        </trans-unit>
+        <trans-unit id="65d36a01a8f6776edbd6f75366a05b8607d1280b" translate="yes" xml:space="preserve">
+          <source>For the sake of completeness, I am posting a solution using &lt;a href=&quot;http://docs.python.org/2/library/heapq.html&quot;&gt;heapq&lt;/a&gt;. Note, this method will work for both numeric and non-numeric values</source>
+          <target state="translated">为了完整起见，我发布了一个使用&lt;a href=&quot;http://docs.python.org/2/library/heapq.html&quot;&gt;heapq&lt;/a&gt;的解决方案。 请注意，此方法适用于数值和非数值</target>
+        </trans-unit>
+        <trans-unit id="db399e651953ade9b57a32080de18963dee9ed23" translate="yes" xml:space="preserve">
+          <source>Good news, so the OP's original use case of mapping pairs retrieved from a database with unique string ids as keys and numeric values as values into a built-in Python v3.6+ dict, should now respect the insert order.</source>
+          <target state="translated">好消息,所以 OP 的原始用例是将从数据库中检索到的映射对作为键和数字值作为值的唯一字符串 id 作为数据库中的值,现在应该尊重插入顺序了。</target>
+        </trans-unit>
+        <trans-unit id="4806c2364021b8f8145a30057c39a5142245883f" translate="yes" xml:space="preserve">
+          <source>Here are the results:</source>
+          <target state="translated">结果是这样的。</target>
+        </trans-unit>
+        <trans-unit id="adf960a8b8a857e77270fac2da0ca550459a93d2" translate="yes" xml:space="preserve">
+          <source>Here is a solution using zip on &lt;a href=&quot;https://docs.python.org/2/library/stdtypes.html#dictionary-view-objects&quot;&gt;&lt;code&gt;d.values()&lt;/code&gt; and &lt;code&gt;d.keys()&lt;/code&gt;&lt;/a&gt;.  A few lines down this link (on Dictionary view objects) is:</source>
+          <target state="translated">这是在&lt;a href=&quot;https://docs.python.org/2/library/stdtypes.html#dictionary-view-objects&quot;&gt; &lt;code&gt;d.values()&lt;/code&gt; 和 &lt;code&gt;d.keys()&lt;/code&gt; &lt;/a&gt;上使用zip的解决方案。 在此链接下（在Dictionary视图对象上），以下几行是：</target>
+        </trans-unit>
+        <trans-unit id="5553fa99d7898bf6baf1ed473e20967f3ae88ecc" translate="yes" xml:space="preserve">
+          <source>Hopefully this will lead to a thin layer OrderedDict implementation as a first step. As @JimFasarakis-Hilliard indicated, some see use cases for the OrderedDict type also in the future. I think the Python community at large will carefully inspect, if this will stand the test of time, and what the next steps will be.</source>
+          <target state="translated">希望这将导致薄层OrderedDict的实现,作为第一步。正如 @JimFasarakis-Hilliard 所指出的那样,有些人认为OrderedDict类型的用例在未来也会出现。我想整个Python社区都会仔细检查,这是否经得起时间的考验,以及下一步会是什么。</target>
+        </trans-unit>
+        <trans-unit id="ec1e4c7c724bb8bea9c23a91011113e2f2dce7c1" translate="yes" xml:space="preserve">
+          <source>How do I sort a dictionary by value</source>
+          <target state="translated">如何按值对字典进行排序</target>
+        </trans-unit>
+        <trans-unit id="2d20e1f4226bf31aba118ac772dcfafec34c1b21" translate="yes" xml:space="preserve">
+          <source>I am writing this detailed explanation to illustrate what people often mean by &quot;I can easily sort a dictionary by key, but how do I sort by value&quot; - and I think the original post was trying to address such an issue. And the solution is to do sort of list of the keys, based on the values, as shown above.</source>
+          <target state="translated">我写这个详细的解释是为了说明大家经常说的 &quot;我可以很容易地按键排序,但如何按值排序&quot;--我想原帖就是想解决这样的问题。而解决的方法是,根据值做排序的键列表,如上图所示。</target>
+        </trans-unit>
+        <trans-unit id="959049e8c5547d2bb3753b623ed264edbbd9fda4" translate="yes" xml:space="preserve">
+          <source>I can sort on the keys, but how can I sort based on the values?</source>
+          <target state="translated">我可以按键排序,但如何根据值来排序?</target>
+        </trans-unit>
+        <trans-unit id="cf03fa7d7a1dff31b72cb2e6339b0dd11fe1316e" translate="yes" xml:space="preserve">
+          <source>I don't agree with the number one choice presented in another answer, because it throws away the keys.</source>
+          <target state="translated">我不同意另一个答案中提出的1号选择题,因为它扔掉了钥匙。</target>
+        </trans-unit>
+        <trans-unit id="19d2cfeb8686f9f94ff3c5c212c2fbe9482cc5a3" translate="yes" xml:space="preserve">
+          <source>I had the same problem, and I solved it like this:</source>
+          <target state="translated">我也遇到了同样的问题,我是这样解决的。</target>
+        </trans-unit>
+        <trans-unit id="5f8dfb8ec29a9b594931275862920fe35c9006d5" translate="yes" xml:space="preserve">
+          <source>I have a dictionary of values read from two fields in a database: a string field and a numeric field. The string field is unique, so that is the key of the dictionary.</source>
+          <target state="translated">我有一个从数据库中的两个字段读取值的字典:一个字符串字段和一个数字字段。字符串字段是唯一的,所以这是字典的关键。</target>
+        </trans-unit>
+        <trans-unit id="efe53f30fe5f776e51a72b8489c53c1531183537" translate="yes" xml:space="preserve">
+          <source>I used the solution mentioned above (code shown below) and retained access to both keys and values and in my case the ordering was on the values, but the importance was the ordering of the keys after ordering the values.</source>
+          <target state="translated">我使用了上面提到的解决方案(代码如下图所示),并保留了对键和值的访问权限,在我的案例中,排序是在值上,但重要的是排序后的键的排序。</target>
+        </trans-unit>
+        <trans-unit id="4c8d9aebfdbaa5e8996cdbcb84a465efd240499e" translate="yes" xml:space="preserve">
+          <source>If one wanted to sort the dictionary by keys, one could do something like:</source>
+          <target state="translated">如果你想按键排序,你可以这样做。</target>
+        </trans-unit>
+        <trans-unit id="886372b4f6517e74b41633e914f09cd361177499" translate="yes" xml:space="preserve">
+          <source>If say the resulting two column table expressions from a database query like:</source>
+          <target state="translated">如果说从一个数据库查询中得到的两列表的表达式,比如:</target>
+        </trans-unit>
+        <trans-unit id="530ba384f53db272ae78357967535136cbbecd05" translate="yes" xml:space="preserve">
+          <source>If values are numeric you may also use &lt;a href=&quot;https://docs.python.org/library/collections.html#collections.Counter&quot;&gt;&lt;code&gt;Counter&lt;/code&gt;&lt;/a&gt; from &lt;a href=&quot;https://docs.python.org/library/collections.html&quot;&gt;collections&lt;/a&gt;.</source>
+          <target state="translated">如果值是数字，则还可以使用来自&lt;a href=&quot;https://docs.python.org/library/collections.html&quot;&gt;集合的&lt;/a&gt; &lt;a href=&quot;https://docs.python.org/library/collections.html#collections.Counter&quot;&gt; &lt;code&gt;Counter&lt;/code&gt; &lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="fbd7b56508ceabc7a444b4cb44034103a8911da3" translate="yes" xml:space="preserve">
+          <source>If you construct a dictionary with the words as keys and the number of occurrences of each word as value, simplified here as:</source>
+          <target state="translated">如果你构造一个以单词为键、以每个单词的出现次数为值的词典,这里简化为:</target>
+        </trans-unit>
+        <trans-unit id="64ecdba5412ab42f84a81d39f72e0dd53bd25575" translate="yes" xml:space="preserve">
+          <source>If you do not have Python 2.7 or higher, the best you can do is iterate over the values in a generator function. (There is an &lt;code&gt;OrderedDict&lt;/code&gt; for 2.4 and 2.6  &lt;a href=&quot;https://pypi.python.org/pypi/ordereddict&quot;&gt;here&lt;/a&gt;, but</source>
+          <target state="translated">如果您没有Python 2.7或更高版本，则最好的办法是迭代生成器函数中的值。 （这里有一个用于2.4和2.6的 &lt;code&gt;OrderedDict&lt;/code&gt; ，但是</target>
+        </trans-unit>
+        <trans-unit id="278b19d2370d44e002afe3c1fc6c079884600a72" translate="yes" xml:space="preserve">
+          <source>If you use &lt;code&gt;keys()&lt;/code&gt;, &lt;code&gt;values()&lt;/code&gt; or &lt;code&gt;items()&lt;/code&gt; then you'll iterate in sorted order by value.</source>
+          <target state="translated">如果您使用 &lt;code&gt;keys()&lt;/code&gt; ， &lt;code&gt;values()&lt;/code&gt; 或 &lt;code&gt;items()&lt;/code&gt; ,则将按值对排序顺序进行迭代。</target>
+        </trans-unit>
+        <trans-unit id="8f399ae9716bd20bde525346fde7a8b306b49128" translate="yes" xml:space="preserve">
+          <source>If you want the output as a dict, you can use &lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.OrderedDict&quot;&gt;&lt;code&gt;collections.OrderedDict&lt;/code&gt;&lt;/a&gt;:</source>
+          <target state="translated">如果您希望将输出作为字典，则可以使用&lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.OrderedDict&quot;&gt; &lt;code&gt;collections.OrderedDict&lt;/code&gt; &lt;/a&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="352391901b326f70d9722aa5957feff2e86c0255" translate="yes" xml:space="preserve">
+          <source>If you want to sort the list in descending order, simply change the original sorting line to:</source>
+          <target state="translated">如果你想按降序排序,只需将原来的排序行改为。</target>
+        </trans-unit>
+        <trans-unit id="2f715ec4093e301ad450a610b8ed97fa6928b100" translate="yes" xml:space="preserve">
+          <source>If your values are integers, and you use Python 2.7 or newer, you can use &lt;a href=&quot;http://docs.python.org/py3k/library/collections.html#collections.Counter&quot;&gt;&lt;code&gt;collections.Counter&lt;/code&gt;&lt;/a&gt; instead of &lt;code&gt;dict&lt;/code&gt;. The &lt;code&gt;most_common&lt;/code&gt; method will give you all items, sorted by the value.</source>
+          <target state="translated">如果您的值是整数，并且使用Python 2.7或更高版本，则可以使用&lt;a href=&quot;http://docs.python.org/py3k/library/collections.html#collections.Counter&quot;&gt; &lt;code&gt;collections.Counter&lt;/code&gt; &lt;/a&gt;而不是 &lt;code&gt;dict&lt;/code&gt; 。 &lt;code&gt;most_common&lt;/code&gt; 方法将为您提供所有项目，并按值排序。</target>
+        </trans-unit>
+        <trans-unit id="118f05d8a2e734939f5c9a87703990a72f3b370f" translate="yes" xml:space="preserve">
+          <source>In Python 2.7, simply do:</source>
+          <target state="translated">在Python 2.7中,只需做。</target>
+        </trans-unit>
+        <trans-unit id="290eeabec82e3c8aa1b1669ffc4f66d4350fb678" translate="yes" xml:space="preserve">
+          <source>In Python3 since unpacking is not allowed &lt;a href=&quot;https://stackoverflow.com/a/15712231/4293057&quot;&gt;[1]&lt;/a&gt; we can use</source>
+          <target state="translated">在Python3中，由于不允许拆包&lt;a href=&quot;https://stackoverflow.com/a/15712231/4293057&quot;&gt;[1]，&lt;/a&gt;我们可以使用</target>
+        </trans-unit>
+        <trans-unit id="0ad5fc91cbcc7675741c91b9ee65980eb88733e8" translate="yes" xml:space="preserve">
+          <source>In a &lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2017-December/151283.html&quot;&gt;mail to the python-dev list&lt;/a&gt;, Guido van Rossum declared:</source>
+          <target state="translated">在&lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2017-December/151283.html&quot;&gt;发给python-dev列表&lt;/a&gt;的邮件中 ，Guido van Rossum声明：</target>
+        </trans-unit>
+        <trans-unit id="6c9df1b3e786b43b4e4309c26f53926445d92b86" translate="yes" xml:space="preserve">
+          <source>In recent Python 2.7, we have the new &lt;a href=&quot;http://docs.python.org/dev/whatsnew/2.7.html#pep-372-adding-an-ordered-dictionary-to-collections&quot;&gt;OrderedDict&lt;/a&gt; type, which remembers the order in which the items were added.</source>
+          <target state="translated">在最近的Python 2.7中，我们有了新的&lt;a href=&quot;http://docs.python.org/dev/whatsnew/2.7.html#pep-372-adding-an-ordered-dictionary-to-collections&quot;&gt;OrderedDict&lt;/a&gt;类型，该类型可以记住添加项目的顺序。</target>
+        </trans-unit>
+        <trans-unit id="f18ab52c8cda2aaae19915a2f953f63b9ac13f42" translate="yes" xml:space="preserve">
+          <source>It can often be very handy to use &lt;b&gt;&lt;a href=&quot;http://docs.python.org/library/collections.html#collections.namedtuple&quot;&gt;namedtuple&lt;/a&gt;&lt;/b&gt;. For example, you have a dictionary of 'name' as keys and 'score' as values and you want to sort on 'score':</source>
+          <target state="translated">使用&lt;b&gt;&lt;a href=&quot;http://docs.python.org/library/collections.html#collections.namedtuple&quot;&gt;namedtuple&lt;/a&gt;&lt;/b&gt;通常很方便。 例如，您有一个&amp;ldquo;名称&amp;rdquo;作为键，而&amp;ldquo;分数&amp;rdquo;作为值的字典，并且您想对&amp;ldquo;分数&amp;rdquo;进行排序：</target>
+        </trans-unit>
+        <trans-unit id="82dd0273930eeb8d0cded8bf90e4f5874908aa18" translate="yes" xml:space="preserve">
+          <source>It is not possible to sort a dictionary, only to get a representation of a dictionary that is sorted. Dictionaries are inherently orderless, but other types, such as lists and tuples, are not. So you need an ordered data type to represent sorted values, which will be a list&amp;mdash;probably a list of tuples.</source>
+          <target state="translated">无法对字典进行排序，只能获得已排序字典的表示形式。 字典本质上是无序的，但其他类型（例如列表和元组）不是。 因此，您需要一种有序的数据类型来表示排序后的值，这将是一个列表-可能是元组列表。</target>
+        </trans-unit>
+        <trans-unit id="f53089c5025a300c1602674ee911b01272ddb1ee" translate="yes" xml:space="preserve">
+          <source>It's implemented using the &lt;a href=&quot;http://en.wikipedia.org/wiki/Skip_list&quot;&gt;skip list&lt;/a&gt; datastructure.</source>
+          <target state="translated">它是使用&lt;a href=&quot;http://en.wikipedia.org/wiki/Skip_list&quot;&gt;跳过列表数据&lt;/a&gt;结构实现的。</target>
+        </trans-unit>
+        <trans-unit id="8b093c2d7de28dc502a20988fff41ea9dee79fd6" translate="yes" xml:space="preserve">
+          <source>Iterate through a dict and sort it by its values in descending order:</source>
+          <target state="translated">迭代一个dict,并按其值依次排序。</target>
+        </trans-unit>
+        <trans-unit id="9a488d8b77c5a82e14ad0a8c7d6cee2e732d7f98" translate="yes" xml:space="preserve">
+          <source>Just learned relevant skill from &lt;a href=&quot;https://www.coursera.org/learn/python-data/lecture/0ou0N/10-tuples&quot;&gt;Python for Everybody&lt;/a&gt;.</source>
+          <target state="translated">刚刚从&lt;a href=&quot;https://www.coursera.org/learn/python-data/lecture/0ou0N/10-tuples&quot;&gt;Python for Everyone中&lt;/a&gt;学习了相关技能。</target>
+        </trans-unit>
+        <trans-unit id="821370123a14fead9d0d998f6afbf1d874bf9980" translate="yes" xml:space="preserve">
+          <source>Keyword arguments and</source>
+          <target state="translated">关键字论证和</target>
+        </trans-unit>
+        <trans-unit id="cc7cd315f64ab61fd5470b91dda121152e14fc52" translate="yes" xml:space="preserve">
+          <source>Make it so. &quot;Dict keeps insertion order&quot; is the ruling. Thanks!</source>
+          <target state="translated">使其。&quot;Dict保持插入顺序 &quot;是裁决。谢了!</target>
+        </trans-unit>
+        <trans-unit id="bfd1a90c4dbeb10c0b403fd2a2ae1866b05e4cb7" translate="yes" xml:space="preserve">
+          <source>Note: I have read Stack Overflow question here &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/72899&quot;&gt;How do I sort a list of dictionaries by a value of the dictionary?&lt;/a&gt;&lt;/em&gt; and probably could change my code to have a list of dictionaries, but since I do not really need a list of dictionaries I wanted to know if there is a simpler solution to sort either in ascending or descending order.</source>
+          <target state="translated">注意：我在这里阅读了堆栈溢出问题， &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/72899&quot;&gt;如何按字典值对字典列表进行排序？&lt;/a&gt;&lt;/em&gt; 可能会更改我的代码以包含字典列表，但是由于我实际上并不需要字典列表，因此我想知道是否有更简单的解决方案来按升序或降序进行排序。</target>
+        </trans-unit>
+        <trans-unit id="408819897473bfb77d3c516efbbf8f673579b385" translate="yes" xml:space="preserve">
+          <source>Now you can get the name and score of, let's say the second-best player (index=1) very Pythonically like this:</source>
+          <target state="translated">现在,你可以像这样非常Python的方式获得第二名球员的名字和分数(index=1)。</target>
+        </trans-unit>
+        <trans-unit id="ae7aa805565edd7a15a84a8e18ac219891280628" translate="yes" xml:space="preserve">
+          <source>Now your inverse has the values; each value has a list of applicable keys.</source>
+          <target state="translated">现在,你的反面有了值;每个值都有一个适用键的列表。</target>
+        </trans-unit>
+        <trans-unit id="aeca9101b56210db3d315f390311767a2bd5c775" translate="yes" xml:space="preserve">
+          <source>Of course, remember, you need to use &lt;code&gt;OrderedDict&lt;/code&gt; because regular Python dictionaries don't keep the original order.</source>
+          <target state="translated">当然，请记住，您需要使用 &lt;code&gt;OrderedDict&lt;/code&gt; ,因为常规Python字典不会保留原始顺序。</target>
+        </trans-unit>
+        <trans-unit id="ae09513ad49cfb20804117b7bfc30c26d62fef6a" translate="yes" xml:space="preserve">
+          <source>Older Python</source>
+          <target state="translated">较老的Python</target>
+        </trans-unit>
+        <trans-unit id="002e9cd3e1b3bb58104645872a489641ac847e35" translate="yes" xml:space="preserve">
+          <source>On the other hand, if one wanted to sort a dictionary by value (as is asked in the question), one could do the following:</source>
+          <target state="translated">另一方面,如果你想按值对字典进行排序(如题中所问的那样),你可以这样做。</target>
+        </trans-unit>
+        <trans-unit id="670cf440797c924695825d054613bf9413218498" translate="yes" xml:space="preserve">
+          <source>Or optimized slightly as suggested by John Fouhy:</source>
+          <target state="translated">或者按照John Fouhy的建议稍作优化。</target>
+        </trans-unit>
+        <trans-unit id="53f109972bb7b732efeb6a6602aaa8aef220fa7b" translate="yes" xml:space="preserve">
+          <source>Please notice that the order is not well defined (keys with the same value will be in an arbitrary order in the output list).</source>
+          <target state="translated">请注意,顺序并没有很好地定义(在输出列表中,具有相同值的键会以任意顺序排列)。</target>
+        </trans-unit>
+        <trans-unit id="3a83a5eb1861a79fd19fdd1708ed0b22c0422daa" translate="yes" xml:space="preserve">
+          <source>Please remember to remove the parentheses after print if not using Python 3.0 or above</source>
+          <target state="translated">如果不使用Python 3.0或以上版本,请记得删除打印后的括号。</target>
+        </trans-unit>
+        <trans-unit id="c9ac9fb5a20750664c01162949392db65e25b3e8" translate="yes" xml:space="preserve">
+          <source>Pretty much the same as &lt;a href=&quot;https://stackoverflow.com/a/613207/11044033&quot;&gt;Hank Gay's answer&lt;/a&gt;:</source>
+          <target state="translated">与&lt;a href=&quot;https://stackoverflow.com/a/613207/11044033&quot;&gt;Hank Gay的答案&lt;/a&gt;大致相同：</target>
+        </trans-unit>
+        <trans-unit id="e377e89cbd81cf623683d9ae7e1b9fe1cc7f52b8" translate="yes" xml:space="preserve">
+          <source>Python 3.6+</source>
+          <target state="translated">Python 3.6以上</target>
+        </trans-unit>
+        <trans-unit id="bb66b974fdf0f8c8b76ea5f069cb666f826a5ccd" translate="yes" xml:space="preserve">
+          <source>Raymond Hettinger kindly provided documentation explaining &quot;&lt;a href=&quot;https://dl.dropboxusercontent.com/u/3967849/sfmu2/_build/html/goal.html&quot;&gt;The Tech Behind Python 3.6 Dictionaries&lt;/a&gt;&quot; - from his San Francisco Python Meetup Group presentation 2016-DEC-08.</source>
+          <target state="translated">Raymond Hettinger从旧金山Python Meetup Group的演讲2016-DEC-08中提供了解释&amp;ldquo; &lt;a href=&quot;https://dl.dropboxusercontent.com/u/3967849/sfmu2/_build/html/goal.html&quot;&gt;Python 3.6词典背后的技术&lt;/a&gt; &amp;rdquo; 的文档。</target>
+        </trans-unit>
+        <trans-unit id="b570bc1342430b1e36419ee96aa70709a1110b76" translate="yes" xml:space="preserve">
+          <source>Sample Output:</source>
+          <target state="translated">样品输出。</target>
+        </trans-unit>
+        <trans-unit id="2778bde47201833596adec771077116147fdf473" translate="yes" xml:space="preserve">
+          <source>So as in some human languages (e.g. German), usage shapes the language, and the will now has been declared ... in &lt;a href=&quot;https://docs.python.org/3.6/whatsnew/3.6.html&quot;&gt;whatsnew36&lt;/a&gt;.</source>
+          <target state="translated">因此，就像在某些人类语言（例如德语）中一样，用法决定了语言的&lt;a href=&quot;https://docs.python.org/3.6/whatsnew/3.6.html&quot;&gt;含义&lt;/a&gt; ，而现在遗嘱已经在whatsnew36中声明了。</target>
+        </trans-unit>
+        <trans-unit id="6ee20f02ce5e51093230a6605abb3ba0ef24c9f3" translate="yes" xml:space="preserve">
+          <source>So we can do the following:</source>
+          <target state="translated">所以我们可以做到以下几点:</target>
+        </trans-unit>
+        <trans-unit id="acda178446821b9b982130e1c2eae479224cee3a" translate="yes" xml:space="preserve">
+          <source>So, the version 3.6 CPython side-effect of dict insertion ordering is now becoming part of the language spec (and not anymore only an implementation detail). That mail thread also surfaced some distinguishing design goals for &lt;code&gt;collections.OrderedDict&lt;/code&gt; as reminded by Raymond Hettinger during discussion.</source>
+          <target state="translated">因此，dict插入顺序的3.6版CPython副作用现在已成为语言规范的一部分（并且不再仅仅是实现细节）。 该邮件线程还浮出了 &lt;code&gt;collections.OrderedDict&lt;/code&gt; 一些区别设计目标，正如雷蒙德&amp;middot;海廷格（Raymond Hettinger）在讨论中所提醒的那样。</target>
+        </trans-unit>
+        <trans-unit id="e2ff0f9716602bfb0c7c228362251926e175097d" translate="yes" xml:space="preserve">
+          <source>Starting from Python 3.6, &lt;code&gt;dict&lt;/code&gt; objects are now ordered by insertion order. It's officially in the specs of Python 3.7.</source>
+          <target state="translated">从Python 3.6开始， &lt;code&gt;dict&lt;/code&gt; 对象现在按插入顺序排序。 它正式在Python 3.7的规范中。</target>
+        </trans-unit>
+        <trans-unit id="dd8309c1cbeeadfa4af4a1ccec904172f1e80356" translate="yes" xml:space="preserve">
+          <source>The OrderedDict behaves like a normal dict:</source>
+          <target state="translated">OrderedDict的行为就像一个普通的dict一样。</target>
+        </trans-unit>
+        <trans-unit id="ebb83272d2dce81b6717969dfc804bf50bb3e4a4" translate="yes" xml:space="preserve">
+          <source>The first because it eases dispatch in the implementation of functions and methods in some cases.</source>
+          <target state="translated">首先是因为它在某些情况下,在函数和方法的实现中,可以简化调度。</target>
+        </trans-unit>
+        <trans-unit id="9d68e429e033414d865fbebd4cbdb4fe0e6b5fa4" translate="yes" xml:space="preserve">
+          <source>The official &lt;strong&gt;&lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.OrderedDict&quot;&gt;OrderedDict&lt;/a&gt;&lt;/strong&gt; documentation offers a very similar example too, but using a lambda for the sort function:</source>
+          <target state="translated">官方的&lt;strong&gt;&lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.OrderedDict&quot;&gt;OrderedDict&lt;/a&gt;&lt;/strong&gt;文档也提供了一个非常相似的示例，但对排序函数使用了lambda：</target>
+        </trans-unit>
+        <trans-unit id="eedd59787f2bab4913748421a0efb5693512979e" translate="yes" xml:space="preserve">
+          <source>The result of this command (sorting the dictionary by value) should return the following:</source>
+          <target state="translated">这个命令的结果(按值排序)应该返回以下结果。</target>
+        </trans-unit>
+        <trans-unit id="4a73820a1781f576a897d199aa316d1226e59174" translate="yes" xml:space="preserve">
+          <source>The second as it encourages to more easily use &lt;code&gt;dict&lt;/code&gt;s as intermediate storage in processing pipelines.</source>
+          <target state="translated">第二个原因是它鼓励在处理管道中更轻松地将 &lt;code&gt;dict&lt;/code&gt; 用作中间存储。</target>
+        </trans-unit>
+        <trans-unit id="a48bd8b6729e278c7c49e866644b5cf1f3d55550" translate="yes" xml:space="preserve">
+          <source>This allows the creation of (value, key) pairs using zip(): pairs = zip(d.values(), d.keys()).</source>
+          <target state="translated">这允许使用zip()创建(值、键)对:pairs=zip(d.value(),d.key()))。</target>
+        </trans-unit>
+        <trans-unit id="5a337b8a023f3824abade0a69a5fe8f99c3fed0e" translate="yes" xml:space="preserve">
+          <source>This is the code:</source>
+          <target state="translated">这就是代码。</target>
+        </trans-unit>
+        <trans-unit id="6eae14349c019a73b4592f1376a60662768f3a3d" translate="yes" xml:space="preserve">
+          <source>This should return the following output:</source>
+          <target state="translated">这应该返回以下输出:</target>
+        </trans-unit>
+        <trans-unit id="76ba6dd4c54ccf5824f678894b125a4864da152a" translate="yes" xml:space="preserve">
+          <source>This will sort the dictionary by the values of each entry within the dictionary from smallest to largest.</source>
+          <target state="translated">这将根据字典中的每个条目的值从最小到最大对字典进行排序。</target>
+        </trans-unit>
+        <trans-unit id="e0f74d83524194ea3290a4eb0ac96ada5160edc7" translate="yes" xml:space="preserve">
+          <source>This works in 3.1.x:</source>
+          <target state="translated">这在3.1.x中可以使用。</target>
+        </trans-unit>
+        <trans-unit id="34a8b500ccfc2f1b0ebeb977ab6c04c06d1e9ee0" translate="yes" xml:space="preserve">
+          <source>Time to rethink our coding habits to not miss the possibilities opened by stable ordering of:</source>
+          <target state="translated">是时候反思我们的编码习惯了,不要错过稳定的排序所打开的可能性。</target>
+        </trans-unit>
+        <trans-unit id="28c712ef2c672e8ba1a4fa22afc4900e8b5c7733" translate="yes" xml:space="preserve">
+          <source>To make a new ordered dictionary from the original, sorting by the values:</source>
+          <target state="translated">要在原有的基础上做一个新的有序字典,按值排序。</target>
+        </trans-unit>
+        <trans-unit id="6d74adb4cde790b0ee66979c3f2e6cc10a1451b8" translate="yes" xml:space="preserve">
+          <source>To sort it in descending order just add &lt;code&gt;reverse=True&lt;/code&gt;:</source>
+          <target state="translated">要将其降序排序，只需添加 &lt;code&gt;reverse=True&lt;/code&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="155819aadfeae59cb9cfcd9499a8ee68174a11b1" translate="yes" xml:space="preserve">
+          <source>Try the following approach. Let us define a dictionary called mydict with the following data:</source>
+          <target state="translated">试试下面的方法。让我们用以下数据定义一个名为mydict的字典。</target>
+        </trans-unit>
+        <trans-unit id="4b2f710b6a34ed5590747fa3bd39096cb443feca" translate="yes" xml:space="preserve">
+          <source>Update 2017-12-15:</source>
+          <target state="translated">更新2017-12-15</target>
+        </trans-unit>
+        <trans-unit id="fdb4a2ce501dfc70684af85d988bb2e653d52a95" translate="yes" xml:space="preserve">
+          <source>Use &lt;strong&gt;ValueSortedDict&lt;/strong&gt; from &lt;a href=&quot;http://pypi.python.org/pypi/dicts&quot;&gt;dicts&lt;/a&gt;:</source>
+          <target state="translated">从&lt;strong&gt;dicts&lt;/strong&gt;使用&lt;strong&gt;ValueSortedDict&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="62b01fe66c6a8fecf8cce532d69c410e89bbbdc8" translate="yes" xml:space="preserve">
+          <source>Using list comprehension, the one liner would be:</source>
+          <target state="translated">用列表理解,单行本题应该是 。</target>
+        </trans-unit>
+        <trans-unit id="b7fb9b44a3d850e5978f0baf1c7d4eaf10d6ddb7" translate="yes" xml:space="preserve">
+          <source>Well, it is actually possible to do a &quot;sort by dictionary values&quot;. Recently I had to do that in a Code Golf (Stack Overflow question &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/3169051/code-golf-word-frequency-chart#3170549&quot;&gt;Code golf: Word frequency chart&lt;/a&gt;&lt;/em&gt;). Abridged, the problem was of the kind: given a text, count how often each word is encountered and display a list of the top words, sorted by decreasing frequency.</source>
+          <target state="translated">好吧，实际上可以执行&amp;ldquo;按字典值排序&amp;rdquo;。 最近，我不得不在Code Golf（堆栈溢出问题&lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/3169051/code-golf-word-frequency-chart#3170549&quot;&gt;Code golf：单词频率图表&lt;/a&gt;&lt;/em&gt; ）中执行此操作。 简而言之，问题是这样的：给定一个文本，计算遇到每个单词的频率，并显示按频率递减排序的最重要单词列表。</target>
+        </trans-unit>
+        <trans-unit id="e541adc2d674900aa8e312e0e2e441fb8add2fc4" translate="yes" xml:space="preserve">
+          <source>When you try using sorted on an iterable that holds e.g. strings as well as ints, sorted() will fail. Of course you can force string comparison with str(). However, in some cases you want to do &lt;em&gt;actual&lt;/em&gt; numeric comparison where &lt;code&gt;12&lt;/code&gt; is smaller than &lt;code&gt;20&lt;/code&gt; (which is not the case in string comparison). So I came up with the following. When you want explicit numeric comparison you can use the flag &lt;code&gt;num_as_num&lt;/code&gt; which will try to do explicit numeric sorting by trying to convert all values to floats. If that succeeds, it will do numeric sorting, otherwise it'll resort to string comparison.</source>
+          <target state="translated">当您尝试在包含字符串和整数的可迭代对象上使用sorted时，sorted（）将失败。 当然，您可以使用str（）强制进行字符串比较。 但是，在某些情况下，您想进行&lt;em&gt;实际的&lt;/em&gt;数字比较，其中 &lt;code&gt;12&lt;/code&gt; 小于 &lt;code&gt;20&lt;/code&gt; （在字符串比较中不是这种情况）。 因此，我提出了以下建议。 当您需要显式数值比较时，可以使用标记 &lt;code&gt;num_as_num&lt;/code&gt; ，它将尝试通过将所有值都转换为浮点数来进行显式数值排序。 如果成功，它将进行数字排序，否则将使用字符串比较。</target>
+        </trans-unit>
+        <trans-unit id="0ff5b485b3755e485f0f27c0455e42a1a34a5121" translate="yes" xml:space="preserve">
+          <source>Where in the Python 3.5 install on my machine it currently yields:</source>
+          <target state="translated">在我的机器上的Python 3.5安装中,目前它在哪里产生了。</target>
+        </trans-unit>
+        <trans-unit id="0dcd2e6a720561c1df622e730734fb59ebbdb067" translate="yes" xml:space="preserve">
+          <source>Whilst I found the accepted answer useful, I was also surprised that it hasn't been updated to reference &lt;strong&gt;&lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.OrderedDict&quot;&gt;OrderedDict&lt;/a&gt;&lt;/strong&gt; from the standard library &lt;strong&gt;collections&lt;/strong&gt; module as a viable, modern alternative - designed to solve exactly this type of problem.</source>
+          <target state="translated">尽管我发现接受的答案很有用，但令我感到惊讶的是，它没有被更新为从标准库&lt;strong&gt;集合&lt;/strong&gt;模块中引用&lt;strong&gt;&lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.OrderedDict&quot;&gt;OrderedDict&lt;/a&gt;&lt;/strong&gt;作为可行的现代替代方案，旨在解决这类问题。</target>
+        </trans-unit>
+        <trans-unit id="1059a59367f309b4b55f78865a999cb543a1f136" translate="yes" xml:space="preserve">
+          <source>You can also print out every value</source>
+          <target state="translated">你也可以打印出每个值</target>
+        </trans-unit>
+        <trans-unit id="3151f5944b8d3d80e7f39e73c10b03122061a488" translate="yes" xml:space="preserve">
+          <source>You can also use custom function that can be passed to key.</source>
+          <target state="translated">你也可以使用可以传给key的自定义函数。</target>
+        </trans-unit>
+        <trans-unit id="27bd46eb9cb8a0d3c801a01821b192486f2c5fd0" translate="yes" xml:space="preserve">
+          <source>You can create an &quot;inverted index&quot;, also</source>
+          <target state="translated">你可以创建一个 &quot;倒置索引&quot;,也可以是</target>
+        </trans-unit>
+        <trans-unit id="007ab6aff38cfad02f1f3c6d815d226b5bf12b3f" translate="yes" xml:space="preserve">
+          <source>You can use a &lt;a href=&quot;https://pypi.python.org/pypi/skipdict/1.0&quot;&gt;skip dict&lt;/a&gt; which is a dictionary that's permanently sorted by value.</source>
+          <target state="translated">您可以使用&lt;a href=&quot;https://pypi.python.org/pypi/skipdict/1.0&quot;&gt;skip dict&lt;/a&gt; ，这是一个按值永久排序的字典。</target>
+        </trans-unit>
+        <trans-unit id="3108b3a9adc0f05687add83a67ccd81aacce791b" translate="yes" xml:space="preserve">
+          <source>You can use the &lt;a href=&quot;http://docs.python.org/2/library/collections.html#collections.Counter&quot;&gt;collections.Counter&lt;/a&gt;. Note, this will work for both numeric and non-numeric values.</source>
+          <target state="translated">您可以使用&lt;a href=&quot;http://docs.python.org/2/library/collections.html#collections.Counter&quot;&gt;collections.Counter&lt;/a&gt; 。 请注意，这将适用于数字和非数字值。</target>
+        </trans-unit>
+        <trans-unit id="c532773b5fa5995d94c7324ea49825da9f88b956" translate="yes" xml:space="preserve">
+          <source>You could use:</source>
+          <target state="translated">你可以用。</target>
+        </trans-unit>
+        <trans-unit id="6df57e615bb0295e689e6bd74bbb12cbca93f286" translate="yes" xml:space="preserve">
+          <source>You may use a temporary list to help you to sort the dictionary:</source>
+          <target state="translated">你可以用一个临时列表来帮助你对字典进行分类。</target>
+        </trans-unit>
+        <trans-unit id="ff9ad3134a5822c19feae380c1e7d9d5fa9876c7" translate="yes" xml:space="preserve">
+          <source>a) I don't know about how well it works</source>
+          <target state="translated">a)我不知道效果如何</target>
+        </trans-unit>
+        <trans-unit id="cffa50a32cb13a240d705317bcec65dd1f31b6ad" translate="yes" xml:space="preserve">
+          <source>and</source>
+          <target state="translated">and</target>
+        </trans-unit>
+        <trans-unit id="d1a8efb81673d316b32cbbe97f95b76ebfdf49bc" translate="yes" xml:space="preserve">
+          <source>b) You have to download and install it of course. If you do not have administrative access, then I'm afraid the option's out.)</source>
+          <target state="translated">b)当然,你必须下载并安装它。如果你没有管理权限,那么恐怕这个选项就没有了。)</target>
+        </trans-unit>
+        <trans-unit id="74178a464783731b5d38fbd4adc3bae7678fe329" translate="yes" xml:space="preserve">
+          <source>copy-paste from : &lt;a href=&quot;http://docs.python.org/dev/library/collections.html#ordereddict-examples-and-recipes&quot;&gt;http://docs.python.org/dev/library/collections.html#ordereddict-examples-and-recipes&lt;/a&gt;</source>
+          <target state="translated">复制粘贴自： &lt;a href=&quot;http://docs.python.org/dev/library/collections.html#ordereddict-examples-and-recipes&quot;&gt;http&lt;/a&gt; : //docs.python.org/dev/library/collections.html#ordereddict-examples-and-recipes</target>
+        </trans-unit>
+        <trans-unit id="c798e426037d4b494533e05c7688caa4c6717921" translate="yes" xml:space="preserve">
+          <source>in the same ordering per value of v.</source>
+          <target state="translated">按v的每个值的相同顺序排列。</target>
+        </trans-unit>
+        <trans-unit id="e410766845cb84b4856929c8042ce3f998f22bde" translate="yes" xml:space="preserve">
+          <source>sorting with highest score first:</source>
+          <target state="translated">以分数高者优先排序。</target>
+        </trans-unit>
+        <trans-unit id="39d011e92a95017607a9554d19f2a6ae86c40008" translate="yes" xml:space="preserve">
+          <source>sorting with lowest score first:</source>
+          <target state="translated">以最低分先排序。</target>
+        </trans-unit>
+        <trans-unit id="92d9544b873d56bf9d3c07f1386ce6f039a937a0" translate="yes" xml:space="preserve">
+          <source>then you can get a list of the words, ordered by frequency of use with &lt;a href=&quot;https://docs.python.org/library/functions.html#sorted&quot;&gt;&lt;code&gt;sorted(d, key=d.get)&lt;/code&gt;&lt;/a&gt; - the sort iterates over the dictionary keys, using the number of word occurrences as a sort key .</source>
+          <target state="translated">那么您可以获取单词列表，并按&lt;a href=&quot;https://docs.python.org/library/functions.html#sorted&quot;&gt; &lt;code&gt;sorted(d, key=d.get)&lt;/code&gt; &lt;/a&gt;的使用频率排序 -使用单词出现的次数作为sort key，排序遍历字典键。</target>
+        </trans-unit>
+        <trans-unit id="1e480c669a446cd2cfa32c42668447a5643e9435" translate="yes" xml:space="preserve">
+          <source>would be stored in two Python tuples, k_seq and v_seq (aligned by numerical index and with the same length of course), then:</source>
+          <target state="translated">将被存储在两个Python tuples中,k_seq和v_seq (当然是按数字索引对齐,长度相同),然后。</target>
+        </trans-unit>
+        <trans-unit id="979077738bfbc204b3c1724499e5c0b8eb3586f4" translate="yes" xml:space="preserve">
+          <source>yielding in this case (for the new Python 3.6+ built-in dict!):</source>
+          <target state="translated">在这种情况下产生了(对于新的Python 3.6+内置的dict!)。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

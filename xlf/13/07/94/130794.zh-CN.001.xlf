@@ -1,0 +1,1196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/130794">
+    <body>
+      <group id="130794">
+        <trans-unit id="075303a37c1db7777d673503bd42ea6517e55270" translate="yes" xml:space="preserve">
+          <source>&quot;As our &lt;strong&gt;applications&lt;/strong&gt; grow and evolves, each one of our &lt;strong&gt;code entities&lt;/strong&gt; will internally require &lt;strong&gt;instances of other objects&lt;/strong&gt;, which are better known as &lt;strong&gt;dependencies&lt;/strong&gt; in the world of software engineering. The &lt;strong&gt;action&lt;/strong&gt; of passing such &lt;strong&gt;dependencies&lt;/strong&gt; to the dependent client is known as &lt;strong&gt;injection&lt;/strong&gt;, and it also entails the participation of another code entity, named the &lt;strong&gt;injector&lt;/strong&gt;. The &lt;strong&gt;injector&lt;/strong&gt; will take responsibility for &lt;strong&gt;instantiating&lt;/strong&gt; and &lt;strong&gt;bootstrapping&lt;/strong&gt; the required &lt;strong&gt;dependencies&lt;/strong&gt; so they are ready for use from the very moment they are successfully injected in the client. This is very important since the client knows nothing about how to &lt;strong&gt;instantiate&lt;/strong&gt; its own &lt;strong&gt;dependencies&lt;/strong&gt; and is only aware of the &lt;strong&gt;interface&lt;/strong&gt; they implement in order to use them.&quot;</source>
+          <target state="translated">&amp;ldquo;随着我们的&lt;strong&gt;应用程序的&lt;/strong&gt;成长和发展，我们的每个&lt;strong&gt;代码实体&lt;/strong&gt;都将在内部需要&lt;strong&gt;其他对象的实例&lt;/strong&gt; ，这些&lt;strong&gt;实例&lt;/strong&gt;在软件工程界被称为&lt;strong&gt;依赖关系&lt;/strong&gt; 。将此类&lt;strong&gt;依赖关系&lt;/strong&gt;传递给依赖客户端的动作称为&lt;strong&gt;注入&lt;/strong&gt; ，并且还需要另一个代码实体（称为&lt;strong&gt;注入器）&lt;/strong&gt;的参与， &lt;strong&gt;注入&lt;/strong&gt; &lt;strong&gt;器&lt;/strong&gt;将负责&lt;strong&gt;实例化&lt;/strong&gt;和&lt;strong&gt;引导&lt;/strong&gt;所需的&lt;strong&gt;依赖项，&lt;/strong&gt;以便从成功注入客户端的那一刻起就可以使用它们。客户对如何&lt;strong&gt;实例化&lt;/strong&gt;自己的&lt;strong&gt;依赖关系&lt;/strong&gt;一无所知，只知道它们实现的&lt;strong&gt;接口&lt;/strong&gt;以便使用它们。&amp;rdquo;</target>
+        </trans-unit>
+        <trans-unit id="88ba72c68eb66f9403511df347aad31c0ffb36bb" translate="yes" xml:space="preserve">
+          <source>&quot;Dependency Injection&quot; is a 25-dollar
+  term for a 5-cent concept. [...]
+  Dependency injection means giving an
+  object its instance variables. [...].</source>
+          <target state="translated">&quot;依赖注入 &quot;是一个5分钱的概念25元的名词。....]依赖注入是指赋予对象以实例变量。[...].</target>
+        </trans-unit>
+        <trans-unit id="884583105d69da013b6572c7250c4e2a8f722ed6" translate="yes" xml:space="preserve">
+          <source>&quot;Dependency injection&quot; is considered a type of &quot;inversion of control&quot;, which means that some logic is taken out of the caller. That isn't the case when the caller passes in parameters, so if that were DI, DI would not imply inversion of control.</source>
+          <target state="translated">&quot;依赖注入 &quot;被认为是一种 &quot;控制权倒置 &quot;的类型,这意味着一些逻辑从调用者那里被抽取出来。当调用者传递参数时,情况并非如此,所以如果是DI,DI并不意味着控制权倒置。</target>
+        </trans-unit>
+        <trans-unit id="559316cc487d0d2d80076d1938d00fe314c1d36f" translate="yes" xml:space="preserve">
+          <source>&amp;ldquo;In short, &lt;strong&gt;DI&lt;/strong&gt; helps you write code in a &lt;strong&gt;loosely coupled&lt;/strong&gt; way and makes your &lt;strong&gt;code&lt;/strong&gt; more &lt;strong&gt;testable&lt;/strong&gt; and &lt;strong&gt;reusable&lt;/strong&gt;.&amp;rdquo;</source>
+          <target state="translated">&amp;ldquo;总之， &lt;strong&gt;DI&lt;/strong&gt;帮助您以&lt;strong&gt;松散耦合的&lt;/strong&gt;方式编写代码，并使您的&lt;strong&gt;代码&lt;/strong&gt;更具&lt;strong&gt;可测试性&lt;/strong&gt;和&lt;strong&gt;可重用性&lt;/strong&gt; 。&amp;rdquo;</target>
+        </trans-unit>
+        <trans-unit id="ec42628a9387e4101c1904f5ffcd31e7a85677db" translate="yes" xml:space="preserve">
+          <source>(A concrete &lt;code&gt;Clock&lt;/code&gt; needs to be provided, which of course could revert to &lt;code&gt;DateTime.Now&lt;/code&gt;, and the two dependencies need to be provided by an IoC container via constructor injection)</source>
+          <target state="translated">（需要提供一个具体的 &lt;code&gt;Clock&lt;/code&gt; ，它当然可以还原为 &lt;code&gt;DateTime.Now&lt;/code&gt; ，并且两个依赖关系需要由IoC容器通过构造函数注入来提供）</target>
+        </trans-unit>
+        <trans-unit id="7c77d04844ca55b45c4e29a2ad4bd0663b614dc7" translate="yes" xml:space="preserve">
+          <source>1) Simple manual &lt;code&gt;Injector&lt;/code&gt;</source>
+          <target state="translated">1）简单的手动 &lt;code&gt;Injector&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="2b8c8a3c4e4de08de9d47e21c94fca818f3e508e" translate="yes" xml:space="preserve">
+          <source>1.    Constructor-based dependency injection:</source>
+          <target state="translated">1.基于构造函数的依赖注入。</target>
+        </trans-unit>
+        <trans-unit id="0fd3eb9210cba499046c01b805cb7de8b0581cf6" translate="yes" xml:space="preserve">
+          <source>2) Use library: For Android &lt;a href=&quot;https://github.com/google/dagger&quot;&gt;dagger2&lt;/a&gt;</source>
+          <target state="translated">2）使用库：对于Android &lt;a href=&quot;https://github.com/google/dagger&quot;&gt;dagger2&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="f1dc2ccd951284c98a3bde560294a5c88093316a" translate="yes" xml:space="preserve">
+          <source>2.    Setter-based dependency injection:</source>
+          <target state="translated">2.基于Setter的依赖注入。</target>
+        </trans-unit>
+        <trans-unit id="20d1910df8e94fb0fa91e3b643d5709d2d44f250" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://martinfowler.com/articles/injection.html#InterfaceInjection&quot;&gt;Martin Fowler&lt;/a&gt; documents a third alternative (h/t @MarcDix), where &lt;strong&gt;classes explicitly implement an interface&lt;/strong&gt; for the dependencies programmers wish injected.</source>
+          <target state="translated">&lt;a href=&quot;http://martinfowler.com/articles/injection.html#InterfaceInjection&quot;&gt;Martin Fowler&lt;/a&gt;记录了第三种选择（h / t @MarcDix），其中&lt;strong&gt;类显式实现了&lt;/strong&gt;程序员希望注入的依赖项&lt;strong&gt;的接口&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="139cc1158c0803cacea84c6bb86ce8b3cd6a16e2" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://php-di.org/doc/understanding-di.html&quot;&gt;This&lt;/a&gt; is the most simple explanation about &lt;strong&gt;Dependency Injection&lt;/strong&gt; and &lt;strong&gt;Dependency Injection Container&lt;/strong&gt; I have ever seen:</source>
+          <target state="translated">&lt;a href=&quot;http://php-di.org/doc/understanding-di.html&quot;&gt;这&lt;/a&gt;是我见过的关于&lt;strong&gt;依赖注入&lt;/strong&gt;和&lt;strong&gt;依赖注入容器&lt;/strong&gt;的最简单的解释：</target>
+        </trans-unit>
+        <trans-unit id="ea2f6774ac13f40817f28f4fc553b644d8059a9c" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html&quot;&gt;James Shore's article shows the following examples for comparison&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html&quot;&gt;James Shore的文章显示了以下示例进行比较&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="0b5dd4547c12b988e4cf971119a75e17e9ed5a4e" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://en.wikipedia.org/wiki/Dependency_injection&quot;&gt;Dependency Injection&lt;/a&gt; means a way (actually &lt;strong&gt;any-way&lt;/strong&gt;) for one part of code (e.g a class) to have access to dependencies (other parts of code, e.g other classes, it depends upon) in a modular way without them being hardcoded (so they can change or be overriden freely, or even be loaded at another time, as needed)</source>
+          <target state="translated">&lt;a href=&quot;https://en.wikipedia.org/wiki/Dependency_injection&quot;&gt;依赖注入&lt;/a&gt;是指一种方式（实际上是&lt;strong&gt;任意方式&lt;/strong&gt; ），使一部分代码（例如，一个类）能够以模块化的方式访问依赖（例如，代码的其他部分，例如，其他类，取决于它）而无需对其进行硬编码（因此它们可以自由更改或覆盖，或者根据需要甚至在其他时间加载）</target>
+        </trans-unit>
+        <trans-unit id="489243935980044f46caf00a1da3950eb72480f3" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;SomeClass()&lt;/code&gt; has its constructor as following:</source>
+          <target state="translated">&lt;code&gt;SomeClass()&lt;/code&gt; 的构造函数如下：</target>
+        </trans-unit>
+        <trans-unit id="e7be66ff5c1f2bead4f99265aacf00180d5bd3fe" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;myObject&lt;/code&gt; can be passed directly which makes testing easier.</source>
+          <target state="translated">&lt;code&gt;myObject&lt;/code&gt; 可以直接传递，这使测试更加容易。</target>
+        </trans-unit>
+        <trans-unit id="9bd7701ca83f91008241672a8066b98e80ce7fa1" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;(and ps , yes it has become an overly-hyped 25$ name for a rather simple, concept)&lt;/em&gt;, my &lt;code&gt;.25&lt;/code&gt; cents</source>
+          <target state="translated">&lt;em&gt;（和ps，是的，它成为一个非常简单的概念而被过度炒作的25 $名称）&lt;/em&gt; ，我的 &lt;code&gt;.25&lt;/code&gt; 美分</target>
+        </trans-unit>
+        <trans-unit id="7c64642d978f251aeaa9e771fd6b2e4c8c2a0138" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;DI increases cohesion by removing any need to determine the direction of dependency and write any glue code.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;DI通过消除确定依赖方向和编写任何粘合代码的任何需求来提高内聚性。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="8cd65eebe518df31a3d3e8b816fd1032b277e646" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;DI reduces coupling by making all of your components modular (i.e. replacable) and have well-defined interfaces to each other.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;DI通过使您的所有组件模块化（即可更换）并具有相互定义的接口来减少耦合。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="f2f6f530262aaa812ba33a2511d7964178350822" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;I found this funny example in terms of &lt;a href=&quot;https://en.wikipedia.org/wiki/Loose_coupling&quot;&gt;loose coupling&lt;/a&gt;:&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;我从&lt;a href=&quot;https://en.wikipedia.org/wiki/Loose_coupling&quot;&gt;松耦合的&lt;/a&gt;角度发现了这个有趣的例子：&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="62fe0e1a78daa62d9061df07333b1c387f953b07" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Using&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Using&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="81d7f6f687485d5dc12f6f5268a195c72b70fee8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;1) 2) 3) Using&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;1）2）3）使用&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="134d462b40518572cfc8a34cb9179e98a9817f10" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;Then what does the &lt;code&gt;Dependency Injection&lt;/code&gt; do for us...?&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;那 &lt;code&gt;Dependency Injection&lt;/code&gt; 对我们有什么作用呢？&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="427d269cef16d7dd435f53adf9f53c88581fff03" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Advantages&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Advantages&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="64e35a8a257eda0748b950b4efd25aebaab56d6c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;After using dependency injection:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;使用依赖项注入后：&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="e118dd44c7e67af1dc63de6f5672af7d0d76495d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;All the above answers are good, my aim is to explain the concept in a simple way so that anyone without a programming knowledge can also understand concept&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;以上所有答案都是好的，我的目的是用一种简单的方式来解释这个概念，以便没有编程知识的人也可以理解这个概念。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="21f37caa4106b3b41630895455450baa84ccfb77" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Alternative solution&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;替代解决方案&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="fe080fcf8cd21d9cdaa29a5c39e27707035ab956" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;DI, DIP and SOLID&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;DI，DIP和SOLID&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="e78d489aa9f4c7df98e18605184dfcf430472ba1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Dependency Injection&lt;/strong&gt; and &lt;strong&gt;dependency Injection Containers&lt;/strong&gt; are different things:</source>
+          <target state="translated">&lt;strong&gt;依赖注入&lt;/strong&gt;和&lt;strong&gt;依赖注入容器&lt;/strong&gt;是不同的东西：</target>
+        </trans-unit>
+        <trans-unit id="4e7a19bc0d7c4175394cf98e210ddbeaca200985" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Dependency Injection&lt;/strong&gt; is passing dependency to other &lt;strong&gt;objects&lt;/strong&gt; or &lt;strong&gt;framework&lt;/strong&gt;( dependency injector).</source>
+          <target state="translated">&lt;strong&gt;依赖注入&lt;/strong&gt;将依赖传递给其他&lt;strong&gt;对象&lt;/strong&gt;或&lt;strong&gt;框架&lt;/strong&gt; （依赖注入器）。</target>
+        </trans-unit>
+        <trans-unit id="9050dff2d4e01dd22dab4a30a3b18b836dbca3a8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Disadvantages&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Disadvantages&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4f1f2d1ba0a7e969d5df6fdb8a7f2b397072df69" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;EDIT&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;EDIT&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="352fe1ffa66ad058937206892159aa0c751d3d51" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Example for Dependency injection&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;依赖注入示例&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="bce3f4a409dc0c67054a7e806ad3eecf69f742f8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Example&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Example&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="89779a6f30decc7c58d031e6da0ce5e9759d2d8e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Next Steps&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;下一步&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="73b8706173c462cc0bdd6d2632616f2d7f4a120a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Note&lt;/strong&gt; : The creation / mapping / projection (via &lt;code&gt;new ..()&lt;/code&gt;) of POCO / POJO / Serialization DTOs / Entity Graphs / Anonymous JSON projections et al - i.e. &quot;Data only&quot; classes or records - used or returned from methods are &lt;em&gt;not&lt;/em&gt; regarded as Dependencies (in the UML sense) and not subject to DI. Using &lt;code&gt;new&lt;/code&gt; to project these is just fine.</source>
+          <target state="translated">&lt;strong&gt;注意&lt;/strong&gt; ：POCO / POJO /序列化DTO /实体图/匿名JSON投影等的创建/映射/投影（通过 &lt;code&gt;new ..()&lt;/code&gt; ）-即&amp;ldquo;仅数据&amp;rdquo;类或记录-从方法中使用或返回作为依赖关系（在UML意义上）并且不受DI约束。 使用 &lt;code&gt;new&lt;/code&gt; 进行投影就可以了。</target>
+        </trans-unit>
+        <trans-unit id="d98f2b4bd341257a9dbd8120abd05530994fcf1c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Problem&lt;/strong&gt;:
+If &lt;code&gt;myObject&lt;/code&gt; involves complex tasks such as disk access or network access, it is &lt;strong&gt;hard&lt;/strong&gt; to do unit test on &lt;code&gt;SomeClass()&lt;/code&gt;. Programmers have to mock &lt;code&gt;myObject&lt;/code&gt; and might &lt;strong&gt;intercept&lt;/strong&gt; the factory call.</source>
+          <target state="translated">&lt;strong&gt;问题&lt;/strong&gt; ：如果 &lt;code&gt;myObject&lt;/code&gt; 涉及诸如磁盘访问或网络访问之类的复杂任务，则&lt;strong&gt;很难&lt;/strong&gt;对 &lt;code&gt;SomeClass()&lt;/code&gt; 进行单元测试。 程序员必须模拟 &lt;code&gt;myObject&lt;/code&gt; 并可能&lt;strong&gt;拦截&lt;/strong&gt;工厂调用。</target>
+        </trans-unit>
+        <trans-unit id="3caa217db0a9feb519ccfb83c5360a0fd9379499" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;UPDATE:&lt;/strong&gt; Watched course about EF Core from Julie Lerman recently and also liked her short definition about DI.</source>
+          <target state="translated">&lt;strong&gt;更新：&lt;/strong&gt;最近观看了朱莉&amp;middot;勒曼（Julie Lerman）的有关EF Core的课程，并且也喜欢她关于DI的简短定义。</target>
+        </trans-unit>
+        <trans-unit id="bb8fdb2caf0495723a2bfa5cae2542c71d3df90c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Using&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Using&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="fed09c4b3a548192ce23e86d0d3ac85024ca7184" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Way 1)&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;方式1）&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="c5287e00dc55d1b18cf0490002f5097515ab0af5" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Way 1)&lt;/strong&gt; Constructor injection</source>
+          <target state="translated">&lt;strong&gt;方式1）&lt;/strong&gt;构造器注入</target>
+        </trans-unit>
+        <trans-unit id="cffbc9253561d5f6c70f7781944f336db2c95227" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Way 2)&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;方式2）&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="bbfccbb774df62a67ec9d3bdc2292dd944115740" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Way 2)&lt;/strong&gt; Setter injection</source>
+          <target state="translated">&lt;strong&gt;方式2）&lt;/strong&gt; Setter注入</target>
+        </trans-unit>
+        <trans-unit id="6b6b88724bc7d2fd56ed9b90ed70c1bf61d456de" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Way 3)&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;方式3）&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7be335f5337bca5a01d1e24ed56b2f2d716bba6a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Way 3)&lt;/strong&gt; Interface injection</source>
+          <target state="translated">&lt;strong&gt;方式3）&lt;/strong&gt;接口注入</target>
+        </trans-unit>
+        <trans-unit id="e997684d5231d7a45924a857d44b5b8961d9a17d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What is Dependency Injection (DI)?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;什么是依赖注入（DI）？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="230a57f9d5d3eb174e62bab1bb6baa6ed97f6dfb" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What is dependency injection and when/why should or shouldn't it be used?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;什么是依赖项注入？何时/为什么/不应该使用它？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6b431da6264f45e0d6035801527ad040d6ae12bf" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;When to use DI?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;什么时候使用DI？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="dd3cb919485762e2f7ae20824d2553c1b374d9e7" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Why use DIP (and DI)?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;为什么要使用DIP（和DI）？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="e626bfdc41d8d0154fb13bbccc4a07c5bdea697f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Without Dependency Injection (DI):&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;没有依赖注入（DI）：&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5b41ad2ddaf8a9d9eee7a1bdd549ad0e74faf4d1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;clean&lt;/strong&gt; of dependency initialization code</source>
+          <target state="translated">&lt;strong&gt;清理&lt;/strong&gt;依赖初始化代码</target>
+        </trans-unit>
+        <trans-unit id="175b3654ce89f52bed835b1e1354adc55d5bff80" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;stable&lt;/strong&gt; regardless of dependency used</source>
+          <target state="translated">&lt;strong&gt;稳定，&lt;/strong&gt;无论是否使用依赖</target>
+        </trans-unit>
+        <trans-unit id="b64cc2760536699c09c33fd0c38b16350e500872" translate="yes" xml:space="preserve">
+          <source>===</source>
+          <target state="translated">===</target>
+        </trans-unit>
+        <trans-unit id="6b0acc829dd60bf821accdbecbe0f34bcc950c1b" translate="yes" xml:space="preserve">
+          <source>A &lt;code&gt;Car&lt;/code&gt; depends on wheels, engine, fuel, battery, etc. to run. Traditionally we define the brand of such dependent objects along with the definition of the &lt;code&gt;Car&lt;/code&gt; object.</source>
+          <target state="translated">&lt;code&gt;Car&lt;/code&gt; 要依靠车轮，发动机，燃料，电池等来运行。 传统上，我们会定义此类从属对象的品牌以及 &lt;code&gt;Car&lt;/code&gt; 对象的定义。</target>
+        </trans-unit>
+        <trans-unit id="76a8eb0e78cd5206cc6a627c1d56ea296a18f598" translate="yes" xml:space="preserve">
+          <source>A dependency is an object that can be used (&lt;code&gt;Service&lt;/code&gt;)</source>
+          <target state="translated">依赖项是可以使用的对象（ &lt;code&gt;Service&lt;/code&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="d726743d668b3ba1c937402de85725ec11622168" translate="yes" xml:space="preserve">
+          <source>A nice comment by Jose Maria Arranz on DI</source>
+          <target state="translated">Jose Maria Arranz在DI上的一个不错的评论</target>
+        </trans-unit>
+        <trans-unit id="55bbd203453572a1a2a8545b2a4e406f89f8d6bc" translate="yes" xml:space="preserve">
+          <source>About replaceable: with a very simple .properties archive and Class.forName you can define wich classes can change. If ANY class of your code can be changed, Java is not for you, use an scripting language.  By the way: annotations cannot be changed without recompiling.</source>
+          <target state="translated">关于可替换:通过一个非常简单的.properties存档和Class.forName,你可以定义哪些类可以改变。如果你的代码中的任何类都可以更改,那么Java就不适合你,请使用脚本语言。顺便说一下:不重新编译就不能更改注释。</target>
+        </trans-unit>
+        <trans-unit id="e431d362be915c2e12e2e8aec306dfb48350104c" translate="yes" xml:space="preserve">
+          <source>Actually,Suppose in java you created two different classes as class A and class B, and whatever the function are available in class B you want to use in class A, So at that time dependency injection can be used.
+where you can crate object of one class in other,in the same way you can inject an entire class in another class to make it accessible.
+by this way dependency can be overcome.</source>
+          <target state="translated">实际上,假设你在java中创建了两个不同的类A和类B,无论类B中的函数是什么,你都想在类A中使用,所以这时可以使用依赖注入。</target>
+        </trans-unit>
+        <trans-unit id="b5e7a0d53d6a3064057c2db69d7bd1bb143ac3e8" translate="yes" xml:space="preserve">
+          <source>All the three classes can be hidden for it's own implementation. Now we can use this code for DI:</source>
+          <target state="translated">这三个类都可以隐藏它自己的实现。现在我们可以用这个代码来进行DI。</target>
+        </trans-unit>
+        <trans-unit id="9f4e112e7a703ff0642590623727505b80c743dd" translate="yes" xml:space="preserve">
+          <source>Allowing expensive resources or services to be created as late as possible and only when needed.</source>
+          <target state="translated">允许尽可能晚地、只在需要的时候才设立昂贵的资源或服务;</target>
+        </trans-unit>
+        <trans-unit id="b73b678b4942a0f37f86394e629e8cffab4b632e" translate="yes" xml:space="preserve">
+          <source>Also when we have many dependencies it is very good practice to use Inversion of Control(IoC) containers which we can tell which interfaces should be mapped to which concrete implementations for all our dependencies and we can have it resolve those dependencies for us when it constructs our object. For example, we could specify in the mapping for the IoC container that the &lt;strong&gt;IEngine&lt;/strong&gt; dependency should be mapped to the &lt;strong&gt;GasEngine&lt;/strong&gt; class and when we ask the IoC container for an instance of our &lt;strong&gt;Car&lt;/strong&gt; class, it will automatically construct our &lt;strong&gt;Car&lt;/strong&gt; class with a &lt;strong&gt;GasEngine&lt;/strong&gt; dependency passed in.</source>
+          <target state="translated">同样，当我们有很多依赖项时，最好使用Inversion of Control（IoC）容器，该容器可以告诉我们所有依赖项应映射到哪个具体实现的接口，并且可以在构造时为我们解决这些依赖项我们的对象。 例如，我们可以在IoC容器的映射中指定将&lt;strong&gt;IEngine&lt;/strong&gt;依赖项映射到&lt;strong&gt;GasEngine&lt;/strong&gt;类，当我们向IoC容器询问&lt;strong&gt;Car&lt;/strong&gt;类的实例时，它将自动构造具有&lt;strong&gt;GasEngine&lt;/strong&gt;依赖项的&lt;strong&gt;Car&lt;/strong&gt;类通过了。</target>
+        </trans-unit>
+        <trans-unit id="992414fdd7e72886a072118a7f3b02c1d3b532c2" translate="yes" xml:space="preserve">
+          <source>Although seemingly innocuous, it has two &lt;code&gt;static&lt;/code&gt; dependencies on two other classes, &lt;code&gt;System.DateTime&lt;/code&gt; and &lt;code&gt;System.Console&lt;/code&gt;, which not only limit the logging output options (logging to console will be worthless if no one is watching), but worse, it is difficult to automatically test given the dependency on a non-deterministic system clock.</source>
+          <target state="translated">尽管看似无害，但它对另外两个类 &lt;code&gt;System.DateTime&lt;/code&gt; 和 &lt;code&gt;System.Console&lt;/code&gt; 具有两个 &lt;code&gt;static&lt;/code&gt; 依赖关系，这不仅限制了日志记录输出选项（如果没有人在看，则登录到控制台将毫无价值），但更糟的是，这很困难自动测试给定对不确定性系统时钟的依赖性。</target>
+        </trans-unit>
+        <trans-unit id="608e86855b2a65e39ae912fd39a0fa1102aef2e4" translate="yes" xml:space="preserve">
+          <source>An automated Unit Test can be built, which definitively proves that our logger is working correctly, as we now have control over the dependencies - the time, and we can spy on the written output:</source>
+          <target state="translated">可以建立一个自动化的单元测试,它可以确定地证明我们的记录器工作正常,因为我们现在可以控制依赖关系--时间,我们可以偷看写的输出。</target>
+        </trans-unit>
+        <trans-unit id="70687f8f4f2b763df000dbed64d4fb27b23ff917" translate="yes" xml:space="preserve">
+          <source>An injection is the passing of a dependency (&lt;code&gt;Service&lt;/code&gt;) to a dependent object (&lt;code&gt;Client&lt;/code&gt;) that would use it</source>
+          <target state="translated">注入是将依赖项（ &lt;code&gt;Service&lt;/code&gt; ）传递给将使用它的依赖项对象（ &lt;code&gt;Client&lt;/code&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="22de376201dcf4ad21e64690cf593a42ea12c2ce" translate="yes" xml:space="preserve">
+          <source>And to instantiate the Car class we will use next code:</source>
+          <target state="translated">而为了实例化Car类,我们将使用下面的代码。</target>
+        </trans-unit>
+        <trans-unit id="5d989001b3ba666eebb2d9b73b1ed4f8b0f5b41d" translate="yes" xml:space="preserve">
+          <source>Any application is composed of many objects that collaborate with each other to perform some useful stuff. Traditionally each object is responsible for obtaining its own references to the dependent objects (dependencies) it collaborate with. This leads to highly coupled classes and hard-to-test code.</source>
+          <target state="translated">任何应用程序都是由许多对象组成的,这些对象之间相互协作来执行一些有用的东西。传统上,每个对象都要负责获取自己对与它协作的依赖对象(依赖关系)的引用。这导致了高度耦合的类和难以测试的代码。</target>
+        </trans-unit>
+        <trans-unit id="dcd3c9a7013d9400c6621023f7f9889b2d159708" translate="yes" xml:space="preserve">
+          <source>Any time where you will need to unit test the methods of a class in isolation of its dependencies,</source>
+          <target state="translated">任何时候,你需要对一个类的方法进行单元测试的时候,都需要对其依赖关系进行隔离测试。</target>
+        </trans-unit>
+        <trans-unit id="8a5fc50e3ceaa03d10efa641f9932ed3164ec099" translate="yes" xml:space="preserve">
+          <source>Application calls Foo</source>
+          <target state="translated">申请电话Foo</target>
+        </trans-unit>
+        <trans-unit id="ac42390e19be354858b8262243637ee16d63efc2" translate="yes" xml:space="preserve">
+          <source>Application creates Bar and gives it Bim</source>
+          <target state="translated">应用程序创建Bar并赋予其Bim</target>
+        </trans-unit>
+        <trans-unit id="cc24fa2cfa1ade20a4b0568072650d805b3f7a37" translate="yes" xml:space="preserve">
+          <source>Application creates Bim</source>
+          <target state="translated">应用程序创建Bim</target>
+        </trans-unit>
+        <trans-unit id="70579284eb400d7297fa45f23e86008434a5dae7" translate="yes" xml:space="preserve">
+          <source>Application creates Foo</source>
+          <target state="translated">应用程序创建Foo</target>
+        </trans-unit>
+        <trans-unit id="c0f19361a5c397f8b9f7a8e3a097732fbca45296" translate="yes" xml:space="preserve">
+          <source>Application creates Foo and gives it Bar</source>
+          <target state="translated">应用程序创建Foo并赋予它Bar</target>
+        </trans-unit>
+        <trans-unit id="7f33a152d579b4e1ccdf69ca92b2a96ddcd2dca4" translate="yes" xml:space="preserve">
+          <source>Application gets Foo from the Container, so:</source>
+          <target state="translated">应用程序从容器中获取Foo,所以。</target>
+        </trans-unit>
+        <trans-unit id="1a435d46695a15e5ef97ebb4802372a00c982aa2" translate="yes" xml:space="preserve">
+          <source>Application needs Foo (e.g. a controller), so:</source>
+          <target state="translated">应用需要Foo(如控制器),所以。</target>
+        </trans-unit>
+        <trans-unit id="63f0eb90a103bbcdae0831a58efe78a5893f2f45" translate="yes" xml:space="preserve">
+          <source>Application needs Foo so:</source>
+          <target state="translated">应用需要Foo所以。</target>
+        </trans-unit>
+        <trans-unit id="9be6e530a74dcafa45c7b24d7025184525c1bc10" translate="yes" xml:space="preserve">
+          <source>Application needs Foo, which needs Bar, which needs Bim, so:</source>
+          <target state="translated">应用需要Foo,这需要吧,这需要Bim,所以。</target>
+        </trans-unit>
+        <trans-unit id="41f971b49b630ecc0dbd5fbc5a28c4f03ee52f5d" translate="yes" xml:space="preserve">
+          <source>As others have said, &lt;em&gt;Dependency Injection(DI)&lt;/em&gt; removes the responsibility of direct creation, and management of the lifespan, of other object instances upon which our class of interest (consumer class) is dependent (in the &lt;a href=&quot;https://en.wikipedia.org/wiki/Class_diagram#Dependency&quot;&gt;UML sense&lt;/a&gt;). These instances are instead passed to our consumer class, typically as constructor parameters or via property setters (the management of the dependency object instancing and passing to the consumer class is usually performed by an &lt;em&gt;Inversion of Control (IoC)&lt;/em&gt; container, but that's another topic).</source>
+          <target state="translated">就像其他人所说的那样， &lt;em&gt;依赖注入（DI）&lt;/em&gt;消除了我们感兴趣的类（消费者类）所依赖的其他对象实例（在&lt;a href=&quot;https://en.wikipedia.org/wiki/Class_diagram#Dependency&quot;&gt;UML意义上&lt;/a&gt; ）直接创建和寿命管理的责任。 这些实例通常作为构造函数参数或通过属性设置器传递给我们的消费者类（对依赖对象实例化和传递给消费者类的管理通常由&lt;em&gt;控制反转（IoC）&lt;/em&gt;容器执行，但这是另一个主题） 。</target>
+        </trans-unit>
+        <trans-unit id="08399bcb01b547cab14e44b28e00c30b6c0663f3" translate="yes" xml:space="preserve">
+          <source>As per above example, decoupling of dependencies does require some design effort, and for the developer, there is a paradigm shift needed to break the habit of &lt;code&gt;new&lt;/code&gt;ing dependencies directly, and instead trusting the container to manage dependencies.</source>
+          <target state="translated">如上面的示例所示，依赖关系的分离确实需要一些设计工作，并且对于开发人员而言，需要进行范式转换，以直接打破 &lt;code&gt;new&lt;/code&gt; 依赖关系的习惯，而是信任容器来管理依赖关系。</target>
+        </trans-unit>
+        <trans-unit id="fff41238dbef5b816e589fb9ecf3cbde7896731e" translate="yes" xml:space="preserve">
+          <source>Bar creates Bim</source>
+          <target state="translated">吧台创建Bim</target>
+        </trans-unit>
+        <trans-unit id="452099fc339bb9ab1a4137666deb3f1f3b017433" translate="yes" xml:space="preserve">
+          <source>Bar does something</source>
+          <target state="translated">吧台做的事情</target>
+        </trans-unit>
+        <trans-unit id="2b2cfde5abc29f811788f8a477a12b0d271a2ada" translate="yes" xml:space="preserve">
+          <source>Bar needs Bim (a service, a repository,
+&amp;hellip;), so:</source>
+          <target state="translated">Bar需要Bim（服务，存储库等），因此：</target>
+        </trans-unit>
+        <trans-unit id="ae219b96ca6e4a1b3a53e426dca90a803fe2da20" translate="yes" xml:space="preserve">
+          <source>But consider the following example&amp;hellip; Suppose you have a class with ten methods that have no dependencies, but you&amp;rsquo;re adding a new method that does have a dependency on IDAO. You could change the constructor to use Constructor Injection, but this may force you to changes to all constructor calls all over the place. Alternatively, you could just add a new constructor that takes the dependency, but then how does a developer easily know when to use one constructor over the other. Finally, if the dependency is very expensive to create, why should it be created and passed to the constructor when it may only be used rarely? &amp;ldquo;Setter Injection&amp;rdquo; is another DI technique that can be used in situations such as this.</source>
+          <target state="translated">但是，请考虑以下示例&amp;hellip;&amp;hellip;假设您有一个类，其中包含十个没有依赖关系的方法，但是您要添加一个确实依赖于IDAO的新方法。 您可以将构造函数更改为使用&amp;ldquo;构造函数注入&amp;rdquo;，但这可能会迫使您更改所有位置的所有构造函数调用。 另外，您可以只添加一个带有依赖项的新构造函数，但是开发人员如何轻松知道何时使用一个构造函数而不是另一个。 最后，如果创建的依赖项非常昂贵，那么当它很少使用时，为什么还要创建它并将其传递给构造函数呢？ &amp;ldquo; Setter注入&amp;rdquo;是另一种可以在这种情况下使用的DI技术。</target>
+        </trans-unit>
+        <trans-unit id="1778648e0dd763c5f5a9c7958ded52526966ceb6" translate="yes" xml:space="preserve">
+          <source>But it's a generic approach to split concerns of:</source>
+          <target state="translated">但它是一种通用的方法来分裂关注的。</target>
+        </trans-unit>
+        <trans-unit id="19a17a99cb30f6d4a5536c327bad501717385b19" translate="yes" xml:space="preserve">
+          <source>But the benefits are many, especially in the ability to thoroughly test your class of interest.</source>
+          <target state="translated">但好处是很多的,尤其是能够彻底检验你的兴趣班的能力。</target>
+        </trans-unit>
+        <trans-unit id="f690c20291f1b4d985514efeb98b89687022ac96" translate="yes" xml:space="preserve">
+          <source>Check &lt;a href=&quot;https://en.wikipedia.org/wiki/Dependency_injection&quot;&gt;https://en.wikipedia.org/wiki/Dependency_injection&lt;/a&gt;</source>
+          <target state="translated">检查&lt;a href=&quot;https://en.wikipedia.org/wiki/Dependency_injection&quot;&gt;https://en.wikipedia.org/wiki/Dependency_injection&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="e531036736b85e446725e4e4e6164a78cdfb8c9c" translate="yes" xml:space="preserve">
+          <source>Consider simple &lt;code&gt;dependent.sh&lt;/code&gt; script:</source>
+          <target state="translated">考虑简单的 &lt;code&gt;dependent.sh&lt;/code&gt; 脚本：</target>
+        </trans-unit>
+        <trans-unit id="a938a98716a29fea8b403330f964cb8cf46392e9" translate="yes" xml:space="preserve">
+          <source>Constructor Injection</source>
+          <target state="translated">构造者注入</target>
+        </trans-unit>
+        <trans-unit id="b5773fd2800024a3f838fe7729940f9f8e15e065" translate="yes" xml:space="preserve">
+          <source>Constructor injection</source>
+          <target state="translated">构造者注入</target>
+        </trans-unit>
+        <trans-unit id="26032cadfd8928d408ef47b863c4b45733ef2d0d" translate="yes" xml:space="preserve">
+          <source>Constructor with dependency injection:</source>
+          <target state="translated">具有依赖注入的构造函数。</target>
+        </trans-unit>
+        <trans-unit id="3f2bf7f408c28388ad6bd617db22886b5fe56b26" translate="yes" xml:space="preserve">
+          <source>Constructor without dependency injection:</source>
+          <target state="translated">没有依赖注入的构造函数。</target>
+        </trans-unit>
+        <trans-unit id="b2146937a33bfcabf2430053c4204e88638eba30" translate="yes" xml:space="preserve">
+          <source>Constructor-based DI is accomplished when the container invokes a class constructor with a number of arguments, each representing a dependency on other class.</source>
+          <target state="translated">基于构造函数的DI是在容器调用一个具有多个参数的类构造函数时完成的,每个参数代表了对其他类的依赖关系。</target>
+        </trans-unit>
+        <trans-unit id="faa2e023d8bf9a1b5e13e711551447a2e6bc4da2" translate="yes" xml:space="preserve">
+          <source>Container creates Bar and gives it Bim</source>
+          <target state="translated">容器创建Bar并赋予其Bim</target>
+        </trans-unit>
+        <trans-unit id="e72228b222f6d8727f4e55af720a28149a261110" translate="yes" xml:space="preserve">
+          <source>Container creates Bim</source>
+          <target state="translated">容器创建Bim</target>
+        </trans-unit>
+        <trans-unit id="6653855bc3a85ec8d066669874a2916aaf0d2c9e" translate="yes" xml:space="preserve">
+          <source>Container creates Foo and gives it Bar</source>
+          <target state="translated">Container创建Foo并赋予它Bar</target>
+        </trans-unit>
+        <trans-unit id="8ac27f6a08ba25f489c38925c6e85a272db84091" translate="yes" xml:space="preserve">
+          <source>DEPENDENCY INJECTION IS SIMPLY GLUING TWO CLASSES AND AT THE SAME TIME KEEPING THEM SEPARATE.</source>
+          <target state="translated">依赖注入只是将两个类粘合在一起,同时保持它们之间的分离。</target>
+        </trans-unit>
+        <trans-unit id="08ebf9ead9196a1af9ffc22cd9c1eeb51be76894" translate="yes" xml:space="preserve">
+          <source>DI brings you closer to the Single Responsibility (SR) principle, like the &lt;code&gt;surgeon who can concentrate on surgery&lt;/code&gt;.</source>
+          <target state="translated">DI使您更接近单一责任（SR）原则，就像 &lt;code&gt;surgeon who can concentrate on surgery&lt;/code&gt; 的外科医生一样。</target>
+        </trans-unit>
+        <trans-unit id="a43f9d298673ad95516fee4e62a2a823a586584a" translate="yes" xml:space="preserve">
+          <source>DI for short, is a technique to remove a common additional responsibility (burden) on components to fetch the dependent components, by providing them to it.</source>
+          <target state="translated">简称DI,是一种技术,通过提供给它的方式,去掉一个共同的额外责任(负担),让组件获取从属的组件。</target>
+        </trans-unit>
+        <trans-unit id="4f5d36ed84699163eaf23e5a7fdfc103b0bbc15e" translate="yes" xml:space="preserve">
+          <source>DI is a particular form of IoC, whereby the process of finding your dependencies is
+  outside the direct control of your currently executing code.</source>
+          <target state="translated">DI是IoC的一种特殊形式,在这种情况下,寻找依赖关系的过程不在你当前执行的代码的直接控制范围内。</target>
+        </trans-unit>
+        <trans-unit id="feb00fd97973bff59f7d3245f637dd67debab5a4" translate="yes" xml:space="preserve">
+          <source>DI is analogous to this in the world of Object Oriented programming.  The values there instead of constant literals are whole objects - but the reason to move the code creating them out from the class code is similar - the objects change more frequently then the code that uses them.  One important case where such a change is needed is tests.</source>
+          <target state="translated">在面向对象编程的世界中,DI类似于此。那里的值不是常量的字形,而是整个对象--但将创建对象的代码从类代码中移出的原因是类似的--对象的变化比使用对象的代码更频繁。一个需要这样改变的重要案例是测试。</target>
+        </trans-unit>
+        <trans-unit id="2e8b1223bba2170ce6128ed0e576d38e0241b406" translate="yes" xml:space="preserve">
+          <source>DI is not as largely emphasized and popularized as in Java frameworks.</source>
+          <target state="translated">DI并不像Java框架中那样主要强调和普及。</target>
+        </trans-unit>
+        <trans-unit id="e75ded6d3588df205b0011e584a93bde9df27a8f" translate="yes" xml:space="preserve">
+          <source>DI is the implementation of IOC principal of Spring which says &quot;Don't call us we will call you&quot;. Using dependency injection programmer doesn't need to create object using the new keyword.</source>
+          <target state="translated">DI是Spring的IOC原理的实现,它说的是 &quot;不要叫我们,我们会叫你&quot;。使用依赖注入程序员不需要使用new关键字来创建对象。</target>
+        </trans-unit>
+        <trans-unit id="88de733e17606a4266cbf096951b24a70dd9b893" translate="yes" xml:space="preserve">
+          <source>DI means there is an intermediate level between the caller and the constructor which manages dependencies. A Makefile is a simple example of dependency injection. The &quot;caller&quot; is the person typing &quot;make bar&quot; on the command line, and the &quot;constructor&quot; is the compiler. The Makefile specifies that bar depends on foo, and it does a</source>
+          <target state="translated">DI意味着在调用者和构造函数之间有一个中间层来管理依赖关系。一个Makefile就是一个简单的依赖注入的例子。调用者 &quot;是在命令行中输入 &quot;make bar &quot;的人,而 &quot;构造函数 &quot;是编译器。Makefile 指定 bar 依赖于 foo,并且它做了一个</target>
+        </trans-unit>
+        <trans-unit id="007835874d333d08ff81faee651cdd6f320b4cd1" translate="yes" xml:space="preserve">
+          <source>Decoupling dependencies between classes in this way allows for &lt;em&gt;easy substitution&lt;/em&gt; of these dependency classes with other implementations which also fulfil the prerequisites of the abstraction (e.g. the dependency can be switched with another implementation of the same interface). Moreover, as others have mentioned, possibly &lt;em&gt;the&lt;/em&gt; most common reason to decouple classes via the DIP is to allow a consuming class to be tested in isolation, as these same dependencies can now be stubbed and/or mocked.</source>
+          <target state="translated">通过这种方式将类之间的依赖关系解耦，可以&lt;em&gt;轻松地&lt;/em&gt;将这些依赖关系类&lt;em&gt;替换&lt;/em&gt;为其他实现方式，这些实现方式也可以满足抽象的先决条件（例如，可以通过同一接口的另一个实现方式来切换依赖关系）。 此外，正如其他人提到的那样，通过DIP分离类&lt;em&gt;的&lt;/em&gt;最常见原因可能是允许对消费类进行隔离测试，因为现在可以对这些相同的依赖项进行存根和/或模拟。</target>
+        </trans-unit>
+        <trans-unit id="8373baaef22105a8574ebe7cace135c9de92ef3f" translate="yes" xml:space="preserve">
+          <source>Dependencies can be injected into objects by many means (such as constructor injection or setter injection). One can even use specialized dependency injection frameworks (e.g. Spring) to do that, but they certainly aren't required. You don't need those frameworks to have dependency injection. Instantiating and passing objects (dependencies) explicitly is just as good an injection as injection by framework.</source>
+          <target state="translated">依赖关系可以通过多种方式注入到对象中(如构造函数注入或setter注入)。人们甚至可以使用专门的依赖注入框架(如Spring)来实现,但肯定不是必须的。你不需要这些框架来进行依赖注入。明确地实例化和传递对象(依赖关系)和框架注入一样,都是很好的注入方式。</target>
+        </trans-unit>
+        <trans-unit id="805edc480d58383c8e5e2cdbb15c0f0b990469a8" translate="yes" xml:space="preserve">
+          <source>Dependency Injection (DI) is one from Design Patterns, which uses the basic feature of OOP - the relationship in one object with another object. While inheritance inherits one object to do more complex and specific another object, relationship or association simply creates a pointer to another object from one object using attribute. The power of DI is in combination with other features of OOP as are interfaces and hiding code.
+Suppose, we have a customer (subscriber) in the library, which can borrow only one book for simplicity.</source>
+          <target state="translated">依赖注入(Dependency Injection,DI)是设计模式中的一种,它利用了OOP的基本特征--一个对象与另一个对象的关系。继承是继承一个对象做更复杂、更具体的另一个对象,而关系或关联只是利用属性从一个对象中创建一个指向另一个对象的指针。DI的力量在于与OOP的其他特性相结合,就像接口和隐藏代码一样。假设,我们在图书馆里有一个顾客(订阅者),为了简单起见只能借一本书。</target>
+        </trans-unit>
+        <trans-unit id="2eaf5885c756aab73a83e3523b8617e6e5448a02" translate="yes" xml:space="preserve">
+          <source>Dependency Injection (DI) is part of Dependency Inversion Principle (DIP) practice, which is also called Inversion of Control (IoC). Basically you need to do DIP because you want to make your code more modular and unit testable, instead of just one monolithic system. So you start identifying parts of the code that can be separated from the class and abstracted away. Now the implementation of the abstraction need to be injected from outside of the class. Normally this can be done via constructor. So you create a constructor that accepts the abstraction as a parameter, and this is called dependency injection (via constructor). For more explanation about DIP, DI, and IoC container you can read &lt;a href=&quot;http://kusnaditjung.blogspot.co.uk/2016/05/dependency-inversion-principle-dip.html&quot;&gt;Here&lt;/a&gt;</source>
+          <target state="translated">依赖注入（DI）是依赖反转原理（DIP）实践的一部分，也称为控制反转（IoC）。 基本上，您需要执行DIP，因为您想使代码更具模块化和单元可测试性，而不仅仅是一个整体式系统。 因此，您开始识别可以与类分离并抽象化的代码部分。 现在，需要从类外部注入抽象的实现。 通常，这可以通过构造函数来完成。 因此，您创建了一个接受抽象为参数的构造函数，这称为依赖注入（通过构造函数）。 有关DIP，DI和IoC容器的更多说明，请阅读&lt;a href=&quot;http://kusnaditjung.blogspot.co.uk/2016/05/dependency-inversion-principle-dip.html&quot;&gt;此处&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="ec9e1e9a757b12d7ba7015b1965d7e8d66b82118" translate="yes" xml:space="preserve">
+          <source>Dependency Injection definition</source>
+          <target state="translated">依赖性注入的定义</target>
+        </trans-unit>
+        <trans-unit id="cb2cb0f05e812293b7ad0ba1d7be1914b8ecef4e" translate="yes" xml:space="preserve">
+          <source>Dependency Injection is a method for writing better code</source>
+          <target state="translated">依赖关系注入是一种写出更好的代码的方法。</target>
+        </trans-unit>
+        <trans-unit id="cddf49311cde392103b798084c33da2a7ca7c60e" translate="yes" xml:space="preserve">
+          <source>Dependency Injection is a practice where objects are designed in a manner where they receive instances of the objects from other pieces of code, instead of constructing them internally. This means that any object implementing the interface which is required by the object can be substituted in without changing the code, which simplifies testing, and improves decoupling.</source>
+          <target state="translated">依赖注入(Dependency Injection)是指在设计对象时,从其他代码中接收对象的实例,而不是在内部构造对象的方式。这意味着任何实现对象所需要的接口的对象都可以在不改变代码的情况下被替换进去,这就简化了测试,提高了解耦性。</target>
+        </trans-unit>
+        <trans-unit id="afcfc311b0f222c1476db1b255d403234af0b4db" translate="yes" xml:space="preserve">
+          <source>Dependency Injection is the process of creating the static, stateless
+  graph of service objects, where each service is parametrised by its
+  dependencies.</source>
+          <target state="translated">依赖关系注入是创建静态的、无状态的服务对象图的过程,每个服务都由其依赖关系参数化。</target>
+        </trans-unit>
+        <trans-unit id="64a15438c3caa440c0a5dc9eb291180789196b8d" translate="yes" xml:space="preserve">
+          <source>Dependency Injection(DI) means to decouple the objects which are dependent on each other. Say object A is dependent on Object B so the idea is to decouple these object from each other. We don&amp;rsquo;t need to hard code the object using new keyword rather sharing dependencies to objects at runtime in spite of compile time.
+If we talk about</source>
+          <target state="translated">依赖注入（DI）意味着将相互依赖的对象分离。 假设对象A依赖于对象B，所以想法是使这些对象彼此分离。 尽管编译时，我们不需要使用new关键字对对象进行硬编码，而在运行时共享对对象的依赖关系。 如果我们谈论</target>
+        </trans-unit>
+        <trans-unit id="5ca81c175fbe0a8a94fd156ed8fda57771b7acaa" translate="yes" xml:space="preserve">
+          <source>Dependency injection is a pattern to allow your application to inject
+  objects on the fly to classes that need them, without forcing those
+  classes to be responsible for those objects. It allows your code to be
+  more loosely coupled, and Entity Framework Core plugs in to this same
+  system of services.</source>
+          <target state="translated">依赖关系注入是一种模式,它允许你的应用程序将对象快速注入到需要它们的类中,而不强迫这些类对这些对象负责。它允许你的代码更加松散地耦合,而Entity Framework Core也插入到这个服务系统中。</target>
+        </trans-unit>
+        <trans-unit id="f51897ce4672efc871df38ef9ec8a1e2a4f4a7a3" translate="yes" xml:space="preserve">
+          <source>Dependency injection is a pattern used to create instances of objects that other objects rely upon without knowing at compile time which class will be used to provide that functionality or simply the way of injecting properties to an object is called dependency injection.</source>
+          <target state="translated">依赖注入是一种用于创建其他对象依赖的对象的实例的模式,在编译时不知道哪个类将被用来提供该功能,或者简单地将属性注入到对象中的方式称为依赖注入。</target>
+        </trans-unit>
+        <trans-unit id="c8bcf420f928a840f91a5b1e5c82929829ba86a5" translate="yes" xml:space="preserve">
+          <source>Dependency injection is basically providing the objects that an object needs (its dependencies) instead of having it construct them itself. It's a very useful technique for testing, since it allows dependencies to be mocked or stubbed out.</source>
+          <target state="translated">依赖关系注入基本上是提供对象所需要的对象(它的依赖关系),而不是让它自己构造它们。它是一种非常有用的测试技术,因为它允许对依赖关系进行模拟或存根注入。</target>
+        </trans-unit>
+        <trans-unit id="eb5f2c3f9e29f385abcc1436959a966409e80529" translate="yes" xml:space="preserve">
+          <source>Dependency injection is invariably associated with an &lt;a href=&quot;http://martinfowler.com/articles/injection.html&quot;&gt;Inversion of Control container(IoC)&lt;/a&gt;, to inject (provide) the concrete dependency instances, and to manage lifespan instances. During the configuration / bootstrapping process, &lt;code&gt;IoC&lt;/code&gt; containers allow the following to be defined:</source>
+          <target state="translated">依赖项注入始终与&amp;ldquo; &lt;a href=&quot;http://martinfowler.com/articles/injection.html&quot;&gt;反转控制容器&amp;rdquo;（IoC）&lt;/a&gt;相关联，以注入（提供）具体的依赖项实例并管理生命周期实例。 在配置/引导过程中， &lt;code&gt;IoC&lt;/code&gt; 容器允许定义以下内容：</target>
+        </trans-unit>
+        <trans-unit id="ca79292d85a27dbcae58c833ab50a3d5b3915751" translate="yes" xml:space="preserve">
+          <source>Dependency injection is one of the design pattern that help us to create complex systems in a simpler manner.</source>
+          <target state="translated">Dependency injection是一种设计模式,它可以帮助我们以更简单的方式创建复杂的系统。</target>
+        </trans-unit>
+        <trans-unit id="69c4857065501ad52a336a3696b71d18e67bed61" translate="yes" xml:space="preserve">
+          <source>Dependency injection is one possible solution to what could generally be termed the &quot;Dependency Obfuscation&quot; requirement. Dependency Obfuscation is a method of taking the 'obvious' nature out of the process of providing a dependency to a class that requires it and therefore obfuscating, in some way, the provision of said dependency to said class. This is not necessarily a bad thing. In fact, by obfuscating the manner by which a dependency is provided to a class then something outside the class is responsible for creating the dependency which means, in various scenarios, a different implementation of the dependency can be supplied to the class without making any changes to the class. This is great for switching between production and testing modes (eg., using a 'mock' service dependency).</source>
+          <target state="translated">依赖注入(Dependency injection)是一种可能的解决方案,它可以被称为 &quot;依赖关系混淆&quot;(Dependency Obfuscation)。Dependency Obfuscation是一种将 &quot;显而易见 &quot;的性质从向需要依赖关系的类提供依赖关系的过程中剥离出来,从而以某种方式混淆了向所述类提供所述依赖关系的方法。这不一定是一件坏事。事实上,通过混淆依赖关系提供给类的方式,类外的东西就会负责创建依赖关系,这意味着,在各种情况下,可以在不改变类的情况下,向类提供不同的依赖实现。这对于在生产模式和测试模式之间切换是非常好的(例如,使用 &quot;模拟 &quot;服务依赖关系)。</target>
+        </trans-unit>
+        <trans-unit id="0170849003cd6320060ea1c729c9aa49b34c7fd9" translate="yes" xml:space="preserve">
+          <source>Dependency injection is the heart of the concept related with Spring Framework.While creating the framework of any project spring may perform a vital role,and here dependency injection come in pitcher.</source>
+          <target state="translated">依赖关系注入是Spring框架的核心概念,在创建任何项目的框架时,Spring都会起到至关重要的作用,而在这里,依赖关系注入就派上了用场。</target>
+        </trans-unit>
+        <trans-unit id="e58f7f11fd58e3edec005e7035583eb40983e40f" translate="yes" xml:space="preserve">
+          <source>Dependency injection makes testing easier. The injection can be done through &lt;strong&gt;constructor&lt;/strong&gt;.</source>
+          <target state="translated">依赖注入使测试更加容易。 注入可以通过&lt;strong&gt;构造函数&lt;/strong&gt;完成。</target>
+        </trans-unit>
+        <trans-unit id="f3ff309b1b6291468565c4f9a9f51b36a3e04dd3" translate="yes" xml:space="preserve">
+          <source>Dependency:</source>
+          <target state="translated">Dependency:</target>
+        </trans-unit>
+        <trans-unit id="7ffc6ee12bdc72c1564366d1210f30e558da7c21" translate="yes" xml:space="preserve">
+          <source>Difference between Inversion of Control &amp;amp; Dependency Injection</source>
+          <target state="translated">控制反转和依赖注入之间的区别</target>
+        </trans-unit>
+        <trans-unit id="be57f0e0c6c38a3c5499991aa97bdbb4642cde74" translate="yes" xml:space="preserve">
+          <source>Doesn't &quot;dependency injection&quot; just mean using parameterized constructors and public setters?</source>
+          <target state="translated">&quot;依赖注入 &quot;不就是指使用参数化构造函数和公共设置器吗?</target>
+        </trans-unit>
+        <trans-unit id="dce70f9dbaf63e1888206b128af00b53f6dd310d" translate="yes" xml:space="preserve">
+          <source>Everytime I want to change what objects my AClass needs, I need to now look into two places - The class itself and the configuration file. How does that make life easier?</source>
+          <target state="translated">每当我想改变AClass需要什么对象时,我现在需要查看两个地方--类本身和配置文件。这如何让生活更轻松?</target>
+        </trans-unit>
+        <trans-unit id="624d5b857fe09b27ef0b52a651428cfe9bdeb229" translate="yes" xml:space="preserve">
+          <source>Example, we have 2 class &lt;code&gt;Client&lt;/code&gt; and &lt;code&gt;Service&lt;/code&gt;. &lt;code&gt;Client&lt;/code&gt; will use &lt;code&gt;Service&lt;/code&gt;</source>
+          <target state="translated">例如，我们有2类 &lt;code&gt;Client&lt;/code&gt; 和 &lt;code&gt;Service&lt;/code&gt; 。 &lt;code&gt;Client&lt;/code&gt; 将使用 &lt;code&gt;Service&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="4cc967eb9e93b5533d3da79d75ffcafa1c607fa2" translate="yes" xml:space="preserve">
+          <source>Example: DI with shell script</source>
+          <target state="translated">例子。带shell脚本的DI</target>
+        </trans-unit>
+        <trans-unit id="2f74df37b1ea988409f33c42af68c3062f522296" translate="yes" xml:space="preserve">
+          <source>Example: removing DI</source>
+          <target state="translated">例子:移除DI</target>
+        </trans-unit>
+        <trans-unit id="4d32216898588a9d6769484729321b2a32005852" translate="yes" xml:space="preserve">
+          <source>Externalizing dependency and looking only on responsibility.</source>
+          <target state="translated">将依赖性外化,只看责任。</target>
+        </trans-unit>
+        <trans-unit id="f94c5803a635417a4c63406b77fcbb7801e90db0" translate="yes" xml:space="preserve">
+          <source>False. The direction of dependencies is in XML form or as annotations, your dependencies are written as XML code and annotations. XML and annotations ARE source code.</source>
+          <target state="translated">False。依赖关系的方向是以XML形式或作为注释,你的依赖关系是以XML代码和注释的形式写的。XML和注释是源码。</target>
+        </trans-unit>
+        <trans-unit id="c66a3755f7748dad912a8f295d8660519cb19da7" translate="yes" xml:space="preserve">
+          <source>False. You do not need a DI framework to build a modular code based on interfaces.</source>
+          <target state="translated">False。你不需要DI框架来构建一个基于接口的模块化代码。</target>
+        </trans-unit>
+        <trans-unit id="e9044ac31a8995f5ad62b7e9f444f33bf9e08657" translate="yes" xml:space="preserve">
+          <source>Foo calls Bar</source>
+          <target state="translated">Foo叫吧</target>
+        </trans-unit>
+        <trans-unit id="36a8c8318b6369919a71996fd940aacf3965166d" translate="yes" xml:space="preserve">
+          <source>Foo creates Bar</source>
+          <target state="translated">Foo创建吧</target>
+        </trans-unit>
+        <trans-unit id="c2cfcdd995da76d7e30b4bb8c5a58a247fe77380" translate="yes" xml:space="preserve">
+          <source>Foo needs Bar (e.g. a service), so:</source>
+          <target state="translated">Foo需要吧(如服务),所以。</target>
+        </trans-unit>
+        <trans-unit id="b181ce4ed346bf93fb78e315f5b4e0fdc64a362e" translate="yes" xml:space="preserve">
+          <source>For example, consider a &lt;code&gt;Car&lt;/code&gt; object.</source>
+          <target state="translated">例如，考虑一个 &lt;code&gt;Car&lt;/code&gt; 对象。</target>
+        </trans-unit>
+        <trans-unit id="773f448aa74e9ddd91521dd1c2732d809239a14b" translate="yes" xml:space="preserve">
+          <source>For example, consider these clases:</source>
+          <target state="translated">比如说,考虑一下这几个clases。</target>
+        </trans-unit>
+        <trans-unit id="6301c293c982fc83aecdf06eaf96df22050f4fa1" translate="yes" xml:space="preserve">
+          <source>From Christoffer Noring, Pablo Deeleman's book &amp;ldquo;Learning Angular - Second Edition&amp;rdquo;:</source>
+          <target state="translated">从Pablo Deeleman的书Christopher Noring的&amp;ldquo; Learning Angular-Second Edition&amp;rdquo;：</target>
+        </trans-unit>
+        <trans-unit id="d2f6f2619a4fc19e9326d217edd2b9cb13d7536f" translate="yes" xml:space="preserve">
+          <source>From the Book, '&lt;a href=&quot;https://rads.stackoverflow.com/amzn/click/com/1617290068&quot;&gt;Well-Grounded Java Developer: Vital techniques of Java 7 and polyglot programming&lt;/a&gt;</source>
+          <target state="translated">摘自《 &lt;a href=&quot;https://rads.stackoverflow.com/amzn/click/com/1617290068&quot;&gt;扎实的Java开发人员：Java 7和多语言编程的重要技术》&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="565b14720ba865ef973ba05f90a124c36bd9081e" translate="yes" xml:space="preserve">
+          <source>From: Anton Moiseev. book &amp;ldquo;Angular Development with Typescript, Second Edition.&amp;rdquo;:</source>
+          <target state="translated">来自：安东&amp;middot;莫伊谢夫（Anton Moiseev）。 本书&amp;ldquo;使用Typescript进行角度开发，第二版&amp;rdquo;：</target>
+        </trans-unit>
+        <trans-unit id="7cc777757b505d7bbd1af628607007866c70d979" translate="yes" xml:space="preserve">
+          <source>Going back to the first question. If using new object() is bad, how come we inject the implementation and not the interface? I think a lot of you are saying we're in fact injecting the interface but the configuration makes you specify the implementation of that interface ..not at runtime .. it is hardcoded during compile time.</source>
+          <target state="translated">回到第一个问题。如果使用new object()是不好的,为什么我们要注入实现而不是接口?我想很多人都在说我们其实是在注入接口,但配置让你指定了接口的实现,而不是在运行时...........它是在编译时硬编码的。</target>
+        </trans-unit>
+        <trans-unit id="28843d4be0ee34f253cca7cab2361c2a39ee4828" translate="yes" xml:space="preserve">
+          <source>Hard for test &lt;code&gt;Client&lt;/code&gt; class</source>
+          <target state="translated">很难测试 &lt;code&gt;Client&lt;/code&gt; 类</target>
+        </trans-unit>
+        <trans-unit id="4aed8ebadb57ba9dd2776c20874fb02210f043c0" translate="yes" xml:space="preserve">
+          <source>Here is the example of how the above code would look like:</source>
+          <target state="translated">下面就以上述代码为例来说明一下。</target>
+        </trans-unit>
+        <trans-unit id="43c80abc12795e6e4cb2a72b1e6d9012d550d4e0" translate="yes" xml:space="preserve">
+          <source>Here we basically inject(pass) our dependency(Engine instance) to Car constructor. So now our classes have loose coupling between objects and their dependencies, and we can easily add new types of engines without changing the Car class.</source>
+          <target state="translated">这里我们基本上是把我们的依赖关系(Engine实例)注入(传递)到Car构造函数。所以现在我们的类在对象和它们的依赖关系之间有了松散的耦合,我们可以在不改变Car类的情况下轻松地添加新的引擎类型。</target>
+        </trans-unit>
+        <trans-unit id="371a2ec52294658d0a3b4228a46b7d8f33efffe9" translate="yes" xml:space="preserve">
+          <source>Here's a simple C# implementation. Given the below Consuming class:</source>
+          <target state="translated">下面是一个简单的C#实现。鉴于下面的Consuming类。</target>
+        </trans-unit>
+        <trans-unit id="922004128193bca294dd5fdb14c71cac1cae1545" translate="yes" xml:space="preserve">
+          <source>Here, the &lt;code&gt;Car&lt;/code&gt; object &lt;em&gt;is responsible for creating the dependent objects.&lt;/em&gt;</source>
+          <target state="translated">在这里， &lt;code&gt;Car&lt;/code&gt; 对象&lt;em&gt;负责创建从属对象。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="a0969f6c9b11047ca63ee874c7cf8c550f36eaef" translate="yes" xml:space="preserve">
+          <source>Here, we are &lt;strong&gt;injecting&lt;/strong&gt; the &lt;strong&gt;dependencies&lt;/strong&gt; (Wheel and Battery) at runtime. Hence the term : &lt;em&gt;Dependency Injection.&lt;/em&gt;</source>
+          <target state="translated">在这里，我们在运行时&lt;strong&gt;注入&lt;/strong&gt; &lt;strong&gt;依赖项&lt;/strong&gt; （车轮和电池）。 因此，术语： &lt;em&gt;依赖注入。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="379dffc1a3970a2596b05e27d433878025eb9945" translate="yes" xml:space="preserve">
+          <source>High cohesion and loose coupling.</source>
+          <target state="translated">内聚力强,联动性松散。</target>
+        </trans-unit>
+        <trans-unit id="00bf8b24a1d88295bc7cfc6557e03947a6402c26" translate="yes" xml:space="preserve">
+          <source>How Dependency Injection works in Spring:</source>
+          <target state="translated">Dependency Injection是如何在Spring中工作的。</target>
+        </trans-unit>
+        <trans-unit id="57367ae4f39a638d3dbf05ee497ca936efcff588" translate="yes" xml:space="preserve">
+          <source>However, we still use &lt;code&gt;new Service()&lt;/code&gt; many time and it is not good when change &lt;code&gt;Service&lt;/code&gt; constructor. To prevent it, we can use DI injector like</source>
+          <target state="translated">但是，我们仍然多次使用 &lt;code&gt;new Service()&lt;/code&gt; ,并且在更改 &lt;code&gt;Service&lt;/code&gt; 构造函数时效果不好。 为了防止这种情况，我们可以使用DI注射器</target>
+        </trans-unit>
+        <trans-unit id="f0d455ffdb1c3dbcd06e6b82c66932dc9c227efa" translate="yes" xml:space="preserve">
+          <source>I know there are already many answers, but I found this very helpful: &lt;a href=&quot;http://tutorials.jenkov.com/dependency-injection/index.html&quot;&gt;http://tutorials.jenkov.com/dependency-injection/index.html&lt;/a&gt;</source>
+          <target state="translated">我知道已经有很多答案了，但是我发现这很有帮助： &lt;a href=&quot;http://tutorials.jenkov.com/dependency-injection/index.html&quot;&gt;http&lt;/a&gt; : //tutorials.jenkov.com/dependency-injection/index.html</target>
+        </trans-unit>
+        <trans-unit id="ed04f29160674f83a072681c6eb371dd9cb26716" translate="yes" xml:space="preserve">
+          <source>I think since everyone has written for DI, let me ask a few questions..</source>
+          <target state="translated">我想既然大家都为DI写了,我就问几个问题。</target>
+        </trans-unit>
+        <trans-unit id="2e46bcee2ea4c8bc4943d46d73203933dc4b2714" translate="yes" xml:space="preserve">
+          <source>I would propose a slightly different, short and precise definition of what Dependency Injection is, focusing on the primary goal, not on the technical means (following along from &lt;a href=&quot;https://blog.softwaremill.com/what-is-dependency-injection-8c9e7805502f&quot;&gt;here&lt;/a&gt;):</source>
+          <target state="translated">我将对&amp;ldquo;依赖注入&amp;rdquo;提出一个稍微不同，简短而精确的定义，重点放在主要目标上，而不是技术手段上（从&lt;a href=&quot;https://blog.softwaremill.com/what-is-dependency-injection-8c9e7805502f&quot;&gt;这里开始&lt;/a&gt; ）：</target>
+        </trans-unit>
+        <trans-unit id="af50e26570dc36b5b468480dbae632233aa97929" translate="yes" xml:space="preserve">
+          <source>IOC is a general concept and it can be expressed in many different ways and Dependency Injection is one concrete example of IOC.</source>
+          <target state="translated">IOC是一个笼统的概念,它可以用很多不同的方式来表达,Dependency Injection就是IOC的一个具体例子。</target>
+        </trans-unit>
+        <trans-unit id="0718ee8859576506cf86f7bd25325cd7eca7c302" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;dependent.sh&lt;/code&gt; script used dependencies directly, the approach would be called &lt;em&gt;dependency lookup&lt;/em&gt; (which is opposite to &lt;em&gt;dependency injection&lt;/em&gt;):</source>
+          <target state="translated">如果 &lt;code&gt;dependent.sh&lt;/code&gt; 脚本直接使用依赖项，则该方法将称为&lt;em&gt;依赖项查找&lt;/em&gt; （与&lt;em&gt;依赖项注入&lt;/em&gt;相反）：</target>
+        </trans-unit>
+        <trans-unit id="ed73d2934d77992080e551028a74bcbaafd9ce4d" translate="yes" xml:space="preserve">
+          <source>If Aproperty of AClass is not injected, is it harder to mock it out?</source>
+          <target state="translated">如果不注入AClass的Aproperty,是不是更难模拟出来?</target>
+        </trans-unit>
+        <trans-unit id="327557f3bb6a180cff634bb5925c6178d29f71c3" translate="yes" xml:space="preserve">
+          <source>If lifespan control of dependencies by the consuming class needs to be retained, control can be re-established by injecting an (abstract) factory for creating the dependency class instances, into the consumer class. The consumer will be able to obtain instances via a &lt;code&gt;Create&lt;/code&gt; on the factory as needed, and dispose of these instances once complete.</source>
+          <target state="translated">如果需要保留消费类对依赖项的生命周期控制，则可以通过将（用于创建）依赖项实例的（抽象）工厂注入到消费类中来重新建立控制。 消费者将能够根据需要通过工厂上的 &lt;code&gt;Create&lt;/code&gt; 获取实例，并在完成后处置这些实例。</target>
+        </trans-unit>
+        <trans-unit id="17ad58325899b3161d70302101921cd886c5bcce" translate="yes" xml:space="preserve">
+          <source>If we use the first one we need to open the machine to change the reel.
+if we opt for the second one, that is placing a hook for reel, we are getting an added benefit of playing any music by changing the reel. and also reducing the function only to playing whatever in the reel.</source>
+          <target state="translated">如果我们使用第一种,我们需要打开机器来更换卷轴,如果我们选择第二种,那就是给卷轴放一个钩子,我们通过更换卷轴,可以得到一个额外的好处,那就是可以播放任何音乐,而且还可以减少功能,只在卷轴中播放任何音乐。</target>
+        </trans-unit>
+        <trans-unit id="8114d9a89619251a62658a6e49b95469bb138929" translate="yes" xml:space="preserve">
+          <source>If you occasionally work outside of Java, recall how &lt;code&gt;source&lt;/code&gt; is often used in many scripting languages (Shell, Tcl, etc., or even &lt;code&gt;import&lt;/code&gt; in Python misused for this purpose).</source>
+          <target state="translated">如果您偶尔在Java之外工作，请回想一下如何在许多脚本语言（Shell，Tcl等）中经常使用 &lt;code&gt;source&lt;/code&gt; ，或者甚至在为此目的而滥用的Python中 &lt;code&gt;import&lt;/code&gt; 代码。</target>
+        </trans-unit>
+        <trans-unit id="b06602d95600aa4bf8101370b37215812a7573e0" translate="yes" xml:space="preserve">
+          <source>If you use use &lt;code&gt;Constructor Injection&lt;/code&gt;, the &lt;code&gt;Service&lt;/code&gt; object is created when &lt;code&gt;Client&lt;/code&gt; created, sometime we use function in &lt;code&gt;Client&lt;/code&gt; class without use &lt;code&gt;Service&lt;/code&gt; so created &lt;code&gt;Service&lt;/code&gt; is wasted</source>
+          <target state="translated">如果使用use &lt;code&gt;Constructor Injection&lt;/code&gt; ，则在创建 &lt;code&gt;Client&lt;/code&gt; 时会创建 &lt;code&gt;Service&lt;/code&gt; 对象，有时我们在 &lt;code&gt;Client&lt;/code&gt; 类中使用不使用 &lt;code&gt;Service&lt;/code&gt; 的函数，因此浪费了创建的 &lt;code&gt;Service&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="0673d4f21f33e89f895b29060653f72b9912e5ee" translate="yes" xml:space="preserve">
+          <source>If you use use &lt;code&gt;Constructor Injection&lt;/code&gt;, when you look at constructor of &lt;code&gt;Client&lt;/code&gt;, you will see how many dependency of &lt;code&gt;Client&lt;/code&gt; class</source>
+          <target state="translated">如果使用 &lt;code&gt;Constructor Injection&lt;/code&gt; ，则在查看 &lt;code&gt;Client&lt;/code&gt; 的构造方法时，将看到 &lt;code&gt;Client&lt;/code&gt; 类有多少依赖项</target>
+        </trans-unit>
+        <trans-unit id="fe36ce97b13993591149a7d6ee89ed548e32abbb" translate="yes" xml:space="preserve">
+          <source>In .Net, IoC containers are aware of protocols such as &lt;code&gt;IDisposable&lt;/code&gt; and will take on the responsibility of &lt;code&gt;Disposing&lt;/code&gt; dependencies in line with the configured lifespan management.</source>
+          <target state="translated">在.Net中，IoC容器知道诸如 &lt;code&gt;IDisposable&lt;/code&gt; 之类的协议，并将负责根据配置的寿命管理来 &lt;code&gt;Disposing&lt;/code&gt; 依赖项。</target>
+        </trans-unit>
+        <trans-unit id="5874ec6c4d7578e3bf3f97834e478c385a3a81da" translate="yes" xml:space="preserve">
+          <source>In 2013, when I wrote this answer, this was a major theme on the &lt;a href=&quot;http://googletesting.blogspot.com/&quot;&gt;Google Testing Blog&lt;/a&gt;. It remains the biggest advantage to me, as programmers not always need the extra flexibility in their run-time design (for instance, for service locator or similar patterns). Programmers often need to isolate the classes during testing.</source>
+          <target state="translated">2013年，当我撰写此答案时，这是&lt;a href=&quot;http://googletesting.blogspot.com/&quot;&gt;Google Testing Blog的&lt;/a&gt;一个主要主题。 这对我来说仍然是最大的优势，因为程序员在运行时设计中并不总是需要额外的灵活性（例如，对于服务定位器或类似的模式）。 程序员在测试过程中经常需要隔离类。</target>
+        </trans-unit>
+        <trans-unit id="8dd39bee0cfeef6f907d686e8fca98428110580e" translate="yes" xml:space="preserve">
+          <source>In my opinion there is one only reason for DI frameworks: boiler plate reduction. With a well done factory system you can do the same, more controlled and more predictable as your preferred DI framework, DI frameworks promise code reduction (XML and annotations are source code too). The problem is this boiler plate reduction is just real in very very simple cases (one instance-per class and similar), sometimes in the real world picking the appropriated service object is not as easy as mapping a class to a singleton object.</source>
+          <target state="translated">在我看来,DI框架的原因只有一个:减少锅炉板。有了一个做得很好的工厂系统,你可以像你喜欢的DI框架一样,更可控,更可预测,DI框架承诺减少代码(XML和注释也是源码)。问题是这种锅炉板减少只是在非常非常简单的情况下(每个类一个实例和类似的),有时在现实世界中挑选合适的服务对象并不像映射一个类到一个单子对象那样容易。</target>
+        </trans-unit>
+        <trans-unit id="945ef8affad419ee07825f142d4a71064182f46f" translate="yes" xml:space="preserve">
+          <source>In other words with this approach is that our high level Car class is dependent on the lower level GasEngine class which violate Dependency Inversion Principle(DIP) from SOLID. DIP suggests that we should depend on abstractions, not concrete classes. So to satisfy this we introduce IEngine interface and rewrite code like below:</source>
+          <target state="translated">换句话说,这种方法是我们的高级Car类依赖于低级的GasEngine类,这违反了SOLID中的Dependency Inversion Principle(DIP)。DIP原则建议我们应该依赖抽象类,而不是依赖具体的类。所以为了满足这个要求,我们引入了IEEngine接口,并重写了如下代码。</target>
+        </trans-unit>
+        <trans-unit id="bc6abe43c16188f9d3e1b34e8bf777645960925f" translate="yes" xml:space="preserve">
+          <source>In simple words dependency injection (DI) is the way to remove dependencies or tight coupling between different object. Dependency Injection gives a cohesive behavior to each object.</source>
+          <target state="translated">简单来说,依赖注入(di)就是消除不同对象之间的依赖关系或紧密耦合的方式。依赖注入(Dependency Injection)赋予每个对象以内聚的行为。</target>
+        </trans-unit>
+        <trans-unit id="2e58974612fd6fe0036631984f3609c239eab907" translate="yes" xml:space="preserve">
+          <source>In this example, the implementation of &lt;code&gt;PersonService::addManager&lt;/code&gt; and &lt;code&gt;PersonService::removeManager&lt;/code&gt; would need an instance of the &lt;code&gt;GroupMembershipService&lt;/code&gt; in order to do its work. Without Dependency Injection, the traditional way of doing this would be to instantiate a new &lt;code&gt;GroupMembershipService&lt;/code&gt; in the constructor of &lt;code&gt;PersonService&lt;/code&gt; and use that instance attribute in both functions. However, if the constructor of &lt;code&gt;GroupMembershipService&lt;/code&gt; has multiple things it requires, or worse yet, there are some initialization &quot;setters&quot; that need to be called on the &lt;code&gt;GroupMembershipService&lt;/code&gt;, the code grows rather quickly, and the &lt;code&gt;PersonService&lt;/code&gt; now depends not only on the &lt;code&gt;GroupMembershipService&lt;/code&gt; but also everything else that &lt;code&gt;GroupMembershipService&lt;/code&gt; depends on. Furthermore, the linkage to &lt;code&gt;GroupMembershipService&lt;/code&gt; is hardcoded into the &lt;code&gt;PersonService&lt;/code&gt; which means that you can't &quot;dummy up&quot; a &lt;code&gt;GroupMembershipService&lt;/code&gt; for testing purposes, or to use a strategy pattern in different parts of your application.</source>
+          <target state="translated">在此示例中， &lt;code&gt;PersonService::addManager&lt;/code&gt; 和 &lt;code&gt;PersonService::removeManager&lt;/code&gt; 需要GroupMembershipService的实例才能完成其工作。 如果没有依赖注入，传统的方式是在 &lt;code&gt;PersonService&lt;/code&gt; 的构造函数中实例化一个新的GroupMembershipService并在两个函数中使用该实例属性。 但是，如果 &lt;code&gt;GroupMembershipService&lt;/code&gt; 的构造函数有很多要求，或者更糟糕的是，则需要在 &lt;code&gt;GroupMembershipService&lt;/code&gt; 上调用一些初始化&amp;ldquo; setter&amp;rdquo;，代码会快速增长，并且 &lt;code&gt;PersonService&lt;/code&gt; 现在不仅取决于GroupMembershipService ，而且还取决于还有 &lt;code&gt;GroupMembershipService&lt;/code&gt; 依赖的其他所有内容。 此外，与 &lt;code&gt;GroupMembershipService&lt;/code&gt; 的链接被硬编码到 &lt;code&gt;PersonService&lt;/code&gt; 中 ，这意味着您不能&amp;ldquo; &lt;code&gt;GroupMembershipService&lt;/code&gt; &amp;rdquo; GroupMembershipService进行测试，也不能在应用程序的不同部分使用策略模式。</target>
+        </trans-unit>
+        <trans-unit id="3945063a7ab43002ea39d3d24e40ac75108803b6" translate="yes" xml:space="preserve">
+          <source>Instead of &lt;code&gt;source&lt;/code&gt;-ing implementation script directly in the dependent one, you use an &lt;code&gt;injector.sh&lt;/code&gt; &quot;container&quot; which wraps both &quot;components&quot;:</source>
+          <target state="translated">而不是直接在从属脚本中执行 &lt;code&gt;source&lt;/code&gt; 脚本，而是使用 &lt;code&gt;injector.sh&lt;/code&gt; &amp;ldquo; container&amp;rdquo;来包装两个&amp;ldquo; components&amp;rdquo;：</target>
+        </trans-unit>
+        <trans-unit id="a32a54b9d71ad0ec3f835fab1768f5cabb2ce808" translate="yes" xml:space="preserve">
+          <source>Interface of book:</source>
+          <target state="translated">书的界面。</target>
+        </trans-unit>
+        <trans-unit id="87ce48016c0abd40898b021fa36510c98da3c3f6" translate="yes" xml:space="preserve">
+          <source>Inversion of Control (IOC)</source>
+          <target state="translated">控制权反转(IOC)</target>
+        </trans-unit>
+        <trans-unit id="c6f589e1a346ddca493c03b3d62843ee5c496a03" translate="yes" xml:space="preserve">
+          <source>It helps to develop high quality components since they are independently developed they are properly tested.</source>
+          <target state="translated">它有助于开发出高质量的组件,因为它们是独立开发的,经过适当的测试。</target>
+        </trans-unit>
+        <trans-unit id="fe52190c660276a5234fd25313a1d7025785a9b1" translate="yes" xml:space="preserve">
+          <source>It helps to replace the component with another if one fails.</source>
+          <target state="translated">如果一个部件出现故障,它有助于用另一个部件来代替。</target>
+        </trans-unit>
+        <trans-unit id="12a6359f43afb8218185323269fc89edefe3a5f9" translate="yes" xml:space="preserve">
+          <source>It is harder to isolate components in unit testing without dependency injection.</source>
+          <target state="translated">在没有依赖注入的情况下,单元测试中隔离组件比较难。</target>
+        </trans-unit>
+        <trans-unit id="5315cf7c004aa65a5379bfbf68f8aa368640746e" translate="yes" xml:space="preserve">
+          <source>It means that objects should only have as many dependencies as is needed to do their job and the dependencies should be few. Furthermore, an object&amp;rsquo;s dependencies should be on interfaces and not on &amp;ldquo;concrete&amp;rdquo; objects, when possible. (A concrete object is any object created with the keyword new.) Loose coupling promotes greater reusability, easier maintainability, and allows you to easily provide &amp;ldquo;mock&amp;rdquo; objects in place of expensive services.</source>
+          <target state="translated">这意味着对象应仅具有完成其工作所需的依赖关系，而依赖关系应少。 此外，在可能的情况下，对象的依赖项应位于接口上，而不应位于&amp;ldquo;具体&amp;rdquo;对象上。 （一个具体的对象是用关键字new创建的任何对象。）松散耦合可提高可重用性，更易于维护，并使您可以轻松地提供&amp;ldquo;模拟&amp;rdquo;对象来代替昂贵的服务。</target>
+        </trans-unit>
+        <trans-unit id="150a68e160c591532e3796e7a048e6a35a2b271c" translate="yes" xml:space="preserve">
+          <source>It&amp;rsquo;s the technique of passing objects dependencies to its constructor.</source>
+          <target state="translated">这是将对象依赖项传递给其构造函数的技术。</target>
+        </trans-unit>
+        <trans-unit id="aa27b9815cfca97bc09894174bbc5029fa7ea762" translate="yes" xml:space="preserve">
+          <source>Last words</source>
+          <target state="translated">最后一句话</target>
+        </trans-unit>
+        <trans-unit id="101f50890da169b761f4204e13794649557a2715" translate="yes" xml:space="preserve">
+          <source>Let's imagine that you want to go fishing:</source>
+          <target state="translated">让我们想象一下,你想去钓鱼。</target>
+        </trans-unit>
+        <trans-unit id="3fb3f6b5b730e2955d7fc11411b3be83f4438c60" translate="yes" xml:space="preserve">
+          <source>Let's try simple example with &lt;strong&gt;Car&lt;/strong&gt; and &lt;strong&gt;Engine&lt;/strong&gt; classes, any car need an engine to go anywhere, at least for now. So below how code will look without dependency injection.</source>
+          <target state="translated">让我们尝试一个有关&lt;strong&gt;Car&lt;/strong&gt;和&lt;strong&gt;Engine&lt;/strong&gt;类的简单示例，至少到现在，任何一辆汽车都需要一个可以行驶到任何地方的发动机。 因此，下面的代码将在没有依赖项注入的情况下显示。</target>
+        </trans-unit>
+        <trans-unit id="0743bd397ad0bae662ab3527bca83ae55d5c97e6" translate="yes" xml:space="preserve">
+          <source>Like wise dependency injection is the  process of externalizing the dependencies to focus only on the specific functionality of the component so that independent components can be coupled together to form a complex system.</source>
+          <target state="translated">像睿智的依赖注入就是将依赖关系外化,只关注组件的具体功能,使独立的组件耦合在一起,形成一个复杂的系统。</target>
+        </trans-unit>
+        <trans-unit id="a77c6a3de980ebb5dc42a0edc1ee999977beda1e" translate="yes" xml:space="preserve">
+          <source>Make test easier</source>
+          <target state="translated">使测试更容易</target>
+        </trans-unit>
+        <trans-unit id="78928cbc17b1ac78636f5d533c2894682e0a6266" translate="yes" xml:space="preserve">
+          <source>Making things as components and to combine to form a large systems with high capabilities.</source>
+          <target state="translated">把东西做成组件,并结合起来,形成一个大的系统,能力很强。</target>
+        </trans-unit>
+        <trans-unit id="04faf2b31cb2eb82166edebcf0b8fa045081749b" translate="yes" xml:space="preserve">
+          <source>Modifying &lt;a href=&quot;http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html&quot;&gt;James&lt;/a&gt; Example for Switch and Bulb:</source>
+          <target state="translated">修改开关和灯泡的&lt;a href=&quot;http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html&quot;&gt;James&lt;/a&gt;示例：</target>
+        </trans-unit>
+        <trans-unit id="38837e9f2c549ac0d1e7a54cf6258ccf4df0c3f2" translate="yes" xml:space="preserve">
+          <source>NOTE:
+It is a good rule of thumb to use constructor arguments for mandatory dependencies and setters for optional dependencies. Note that the if we use annotation based than @Required annotation on a setter can be used to make setters as a required dependencies.</source>
+          <target state="translated">注意:使用构造函数参数作为强制依赖关系,而使用setter作为可选依赖关系,这是一个很好的经验法则。请注意,如果我们使用基于注释的比@Required注释的setter可以用来使setter作为必需的依赖关系。</target>
+        </trans-unit>
+        <trans-unit id="8360dc1497a3895cbb0ae2365dd63cd62fb85433" translate="yes" xml:space="preserve">
+          <source>Next we can have many kind of books; one of type is fiction:</source>
+          <target state="translated">接下来我们可以有很多种类的书,其中一种是小说。</target>
+        </trans-unit>
+        <trans-unit id="381bcfef8f062363621c6445f025fc1ec1ecb6e0" translate="yes" xml:space="preserve">
+          <source>No Dependency:</source>
+          <target state="translated">没有依赖性。</target>
+        </trans-unit>
+        <trans-unit id="148aedccb1c30aae863f891e9230b9918c3c26e5" translate="yes" xml:space="preserve">
+          <source>Note that the constructor accepts an interface and not concrete object. Also, note that an exception is thrown if the orderDao parameter is null. This emphasizes the importance of receiving a valid dependency. Constructor Injection is, in my opinion, the preferred mechanism for giving an object its dependencies. It is clear to the developer while invoking the object which dependencies need to be given to the &amp;ldquo;Person&amp;rdquo; object for proper execution.</source>
+          <target state="translated">请注意，构造函数接受接口，而不接受具体对象。 另外，请注意，如果orderDao参数为null，则会引发异常。 这强调了接收有效依赖关系的重要性。 在我看来，构造函数注入是赋予对象依赖项的首选机制。 开发人员很清楚在调用对象时需要将哪些依赖项赋予&amp;ldquo; Person&amp;rdquo;对象以正确执行。</target>
+        </trans-unit>
+        <trans-unit id="52a2afd82b94f21efe4003a5f77702e673692a03" translate="yes" xml:space="preserve">
+          <source>Notice how the &lt;code&gt;DataSourceImpl&lt;/code&gt; instantiation is moved into a constructor. The constructor takes four parameters which are the four values needed by the &lt;code&gt;DataSourceImpl&lt;/code&gt;. Though the &lt;code&gt;MyDao&lt;/code&gt; class still depends on these four values, it no longer satisfies these dependencies itself. They are provided by whatever class creating a &lt;code&gt;MyDao&lt;/code&gt; instance.</source>
+          <target state="translated">注意如何将 &lt;code&gt;DataSourceImpl&lt;/code&gt; 实例化移动到构造函数中。 构造函数采用四个参数，它们是 &lt;code&gt;DataSourceImpl&lt;/code&gt; 所需的四个值。 尽管 &lt;code&gt;MyDao&lt;/code&gt; 类仍依赖于这四个值，但它本身已不再满足这些依赖关系。 它们由创建 &lt;code&gt;MyDao&lt;/code&gt; 实例的任何类提供。</target>
+        </trans-unit>
+        <trans-unit id="b9bf32a5cd289e031981b513bdc34931168fff08" translate="yes" xml:space="preserve">
+          <source>Now a days these concept forms the basis of well known frameworks in programming world.
+The Spring Angular etc are the well-known software frameworks built on the top of this concept</source>
+          <target state="translated">现在,这些概念构成了编程世界中著名的框架的基础。Spring Angular等都是建立在这个概念之上的知名软件框架。</target>
+        </trans-unit>
+        <trans-unit id="3f568c10c487626292e158f1321b91077bbdfb85" translate="yes" xml:space="preserve">
+          <source>Now our Car class is dependent on only the IEngine interface, not a specific implementation of engine. 
+Now, the only trick is how do we create an instance of the Car and give it an actual concrete Engine class like GasEngine or ElectricityEngine. That's where &lt;strong&gt;Dependency Injection&lt;/strong&gt; comes in.</source>
+          <target state="translated">现在，我们的Car类仅依赖IEngine接口，而不依赖于引擎的特定实现。 现在，唯一的技巧是如何创建Car的实例，并为其提供实际的具体Engine类，例如GasEngine或ElectricityEngine。 那就是&lt;strong&gt;依赖注入&lt;/strong&gt;进来的地方。</target>
+        </trans-unit>
+        <trans-unit id="294a5073bdc9a6339404dadb5c21756e099a6869" translate="yes" xml:space="preserve">
+          <source>Now subscriber can have association to the book:</source>
+          <target state="translated">现在订阅者可以对这本书产生联想。</target>
+        </trans-unit>
+        <trans-unit id="3c4442a341c09f2a8337cd53e8c9d7b14c1f8d57" translate="yes" xml:space="preserve">
+          <source>Now the problem is that dependent &quot;component&quot; has to perform initialization itself.</source>
+          <target state="translated">现在的问题是,依赖的 &quot;组件 &quot;必须自己进行初始化。</target>
+        </trans-unit>
+        <trans-unit id="244d7754a9d504a1f45d44ae1bdf5c41e24ccff1" translate="yes" xml:space="preserve">
+          <source>Now, this code is already follow &lt;code&gt;Dependency Injection&lt;/code&gt; and it is easier for test &lt;code&gt;Client&lt;/code&gt; class.</source>
+          <target state="translated">现在，此代码已经遵循了 &lt;code&gt;Dependency Injection&lt;/code&gt; ,并且对于测试 &lt;code&gt;Client&lt;/code&gt; 类而言更加容易。</target>
+        </trans-unit>
+        <trans-unit id="01cf15bf0efc21fae58f14423988c7d39bcbc525" translate="yes" xml:space="preserve">
+          <source>Objects are once loaded in Spring container and then we reuse them whenever we need them by fetching those objects from Spring container using getBean(String beanName) method.</source>
+          <target state="translated">对象一旦被加载到Spring容器中,然后我们就可以通过使用getBean(String beanName)方法从Spring容器中获取这些对象,在需要的时候重用它们。</target>
+        </trans-unit>
+        <trans-unit id="6cf40f56e8e4c0d23d55ca133079493612e29b47" translate="yes" xml:space="preserve">
+          <source>One common alternative is defining a &lt;strong&gt;do-nothing constructor&lt;/strong&gt;. Dependency injection can be done through setters. (h/t @MikeVella).</source>
+          <target state="translated">一种常见的替代方法是定义&lt;strong&gt;什么都不做的构造函数&lt;/strong&gt; 。 依赖注入可以通过设置器来完成。 （h / t @MikeVella）。</target>
+        </trans-unit>
+        <trans-unit id="e85085db2ea4a2409b650b063f440106471f7755" translate="yes" xml:space="preserve">
+          <source>One consequence of DI is that the lifespan management of dependency object instances is no longer controlled by a consuming class, as the dependency object is now passed into the consuming class (via constructor or setter injection).</source>
+          <target state="translated">DI的一个后果是,依赖对象实例的生命周期管理不再由消耗类控制,因为依赖对象现在被传递到消耗类中(通过构造函数或setter注入)。</target>
+        </trans-unit>
+        <trans-unit id="0e87d7a02651091658f2b2651ada0186577a5e58" translate="yes" xml:space="preserve">
+          <source>One requirement is that the services must be parametrised by their dependencies. What this means exactly depends on the language and approach taken in a given system. Usually, this takes the form of constructor parameters, but using setters is also an option. This also means that the dependencies of a service are hidden (when invoking a service method) from the users of the service.</source>
+          <target state="translated">一个要求是,服务必须由其依赖关系来描述。这究竟意味着什么,取决于在给定系统中的语言和方法。通常情况下,它采用构造函数参数的形式,但使用setters也是一种选择。这也意味着服务的依赖关系被隐藏起来(在调用服务方法时),不被服务的用户看到。</target>
+        </trans-unit>
+        <trans-unit id="159c3350bcfe189a7b428c479d9201ea48faf507" translate="yes" xml:space="preserve">
+          <source>Or, lifespan control of dependency instances can be relinquished to an IoC container (more about this below).</source>
+          <target state="translated">或者,可以将依赖实例的生命周期控制权放弃给IoC容器(下面有更多关于这个问题的内容)。</target>
+        </trans-unit>
+        <trans-unit id="93d225da5e27eb45ee9a17d2a3dcf555280a505b" translate="yes" xml:space="preserve">
+          <source>Passing &lt;code&gt;myObject&lt;/code&gt; in as an argument to the constructor</source>
+          <target state="translated">将 &lt;code&gt;myObject&lt;/code&gt; 作为参数传递给构造函数</target>
+        </trans-unit>
+        <trans-unit id="21b3ab899d3e7a2f72bd43dcfb14037ae113a442" translate="yes" xml:space="preserve">
+          <source>Practically, every design pattern separates concerns to make future changes affect minimum files.</source>
+          <target state="translated">实际上,每一个设计模式的分离关注点都是为了让未来的修改影响最小的文件。</target>
+        </trans-unit>
+        <trans-unit id="d9f5010baa893f9ad98e960248019e1ff603968f" translate="yes" xml:space="preserve">
+          <source>Previously we are writing code like this</source>
+          <target state="translated">以前我们写的代码是这样的</target>
+        </trans-unit>
+        <trans-unit id="533e261383d8b2d3e59f53c2e9d59c559259294d" translate="yes" xml:space="preserve">
+          <source>Programmers have understood the dependency obfuscation requirement for years and many alternative solutions have evolved both before and after dependency injection was conceived. There are Factory patterns but there are also many options using ThreadLocal where no injection to a particular instance is needed - the dependency is effectively injected into the thread which has the benefit of making the object available (via convenience static getter methods) to &lt;em&gt;any&lt;/em&gt; class that requires it without having to add annotations to the classes that require it and set up intricate XML 'glue' to make it happen. When your dependencies are required for persistence (JPA/JDO or whatever) it allows you to achieve 'tranaparent persistence' much easier and with domain model and business model classes made up purely of POJOs (i.e. no framework specific/locked in annotations).</source>
+          <target state="translated">程序员已经了解依赖混淆的要求已有多年了，并且在构思依赖注入之前和之后，许多替代解决方案都得到了发展。 有Factory模式，但也有许多使用ThreadLocal的选项，其中不需要注入到特定实例-依赖关系被有效地注入到线程中，这具有使对象（通过便捷的静态getter方法）可用于&lt;em&gt;任何以下&lt;/em&gt;类的优点：需要它，而不必在需要它的类中添加注释，并设置复杂的XML'胶水'来实现它。 当您的依赖关系是持久性所必需的（JPA / JDO或其他）时，它使您可以更轻松地实现&amp;ldquo;透明持久性&amp;rdquo;，并使用纯粹由POJO组成的域模型和业务模型类（即，没有特定于框架/未锁定在注释中）。</target>
+        </trans-unit>
+        <trans-unit id="6fbc5d43864c0ac8fa3636a03653618ac21757e7" translate="yes" xml:space="preserve">
+          <source>Setter Injection</source>
+          <target state="translated">定型机注射</target>
+        </trans-unit>
+        <trans-unit id="5a34561d27d0c82f9fb28bebbfcc20bc74ddc2a1" translate="yes" xml:space="preserve">
+          <source>Setter Injection does not force dependencies to be passed to the constructor. Instead, the dependencies are set onto public properties exposed by the object in need. As implied previously, the primary motivators for doing this include:</source>
+          <target state="translated">Setter注入不会强制将依赖关系传递给构造函数。相反,依赖关系被设置到需要的对象所暴露的公共属性上。正如前面所暗示的那样,这样做的主要动机包括。</target>
+        </trans-unit>
+        <trans-unit id="3ba4002363cebe927c87f145292fe23279da4fc4" translate="yes" xml:space="preserve">
+          <source>Setter injection</source>
+          <target state="translated">注射器</target>
+        </trans-unit>
+        <trans-unit id="b8cb1079b38327369ec318ba6d8358b7e9c456ba" translate="yes" xml:space="preserve">
+          <source>Setter-based DI is accomplished by the container calling setter methods on your beans after invoking a no-argument constructor or no-argument static factory method to instantiate your bean.</source>
+          <target state="translated">基于setter的DI是通过容器在调用无参数构造函数或无参数静态工厂方法来实例化你的Bean之后,在你的Bean上调用setter方法来完成的。</target>
+        </trans-unit>
+        <trans-unit id="de72ea9e60d3b0389fb7873c1d21268b088fa6d4" translate="yes" xml:space="preserve">
+          <source>Simple</source>
+          <target state="translated">Simple</target>
+        </trans-unit>
+        <trans-unit id="53b5b8696132c7f14a83c7efaf53a8df90f22d0e" translate="yes" xml:space="preserve">
+          <source>So in the end &lt;strong&gt;Dependency injection&lt;/strong&gt; is just a technique for
+  achieving loose coupling between objects and their dependencies.
+  Rather than directly instantiating dependencies that class needs in
+  order to perform its actions, dependencies are provided to the class
+  (most often) via constructor injection.</source>
+          <target state="translated">因此，最终&lt;strong&gt;依赖注入&lt;/strong&gt;只是一种用于实现对象及其依赖之间的松散耦合的技术。 不是直接实例化类执行其操作所需的依赖关系，而是通过构造函数注入将依赖关系（最常见）提供给类。</target>
+        </trans-unit>
+        <trans-unit id="7da9dbfe443ff7c3e18888265c12bc4c6d7027ed" translate="yes" xml:space="preserve">
+          <source>Source: &lt;em&gt;&lt;a href=&quot;http://ganeshtiwaridotcomdotnp.blogspot.com/2011/05/understanding-dependency-injection-and.html&quot;&gt;Understanding dependency injection&lt;/a&gt;&lt;/em&gt;</source>
+          <target state="translated">资料来源： &lt;em&gt;&lt;a href=&quot;http://ganeshtiwaridotcomdotnp.blogspot.com/2011/05/understanding-dependency-injection-and.html&quot;&gt;了解依赖注入&lt;/a&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="5974b915c67629f3fb291858490061a4113d7288" translate="yes" xml:space="preserve">
+          <source>Specifically, in the paradigm of Robert C Martin's &lt;a href=&quot;http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)&quot;&gt;SOLID principles of Object Oriented Design&lt;/a&gt;, &lt;code&gt;DI&lt;/code&gt; is one of the possible implementations of the &lt;a href=&quot;http://en.wikipedia.org/wiki/Dependency_inversion_principle&quot;&gt;Dependency Inversion Principle (DIP)&lt;/a&gt;. The &lt;a href=&quot;https://stackoverflow.com/q/27978841/314291&quot;&gt;DIP is the &lt;code&gt;D&lt;/code&gt; of the &lt;code&gt;SOLID&lt;/code&gt; mantra&lt;/a&gt;  - other DIP implementations include the Service Locator, and Plugin patterns.</source>
+          <target state="translated">具体而言，在罗伯特&amp;middot;C&amp;middot;马丁（Robert C Martin）的&lt;a href=&quot;http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)&quot;&gt;面向对象设计&lt;/a&gt;的SOLID原理的范式中， &lt;code&gt;DI&lt;/code&gt; 是&lt;a href=&quot;http://en.wikipedia.org/wiki/Dependency_inversion_principle&quot;&gt;依赖倒置原理（DIP）&lt;/a&gt;的可能实现之一。 &lt;a href=&quot;https://stackoverflow.com/q/27978841/314291&quot;&gt;DIP是 &lt;code&gt;SOLID&lt;/code&gt; 口头禅的 &lt;code&gt;D&lt;/code&gt; -&lt;/a&gt;其他DIP实现包括服务定位器和插件模式。</target>
+        </trans-unit>
+        <trans-unit id="f4b86bb17c077dd81ce6f0d78a2ce285c974111f" translate="yes" xml:space="preserve">
+          <source>Supporting dependency injection without having to modify the constructor of a legacy class.</source>
+          <target state="translated">支持依赖注入,无需修改传统类的构造函数。</target>
+        </trans-unit>
+        <trans-unit id="ad518a2bfe35a440dc057b8df89372141fdee4b1" translate="yes" xml:space="preserve">
+          <source>Switch -&amp;gt; Bulb1 OR Bulb2 OR NightBulb (injected dependency)</source>
+          <target state="translated">开关-&amp;gt; Bulb1 OR Bulb2 OR NightBulb（注入依赖项）</target>
+        </trans-unit>
+        <trans-unit id="1f8e6772695db9bb64683f23fba3fcc305250d9e" translate="yes" xml:space="preserve">
+          <source>Switch -&amp;gt; PermanentBulb &lt;em&gt;//switch is directly connected to permanent bulb, testing not possible easily&lt;/em&gt;</source>
+          <target state="translated">开关-&amp;gt; PermanentBulb &lt;em&gt;//开关直接连接到永久灯泡，无法轻松测试&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="9c4c8437fc5346d142f060317a5f268dabd0d961" translate="yes" xml:space="preserve">
+          <source>Switch needs to know beforehand which bulb I am connected to (hard-coded dependency). So,</source>
+          <target state="translated">Switch需要事先知道我连接的是哪个灯泡(硬编码依赖)。所以。</target>
+        </trans-unit>
+        <trans-unit id="4d7495d3cc88447e63485a25f72ecf731763671c" translate="yes" xml:space="preserve">
+          <source>Switch only knows I need to turn on/off whichever Bulb is passed to me. So,</source>
+          <target state="translated">开关只知道我需要关闭任何一个灯泡,无论传给我的是哪一个灯泡,我都要打开。所以....,</target>
+        </trans-unit>
+        <trans-unit id="4c1913b877e14f9958c5e5bb105932590816f59f" translate="yes" xml:space="preserve">
+          <source>The &quot;component&quot;'s source code is neither &lt;strong&gt;clean&lt;/strong&gt; nor &lt;strong&gt;stable&lt;/strong&gt; because every changes in initialization of dependencies requires new release for &quot;components&quot;'s source code file as well.</source>
+          <target state="translated">&amp;ldquo;组件&amp;rdquo;的源代码既不是&lt;strong&gt;干净的&lt;/strong&gt;也不是&lt;strong&gt;稳定的，&lt;/strong&gt;因为对依赖项的初始化的每次更改都需要&amp;ldquo;组件&amp;rdquo;的源代码文件的新发行版。</target>
+        </trans-unit>
+        <trans-unit id="73264d2706ed99c7c3cf1d84437da53a400c9eb1" translate="yes" xml:space="preserve">
+          <source>The &amp;ldquo;Dependency Injection&amp;rdquo; (DI) is also known as &amp;ldquo;Inversion of Control&amp;rdquo; (IoC), can be used as a technique for encouraging this loose coupling.</source>
+          <target state="translated">&amp;ldquo;依赖注入&amp;rdquo;（DI）也称为&amp;ldquo;控制反转&amp;rdquo;（IoC），可以用作鼓励这种松散耦合的技术。</target>
+        </trans-unit>
+        <trans-unit id="4ce8e8f58189f93cac9d7dcd25f82fad19ea42c5" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;archive_files&lt;/code&gt;&lt;em&gt;dependency&lt;/em&gt; has just been &lt;em&gt;injected&lt;/em&gt; into &lt;em&gt;dependent&lt;/em&gt; script.</source>
+          <target state="translated">&lt;code&gt;archive_files&lt;/code&gt; &lt;em&gt;依赖关系&lt;/em&gt;刚刚被&lt;em&gt;注入&lt;/em&gt;到&lt;em&gt;依赖&lt;/em&gt;脚本中。</target>
+        </trans-unit>
+        <trans-unit id="57f5c2a4c3648bf44c57e0b10c21224b7534177d" translate="yes" xml:space="preserve">
+          <source>The above image is an image of Reel-to-reel portable tape recorder, mid-20th century. &lt;a href=&quot;https://www.britannica.com/technology/tape-recorder&quot;&gt;Source&lt;/a&gt;.</source>
+          <target state="translated">上图是20世纪中叶的卷到卷便携式录音机的图像。 &lt;a href=&quot;https://www.britannica.com/technology/tape-recorder&quot;&gt;来源&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="bc174d974fc2630ad90c3952d5479067c5370ff0" translate="yes" xml:space="preserve">
+          <source>The accepted answer is a good one - but I would like to add to this that DI is very much like the classic avoiding of hardcoded constants in the code.</source>
+          <target state="translated">接受的答案是一个很好的答案--但我想在此补充一点,DI很像经典的回避代码中的硬编码常数。</target>
+        </trans-unit>
+        <trans-unit id="a38ac33b8fba8d81022fa8e5992560f5f98cbdc3" translate="yes" xml:space="preserve">
+          <source>The best analogy I can think of is the surgeon and his assistant(s) in an operation theater, where the surgeon is the main person and his assistant who provides the various surgical components when he needs it so that the surgeon can concentrate on the one thing he does best (surgery). Without the assistant the surgeon has to get the components himself every time he needs one.</source>
+          <target state="translated">我能想到的最好的比喻是手术室里的外科医生和他的助手,外科医生是主要的人,他的助手在他需要的时候提供各种手术部件,这样外科医生就可以专注于他最擅长的事情(手术)。如果没有助手,外科医生每次需要的时候,都要自己去拿这些部件。</target>
+        </trans-unit>
+        <trans-unit id="a41ea95353f5d528dfa619f0e43f5976252872f7" translate="yes" xml:space="preserve">
+          <source>The best definition I've found so far is &lt;a href=&quot;http://jamesshore.com/Blog/Dependency-Injection-Demystified.html&quot;&gt;one by James Shore&lt;/a&gt;:</source>
+          <target state="translated">到目前为止，我发现的最佳定义是&lt;a href=&quot;http://jamesshore.com/Blog/Dependency-Injection-Demystified.html&quot;&gt;James Shore定义的&lt;/a&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="888a31b520ca5d4997c6aa72d7a98329f15bff71" translate="yes" xml:space="preserve">
+          <source>The issue with this code that we tightly coupled to GasEngine and if we decide to change it to ElectricityEngine then we will need to rewrite Car class. And the bigger the application the more issues and headache we will have to add and use new type of engine.</source>
+          <target state="translated">这个代码的问题是,我们把它紧紧地耦合到GasEngine,如果我们决定把它改成ElectricityEngine,那么我们就需要重写Car类。而且应用越大,我们需要添加和使用新的引擎类型,就会有更多的问题和麻烦。</target>
+        </trans-unit>
+        <trans-unit id="55cafcb834ee14f42eff09928fdaf624281b81f7" translate="yes" xml:space="preserve">
+          <source>The key to DI-friendly code is to avoid static coupling of classes, and not to use new() for the creation of Dependencies</source>
+          <target state="translated">DI友好代码的关键是避免类之间的静态耦合,不要用new()来创建Dependencies,也不要用new()来创建Dependencies</target>
+        </trans-unit>
+        <trans-unit id="5ca5815f45aca9074db82cb4273a806d37ea2c5b" translate="yes" xml:space="preserve">
+          <source>The main benefit of the &lt;strong&gt;Dependency Injection&lt;/strong&gt; that classes are more loosely coupled, because they do not have hard-coded dependencies. This follows the Dependency Inversion Principle, which was mentioned above. Instead of referencing specific implementations, classes request abstractions (usually &lt;strong&gt;interfaces&lt;/strong&gt;) which are provided to them when the class is constructed.</source>
+          <target state="translated">&lt;strong&gt;依赖注入&lt;/strong&gt;的主要好处是，类之间的耦合更为松散，因为它们没有硬编码的依赖关系。 这遵循了上面提到的依赖倒置原则。 类不引用特定的实现，而是请求构造类时提供给它们的抽象（通常是&lt;strong&gt;interface&lt;/strong&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="473698f3e91170575e3a1dd7c3f14effd0d4dbdd" translate="yes" xml:space="preserve">
+          <source>The main benefits we achieved by using dependency injection.</source>
+          <target state="translated">我们使用依赖性注入的主要好处。</target>
+        </trans-unit>
+        <trans-unit id="3a01d41764fb9f4deb184c6238b397910d66d4e7" translate="yes" xml:space="preserve">
+          <source>The main purpose of the intermediate level is not just to pass in the dependencies to the constructor, but to list all the dependencies in &lt;em&gt;just one place&lt;/em&gt;, and to hide them from the coder (not to make the coder provide them).</source>
+          <target state="translated">中间级别的主要目的不仅是将依赖项传递给构造函数，而且还要在&lt;em&gt;一个位置&lt;/em&gt;列出所有依赖项，并将其从编码器中隐藏起来（而不是让编码器提供它们）。</target>
+        </trans-unit>
+        <trans-unit id="675567e15eedcab72deecf5182fe51cdda38c6b1" translate="yes" xml:space="preserve">
+          <source>The module graph - the graph of service objects - is typically created on application startup. This can be done using a container, such as Spring, but can also be done manually, by passing parameters to object constructors. Both ways have their pros and cons, but a framework definitely isn&amp;rsquo;t necessary to use DI in your application.</source>
+          <target state="translated">模块图-服务对象图-通常在应用程序启动时创建。 可以使用容器（例如Spring）来完成此操作，也可以通过将参数传递给对象构造函数来手动完成。 两种方法都有其优缺点，但是绝对不需要在应用程序中使用DI的框架。</target>
+        </trans-unit>
+        <trans-unit id="1345d93e55da0a02f0e73cb3294e155c0fcd0c41" translate="yes" xml:space="preserve">
+          <source>The objective of the DIP is to decouple tight, concrete dependencies between classes, and instead, to loosen the coupling by means of an abstraction, which can be achieved via an &lt;code&gt;interface&lt;/code&gt;, &lt;code&gt;abstract class&lt;/code&gt; or &lt;code&gt;pure virtual class&lt;/code&gt;, depending on the language and approach used.</source>
+          <target state="translated">DIP的目的是解耦类之间的紧密，具体的依赖关系，而是通过抽象来放松耦合，抽象可以通过 &lt;code&gt;interface&lt;/code&gt; ， &lt;code&gt;abstract class&lt;/code&gt; 或 &lt;code&gt;pure virtual class&lt;/code&gt; ，具体取决于所使用的语言和方法。</target>
+        </trans-unit>
+        <trans-unit id="13ddfae2bc42d77fabc17f4670bf62cf40aa3c4a" translate="yes" xml:space="preserve">
+          <source>The objects that we create in our applications (regardless if we use Java, C# or other object-oriented language) usually fall into one of two categories: stateless, static and global &amp;ldquo;service objects&amp;rdquo; (modules), and stateful, dynamic and local &amp;ldquo;data objects&amp;rdquo;.</source>
+          <target state="translated">我们在应用程序中创建的对象（无论使用Java，C＃还是其他面向对象的语言）通常分为两类之一：无状态，静态和全局&amp;ldquo;服务对象&amp;rdquo;（模块），以及有状态，动态和局部对象&amp;ldquo;数据对象&amp;rdquo;。</target>
+        </trans-unit>
+        <trans-unit id="fccd88c774cbd85630c6ee5e8c38793343e3457d" translate="yes" xml:space="preserve">
+          <source>The person typing &quot;make bar&quot; doesn't need to know that bar depends on foo. The dependency was injected between &quot;make bar&quot; and gcc.</source>
+          <target state="translated">输入 &quot;make bar &quot;的人不需要知道bar依赖foo。在 &quot;make bar &quot;和gcc之间注入了依赖关系。</target>
+        </trans-unit>
+        <trans-unit id="c8b03c2d69af0fb222af1edc1d1a6a786e0d51c4" translate="yes" xml:space="preserve">
+          <source>The popular answers are unhelpful, because they define dependency injection in a way that isn't useful. Let's agree that by &quot;dependency&quot; we mean some pre-existing other object that our object X needs. But we don't say we're doing &quot;dependency injection&quot; when we say</source>
+          <target state="translated">流行的答案是无济于事的,因为它们以一种没有用的方式定义了依赖注入。让我们同意,我们所说的 &quot;依赖注入 &quot;是指我们的对象X需要的一些预先存在的其他对象。但是,当我们说 &quot;依赖注入 &quot;时,我们并没有说我们在做 &quot;依赖注入&quot;。</target>
+        </trans-unit>
+        <trans-unit id="bbadfee066654ad4aea424424e4eade208a93f88" translate="yes" xml:space="preserve">
+          <source>The primary intention of a tape recorder machine is to record or playback sound.</source>
+          <target state="translated">录音机的主要目的是为了记录或播放声音。</target>
+        </trans-unit>
+        <trans-unit id="72621a62fc0916c8f0e046dcd1a82521dee3ad8a" translate="yes" xml:space="preserve">
+          <source>The purpose of dependency injection is to decouple the work of
+  resolving external software components from your application business
+  logic.Without dependency injection, the details of how a component
+  accesses required services can get muddled in with the component&amp;rsquo;s
+  code. This not only increases the potential for errors, adds code
+  bloat, and magnifies maintenance complexities; it couples components
+  together more closely, making it difficult to modify dependencies when
+  refactoring or testing.</source>
+          <target state="translated">依赖项注入的目的是将解析外部软件组件的工作与应用程序业务逻辑分离开来。如果没有依赖项注入，组件代码如何访问组件如何访问所需服务的细节就会变得混乱。 这不仅增加了潜在的错误，增加了代码膨胀，而且增加了维护复杂性； 它将组件更紧密地耦合在一起，使得在重构或测试时很难修改依赖关系。</target>
+        </trans-unit>
+        <trans-unit id="0597c45b3f09c949a793674e4746ee654b8e2e31" translate="yes" xml:space="preserve">
+          <source>The script is dependent: it won't execute successfully on its own (&lt;code&gt;archive_files&lt;/code&gt; is not defined).</source>
+          <target state="translated">该脚本是依赖的：它不会自行成功执行（未定义 &lt;code&gt;archive_files&lt;/code&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="1771cd5e467d2af2b6f2a767136b82451f592144" translate="yes" xml:space="preserve">
+          <source>The specific domain of DI is delegation of dependency configuration and initialization.</source>
+          <target state="translated">DI的具体领域是授权依赖配置和初始化。</target>
+        </trans-unit>
+        <trans-unit id="cd6b99e6180e4829c33bd4547e92926e1044e126" translate="yes" xml:space="preserve">
+          <source>The whole point of Dependency Injection (DI) is to keep application source code &lt;strong&gt;clean&lt;/strong&gt; and &lt;strong&gt;stable&lt;/strong&gt;:</source>
+          <target state="translated">依赖注入（DI）的全部目的是保持应用程序源代码的&lt;strong&gt;清洁&lt;/strong&gt;和&lt;strong&gt;稳定&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="27e320b7600e5266bce3ce68ab1e42620f41d50b" translate="yes" xml:space="preserve">
+          <source>There are many different ways how to use dependency injection. It is possible to combine it with Singleton, etc., but still in basic it is only association realized by creating attribute of object type inside another object.
+The usefulness is only and only in feature, that code, which we should write again and again is always prepared and done for us forward. This is why DI so closely binded with Inversion of Control (IoC) which means, that our program passes control another running module, which does injections of beans to our code. (Each object, which can be injected can be signed or considered as a Bean.) For example in Spring it is done by creating and initialization &lt;em&gt;ApplicationContext&lt;/em&gt; container, which does this work for us. We simply in our code create the Context and invoke initialization the beans. In that moment injection has been done automatically.</source>
+          <target state="translated">有许多不同的方法来使用依赖项注入。 可以将其与Singleton等结合使用，但是从根本上讲，它仅是通过在另一个对象内部创建对象类型的属性来实现的关联。 有用性仅在功能方面，我们应该一遍又一遍地编写的代码总是为我们准备和完成。 这就是为什么DI与控制反转（IoC）如此紧密地绑定的原因，这意味着我们的程序将控制另一个正在运行的模块，该模块将Bean注入到我们的代码中。 （每个可以注入的对象都可以签名或视为Bean。）例如，在Spring中，它是通过创建和初始化&lt;em&gt;ApplicationContext&lt;/em&gt;容器完成的，该容器为我们完成了这项工作。 我们只需在代码中创建Context并调用初始化bean。 在那一刻，注射已自动完成。</target>
+        </trans-unit>
+        <trans-unit id="4bbc78d6e852d2e63980ceadf582e6e2cde07680" translate="yes" xml:space="preserve">
+          <source>There are two primary approaches to implementing DI:</source>
+          <target state="translated">实施直接投资的主要方法有两种:</target>
+        </trans-unit>
+        <trans-unit id="e94b174e1d5cc2e2152c883c5d77b0f60deea3d8" translate="yes" xml:space="preserve">
+          <source>There have been several questions already posted with specific questions about &lt;a href=&quot;http://en.wikipedia.org/wiki/Dependency_injection&quot;&gt;dependency injection&lt;/a&gt;, such as when to use it and what frameworks are there for it. However,</source>
+          <target state="translated">已经发布了几个问题，其中包括有关&lt;a href=&quot;http://en.wikipedia.org/wiki/Dependency_injection&quot;&gt;依赖项注入的&lt;/a&gt;特定问题，例如何时使用它以及支持它的框架。 然而，</target>
+        </trans-unit>
+        <trans-unit id="bc485497e5c277af6e8ba89ddeb765c26b3e96ea" translate="yes" xml:space="preserve">
+          <source>There is &lt;a href=&quot;http://martinfowler.com/articles/injection.html&quot;&gt;an article by Martin Fowler&lt;/a&gt; that may prove useful, too.</source>
+          <target state="translated">&lt;a href=&quot;http://martinfowler.com/articles/injection.html&quot;&gt;Martin Fowler的一篇文章&lt;/a&gt;可能也很有用。</target>
+        </trans-unit>
+        <trans-unit id="815c6163aa7ffe62c24c7f4421caa35a91b5752f" translate="yes" xml:space="preserve">
+          <source>This can be viewed in different ways:</source>
+          <target state="translated">这可以从不同的角度来看。</target>
+        </trans-unit>
+        <trans-unit id="252c2fc56bbf461770e127f5279e75e5c6e1a9ef" translate="yes" xml:space="preserve">
+          <source>This is based on the answer @Adam N posted.</source>
+          <target state="translated">这是根据@Adam N发布的答案。</target>
+        </trans-unit>
+        <trans-unit id="3214625379bb5b7d1b275f45dbd054121808f8f3" translate="yes" xml:space="preserve">
+          <source>To make Dependency Injection concept simple to understand. Let's take an example of switch button to toggle(on/off) a bulb.</source>
+          <target state="translated">为了使依赖注入的概念简单易懂。让我们以开关按钮来切换(开启)灯泡为例。</target>
+        </trans-unit>
+        <trans-unit id="5343d4544799a720118861acb1f47462973d60f8" translate="yes" xml:space="preserve">
+          <source>Two types of Dependency Injection:</source>
+          <target state="translated">两种类型的依赖性注射。</target>
+        </trans-unit>
+        <trans-unit id="63568b370a821de5c78ae9aa707bb16d7ed41fac" translate="yes" xml:space="preserve">
+          <source>Typically, once IoC containers have been configured / bootstrapped, they operate seamlessly in the background allowing the coder to focus on the code at hand rather than worrying about dependencies.</source>
+          <target state="translated">通常情况下,一旦IoC容器被配置为bootstrapped后,它们就会在后台无缝地运行,让编码员专注于手头的代码,而不是担心依赖关系。</target>
+        </trans-unit>
+        <trans-unit id="182c61d24602b96b1f93b9d02ddeddadb6b2993d" translate="yes" xml:space="preserve">
+          <source>Unfortunately the bad part is that some people have assumed you need a specialized framework to do dependency obfuscation and that you are somehow a 'lesser' programmer if you choose not to use a particular framework to do it. Another, extremely disturbing myth, believed by many, is that dependency injection is the only way of achieving dependency obfuscation. This is demonstrably and historically and obviously 100% wrong but you will have trouble convincing some people that there are alternatives to dependency injection for your dependency obfuscation requirements.</source>
+          <target state="translated">不幸的是,糟糕的是,有些人认为你需要一个专门的框架来做依赖混淆,如果你选择不使用特定的框架来做,那么你就是一个 &quot;较差的 &quot;程序员。另一个非常令人不安的神话,很多人相信,依赖注入是实现依赖混淆的唯一方法。这显然是有目共睹的,而且从历史上看是100%错误的,但你很难说服一些人相信除了依赖注入之外,还有其他的方法可以满足你的依赖混淆需求。</target>
+        </trans-unit>
+        <trans-unit id="3848296892c89c589ff3cd256248c78c171b9a63" translate="yes" xml:space="preserve">
+          <source>Use Dependency Injection</source>
+          <target state="translated">使用依赖注入</target>
+        </trans-unit>
+        <trans-unit id="b5b26b6f5a26c971914a39f28f7610b2ff42bb58" translate="yes" xml:space="preserve">
+          <source>Using a Dependency Injection Container</source>
+          <target state="translated">使用依赖注入容器</target>
+        </trans-unit>
+        <trans-unit id="38051c244ec62e5af7798f63213cc9da83353e86" translate="yes" xml:space="preserve">
+          <source>Using configuration only with &lt;em&gt;dependency lookup&lt;/em&gt; does not help as number of configuration parameters may change per dependency (e.g. new authentication type) as well as number of supported types of dependencies (e.g. new database type).</source>
+          <target state="translated">仅通过&lt;em&gt;依赖关系查找&lt;/em&gt;使用配置无济于事，因为每个依赖关系（例如，新的身份验证类型）以及支持的依赖关系类型的数量（例如，新的数据库类型）可能会更改配置参数的数量。</target>
+        </trans-unit>
+        <trans-unit id="cd86d58fd77887709d26819ecdbbed88c3b2259e" translate="yes" xml:space="preserve">
+          <source>Usually the intermediate level provides factories for the constructed objects, which must provide a role that each requested object type must satisfy. That's because by having an intermediate level that hides the details of construction, you've already incurred the abstraction penalty imposed by factories, so you might as well use factories.</source>
+          <target state="translated">通常情况下,中间层为构造的对象提供了工厂,这些工厂必须提供每个被请求的对象类型必须满足的角色。这是因为通过中间层隐藏了构造的细节,你已经招致了工厂所带来的抽象惩罚,所以还不如使用工厂。</target>
+        </trans-unit>
+        <trans-unit id="f80646d8467ba758d39c4c0efe8023f67e2f3d51" translate="yes" xml:space="preserve">
+          <source>We can also loosen the dependency on &lt;code&gt;Console&lt;/code&gt; to an abstraction, such as a &lt;code&gt;TextWriter&lt;/code&gt;. Dependency Injection is typically implemented as either &lt;code&gt;constructor&lt;/code&gt; injection (passing an abstraction to a dependency as a parameter to the constructor of a consuming class) or &lt;code&gt;Setter Injection&lt;/code&gt; (passing the dependency via a &lt;code&gt;setXyz()&lt;/code&gt; setter or a .Net Property with &lt;code&gt;{set;}&lt;/code&gt; defined). Constructor Injection is preferred, as this guarantees the class will be in a correct state after construction, and allows the internal dependency fields to be marked as &lt;code&gt;readonly&lt;/code&gt; (C#) or &lt;code&gt;final&lt;/code&gt; (Java). So using constructor injection on the above example, this leaves us with:</source>
+          <target state="translated">我们还可以将对 &lt;code&gt;Console&lt;/code&gt; 的依赖关系放宽为一个抽象，例如 &lt;code&gt;TextWriter&lt;/code&gt; 。 依赖注入通常实现为 &lt;code&gt;constructor&lt;/code&gt; 注入（将依赖关系的抽象作为消费类的构造函数的参数传递给依赖项）或 &lt;code&gt;Setter Injection&lt;/code&gt; （通过 &lt;code&gt;setXyz()&lt;/code&gt; setter或.Net属性与 &lt;code&gt;{set;}&lt;/code&gt; 传递依赖关系）定义）。 最好使用构造函数注入，因为这样可以保证在构造后类将处于正确的状态，并允许将内部依赖项字段标记为 &lt;code&gt;readonly&lt;/code&gt; （C＃）或 &lt;code&gt;final&lt;/code&gt; （Java）。 因此，在上面的示例中使用构造函数注入，这使我们拥有：</target>
+        </trans-unit>
+        <trans-unit id="86284d96e43cd594072665725439a4504abe091b" translate="yes" xml:space="preserve">
+          <source>We can however apply &lt;code&gt;DIP&lt;/code&gt; to this class, by abstracting out the the concern of timestamping as a dependency, and coupling &lt;code&gt;MyLogger&lt;/code&gt; only to a simple interface:</source>
+          <target state="translated">但是，我们可以通过将时间戳记作为依赖项的问题抽象出来，并将 &lt;code&gt;MyLogger&lt;/code&gt; 仅耦合到一个简单的接口，从而将 &lt;code&gt;DIP&lt;/code&gt; 应用于此类。</target>
+        </trans-unit>
+        <trans-unit id="4d76ed5465c1e8ece422b3fde5fc9eac7b93e015" translate="yes" xml:space="preserve">
+          <source>We can see a wide variety of application of this pattern in our day to day life.
+Some of the examples are Tape recorder, VCD, CD Drive etc.</source>
+          <target state="translated">在我们的日常生活中,我们可以看到这种模式的应用非常广泛。例如:磁带录音机、VCD、光驱等。</target>
+        </trans-unit>
+        <trans-unit id="699f2807e416a1b822a3e5508ecc546ba1097cee" translate="yes" xml:space="preserve">
+          <source>We don&amp;rsquo;t need to hard code the object using new keyword rather define the bean dependency in the configuration file. The spring container will be responsible for hooking up all.</source>
+          <target state="translated">我们不需要使用new关键字对对象进行硬编码，而是在配置文件中定义Bean依赖项。 弹簧容器将负责所有连接。</target>
+        </trans-unit>
+        <trans-unit id="e6a519ea1c63ceedd483bc62f122abf4b1705040" translate="yes" xml:space="preserve">
+          <source>We just call that passing parameters into the constructor. We've been doing that regularly ever since constructors were invented.</source>
+          <target state="translated">我们只需要将参数传递到构造函数中就可以了。自从构造函数被发明出来之后,我们就经常这样做。</target>
+        </trans-unit>
+        <trans-unit id="4939eb99c093f041eb14a0ea96bcb8652ea8525e" translate="yes" xml:space="preserve">
+          <source>What if I want to change the object at runtime? For example, my config already says when I instantiate MyController, inject for FileLogger as ILogger. But I might want to inject DatabaseLogger.</source>
+          <target state="translated">如果我想在运行时改变对象怎么办?例如,我的配置中已经说了,当我实例化MyController时,注入FileLogger为ILogger。但我可能想注入DatabaseLogger。</target>
+        </trans-unit>
+        <trans-unit id="3e2750129099d2d658ea524bc22e6b383e10d747" translate="yes" xml:space="preserve">
+          <source>What if we want to change the type of its dependent object - say &lt;code&gt;Wheel&lt;/code&gt; - after the initial &lt;code&gt;NepaliRubberWheel()&lt;/code&gt; punctures?
+We need to recreate the Car object with its new dependency say &lt;code&gt;ChineseRubberWheel()&lt;/code&gt;, but only the &lt;code&gt;Car&lt;/code&gt; manufacturer can do that.</source>
+          <target state="translated">如果我们想在最初的 &lt;code&gt;NepaliRubberWheel()&lt;/code&gt; 穿刺之后更改其依赖对象的类型（例如 &lt;code&gt;Wheel&lt;/code&gt; ），该怎么办？ 我们需要使用其新的依赖项 &lt;code&gt;ChineseRubberWheel()&lt;/code&gt; 重新创建Car对象，但是只有 &lt;code&gt;Car&lt;/code&gt; 制造商才能做到这一点。</target>
+        </trans-unit>
+        <trans-unit id="d12d549f3851beb3cde5e7133f1816376aac4516" translate="yes" xml:space="preserve">
+          <source>What is dependency Injection?</source>
+          <target state="translated">什么是依赖性注入?</target>
+        </trans-unit>
+        <trans-unit id="2a58e8a199dcdef3591f016058aadf67a10b6ea0" translate="yes" xml:space="preserve">
+          <source>What is dependency injection</source>
+          <target state="translated">什么是依赖性注入</target>
+        </trans-unit>
+        <trans-unit id="96816fe77c474fe522ad8e991ee6edf78f7425c0" translate="yes" xml:space="preserve">
+          <source>When to use DI : I would recommend using DI in almost all production projects ( small/big), particularly in ever changing business environments :)</source>
+          <target state="translated">何时使用DI:我建议在几乎所有的生产项目中使用DI(小规模的),特别是在不断变化的商业环境中使用DI :)</target>
+        </trans-unit>
+        <trans-unit id="f48ccb208f603d34093b9d2e0d7b264d9656e30f" translate="yes" xml:space="preserve">
+          <source>When to use? I would say whenever the application is large enough that encapsulating logic into separate modules, with a dependency graph between the modules gives a gain in readability and explorability of the code.</source>
+          <target state="translated">何时使用?我想说的是,当应用程序足够大的时候,将逻辑封装成独立的模块,并在模块之间建立一个依赖图,这样可以提高代码的可读性和可探索性。</target>
+        </trans-unit>
+        <trans-unit id="eed4b47b27cb37bd0ec38f924963811f2806030d" translate="yes" xml:space="preserve">
+          <source>When using dependency injection, objects are given their dependencies &lt;em&gt;at run time rather than compile time (car manufacturing time)&lt;/em&gt;.
+So that we can now change the &lt;code&gt;Wheel&lt;/code&gt; whenever we want. Here, the &lt;code&gt;dependency&lt;/code&gt; (&lt;code&gt;wheel&lt;/code&gt;) can be injected into &lt;code&gt;Car&lt;/code&gt; at run time.</source>
+          <target state="translated">当使用依赖注入时， &lt;em&gt;在运行时而不是编译时（汽车制造时间）为&lt;/em&gt;对象提供它们的依赖。 这样，我们现在就可以随时更改 &lt;code&gt;Wheel&lt;/code&gt; 。 在这里， &lt;code&gt;dependency&lt;/code&gt; （ &lt;code&gt;wheel&lt;/code&gt; ）可以在运行时注入到 &lt;code&gt;Car&lt;/code&gt; 中。</target>
+        </trans-unit>
+        <trans-unit id="abc4d8921a46969ecc613e5055f52eca2c65ee07" translate="yes" xml:space="preserve">
+          <source>When we change &lt;code&gt;Service&lt;/code&gt; constructor, we need to change code in all place create &lt;code&gt;Service&lt;/code&gt; object</source>
+          <target state="translated">更改 &lt;code&gt;Service&lt;/code&gt; 构造函数时，需要在所有位置更改代码以创建 &lt;code&gt;Service&lt;/code&gt; 对象</target>
+        </trans-unit>
+        <trans-unit id="60a4437333ad60740280d7819cb15d4da2c92233" translate="yes" xml:space="preserve">
+          <source>When you change the &lt;code&gt;Service&lt;/code&gt;, you only need to change it in Injector class</source>
+          <target state="translated">更改 &lt;code&gt;Service&lt;/code&gt; ，只需在Injector类中进行更改</target>
+        </trans-unit>
+        <trans-unit id="f19469b25d4ea3f9876fe4907b1de5c966b79296" translate="yes" xml:space="preserve">
+          <source>When you have a configuration of DI where all the actual implementations(not interfaces) that are going to be injected into a class (for e.g services to a controller) why is that not some sort of hard-coding?</source>
+          <target state="translated">当你有一个DI的配置,其中所有的实际实现(而不是接口)都将被注入到类中(例如服务到控制器的服务),为什么这不是某种硬编码?</target>
+        </trans-unit>
+        <trans-unit id="e0e2e926020e782ca430259f6c4e7d67c44e4d4d" translate="yes" xml:space="preserve">
+          <source>When you use some constant like a database name you'd quickly move it from the inside of the code to some config file and pass a variable containing that value to the place where it is needed.  The reason to do that is that these constants usually change more frequently than the rest of the code.  For example if you'd like to test the code in a test database.</source>
+          <target state="translated">当你使用一些常量,比如数据库名称,你会迅速将其从代码内部移到一些配置文件中,然后将包含该值的变量传递到需要它的地方。这样做的原因是,这些常量通常比代码的其他部分变化更频繁。例如,如果你想在测试数据库中测试代码。</target>
+        </trans-unit>
+        <trans-unit id="f13093462f2a85a2c0797285aa9864b8c2e8b0bb" translate="yes" xml:space="preserve">
+          <source>Where there likely will be a need to substitute a dependency for an equivalent implementation,</source>
+          <target state="translated">在可能需要用从属关系代替同等执行的情况下:</target>
+        </trans-unit>
+        <trans-unit id="bd97b161d9e5c8373340c65f6128ec2d5bcf0fbe" translate="yes" xml:space="preserve">
+          <source>Where uncertainty of the lifespan of a dependency may warrant experimentation (e.g. Hey, &lt;code&gt;MyDepClass&lt;/code&gt; is thread safe - what if we make it a singleton and inject the same instance into all consumers?)</source>
+          <target state="translated">在依赖项生命周期的不确定性可能需要进行实验的情况下（例如，嘿， &lt;code&gt;MyDepClass&lt;/code&gt; 是线程安全的-如果我们将其设为单例并将相同的实例注入所有使用者，该怎么办？）</target>
+        </trans-unit>
+        <trans-unit id="59a5dadbd1f1b46c880e4228a933e3575c4621e6" translate="yes" xml:space="preserve">
+          <source>Whereas after application of the DIP, the requirement is loosened, and the concern of obtaining and managing the lifespan of the &lt;code&gt;Foo&lt;/code&gt; dependency has been removed:</source>
+          <target state="translated">在应用DIP之后，该要求被放宽了，并且消除了获取和管理 &lt;code&gt;Foo&lt;/code&gt; 依赖项的寿命的担忧：</target>
+        </trans-unit>
+        <trans-unit id="2f8fd3870a84afb43d089851d3d66aefbefd8208" translate="yes" xml:space="preserve">
+          <source>While designing a system it require a reel to record or playback sound or music. There are two possibilities for designing this system</source>
+          <target state="translated">在设计一个系统时,它需要一个卷轴来记录或播放声音或音乐。这种系统的设计有两种可能性</target>
+        </trans-unit>
+        <trans-unit id="f24455302b22cf5f3be2af86011a77cc94c7bdb3" translate="yes" xml:space="preserve">
+          <source>Why : Because you want your code to be easily testable, mockable etc so that you can quickly test your changes and push it to the market. Besides why would you not when you there are lots of awesome free tools/frameworks to support you in your journey to a codebase where you have more control.</source>
+          <target state="translated">为什么:因为你想让你的代码易于测试,可模拟等,这样你就可以快速测试你的修改并将其推向市场。此外,当你有很多很棒的免费工具框架来支持你的代码库,让你拥有更多的控制权时,你为什么不愿意呢?</target>
+        </trans-unit>
+        <trans-unit id="155c0f309806e222f377eeb338deeddb4ac2035d" translate="yes" xml:space="preserve">
+          <source>Why does PersonService no longer have to worry about GroupMembershipService? You just mentioned GroupMembership has multiple things(objects/properties) it depends on. If GMService was required in PService, you'd have it as a property. You can mock that out regardless of whether you injected it or not. The only time I'd like it to be injected is if GMService had more specific child classes, which you wouldn't know until runtime. Then you'd want to inject the subclass. Or if you wanted to use that as either singleton or prototype. To be honest, the configuration file has everything hardcoded as far as what subclass for a type (interface) it is going to inject during compile time.</source>
+          <target state="translated">为什么PersonService不用再担心GroupMembershipService了?你刚才提到GroupMembership有多个依赖的东西(objectsproperties)。如果PService中需要GMService,你就会把它作为一个属性。不管你是否注入了它,你都可以模拟出来。我唯一希望注入它的情况是,如果GMService有更多特定的子类,你要在运行时才会知道。那么你就会希望注入子类。或者如果你想把它作为单子类或原型类使用。老实说,配置文件中的所有内容都是硬编码的,比如说在编译时要注入什么类型(接口)的子类。</target>
+        </trans-unit>
+        <trans-unit id="316cb2abaec2a090bd29421bce7b593838a6bd08" translate="yes" xml:space="preserve">
+          <source>With Dependency Injection</source>
+          <target state="translated">有了依赖性注入</target>
+        </trans-unit>
+        <trans-unit id="1233c83a1bf8dee2cadec4b76cd3eec49f5d8602" translate="yes" xml:space="preserve">
+          <source>With Dependency Injection, instead of instantiating the &lt;code&gt;GroupMembershipService&lt;/code&gt; within your &lt;code&gt;PersonService&lt;/code&gt;, you'd either pass it in to the &lt;code&gt;PersonService&lt;/code&gt; constructor, or else add a Property (getter and setter) to set a local instance of it. This means that your &lt;code&gt;PersonService&lt;/code&gt; no longer has to worry about how to create a &lt;code&gt;GroupMembershipService&lt;/code&gt;, it just accepts the ones it's given, and works with them.  This also means that anything which is a subclass of &lt;code&gt;GroupMembershipService&lt;/code&gt;, or implements the &lt;code&gt;GroupMembershipService&lt;/code&gt; interface can be &quot;injected&quot; into the &lt;code&gt;PersonService&lt;/code&gt;, and the &lt;code&gt;PersonService&lt;/code&gt; doesn't need to know about the change.</source>
+          <target state="translated">使用依赖注入，无需在 &lt;code&gt;PersonService&lt;/code&gt; 中实例化GroupMembershipService ，而是将其传递给 &lt;code&gt;PersonService&lt;/code&gt; 构造函数，或者添加一个Property（getter和setter）来设置它的本地实例。 这意味着您的 &lt;code&gt;PersonService&lt;/code&gt; 不再需要担心如何创建 &lt;code&gt;GroupMembershipService&lt;/code&gt; ，而只需接受它所提供的服务并与之一起使用。 这也意味着可以将任何属于 &lt;code&gt;GroupMembershipService&lt;/code&gt; 的子类或实现 &lt;code&gt;GroupMembershipService&lt;/code&gt; 接口的东西&amp;ldquo;注入&amp;rdquo;到 &lt;code&gt;PersonService&lt;/code&gt; 中 ，而 &lt;code&gt;PersonService&lt;/code&gt; 不需要知道更改。</target>
+        </trans-unit>
+        <trans-unit id="0f0a3b5beff6045bb4f3fe845c538ad21014ce5e" translate="yes" xml:space="preserve">
+          <source>With Dependency injection, the dependency injector will take off the instantiation for us</source>
+          <target state="translated">使用Dependency injection,依赖注入器将为我们摘掉实例化。</target>
+        </trans-unit>
+        <trans-unit id="55cdf21af285a1570d5d341608f193842fd5a672" translate="yes" xml:space="preserve">
+          <source>With dependency injection, someone else takes care of all the preparation and makes the required equipment available to you. You will receive (&quot;be injected&quot;) the boat, the fishing rod and the bait - all ready to use.</source>
+          <target state="translated">有了依赖性注射,别人会负责所有的准备工作,并将所需的设备提供给您。</target>
+        </trans-unit>
+        <trans-unit id="f9f5cf6442cf84c858a561c2c1aa9e63fe5c3866" translate="yes" xml:space="preserve">
+          <source>Without Dependency Injection</source>
+          <target state="translated">无依赖性注射</target>
+        </trans-unit>
+        <trans-unit id="3b220ed590066bbf10e392ad2dd726fec3be4180" translate="yes" xml:space="preserve">
+          <source>Without dependency injection, you need to take care of everything yourself. You need to find a boat, to buy a fishing rod, to look for bait, etc. It's possible, of course, but it puts a lot of responsibility on you. In software terms, it means that you have to perform a lookup for all these things.</source>
+          <target state="translated">没有依赖性注射,一切都需要自己去打理。你需要找船、买鱼竿、找鱼饵等等。当然,这是有可能的,但这让你承担了很多责任。用软件的话说,这意味着你必须对这些事情都要进行查询。</target>
+        </trans-unit>
+        <trans-unit id="49f49ef1de77737ae4e3ae770e87d4b807452cda" translate="yes" xml:space="preserve">
+          <source>Without the DIP, our code (I've called this 'consuming class') is directly coupled to a concrete dependency and is also often burdened with the responsibility of knowing how to obtain, and manage, an instance of this dependency, i.e. conceptually:</source>
+          <target state="translated">如果没有DIP,我们的代码(我把这个 &quot;消耗类 &quot;称为 &quot;消耗类&quot;)就直接与具体的依赖关系耦合在一起,而且还经常要承担起知道如何获取、管理这个依赖关系的实例的责任,也就是概念上的责任。</target>
+        </trans-unit>
+        <trans-unit id="1b0617f8014f1a76dc7ba00100921c6326f40868" translate="yes" xml:space="preserve">
+          <source>You can also read</source>
+          <target state="translated">您还可以阅读</target>
+        </trans-unit>
+        <trans-unit id="e84e5e5caa3f2b230be8ecf0ca3d63c1bcbc6707" translate="yes" xml:space="preserve">
+          <source>You could have injected dependency which implements &lt;code&gt;archive_files&lt;/code&gt; using &lt;code&gt;tar&lt;/code&gt; or &lt;code&gt;xz&lt;/code&gt;.</source>
+          <target state="translated">您可能已经注入了依赖关系，该依赖关系使用 &lt;code&gt;tar&lt;/code&gt; 或 &lt;code&gt;xz&lt;/code&gt; 实现了 &lt;code&gt;archive_files&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="6c14f594f01f1de9fd2aab048e30d8d2194a66f7" translate="yes" xml:space="preserve">
+          <source>You define &lt;code&gt;archive_files&lt;/code&gt; in &lt;code&gt;archive_files_zip.sh&lt;/code&gt; implementation script (using &lt;code&gt;zip&lt;/code&gt; in this case):</source>
+          <target state="translated">您可以在 &lt;code&gt;archive_files_zip.sh&lt;/code&gt; 实现脚本中定义 &lt;code&gt;archive_files&lt;/code&gt; （在这种情况下使用 &lt;code&gt;zip&lt;/code&gt; ）：</target>
+        </trans-unit>
+        <trans-unit id="7444b1acde932a72f7dd1189c7b8bfd322ca3632" translate="yes" xml:space="preserve">
+          <source>You don't need a container to do dependency injection. However a container can help you.</source>
+          <target state="translated">你不需要一个容器来做依赖注入。然而,容器可以帮助你。</target>
+        </trans-unit>
+        <trans-unit id="bbf99c4996fccfe9e7a0ac73dbccffb4a67c6cea" translate="yes" xml:space="preserve">
+          <source>a DI Container is a tool to help injecting dependencies</source>
+          <target state="translated">DI容器是一个帮助注入依赖关系的工具。</target>
+        </trans-unit>
+        <trans-unit id="4a4aad97c907cbb008e7b8b26d6f30985b32b8aa" translate="yes" xml:space="preserve">
+          <source>application &lt;strong&gt;deployment&lt;/strong&gt; (&lt;strong&gt;multiple&lt;/strong&gt; target environments with independent lifecycles)</source>
+          <target state="translated">应用程序&lt;strong&gt;部署&lt;/strong&gt; （具有独立生命周期的&lt;strong&gt;多个&lt;/strong&gt;目标环境）</target>
+        </trans-unit>
+        <trans-unit id="a32ef176365fadc9778959691ce81fd982d81b42" translate="yes" xml:space="preserve">
+          <source>application &lt;strong&gt;development&lt;/strong&gt; (&lt;strong&gt;single&lt;/strong&gt; source code release lifecycle)</source>
+          <target state="translated">应用程序&lt;strong&gt;开发&lt;/strong&gt; （ &lt;strong&gt;单个&lt;/strong&gt;源代码发布生命周期）</target>
+        </trans-unit>
+        <trans-unit id="c2ae11a3ef2bc13a293ffe2bcc4ea4cf9c7088db" translate="yes" xml:space="preserve">
+          <source>before doing a</source>
+          <target state="translated">才做</target>
+        </trans-unit>
+        <trans-unit id="fb1802bd1e16e969815bc074b7285e09e6c78cfd" translate="yes" xml:space="preserve">
+          <source>from Book &lt;strong&gt;Apress.Spring.Persistence.with.Hibernate.Oct.2010&lt;/strong&gt;</source>
+          <target state="translated">摘自Book &lt;strong&gt;Apress.Spring.Persistence.Hibernate.Oct.2010&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="472f32380d47285104826da06f61443568994b00" translate="yes" xml:space="preserve">
+          <source>mapping between each abstraction and the configured concrete implementation (e.g. &lt;em&gt;&quot;any time a consumer requests an &lt;code&gt;IBar&lt;/code&gt;, return a &lt;code&gt;ConcreteBar&lt;/code&gt; instance&quot;&lt;/em&gt;)</source>
+          <target state="translated">每个抽象与已配置的具体实现之间的映射（例如&lt;em&gt;&amp;ldquo;任何时候消费者使用 &lt;code&gt;IBar&lt;/code&gt; ，返回 &lt;code&gt;ConcreteBar&lt;/code&gt; 实例&amp;rdquo;&lt;/em&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="a89dcdc02705c87126898e6ee6b1fbd5bdb0786f" translate="yes" xml:space="preserve">
+          <source>policies can be set up for the lifespan management of each dependency, e.g. to create a new object for each consumer instance, to share a singleton dependency instance across all consumers, to share the same dependency instance only across the same thread, etc.</source>
+          <target state="translated">可以为每个依赖关系的生命周期管理设置策略,例如为每个消费者实例创建一个新对象,在所有消费者中共享一个单子依赖实例,只在同一线程中共享同一依赖实例等。</target>
+        </trans-unit>
+        <trans-unit id="036711eff2961f7a9eb870a48ad40790feff55dd" translate="yes" xml:space="preserve">
+          <source>we can place the reel inside the machine</source>
+          <target state="translated">我们可以把卷轴放在机器内</target>
+        </trans-unit>
+        <trans-unit id="0a91593e00bce6f1bb48c8658c6f3c6f186cbbf2" translate="yes" xml:space="preserve">
+          <source>we can provide a hook for the reel where it can be placed.</source>
+          <target state="translated">我们可以提供一个卷轴的钩子,可以把它放在那里。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

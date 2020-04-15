@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="es" datatype="htmlbody" original="https://stackoverflow.com/questions/136097">
+    <body>
+      <group id="136097">
+        <trans-unit id="aa144f0df0c14097f3b8e4a435d288dd748a60f2" translate="yes" xml:space="preserve">
+          <source>1 - we can directly call static and classmethods without initializing</source>
+          <target state="translated">1-podemos llamar directamente estática y métodos de clase sin inicializar</target>
+        </trans-unit>
+        <trans-unit id="0a9d3e4d0a97cf241ef520fe2f9fed00affd565a" translate="yes" xml:space="preserve">
+          <source>2- Static method cannot call self method but can call other static and classmethod</source>
+          <target state="translated">2-El método estático no puede llamarse método propio sino que puede llamar a otros métodos estáticos y de clase</target>
+        </trans-unit>
+        <trans-unit id="ba80ec9d2d639befa7d404721881b5c7d98cdae9" translate="yes" xml:space="preserve">
+          <source>3- Static method belong to class and will not use object at all.</source>
+          <target state="translated">3-El método estático pertenece a la clase y no utilizará el objeto en absoluto.</target>
+        </trans-unit>
+        <trans-unit id="e8c0b69e76c3b6c611154e992cff7ec6523a7c8d" translate="yes" xml:space="preserve">
+          <source>4- Class method are not bound to an object but to a class.</source>
+          <target state="translated">4-Los métodos de clase no están ligados a un objeto sino a una clase.</target>
+        </trans-unit>
+        <trans-unit id="2c410662ef68a73ded71a185123e3a9bdd483a53" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://rapd.wordpress.com/2008/07/02/python-staticmethod-vs-classmethod/&quot;&gt;Here&lt;/a&gt; is a short article on this question</source>
+          <target state="translated">&lt;a href=&quot;http://rapd.wordpress.com/2008/07/02/python-staticmethod-vs-classmethod/&quot;&gt;Aqu&amp;iacute;&lt;/a&gt; hay un breve art&amp;iacute;culo sobre esta pregunta.</target>
+        </trans-unit>
+        <trans-unit id="ecef4db1810048a106a04d647a7cecab4f8eae51" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://julien.danjou.info/blog/2013/guide-python-static-class-abstract-methods&quot;&gt;The definitive guide on how to use static, class or abstract methods in Python&lt;/a&gt; is one good link for this topic, and summary it as following.</source>
+          <target state="translated">&lt;a href=&quot;https://julien.danjou.info/blog/2013/guide-python-static-class-abstract-methods&quot;&gt;La gu&amp;iacute;a definitiva sobre c&amp;oacute;mo usar m&amp;eacute;todos est&amp;aacute;ticos, de clase o abstractos en Python&lt;/a&gt; es un buen enlace para este tema, y ​​resumirlo de la siguiente manera.</target>
+        </trans-unit>
+        <trans-unit id="666e477109d5e8dbab875d1af9b39529b55a2804" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;@staticmethod&lt;/code&gt; just disables the default function as method descriptor.  classmethod wraps your function in a container callable that passes a reference to the owning class as first argument:</source>
+          <target state="translated">&lt;code&gt;@staticmethod&lt;/code&gt; simplemente deshabilita la funci&amp;oacute;n predeterminada como descriptor de m&amp;eacute;todo. classmethod envuelve su funci&amp;oacute;n en un contenedor invocable que pasa una referencia a la clase propietaria como primer argumento:</target>
+        </trans-unit>
+        <trans-unit id="9f1da008aee7e1bacb91f2808d9ff3a6fe24d3c6" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;a&lt;/code&gt; is bound to &lt;code&gt;foo&lt;/code&gt;. That is what is meant by the term &quot;bound&quot; below:</source>
+          <target state="translated">&lt;code&gt;a&lt;/code&gt; est&amp;aacute; obligado a &lt;code&gt;foo&lt;/code&gt; . Eso es lo que se entiende por el t&amp;eacute;rmino &quot;obligado&quot; a continuaci&amp;oacute;n:</target>
+        </trans-unit>
+        <trans-unit id="63e351f5e858a7fd0d48a6e4d6759d19a111bf63" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;classmethod&lt;/code&gt; is mostly used for alternative constructors.</source>
+          <target state="translated">&lt;code&gt;classmethod&lt;/code&gt; se usa principalmente para constructores alternativos.</target>
+        </trans-unit>
+        <trans-unit id="7f77acaab87e00fe6a0a1c10f99432922bf13570" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;foo&lt;/code&gt; is just a function, but when you call &lt;code&gt;a.foo&lt;/code&gt; you don't just get the function,
+you get a &quot;partially applied&quot; version of the function with the object instance &lt;code&gt;a&lt;/code&gt; bound as the first argument to the function. &lt;code&gt;foo&lt;/code&gt; expects 2 arguments, while &lt;code&gt;a.foo&lt;/code&gt; only expects 1 argument.</source>
+          <target state="translated">&lt;code&gt;foo&lt;/code&gt; es solo una funci&amp;oacute;n, pero cuando llama a &lt;code&gt;a.foo&lt;/code&gt; no solo obtiene la funci&amp;oacute;n, obtiene una versi&amp;oacute;n &quot;parcialmente aplicada&quot; de la funci&amp;oacute;n con la instancia del objeto unida como primer argumento de la funci&amp;oacute;n. &lt;code&gt;foo&lt;/code&gt; espera 2 argumentos, mientras que &lt;code&gt;a.foo&lt;/code&gt; solo espera 1 argumento.</target>
+        </trans-unit>
+        <trans-unit id="4c7321399c70f406d6b983cba08f69f8710b39a6" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;staticmethod&lt;/code&gt; does not use the state of the object. It could be a function external to a class. It only put inside the class for grouping functions with similar functionality (for example, like Java's &lt;code&gt;Math&lt;/code&gt; class static methods)</source>
+          <target state="translated">&lt;code&gt;staticmethod&lt;/code&gt; no utiliza el estado del objeto. Podr&amp;iacute;a ser una funci&amp;oacute;n externa a una clase. Solo se coloca dentro de la clase para agrupar funciones con una funcionalidad similar (por ejemplo, como los m&amp;eacute;todos est&amp;aacute;ticos de la clase &lt;code&gt;Math&lt;/code&gt; de Java)</target>
+        </trans-unit>
+        <trans-unit id="70ebfa84e6baeaba89a1999620a95d79a3a014c4" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Factory methods&lt;/em&gt;, that are used to create an instance for a class using for example some sort of pre-processing.</source>
+          <target state="translated">&lt;em&gt;M&amp;eacute;todos de f&amp;aacute;brica&lt;/em&gt; , que se utilizan para crear una instancia para una clase utilizando, por ejemplo, alg&amp;uacute;n tipo de preprocesamiento.</target>
+        </trans-unit>
+        <trans-unit id="19768dccc2b9e420935daf19e8803203ed16eed2" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Static methods calling static methods&lt;/em&gt;: if you split a static methods in several static methods, you shouldn't hard-code the class name but use class methods</source>
+          <target state="translated">&lt;em&gt;M&amp;eacute;todos est&amp;aacute;ticos que llaman m&amp;eacute;todos est&amp;aacute;ticos&lt;/em&gt; : si divide los m&amp;eacute;todos est&amp;aacute;ticos en varios m&amp;eacute;todos est&amp;aacute;ticos, no debe codificar el nombre de la clase sino usar m&amp;eacute;todos de clase</target>
+        </trans-unit>
+        <trans-unit id="3d87acdab3eddbb193a6102f1a2534880a4189a4" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;@classmethod&lt;/code&gt;&lt;/strong&gt; function also callable without instantiating the class, but its definition follows Sub class, not Parent class, via inheritance, can be overridden by subclass. That&amp;rsquo;s because the first argument for &lt;code&gt;@classmethod&lt;/code&gt; function must always be &lt;em&gt;cls&lt;/em&gt; (class).</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;@classmethod&lt;/code&gt; &lt;/strong&gt; funci&amp;oacute;n &lt;strong&gt;@classmethod&lt;/strong&gt; tambi&amp;eacute;n se puede &lt;strong&gt;llamar&lt;/strong&gt; sin crear instancias de la clase, pero su definici&amp;oacute;n sigue a la subclase, no a la clase padre, por herencia, puede ser anulada por subclase. Esto se debe a que el primer argumento para la funci&amp;oacute;n &lt;code&gt;@classmethod&lt;/code&gt; siempre debe ser &lt;em&gt;cls&lt;/em&gt; (clase).</target>
+        </trans-unit>
+        <trans-unit id="07183b14ce2b254988723cad943c35fde62379ba" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;@staticmethod&lt;/code&gt;&lt;/strong&gt; function is nothing more than a function defined inside a class. It is callable without instantiating the class first. It&amp;rsquo;s definition is immutable via inheritance.</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;@staticmethod&lt;/code&gt; &lt;/strong&gt; funci&amp;oacute;n &lt;strong&gt;@staticmethod&lt;/strong&gt; no es m&amp;aacute;s que una funci&amp;oacute;n definida dentro de una clase. Es invocable sin instanciar primero la clase. Su definici&amp;oacute;n es inmutable a trav&amp;eacute;s de la herencia.</target>
+        </trans-unit>
+        <trans-unit id="2b6a30c8a4feebc05c4e9619c9402923e2918c46" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Benefits of Static Methods:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Beneficios de los m&amp;eacute;todos est&amp;aacute;ticos:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4541e7106f30501f486b234e7f532b33217c8233" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Class Method:&lt;/strong&gt; Python unlike Java and C++ doesn't have constructor overloading.  And so to achieve this you could use &lt;code&gt;classmethod&lt;/code&gt;. Following example will explain this</source>
+          <target state="translated">&lt;strong&gt;M&amp;eacute;todo de clase:&lt;/strong&gt; Python, a diferencia de Java y C ++, no tiene sobrecarga del constructor. Y para lograr esto, podr&amp;iacute;a usar &lt;code&gt;classmethod&lt;/code&gt; . El siguiente ejemplo explicar&amp;aacute; esto</target>
+        </trans-unit>
+        <trans-unit id="477db5eb89c8f164a4c2adb5b5140970f46c9422" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Class Methods:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;M&amp;eacute;todos de clase:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="230a3084a5494570dbc2dcf3a00d2e16eaa9ab0a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Difference:&lt;/strong&gt; A classmethod will receive the class itself as the first argument, while a staticmethod does not.</source>
+          <target state="translated">&lt;strong&gt;Diferencia:&lt;/strong&gt; un m&amp;eacute;todo de clase recibir&amp;aacute; la clase en s&amp;iacute; como primer argumento, mientras que un m&amp;eacute;todo est&amp;aacute;tico no.</target>
+        </trans-unit>
+        <trans-unit id="cb38e8b8db4a863b4a43406d1c1edbe185ca4988" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Official python docs:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Documentos oficiales de Python:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f8000d9e43119e78c3dc28894c99b6e45fdf6129" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Only the first argument differs&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;Solo el primer argumento difiere&lt;/strong&gt; :</target>
+        </trans-unit>
+        <trans-unit id="f9f5eb385e646bdeefe41d0134d9298e151d0ad6" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Similarity:&lt;/strong&gt; Both of them can be called on the &lt;em&gt;Class&lt;/em&gt; itself, rather than just the &lt;em&gt;instance&lt;/em&gt; of the class. So, both of them in a sense are &lt;em&gt;Class's methods&lt;/em&gt;.</source>
+          <target state="translated">&lt;strong&gt;Similitud:&lt;/strong&gt; Ambos pueden llamarse en la &lt;em&gt;Clase en&lt;/em&gt; s&amp;iacute;, en lugar de solo la &lt;em&gt;instancia&lt;/em&gt; de la clase. Entonces, ambos en cierto sentido son &lt;em&gt;los m&amp;eacute;todos de Class&lt;/em&gt; .</target>
+        </trans-unit>
+        <trans-unit id="13b294aa2a66fd79cfa2fa74b88dff29e3a58028" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Static Method:&lt;/strong&gt; This is rather simple, it's not bound to instance or class and you can simply call that using class name.</source>
+          <target state="translated">&lt;strong&gt;M&amp;eacute;todo est&amp;aacute;tico:&lt;/strong&gt; esto es bastante simple, no est&amp;aacute; vinculado a la instancia o clase y simplemente puede llamarlo usando el nombre de la clase.</target>
+        </trans-unit>
+        <trans-unit id="e01b6d5fbe10be46aaf391a840622400eeaba30e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Static Methods:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;M&amp;eacute;todos Est&amp;aacute;ticos:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5e7552d839770842e4bdc41f92fe9f44d288df33" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;With classmethods&lt;/strong&gt;, the class of the object instance is implicitly passed as the first argument instead of &lt;code&gt;self&lt;/code&gt;.</source>
+          <target state="translated">&lt;strong&gt;Con classmethods&lt;/strong&gt; , la clase de la instancia del objeto se pasa impl&amp;iacute;citamente como el primer argumento en lugar de &lt;code&gt;self&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="a432d953e1017402a8688be133f46b1f6662056f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;With staticmethods&lt;/strong&gt;, neither &lt;code&gt;self&lt;/code&gt; (the object instance) nor  &lt;code&gt;cls&lt;/code&gt; (the class) is implicitly passed as the first argument. They behave like plain functions except that you can call them from an instance or the class:</source>
+          <target state="translated">&lt;strong&gt;Con m&amp;eacute;todos est&amp;aacute;ticos&lt;/strong&gt; , ni &lt;code&gt;self&lt;/code&gt; (la instancia del objeto) ni &lt;code&gt;cls&lt;/code&gt; (la clase) se pasa impl&amp;iacute;citamente como primer argumento. Se comportan como funciones simples, excepto que puede llamarlas desde una instancia o la clase:</target>
+        </trans-unit>
+        <trans-unit id="90bbd0ef7a61c3f762a030a3fabe6121f8aa5f09" translate="yes" xml:space="preserve">
+          <source>@classmethod</source>
+          <target state="translated">@classmethod</target>
+        </trans-unit>
+        <trans-unit id="1b87c7f5dd2ac6a4b5c6f0928185ece8eefb7bfa" translate="yes" xml:space="preserve">
+          <source>@classmethod : can be used to create a shared global access to all the instances created of that class..... like updating a record by multiple users....
+I particulary found it use ful when creating singletons as well..:)</source>
+          <target state="translated">@classmethod:puede ser usado para crear un acceso global compartido a todas las instancias creadas de esa clase....como la actualización de un registro por múltiples usuarios....Particularmente lo encontré usado ful al crear singletons también...:)</target>
+        </trans-unit>
+        <trans-unit id="44ef4b40d79513b33f7f9ae604039ccb1774d51f" translate="yes" xml:space="preserve">
+          <source>@classmethod allows you easy access to private members that are associated to the class definition. this is a great way to do singletons, or factory classes that control the number of instances of the created objects exist.</source>
+          <target state="translated">@classmethod le permite acceder fácilmente a los miembros privados que están asociados a la definición de la clase.esta es una gran manera de hacer singletons,o clases de fábrica que controlan el número de instancias de los objetos creados existen.</target>
+        </trans-unit>
+        <trans-unit id="cd8d342a5b4d72e4e7a0daeb849290be2f41e7e1" translate="yes" xml:space="preserve">
+          <source>@classmethod function also callable without instantiating the class, but its definition follows Sub class, not Parent class, via inheritance. That&amp;rsquo;s because the first argument for @classmethod function must always be cls (class).</source>
+          <target state="translated">La funci&amp;oacute;n @classmethod tambi&amp;eacute;n se puede llamar sin crear instancias de la clase, pero su definici&amp;oacute;n sigue a la subclase, no a la clase padre, por herencia. Esto se debe a que el primer argumento para la funci&amp;oacute;n @classmethod siempre debe ser cls (clase).</target>
+        </trans-unit>
+        <trans-unit id="1800b3976c1e687a9ed79d2d3b2072083ebcd591" translate="yes" xml:space="preserve">
+          <source>@decorators were added in python 2.4 If you're using python &amp;lt; 2.4 you can use the classmethod() and staticmethod() function.</source>
+          <target state="translated">@decorators se agregaron en python 2.4 Si est&amp;aacute; usando python &amp;lt;2.4, puede usar las funciones classmethod () y staticmethod ().</target>
+        </trans-unit>
+        <trans-unit id="f7625edc6b9228ed3988e14a71b1981c5ed03102" translate="yes" xml:space="preserve">
+          <source>@static method:  has nothing to do with the class or instance being associated with ...but for readability can use static method</source>
+          <target state="translated">Método @estático:no tiene nada que ver con la clase o instancia a la que se asocia...pero para la legibilidad puede usar el método estático</target>
+        </trans-unit>
+        <trans-unit id="a7e9e685ffa9bc2ea7a32b2ca97495fffb98da72" translate="yes" xml:space="preserve">
+          <source>@staticmethod</source>
+          <target state="translated">@staticmethod</target>
+        </trans-unit>
+        <trans-unit id="316937114375aa711e02d313c11e07624f951988" translate="yes" xml:space="preserve">
+          <source>@staticmethod function is nothing more than a function defined inside a class. It is callable without instantiating the class first. It&amp;rsquo;s definition is immutable via inheritance.</source>
+          <target state="translated">La funci&amp;oacute;n @staticmethod no es m&amp;aacute;s que una funci&amp;oacute;n definida dentro de una clase. Es invocable sin instanciar primero la clase. Su definici&amp;oacute;n es inmutable a trav&amp;eacute;s de la herencia.</target>
+        </trans-unit>
+        <trans-unit id="07d2b2c31d4856ae66f1901996734386b80a1c1e" translate="yes" xml:space="preserve">
+          <source>@staticmethod provides marginal performance gains, but I have yet to see a productive use of a static method within a class that couldn't be achieved as a standalone function outside the class.</source>
+          <target state="translated">El @método estático proporciona ganancias marginales de rendimiento,pero todavía no he visto un uso productivo de un método estático dentro de una clase que no se pueda lograr como una función autónoma fuera de la clase.</target>
+        </trans-unit>
+        <trans-unit id="43b64154609a96d68266675199015630093e6d25" translate="yes" xml:space="preserve">
+          <source>A &lt;strong&gt;classmethod&lt;/strong&gt;, on the other hand, is a method that gets passed the class it was called on, or the class of the instance it was called on, as first argument. This is useful when you want the method to be a factory for the class: since it gets the actual class it was called on as first argument, you can always instantiate the right class, even when subclasses are involved. Observe for instance how &lt;code&gt;dict.fromkeys()&lt;/code&gt;, a classmethod, returns an instance of the subclass when called on a subclass:</source>
+          <target state="translated">Un &lt;strong&gt;m&amp;eacute;todo de clase&lt;/strong&gt; , por otro lado, es un m&amp;eacute;todo que pasa la clase a la que se llam&amp;oacute;, o la clase de la instancia a la que se llam&amp;oacute;, como primer argumento. Esto es &amp;uacute;til cuando desea que el m&amp;eacute;todo sea una f&amp;aacute;brica para la clase: dado que obtiene la clase real a la que se llam&amp;oacute; como primer argumento, siempre puede crear una instancia de la clase correcta, incluso cuando est&amp;aacute;n involucradas subclases. Observe, por ejemplo, c&amp;oacute;mo &lt;code&gt;dict.fromkeys()&lt;/code&gt; , un m&amp;eacute;todo de clase, devuelve una instancia de la subclase cuando se llama en una subclase:</target>
+        </trans-unit>
+        <trans-unit id="ea9ca6bfe7447631d34a67f0f001a61c11f0d90e" translate="yes" xml:space="preserve">
+          <source>A &lt;strong&gt;staticmethod&lt;/strong&gt; is a method that knows nothing about the class or instance it was called on. It just gets the arguments that were passed, no implicit first argument. It is basically useless in Python -- you can just use a module function instead of a staticmethod.</source>
+          <target state="translated">Un m&amp;eacute;todo &lt;strong&gt;est&amp;aacute;tico&lt;/strong&gt; es un m&amp;eacute;todo que no sabe nada acerca de la clase o instancia en la que se &lt;strong&gt;invoc&amp;oacute;&lt;/strong&gt; . Simplemente obtiene los argumentos que se aprobaron, no el primer argumento impl&amp;iacute;cito. B&amp;aacute;sicamente es in&amp;uacute;til en Python: puede usar una funci&amp;oacute;n de m&amp;oacute;dulo en lugar de un m&amp;eacute;todo est&amp;aacute;tico.</target>
+        </trans-unit>
+        <trans-unit id="fdf2945b9c4df3d30c98cd6d026d7f48f4cc3d83" translate="yes" xml:space="preserve">
+          <source>A class method is a similar to an instance method in that it takes an implicit first argument, but instead of taking the instance, it takes the class. Frequently these are used as alternative constructors for better semantic usage and it will support inheritance.</source>
+          <target state="translated">El método de la clase es similar al de la instancia en el sentido de que toma un primer argumento implícito,pero en lugar de tomar la instancia,toma la clase.A menudo se utilizan como constructores alternativos para un mejor uso semántico y apoyará la herencia.</target>
+        </trans-unit>
+        <trans-unit id="7bcf63323ea71d67fbe14ff17405e56e9914d012" translate="yes" xml:space="preserve">
+          <source>A class method receives the class as
+  implicit first argument, just like an
+  instance method receives the instance.
+  To declare a class method, use this
+  idiom:</source>
+          <target state="translated">Un método de clase recibe la clase como primer argumento implícito,al igual que un método de instancia recibe la instancia.Para declarar un método de clase,usa esta expresión:</target>
+        </trans-unit>
+        <trans-unit id="3d92730dcf5e8db0d25f10bd3fd12e7e4523c413" translate="yes" xml:space="preserve">
+          <source>A class method receives the class as implicit first argument, just like an instance method receives the instance. It is a method which is bound to the class and not the object of the class.It has access to the state of the class as it takes a class parameter that points to the class and not the object instance. It can modify a class state that would apply across all the instances of the class. For example it can modify a class variable that will be applicable to all the instances.</source>
+          <target state="translated">Un método de clase recibe la clase como primer argumento implícito,al igual que un método de instancia recibe la instancia.Es un método que está ligado a la clase y no al objeto de la clase.Tiene acceso al estado de la clase ya que toma un parámetro de clase que apunta a la clase y no al objeto instancia.Puede modificar un estado de la clase que se aplicaría a todas las instancias de la clase.Por ejemplo,puede modificar una variable de clase que será aplicable a todas las instancias.</target>
+        </trans-unit>
+        <trans-unit id="4f544cf2ef41a072f58086b28f8ecb1cc39d4746" translate="yes" xml:space="preserve">
+          <source>A normal method of a class is an implicit &lt;strong&gt;dynamic&lt;/strong&gt; method which takes the instance as first argument.</source>
+          <target state="translated">Un m&amp;eacute;todo normal de una clase es un m&amp;eacute;todo &lt;strong&gt;din&amp;aacute;mico&lt;/strong&gt; impl&amp;iacute;cito que toma la instancia como primer argumento.</target>
+        </trans-unit>
+        <trans-unit id="2b07004d7733b00054b2d72c8854d6ba07c831e3" translate="yes" xml:space="preserve">
+          <source>A quick hack-up ofotherwise identical methods in iPython reveals that &lt;code&gt;@staticmethod&lt;/code&gt; yields marginal performance gains (in the nanoseconds), but otherwise it seems to serve no function. Also, any performance gains will probably be wiped out by the additional work of processing the method through &lt;code&gt;staticmethod()&lt;/code&gt; during compilation (which happens prior to any code execution when you run a script).</source>
+          <target state="translated">Un corte r&amp;aacute;pido de m&amp;eacute;todos id&amp;eacute;nticos en iPython revela que &lt;code&gt;@staticmethod&lt;/code&gt; produce ganancias de rendimiento marginal (en nanosegundos), pero de lo contrario parece no tener ninguna funci&amp;oacute;n. Adem&amp;aacute;s, cualquier aumento de rendimiento probablemente ser&amp;aacute; eliminado por el trabajo adicional de procesar el m&amp;eacute;todo a trav&amp;eacute;s de &lt;code&gt;staticmethod()&lt;/code&gt; durante la compilaci&amp;oacute;n (que ocurre antes de la ejecuci&amp;oacute;n de cualquier c&amp;oacute;digo cuando ejecuta un script).</target>
+        </trans-unit>
+        <trans-unit id="174b86cd307a93d7ede9985e59dfb55608a534c0" translate="yes" xml:space="preserve">
+          <source>A static method does not receive an
+  implicit first argument. To declare a
+  static method, use this idiom:</source>
+          <target state="translated">Un método estático no recibe un primer argumento implícito.Para declarar un método estático,use este idioma:</target>
+        </trans-unit>
+        <trans-unit id="d1a64bfff8220829f5366f3b2a593cfff2896ad2" translate="yes" xml:space="preserve">
+          <source>A staticmethod is indeed such a normal function the same as those outside a class definition.</source>
+          <target state="translated">Un método estadístico es,en efecto,una función tan normal como las que están fuera de una definición de clase.</target>
+        </trans-unit>
+        <trans-unit id="d402c4c27f3621c9392d6c31422a842c2a7bd1bf" translate="yes" xml:space="preserve">
+          <source>Also observe that this is a good example for using a classmethod and a static method,
+The static method clearly belongs to the class, since it uses the class Cluster internally.
+The classmethod only needs information about the class, and no instance of the object.</source>
+          <target state="translated">Obsérvese también que este es un buen ejemplo para utilizar un método de clase y un método estático,El método estático pertenece claramente a la clase,ya que utiliza la clase Cluster internamente.El método de la clase sólo necesita información sobre la clase,y ninguna instancia del objeto.</target>
+        </trans-unit>
+        <trans-unit id="caa569c9ae472a87f325f4b599c69c6baca55fad" translate="yes" xml:space="preserve">
+          <source>An example of a static method is &lt;code&gt;str.maketrans&lt;/code&gt;, moved from the &lt;code&gt;string&lt;/code&gt; module in Python 3.  It makes a translation table suitable for consumption by &lt;code&gt;str.translate&lt;/code&gt;. It does seem rather silly when used from an instance of a string, as demonstrated below, but importing the function from the &lt;code&gt;string&lt;/code&gt; module is rather clumsy, and it's nice to be able to call it from the class, as in &lt;code&gt;str.maketrans&lt;/code&gt;</source>
+          <target state="translated">Un ejemplo de un m&amp;eacute;todo est&amp;aacute;tico es &lt;code&gt;str.maketrans&lt;/code&gt; , movido desde el m&amp;oacute;dulo de &lt;code&gt;string&lt;/code&gt; en Python 3. Hace que una tabla de traducci&amp;oacute;n sea adecuada para el consumo de &lt;code&gt;str.translate&lt;/code&gt; . Parece bastante tonto cuando se usa desde una instancia de una cadena, como se demuestra a continuaci&amp;oacute;n, pero importar la funci&amp;oacute;n desde el m&amp;oacute;dulo de &lt;code&gt;string&lt;/code&gt; es bastante torpe, y es bueno poder llamarlo desde la clase, como en &lt;code&gt;str.maketrans&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="4016333d9516bf49e82568ddb25694c7dab41ec1" translate="yes" xml:space="preserve">
+          <source>Analyze @staticmethod &lt;strong&gt;literally&lt;/strong&gt; providing different insights.</source>
+          <target state="translated">Analice @staticmethod &lt;strong&gt;literalmente&lt;/strong&gt; proporcionando diferentes ideas.</target>
+        </trans-unit>
+        <trans-unit id="46dc7b6eec81baff58dad68305e781177e5e36b4" translate="yes" xml:space="preserve">
+          <source>And later we can use this as a function that already has the first argument bound to it. In this way, it works like a partial function on the instance:</source>
+          <target state="translated">Y más tarde podemos usar esto como una función que ya tiene el primer argumento ligado a ella.De esta manera,funciona como una función parcial en la instancia:</target>
+        </trans-unit>
+        <trans-unit id="8de9d2abf5cd59c945e75988adc6ab4ac9e4ae20" translate="yes" xml:space="preserve">
+          <source>And of course the same thing happens when you call &lt;code&gt;static_foo&lt;/code&gt; with the class &lt;code&gt;A&lt;/code&gt; instead.</source>
+          <target state="translated">Y, por supuesto, sucede lo mismo cuando llamas a &lt;code&gt;static_foo&lt;/code&gt; con la clase &lt;code&gt;A&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="0f24da3f406bdcbf3cbb1052ac539ab58118e8b9" translate="yes" xml:space="preserve">
+          <source>And you then want to override &lt;code&gt;bar()&lt;/code&gt; in a child class:</source>
+          <target state="translated">Y luego desea anular &lt;code&gt;bar()&lt;/code&gt; en una clase secundaria:</target>
+        </trans-unit>
+        <trans-unit id="1e36acde21e68ba316af8bc3e870c4b88751f9d9" translate="yes" xml:space="preserve">
+          <source>Another benefit of making the &lt;code&gt;_is_cluster_for&lt;/code&gt; method a classmethod is so a subclass can decide to change it's implementation, maybe because it is pretty generic and can handle more than one type of cluster, so just checking the name of the class would not be enough.</source>
+          <target state="translated">Otro beneficio de hacer que el m&amp;eacute;todo _is_cluster_for sea un m&amp;eacute;todo de clase es que una subclase puede decidir cambiar su implementaci&amp;oacute;n, tal vez porque es bastante gen&amp;eacute;rico y puede manejar m&amp;aacute;s de un tipo de cl&amp;uacute;ster, por lo que simplemente verificar el nombre de la clase no ser&amp;iacute;a suficiente.</target>
+        </trans-unit>
+        <trans-unit id="7dab70172b4929776efda7b5da9421027c390a28" translate="yes" xml:space="preserve">
+          <source>Another consideration with respect to staticmethod vs classmethod comes up with inheritance.  Say you have the following class:</source>
+          <target state="translated">Otra consideración con respecto al método estadístico vs.el método de la clase es la herencia.Digamos que tienes la siguiente clase:</target>
+        </trans-unit>
+        <trans-unit id="5e28a0e57c66449c767e62be787a89c79b95f964" translate="yes" xml:space="preserve">
+          <source>As a matter of fact, &lt;code&gt;classmethod&lt;/code&gt; has a runtime overhead but makes it possible to access the owning class.  Alternatively I recommend using a metaclass and putting the class methods on that metaclass:</source>
+          <target state="translated">De hecho, &lt;code&gt;classmethod&lt;/code&gt; tiene una sobrecarga de tiempo de ejecuci&amp;oacute;n pero hace posible acceder a la clase propietaria. Alternativamente, recomiendo usar una metaclase y poner los m&amp;eacute;todos de clase en esa metaclase:</target>
+        </trans-unit>
+        <trans-unit id="0d849f64698b3cf225429211c021d253be4d70d2" translate="yes" xml:space="preserve">
+          <source>Basically &lt;code&gt;@classmethod&lt;/code&gt; makes a method whose first argument is the class it's called from (rather than the class instance), &lt;code&gt;@staticmethod&lt;/code&gt; does not have any implicit arguments.</source>
+          <target state="translated">B&amp;aacute;sicamente, &lt;code&gt;@classmethod&lt;/code&gt; crea un m&amp;eacute;todo cuyo primer argumento es la clase de la que se llama (en lugar de la instancia de clase), &lt;code&gt;@staticmethod&lt;/code&gt; no tiene ning&amp;uacute;n argumento impl&amp;iacute;cito.</target>
+        </trans-unit>
+        <trans-unit id="7a9e8fbf97ca31874aa69d63a389a951865d7274" translate="yes" xml:space="preserve">
+          <source>Below is the usual way an object instance calls a method. The object instance, &lt;code&gt;a&lt;/code&gt;, is implicitly passed as the first argument.</source>
+          <target state="translated">A continuaci&amp;oacute;n se muestra la forma habitual en que una instancia de objeto llama a un m&amp;eacute;todo. La instancia del objeto, &lt;code&gt;a&lt;/code&gt; , se pasa impl&amp;iacute;citamente como el primer argumento.</target>
+        </trans-unit>
+        <trans-unit id="558943de44a405cf7f92076e794bfab4df9297b3" translate="yes" xml:space="preserve">
+          <source>Both of them are non-data descriptors (It would be easier to understand them if you are familiar with &lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#implementing-descriptors&quot;&gt;descriptors&lt;/a&gt; first).</source>
+          <target state="translated">Ambos son descriptores que no son de datos (ser&amp;iacute;a m&amp;aacute;s f&amp;aacute;cil comprenderlos si est&amp;aacute; familiarizado con los &lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#implementing-descriptors&quot;&gt;descriptores&lt;/a&gt; primero).</target>
+        </trans-unit>
+        <trans-unit id="96cb4b862bfd721769fe8f3891a2750e3f0d62bb" translate="yes" xml:space="preserve">
+          <source>Bound methods</source>
+          <target state="translated">Métodos de ataduras...</target>
+        </trans-unit>
+        <trans-unit id="485f0584baedc52a76dddcbdc5a384a621979991" translate="yes" xml:space="preserve">
+          <source>Can be called through both class and instance.</source>
+          <target state="translated">Se puede llamar tanto a través de la clase como de la instancia.</target>
+        </trans-unit>
+        <trans-unit id="267824910c5cace5b6b1cc20f56a51bf416793ea" translate="yes" xml:space="preserve">
+          <source>Class Method</source>
+          <target state="translated">Método de clase</target>
+        </trans-unit>
+        <trans-unit id="96aa2b8b1142697d7bff0fdb46efcf730f9fcac9" translate="yes" xml:space="preserve">
+          <source>Class methods are different than C++
+  or Java static methods. If you want
+  those, see &lt;a href=&quot;http://docs.python.org/2/library/functions.html#staticmethod&quot;&gt;&lt;code&gt;staticmethod()&lt;/code&gt;&lt;/a&gt; in this
+  section.</source>
+          <target state="translated">Los m&amp;eacute;todos de clase son diferentes a los m&amp;eacute;todos est&amp;aacute;ticos C ++ o Java. Si desea esos, vea &lt;a href=&quot;http://docs.python.org/2/library/functions.html#staticmethod&quot;&gt; &lt;code&gt;staticmethod()&lt;/code&gt; &lt;/a&gt; en esta secci&amp;oacute;n.</target>
+        </trans-unit>
+        <trans-unit id="80672eaa5ba6013d2c0fa4f9eca5fccf474819ff" translate="yes" xml:space="preserve">
+          <source>Class methods, as the name suggests, are used to make changes to classes and not the objects. To make changes to classes, they will modify the class attributes(not object attributes), since that is how you update classes.
+This is the reason that class methods take the class(conventionally denoted by 'cls') as the first argument.</source>
+          <target state="translated">Los métodos de clase,como su nombre indica,se utilizan para hacer cambios en las clases y no en los objetos.Para hacer cambios en las clases,modificarán los atributos de la clase (no los atributos del objeto),ya que así es como se actualizan las clases.Esta es la razón por la que los métodos de clase toman la clase(convencionalmente denotada por 'cls')como primer argumento.</target>
+        </trans-unit>
+        <trans-unit id="b35b086653d69dfdfe1042ce78c4bcdb48c3d279" translate="yes" xml:space="preserve">
+          <source>Difference between staticmethod and classmethod</source>
+          <target state="translated">Diferencia entre el método estadístico y el método de la clase</target>
+        </trans-unit>
+        <trans-unit id="164607916d6ea823ef7c78eb0833afe38bf3630f" translate="yes" xml:space="preserve">
+          <source>First I'll explain &lt;code&gt;a_normal_instance_method&lt;/code&gt;. This is precisely called an &quot;&lt;strong&gt;instance method&lt;/strong&gt;&quot;. When an instance method is used, it is used as a partial function (as opposed to a total function, defined for all values when viewed in source code) that is, when used, the first of the arguments is predefined as the instance of the object, with all of its given attributes. It has the instance of the object bound to it, and it must be called from an instance of the object. Typically, it will access various attributes of the instance.</source>
+          <target state="translated">Primero explicar&amp;eacute; un &lt;code&gt;a_normal_instance_method&lt;/code&gt; . Esto se llama precisamente un &quot; &lt;strong&gt;m&amp;eacute;todo de instancia&lt;/strong&gt; &quot;. Cuando se usa un m&amp;eacute;todo de instancia, se usa como una funci&amp;oacute;n parcial (en oposici&amp;oacute;n a una funci&amp;oacute;n total, definida para todos los valores cuando se ve en el c&amp;oacute;digo fuente), es decir, cuando se usa, el primero de los argumentos est&amp;aacute; predefinido como la instancia de objeto, con todos sus atributos dados. Tiene la instancia del objeto vinculada a &amp;eacute;l y debe llamarse desde una instancia del objeto. Por lo general, acceder&amp;aacute; a varios atributos de la instancia.</target>
+        </trans-unit>
+        <trans-unit id="0f7fb90238ae76c6afb80f76159dd7556d88d38f" translate="yes" xml:space="preserve">
+          <source>For example, if you want to create a factory method (A function returning an instance of a different implementation of a class depending on what argument it gets) you can do something like:</source>
+          <target state="translated">Por ejemplo,si quieres crear un método de fábrica (una función que devuelve una instancia de una implementación diferente de una clase dependiendo del argumento que reciba)puedes hacer algo como:</target>
+        </trans-unit>
+        <trans-unit id="06ec4552ced78aea82f7ba25beef8c69e6f4a32a" translate="yes" xml:space="preserve">
+          <source>For example, this binds the &lt;code&gt;str.join&lt;/code&gt; method to the &lt;code&gt;':'&lt;/code&gt; instance:</source>
+          <target state="translated">Por ejemplo, esto vincula el m&amp;eacute;todo &lt;code&gt;str.join&lt;/code&gt; a la instancia &lt;code&gt;':'&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="e14341dc4aa4a22660bb62e64b2a9ec3f3217718" translate="yes" xml:space="preserve">
+          <source>For example, this is an instance of a string:</source>
+          <target state="translated">Por ejemplo,esta es una instancia de una cuerda:</target>
+        </trans-unit>
+        <trans-unit id="90faa00926d9e27636891da919e5733d1122d8b2" translate="yes" xml:space="preserve">
+          <source>For the sake of code readability I'd avoid &lt;code&gt;@staticmethod&lt;/code&gt; unless your method will be used for loads of work, where the nanoseconds count.</source>
+          <target state="translated">En aras de la legibilidad del c&amp;oacute;digo, evitar&amp;iacute;a &lt;code&gt;@staticmethod&lt;/code&gt; a menos que su m&amp;eacute;todo se utilice para un mont&amp;oacute;n de trabajo, donde los nanosegundos cuentan.</target>
+        </trans-unit>
+        <trans-unit id="9a2b129313b892462b40ddd6c79d0af830dea9c8" translate="yes" xml:space="preserve">
+          <source>Functions that have first argument as classname.</source>
+          <target state="translated">Funciones que tienen como primer argumento el nombre de la clase.</target>
+        </trans-unit>
+        <trans-unit id="807d50dce55b514a4fba42b13f8002d515f8a71b" translate="yes" xml:space="preserve">
+          <source>Gives: &lt;code&gt;In Foo2 MAGIC&lt;/code&gt;</source>
+          <target state="translated">Da: &lt;code&gt;In Foo2 MAGIC&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="2860e65bbc0758e8d4d475d85f1680dabe52e6a1" translate="yes" xml:space="preserve">
+          <source>Here, with a staticmethod, even though it is a method, &lt;code&gt;a.static_foo&lt;/code&gt; just returns
+a good 'ole function with no arguments bound. &lt;code&gt;static_foo&lt;/code&gt; expects 1 argument, and
+&lt;code&gt;a.static_foo&lt;/code&gt; expects 1 argument too.</source>
+          <target state="translated">Aqu&amp;iacute;, con un m&amp;eacute;todo est&amp;aacute;tico, aunque es un m&amp;eacute;todo, &lt;code&gt;a.static_foo&lt;/code&gt; simplemente devuelve una buena funci&amp;oacute;n 'ole sin argumentos vinculados. &lt;code&gt;static_foo&lt;/code&gt; espera 1 argumento, y &lt;code&gt;a.static_foo&lt;/code&gt; espera 1 argumento tambi&amp;eacute;n.</target>
+        </trans-unit>
+        <trans-unit id="ce0274e0663be4ad665ddb61fc313fc1346d7b03" translate="yes" xml:space="preserve">
+          <source>Hope I was clear !</source>
+          <target state="translated">¡Espero haber sido claro!</target>
+        </trans-unit>
+        <trans-unit id="536783112e18b97571f614392a4dc28b80515954" translate="yes" xml:space="preserve">
+          <source>However, a module level function must live in the module and be specially imported to other places where it is used.</source>
+          <target state="translated">Sin embargo,una función de nivel de módulo debe vivir en el módulo y ser especialmente importada a otros lugares donde se utiliza.</target>
+        </trans-unit>
+        <trans-unit id="8f6343acac6bb042a0e1759058bfdad64fdb5e56" translate="yes" xml:space="preserve">
+          <source>However, you could achieve the same thing using &lt;code&gt;@classmethod&lt;/code&gt; as mentioned below</source>
+          <target state="translated">Sin embargo, podr&amp;iacute;a lograr lo mismo usando &lt;code&gt;@classmethod&lt;/code&gt; como se menciona a continuaci&amp;oacute;n</target>
+        </trans-unit>
+        <trans-unit id="fe663cfec4745cf0ea4c84d7a734da467f0e2ce4" translate="yes" xml:space="preserve">
+          <source>I started learning programming language with C++ and then Java and then Python and so this question bothered me a lot as well, until I understood the simple usage of each.</source>
+          <target state="translated">Empecé a aprender el lenguaje de programación con C++y luego Java y luego Python,así que esta pregunta me molestó mucho también,hasta que entendí el simple uso de cada uno.</target>
+        </trans-unit>
+        <trans-unit id="5ab2de0b5f9aebcc8092bd625d4e80db8214b56e" translate="yes" xml:space="preserve">
+          <source>I think a better question is &quot;When would you use @classmethod vs @staticmethod?&quot;</source>
+          <target state="translated">Creo que una mejor pregunta es:&quot;¿Cuándo usarías @classmethod vs @staticmethod?&quot;</target>
+        </trans-unit>
+        <trans-unit id="e03cea799789ab3a8ab2445c8c76ff25537711d7" translate="yes" xml:space="preserve">
+          <source>I think giving a purely Python version of &lt;code&gt;staticmethod&lt;/code&gt; and &lt;code&gt;classmethod&lt;/code&gt; would help to understand the difference between them at language level.</source>
+          <target state="translated">Creo que dar una versi&amp;oacute;n puramente Python de &lt;code&gt;staticmethod&lt;/code&gt; y &lt;code&gt;classmethod&lt;/code&gt; ayudar&amp;iacute;a a comprender la diferencia entre ellos a nivel de lenguaje.</target>
+        </trans-unit>
+        <trans-unit id="69a1c0771c12086dd4b452a55dc59cc30ff19aca" translate="yes" xml:space="preserve">
+          <source>I will try to explain the basic difference using an example.</source>
+          <target state="translated">Intentaré explicar la diferencia básica con un ejemplo.</target>
+        </trans-unit>
+        <trans-unit id="1bf6e736cb87adbab8ee43c998f8352378eb5f99" translate="yes" xml:space="preserve">
+          <source>If it is attached to the object, however, it will follow the object conveniently through importing and inheritance as well.</source>
+          <target state="translated">Sin embargo,si está unido al objeto,seguirá convenientemente al objeto a través de la importación y la herencia también.</target>
+        </trans-unit>
+        <trans-unit id="b6064776a38f8588bf3204f57e4defc4d6b48090" translate="yes" xml:space="preserve">
+          <source>In contrast, a staticmethod does not take the instance as first argument, so is called &lt;strong&gt;'static'&lt;/strong&gt;.</source>
+          <target state="translated">Por el contrario, un m&amp;eacute;todo est&amp;aacute;tico no toma la instancia como primer argumento, por lo que se llama &lt;strong&gt;'est&amp;aacute;tica'&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="418e1f592595199710930f400b12c6648ac41d0d" translate="yes" xml:space="preserve">
+          <source>In more detail...</source>
+          <target state="translated">En más detalle...</target>
+        </trans-unit>
+        <trans-unit id="ce1dc58e2832295d9371005f7e0507920675bea9" translate="yes" xml:space="preserve">
+          <source>In python 2, you have to import this function from the increasingly less useful string module:</source>
+          <target state="translated">En pitón 2,hay que importar esta función desde el cada vez menos útil módulo de cuerdas:</target>
+        </trans-unit>
+        <trans-unit id="f6b415ed12f65f9bbf40b9142a369fba8072e05c" translate="yes" xml:space="preserve">
+          <source>Instance methods can be bound via a dotted lookup for use later.</source>
+          <target state="translated">Los métodos de instancia pueden ser vinculados a través de una búsqueda puntual para su uso posterior.</target>
+        </trans-unit>
+        <trans-unit id="fe77d4b7f35bb53ca43fe505597fa8fc7799f6f4" translate="yes" xml:space="preserve">
+          <source>It can be called either on the class
+  (such as &lt;code&gt;C.f()&lt;/code&gt;) or on an instance
+  (such as &lt;code&gt;C().f()&lt;/code&gt;). The instance is
+  ignored except for its class.</source>
+          <target state="translated">Se puede invocar en la clase (como &lt;code&gt;C.f()&lt;/code&gt; ) o en una instancia (como &lt;code&gt;C().f()&lt;/code&gt; ). La instancia se ignora a excepci&amp;oacute;n de su clase.</target>
+        </trans-unit>
+        <trans-unit id="c2c132e491d3b48b18fe928903a3b9627a4b7db6" translate="yes" xml:space="preserve">
+          <source>It can be called either on the class
+  (such as &lt;code&gt;C.f()&lt;/code&gt;) or on an instance
+  (such as &lt;code&gt;C().f()&lt;/code&gt;). The instance is
+  ignored except for its class. If a
+  class method is called for a derived
+  class, the derived class object is
+  passed as the implied first argument.</source>
+          <target state="translated">Se puede invocar en la clase (como &lt;code&gt;C.f()&lt;/code&gt; ) o en una instancia (como &lt;code&gt;C().f()&lt;/code&gt; ). La instancia se ignora a excepci&amp;oacute;n de su clase. Si se llama a un m&amp;eacute;todo de clase para una clase derivada, el objeto de clase derivada se pasa como el primer argumento impl&amp;iacute;cito.</target>
+        </trans-unit>
+        <trans-unit id="bab5a5442633b80e598ccbf398e186dbd8ee95fb" translate="yes" xml:space="preserve">
+          <source>It eases the readability of the code, and it does not depend on the state of object itself;</source>
+          <target state="translated">Facilita la legibilidad del código,y no depende del estado del objeto en sí;</target>
+        </trans-unit>
+        <trans-unit id="939616480d0a5694951a8e24ef3733c4dcbedd3d" translate="yes" xml:space="preserve">
+          <source>It is luckily grouped into the class just in order to stand closer where it is applied, or you might scroll around to find it.</source>
+          <target state="translated">Afortunadamente se agrupa en la clase sólo para estar más cerca de donde se aplica,o puede desplazarse para encontrarlo.</target>
+        </trans-unit>
+        <trans-unit id="230b0bc30ac33392bc5367bb425ea96b284d2e75" translate="yes" xml:space="preserve">
+          <source>It is very similar to a module level function.</source>
+          <target state="translated">Es muy similar a una función a nivel de módulo.</target>
+        </trans-unit>
+        <trans-unit id="bdaab6a3bf7746bf4181f9f1669e8524b277ed65" translate="yes" xml:space="preserve">
+          <source>It localizes the function name in the classscope</source>
+          <target state="translated">Localiza el nombre de la función en el classscope</target>
+        </trans-unit>
+        <trans-unit id="f21f6aa25b5c058c5e292d885804e6cf2b2ef443" translate="yes" xml:space="preserve">
+          <source>It moves the function code closer to where it is used</source>
+          <target state="translated">Mueve el código de función más cerca de donde se utiliza</target>
+        </trans-unit>
+        <trans-unit id="faebdc4b4a231fbaedbee2f66d2684f878485f0d" translate="yes" xml:space="preserve">
+          <source>Let me tell the similarity between a method decorated with @classmethod vs @staticmethod first.</source>
+          <target state="translated">Déjeme decirle la similitud entre un método decorado con @classmethod vs @staticmethod primero.</target>
+        </trans-unit>
+        <trans-unit id="2b2aa4f3e36c9530575f19c9f0598e540f26891d" translate="yes" xml:space="preserve">
+          <source>Let's consider we have a &lt;code&gt;Person&lt;/code&gt; class which takes two arguments &lt;code&gt;first_name&lt;/code&gt; and &lt;code&gt;last_name&lt;/code&gt; and creates the instance of &lt;code&gt;Person&lt;/code&gt;.</source>
+          <target state="translated">Consideremos que tenemos una clase &lt;code&gt;Person&lt;/code&gt; que toma dos argumentos &lt;code&gt;first_name&lt;/code&gt; y &lt;code&gt;last_name&lt;/code&gt; y crea la instancia de &lt;code&gt;Person&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="a9b10a40e3f747fcf229fa77c0fa98a6c253c3a2" translate="yes" xml:space="preserve">
+          <source>Maybe a bit of example code will help: Notice the difference in the call signatures of &lt;code&gt;foo&lt;/code&gt;, &lt;code&gt;class_foo&lt;/code&gt; and &lt;code&gt;static_foo&lt;/code&gt;:</source>
+          <target state="translated">Quiz&amp;aacute;s ayude un poco de c&amp;oacute;digo de ejemplo: observe la diferencia en las firmas de llamada de &lt;code&gt;foo&lt;/code&gt; , &lt;code&gt;class_foo&lt;/code&gt; y &lt;code&gt;static_foo&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="7122abd306cee02d99048842c405d1b59faf3176" translate="yes" xml:space="preserve">
+          <source>More convenient to import versus module-level functions since each method does not have to be specially imported</source>
+          <target state="translated">Más conveniente para la importación frente a las funciones a nivel de módulo,ya que cada método no tiene que ser importado especialmente</target>
+        </trans-unit>
+        <trans-unit id="baee456d57820da13b11bc2426c66fd95bd49685" translate="yes" xml:space="preserve">
+          <source>My contribution demonstrates the difference amongst &lt;code&gt;@classmethod&lt;/code&gt;, &lt;code&gt;@staticmethod&lt;/code&gt;, and instance methods, including how an instance can indirectly call a &lt;code&gt;@staticmethod&lt;/code&gt;. But instead of indirectly calling a &lt;code&gt;@staticmethod&lt;/code&gt; from an instance, making it private may be more &quot;pythonic.&quot; Getting something from a private method isn't demonstrated here but it's basically the same concept.</source>
+          <target state="translated">Mi contribuci&amp;oacute;n demuestra la diferencia entre &lt;code&gt;@classmethod&lt;/code&gt; , &lt;code&gt;@staticmethod&lt;/code&gt; y los m&amp;eacute;todos de instancia, incluida la forma en que una instancia puede llamar indirectamente un &lt;code&gt;@staticmethod&lt;/code&gt; . Pero en lugar de llamar indirectamente a un &lt;code&gt;@staticmethod&lt;/code&gt; desde una instancia, hacerlo privado puede ser m&amp;aacute;s &quot;pit&amp;oacute;nico&quot;. Obtener algo de un m&amp;eacute;todo privado no se demuestra aqu&amp;iacute;, pero es b&amp;aacute;sicamente el mismo concepto.</target>
+        </trans-unit>
+        <trans-unit id="06bdb3d7b2f194e09ab0a51f0107d3fa31a0f2c6" translate="yes" xml:space="preserve">
+          <source>Now, if the requirement comes where you need to create a class using a single name only, just a &lt;code&gt;first_name&lt;/code&gt;, you &lt;strong&gt;can't&lt;/strong&gt; do something like this in Python.</source>
+          <target state="translated">Ahora, si el requisito viene donde necesita crear una clase usando un solo nombre, solo un nombre, no &lt;strong&gt;puede&lt;/strong&gt; hacer algo as&amp;iacute; en Python.</target>
+        </trans-unit>
+        <trans-unit id="c446d44cb0d9ce8db33e3b393ea1f71b690bad22" translate="yes" xml:space="preserve">
+          <source>On the other hand, a static method does not receive an implicit first argument, compared to class methods or instance methods. And can&amp;rsquo;t access or modify class state. It only belongs to the class because from design point of view that is the correct way. But in terms of functionality is not bound, at runtime, to the class.</source>
+          <target state="translated">Por otro lado, un m&amp;eacute;todo est&amp;aacute;tico no recibe un primer argumento impl&amp;iacute;cito, en comparaci&amp;oacute;n con los m&amp;eacute;todos de clase o los m&amp;eacute;todos de instancia. Y no puede acceder ni modificar el estado de la clase. Solo pertenece a la clase porque desde el punto de vista del dise&amp;ntilde;o esa es la forma correcta. Pero en t&amp;eacute;rminos de funcionalidad no est&amp;aacute; vinculado, en tiempo de ejecuci&amp;oacute;n, a la clase.</target>
+        </trans-unit>
+        <trans-unit id="0601259c1a596a32a613d81d7b9416a72f1706e5" translate="yes" xml:space="preserve">
+          <source>One use people have found for class methods is to create &lt;a href=&quot;https://stackoverflow.com/a/1950927/190597&quot;&gt;inheritable alternative constructors&lt;/a&gt;.</source>
+          <target state="translated">Un uso que la gente ha encontrado para los m&amp;eacute;todos de clase es crear &lt;a href=&quot;https://stackoverflow.com/a/1950927/190597&quot;&gt;constructores alternativos heredables&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="3e6e99fe2ce49b8e8aed43869178d41b3d185e3f" translate="yes" xml:space="preserve">
+          <source>Python does not have to instantiate a bound-method for object.</source>
+          <target state="translated">Python no tiene que instanciar un método de unión para el objeto.</target>
+        </trans-unit>
+        <trans-unit id="f24b1de7ff195e42428cd5db28a36a5b118842b9" translate="yes" xml:space="preserve">
+          <source>See the &lt;a href=&quot;https://github.com/pydata/pandas/blob/master/pandas/core/frame.py&quot;&gt;pandas source code&lt;/a&gt; for other similar examples of alternative constructors, and see also the official Python documentation on &lt;a href=&quot;https://docs.python.org/library/functions.html#classmethod&quot;&gt;&lt;code&gt;classmethod&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;https://docs.python.org/library/functions.html#staticmethod&quot;&gt;&lt;code&gt;staticmethod&lt;/code&gt;&lt;/a&gt;.</source>
+          <target state="translated">Vea el &lt;a href=&quot;https://github.com/pydata/pandas/blob/master/pandas/core/frame.py&quot;&gt;c&amp;oacute;digo fuente de&lt;/a&gt; los pandas para otros ejemplos similares de constructores alternativos, y tambi&amp;eacute;n vea la documentaci&amp;oacute;n oficial de Python sobre &lt;a href=&quot;https://docs.python.org/library/functions.html#classmethod&quot;&gt; &lt;code&gt;classmethod&lt;/code&gt; &lt;/a&gt; y &lt;a href=&quot;https://docs.python.org/library/functions.html#staticmethod&quot;&gt; &lt;code&gt;staticmethod&lt;/code&gt; &lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="f01d0a8ab6576c208384ec02c477895fb03fdd00" translate="yes" xml:space="preserve">
+          <source>Simple functions with no self argument.</source>
+          <target state="translated">Funciones sencillas sin argumentos propios.</target>
+        </trans-unit>
+        <trans-unit id="94dd432a314d7dfb9142b28cff141918df0ee440" translate="yes" xml:space="preserve">
+          <source>So a static method is, in a sense, not bound to the Class itself and is just hanging in there just because it may have a related functionality.</source>
+          <target state="translated">Así que un método estático,en cierto sentido,no está ligado a la Clase en sí misma y se mantiene sólo porque puede tener una funcionalidad relacionada.</target>
+        </trans-unit>
+        <trans-unit id="65363de032aba81ff598ab4d63be7b2e577f8cb9" translate="yes" xml:space="preserve">
+          <source>So let's say in above example you need a validation that &lt;code&gt;first_name&lt;/code&gt; should not exceed 20 characters, you can simply do this.</source>
+          <target state="translated">Entonces, digamos en el ejemplo anterior que necesita una validaci&amp;oacute;n de que &lt;code&gt;first_name&lt;/code&gt; no debe exceder los 20 caracteres, simplemente puede hacer esto.</target>
+        </trans-unit>
+        <trans-unit id="182c8c616107a2457bad4250829c2d737ac45ed3" translate="yes" xml:space="preserve">
+          <source>So using  &lt;code&gt;@staticmethod&lt;/code&gt; for methods only called directly from the class has become optional in python3. If you want to call them from both class and instance, you still need to use the &lt;code&gt;@staticmethod&lt;/code&gt; decorator.</source>
+          <target state="translated">Por lo tanto, usar &lt;code&gt;@staticmethod&lt;/code&gt; para m&amp;eacute;todos que solo se invocan directamente desde la clase se ha convertido en opcional en python3. Si desea llamarlos tanto desde la clase como desde la instancia, a&amp;uacute;n necesita usar el decorador &lt;code&gt;@staticmethod&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="9e7b56ba099663ac3dac80d5ad3bbee9b28e3d48" translate="yes" xml:space="preserve">
+          <source>Static Method</source>
+          <target state="translated">Método estático</target>
+        </trans-unit>
+        <trans-unit id="f4eea620f6c60864e8c46d16abb4c687e8c6331d" translate="yes" xml:space="preserve">
+          <source>Static methods in Python are similar
+  to those found in Java or C++. For a
+  more advanced concept, see
+  &lt;a href=&quot;http://docs.python.org/2/library/functions.html#classmethod&quot;&gt;&lt;code&gt;classmethod()&lt;/code&gt;&lt;/a&gt; in this section.</source>
+          <target state="translated">Los m&amp;eacute;todos est&amp;aacute;ticos en Python son similares a los encontrados en Java o C ++. Para un concepto m&amp;aacute;s avanzado, vea &lt;a href=&quot;http://docs.python.org/2/library/functions.html#classmethod&quot;&gt; &lt;code&gt;classmethod()&lt;/code&gt; &lt;/a&gt; en esta secci&amp;oacute;n.</target>
+        </trans-unit>
+        <trans-unit id="e562c390a784edf0b3feb04ea00ba8e2392d8d34" translate="yes" xml:space="preserve">
+          <source>Static methods on the other hand, are used to perform functionalities that are not bound to the class i.e. they will not read or write class variables. Hence, static methods do not take classes as arguments. They are used so that classes can perform functionalities that are not directly related to the purpose of the class.</source>
+          <target state="translated">Los métodos estáticos,en cambio,se utilizan para realizar funcionalidades que no están ligadas a la clase,es decir,no leerán ni escribirán variables de clase.Por lo tanto,los métodos estáticos no toman las clases como argumentos.Se utilizan para que las clases puedan realizar funcionalidades que no están directamente relacionadas con el propósito de la clase.</target>
+        </trans-unit>
+        <trans-unit id="5ffe8a646ab05acaf25f6688924681394d7f4b50" translate="yes" xml:space="preserve">
+          <source>Staticmethods are used to group functions which have some logical connection with a class to the class.</source>
+          <target state="translated">Los métodos estadísticos se utilizan para agrupar las funciones que tienen alguna conexión lógica con una clase a la clase.</target>
+        </trans-unit>
+        <trans-unit id="ce6f2467322be66f2c66550f026cdbdd30261e17" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;@classmethod&lt;/code&gt; form is a function
+  &lt;a href=&quot;http://docs.python.org/2/glossary.html#term-decorator&quot;&gt;&lt;em&gt;decorator&lt;/em&gt;&lt;/a&gt; &amp;ndash; see the description of
+  function definitions in &lt;a href=&quot;http://docs.python.org/2/reference/compound_stmts.html#function&quot;&gt;&lt;em&gt;Function
+  definitions&lt;/em&gt;&lt;/a&gt; for details.</source>
+          <target state="translated">El formulario &lt;code&gt;@classmethod&lt;/code&gt; es un &lt;a href=&quot;http://docs.python.org/2/glossary.html#term-decorator&quot;&gt;&lt;em&gt;decorador de&lt;/em&gt;&lt;/a&gt; funciones; consulte la descripci&amp;oacute;n de las definiciones de funciones en Definiciones de &lt;a href=&quot;http://docs.python.org/2/reference/compound_stmts.html#function&quot;&gt;&lt;em&gt;funciones&lt;/em&gt;&lt;/a&gt; para obtener detalles.</target>
+        </trans-unit>
+        <trans-unit id="9055ab2b4172076d48e20f45dc0229a7e5605442" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;@staticmethod&lt;/code&gt; form is a function
+  &lt;a href=&quot;http://docs.python.org/2/glossary.html#term-decorator&quot;&gt;&lt;em&gt;decorator&lt;/em&gt;&lt;/a&gt; &amp;ndash; see the description of
+  function definitions in &lt;a href=&quot;http://docs.python.org/2/reference/compound_stmts.html#function&quot;&gt;&lt;em&gt;Function
+  definitions&lt;/em&gt;&lt;/a&gt; for details.</source>
+          <target state="translated">El formulario &lt;code&gt;@staticmethod&lt;/code&gt; es un &lt;a href=&quot;http://docs.python.org/2/glossary.html#term-decorator&quot;&gt;&lt;em&gt;decorador de&lt;/em&gt;&lt;/a&gt; funciones; consulte la descripci&amp;oacute;n de las definiciones de funciones en Definiciones de &lt;a href=&quot;http://docs.python.org/2/reference/compound_stmts.html#function&quot;&gt;&lt;em&gt;funciones&lt;/em&gt;&lt;/a&gt; para obtener detalles.</target>
+        </trans-unit>
+        <trans-unit id="8f0986b5efbab0453d76f7f6ca9ae170f03a69d9" translate="yes" xml:space="preserve">
+          <source>The Normal Instance Method</source>
+          <target state="translated">El método de instancia normal</target>
+        </trans-unit>
+        <trans-unit id="bd04489a697867005e789fddc84ebc4dd500b1ba" translate="yes" xml:space="preserve">
+          <source>The built-in function staticmethod()is used to create them.</source>
+          <target state="translated">La función incorporada staticmethod()se utiliza para crearlos.</target>
+        </trans-unit>
+        <trans-unit id="6421f9367c3ff555773546cfcde71ec15b8c1b25" translate="yes" xml:space="preserve">
+          <source>The most canonical example of a builtin classmethod is &lt;code&gt;dict.fromkeys&lt;/code&gt;. It is used as an alternative constructor of dict, (well suited for when you know what your keys are and want a default value for them.)</source>
+          <target state="translated">El ejemplo m&amp;aacute;s can&amp;oacute;nico de un m&amp;eacute;todo de &lt;code&gt;dict.fromkeys&lt;/code&gt; integrado es dict.fromkeys . Se utiliza como un constructor alternativo de dict (muy adecuado para cuando sepa cu&amp;aacute;les son sus claves y desee un valor predeterminado para ellas).</target>
+        </trans-unit>
+        <trans-unit id="5944b31af7aa8a97f6f73cdc54e88234802fe3f1" translate="yes" xml:space="preserve">
+          <source>The other cases have been well covered by unutbus answer.</source>
+          <target state="translated">Los otros casos han sido bien cubiertos por la respuesta de Unutbus.</target>
+        </trans-unit>
+        <trans-unit id="d9dcfa9ec5bb063d28e1a65b69d5c1996c83cf8c" translate="yes" xml:space="preserve">
+          <source>The static method does &lt;em&gt;not&lt;/em&gt; take the instance as an argument.</source>
+          <target state="translated">El m&amp;eacute;todo est&amp;aacute;tico &lt;em&gt;no&lt;/em&gt; toma la instancia como argumento.</target>
+        </trans-unit>
+        <trans-unit id="af7cb13e62642ee499a113906d710325fb97372a" translate="yes" xml:space="preserve">
+          <source>The workaround here would be to call &lt;code&gt;Foo2.magic()&lt;/code&gt; in &lt;code&gt;bar()&lt;/code&gt;, but then you're repeating yourself (if the name of &lt;code&gt;Foo2&lt;/code&gt; changes, you'll have to remember to update that &lt;code&gt;bar()&lt;/code&gt; method).</source>
+          <target state="translated">La soluci&amp;oacute;n aqu&amp;iacute; ser&amp;iacute;a llamar a &lt;code&gt;Foo2.magic()&lt;/code&gt; en &lt;code&gt;bar()&lt;/code&gt; , pero luego se repite (si cambia el nombre de &lt;code&gt;Foo2&lt;/code&gt; , deber&amp;aacute; recordar actualizar ese m&amp;eacute;todo &lt;code&gt;bar()&lt;/code&gt; ).</target>
+        </trans-unit>
+        <trans-unit id="d75be3892212a0b3d72aa89d5805947b4703d4c3" translate="yes" xml:space="preserve">
+          <source>These are created with classmethod in-built function.</source>
+          <target state="translated">Estos se crean con la función incorporada del método de la clase.</target>
+        </trans-unit>
+        <trans-unit id="f15cd3ae0b92af773354fba252df6a2f9c169e4b" translate="yes" xml:space="preserve">
+          <source>Think we have a class with &lt;code&gt;b=2&lt;/code&gt;, we will create an object and re-set this to &lt;code&gt;b=4&lt;/code&gt; in it.
+Staticmethod cannot access nothing from previous.
+Classmethod can access &lt;code&gt;.b==2&lt;/code&gt; only, via &lt;code&gt;cls.b&lt;/code&gt;.
+Normal method can access both: &lt;code&gt;.b==4&lt;/code&gt; via &lt;code&gt;self.b&lt;/code&gt; and &lt;code&gt;.b==2&lt;/code&gt; via &lt;code&gt;self.__class__.b&lt;/code&gt;.</source>
+          <target state="translated">Cree que tenemos una clase con &lt;code&gt;b=2&lt;/code&gt; , crearemos un objeto y lo restableceremos a &lt;code&gt;b=4&lt;/code&gt; en &amp;eacute;l. El m&amp;eacute;todo est&amp;aacute;tico no puede acceder a nada de lo anterior. Classmethod puede acceder a .b &lt;code&gt;.b==2&lt;/code&gt; solamente, a trav&amp;eacute;s de &lt;code&gt;cls.b&lt;/code&gt; . El m&amp;eacute;todo normal puede acceder a ambos: &lt;code&gt;.b==4&lt;/code&gt; trav&amp;eacute;s de &lt;code&gt;self.b&lt;/code&gt; y .b &lt;code&gt;.b==2&lt;/code&gt; trav&amp;eacute;s de &lt;code&gt;self.__class__.b&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="80280e49a1f8353c5b3bba30201343e829087168" translate="yes" xml:space="preserve">
+          <source>This has changed between python2 and python3:</source>
+          <target state="translated">Esto ha cambiado entre pitón2 y pitón3:</target>
+        </trans-unit>
+        <trans-unit id="258f0cf75229fbcab6f2fd1285ff5938bf4aeca7" translate="yes" xml:space="preserve">
+          <source>This will give you an error when you will try to create an object (instance).</source>
+          <target state="translated">Esto te dará un error cuando intentes crear un objeto (ejemplo).</target>
+        </trans-unit>
+        <trans-unit id="4adbdfc052a06d13f49928019797c091206b0882" translate="yes" xml:space="preserve">
+          <source>This works, but note that now the &lt;code&gt;bar()&lt;/code&gt; implementation in the child class (&lt;code&gt;Foo2&lt;/code&gt;) can no longer take advantage of anything specific to that class.  For example, say &lt;code&gt;Foo2&lt;/code&gt; had a method called &lt;code&gt;magic()&lt;/code&gt; that you want to use in the &lt;code&gt;Foo2&lt;/code&gt; implementation of &lt;code&gt;bar()&lt;/code&gt;:</source>
+          <target state="translated">Esto funciona, pero tenga en cuenta que ahora la implementaci&amp;oacute;n de la &lt;code&gt;bar()&lt;/code&gt; en la clase secundaria ( &lt;code&gt;Foo2&lt;/code&gt; ) ya no puede aprovechar nada espec&amp;iacute;fico de esa clase. Por ejemplo, supongamos que &lt;code&gt;Foo2&lt;/code&gt; ten&amp;iacute;a un m&amp;eacute;todo llamado &lt;code&gt;magic()&lt;/code&gt; que desea utilizar en la implementaci&amp;oacute;n de &lt;code&gt;Foo2&lt;/code&gt; de &lt;code&gt;bar()&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="79477ed5dad94d6833e83e3a8699a0463de9de85" translate="yes" xml:space="preserve">
+          <source>To decide whether to use &lt;a href=&quot;https://docs.python.org/3/library/functions.html?highlight=staticmethod#staticmethod&quot;&gt;@staticmethod&lt;/a&gt; or &lt;a href=&quot;https://docs.python.org/3.5/library/functions.html?highlight=classmethod#classmethod&quot;&gt;@classmethod&lt;/a&gt; you have to look inside your method. &lt;strong&gt;If your method accesses other variables/methods in your class then use @classmethod&lt;/strong&gt;. On the other hand, if your method does not touches any other parts of the class then use @staticmethod.</source>
+          <target state="translated">Para decidir si usar &lt;a href=&quot;https://docs.python.org/3/library/functions.html?highlight=staticmethod#staticmethod&quot;&gt;@staticmethod&lt;/a&gt; o &lt;a href=&quot;https://docs.python.org/3.5/library/functions.html?highlight=classmethod#classmethod&quot;&gt;@classmethod&lt;/a&gt; tienes que mirar dentro de tu m&amp;eacute;todo. &lt;strong&gt;Si su m&amp;eacute;todo accede a otras variables / m&amp;eacute;todos en su clase, use @classmethod&lt;/strong&gt; . Por otro lado, si su m&amp;eacute;todo no toca ninguna otra parte de la clase, use @staticmethod.</target>
+        </trans-unit>
+        <trans-unit id="41c4939ed15126e325624c1d7f0ae8e61154e275" translate="yes" xml:space="preserve">
+          <source>To me, this is a slight violation of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Open/closed_principle&quot;&gt;open/closed principle&lt;/a&gt;, since a decision made in &lt;code&gt;Foo&lt;/code&gt; is impacting your ability to refactor common code in a derived class (ie it's less open to extension).  If &lt;code&gt;bar()&lt;/code&gt; were a &lt;code&gt;classmethod&lt;/code&gt; we'd be fine:</source>
+          <target state="translated">Para m&amp;iacute;, esto es una ligera violaci&amp;oacute;n del &lt;a href=&quot;https://en.wikipedia.org/wiki/Open/closed_principle&quot;&gt;principio abierto / cerrado&lt;/a&gt; , ya que una decisi&amp;oacute;n tomada en &lt;code&gt;Foo&lt;/code&gt; est&amp;aacute; afectando su capacidad de refactorizar c&amp;oacute;digo com&amp;uacute;n en una clase derivada (es decir, est&amp;aacute; menos abierto a la extensi&amp;oacute;n). Si &lt;code&gt;bar()&lt;/code&gt; fuera un &lt;code&gt;classmethod&lt;/code&gt; , estar&amp;iacute;amos bien:</target>
+        </trans-unit>
+        <trans-unit id="8a5223e4291f77ecc334b5a5bbcbdaa187282c18" translate="yes" xml:space="preserve">
+          <source>We could follow the KISS style (keep it simple, stupid): Don't use staticmethods and classmethods, don't use classes without instantiating them, access only the object's attributes &lt;code&gt;self.attribute(s)&lt;/code&gt;. There are languages where the OOP is implemented that way and I think it is not bad idea. :)</source>
+          <target state="translated">Podr&amp;iacute;amos seguir el estilo KISS (que sea simple, est&amp;uacute;pido): no use m&amp;eacute;todos est&amp;aacute;ticos y m&amp;eacute;todos de clase, no use clases sin instanciarlos, acceda solo a los atributos del objeto &lt;code&gt;self.attribute(s)&lt;/code&gt; . Hay idiomas en los que la OOP se implementa de esa manera y creo que no es mala idea. :)</target>
+        </trans-unit>
+        <trans-unit id="fcbb519e378d850b1b68ca11bf02470e1595d064" translate="yes" xml:space="preserve">
+          <source>What is the difference between @staticmethod and @classmethod in Python?</source>
+          <target state="translated">¿Cuál es la diferencia entre el método @staticmethod y el método @classmethod en Python?</target>
+        </trans-unit>
+        <trans-unit id="eb4e5926c4dc5d5f3bc9f05359bd22b70d529258" translate="yes" xml:space="preserve">
+          <source>What is the difference between a function decorated with &lt;a href=&quot;http://docs.python.org/library/functions.html#staticmethod&quot;&gt;&lt;code&gt;@staticmethod&lt;/code&gt;&lt;/a&gt; and one decorated with &lt;a href=&quot;http://docs.python.org/library/functions.html#classmethod&quot;&gt;&lt;code&gt;@classmethod&lt;/code&gt;&lt;/a&gt;?</source>
+          <target state="translated">&amp;iquest;Cu&amp;aacute;l es la diferencia entre una funci&amp;oacute;n decorada con &lt;a href=&quot;http://docs.python.org/library/functions.html#staticmethod&quot;&gt; &lt;code&gt;@staticmethod&lt;/code&gt; &lt;/a&gt; y una decorada con &lt;a href=&quot;http://docs.python.org/library/functions.html#classmethod&quot;&gt; &lt;code&gt;@classmethod&lt;/code&gt; &lt;/a&gt; ?</target>
+        </trans-unit>
+        <trans-unit id="2e5c6569bb706d28e402587b1466ff95d88243e1" translate="yes" xml:space="preserve">
+          <source>When an object's method is called, it is automatically given an extra argument &lt;code&gt;self&lt;/code&gt; as its first argument. That is, method</source>
+          <target state="translated">Cuando se llama al m&amp;eacute;todo de un objeto, se le asigna autom&amp;aacute;ticamente un argumento adicional &lt;code&gt;self&lt;/code&gt; como primer argumento. Es decir, m&amp;eacute;todo</target>
+        </trans-unit>
+        <trans-unit id="829e8b693aed55e8328e8d5d8439f95ac3af86b9" translate="yes" xml:space="preserve">
+          <source>When the method is decorated</source>
+          <target state="translated">Cuando el método es decorado</target>
+        </trans-unit>
+        <trans-unit id="341319811e49792c2c672aa7a5e85c27a7f50380" translate="yes" xml:space="preserve">
+          <source>When we subclass dict, we can use the same constructor, which creates an instance of the subclass.</source>
+          <target state="translated">Cuando dictamos la subclase,podemos usar el mismo constructor,que crea una instancia de la subclase.</target>
+        </trans-unit>
+        <trans-unit id="68ae0e89977a649bad665ad27c89cbedc3a29ee1" translate="yes" xml:space="preserve">
+          <source>With &lt;code&gt;a.class_foo&lt;/code&gt;, &lt;code&gt;a&lt;/code&gt; is not bound to &lt;code&gt;class_foo&lt;/code&gt;, rather the class &lt;code&gt;A&lt;/code&gt; is bound to &lt;code&gt;class_foo&lt;/code&gt;.</source>
+          <target state="translated">Con &lt;code&gt;a.class_foo&lt;/code&gt; , &lt;code&gt;a&lt;/code&gt; no est&amp;aacute; vinculado a &lt;code&gt;class_foo&lt;/code&gt; , sino que la clase &lt;code&gt;A&lt;/code&gt; est&amp;aacute; vinculada a &lt;code&gt;class_foo&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="e91195e59505ea892019be8785a88af1bd3c3f6f" translate="yes" xml:space="preserve">
+          <source>Work on class attributes; not on instance attributes.</source>
+          <target state="translated">Trabaje en los atributos de la clase;no en los atributos de la instancia.</target>
+        </trans-unit>
+        <trans-unit id="adebd78a8dd903e227a396616541192276725be4" translate="yes" xml:space="preserve">
+          <source>You can also call &lt;code&gt;class_foo&lt;/code&gt; using the class. In fact, if you define something to be
+a classmethod, it is probably because you intend to call it from the class rather than from a class instance. &lt;code&gt;A.foo(1)&lt;/code&gt; would have raised a TypeError, but &lt;code&gt;A.class_foo(1)&lt;/code&gt; works just fine:</source>
+          <target state="translated">Tambi&amp;eacute;n puede llamar a &lt;code&gt;class_foo&lt;/code&gt; usando la clase. De hecho, si define algo como un m&amp;eacute;todo de clase, probablemente sea porque tiene la intenci&amp;oacute;n de llamarlo desde la clase en lugar de desde una instancia de clase. &lt;code&gt;A.foo(1)&lt;/code&gt; habr&amp;iacute;a generado un TypeError, pero &lt;code&gt;A.class_foo(1)&lt;/code&gt; funciona bien:</target>
+        </trans-unit>
+        <trans-unit id="3ffe0412197d5a8f4286d21ec5576d1cbd38ecf0" translate="yes" xml:space="preserve">
+          <source>You may have seen Python code like this pseudocode, which demonstrates the signatures of the various method types and provides a docstring to explain each:</source>
+          <target state="translated">Puede que hayas visto un código Python como este pseudocódigo,que demuestra las firmas de los diversos tipos de métodos y proporciona una cadena de documentos para explicar cada uno de ellos:</target>
+        </trans-unit>
+        <trans-unit id="aa25ff3c9b231e9b99c6cece2313f1a161111d45" translate="yes" xml:space="preserve">
+          <source>You might want to consider the difference between:</source>
+          <target state="translated">Tal vez quieras considerar la diferencia entre:</target>
+        </trans-unit>
+        <trans-unit id="cffa50a32cb13a240d705317bcec65dd1f31b6ad" translate="yes" xml:space="preserve">
+          <source>and</source>
+          <target state="translated">and</target>
+        </trans-unit>
+        <trans-unit id="9d508031d4e84b7cc27af600bec98b3141da798e" translate="yes" xml:space="preserve">
+          <source>and you could simply call using &lt;code&gt;class name&lt;/code&gt;</source>
+          <target state="translated">y puedes simplemente llamar usando el &lt;code&gt;class name&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="d49b88615309e95621c35de40da5fe92499b533d" translate="yes" xml:space="preserve">
+          <source>as a guideline, use static methods as utilities, use class methods for example as factory . Or maybe to define a singleton. And use instance methods to model the state and behavior of instances.</source>
+          <target state="translated">como guía,usar métodos estáticos como utilidades,usar métodos de clase por ejemplo como fábrica.O tal vez para definir un singleton.Y usar métodos de instancia para modelar el estado y el comportamiento de las instancias.</target>
+        </trans-unit>
+        <trans-unit id="d52a33eead97a71117a46cf4e95a8a4ce30467f3" translate="yes" xml:space="preserve">
+          <source>class method</source>
+          <target state="translated">método de clase</target>
+        </trans-unit>
+        <trans-unit id="52f372dd7e7596da7a6a95d387e97222b81d84c7" translate="yes" xml:space="preserve">
+          <source>classmethod has no access to attributes of the object. It however can access attributes of the class and of parent classes in the inheritance hierarchy.
+It can be called at the class directly (without creating an object). If called at the object then it is the same as normal method which doesn't access &lt;code&gt;self.&amp;lt;attribute(s)&amp;gt;&lt;/code&gt; and accesses &lt;code&gt;self.__class__.&amp;lt;attribute(s)&amp;gt;&lt;/code&gt; only.</source>
+          <target state="translated">classmethod no tiene acceso a los atributos del objeto. Sin embargo, puede acceder a los atributos de la clase y de las clases primarias en la jerarqu&amp;iacute;a de herencia. Se puede invocar directamente en la clase (sin crear un objeto). Si se llama al objeto, es el mismo m&amp;eacute;todo normal que no accede a &lt;code&gt;self.&amp;lt;attribute(s)&amp;gt;&lt;/code&gt; y accede a &lt;code&gt;self.__class__.&amp;lt;attribute(s)&amp;gt;&lt;/code&gt; solamente.</target>
+        </trans-unit>
+        <trans-unit id="7948ad16ed2603a6348a81efc5083231e6e99599" translate="yes" xml:space="preserve">
+          <source>classmethod: &lt;strong&gt;the class of the current object&lt;/strong&gt; is automatically passed as an (additional) fist argument</source>
+          <target state="translated">m&amp;eacute;todo de &lt;strong&gt;clase&lt;/strong&gt; : &lt;strong&gt;la clase del objeto actual&lt;/strong&gt; se pasa autom&amp;aacute;ticamente como un argumento de pu&amp;ntilde;o (adicional)</target>
+        </trans-unit>
+        <trans-unit id="040092959b9872d342ec8835eaf66a5912667aab" translate="yes" xml:space="preserve">
+          <source>if we use the instance method, &lt;code&gt;join&lt;/code&gt; on this string, to join another iterable,
+it quite obviously is a function of the instance, in addition to being a function of the iterable list, &lt;code&gt;['a', 'b', 'c']&lt;/code&gt;:</source>
+          <target state="translated">si usamos el m&amp;eacute;todo de instancia, &lt;code&gt;join&lt;/code&gt; en esta cadena, para unirte a otro iterable, obviamente es una funci&amp;oacute;n de la instancia, adem&amp;aacute;s de ser una funci&amp;oacute;n de la lista iterable, &lt;code&gt;['a', 'b', 'c']&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="458d61efa24b172ec0fd06ca32a179e50bd11ce5" translate="yes" xml:space="preserve">
+          <source>must be called with 2 arguments. &lt;code&gt;self&lt;/code&gt; is automatically passed, and it is &lt;em&gt;the object itself&lt;/em&gt;.</source>
+          <target state="translated">debe llamarse con 2 argumentos. &lt;code&gt;self&lt;/code&gt; se pasa autom&amp;aacute;ticamente, y es &lt;em&gt;el objeto mismo&lt;/em&gt; .</target>
+        </trans-unit>
+        <trans-unit id="708f8989ac21092a5c5d8c983540d9bb44c48d11" translate="yes" xml:space="preserve">
+          <source>normal method</source>
+          <target state="translated">El método normal</target>
+        </trans-unit>
+        <trans-unit id="feaabadfa899129cb55b2beee5ee0ea7aabdd795" translate="yes" xml:space="preserve">
+          <source>normal method: &lt;strong&gt;the current object&lt;/strong&gt; if automatically passed as an (additional) first argument</source>
+          <target state="translated">m&amp;eacute;todo normal: &lt;strong&gt;el objeto actual&lt;/strong&gt; si se pasa autom&amp;aacute;ticamente como un primer argumento (adicional)</target>
+        </trans-unit>
+        <trans-unit id="bced6a1cd17696e1d77254556ccfcc9c6ad98d6a" translate="yes" xml:space="preserve">
+          <source>python2:</source>
+          <target state="translated">python2:</target>
+        </trans-unit>
+        <trans-unit id="e174fa5929995f67b31815ee0e9bd6d2d9fd8564" translate="yes" xml:space="preserve">
+          <source>python3:</source>
+          <target state="translated">python3:</target>
+        </trans-unit>
+        <trans-unit id="75d198e754da69d735666ee31a24c9846f114435" translate="yes" xml:space="preserve">
+          <source>static method</source>
+          <target state="translated">método estático</target>
+        </trans-unit>
+        <trans-unit id="6acd42d6636986fd7c20f9eddf725cc1b2a99a5e" translate="yes" xml:space="preserve">
+          <source>staticmethod has no access to attibutes of the object, of the class, or of parent classes in the inheritance hierarchy.
+It can be called at the class directly (without creating an object).</source>
+          <target state="translated">staticmethod no tiene acceso a los atributos del objeto,de la clase,o de las clases parentales en la jerarquía de la herencia.Puede ser llamado a la clase directamente (sin crear un objeto).</target>
+        </trans-unit>
+        <trans-unit id="7ac95df276e52f37bfcb52496e9992dd99c61d05" translate="yes" xml:space="preserve">
+          <source>staticmethod: &lt;strong&gt;no extra arguments&lt;/strong&gt; are automatically passed. What you passed to the function is what you get.</source>
+          <target state="translated">m&amp;eacute;todo est&amp;aacute;tico: &lt;strong&gt;no&lt;/strong&gt; se pasan &lt;strong&gt;argumentos adicionales&lt;/strong&gt; autom&amp;aacute;ticamente. Lo que pasaste a la funci&amp;oacute;n es lo que obtienes.</target>
+        </trans-unit>
+        <trans-unit id="2fa2da2994698860ee444ff57aadffe1813adf65" translate="yes" xml:space="preserve">
+          <source>the automatically provided argument &lt;em&gt;is not&lt;/em&gt;&lt;code&gt;self&lt;/code&gt;, but &lt;em&gt;the class of&lt;/em&gt;&lt;code&gt;self&lt;/code&gt;.</source>
+          <target state="translated">el argumento provisto autom&amp;aacute;ticamente &lt;em&gt;no es&lt;/em&gt; &lt;code&gt;self&lt;/code&gt; , sino &lt;em&gt;la clase de&lt;/em&gt; &lt;code&gt;self&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="0fbfad97aa3528afd3e7b36e34de780b77e439c1" translate="yes" xml:space="preserve">
+          <source>the method &lt;em&gt;is not given&lt;/em&gt; any automatic argument at all. It is only given the parameters that it is called with.</source>
+          <target state="translated">el m&amp;eacute;todo &lt;em&gt;no recibe&lt;/em&gt; ning&amp;uacute;n argumento autom&amp;aacute;tico en absoluto. Solo se le dan los par&amp;aacute;metros con los que se llama.</target>
+        </trans-unit>
+        <trans-unit id="2e0f976fbe142678d71e6f50a7587ee622db8c82" translate="yes" xml:space="preserve">
+          <source>usages</source>
+          <target state="translated">usages</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/5431941">
+    <body>
+      <group id="5431941">
+        <trans-unit id="6e1b2cc5e3930b8b330394fc60c0c44a838abc25" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;feof()&lt;/code&gt; indicates if one has tried to read past the end of file. That means it has little predictive effect: if it is true, you are sure that the next input operation will fail (you aren't sure the previous one failed BTW), but if it is false, you aren't sure the next input operation will succeed.  More over, input operations may fail for other reasons than the end of file (a format error for formatted input, a pure IO failure -- disk failure, network timeout -- for all input kinds), so even if you could be predictive about the end of file (and anybody who has tried to implement Ada one, which is predictive, will tell you it can complex if you need to skip spaces, and that it has undesirable effects on interactive devices -- sometimes forcing the input of the next line before starting the handling of the previous one), you would have to be able to handle a failure.</source>
+          <target state="translated">&lt;code&gt;feof()&lt;/code&gt; 指示是否尝试读取文件末尾。 这意味着它没有什么预测作用：如果为true，则确保下一个输入操作将失败（不确定前一个操作失败），但是如果为false，则不确定下一个输入操作操作将会成功。 此外，输入操作可能会由于文件末尾以外的其他原因而失败（格式化输入的格式错误，纯IO故障-磁盘故障，网络超时-对于所有输入类型），即使您可以预测一下文件末尾（所有尝试实现Ada的人（可以预测的）都会告诉您，如果您需要跳过空格，它可能会很复杂，并且会对交互式设备产生不良影响-有时会强制输入下一个在开始处理上一个操作之前，您必须能够处理故障。</target>
+        </trans-unit>
+        <trans-unit id="afa06bf319127e946cf4e91c64db135f72173ee7" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;while(!feof)&lt;/code&gt; is wrong because it tests for something that is irrelevant and fails to test for something that you need to know. The result is that you are erroneously executing code that assumes that it is accessing data that was read successfully, when in fact this never happened.</source>
+          <target state="translated">&lt;code&gt;while(!feof)&lt;/code&gt; 是错误的，因为它测试不相关的内容并且无法测试您需要知道的内容。 结果是您错误地执行了假定代码正在访问成功读取的数据的代码，而实际上却从未发生过。</target>
+        </trans-unit>
+        <trans-unit id="9eb326b40426039e3d1d065ee164e2d844fa627d" translate="yes" xml:space="preserve">
+          <source>A final example that actually queries the EOF state: Suppose you have a string and want to test that it represents an integer in its entirety, with no extra bits at the end except whitespace. Using C++ iostreams, it goes like this:</source>
+          <target state="translated">最后一个实际查询 EOF 状态的例子。假设你有一个字符串,并想测试它是否代表一个整数,除了空格外,没有多余的位。使用C++iostreams,它是这样的。</target>
+        </trans-unit>
+        <trans-unit id="8dc77d583dd50f5726373188a86ce687c8478084" translate="yes" xml:space="preserve">
+          <source>C stdio, &lt;code&gt;scanf&lt;/code&gt;:</source>
+          <target state="translated">C stdio， &lt;code&gt;scanf&lt;/code&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="1fec40ea496c0be88b250ec229e62a91f3723582" translate="yes" xml:space="preserve">
+          <source>C stdio, read from a file:</source>
+          <target state="translated">C stdio,从文件中读取。</target>
+        </trans-unit>
+        <trans-unit id="d42eafbaea2b0c2a8705dac6e80e5982ec2c04e3" translate="yes" xml:space="preserve">
+          <source>C++, iostreams formatted extraction:</source>
+          <target state="translated">C++,iostreams格式化提取。</target>
+        </trans-unit>
+        <trans-unit id="9819de783fd655b396980f4cc286ff286bfccab4" translate="yes" xml:space="preserve">
+          <source>C++, iostreams getline:</source>
+          <target state="translated">C++,iostreams getline。</target>
+        </trans-unit>
+        <trans-unit id="c50b4aa773448ba7d6756b6d57c20bebb5810fea" translate="yes" xml:space="preserve">
+          <source>Concurrency and simultaneity</source>
+          <target state="translated">并发性和同时性</target>
+        </trans-unit>
+        <trans-unit id="4adddd0410090df891e6fa4925fe03ba5adb5c9d" translate="yes" xml:space="preserve">
+          <source>Consider the following code:</source>
+          <target state="translated">请考虑以下代码:</target>
+        </trans-unit>
+        <trans-unit id="cda4aab5bcbd0ed38717196ad5a3684cd59490a3" translate="yes" xml:space="preserve">
+          <source>EOF</source>
+          <target state="translated">EOF</target>
+        </trans-unit>
+        <trans-unit id="73dc949a54f03d991a93620bb37f1f1fb97fcbe8" translate="yes" xml:space="preserve">
+          <source>Even worse, consider the case where a read error occurs.  In that case, &lt;code&gt;fgetc()&lt;/code&gt; returns &lt;code&gt;EOF&lt;/code&gt;, &lt;code&gt;feof()&lt;/code&gt; returns false, and the loop never terminates.  In all cases where &lt;code&gt;while(!feof(p))&lt;/code&gt; is used, there must be at least a check inside the loop for &lt;code&gt;ferror()&lt;/code&gt;, or at the very least the while condition should be replaced with &lt;code&gt;while(!feof(p) &amp;amp;&amp;amp; !ferror(p))&lt;/code&gt; or there is a very real possibility of an infinite loop, probably spewing all sorts of garbage as invalid data is being processed.</source>
+          <target state="translated">更糟糕的是，考虑发生读取错误的情况。 在那种情况下， &lt;code&gt;fgetc()&lt;/code&gt; 返回 &lt;code&gt;EOF&lt;/code&gt; ， &lt;code&gt;feof()&lt;/code&gt; 返回false，并且循环永远不会终止。 在使用 &lt;code&gt;while(!feof(p))&lt;/code&gt; 的所有情况下，循环内都必须至少检查 &lt;code&gt;ferror()&lt;/code&gt; ，或者至少应将while条件替换为 &lt;code&gt;while(!feof(p) &amp;amp;&amp;amp; !ferror(p))&lt;/code&gt; 否则很有可能发生无限循环，可能会在处理无效数据时喷出各种各样的垃圾。</target>
+        </trans-unit>
+        <trans-unit id="eb01bf04c9a0e8a71c45816513df424f1c7ffedb" translate="yes" xml:space="preserve">
+          <source>Examples</source>
+          <target state="translated">Examples</target>
+        </trans-unit>
+        <trans-unit id="d5fb570011dd7778bf532c618109acc3eba49ca7" translate="yes" xml:space="preserve">
+          <source>I'd like to provide an abstract, high-level perspective.</source>
+          <target state="translated">我想提供一个抽象的、高层次的观点。</target>
+        </trans-unit>
+        <trans-unit id="48a4e8d542c3e9555786d500773be3d2bcbb6f32" translate="yes" xml:space="preserve">
+          <source>I've seen people trying to read files like this in a lot of posts lately:</source>
+          <target state="translated">最近我在很多帖子里看到有人想看这样的文件。</target>
+        </trans-unit>
+        <trans-unit id="391b94302281cf331dee93fdab146e79d7a9d7f6" translate="yes" xml:space="preserve">
+          <source>I/O operations interact with the environment. The environment is not part of your program, and not under your control. The environment truly exists &quot;concurrently&quot; with your program. As with all things concurrent, questions about the &quot;current state&quot; don't make sense: There is no concept of &quot;simultaneity&quot; across concurrent events. Many properties of state simply don't &lt;em&gt;exist&lt;/em&gt; concurrently.</source>
+          <target state="translated">I / O操作与环境交互。 环境不是您的程序的一部分，也不在您的控制之下。 该环境确实与您的程序&amp;ldquo;同时存在&amp;rdquo;。 与所有并发一样，关于&amp;ldquo;当前状态&amp;rdquo;的问题也没有道理：在并发事件中没有&amp;ldquo;同时性&amp;rdquo;的概念。 状态的许多属性根本不会同时&lt;em&gt;存在&lt;/em&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="6cfad93b891ef97aae642f181beb8c35018a07f9" translate="yes" xml:space="preserve">
+          <source>In each of the examples, note carefully that we &lt;em&gt;first&lt;/em&gt; attempt the I/O operation and &lt;em&gt;then&lt;/em&gt; consume the result if it is valid. Note further that we &lt;em&gt;always&lt;/em&gt; must use the result of the I/O operation, though the result takes different shapes and forms in each example.</source>
+          <target state="translated">在每个示例中，请仔细注意，我们&lt;em&gt;首先&lt;/em&gt;尝试I / O操作， &lt;em&gt;然后&lt;/em&gt;在有效时使用结果。 还要注意，尽管每个示例中的结果采用不同的形状和形式，但我们&lt;em&gt;始终&lt;/em&gt;必须使用I / O操作的结果。</target>
+        </trans-unit>
+        <trans-unit id="9f489c41d38ccf842f692e0db445abd3e48eee2b" translate="yes" xml:space="preserve">
+          <source>In the C standard library you can achieve something similar with the &lt;code&gt;strto*l&lt;/code&gt; functions by checking that the end pointer has reached the end of the input string.</source>
+          <target state="translated">在C标准库中，您可以通过检查end指针是否到达输入字符串的末尾来实现与 &lt;code&gt;strto*l&lt;/code&gt; 函数相似的功能。</target>
+        </trans-unit>
+        <trans-unit id="94f320dacdbdb7b3f3c407e0a74b13947ccdf877" translate="yes" xml:space="preserve">
+          <source>In this case, &lt;code&gt;feof()&lt;/code&gt; is called before any data has been read, so it returns false.  The loop is entered, &lt;code&gt;fgetc()&lt;/code&gt; is called (and returns &lt;code&gt;EOF&lt;/code&gt;), and count is incremented.  Then &lt;code&gt;feof()&lt;/code&gt; is called and returns true, causing the loop to abort.</source>
+          <target state="translated">在这种情况下， &lt;code&gt;feof()&lt;/code&gt; 在读取任何数据之前被调用，因此它返回false。 进入循环，调用 &lt;code&gt;fgetc()&lt;/code&gt; （并返回 &lt;code&gt;EOF&lt;/code&gt; ），并增加计数。 然后调用 &lt;code&gt;feof()&lt;/code&gt; 并返回true，从而导致循环中止。</target>
+        </trans-unit>
+        <trans-unit id="df7cb0a6afe126d638917eed2a4e224c4b44dc9f" translate="yes" xml:space="preserve">
+          <source>It is always necessary to check the return value of a read (either an &lt;code&gt;fread()&lt;/code&gt;, or an &lt;code&gt;fscanf()&lt;/code&gt;, or an &lt;code&gt;fgetc()&lt;/code&gt;) before calling &lt;code&gt;feof()&lt;/code&gt;.</source>
+          <target state="translated">在调用 &lt;code&gt;feof()&lt;/code&gt; 之前，总是有必要检查read的返回值（ &lt;code&gt;fread()&lt;/code&gt; 或 &lt;code&gt;fscanf()&lt;/code&gt; 或 &lt;code&gt;fgetc()&lt;/code&gt; ） 。</target>
+        </trans-unit>
+        <trans-unit id="222d991e983b86924c85aebf64b8055dafefd796" translate="yes" xml:space="preserve">
+          <source>It's wrong because (in the absence of a read error) it enters the loop one more time than the author expects.  If there is a read error, the loop never terminates.</source>
+          <target state="translated">这是不对的,因为(在没有读错的情况下)它进入循环的时间比作者预期的多了一次。如果有一个读取错误,循环永远不会终止。</target>
+        </trans-unit>
+        <trans-unit id="72403131093f16a828236fe0866b652fccd6f5ee" translate="yes" xml:space="preserve">
+          <source>Let me make this more precise: Suppose you want to ask, &quot;do you have more data&quot;. You could ask this of a concurrent container, or of your I/O system. But the answer is generally unactionable, and thus meaningless. So what if the container says &quot;yes&quot; &amp;ndash; by the time you try reading, it may no longer have data. Similarly, if the answer is &quot;no&quot;, by the time you try reading, data may have arrived. The conclusion is that there simply &lt;em&gt;is&lt;/em&gt; no property like &quot;I have data&quot;, since you cannot act meaningfully in response to any possible answer. (The situation is slightly better with buffered input, where you might conceivably get a &quot;yes, I have data&quot; that constitutes some kind of guarantee, but you would still have to be able to deal with the opposite case. And with output the situation is certainly just as bad as I described: you never know if that disk or that network buffer is full.)</source>
+          <target state="translated">让我更精确地说：假设您想问&amp;ldquo;您是否有更多数据&amp;rdquo;。 您可以询问并发容器或I / O系统。 但是答案通常是不可行的，因此毫无意义。 因此，如果容器说&amp;ldquo;是&amp;rdquo;，该怎么办？到您尝试读取时，它可能不再有数据。 同样，如果答案为&amp;ldquo;否&amp;rdquo;，那么在您尝试阅读时，数据可能已经到达。 结论是，根本没有像&amp;ldquo;我有数据&amp;rdquo;这样的属性，因为您无法对任何可能的答案做出有意义的举动。 （使用缓冲输入的情况要好一些，可以想象得到&amp;ldquo;是的，我有数据&amp;rdquo;可以构成某种保证，但是您仍然必须能够处理相反的情况。然后输出情况肯定和我描述的一样糟糕：您永远不知道该磁盘或网络缓冲区是否已满。）</target>
+        </trans-unit>
+        <trans-unit id="9a0fe292e7d9800c123efbe9d32e1657a9705bbd" translate="yes" xml:space="preserve">
+          <source>No it's not always wrong. If your loop condition is &quot;while we haven't tried to read past end of file&quot; then you use &lt;code&gt;while (!feof(f))&lt;/code&gt;. This is however not a common loop condition - usually you want to test for something else (such as &quot;can I read more&quot;). &lt;code&gt;while (!feof(f))&lt;/code&gt; isn't wrong, it's just &lt;em&gt;used&lt;/em&gt; wrong.</source>
+          <target state="translated">不，这并不总是错误的。 如果您的循环条件是&amp;ldquo;虽然我们还没有尝试读取文件末尾&amp;rdquo;，那么您可以使用 &lt;code&gt;while (!feof(f))&lt;/code&gt; 。 但是，这不是常见的循环条件-通常，您要测试其他内容（例如&amp;ldquo;我可以阅读更多内容&amp;rdquo;）。 &lt;code&gt;while (!feof(f))&lt;/code&gt; 没错，只是&lt;em&gt;用&lt;/em&gt;错了。</target>
+        </trans-unit>
+        <trans-unit id="ddcbc1fbbf593776812d44f0c505dd66950884f6" translate="yes" xml:space="preserve">
+          <source>Note that the function explicitly returns &lt;code&gt;-1&lt;/code&gt; (and not EOF!) when an error occurs or it reaches EOF.</source>
+          <target state="translated">请注意，当发生错误或到达EOF时，该函数显式返回 &lt;code&gt;-1&lt;/code&gt; （而不是EOF！）。</target>
+        </trans-unit>
+        <trans-unit id="c138187ee78a95264184501dc023ae49eaee3b8e" translate="yes" xml:space="preserve">
+          <source>Now we get to EOF. EOF is the &lt;em&gt;response&lt;/em&gt; you get from an &lt;em&gt;attempted&lt;/em&gt; I/O operation. It means that you were trying to read or write something, but when doing so you failed to read or write any data, and instead the end of the input or output was encountered. This is true for essentially all the I/O APIs, whether it be the C standard library, C++ iostreams, or other libraries. As long as the I/O operations succeed, you simply &lt;em&gt;cannot know&lt;/em&gt; whether further, future operations will succeed. You &lt;em&gt;must&lt;/em&gt; always first try the operation and then respond to success or failure.</source>
+          <target state="translated">现在我们到EOF。 EOF是您从&lt;em&gt;尝试的&lt;/em&gt; I / O操作获得的&lt;em&gt;响应&lt;/em&gt; 。 这意味着您正在尝试读取或写入某些内容，但是这样做时您无法读取或写入任何数据，而是遇到了输入或输出的结尾。 基本上对于所有I / O API都是如此，无论是C标准库，C ++ iostream还是其他库。 只要I / O操作成功，您就根本&lt;em&gt;无法知道&lt;/em&gt;将来的操作是否还会成功。 您&lt;em&gt;必须&lt;/em&gt;始终首先尝试该操作，然后响应成功或失败。</target>
+        </trans-unit>
+        <trans-unit id="e6f37fa35c54fd8bca21c8861aadeeabddb790fb" translate="yes" xml:space="preserve">
+          <source>POSIX &lt;a href=&quot;http://pubs.opengroup.org/onlinepubs/9699919799/functions/getline.html&quot;&gt;&lt;code&gt;getline()&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">POSIX &lt;a href=&quot;http://pubs.opengroup.org/onlinepubs/9699919799/functions/getline.html&quot;&gt; &lt;code&gt;getline()&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="3c29f18cc80a5ab4397ce9ee67110730141c85b5" translate="yes" xml:space="preserve">
+          <source>POSIX, &lt;code&gt;write(2)&lt;/code&gt; to flush a buffer:</source>
+          <target state="translated">POSIX， &lt;code&gt;write(2)&lt;/code&gt; 以刷新缓冲区：</target>
+        </trans-unit>
+        <trans-unit id="158b03cf3f0ee84ce61146b4f5131a4764b5329d" translate="yes" xml:space="preserve">
+          <source>So the correct idiom in C is to loop with the IO operation success as loop condition, and then test the cause of the failure.  For instance:</source>
+          <target state="translated">所以C语言中正确的成语是以IO操作成功作为循环条件,然后测试失败的原因。比如说。</target>
+        </trans-unit>
+        <trans-unit id="817fc48d7d94d06d30c126604b404be0c742323a" translate="yes" xml:space="preserve">
+          <source>So we conclude that it is impossible, and in fact un&lt;em&gt;reasonable&lt;/em&gt;, to ask an I/O system whether it &lt;em&gt;will be&lt;/em&gt; able to perform an I/O operation. The only possible way we can interact with it (just as with a concurrent container) is to &lt;em&gt;attempt&lt;/em&gt; the operation and check whether it succeeded or failed. At that moment where you interact with the environment, then and only then can you know whether the interaction was actually possible, and at that point you must commit to performing the interaction. (This is a &quot;synchronisation point&quot;, if you will.)</source>
+          <target state="translated">因此，我们得出结论，问一个I / O系统是否能够执行I / O操作是不可能的，实际上是&lt;em&gt;不合理的&lt;/em&gt; 。 我们与之交互的唯一可能方式（就像与并发容器一样）是&lt;em&gt;尝试&lt;/em&gt;操作并检查其成功还是失败。 在与环境进行交互的那一刻，只有那时，您才能知道该交互是否确实可行，并且在这一点上，您必须致力于执行交互。 （如果需要，这是一个&amp;ldquo;同步点&amp;rdquo;。）</target>
+        </trans-unit>
+        <trans-unit id="846041b1f2857074a016d9e21966bce492dc7a74" translate="yes" xml:space="preserve">
+          <source>So, in summary, although I cannot state with certainty that there is never a situation in which it may be semantically correct to write &quot;&lt;code&gt;while(!feof(f))&lt;/code&gt;&quot; (although there &lt;strong&gt;must&lt;/strong&gt; be another check inside the loop with a break to avoid a infinite loop on a read error), it is the case that it is almost certainly always wrong.  And even if a case ever arose where it would be correct, it is so idiomatically wrong that it would not be the right way to write the code.  Anyone seeing that code should immediately hesitate and say, &quot;that's a bug&quot;.  And possibly slap the author (unless the author is your boss in which case discretion is advised.)</source>
+          <target state="translated">因此，总而言之，尽管我不能确定地说永远不会出现这样一种情况，即在语义上写&amp;ldquo; &lt;code&gt;while(!feof(f))&lt;/code&gt; &amp;rdquo;是正确的（尽管在循环中&lt;strong&gt;必须&lt;/strong&gt;进行另一次检查，但&lt;strong&gt;要&lt;/strong&gt;中断到避免在读取错误时发生无限循环），这种情况几乎肯定总是错误的。 即使出现了正确的案例，它也是一种惯常的错误，以至于它不是编写代码的正确方法。 任何看到该代码的人都应立即犹豫并说：&amp;ldquo;那是一个错误&amp;rdquo;。 并可能对作者打耳光（除非作者是您的老板，在这种情况下，建议您谨慎行事。）</target>
+        </trans-unit>
+        <trans-unit id="7011b1a621a67e63735eb77a3fab573aef5632e9" translate="yes" xml:space="preserve">
+          <source>The answer</source>
+          <target state="translated">答案是</target>
+        </trans-unit>
+        <trans-unit id="6c637ec0e42c35161dade1e8e1b6a8760f84d564" translate="yes" xml:space="preserve">
+          <source>The result we must use is &lt;code&gt;n&lt;/code&gt;, the number of elements that were read (which may be as little as zero).</source>
+          <target state="translated">我们必须使用的结果是 &lt;code&gt;n&lt;/code&gt; ，即已读取的元素数（可能少至零）。</target>
+        </trans-unit>
+        <trans-unit id="dd8b9000013378645669f0c9713d6ab04b2f81d8" translate="yes" xml:space="preserve">
+          <source>The result we must use is &lt;code&gt;nbytes&lt;/code&gt;, the number of bytes up to and including the newline (or EOF if the file did not end with a newline).</source>
+          <target state="translated">我们必须使用的结果是 &lt;code&gt;nbytes&lt;/code&gt; ，直至并包括换行符的字节数（如果文件未以换行符结尾，则为EOF）。</target>
+        </trans-unit>
+        <trans-unit id="a2be6c557782f15a6fe8146ffef5463a0c52393e" translate="yes" xml:space="preserve">
+          <source>The result we must use is &lt;code&gt;std::cin&lt;/code&gt; itself, which can be evaluated in a boolean context and tells us whether the stream is still in the &lt;code&gt;good()&lt;/code&gt; state.</source>
+          <target state="translated">我们必须使用的结果是 &lt;code&gt;std::cin&lt;/code&gt; 本身，可以在布尔上下文中对其进行评估，并告诉我们流是否仍处于 &lt;code&gt;good()&lt;/code&gt; 状态。</target>
+        </trans-unit>
+        <trans-unit id="94f4bf47648a9a9a15729400e2bbd4e7a33fd3d8" translate="yes" xml:space="preserve">
+          <source>The result we must use is again &lt;code&gt;std::cin&lt;/code&gt;, just as before.</source>
+          <target state="translated">和以前一样，我们必须再次使用 &lt;code&gt;std::cin&lt;/code&gt; 的结果。</target>
+        </trans-unit>
+        <trans-unit id="e176f9e6233fcb3bd9259568ee600f922fc9b066" translate="yes" xml:space="preserve">
+          <source>The result we must use is the return value of &lt;code&gt;scanf&lt;/code&gt;, the number of elements converted.</source>
+          <target state="translated">我们必须使用的结果是 &lt;code&gt;scanf&lt;/code&gt; 的返回值，即转换后的元素数。</target>
+        </trans-unit>
+        <trans-unit id="303da19e8cd21a2b3892dcd8aaca7a9c24e2434b" translate="yes" xml:space="preserve">
+          <source>The result we use here is &lt;code&gt;k&lt;/code&gt;, the number of bytes written. The point here is that we can only know how many bytes were written &lt;em&gt;after&lt;/em&gt; the write operation.</source>
+          <target state="translated">我们在这里使用的结果是 &lt;code&gt;k&lt;/code&gt; ，即写入的字节数。 这里的要点是，我们只能知道在写操作&lt;em&gt;之后&lt;/em&gt;写了多少字节。</target>
+        </trans-unit>
+        <trans-unit id="b372e2f1e30a0546ffa61e565b193a1cfb9392b9" translate="yes" xml:space="preserve">
+          <source>This happens in all such cases.  &lt;code&gt;feof()&lt;/code&gt; does not return true until &lt;strong&gt;after&lt;/strong&gt; a read on the stream encounters the end of file.  The purpose of &lt;code&gt;feof()&lt;/code&gt; is NOT to check if the next read will reach the end of file.  The purpose of &lt;code&gt;feof()&lt;/code&gt; is to distinguish between a read error and having reached the end of the file.  If &lt;code&gt;fread()&lt;/code&gt; returns 0, you must use &lt;code&gt;feof&lt;/code&gt;/&lt;code&gt;ferror&lt;/code&gt; to decide whether an error was encountered or if all of the data was consumed.  Similarly if &lt;code&gt;fgetc&lt;/code&gt; returns &lt;code&gt;EOF&lt;/code&gt;.  &lt;code&gt;feof()&lt;/code&gt; is only useful &lt;strong&gt;after&lt;/strong&gt; fread has returned zero or &lt;code&gt;fgetc&lt;/code&gt; has returned &lt;code&gt;EOF&lt;/code&gt;.  Before that happens, &lt;code&gt;feof()&lt;/code&gt; will always return 0.</source>
+          <target state="translated">在所有这种情况下都会发生这种情况。 &lt;code&gt;feof()&lt;/code&gt; 直到流中的读取遇到文件结尾&lt;strong&gt;后才&lt;/strong&gt;返回true。 &lt;code&gt;feof()&lt;/code&gt; 的目的不是检查下一次读取是否到达文件末尾。 &lt;code&gt;feof()&lt;/code&gt; 的目的是区分读取错误和到达文件末尾。 如果 &lt;code&gt;fread()&lt;/code&gt; 返回0，则必须使用 &lt;code&gt;feof&lt;/code&gt; / &lt;code&gt;ferror&lt;/code&gt; 来确定是否遇到错误或是否消耗了所有数据。 同样，如果 &lt;code&gt;fgetc&lt;/code&gt; 返回 &lt;code&gt;EOF&lt;/code&gt; 。 &lt;code&gt;feof()&lt;/code&gt; 仅&lt;strong&gt;在&lt;/strong&gt; fread返回零或 &lt;code&gt;fgetc&lt;/code&gt; 返回 &lt;code&gt;EOF&lt;/code&gt; &lt;strong&gt;之后&lt;/strong&gt;才有用。 在此之前， &lt;code&gt;feof()&lt;/code&gt; 将始终返回0。</target>
+        </trans-unit>
+        <trans-unit id="1f110543f655f47775382a08be85a099094240cb" translate="yes" xml:space="preserve">
+          <source>This program will consistently print one greater than the number of characters in the input stream (assuming no read errors).  Consider the case where the input stream is empty:</source>
+          <target state="translated">这个程序将始终如一地打印出一个大于输入流中的字符数(假设没有读错)。考虑一下输入流为空的情况。</target>
+        </trans-unit>
+        <trans-unit id="b0925f526af3483a02c05fdbde7c36f4875c2e14" translate="yes" xml:space="preserve">
+          <source>We use two results here. The first is &lt;code&gt;iss&lt;/code&gt;, the stream object itself, to check that the formatted extraction to &lt;code&gt;value&lt;/code&gt; succeeded. But then, after also consuming whitespace, we perform another I/O/ operation, &lt;code&gt;iss.get()&lt;/code&gt;, and expect it to fail as EOF, which is the case if the entire string has already been consumed by the formatted extraction.</source>
+          <target state="translated">我们在这里使用两个结果。 首先是 &lt;code&gt;iss&lt;/code&gt; ，即流对象本身，以检查是否已成功格式化格式化为 &lt;code&gt;value&lt;/code&gt; 的提取。 但是，在又消耗了空格之后，我们执行另一个I / O /操作 &lt;code&gt;iss.get()&lt;/code&gt; ，并期望它作为EOF失败，如果整个字符串已经被格式化提取所消耗，情况就是如此。</target>
+        </trans-unit>
+        <trans-unit id="648647fd82435dc0507ee1805f9b069afb309877" translate="yes" xml:space="preserve">
+          <source>What is wrong with this loop?</source>
+          <target state="translated">这个循环有什么问题?</target>
+        </trans-unit>
+        <trans-unit id="2a805c3203447610847e1ae47416a85730b84c3d" translate="yes" xml:space="preserve">
+          <source>Why is “while ( !feof (file) )” always wrong</source>
+          <target state="translated">为什么 &quot;while(!feof (file))&quot;总是错误的?</target>
+        </trans-unit>
+        <trans-unit id="f54a4cb85ad4243779102fab2d01c2695116ea1c" translate="yes" xml:space="preserve">
+          <source>You may notice that we very rarely spell out the actual word &quot;EOF&quot;. We usually detect the error condition in some other way that is more immediately interesting to us (e.g. failure to perform as much I/O as we had desired). In every example there is some API feature that could tell us explicitly that the EOF state has been encountered, but this is in fact not a terribly useful piece of information. It is much more of a detail than we often care about. What matters is whether the I/O succeeded, more-so than how it failed.</source>
+          <target state="translated">你可能会注意到,我们很少拼出实际的 &quot;EOF &quot;这个词。我们通常会用其他一些我们更感兴趣的方式来检测错误状态(例如,未能执行尽可能多的IO)。在每个例子中,都有一些API功能可以明确告诉我们遇到了EAF状态,但实际上这并不是一个非常有用的信息。它比我们经常关心的细节要多得多。重要的是IO是否成功了,而不是如何失败。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

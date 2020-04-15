@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/10714251">
+    <body>
+      <group id="10714251">
+        <trans-unit id="1583e07615db44b3aebaf031efc7dc227e1bd7fd" translate="yes" xml:space="preserve">
+          <source>&quot;... and am finding that my code would be more re-usable if I were able to use variables instead of Select functions.&quot;</source>
+          <target state="translated">&quot;... Select 함수 대신 변수를 사용할 수 있으면 코드를 더 재사용 할 수 있다는 것을 알게되었습니다.&quot;</target>
+        </trans-unit>
+        <trans-unit id="65668430b49589fc9fbf6663610ba1ef10b4f6b9" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;.select&lt;/code&gt; can be avoided, as many posted already, by directly working with the already existing objects, which allows various indirect referencing like calculating i and j in a complex way and then editing cell(i,j), etc.</source>
+          <target state="translated">&lt;code&gt;.select&lt;/code&gt; 는 이미 게시 된 많은 사람들이 이미 존재하는 객체로 직접 작업하여 피할 수 있습니다. 이는 복잡한 방법으로 i 및 j를 계산 한 다음 셀 (i, j)을 편집하는 등 다양한 간접 참조를 허용합니다.</target>
+        </trans-unit>
+        <trans-unit id="46aace16bb5f3e381d2482dce00631eeda077e0d" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Set&lt;/code&gt; the variable to the required range.  There are many ways to refer to a single-cell range</source>
+          <target state="translated">변수를 필요한 범위로 &lt;code&gt;Set&lt;/code&gt; 하십시오. 단일 셀 범위를 참조하는 방법에는 여러 가지가 있습니다</target>
+        </trans-unit>
+        <trans-unit id="dbf0a53faf54267e7d0218a3e233651058490cf8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;1)&lt;/strong&gt; Directly work with the relevant objects</source>
+          <target state="translated">&lt;strong&gt;1)&lt;/strong&gt; 관련 객체로 직접 작업</target>
+        </trans-unit>
+        <trans-unit id="ac076fbab555f48bb12dc9a7c21d14606ed09db8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;2)&lt;/strong&gt; If required declare your variables. The same code above can be written as</source>
+          <target state="translated">&lt;strong&gt;2)&lt;/strong&gt; 필요한 경우 변수를 선언하십시오. 위와 동일한 코드를 작성할 수 있습니다</target>
+        </trans-unit>
+        <trans-unit id="99428b1a299a34007af83abf35330640dd4f9340" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;How do we avoid it?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;우리는 어떻게 그것을 피합니까?&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="cc08b622bab6c87c5cc5be08dde9605c3175d5e4" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;This is how you may avoid &lt;code&gt;Select&lt;/code&gt; and &lt;code&gt;Activate&lt;/code&gt; in the following cases:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;다음과 같은 경우 &lt;code&gt;Select&lt;/code&gt; 및 &lt;code&gt;Activate&lt;/code&gt; 를 피할 수 있습니다.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4a036de4957f470612e6979da7ab6f0c0d8fcf0a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Two Main reasons why &lt;code&gt;.Select&lt;/code&gt;/&lt;code&gt;.Activate&lt;/code&gt;/&lt;code&gt;Selection&lt;/code&gt;/&lt;code&gt;Activecell&lt;/code&gt;/&lt;code&gt;Activesheet&lt;/code&gt;/&lt;code&gt;Activeworkbook&lt;/code&gt; etc... should be avoided&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;.Select&lt;/code&gt; / &lt;code&gt;.Activate&lt;/code&gt; / &lt;code&gt;Selection&lt;/code&gt; / &lt;code&gt;Activecell&lt;/code&gt; / &lt;code&gt;Activesheet&lt;/code&gt; / &lt;code&gt;Activeworkbook&lt;/code&gt; 등을 피해야하는 두 가지 주요 이유&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="9615b91dffdf33df5e1f2103a44c256bec9f7d7f" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt;(Yes, I know this question was about &lt;code&gt;.Select&lt;/code&gt;, not &lt;code&gt;Selection&lt;/code&gt; but I wanted to remove any misconceptions that novice VBA coders might infer.)&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt;(예, 나는이 질문이 &lt;code&gt;.Select&lt;/code&gt; 에 관한 것이 아니라 &lt;code&gt;Selection&lt;/code&gt; 에 관한 것임을 알고 있지만 초보자 VBA 코더가 추론 할 수있는 오해를 제거하고 싶었습니다.)&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="60ff3ea1fbc282bfa0ebe965624896d49bcfbd15" translate="yes" xml:space="preserve">
+          <source>A common (bad) piece of code is to open a book, get some data then close again</source>
+          <target state="translated">일반적인 (나쁜) 코드는 책을 열고 데이터를 얻은 다음 다시 닫는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="b5c432e332545ae43153b3b22f6fa7dc9543f84d" translate="yes" xml:space="preserve">
+          <source>A good example of when you could be justified in using &lt;code&gt;.Activate&lt;/code&gt; and &lt;code&gt;.Select&lt;/code&gt; is when you want make sure that a specific Worksheet is selected for visual reasons. E.g., that your Excel would always open with the cover worksheet selected first, disregarding which which was the ActiveSheet when the file was closed.</source>
+          <target state="translated">&lt;code&gt;.Activate&lt;/code&gt; 및 &lt;code&gt;.Select&lt;/code&gt; 를 사용하여 정당화 할 수있는 좋은 예는 시각적 이유로 특정 워크 시트를 선택해야하는 경우입니다. 예를 들어, 파일을 닫을 때 어떤 ActiveSheet를 무시했는지에 관계없이 Excel에서 항상 표지 워크 시트를 먼저 선택한 상태로 Excel을 열어야합니다.</target>
+        </trans-unit>
+        <trans-unit id="a7ff9741542bb2bff5f3d5f551bf4aeac916af25" translate="yes" xml:space="preserve">
+          <source>A minus -2 would have referenced J2</source>
+          <target state="translated">빼기 -2는 J2를 참조했을 것입니다</target>
+        </trans-unit>
+        <trans-unit id="4220e97788b8078159668a22922f256f15e54813" translate="yes" xml:space="preserve">
+          <source>Adding a new Worksheet and copying a cell on it:</source>
+          <target state="translated">새 워크 시트 추가 및 셀 복사 :</target>
+        </trans-unit>
+        <trans-unit id="e26144a32cd81fc46c2cfab306213322549da933" translate="yes" xml:space="preserve">
+          <source>After you've done that at the top of your Sub, using them could not be simpler, just use them wherever you would use &quot;Selection&quot;:</source>
+          <target state="translated">Sub 상단에서 작업을 완료 한 후에는 더 간단하게 사용할 수 없습니다. &quot;Selection&quot;을 사용할 때마다 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="9787f1901cdd0a4dbe1ff18d12b8cc48258584ee" translate="yes" xml:space="preserve">
+          <source>Again, this refers to the &lt;em&gt;active workbook&lt;/em&gt;.  Unless you specifically want to work only with the &lt;code&gt;ActiveWorkbook&lt;/code&gt; or &lt;code&gt;ThisWorkbook&lt;/code&gt;, it is better to Dim a &lt;code&gt;Workbook&lt;/code&gt; variable too.</source>
+          <target state="translated">다시 이것은 &lt;em&gt;활성 통합 문서를&lt;/em&gt; 나타냅니다. 특별히 &lt;code&gt;ActiveWorkbook&lt;/code&gt; 또는 &lt;code&gt;ThisWorkbook&lt;/code&gt; 으로 만 작업하지 않으려는 경우 &lt;code&gt;Workbook&lt;/code&gt; 변수를 흐리게 처리하는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="228ef87a9e7ba50e3e4ff446dac448818b7b1544" translate="yes" xml:space="preserve">
+          <source>All the above examples refer to cells on the &lt;em&gt;active sheet&lt;/em&gt;.  Unless you specifically want to work only with the active sheet, it is better to Dim a &lt;code&gt;Worksheet&lt;/code&gt; variable too</source>
+          <target state="translated">위의 모든 예는 &lt;em&gt;활성 시트의&lt;/em&gt; 셀을 나타냅니다. 활성 시트로만 작업하려는 경우가 아니라면 &lt;code&gt;Worksheet&lt;/code&gt; 변수를 흐리게 처리하는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="ac83fe225af8cf1235a81c24e2829cbed9cf54a0" translate="yes" xml:space="preserve">
+          <source>Always state the workbook, worksheet and the cell/range.</source>
+          <target state="translated">통합 문서, 워크 시트 및 셀 / 범위를 항상 명시하십시오.</target>
+        </trans-unit>
+        <trans-unit id="0c3e8c70cfdf57f0ad7dadcf53a72e6a6a570606" translate="yes" xml:space="preserve">
+          <source>And Macro1 as:</source>
+          <target state="translated">그리고 Macro1은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="66a162fc9cb6af64eb431f806241eb8da0acc491" translate="yes" xml:space="preserve">
+          <source>And never use the index of a workbook.</source>
+          <target state="translated">통합 문서의 색인을 사용하지 마십시오.</target>
+        </trans-unit>
+        <trans-unit id="c7a61fd49482d190e4fc8e29863bd18d71ee9b14" translate="yes" xml:space="preserve">
+          <source>And would be better like:</source>
+          <target state="translated">그리고 더 좋을 것입니다 :</target>
+        </trans-unit>
+        <trans-unit id="e02fd59c2f4740db7b8d363450445f14ee5220cb" translate="yes" xml:space="preserve">
+          <source>Another good example is when you need to export all sheets into one PDF file, as mentioned in this case - &lt;a href=&quot;https://stackoverflow.com/questions/59107554/how-to-avoid-select-active-statements-in-vba-in-this-example&quot;&gt;How to avoid select/active statements in VBA in this example?&lt;/a&gt;</source>
+          <target state="translated">또 다른 좋은 예는이 경우에서 언급 한 것처럼 모든 시트를 하나의 PDF 파일로 &lt;a href=&quot;https://stackoverflow.com/questions/59107554/how-to-avoid-select-active-statements-in-vba-in-this-example&quot;&gt;내 보내야하는 경우입니다.이 예에서 VBA에서 선택 / 활성 명령문을 피하는 방법은 무엇입니까?&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="2ca55f853d0333e2d3bea08ceb83d3f443e361ff" translate="yes" xml:space="preserve">
+          <source>As an added bonus, if you &lt;em&gt;always&lt;/em&gt; name your variables &quot;wb&quot; and &quot;ws&quot;, you can copy and paste code from one book to another and it will usually work with minimal changes needed, if any.</source>
+          <target state="translated">추가로, &lt;em&gt;항상&lt;/em&gt; 변수 이름을 &quot;wb&quot;와 &quot;ws&quot;로 지정하면 한 책에서 다른 책으로 코드를 복사하여 붙여 넣을 수 있으며 필요한 경우 최소한의 변경만으로도 작동합니다.</target>
+        </trans-unit>
+        <trans-unit id="29c8dfc5ba99ac1d6c7ccd6a62dfa8ae208771c6" translate="yes" xml:space="preserve">
+          <source>At best, your macro will crash, at worst you might end up writing values or changing cells in the wrong workbook with no way to &quot;Undo&quot; them.</source>
+          <target state="translated">기껏해야 매크로가 중단됩니다. 최악의 경우 &quot;실행 취소&quot;할 수없는 방법으로 잘못된 통합 문서에서 값을 쓰거나 셀을 변경할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="c266c2aae0dfbc70617fbb635ddbd6ab8df188d3" translate="yes" xml:space="preserve">
+          <source>Avoiding &lt;code&gt;Select&lt;/code&gt; and &lt;code&gt;Activate&lt;/code&gt; is the move that makes you a bit better VBA developer. In general, &lt;code&gt;Select&lt;/code&gt; and &lt;code&gt;Activate&lt;/code&gt; are used when a macro is recorded, thus the &lt;code&gt;Parent&lt;/code&gt; worksheet or range is always considered the active one.</source>
+          <target state="translated">&lt;code&gt;Select&lt;/code&gt; 및 &lt;code&gt;Activate&lt;/code&gt; 피하는 것은 VBA 개발자를 조금 더 향상시키는 조치입니다. 일반적으로 매크로가 기록 될 때 &lt;code&gt;Select&lt;/code&gt; 및 &lt;code&gt;Activate&lt;/code&gt; 가 사용되므로 &lt;code&gt;Parent&lt;/code&gt; 워크 시트 또는 범위는 항상 활성으로 간주됩니다.</target>
+        </trans-unit>
+        <trans-unit id="9ecb8a979e18efe477619674504f8039f77f6492" translate="yes" xml:space="preserve">
+          <source>Basically because they're called primarily to handle user input through the Application UI. Since they're the methods called when the user handles objects through the UI, they're the ones recorded by the macro-recorder, and that's why calling them is either brittle or redundant for most situations: you don't have to select an object so as to perform an action with &lt;code&gt;Selection&lt;/code&gt; right afterwards.</source>
+          <target state="translated">기본적으로 응용 프로그램 UI를 통한 사용자 입력을 처리하기 위해 주로 호출되기 때문입니다. 사용자가 UI를 통해 객체를 처리 할 때 호출되는 메소드이기 때문에 매크로 레코더에 의해 기록 된 메소드이므로 대부분의 상황에서 객체를 호출하는 것은 취하기 어렵거나 중복됩니다. 바로 다음에 &lt;code&gt;Selection&lt;/code&gt; 으로 작업을 수행 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="905437c19e84b248c8538ed51d8616749ba18a57" translate="yes" xml:space="preserve">
+          <source>Basically when you expect the &lt;em&gt;final user&lt;/em&gt; to play a role in the execution.</source>
+          <target state="translated">기본적으로 &lt;em&gt;최종 사용자&lt;/em&gt; 가 실행에서 역할을 수행 할 것으로 예상되는 경우.</target>
+        </trans-unit>
+        <trans-unit id="d53615a8a60eaf9f8057825a8088f5891dee445b" translate="yes" xml:space="preserve">
+          <source>Because end users will always just click buttons and as soon as the focus moves off of the workbook the code wants to work with then things go completely wrong.</source>
+          <target state="translated">최종 사용자는 항상 버튼을 클릭하기 때문에 포커스가 통합 문서에서 벗어나 자마자 코드가 작동하기를 원하면 완전히 잘못됩니다.</target>
+        </trans-unit>
+        <trans-unit id="4f3ade12de7118b1fab12c29e66e2eaa28e83ea2" translate="yes" xml:space="preserve">
+          <source>Can I really never use &lt;code&gt;.Select&lt;/code&gt; or &lt;code&gt;.Activate&lt;/code&gt; for anything?</source>
+          <target state="translated">&lt;code&gt;.Select&lt;/code&gt; 또는 &lt;code&gt;.Activate&lt;/code&gt; 를 절대로 사용할 수 없습니까?</target>
+        </trans-unit>
+        <trans-unit id="67a19b1bc7ddad4d1497ab55d5007648d46c8730" translate="yes" xml:space="preserve">
+          <source>Consider this code</source>
+          <target state="translated">이 코드를 고려</target>
+        </trans-unit>
+        <trans-unit id="0bc8c412a86987fbdd9ffe118b5d3658448585de" translate="yes" xml:space="preserve">
+          <source>Consider, if the above example had been written like this:</source>
+          <target state="translated">위의 예제가 다음과 같이 작성된 경우를 고려하십시오.</target>
+        </trans-unit>
+        <trans-unit id="342af09d892d741e8ae4eb8e0e9c0bde9cb1610c" translate="yes" xml:space="preserve">
+          <source>Example &lt;code&gt;valOne = Range(&quot;A1&quot;).Value&lt;/code&gt;</source>
+          <target state="translated">예 &lt;code&gt;valOne = Range(&quot;A1&quot;).Value&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="25ae24e2d7c0935ba151d02c912ed006bdcab2e3" translate="yes" xml:space="preserve">
+          <source>Example &lt;code&gt;valTwo = Sheets(&quot;Sheet3&quot;).Codename&lt;/code&gt;</source>
+          <target state="translated">예제 &lt;code&gt;valTwo = Sheets(&quot;Sheet3&quot;).Codename&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="c63737abd7347a7ae582cb9fbdf37d6c0e5b251e" translate="yes" xml:space="preserve">
+          <source>Example:</source>
+          <target state="translated">Example:</target>
+        </trans-unit>
+        <trans-unit id="cf7ebef2a1d6c136a006983c3fada9586f976045" translate="yes" xml:space="preserve">
+          <source>Examples of Selection-based sub framework:</source>
+          <target state="translated">선택 기반 하위 프레임 워크의 예 :</target>
+        </trans-unit>
+        <trans-unit id="059c3e8cce263b2945a18ac90b2637e10a8026b1" translate="yes" xml:space="preserve">
+          <source>For example:</source>
+          <target state="translated">예를 들면 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="19ed3e227b2182a6509decf520975d8866c8c29d" translate="yes" xml:space="preserve">
+          <source>From (code generated with macro recorder):</source>
+          <target state="translated">From (매크로 레코더로 생성 된 코드) :</target>
+        </trans-unit>
+        <trans-unit id="c4d63e4c56f1d2b74aaf3de1c3943ce348748d84" translate="yes" xml:space="preserve">
+          <source>From:</source>
+          <target state="translated">From:</target>
+        </trans-unit>
+        <trans-unit id="2e15feb4b1e6d46ee1b8d65de8879bda3bf04984" translate="yes" xml:space="preserve">
+          <source>Here are a couple additional reasons to make liberal use of named ranges though I am sure I could think of more.</source>
+          <target state="translated">더 많은 것을 생각할 수 있다고 확신하지만 명명 된 범위를 자유롭게 사용하는 몇 가지 추가 이유가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="d93452b537df3f534f5ef7bedc5edff439df4f87" translate="yes" xml:space="preserve">
+          <source>Here are a couple examples.</source>
+          <target state="translated">다음은 몇 가지 예입니다.</target>
+        </trans-unit>
+        <trans-unit id="70b222c6b3bdc9703cf528be11364ad5184179d0" translate="yes" xml:space="preserve">
+          <source>Hope this helps to clear things up a little bit.</source>
+          <target state="translated">이것이 조금 정리하는 데 도움이되기를 바랍니다.</target>
+        </trans-unit>
+        <trans-unit id="1397360149465600f8777ba9df8d95a5e4126e51" translate="yes" xml:space="preserve">
+          <source>How to avoid using Select in Excel VBA</source>
+          <target state="translated">Excel VBA에서 Select를 사용하지 않는 방법</target>
+        </trans-unit>
+        <trans-unit id="e6bdfe5f18421fcf3e6addabaae874e296142168" translate="yes" xml:space="preserve">
+          <source>However, this definition settles situations on which they are called for:</source>
+          <target state="translated">그러나이 정의는 다음과 같은 상황을 해결합니다.</target>
+        </trans-unit>
+        <trans-unit id="8f89cc294fff45750397aff3d126f9f1ee0b3ca2" translate="yes" xml:space="preserve">
+          <source>I have a simple golden rule that I follow: Add variables named &quot;wb&quot; and &quot;ws&quot; for a Workbook object and a Worksheet object and always use those to refer to my macro book. If I need to refer to more than one book, or more than one sheet, I add more variables.</source>
+          <target state="translated">다음과 같은 간단한 황금 규칙이 있습니다. 통합 문서 개체 및 워크 시트 개체에 &quot;wb&quot;및 &quot;ws&quot;라는 변수를 추가하고 항상이 변수를 사용하여 내 매크로 북을 참조하십시오. 둘 이상의 책이나 둘 이상의 시트를 참조해야하는 경우 변수를 더 추가합니다.</target>
+        </trans-unit>
+        <trans-unit id="c4e5a5bc6d3ac2b448ed1a7bd951468681990bc7" translate="yes" xml:space="preserve">
+          <source>I have found &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/aa139976%28v=office.10%29.aspx&quot;&gt;this article on ranges&lt;/a&gt; and &lt;a href=&quot;http://www.businessprogrammer.com/201105/power-excel-vba-secret-avoid-using-select/&quot;&gt;this example on the benefits of not using select&lt;/a&gt; but can't find anything on &lt;em&gt;how&lt;/em&gt;?</source>
+          <target state="translated">&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/aa139976%28v=office.10%29.aspx&quot;&gt;범위 에서이 기사를&lt;/a&gt; 찾았고 &lt;a href=&quot;http://www.businessprogrammer.com/201105/power-excel-vba-secret-avoid-using-select/&quot;&gt;select를 사용하지 않을 때의 이점에 대한이 예제를&lt;/a&gt; 찾았지만 &lt;em&gt;어떻게&lt;/em&gt; 찾을 수 없습니까?</target>
+        </trans-unit>
+        <trans-unit id="406f5a70b189cd46c55531348ccb84e4fdd5b945" translate="yes" xml:space="preserve">
+          <source>I hope that helps. Let me know if you have any questions.</source>
+          <target state="translated">도움이 되길 바랍니다. 궁금한 점이 있으면 알려주세요.</target>
+        </trans-unit>
+        <trans-unit id="c82904cb28ac0559082451b3612913720cd3cedd" translate="yes" xml:space="preserve">
+          <source>I hope this helps someone.</source>
+          <target state="translated">나는 이것이 누군가를 돕기를 바랍니다.</target>
+        </trans-unit>
+        <trans-unit id="0449608ca81bf5f5050ebe5831b2f71390c1c5db" translate="yes" xml:space="preserve">
+          <source>I noticed that none of these answers mention the &lt;a href=&quot;https://msdn.microsoft.com/en-us/vba/excel-vba/articles/range-offset-property-excel&quot;&gt;.Offset Property&lt;/a&gt;. This also can be used to avoid using the &lt;code&gt;Select&lt;/code&gt; action when manipulating certain cells, particularly in reference to a selected cell (as the OP mentions with &lt;code&gt;ActiveCell&lt;/code&gt;).</source>
+          <target state="translated">이 답변 중 어느 것도 &lt;a href=&quot;https://msdn.microsoft.com/en-us/vba/excel-vba/articles/range-offset-property-excel&quot;&gt;.Offset 속성에&lt;/a&gt; 대해 언급하지 않았습니다. 이것은 또한 특정 셀을 조작 할 때, 특히 선택된 셀을 참조하여 ( &lt;code&gt;ActiveCell&lt;/code&gt; 에서 OP가 언급 한대로) 특정 셀을 조작 할 때 &lt;code&gt;Select&lt;/code&gt; 조치를 사용하지 않도록하는 데 사용될 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="9cb3e9de7fe6f06115cf1d8c5c0446bf5051938c" translate="yes" xml:space="preserve">
+          <source>I will also assume the &quot;ActiveCell&quot; is &lt;strong&gt;J4&lt;/strong&gt;.</source>
+          <target state="translated">또한 &quot;ActiveCell&quot;이 &lt;strong&gt;J4&lt;/strong&gt; 라고 가정합니다.</target>
+        </trans-unit>
+        <trans-unit id="06cc60f8c75ea171652433a327d13dc8e6332b81" translate="yes" xml:space="preserve">
+          <source>I'm going to give the short answer since everyone else gave the long one.</source>
+          <target state="translated">다른 사람들이 모두 긴 답변을했기 때문에 나는 짧은 대답을 할 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="054c04a0c52ae72376c1375e28fe08492eab52a8" translate="yes" xml:space="preserve">
+          <source>I've heard much about the understandable abhorrence of using &lt;code&gt;.Select&lt;/code&gt; in Excel VBA, but am unsure of how to avoid using it. I am finding that my code would be more re-usable if I were able to use variables instead of &lt;code&gt;Select&lt;/code&gt; functions. However, I am not sure how to refer to things (like the &lt;code&gt;ActiveCell&lt;/code&gt; etc.) if not using &lt;code&gt;Select&lt;/code&gt;.</source>
+          <target state="translated">Excel VBA에서 &lt;code&gt;.Select&lt;/code&gt; 를 사용할 때 이해할 수있는 혐오에 대해 많이 들었지만 사용하지 않는 방법을 잘 모르겠습니다. &lt;code&gt;Select&lt;/code&gt; 함수 대신 변수를 사용할 수 있으면 코드를 더 재사용 할 수 있다는 것을 알았습니다. 그러나 &lt;code&gt;Select&lt;/code&gt; 를 사용하지 않으면 &lt;code&gt;ActiveCell&lt;/code&gt; 과 같은 것을 참조하는 방법을 잘 모르겠습니다.</target>
+        </trans-unit>
+        <trans-unit id="70a894385d22dff1dce34826fbc2099c7cda7e04" translate="yes" xml:space="preserve">
+          <source>IMHO use of &lt;code&gt;.select&lt;/code&gt; comes from people, who like me started learning VBA by necessity through recording macros and then modifying the code without realizing that &lt;code&gt;.select&lt;/code&gt; and subsequent &lt;code&gt;selection&lt;/code&gt; is just an unnecessary middle-men.</source>
+          <target state="translated">&lt;code&gt;.select&lt;/code&gt; 의 IMHO 사용은 매크로를 기록하고 &lt;code&gt;.select&lt;/code&gt; 및 후속 &lt;code&gt;selection&lt;/code&gt; 이 불필요한 중개인 임을 깨닫지 않고 코드를 수정하여 필연적으로 VBA를 배우기 시작한 사람들로부터 나옵니다.</target>
+        </trans-unit>
+        <trans-unit id="f789aa2d6d3b11b1653e6c359b8d306d22d93e4e" translate="yes" xml:space="preserve">
+          <source>If you &lt;em&gt;do&lt;/em&gt; want to work with the &lt;code&gt;ActiveSheet&lt;/code&gt;, for clarity it's best to be explicit. But take care, as some &lt;code&gt;Worksheet&lt;/code&gt; methods change the active sheet.</source>
+          <target state="translated">&lt;code&gt;ActiveSheet&lt;/code&gt; 로 작업하고 싶다면 명확성을 유지하는 것이 가장 좋습니다. 그러나 일부 &lt;code&gt;Worksheet&lt;/code&gt; 방법은 활성 시트를 변경하므로주의하십시오.</target>
+        </trans-unit>
+        <trans-unit id="cf37ca85c57f5f0614a801ca0fc60ed6ed1683f4" translate="yes" xml:space="preserve">
+          <source>If you &lt;em&gt;do&lt;/em&gt; want to work with the &lt;code&gt;ActiveWorkbook&lt;/code&gt;, for clarity it's best to be explicit. But take care, as many &lt;code&gt;WorkBook&lt;/code&gt; methods change the active book.</source>
+          <target state="translated">&lt;code&gt;ActiveWorkbook&lt;/code&gt; 을 사용하려면 명확성을 유지하는 것이 가장 좋습니다. 그러나 많은 &lt;code&gt;WorkBook&lt;/code&gt; 메서드가 활성 책을 변경하므로주의하십시오.</target>
+        </trans-unit>
+        <trans-unit id="dbeeee43d26bf344b7062ff2ea8aa9aede597130" translate="yes" xml:space="preserve">
+          <source>If you are developing and expect the user to choose the object instances for your code to handle, then &lt;code&gt;.Selection&lt;/code&gt; or &lt;code&gt;.ActiveObject&lt;/code&gt; are apropriate.</source>
+          <target state="translated">개발 중이고 사용자가 코드에서 처리 할 개체 인스턴스를 선택할 것으로 예상하는 경우 &lt;code&gt;.ActiveObject&lt;/code&gt; 또는 .ActiveObject 가 적합합니다.</target>
+        </trans-unit>
+        <trans-unit id="cc4234df1fa6976f14bdf9d894db67a406e78e71" translate="yes" xml:space="preserve">
+          <source>If you are looping over a range of cells it is often better (faster) to copy the range values to a variant array first and loop over that</source>
+          <target state="translated">셀 범위를 반복하는 경우 범위 값을 변형 배열에 먼저 복사하고 반복하는 것이 좋습니다 (빠름).</target>
+        </trans-unit>
+        <trans-unit id="897ca510ef4f543f54c868e4ea12e2c6c2e52698" translate="yes" xml:space="preserve">
+          <source>If you had used named ranges to begin with, the &lt;code&gt;Months&lt;/code&gt; and &lt;code&gt;Sales&lt;/code&gt; columns could be moved around all you like, and your code will continue working just fine.</source>
+          <target state="translated">명명 된 범위를 사용하여 시작한 경우 &lt;code&gt;Months&lt;/code&gt; 및 &lt;code&gt;Sales&lt;/code&gt; 열을 원하는대로 이동할 수 있으며 코드는 계속 정상적으로 작동합니다.</target>
+        </trans-unit>
+        <trans-unit id="749fce5d2ede6dcecd826470fbe76f3689d34b17" translate="yes" xml:space="preserve">
+          <source>If you want to use it for a cell that is not the active one, for instance for &quot;B2&quot;, you should select it first, like this:</source>
+          <target state="translated">활성 셀이 아닌 셀 (예 : &quot;B2&quot;)에이 셀을 사용하려면 먼저 다음과 같이 선택해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="a653b6f01f61e4975c23afcfb8b3573413d843a9" translate="yes" xml:space="preserve">
+          <source>In short, don't discard &lt;code&gt;Selection&lt;/code&gt; due to its close association with &lt;code&gt;.Select&lt;/code&gt; and &lt;code&gt;ActiveCell&lt;/code&gt;. As a worksheet property it has many other purposes.</source>
+          <target state="translated">즉, &lt;code&gt;.Select&lt;/code&gt; 및 &lt;code&gt;ActiveCell&lt;/code&gt; 과의 밀접한 연관성 때문에 &lt;code&gt;Selection&lt;/code&gt; 을 버리지 마십시오. 워크 시트 속성으로서 다른 많은 목적이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="cfaa76811fa329554d5f4bd88b9a6e03e0b4ad7d" translate="yes" xml:space="preserve">
+          <source>It is pretty obvious what the named ranges &lt;code&gt;Months&lt;/code&gt; and &lt;code&gt;MonthlySales&lt;/code&gt; contain, and what the procedure is doing.</source>
+          <target state="translated">&lt;code&gt;Months&lt;/code&gt; 및 &lt;code&gt;MonthlySales&lt;/code&gt; 라는 명명 된 범위에 포함 된 내용과 절차가 수행중인 작업이 매우 분명합니다.</target>
+        </trans-unit>
+        <trans-unit id="5ad7d1bf5793ee33867d812b4a5ba5ca5ff61785" translate="yes" xml:space="preserve">
+          <source>It is usually the main cause of runtime errors.</source>
+          <target state="translated">일반적으로 런타임 오류의 주요 원인입니다.</target>
+        </trans-unit>
+        <trans-unit id="201fe044a2fb275379e6872e86fe757d6a288ae0" translate="yes" xml:space="preserve">
+          <source>It really depends on what you are trying to do. Anyway a simple example could be useful. Let's suppose that you want to set the value of the active cell to &quot;foo&quot;. Using ActiveCell you would write something like this:</source>
+          <target state="translated">실제로 당신이하려는 일에 달려 있습니다. 어쨌든 간단한 예가 유용 할 수 있습니다. 활성 셀의 값을 &quot;foo&quot;로 설정하려고한다고 가정하십시오. ActiveCell을 사용하면 다음과 같이 작성할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="ff99bc44597d2d4c55a57cdf57976aef1d2bc4e6" translate="yes" xml:space="preserve">
+          <source>It slows down your code.</source>
+          <target state="translated">코드 속도가 느려집니다.</target>
+        </trans-unit>
+        <trans-unit id="ad428f8c472dea0571feb2430daf298a70e70a94" translate="yes" xml:space="preserve">
+          <source>Named ranges ensure that your macros do not break when (not if!) the configuration of the spreadsheet changes.</source>
+          <target state="translated">명명 된 범위는 스프레드 시트의 구성이 변경 될 때 매크로가 깨지지 않도록합니다.</target>
+        </trans-unit>
+        <trans-unit id="a58c2c2aa99585df7fde3e6747abc640a32ec180" translate="yes" xml:space="preserve">
+          <source>Named ranges make your code easier to read and understand.</source>
+          <target state="translated">명명 된 범위를 사용하면 코드를보다 쉽게 ​​읽고 이해할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="13c323eb1978f7ee0ff5123b07d0ef78e67196d2" translate="yes" xml:space="preserve">
+          <source>Not copying values, but taking them</source>
+          <target state="translated">값을 복사하지 않고 가져옵니다.</target>
+        </trans-unit>
+        <trans-unit id="8d07f1f7a3605d5cbc3b8666a34b7d361ba61207" translate="yes" xml:space="preserve">
+          <source>Note that &quot;0&quot; is not needed in the offset parameter if not needed (,2)</source>
+          <target state="translated">필요하지 않은 경우 오프셋 매개 변수에 &quot;0&quot;이 필요하지 않습니다 (, 2).</target>
+        </trans-unit>
+        <trans-unit id="ce24df35a6acd90a6c665387396054ce7dd32a42" translate="yes" xml:space="preserve">
+          <source>On the other hand, &lt;code&gt;.Select&lt;/code&gt; and &lt;code&gt;.Activate&lt;/code&gt; are of use when you can infer the user's next action and you want your code to guide the user, possibly saving him some time and mouse clicks. For example, if your code just created a brand new instance of a chart or updated one, the user might want to check it out, and you could call &lt;code&gt;.Activate&lt;/code&gt; on it or its sheet to save the user the time searching for it; or if you know the user will need to update some range values, you can programatically select that range.</source>
+          <target state="translated">반면에 &lt;code&gt;.Select&lt;/code&gt; 및 &lt;code&gt;.Activate&lt;/code&gt; 는 사용자의 다음 동작을 유추 할 수 있고 코드에서 사용자를 안내하여 시간과 마우스 클릭을 줄일 수있는 경우에 사용됩니다. 예를 들어, 코드에서 방금 차트의 새 인스턴스를 만들거나 업데이트 한 경우 사용자가 해당 차트를 확인하고 &lt;code&gt;.Activate&lt;/code&gt; 를 호출하여 사용자가 검색하는 시간을 절약 할 수 있습니다. 또는 사용자가 일부 범위 값을 업데이트해야한다는 것을 알고 있으면 프로그래밍 방식으로 해당 범위를 선택할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="8a5631d586cbbc18aba6d9d7014311024dadc2f9" translate="yes" xml:space="preserve">
+          <source>One small point of emphasis I'll add to all the excellent answers given above:</source>
+          <target state="translated">위에서 언급 한 모든 훌륭한 답변에 한 가지 작은 강조점을 추가하겠습니다.</target>
+        </trans-unit>
+        <trans-unit id="761062da63f5c2dfd2f32bfa21813d6c157419fc" translate="yes" xml:space="preserve">
+          <source>Or you could</source>
+          <target state="translated">아니면 당신은 할 수</target>
+        </trans-unit>
+        <trans-unit id="242daa76d32fe1291a06f3b0520926d68ab2cce2" translate="yes" xml:space="preserve">
+          <source>Otherwise, there is nothing implicitly wrong with &lt;code&gt;.select&lt;/code&gt; itself and you can find uses for this easily, e.g. I have a spreadsheet that I populate with date, activate macro that does some magic with it and exports it in an acceptable format on a separate sheet, which, however, requires some final manual (unpredictable) inputs into an adjacent cell. So here comes the moment for &lt;code&gt;.select&lt;/code&gt; that saves me that additional mouse movement and click.</source>
+          <target state="translated">그렇지 않으면 &lt;code&gt;.select&lt;/code&gt; 자체에 묵시적으로 아무런 문제가 없으며 쉽게 사용할 수 있습니다. 예를 들어 날짜가 채워진 스프레드 시트가 있고 마법을 사용하는 매크로를 활성화하고 별도의 시트에 허용되는 형식으로 내보내는 경우 그러나 인접 셀에 대한 최종 수동 (예측 불가능) 입력이 필요합니다. 여기에 &lt;code&gt;.select&lt;/code&gt; 의 순간이 생겨서 추가 마우스 움직임과 클릭을 저장합니다.</target>
+        </trans-unit>
+        <trans-unit id="32b3a37f94a8c922d5c28e8c5a5f7c0bbdea6152" translate="yes" xml:space="preserve">
+          <source>Pass ranges to your &lt;code&gt;Sub&lt;/code&gt;s and &lt;code&gt;Function&lt;/code&gt;s as Range variables</source>
+          <target state="translated">범위 변수로 범위를 &lt;code&gt;Sub&lt;/code&gt; 및 &lt;code&gt;Function&lt;/code&gt; 에 전달</target>
+        </trans-unit>
+        <trans-unit id="0abd2efbaeebc3f9874d726f6b5be41e099a7bb1" translate="yes" xml:space="preserve">
+          <source>Please note that in the following I'm comparing the Select approach (the one that the OP wants to avoid), with the Range approach (and this is the answer to the question). So don't stop reading when you see the first Select.</source>
+          <target state="translated">다음에서는 Select 접근법 (OP가 피하고 싶은 접근법)과 Range 접근법을 비교하고 있습니다 (이것은 질문에 대한 답변입니다). 따라서 첫 번째 선택이 표시 될 때 읽기를 중단하지 마십시오.</target>
+        </trans-unit>
+        <trans-unit id="84b6d862dbab1b92cc220f9f74080e54427e1405" translate="yes" xml:space="preserve">
+          <source>Probably the biggest thing you can do to avoid using Select is to &lt;strong&gt;&lt;em&gt;as much as possible, use named ranges (combined with meaningful variable names) in your VBA code&lt;/em&gt;&lt;/strong&gt;. This point was mentioned above, but glossed over a bit; however, it deserves special attention.</source>
+          <target state="translated">아마도 Select 사용을 피하기 위해 할 수있는 가장 큰 일은 &lt;strong&gt;&lt;em&gt;VBA 코드에서 가능한 한 의미있는 변수 이름과 결합 된 명명 된 범위를 사용하는 것&lt;/em&gt;&lt;/strong&gt; 입니다. 이 점은 위에서 언급했지만 조금씩 빛났다. 그러나 특별한주의가 필요합니다.</target>
+        </trans-unit>
+        <trans-unit id="c19b9e55c4b41a683af84fb571d28868be5285ec" translate="yes" xml:space="preserve">
+          <source>Quick Answer:</source>
+          <target state="translated">빠른 답변 :</target>
+        </trans-unit>
+        <trans-unit id="76837e683f1ab6c8eace2b2bf42966d8b27bd806" translate="yes" xml:space="preserve">
+          <source>Similar to the previous example a minus 1 would be &lt;code&gt;i4&lt;/code&gt;</source>
+          <target state="translated">이전 예와 유사하게 빼기 1은 &lt;code&gt;i4&lt;/code&gt; 입니다.</target>
+        </trans-unit>
+        <trans-unit id="ccaa5dfd9846264e3d7b54e960eb926a1df91b66" translate="yes" xml:space="preserve">
+          <source>So to change the value of cell &quot;A1&quot; in &quot;Output&quot; to &quot;Hello&quot;, instead of:</source>
+          <target state="translated">따라서 &quot;출력&quot;의 &quot;A1&quot;셀 값을 &quot;Hello&quot;로 변경하려면 다음을 수행하십시오.</target>
+        </trans-unit>
+        <trans-unit id="6349bc802ce809cbc798d6a0e4404ab7b4fd0fb0" translate="yes" xml:space="preserve">
+          <source>So, you can eliminate these issues by directly referencing your cells.  Which goes:</source>
+          <target state="translated">따라서 셀을 직접 참조하여 이러한 문제를 제거 할 수 있습니다. 간다 :</target>
+        </trans-unit>
+        <trans-unit id="3317d77437344f8effb7824986e8599bc1c40a6f" translate="yes" xml:space="preserve">
+          <source>Some examples of how to avoid select</source>
+          <target state="translated">선택을 피하는 방법의 몇 가지 예</target>
+        </trans-unit>
+        <trans-unit id="71c86c440c43a975779bcd286f8334855549bb73" translate="yes" xml:space="preserve">
+          <source>The &quot;Set wb = ThisWorkbook&quot; command is absolutely key. &quot;ThisWorkbook&quot; is a special value in Excel, and it means the workbook that your VBA code is &lt;em&gt;currently running from&lt;/em&gt;. A very helpful shortcut to set your Workbook variable with.</source>
+          <target state="translated">&quot;Set wb = ThisWorkbook&quot;명령은 절대적으로 중요합니다. &quot;ThisWorkbook&quot;은 Excel에서 특별한 값이며 VBA 코드가 &lt;em&gt;현재 실행중인&lt;/em&gt; 통합 문서를 의미합니다. 통합 문서 변수를 설정하는 데 유용한 바로 가기입니다.</target>
+        </trans-unit>
+        <trans-unit id="5fee5abcdd7dbc77b9703f21e028afc5cb7a5c70" translate="yes" xml:space="preserve">
+          <source>The actual code to process could be anything from a single line to multiple modules. I have used this method to initiate long running routines on a ragged selection of cells containing the filenames of external workbooks.</source>
+          <target state="translated">처리 할 실제 코드는 한 줄에서 여러 모듈에 이르기까지 모든 것이 될 수 있습니다. 이 방법을 사용하여 외부 통합 문서의 파일 이름을 포함하는 거친 셀 선택에서 장기 실행 루틴을 시작했습니다.</target>
+        </trans-unit>
+        <trans-unit id="abe06f7a26cb0d5cb85b28afa84b21fb132154a3" translate="yes" xml:space="preserve">
+          <source>The example from above would look like this:</source>
+          <target state="translated">위의 예는 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="232e072f73db13abfe2c99fdf56f713a07b7b7bd" translate="yes" xml:space="preserve">
+          <source>The main reason never to use Select or Activesheet is because most people will have at least another couple of workbooks open (sometimes dozens) when they run your macro, and if they click away from your sheet while your macro is running and click on some other book they have open, then the &quot;Activesheet&quot; changes, and the target workbook for an unqualified &quot;Select&quot; command changes as well.</source>
+          <target state="translated">Select 또는 Activesheet를 사용하지 않는 주된 이유는 대부분의 사람들이 매크로를 실행할 때 적어도 몇 개의 통합 문서가 열리거나 (때로는 수십 개) 매크로가 실행되는 동안 시트에서 멀리 클릭하고 다른 시트를 클릭하기 때문입니다. 책을 연 다음 &quot;Activesheet&quot;가 변경되고 규정되지 않은 &quot;Select&quot;명령의 대상 통합 문서도 변경됩니다.</target>
+        </trans-unit>
+        <trans-unit id="2b87517a7b7db3e49616eda0b99c113c8df61e36" translate="yes" xml:space="preserve">
+          <source>Then you can rewrite Macro2 as:</source>
+          <target state="translated">그런 다음 Macro2를 다음과 같이 다시 작성할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="5ccd7090c87aa3e8666028fc4b07152cb2712b92" translate="yes" xml:space="preserve">
+          <source>There are times when having short, time-saving macro sub routines assigned to hot-key combinations available with the tap of a couple of keys saves a lot of time. Being able to select a group of cells to enact the operational code on works wonders when dealing with pocketed data that does not conform to a worksheet-wide data format. Much in the same way that you might select a group of cells and apply a format change, selecting a group of cells to run special macro code against can be a major time saver.</source>
+          <target state="translated">단축키를 조합하여 짧고 시간을 절약 할 수있는 매크로 서브 루틴을 두 개만 누르면 시간을 많이 절약 할 수 있습니다. 워크 시트 전체의 데이터 형식을 준수하지 않는 포켓 데이터를 처리 할 때 작업 코드에서 작동하도록 셀 그룹을 선택할 수 있다는 것은 놀라운 일입니다. 셀 그룹을 선택하고 형식 변경을 적용 할 수있는 것과 같은 방식으로 셀 그룹을 선택하여 특수 매크로 코드를 실행하면 시간을 크게 절약 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="e09d2880bfcc8b2dffdda0f2fc4363c4a3bb96b6" translate="yes" xml:space="preserve">
+          <source>There are various combinations of these methods, but that would be the general idea expressed as shortly as possible for impatient people like me.</source>
+          <target state="translated">이러한 방법에는 여러 가지 조합이 있지만 나 같은 초조 한 사람들에게는 가능한 한 빨리 표현되는 일반적인 아이디어가 될 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="4a135e576f2a780630edd1a83b84c56e5ce6b835" translate="yes" xml:space="preserve">
+          <source>These aren't to say they are &quot;better&quot; than the above options, but just listing alternatives.</source>
+          <target state="translated">이것들은 위의 옵션보다 &quot;더 나은&quot;것이 아니라 대안을 나열하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="60a34910e232eb57b418886648c46ba303e02e75" translate="yes" xml:space="preserve">
+          <source>These methods are rather stigmatized, so taking the lead of @Vityata and @Jeeped for the sake of drawing a line in the sand:</source>
+          <target state="translated">이 방법들은 다소 비난을 받으므로 모래에 선을 그리는 것을 위해 @Vityata와 @Jeeped를 이끌어갑니다.</target>
+        </trans-unit>
+        <trans-unit id="929bf8332f019b9414f7499db2ba21af5d19d7a3" translate="yes" xml:space="preserve">
+          <source>This code can also be written as</source>
+          <target state="translated">이 코드는 다음과 같이 작성할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="8f3ca10303fe3f18ca0db94d265c340831916367" translate="yes" xml:space="preserve">
+          <source>This code will work just fine at first - that is until you or a future user decides &quot;gee wiz, I think I'm going to add a new column with the year in Column &lt;code&gt;A&lt;/code&gt;!&quot;, or put an expenses column between the months and sales columns, or add a header to each column. Now, your code is broken. And because you used terrible variable names, it will take you a lot more time to figure out how to fix it than it should take.</source>
+          <target state="translated">이 코드는 처음에는 잘 작동합니다. 즉, 귀하 또는 미래의 사용자가 &quot;gee wiz&quot;를 결정할 때까지, 나는 &lt;code&gt;A&lt;/code&gt; 열에 연도를 가진 새 열을 추가 할 것입니다! &quot;또는 몇 개월 사이에 비용 열을 넣을 것입니다 및 판매 항목을 추가하거나 각 항목에 헤더를 추가하십시오. 이제 코드가 깨졌습니다. 그리고 끔찍한 변수 이름을 사용했기 때문에 필요한 것보다 수정하는 방법을 알아내는 데 훨씬 많은 시간이 걸립니다.</target>
+        </trans-unit>
+        <trans-unit id="eacc091cdbc76177f176d8b0e9bd243614c3c187" translate="yes" xml:space="preserve">
+          <source>This is a small taster for what's possible.</source>
+          <target state="translated">이것은 가능한 것에 대한 작은 맛보기입니다.</target>
+        </trans-unit>
+        <trans-unit id="ae0989b74e24d3660df0f50524cb9716b7eda992" translate="yes" xml:space="preserve">
+          <source>This is an example that will clear the contents of cell &quot;A1&quot; (or more if the selection type is xllastcell, etc). All done without having to select the cells.</source>
+          <target state="translated">셀 &quot;A1&quot;의 내용을 지우는 예제입니다 (선택 유형이 xllastcell 등인 경우 이상). 셀을 선택할 필요없이 모두 완료되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="762ebf2457ee279a98fd5649ebb9cbc3cd6a7b9d" translate="yes" xml:space="preserve">
+          <source>This is bad:</source>
+          <target state="translated">이것은 나쁘다 :</target>
+        </trans-unit>
+        <trans-unit id="0d41dbd9ad4957e46b3782cd01ec1fafee48d61f" translate="yes" xml:space="preserve">
+          <source>This is probably the most common mistake in &lt;a href=&quot;/questions/tagged/vba&quot;&gt;vba&lt;/a&gt;. Whenever you copy ranges, sometimes the worksheet is not referenced and thus VBA considers the wrong sheet the ActiveWorksheet.</source>
+          <target state="translated">이것은 아마도 &lt;a href=&quot;/questions/tagged/vba&quot;&gt;vba&lt;/a&gt; 에서 가장 흔한 실수 일 것입니다. 범위를 복사 할 때마다 때때로 워크 시트가 참조되지 않으므로 VBA는 잘못된 시트를 ActiveWorksheet로 간주합니다.</target>
+        </trans-unit>
+        <trans-unit id="5e122b50935040e5fd1d6401fcf8c058d49ea198" translate="yes" xml:space="preserve">
+          <source>This will change the cell &lt;code&gt;J6&lt;/code&gt; to be a value of 12</source>
+          <target state="translated">이것은 셀 &lt;code&gt;J6&lt;/code&gt; 을 12의 값으로 변경합니다</target>
+        </trans-unit>
+        <trans-unit id="08d9486971b376a463a863dc46d7024a72f24f2e" translate="yes" xml:space="preserve">
+          <source>This will clear values in all cells in the column k.</source>
+          <target state="translated">그러면 k 열의 모든 셀에서 값이 지워집니다.</target>
+        </trans-unit>
+        <trans-unit id="20b8048458adb606f2b1e1a196e5e1d0910514c8" translate="yes" xml:space="preserve">
+          <source>This will copy the cell in &lt;code&gt;k4&lt;/code&gt; to &lt;code&gt;L4&lt;/code&gt;.</source>
+          <target state="translated">이것은 &lt;code&gt;k4&lt;/code&gt; 의 셀을 &lt;code&gt;L4&lt;/code&gt; 에 복사합니다.</target>
+        </trans-unit>
+        <trans-unit id="c4280da2552c89b41daaf9e638bcff148983122b" translate="yes" xml:space="preserve">
+          <source>Thus, something like the code below is absolutely OK:</source>
+          <target state="translated">따라서 아래 코드와 같은 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="b29db0a9ebce0d821cd293ea4647e15fe52b8f73" translate="yes" xml:space="preserve">
+          <source>To avoid using the &lt;code&gt;.Select&lt;/code&gt; method you can set a variable equal to the property that you want.</source>
+          <target state="translated">&lt;code&gt;.Select&lt;/code&gt; 메서드를 사용하지 않으려면 원하는 속성과 같은 변수를 설정할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="7e7fbc811015943c1c30e7ceeea8b05c76a8ee58" translate="yes" xml:space="preserve">
+          <source>To:</source>
+          <target state="translated">To:</target>
+        </trans-unit>
+        <trans-unit id="b5d0d629ad0e2b5237278acee2d84781c70e9023" translate="yes" xml:space="preserve">
+          <source>Try always to reference the Worksheet as well</source>
+          <target state="translated">항상 워크 시트를 참조하십시오</target>
+        </trans-unit>
+        <trans-unit id="820d37aca0668bb02b9cb9b9176812569cde5943" translate="yes" xml:space="preserve">
+          <source>Use &lt;code&gt;Dim&lt;/code&gt;'d variables</source>
+          <target state="translated">&lt;code&gt;Dim&lt;/code&gt; 'd 변수 사용</target>
+        </trans-unit>
+        <trans-unit id="8c02248d1ef375250bb52904ec3aa6867866086e" translate="yes" xml:space="preserve">
+          <source>Using Ranges you can write a more generic macro that can be used to set the value of any cell you want to whatever you want:</source>
+          <target state="translated">범위를 사용하면 원하는 셀의 값을 원하는대로 설정하는 데 사용할 수있는보다 일반적인 매크로를 작성할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="a1d131a998e15e990e02311e0e95ed6f9b0aaa23" translate="yes" xml:space="preserve">
+          <source>Using fancy named ranges</source>
+          <target state="translated">멋진 명명 된 범위 사용</target>
+        </trans-unit>
+        <trans-unit id="6d9d1adab2b726167f433785499507aa1f2706a1" translate="yes" xml:space="preserve">
+          <source>Usually, if you are willing to &lt;code&gt;select&lt;/code&gt;, most probably you are copying something. If you are only interested in the values, this is a good option to avoid select:</source>
+          <target state="translated">일반적으로를 &lt;code&gt;select&lt;/code&gt; 하려는 경우 무언가를 복사하는 것입니다. 값에만 관심이있는 경우 선택을 피하는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="62f1316df6e963f4c1cb189f5c550cf5322ce17d" translate="yes" xml:space="preserve">
+          <source>We can now do this:</source>
+          <target state="translated">우리는 이제 이것을 할 수 있습니다 :</target>
+        </trans-unit>
+        <trans-unit id="3db9289846abc2602cc47e2f88e6fd49aa2e29fc" translate="yes" xml:space="preserve">
+          <source>When a command only works with &lt;code&gt;ActiveWindow&lt;/code&gt; like &lt;a href=&quot;https://github.com/Vitosh/VBA_personal/blob/master/Boilerplate/Boilerplate%20VitoshAcademy/tblInput.vb&quot;&gt;ActiveWindow.Zoom&lt;/a&gt; or &lt;a href=&quot;https://github.com/Vitosh/VBA_personal/blob/master/Boilerplate/Boilerplate%20VitoshAcademy/ExcelAdditional.bas&quot;&gt;ActiveWindow.FreezePanes&lt;/a&gt;</source>
+          <target state="translated">명령이 &lt;a href=&quot;https://github.com/Vitosh/VBA_personal/blob/master/Boilerplate/Boilerplate%20VitoshAcademy/tblInput.vb&quot;&gt;ActiveWindow.Zoom&lt;/a&gt; 또는 &lt;a href=&quot;https://github.com/Vitosh/VBA_personal/blob/master/Boilerplate/Boilerplate%20VitoshAcademy/ExcelAdditional.bas&quot;&gt;ActiveWindow.FreezePanes&lt;/a&gt; 와 같은 ActiveWindow 에서만 작동하는 경우</target>
+        </trans-unit>
+        <trans-unit id="664c3ec1724c39e9d817d23e1add267175c2243c" translate="yes" xml:space="preserve">
+          <source>When to call &lt;code&gt;.Activate&lt;/code&gt;, &lt;code&gt;.Select&lt;/code&gt;, &lt;code&gt;.Selection&lt;/code&gt;, &lt;code&gt;.ActiveSomething&lt;/code&gt; methods/properties</source>
+          <target state="translated">&lt;code&gt;.Activate&lt;/code&gt; , &lt;code&gt;.Select&lt;/code&gt; , &lt;code&gt;.Selection&lt;/code&gt; , &lt;code&gt;.ActiveSomething&lt;/code&gt; 메소드 / 프로퍼티를 호출 할 때</target>
+        </trans-unit>
+        <trans-unit id="18f1fbe694af57d98b927314b300825941887eef" translate="yes" xml:space="preserve">
+          <source>When you want to copy range between worksheets:</source>
+          <target state="translated">워크 시트간에 범위를 복사하려는 경우 :</target>
+        </trans-unit>
+        <trans-unit id="ba9b0865f911659398740f3174b15810ea5acab0" translate="yes" xml:space="preserve">
+          <source>Which is not only much more reliable and less likely to crash if the user is working with multiple spreadsheets, it's also much shorter, quicker and easier to write.</source>
+          <target state="translated">사용자가 여러 스프레드 시트로 작업하는 경우 훨씬 더 안정적이며 충돌 가능성이 적을뿐만 아니라 훨씬 짧고 빠르며 작성하기 쉽습니다.</target>
+        </trans-unit>
+        <trans-unit id="09932fb3aef04cea54af61c310221424cea0a4e5" translate="yes" xml:space="preserve">
+          <source>While I cannot think of any more than an isolated handful of situations where &lt;code&gt;.Select&lt;/code&gt; would be a better choice than direct cell referencing, I would rise to the defense of &lt;code&gt;Selection&lt;/code&gt; and point out that it should not be thrown out for the same reasons that &lt;code&gt;.Select&lt;/code&gt; should be avoided.</source>
+          <target state="translated">직접 셀 참조보다 &lt;code&gt;.Select&lt;/code&gt; 가 더 나은 선택이 될 수있는 고립 된 소수의 상황 이상을 생각할 수는 없지만, &lt;code&gt;Selection&lt;/code&gt; 방어에 나서서 같은 이유로 포기해서는 안된다고 지적합니다 &lt;code&gt;.Select&lt;/code&gt; 을 피해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="0a6152210d03ead206f38c1da3eb6a5db226d13c" translate="yes" xml:space="preserve">
+          <source>Why is this important? Partially because it is easier for other people to understand it, but even if you are the only person who will ever see or use your code, you should still use named ranges and good variable names because &lt;strong&gt;&lt;em&gt;YOU WILL FORGET&lt;/em&gt;&lt;/strong&gt; what you meant to do with it a year later, and &lt;strong&gt;&lt;em&gt;you will waste&lt;/em&gt;&lt;/strong&gt; 30 minutes just figuring out what your code is doing.</source>
+          <target state="translated">이것이 왜 중요한가? 부분적으로 다른 사람들이 이해하기 쉽기 때문에 코드를 보거나 사용하는 유일한 사람이더라도 이름이 지정된 범위와 좋은 변수 이름을 사용해야합니다. 1 년 후, 코드의 기능을 파악하는 데 30 분이 소요됩니다.</target>
+        </trans-unit>
+        <trans-unit id="132048d27141895d32dea0e4d12d74cb144590fd" translate="yes" xml:space="preserve">
+          <source>Why not call &lt;code&gt;.Activate&lt;/code&gt;, &lt;code&gt;.Select&lt;/code&gt;, &lt;code&gt;Selection&lt;/code&gt;, &lt;code&gt;ActiveSomething&lt;/code&gt; methods/properties</source>
+          <target state="translated">&lt;code&gt;.Activate&lt;/code&gt; , &lt;code&gt;.Select&lt;/code&gt; , &lt;code&gt;Selection&lt;/code&gt; , &lt;code&gt;ActiveSomething&lt;/code&gt; 메서드 / 속성을 호출하지 않는 이유</target>
+        </trans-unit>
+        <trans-unit id="e17d9b760fa5d36bbd15d9bca87074516c81d248" translate="yes" xml:space="preserve">
+          <source>Working with .Parent feature. This example shows how setting only one myRng reference enables dynamic access to the entire environment with no .Select, .Activate, .Activecell, .ActiveWorkbook, .ActiveSheet and so on. (There's no genereic .Child feature)</source>
+          <target state="translated">부모 기능 사용 이 예제는 하나의 myRng 참조 만 설정하여 .Select, .Activate, .Activecell, .ActiveWorkbook, .ActiveSheet 등없이 전체 환경에 동적으로 액세스하는 방법을 보여줍니다. (일반적인 자식 기능은 없습니다)</target>
+        </trans-unit>
+        <trans-unit id="1508720ece33c2584914411ccc009c19c7e36381" translate="yes" xml:space="preserve">
+          <source>You &lt;em&gt;can&lt;/em&gt; use the shortcut to the &lt;code&gt;Evaluate&lt;/code&gt; method, but this is less efficient and should generally be avoided in production code.</source>
+          <target state="translated">&lt;code&gt;Evaluate&lt;/code&gt; 방법 바로 가기를 사용할 &lt;em&gt;수&lt;/em&gt; 있지만 효율성이 떨어 지므로 일반적으로 프로덕션 코드에서는 피해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="a1de300f4a1c4b4c7e7122036a1192f5eb62c4eb" translate="yes" xml:space="preserve">
+          <source>You can also use the &lt;code&gt;ThisWorkbook&lt;/code&gt; object to refer to the book containing the running code.</source>
+          <target state="translated">&lt;code&gt;ThisWorkbook&lt;/code&gt; 개체를 사용하여 실행 코드가 포함 된 책을 참조 할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="1b0f18f5b5700344d106581cc1ef1edf1a937cde" translate="yes" xml:space="preserve">
+          <source>You don't know what other workbooks will be open when the user runs your code.</source>
+          <target state="translated">사용자가 코드를 실행할 때 어떤 다른 통합 문서가 열릴 지 알 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="b567a50d846bbc185751ba49c0c391aab667ea78" translate="yes" xml:space="preserve">
+          <source>You may access them with &lt;code&gt;[]&lt;/code&gt;, which is really beautiful, compared to the other way. Check yourself:</source>
+          <target state="translated">다른 방법에 비해 &lt;code&gt;[]&lt;/code&gt; 정말 아름답습니다. 자신을 확인하십시오 :</target>
+        </trans-unit>
+        <trans-unit id="45f73eb1e95dbceb0d425d807da5afe4b3ce6e16" translate="yes" xml:space="preserve">
+          <source>You should also apply Methods (such as &lt;code&gt;Find&lt;/code&gt; and &lt;code&gt;Copy&lt;/code&gt;) to variables</source>
+          <target state="translated">또한 메소드 (예 : &lt;code&gt;Find&lt;/code&gt; 및 &lt;code&gt;Copy&lt;/code&gt; )를 변수에 적용해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="d2f66f82c75e0adb5a4b880874806ebe3f59a263" translate="yes" xml:space="preserve">
+          <source>You'll get .select and .activate whenever you record macros and reuse them.  When you .select a cell or sheet it just makes it active.  From that point on whenever you use unqualified references like &lt;code&gt;Range.Value&lt;/code&gt; they just use the active cell and sheet.  This can also be problematic if you don't watch where your code is placed or a user clicks on the workbook.</source>
+          <target state="translated">매크로를 기록하고 재사용 할 때마다 .select 및 .activate가 표시됩니다. 셀이나 시트를 선택하면 활성화됩니다. 그 시점부터 &lt;code&gt;Range.Value&lt;/code&gt; 와 같은 규정되지 않은 참조를 사용할 때마다 활성 셀과 시트 만 사용됩니다. 코드의 위치를 ​​보지 않거나 사용자가 통합 문서를 클릭하는 경우에도 문제가 될 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="7e2fb968a45f3910e02ba7ce0b0ea0809f985cc3" translate="yes" xml:space="preserve">
+          <source>for example</source>
+          <target state="translated">예를 들어</target>
+        </trans-unit>
+        <trans-unit id="0ebdc211de2dfa5eadfec7af61e45b784eadf3f9" translate="yes" xml:space="preserve">
+          <source>or a multi-cell range</source>
+          <target state="translated">또는 다중 셀 범위</target>
+        </trans-unit>
+        <trans-unit id="db79665cffa616a326a2d28c638db4c3d9635d03" translate="yes" xml:space="preserve">
+          <source>► For instance, if you want the codename of 'Sheet3` you could set a variable equal to the codename property of that worksheet.</source>
+          <target state="translated">► 예를 들어 코드 이름이 'Sheet3'인 경우 해당 워크 시트의 codename 속성과 같은 변수를 설정할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="0c76659031ced3ca2a500590e56bef41650de411" translate="yes" xml:space="preserve">
+          <source>► For instance, if you want the value in &lt;code&gt;Cell A1&lt;/code&gt; you could set a variable equal to the value property of that cell.</source>
+          <target state="translated">► 예를 들어 &lt;code&gt;Cell A1&lt;/code&gt; 의 값을 원하는 경우 해당 셀의 value 속성과 같은 변수를 설정할 수 있습니다.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,1419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/231767">
+    <body>
+      <group id="231767">
+        <trans-unit id="3ab3cb492545479a81b590f95c9c450455ddcdb4" translate="yes" xml:space="preserve">
+          <source>&quot;&lt;em&gt;next&lt;/em&gt;&quot; is a message sent to a closure, created by the &quot;&lt;em&gt;iter&lt;/em&gt;&quot; call.</source>
+          <target state="translated">&amp;ldquo; &lt;em&gt;next&lt;/em&gt; &amp;rdquo;是发送到闭包的消息，由&amp;ldquo; &lt;em&gt;iter&lt;/em&gt; &amp;rdquo;调用创建。</target>
+        </trans-unit>
+        <trans-unit id="1c0a4cfbcf63e8fb4ae3a319aeb3fe7f9e9106c2" translate="yes" xml:space="preserve">
+          <source>&amp;hellip; repeat previous step, until&amp;hellip;</source>
+          <target state="translated">&amp;hellip;重复上一步，直到&amp;hellip;</target>
+        </trans-unit>
+        <trans-unit id="a6bd3f8f802396a1fb3f884b82392e785e8a7356" translate="yes" xml:space="preserve">
+          <source>(Appendix critiques a couple of answers, including the top one, and discusses the use of &lt;code&gt;return&lt;/code&gt; in a generator.)</source>
+          <target state="translated">（附录对几个答案进行了评论，包括最上面的一个，并讨论了生成器中 &lt;code&gt;return&lt;/code&gt; 的用法。）</target>
+        </trans-unit>
+        <trans-unit id="911bcad209bd54af6df884267feb81dcf90ade83" translate="yes" xml:space="preserve">
+          <source>(My below answer only speaks from the perspective of using Python generator, not the &lt;a href=&quot;https://stackoverflow.com/questions/8389812/how-are-generators-and-coroutines-implemented-in-cpython&quot;&gt;underlying implementation of generator mechanism&lt;/a&gt;, which involves some tricks of stack and heap manipulation.)</source>
+          <target state="translated">（我下面的回答仅从使用Python生成器的角度讲，而不是&lt;a href=&quot;https://stackoverflow.com/questions/8389812/how-are-generators-and-coroutines-implemented-in-cpython&quot;&gt;生成器机制&lt;/a&gt;的基础实现 ，它涉及堆栈和堆操作的一些技巧。）</target>
+        </trans-unit>
+        <trans-unit id="afb37c24b5b881de80de7247dc75c21ceafe07ec" translate="yes" xml:space="preserve">
+          <source>(Now I want to talk about the rationale behind &lt;code&gt;generator&lt;/code&gt;, and the &lt;code&gt;iterator&lt;/code&gt; based on my own understanding. I hope this can help you grasp the &lt;strong&gt;&lt;em&gt;essential motivation&lt;/em&gt;&lt;/strong&gt; of iterator and generator. Such concept shows up in other languages as well such as C#.)</source>
+          <target state="translated">（现在，我想根据自己的理解来讨论 &lt;code&gt;generator&lt;/code&gt; 的基本原理，以及 &lt;code&gt;iterator&lt;/code&gt; 。我希望这可以帮助您掌握迭代器和generator的&lt;strong&gt;&lt;em&gt;基本动机&lt;/em&gt;&lt;/strong&gt; 。这种概念也出现在其他语言中，例如C＃。）</target>
+        </trans-unit>
+        <trans-unit id="adc9c0af7e633a543a37a61fedbb4daccf85e945" translate="yes" xml:space="preserve">
+          <source>(and specifically a type of coroutine, but continuations represent the more general mechanism to understand what is going on).</source>
+          <target state="translated">并具体地说,是一种类型的冠词,但连续性代表了更一般的理解机制)。</target>
+        </trans-unit>
+        <trans-unit id="5375d7ac510abd4ae6e424a7dc969f2441dd692e" translate="yes" xml:space="preserve">
+          <source>--  Nick Coghlan   |   ncoghlan at gmail.com   |   Brisbane, Australia</source>
+          <target state="translated">ncoghlan at gmail.com</target>
+        </trans-unit>
+        <trans-unit id="62855b351e703dcbddfc4ef993d2891ccb386e20" translate="yes" xml:space="preserve">
+          <source>... then remember that a generator is an &lt;em&gt;iterator&lt;/em&gt;; that is, it is one-time-use. If you want to reuse it, you should call &lt;code&gt;myRange(...)&lt;/code&gt; again. If you need to use the result twice, convert the result to a list and store it in a variable &lt;code&gt;x = list(myRange(5))&lt;/code&gt;. Those who absolutely need to clone a generator (for example, who are doing terrifyingly hackish metaprogramming) can use &lt;a href=&quot;https://docs.python.org/2/library/itertools.html#itertools.tee&quot;&gt;&lt;code&gt;itertools.tee&lt;/code&gt;&lt;/a&gt; if absolutely necessary, since the copyable iterator Python &lt;a href=&quot;http://en.wikipedia.org/wiki/Python_Enhancement_Proposal#Development&quot;&gt;PEP&lt;/a&gt; standards proposal has been deferred.</source>
+          <target state="translated">...然后记住生成器是&lt;em&gt;迭代器&lt;/em&gt; ; 即是一次性使用。 如果要重用它，则应再次调用 &lt;code&gt;myRange(...)&lt;/code&gt; 。 如果需要两次使用结果，请将结果转换为列表，然后将其存储在变量 &lt;code&gt;x = list(myRange(5))&lt;/code&gt; 。 那些绝对需要克隆生成器的人（例如，正在进行骇人的骇客的元编程的人）可以在绝对必要的情况下使用&lt;a href=&quot;https://docs.python.org/2/library/itertools.html#itertools.tee&quot;&gt; &lt;code&gt;itertools.tee&lt;/code&gt; &lt;/a&gt; ，因为可复制的迭代器Python &lt;a href=&quot;http://en.wikipedia.org/wiki/Python_Enhancement_Proposal#Development&quot;&gt;PEP&lt;/a&gt;标准建议已被推迟。</target>
+        </trans-unit>
+        <trans-unit id="164d0459345ae6f00bc812c7394f8917ff09c4bc" translate="yes" xml:space="preserve">
+          <source>...provide the next data in the series.</source>
+          <target state="translated">...提供系列中的下一个数据。</target>
+        </trans-unit>
+        <trans-unit id="391e35abadb8cf99afd59f9fdc30216a58ce407f" translate="yes" xml:space="preserve">
+          <source>...relinquish CPU execution until the iterator advances.</source>
+          <target state="translated">...放弃CPU执行,直到迭代器前进。</target>
+        </trans-unit>
+        <trans-unit id="1827a89fdabc2940a265095fb52eea3cd75fc746" translate="yes" xml:space="preserve">
+          <source>&lt;b&gt;This step corresponds to &lt;code&gt;def&lt;/code&gt;ining the generator function, i.e. the function containing a &lt;code&gt;yield&lt;/code&gt;.&lt;/b&gt;</source>
+          <target state="translated">&lt;b&gt;该步骤对应于定义生成器函数，即包含 &lt;code&gt;yield&lt;/code&gt; 的函数。&lt;/b&gt;</target>
+        </trans-unit>
+        <trans-unit id="22db8f278d2cf3273c51bb64d7f5260d4584c88d" translate="yes" xml:space="preserve">
+          <source>&lt;b&gt;This step corresponds to calling &lt;code&gt;.next()&lt;/code&gt; on the generator object.&lt;/b&gt;</source>
+          <target state="translated">&lt;b&gt;此步骤对应于在生成器对象上调用 &lt;code&gt;.next()&lt;/code&gt; 。&lt;/b&gt;</target>
+        </trans-unit>
+        <trans-unit id="721dffe48ec31d738fb17ec67ecedf85cc9ef1cd" translate="yes" xml:space="preserve">
+          <source>&lt;b&gt;This step corresponds to calling the generator function which returns a generator object.&lt;/b&gt; Note that you don't tell me any numbers yet; you just grab your paper and pencil.</source>
+          <target state="translated">&lt;b&gt;此步骤对应于调用生成器函数，该函数返回生成器对象。&lt;/b&gt; 请注意，您还没有告诉我任何数字。 你只要拿起纸和铅笔。</target>
+        </trans-unit>
+        <trans-unit id="b9a955eec36cf4b6c9a4e64ce4bf09d433135e6a" translate="yes" xml:space="preserve">
+          <source>&lt;b&gt;This step corresponds to the generator object ending its job, and raising a &lt;code&gt;StopIteration&lt;/code&gt; exception&lt;/b&gt; The generator function does not need to raise the exception. It's raised automatically when the function ends or issues a &lt;code&gt;return&lt;/code&gt;.</source>
+          <target state="translated">&lt;b&gt;此步骤对应于生成器对象结束其工作，并引发 &lt;code&gt;StopIteration&lt;/code&gt; 异常&lt;/b&gt; 。生成器函数不需要引发异常。 函数结束或发出 &lt;code&gt;return&lt;/code&gt; 时，它将自动引发。</target>
+        </trans-unit>
+        <trans-unit id="f08ebcf021089bec1572b041eac525a374a0d033" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;list.extend&lt;/code&gt; calls an iterator until it's exhausted. In the case of the code sample you posted, it would be much clearer to just return a tuple and append that to the list.</source>
+          <target state="translated">&lt;code&gt;list.extend&lt;/code&gt; 调用迭代器，直到耗尽为止。 对于您发布的代码示例，返回一个元组并将其附加到列表中会更加清楚。</target>
+        </trans-unit>
+        <trans-unit id="5fea5fac7cbf1b26fe6763d6386ee47d486dbda6" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;list&lt;/code&gt; and &lt;code&gt;generator&lt;/code&gt; are twins</source>
+          <target state="translated">&lt;code&gt;list&lt;/code&gt; 和 &lt;code&gt;generator&lt;/code&gt; 是双胞胎</target>
+        </trans-unit>
+        <trans-unit id="9902af71eb478ea1b302fe4da1da7cf183f39ef8" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;mylist&lt;/code&gt; is an &lt;em&gt;iterable&lt;/em&gt;. When you use a list comprehension, you create a list, and so an iterable:</source>
+          <target state="translated">&lt;code&gt;mylist&lt;/code&gt; 是&lt;em&gt;可迭代的&lt;/em&gt; 。 当您使用列表推导时，您将创建一个列表，因此是可迭代的：</target>
+        </trans-unit>
+        <trans-unit id="38f4e38094ba58e67ca37899086f5ea94d637159" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;return&lt;/code&gt; and &lt;code&gt;yield&lt;/code&gt; are twins</source>
+          <target state="translated">&lt;code&gt;return&lt;/code&gt; 和 &lt;code&gt;yield&lt;/code&gt; 是双胞胎</target>
+        </trans-unit>
+        <trans-unit id="7b01d9479576f8dc8ce3cf24ecbd8c38827200bf" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;yield&lt;/code&gt; forms an expression that allows data to be sent into the generator (see footnote 3)</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 形成一个表达式，该表达式允许将数据发送到生成器中（请参见脚注3）</target>
+        </trans-unit>
+        <trans-unit id="393afd38f0f130b369c23e78f4c43a313a970250" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;yield&lt;/code&gt; is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Syntactic_sugar&quot;&gt;sugary&lt;/a&gt; way to say</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 是一种&lt;a href=&quot;https://en.wikipedia.org/wiki/Syntactic_sugar&quot;&gt;含糖的&lt;/a&gt;说法</target>
+        </trans-unit>
+        <trans-unit id="f0678b46e10ca9ffeda185128b6349088f185f67" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;yield&lt;/code&gt; is a keyword that is used like &lt;code&gt;return&lt;/code&gt;, except the function will return a generator.</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 是一个像 &lt;code&gt;return&lt;/code&gt; 一样使用的关键字，不同之处在于该函数将返回一个生成器。</target>
+        </trans-unit>
+        <trans-unit id="d4184f15f233616d72aa7e7ca25ec3a4265c4298" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;yield&lt;/code&gt; is just like &lt;code&gt;return&lt;/code&gt; - it returns whatever you tell it to (as a generator). The difference is that the next time you call the generator, execution starts from the last call to the &lt;code&gt;yield&lt;/code&gt; statement. Unlike return, &lt;strong&gt;the stack frame is not cleaned up when a yield occurs, however control is transferred back to the caller, so its state will resume the next time the function is called.&lt;/strong&gt;</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 就像 &lt;code&gt;return&lt;/code&gt; 一样-它返回您告诉的任何内容（作为生成器）。 不同之处在于，下次调用生成器时，执行从最后一次调用到 &lt;code&gt;yield&lt;/code&gt; 语句开始。 与return不同的&lt;strong&gt;是，在产生良率时不会清除堆栈帧，但是会将控制权转移回调用者，因此下次调用该函数时，其状态将恢复。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7f48e19febbab48404940d230045aa3e927e5e30" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;yield&lt;/code&gt; is like a return element for a function. The difference is, that the &lt;code&gt;yield&lt;/code&gt; element turns a function into a generator. A generator behaves just like a function until something is 'yielded'. The generator stops until it is next called, and continues from exactly the same point as it started. You can get a sequence of all the 'yielded' values in one, by calling &lt;code&gt;list(generator())&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 就像函数的返回元素一样。 不同之处在于， &lt;code&gt;yield&lt;/code&gt; 元素将函数转换为生成器。 生成器的行为就像函数一样，直到&amp;ldquo;屈服&amp;rdquo;为止。 生成器将停止运行，直到下一次调用为止，并从与启动完全相同的位置继续。 您可以通过调用 &lt;code&gt;list(generator())&lt;/code&gt; 来获得所有&amp;ldquo;屈服&amp;rdquo;值的序列。</target>
+        </trans-unit>
+        <trans-unit id="ce79dbc24d94277033832b51d011f10c74c51c55" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;yield&lt;/code&gt; provides an 
+easy way of &lt;a href=&quot;https://docs.python.org/2/library/stdtypes.html#generator-types&quot;&gt;implementing the iterator protocol&lt;/a&gt;, defined by the following two methods: 
+&lt;code&gt;__iter__&lt;/code&gt; and &lt;code&gt;next&lt;/code&gt; (Python 2) or &lt;code&gt;__next__&lt;/code&gt; (Python 3).  Both of those methods
+make an object an iterator that you could type-check with the &lt;code&gt;Iterator&lt;/code&gt; Abstract Base 
+Class from the &lt;code&gt;collections&lt;/code&gt; module.</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 提供了一种&lt;a href=&quot;https://docs.python.org/2/library/stdtypes.html#generator-types&quot;&gt;实现迭代器协议&lt;/a&gt;的简便方法， 该协议由以下两种方法定义： &lt;code&gt;__iter__&lt;/code&gt; 和 &lt;code&gt;next&lt;/code&gt; （Python 2）或 &lt;code&gt;__next__&lt;/code&gt; （Python 3）。 这两种方法都使对象成为迭代器，您可以使用 &lt;code&gt;collections&lt;/code&gt; 模块中的 &lt;code&gt;Iterator&lt;/code&gt; Abstract Base Class对其进行类型检查。</target>
+        </trans-unit>
+        <trans-unit id="72b1d67b42a7bcd2f82b7a63ae89928f2425a004" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Caller:&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Caller:&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="cff026d6f9aa06262d0a44145fc01e31f8076361" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Generator:&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Generator:&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="c38bed66dadc73d83b4620730a13bb214521445c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;yield&lt;/code&gt;&lt;/strong&gt; is only legal inside of a function definition, and &lt;strong&gt;the inclusion of &lt;code&gt;yield&lt;/code&gt; in a function definition makes it return a generator.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;yield&lt;/code&gt; &lt;/strong&gt;仅在函数定义内部合法，并且&lt;strong&gt; &lt;code&gt;yield&lt;/code&gt; 包含在函数定义中使其返回生成器。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="229ca9910a03e900f64ebcb32c51dbc86e43eacf" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;Execution Control Transfer gotcha&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;执行控制转移陷阱&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="653263d633592b8035eb87354035a2aedee82289" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;As a Python generator:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;作为Python生成器：&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="daa7df2500b97f81040621f58d60cce72d811842" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Calling functions&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;通话功能&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6b934a0ad7383658a04e1dbb7356e9f956f6fa54" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Note:&lt;/strong&gt; For Python 3, use&lt;code&gt;print(corner_street_atm.__next__())&lt;/code&gt; or &lt;code&gt;print(next(corner_street_atm))&lt;/code&gt;</source>
+          <target state="translated">&lt;strong&gt;注意：&lt;/strong&gt;对于Python 3，请使用 &lt;code&gt;print(corner_street_atm.__next__())&lt;/code&gt; 或 &lt;code&gt;print(next(corner_street_atm))&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="284c0cc1c16634ee278d62d9da4d70563394d278" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;TL;DR&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;TL;DR&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="867dc1e5830b6274ed3a21ce05e3f7d42fcc32aa" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;This is the result from the code:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;这是代码的结果：&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="57c3f7ae705716465207e976c5f8b4654e8b8e23" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Using lexical closures instead of generators&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;使用词汇闭包而不是生成器&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="fb818cdf73632877fa6680be81278640e6f5f261" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Using object closures instead of generators&lt;/strong&gt; (because &lt;a href=&quot;http://c2.com/cgi/wiki?ClosuresAndObjectsAreEquivalent&quot;&gt;ClosuresAndObjectsAreEquivalent&lt;/a&gt;)</source>
+          <target state="translated">&lt;strong&gt;使用对象闭包而不是生成器&lt;/strong&gt; （因为&lt;a href=&quot;http://c2.com/cgi/wiki?ClosuresAndObjectsAreEquivalent&quot;&gt;ClosuresAndObjectsAreEquivalent&lt;/a&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="6cd1618b874d384cc3e5eb172422b1adea86fbd2" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What does the &lt;code&gt;yield&lt;/code&gt; keyword do in Python?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;yield&lt;/code&gt; 关键字在Python中有什么作用？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="cf577700a9ff9e3f004ffc00209080b9c3eba6b7" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Yield is an object&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;产量是一个对象&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5bb3a856024a662b96de26aecfd9bd37f19227ac" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;return&lt;/strong&gt; (in function)</source>
+          <target state="translated">&lt;strong&gt;返回&lt;/strong&gt; （函数中）</target>
+        </trans-unit>
+        <trans-unit id="9a40ecb26c7c8562eed416b67a93ab45567e9bd8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;yield&lt;/strong&gt; &amp;mdash; give way or relinquish (as in political power)</source>
+          <target state="translated">&lt;strong&gt;屈服&lt;/strong&gt; &amp;mdash;让步或放弃（如在政治权力中一样）</target>
+        </trans-unit>
+        <trans-unit id="bccdd99e0ed80b5b71ebb537cdf27634a356412a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;yield&lt;/strong&gt; &amp;mdash; produce or provide (as in agriculture)</source>
+          <target state="translated">&lt;strong&gt;产量&lt;/strong&gt; &amp;mdash;生产或提供（如在农业中）</target>
+        </trans-unit>
+        <trans-unit id="2c3677668ae12b29cf20934e6d983bdb8043dd08" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;yield&lt;/strong&gt; (in function)</source>
+          <target state="translated">&lt;strong&gt;产量&lt;/strong&gt; （功能）</target>
+        </trans-unit>
+        <trans-unit id="26de2c12b563c2f9a7febaaeb02a1b7ff942e453" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt;
+1. This piece of code was written by Jochen Schulz (jrschulz), who made a great Python library for metric spaces. This is the link to the complete source: &lt;a href=&quot;http://well-adjusted.de/~jrschulz/mspace/&quot;&gt;Module mspace&lt;/a&gt;.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt;1.这段代码是由Jochen Schulz（jrschulz）编写的，Jochen Schulz是一个很好的用于度量空间的Python库。&lt;/sub&gt; &lt;sub&gt;这是完整源代码的链接： &lt;a href=&quot;http://well-adjusted.de/~jrschulz/mspace/&quot;&gt;Module mspace&lt;/a&gt; 。&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="f79576b025501c7eb386682a764849f89c207838" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt;
+&lt;code&gt;yield&lt;/code&gt; was originally introduced as a statement, meaning that it 
+could only appear at the beginning of a line in a code block. 
+Now &lt;code&gt;yield&lt;/code&gt; creates a yield expression. 
+&lt;a href=&quot;https://docs.python.org/2/reference/simple_stmts.html#grammar-token-yield_stmt&quot;&gt;https://docs.python.org/2/reference/simple_stmts.html#grammar-token-yield_stmt&lt;/a&gt; 
+This change was &lt;a href=&quot;https://www.python.org/dev/peps/pep-0342/#specification-sending-values-into-generators&quot;&gt;proposed&lt;/a&gt; to allow a user to send data into the generator just as
+one might receive it. To send data, one must be able to assign it to something, and
+for that, a statement just won't work.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt; &lt;code&gt;yield&lt;/code&gt; 最初是作为语句引入的，这意味着它只能出现在代码块的一行的开头。&lt;/sub&gt; &lt;sub&gt;现在 &lt;code&gt;yield&lt;/code&gt; 将创建一个yield表达式。&lt;/sub&gt; &lt;sub&gt;&lt;a href=&quot;https://docs.python.org/2/reference/simple_stmts.html#grammar-token-yield_stmt&quot;&gt;https://docs.python.org/2/reference/simple_stmts.html#grammar-token-yield_stmt&lt;/a&gt; &lt;a href=&quot;https://www.python.org/dev/peps/pep-0342/#specification-sending-values-into-generators&quot;&gt;提出&lt;/a&gt;此更改是为了允许用户将数据发送到生成器中，就像接收数据一样。&lt;/sub&gt; &lt;sub&gt;要发送数据，必须能够将其分配给某物，为此，一条语句就行不通了。&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="3ecaefffce9acc4aec2e8eb1485d8144441fb64a" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt; This means, for example, that &lt;code&gt;xrange&lt;/code&gt; objects (&lt;code&gt;range&lt;/code&gt; in Python 3) aren't &lt;code&gt;Iterator&lt;/code&gt;s, even though they are iterable, because they can be reused. Like lists, their &lt;code&gt;__iter__&lt;/code&gt; methods return iterator objects.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt;例如，这意味着 &lt;code&gt;xrange&lt;/code&gt; 对象（Python 3中的 &lt;code&gt;range&lt;/code&gt; ）不是 &lt;code&gt;Iterator&lt;/code&gt; ，即使它们是可迭代的，因为它们可以被重用。&lt;/sub&gt; &lt;sub&gt;像列表一样，它们的 &lt;code&gt;__iter__&lt;/code&gt; 方法返回迭代器对象。&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="6d4047120e95ed7d93b8ea0918529c67a9bc43e4" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt;The languages CLU, Sather, and Icon were referenced in the proposal
+to introduce the concept of generators to Python. The general idea is
+that a function can maintain internal state and yield intermediate 
+data points on demand by the user. This promised to be &lt;a href=&quot;https://www.python.org/dev/peps/pep-0255/&quot;&gt;superior in performance 
+to other approaches, including Python threading&lt;/a&gt;, which isn't even available on some systems.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt;提案中引用了CLU，Sather和Icon语言，以将生成器的概念引入Python。&lt;/sub&gt; &lt;sub&gt;一般的想法是，一个功能可以保持内部状态并根据用户的需求产生中间数据点。&lt;/sub&gt; &lt;sub&gt;这有望&lt;a href=&quot;https://www.python.org/dev/peps/pep-0255/&quot;&gt;在性能上优于其他方法，包括Python线程&lt;/a&gt; ，该方法甚至在某些系统上不可用。&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="45728cd7c825dedfa1bf52fd66ed620c707bd5e8" translate="yes" xml:space="preserve">
+          <source>A &lt;code&gt;return&lt;/code&gt; in a function will return a single value.</source>
+          <target state="translated">函数的返回将返回单个值。</target>
+        </trans-unit>
+        <trans-unit id="f4dca203541c03ec91c7704f277f8cc1b514af3a" translate="yes" xml:space="preserve">
+          <source>A feature of an &lt;code&gt;Iterator&lt;/code&gt;&lt;a href=&quot;https://docs.python.org/2/glossary.html#term-iterator&quot;&gt;is that once exhausted&lt;/a&gt;, you can't reuse or reset it:</source>
+          <target state="translated">&lt;code&gt;Iterator&lt;/code&gt; 一个功能&lt;a href=&quot;https://docs.python.org/2/glossary.html#term-iterator&quot;&gt;是，一旦耗尽&lt;/a&gt; ，就无法重用或重置它：</target>
+        </trans-unit>
+        <trans-unit id="bc88bfb2c2db80515dc1ecb96783382a954c2f20" translate="yes" xml:space="preserve">
+          <source>A function with &lt;a href=&quot;https://docs.python.org/reference/expressions.html#yieldexpr&quot;&gt;&lt;strong&gt;&lt;code&gt;yield&lt;/code&gt;&lt;/strong&gt;&lt;/a&gt;, when called, &lt;strong&gt;returns a &lt;a href=&quot;https://docs.python.org/2/tutorial/classes.html#generators&quot;&gt;Generator&lt;/a&gt;.&lt;/strong&gt;</source>
+          <target state="translated">具有&lt;a href=&quot;https://docs.python.org/reference/expressions.html#yieldexpr&quot;&gt;&lt;strong&gt; &lt;code&gt;yield&lt;/code&gt; &lt;/strong&gt;&lt;/a&gt;的函数在调用时&lt;strong&gt;将返回&lt;a href=&quot;https://docs.python.org/2/tutorial/classes.html#generators&quot;&gt;Generator&lt;/a&gt; 。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="897499bfe1868bc9f693489cbbf23e92d00c56ab" translate="yes" xml:space="preserve">
+          <source>A generator can also be &lt;strong&gt;sent information&lt;/strong&gt;, making it conceptually a &lt;strong&gt;coroutine&lt;/strong&gt;.</source>
+          <target state="translated">生成器也可以&lt;strong&gt;发送信息&lt;/strong&gt; ，从概念上讲是&lt;strong&gt;协程&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="9738265b02043df1ee0a4dc75d4ad9e6a30481dd" translate="yes" xml:space="preserve">
+          <source>A generator differs from a function in the sense that it is lazy. It accomplishes this by maintaining it's local state and allowing you to resume whenever you need to.</source>
+          <target state="translated">生成器与函数的区别在于它是懒惰的。它通过保持它的本地状态并允许你在需要的时候随时恢复。</target>
+        </trans-unit>
+        <trans-unit id="1f888f43eb25e3718593933b4335447760fb8473" translate="yes" xml:space="preserve">
+          <source>A generator is iterable. What is an &lt;em&gt;iterable&lt;/em&gt;? It's anything like a &lt;code&gt;list&lt;/code&gt; or &lt;code&gt;set&lt;/code&gt; or &lt;code&gt;range&lt;/code&gt; or dict-view, with a &lt;em&gt;built-in protocol for visiting each element in a certain order&lt;/em&gt;.</source>
+          <target state="translated">生成器是可迭代的。 什么是&lt;em&gt;可迭代的&lt;/em&gt; ？ 它就像 &lt;code&gt;list&lt;/code&gt; ， &lt;code&gt;set&lt;/code&gt; ， &lt;code&gt;range&lt;/code&gt; 或字典视图一样，带有&lt;em&gt;内置协议，可以按一定顺序访问每个元素&lt;/em&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="40806863ce6fa16185eff4ee6a143d5d9c549f75" translate="yes" xml:space="preserve">
+          <source>A real life example would be something like reading a file line by line or if you just want to make a generator.</source>
+          <target state="translated">一个现实生活中的例子是,比如逐行读取文件,或者你只是想做一个生成器。</target>
+        </trans-unit>
+        <trans-unit id="44cb9a9a8788c105610a9684a6bc2a2b8a67003f" translate="yes" xml:space="preserve">
+          <source>A syntax is proposed for a generator to delegate part of its operations to another generator. This allows a section of code containing 'yield' to be factored out and placed in another generator. Additionally, the subgenerator is allowed to return with a value, and the value is made available to the delegating generator.</source>
+          <target state="translated">我们提出了一个语法,用于将生成器的部分操作委托给另一个生成器。这允许将包含 &quot;收益率 &quot;的代码部分进行计算,并放在另一个生成器中。此外,允许子生成器返回一个值,并将该值提供给委托生成器。</target>
+        </trans-unit>
+        <trans-unit id="74447fa535e8bb207f72d52e27e00da4cbc34ba7" translate="yes" xml:space="preserve">
+          <source>Again, this is a pretty contrived example, you probably would use itertools if you really wanted to count to 50 billion. :)</source>
+          <target state="translated">还是那句话,这是个很虚构的例子,如果你真的想数到500亿,你可能会用itertools。)</target>
+        </trans-unit>
+        <trans-unit id="bd27eb03f93b277d1b217b449e15ffaa08956520" translate="yes" xml:space="preserve">
+          <source>All great answers, however a bit difficult for newbies.</source>
+          <target state="translated">都是很好的答案,不过对于新手来说有点难。</target>
+        </trans-unit>
+        <trans-unit id="2fab016fc71934fbba31dba4e6e38ca3818acafb" translate="yes" xml:space="preserve">
+          <source>Also, note that &lt;code&gt;yield&lt;/code&gt; can be used in coroutines as the dual of their use in generator functions.  Although it isn't the same use as your code snippet, &lt;code&gt;(yield)&lt;/code&gt; can be used as an expression in a function.  When a caller sends a value to the method using the &lt;code&gt;send()&lt;/code&gt; method, then the coroutine will execute until the next &lt;code&gt;(yield)&lt;/code&gt; statement is encountered.</source>
+          <target state="translated">另外，请注意，协程可以将 &lt;code&gt;yield&lt;/code&gt; 用作生成函数的双重用途。 尽管 &lt;code&gt;(yield)&lt;/code&gt; 与代码段用法不同，但它可以用作函数中的表达式。 当调用者使用 &lt;code&gt;send()&lt;/code&gt; 方法向该方法发送值时，协程将一直执行，直到遇到下一个 &lt;code&gt;(yield)&lt;/code&gt; 语句为止。</target>
+        </trans-unit>
+        <trans-unit id="c56156759c86e1fd4089d77e11250c9e375078a7" translate="yes" xml:space="preserve">
+          <source>An &lt;code&gt;expression_list&lt;/code&gt; is basically any number of expressions separated by commas - essentially, in Python 2, you can stop the generator with &lt;code&gt;return&lt;/code&gt;, but you can't return a value.</source>
+          <target state="translated">&lt;code&gt;expression_list&lt;/code&gt; 基本上是用逗号分隔的任意数量的表达式-本质上，在Python 2中，您可以使用 &lt;code&gt;return&lt;/code&gt; 停止生成器，但不能返回值。</target>
+        </trans-unit>
+        <trans-unit id="81d45d4bfb0fa5b224eac8c43cc82a19dfb43fe4" translate="yes" xml:space="preserve">
+          <source>An easy example to understand what it is: &lt;code&gt;yield&lt;/code&gt;</source>
+          <target state="translated">一个简单的例子来了解它是什么： &lt;code&gt;yield&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="cdd85aeb410d39ea117f7d9f6130e19b2898ccdb" translate="yes" xml:space="preserve">
+          <source>An example? Let's see the possible orders of arrival for a four-horse race:</source>
+          <target state="translated">举个例子?让我们来看看四人马比赛可能的到场顺序。</target>
+        </trans-unit>
+        <trans-unit id="29b15a5d175843895768eba634b31bff250c477b" translate="yes" xml:space="preserve">
+          <source>An iterable is the last part of a list comprehension, and all generators are iterable, so they're often used like so:</source>
+          <target state="translated">迭代是列表理解的最后一部分,所有的生成器都是可迭代的,所以经常这样使用。</target>
+        </trans-unit>
+        <trans-unit id="81d8a56bb9735baf48091b3e5b5e287b1b2e4127" translate="yes" xml:space="preserve">
+          <source>An iterator is just a fancy sounding term for an object that has a &lt;code&gt;next()&lt;/code&gt; method.  So a yield-ed function ends up being something like this:</source>
+          <target state="translated">迭代器只是一个具有 &lt;code&gt;next()&lt;/code&gt; 方法的对象的美化工具。 因此，由yield产生的函数最终是这样的：</target>
+        </trans-unit>
+        <trans-unit id="d914dca0e9f94be2a010606114630680fc2fbce8" translate="yes" xml:space="preserve">
+          <source>And if necessary, we can type-check like this:</source>
+          <target state="translated">如果有必要,我们可以这样打字检查。</target>
+        </trans-unit>
+        <trans-unit id="8b152c57dd4e6896c2e2d3a2c969268781a04e11" translate="yes" xml:space="preserve">
+          <source>And it works because Python does not care if the argument of a method is a list or not. Python expects iterables so it will work with strings, lists, tuples, and generators! This is called duck typing and is one of the reasons why Python is so cool. But this is another story, for another question...</source>
+          <target state="translated">而它之所以有效,是因为Python不关心方法的参数是否是列表。Python 期待的是迭代,所以它可以与字符串、列表、图元和生成器一起工作! 这就是所谓的鸭式键入,也是Python如此酷的原因之一。但这是另一个故事,这是另一个问题......</target>
+        </trans-unit>
+        <trans-unit id="97fbec56b74d699d8da84f4466277b6823b52c60" translate="yes" xml:space="preserve">
+          <source>And now we can delegate functionality to a sub-generator and it can be used
+by a generator just as above:</source>
+          <target state="translated">而现在我们可以将功能委托给一个子生成器,它可以像上面一样被生成器使用。</target>
+        </trans-unit>
+        <trans-unit id="bdec22c07b1756ea41e55aa6af803ad40c179f4d" translate="yes" xml:space="preserve">
+          <source>And now we can send data into the generator. (&lt;a href=&quot;https://www.python.org/dev/peps/pep-0342/#specification-sending-values-into-generators&quot;&gt;Sending &lt;code&gt;None&lt;/code&gt; is 
+the same as calling &lt;code&gt;next&lt;/code&gt;&lt;/a&gt;.) :</source>
+          <target state="translated">现在我们可以将数据发送到生成器中。 （不&lt;a href=&quot;https://www.python.org/dev/peps/pep-0342/#specification-sending-values-into-generators&quot;&gt;发送 &lt;code&gt;None&lt;/code&gt; 内容与呼叫 &lt;code&gt;next&lt;/code&gt; 相同&lt;/a&gt; 。）：</target>
+        </trans-unit>
+        <trans-unit id="df8f95772f413efb0c2dbf265ff4862fae1c7bc4" translate="yes" xml:space="preserve">
+          <source>And this is the caller:</source>
+          <target state="translated">而这就是来电者。</target>
+        </trans-unit>
+        <trans-unit id="3b57182086d6c04e166187f3787e8d917fd59442" translate="yes" xml:space="preserve">
+          <source>Answer Outline/Summary</source>
+          <target state="translated">答案大纲摘要</target>
+        </trans-unit>
+        <trans-unit id="c3c07bbc3573c4c760856487909b704db42f46ae" translate="yes" xml:space="preserve">
+          <source>Appendix:</source>
+          <target state="translated">Appendix:</target>
+        </trans-unit>
+        <trans-unit id="f7153a3ed77229b8ef3f57eb201522d76e468e8a" translate="yes" xml:space="preserve">
+          <source>As I understand, when we want to process a bunch of data, we usually first store the data somewhere and then process it one by one. But this &lt;em&gt;naive&lt;/em&gt; approach is problematic. If the data volume is huge, it's expensive to store them as a whole beforehand. &lt;strong&gt;So instead of storing the &lt;code&gt;data&lt;/code&gt; itself directly, why not store some kind of &lt;code&gt;metadata&lt;/code&gt; indirectly, i.e. &lt;code&gt;the logic how the data is computed&lt;/code&gt;&lt;/strong&gt;.</source>
+          <target state="translated">据我了解，当我们要处理一堆数据时，通常会先将数据存储在某个地方，然后再逐一处理。 但是这种&lt;em&gt;幼稚的&lt;/em&gt;方法是有问题的。 如果数据量巨大，则预先存储它们是很昂贵的。 &lt;strong&gt;因此，为什么不间接存储某种类型的 &lt;code&gt;metadata&lt;/code&gt; ，而不是直接存储 &lt;code&gt;data&lt;/code&gt; 本身，即 &lt;code&gt;the logic how the data is computed&lt;/code&gt; &lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="71b8419f2c05a320eab84f0ff210eed5a7aa3f59" translate="yes" xml:space="preserve">
+          <source>As an analogy, &lt;code&gt;return&lt;/code&gt; and &lt;code&gt;yield&lt;/code&gt; are twins. &lt;code&gt;return&lt;/code&gt; means 'return and stop' whereas 'yield` means 'return, but continue'</source>
+          <target state="translated">打个比方， &lt;code&gt;return&lt;/code&gt; 和 &lt;code&gt;yield&lt;/code&gt; 是双胞胎。 &lt;code&gt;return&lt;/code&gt; 表示&amp;ldquo;返回并停止&amp;rdquo;，而&amp;ldquo; yield&amp;rdquo;表示&amp;ldquo;返回但继续&amp;rdquo;</target>
+        </trans-unit>
+        <trans-unit id="9399c22507893ea92efd2d3d7bd85d4924662fa9" translate="yes" xml:space="preserve">
+          <source>As you can see both functions do the same thing. The only difference is &lt;code&gt;return_dates()&lt;/code&gt; gives a list and &lt;code&gt;yield_dates()&lt;/code&gt; gives a generator.</source>
+          <target state="translated">如您所见，两个函数都做同样的事情。 唯一的区别是 &lt;code&gt;return_dates()&lt;/code&gt; 提供了一个列表， &lt;code&gt;yield_dates()&lt;/code&gt; 提供了一个生成器。</target>
+        </trans-unit>
+        <trans-unit id="135740deb1c52c950dd9825f622468250cfec310" translate="yes" xml:space="preserve">
+          <source>As you can see, in the first case &lt;code&gt;foo&lt;/code&gt; holds the entire list in memory at once. It's not a big deal for a list with 5 elements, but what if you want a list of 5 million? Not only is this a huge memory eater, it also costs a lot of time to build at the time that the function is called.</source>
+          <target state="translated">如您所见，在第一种情况下， &lt;code&gt;foo&lt;/code&gt; 一次将整个列表保存在内存中。 包含5个元素的列表并不是什么大问题，但是如果您想要500万个列表，该怎么办？ 这不仅是一个巨大的内存消耗者，而且在调用该函数时还花费大量时间来构建。</target>
+        </trans-unit>
+        <trans-unit id="5bbe3ddff5d188e8a248228bc2152ed147d1b379" translate="yes" xml:space="preserve">
+          <source>Behind the scenes</source>
+          <target state="translated">幕后黑手</target>
+        </trans-unit>
+        <trans-unit id="5b6a80379109f3fc6042e0737cbf5d072100c51f" translate="yes" xml:space="preserve">
+          <source>Both functions do the same thing, but &lt;code&gt;yield&lt;/code&gt; uses three lines instead of five and has one less variable to worry about.</source>
+          <target state="translated">这两个函数都做同样的事情，但是 &lt;code&gt;yield&lt;/code&gt; 使用三行而不是五行，并且少担心一个变量。</target>
+        </trans-unit>
+        <trans-unit id="cca4c988c7e1babe71c97f7849efb9f46f5d36d6" translate="yes" xml:space="preserve">
+          <source>Bottom line, until the developers of CPython tell us otherwise: &lt;strong&gt;Don't put &lt;code&gt;yield&lt;/code&gt; in a generator expression or comprehension.&lt;/strong&gt;</source>
+          <target state="translated">最重要的是，直到CPython的开发人员另行告诉我们为止： &lt;strong&gt;不要将 &lt;code&gt;yield&lt;/code&gt; 放在生成器表达式或理解中。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d08cdf468566d1e5880decf4e3f20a483dff611f" translate="yes" xml:space="preserve">
+          <source>Brilliant choice of the word &lt;code&gt;yield&lt;/code&gt; because &lt;a href=&quot;https://www.google.com/search?q=yield+meaning&quot;&gt;both meanings&lt;/a&gt; apply:</source>
+          <target state="translated">明智地选择 &lt;code&gt;yield&lt;/code&gt; ,因为&lt;a href=&quot;https://www.google.com/search?q=yield+meaning&quot;&gt;两种含义都&lt;/a&gt;适用：</target>
+        </trans-unit>
+        <trans-unit id="18cf04f82308b4c79617d9344cd8cccedc5948df" translate="yes" xml:space="preserve">
+          <source>Built-in lists, dictionaries, tuples, sets, files.</source>
+          <target state="translated">内置列表、字典、词典、补遗、集、文件。</target>
+        </trans-unit>
+        <trans-unit id="ace5b94af148161c793a05983917f7f7008ae80a" translate="yes" xml:space="preserve">
+          <source>But in your code, it gets a generator, which is good because:</source>
+          <target state="translated">但在你的代码中,它得到了一个发电机,这很好,因为。</target>
+        </trans-unit>
+        <trans-unit id="e41053f2e7b7818b717e108be50e7b8bc56bf7fd" translate="yes" xml:space="preserve">
+          <source>But this is inefficient because</source>
+          <target state="translated">但这样做的效率很低,因为</target>
+        </trans-unit>
+        <trans-unit id="112200cd9ac4f291717eeda13db581f83c118af7" translate="yes" xml:space="preserve">
+          <source>But you could easily implement (and conceptualize) generators as a simple, specific case of continuation passing style:</source>
+          <target state="translated">但你可以很容易地实现(和概念化)生成器作为一个简单的、具体的延续传递方式的案例。</target>
+        </trans-unit>
+        <trans-unit id="224ba6c7dc6ef4515b36b8503f362933f7f951ca" translate="yes" xml:space="preserve">
+          <source>Call &lt;code&gt;iter(mylist)&lt;/code&gt; -&amp;gt; this returns an object with a &lt;code&gt;next()&lt;/code&gt; method (or &lt;code&gt;__next__()&lt;/code&gt; in Python 3).</source>
+          <target state="translated">调用 &lt;code&gt;iter(mylist)&lt;/code&gt; -&amp;gt;这将返回一个具有 &lt;code&gt;next()&lt;/code&gt; 方法的对象（或Python 3中的 &lt;code&gt;__next__()&lt;/code&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="4fdabc45b3bad82e2c9c7d5aa68f04b364ec25ac" translate="yes" xml:space="preserve">
+          <source>Calling &lt;code&gt;yielderFunction()&lt;/code&gt; doesn't run its code, but makes a generator out of the code. (Maybe it's a good idea to name such things with the &lt;code&gt;yielder&lt;/code&gt; prefix for readability.)</source>
+          <target state="translated">调用 &lt;code&gt;yielderFunction()&lt;/code&gt; 不会运行其代码，但是会使代码生成一个生成器。 （为便于阅读，使用 &lt;code&gt;yielder&lt;/code&gt; 前缀命名此类名称可能是个好主意。）</target>
+        </trans-unit>
+        <trans-unit id="d4e40bacc080c668ae12d6659592822c4592d6dc" translate="yes" xml:space="preserve">
+          <source>Cheers, Nick.</source>
+          <target state="translated">干杯,尼克。</target>
+        </trans-unit>
+        <trans-unit id="fa1fe25132badc6a4700de54339362efef6cccf3" translate="yes" xml:space="preserve">
+          <source>Compare function to the original definition.</source>
+          <target state="translated">对比一下功能与原定义。</target>
+        </trans-unit>
+        <trans-unit id="422466cb355bfaa6b435c10bfd2011e9037906cc" translate="yes" xml:space="preserve">
+          <source>Compare the following examples:</source>
+          <target state="translated">比较以下例子:</target>
+        </trans-unit>
+        <trans-unit id="23177d88df5aa8c7d73ae1fbc8fbc37e2afda7be" translate="yes" xml:space="preserve">
+          <source>Comparing example to &quot;just returning a list&quot;</source>
+          <target state="translated">将例子与 &quot;只是返回列表 &quot;进行比较</target>
+        </trans-unit>
+        <trans-unit id="13ee7709c64ae8875430c0fce8f630d0fd20adab" translate="yes" xml:space="preserve">
+          <source>Comparing to &lt;code&gt;return&lt;/code&gt; which runs once and stops, &lt;code&gt;yield&lt;/code&gt; runs times you planed.
+You can interpret &lt;code&gt;return&lt;/code&gt; as &lt;code&gt;return one of them&lt;/code&gt;, and &lt;code&gt;yield&lt;/code&gt; as &lt;code&gt;return all of them&lt;/code&gt;. This is called &lt;code&gt;iterable&lt;/code&gt;.</source>
+          <target state="translated">比较一次运行一次并停止的 &lt;code&gt;yield&lt;/code&gt; ， 产量运行所计划的时间。 您可以将 &lt;code&gt;return&lt;/code&gt; 解释为 &lt;code&gt;return one of them&lt;/code&gt; ，并把 &lt;code&gt;yield&lt;/code&gt; 解释为 &lt;code&gt;return all of them&lt;/code&gt; 。 这称为 &lt;code&gt;iterable&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="e39262defe80a83fac1b793497417432c8b1a879" translate="yes" xml:space="preserve">
+          <source>Conclusion</source>
+          <target state="translated">Conclusion</target>
+        </trans-unit>
+        <trans-unit id="d93505eddd729749377d3ebb203709c807a5b6b0" translate="yes" xml:space="preserve">
+          <source>Continuations in programming languages theory are a much more fundamental kind of computation, but they are not often used, because they are extremely hard to reason about and also very difficult to implement. But the idea of what a continuation is, is straightforward: it is the state of a computation that has not yet finished. In this state, the current values of variables, the operations that have yet to be performed, and so on, are saved. Then at some point later in the program the continuation can be invoked, such that the program's variables are reset to that state and the operations that were saved are carried out.</source>
+          <target state="translated">程序设计语言理论中的延续是一种更基本的计算,但它并不常用,因为它极难推理,也很难实现。但什么是延续,这个概念很直接:它是一个计算还没有完成的状态。在这个状态下,变量的当前值、尚未执行的操作等都会被保存下来。然后在程序后面的某个时刻,可以调用延续,这样程序的变量就会被重置为该状态,并执行保存的操作。</target>
+        </trans-unit>
+        <trans-unit id="b72e044549c84a332ce620bd9e0a6adabcb6a3af" translate="yes" xml:space="preserve">
+          <source>Continuations, in this more general form, can be implemented in two ways. In the &lt;code&gt;call/cc&lt;/code&gt; way, the program's stack is literally saved and then when the continuation is invoked, the stack is restored.</source>
+          <target state="translated">以这种更一般的形式进行的连续可以两种方式实现。 以 &lt;code&gt;call/cc&lt;/code&gt; 的方式，该程序的堆栈实际上是被保存的，然后在调用延续时，该堆栈被还原。</target>
+        </trans-unit>
+        <trans-unit id="2c47bc7e9e1cccd861bf2f12386c3a01928597e8" translate="yes" xml:space="preserve">
+          <source>Controlling a generator exhaustion</source>
+          <target state="translated">控制发电机耗尽</target>
+        </trans-unit>
+        <trans-unit id="fe65bca192a86197c66d7cf330e1537caa61c387" translate="yes" xml:space="preserve">
+          <source>Cooperative Delegation to Sub-Coroutine with &lt;code&gt;yield from&lt;/code&gt;</source>
+          <target state="translated">合作派遣到协程， &lt;code&gt;yield from&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="33163af7bd841f674f77c35298225e94a5016009" translate="yes" xml:space="preserve">
+          <source>Coroutines:</source>
+          <target state="translated">Coroutines:</target>
+        </trans-unit>
+        <trans-unit id="abfb94ac57644f17a8adf8955a59558bd94c3b33" translate="yes" xml:space="preserve">
+          <source>Critique of answer suggesting &lt;code&gt;yield&lt;/code&gt; in a generator expression or comprehension.</source>
+          <target state="translated">对生成器表达或理解中的 &lt;code&gt;yield&lt;/code&gt; 的答案的评论。</target>
+        </trans-unit>
+        <trans-unit id="a9c0621bff7dcefce6457fdee9b6bcef2e0f3d8a" translate="yes" xml:space="preserve">
+          <source>Critique of the Top/Accepted Answer**</source>
+          <target state="translated">頂點的評測,接受的答案是**</target>
+        </trans-unit>
+        <trans-unit id="391058e00a0cf1fea23f9021af0e6821cda75f41" translate="yes" xml:space="preserve">
+          <source>Different behavior:</source>
+          <target state="translated">不同的行为。</target>
+        </trans-unit>
+        <trans-unit id="4beaba95c78d5c63061a997dcde838cb3d1a985b" translate="yes" xml:space="preserve">
+          <source>Does that make more sense or just confuse you more?  :)</source>
+          <target state="translated">是更有意义,还是让你更迷惑?)</target>
+        </trans-unit>
+        <trans-unit id="478cc5edb794118536367238291728364671b4c5" translate="yes" xml:space="preserve">
+          <source>Don't confuse your Iterables, Iterators, and Generators</source>
+          <target state="translated">不要混淆了你的迭代器、迭代器和生成器。</target>
+        </trans-unit>
+        <trans-unit id="c5ebf51ae7871d62102efa654179e7b2cbd98826" translate="yes" xml:space="preserve">
+          <source>Either way, an iterator is created, i.e. some object that can give you the data you want. The OO approach may be a bit complex. Anyway, which one to use is up to you.</source>
+          <target state="translated">无论哪种方式,都会创建一个迭代器,也就是一些可以提供你想要的数据的对象。OO的方法可能有点复杂。总之,使用哪种方法是由你自己决定的。</target>
+        </trans-unit>
+        <trans-unit id="17dcf8ce994111b56509be2581c55631ea92717d" translate="yes" xml:space="preserve">
+          <source>Everything you can use &quot;&lt;code&gt;for... in...&lt;/code&gt;&quot; on is an iterable; &lt;code&gt;lists&lt;/code&gt;, &lt;code&gt;strings&lt;/code&gt;, files...</source>
+          <target state="translated">您可以 &lt;code&gt;for... in...&lt;/code&gt; &amp;ldquo; ...中使用... &amp;rdquo;上的所有内容都是可迭代的； &lt;code&gt;lists&lt;/code&gt; ， &lt;code&gt;strings&lt;/code&gt; ，文件...</target>
+        </trans-unit>
+        <trans-unit id="0f01ed56a1e32a05e5ef96e4d779f34784af9a96" translate="yes" xml:space="preserve">
+          <source>Example</source>
+          <target state="translated">Example</target>
+        </trans-unit>
+        <trans-unit id="a58924e6ca70e15697b41c0fd8af77f8e3655bd0" translate="yes" xml:space="preserve">
+          <source>First, the &lt;strong&gt;iterator protocol&lt;/strong&gt; - when you write</source>
+          <target state="translated">首先， &lt;strong&gt;迭代器协议&lt;/strong&gt; -当您编写时</target>
+        </trans-unit>
+        <trans-unit id="ab464772e390ee8b69cf6e6fbb14dd8f889ce77c" translate="yes" xml:space="preserve">
+          <source>First, we must queue up the generator with the builtin function, &lt;a href=&quot;https://docs.python.org/2/library/functions.html#next&quot;&gt;&lt;code&gt;next&lt;/code&gt;&lt;/a&gt;. It will 
+call the appropriate &lt;code&gt;next&lt;/code&gt; or &lt;code&gt;__next__&lt;/code&gt; method, depending on the version of
+Python you are using:</source>
+          <target state="translated">首先，我们必须使带有内置函数&lt;a href=&quot;https://docs.python.org/2/library/functions.html#next&quot;&gt; &lt;code&gt;next&lt;/code&gt; &lt;/a&gt;的生成器排队。 根据您使用的Python版本，它将调用相应的 &lt;code&gt;next&lt;/code&gt; 或 &lt;code&gt;__next__&lt;/code&gt; 方法：</target>
+        </trans-unit>
+        <trans-unit id="ec0c3b76630fd745381cc215a284820af75a683a" translate="yes" xml:space="preserve">
+          <source>Footnotes</source>
+          <target state="translated">Footnotes</target>
+        </trans-unit>
+        <trans-unit id="87881092dde77e187d0bf9cb4e0f744846b558a8" translate="yes" xml:space="preserve">
+          <source>For example, I'm trying to understand this code&lt;sup&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/sup&gt;:</source>
+          <target state="translated">例如，我试图理解这段代码&lt;sup&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/sup&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="059c3e8cce263b2945a18ac90b2637e10a8026b1" translate="yes" xml:space="preserve">
+          <source>For example:</source>
+          <target state="translated">例如:</target>
+        </trans-unit>
+        <trans-unit id="4359df1244f408dd74c85feea20108563cf47ea0" translate="yes" xml:space="preserve">
+          <source>For more accurate information, read about &lt;a href=&quot;http://docs.python.org/library/stdtypes.html#iterator-types&quot;&gt;iterator types&lt;/a&gt;, the &lt;a href=&quot;http://docs.python.org/reference/simple_stmts.html#yield&quot;&gt;yield statement&lt;/a&gt; and &lt;a href=&quot;http://docs.python.org/glossary.html#term-generator&quot;&gt;generators&lt;/a&gt; in the Python documentation.</source>
+          <target state="translated">有关更准确的信息，请阅读Python文档中有关&lt;a href=&quot;http://docs.python.org/library/stdtypes.html#iterator-types&quot;&gt;迭代器类型&lt;/a&gt; ， &lt;a href=&quot;http://docs.python.org/reference/simple_stmts.html#yield&quot;&gt;yield语句&lt;/a&gt;和&lt;a href=&quot;http://docs.python.org/glossary.html#term-generator&quot;&gt;生成器&lt;/a&gt;的信息。</target>
+        </trans-unit>
+        <trans-unit id="ab34884b9c5a1c376f359e896bfa36ac9404ee1e" translate="yes" xml:space="preserve">
+          <source>For more insight as to what's happening behind the scenes, the &lt;code&gt;for&lt;/code&gt; loop can be rewritten to this:</source>
+          <target state="translated">为了更深入地了解幕后发生的事情，可以将 &lt;code&gt;for&lt;/code&gt; 循环重写为：</target>
+        </trans-unit>
+        <trans-unit id="b3b09a14c47c5a101227ecf4d23816285925f6d5" translate="yes" xml:space="preserve">
+          <source>For those who prefer a minimal working example, meditate on this interactive Python session:</source>
+          <target state="translated">对于那些喜欢最小的工作体例的人来说,可以沉思一下这个交互式的Python会话。</target>
+        </trans-unit>
+        <trans-unit id="50c79418c72adb6d21a9a53d6133434acd4b25f6" translate="yes" xml:space="preserve">
+          <source>From &lt;em&gt;&lt;a href=&quot;http://www.python.org/dev/peps/pep-0380/&quot;&gt;PEP 380 -- Syntax for Delegating to a Subgenerator&lt;/a&gt;&lt;/em&gt;:</source>
+          <target state="translated">从&lt;em&gt;&lt;a href=&quot;http://www.python.org/dev/peps/pep-0380/&quot;&gt;PEP 380-委托给子生成器的语法&lt;/a&gt;&lt;/em&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="12e842703e6cd07e003a70536ed53b1cad820600" translate="yes" xml:space="preserve">
+          <source>From a programming viewpoint, the iterators are implemented as &lt;a href=&quot;http://en.wikipedia.org/wiki/Thunk_(functional_programming)&quot;&gt;thunks&lt;/a&gt;.</source>
+          <target state="translated">从编程的角度来看，迭代器被实现为&lt;a href=&quot;http://en.wikipedia.org/wiki/Thunk_(functional_programming)&quot;&gt;thunk&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="c04b84b0d27f22df1bc44e709e3324e4728e5047" translate="yes" xml:space="preserve">
+          <source>Further, there is an &lt;a href=&quot;http://bugs.python.org/issue10544&quot;&gt;outstanding issue (10544)&lt;/a&gt; which seems to be pointing in the direction of this &lt;em&gt;never&lt;/em&gt; being a good idea (PyPy, a Python implementation written in Python, is already raising syntax warnings.)</source>
+          <target state="translated">此外，还有一个&lt;a href=&quot;http://bugs.python.org/issue10544&quot;&gt;悬而未决的问题（10544）&lt;/a&gt; ，似乎正说明这&lt;em&gt;绝不&lt;/em&gt;是一个好主意（PyPy，用Python编写的Python实现，已经在发出语法警告。）</target>
+        </trans-unit>
+        <trans-unit id="a3e705cc61a19f33d7c9c030f107a70569966485" translate="yes" xml:space="preserve">
+          <source>Generators</source>
+          <target state="translated">Generators</target>
+        </trans-unit>
+        <trans-unit id="ea270aafef5ea2be7a50c15d8f3cf44425aa37b7" translate="yes" xml:space="preserve">
+          <source>Generators and coroutines are a cool way to set up data-flow type applications.  I thought it would be worthwhile knowing about the other use of the &lt;code&gt;yield&lt;/code&gt; statement in functions.</source>
+          <target state="translated">生成器和协程是设置数据流类型应用程序的一种很酷的方法。 我认为值得了解函数中 &lt;code&gt;yield&lt;/code&gt; 语句的其他用法。</target>
+        </trans-unit>
+        <trans-unit id="179018c67d6955b4f49df82ba24dc3b04e776679" translate="yes" xml:space="preserve">
+          <source>Generators are iterators because they implement the &lt;a href=&quot;https://docs.python.org/2/library/stdtypes.html#iterator-types&quot;&gt;&lt;strong&gt;iterator protocol&lt;/strong&gt;&lt;/a&gt;, so you can iterate over them.</source>
+          <target state="translated">生成器是迭代器，因为它们实现了&lt;a href=&quot;https://docs.python.org/2/library/stdtypes.html#iterator-types&quot;&gt;&lt;strong&gt;迭代器协议&lt;/strong&gt;&lt;/a&gt; ，因此您可以对其进行迭代。</target>
+        </trans-unit>
+        <trans-unit id="a5e08e7b38a556477cdbe545a9f764632125d102" translate="yes" xml:space="preserve">
+          <source>Generators are iterators, a kind of iterable &lt;strong&gt;you can only iterate over once&lt;/strong&gt;. Generators do not store all the values in memory, &lt;strong&gt;they generate the values on the fly&lt;/strong&gt;:</source>
+          <target state="translated">生成器是迭代器，一种迭代， &lt;strong&gt;您只能迭代一次&lt;/strong&gt; 。 生成器不会将所有值存储在内存中， &lt;strong&gt;它们会即时生成值&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="682b0796dd83f3fd0ad45f54f168909fac114df8" translate="yes" xml:space="preserve">
+          <source>Generators.</source>
+          <target state="translated">Generators.</target>
+        </trans-unit>
+        <trans-unit id="30755c71dba128a057a2e8b31c452388bed51a8e" translate="yes" xml:space="preserve">
+          <source>Generators:</source>
+          <target state="translated">Generators:</target>
+        </trans-unit>
+        <trans-unit id="d054231a90af4e28b960cfe94d5c8186673ab51e" translate="yes" xml:space="preserve">
+          <source>Gets an iterator for &lt;code&gt;mylist&lt;/code&gt;:</source>
+          <target state="translated">获取 &lt;code&gt;mylist&lt;/code&gt; 的迭代器：</target>
+        </trans-unit>
+        <trans-unit id="c8a20bbe7bfc35516518ea627afd092d0e96e4cc" translate="yes" xml:space="preserve">
+          <source>Here &lt;code&gt;mylist&lt;/code&gt; is an &lt;em&gt;iterable&lt;/em&gt; because it implements the iterator protocol. In a user-defined class, you can implement the &lt;code&gt;__iter__()&lt;/code&gt; method to make instances of your class iterable. This method should return an &lt;em&gt;iterator&lt;/em&gt;. An iterator is an object with a &lt;code&gt;next()&lt;/code&gt; method. It is possible to implement both &lt;code&gt;__iter__()&lt;/code&gt; and &lt;code&gt;next()&lt;/code&gt; on the same class, and have &lt;code&gt;__iter__()&lt;/code&gt; return &lt;code&gt;self&lt;/code&gt;. This will work for simple cases, but not when you want two iterators looping over the same object at the same time.</source>
+          <target state="translated">&lt;code&gt;mylist&lt;/code&gt; 在这里是&lt;em&gt;可迭代的，&lt;/em&gt;因为它实现了迭代器协议。 在用户定义的类中，可以实现 &lt;code&gt;__iter__()&lt;/code&gt; 方法以使您的类的实例可迭代。 此方法应返回一个&lt;em&gt;迭代器&lt;/em&gt; 。 迭代器是具有 &lt;code&gt;next()&lt;/code&gt; 方法的对象。 可以在同一个类上同时实现 &lt;code&gt;__iter__()&lt;/code&gt; 和 &lt;code&gt;next()&lt;/code&gt; ，并使 &lt;code&gt;__iter__()&lt;/code&gt; 返回 &lt;code&gt;self&lt;/code&gt; 。 这适用于简单的情况，但是当您希望两个迭代器同时在同一个对象上循环时，则不能使用。</target>
+        </trans-unit>
+        <trans-unit id="0e79b5d88ed3c6e491dd1236e901c3ae33f6911d" translate="yes" xml:space="preserve">
+          <source>Here are some Python examples of how to actually implement generators as if Python did not provide syntactic sugar for them:</source>
+          <target state="translated">下面是一些Python的例子,说明如何实际实现生成器,就像Python没有为它们提供语法糖一样。</target>
+        </trans-unit>
+        <trans-unit id="a3efbd24d9780439598b7e67d051e0a6314b264c" translate="yes" xml:space="preserve">
+          <source>Here is a demonstration which uses the structure of R6RS, but the semantics is absolutely identical to Python's. It's the same model of computation, and only a change in syntax is required to rewrite it in Python.</source>
+          <target state="translated">这里有一个演示,它使用了R6RS的结构,但语义绝对与Python的结构相同。它的计算模型是一样的,只需要改变一下语法就可以在Python中重写。</target>
+        </trans-unit>
+        <trans-unit id="5172df8a142b5de0fd37381a2dbff76cdb21ea9b" translate="yes" xml:space="preserve">
+          <source>Here is a mental image of what &lt;code&gt;yield&lt;/code&gt; does.</source>
+          <target state="translated">这是 &lt;code&gt;yield&lt;/code&gt; 的心理印象。</target>
+        </trans-unit>
+        <trans-unit id="ea724b816190320574ae29c6484ba706b02e562b" translate="yes" xml:space="preserve">
+          <source>Here is a simple example:</source>
+          <target state="translated">这里有一个简单的例子。</target>
+        </trans-unit>
+        <trans-unit id="823fc4d20942e0533416446349c24b8a063855e9" translate="yes" xml:space="preserve">
+          <source>Here is an example in plain language. I will provide a correspondence between high-level human concepts to low-level Python concepts.</source>
+          <target state="translated">下面用通俗的语言举个例子。我将提供一个人类高层概念与低层Python概念之间的对应关系。</target>
+        </trans-unit>
+        <trans-unit id="c4be0889ef73ed93c610ebfab505f5cb8fc53788" translate="yes" xml:space="preserve">
+          <source>Here is an example which &lt;code&gt;yield&lt;/code&gt; is definitely best for:</source>
+          <target state="translated">这是一个绝对适合的 &lt;code&gt;yield&lt;/code&gt; 示例：</target>
+        </trans-unit>
+        <trans-unit id="6617e5991223485f0a00e8961fec1ddd85153c85" translate="yes" xml:space="preserve">
+          <source>Here is an example, take note of the &lt;code&gt;received&lt;/code&gt; variable, which will point to the data that is sent to the generator:</source>
+          <target state="translated">这是一个示例，请注意 &lt;code&gt;received&lt;/code&gt; 变量，该变量将指向发送到生成器的数据：</target>
+        </trans-unit>
+        <trans-unit id="89aa700446679e9b8d5b65f7b661f79a7e178b5e" translate="yes" xml:space="preserve">
+          <source>Here it's a useless example, but it's handy when you know your function will return a huge set of values that you will only need to read once.</source>
+          <target state="translated">这里是一个无用的例子,但当你知道你的函数将返回大量的值,而你只需要读取一次就可以了。</target>
+        </trans-unit>
+        <trans-unit id="eeb09fb712bc1579dd70a54645ad53925ce84c23" translate="yes" xml:space="preserve">
+          <source>Here's a simple &lt;code&gt;yield&lt;/code&gt; based approach, to compute the fibonacci series, explained:</source>
+          <target state="translated">这是一种简单的基于 &lt;code&gt;yield&lt;/code&gt; 的方法，用于计算斐波那契数列，解释如下：</target>
+        </trans-unit>
+        <trans-unit id="d5531c22206a07d82c2ec43020b326ceb13fdc0a" translate="yes" xml:space="preserve">
+          <source>How you might use generators</source>
+          <target state="translated">如何使用发电机</target>
+        </trans-unit>
+        <trans-unit id="d332df6254754940f55d36631c669c40c1993a88" translate="yes" xml:space="preserve">
+          <source>However, &lt;code&gt;yield from&lt;/code&gt; also allows for delegation to subgenerators, 
+which will be explained in the following section on cooperative delegation with sub-coroutines.</source>
+          <target state="translated">但是， &lt;code&gt;yield from&lt;/code&gt; 还允许委派给子生成器，这将在以下有关与子协程进行合作委派的部分中进行解释。</target>
+        </trans-unit>
+        <trans-unit id="f7b0cdd1500200d6f1d896513a1bb21305470aa6" translate="yes" xml:space="preserve">
+          <source>I am not a Python developer, but it looks to me &lt;code&gt;yield&lt;/code&gt; holds the position of program flow and the next loop start from &quot;yield&quot; position. It seems like it is waiting at that position, and just before that, returning a value outside, and next time continues to work.</source>
+          <target state="translated">我不是Python开发人员，但在我看来， &lt;code&gt;yield&lt;/code&gt; 保持程序流的位置，而下一个循环从&amp;ldquo; yield&amp;rdquo;位置开始。 似乎它正在那个位置等待，就在那之前，在外面返回一个值，下一次继续工作。</target>
+        </trans-unit>
+        <trans-unit id="7e9ed01bd64f5c7896a84a3e0de95a03f1c43874" translate="yes" xml:space="preserve">
+          <source>I ask you, &quot;tell me the next number&quot;, and you tell me the first number; after that, you wait for me to ask you for the next number. It's your job to remember where you were, what numbers you have already said, and what is the next number. I don't care about the details.</source>
+          <target state="translated">我问你,&quot;告诉我下一个数字&quot;,你就告诉我第一个数字;说完了,你就等着我问你下一个数字。你的工作就是记住你在哪里,你已经说过哪些数字,下一个数字是什么,这是你的工作。我不关心这些细节。</target>
+        </trans-unit>
+        <trans-unit id="ae297b474260c70e731c6a136da6c3a9aef2dfb5" translate="yes" xml:space="preserve">
+          <source>I assume you have learned the &lt;code&gt;return&lt;/code&gt; statement.</source>
+          <target state="translated">我认为您已经了解了 &lt;code&gt;return&lt;/code&gt; 语句。</target>
+        </trans-unit>
+        <trans-unit id="5bff8648a9749f500c9b8ad13ccf39b8881ec210" translate="yes" xml:space="preserve">
+          <source>I believe I have covered all aspects of the following question:</source>
+          <target state="translated">我相信我已经涵盖了以下问题的所有方面。</target>
+        </trans-unit>
+        <trans-unit id="a679dadd1d940ee0fc56a1b939523e2268a7d0ab" translate="yes" xml:space="preserve">
+          <source>I call you and tell you that I want a sequence of numbers which is produced in a specific way, and I let you know what the algorithm is.</source>
+          <target state="translated">我给你打电话,告诉你,我想要一个数字序列,这个数字是用特定的方式产生的,我让你知道是什么算法。</target>
+        </trans-unit>
+        <trans-unit id="b123a6615d9a46f5c9c87bd3114b75d2fd201567" translate="yes" xml:space="preserve">
+          <source>I like to think of a thread as having a stack (even when it's not implemented that way).</source>
+          <target state="translated">我喜欢把一个线程看成是有一个栈(即使它不是这样实现的)。</target>
+        </trans-unit>
+        <trans-unit id="776c90801148362b805a9659dc082980e40d4245" translate="yes" xml:space="preserve">
+          <source>I should note that this &lt;em&gt;is&lt;/em&gt; an oversimplification for illustrative purposes. :)</source>
+          <target state="translated">我应该注意，出于说明目的，这过于简单了。 :)</target>
+        </trans-unit>
+        <trans-unit id="cb5a08e181cbeb658f35df743832a692b6761240" translate="yes" xml:space="preserve">
+          <source>I want to operate on a sequence of numbers, but I don't want to bother my self with the creation of that sequence, I want only to focus on the operation I want to do. So, I do the following:</source>
+          <target state="translated">我想对一个数字序列进行操作,但我不想在创建这个序列的过程中打扰自己,我只想专注于我想做的操作。于是,我做了以下的操作。</target>
+        </trans-unit>
+        <trans-unit id="a3a2a857bfdd4d4fc3add0498fdaf773cfe37b55" translate="yes" xml:space="preserve">
+          <source>I was going to post &quot;read page 19 of Beazley's 'Python: Essential Reference' for a quick description of generators&quot;, but so many others have posted good descriptions already.</source>
+          <target state="translated">我本来想贴出 &quot;阅读Beazley的'Python:Essential Reference &quot;来了解一下关于生成器的快速描述&quot;,但很多人已经贴出了很好的描述。</target>
+        </trans-unit>
+        <trans-unit id="a101ee9df37442be51ecc059a7eaa91d1dd5f763" translate="yes" xml:space="preserve">
+          <source>I'd agree that's a sensible place for us to end up, as any code
+  relying on the current behaviour is really too clever to be
+  maintainable.</source>
+          <target state="translated">我同意这是个明智的结局,因为任何依赖当前行为的代码都实在是太聪明了,无法维护。</target>
+        </trans-unit>
+        <trans-unit id="1f609c272028fe91fcfd70e16ea920d4901be9b2" translate="yes" xml:space="preserve">
+          <source>I'm OK with either approach.  Leaving things the way they are in Python 3
+      is no good, IMHO.</source>
+          <target state="translated">我对这两种方法都没问题。在Python 3中保持原样是不好的,IMHO。</target>
+        </trans-unit>
+        <trans-unit id="f3a52ccfeb39b7c960e43a846a1980250d8002bd" translate="yes" xml:space="preserve">
+          <source>If the compiler detects the &lt;code&gt;yield&lt;/code&gt; keyword &lt;em&gt;anywhere&lt;/em&gt; inside a function, that function no longer returns via the &lt;code&gt;return&lt;/code&gt; statement. &lt;strong&gt;&lt;em&gt;Instead&lt;/em&gt;&lt;/strong&gt;, it &lt;strong&gt;immediately&lt;/strong&gt; returns a &lt;strong&gt;lazy &quot;pending list&quot; object&lt;/strong&gt; called a generator</source>
+          <target state="translated">如果编译器在函数内部的&lt;em&gt;任何位置&lt;/em&gt;检测到 &lt;code&gt;yield&lt;/code&gt; 关键字，则该函数不再通过 &lt;code&gt;return&lt;/code&gt; 语句返回 。 &lt;strong&gt;&lt;em&gt;相反&lt;/em&gt;&lt;/strong&gt; ，它&lt;strong&gt;立即&lt;/strong&gt;返回一个&lt;strong&gt;懒惰的&amp;ldquo;待处理列表&amp;rdquo;对象，&lt;/strong&gt;称为生成器</target>
+        </trans-unit>
+        <trans-unit id="863b82de998a8840db9f970356b780625e865e98" translate="yes" xml:space="preserve">
+          <source>If you need &lt;strong&gt;multiple passes&lt;/strong&gt; and the series isn't too long, just call &lt;code&gt;list()&lt;/code&gt; on it:</source>
+          <target state="translated">如果您需要&lt;strong&gt;多次通过&lt;/strong&gt; ，并且序列不太长，只需在其上调用 &lt;code&gt;list()&lt;/code&gt; 即可 ：</target>
+        </trans-unit>
+        <trans-unit id="8e81f608f52f839d0787e210b24258db0ad4019d" translate="yes" xml:space="preserve">
+          <source>If you want &lt;strong&gt;a function to return a huge set of values&lt;/strong&gt;, use &lt;code&gt;yield&lt;/code&gt;.</source>
+          <target state="translated">如果希望&lt;strong&gt;函数返回大量值&lt;/strong&gt; ，请使用 &lt;code&gt;yield&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="9e30ae315ff14bf5d22d79d19890817eba23a8df" translate="yes" xml:space="preserve">
+          <source>In &lt;a href=&quot;https://docs.python.org/2/reference/simple_stmts.html#the-return-statement&quot;&gt;Python 2&lt;/a&gt;:</source>
+          <target state="translated">在&lt;a href=&quot;https://docs.python.org/2/reference/simple_stmts.html#the-return-statement&quot;&gt;Python 2中&lt;/a&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="ff77817e2891cf318ae9092b17aa58414c356493" translate="yes" xml:space="preserve">
+          <source>In &lt;a href=&quot;https://docs.python.org/3/reference/simple_stmts.html#the-return-statement&quot;&gt;Python 3&lt;/a&gt;:</source>
+          <target state="translated">在&lt;a href=&quot;https://docs.python.org/3/reference/simple_stmts.html#the-return-statement&quot;&gt;Python 3中&lt;/a&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="01f20dd2f471369e8b09d4eee95c6fa431042ca7" translate="yes" xml:space="preserve">
+          <source>In &lt;strong&gt;Controlling a generator exhaustion&lt;/strong&gt; he calls the &lt;code&gt;.next&lt;/code&gt; method, when instead he should use the builtin function, &lt;code&gt;next&lt;/code&gt;. It would be an appropriate layer of indirection, because his code does not work in Python 3.</source>
+          <target state="translated">在&lt;strong&gt;控制发电机的排气中，&lt;/strong&gt;他调用 &lt;code&gt;.next&lt;/code&gt; 方法，而应改为使用内置函数 &lt;code&gt;next&lt;/code&gt; 。 这将是一个适当的间接层，因为他的代码在Python 3中不起作用。</target>
+        </trans-unit>
+        <trans-unit id="9d6c893042f47fbe024cf470eea2e0d66f65c064" translate="yes" xml:space="preserve">
+          <source>In Python 3, you can &lt;strong&gt;delegate&lt;/strong&gt; from one generator to another in both directions with &lt;strong&gt;&lt;code&gt;yield from&lt;/code&gt;&lt;/strong&gt;.</source>
+          <target state="translated">在Python 3中，您可以使用&lt;strong&gt; &lt;code&gt;yield from&lt;/code&gt; &lt;/strong&gt;从一个生成器到两个方向的另一个生成器。</target>
+        </trans-unit>
+        <trans-unit id="8ddb3a147bbf4149f8203b3ca2fa59434dcfe553" translate="yes" xml:space="preserve">
+          <source>In Python-speak, an &lt;em&gt;iterable&lt;/em&gt; is any object which &quot;understands the concept of a for-loop&quot; like a list &lt;code&gt;[1,2,3]&lt;/code&gt;, and an &lt;em&gt;iterator&lt;/em&gt; is a specific instance of the requested for-loop like &lt;code&gt;[1,2,3].__iter__()&lt;/code&gt;. A &lt;em&gt;generator&lt;/em&gt; is exactly the same as any iterator, except for the way it was written (with function syntax).</source>
+          <target state="translated">用Python讲， &lt;em&gt;可迭代&lt;/em&gt;是&amp;ldquo;理解for循环的概念&amp;rdquo;的任何对象，例如列表 &lt;code&gt;[1,2,3]&lt;/code&gt; ，而&lt;em&gt;迭代器&lt;/em&gt;是所请求的for循环的特定实例，例如[1,2,3] &lt;code&gt;[1,2,3].__iter__()&lt;/code&gt; 。 &lt;em&gt;生成器&lt;/em&gt;与任何迭代器完全相同，但其编写方式（带有函数语法）除外。</target>
+        </trans-unit>
+        <trans-unit id="174c5ef25999552b6ac3e98b79e66dc670f6ce7e" translate="yes" xml:space="preserve">
+          <source>In a generator function, the &lt;code&gt;return&lt;/code&gt; statement indicates that the generator is done and will cause &lt;code&gt;StopIteration&lt;/code&gt; to be raised. The returned value (if any) is used as an argument to construct &lt;code&gt;StopIteration&lt;/code&gt; and becomes the &lt;code&gt;StopIteration.value&lt;/code&gt; attribute.</source>
+          <target state="translated">在生成器函数中， &lt;code&gt;return&lt;/code&gt; 语句指示生成器完成，并将引起 &lt;code&gt;StopIteration&lt;/code&gt; 升高。 返回的值（如果有）用作构造 &lt;code&gt;StopIteration&lt;/code&gt; 的参数，并成为 &lt;code&gt;StopIteration.value&lt;/code&gt; 属性。</target>
+        </trans-unit>
+        <trans-unit id="a40ea84cb1072d7d399fbe3b382af1883bc53737" translate="yes" xml:space="preserve">
+          <source>In a generator function, the &lt;code&gt;return&lt;/code&gt; statement is not allowed to include an &lt;code&gt;expression_list&lt;/code&gt;. In that context, a bare &lt;code&gt;return&lt;/code&gt; indicates that the generator is done and will cause &lt;code&gt;StopIteration&lt;/code&gt; to be raised.</source>
+          <target state="translated">在生成器函数中， &lt;code&gt;return&lt;/code&gt; 语句不允许包含 &lt;code&gt;expression_list&lt;/code&gt; 。 在这种情况下，简单的 &lt;code&gt;return&lt;/code&gt; 指示生成器已完成，并将导致 &lt;code&gt;StopIteration&lt;/code&gt; 升高。</target>
+        </trans-unit>
+        <trans-unit id="fe5f6300dd7512030712c12beefa508ff061926a" translate="yes" xml:space="preserve">
+          <source>In a nutshell: &lt;strong&gt;a generator is a lazy, incrementally-pending list&lt;/strong&gt;, and &lt;strong&gt;&lt;code&gt;yield&lt;/code&gt; statements allow you to use function notation to program the list values&lt;/strong&gt; the generator should incrementally spit out.</source>
+          <target state="translated">简而言之： &lt;strong&gt;生成器是一个懒惰的，增量待定的list&lt;/strong&gt; ，并且&lt;strong&gt; &lt;code&gt;yield&lt;/code&gt; 语句允许您使用函数符号来编程&lt;/strong&gt;生成器应逐渐吐出&lt;strong&gt;的列表值&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="a0169a7972621076b895fe9b5351a9c054ff5aa8" translate="yes" xml:space="preserve">
+          <source>In conclusion, as a metaphor to grok it:</source>
+          <target state="translated">总之,作为一个比喻来摸索它。</target>
+        </trans-unit>
+        <trans-unit id="65df69d0bd87c71c73d55034f2acb57286f92bd2" translate="yes" xml:space="preserve">
+          <source>In continuation passing style (CPS), continuations are just normal functions (only in languages where functions are first class) which the programmer explicitly manages and passes around to subroutines. In this style, program state is represented by closures (and the variables that happen to be encoded in them) rather than variables that reside somewhere on the stack. Functions that manage control flow accept continuation as arguments (in some variations of CPS, functions may accept multiple continuations) and manipulate control flow by invoking them by simply calling them and returning afterwards. A very simple example of continuation passing style is as follows:</source>
+          <target state="translated">在延续传递风格(CPS)中,延续只是普通的函数(只有在函数是第一类的语言中才有),程序员显式管理并传递给子程序。在这种风格中,程序状态由闭包(以及恰好被编码在其中的变量)来表示,而不是存在于堆栈中的变量。管理控制流的函数接受延续作为参数(在CPS的一些变体中,函数可以接受多个延续),并通过简单地调用它们并在调用后返回来操纵控制流。下面是一个非常简单的延续传递方式的例子。</target>
+        </trans-unit>
+        <trans-unit id="f90a21a794093245566d4b9689b0360b69b80989" translate="yes" xml:space="preserve">
+          <source>In summary, the &lt;code&gt;yield&lt;/code&gt; statement transforms your function into a factory that produces a special object called a &lt;code&gt;generator&lt;/code&gt; which wraps around the body of your original function. When the &lt;code&gt;generator&lt;/code&gt; is iterated, it executes your function  until it reaches the next &lt;code&gt;yield&lt;/code&gt; then suspends execution and evaluates to the value passed to &lt;code&gt;yield&lt;/code&gt;. It repeats this process on each iteration until the path of execution exits the function. For instance,</source>
+          <target state="translated">总而言之， &lt;code&gt;yield&lt;/code&gt; 语句将您的函数转换为一个工厂，该工厂产生一个称为 &lt;code&gt;generator&lt;/code&gt; 的特殊对象，该对象环绕原始函数的主体。 迭代 &lt;code&gt;generator&lt;/code&gt; ，它将执行您的函数，直到达到下一个 &lt;code&gt;yield&lt;/code&gt; 为止，然后挂起执行并评估传递给 &lt;code&gt;yield&lt;/code&gt; 的值。 它将在每次迭代中重复此过程，直到执行路径退出函数为止。 例如，</target>
+        </trans-unit>
+        <trans-unit id="dbb3601dd734c0edf841aa944a55cbabed686850" translate="yes" xml:space="preserve">
+          <source>In terms of getting there, we'll likely want:</source>
+          <target state="translated">在到达那里的时候,我们可能会想要。</target>
+        </trans-unit>
+        <trans-unit id="af70c38bd0efc99a5d44a07df4047e8a92d9ae06" translate="yes" xml:space="preserve">
+          <source>In the case of your code, the function &lt;code&gt;get_child_candidates&lt;/code&gt; is acting like an iterator so that when you extend your list, it adds one element at a time to the new list.</source>
+          <target state="translated">对于您的代码，函数 &lt;code&gt;get_child_candidates&lt;/code&gt; 的行为就像一个迭代器，因此当您扩展列表时，它一次向新列表添加一个元素。</target>
+        </trans-unit>
+        <trans-unit id="791078267dbf81f5f1c3cf2eb3971161ef95c26f" translate="yes" xml:space="preserve">
+          <source>In the second case, &lt;code&gt;bar&lt;/code&gt; just gives you a generator. A generator is an iterable--which means you can use it in a &lt;code&gt;for&lt;/code&gt; loop, etc, but each value can only be accessed once. All the values are also not stored in memory at the same time; the generator object &quot;remembers&quot; where it was in the looping the last time you called it--this way, if you're using an iterable to (say) count to 50 billion, you don't have to count to 50 billion all at once and store the 50 billion numbers to count through.</source>
+          <target state="translated">在第二种情况下， &lt;code&gt;bar&lt;/code&gt; 只是为您提供了一个生成器。 生成器是可迭代的-这意味着您可以在 &lt;code&gt;for&lt;/code&gt; 循环等中使用它，但是每个值只能被访问一次。 所有的值也不会同时存储在存储器中。 生成器对象&amp;ldquo;记住&amp;rdquo;您上次调用它时在循环中的位置-这样，如果您使用的是一个迭代的（例如）计数为500亿，则不必计数为500亿立即存储500亿个数字以进行计算。</target>
+        </trans-unit>
+        <trans-unit id="bd951975204b594b5a324c588bdc33476765e99f" translate="yes" xml:space="preserve">
+          <source>In this (very simplistic) example, the programmer saves the operation of actually writing the file into a continuation (which can potentially be a very complex operation with many details to write out), and then passes that continuation (i.e, as a first-class closure) to another operator which does some more processing, and then calls it if necessary. (I use this design pattern a lot in actual GUI programming, either because it saves me lines of code or, more importantly, to manage control flow after GUI events trigger.)</source>
+          <target state="translated">在这个(非常简单的)例子中,程序员将实际写入文件的操作保存为一个延续(这可能是一个非常复杂的操作,有很多细节需要写出来),然后将这个延续(即作为一个一级封包)传递给另一个操作者,由他来做更多的处理,然后在必要时调用它。(在实际的GUI编程中,我经常使用这种设计模式,因为它可以为我节省几行代码,或者更重要的是,在GUI事件触发后管理控制流。)</target>
+        </trans-unit>
+        <trans-unit id="d137b802f3a324a2d71f425b20cbe30685de8a31" translate="yes" xml:space="preserve">
+          <source>Indirectly, if you provide &lt;code&gt;fib&lt;/code&gt; to a &lt;code&gt;for&lt;/code&gt; loop, a &lt;code&gt;list&lt;/code&gt; initializer, a &lt;code&gt;tuple&lt;/code&gt; initializer, or anything else that expects an object that generates/produces values, you'll &quot;consume&quot; the generator until no more values can be produced by it (and it returns):</source>
+          <target state="translated">间接地，如果将 &lt;code&gt;fib&lt;/code&gt; 提供给 &lt;code&gt;for&lt;/code&gt; 循环， &lt;code&gt;list&lt;/code&gt; 初始值设定项， &lt;code&gt;tuple&lt;/code&gt; 初始值设定项或其他任何期望对象产生/产生值的对象，则将&amp;ldquo;消耗&amp;rdquo;产生器，直到不再产生任何值为止（它返回）：</target>
+        </trans-unit>
+        <trans-unit id="1484d552dab70171147c52a184472f4c770e78cd" translate="yes" xml:space="preserve">
+          <source>Insert a line &lt;code&gt;result = []&lt;/code&gt; at the start of the function.</source>
+          <target state="translated">在函数开始处插入一行 &lt;code&gt;result = []&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="f65bc680a718b8079e23b9ac8d4b6ee9a4e7033d" translate="yes" xml:space="preserve">
+          <source>Insert a line &lt;code&gt;return result&lt;/code&gt; at the bottom of the function.</source>
+          <target state="translated">在函数的底部插入行 &lt;code&gt;return result&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="ddae4c2e0ba5c800a528da8a2d033235effb5bce" translate="yes" xml:space="preserve">
+          <source>Instead of &lt;code&gt;yield&lt;/code&gt; statements, if you had three &lt;code&gt;return&lt;/code&gt; statements in &lt;code&gt;f123()&lt;/code&gt; only the first would get executed, and the function would exit. But &lt;code&gt;f123()&lt;/code&gt; is no ordinary function. When &lt;code&gt;f123()&lt;/code&gt; is called, it &lt;em&gt;does not&lt;/em&gt; return any of the values in the yield statements! It returns a generator object. Also, the function does not really exit - it goes into a suspended state. When the &lt;code&gt;for&lt;/code&gt; loop tries to loop over the generator object, the function resumes from its suspended state at the very next line after the &lt;code&gt;yield&lt;/code&gt; it previously returned from, executes the next line of code, in this case, a &lt;code&gt;yield&lt;/code&gt; statement, and returns that as the next item. This happens until the function exits, at which point the generator raises &lt;code&gt;StopIteration&lt;/code&gt;, and the loop exits.</source>
+          <target state="translated">如果您在 &lt;code&gt;f123()&lt;/code&gt; 中只有三个 &lt;code&gt;return&lt;/code&gt; 语句， 则不会执行 &lt;code&gt;yield&lt;/code&gt; 语句，只有第一个会执行，该函数将退出。 但是 &lt;code&gt;f123()&lt;/code&gt; 不是普通函数。 调用 &lt;code&gt;f123()&lt;/code&gt; 时 ，它&lt;em&gt;不会&lt;/em&gt;返回yield语句中的任何值！ 它返回一个生成器对象。 另外，该函数并没有真正退出-进入了挂起状态。 当 &lt;code&gt;for&lt;/code&gt; 循环尝试循环生成器对象时，该函数从先前返回的 &lt;code&gt;yield&lt;/code&gt; 之后的下一行开始从其挂起状态恢复，执行下一行代码（在这种情况下为 &lt;code&gt;yield&lt;/code&gt; 语句），并返回作为下一项。 这会一直发生到函数退出，此时生成器将引发 &lt;code&gt;StopIteration&lt;/code&gt; ，然后退出循环。</target>
+        </trans-unit>
+        <trans-unit id="6ba67eec9e92df05acdf46af85244d2e3cb47ac2" translate="yes" xml:space="preserve">
+          <source>Instead of this:</source>
+          <target state="translated">而不是这样。</target>
+        </trans-unit>
+        <trans-unit id="a2128e769c0a333306ebd59207294d6e72de5845" translate="yes" xml:space="preserve">
+          <source>It can be useful for various things like controlling access to a resource.</source>
+          <target state="translated">它可以用于控制对资源的访问等各种事情。</target>
+        </trans-unit>
+        <trans-unit id="815bab4f701d81dd1ca8739066ea47b1ea845181" translate="yes" xml:space="preserve">
+          <source>It is confused on what makes an &lt;strong&gt;iterable&lt;/strong&gt;, just using a list as an example. See my references above, but in summary: an iterable has an &lt;code&gt;__iter__&lt;/code&gt; method returning an &lt;strong&gt;iterator&lt;/strong&gt;. An &lt;strong&gt;iterator&lt;/strong&gt; provides a &lt;code&gt;.next&lt;/code&gt; (Python 2 or &lt;code&gt;.__next__&lt;/code&gt; (Python 3) method, which is implicitly called by &lt;code&gt;for&lt;/code&gt; loops until it raises &lt;code&gt;StopIteration&lt;/code&gt;, and once it does, it will continue to do so.</source>
+          <target state="translated">仅以列表为例，它对使&lt;strong&gt;可迭代的&lt;/strong&gt;内容感到困惑。 请参阅上面的参考资料，但总而言之：iterable具有返回&lt;strong&gt;iterator&lt;/strong&gt;的 &lt;code&gt;__iter__&lt;/code&gt; 方法。 &lt;strong&gt;迭代器&lt;/strong&gt;提供 &lt;code&gt;.next&lt;/code&gt; （Python 2或 &lt;code&gt;.__next__&lt;/code&gt; （Python 3））方法， &lt;code&gt;for&lt;/code&gt; 循环会隐式调用该方法，直到引发 &lt;code&gt;StopIteration&lt;/code&gt; 为止，一旦这样做，它将继续这样做。</target>
+        </trans-unit>
+        <trans-unit id="d0e5a74aff1c87c165974074b746e9b876037387" translate="yes" xml:space="preserve">
+          <source>It is just the same except you used &lt;code&gt;()&lt;/code&gt; instead of &lt;code&gt;[]&lt;/code&gt;. BUT, you &lt;strong&gt;cannot&lt;/strong&gt; perform &lt;code&gt;for i in mygenerator&lt;/code&gt; a second time since generators can only be used once: they calculate 0, then forget about it and calculate 1, and end calculating 4, one by one.</source>
+          <target state="translated">除了使用 &lt;code&gt;()&lt;/code&gt; 而不是 &lt;code&gt;[]&lt;/code&gt; 之外，其他功能相同。 但是，您&lt;strong&gt;不能&lt;/strong&gt;第二次 &lt;code&gt;for i in mygenerator&lt;/code&gt; 执行i，因为生成器只能使用一次：它们先计算0，然后忘记它，然后计算1，最后一次计算4。</target>
+        </trans-unit>
+        <trans-unit id="05428c01ccee190c5ac8f4e2b026d5698fe85729" translate="yes" xml:space="preserve">
+          <source>It really helps simplify some problems, and makes some things easier to work with.</source>
+          <target state="translated">它确实可以帮助简化一些问题,让一些事情变得更容易处理。</target>
+        </trans-unit>
+        <trans-unit id="ce1006cada79cecc9b2fc03861f35b39cd056555" translate="yes" xml:space="preserve">
+          <source>It seems to be an interesting and nice ability :D</source>
+          <target state="translated">这似乎是一个有趣而不错的能力 :D</target>
+        </trans-unit>
+        <trans-unit id="a4c8c5a8330bec1551d58ebddad1eca41f75c743" translate="yes" xml:space="preserve">
+          <source>It then uses a generator expression to describe what a generator is. Since a generator is simply a convenient way to create an &lt;strong&gt;iterator&lt;/strong&gt;, it only confuses the matter, and we still have not yet gotten to the &lt;code&gt;yield&lt;/code&gt; part.</source>
+          <target state="translated">然后，它使用生成器表达式来描述什么是生成器。 由于生成器只是创建&lt;strong&gt;迭代器的&lt;/strong&gt;一种简便方法，因此它只会使问题感到困惑，而我们仍未达到 &lt;code&gt;yield&lt;/code&gt; 部分。</target>
+        </trans-unit>
+        <trans-unit id="2b525c9fdafab13df3793783112dad0c5e7c47f0" translate="yes" xml:space="preserve">
+          <source>It turns out that &lt;code&gt;yield&lt;/code&gt; does a lot. I'm sure I could add even more 
+thorough examples to this. If you want more or have some constructive criticism, let me know by commenting
+below.</source>
+          <target state="translated">事实证明， &lt;code&gt;yield&lt;/code&gt; 很大。 我相信我可以为此添加更详尽的示例。 如果您想要更多或有建设性的批评，请在下面评论中告诉我。</target>
+        </trans-unit>
+        <trans-unit id="bedfd4c2b8ac96435e9dab026a1ad6ca9d8e9595" translate="yes" xml:space="preserve">
+          <source>It's returning a generator. I'm not particularly familiar with Python, but I believe it's the same kind of thing as &lt;a href=&quot;http://csharpindepth.com/Articles/Chapter11/StreamingAndIterators.aspx&quot;&gt;C#'s iterator blocks&lt;/a&gt; if you're familiar with those.</source>
+          <target state="translated">它正在返回发电机。 我对Python并不是特别熟悉，但是如果您熟悉&lt;a href=&quot;http://csharpindepth.com/Articles/Chapter11/StreamingAndIterators.aspx&quot;&gt;C＃的迭代器块&lt;/a&gt; ，我相信它与C＃的迭代器块一样 。</target>
+        </trans-unit>
+        <trans-unit id="b62a14283b71537aa375bb5504d321c2fa6f966c" translate="yes" xml:space="preserve">
+          <source>It's the core about &lt;code&gt;yield&lt;/code&gt;.</source>
+          <target state="translated">这是 &lt;code&gt;yield&lt;/code&gt; 的核心。</target>
+        </trans-unit>
+        <trans-unit id="4dd80eea3f6c51bf5b9c13a8a47609bd55b30e0e" translate="yes" xml:space="preserve">
+          <source>Iterables</source>
+          <target state="translated">Iterables</target>
+        </trans-unit>
+        <trans-unit id="d8b8f9a4e83121e284417429816033e650e4b4db" translate="yes" xml:space="preserve">
+          <source>Iteration is a process implying iterables (implementing the &lt;code&gt;__iter__()&lt;/code&gt; method) and iterators (implementing the &lt;code&gt;__next__()&lt;/code&gt; method).
+Iterables are any objects you can get an iterator from. Iterators are objects that let you iterate on iterables.</source>
+          <target state="translated">迭代是一个包含可迭代对象（实现 &lt;code&gt;__iter__()&lt;/code&gt; 方法）和迭代器（实现 &lt;code&gt;__next__()&lt;/code&gt; 方法）的过程。 可迭代对象是可以从中获取迭代器的任何对象。 迭代器是使您可以迭代可迭代对象的对象。</target>
+        </trans-unit>
+        <trans-unit id="0ae5cba6a7258c212d3cd38a207c7e9817fe838e" translate="yes" xml:space="preserve">
+          <source>Itertools, your best friend</source>
+          <target state="translated">Itertools,你最好的朋友</target>
+        </trans-unit>
+        <trans-unit id="45989d87a7cb5c27f41e09694e3e18fcead4c711" translate="yes" xml:space="preserve">
+          <source>Itertools? This was not relevant to what &lt;code&gt;yield&lt;/code&gt; does at all.</source>
+          <target state="translated">Itertools？ 这与 &lt;code&gt;yield&lt;/code&gt; 完全无关。</target>
+        </trans-unit>
+        <trans-unit id="4092678f14b36035b0f14d72fd89eede06817d6a" translate="yes" xml:space="preserve">
+          <source>Keep calling the &lt;code&gt;next()&lt;/code&gt; method on the iterator returned from step 1. The return value from &lt;code&gt;next()&lt;/code&gt; is assigned to &lt;code&gt;x&lt;/code&gt; and the loop body is executed. If an exception &lt;code&gt;StopIteration&lt;/code&gt; is raised from within &lt;code&gt;next()&lt;/code&gt;, it means there are no more values in the iterator and the loop is exited.</source>
+          <target state="translated">继续在步骤1返回的迭代器上调用 &lt;code&gt;next()&lt;/code&gt; 方法。将next（）的返回值分配给 &lt;code&gt;x&lt;/code&gt; ,并执行循环体。 如果从 &lt;code&gt;next()&lt;/code&gt; 内部引发异常 &lt;code&gt;StopIteration&lt;/code&gt; ，则意味着迭代器中没有更多值，并且退出了循环。</target>
+        </trans-unit>
+        <trans-unit id="02ece3e82c3cc947abccfde61ed0ddf58d180562" translate="yes" xml:space="preserve">
+          <source>Let's define a function &lt;code&gt;makeRange&lt;/code&gt; that's just like Python's &lt;code&gt;range&lt;/code&gt;. Calling &lt;code&gt;makeRange(n)&lt;/code&gt; RETURNS A GENERATOR:</source>
+          <target state="translated">让我们定义一个函数 &lt;code&gt;makeRange&lt;/code&gt; ，就像Python的 &lt;code&gt;range&lt;/code&gt; 一样 。 调用 &lt;code&gt;makeRange(n)&lt;/code&gt; 返回一个生成器：</target>
+        </trans-unit>
+        <trans-unit id="17e789352f0c8efe4814e81b930cce60ca106303" translate="yes" xml:space="preserve">
+          <source>Like every answer suggests, &lt;code&gt;yield&lt;/code&gt; is used for creating a sequence generator. It's used for generating some sequence dynamically. For example, while reading a file line by line on a network, you can use the &lt;code&gt;yield&lt;/code&gt; function as follows:</source>
+          <target state="translated">就像每个答案所暗示的那样， &lt;code&gt;yield&lt;/code&gt; 用于创建序列生成器。 它用于动态生成一些序列。 例如，在网络上逐行读取文件时，可以按以下方式使用 &lt;code&gt;yield&lt;/code&gt; 函数：</target>
+        </trans-unit>
+        <trans-unit id="f1e0ba1d127fcef46948db3881dab6eede1ff0a8" translate="yes" xml:space="preserve">
+          <source>Luckily Guido and his team were generous enough to develop generators so we could just do this;</source>
+          <target state="translated">幸运的是,Guido和他的团队足够慷慨地开发出了发电机,所以我们可以只做这个。</target>
+        </trans-unit>
+        <trans-unit id="ea2bbc6304080fdb00b621f7aa3245c1e64e92e2" translate="yes" xml:space="preserve">
+          <source>Many people use &lt;code&gt;return&lt;/code&gt; rather than &lt;code&gt;yield&lt;/code&gt;, but in some cases &lt;code&gt;yield&lt;/code&gt; can be more efficient and easier to work with.</source>
+          <target state="translated">许多人使用 &lt;code&gt;return&lt;/code&gt; 而不是 &lt;code&gt;yield&lt;/code&gt; ，但在某些情况下， &lt;code&gt;yield&lt;/code&gt; 可以更有效且更容易使用。</target>
+        </trans-unit>
+        <trans-unit id="f1ecc57d869eaa2aeb4f14bb021fbf641a09a4cf" translate="yes" xml:space="preserve">
+          <source>Minutiae</source>
+          <target state="translated">Minutiae</target>
+        </trans-unit>
+        <trans-unit id="63298b940ce76e1f6554f705d9938c3451b0daf7" translate="yes" xml:space="preserve">
+          <source>More importantly, &lt;code&gt;yield&lt;/code&gt; is a &lt;strong&gt;barrier&lt;/strong&gt;.</source>
+          <target state="translated">更重要的是， &lt;code&gt;yield&lt;/code&gt; 是一个&lt;strong&gt;障碍&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="260be5bd97364077b3283e9557a7cf6fccbc23dd" translate="yes" xml:space="preserve">
+          <source>Moreover &lt;a href=&quot;https://www.python.org/dev/peps/pep-0492/&quot;&gt;this&lt;/a&gt; will introduce (since Python 3.5):</source>
+          <target state="translated">此外， &lt;a href=&quot;https://www.python.org/dev/peps/pep-0492/&quot;&gt;这&lt;/a&gt;将引入（自Python 3.5起）：</target>
+        </trans-unit>
+        <trans-unit id="f90dd4485580d3bdc59a261e1ec77656145f7983" translate="yes" xml:space="preserve">
+          <source>My vote is it be a SyntaxError since you're not getting what you expect from
+    the syntax.</source>
+          <target state="translated">我的意见是它是一个语法错误,因为你没有得到你所期望的语法。</target>
+        </trans-unit>
+        <trans-unit id="6d2a636bd1ba1e865b86d549524144e1fe118a22" translate="yes" xml:space="preserve">
+          <source>No discussion of the methods that &lt;code&gt;yield&lt;/code&gt; provides along with the new functionality &lt;code&gt;yield from&lt;/code&gt; in Python 3. &lt;strong&gt;The top/accepted answer is a very incomplete answer.&lt;/strong&gt;</source>
+          <target state="translated">没有讨论 &lt;code&gt;yield&lt;/code&gt; 的方法以及Python 3中新功能的 &lt;code&gt;yield from&lt;/code&gt; 。 &lt;strong&gt;最高/可接受的答案是非常不完整的答案。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="957edece43529861540ff3f36e5e7a2451ec8ff3" translate="yes" xml:space="preserve">
+          <source>Normally, most people would not care about the following distinctions and probably want to stop reading here.</source>
+          <target state="translated">通常情况下,大多数人都不会在意下面的区别,可能会想在这里停止阅读。</target>
+        </trans-unit>
+        <trans-unit id="f8c793e525ecfff42fd9cd9042640febe5190bea" translate="yes" xml:space="preserve">
+          <source>Note that &lt;code&gt;def&lt;/code&gt;ining a function which contains a &lt;code&gt;yield&lt;/code&gt; keyword is not the only way to create a generator; it's just the easiest way to create one.</source>
+          <target state="translated">请注意，定义包含 &lt;code&gt;yield&lt;/code&gt; 关键字的函数并不是创建生成器的唯一方法； 这是创建一个最简单的方法。</target>
+        </trans-unit>
+        <trans-unit id="c9d2501fc158d349dfef0af0d5919d70d9574d6f" translate="yes" xml:space="preserve">
+          <source>Note that a &lt;code&gt;for&lt;/code&gt; loop doesn't know what kind of object it's dealing with - it just follows the iterator protocol, and is happy to get item after item as it calls &lt;code&gt;next()&lt;/code&gt;. Built-in lists return their items one by one, dictionaries return the &lt;em&gt;keys&lt;/em&gt; one by one, files return the &lt;em&gt;lines&lt;/em&gt; one by one, etc. And generators return... well that's where &lt;code&gt;yield&lt;/code&gt; comes in:</source>
+          <target state="translated">请注意， &lt;code&gt;for&lt;/code&gt; 循环不知道它要处理的是哪种对象-它仅遵循迭代器协议，并且很高兴在调用 &lt;code&gt;next()&lt;/code&gt; 时逐项获取对象。 内置列表一一返回它们的项，字典一一返回&lt;em&gt;键&lt;/em&gt; ，文件一一返回&lt;em&gt;行&lt;/em&gt; ，依此类推。生成器返回&amp;hellip;&amp;hellip;这就是 &lt;code&gt;yield&lt;/code&gt; 的地方：</target>
+        </trans-unit>
+        <trans-unit id="d0983c67f73b9198117de75714eca1653ab0ab62" translate="yes" xml:space="preserve">
+          <source>Now let's talk about generators in Python. Generators are a specific subtype of continuation. Whereas &lt;strong&gt;continuations are able in general to save the state of a &lt;em&gt;computation&lt;/em&gt;&lt;/strong&gt; (i.e., the program's call stack), &lt;strong&gt;generators are only able to save the state of iteration over an &lt;em&gt;iterator&lt;/em&gt;&lt;/strong&gt;. Although, this definition is slightly misleading for certain use cases of generators. For instance:</source>
+          <target state="translated">现在让我们谈谈Python中的生成器。 生成器是延续的特定子类型。 &lt;strong&gt;延续通常能够保存&lt;em&gt;计算&lt;/em&gt;状态&lt;/strong&gt; （即程序的调用堆栈），而&lt;strong&gt;生成器只能保存迭代&lt;em&gt;器&lt;/em&gt;上的&lt;em&gt;迭代状态&lt;/em&gt;&lt;/strong&gt; 。 虽然，对于发电机的某些使用情况，此定义会产生误导。 例如：</target>
+        </trans-unit>
+        <trans-unit id="cbea0f398a5f710fc8e5fc5cc6c1aa916df7b9fc" translate="yes" xml:space="preserve">
+          <source>Now the hard part:</source>
+          <target state="translated">现在最难的部分。</target>
+        </trans-unit>
+        <trans-unit id="96065685d9b9c8665dca19ef4217583b206991ad" translate="yes" xml:space="preserve">
+          <source>Now upon each iteration a function on the generator called &lt;code&gt;next()&lt;/code&gt; executes the function until it either reaches a 'yield' statement in which it stops and  'yields' the value or reaches the end of the function. In this case on the first call, &lt;code&gt;next()&lt;/code&gt; executes up to the yield statement and yield 'n', on the next call it will execute the  increment statement, jump back to the 'while', evaluate it, and if true, it will stop and yield 'n' again, it will continue that way until the while condition returns false and the generator jumps to the end of the function.</source>
+          <target state="translated">现在，在每次迭代时，生成器上称为 &lt;code&gt;next()&lt;/code&gt; 的函数都会执行该函数，直到它到达&amp;ldquo; yield&amp;rdquo;语句为止，在该语句中它停止并&amp;ldquo; yield&amp;rdquo;该值或到达函数的结尾。 在这种情况下，第一次调用时， &lt;code&gt;next()&lt;/code&gt; 会执行到yield语句并产生yield'n'，在下一次调用时，它将执行递增语句，跳回到'while'，对其进行评估，如果为true，则执行将停止并再次产生&amp;ldquo; n&amp;rdquo;，它将继续这种方式，直到while条件返回false且生成器跳至函数末尾。</target>
+        </trans-unit>
+        <trans-unit id="6f591e3f872109c5472337a1e87fe9e3bcde0a83" translate="yes" xml:space="preserve">
+          <source>Now, enter in the REPL:</source>
+          <target state="translated">现在,在REPL中输入。</target>
+        </trans-unit>
+        <trans-unit id="e92a9d3b2c29a2e3bc4353c33fa7bff82dd4846f" translate="yes" xml:space="preserve">
+          <source>Now, recall that &lt;code&gt;yield from&lt;/code&gt; is available in Python 3. This allows us to delegate
+coroutines to a subcoroutine:</source>
+          <target state="translated">现在，回想一下 &lt;code&gt;yield from&lt;/code&gt; 在Python 3中可用。这使我们可以将协程委托给子协程：</target>
+        </trans-unit>
+        <trans-unit id="5a307763317a3a7bc6e71bc9264167d7ad80a27e" translate="yes" xml:space="preserve">
+          <source>Now, you win to get all the numbers.</source>
+          <target state="translated">现在,你赢得了所有的数字。</target>
+        </trans-unit>
+        <trans-unit id="b6987f5b93c9acf22eca3106831b92a972ad34e6" translate="yes" xml:space="preserve">
+          <source>On 30 January 2017 at 19:05, Brett Cannon  wrote:</source>
+          <target state="translated">2017年1月30日19:05,Brett Cannon写道:</target>
+        </trans-unit>
+        <trans-unit id="85c98d1e4740c518785320f781b5df7464816e4c" translate="yes" xml:space="preserve">
+          <source>On Sun, 29 Jan 2017 at 16:39 Craig Rodrigues  wrote:</source>
+          <target state="translated">2017年1月29日(Sun,29 Jan 2017 at 16:39 Craig Rodrigues)写道:</target>
+        </trans-unit>
+        <trans-unit id="effbc2c26171feae094bbbc8c2b18c68368e591a" translate="yes" xml:space="preserve">
+          <source>One can yield data programmatically, for example:</source>
+          <target state="translated">人们可以通过程序化的方式产生数据,比如说。</target>
+        </trans-unit>
+        <trans-unit id="8ec523094d69740bf96305160c0edf4de24e608c" translate="yes" xml:space="preserve">
+          <source>One more step we can rewrite &lt;code&gt;yield&lt;/code&gt; statement with &lt;code&gt;return&lt;/code&gt;</source>
+          <target state="translated">我们可以再执行一步，用 &lt;code&gt;return&lt;/code&gt; 重写 &lt;code&gt;yield&lt;/code&gt; 语句</target>
+        </trans-unit>
+        <trans-unit id="b31a591d4d9d64b9d692dc2c86bc55fc3a7bde29" translate="yes" xml:space="preserve">
+          <source>Original version:</source>
+          <target state="translated">原来的版本。</target>
+        </trans-unit>
+        <trans-unit id="bee143e2a96019cef9b2e3c68a2e94c347f68a59" translate="yes" xml:space="preserve">
+          <source>Other Methods: close and throw</source>
+          <target state="translated">其他方法:关闭和投掷</target>
+        </trans-unit>
+        <trans-unit id="f3c8c95c5e534bcd2ea0034a0d83177efa6923f4" translate="yes" xml:space="preserve">
+          <source>Output:</source>
+          <target state="translated">Output:</target>
+        </trans-unit>
+        <trans-unit id="5f07ef89f002df2bf1789a1e70ac0785b82990f2" translate="yes" xml:space="preserve">
+          <source>Please note: generators can actually be used for many more things, such as &lt;a href=&quot;http://www.dabeaz.com/coroutines/index.html&quot;&gt;implementing coroutines&lt;/a&gt; or non-deterministic programming or other elegant things. However, the &quot;lazy lists&quot; viewpoint I present here is the most common use you will find.</source>
+          <target state="translated">请注意：生成器实际上可以用于更多事情，例如&lt;a href=&quot;http://www.dabeaz.com/coroutines/index.html&quot;&gt;实现协程&lt;/a&gt;或不确定性编程或其他优雅的事情。 但是，我在这里提出的&amp;ldquo;惰性列表&amp;rdquo;观点是您会发现的最常见用法。</target>
+        </trans-unit>
+        <trans-unit id="00d9b100b9bcc674781b9766a8e6870f8757ebdd" translate="yes" xml:space="preserve">
+          <source>Py3k warning in 2.7.x</source>
+          <target state="translated">2.7.x中的Py3k警告</target>
+        </trans-unit>
+        <trans-unit id="cef032cf531f21b2c9cdf6eb64b001d4fb256c9b" translate="yes" xml:space="preserve">
+          <source>Python compiles the function, encounters the &lt;code&gt;yield&lt;/code&gt; keyword and simply returns a generator object back at you. Not very helpful it seems.</source>
+          <target state="translated">Python编译函数，遇到 &lt;code&gt;yield&lt;/code&gt; 关键字，然后简单地将生成器对象返回给您。 看起来不是很有帮助。</target>
+        </trans-unit>
+        <trans-unit id="c0e695374f96756b35fdfe22b9dbb044371df33d" translate="yes" xml:space="preserve">
+          <source>Python performs the following two steps:</source>
+          <target state="translated">Python执行以下两个步骤。</target>
+        </trans-unit>
+        <trans-unit id="c35284ab3425210def57302b5a65e2b0a11149ab" translate="yes" xml:space="preserve">
+          <source>Remember that this is just pseudocode and the actual implementation of generators in Python is more complex. But as an exercise to understand what is going on, try to use continuation passing style to implement generator objects without use of the &lt;code&gt;yield&lt;/code&gt; keyword.</source>
+          <target state="translated">请记住，这只是伪代码，Python中生成器的实际实现更为复杂。 但是，作为练习以了解发生了什么，请尝试使用连续传递样式来实现生成器对象，而不使用 &lt;code&gt;yield&lt;/code&gt; 关键字。</target>
+        </trans-unit>
+        <trans-unit id="1ac5b61c45f411038301d2404cf4fec54441c6ad" translate="yes" xml:space="preserve">
+          <source>Replace &lt;code&gt;return&lt;/code&gt; with &lt;code&gt;yield&lt;/code&gt;:</source>
+          <target state="translated">用 &lt;code&gt;yield&lt;/code&gt; 替换 &lt;code&gt;return&lt;/code&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="d3afd790e348a0c26c0be34d40ecc9f41e19d26d" translate="yes" xml:space="preserve">
+          <source>Replace each &lt;code&gt;yield expr&lt;/code&gt; with &lt;code&gt;result.append(expr)&lt;/code&gt;.</source>
+          <target state="translated">将每个 &lt;code&gt;yield expr&lt;/code&gt; 替换为 &lt;code&gt;result.append(expr)&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="25e781fe1df53bae8a289d02fbdb77ae6469547c" translate="yes" xml:space="preserve">
+          <source>Run it:</source>
+          <target state="translated">运转它。</target>
+        </trans-unit>
+        <trans-unit id="97dadded1b9f2fcec4b19ca00a996516c8982a2c" translate="yes" xml:space="preserve">
+          <source>Same behavior:</source>
+          <target state="translated">同样的行为。</target>
+        </trans-unit>
+        <trans-unit id="5a97a974883d7bcd43990ce0a93d8ca9aa864bfd" translate="yes" xml:space="preserve">
+          <source>Say you wanted to create a your own &lt;code&gt;range&lt;/code&gt; function that produces an iterable range of numbers, you could do it like so,</source>
+          <target state="translated">假设您要创建自己的 &lt;code&gt;range&lt;/code&gt; 函数以产生可迭代的数字范围，则可以这样做，</target>
+        </trans-unit>
+        <trans-unit id="2ab0369f1d5983f084d45c352d30c1446684eceb" translate="yes" xml:space="preserve">
+          <source>See, you get only a single number rather than a list of them. &lt;code&gt;return&lt;/code&gt; never allows you prevail happily, just implements once and quit.</source>
+          <target state="translated">看，您只会得到一个数字，而不是列表。 &lt;code&gt;return&lt;/code&gt; 永远不会让你高高兴兴，只执行一次就退出。</target>
+        </trans-unit>
+        <trans-unit id="010b0672dea78d8c4aa4f2420058adae5991abbe" translate="yes" xml:space="preserve">
+          <source>Shortcut to understanding &lt;code&gt;yield&lt;/code&gt;</source>
+          <target state="translated">了解 &lt;code&gt;yield&lt;/code&gt; 捷径</target>
+        </trans-unit>
+        <trans-unit id="a7942e6cc5e90e1d35d5f04820acc2b178f0f857" translate="yes" xml:space="preserve">
+          <source>Similarly, with a &lt;code&gt;tuple&lt;/code&gt; initializer:</source>
+          <target state="translated">同样，使用 &lt;code&gt;tuple&lt;/code&gt; 初始化程序：</target>
+        </trans-unit>
+        <trans-unit id="b2196b60ca80d641d8c512b27441745d29a9bae0" translate="yes" xml:space="preserve">
+          <source>Since yield is an expression, it has been touted by some as interesting to use it in comprehensions or generator expression - in spite of citing no particularly good use-case.</source>
+          <target state="translated">由于屈服是一种表达方式,所以有人吹捧它在理解或生成器表达中使用它是很有意思的--尽管没有举出特别好的用例。</target>
+        </trans-unit>
+        <trans-unit id="eb2327b341cffc04d124fdbbf7357dcf2a6b1dc4" translate="yes" xml:space="preserve">
+          <source>So it's a kind of a frozen function that the generator is hanging onto.</source>
+          <target state="translated">所以说,这是发电机的一种被冻结的功能挂在上面。</target>
+        </trans-unit>
+        <trans-unit id="19673e758686be33a34cf32a2f95654be99c541b" translate="yes" xml:space="preserve">
+          <source>So that's the iterator protocol, many objects implement this protocol:</source>
+          <target state="translated">所以这就是迭代器协议,很多对象实现了这个协议。</target>
+        </trans-unit>
+        <trans-unit id="9bd6893f306954b22b5c6d426e694f0b79db960f" translate="yes" xml:space="preserve">
+          <source>So the generator object is sort of like an adapter - at one end it exhibits the iterator protocol, by exposing &lt;code&gt;__iter__()&lt;/code&gt; and &lt;code&gt;next()&lt;/code&gt; methods to keep the &lt;code&gt;for&lt;/code&gt; loop happy. At the other end, however, it runs the function just enough to get the next value out of it, and puts it back in suspended mode.</source>
+          <target state="translated">因此，生成器对象有点像适配器-通过展示 &lt;code&gt;__iter__()&lt;/code&gt; 和 &lt;code&gt;next()&lt;/code&gt; 方法来保持 &lt;code&gt;for&lt;/code&gt; 循环满意，它展示了迭代器协议。 然而，在另一端，它恰好运行该函数以从中获取下一个值，并将其放回暂停模式。</target>
+        </trans-unit>
+        <trans-unit id="0846a1b0282a9b40bd6407dbf79fde868f3d33b4" translate="yes" xml:space="preserve">
+          <source>So, how do you generate these values? This can either be done directly by using the built-in function &lt;code&gt;next&lt;/code&gt;, or, indirectly by feeding it to a construct that consumes values.</source>
+          <target state="translated">那么，如何生成这些值？ 这可以通过使用内置函数 &lt;code&gt;next&lt;/code&gt; 来直接完成，也可以通过将其提供给使用值的构造来间接完成。</target>
+        </trans-unit>
+        <trans-unit id="5a9e453ff9384952ce4f468ed81ccbae376c01b4" translate="yes" xml:space="preserve">
+          <source>Sometime later, I tell you, &quot;OK, get ready to tell me the sequence of numbers&quot;.</source>
+          <target state="translated">不知过了多久,我告诉你,&quot;好了,准备好了,告诉我数字的顺序&quot;。</target>
+        </trans-unit>
+        <trans-unit id="f19056e03502445791c22a8e19229c5e20a55381" translate="yes" xml:space="preserve">
+          <source>SyntaxError in 3.8</source>
+          <target state="translated">3.8中的语法错误</target>
+        </trans-unit>
+        <trans-unit id="567e7ba961e72df760eb88d4a21163100151b70e" translate="yes" xml:space="preserve">
+          <source>SyntaxWarning or DeprecationWarning in 3.7</source>
+          <target state="translated">3.7中的SyntaxWarning或DeprecationWarning</target>
+        </trans-unit>
+        <trans-unit id="9ab0a0362c832896068559a5fa49081174de2ddf" translate="yes" xml:space="preserve">
+          <source>That is, it will run the code in your function from the beginning until it hits &lt;code&gt;yield&lt;/code&gt;. Then, it&amp;rsquo;ll return the first value of the loop.</source>
+          <target state="translated">也就是说，它将从头开始在函数中运行代码，直到达到 &lt;code&gt;yield&lt;/code&gt; 为止。 然后，它将返回循环的第一个值。</target>
+        </trans-unit>
+        <trans-unit id="838208781647d2859f5be9f1f69a5eae0736b9bf" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;close&lt;/code&gt; method raises &lt;code&gt;GeneratorExit&lt;/code&gt; at the point the function 
+execution was frozen. This will also be called by &lt;code&gt;__del__&lt;/code&gt; so you 
+can put any cleanup code where you handle the &lt;code&gt;GeneratorExit&lt;/code&gt;:</source>
+          <target state="translated">&lt;code&gt;close&lt;/code&gt; 方法在函数执行被冻结时将引发 &lt;code&gt;GeneratorExit&lt;/code&gt; 。 &lt;code&gt;__del__&lt;/code&gt; 也将调用它，因此您可以将任何清理代码放在处理 &lt;code&gt;GeneratorExit&lt;/code&gt; 的位置 ：</target>
+        </trans-unit>
+        <trans-unit id="a3d45fcf0497296d8e1482b4554df59b5eedf048" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;extend()&lt;/code&gt; method is a list object method that expects an iterable and adds its values to the list.</source>
+          <target state="translated">&lt;code&gt;extend()&lt;/code&gt; 方法是一个列表对象方法，该方法期望可迭代并将其值添加到列表中。</target>
+        </trans-unit>
+        <trans-unit id="29609fb0ada2ba2818fb2a90a695577b51e87c1d" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;gi_code&lt;/code&gt; and &lt;code&gt;gi_frame&lt;/code&gt; fields are where the frozen state is stored. Exploring them with &lt;code&gt;dir(..)&lt;/code&gt;, we can confirm that our mental model above is credible.</source>
+          <target state="translated">&lt;code&gt;gi_code&lt;/code&gt; 和 &lt;code&gt;gi_frame&lt;/code&gt; 字段是冻结状态的存储位置。 用 &lt;code&gt;dir(..)&lt;/code&gt; 探索它们，我们可以确认我们上面的心理模型是可信的。</target>
+        </trans-unit>
+        <trans-unit id="d96f54e7ea72522d78f3384a3336d7ad5556bc22" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;return&lt;/code&gt; statement in a generator</source>
+          <target state="translated">生成器中的 &lt;code&gt;return&lt;/code&gt; 语句</target>
+        </trans-unit>
+        <trans-unit id="77154ad361e61b0b0ba81607182893014c0d1a34" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;yield&lt;/code&gt; keyword is reduced to two simple facts:</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 关键字简化为两个简单事实：</target>
+        </trans-unit>
+        <trans-unit id="dc5a0f0208c180c85b5d0c4f32b9d8172d5659ac" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;yield&lt;/code&gt; keyword simply collects returning results. Think of &lt;code&gt;yield&lt;/code&gt; like &lt;code&gt;return +=&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;yield&lt;/code&gt; 关键字只是收集返回的结果。 认为 &lt;code&gt;yield&lt;/code&gt; 就像 &lt;code&gt;return +=&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="569b8a7334a018ddbbd0be69dd1861bc7484befb" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;yield&lt;/code&gt; statement in Python returns a generator. A generator in Python is a function that returns</source>
+          <target state="translated">Python中的 &lt;code&gt;yield&lt;/code&gt; 语句返回一个生成器。 Python中的生成器是返回的函数</target>
+        </trans-unit>
+        <trans-unit id="286c50d08b635ef15bfeee9cc3db60c93c6ad474" translate="yes" xml:space="preserve">
+          <source>The CPython core developers are &lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2017-January/147301.html&quot;&gt;discussing deprecating its allowance&lt;/a&gt;.
+Here's a relevant post from the mailing list:</source>
+          <target state="translated">CPython核心开发人员正在&lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2017-January/147301.html&quot;&gt;讨论弃用其津贴&lt;/a&gt; 。 这是邮件列表中的相关帖子：</target>
+        </trans-unit>
+        <trans-unit id="4e3fe55c48ec33c0b2a6787983638ea6d62f5711" translate="yes" xml:space="preserve">
+          <source>The OO approach, we wrap the metadata &lt;code&gt;as a class&lt;/code&gt;. This is the so-called &lt;code&gt;iterator&lt;/code&gt; who implements the iterator protocol (i.e. the &lt;code&gt;__next__()&lt;/code&gt;, and &lt;code&gt;__iter__()&lt;/code&gt; methods). This is also the commonly seen &lt;a href=&quot;https://en.wikipedia.org/wiki/Iterator_pattern#Python&quot;&gt;iterator design pattern&lt;/a&gt;.</source>
+          <target state="translated">面向对象的方法，我们将元数据包装 &lt;code&gt;as a class&lt;/code&gt; 。 这就是实现迭代器协议的所谓 &lt;code&gt;iterator&lt;/code&gt; 器（即 &lt;code&gt;__next__()&lt;/code&gt; 和 &lt;code&gt;__iter__()&lt;/code&gt; 方法）。 这也是常见的&lt;a href=&quot;https://en.wikipedia.org/wiki/Iterator_pattern#Python&quot;&gt;迭代器设计模式&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="b36d36ae5461cd703d79e055f55c9ebb36c41eab" translate="yes" xml:space="preserve">
+          <source>The above example can be thought of as merely creating a list which you append to and return:</source>
+          <target state="translated">上面的例子可以认为仅仅是建立一个列表,你可以将其附加到并返回。</target>
+        </trans-unit>
+        <trans-unit id="384fee2b6ad3d7469cdf79c4d54b9d63ea5ae224" translate="yes" xml:space="preserve">
+          <source>The above simple generator is also equivalent to the below - as of Python 3.3 (and not available in Python 2), you can use &lt;a href=&quot;https://www.python.org/dev/peps/pep-0380/&quot;&gt;&lt;code&gt;yield from&lt;/code&gt;&lt;/a&gt;:</source>
+          <target state="translated">上面的简单生成器也等效于下面的生成器-从Python 3.3开始（在Python 2中不可用），您可以使用&lt;a href=&quot;https://www.python.org/dev/peps/pep-0380/&quot;&gt; &lt;code&gt;yield from&lt;/code&gt; &lt;/a&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="e62f3d84017118479b990b0d86c245c11aa0d847" translate="yes" xml:space="preserve">
+          <source>The built-in function &lt;code&gt;next()&lt;/code&gt; just calls the objects &lt;code&gt;.next()&lt;/code&gt; function, which is a part of the &quot;iteration protocol&quot; and is found on all iterators. You can manually use the &lt;code&gt;next()&lt;/code&gt; function (and other parts of the iteration protocol) to implement fancy things, usually at the expense of readability, so try to avoid doing that...</source>
+          <target state="translated">内置函数 &lt;code&gt;next()&lt;/code&gt; 仅调用对象 &lt;code&gt;.next()&lt;/code&gt; 函数，该函数是&amp;ldquo;迭代协议&amp;rdquo;的一部分，可以在所有迭代器上找到。 您可以手动使用 &lt;code&gt;next()&lt;/code&gt; 函数（以及迭代协议的其他部分）来实现一些奇特的事情，通常是以牺牲可读性为代价的，因此请避免这样做...</target>
+        </trans-unit>
+        <trans-unit id="7de99b1c48ee10b1bddb666e63ca36fa1bf9d357" translate="yes" xml:space="preserve">
+          <source>The difference between a list &lt;code&gt;return&lt;/code&gt; outputs and the object &lt;code&gt;yield&lt;/code&gt; output is:</source>
+          <target state="translated">列表 &lt;code&gt;return&lt;/code&gt; 输出和对象 &lt;code&gt;yield&lt;/code&gt; 输出之间的区别是：</target>
+        </trans-unit>
+        <trans-unit id="bb49489746a020a2dc0a0d8886122c8ac1c8272f" translate="yes" xml:space="preserve">
+          <source>The execution control will be transferred from getNextLines() to the &lt;code&gt;for&lt;/code&gt; loop when yield is executed. Thus, every time getNextLines() is invoked, execution begins from the point where it was paused last time.</source>
+          <target state="translated">执行yield时，执行控制将从getNextLines（）转移到 &lt;code&gt;for&lt;/code&gt; 循环。 因此，每次调用getNextLines（）时，都会从上次暂停的位置开始执行。</target>
+        </trans-unit>
+        <trans-unit id="9574ade792214860025139f4da109ddb0dd74095" translate="yes" xml:space="preserve">
+          <source>The first time the &lt;code&gt;for&lt;/code&gt; calls the generator object created from your function, it will run the code in your function from the beginning until it hits &lt;code&gt;yield&lt;/code&gt;, then it'll return the first value of the loop. Then, each subsequent call will run another iteration of the loop you have written in the function and return the next value. This will continue until the generator is considered empty, which happens when the function runs without hitting &lt;code&gt;yield&lt;/code&gt;. That can be because the loop has come to an end, or because you no longer satisfy an &lt;code&gt;&quot;if/else&quot;&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;for&lt;/code&gt; 第一次调用从您的函数创建的生成器对象时，它将从头开始运行函数中的代码，直到达到 &lt;code&gt;yield&lt;/code&gt; 为止，然后它将返回循环的第一个值。 然后，每个后续调用将运行您在函数中编写的循环的另一次迭代，并返回下一个值。 这将一直持续到生成器被认为是空的为止，这在函数运行而未达到 &lt;code&gt;yield&lt;/code&gt; 时发生 。 那可能是因为循环已经结束，或者是因为您不再满足 &lt;code&gt;&quot;if/else&quot;&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="55b6d1db997b3f1403e7e44c2927b50a091ed779" translate="yes" xml:space="preserve">
+          <source>The functional approach, we wrap the metadata &lt;code&gt;as a function&lt;/code&gt;. This is
+the so-called &lt;code&gt;generator function&lt;/code&gt;. But under the hood, the returned &lt;code&gt;generator object&lt;/code&gt; still &lt;code&gt;IS-A&lt;/code&gt; iterator because it also implements the iterator protocol.</source>
+          <target state="translated">在功能方法上，我们将元数据包装 &lt;code&gt;as a function&lt;/code&gt; 。 这就是所谓的 &lt;code&gt;generator function&lt;/code&gt; 。 但实际上，返回的 &lt;code&gt;generator object&lt;/code&gt; 仍然 &lt;code&gt;IS-A&lt;/code&gt; 迭代器，因为它也实现了迭代器协议。</target>
+        </trans-unit>
+        <trans-unit id="ad5e73ec25fc40ac5fd2ca20c474cd6986e30ab3" translate="yes" xml:space="preserve">
+          <source>The generator remembers it was paused at &lt;code&gt;yield value&lt;/code&gt; and resumes from there. The next message is printed and the search for the &lt;code&gt;yield&lt;/code&gt; statement to pause at it performed again (due to the &lt;code&gt;while&lt;/code&gt; loop).</source>
+          <target state="translated">生成器会记住它已暂停在 &lt;code&gt;yield value&lt;/code&gt; 然后从那里恢复。 打印下一条消息，并再次执行搜索 &lt;code&gt;yield&lt;/code&gt; 语句以使其暂停的消息（由于 &lt;code&gt;while&lt;/code&gt; 循环）。</target>
+        </trans-unit>
+        <trans-unit id="956ec5707ad9efc1beeb86871d9e095c1cace192" translate="yes" xml:space="preserve">
+          <source>The generator type is a sub-type of iterator:</source>
+          <target state="translated">生成器类型是迭代器的一个子类型。</target>
+        </trans-unit>
+        <trans-unit id="89f016e32a8da16e8af307b674da7c0f4716f8a7" translate="yes" xml:space="preserve">
+          <source>The grammar currently allows any expression in a list comprehension.</source>
+          <target state="translated">语法目前允许列表理解中的任何表达方式。</target>
+        </trans-unit>
+        <trans-unit id="edf75537a05166775dfd15ba5c8a40896c6f403e" translate="yes" xml:space="preserve">
+          <source>The idea for generators comes from other languages (see footnote 1) with varying implementations. In Python's Generators, the execution of the code is &lt;a href=&quot;https://docs.python.org/3.5/glossary.html#term-generator-iterator&quot;&gt;frozen&lt;/a&gt; at the point of the yield. When the generator is called (methods are discussed below) execution resumes and then freezes at the next yield.</source>
+          <target state="translated">生成器的想法来自具有不同实现方式的其他语言（请参见脚注1）。 在Python的Generators中，代码的执行会在收益率点&lt;a href=&quot;https://docs.python.org/3.5/glossary.html#term-generator-iterator&quot;&gt;冻结&lt;/a&gt; 。 调用生成器时（下面将讨论方法），恢复执行，然后冻结下一个产量。</target>
+        </trans-unit>
+        <trans-unit id="305c568102291c5cb1ca7281807fa2c9a3b573fc" translate="yes" xml:space="preserve">
+          <source>The itertools module contains special functions to manipulate iterables. Ever wish to duplicate a generator?
+Chain two generators? Group values in a nested list with a one-liner? &lt;code&gt;Map / Zip&lt;/code&gt; without creating another list?</source>
+          <target state="translated">itertools模块包含用于操纵可迭代对象的特殊功能。 曾经希望复制一个发电机吗？ 连锁两个发电机？ 用一个班轮对嵌套列表中的值进行分组？ 无需创建其他列表的 &lt;code&gt;Map / Zip&lt;/code&gt; ？</target>
+        </trans-unit>
+        <trans-unit id="6f58a19a2dd95bc1b3cbfc74f010f82f5559c58c" translate="yes" xml:space="preserve">
+          <source>The key idea is that the compiler/interpreter/whatever does some trickery so that as far as the caller is concerned, they can keep calling next() and it will keep returning values - &lt;em&gt;as if the generator method was paused&lt;/em&gt;. Now obviously you can't really &quot;pause&quot; a method, so the compiler builds a state machine for you to remember where you currently are and what the local variables etc look like. This is much easier than writing an iterator yourself.</source>
+          <target state="translated">关键思想是，编译器/解释器/无论做什么都做一些技巧，以便就调用者而言，他们可以继续调用next（），并且将继续返回值- &lt;em&gt;就像Generator方法已暂停一样&lt;/em&gt; 。 现在显然您不能真正地&amp;ldquo;暂停&amp;rdquo;方法，因此编译器构建了一个状态机，供您记住您当前所​​在的位置以及局部变量等的外观。 这比自己编写迭代器要容易得多。</target>
+        </trans-unit>
+        <trans-unit id="92d79cb061c23c0b97be5b3c6bcac7a9343bbb0e" translate="yes" xml:space="preserve">
+          <source>The loop iterates on a list, but the list expands while the loop is being iterated :-) It's a concise way to go through all these nested data even if it's a bit dangerous since you can end up with an infinite loop. In this case, &lt;code&gt;candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))&lt;/code&gt; exhaust all the values of the generator, but &lt;code&gt;while&lt;/code&gt; keeps creating new generator objects which will produce different values from the previous ones since it's not applied on the same node.</source>
+          <target state="translated">循环在列表上迭代，但是循环在迭代时列表会扩展:-)这是浏览所有这些嵌套数据的一种简洁方法，即使这样做有点危险，因为您可能会遇到无限循环。 在这种情况下， &lt;code&gt;candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))&lt;/code&gt; 耗尽了生成器的所有值，但 &lt;code&gt;while&lt;/code&gt; 继续创建新的生成器对象，该对象将产生与先前值不同的生成器，因为它不适用于同一对象节点。</target>
+        </trans-unit>
+        <trans-unit id="fa326100d98f456e392b2f2fad538e2c0e77b226" translate="yes" xml:space="preserve">
+          <source>The most famous user of the iterator protocol is the &lt;code&gt;for&lt;/code&gt; command in Python. So, whenever you do a:</source>
+          <target state="translated">迭代器协议最著名的用户是Python中的 &lt;code&gt;for&lt;/code&gt; 命令。 因此，无论何时执行以下操作：</target>
+        </trans-unit>
+        <trans-unit id="db347df1c70b1f578850ca66fe264ef9284adcde" translate="yes" xml:space="preserve">
+          <source>The new syntax also opens up some opportunities for optimisation when one generator re-yields values produced by another.</source>
+          <target state="translated">新的语法也为优化提供了一些机会,当一个生成器重新产生的值由另一个生成器产生时,新的语法也为优化提供了一些机会。</target>
+        </trans-unit>
+        <trans-unit id="b74ff8ee45b0b8f3cea227a5cb8b0ca2512e0fa1" translate="yes" xml:space="preserve">
+          <source>The output is:</source>
+          <target state="translated">输出是:</target>
+        </trans-unit>
+        <trans-unit id="65c10c8b7349834a5510a50665946231ee354c64" translate="yes" xml:space="preserve">
+          <source>The power comes from using the generator with a loop that calculates a sequence, the generator executes the loop stopping each time to 'yield' the next result of the calculation, in this way it calculates a list on the fly, the benefit being the memory saved for especially large calculations</source>
+          <target state="translated">它的力量来自于使用具有计算序列的循环的生成器,生成器每次执行循环都会停止,以 &quot;产生 &quot;下一个计算结果,这样做的好处是节省了内存,可用于特别大的计算</target>
+        </trans-unit>
+        <trans-unit id="fc99ade7c7b098191b4ad77e911e56c56415f9b0" translate="yes" xml:space="preserve">
+          <source>The rest of this post will, without loss of generality, conceptualize continuations as CPS, because it is a hell of a lot easier to understand and read.</source>
+          <target state="translated">本帖后面的内容,在不失大意的情况下,将延续性的概念化为CPS,因为它的理解和阅读起来要方便得多。</target>
+        </trans-unit>
+        <trans-unit id="a8c92b7c9011965f168156df7f932f40277a20fa" translate="yes" xml:space="preserve">
+          <source>The truth is Python performs the above two steps anytime it wants to &lt;em&gt;loop over&lt;/em&gt; the contents of an object - so it could be a for loop, but it could also be code like &lt;code&gt;otherlist.extend(mylist)&lt;/code&gt; (where &lt;code&gt;otherlist&lt;/code&gt; is a Python list).</source>
+          <target state="translated">事实是Python随时想&lt;em&gt;遍历&lt;/em&gt;对象的内容时都执行上述两个步骤-因此它可能是for循环，但也可能是诸如 &lt;code&gt;otherlist.extend(mylist)&lt;/code&gt; 之类的代码（其中 &lt;code&gt;otherlist&lt;/code&gt; 是Python列表） 。</target>
+        </trans-unit>
+        <trans-unit id="02672c2bae3577e3b6b8642a622474b7f6f3b750" translate="yes" xml:space="preserve">
+          <source>The unquoted results are what's printed. The quoted result is what is returned from &lt;code&gt;yield&lt;/code&gt;. Call &lt;code&gt;next&lt;/code&gt; again now:</source>
+          <target state="translated">未报价的结果是打印的内容。 引用的结果是 &lt;code&gt;yield&lt;/code&gt; 所返回的结果。 现在再次致电：</target>
+        </trans-unit>
+        <trans-unit id="b738047d593c9d45f3f7f40a6e4eb41f8b25d5d8" translate="yes" xml:space="preserve">
+          <source>Then I can use it in other code like this:</source>
+          <target state="translated">那么我可以在其他的代码中使用它,比如这样。</target>
+        </trans-unit>
+        <trans-unit id="22b87c58846e1f25413204d0a0b8a1d8ed0faa70" translate="yes" xml:space="preserve">
+          <source>Then just &lt;code&gt;import itertools&lt;/code&gt;.</source>
+          <target state="translated">然后只需 &lt;code&gt;import itertools&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="68d7286f8dc4f85d70f3ddd2982d475286c52f12" translate="yes" xml:space="preserve">
+          <source>Then, every other call will run the loop you have written in the function one more time, returning the next value until there isn't any value to return.</source>
+          <target state="translated">然后,每一次其他的调用都会把你在函数中写的循环再运行一次,返回下一个值,直到没有任何值返回为止。</target>
+        </trans-unit>
+        <trans-unit id="3bb53270d0d4b4b1c8ffaa313d2acf3c3c850136" translate="yes" xml:space="preserve">
+          <source>Then, your code will continue from where it left off each time &lt;code&gt;for&lt;/code&gt; uses the generator.</source>
+          <target state="translated">然后，您的代码将从每次停止使用生成器的地方继续。</target>
+        </trans-unit>
+        <trans-unit id="959039a43531d3c4457a69589ed899271db1489a" translate="yes" xml:space="preserve">
+          <source>There are 2 approaches to wrap such metadata.</source>
+          <target state="translated">有2种方法来包装这种元数据。</target>
+        </trans-unit>
+        <trans-unit id="1e019b6ab061a03c5c91f64a23063b53844dc5f0" translate="yes" xml:space="preserve">
+          <source>There are lots of ways to implement this computation. I used mutation, but it is easy to do it without mutation, by returning the current value and the next yielder.</source>
+          <target state="translated">有很多方法可以实现这种计算。我用的是突变法,不过不用突变法也很简单,通过返回当前值和下一个收益器来实现。</target>
+        </trans-unit>
+        <trans-unit id="2d7b67871d58c1c22337093d7853eafa16e73e0b" translate="yes" xml:space="preserve">
+          <source>There comes &lt;code&gt;yield&lt;/code&gt;</source>
+          <target state="translated">有 &lt;code&gt;yield&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="b0a32cb8e02d7bb4ce6cf72881e646c325fc9731" translate="yes" xml:space="preserve">
+          <source>There is another &lt;code&gt;yield&lt;/code&gt; use and meaning (since Python 3.3):</source>
+          <target state="translated">还有另一个 &lt;code&gt;yield&lt;/code&gt; 的用法和含义（自Python 3.3起）：</target>
+        </trans-unit>
+        <trans-unit id="3efe40491ef4b5d01abc9316e30e10c965a4a4c9" translate="yes" xml:space="preserve">
+          <source>There is more about it in this article about &lt;a href=&quot;http://effbot.org/zone/python-for-statement.htm&quot;&gt;how &lt;code&gt;for&lt;/code&gt; loops work&lt;/a&gt;.</source>
+          <target state="translated">本文中有更多关于&lt;a href=&quot;http://effbot.org/zone/python-for-statement.htm&quot;&gt; &lt;code&gt;for&lt;/code&gt; 循环如何工作的内容&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="6f47398ac35d029b6377a0b4ddaede2532b3994a" translate="yes" xml:space="preserve">
+          <source>There is one major difference, though; see the last section.</source>
+          <target state="translated">有一个主要的区别,虽然;见最后一节。</target>
+        </trans-unit>
+        <trans-unit id="dfe628b44e21e48a9a1638275ee2cab7d93e4a99" translate="yes" xml:space="preserve">
+          <source>There is one type of answer that I don't feel has been given yet, among the many great answers that describe how to use generators. Here is the programming language theory answer:</source>
+          <target state="translated">在众多描述如何使用生成器的优秀答案中,有一种类型的答案我觉得还没有给出。下面是编程语言理论的答案。</target>
+        </trans-unit>
+        <trans-unit id="869f60d5d93fd508128a38611098256c7978879c" translate="yes" xml:space="preserve">
+          <source>There's one extra thing to mention: a function that yields doesn't actually have to terminate. I've written code like this:</source>
+          <target state="translated">还有一件事要提一下:产生的函数实际上不一定要终止。我写过这样的代码。</target>
+        </trans-unit>
+        <trans-unit id="761653d5f6ddfd0071e0c9f8287f586c348d08cd" translate="yes" xml:space="preserve">
+          <source>These iterables are handy because you can read them as much as you wish, but you store all the values in memory and this is not always what you want when you have a lot of values.</source>
+          <target state="translated">这些迭代值很方便,因为你可以随心所欲地读取它们,但你把所有的值都存储在内存中,当你有很多值时,这并不总是你想要的。</target>
+        </trans-unit>
+        <trans-unit id="847e29854b26173ea7127ee888f4830e76ab29e1" translate="yes" xml:space="preserve">
+          <source>Think of it this way:</source>
+          <target state="translated">这样想一想。</target>
+        </trans-unit>
+        <trans-unit id="ccd34f995b2f074874396138bbe200b9f454f73e" translate="yes" xml:space="preserve">
+          <source>This code actually loops over that array twice! :(</source>
+          <target state="translated">这段代码实际上是在那个数组上循环了两次! :(</target>
+        </trans-unit>
+        <trans-unit id="8d161d7ff1bebc685509da31091434ec70757135" translate="yes" xml:space="preserve">
+          <source>This code contains several smart parts:</source>
+          <target state="translated">这个代码包含了几个智能部分。</target>
+        </trans-unit>
+        <trans-unit id="95d467a037a72f1d404c008c65683f34bbcb709d" translate="yes" xml:space="preserve">
+          <source>This is basically what the Python interpreter does with the above code:</source>
+          <target state="translated">这基本上就是Python解释器对上述代码的处理方式。</target>
+        </trans-unit>
+        <trans-unit id="ea2ea6265215d15078974a1d7665827ca856c901" translate="yes" xml:space="preserve">
+          <source>This is because the presence of &lt;code&gt;yield&lt;/code&gt; signaled to Python that you want to create a &lt;em&gt;generator&lt;/em&gt;, that is, an object that generates values on demand.</source>
+          <target state="translated">这是因为 &lt;code&gt;yield&lt;/code&gt; 的存在向Python发出信号，表示您想要创建一个&lt;em&gt;generator&lt;/em&gt; ，即一个按需生成值的对象。</target>
+        </trans-unit>
+        <trans-unit id="54444ced92aaabea39a670c4bad4931fb55ea203" translate="yes" xml:space="preserve">
+          <source>This is clearly a reasonable iterable whose behavior is well defined -- each time the generator iterates over it, it returns 4 (and does so forever). But it isn't probably the prototypical type of iterable that comes to mind when thinking of iterators (i.e., &lt;code&gt;for x in collection: do_something(x)&lt;/code&gt;). This example illustrates the power of generators: if anything is an iterator, a generator can save the state of its iteration.</source>
+          <target state="translated">显然，这是一个合理的迭代器，其行为已得到很好的定义-每次生成器对其进行迭代时，它都会返回4（并且永远如此）。 但是，在考虑迭代器时（例如， &lt;code&gt;for x in collection: do_something(x)&lt;/code&gt; ），可能不会想到原型的可迭代类型。 此示例说明了生成器的功能：如果迭代器是任何东西，则生成器可以保存其迭代状态。</target>
+        </trans-unit>
+        <trans-unit id="6b729e4e5167e0f6ea0ad29b09ff6d8212c4d8e9" translate="yes" xml:space="preserve">
+          <source>This is how the &quot;Python iteration protocol&quot; works. That is, what is going on when you do &lt;code&gt;list(makeRange(5))&lt;/code&gt;. This is what I describe earlier as a &quot;lazy, incremental list&quot;.</source>
+          <target state="translated">这就是&amp;ldquo; Python迭代协议&amp;rdquo;的工作方式。 也就是说，执行 &lt;code&gt;list(makeRange(5))&lt;/code&gt; 时发生了什么 。 这就是我之前所说的&amp;ldquo;懒惰的增量列表&amp;rdquo;。</target>
+        </trans-unit>
+        <trans-unit id="d3493820819de86b02fd63f645e29ae4e0b50631" translate="yes" xml:space="preserve">
+          <source>This is the most simple use case of generators. As you said, it can be used to write efficient permutations, using yield to push things up through the call stack instead of using some sort of stack variable. Generators can also be used for specialized tree traversal, and all manner of other things.</source>
+          <target state="translated">这是生成器最简单的用例。就像你说的,它可以用来写高效的permutations,使用 yield 来通过调用堆栈推送东西,而不是使用某种堆栈变量。生成器也可以用于专门的树状遍历,以及其他各种方式的事情。</target>
+        </trans-unit>
+        <trans-unit id="f172eb1953bc01c27cabdd6f9c836e9c3d1d5872" translate="yes" xml:space="preserve">
+          <source>This is what a generator does (a function that contains a &lt;code&gt;yield&lt;/code&gt;); it starts executing, pauses whenever it does a &lt;code&gt;yield&lt;/code&gt;, and when asked for a &lt;code&gt;.next()&lt;/code&gt; value it continues from the point it was last. It fits perfectly by design with the iterator protocol of Python, which describes how to sequentially request values.</source>
+          <target state="translated">生成器就是这样做的（包含 &lt;code&gt;yield&lt;/code&gt; 的函数）； 它开始执行，在执行 &lt;code&gt;yield&lt;/code&gt; 时暂停，并在询问 &lt;code&gt;.next()&lt;/code&gt; 值时从最后一个点继续。 根据设计，它与Python的迭代器协议完美契合，该协议描述了如何顺序请求值。</target>
+        </trans-unit>
+        <trans-unit id="c64469b38e358bb60db655f2f7dead53a870f525" translate="yes" xml:space="preserve">
+          <source>This trick may give you an idea of the logic behind the function, but what actually happens with &lt;code&gt;yield&lt;/code&gt; is significantly different than what happens in the list based approach. In many cases, the yield approach will be a lot more memory efficient and faster too. In other cases, this trick will get you stuck in an infinite loop, even though the original function works just fine. Read on to learn more...</source>
+          <target state="translated">这个技巧可能会让您对函数背后的逻辑有所了解，但是，与 &lt;code&gt;yield&lt;/code&gt; 实际发生的情况相比，在基于列表的方法中发生的情况明显不同。 在许多情况下，yield方法也将具有更高的内存效率和更快的存储速度。 在其他情况下，即使原始函数运行正常，此技巧也会使您陷入无限循环。 请继续阅读以了解更多信息...</target>
+        </trans-unit>
+        <trans-unit id="fe901acdbaffa726773d1aa79c953022a37c87a8" translate="yes" xml:space="preserve">
+          <source>This was my first &quot;aha&quot; moment with yield.</source>
+          <target state="translated">这是我第一次与屈服的 &quot;啊哈 &quot;瞬间。</target>
+        </trans-unit>
+        <trans-unit id="06ea075137bd0bbc68755225020ab2be38ff24de" translate="yes" xml:space="preserve">
+          <source>Thus in short, a function with the following code</source>
+          <target state="translated">因此,简而言之,一个函数的代码如下</target>
+        </trans-unit>
+        <trans-unit id="5d4b050e5c318bdd9abdf7fc385ecbec5643af7f" translate="yes" xml:space="preserve">
+          <source>Thus, in the unlikely event that you are failing to do something like this...</source>
+          <target state="translated">因此,万一你做不到这样的事情........</target>
+        </trans-unit>
+        <trans-unit id="af7dabd9ee0abc1597b9509efda1778a58b95bbe" translate="yes" xml:space="preserve">
+          <source>To force the generator to immediately return its pending values, you can pass it into &lt;code&gt;list()&lt;/code&gt; (just like you could any iterable):</source>
+          <target state="translated">要强制生成器立即返回其未决值，可以将其传递到 &lt;code&gt;list()&lt;/code&gt; 中 （就像您可以进行任何迭代一样）：</target>
+        </trans-unit>
+        <trans-unit id="c0114d7058a0e2d82c0d2df0bb48add203549c89" translate="yes" xml:space="preserve">
+          <source>To get a better feel for generators, you can play around with the &lt;code&gt;itertools&lt;/code&gt; module (be sure to use &lt;code&gt;chain.from_iterable&lt;/code&gt; rather than &lt;code&gt;chain&lt;/code&gt; when warranted). For example, you might even use generators to implement infinitely-long lazy lists like &lt;code&gt;itertools.count()&lt;/code&gt;. You could implement your own &lt;code&gt;def enumerate(iterable): zip(count(), iterable)&lt;/code&gt;, or alternatively do so with the &lt;code&gt;yield&lt;/code&gt; keyword in a while-loop.</source>
+          <target state="translated">为了更好地了解生成器，可以使用 &lt;code&gt;itertools&lt;/code&gt; 模块（一定要使用 &lt;code&gt;chain.from_iterable&lt;/code&gt; ,而不要在需要时使用 &lt;code&gt;chain&lt;/code&gt; ）。 例如，您甚至可以使用生成器来实现无限长的惰性列表，例如 &lt;code&gt;itertools.count()&lt;/code&gt; 。 您可以实现自己的 &lt;code&gt;def enumerate(iterable): zip(count(), iterable)&lt;/code&gt; ，或者在while循环中使用 &lt;code&gt;yield&lt;/code&gt; 关键字来实现。</target>
+        </trans-unit>
+        <trans-unit id="47ee4ff7a14b54f8654a7b96763d1d5353cfb7c7" translate="yes" xml:space="preserve">
+          <source>To help understand what a &lt;code&gt;yield&lt;/code&gt; does in the following code, you can use your finger to trace the cycle through any code that has a &lt;code&gt;yield&lt;/code&gt;.  Every time your finger hits the &lt;code&gt;yield&lt;/code&gt;, you have to wait for a &lt;code&gt;next&lt;/code&gt; or a &lt;code&gt;send&lt;/code&gt; to be entered.  When a &lt;code&gt;next&lt;/code&gt; is called, you trace through the code until you hit the &lt;code&gt;yield&lt;/code&gt;&amp;hellip; the code on the right of the &lt;code&gt;yield&lt;/code&gt; is evaluated and returned to the caller&amp;hellip; then you wait.  When &lt;code&gt;next&lt;/code&gt; is called again, you perform another loop through the code.  However, you'll note that in a coroutine, &lt;code&gt;yield&lt;/code&gt; can also be used with a &lt;code&gt;send&lt;/code&gt;&amp;hellip; which will send a value from the caller &lt;em&gt;into&lt;/em&gt; the yielding function. If a &lt;code&gt;send&lt;/code&gt; is given, then &lt;code&gt;yield&lt;/code&gt; receives the value sent, and spits it out the left hand side&amp;hellip; then the trace through the code progresses until you hit the &lt;code&gt;yield&lt;/code&gt; again (returning the value at the end, as if &lt;code&gt;next&lt;/code&gt; was called).</source>
+          <target state="translated">为了帮助理解以下代码中的 &lt;code&gt;yield&lt;/code&gt; ，您可以用手指在任何具有 &lt;code&gt;yield&lt;/code&gt; 的代码中跟踪循环。 每次您的手指触碰 &lt;code&gt;yield&lt;/code&gt; ，您都必须等待 &lt;code&gt;next&lt;/code&gt; 输入。 调用 &lt;code&gt;next&lt;/code&gt; 时 ，您将遍历代码，直到达到 &lt;code&gt;yield&lt;/code&gt; 为止&amp;hellip;&amp;hellip; yield右边的代码将被评估并返回给调用方&amp;hellip;&amp;hellip;然后等待。 再次调用 &lt;code&gt;next&lt;/code&gt; 时，您将通过代码执行另一个循环。 但是，您会注意到，在协程中， &lt;code&gt;yield&lt;/code&gt; 也可以与 &lt;code&gt;send&lt;/code&gt; 一起使用，它将从调用方将值发送&lt;em&gt;到&lt;/em&gt; yielding函数。 如果给出了 &lt;code&gt;send&lt;/code&gt; ，则 &lt;code&gt;yield&lt;/code&gt; 接收发送的值，然后将其吐出左侧。然后，执行代码的跟踪将一直进行到您再次达到 &lt;code&gt;yield&lt;/code&gt; 为止为止（返回值，就像调用了 &lt;code&gt;next&lt;/code&gt; 一样 ）。</target>
+        </trans-unit>
+        <trans-unit id="b2f6f90d2c166bfe4363d100db6a325bd8c53d50" translate="yes" xml:space="preserve">
+          <source>To implement iterators, generators, and thread pools for concurrent execution, etc. as thunks (also called anonymous functions), one uses messages sent to a closure object, which has a dispatcher, and the dispatcher answers to &quot;messages&quot;.</source>
+          <target state="translated">要实现迭代器、生成器、并发执行的线程池等作为thunks(也叫匿名函数)来实现,一是使用消息发送到一个闭包对象,这个闭包对象有一个调度器,调度器回复 &quot;消息&quot;。</target>
+        </trans-unit>
+        <trans-unit id="9115b0a8c20c76763e2640100aa35118070b6a7e" translate="yes" xml:space="preserve">
+          <source>To master &lt;code&gt;yield&lt;/code&gt;, you must understand that &lt;strong&gt;when you call the function, the code you have written in the function body does not run.&lt;/strong&gt; The function only returns the generator object, this is a bit tricky :-)</source>
+          <target state="translated">要掌握 &lt;code&gt;yield&lt;/code&gt; ，您必须了解&lt;strong&gt;在调用函数时，在函数主体中编写的代码不会运行。&lt;/strong&gt; 该函数仅返回生成器对象，这有点棘手:-)</target>
+        </trans-unit>
+        <trans-unit id="7b9662418d3af2db32eb7c9811a63029be459951" translate="yes" xml:space="preserve">
+          <source>To reiterate: Continuations can save the state of a program's stack and generators can save the state of iteration. This means that continuations are more a lot powerful than generators, but also that generators are a lot, lot easier. They are easier for the language designer to implement, and they are easier for the programmer to use (if you have some time to burn, try to read and understand &lt;a href=&quot;http://www.madore.org/~david/computers/callcc.html&quot;&gt;this page about continuations and call/cc&lt;/a&gt;).</source>
+          <target state="translated">重申一下：连续可以保存程序堆栈的状态，而生成器可以保存迭代的状态。 这意味着延续比生成器强大得多，而且生成器也非常容易得多。 它们对于语言设计人员来说更容易实现，对程序员来说也更容易使用（如果您有时间要燃烧，请尝试阅读并理解&lt;a href=&quot;http://www.madore.org/~david/computers/callcc.html&quot;&gt;有关延续和call / cc的本页&lt;/a&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="855f35ae228f90d1d655b0f84b71dcd8c195b750" translate="yes" xml:space="preserve">
+          <source>To understand what &lt;code&gt;yield&lt;/code&gt; does, you must understand what &lt;em&gt;generators&lt;/em&gt; are. And before you can understand generators, you must understand &lt;em&gt;iterables&lt;/em&gt;.</source>
+          <target state="translated">要了解 &lt;code&gt;yield&lt;/code&gt; ，您必须了解&lt;em&gt;发电机&lt;/em&gt;是什么。 并且，在您了解生成器之前，您必须了解&lt;em&gt;iterables&lt;/em&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="3e68d29cff9fbdfeadc382da40caa5670dec8b66" translate="yes" xml:space="preserve">
+          <source>Try to get a num_list with &lt;code&gt;return&lt;/code&gt;.</source>
+          <target state="translated">尝试获取带有 &lt;code&gt;return&lt;/code&gt; 的num_list。</target>
+        </trans-unit>
+        <trans-unit id="3eb3e1a1dbeab210622a6dce745b27ec3fd6ceec" translate="yes" xml:space="preserve">
+          <source>Understanding the inner mechanisms of iteration</source>
+          <target state="translated">了解迭代的内在机制</target>
+        </trans-unit>
+        <trans-unit id="4965a83c485d39c529c9df84037bbc4eae475d84" translate="yes" xml:space="preserve">
+          <source>User-defined classes that implement &lt;code&gt;__iter__()&lt;/code&gt;.</source>
+          <target state="translated">用户定义的实现 &lt;code&gt;__iter__()&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="68ac05f8fef6cd332ab57a59a59a7b6765c2f5ba" translate="yes" xml:space="preserve">
+          <source>Uses the iterator to loop over items:</source>
+          <target state="translated">使用迭代器对项目进行循环。</target>
+        </trans-unit>
+        <trans-unit id="9bbf05762b1e4da7eb5da4e2336f231ae41d9fab" translate="yes" xml:space="preserve">
+          <source>Using the built-in &lt;code&gt;next()&lt;/code&gt; function, you directly invoke &lt;code&gt;.next&lt;/code&gt;/&lt;code&gt;__next__&lt;/code&gt;, forcing the generator to produce a value:</source>
+          <target state="translated">使用内置的 &lt;code&gt;next()&lt;/code&gt; 函数，您可以直接调用 &lt;code&gt;.next&lt;/code&gt; / &lt;code&gt;__next__&lt;/code&gt; ，强制生成器产生一个值：</target>
+        </trans-unit>
+        <trans-unit id="bcee0bd785aa39b558b7c8bc31ae6f288f6986a3" translate="yes" xml:space="preserve">
+          <source>Usually we pass a list to it:</source>
+          <target state="translated">一般情况下,我们会把名单传给它。</target>
+        </trans-unit>
+        <trans-unit id="3e5ea4b6c7fb3c82481552aaaf2cefbefc296023" translate="yes" xml:space="preserve">
+          <source>Usually, you can write code that doesn't use generators but implements the same logic. One option is to use the temporary list 'trick' I mentioned before. That will not work in all cases, for e.g. if you have infinite loops, or it may make inefficient use of memory when you have a really long list. The other approach is to implement a new iterable class SomethingIter that keeps the state in instance members and performs the next logical step in it's next() (or &lt;strong&gt;next&lt;/strong&gt;() in Python 3) method. Depending on the logic, the code inside the next() method may end up looking very complex and be prone to bugs. Here generators provide a clean and easy solution.</source>
+          <target state="translated">通常，您可以编写不使用生成器但实现相同逻辑的代码。 一种选择是使用我之前提到的临时列表&amp;ldquo;技巧&amp;rdquo;。 这并非在所有情况下都可行，例如，如果您有无限循环，或者当列表很长时，它可能会导致内存使用效率低下。 另一种方法是实现一个新的可迭代类SomethingIter，该类将状态保留在实例成员中，并在next（）（或Python 3中的&lt;strong&gt;next&lt;/strong&gt; （））方法中执行下一个逻辑步骤。 根据逻辑的不同，next（）方法内部的代码可能看起来非常复杂，并且容易出现错误。 在这里，发电机提供了一种干净而简单的解决方案。</target>
+        </trans-unit>
+        <trans-unit id="b60b494a256a412f7ab8c496c30174516878d2d5" translate="yes" xml:space="preserve">
+          <source>What does the “yield” keyword do</source>
+          <target state="translated">&quot;产量 &quot;这个关键词有什么作用</target>
+        </trans-unit>
+        <trans-unit id="8564153bf26487e9c47a7a365dd4a37cb1949c87" translate="yes" xml:space="preserve">
+          <source>What happens when the method &lt;code&gt;_get_child_candidates&lt;/code&gt; is called?
+Is a list returned? A single element? Is it called again? When will subsequent calls stop?</source>
+          <target state="translated">调用 &lt;code&gt;_get_child_candidates&lt;/code&gt; 方法时会发生什么？ 是否返回列表？ 一个元素？ 再叫一次吗？ 后续通话什么时候停止？</target>
+        </trans-unit>
+        <trans-unit id="1b4f84d352af15ddc950c1b08d4d361ed4f38885" translate="yes" xml:space="preserve">
+          <source>What is the use of the &lt;code&gt;yield&lt;/code&gt; keyword in Python, and what does it do?</source>
+          <target state="translated">Python中 &lt;code&gt;yield&lt;/code&gt; 关键字的用途是什么？</target>
+        </trans-unit>
+        <trans-unit id="a3a6372570b3576b2b5dd78ff44c4dd57682334c" translate="yes" xml:space="preserve">
+          <source>When &lt;code&gt;next()&lt;/code&gt; is called subsequently, it retrieves the function's belongings onto the stack and re-animates it. The function continues to compute from where it left off, oblivious to the fact that it had just spent an eternity in cold storage.</source>
+          <target state="translated">当 &lt;code&gt;next()&lt;/code&gt; 调用next（）时 ，它将把函数的所有物检索到堆栈上并对其进行动画处理。 该函数从中断处继续进行计算，而忽略了它刚刚在冷库中度过了一个永恒的事实。</target>
+        </trans-unit>
+        <trans-unit id="0aca1dde96511b6083cb83899e9046f371ad1461" translate="yes" xml:space="preserve">
+          <source>When &lt;code&gt;yield&lt;/code&gt; is used instead of a &lt;code&gt;return&lt;/code&gt; in a python function, that function is turned into something special called &lt;code&gt;generator function&lt;/code&gt;. That function will return an object of &lt;code&gt;generator&lt;/code&gt; type. &lt;strong&gt;The &lt;code&gt;yield&lt;/code&gt; keyword is a flag to notify the python compiler to treat such function specially.&lt;/strong&gt; Normal functions will terminate once some value is returned from it. But with the help of the compiler, the generator function &lt;strong&gt;can be thought of&lt;/strong&gt; as resumable. That is, the execution context will be restored and the execution will continue from last run. Until you explicitly call return, which will raise a &lt;code&gt;StopIteration&lt;/code&gt; exception (which is also part of the iterator protocol), or reach the end of the function. I found a lot of references about &lt;code&gt;generator&lt;/code&gt; but this &lt;a href=&quot;https://docs.python.org/dev/howto/functional.html#generators&quot;&gt;one&lt;/a&gt; from the &lt;code&gt;functional programming perspective&lt;/code&gt; is the most digestable.</source>
+          <target state="translated">当使用 &lt;code&gt;yield&lt;/code&gt; 而不是python函数中的 &lt;code&gt;return&lt;/code&gt; 时，该函数将变成一种特殊的 &lt;code&gt;generator function&lt;/code&gt; 。 该函数将返回 &lt;code&gt;generator&lt;/code&gt; 类型的对象。 &lt;strong&gt; &lt;code&gt;yield&lt;/code&gt; 关键字是一个标志，用于通知python编译器专门对待此类功能。&lt;/strong&gt; 普通函数将在返回一些值后终止。 但是在编译器的帮助下， &lt;strong&gt;可以将&lt;/strong&gt; generator函数视为可恢复的。 也就是说，将恢复执行上下文，并且将从上次运行继续执行。 在显式调用return之前，它将引发 &lt;code&gt;StopIteration&lt;/code&gt; 异常（这也是迭代器协议的一部分），或到达函数的结尾。 我发现了很多有关 &lt;code&gt;generator&lt;/code&gt; 的参考，但是从 &lt;code&gt;functional programming perspective&lt;/code&gt; 是最易理解的。</target>
+        </trans-unit>
+        <trans-unit id="b4956520f1ca1888af160527fdbeadaee79d2a28" translate="yes" xml:space="preserve">
+          <source>When a normal function is called, it puts its local variables on the stack, does some computation, then clears the stack and returns. The values of its local variables are never seen again.</source>
+          <target state="translated">当一个普通函数被调用时,它将其局部变量放在堆栈上,做一些计算,然后清空堆栈并返回。它的局部变量的值永远不会再出现。</target>
+        </trans-unit>
+        <trans-unit id="958c8511d450491ba26702ca0bd0c2811dde47aa" translate="yes" xml:space="preserve">
+          <source>When we call the second function, it behaves very differently to the first. The &lt;code&gt;yield&lt;/code&gt; statement might be unreachable, but if it's present anywhere, it changes the nature of what we're dealing with.</source>
+          <target state="translated">当我们调用第二个函数时，它的行为与第一个函数非常不同。 &lt;code&gt;yield&lt;/code&gt; 语句可能无法到达，但是如果它存在于任何地方，它将改变我们正在处理的内容的性质。</target>
+        </trans-unit>
+        <trans-unit id="550768170ef01550f901dfdde3779cde4dea9c6b" translate="yes" xml:space="preserve">
+          <source>When you create a list, you can read its items one by one. Reading its items one by one is called iteration:</source>
+          <target state="translated">当你创建一个列表时,你可以逐一读取它的项目。逐一读取它的项目被称为迭代。</target>
+        </trans-unit>
+        <trans-unit id="3b7f697cea53ab4cee00328eb8586bf8e9cddc3b" translate="yes" xml:space="preserve">
+          <source>When you enter this into your REPL and then try and call it, you'll get a mystifying result:</source>
+          <target state="translated">当你把这个输入到你的REPL中,然后尝试调用它,你会得到一个神秘的结果。</target>
+        </trans-unit>
+        <trans-unit id="0e20678b0bb4c25b8fa4c7b3b518c72e5245ebc8" translate="yes" xml:space="preserve">
+          <source>When you first invoke &lt;code&gt;fib&lt;/code&gt; by calling it:</source>
+          <target state="translated">首次调用 &lt;code&gt;fib&lt;/code&gt; 时：</target>
+        </trans-unit>
+        <trans-unit id="b514c61a51b4ead83e3fa823a9f1c657b29464d0" translate="yes" xml:space="preserve">
+          <source>When you request an iterator from a list, it creates a new iterator. However, when you request an iterator from an iterator (which you would rarely do), it just gives you a copy of itself.</source>
+          <target state="translated">当你从一个列表中请求一个迭代器时,它会创建一个新的迭代器。但是,当你从一个迭代器中请求一个迭代器时(你很少会这样做),它只是给你一个自己的副本。</target>
+        </trans-unit>
+        <trans-unit id="b7cc0f0bf3ed5fc052470ce219aa6f3e30a8013e" translate="yes" xml:space="preserve">
+          <source>When you see a function with &lt;code&gt;yield&lt;/code&gt; statements, apply this easy trick to understand what will happen:</source>
+          <target state="translated">当您看到带有 &lt;code&gt;yield&lt;/code&gt; 语句的函数时，请应用以下简单技巧来了解将会发生的情况：</target>
+        </trans-unit>
+        <trans-unit id="2f6c491a0995ee077800eec24720b11c6e7f2988" translate="yes" xml:space="preserve">
+          <source>When you then request it generates the first value, directly or indirectly, it executes all statements that it finds, until it encounters a &lt;code&gt;yield&lt;/code&gt;, it then yields back the value you supplied to &lt;code&gt;yield&lt;/code&gt; and pauses. For an example that better demonstrates this, let's use some &lt;code&gt;print&lt;/code&gt; calls (replace with &lt;code&gt;print &quot;text&quot;&lt;/code&gt; if on Python 2):</source>
+          <target state="translated">然后，当您请求它直接或间接生成第一个值时，它将执行找到的所有语句，直到遇到 &lt;code&gt;yield&lt;/code&gt; ，然后将您提供的值返回给 &lt;code&gt;yield&lt;/code&gt; 并暂停。 为了更好地说明这一点，让我们使用一些 &lt;code&gt;print&lt;/code&gt; 调用（如果在Python 2上，请用 &lt;code&gt;print &quot;text&quot;&lt;/code&gt; 代替）：</target>
+        </trans-unit>
+        <trans-unit id="224be01d8e5c7c05d7fa83727c243ea08c1b6325" translate="yes" xml:space="preserve">
+          <source>Whenever &lt;code&gt;yield&lt;/code&gt; is called, it tells the function to return a continuation.  When the function is called again, it starts from wherever it left off. So, in pseudo-pseudocode (i.e., not pseudocode, but not code) the generator's &lt;code&gt;next&lt;/code&gt; method is basically as follows:</source>
+          <target state="translated">每当调用 &lt;code&gt;yield&lt;/code&gt; 时 ，它都会告诉函数返回一个延续。 再次调用该函数时，将从中断处开始。 因此，在伪伪代码（即不是伪代码，而不是代码）中，生成器的 &lt;code&gt;next&lt;/code&gt; 方法基本上如下：</target>
+        </trans-unit>
+        <trans-unit id="f26fb14b01ccba778163556c3df5281b63e8507c" translate="yes" xml:space="preserve">
+          <source>Whenever you find yourself building a list from scratch, &lt;code&gt;yield&lt;/code&gt; each piece instead.</source>
+          <target state="translated">每当您发现自己从头开始建立清单时，请改为制作每张清单。</target>
+        </trans-unit>
+        <trans-unit id="365379f34df99ca9b0a193c6b7d8ec4a2986c91d" translate="yes" xml:space="preserve">
+          <source>While a lot of answers show why you'd use a &lt;code&gt;yield&lt;/code&gt; to create a generator, there are more uses for &lt;code&gt;yield&lt;/code&gt;.  It's quite easy to make a coroutine, which enables the passing of information between two blocks of code.  I won't repeat any of the fine examples that have already been given about using &lt;code&gt;yield&lt;/code&gt; to create a generator.</source>
+          <target state="translated">尽管很多答案表明了为什么要使用 &lt;code&gt;yield&lt;/code&gt; 来创建生成器，但是 &lt;code&gt;yield&lt;/code&gt; 仍有更多用途。 创建协程非常容易，这使信息可以在两个代码块之间传递。 我不会重复任何关于使用 &lt;code&gt;yield&lt;/code&gt; 来创建生成器的优秀示例。</target>
+        </trans-unit>
+        <trans-unit id="08166f360bf5ae486bc24968f9bf3f260bd29d10" translate="yes" xml:space="preserve">
+          <source>Why Use Generators?</source>
+          <target state="translated">为什么要使用发电机?</target>
+        </trans-unit>
+        <trans-unit id="2bba704c3c5538921356a3f491c4600284327828" translate="yes" xml:space="preserve">
+          <source>With a &lt;code&gt;yield&lt;/code&gt; function, when its code begins to run (i.e. after the function is called, returning a generator object, whose &lt;code&gt;next()&lt;/code&gt; method is then invoked), it similarly puts its local variables onto the stack and computes for a while. But then, when it hits the &lt;code&gt;yield&lt;/code&gt; statement, before clearing its part of the stack and returning, it takes a snapshot of its local variables and stores them in the generator object. It also writes down the place where it's currently up to in its code (i.e. the particular &lt;code&gt;yield&lt;/code&gt; statement).</source>
+          <target state="translated">使用 &lt;code&gt;yield&lt;/code&gt; 函数，当其代码开始运行时（即，在调用函数后，返回生成器对象，然后调用 &lt;code&gt;next()&lt;/code&gt; 方法的生成器对象），它类似地将其局部变量放到堆栈上并进行一段时间的计算。 但是，当它命中 &lt;code&gt;yield&lt;/code&gt; 语句时，在清除堆栈的一部分并返回之前，它会对其局部变量进行快照，并将其存储在生成器对象中。 它还在代码中写下了当前位置（即特定的 &lt;code&gt;yield&lt;/code&gt; 语句）。</target>
+        </trans-unit>
+        <trans-unit id="8425e30a55cb65d01335e276892c145cda45d14d" translate="yes" xml:space="preserve">
+          <source>Yay - no more &lt;code&gt;yield&lt;/code&gt; statements! Read and figure out code.</source>
+          <target state="translated">是的-没有更多的 &lt;code&gt;yield&lt;/code&gt; 声明！ 阅读并找出代码。</target>
+        </trans-unit>
+        <trans-unit id="33b0fd0f74faa27daf44c1c690d408e467aa0dd1" translate="yes" xml:space="preserve">
+          <source>Yield</source>
+          <target state="translated">Yield</target>
+        </trans-unit>
+        <trans-unit id="48f955098d7be7968cf5c16d1f085bb59f48b670" translate="yes" xml:space="preserve">
+          <source>Yield gives you a generator.</source>
+          <target state="translated">产量给你一个发电机。</target>
+        </trans-unit>
+        <trans-unit id="cacdcd91fde152ba93b046096635f8dd9f810e6b" translate="yes" xml:space="preserve">
+          <source>Yield is &lt;strong&gt;lazy&lt;/strong&gt;, it puts off computation. A function with a yield in it &lt;em&gt;doesn't actually execute at all when you call it.&lt;/em&gt; It returns an &lt;a href=&quot;https://docs.python.org/3/reference/expressions.html#yieldexpr&quot;&gt;iterator object&lt;/a&gt; that remembers where it left off. Each time you call &lt;code&gt;next()&lt;/code&gt; on the iterator (this happens in a for-loop) execution inches forward to the next yield. &lt;code&gt;return&lt;/code&gt; raises StopIteration and ends the series (this is the natural end of a for-loop).</source>
+          <target state="translated">产量&lt;strong&gt;懒惰&lt;/strong&gt; ，推迟了计算。 &lt;em&gt;当您调用&lt;/em&gt;函数时，其中包含yield的函数&lt;em&gt;实际上根本不会执行。&lt;/em&gt; 它返回一个&lt;a href=&quot;https://docs.python.org/3/reference/expressions.html#yieldexpr&quot;&gt;迭代器对象&lt;/a&gt; ，该对象记住它从何处中断。 每次您在迭代器上调用 &lt;code&gt;next()&lt;/code&gt; （这在for循环中发生）时，执行都会向前推进到下一个收益。 &lt;code&gt;return&lt;/code&gt; 引发StopIteration并结束序列（这是for循环的自然结束）。</target>
+        </trans-unit>
+        <trans-unit id="ba1346186897dbbfeb506927791cbf680a8824df" translate="yes" xml:space="preserve">
+          <source>Yield is &lt;strong&gt;single-pass&lt;/strong&gt;: you can only iterate through once. When a function has a yield in it we call it a &lt;a href=&quot;https://stackoverflow.com/a/1756342/673991&quot;&gt;generator function&lt;/a&gt;. And an &lt;a href=&quot;https://stackoverflow.com/a/9884501/673991&quot;&gt;iterator&lt;/a&gt; is what it returns. Those terms are revealing. We lose the convenience of a container, but gain the power of a series that's computed as needed, and arbitrarily long.</source>
+          <target state="translated">收益是&lt;strong&gt;单次通过&lt;/strong&gt; ：您只能迭代一次。 当一个函数包含一个yield时，我们称其为&lt;a href=&quot;https://stackoverflow.com/a/1756342/673991&quot;&gt;Generator函数&lt;/a&gt; 。 而&lt;a href=&quot;https://stackoverflow.com/a/9884501/673991&quot;&gt;迭代器&lt;/a&gt;就是它返回的内容。 这些术语在揭示。 我们失去了容器的便利性，但获得了按需计算且任意长的序列的功效。</target>
+        </trans-unit>
+        <trans-unit id="8eb3142ec6ce40811e7cb41ff05374c2da24d165" translate="yes" xml:space="preserve">
+          <source>Yield is &lt;strong&gt;versatile&lt;/strong&gt;. Data doesn't have to be stored all together, it can be made available one at a time. It can be infinite.</source>
+          <target state="translated">产量&lt;strong&gt;多才多艺&lt;/strong&gt; 。 数据不必全部存储在一起，可以一次存储一次。 它可以是无限的。</target>
+        </trans-unit>
+        <trans-unit id="42e3a00c8f296b5fa17180ed67b9949807587502" translate="yes" xml:space="preserve">
+          <source>You can also throw an exception which can be handled in the generator
+or propagated back to the user:</source>
+          <target state="translated">你也可以抛出一个异常,这个异常可以在生成器中处理,也可以传回给用户。</target>
+        </trans-unit>
+        <trans-unit id="3ad9323c26f58229cc6c89459957a3157bf59a21" translate="yes" xml:space="preserve">
+          <source>You can read more about the precise semantics of &lt;code&gt;yield from&lt;/code&gt; in &lt;a href=&quot;https://www.python.org/dev/peps/pep-0380/#formal-semantics&quot;&gt;PEP 380.&lt;/a&gt;</source>
+          <target state="translated">您可以在&lt;a href=&quot;https://www.python.org/dev/peps/pep-0380/#formal-semantics&quot;&gt;PEP 380中&lt;/a&gt;阅读有关 &lt;code&gt;yield from&lt;/code&gt; 的精确语义的更多信息。</target>
+        </trans-unit>
+        <trans-unit id="170b20ccfec99da9235a6ef28068af3e2591fc27" translate="yes" xml:space="preserve">
+          <source>You can stop here, or read a little bit to see an advanced use of a generator:</source>
+          <target state="translated">大家可以在这里停一停,或者看一看发电机的高级使用方法。</target>
+        </trans-unit>
+        <trans-unit id="56ff330d6def0407146a91a863f8fc2587a5c6d6" translate="yes" xml:space="preserve">
+          <source>You can use it in your code as follows:</source>
+          <target state="translated">你可以在你的代码中使用它,如下所示。</target>
+        </trans-unit>
+        <trans-unit id="82929aa8decc455ab58ff5e64314ac91e1a3d659" translate="yes" xml:space="preserve">
+          <source>You create an array that you only use once (this wastes memory)</source>
+          <target state="translated">你创建一个只用一次的数组(这样做会浪费内存</target>
+        </trans-unit>
+        <trans-unit id="e5238c336d39149ce635875c88df949f1a84273e" translate="yes" xml:space="preserve">
+          <source>You don't need to read the values twice.</source>
+          <target state="translated">你不需要把值读两遍。</target>
+        </trans-unit>
+        <trans-unit id="02fbf8c8568af6ce36580f6ee74a1c505f605eb0" translate="yes" xml:space="preserve">
+          <source>You may have a lot of children and you don't want them all stored in memory.</source>
+          <target state="translated">你可能有很多孩子,你不希望他们都储存在记忆中。</target>
+        </trans-unit>
+        <trans-unit id="e5126053bf6eeea52bae61ffbf604541a9b1ae8d" translate="yes" xml:space="preserve">
+          <source>You will always get [0, 1, 2] from a list object but only could retrieve them from 'the object &lt;code&gt;yield&lt;/code&gt; output' once. So, it has a new name &lt;code&gt;generator&lt;/code&gt; object as displayed in &lt;code&gt;Out[11]: &amp;lt;generator object num_list at 0x10327c990&amp;gt;&lt;/code&gt;.</source>
+          <target state="translated">您将始终从列表对象获取[0，1，2]，但只能从&amp;ldquo;对象 &lt;code&gt;yield&lt;/code&gt; 输出&amp;rdquo;中检索一次。 因此，它具有一个新的名称 &lt;code&gt;generator&lt;/code&gt; 对象，如 &lt;code&gt;Out[11]: &amp;lt;generator object num_list at 0x10327c990&amp;gt;&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="2f8b14bde35e7bc3becf466f732823047f257702" translate="yes" xml:space="preserve">
+          <source>You'll have to make another if you want to use its functionality again (see footnote 2):</source>
+          <target state="translated">如果你想再次使用它的功能,就必须再做一个(见脚注2)。</target>
+        </trans-unit>
+        <trans-unit id="7ea7dca3eb3be682f93182ec4cb7bfa2d14d36ad" translate="yes" xml:space="preserve">
+          <source>Your code explained</source>
+          <target state="translated">你的代码说明</target>
+        </trans-unit>
+        <trans-unit id="4c58039107bd67500d2d3318769f8f423735fd2d" translate="yes" xml:space="preserve">
+          <source>[This is the step most people forget to tell you about]</source>
+          <target state="translated">[这是大多数人忘记告诉你的步骤]</target>
+        </trans-unit>
+        <trans-unit id="822a8e24b36ceb4904c03d9fb614f6c229c4b157" translate="yes" xml:space="preserve">
+          <source>and use it like this;</source>
+          <target state="translated">并这样使用它。</target>
+        </trans-unit>
+        <trans-unit id="a77a5320b0aaedb8d68bfda55fda0542b3d92a2f" translate="yes" xml:space="preserve">
+          <source>build a series of stuff</source>
+          <target state="translated">串联</target>
+        </trans-unit>
+        <trans-unit id="d3e0b619b3729b20359ab7068cacec3bc130b31e" translate="yes" xml:space="preserve">
+          <source>continuations</source>
+          <target state="translated">continuations</target>
+        </trans-unit>
+        <trans-unit id="8225801242495db96d7b6f7c5559aeb4cf7bcbd2" translate="yes" xml:space="preserve">
+          <source>do this:</source>
+          <target state="translated">做到这一点。</target>
+        </trans-unit>
+        <trans-unit id="70098eefec2efcfcd1042865cc5c5b7d99f6abcc" translate="yes" xml:space="preserve">
+          <source>eventually, you might come to an end. You don't tell me a number; you just shout, &quot;hold your horses! I'm done! No more numbers!&quot;</source>
+          <target state="translated">最终,你可能会走到尽头。你不告诉我一个数字,你只管喊:&quot;稳住你的马! 我不干了!没有数字了!&quot;</target>
+        </trans-unit>
+        <trans-unit id="4920bb1daf53da0a3e71fa2a9e6eb26483536f6d" translate="yes" xml:space="preserve">
+          <source>it doesn't matter if &lt;code&gt;sequence&lt;/code&gt; is a list, a string, a dictionary or a generator &lt;em&gt;object&lt;/em&gt; like described above; the result is the same: you read items off a sequence one by one.</source>
+          <target state="translated">&lt;code&gt;sequence&lt;/code&gt; 是如上所述的列表，字符串，字典还是生成器&lt;em&gt;对象&lt;/em&gt;都没有关系； 结果是相同的：您从一个序列中逐个读取项目。</target>
+        </trans-unit>
+        <trans-unit id="3fc77b0bc00895bd9fb6a9b4c27987e556677c13" translate="yes" xml:space="preserve">
+          <source>like barrier in the CUDA language, it will not transfer control until it gets
+  completed.</source>
+          <target state="translated">像CUDA语言中的障碍物一样,直到完成后才会转移控制权。</target>
+        </trans-unit>
+        <trans-unit id="75e2309b5e1075332554d77f44b43d1c7f6a103e" translate="yes" xml:space="preserve">
+          <source>simply outputs</source>
+          <target state="translated">简单地输出</target>
+        </trans-unit>
+        <trans-unit id="7f9590246b59001286048a3a2c09550745ee2ab7" translate="yes" xml:space="preserve">
+          <source>to avoid coroutines being confused with a regular generator (today &lt;code&gt;yield&lt;/code&gt; is used in both).</source>
+          <target state="translated">为了避免将协程与常规生成器混淆（两者均使用今天的 &lt;code&gt;yield&lt;/code&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="2c520454aaae8b0b40814f37e538a2a4da92490e" translate="yes" xml:space="preserve">
+          <source>where the &lt;code&gt;yield&lt;/code&gt; keyword is actually syntactic sugar for the real generator function, basically something like:</source>
+          <target state="translated">其中 &lt;code&gt;yield&lt;/code&gt; 关键字实际上是实际生成器函数的语法糖，基本上是这样的：</target>
+        </trans-unit>
+        <trans-unit id="d893c24989b32aee817b8346e7ad376f369b2d24" translate="yes" xml:space="preserve">
+          <source>will print</source>
+          <target state="translated">会打印</target>
+        </trans-unit>
+        <trans-unit id="4ebe44985fd81b0255b36a096600873c8ed8bf99" translate="yes" xml:space="preserve">
+          <source>you have a generator object now waiting for a command for it to generate a value. Use &lt;code&gt;next&lt;/code&gt; and see what get's printed:</source>
+          <target state="translated">您现在有了一个生成器对象，等待一个命令来生成一个值。 &lt;code&gt;next&lt;/code&gt; 使用并查看打印出来的内容：</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

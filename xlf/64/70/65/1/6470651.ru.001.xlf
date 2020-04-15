@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="htmlbody" original="https://stackoverflow.com/questions/6470651">
+    <body>
+      <group id="6470651">
+        <trans-unit id="ce551772d925b8244e0871a46c5c62edabde5ab0" translate="yes" xml:space="preserve">
+          <source>&quot;A memory leak, in computer science (or leakage, in this context), occurs when a computer program consumes memory but is unable to release it back to the operating system.&quot; (Wikipedia)</source>
+          <target state="translated">&quot;Утечка памяти,в компьютерной науке (или утечка,в данном контексте),происходит,когда компьютерная программа потребляет память,но не может ее освободить обратно в операционную систему&quot;.(Википедия)</target>
+        </trans-unit>
+        <trans-unit id="5e57ac3aff18b19898d770571f33488ff49c0558" translate="yes" xml:space="preserve">
+          <source>(*edited*)</source>
+          <target state="translated">(*edited*)</target>
+        </trans-unit>
+        <trans-unit id="5bdafb56fc1b00b73f2a4f5cd91af94f858da2b7" translate="yes" xml:space="preserve">
+          <source>(The &lt;code&gt;ClassLoader&lt;/code&gt; doesn't really play a role in creating the leak, it just makes the leak worse because of this additional reference chain: example class &amp;rarr; &lt;code&gt;ClassLoader&lt;/code&gt; &amp;rarr; all the classes it has loaded. It was even worse in many JVM implementations, especially prior to Java 7, because classes and &lt;code&gt;ClassLoader&lt;/code&gt;s were allocated straight into permgen and were never garbage-collected at all.)</source>
+          <target state="translated">( &lt;code&gt;ClassLoader&lt;/code&gt; на самом деле не играет роли в создании утечки, он только усугубляет утечку из-за этой дополнительной цепочки ссылок: пример class &amp;rarr; &lt;code&gt;ClassLoader&lt;/code&gt; &amp;rarr; все классы, которые он загрузил. Это было еще хуже во многих реализациях JVM, особенно до Java 7, потому что классы и &lt;code&gt;ClassLoader&lt;/code&gt; были размещены прямо в permgen и никогда не собирались мусором.)</target>
+        </trans-unit>
+        <trans-unit id="8a2cb5badd06d28955e6dd5187697ae3899dae98" translate="yes" xml:space="preserve">
+          <source>-Wes Tarle</source>
+          <target state="translated">Уэс-Тарл</target>
+        </trans-unit>
+        <trans-unit id="9f33ee22495c88b28752411615696d9e6cd9b883" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;File.deleteOnExit()&lt;/code&gt; - always leaks the string, &lt;del&gt;if the string is a substring, the leak is even worse (the underlying char[] is also leaked)&lt;/del&gt; - &lt;em&gt;in Java&amp;nbsp;7 substring also copies the &lt;code&gt;char[]&lt;/code&gt;, so the later doesn't apply&lt;/em&gt;; @Daniel, no needs for votes, though.</source>
+          <target state="translated">&lt;code&gt;File.deleteOnExit()&lt;/code&gt; - всегда пропускает строку, &lt;del&gt; если строка является подстрокой, утечка еще хуже (основной символ [] также просочился) &lt;/del&gt; - &lt;em&gt;в Java 7 подстрока также копирует &lt;code&gt;char[]&lt;/code&gt; , поэтому последнее не применяется&lt;/em&gt; ; @ Даниэль, но голоса не нужны.</target>
+        </trans-unit>
+        <trans-unit id="3b29da849034672fbeff563c8ca560e1f28825fb" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Runtime.addShutdownHook&lt;/code&gt; and not remove... and then even with removeShutdownHook due to a bug in ThreadGroup class regarding unstarted threads it may not get collected, effectively leak the ThreadGroup. JGroup has the leak in GossipRouter.</source>
+          <target state="translated">&lt;code&gt;Runtime.addShutdownHook&lt;/code&gt; , а не remove ..., а затем даже с removeShutdownHook из-за ошибки в классе ThreadGroup относительно незапущенных потоков, которые могут не собираться, эффективно утечка ThreadGroup. У JGroup есть утечка в GossipRouter.</target>
+        </trans-unit>
+        <trans-unit id="b5fe4e1a6cd0ea146ce3183821fd7ded9f7fddcd" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Thread&lt;/code&gt; object &amp;rarr; &lt;code&gt;threadLocals&lt;/code&gt; map &amp;rarr; instance of example class &amp;rarr; example class &amp;rarr; static &lt;code&gt;ThreadLocal&lt;/code&gt; field &amp;rarr; &lt;code&gt;ThreadLocal&lt;/code&gt; object.</source>
+          <target state="translated">Объект &lt;code&gt;threadLocals&lt;/code&gt; &amp;rarr; карта threadLocals &amp;rarr; экземпляр класса примера &amp;rarr; пример класса &amp;rarr; статическое поле &lt;code&gt;ThreadLocal&lt;/code&gt; &amp;rarr; объект ThreadLocal .</target>
+        </trans-unit>
+        <trans-unit id="a9416d962c9ac52f5046b355062720b3a6a912a5" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;ThreadLocal&lt;/code&gt; caches; those are evil in many cases. I am sure everyone has seen quite a bit of simple caches based on ThreadLocal, well the bad news: if the thread keeps going more than expected the life the context ClassLoader, it is a pure nice little leak. Do not use ThreadLocal caches unless really needed.</source>
+          <target state="translated">&lt;code&gt;ThreadLocal&lt;/code&gt; кеши; это зло во многих случаях. Я уверен, что все видели довольно много простых кешей, основанных на ThreadLocal, что является плохой новостью: если поток продолжает работать быстрее, чем ожидалось, в контексте ClassLoader, это просто приятная утечка. Не используйте кэши ThreadLocal, если они действительно не нужны.</target>
+        </trans-unit>
+        <trans-unit id="1c6aba7a78f8385e0ba3e00b9761fe99aed8a72b" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;(I can add some more time wasters I have encountered upon request.)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;(Я могу добавить еще несколько потерь времени, с которыми я столкнулся по запросу.)&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="83c6a1eadabdd69897dc450376fab516908bf374" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Typical example:&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Типичный пример:&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="e8a4892207dc4108ead9ad94e3c06ab543f3489f" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;What often happens:&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Что часто бывает:&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="4a9b98791a2ab9361faf8fde0f4c41f252b82e19" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;(Unclosed) open streams ( file , network etc... )&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;(Незакрытые) открытые потоки (файл, сеть и т. Д.)&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f79c87db599bf20aaa050617e73ebbe69aaa028b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Areas that are unreachable from JVM's garbage collector&lt;/strong&gt;, such as memory allocated through native methods</source>
+          <target state="translated">&lt;strong&gt;Области, недоступные из сборщика мусора JVM&lt;/strong&gt; , такие как память, выделенная нативными методами</target>
+        </trans-unit>
+        <trans-unit id="4699b0f1f0227f0142005faa185d17f92b4d4515" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Calling &lt;a href=&quot;http://download.oracle.com/javase/6/docs/api/java/lang/String.html#intern%28%29&quot;&gt;&lt;code&gt;String.intern()&lt;/code&gt;&lt;/a&gt; on lengthy String&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Вызов &lt;a href=&quot;http://download.oracle.com/javase/6/docs/api/java/lang/String.html#intern%28%29&quot;&gt; &lt;code&gt;String.intern()&lt;/code&gt; &lt;/a&gt; для длинной строки&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3726fbd1251a5fadd54dc665b5e59b41e631b1b1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Incorrect or inappropriate JVM options&lt;/strong&gt;, such as the &lt;code&gt;noclassgc&lt;/code&gt; option on IBM JDK that prevents unused class garbage collection</source>
+          <target state="translated">&lt;strong&gt;Неправильные или неподходящие параметры JVM&lt;/strong&gt; , такие как параметр &lt;code&gt;noclassgc&lt;/code&gt; в IBM JDK, который предотвращает неиспользуемую сборку мусора классов</target>
+        </trans-unit>
+        <trans-unit id="9120e3e844c455e48acd2e25895a159800ab3a73" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;It gets worse over time.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Со временем становится хуже.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6c5741c3dad69ebb3321e2c35668a7815931d415" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Real-life scenario:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Реальный сценарий:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7bf99711d32dc7b8bc74ee8adecf080bd76fa985" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Static field holding object reference [esp final field]&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Статическое поле, содержащее ссылку на объект [esp final field]&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2815984d9739ac637be39c602500deddc0cd3d1c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The garbage collector cannot clean it.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Сборщик мусора не может его почистить.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="8573fafe482d5317550f13754962a332336456f1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The solution?&lt;/strong&gt; Just directly save the key / value (as you probably already do) rather than saving the &lt;code&gt;Map.Entry&lt;/code&gt;.</source>
+          <target state="translated">&lt;strong&gt;Решение?&lt;/strong&gt; Просто сохраните ключ / значение (как вы, вероятно, уже сделали) вместо сохранения &lt;code&gt;Map.Entry&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="d21ebb21d17f7c002c95a9430a5725826affb75d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Unclosed connections&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Незакрытые соединения&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="ef7c13da50873fcd8c19bd2ad40c8d7de85846ff" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Update&lt;/strong&gt;: Since lots of people keep asking for it, &lt;a href=&quot;https://gist.github.com/dpryden/b2bb29ee2d146901b4ae&quot;&gt;here's some example code that shows this behavior in action&lt;/a&gt;.</source>
+          <target state="translated">&lt;strong&gt;Обновление&lt;/strong&gt; : так как многие люди продолжают спрашивать об этом, &lt;a href=&quot;https://gist.github.com/dpryden/b2bb29ee2d146901b4ae&quot;&gt;вот несколько примеров кода, который показывает это поведение в действии&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="e6b659a120e5d6112b5b7ab03de7d6b71d2f7026" translate="yes" xml:space="preserve">
+          <source>A cache of objects is a good starting point to mess things up.</source>
+          <target state="translated">Кэш объектов-хорошая отправная точка,чтобы все испортить.</target>
+        </trans-unit>
+        <trans-unit id="bb7cb15522cb5a211052ea6472969db685b66046" translate="yes" xml:space="preserve">
+          <source>A common example of this in GUI code is when creating a widget/component and adding a listener to some static/application scoped object and then not removing the listener when the widget is destroyed. Not only do you get a memory leak, but also a performance hit as when whatever you are listening to fires events, all your old listeners are called too.</source>
+          <target state="translated">Распространенным примером этого в GUI-коде является создание компонента виджета и добавление слушателя к какому-либо объекту со статическими приложениями,а затем не удаление слушателя при уничтожении виджета.Вы получаете не только утечку памяти,но и хит производительности,так как при прослушивании событий пожара вызываются все ваши старые слушатели.</target>
+        </trans-unit>
+        <trans-unit id="9a0673a585c795ac28cf1e0c0cf4a751e109fd26" translate="yes" xml:space="preserve">
+          <source>A memory leak is indeed truly possible and is perfectly predictable. No need for special language features or corner cases. Memory leaks are either an indicator that something is maybe missing or even of design problems.</source>
+          <target state="translated">Утечка памяти действительно возможна и совершенно предсказуема.Нет необходимости в специальных языковых функциях или угловых корпусах.Утечка памяти-это либо индикатор того,что чего-то не хватает,либо даже проблемы с дизайном.</target>
+        </trans-unit>
+        <trans-unit id="baefde2ecc16522348f8de06b13e699e98c478ed" translate="yes" xml:space="preserve">
+          <source>A simple thing to do is to use a HashSet with an incorrect (or non-existent) &lt;code&gt;hashCode()&lt;/code&gt; or &lt;code&gt;equals()&lt;/code&gt;, and then keep adding &quot;duplicates&quot;.  Instead of ignoring duplicates as it should, the set will only ever grow and you won't be able to remove them.</source>
+          <target state="translated">Простая вещь - это использовать HashSet с неправильным (или не существующим) &lt;code&gt;hashCode()&lt;/code&gt; или &lt;code&gt;equals()&lt;/code&gt; , а затем продолжать добавлять &amp;laquo;дубликаты&amp;raquo;. Вместо того, чтобы игнорировать дубликаты, как следует, набор будет только расти, и вы не сможете их удалить.</target>
+        </trans-unit>
+        <trans-unit id="a80d8e5173a3525de31e5ab2033ddb3b6ec29dd6" translate="yes" xml:space="preserve">
+          <source>A variation on this pattern is why application containers (like Tomcat) can leak memory like a sieve if you frequently redeploy applications which happen to use &lt;code&gt;ThreadLocal&lt;/code&gt;s that in some way point back to themselves. This can happen for a number of subtle reasons and is often hard to debug and/or fix.</source>
+          <target state="translated">Разновидность этого шаблона заключается в том, что контейнеры приложений (например, Tomcat) могут пропускать память как сито, если вы часто повторно развертываете приложения, которые используют &lt;code&gt;ThreadLocal&lt;/code&gt; , которые в некотором роде указывают на себя. Это может произойти по ряду скрытых причин, и его часто трудно отладить и / или исправить.</target>
+        </trans-unit>
+        <trans-unit id="588772519dca67090e1685f2821715a70d9cedbd" translate="yes" xml:space="preserve">
+          <source>After each &lt;code&gt;pseudoQueryDatabase()&lt;/code&gt; call, the &lt;code&gt;map&lt;/code&gt; instances should be ready for collection, but it won't happen, as at least one &lt;code&gt;Entry&lt;/code&gt; is stored somewhere else.</source>
+          <target state="translated">После каждого &lt;code&gt;pseudoQueryDatabase()&lt;/code&gt; экземпляры &lt;code&gt;map&lt;/code&gt; должны быть готовы к сбору, но этого не произойдет, поскольку хотя бы одна &lt;code&gt;Entry&lt;/code&gt; хранится где-то еще.</target>
+        </trans-unit>
+        <trans-unit id="9b59729415ee481439bfee253d53a21559efa0a8" translate="yes" xml:space="preserve">
+          <source>All the other answers so far are in my definition not really memory leaks. They all aim at filling the memory with pointless stuff real fast. But at any time you could still dereference the objects you created and thus freeing the memory --&amp;gt; NO LEAK. &lt;a href=&quot;https://stackoverflow.com/a/4948560/327301&quot;&gt;acconrad's answer&lt;/a&gt; comes pretty close though as I have to admit since his solution is effectively to just &quot;crash&quot; the garbage collector by forcing it in an endless loop).</source>
+          <target state="translated">Все остальные ответы в моем определении на самом деле не утечки памяти. Все они стремятся заполнить память бессмысленными вещами очень быстро. Но в любой момент вы все равно можете разыменовать созданные вами объекты и, таким образом, освободить память -&amp;gt; НЕТ УТЕЧКИ. &lt;a href=&quot;https://stackoverflow.com/a/4948560/327301&quot;&gt;Ответ acconrad&lt;/a&gt; довольно близок, хотя, как я должен признать, его решение состоит в том, чтобы просто &amp;laquo;сбить&amp;raquo; сборщик мусора, запустив его в бесконечный цикл).</target>
+        </trans-unit>
+        <trans-unit id="d14d9c81cd606cffaec50cf1e4ba0a95ee66650b" translate="yes" xml:space="preserve">
+          <source>All you need is a jar file with a file inside which will be referenced from Java code. The bigger the jar file, the quicker memory gets allocated.</source>
+          <target state="translated">Все,что вам нужно-это jar-файл с файлом внутри,на который будут даны ссылки из Java-кода.Чем больше jar-файл,тем быстрее выделяется память.</target>
+        </trans-unit>
+        <trans-unit id="92796050257ee31b4669322aedc4e14a1f4e1bac" translate="yes" xml:space="preserve">
+          <source>Another way to create potentially huge memory leaks is to hold references to &lt;code&gt;Map.Entry&amp;lt;K,V&amp;gt;&lt;/code&gt; of a &lt;code&gt;TreeMap&lt;/code&gt;.</source>
+          <target state="translated">Другой способ создать потенциально большие утечки памяти - хранить ссылки на &lt;code&gt;Map.Entry&amp;lt;K,V&amp;gt;&lt;/code&gt; &lt;code&gt;TreeMap&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="15208722c8d9d35afacae07addaaa54d89ae1c80" translate="yes" xml:space="preserve">
+          <source>Any time you keep references around to objects that you no longer need you have a memory leak.  See &lt;a href=&quot;http://www.ibm.com/developerworks/library/j-leaks/&quot;&gt;Handling memory leaks in Java programs&lt;/a&gt; for examples of how memory leaks manifest themselves in Java and what you can do about it.</source>
+          <target state="translated">Каждый раз, когда вы храните ссылки на объекты, которые вам больше не нужны, у вас возникает утечка памяти. Посмотрите &lt;a href=&quot;http://www.ibm.com/developerworks/library/j-leaks/&quot;&gt;Обработка утечек памяти в программах Java&lt;/a&gt; для примеров того, как утечки памяти проявляются в Java и что вы можете с этим поделать.</target>
+        </trans-unit>
+        <trans-unit id="3eb29554094059e5e094f60940cd4967c16b94c3" translate="yes" xml:space="preserve">
+          <source>Application:</source>
+          <target state="translated">Application:</target>
+        </trans-unit>
+        <trans-unit id="2160b097141acc1504e1eceb949c5dcc5858756e" translate="yes" xml:space="preserve">
+          <source>As a lot of people have suggested, Resource Leaks are fairly easy to cause - like the JDBC examples. Actual Memory leaks are a bit harder - especially if you aren't relying on broken bits of the JVM to do it for you...</source>
+          <target state="translated">Как предлагали многие,утечки ресурсов довольно легко вызвать-как,например,в примерах JDBC.Фактические утечки памяти немного сложнее-особенно если вы не полагаетесь на сломанные биты JVM,чтобы сделать это за вас....</target>
+        </trans-unit>
+        <trans-unit id="a4b08c6fe4ec7a0e9b4c24d40b76337ca881783d" translate="yes" xml:space="preserve">
+          <source>As a toy example:</source>
+          <target state="translated">В качестве примера игрушки:</target>
+        </trans-unit>
+        <trans-unit id="6ed7302d22555afde81c52261097b368f125c935" translate="yes" xml:space="preserve">
+          <source>At the end of the day, with a modern JVM, you need to write some Java code that allocates a native resource outside the normal scope of the JVM's awareness.</source>
+          <target state="translated">В конце концов,с современным JVM,вам нужно написать некоторый Java код,который выделяет родной ресурс за пределы обычной осведомленности JVM.</target>
+        </trans-unit>
+        <trans-unit id="a4a0b6d34474218b90f7179c656bff731e8f4ed4" translate="yes" xml:space="preserve">
+          <source>Because the substring refers to the internal representation of the original, much longer string, the original stays in memory. Thus, as long as you have a StringLeaker in play, you have the whole original string in memory, too, even though you might think you're just holding on to a single-character string.</source>
+          <target state="translated">Так как подстрока относится к внутреннему представлению оригинальной,гораздо более длинной строки,оригинал остается в памяти.Таким образом,пока у вас в игре StringLeaker,вся исходная строка тоже остается в памяти,хотя вы можете подумать,что держите только одну строку из символов.</target>
+        </trans-unit>
+        <trans-unit id="ec66d55aea6163734b225b0eaee1f4aff2d21c20" translate="yes" xml:space="preserve">
+          <source>Below there will be a non-obvious case where Java leaks, besides the standard case of forgotten listeners, static references, bogus/modifiable keys in hashmaps, or just threads stuck without any chance to end their life-cycle.</source>
+          <target state="translated">Ниже будет показан неочевидный случай утечки Java,помимо стандартного случая забытых слушателей,статических ссылок,поддельных ключей в хэшмапах,или просто нитей,застрявших без всякого шанса закончить свой жизненный цикл.</target>
+        </trans-unit>
+        <trans-unit id="d6890f5c871bf813320eebb7769e31ce3e0862eb" translate="yes" xml:space="preserve">
+          <source>But any long-lived application tend to have shared state. It can be anything, statics, singletons... Often non-trivial applications tend to make complex objects graphs. Just forgetting to set a reference to null or more often forgetting to remove one object from a collection is enough to make a memory leak.</source>
+          <target state="translated">Но любое долгоживущее приложение,как правило,имеет общее состояние.Это может быть что угодно,статика,синглоны...Часто нетривиальные приложения склонны создавать сложные графики объектов.Достаточно просто забыть установить ссылку на ноль или чаще забыть удалить один объект из коллекции,чтобы произошла утечка памяти.</target>
+        </trans-unit>
+        <trans-unit id="5d2e7eace75767ecc3750ad43683978a9ba57abb" translate="yes" xml:space="preserve">
+          <source>But each &lt;em&gt;value&lt;/em&gt; is a strong reference, so when a value (directly or indirectly) points to the &lt;code&gt;ThreadLocal&lt;/code&gt; object that is its &lt;em&gt;key&lt;/em&gt;, that object will neither be garbage-collected nor removed from the map as long as the thread lives.</source>
+          <target state="translated">Но каждое &lt;em&gt;значение&lt;/em&gt; является надежной ссылкой, поэтому, когда значение (прямо или косвенно) указывает на объект &lt;code&gt;ThreadLocal&lt;/code&gt; , который является его &lt;em&gt;ключом&lt;/em&gt; , этот объект не будет ни собираться мусором, ни удаляться с карты в течение всего времени существования потока.</target>
+        </trans-unit>
+        <trans-unit id="6dc882c31ef2333a4cb2ce12871d12e4568e39ef" translate="yes" xml:space="preserve">
+          <source>But that is about a &quot;standard&quot; type of memory leak, when you cannot access the memory anymore, but it is still owned by the application. You can instead keep references to unused objects, or open streams without closing them afterwards.</source>
+          <target state="translated">Но речь идет о &quot;стандартном&quot; типе утечки памяти,когда доступ к памяти уже невозможен,но она все равно принадлежит приложению.Вместо этого можно хранить ссылки на неиспользуемые объекты или открывать потоки,не закрывая их впоследствии.</target>
+        </trans-unit>
+        <trans-unit id="789320444cb7767260264a9cc9e9745ad7e7b191" translate="yes" xml:space="preserve">
+          <source>But there are multiple meta-questions that may have been being asked?</source>
+          <target state="translated">Но есть несколько мета-вопросов,которые могли быть заданы?</target>
+        </trans-unit>
+        <trans-unit id="06b82e17900450ead4189c16a2dab375e08481ce" translate="yes" xml:space="preserve">
+          <source>But there are really simpler cases for memory leaks. The garbage collector only frees what is no longer referenced. We as Java developers don't care about memory. We allocate it when needed and let it be freed automatically. Fine.</source>
+          <target state="translated">Но есть и более простые случаи утечки памяти.Сборщик мусора освобождает только то,на что больше нет ссылок.Мы,разработчики Java,не заботимся о памяти.Мы выделяем ее,когда это необходимо,и позволяем ей быть освобожденной автоматически.Ладно.</target>
+        </trans-unit>
+        <trans-unit id="ce4161afe55f67a0294d9c668e44e8d09476c61c" translate="yes" xml:space="preserve">
+          <source>Call &lt;code&gt;System.gc()&lt;/code&gt; all you like, but the object passed to &lt;code&gt;leakMe&lt;/code&gt; will never die.</source>
+          <target state="translated">&lt;code&gt;System.gc()&lt;/code&gt; как хотите, но объект, передаваемый в &lt;code&gt;leakMe&lt;/code&gt; , никогда не умрет.</target>
+        </trans-unit>
+        <trans-unit id="d152e2fcb524abf55287ceec73755ba1b51b9525" translate="yes" xml:space="preserve">
+          <source>Call the native method.</source>
+          <target state="translated">Вызовите родной метод.</target>
+        </trans-unit>
+        <trans-unit id="32c8fac6d96245359d4955074230160abf920c47" translate="yes" xml:space="preserve">
+          <source>Calling &lt;code&gt;ThreadGroup.destroy()&lt;/code&gt; when the ThreadGroup has no threads itself, but it still keeps child ThreadGroups. A bad leak that will prevent the ThreadGroup to remove from its parent, but all the children become un-enumerateable.</source>
+          <target state="translated">Вызов &lt;code&gt;ThreadGroup.destroy()&lt;/code&gt; когда ThreadGroup не имеет потоков, но при этом он сохраняет дочерние группы ThreadGroup. Серьезная утечка, которая не позволит ThreadGroup удалить из своего родителя, но все дочерние элементы станут не перечисляемыми.</target>
+        </trans-unit>
+        <trans-unit id="96d2be15f0142d38fff9f1d0710b8a2950d9695e" translate="yes" xml:space="preserve">
+          <source>Code doesn't compile in Eclipse IDE - compile it using command &lt;code&gt;javac&lt;/code&gt; (during compilation you'll get warnings)</source>
+          <target state="translated">Код не компилируется в Eclipse IDE - скомпилируйте его с помощью команды &lt;code&gt;javac&lt;/code&gt; (во время компиляции вы получите предупреждения)</target>
+        </trans-unit>
+        <trans-unit id="f90dd378d13e2f5f863d95c5043b9eb2f5314f2d" translate="yes" xml:space="preserve">
+          <source>Consider the following wrapper class:</source>
+          <target state="translated">Рассмотрим следующий класс обертки:</target>
+        </trans-unit>
+        <trans-unit id="58fab44360252f01998a02b0103a0562094b38f5" translate="yes" xml:space="preserve">
+          <source>Consider: the basic pattern to terminate a worker thread is to set some condition variable seen by the thread. The thread can check the variable periodically and use that as a signal to terminate. If the variable is not declared &lt;code&gt;volatile&lt;/code&gt;, then the change to the variable might not be seen by the thread, so it won't know to terminate. Or imagine if some threads want to update a shared object, but deadlock while trying to lock on it.</source>
+          <target state="translated">Обратите внимание: основной шаблон для завершения рабочего потока состоит в том, чтобы установить некоторую переменную условия, видимую потоком. Поток может периодически проверять переменную и использовать ее как сигнал для завершения. Если переменная не объявлена ​​как &lt;code&gt;volatile&lt;/code&gt; , то изменение в переменной может не быть замечено потоком, поэтому он не будет знать, что завершить. Или представьте, что некоторые потоки хотят обновить общий объект, но зашли в тупик, пытаясь заблокировать его.</target>
+        </trans-unit>
+        <trans-unit id="208d1932659651cdfcd8d8bc76e9e21d0d4d0246" translate="yes" xml:space="preserve">
+          <source>Create a static Map and keep adding hard references to it.  Those will never be GC'd.</source>
+          <target state="translated">Создайте статическую карту и продолжайте добавлять к ней жесткие ссылки.Это никогда не будет GC'd.</target>
+        </trans-unit>
+        <trans-unit id="d1bddb5b37195d2b9cfc511e087351b8b37fc258" translate="yes" xml:space="preserve">
+          <source>Creating a thread inherits the &lt;code&gt;ContextClassLoader&lt;/code&gt; and &lt;code&gt;AccessControlContext&lt;/code&gt;, plus the &lt;code&gt;ThreadGroup&lt;/code&gt; and any &lt;code&gt;InheritedThreadLocal&lt;/code&gt;, all those references are potential leaks, along with the entire classes loaded by the classloader and all static references, and ja-ja. The effect is especially visible with the entire j.u.c.Executor framework that features a super simple &lt;code&gt;ThreadFactory&lt;/code&gt; interface, yet most developers have no clue of the lurking danger. Also a lot of libraries do start threads upon request (way too many industry popular libraries).</source>
+          <target state="translated">Создание потока наследует &lt;code&gt;ContextClassLoader&lt;/code&gt; и &lt;code&gt;AccessControlContext&lt;/code&gt; , плюс &lt;code&gt;ThreadGroup&lt;/code&gt; и любой &lt;code&gt;InheritedThreadLocal&lt;/code&gt; , все эти ссылки являются потенциальными утечками, вместе со всеми классами, загруженными загрузчиком классов и всеми статическими ссылками, и ja-ja. Эффект особенно заметен во всей инфраструктуре jucExecutor, которая имеет очень простой интерфейс &lt;code&gt;ThreadFactory&lt;/code&gt; , однако большинство разработчиков не имеют ни малейшего представления о скрытой опасности. Также многие библиотеки запускают потоки по запросу (слишком много популярных в отрасли библиотек).</target>
+        </trans-unit>
+        <trans-unit id="2e6cf4701335cb5f59429515d569b0d29f77d768" translate="yes" xml:space="preserve">
+          <source>Creating, but not starting, a &lt;code&gt;Thread&lt;/code&gt; goes into the same category as above.</source>
+          <target state="translated">Создание, но не запуск, &lt;code&gt;Thread&lt;/code&gt; попадает в ту же категорию, что и выше.</target>
+        </trans-unit>
+        <trans-unit id="7294b77309edefafefe2bd3f45c66bab000f3d7c" translate="yes" xml:space="preserve">
+          <source>Declare native method.</source>
+          <target state="translated">Объявите родной метод.</target>
+        </trans-unit>
+        <trans-unit id="23728e6f1e8c32e9d0000075eebf66661982db5b" translate="yes" xml:space="preserve">
+          <source>Depending on your &lt;code&gt;jvm&lt;/code&gt; settings, the application may crash in the early stage due to a &lt;code&gt;OutOfMemoryError&lt;/code&gt;.</source>
+          <target state="translated">В зависимости от настроек &lt;code&gt;jvm&lt;/code&gt; приложение может &lt;code&gt;OutOfMemoryError&lt;/code&gt; на ранней стадии из-за ошибки OutOfMemoryError .</target>
+        </trans-unit>
+        <trans-unit id="58816422485d099c26b663bf93adbe40a467f347" translate="yes" xml:space="preserve">
+          <source>Do they know they can call other languages through native interfaces?</source>
+          <target state="translated">Знают ли они,что могут называть другие языки через родные интерфейсы?</target>
+        </trans-unit>
+        <trans-unit id="f5c9fcb2ac63bb6c6c32913f8fefe3bb71d7ed08" translate="yes" xml:space="preserve">
+          <source>Do they know to leak memory in those other languages?</source>
+          <target state="translated">Знают ли они,что утечка памяти на других языках?</target>
+        </trans-unit>
+        <trans-unit id="69aab9c5dfbb16547f4fc2c5abaf1344cf95a14c" translate="yes" xml:space="preserve">
+          <source>Does the candidate even know what memory management is, and what is going on behind the scene in Java?</source>
+          <target state="translated">Знает ли кандидат вообще,что такое управление памятью,и что происходит за сценой на Java?</target>
+        </trans-unit>
+        <trans-unit id="4dd2014adcd814735e78bd1371951597f5a3eea0" translate="yes" xml:space="preserve">
+          <source>Does the candidate understand how garbage collection works?</source>
+          <target state="translated">Понимает ли кандидат,как работает сбор мусора?</target>
+        </trans-unit>
+        <trans-unit id="0bf3c2bfc81fd20031b3e9b9d609f7dd6aaaaf29" translate="yes" xml:space="preserve">
+          <source>Does the candidate understand the difference between theory and reality?</source>
+          <target state="translated">Понимает ли кандидат разницу между теорией и реальностью?</target>
+        </trans-unit>
+        <trans-unit id="f2811d869f66aa43f58c855c0b8b1856517b1f02" translate="yes" xml:space="preserve">
+          <source>Doing so will keep both the original long string and the derived substring in memory even after the StringLeaker instance has been discarded.</source>
+          <target state="translated">Это позволит сохранить в памяти как оригинальную длинную строку,так и производную подстроку даже после того,как экземпляр StringLeaker был отброшен.</target>
+        </trans-unit>
+        <trans-unit id="595b1741483d7d383832f58de31ab4ccfd5ae979" translate="yes" xml:space="preserve">
+          <source>Due to the way &lt;code&gt;ThreadLocal&lt;/code&gt; is implemented in Oracle's JDK, this creates a memory leak:</source>
+          <target state="translated">Благодаря тому, что &lt;code&gt;ThreadLocal&lt;/code&gt; реализован в Oracle JDK, это создает утечку памяти:</target>
+        </trans-unit>
+        <trans-unit id="6612e728c6376d049be0c52a45c0cafe2f871430" translate="yes" xml:space="preserve">
+          <source>Each &lt;code&gt;Thread&lt;/code&gt; has a private field &lt;code&gt;threadLocals&lt;/code&gt;, which actually stores the thread-local values.</source>
+          <target state="translated">Каждый поток имеет приватное поле &lt;code&gt;threadLocals&lt;/code&gt; , которое на самом деле хранит локальные значения потока.</target>
+        </trans-unit>
+        <trans-unit id="651924eafe2e5c299685cb6d3c0296106ddc4229" translate="yes" xml:space="preserve">
+          <source>Each &lt;em&gt;key&lt;/em&gt; in this map is a weak reference to a &lt;code&gt;ThreadLocal&lt;/code&gt; object, so after that &lt;code&gt;ThreadLocal&lt;/code&gt; object is garbage-collected, its entry is removed from the map.</source>
+          <target state="translated">Каждый &lt;em&gt;ключ&lt;/em&gt; в этой карте является слабой ссылкой на объект &lt;code&gt;ThreadLocal&lt;/code&gt; , поэтому после того, как этот объект &lt;code&gt;ThreadLocal&lt;/code&gt; будет собран мусором, его запись удаляется с карты.</target>
+        </trans-unit>
+        <trans-unit id="2f85102b6f29d40dee4486317764bdc96c07bfac" translate="yes" xml:space="preserve">
+          <source>Et voil&amp;agrave;: you find a jar archive in your current working directory with two files inside.</source>
+          <target state="translated">Et voil&amp;agrave;: в вашем текущем рабочем каталоге вы найдете архив jar с двумя файлами внутри.</target>
+        </trans-unit>
+        <trans-unit id="3fc97cb36795d349336e2937cf57eba4d88c6f85" translate="yes" xml:space="preserve">
+          <source>Even if the JDBC driver were to implement &lt;code&gt;finalize&lt;/code&gt;, it is possible for exceptions to be thrown during finalization. The resulting behavior is that any memory associated with the now &quot;dormant&quot; object will not be reclaimed, as &lt;code&gt;finalize&lt;/code&gt; is guaranteed to be invoked only once.</source>
+          <target state="translated">Даже если драйвер JDBC должен был реализовать &lt;code&gt;finalize&lt;/code&gt; , во время финализации могут возникать исключения. В результате получается, что любая память, связанная с теперь &amp;laquo;неактивным&amp;raquo; объектом, не будет возвращена, поскольку &lt;code&gt;finalize&lt;/code&gt; гарантированно будет вызвана только один раз.</target>
+        </trans-unit>
+        <trans-unit id="16c7bc550059cf92961fbeac4004677360337532" translate="yes" xml:space="preserve">
+          <source>Everyone always forgets the native code route.  Here's a simple formula for a leak:</source>
+          <target state="translated">Все всегда забывают маршрут с родным кодом.Вот простая формула утечки:</target>
+        </trans-unit>
+        <trans-unit id="85ba58bac97a3e55de6e391b4dcfef4a1a7a69b4" translate="yes" xml:space="preserve">
+          <source>For added badness, you might also &lt;code&gt;.intern()&lt;/code&gt; the substring:</source>
+          <target state="translated">Для дополнительной ошибки вы можете также &lt;code&gt;.intern()&lt;/code&gt; подстрока:</target>
+        </trans-unit>
+        <trans-unit id="3c74b0583eca451f3949e324127e22834986bacd" translate="yes" xml:space="preserve">
+          <source>For instance, using ThreadLocal variables in Servlets to communicate with other web components, having the threads being created by the container and maintaining the idle ones in a pool. ThreadLocal variables, if not correctly cleaned up, will live there until, possibly, the same web component overwrites their values.</source>
+          <target state="translated">Например,используя ThreadLocal переменные в сервлетах для связи с другими веб-компонентами,имея создаваемые контейнером потоки и поддерживая холостые в пуле.ThreadLocal переменных,если не правильно очистить,будет жить там,пока,возможно,тот же компонент веб-перезаписывает их значения.</target>
+        </trans-unit>
+        <trans-unit id="a550b50fecea603dd7d627a3a2a7718b13bdaa32" translate="yes" xml:space="preserve">
+          <source>Good luck and stay safe; leaks are evil!</source>
+          <target state="translated">Удачи и берегите себя,утечки-это зло!</target>
+        </trans-unit>
+        <trans-unit id="d4becfb3fb0bc45134001f050666b7e0050d978e" translate="yes" xml:space="preserve">
+          <source>Here's a good way to create a true memory leak (objects inaccessible by running code but still stored in memory) in pure Java:</source>
+          <target state="translated">Вот хороший способ создать настоящую утечку памяти (объекты,недоступные запущенным кодом,но все равно хранящиеся в памяти)на чистом Java:</target>
+        </trans-unit>
+        <trans-unit id="2f2b740f4900d7a6978f8315f2f1a8035106b9da" translate="yes" xml:space="preserve">
+          <source>Here's a simple/sinister one via &lt;a href=&quot;http://wiki.eclipse.org/Performance_Bloopers#String.substring.28.29&quot;&gt;http://wiki.eclipse.org/Performance_Bloopers#String.substring.28.29&lt;/a&gt;.</source>
+          <target state="translated">Вот простой / зловещий через &lt;a href=&quot;http://wiki.eclipse.org/Performance_Bloopers#String.substring.28.29&quot;&gt;http://wiki.eclipse.org/Performance_Bloopers#String.substring.28.29&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="1b7f86efaf6f1be9a4631614110e3a1d163c3c9e" translate="yes" xml:space="preserve">
+          <source>How to create a memory leak in Java</source>
+          <target state="translated">Как создать утечку памяти в Java</target>
+        </trans-unit>
+        <trans-unit id="01b6c42de1549d8f57e267f836caf27305ce373f" translate="yes" xml:space="preserve">
+          <source>I came across a more subtle kind of resource leak recently.
+We open resources via class loader's getResourceAsStream and it happened that the input stream handles were not closed.</source>
+          <target state="translated">Недавно я наткнулся на более тонкую утечку ресурсов.Мы открываем ресурсы через getResourceAsStream загрузчика класса,и оказалось,что хэндлы входного потока не закрыты.</target>
+        </trans-unit>
+        <trans-unit id="e00a7aee2c9e1ea43ccd97f28e1044cddc2c12bb" translate="yes" xml:space="preserve">
+          <source>I can copy my answer from here:
+&lt;a href=&quot;https://stackoverflow.com/questions/4948529/easiest-way-to-cause-memory-leak-in-java/4948763&quot;&gt;Easiest way to cause memory leak in Java?&lt;/a&gt;</source>
+          <target state="translated">Я могу скопировать мой ответ отсюда: &lt;a href=&quot;https://stackoverflow.com/questions/4948529/easiest-way-to-cause-memory-leak-in-java/4948763&quot;&gt;Самый простой способ вызвать утечку памяти в Java?&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="4c593eeadc2fb1717b13d6e06d4149bb1f7cea59" translate="yes" xml:space="preserve">
+          <source>I don't think anyone has said this yet: you can resurrect an object by overriding the finalize() method such that finalize() stores a reference of this somewhere. The garbage collector will only be called once on the object so after that the object will never destroyed.</source>
+          <target state="translated">Не думаю,что кто-то это уже говорил:можно воскресить объект,переопределив метод finalize()таким образом,что метод finalize()где-то хранит ссылку на это.Сборщик мусора будет вызываться на объекте только один раз,так что после этого объект никогда не будет уничтожен.</target>
+        </trans-unit>
+        <trans-unit id="c6a50503d1ed9c1772a9fcbd93fa55757fa057ca" translate="yes" xml:space="preserve">
+          <source>I have had a nice &quot;memory leak&quot; in relation to PermGen and XML parsing once.
+The XML parser we used (I can't remember which one it was) did a String.intern() on tag names, to make comparison faster.
+One of our customers had the great idea to store data values not in XML attributes or text, but as tagnames, so we had a document like:</source>
+          <target state="translated">Однажды у меня была хорошая &quot;утечка памяти&quot; в связи с разбором PermGen и XML.Парсер XML,который мы использовали (я не помню,какой он был),сделал String.intern()на именах тегов,чтобы сделать сравнение быстрее.У одного из наших клиентов возникла отличная идея хранить значения данных не в атрибутах XML или тексте,а в виде магнитных имён,так что у нас был такой документ:</target>
+        </trans-unit>
+        <trans-unit id="21b20ac27c46030b96ee7a4c65ccb09c92ac0b95" translate="yes" xml:space="preserve">
+          <source>I have written a more extensive benchmark &lt;a href=&quot;https://stackoverflow.com/a/49430255/8524301&quot;&gt;here&lt;/a&gt;.</source>
+          <target state="translated">Я написал более обширный тест &lt;a href=&quot;https://stackoverflow.com/a/49430255/8524301&quot;&gt;здесь&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="e6ecf084ad53032ca17349b056ec1fdcf8050143" translate="yes" xml:space="preserve">
+          <source>I just had an interview, and I was asked to create a &lt;strong&gt;&lt;em&gt;memory leak&lt;/em&gt;&lt;/strong&gt; with Java.</source>
+          <target state="translated">У меня только что было интервью, и меня попросили создать &lt;strong&gt;&lt;em&gt;утечку памяти&lt;/em&gt;&lt;/strong&gt; с помощью Java.</target>
+        </trans-unit>
+        <trans-unit id="92126881424ebbbf07602882ed701925fe7eb526" translate="yes" xml:space="preserve">
+          <source>I recently encountered a memory leak situation caused in a way by log4j.</source>
+          <target state="translated">Недавно я столкнулся с ситуацией утечки памяти,вызванной каким-то образом log4j.</target>
+        </trans-unit>
+        <trans-unit id="7a504850de91ebafb452ca1440f20c4063b46f8a" translate="yes" xml:space="preserve">
+          <source>I think that a valid example could be using ThreadLocal variables in an environment where threads are pooled.</source>
+          <target state="translated">Я думаю,что правильным примером может быть использование переменных ThreadLocal в среде,где потоки объединены в пулы.</target>
+        </trans-unit>
+        <trans-unit id="45f7a3d9f100654fd1c34bd75e3eb9d5a83eae86" translate="yes" xml:space="preserve">
+          <source>I thought it was interesting that no one used the internal class examples.  If you have an internal class; it inherently maintains a reference to the containing class.  Of course it is not technically a memory leak because Java WILL eventually clean it up; but this can cause classes to hang around longer than anticipated.</source>
+          <target state="translated">Мне показалось интересным,что никто не использует примеры внутренних классов.Если у вас есть внутренний класс,то он по своей сути поддерживает ссылку на содержащий его класс.Конечно,технически это не утечка памяти,так как Java WILL в конце концов его очистит;но это может привести к тому,что классы будут зависать дольше,чем предполагалось.</target>
+        </trans-unit>
+        <trans-unit id="7d429b0485d7a2ac23d7e784ee85f99d6b65f029" translate="yes" xml:space="preserve">
+          <source>I'll concentrate on threads to show the danger of unmanaged threads mostly, don't wish to even touch swing.</source>
+          <target state="translated">Я сконцентрируюсь на нитях,чтобы показать опасность неуправляемых нитей в основном,не желая даже прикасаться к качелям.</target>
+        </trans-unit>
+        <trans-unit id="1fe18c2a2477f6295792e994a397c93f0806a8eb" translate="yes" xml:space="preserve">
+          <source>I'm reading your meta-question as &quot;What's an answer I could have used in this interview situation&quot;. And hence, I'm going to focus on interview skills instead of Java. I believe you're more likely to repeat the situation of not knowing the answer to a question in an interview than you are to be in a place of needing to know how to make Java leak. So, hopefully, this will help.</source>
+          <target state="translated">Я читаю ваш мета-вопрос как &quot;Какой ответ я мог бы использовать в этой ситуации с интервью&quot;.И,следовательно,я сконцентрируюсь на навыках интервью вместо Java.Я полагаю,что вы скорее повторите ситуацию,когда вы не знаете ответа на вопрос в интервью,чем будете находиться в месте,где вам нужно знать,как сделать так,чтобы Java просочился.Так что,надеюсь,это поможет.</target>
+        </trans-unit>
+        <trans-unit id="4b275ac46db4fdaa491bf5408c4f45e1255c8d27" translate="yes" xml:space="preserve">
+          <source>I've also heard a rumor that if you have a variable that exists for longer than a specific amount of time; Java assumes that it will always exist and will actually never try to clean it up if cannot be reached in code anymore.  But that is completely unverified.</source>
+          <target state="translated">Я также слышал слух,что если у вас есть переменная,которая существует дольше,чем определенное количество времени;Java предполагает,что она будет существовать всегда и на самом деле никогда не будет пытаться очистить ее,если она больше не может быть доступна в коде.Но это полностью непроверено.</target>
+        </trans-unit>
+        <trans-unit id="3fb2a5a45b0633c5ecfa4de6234eeb7c9b8db692" translate="yes" xml:space="preserve">
+          <source>If the query was called lots of times and, for each query (so, for each &lt;code&gt;Map&lt;/code&gt; returned) you save an &lt;code&gt;Entry&lt;/code&gt; somewhere, the memory would constantly keep growing.</source>
+          <target state="translated">Если запрос вызывался много раз, и для каждого запроса (то есть для каждой возвращаемой &lt;code&gt;Map&lt;/code&gt; ) вы сохраняете где-нибудь &lt;code&gt;Entry&lt;/code&gt; , память постоянно будет расти.</target>
+        </trans-unit>
+        <trans-unit id="e728ed31e7836138e4e1b214963390f9f9d63680" translate="yes" xml:space="preserve">
+          <source>If there is just one reference surviving the undeployment of your web app, the corresponding classloader and by consequence all classes of your web app cannot be garbage collected.</source>
+          <target state="translated">Если существует только одна ссылка,пережившая распаковку вашего веб-приложения,то соответствующий загрузчик классов и,как следствие,все классы вашего веб-приложения не могут быть собраны в мусор.</target>
+        </trans-unit>
+        <trans-unit id="a844f39481ac36271eb7582aa6ffdda4fd58a0aa" translate="yes" xml:space="preserve">
+          <source>If this Info object has references to other objects, which again have references to other objects. In a way you could also consider this to be some kind of memory leak, (caused by bad design).</source>
+          <target state="translated">Если у этого Инфообъекта есть ссылки на другие объекты,то у него опять же есть ссылки на другие объекты.В каком-то смысле вы также можете считать это некоторой утечкой памяти (вызванной плохим дизайном).</target>
+        </trans-unit>
+        <trans-unit id="3dec03b2417923a03f07454056bdbc6a069e20ca" translate="yes" xml:space="preserve">
+          <source>If you only have a handful of threads these bugs will probably be obvious because your program will stop working properly. If you have a thread pool that creates more threads as needed, then the obsolete/stuck threads might not be noticed, and will accumulate indefinitely, causing a memory leak. Threads are likely to use other data in your application, so will also prevent anything they directly reference from ever being collected.</source>
+          <target state="translated">Если у вас только горстка потоков,эти ошибки,вероятно,будут очевидны,потому что ваша программа перестанет работать должным образом.Если у вас есть пул потоков,который создает больше потоков по мере необходимости,то obsoletestuck потоки могут не быть замечены,и будут накапливаться бесконечно,вызывая утечку памяти.Потоки,вероятно,использовать другие данные в вашем приложении,так что будет также предотвратить все,что они непосредственно ссылаются на когда-либо собирались.</target>
+        </trans-unit>
+        <trans-unit id="07183207e77909e1bfc147b3897805b040b19554" translate="yes" xml:space="preserve">
+          <source>If you want the application to play safe, close the input stream right where it's created:</source>
+          <target state="translated">Если вы хотите,чтобы приложение работало безопасно,закройте входной поток прямо там,где оно создано:</target>
+        </trans-unit>
+        <trans-unit id="b77776fc1bc27a6e9d7f17108863ff3131c7112a" translate="yes" xml:space="preserve">
+          <source>If you want these bad keys/elements to hang around you can use a static field like</source>
+          <target state="translated">Если вы хотите,чтобы эти плохие ключевые элементы зависали вокруг вас,вы можете использовать статическое поле вроде</target>
+        </trans-unit>
+        <trans-unit id="1f4a041a2b50b2a53250f8f05e6166af2d9e5d37" translate="yes" xml:space="preserve">
+          <source>If you were implementing it yourself, would you have thought to clear the array element that is no longer used (&lt;code&gt;elementData[--size] = null&lt;/code&gt;)? That reference might keep a huge object alive ...</source>
+          <target state="translated">Если бы вы реализовывали это самостоятельно, вы бы подумали очистить элемент массива, который больше не используется ( &lt;code&gt;elementData[--size] = null&lt;/code&gt; )? Эта ссылка может поддержать огромный объект ...</target>
+        </trans-unit>
+        <trans-unit id="fd37c731da6ece7675c58bbe7d98346fdbaa4cda" translate="yes" xml:space="preserve">
+          <source>If you're doubtful, try to compile and start the class above, but make sure to chose a decent heap size (2 MB):</source>
+          <target state="translated">Если вы сомневаетесь,попробуйте скомпилировать и запустить класс выше,но убедитесь,что выбрали приличный размер кучи (2 MB):</target>
+        </trans-unit>
+        <trans-unit id="d47133a89c6ee68265054f24bec9f1e818d65900" translate="yes" xml:space="preserve">
+          <source>Imagine having a db query that returns a big &lt;code&gt;TreeMap&lt;/code&gt; data structure. People usually use &lt;code&gt;TreeMap&lt;/code&gt;s as the element insertion order is retained.</source>
+          <target state="translated">Представьте, что у вас есть запрос &lt;code&gt;TreeMap&lt;/code&gt; данных, который возвращает большую структуру данных TreeMap . Люди обычно используют &lt;code&gt;TreeMap&lt;/code&gt; , поскольку порядок вставки элементов сохраняется.</target>
+        </trans-unit>
+        <trans-unit id="616351eed8e13ed77018420d9f5f8f9e135a2f8b" translate="yes" xml:space="preserve">
+          <source>In fact, they did not use numbers but longer textual IDs (around 20 characters), which were unique and came in at a rate of 10-15 million a day. That makes 200&amp;nbsp;MB of rubbish a day, which is never needed again, and never GCed (since it is in PermGen). We had permgen set to 512&amp;nbsp;MB, so it took around two days for the out-of-memory exception (OOME) to arrive...</source>
+          <target state="translated">На самом деле они использовали не цифры, а более длинные текстовые идентификаторы (около 20 символов), которые были уникальными и приходили со скоростью 10&amp;ndash;15 миллионов в день. Это составляет 200 МБ мусора в день, который больше никогда не нужен, и никогда не GCed (так как он в PermGen). Для permgen было установлено значение 512 МБ, поэтому потребовалось около двух дней, чтобы возникла исключительная ситуация нехватки памяти (OOME) ...</target>
+        </trans-unit>
+        <trans-unit id="7d3a9486d4f2eefbc274d2aae1c983235c4f0060" translate="yes" xml:space="preserve">
+          <source>In native method, call &lt;code&gt;malloc&lt;/code&gt;.  Don't call &lt;code&gt;free&lt;/code&gt;.</source>
+          <target state="translated">В нативном методе вызовите &lt;code&gt;malloc&lt;/code&gt; . Не звоните &lt;code&gt;free&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="814f901888930bb38be0968e58de23b51f29ac3b" translate="yes" xml:space="preserve">
+          <source>In order to store thread specific tags, log4j's NDC class uses a Hashtable which is keyed by the Thread object itself (as opposed to say the thread id), and thus till the NDC tag stays in memory all the objects that hang off of the thread object also stay in memory. In our web application we use NDC to tag logoutputs with a request id to distinguish logs from a single request separately. The container that associates the NDC tag with a thread, also removes it while returning the response from a request. The problem occurred when during the course of processing a request, a child thread was spawned, something like the following code:</source>
+          <target state="translated">Для хранения специфических для потоков тегов в классе log4j используется Hashtable,который квитируется самим объектом Thread (а не,скажем,thread id),и,таким образом,до тех пор,пока тег NDC не останется в памяти,все объекты,которые зависают от объекта thread,также остаются в памяти.В нашем веб-приложении мы используем NDC для тэга лог-выходов с идентификатором запроса,чтобы отличать лог от отдельного запроса.Контейнер,связывающий тег NDC с потоком,также удаляет его при возвращении ответа с запроса.Проблема возникает,когда в процессе обработки запроса порождается дочерний поток,что-то вроде следующего кода:</target>
+        </trans-unit>
+        <trans-unit id="1151b20bb174dcd65ae8dc89e7062e26b2f1ceff" translate="yes" xml:space="preserve">
+          <source>In such an event where the &lt;code&gt;Connection&lt;/code&gt;'s &lt;code&gt;finalize&lt;/code&gt; method does not clean up everything, one might actually find that the physical connection to the database server will last several garbage collection cycles, until the database server eventually figures out that the connection is not alive (if it does), and should be closed.</source>
+          <target state="translated">В таком случае, когда метод &lt;code&gt;finalize&lt;/code&gt; в &lt;code&gt;Connection&lt;/code&gt; не очищает все, на самом деле можно обнаружить, что физическое соединение с сервером базы данных будет длиться несколько циклов сбора мусора, пока сервер базы данных не обнаружит, что соединение не существует ( если это так) и должен быть закрыт.</target>
+        </trans-unit>
+        <trans-unit id="a086d2d8fc03e322322053a853925ae19c3f6771" translate="yes" xml:space="preserve">
+          <source>In this example, the chain of strong references looks like this:</source>
+          <target state="translated">В данном примере цепочка сильных ссылок выглядит так:</target>
+        </trans-unit>
+        <trans-unit id="d62d178029de1efea2203c23a23efb70a4696661" translate="yes" xml:space="preserve">
+          <source>In web applications, some objects are stored in application scope until the application is explicitly stopped or removed.</source>
+          <target state="translated">В веб-приложениях некоторые объекты хранятся в области применения до тех пор,пока применение не будет явно остановлено или удалено.</target>
+        </trans-unit>
+        <trans-unit id="68aec4830681344f2b93563671f2dff71f1bbf04" translate="yes" xml:space="preserve">
+          <source>Is a theoretically &quot;perfect&quot; Java implementation vulnerable to leaks?</source>
+          <target state="translated">Является ли теоретически &quot;идеальная&quot; реализация Java уязвимой к утечкам?</target>
+        </trans-unit>
+        <trans-unit id="05f78f8106fbe6329e286863d22b4d75d685d7ed" translate="yes" xml:space="preserve">
+          <source>Is it possible in practice to make Java leak? Of course it is, and there are plenty of examples in the other answers.</source>
+          <target state="translated">Возможно ли на практике сделать утечку Java? Конечно,да,и примеров в других ответах предостаточно.</target>
+        </trans-unit>
+        <trans-unit id="72344f67ba500872a5868aea32be6d2ec2ff0948" translate="yes" xml:space="preserve">
+          <source>It is hard to asses why this applies only to &lt;code&gt;TreeMap&lt;/code&gt;s, but by looking at the implementation the reason might be that: a &lt;code&gt;TreeMap.Entry&lt;/code&gt; stores references to its siblings, therefore if a &lt;code&gt;TreeMap&lt;/code&gt; is ready to be collected, but some other class holds a reference to any of its &lt;code&gt;Map.Entry&lt;/code&gt;, then the &lt;strong&gt;entire&lt;/strong&gt; Map will be retained into memory.</source>
+          <target state="translated">Трудно понять, почему это применимо только к &lt;code&gt;TreeMap&lt;/code&gt; , но, глядя на реализацию, причина может быть в следующем: &lt;code&gt;TreeMap.Entry&lt;/code&gt; хранит ссылки на своих братьев и сестер, поэтому, если &lt;code&gt;TreeMap&lt;/code&gt; готов к сбору, но некоторые другие классы содержат ссылка на любой из его &lt;code&gt;Map.Entry&lt;/code&gt; , тогда &lt;strong&gt;вся&lt;/strong&gt; карта будет сохранена в памяти.</target>
+        </trans-unit>
+        <trans-unit id="561fe384bd30b46ac778a1ce06a62ef27c82a798" translate="yes" xml:space="preserve">
+          <source>It's a waste of memory.</source>
+          <target state="translated">Это пустая трата памяти.</target>
+        </trans-unit>
+        <trans-unit id="3214ee93295d6c88e9d4e29520c16ecb1e48337f" translate="yes" xml:space="preserve">
+          <source>It's caused by a &lt;strong&gt;bug&lt;/strong&gt; or &lt;strong&gt;bad design.&lt;/strong&gt;</source>
+          <target state="translated">Это вызвано &lt;strong&gt;ошибкой&lt;/strong&gt; или &lt;strong&gt;плохим дизайном.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="05faaf871b0d1119fafda19c7fdc687954cbd451" translate="yes" xml:space="preserve">
+          <source>Just paste into a file named BigJarCreator.java, compile and run it from command line:</source>
+          <target state="translated">Просто вставьте в файл под названием BigJarCreator.java,скомпилируйте и запустите его из командной строки:</target>
+        </trans-unit>
+        <trans-unit id="f6a8033007fd6ec98535faec7a65097b14dd4f72" translate="yes" xml:space="preserve">
+          <source>Let's create a second class:</source>
+          <target state="translated">Давайте создадим второй класс:</target>
+        </trans-unit>
+        <trans-unit id="d4bc67a5ed72fede9fcad90c9bb44a98798af683" translate="yes" xml:space="preserve">
+          <source>Like we have to close SQL connections or files. We need to set proper references to null and remove elements from the collection. We shall have proper caching strategies (maximum memory size, number of elements, or timers). All objects that allow a listener to be notified must provide both a addListener and removeListener method. And when these notifiers are no longer used, they must clear their listener list.</source>
+          <target state="translated">Как будто мы должны закрыть SQL соединения или файлы.Нам нужно установить правильные ссылки на null и удалить элементы из коллекции.У нас должны быть правильные кэширующие стратегии (максимальный объем памяти,количество элементов или таймеры).Все объекты,которые позволяют получать уведомления слушателю,должны предоставлять как метод addListener,так и метод removeListener.А когда эти уведомления больше не используются,они должны очистить свой список слушателей.</target>
+        </trans-unit>
+        <trans-unit id="3b458dced83c8ab074875078d1d91f33a9d27043" translate="yes" xml:space="preserve">
+          <source>Log4j has this mechanism called &lt;a href=&quot;http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/NDC.html&quot;&gt;Nested Diagnostic Context(NDC)&lt;/a&gt;  which is an instrument to distinguish interleaved log output from different sources. The granularity at which NDC works is threads, so it distinguishes log outputs from different threads separately.</source>
+          <target state="translated">Log4j имеет этот механизм, называемый &lt;a href=&quot;http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/NDC.html&quot;&gt;Nested Diagnostic Context (NDC),&lt;/a&gt; который представляет собой инструмент для различения чередующихся выходных данных журнала из разных источников. Гранулярность, на которой работает NDC - это потоки, поэтому он различает выходные данные журнала из разных потоков по отдельности.</target>
+        </trans-unit>
+        <trans-unit id="a74d4d9b42b3c1615e4d56d4f582ad45b2655049" translate="yes" xml:space="preserve">
+          <source>Managing a &lt;code&gt;List&lt;/code&gt; instance where you are only adding to the list and not deleting from it (although you should be getting rid of elements you no longer need), or</source>
+          <target state="translated">Управление экземпляром &lt;code&gt;List&lt;/code&gt; , когда вы только добавляете в список, а не удаляете из него (хотя вы должны избавляться от элементов, которые вам больше не нужны), или</target>
+        </trans-unit>
+        <trans-unit id="b465c99f288420225f974ac507b411ef070d8d63" translate="yes" xml:space="preserve">
+          <source>Maybe by using external native code through JNI?</source>
+          <target state="translated">Может быть,используя внешний нативный код через JNI?</target>
+        </trans-unit>
+        <trans-unit id="8175a245c08fc481438f6815596d0da7c146e50e" translate="yes" xml:space="preserve">
+          <source>Most examples here are &quot;too complex&quot;. They are edge cases. With these examples, the programmer made a mistake (like don't redefining equals/hashcode), or has been bitten by a corner case of the JVM/JAVA (load of class with static...). I think that's not the type of example an interviewer want or even the most common case.</source>
+          <target state="translated">Большинство примеров здесь &quot;слишком сложные&quot;.Это крайние случаи.В этих примерах программист допустил ошибку (например,не переопределял equalshashcode),или был укушен угловым случаем JVMJAVA (загрузка класса со статическим...).Я думаю,что это не тот пример,который нужен интервьюеру,и даже не самый распространенный случай.</target>
+        </trans-unit>
+        <trans-unit id="da0e531c2d2164c2c5e59501901aa030bdfe6f3b" translate="yes" xml:space="preserve">
+          <source>Needless to say, I felt pretty dumb having no clue on how to even start creating one.</source>
+          <target state="translated">Излишне говорить,что я чувствовал себя довольно глупо,даже не имея понятия,как начать его создавать.</target>
+        </trans-unit>
+        <trans-unit id="c19ee64f2381d0ee2609515e17669080e93f414f" translate="yes" xml:space="preserve">
+          <source>Next you might explain creating an Object that has an underlying native resource, like this:</source>
+          <target state="translated">Далее вы можете объяснить,как создать Объект,у которого есть основной родной ресурс,например,такой:</target>
+        </trans-unit>
+        <trans-unit id="6fd38b422389649a368e74b0ac97cd5537e46b9f" translate="yes" xml:space="preserve">
+          <source>Not unloading Singletons when bringing down a Java EE application. Apparently, the Classloader that loaded the singleton class will retain a reference to the class, and hence the singleton instance will never be collected. When a new instance of the application is deployed, a new class loader is usually created, and the former class loader will continue to exist due to the singleton.</source>
+          <target state="translated">Не разгружать синглеты при свертывании приложения Java EE.Очевидно,что Classloader,загрузивший класс одиночных кнопок,сохранит ссылку на этот класс,и,следовательно,экземпляр одиночной кнопки никогда не будет собран.При развертывании нового экземпляра приложения обычно создается новый загрузчик класса,а прежний загрузчик класса будет продолжать существовать благодаря одиночной кнопке.</target>
+        </trans-unit>
+        <trans-unit id="9998b1000c5178e2b3e94d9693a3bf2b4281faec" translate="yes" xml:space="preserve">
+          <source>Now if you call Example1 and get an Example2 discarding Example1, you will inherently still have a link to an Example1 object.</source>
+          <target state="translated">Теперь,если вы позвоните на Example1 и получите Example2,отбрасывающий Example1,у вас все равно останется ссылка на объект Example1.</target>
+        </trans-unit>
+        <trans-unit id="31d4698f19da02d2be9e8fdd5e63c35ecbb2df33" translate="yes" xml:space="preserve">
+          <source>Of course all sort of listeners (like UI listeners), caches, or any long-lived shared state tend to produce memory leak if not properly handled. What shall be understood is that this is not a Java corner case, or a problem with the garbage collector. It is a design problem. We design that we add a listener to a long-lived object, but we don't remove the listener when no longer needed. We cache objects, but we have no strategy to remove them from the cache.</source>
+          <target state="translated">Конечно,все виды слушателей (например,слушатели пользовательского интерфейса),кэш или любое долгоживущее общее состояние,как правило,приводят к утечке памяти,если с ними не обращаться должным образом.Следует понимать,что это не случай Java-угла или проблема с мусорщиком.Это проблема проектирования.Мы проектируем так,что добавляем слушателя к долгоживущему объекту,но не удаляем слушателя,когда он больше не нужен.Мы кэшируем объекты,но у нас нет стратегии удаления их из кэша.</target>
+        </trans-unit>
+        <trans-unit id="f39c96ac84791daa94456083a1e63b12c3b34e64" translate="yes" xml:space="preserve">
+          <source>Of course, once identified, the problem can be solved easily.</source>
+          <target state="translated">Конечно,после идентификации проблема может быть легко решена.</target>
+        </trans-unit>
+        <trans-unit id="359f9517116d8da7b1550c5bd1475ce1ff8ac81b" translate="yes" xml:space="preserve">
+          <source>One of the most important skills you can develop for interviewing is learning to actively listen to the questions and working with the interviewer to extract their intent. Not only does this let you answer their question the way they want, but also shows that you have some vital communication skills. And when it comes down to a choice between many equally talented developers, I'll hire the one who listens, thinks, and understands before they respond every time.</source>
+          <target state="translated">Один из важнейших навыков,который вы можете развить для проведения интервью-это научиться активно слушать вопросы и работать с интервьюером,чтобы извлечь из них пользу.Это не только позволит вам отвечать на их вопросы так,как они хотят,но и продемонстрирует,что у вас есть некоторые жизненно важные навыки общения.И когда дело доходит до выбора между многими не менее талантливыми разработчиками,я нанимаю того,кто слушает,думает и понимает до того,как они каждый раз отвечают.</target>
+        </trans-unit>
+        <trans-unit id="36a5e6b2c91adbb6a3e2aab7e879640729801965" translate="yes" xml:space="preserve">
+          <source>One way that &lt;em&gt;used&lt;/em&gt; to work though - and I don't know if it still does - is to have a three-deep circular chain. As in Object A has a reference to Object B, Object B has a reference to Object C and Object C has a reference to Object A. The GC was clever enough to know that a two deep chain - as in A &amp;lt;--&amp;gt; B - can safely be collected if A and B aren't accessible by anything else, but couldn't handle the three-way chain...</source>
+          <target state="translated">Хотя один из способов, который &lt;em&gt;раньше&lt;/em&gt; работал - и я не знаю, работает ли он по-прежнему, - это иметь трехглубинную круговую цепь. Так как в объекте A есть ссылка на объект B, объект B имеет ссылку на объект C, а объект C имеет ссылку на объект A. GC был достаточно умен, чтобы знать, что две глубокие цепочки - как в A &amp;lt;-&amp;gt; B - может быть безопасно собрана, если A и B недоступны для чего-либо еще, но не справились с трехсторонней цепью ...</target>
+        </trans-unit>
+        <trans-unit id="5b917237b7467dac31648fbc59206979ce55dfd9" translate="yes" xml:space="preserve">
+          <source>Opening &lt;code&gt;Socket&lt;/code&gt;s or &lt;code&gt;File&lt;/code&gt;s, but not closing them when they are no longer needed (similar to the above example involving the &lt;code&gt;Connection&lt;/code&gt; class).</source>
+          <target state="translated">Открываем &lt;code&gt;Socket&lt;/code&gt; s или &lt;code&gt;File&lt;/code&gt; s, но не закрываем их, когда они больше не нужны (аналогично приведенному выше примеру с классом &lt;code&gt;Connection&lt;/code&gt; ).</target>
+        </trans-unit>
+        <trans-unit id="76869464027089f768f29feb0983c01df9f013f8" translate="yes" xml:space="preserve">
+          <source>Or how garbage collection is supposed to work in an ideal case?</source>
+          <target state="translated">Или как сбор мусора должен работать в идеальном случае?</target>
+        </trans-unit>
+        <trans-unit id="a6c25b025c686e8f9dc74431fd57522f3d862d94" translate="yes" xml:space="preserve">
+          <source>Probably one of the simplest examples of a potential memory leak, and how to avoid it, is the implementation of ArrayList.remove(int):</source>
+          <target state="translated">Вероятно,одним из простейших примеров потенциальной утечки памяти,и как ее избежать,является реализация ArrayList.remove(int):</target>
+        </trans-unit>
+        <trans-unit id="17fed754c98c700a1e917a4eff83b7503478c1c4" translate="yes" xml:space="preserve">
+          <source>Quite simple and surprising.</source>
+          <target state="translated">Довольно просто и удивительно.</target>
+        </trans-unit>
+        <trans-unit id="f8be3060c2f0cc0e7ea1d276209efffb79b9da26" translate="yes" xml:space="preserve">
+          <source>Remember, memory allocations in native code come from the JVM heap.</source>
+          <target state="translated">Помните,что выделение памяти в нативном коде происходит из кучи JVM.</target>
+        </trans-unit>
+        <trans-unit id="f93f18734a59d8cc05e84f1d83da3ae5a1b3c541" translate="yes" xml:space="preserve">
+          <source>Repeat.</source>
+          <target state="translated">Repeat.</target>
+        </trans-unit>
+        <trans-unit id="fa7a78b153a99b91ec29c754c3a203c8e71690c7" translate="yes" xml:space="preserve">
+          <source>See &lt;a href=&quot;http://publib.boulder.ibm.com/infocenter/wasinfo/v6r0/index.jsp?topic=/com.ibm.websphere.express.doc/info/exp/ae/tprf_tunejvm.html&quot;&gt;IBM jdk settings&lt;/a&gt;.</source>
+          <target state="translated">Смотрите &lt;a href=&quot;http://publib.boulder.ibm.com/infocenter/wasinfo/v6r0/index.jsp?topic=/com.ibm.websphere.express.doc/info/exp/ae/tprf_tunejvm.html&quot;&gt;настройки IBM jdk&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="4342f1aa1b6f38f7d64ecef7db9d19d2d3e75a62" translate="yes" xml:space="preserve">
+          <source>So an NDC context was associated with inline thread that was spawned. The thread object that was the key for this NDC context, is the inline thread which has the hugeList object hanging off of it. Hence even after the thread finished doing what it was doing, the reference to the hugeList was kept alive by the NDC context Hastable, thus causing a memory leak.</source>
+          <target state="translated">Таким образом,контекст НДЦ был связан с встраиваемым потоком,который был порожден.Объект потока,который был ключом для этого NDC контекста,является встроенным потоком,который имеет огромный список объектов (hugeList),зависающий от него.Следовательно,даже после того,как поток закончил делать то,что он делал,ссылка на огромный список была сохранена в NDC context Hastable,что привело к утечке памяти.</target>
+        </trans-unit>
+        <trans-unit id="7d67985467b958c5652d6e83679a4c218ed1543a" translate="yes" xml:space="preserve">
+          <source>Sure, you can make things a lot more complicated:</source>
+          <target state="translated">Конечно,ты можешь все усложнить:</target>
+        </trans-unit>
+        <trans-unit id="cd8d76ac2082269dbea658a5d224bb45032f49e4" translate="yes" xml:space="preserve">
+          <source>Take any web application running in any servlet container (Tomcat, Jetty, Glassfish, whatever...). Redeploy the app 10 or 20 times in a row (it may be enough to simply touch the WAR in the server's autodeploy directory.</source>
+          <target state="translated">Возьмите любое веб-приложение,запущенное в любом контейнере для сервлетов (Tomcat,Jetty,Glassfish,что угодно...).Перепланируйте приложение 10 или 20 раз подряд (может быть достаточно просто коснуться WAR в каталоге автопланировки сервера.</target>
+        </trans-unit>
+        <trans-unit id="3f0ddb50199ce6aa646038cf3549d10733a974bc" translate="yes" xml:space="preserve">
+          <source>The above scenario of encountering exceptions during object finalization is related to another other scenario that could possibly lead to a memory leak - object resurrection. Object resurrection is often done intentionally by creating a strong reference to the object from being finalized, from another object. When object resurrection is misused it will lead to a memory leak in combination with other sources of memory leaks.</source>
+          <target state="translated">Вышеописанный сценарий столкновения с исключениями при доработке объекта связан с другим сценарием,который может привести к утечке памяти-воскрешению объекта.Воскресение объекта часто происходит преднамеренно,создавая сильную ссылку на объект из завершенного,из другого объекта.При неправильном использовании воскрешения объекта это приведет к утечке памяти в сочетании с другими источниками утечки памяти.</target>
+        </trans-unit>
+        <trans-unit id="2b9ff2a3549857707ad2be7dd1a55940374de5a7" translate="yes" xml:space="preserve">
+          <source>The answer depends entirely on what the interviewer thought they were asking.</source>
+          <target state="translated">Ответ полностью зависит от того,что,по мнению интервьюера,они спрашивали.</target>
+        </trans-unit>
+        <trans-unit id="e3695b3f538930610ef2063781d02d8ad60759f2" translate="yes" xml:space="preserve">
+          <source>The application clears all references to the custom class or the &lt;code&gt;ClassLoader&lt;/code&gt; it was loaded from.</source>
+          <target state="translated">Приложение очищает все ссылки на пользовательский класс или &lt;code&gt;ClassLoader&lt;/code&gt; он был загружен.</target>
+        </trans-unit>
+        <trans-unit id="eb7caa9734b5c2cfa40c6dd7a093614c5ac2b370" translate="yes" xml:space="preserve">
+          <source>The application creates a long-running thread (or use a thread pool to leak even faster).</source>
+          <target state="translated">Приложение создает долгосрочную резьбу (или использовать пул резьбы,чтобы утечка еще быстрее).</target>
+        </trans-unit>
+        <trans-unit id="7f743f017b4a20fdb5c358a933b5c9d5b39a31e1" translate="yes" xml:space="preserve">
+          <source>The class allocates a large chunk of memory (e.g. &lt;code&gt;new byte[1000000]&lt;/code&gt;), stores a strong reference to it in a static field, and then stores a reference to itself in a &lt;code&gt;ThreadLocal&lt;/code&gt;.  Allocating the extra memory is optional (leaking the class instance is enough), but it will make the leak work that much faster.</source>
+          <target state="translated">Класс выделяет большой кусок памяти (например, &lt;code&gt;new byte[1000000]&lt;/code&gt; ), сохраняет сильную ссылку на него в статическом поле, а затем сохраняет ссылку на себя в &lt;code&gt;ThreadLocal&lt;/code&gt; . Выделение дополнительной памяти необязательно (достаточно утечки экземпляра класса), но это сделает утечку работать намного быстрее.</target>
+        </trans-unit>
+        <trans-unit id="d1d4b11ad55598d70c016aed843e15846eb38a95" translate="yes" xml:space="preserve">
+          <source>The easy answer is: You can't. Java does automatic memory management and will free resources that are not needed for you. You can't stop this from happening. It will ALWAYS be able to release the resources. In programs with manual memory management, this is different. You cann get some memory in C using malloc(). To free the memory, you need the pointer that malloc returned and call free() on it. But if you don't have the pointer anymore (overwritten, or lifetime exceeded), then you are unfortunately incapable of freeing this memory and thus you have a memory leak.</source>
+          <target state="translated">Легкий ответ:ты не можешь.Java осуществляет автоматическое управление памятью и освобождает ресурсы,которые вам не нужны.Вы не можете остановить это.Она ВСЕГДА сможет освободить ресурсы.В программах с ручным управлением памятью это другое.Вы можете получить немного памяти на Си с помощью malloc().Чтобы освободить память,Вам нужен указатель,который malloc вернул и вызвал free()на нем.Но если у Вас больше нет указателя (перезаписан,или время жизни превышено),то Вы,к сожалению,не можете освободить эту память,а значит,произошла утечка памяти.</target>
+        </trans-unit>
+        <trans-unit id="b424fdf14efd0565b16910fc197e737854e5dbbb" translate="yes" xml:space="preserve">
+          <source>The following is a pretty pointless example, if you do not understand &lt;a href=&quot;http://en.wikipedia.org/wiki/Java_Database_Connectivity&quot;&gt;JDBC&lt;/a&gt;. Or at least how JDBC expects a developer to close &lt;code&gt;Connection&lt;/code&gt;, &lt;code&gt;Statement&lt;/code&gt; and &lt;code&gt;ResultSet&lt;/code&gt; instances before discarding them or losing references to them, instead of relying on the implementation of &lt;code&gt;finalize&lt;/code&gt;.</source>
+          <target state="translated">Ниже приведен довольно бессмысленный пример, если вы не понимаете &lt;a href=&quot;http://en.wikipedia.org/wiki/Java_Database_Connectivity&quot;&gt;JDBC&lt;/a&gt; . Или, по крайней мере, то, как JDBC ожидает, что разработчик закроет экземпляры &lt;code&gt;Connection&lt;/code&gt; , &lt;code&gt;Statement&lt;/code&gt; и &lt;code&gt;ResultSet&lt;/code&gt; перед тем, как отбросить их или потерять ссылки на них, вместо того чтобы полагаться на реализацию &lt;code&gt;finalize&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="8b24917f88855c09f743fed66380957ea6ac7f32" translate="yes" xml:space="preserve">
+          <source>The ideas of creating objects that have a very large footprint and then not being able to access them aren't real memory leaks either. If nothing can access it then it will be garbage collected, and if something can access it then it's not a leak...</source>
+          <target state="translated">Идеи создания объектов,которые имеют очень большую площадь,а затем не имеют доступа к ним,также не являются реальной утечкой памяти.Если ничто не может получить доступ к ним,то это будет мусор,собранный,а если что-то может получить доступ к ним,то это не утечка...</target>
+        </trans-unit>
+        <trans-unit id="498384654cf1a60837b9c1e363e1194c26e66a19" translate="yes" xml:space="preserve">
+          <source>The interviewer might have be looking for a circular reference solution:</source>
+          <target state="translated">Интервьюер,возможно,искал бы циркулярное решение:</target>
+        </trans-unit>
+        <trans-unit id="412ce2817e5c890b4523cb4a740d986a34dfcdb5" translate="yes" xml:space="preserve">
+          <source>The interviewer was probably looking for a circular reference like the code below (which incidentally only leak memory in very old JVMs that used reference counting, which isn't the case any more).  But it's a pretty vague question, so it's a prime opportunity to show off your understanding of JVM memory management.</source>
+          <target state="translated">Вероятно,интервьюер искал круглую ссылку,подобную приведенному ниже коду (которая,кстати,утечка памяти произошла только в очень старых JVM,использующих подсчет ссылок,что уже не так).Но это довольно расплывчатый вопрос,так что это прекрасная возможность показать свое понимание управления памятью JVM.</target>
+        </trans-unit>
+        <trans-unit id="8dc73d2ce0e83223aa03d41ab80d35a989d7f58c" translate="yes" xml:space="preserve">
+          <source>The long answer is: You can get a memory leak by writing a library for Java using the JNI, which can have manual memory management and thus have memory leaks. If you call this library, your java process will leak memory. Or, you can have bugs in the JVM, so that the JVM looses memory. There are probably bugs in the JVM, there may even be some known ones since garbage collection is not that trivial, but then it's still a bug. By design this is not possible. You may be asking for some java code that is effected by such a bug. Sorry I don't know one and it might well not be a bug anymore in the next Java version anyway.</source>
+          <target state="translated">Длинный ответ:Вы можете получить утечку памяти,написав библиотеку для Java с помощью JNI,которая может иметь ручное управление памятью и,таким образом,иметь утечки памяти.Если вы вызовете эту библиотеку,то ваш java процесс приведет к утечке памяти.Или у вас могут быть ошибки в JVM,так что JVM теряет память.Вероятно,в JVM есть ошибки,могут быть даже некоторые известные,так как сборка мусора не так банальна,но тогда это все равно ошибка.По дизайну это невозможно.Возможно,вы спрашиваете java-код,на который влияет такая ошибка.Извините,я не знаю одну из них,и в следующей Java-версии это все равно может не быть ошибкой.</target>
+        </trans-unit>
+        <trans-unit id="adea7071c985a58f8fd610cc024525873a3aa3a3" translate="yes" xml:space="preserve">
+          <source>The problem is, the lifetime of the container is longer than the lifetime of your application. You have to make sure that all references the container might have to objects or classes of your application can be garbage collected.</source>
+          <target state="translated">Проблема в том,что срок службы контейнера дольше,чем срок службы вашего приложения.Вы должны удостовериться,что все ссылки на контейнер могут содержать объекты или классы вашего приложения,которые могут быть собраны в мусор.</target>
+        </trans-unit>
+        <trans-unit id="32354f8645f398ec02633b310f2fbfabd89963a0" translate="yes" xml:space="preserve">
+          <source>The problem with the above is that the &lt;code&gt;Connection&lt;/code&gt; object is not closed, and hence the physical connection will remain open, until the garbage collector comes around and sees that it is unreachable. GC will invoke the &lt;code&gt;finalize&lt;/code&gt; method, but there are JDBC drivers that do not implement the &lt;code&gt;finalize&lt;/code&gt;, at least not in the same way that &lt;code&gt;Connection.close&lt;/code&gt; is implemented. The resulting behavior is that while memory will be reclaimed due to unreachable objects being collected, resources (including memory) associated with the &lt;code&gt;Connection&lt;/code&gt; object might simply not be reclaimed.</source>
+          <target state="translated">Проблема с вышеупомянутым состоит в том, что объект &lt;code&gt;Connection&lt;/code&gt; не закрыт, и, следовательно, физическое соединение останется открытым, пока сборщик мусора не придет и не обнаружит, что он недоступен. GC вызовет метод &lt;code&gt;finalize&lt;/code&gt; , но есть драйверы JDBC, которые не реализуют &lt;code&gt;finalize&lt;/code&gt; , по крайней мере, не так, как реализован &lt;code&gt;Connection.close&lt;/code&gt; . В результате получается, что в то время как память будет возвращена из-за того, что объекты недоступны, ресурсы (включая память), связанные с объектом &lt;code&gt;Connection&lt;/code&gt; , могут просто не быть возвращены.</target>
+        </trans-unit>
+        <trans-unit id="c0492784502ac7b023338bf1861aa0d6c1111248" translate="yes" xml:space="preserve">
+          <source>The same case with &lt;code&gt;java.util.zip.Deflater&lt;/code&gt;. This one is far worse since Deflater is memory hungry in Java, i.e. always uses 15&amp;nbsp;bits (max) and 8&amp;nbsp;memory levels (9 is max) allocating several hundreds KB of native memory. Fortunately, &lt;code&gt;Deflater&lt;/code&gt; is not widely used and to my knowledge JDK contains no misuses. Always call &lt;code&gt;end()&lt;/code&gt; if you manually create a &lt;code&gt;Deflater&lt;/code&gt; or &lt;code&gt;Inflater&lt;/code&gt;. The best part of the last two: &lt;em&gt;you can't find them via normal profiling tools available.&lt;/em&gt;</source>
+          <target state="translated">Тот же самый случай с &lt;code&gt;java.util.zip.Deflater&lt;/code&gt; . Это гораздо хуже, поскольку Deflater требует много памяти в Java, то есть всегда использует 15 бит (максимум) и 8 уровней памяти (9 максимум), выделяя несколько сотен килобайт собственной памяти. К счастью, &lt;code&gt;Deflater&lt;/code&gt; широко не используется, и, насколько мне известно, JDK не содержит злоупотреблений. Всегда вызывайте &lt;code&gt;end()&lt;/code&gt; если вы вручную создаете &lt;code&gt;Deflater&lt;/code&gt; или &lt;code&gt;Inflater&lt;/code&gt; . Лучшая часть последних двух: &lt;em&gt;вы не можете найти их с помощью обычных инструментов профилирования.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="f7730755a141a588beb950cf6c7f3e8017ee4066" translate="yes" xml:space="preserve">
+          <source>The same does not happen with a hashed data-structure (&lt;code&gt;HashMap&lt;/code&gt;).</source>
+          <target state="translated">То же самое не происходит с хешированной структурой данных ( &lt;code&gt;HashMap&lt;/code&gt; ).</target>
+        </trans-unit>
+        <trans-unit id="0352f2341f5f449ba06bcda30149e5f08b413dbd" translate="yes" xml:space="preserve">
+          <source>The thread loads a class via an (optionally custom) &lt;code&gt;ClassLoader&lt;/code&gt;.</source>
+          <target state="translated">Поток загружает класс через (необязательно) &lt;code&gt;ClassLoader&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="6fedeb1df7f6b88de765c27a7adbb0fdeb28d8aa" translate="yes" xml:space="preserve">
+          <source>The way to avoid storing an unwanted reference to the original string is to do something like this:</source>
+          <target state="translated">Способ избежать хранения нежелательной ссылки на исходную строку-это сделать что-то подобное:</target>
+        </trans-unit>
+        <trans-unit id="45629db4e3dbdc5582d4bb13414ae467af08c8bb" translate="yes" xml:space="preserve">
+          <source>Then you can explain that with reference counting, the above code would leak memory.  But most modern JVMs don't use reference counting any longer, most use a sweep garbage collector, which will in fact collect this memory.</source>
+          <target state="translated">Тогда можно объяснить,что при подсчете ссылок приведенный выше код приведет к утечке памяти.Но большинство современных JVM больше не используют подсчет ссылок,большинство используют мусорный сборщик,который на самом деле будет собирать эту память.</target>
+        </trans-unit>
+        <trans-unit id="66d4e8703685eff6d732f6391330bb34727fe15c" translate="yes" xml:space="preserve">
+          <source>Then you can explain this is technically a memory leak, but really the leak is caused by native code in the JVM allocating underlying native resources, which weren't freed by your Java code.</source>
+          <target state="translated">Тогда вы можете объяснить,что технически это утечка памяти,но на самом деле утечка вызвана нативным кодом в JVM,выделяющим базовые нативные ресурсы,которые не были освобождены вашим Java кодом.</target>
+        </trans-unit>
+        <trans-unit id="ffc5e9bb3e214badc001c96e9c2a5a49f5a27f5e" translate="yes" xml:space="preserve">
+          <source>There are plenty more examples that you can conjure up - like</source>
+          <target state="translated">Есть еще много примеров,которые можно вызвать в воображении-например.</target>
+        </trans-unit>
+        <trans-unit id="904011d1f23e7492eaba27cbc41be9c7c5b6df7a" translate="yes" xml:space="preserve">
+          <source>This class basically does nothing, but create unreferenced InputStream objects. Those objects will be garbage collected immediately and thus, do not contribute to heap size.
+It is important for our example to load an existing resource from a jar file, and size does matter here!</source>
+          <target state="translated">Этот класс,по сути,ничего не делает,кроме как создает объекты без привязки InputStream.Эти объекты будут сразу же собирать мусор и,таким образом,не будут способствовать размеру кучи.Для нашего примера важно загрузить существующий ресурс из jar-файла,и размер здесь имеет значение!</target>
+        </trans-unit>
+        <trans-unit id="aafd3bef6db7342b162f90ff472dde6af8ff6c40" translate="yes" xml:space="preserve">
+          <source>This is a classic problem with reference counting garbage collectors.  You would then politely explain that JVMs use a much more sophisticated algorithm that doesn't have this limitation.</source>
+          <target state="translated">Это классическая проблема с подсчётом мусора по ссылкам.Тогда вы вежливо объясните,что JVM используют гораздо более сложный алгоритм,который не имеет этого ограничения.</target>
+        </trans-unit>
+        <trans-unit id="c4fe560b3789232951558a324f943b367a22a050" translate="yes" xml:space="preserve">
+          <source>This is the graph when using a &lt;code&gt;HashMap&lt;/code&gt;.</source>
+          <target state="translated">Это график при использовании &lt;code&gt;HashMap&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="b145c727efa517020a8f1c0a55c1c2da20a12547" translate="yes" xml:space="preserve">
+          <source>Threads are not collected until they terminate. They serve as &lt;a href=&quot;https://stackoverflow.com/questions/6366211/what-are-the-roots&quot;&gt;roots&lt;/a&gt; of garbage collection. They are one of the few objects that won't be reclaimed simply by forgetting about them or clearing references to them.</source>
+          <target state="translated">Темы не собираются, пока они не прекратятся. Они служат &lt;a href=&quot;https://stackoverflow.com/questions/6366211/what-are-the-roots&quot;&gt;корнями&lt;/a&gt; для сбора мусора. Они являются одним из немногих объектов, которые не будут возвращены, просто забыв о них или очистив ссылки на них.</target>
+        </trans-unit>
+        <trans-unit id="a4085f8f26ad02cf20cca7df5130111f289a5f5a" translate="yes" xml:space="preserve">
+          <source>Threads started by your application, ThreadLocal variables, logging appenders are some of the usual suspects to cause classloader leaks.</source>
+          <target state="translated">Потоки,запускаемые вашим приложением,переменные ThreadLocal,приложения для ведения логов-вот некоторые из обычных подозреваемых в том,что они приводят к утечкам работы classloader.</target>
+        </trans-unit>
+        <trans-unit id="19e95f717de5b1ff354994ef88c03939a32c2c41" translate="yes" xml:space="preserve">
+          <source>Uhm, you might say, what an idiot.</source>
+          <target state="translated">Можно сказать,какой идиот.</target>
+        </trans-unit>
+        <trans-unit id="0008cf97a597cccd424ebf9a467479cf5807f825" translate="yes" xml:space="preserve">
+          <source>Unless anybody has actually tested this, chances are high that you'll get an OutOfMemoryError after a couple of redeployments, because the application did not take care to clean up after itself. You may even find a bug in your server with this test.</source>
+          <target state="translated">Если никто на самом деле не протестировал это,велики шансы,что вы получите OutOfMemoryError после пары перестановок,потому что приложение не позаботилось об очистке после себя.Вы даже можете найти ошибку в вашем сервере с помощью этого теста.</target>
+        </trans-unit>
+        <trans-unit id="128a6307eefbc715ecb4699ab3da65a0639066f2" translate="yes" xml:space="preserve">
+          <source>Using &lt;code&gt;InflaterInputStream&lt;/code&gt; passing &lt;code&gt;new java.util.zip.Inflater()&lt;/code&gt; in the constructor (&lt;code&gt;PNGImageDecoder&lt;/code&gt; for instance) and not calling &lt;code&gt;end()&lt;/code&gt; of the inflater. Well, if you pass in the constructor with just &lt;code&gt;new&lt;/code&gt;, no chance... And yes, calling &lt;code&gt;close()&lt;/code&gt; on the stream does not close the inflater if it's manually passed as constructor parameter. This is not a true leak since it'd be released by the finalizer... when it deems it necessary. Till that moment it eats native memory so badly it can cause Linux oom_killer to kill the process with impunity. The main issue is that finalization in Java is very unreliable and G1 made it worse till 7.0.2. Moral of the story: release native resources as soon as you can; the finalizer is just too poor.</source>
+          <target state="translated">Используя &lt;code&gt;InflaterInputStream&lt;/code&gt; , передавая &lt;code&gt;new java.util.zip.Inflater()&lt;/code&gt; в конструктор (например, &lt;code&gt;PNGImageDecoder&lt;/code&gt; ) и не вызывая &lt;code&gt;end()&lt;/code&gt; инфлятора. Что ж, если вы передадите в конструктор просто &lt;code&gt;new&lt;/code&gt; , без шансов ... И да, вызов &lt;code&gt;close()&lt;/code&gt; в потоке не закроет инфлятор, если он был вручную передан как параметр конструктора. Это не настоящая утечка, поскольку она будет выпущена финализатором ... когда он сочтет это необходимым. До этого момента он так сильно ест внутреннюю память, что может заставить Linux oom_killer безнаказанно убивать процесс. Основная проблема заключается в том, что финализация в Java очень ненадежна, и G1 ухудшил ее до 7.0.2. Мораль истории: освободите родные ресурсы как можно скорее; финализатор слишком беден.</target>
+        </trans-unit>
+        <trans-unit id="db7f83d9c472fa43a63151a5e4c317b7c3bbf627" translate="yes" xml:space="preserve">
+          <source>Using &lt;code&gt;java.net.URL&lt;/code&gt; with the HTTP(S) protocol and loading the resource from(!). This one is special, the &lt;code&gt;KeepAliveCache&lt;/code&gt; creates a new thread in the system ThreadGroup which leaks the current thread's context classloader. The thread is created upon the first request when no alive thread exists, so either you may get lucky or just leak. &lt;em&gt;The leak is already fixed in Java&amp;nbsp;7 and the code that creates thread properly removes the context classloader.&lt;/em&gt; There are few more cases (&lt;del&gt;like ImageFetcher&lt;/del&gt;, &lt;em&gt;also fixed&lt;/em&gt;) of creating similar threads.</source>
+          <target state="translated">Использование &lt;code&gt;java.net.URL&lt;/code&gt; с протоколом HTTP (S) и загрузка ресурса из (!). Этот особенный, &lt;code&gt;KeepAliveCache&lt;/code&gt; создает новый поток в системной группе ThreadGroup, который пропускает загрузчик классов контекста текущего потока. Поток создается по первому запросу, когда живого потока не существует, так что вы можете стать счастливчиком или просто пропустить. &lt;em&gt;Утечка уже исправлена ​​в Java 7, и код, который создает поток, правильно удаляет загрузчик классов контекста.&lt;/em&gt; Есть еще несколько случаев ( &lt;del&gt; как ImageFetcher &lt;/del&gt; &lt;em&gt;также исправлено&lt;/em&gt; ) создания похожих тем.</target>
+        </trans-unit>
+        <trans-unit id="7e2bd08997e52249f29d0c756352856016775283" translate="yes" xml:space="preserve">
+          <source>Using WeakHashMap and the value (in)directly references the key. This is a hard one to find without a heap dump. That applies to all extended &lt;code&gt;Weak/SoftReference&lt;/code&gt; that might keep a hard reference back to the guarded object.</source>
+          <target state="translated">Использование WeakHashMap и значение (in) напрямую ссылаются на ключ. Это трудно найти без дампа кучи. Это относится ко всем расширенным &lt;code&gt;Weak/SoftReference&lt;/code&gt; , которые могут сохранять жесткую ссылку на охраняемый объект.</target>
+        </trans-unit>
+        <trans-unit id="5fa1d1f56ee0faa7d0cf56ebc24c98388dcc729f" translate="yes" xml:space="preserve">
+          <source>We maybe have a complex graph that store the previous state that is needed by a computation. But the previous state is itself linked to the state before and so on.</source>
+          <target state="translated">Возможно,у нас есть сложный график,который хранит предыдущее состояние,необходимое для вычисления.Но предыдущее состояние само по себе связано с предыдущим состоянием и так далее.</target>
+        </trans-unit>
+        <trans-unit id="5fd7c424bc08d42aa85bcb6558d5264996a2b57a" translate="yes" xml:space="preserve">
+          <source>Well, what makes this interesting is: this way, you can leak heap memory of the underlying process, rather than from JVM's heap.</source>
+          <target state="translated">Ну,что делает это интересным,так это то,что таким образом,вы можете утечь кучу памяти лежащего в основе процесса,а не из кучи JVM.</target>
+        </trans-unit>
+        <trans-unit id="1e8f1a2cab2a1e8c521b8499a326ad722ac22533" translate="yes" xml:space="preserve">
+          <source>What would an example be?</source>
+          <target state="translated">Каким был бы пример?</target>
+        </trans-unit>
+        <trans-unit id="2bcbc0f27e355df9586f60612ed6c419c0b76ba0" translate="yes" xml:space="preserve">
+          <source>What's a memory leak:</source>
+          <target state="translated">Что такое утечка памяти:</target>
+        </trans-unit>
+        <trans-unit id="8e57ea67c0d0d56590c6fc284fb243c6af72b231" translate="yes" xml:space="preserve">
+          <source>With pure Java, it is almost impossible.</source>
+          <target state="translated">С чистой Явой это почти невозможно.</target>
+        </trans-unit>
+        <trans-unit id="e3503ae94b2d7d671b690c78d933fef4b9fd517a" translate="yes" xml:space="preserve">
+          <source>You are able to make memory leak with &lt;strong&gt;sun.misc.Unsafe&lt;/strong&gt; class. In fact this service class is used in different standard classes (for example in &lt;strong&gt;java.nio&lt;/strong&gt; classes). &lt;strong&gt;You can't create instance of this class directly&lt;/strong&gt;, but you may &lt;strong&gt;use reflection to do that&lt;/strong&gt;.</source>
+          <target state="translated">Вы можете сделать утечку памяти с классом &lt;strong&gt;sun.misc.Unsafe&lt;/strong&gt; . Фактически этот класс обслуживания используется в различных стандартных классах (например, в классах &lt;strong&gt;java.nio&lt;/strong&gt; ). &lt;strong&gt;Вы не можете создать экземпляр этого класса напрямую&lt;/strong&gt; , но вы можете &lt;strong&gt;использовать отражение для этого&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="495db2d0ecb2b5d6486e34663aac96fb78fd63b3" translate="yes" xml:space="preserve">
+          <source>You can create a moving memory leak by creating a new instance of a class in that class's finalize method. Bonus points if the finalizer creates multiple instances. Here's a simple program that leaks the entire heap in sometime between a few seconds and a few minutes depending on your heap size:</source>
+          <target state="translated">Утечку перемещаемой памяти можно создать,создав новый экземпляр класса в доработанном методе этого класса.Бонусные очки,если финализатор создаст несколько экземпляров.Вот простая программа,которая в зависимости от размера вашей кучи,утечка всей кучи происходит в течение нескольких секунд-нескольких минут:</target>
+        </trans-unit>
+        <trans-unit id="c72266e96293bbdf8f5fe332a36656dce96d27dc" translate="yes" xml:space="preserve">
+          <source>You can easily create such a jar with the following class:</source>
+          <target state="translated">Вы можете легко создать такую банку следующим классом:</target>
+        </trans-unit>
+        <trans-unit id="fefe0fe4e4d641d9025b925dd7404b2aa130fb61" translate="yes" xml:space="preserve">
+          <source>You can see from this &lt;code&gt;visualvm&lt;/code&gt; graph how the memory keeps growing.</source>
+          <target state="translated">Из этого графика &lt;code&gt;visualvm&lt;/code&gt; как растет память.</target>
+        </trans-unit>
+        <trans-unit id="d8c3ed8ac3489419651ba518cc481631d2dc3ca9" translate="yes" xml:space="preserve">
+          <source>You will not encounter an OOM error here, as no references are kept, the application will keep running no matter how large you chose ITERATIONS in the above example.
+The memory consumption of your process (visible in top (RES/RSS) or process explorer) grows unless the application gets to the wait command. In the setup above, it will allocate around 150 MB in memory.</source>
+          <target state="translated">Здесь вы не столкнетесь с OOM-ошибкой,так как не сохраняются ссылки,приложение будет продолжать работать независимо от того,какого размера вы выбрали ИТЕРАЦИИ в вышеуказанном примере.Потребление памяти вашим процессом (видимое сверху (RESRSS)или проводником процессов)растет,если только приложение не получит команду ожидания.В вышеприведенной настройке оно выделит около 150 МБ памяти.</target>
+        </trans-unit>
+        <trans-unit id="86f8f434981fb71a8e76491c4a7a343cf03466a0" translate="yes" xml:space="preserve">
+          <source>Your cache grows and grows. And pretty soon the entire database gets sucked into memory. A better design uses an LRUMap (Only keeps recently used objects in cache).</source>
+          <target state="translated">Твой кэш растет и растет.И довольно скоро вся база данных засасывается в память.Лучший дизайн использует LRUMap (хранит в кэше только недавно использованные объекты).</target>
+        </trans-unit>
+        <trans-unit id="ad36d9e69cb6c7cf2acdd873fd137df990e16c0b" translate="yes" xml:space="preserve">
+          <source>adding more &lt;strong&gt;complex reference trees&lt;/strong&gt;.</source>
+          <target state="translated">добавление более &lt;strong&gt;сложных справочных деревьев&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="dff532b2bed649cb51e0055c618ee5a7df1d5e3b" translate="yes" xml:space="preserve">
+          <source>and your process will not exceed 35 MB, independent of the iteration count.</source>
+          <target state="translated">и ваш процесс не превысит 35 МБ,независимо от количества итераций.</target>
+        </trans-unit>
+        <trans-unit id="5d0578d4d75c5bea4841ed0d843dfa4511871bc3" translate="yes" xml:space="preserve">
+          <source>or leaks caused by &lt;strong&gt;3rd party libraries&lt;/strong&gt;.</source>
+          <target state="translated">или утечки, вызванные &lt;strong&gt;сторонними библиотеками&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="6dc2a9f3e198de9ab5c44591f007d29eb6dce64c" translate="yes" xml:space="preserve">
+          <source>using &lt;strong&gt;ThreadLocal&lt;/strong&gt; constructions.</source>
+          <target state="translated">используя конструкции &lt;strong&gt;ThreadLocal&lt;/strong&gt; .</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/661561">
+    <body>
+      <group id="661561">
+        <trans-unit id="06e8f5916a582a85868630f3154c466f7fc04910" translate="yes" xml:space="preserve">
+          <source>&quot;serviceGUI()&quot; is a GUI level method within the form (this) that can change as many controls as you want. Call &quot;updateGUI()&quot; from the other thread. Parameters can be added to pass values, or (probably faster) use class scope variables with locks on them as required if there is any possibility of a clash between threads accessing them that could cause instability.  Use BeginInvoke instead of Invoke if the non-GUI thread is time critical (keeping Brian Gideon's warning in mind).</source>
+          <target state="translated">&quot;serviceGUI ()&quot;는 원하는만큼 많은 컨트롤을 변경할 수있는 양식 (this) 내의 GUI 레벨 메소드입니다. 다른 스레드에서 &quot;updateGUI ()&quot;를 호출하십시오. 매개 변수를 추가하여 값을 전달하거나, 스레드 사이에 충돌이 발생하여 불안정성을 유발할 수있는 경우 필요한 경우 클래스 범위 변수를 잠금과 함께 사용할 수 있습니다. 비 GUI 스레드가 시간이 중요한 경우 (Brian Gideon의 경고를 염두에두고) Invoke 대신 BeginInvoke를 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="ef8ec856c4ab1a77f14b563ee4ef56d73621c6ac" translate="yes" xml:space="preserve">
+          <source>(The code is typed here out of my head, so I haven't checked for correct syntax, etc., but it should get you going.)</source>
+          <target state="translated">(코드는 여기 머리에 입력되었으므로 올바른 구문 등을 확인하지는 않았지만 진행해야합니다.)</target>
+        </trans-unit>
+        <trans-unit id="0b9d4de19ed62632e2e708a5b3d176bf82f4ae93" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.tasks.task.aspx&quot;&gt;Task&lt;/a&gt; instead of &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.thread.aspx&quot;&gt;Thread&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.thread.aspx&quot;&gt;Thread&lt;/a&gt; 대신 &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.tasks.task.aspx&quot;&gt;Task&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="a035d2e7e3c891ee830ddcb57bb2ffe98c02f4e3" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.tasks.taskcreationoptions.aspx&quot;&gt;TaskCreationOptions.LongRunning&lt;/a&gt; that hints to do not queue the task into &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.threadpool.aspx&quot;&gt;ThreadPool&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.tasks.taskcreationoptions.aspx&quot;&gt;TaskCreationOptions.LongRunning&lt;/a&gt; 작업을 &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.threadpool.aspx&quot;&gt;ThreadPool에&lt;/a&gt; 대기시키지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="79df28c45d995623e2b44da7f9e393555db0ba13" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156513.aspx&quot;&gt;async&lt;/a&gt; keyword, that allows to use &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156528.aspx&quot;&gt;await&lt;/a&gt; which in turn prevent the event handler from reaching the completion state till the task finished and in the meantime doesn't block the UI thread.</source>
+          <target state="translated">&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156513.aspx&quot;&gt;async&lt;/a&gt; 키워드를 사용하면 &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156528.aspx&quot;&gt;await&lt;/a&gt; 를 사용하여 이벤트 처리기가 완료 될 때까지 이벤트 핸들러가 완료 상태에 도달하지 못하게하고 그 동안 UI 스레드를 차단하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="b25bb1684a5a528e8195bd99abb1e1bd38903c79" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Main Code (put this inside of your form's class code):&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;메인 코드 (이것은 폼의 클래스 코드 안에 넣습니다) :&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2003baf2e128c2d5d838f3388dd29fde682d6122" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Some argumentation&lt;/strong&gt;: Usually it is bad for code readability to put {} after an &lt;code&gt;if ()&lt;/code&gt; statement in one line. But in this case it is routine all-the-same &quot;mantra&quot;. It doesn't break code readability if this method is consistent over the project. And it saves your code from littering (one line of code instead of five).</source>
+          <target state="translated">&lt;strong&gt;약간의 논증&lt;/strong&gt; : 보통 코드 가독성이 &lt;code&gt;if ()&lt;/code&gt; 문 뒤에 {}를 한 줄에 넣는 것은 좋지 않습니다. 그러나이 경우에는 일상적으로 동일한 &quot;만트라&quot;입니다. 이 방법이 프로젝트에서 일관된 경우 코드 가독성을 깨뜨리지 않습니다. 또한 코드가 흩어지지 않도록합니다 (5 개 대신 1 줄의 코드).</target>
+        </trans-unit>
+        <trans-unit id="18c4f89ccd64d4745a0ce358a66f7450a781b0a3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;THAT is IT&lt;/strong&gt;.</source>
+          <target state="translated">&lt;strong&gt;그것은 IT&lt;/strong&gt; 입니다.</target>
+        </trans-unit>
+        <trans-unit id="e71411d3df4fe0bd35c4b498343bf90c08652137" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;UPDATE 05/10/2010:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;2010 년 5 월 10 일 업데이트 :&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="86a9fd4506d2f1904c60a22271b325d8665578a8" translate="yes" xml:space="preserve">
+          <source>And so, I can now update the display with one line, from anywhere in the entire program in the manner which you think it would work without any threading:</source>
+          <target state="translated">그래서 이제 스레딩없이 작동한다고 생각하는 방식으로 전체 프로그램의 어느 곳에서나 한 줄로 디스플레이를 업데이트 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="92eb0cd81eb0849be1e04dcb26e19c8969ffeb0e" translate="yes" xml:space="preserve">
+          <source>And the delegate can update a Label on the GUI:</source>
+          <target state="translated">또한 대리인은 GUI에서 레이블을 업데이트 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="31cf02132c161d997ad0904997ef28bbf25cf885" translate="yes" xml:space="preserve">
+          <source>As you see &lt;code&gt;if(InvokeRequired) {something long}&lt;/code&gt; you just know &quot;this function is safe to call from another thread&quot;.</source>
+          <target state="translated">당신이 &lt;code&gt;if(InvokeRequired) {something long}&lt;/code&gt; 을 보듯이 &quot;이 함수는 다른 스레드에서 호출해도 안전합니다&quot;라는 것을 알 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="4a35af3462ca25779e2ead4d564c4eae67de2e9a" translate="yes" xml:space="preserve">
+          <source>Asynchronous implementation of an event handler (Yes, that's all):</source>
+          <target state="translated">이벤트 핸들러의 비동기 구현 (예, 그게 다) :</target>
+        </trans-unit>
+        <trans-unit id="8b1c94f495b755cc182cea3bf12cd2fb5c4f86b6" translate="yes" xml:space="preserve">
+          <source>Because of the triviality of the scenario I would actually have the UI thread poll for the status. I think you will find that it can be quite elegant.</source>
+          <target state="translated">사소한 시나리오로 인해 실제로 상태에 대한 UI 스레드 폴링이 있습니다. 나는 그것이 매우 우아 할 수 있다고 생각합니다.</target>
+        </trans-unit>
+        <trans-unit id="a5e64b95b0c01be281f2ccfdf82bae3b8f9af418" translate="yes" xml:space="preserve">
+          <source>Call it like this:</source>
+          <target state="translated">다음과 같이 호출하십시오.</target>
+        </trans-unit>
+        <trans-unit id="b6a6569e280e9bf50679b2e7fdfde8cef142de82" translate="yes" xml:space="preserve">
+          <source>Calling &lt;code&gt;Invoke&lt;/code&gt; on the worker thread is a blocking call. It will temporarily halt the work being done in that thread.</source>
+          <target state="translated">작업자 스레드에서 호출은 차단 호출입니다. 해당 스레드에서 수행중인 작업이 일시적으로 중단됩니다.</target>
+        </trans-unit>
+        <trans-unit id="97eb2b24ef99f5fc0403791b5825f6c4dddd3dda" translate="yes" xml:space="preserve">
+          <source>Create a class variable:</source>
+          <target state="translated">클래스 변수를 작성하십시오.</target>
+        </trans-unit>
+        <trans-unit id="6130f4f9231c1b4bf96ddf7abe1635202ab486a4" translate="yes" xml:space="preserve">
+          <source>Don't be confused with &lt;code&gt;Thread(() =&amp;gt; .....)&lt;/code&gt;. I use an anonymous function or lambda expression when I work on a thread. To reduce the lines of code you can use the &lt;code&gt;ThreadStart(..)&lt;/code&gt; method too which I am not supposed to explain here.</source>
+          <target state="translated">&lt;code&gt;Thread(() =&amp;gt; .....)&lt;/code&gt; 와 혼동하지 마십시오. 스레드에서 작업 할 때 익명 함수 또는 람다 식을 사용합니다. 코드 줄을 줄이려면 여기서 설명하지 않아도되는 &lt;code&gt;ThreadStart(..)&lt;/code&gt; 메서드를 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="a0acb89cb85cc4e8876d890aa4ed05b9e360f129" translate="yes" xml:space="preserve">
+          <source>Finally, on .NET 4.5 and up you can also use &lt;code&gt;Progress&amp;lt;T&amp;gt;&lt;/code&gt; (which basically captures &lt;code&gt;SynchronizationContext.Current&lt;/code&gt; upon its creation) as demonstrated by &lt;a href=&quot;https://stackoverflow.com/a/18033198/67824&quot;&gt;Ryszard Dżegan's&lt;/a&gt; for cases where the long-running operation needs to run UI code while still working.</source>
+          <target state="translated">마지막으로 .NET 4.5 이상에서는 &lt;a href=&quot;https://stackoverflow.com/a/18033198/67824&quot;&gt;Ryszard Dżeg 's가&lt;/a&gt; 시연 한 것처럼 &lt;code&gt;Progress&amp;lt;T&amp;gt;&lt;/code&gt; (기본적으로 &lt;code&gt;SynchronizationContext.Current&lt;/code&gt; 를 캡처)를 사용하여 장시간 작동하는 작업이 여전히 작동하는 동안 UI 코드를 실행해야하는 경우에 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="ec398c7a3d79e8c67608a9ce86eab350611e8846" translate="yes" xml:space="preserve">
+          <source>Fire and forget extension method for .NET 3.5+</source>
+          <target state="translated">.NET 3.5 이상에 대한 실행 및 확장 확장 방법</target>
+        </trans-unit>
+        <trans-unit id="2e35b1fb8ba3d7e2dd21da213a139491ce2a4046" translate="yes" xml:space="preserve">
+          <source>For .NET 2.0, here's a nice bit of code I wrote that does exactly what you want, and works for any property on a &lt;code&gt;Control&lt;/code&gt;:</source>
+          <target state="translated">.NET 2.0의 경우, 내가 원하는 코드를 정확하게 작성하고 &lt;code&gt;Control&lt;/code&gt; 의 모든 속성에서 작동하는 멋진 코드가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="2beba6e59821c8a1127e2df78047c54d33830c4f" translate="yes" xml:space="preserve">
+          <source>For .NET 3.0 you should use this code:</source>
+          <target state="translated">.NET 3.0의 경우 다음 코드를 사용해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="98dff10044987f5f2e03ce583b305d872fa344ec" translate="yes" xml:space="preserve">
+          <source>For &lt;strong&gt;WinForms&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;WinForms의 경우&lt;/strong&gt; :</target>
+        </trans-unit>
+        <trans-unit id="56bbfb092f2e4518b7c0ee804f7a1dd641583300" translate="yes" xml:space="preserve">
+          <source>For a function that has arguments:</source>
+          <target state="translated">인수가있는 함수의 경우 :</target>
+        </trans-unit>
+        <trans-unit id="1b7c73ed1ea910b060aaea933548856fef7a9a25" translate="yes" xml:space="preserve">
+          <source>For a more verbose examples see: &lt;a href=&quot;http://channel9.msdn.com/Events/TechEd/Australia/Tech-Ed-Australia-2011/DEV411&quot;&gt;The Future of C#: Good things come to those who 'await'&lt;/a&gt; by &lt;a href=&quot;http://www.linkedin.com/in/albahari&quot;&gt;Joseph Albahari&lt;/a&gt;.</source>
+          <target state="translated">더 자세한 예는 다음을 참조하십시오. &lt;a href=&quot;http://channel9.msdn.com/Events/TechEd/Australia/Tech-Ed-Australia-2011/DEV411&quot;&gt;C #의 미래 :&lt;/a&gt; &lt;a href=&quot;http://www.linkedin.com/in/albahari&quot;&gt;Joseph Albahari가&lt;/a&gt; '기다리는'사람들에게 좋은 일 이옵니다 .</target>
+        </trans-unit>
+        <trans-unit id="6904a474c24d10e266026cccdd06550753898a0a" translate="yes" xml:space="preserve">
+          <source>For example, access a control other than in the current thread:</source>
+          <target state="translated">예를 들어, 현재 스레드가 아닌 다른 컨트롤에 액세스하십시오.</target>
+        </trans-unit>
+        <trans-unit id="059c3e8cce263b2945a18ac90b2637e10a8026b1" translate="yes" xml:space="preserve">
+          <source>For example:</source>
+          <target state="translated">예를 들면 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="faf13e57945a7572c6f9e83ad1f17bafee632f3d" translate="yes" xml:space="preserve">
+          <source>For many purposes it's as simple as this:</source>
+          <target state="translated">많은 목적을 위해 다음과 같이 간단합니다.</target>
+        </trans-unit>
+        <trans-unit id="3b2e156fbe1d1b92baf603cda3f080390c5c043f" translate="yes" xml:space="preserve">
+          <source>For no arguments:</source>
+          <target state="translated">인수가없는 경우 :</target>
+        </trans-unit>
+        <trans-unit id="997bf8d685345ddc24ee54a5b37af9603b7393b0" translate="yes" xml:space="preserve">
+          <source>Handling exceptions</source>
+          <target state="translated">예외 처리</target>
+        </trans-unit>
+        <trans-unit id="cc36938e8dad96fe3d3b7f2b4f5f92c96a7453c7" translate="yes" xml:space="preserve">
+          <source>Handling long work</source>
+          <target state="translated">긴 작업 처리</target>
+        </trans-unit>
+        <trans-unit id="c8f223d1c487f7583dd813f1ecc75eddaba6910a" translate="yes" xml:space="preserve">
+          <source>Hence I added the runtime checks to ensure that the passed-in property does actually belong to the &lt;code&gt;Control&lt;/code&gt; that the method's being called on. Not perfect, but still a lot better than the .NET 2.0 version.</source>
+          <target state="translated">따라서 전달 된 속성이 실제로 메서드가 호출되는 &lt;code&gt;Control&lt;/code&gt; 에 속하는지 확인하기 위해 런타임 검사를 추가했습니다. 완벽하지는 않지만 .NET 2.0 버전보다 훨씬 우수합니다.</target>
+        </trans-unit>
+        <trans-unit id="91e5087eaf54fef1ea7de0b2cc2c05ec2df6078a" translate="yes" xml:space="preserve">
+          <source>How could I do that?</source>
+          <target state="translated">내가 어떻게 할 수 있습니까?</target>
+        </trans-unit>
+        <trans-unit id="4f9b3d0143e673c727a6b3bca332d46bae2e97c3" translate="yes" xml:space="preserve">
+          <source>How do I update the GUI from another thread</source>
+          <target state="translated">다른 스레드에서 GUI를 업데이트하는 방법</target>
+        </trans-unit>
+        <trans-unit id="e30cbf94521432af2759b5116a560d2c9047e2d2" translate="yes" xml:space="preserve">
+          <source>I am yet to find out what the above line means, but it works.</source>
+          <target state="translated">위의 줄이 무엇을 의미하는지 아직 알지 못하지만 작동합니다.</target>
+        </trans-unit>
+        <trans-unit id="d75f4c8516e085079c2b37c9d22d6534ebf9b1bb" translate="yes" xml:space="preserve">
+          <source>I feed my forms that get updated by another thread with an instance of this &lt;strong&gt;ThreadSafeGuiCommand&lt;/strong&gt;, and I define methods that update the GUI (in my Form) like this:</source>
+          <target state="translated">이 &lt;strong&gt;ThreadSafeGuiCommand&lt;/strong&gt; 의 인스턴스를 사용하여 다른 스레드에 의해 업데이트되는 양식을 제공하고 다음과 같이 GUI를 업데이트하는 메소드를 정의합니다.</target>
+        </trans-unit>
+        <trans-unit id="b3e97b17cf9ba388b9d642a6a1c3fcdebc54d0c2" translate="yes" xml:space="preserve">
+          <source>I have a &lt;code&gt;Form&lt;/code&gt; running on &lt;code&gt;thread1&lt;/code&gt;, and from that I'm starting another thread (&lt;code&gt;thread2&lt;/code&gt;).</source>
+          <target state="translated">&lt;code&gt;thread1&lt;/code&gt; 에서 &lt;code&gt;Form&lt;/code&gt; 을 실행 중이며 다른 스레드 ( &lt;code&gt;thread2&lt;/code&gt; )를 시작하고 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="673c3233f31fc8161d1b8335bf93aed55c89f33d" translate="yes" xml:space="preserve">
+          <source>I have a &lt;strong&gt;WPF&lt;/strong&gt; application and have defined a worker as below:</source>
+          <target state="translated">&lt;strong&gt;WPF&lt;/strong&gt; 응용 프로그램이 있고 작업자를 아래와 같이 정의했습니다.</target>
+        </trans-unit>
+        <trans-unit id="0a0d08ab211012a7374ff01f309c22ef8996d5d1" translate="yes" xml:space="preserve">
+          <source>I have a dialog form called &lt;code&gt;form_Diagnostics,&lt;/code&gt; which has a richtext box, called &lt;code&gt;updateDiagWindow,&lt;/code&gt; which I am using as a sort of logging display.  I needed to be able to update its text from all threads. The extra lines allow the window to automatically scroll to the newest lines.</source>
+          <target state="translated">&lt;code&gt;form_Diagnostics,&lt;/code&gt; 라는 대화 상자 양식이 있는데 여기에는 일종의 로깅 표시로 사용하는 &lt;code&gt;updateDiagWindow,&lt;/code&gt; 라는 서식있는 텍스트 상자가 있습니다. 모든 스레드에서 텍스트를 업데이트 할 수 있어야했습니다. 추가 줄을 사용하면 창을 자동으로 최신 줄로 스크롤 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="132fe4097141f95bb8edf31f41595d41d8bbe0f0" translate="yes" xml:space="preserve">
+          <source>I just read the answers and this appears to be a very hot topic. I'm currently using .NET 3.5 SP1 and Windows Forms.</source>
+          <target state="translated">방금 답변을 읽었으며 이것은 매우 인기있는 주제로 보입니다. 현재 .NET 3.5 SP1 및 Windows Forms를 사용하고 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="f7e90bc70333188d650eb16c562d30a498ce44cb" translate="yes" xml:space="preserve">
+          <source>If anyone has any further suggestions on how to improve this code for compile-time safety, please comment!</source>
+          <target state="translated">컴파일 타임 안전을 위해이 코드를 개선하는 방법에 대한 추가 제안 사항이 있으면 의견을 말하십시오!</target>
+        </trans-unit>
+        <trans-unit id="289fd35c9b61e17d98149973f29b477c011f5190" translate="yes" xml:space="preserve">
+          <source>If the user closes the form just before &lt;code&gt;this.Invoke&lt;/code&gt; is called (remember, &lt;code&gt;this&lt;/code&gt; is the &lt;code&gt;Form&lt;/code&gt; object), an &lt;code&gt;ObjectDisposedException&lt;/code&gt; will be likely fired.</source>
+          <target state="translated">사용자가 &lt;code&gt;this.Invoke&lt;/code&gt; 가 호출되기 직전에 양식을 닫으면 ( &lt;code&gt;this&lt;/code&gt; &lt;code&gt;Form&lt;/code&gt; 객체 임) &lt;code&gt;ObjectDisposedException&lt;/code&gt; 이 발생할 가능성이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="12ac3feffdf8fef0f3c58110db30508567a1b86d" translate="yes" xml:space="preserve">
+          <source>If you're using .NET 3.0 or above, you could rewrite the above method as an extension method of the &lt;code&gt;Control&lt;/code&gt; class, which would then simplify the call to:</source>
+          <target state="translated">.NET 3.0 이상을 사용하는 경우 위의 메서드를 &lt;code&gt;Control&lt;/code&gt; 클래스의 확장 메서드로 다시 작성하면 다음에 대한 호출이 간단 해집니다.</target>
+        </trans-unit>
+        <trans-unit id="02404b5453ff580641d38103cb594dc85397418b" translate="yes" xml:space="preserve">
+          <source>Implementation of the second thread that notifies the UI thread:</source>
+          <target state="translated">UI 스레드에 알리는 두 번째 스레드 구현 :</target>
+        </trans-unit>
+        <trans-unit id="f87ff8dd949c92969afc3406bf77ce811681cb41" translate="yes" xml:space="preserve">
+          <source>In order to do this, you'll have to Invoke the event-handler instead of calling it directly.</source>
+          <target state="translated">이를 수행하려면 이벤트 핸들러를 직접 호출하는 대신 이벤트 핸들러를 호출해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="4bc79a4a1bcef7705ee83799ec4eecbba2db8fff" translate="yes" xml:space="preserve">
+          <source>In order to easily raise events this way, I've created an extension method, which allows me to simplify raising an event by just calling:</source>
+          <target state="translated">이런 식으로 이벤트를 쉽게 발생시키기 위해 확장 메서드를 만들었습니다. 다음과 같이 호출하면 이벤트 발생을 단순화 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="b830d14884e12014b9fbbb1b8c12c03362e347d8" translate="yes" xml:space="preserve">
+          <source>In order to make sure that the code above works with Windows Forms and WPF, and all other platforms, you can have a look at the &lt;code&gt;AsyncOperation&lt;/code&gt;, &lt;code&gt;AsyncOperationManager&lt;/code&gt; and &lt;code&gt;SynchronizationContext&lt;/code&gt; classes.</source>
+          <target state="translated">위의 코드가 Windows Forms 및 WPF 및 기타 모든 플랫폼에서 작동하는지 확인하기 위해 &lt;code&gt;AsyncOperation&lt;/code&gt; , &lt;code&gt;AsyncOperationManager&lt;/code&gt; 및 &lt;code&gt;SynchronizationContext&lt;/code&gt; 클래스를 살펴볼 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="2bafa3bcbde8b11dd6f6f8474aefd0328f29bcfe" translate="yes" xml:space="preserve">
+          <source>In this way I'm quite sure that I will have my GUI updated whatever thread will make the call, optionally waiting for a well-defined amount of time (the timeout).</source>
+          <target state="translated">이런 식으로 GUI가 호출 할 스레드가 무엇이든 업데이트되고 선택적으로 잘 정의 된 시간 (시간 초과)을 기다리는 것이 확실합니다.</target>
+        </trans-unit>
+        <trans-unit id="276b67ef3fc2886fd07cc136f0032509ab969c9c" translate="yes" xml:space="preserve">
+          <source>Issue:</source>
+          <target state="translated">Issue:</target>
+        </trans-unit>
+        <trans-unit id="5c09f5610595c3681b6b9f8f860e90814d3912f2" translate="yes" xml:space="preserve">
+          <source>It adds null-checking to the result of the &quot;as MemberExpression&quot;.</source>
+          <target state="translated">&quot;as MemberExpression&quot;의 결과에 널 검사를 추가합니다.</target>
+        </trans-unit>
+        <trans-unit id="1b357f202ac6a997dd222e67afc35f9fc43181a2" translate="yes" xml:space="preserve">
+          <source>It improves the static type-safety.</source>
+          <target state="translated">정적 타입 안전성을 향상시킵니다.</target>
+        </trans-unit>
+        <trans-unit id="2049dc7e0c56277861206c459256923e73eae66d" translate="yes" xml:space="preserve">
+          <source>Make a delegate like this:</source>
+          <target state="translated">다음과 같이 대리인을 만드십시오.</target>
+        </trans-unit>
+        <trans-unit id="056232f0995be14e2c690931206e0b7768bc0410" translate="yes" xml:space="preserve">
+          <source>Make sure you do not call &lt;code&gt;BeginInvoke&lt;/code&gt; too frequently or it could overrun the message pump.</source>
+          <target state="translated">&lt;code&gt;BeginInvoke&lt;/code&gt; 를 너무 자주 호출하지 않으면 메시지 펌프가 오버런 될 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="95fbbc35d31bba9e8d7c5dfc4ef99aabafcb4a88" translate="yes" xml:space="preserve">
+          <source>Most of the other answers are a little complex for me on this question (I'm new to C#), so I am writing mine:</source>
+          <target state="translated">다른 답변의 대부분은이 질문에 대해 약간 복잡합니다 (C #을 처음 사용합니다).</target>
+        </trans-unit>
+        <trans-unit id="51e734044597a111c1f012c920b2b3988f90701f" translate="yes" xml:space="preserve">
+          <source>My version is to insert &lt;strong&gt;one line&lt;/strong&gt; of recursive &quot;mantra&quot;:</source>
+          <target state="translated">내 버전은 &lt;strong&gt;한 줄&lt;/strong&gt; 의 재귀 &quot;만트라&quot;를 삽입하는 &lt;strong&gt;것&lt;/strong&gt; 입니다.</target>
+        </trans-unit>
+        <trans-unit id="2558a11cabafcc1fceb617a3bb2f29ff0e2d092a" translate="yes" xml:space="preserve">
+          <source>None of the Invoke stuff in the previous answers is necessary.</source>
+          <target state="translated">이전 답변의 호출 항목은 필요하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="fdf42dcb4fbc864cb93f4aafe738399a8c2b9a1b" translate="yes" xml:space="preserve">
+          <source>Not only is the property name now checked at compile time, the property's type is as well, so it's impossible to (for example) assign a string value to a boolean property, and hence cause a runtime exception.</source>
+          <target state="translated">컴파일시 속성 이름이 검사 될뿐만 아니라 속성 유형도 검사되므로 문자열 값을 부울 속성에 할당 할 수 없으므로 런타임 예외가 발생합니다.</target>
+        </trans-unit>
+        <trans-unit id="f8785b60684e9800ab98a1dc1bf249b101f93460" translate="yes" xml:space="preserve">
+          <source>Note that &lt;code&gt;BeginInvoke()&lt;/code&gt; is preferred over &lt;code&gt;Invoke()&lt;/code&gt; because it's less likely to cause deadlocks (however, this is not an issue here when just assigning text to a label):</source>
+          <target state="translated">&lt;code&gt;BeginInvoke()&lt;/code&gt; 는 교착 상태를 일으킬 가능성이 적기 때문에 &lt;code&gt;Invoke()&lt;/code&gt; 보다 선호됩니다 (단, 레이블에 텍스트를 지정할 때 문제가되지는 않습니다).</target>
+        </trans-unit>
+        <trans-unit id="3b46560eddc4c2f341e378a4c3cff35634afa23f" translate="yes" xml:space="preserve">
+          <source>Note that on .NET 4.0 and up you should really be using tasks for async operations. See &lt;a href=&quot;https://stackoverflow.com/a/23596503/67824&quot;&gt;n-san's&lt;/a&gt; answer for the equivalent task-based approach (using &lt;code&gt;TaskScheduler.FromCurrentSynchronizationContext&lt;/code&gt;).</source>
+          <target state="translated">.NET 4.0 이상에서는 실제로 비동기 작업을위한 작업을 사용해야합니다. 동등한 작업 기반 접근 방법에 대해서는 &lt;a href=&quot;https://stackoverflow.com/a/23596503/67824&quot;&gt;n-san의&lt;/a&gt; 답변을 참조하십시오 ( &lt;code&gt;TaskScheduler.FromCurrentSynchronizationContext&lt;/code&gt; 사용).</target>
+        </trans-unit>
+        <trans-unit id="8103dd89abcff6d3327db6c01953b9066dbdc3d4" translate="yes" xml:space="preserve">
+          <source>Note that the code above will not work on WPF projects, since WPF controls do not implement the &lt;code&gt;ISynchronizeInvoke&lt;/code&gt; interface.</source>
+          <target state="translated">WPF 컨트롤은 &lt;code&gt;ISynchronizeInvoke&lt;/code&gt; 인터페이스를 구현하지 않기 때문에 위 코드는 WPF 프로젝트에서 작동하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="c771f07cef7313574a9235981615ab2f7d9d44ab" translate="yes" xml:space="preserve">
+          <source>Notice that &lt;code&gt;Invoke&lt;/code&gt; blocks execution until it completes--this is synchronous code. The question doesn't ask about asynchronous code, but there is lots of &lt;a href=&quot;https://stackoverflow.com/search?q=c%23+await+async+pattern&quot;&gt;content on Stack Overflow&lt;/a&gt; about writing asynchronous code when you want to learn about it.</source>
+          <target state="translated">&lt;code&gt;Invoke&lt;/code&gt; 는 완료 될 때까지 실행을 차단합니다. 동기 코드입니다. 이 질문은 비동기 코드에 대해서는 묻지 않지만 &lt;a href=&quot;https://stackoverflow.com/search?q=c%23+await+async+pattern&quot;&gt;스택 오버플&lt;/a&gt; 로에는 배우고 싶을 때 비동기 코드 작성에 대한 많은 내용이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="0a1c8d08a9994e288f56b821c9bf285da6f45d73" translate="yes" xml:space="preserve">
+          <source>Notice the following:</source>
+          <target state="translated">다음을 주목하십시오 :</target>
+        </trans-unit>
+        <trans-unit id="d16a100a5358238efcfc9836314ca5968079b253" translate="yes" xml:space="preserve">
+          <source>Of course, you can also make use of the BackGroundWorker class, which will abstract this matter for you.</source>
+          <target state="translated">물론 BackGroundWorker 클래스를 사용하여이 문제를 추상화 할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="66466dd59f9ceb2a8b17064a55b074d3b8c714ae" translate="yes" xml:space="preserve">
+          <source>One final thing, be sure to set the &lt;code&gt;WorkerReportsProgress&lt;/code&gt; flag, or the &lt;code&gt;ReportProgress&lt;/code&gt; method will be completely ignored.</source>
+          <target state="translated">마지막으로 &lt;code&gt;WorkerReportsProgress&lt;/code&gt; 플래그를 설정해야합니다. 그렇지 않으면 &lt;code&gt;ReportProgress&lt;/code&gt; 메서드가 완전히 무시됩니다.</target>
+        </trans-unit>
+        <trans-unit id="12d48e80773109c8f6b741f7df399cd3845e0c23" translate="yes" xml:space="preserve">
+          <source>Optional stuff:
+Personally I came up coding the following:</source>
+          <target state="translated">선택 사항 : 개인적으로 다음을 코딩했습니다.</target>
+        </trans-unit>
+        <trans-unit id="100c1db1be5b773c9c74b97faae9575686f93549" translate="yes" xml:space="preserve">
+          <source>Or use Action delegate instead:</source>
+          <target state="translated">또는 대신 Action 대리자를 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="b61328bc36dfc2cefe53b2d82b151660926a54f0" translate="yes" xml:space="preserve">
+          <source>Otherwise, the original is a very nice solution.</source>
+          <target state="translated">그렇지 않으면 원본이 매우 좋은 솔루션입니다.</target>
+        </trans-unit>
+        <trans-unit id="23f14e23058aa2b641c25cfbb0f02248fbc6d917" translate="yes" xml:space="preserve">
+          <source>Progress class (see &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/hh138298.aspx&quot;&gt;IProgress Interface&lt;/a&gt;) that supports &lt;a href=&quot;http://en.wikipedia.org/wiki/Separation_of_concerns&quot;&gt;Separation of Concerns (SoC)&lt;/a&gt; design principle and doesn't require explicit dispatcher and invoking. It uses the current &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.synchronizationcontext.aspx&quot;&gt;SynchronizationContext&lt;/a&gt; from its creation place (here the UI thread).</source>
+          <target state="translated">&lt;a href=&quot;http://en.wikipedia.org/wiki/Separation_of_concerns&quot;&gt;SoC (Separation of Concerns)&lt;/a&gt; 설계 원칙을 지원하고 명시적인 디스패처 및 호출이 필요하지 않은 Progress 클래스 ( &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/hh138298.aspx&quot;&gt;IProgress 인터페이스&lt;/a&gt; 참조) 생성 위치 (여기서는 UI 스레드)에서 현재 &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.synchronizationcontext.aspx&quot;&gt;SynchronizationContext&lt;/a&gt; 를 사용합니다.</target>
+        </trans-unit>
+        <trans-unit id="abdfeb8d9e9f9912b938c6b48378c1505d318136" translate="yes" xml:space="preserve">
+          <source>Salvete! Having searched for this question, I found the answers by &lt;em&gt;FrankG&lt;/em&gt; and &lt;em&gt;Oregon Ghost&lt;/em&gt; to be the easiest most useful to me. Now, I code in Visual Basic and ran this snippet through a convertor; so I'm not sure quite how it turns out.</source>
+          <target state="translated">살 베테! 이 질문을 검색 한 결과 &lt;em&gt;FrankG&lt;/em&gt; 와 &lt;em&gt;Oregon Ghost&lt;/em&gt; 의 답변이 가장 유용한 것으로 나타났습니다. 이제 Visual Basic으로 코드를 작성하고 변환기를 통해이 스 니펫을 실행했습니다. 그래서 그것이 어떻게 나오는지 잘 모르겠습니다.</target>
+        </trans-unit>
+        <trans-unit id="7365313197e7145513a48d71144c6b3db82f7f9d" translate="yes" xml:space="preserve">
+          <source>See also about &lt;a href=&quot;https://stackoverflow.com/a/19023209/2042090&quot;&gt;UI Threading Model&lt;/a&gt; concept.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/a/19023209/2042090&quot;&gt;UI 스레딩 모델&lt;/a&gt; 개념에 대해서도 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="2f6c77a6fa91a9c251ca66971241fa23e5e5b7c3" translate="yes" xml:space="preserve">
+          <source>See here for a comparison of the two: &lt;a href=&quot;https://stackoverflow.com/questions/1167771/methodinvoker-vs-action-for-control-begininvoke&quot;&gt;MethodInvoker vs Action for Control.BeginInvoke&lt;/a&gt;</source>
+          <target state="translated">이 두 가지를 비교하려면 여기를 참조하십시오. &lt;a href=&quot;https://stackoverflow.com/questions/1167771/methodinvoker-vs-action-for-control-begininvoke&quot;&gt;MethodInvoker와 Control.BeginInvoke의 동작&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="40fd68e2415e8732c933a74161b6c77553357df7" translate="yes" xml:space="preserve">
+          <source>Set it in the constructor that creates your UI:</source>
+          <target state="translated">UI를 생성하는 생성자에서 설정하십시오.</target>
+        </trans-unit>
+        <trans-unit id="52f38ef8f878567d18c1a45521f930ba910e3908" translate="yes" xml:space="preserve">
+          <source>Short and clean code written in sequential manner without callbacks and explicit threads.</source>
+          <target state="translated">콜백 및 명시 적 스레드없이 순차적으로 작성된 짧고 깨끗한 코드입니다.</target>
+        </trans-unit>
+        <trans-unit id="3467985a31de5bca2f25c74837931bdba0251217" translate="yes" xml:space="preserve">
+          <source>Simply use something like this:</source>
+          <target state="translated">다음과 같이 사용하십시오 :</target>
+        </trans-unit>
+        <trans-unit id="36b786dba50cd33fdb52fcf04106f6a18d10f580" translate="yes" xml:space="preserve">
+          <source>Since &lt;a href=&quot;https://en.wikipedia.org/wiki/C_Sharp_%28programming_language%29#Versions&quot;&gt;.NET 4.5 and C# 5.0&lt;/a&gt; you should use &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/hh873175.aspx&quot;&gt;&lt;strong&gt;Task-based Asynchronous Pattern (TAP)&lt;/strong&gt;&lt;/a&gt; along with &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156513.aspx&quot;&gt;&lt;strong&gt;async&lt;/strong&gt;&lt;/a&gt;-&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156528.aspx&quot;&gt;&lt;strong&gt;await&lt;/strong&gt;&lt;/a&gt; keywords &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/hh873175.aspx&quot;&gt;&lt;strong&gt;&lt;em&gt;in all areas&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt; (including the GUI):</source>
+          <target state="translated">&lt;a href=&quot;https://en.wikipedia.org/wiki/C_Sharp_%28programming_language%29#Versions&quot;&gt;.NET 4.5 및 C # 5.0&lt;/a&gt; 부터 &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/hh873175.aspx&quot;&gt;&lt;strong&gt;&lt;em&gt;모든 영역&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt; (GUI 포함) &lt;strong&gt;&lt;em&gt;에서&lt;/em&gt;&lt;/strong&gt; &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156513.aspx&quot;&gt;&lt;strong&gt;async&lt;/strong&gt;&lt;/a&gt; - &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156528.aspx&quot;&gt;&lt;strong&gt;await&lt;/strong&gt;&lt;/a&gt; 키워드와 함께 &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/hh873175.aspx&quot;&gt;&lt;strong&gt;태스크 기반 비동기 패턴 (TAP)&lt;/strong&gt;&lt;/a&gt; 을 사용해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="4190ac35a0d65d8420cd953993197fee2c185752" translate="yes" xml:space="preserve">
+          <source>Solution:</source>
+          <target state="translated">Solution:</target>
+        </trans-unit>
+        <trans-unit id="b0adad1a41f59dfd023426181ac2ee9bbb1e5c3c" translate="yes" xml:space="preserve">
+          <source>TAP is the recommended asynchronous design pattern for new development</source>
+          <target state="translated">TAP는 새로운 개발에 권장되는 비동기 설계 패턴입니다.</target>
+        </trans-unit>
+        <trans-unit id="1027d988d679bf8e554c1732eadd813bbc690bca" translate="yes" xml:space="preserve">
+          <source>That's fine if you always want to update the same field. If you've got more complicated updates to make, you could define a class to represent the UI state and pass it to the ReportProgress method.</source>
+          <target state="translated">항상 같은 필드를 업데이트하려면 괜찮습니다. 보다 복잡한 업데이트가 필요한 경우 UI 상태를 나타내는 클래스를 정의하여 ReportProgress 메서드에 전달할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="39161d34d01cd3bf75ecfbcbc1975fbc70a5af52" translate="yes" xml:space="preserve">
+          <source>The &lt;strong&gt;InvokeRequired&lt;/strong&gt; property, as described &lt;a href=&quot;http://msdn.microsoft.com/it-it/library/system.windows.forms.control.invokerequired(v=vs.90).aspx&quot;&gt;here (Control.InvokeRequired Property reference to MSDN)&lt;/a&gt; returns true if the call was made from a thread that is not the GUI thread, false either if the call was made from the GUI thread, or if the &lt;strong&gt;Handle&lt;/strong&gt; was not created yet.</source>
+          <target state="translated">&lt;a href=&quot;http://msdn.microsoft.com/it-it/library/system.windows.forms.control.invokerequired(v=vs.90).aspx&quot;&gt;여기에&lt;/a&gt; 설명 된 &lt;strong&gt;InvokeRequired&lt;/strong&gt; 속성 (MSDN에 대한 Control.InvokeRequired 속성 참조) 은 GUI 스레드가 아닌 스레드에서 호출 한 경우 true를, GUI 스레드에서 호출 된 경우 또는 &lt;strong&gt;Handle&lt;/strong&gt; 이 아직 생성되지 않았습니다.</target>
+        </trans-unit>
+        <trans-unit id="756201256fb178cf21491ba3265438d3a68f743b" translate="yes" xml:space="preserve">
+          <source>The &lt;strong&gt;simplest&lt;/strong&gt; way is an anonymous method passed into &lt;a href=&quot;https://msdn.microsoft.com/en-us/library/zyzhdc6b(v=vs.110).aspx&quot;&gt;&lt;code&gt;Label.Invoke&lt;/code&gt;&lt;/a&gt;:</source>
+          <target state="translated">&lt;strong&gt;가장 간단한&lt;/strong&gt; 방법은 &lt;a href=&quot;https://msdn.microsoft.com/en-us/library/zyzhdc6b(v=vs.110).aspx&quot;&gt; &lt;code&gt;Label.Invoke&lt;/code&gt; &lt;/a&gt; 전달 된 익명 메소드입니다.</target>
+        </trans-unit>
+        <trans-unit id="8fa8a0ac6dd3403c4ef0c36c1588c7afcb068c73" translate="yes" xml:space="preserve">
+          <source>The UI and worker threads remain loosely coupled as opposed to the &lt;code&gt;Control.Invoke&lt;/code&gt; or &lt;code&gt;Control.BeginInvoke&lt;/code&gt; approach which tightly couples them.</source>
+          <target state="translated">UI와 작업자 스레드는 밀접하게 연결된 &lt;code&gt;Control.Invoke&lt;/code&gt; 또는 &lt;code&gt;Control.BeginInvoke&lt;/code&gt; 접근 방식과 달리 느슨하게 연결되어 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="df6e6c4bb5a7f46ea2cacf1ae0fcd0a3a35bd7dd" translate="yes" xml:space="preserve">
+          <source>The UI thread gets to dictate when and how often the UI gets updated.</source>
+          <target state="translated">UI 스레드는 UI 업데이트시기와 빈도를 알려줍니다.</target>
+        </trans-unit>
+        <trans-unit id="47d01262caa2797c54cc31cd37be606cc13b9d94" translate="yes" xml:space="preserve">
+          <source>The UI thread will not impede the progress of the worker thread.</source>
+          <target state="translated">UI 스레드는 작업자 스레드의 진행을 방해하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="81b51d5dd17beeed7cda13dc3eeee333fe995292" translate="yes" xml:space="preserve">
+          <source>The approach avoids the marshaling operation required when using the &lt;code&gt;ISynchronizeInvoke.Invoke&lt;/code&gt; and &lt;code&gt;ISynchronizeInvoke.BeginInvoke&lt;/code&gt; methods. There is nothing wrong with using the marshaling technique, but there are a couple of caveats you need to be aware of.</source>
+          <target state="translated">이 방법은 &lt;code&gt;ISynchronizeInvoke.Invoke&lt;/code&gt; 및 &lt;code&gt;ISynchronizeInvoke.BeginInvoke&lt;/code&gt; 메서드를 사용할 때 필요한 마샬링 작업을 피합니다. 마샬링 기술을 사용하는 데 아무런 문제가 없지만 알아야 할 몇 가지주의 사항이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="79b47f9f0987822dc91f8dd482d9c5e991f3d35e" translate="yes" xml:space="preserve">
+          <source>The below snippet is an example of how to handle exceptions and toggle button's &lt;code&gt;Enabled&lt;/code&gt; property to prevent multiple clicks during background execution.</source>
+          <target state="translated">아래 스 니펫은 백그라운드를 실행하는 동안 여러 번의 클릭을 방지하기 위해 예외를 처리하고 버튼의 &lt;code&gt;Enabled&lt;/code&gt; 속성을 토글하는 방법의 예입니다.</target>
+        </trans-unit>
+        <trans-unit id="e015ca7a822ecdf8f0e3421ccd4f5df68686553a" translate="yes" xml:space="preserve">
+          <source>The compiler will fail if the user passes the wrong data type.</source>
+          <target state="translated">사용자가 잘못된 데이터 유형을 전달하면 컴파일러가 실패합니다.</target>
+        </trans-unit>
+        <trans-unit id="8567ff643886c694396f9e4a9d0c0d1211b1e19c" translate="yes" xml:space="preserve">
+          <source>The easiest way I think:</source>
+          <target state="translated">내가 생각하는 가장 쉬운 방법 :</target>
+        </trans-unit>
+        <trans-unit id="b39707b1e5e242357e99cdebdf24e5add3a9e092" translate="yes" xml:space="preserve">
+          <source>The intervals at which the UI and worker threads perform operations can remain independent.</source>
+          <target state="translated">UI 및 작업자 스레드가 작업을 수행하는 간격은 독립적으로 유지 될 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="55abdac7d630f4990d136d5aa079d215cae4975d" translate="yes" xml:space="preserve">
+          <source>The simple solution is to use &lt;code&gt;Control.Invoke&lt;/code&gt;.</source>
+          <target state="translated">간단한 해결책은 &lt;code&gt;Control.Invoke&lt;/code&gt; 를 사용하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="697cecf0765f8d870b9a2135694b6c3743b72472" translate="yes" xml:space="preserve">
+          <source>The solution is to use &lt;code&gt;SynchronizationContext&lt;/code&gt;, specifically &lt;code&gt;SynchronizationContext.Current&lt;/code&gt; as &lt;a href=&quot;https://stackoverflow.com/a/21888091/67824&quot;&gt;hamilton.danielb&lt;/a&gt; suggests (other answers rely on specific &lt;code&gt;SynchronizationContext&lt;/code&gt; implementations which is completely unnecessary). I would slightly modify his code to use &lt;code&gt;SynchronizationContext.Post&lt;/code&gt; rather than &lt;code&gt;SynchronizationContext.Send&lt;/code&gt; though (as there's typically no need for the worker thread to wait):</source>
+          <target state="translated">해결책은 &lt;a href=&quot;https://stackoverflow.com/a/21888091/67824&quot;&gt;hamilton.danielb가&lt;/a&gt; 제안한 것처럼 &lt;code&gt;SynchronizationContext&lt;/code&gt; , 특히 &lt;code&gt;SynchronizationContext.Current&lt;/code&gt; 를 사용하는 것입니다 (다른 답변은 완전히 불필요한 불필요한 특정 &lt;code&gt;SynchronizationContext&lt;/code&gt; 구현에 의존합니다). &lt;code&gt;SynchronizationContext.Post&lt;/code&gt; 대신 SynchronizationContext.Post 를 사용하도록 코드를 약간 수정합니다 (일반적으로 작업자 스레드를 기다릴 필요가 없으므로).</target>
+        </trans-unit>
+        <trans-unit id="b3f8d0f13fffd30bb077dcec3d38358ee933a1bb" translate="yes" xml:space="preserve">
+          <source>The strategy I propose in this answer reverses the communication roles of the threads. Instead of the worker thread pushing the data the UI thread polls for it. This a common pattern used in many scenarios. Since all you are wanting to do is display progress information from the worker thread then I think you will find that this solution is a great alternative to the marshaling solution. It has the following advantages.</source>
+          <target state="translated">이 답변에서 제안하는 전략은 스레드의 통신 역할을 반대로합니다. 작업자 스레드가 데이터를 푸시하는 대신 UI 스레드가 폴링합니다. 이것은 많은 시나리오에서 사용되는 일반적인 패턴입니다. 작업자 스레드에서 진행 정보를 표시하기 만하면이 솔루션이 마샬링 솔루션의 훌륭한 대안이라는 것을 알 수 있습니다. 다음과 같은 장점이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="e2bf2df106b88f13d3a763d19ed8cd2c16ab6024" translate="yes" xml:space="preserve">
+          <source>The vast majority of answers use &lt;code&gt;Control.Invoke&lt;/code&gt; which is a &lt;a href=&quot;https://stackoverflow.com/a/7480544/67824&quot;&gt;race condition waiting to happen&lt;/a&gt;. For example, consider the accepted answer:</source>
+          <target state="translated">대부분의 답변은 &lt;code&gt;Control.Invoke&lt;/code&gt; 를 사용하며 이는 &lt;a href=&quot;https://stackoverflow.com/a/7480544/67824&quot;&gt;경쟁 조건이 발생하기를 기다리는 것&lt;/a&gt; 입니다. 예를 들어, 허용되는 답변을 고려하십시오.</target>
+        </trans-unit>
+        <trans-unit id="604d10e37bd6af9f02cf2c7b04e768daa803e87b" translate="yes" xml:space="preserve">
+          <source>The well-known formula greatly described in the previous answers that makes use of the &lt;strong&gt;InvokeRequired&lt;/strong&gt; property covers most of the cases, but not the entire pool.</source>
+          <target state="translated">&lt;strong&gt;InvokeRequired&lt;/strong&gt; 속성을 사용하는 이전 답변에서 크게 설명한 잘 알려진 수식은 대부분의 경우를 다루지 만 전체 풀에는 적용되지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="890683f7e44a47f2e3e262a17effcf44679d2e5d" translate="yes" xml:space="preserve">
+          <source>The worker thread cannot dominate the time the UI thread spends updating.</source>
+          <target state="translated">작업자 스레드는 UI 스레드가 업데이트에 소비하는 시간을 지배 할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="24c15df597a8d91320fbb037c4c52d1c2ac1d46d" translate="yes" xml:space="preserve">
+          <source>The worker thread cannot overrun the UI thread's message pump.</source>
+          <target state="translated">작업자 스레드가 UI 스레드의 메시지 펌프를 오버런 할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="e403b384ca605c89f5c9fda03bc185ce21b30ae6" translate="yes" xml:space="preserve">
+          <source>Then in the UI you need to cross threads to change the actual control... like a label or a progress bar.</source>
+          <target state="translated">그런 다음 UI에서 레이블 또는 진행률 표시 줄과 같은 실제 컨트롤을 변경하려면 스레드를 교차해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="4aa5926b4ce72b26fddea8c5290a922f2a8c4579" translate="yes" xml:space="preserve">
+          <source>Then you can chain your tasks so that when the result is ready then another task (which is scheduled on the UI thread) picks it and assigns it to a label.</source>
+          <target state="translated">그런 다음 결과가 준비되면 UI 스레드에서 예약 된 다른 작업이이를 선택하여 레이블에 할당하도록 작업을 연결할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="b493d42db3d0b22ec3d0ca66af71edce5ca57b85" translate="yes" xml:space="preserve">
+          <source>Then, the recommended solution for new development is:</source>
+          <target state="translated">그런 다음 새로운 개발에 권장되는 솔루션은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="30f7e9ddf06f0e7aa560f115e09993fdf9cf8354" translate="yes" xml:space="preserve">
+          <source>There the &lt;code&gt;lblThreshold&lt;/code&gt; is a Label and &lt;code&gt;Speed_Threshold&lt;/code&gt; is a global variable.</source>
+          <target state="translated">&lt;code&gt;lblThreshold&lt;/code&gt; 는 레이블이고 &lt;code&gt;Speed_Threshold&lt;/code&gt; 는 전역 변수입니다.</target>
+        </trans-unit>
+        <trans-unit id="d8b1a4d114196a3469d1f751f037104143e931e4" translate="yes" xml:space="preserve">
+          <source>This actually caused some of our released software to hang. It was easy enough to fix by replacing &lt;code&gt;Invoke()&lt;/code&gt; with &lt;code&gt;BeginInvoke()&lt;/code&gt;. Unless you have a need for synchronous operation, which may be the case if you need a return value, use &lt;code&gt;BeginInvoke()&lt;/code&gt;.</source>
+          <target state="translated">이로 인해 실제로 출시 된 일부 소프트웨어가 중단되었습니다. &lt;code&gt;Invoke()&lt;/code&gt; 를 &lt;code&gt;BeginInvoke()&lt;/code&gt; 로 바꾸면 쉽게 해결할 수 있습니다. 반환 값이 필요한 경우 동기 작업이 필요하지 않은 경우 &lt;code&gt;BeginInvoke()&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="9e65e8d671f84a6a2a146ac8452477f963671d53" translate="yes" xml:space="preserve">
+          <source>This can be called using the following line of code:</source>
+          <target state="translated">다음 코드 줄을 사용하여 호출 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="5a253bbb5583b45b0a67f50671c842577192f9a8" translate="yes" xml:space="preserve">
+          <source>This can cause an &lt;strong&gt;InvalidOperationException&lt;/strong&gt; if the operations before the label's update &quot;take less time&quot; (read it and interpret it as a simplification) than the time it takes for the GUI thread to create the &lt;strong&gt;Form&lt;/strong&gt;'s &lt;strong&gt;Handle&lt;/strong&gt;. This happens within the &lt;strong&gt;ShowDialog()&lt;/strong&gt; method.</source>
+          <target state="translated">이로 인해 GUI 스레드가 &lt;strong&gt;Form&lt;/strong&gt; 's &lt;strong&gt;Handle&lt;/strong&gt; 을 작성하는 데 걸리는 시간보다 레이블 업데이트 이전의 조작이 &quot;시간이 덜 소요&quot;(읽고 단순화로 해석)하는 경우 &lt;strong&gt;InvalidOperationException&lt;/strong&gt; 이 발생할 수 있습니다. 이것은 &lt;strong&gt;ShowDialog ()&lt;/strong&gt; 메서드 내에서 발생합니다.</target>
+        </trans-unit>
+        <trans-unit id="9371b80c5f5586fe1db295b43782ca3a487a2159" translate="yes" xml:space="preserve">
+          <source>This in my C# 3.0 variation of Ian Kemp's solution:</source>
+          <target state="translated">이것은 Ian Kemp 솔루션의 C # 3.0 변형에서 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="36837b3159c884b81f190c3ee515db09b2793b97" translate="yes" xml:space="preserve">
+          <source>This is the classic way you should do this:</source>
+          <target state="translated">이것이 당신이 해야하는 고전적인 방법입니다.</target>
+        </trans-unit>
+        <trans-unit id="69600c6f800be4b97d0cb2581b0ac02d97900218" translate="yes" xml:space="preserve">
+          <source>This one is similar to the solution above using .NET Framework 3.0, but it solved the issue of &lt;strong&gt;compile-time safety support&lt;/strong&gt;.</source>
+          <target state="translated">이것은 .NET Framework 3.0을 사용하는 위의 솔루션과 유사하지만 &lt;strong&gt;컴파일 타임 안전 지원&lt;/strong&gt; 문제를 해결했습니다.</target>
+        </trans-unit>
+        <trans-unit id="fa62c9094cf0e45a7e4a6063b5094a87f058c4c6" translate="yes" xml:space="preserve">
+          <source>This works for tasks (not threads) which are the &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/dd460717.aspx&quot;&gt;preferred way of writing concurrent code now&lt;/a&gt;.</source>
+          <target state="translated">이것은 &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/dd460717.aspx&quot;&gt;동시 코드를 작성&lt;/a&gt; 하는 선호되는 방법 인 작업 (스레드가 아닌)에 작동합니다.</target>
+        </trans-unit>
+        <trans-unit id="7f96cff712f63bde79316d19b692dfc592274706" translate="yes" xml:space="preserve">
+          <source>Threading code is often buggy and always hard to test. You don't need to write threading code to update the user interface from a background task. Just use the &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker.aspx&quot;&gt;BackgroundWorker&lt;/a&gt; class to run the task and its &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/a3zbdb1t.aspx&quot;&gt;ReportProgress&lt;/a&gt; method to update the user interface. Usually, you just report a percentage complete, but there's another overload that includes a state object. Here's an example that just reports a string object:</source>
+          <target state="translated">스레딩 코드는 종종 버그가 있으며 항상 테스트하기가 어렵습니다. 백그라운드 작업에서 사용자 인터페이스를 업데이트하기 위해 스레딩 코드를 작성할 필요가 없습니다. &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker.aspx&quot;&gt;BackgroundWorker&lt;/a&gt; 클래스를 사용하여 작업 및 &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/a3zbdb1t.aspx&quot;&gt;ReportProgress&lt;/a&gt; 메서드를 실행하여 사용자 인터페이스를 업데이트하십시오. 일반적으로 완료율 만보고하지만 상태 객체를 포함하는 또 다른 과부하가 있습니다. 다음은 문자열 객체 만보고하는 예입니다.</target>
+        </trans-unit>
+        <trans-unit id="4e2995652eca6ee4618bdd8e0460a24c8da67b5b" translate="yes" xml:space="preserve">
+          <source>To use:</source>
+          <target state="translated">사용:</target>
+        </trans-unit>
+        <trans-unit id="855a24afe57fcde7916916da3235b6566b77bbd3" translate="yes" xml:space="preserve">
+          <source>Try to refresh the label using this</source>
+          <target state="translated">이것을 사용하여 레이블을 새로 고치십시오.</target>
+        </trans-unit>
+        <trans-unit id="7ddd9dbab79025d426f64387b0d83c755b5e4e8e" translate="yes" xml:space="preserve">
+          <source>Unfortunately this doesn't stop anyone from doing stupid things such as passing in another &lt;code&gt;Control&lt;/code&gt;'s property and value, so the following will happily compile:</source>
+          <target state="translated">불행히도 이것은 다른 &lt;code&gt;Control&lt;/code&gt; 의 속성과 값을 전달하는 것과 같은 어리석은 일을 막지 못하므로 다음은 행복하게 컴파일됩니다.</target>
+        </trans-unit>
+        <trans-unit id="4bddb850ecf801bcf903bcdac2f98cb8c731daf3" translate="yes" xml:space="preserve">
+          <source>Variation of &lt;a href=&quot;https://stackoverflow.com/questions/661561/how-to-update-the-gui-from-another-thread-in-c/661662#661662&quot;&gt;Marc Gravell's &lt;strong&gt;simplest&lt;/strong&gt; solution&lt;/a&gt; for .NET 4:</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/questions/661561/how-to-update-the-gui-from-another-thread-in-c/661662#661662&quot;&gt;Marc Gravell의&lt;/a&gt; .NET 4를위한 &lt;strong&gt;가장 간단한&lt;/strong&gt; 솔루션의 변형 :</target>
+        </trans-unit>
+        <trans-unit id="93d59e4fac4a61382bde7634c1bf5fd82eeda470" translate="yes" xml:space="preserve">
+          <source>What if the &lt;strong&gt;Handle&lt;/strong&gt; has not been created yet?</source>
+          <target state="translated">&lt;strong&gt;핸들&lt;/strong&gt; 이 아직 생성되지 않은 경우 어떻게합니까?</target>
+        </trans-unit>
+        <trans-unit id="39694840820e4b8992cae49492d54071f31619cc" translate="yes" xml:space="preserve">
+          <source>When I encountered the same issue I sought help from Google, but rather than give me a simple solution it confused me more by giving examples of &lt;code&gt;MethodInvoker&lt;/code&gt; and blah blah blah. So I decided to solve it on my own. Here is my solution:</source>
+          <target state="translated">같은 문제가 발생했을 때 Google의 도움을 구했지만 간단한 해결책을 제공하는 대신 &lt;code&gt;MethodInvoker&lt;/code&gt; 및 blah blah blah의 예를 제공하여 더 혼란 스럽습니다. 그래서 나는 그것을 스스로 해결하기로 결정했습니다. 내 해결책은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="117b5c3090e1de4904d1018be2cb9656af1f384a" translate="yes" xml:space="preserve">
+          <source>When using &lt;code&gt;Invoke()&lt;/code&gt; you are waiting for the method to return. Now, it may be that you do something in the invoked code that will need to wait for the thread, which may not be immediately obvious if it's buried in some functions that you are calling, which itself may happen indirectly via event handlers. So you would be waiting for the thread, the thread would be waiting for you and you are deadlocked.</source>
+          <target state="translated">&lt;code&gt;Invoke()&lt;/code&gt; 를 사용할 때 메소드가 리턴되기를 기다리고 있습니다. 이제 호출 된 코드에서 스레드를 기다려야하는 무언가를 수행 할 수 있습니다. 스레드를 호출하는 일부 함수에 묻혀 있으면 이벤트 처리기를 통해 간접적으로 발생할 수 있습니다. 그래서 당신은 스레드를 기다리고있을 것이고, 스레드는 당신을 기다리고있을 것이며 교착 상태입니다.</target>
+        </trans-unit>
+        <trans-unit id="ace168a0655e9650d03a6eb7281a0176d46125fb" translate="yes" xml:space="preserve">
+          <source>When you want to update the label:</source>
+          <target state="translated">라벨을 업데이트하려는 경우 :</target>
+        </trans-unit>
+        <trans-unit id="a6c30215367b2619abb1efd599355c95d38dc78a" translate="yes" xml:space="preserve">
+          <source>When you're in the UI thread you could ask it for its synchronization context task scheduler. It would give you a &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/dd997402%28v=vs.110%29.aspx&quot;&gt;TaskScheduler&lt;/a&gt; that schedules everything on the UI thread.</source>
+          <target state="translated">UI 스레드에있을 때 동기화 컨텍스트 작업 스케줄러를 요청할 수 있습니다. UI 스레드의 모든 것을 예약하는 &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/dd997402%28v=vs.110%29.aspx&quot;&gt;TaskScheduler&lt;/a&gt; 를 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="aebd548c021054503461285e4f96d9292d440588" translate="yes" xml:space="preserve">
+          <source>Which is the simplest way to update a &lt;code&gt;Label&lt;/code&gt; from another &lt;code&gt;Thread&lt;/code&gt;?</source>
+          <target state="translated">다른 &lt;code&gt;Thread&lt;/code&gt; 에서 &lt;code&gt;Label&lt;/code&gt; 을 업데이트하는 가장 간단한 방법은 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="ccf1cfc0ec51766294ead6f7014e102235b667c3" translate="yes" xml:space="preserve">
+          <source>While &lt;code&gt;thread2&lt;/code&gt; is processing some files I would like to update a &lt;code&gt;Label&lt;/code&gt; on the &lt;code&gt;Form&lt;/code&gt; with the current status of &lt;code&gt;thread2&lt;/code&gt;'s work.</source>
+          <target state="translated">&lt;code&gt;thread2&lt;/code&gt; 가 일부 파일을 처리하는 동안 thread2 의 현재 상태로 &lt;code&gt;Form&lt;/code&gt; 의 &lt;code&gt;Label&lt;/code&gt; 을 업데이트하고 싶습니다.</target>
+        </trans-unit>
+        <trans-unit id="276f0c42dd06946cd66deb4e508b2933d99f22b0" translate="yes" xml:space="preserve">
+          <source>You call it like this:</source>
+          <target state="translated">당신은 이것을 다음과 같이 부릅니다.</target>
+        </trans-unit>
+        <trans-unit id="eac883ef65248c488fbe272042c9115ef0e7f11b" translate="yes" xml:space="preserve">
+          <source>You can call this function in a new thread like this</source>
+          <target state="translated">이 기능을 다음과 같은 새 스레드에서 호출 할 수 있습니다</target>
+        </trans-unit>
+        <trans-unit id="8d8577637730eec0209d28a2bfab74ba363a6e8b" translate="yes" xml:space="preserve">
+          <source>You can come across an exception if you want to have a modal form shown and updated by another thread. Because you want that form shown modally, you could do the following:</source>
+          <target state="translated">다른 스레드에서 모달 양식을 표시하고 업데이트하려는 경우 예외가 발생할 수 있습니다. 해당 양식을 모달로 표시하려면 다음을 수행하십시오.</target>
+        </trans-unit>
+        <trans-unit id="b6fc7a97eadd36502f04ede9995f8c91e25f81aa" translate="yes" xml:space="preserve">
+          <source>You can do this by raising your event like this:</source>
+          <target state="translated">다음과 같이 이벤트를 제기하면됩니다.</target>
+        </trans-unit>
+        <trans-unit id="64d8906876b7f8391b99d6ea381a03ebd72b23b2" translate="yes" xml:space="preserve">
+          <source>You can handle the operation to perform if the &lt;strong&gt;Handle&lt;/strong&gt; has not been created yet: You can just ignore the GUI update (like shown in the code above) or you can wait (more risky).
+This should answer the question.</source>
+          <target state="translated">&lt;strong&gt;핸들&lt;/strong&gt; 이 아직 생성되지 않은 경우 수행 할 작업을 처리 할 수 ​​있습니다. 위의 코드에 표시된 것처럼 GUI 업데이트를 무시하거나 대기 (더 위험) 할 수 있습니다. 질문에 대답해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="743a055c3d5e093dfdde319126585293e865c2ba" translate="yes" xml:space="preserve">
+          <source>You may use the already-existing delegate &lt;code&gt;Action&lt;/code&gt;:</source>
+          <target state="translated">이미 존재하는 델리게이트 &lt;code&gt;Action&lt;/code&gt; 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="52dda13121e4647f295e6a6c0a7d8f0aa9581409" translate="yes" xml:space="preserve">
+          <source>You must use invoke and delegate</source>
+          <target state="translated">호출 및 위임을 사용해야합니다</target>
+        </trans-unit>
+        <trans-unit id="6f8c60526ff0287a0bfb1c1dc666f1119b1e1e4d" translate="yes" xml:space="preserve">
+          <source>You need to look at WindowsFormsSynchronizationContext:</source>
+          <target state="translated">WindowsFormsSynchronizationContext를 확인해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="f0a9572441b9e570c583b3d7d7241c210e0bc176" translate="yes" xml:space="preserve">
+          <source>You should also check for the &lt;strong&gt;Handle&lt;/strong&gt; like this:</source>
+          <target state="translated">또한 다음과 같이 &lt;strong&gt;핸들을&lt;/strong&gt; 확인해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="2ebe7f42a2e8f4ba3bd7b673b1baede123148e84" translate="yes" xml:space="preserve">
+          <source>You'll have to make sure that the update happens on the correct thread; the UI thread.</source>
+          <target state="translated">업데이트가 올바른 스레드에서 발생하는지 확인해야합니다. UI 스레드</target>
+        </trans-unit>
+        <trans-unit id="45a682c62de33d9b5b3ebe367b58c3b4d401d546" translate="yes" xml:space="preserve">
+          <source>You'll need to Invoke the method on the GUI thread. You can do that by calling Control.Invoke.</source>
+          <target state="translated">GUI 스레드에서 메소드를 호출해야합니다. Control.Invoke를 호출하여이를 수행 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="ab978b0aa28912ee18d6dfd0c3ccd422c64d3e8d" translate="yes" xml:space="preserve">
+          <source>Your worker thread has an event. Your UI thread starts off another thread to do the work and hooks up that worker event so you can display the state of the worker thread.</source>
+          <target state="translated">작업자 스레드에 이벤트가 있습니다. UI 스레드는 다른 스레드를 시작하여 작업을 수행하고 해당 작업자 이벤트를 연결하여 작업자 스레드의 상태를 표시 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="a4904d0772e515c0faa1d297969bae0f69b5dae3" translate="yes" xml:space="preserve">
+          <source>instead of &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/ms228963.aspx&quot;&gt;Asynchronous Programming Model (APM)&lt;/a&gt; and &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/wewwczdw.aspx&quot;&gt;Event-based Asynchronous Pattern (EAP)&lt;/a&gt; (the latter includes the &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker%28v=vs.95%29.aspx&quot;&gt;BackgroundWorker Class&lt;/a&gt;).</source>
+          <target state="translated">&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/ms228963.aspx&quot;&gt;APM (Asynchronous Programming Model)&lt;/a&gt; 및 &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/wewwczdw.aspx&quot;&gt;EAP (Event-based Asynchronous Pattern&lt;/a&gt; ) 대신에 &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker%28v=vs.95%29.aspx&quot;&gt;BackgroundWorker 클래스가&lt;/a&gt; 포함됩니다.</target>
+        </trans-unit>
+        <trans-unit id="271f2b2b763ae88d25e8a52b1980ecf07d016741" translate="yes" xml:space="preserve">
+          <source>which uses LINQ and lambda expressions to allow much cleaner, simpler and safer syntax:</source>
+          <target state="translated">LINQ 및 람다 식을 사용하여 훨씬 깨끗하고 간단하며 안전한 구문을 허용합니다.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

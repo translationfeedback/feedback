@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/10636611">
+    <body>
+      <group id="10636611">
+        <trans-unit id="79b3ba11b449f653cf94ea42d31d8665cb70305e" translate="yes" xml:space="preserve">
+          <source>&quot;How do we get around it?&quot; Have the server tell the request that CORS is OK.</source>
+          <target state="translated">&quot;我们该怎么绕开它?&quot; 让服务器告诉请求者,CORS是可以的。</target>
+        </trans-unit>
+        <trans-unit id="922d106809a27f5ea5725cbecf04bcf0394fbc75" translate="yes" xml:space="preserve">
+          <source>&quot;Why don't we just block the browser from doing that?&quot; Yep. CORS.</source>
+          <target state="translated">&quot;我们为什么不直接屏蔽浏览器呢?&quot; 是的。CORS.</target>
+        </trans-unit>
+        <trans-unit id="8cce81f32d4f3933a9d189ba04d55f2214ac9ccf" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://en.wikipedia.org/wiki/Cross-origin_resource_sharing&quot;&gt;Wikipedia&lt;/a&gt;:</source>
+          <target state="translated">&lt;a href=&quot;https://en.wikipedia.org/wiki/Cross-origin_resource_sharing&quot;&gt;Wikipedia&lt;/a&gt;:</target>
+        </trans-unit>
+        <trans-unit id="a4a8b5194f78b6038b34fcb3aaefa3c75ec70357" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; is a &lt;a href=&quot;http://www.html5rocks.com/en/tutorials/cors/&quot;&gt;CORS (Cross-Origin Resource Sharing) header&lt;/a&gt;.</source>
+          <target state="translated">&lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; 是&lt;a href=&quot;http://www.html5rocks.com/en/tutorials/cors/&quot;&gt;CORS（跨源资源共享）标头&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="c09130b0fcfe3404570f3cf7d450decda7ec406d" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Content-Type&lt;/code&gt; (this is only simple when its value is &lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt;, &lt;code&gt;multipart/form-data&lt;/code&gt;, or &lt;code&gt;text/plain&lt;/code&gt;)</source>
+          <target state="translated">&lt;code&gt;Content-Type&lt;/code&gt; （仅当其值为 &lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt; ， &lt;code&gt;multipart/form-data&lt;/code&gt; 或 &lt;code&gt;text/plain&lt;/code&gt; 时，这才简单）</target>
+        </trans-unit>
+        <trans-unit id="31c8c8b02a31794b56f4026cc609f63ad40bb60d" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;https://cors-anywhere.herokuapp.com/&lt;/code&gt; + &lt;code&gt;Your API URL&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;https://cors-anywhere.herokuapp.com/&lt;/code&gt; + &lt;code&gt;Your API URL&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="85bb5e6604df9c285a25a74cf794fab003bbd6a3" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;1. A client downloads javascript code MyCode.js from &lt;a href=&quot;http://siteA&quot;&gt;http://siteA&lt;/a&gt; - the origin.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;1.客户端从源地址&lt;a href=&quot;http://siteA&quot;&gt;http：// siteA&lt;/a&gt;下载javascript代码MyCode.js。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="e67c2a45dcc374cf1513c3c3847ca0329605f44f" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;2. The response header of MyCode.js contains Access-Control-Allow-Origin: &lt;a href=&quot;http://siteB&quot;&gt;http://siteB&lt;/a&gt;, which I thought meant that MyCode.js was allowed to make cross-origin references to the site B.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;2. MyCode.js的响应标头包含Access-Control-Allow-Origin： &lt;a href=&quot;http://siteB&quot;&gt;http：// siteB&lt;/a&gt; ，我认为这意味着MyCode.js被允许对站点B进行跨域引用。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="e72ad7b755a692bece6c7ac0d6f5e50584dca43a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;DomainA AJAX request headers&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;DomainA AJAX请求标头&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d140b20d9bc077421ada900ec804924f2dd7508c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;DomainB response headers&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;DomainB响应标头&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="43b44e358ed9ab663aff14a7eb3cb779b17abc1d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Key point:&lt;/strong&gt; When a client makes a request to the server, it will send the cookies stored under that domain.</source>
+          <target state="translated">&lt;strong&gt;关键点：&lt;/strong&gt;客户端向服务器发出请求时，它将发送存储在该域下的cookie。</target>
+        </trans-unit>
+        <trans-unit id="451ed0d1faeb007761b9f1f6e5c819251b69932c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Mechanism&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;机制&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="458265a655ab105933b08a0c271497ca9d12a196" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;this must have before all router&lt;/strong&gt;.</source>
+          <target state="translated">&lt;strong&gt;这必须在所有路由器之前&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="3144daeec601dcd1b43f2a37773bb3e0722f2c8f" translate="yes" xml:space="preserve">
+          <source>A client downloads javascript code MyCode.js from http://siteA - &lt;strong&gt;the origin&lt;/strong&gt;.</source>
+          <target state="translated">客户端从http：// siteA- &lt;strong&gt;origin&lt;/strong&gt;下载javascript代码MyCode.js。</target>
+        </trans-unit>
+        <trans-unit id="b487ed479c5653fe0a2624288946f1c8ef051bd4" translate="yes" xml:space="preserve">
+          <source>A resource makes a &lt;strong&gt;cross-origin HTTP request&lt;/strong&gt; when it requests a resource from a different domain, or port than the one which the first resource itself serves.</source>
+          <target state="translated">当资源从与第一个资源本身所服务的域或端口不同的域或端口请求资源时，它会发出&lt;strong&gt;跨域HTTP请求&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="ce0f87926e811ddf23f0d196ca75fb63d5c3ead6" translate="yes" xml:space="preserve">
+          <source>A response that tells the browser to allow code from any origin to
+  access a resource will include the following:</source>
+          <target state="translated">一个告诉浏览器允许来自任何来源的代码访问资源的响应将包括以下内容。</target>
+        </trans-unit>
+        <trans-unit id="ba3428e2ff13f1e68025f1c48520f8917410ea5c" translate="yes" xml:space="preserve">
+          <source>According to &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS&quot;&gt;this&lt;/a&gt; Mozilla Developer Network article,</source>
+          <target state="translated">根据Mozilla开发人员网络的这篇文章，</target>
+        </trans-unit>
+        <trans-unit id="bf23c326dd333575e69254167b04cd66436a8ddf" translate="yes" xml:space="preserve">
+          <source>Although some validation and authorization can be performed by the server, &lt;strong&gt;it is generally the browser's responsibility&lt;/strong&gt; to support these headers and honor the restrictions they impose.</source>
+          <target state="translated">尽管服务器可以执行某些验证和授权， &lt;strong&gt;但是浏览器通常有责任&lt;/strong&gt;支持这些标头并遵守其施加的限制。</target>
+        </trans-unit>
+        <trans-unit id="35cb55e5ed57188c2c958286ec803a59b4bb54db" translate="yes" xml:space="preserve">
+          <source>An &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; (ACAO) header in its response indicating which origin sites are allowed.</source>
+          <target state="translated">响应中的 &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; （ACAO）标头，指示允许哪些原始站点。</target>
+        </trans-unit>
+        <trans-unit id="4a79c7e5f70a613673420444f94f034d8ff57aa2" translate="yes" xml:space="preserve">
+          <source>An &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; (ACAO) header with a wildcard that allows all domains:</source>
+          <target state="translated">具有通配符的 &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; （ACAO）标头，允许所有域：</target>
+        </trans-unit>
+        <trans-unit id="181e454044a5f8794317a9184ef7086fe1502149" translate="yes" xml:space="preserve">
+          <source>An &lt;strong&gt;HTML page&lt;/strong&gt; served from &lt;code&gt;http://domain-a.com&lt;/code&gt; makes an &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; src request for &lt;code&gt;http://domain-b.com/image.jpg&lt;/code&gt;.</source>
+          <target state="translated">从 &lt;code&gt;http://domain-a.com&lt;/code&gt; 提供的&lt;strong&gt;HTML页面&lt;/strong&gt;对http://domain-b.com/image.jpg发出 &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; src请求。</target>
+        </trans-unit>
+        <trans-unit id="b609b5a98435feed729bf00208beca36f266c405" translate="yes" xml:space="preserve">
+          <source>An error page if the server does not allow the cross-origin request</source>
+          <target state="translated">如果服务器不允许跨源请求,会出现错误页面。</target>
+        </trans-unit>
+        <trans-unit id="2aa81cf349bfa1a844c8cd05dff5a9ad245bf1b1" translate="yes" xml:space="preserve">
+          <source>An example story: On your computer, there's a cookie for &lt;code&gt;yourbank.com&lt;/code&gt;. Maybe your session is in there.</source>
+          <target state="translated">一个例子：在您的计算机上，有一个cookie用于 &lt;code&gt;yourbank.com&lt;/code&gt; 。 也许你的会议在那里。</target>
+        </trans-unit>
+        <trans-unit id="b97580e9a4d93057941cecbf72a8e5d77baa599d" translate="yes" xml:space="preserve">
+          <source>And the server sends back an &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt;, just as it would for a simple request:</source>
+          <target state="translated">然后服务器发送一个 &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; ，就像处理一个简单的请求一样：</target>
+        </trans-unit>
+        <trans-unit id="bbcce9482362cd9d846f8ef9260df5096f61aefb" translate="yes" xml:space="preserve">
+          <source>Apparently, I have completely misunderstood its semantics. I thought of something like this:</source>
+          <target state="translated">显然,我完全误解了它的语义。我想到了这样的东西。</target>
+        </trans-unit>
+        <trans-unit id="9c0a94e83fa3f4a9ba8e76553be179ce0c84ddf9" translate="yes" xml:space="preserve">
+          <source>As I mentioned above, W3 recommended browser to implement a &quot;&lt;strong&gt;preflight request&lt;/strong&gt;&quot; before submiting the actually Cross-Origin HTTP request, in a nutshell it is an HTTP &lt;code&gt;OPTIONS&lt;/code&gt; request:</source>
+          <target state="translated">正如我上面提到的，W3建议浏览器在提交实际的跨域HTTP请求之前实现一个&amp;ldquo; &lt;strong&gt;预检请求&lt;/strong&gt; &amp;rdquo;，简而言之，它是一个HTTP &lt;code&gt;OPTIONS&lt;/code&gt; 请求：</target>
+        </trans-unit>
+        <trans-unit id="18fc2f97599c6123f77e230a7df453afa9545e6c" translate="yes" xml:space="preserve">
+          <source>Cross-Origin Resource Sharing (CORS)</source>
+          <target state="translated">跨源资源共享(CORS)</target>
+        </trans-unit>
+        <trans-unit id="cd4c33b899fc233fd73d75ce9074d02da1ac4b4d" translate="yes" xml:space="preserve">
+          <source>Cross-Origin Resource Sharing - &lt;code&gt;CORS&lt;/code&gt; (A.K.A. Cross-Domain AJAX request) is an issue that most web developers might encounter, according to Same-Origin-Policy, browsers restrict client JavaScript in a security sandbox, usually JS cannot directly communicate with a remote server from a different domain. In the past developers created many tricky ways to achieve Cross-Domain resource request, most commonly using ways are:</source>
+          <target state="translated">跨域资源共享 &lt;code&gt;CORS&lt;/code&gt; （AKA跨域AJAX请求）是大多数Web开发人员可能遇到的问题，根据Same-Origin-Policy，浏览器将客户端JavaScript限制在安全沙箱中，通常JS无法直接与远程通信来自其他域的服务器。 过去，开发人员创建了许多棘手的方法来实现跨域资源请求，最常用的方法是：</target>
+        </trans-unit>
+        <trans-unit id="011fc91df492b0380e17a87ee2e66441e70c4e0f" translate="yes" xml:space="preserve">
+          <source>Embeds remote server in an iframe and communicate through fragment or window.name, refer &lt;a href=&quot;http://www.ibm.com/developerworks/library/wa-crossdomaincomm/#N10120&quot;&gt;here&lt;/a&gt;.</source>
+          <target state="translated">将远程服务器嵌入到iframe中，并通过fragment或window.name进行通信，请参见&lt;a href=&quot;http://www.ibm.com/developerworks/library/wa-crossdomaincomm/#N10120&quot;&gt;此处&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="0f01ed56a1e32a05e5ef96e4d779f34784af9a96" translate="yes" xml:space="preserve">
+          <source>Example</source>
+          <target state="translated">Example</target>
+        </trans-unit>
+        <trans-unit id="c55d6bc880c85b7ddccab1864214b1926c931775" translate="yes" xml:space="preserve">
+          <source>For cross origin sharing, set header: &lt;code&gt;'Access-Control-Allow-Origin':'*';&lt;/code&gt;</source>
+          <target state="translated">对于跨源共享，设置标题： &lt;code&gt;'Access-Control-Allow-Origin':'*';&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="0d1c001eb437a4a4ce15ecea22bb7619b01e35aa" translate="yes" xml:space="preserve">
+          <source>For each resource/page that Site B wants to make accessible to Site A, Site B should serve its pages with the response header:</source>
+          <target state="translated">对于网站B想让网站A访问的每一个资源页面,网站B应该用响应的页眉为其页面提供服务。</target>
+        </trans-unit>
+        <trans-unit id="448733166bdf64413416b6944ad16b39bf49185a" translate="yes" xml:space="preserve">
+          <source>For example, &lt;code&gt;XMLHttpRequest&lt;/code&gt; and &lt;code&gt;Fetch&lt;/code&gt; follow the &lt;strong&gt;same-origin policy&lt;/strong&gt;.</source>
+          <target state="translated">例如， &lt;code&gt;XMLHttpRequest&lt;/code&gt; 和 &lt;code&gt;Fetch&lt;/code&gt; 遵循&lt;strong&gt;同源策略&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="059c3e8cce263b2945a18ac90b2637e10a8026b1" translate="yes" xml:space="preserve">
+          <source>For example:</source>
+          <target state="translated">例如:</target>
+        </trans-unit>
+        <trans-unit id="2ac76251686f22fcdbe32b54806e17b5c620fa63" translate="yes" xml:space="preserve">
+          <source>For more info, visit &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin&quot;&gt;here&lt;/a&gt;....</source>
+          <target state="translated">有关更多信息，请访问&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin&quot;&gt;这里。&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="c434a7a5f602c383de2c018c1b0444a3ea8fbb96" translate="yes" xml:space="preserve">
+          <source>For more specific examples see the documentation. I have used the simple example above to get around the CORS issue in an ionic application I am building that has to access a separate flask server.</source>
+          <target state="translated">更多具体的例子请看文档。我用上面的简单例子来解决我正在构建的一个离子应用中的CORS问题,该应用必须访问一个单独的flask服务器。</target>
+        </trans-unit>
+        <trans-unit id="da1bd7e32d017921022d548d7ad4d638f61ae61e" translate="yes" xml:space="preserve">
+          <source>For security reasons, browsers restrict &lt;strong&gt;cross-origin HTTP&lt;/strong&gt; requests &lt;strong&gt;initiated from within scripts&lt;/strong&gt;.</source>
+          <target state="translated">出于安全原因，浏览器会限制&lt;strong&gt;从脚本内部发起的&lt;/strong&gt; &lt;strong&gt;跨域HTTP&lt;/strong&gt;请求。</target>
+        </trans-unit>
+        <trans-unit id="d6d0578bc5e77903d01a8d5a163a1d8888a0ad92" translate="yes" xml:space="preserve">
+          <source>From a high level we can simply deem CORS is a contract between client AJAX call from domain A and a page hosted on domain B, a typical Cross-Origin request/response would be:</source>
+          <target state="translated">从高层次上看,我们可以简单地认为CORS是A域的AJAX客户端调用和B域托管的页面之间的契约,一个典型的跨源请求响应(Cross-Origin requestresponse)就是这样。</target>
+        </trans-unit>
+        <trans-unit id="6edd5efadce6bfaad382d3cb5bd545a64ef9e2c0" translate="yes" xml:space="preserve">
+          <source>From my own experience, it's hard to find a simple explanation why CORS is even a concern.</source>
+          <target state="translated">从我自己的经验来看,很难找到一个简单的解释,为什么连CORS都要关注。</target>
+        </trans-unit>
+        <trans-unit id="1727a759182c88301c3e81d2fbbe9997d5ed21c4" translate="yes" xml:space="preserve">
+          <source>How CORS works (&lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; header)</source>
+          <target state="translated">CORS的工作方式（ &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; 标头）</target>
+        </trans-unit>
+        <trans-unit id="c8cc4076ef7542bc5aed83b4de859cfb8a1094e1" translate="yes" xml:space="preserve">
+          <source>How does Access-Control-Allow-Origin header work</source>
+          <target state="translated">Access-Control-Allow-Origin头是如何工作的?</target>
+        </trans-unit>
+        <trans-unit id="7ababbc9fc0b6cccf17b2439c963b15cce41b12d" translate="yes" xml:space="preserve">
+          <source>I blogged about CORS three years ago: &lt;a href=&quot;http://wayneye.com/Blog/Ajax-Cross-Origin-HTTP-request&quot;&gt;AJAX Cross-Origin HTTP request&lt;/a&gt;</source>
+          <target state="translated">我三年前写了关于CORS的博客： &lt;a href=&quot;http://wayneye.com/Blog/Ajax-Cross-Origin-HTTP-request&quot;&gt;AJAX跨源HTTP请求&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="b6d70cc5a4760303b495e7652f8245f1fe3b0fb9" translate="yes" xml:space="preserve">
+          <source>I do not want to utilize JSONP.</source>
+          <target state="translated">我不想利用JSONP。</target>
+        </trans-unit>
+        <trans-unit id="d09fde375f0cd87d20979405e3d38cb1e221db9d" translate="yes" xml:space="preserve">
+          <source>I have full control of both site A and site B. How do I enable the javascript code downloaded from the site A to access resources on the site B using this header?</source>
+          <target state="translated">我对A站点和B站点都有完全的控制权,如何才能让从A站点下载的javascript代码使用这个标题访问B站点的资源?</target>
+        </trans-unit>
+        <trans-unit id="9ab469e49ab007a1f4aca272e24988f133d0239d" translate="yes" xml:space="preserve">
+          <source>I saw a lot of added this headers:</source>
+          <target state="translated">我看到很多人加了这个头像。</target>
+        </trans-unit>
+        <trans-unit id="bcfe019fd908beb42af7ba76dea547996805d921" translate="yes" xml:space="preserve">
+          <source>I think the reason for my bad intuition is the point of view I have when developing a site. It's &lt;strong&gt;my&lt;/strong&gt; site, with all &lt;strong&gt;my&lt;/strong&gt; JavaScript, therefore it isn't doing anything malicious and it should be up to &lt;strong&gt;me&lt;/strong&gt; to specify which other sites &lt;strong&gt;my&lt;/strong&gt; JavaScript can interact with. When in fact I should be thinking which &lt;strong&gt;other&lt;/strong&gt; sites JavaScript are trying to interact with my site and should I use CORS to allow them?</source>
+          <target state="translated">我认为直觉不佳的原因是开发网站时的观点。 这是&lt;strong&gt;我的&lt;/strong&gt;网站，使用了&lt;strong&gt;我&lt;/strong&gt;所有的JavaScript，因此它没有做任何恶意的事情，应该由&lt;strong&gt;我&lt;/strong&gt;来指定&lt;strong&gt;我的&lt;/strong&gt; JavaScript可以与哪些其他网站进行交互。 实际上，我何时应该在考虑JavaScript尝试与&lt;strong&gt;其他&lt;/strong&gt;网站进行交互的&lt;strong&gt;其他&lt;/strong&gt;站点，并且我应该使用CORS允许它们吗？</target>
+        </trans-unit>
+        <trans-unit id="ea75fc450491732817d81c5e6ba7c55e53aaaf8c" translate="yes" xml:space="preserve">
+          <source>If another client makes a &lt;em&gt;cross origin&lt;/em&gt; request to a server, those cookies are sent along, just as before.  Ruh roh.</source>
+          <target state="translated">如果另一个客户端向服务器发出&lt;em&gt;跨源&lt;/em&gt;请求，则这些cookie会像以前一样发送。 h</target>
+        </trans-unit>
+        <trans-unit id="0fbef03b48408fe4be85b4fd43c89fcb90ea9874" translate="yes" xml:space="preserve">
+          <source>If foo.aspx supports OPTIONS HTTP verb, it might return response like below:</source>
+          <target state="translated">如果foo.aspx支持OPTIONS HTTP动词,它可能会返回像下面这样的响应。</target>
+        </trans-unit>
+        <trans-unit id="82d42f9e57a8e7c74c1875653db07a225efbc513" translate="yes" xml:space="preserve">
+          <source>If the server responds to the OPTIONS preflight with appropriate response headers (&lt;code&gt;Access-Control-Allow-Headers&lt;/code&gt; for non-simple headers, &lt;code&gt;Access-Control-Allow-Methods&lt;/code&gt; for non-simple verbs) that match the non-simple verb and/or non-simple headers, then the browser sends the actual request.</source>
+          <target state="translated">如果服务器使用适当的响应标头（非简单标头的 &lt;code&gt;Access-Control-Allow-Headers&lt;/code&gt; ，非简单动词的 &lt;code&gt;Access-Control-Allow-Methods&lt;/code&gt; ）响应非简单动词和/或非匹配的OPTIONS预检响应-simple标头，然后浏览器发送实际请求。</target>
+        </trans-unit>
+        <trans-unit id="b209912bc039e43f1ba2a6ad10304105e971e755" translate="yes" xml:space="preserve">
+          <source>If you are using PHP, try adding the following code at the beginning of the php file:</source>
+          <target state="translated">如果你使用的是PHP,请尝试在php文件的开头添加以下代码。</target>
+        </trans-unit>
+        <trans-unit id="012b5bc6588408b5759125ca431dc0ee67a011c5" translate="yes" xml:space="preserve">
+          <source>If you are using external domains such as server, try this:</source>
+          <target state="translated">如果你使用的是外部域,比如服务器,可以试试这个。</target>
+        </trans-unit>
+        <trans-unit id="fac656ade96604b1bb74bdc54813902f91db4ff2" translate="yes" xml:space="preserve">
+          <source>If you are using localhost, try this:</source>
+          <target state="translated">如果你使用的是localhost,可以试试这个。</target>
+        </trans-unit>
+        <trans-unit id="fa242605a7d86095b9190396fd9364feb7753098" translate="yes" xml:space="preserve">
+          <source>If you want just to test a cross domain application in which the browser blocks your request, then you can just open your browser in unsafe mode and test your application without changing your code and without making your code unsafe.
+From MAC OS you can do this from the terminal line:</source>
+          <target state="translated">如果你只是想测试一个跨域的应用程序,而浏览器会阻止你的请求,那么你可以在不安全模式下打开浏览器,在不改变代码的情况下测试你的应用程序,而不需要修改你的代码,也不需要让你的代码不安全。在MAC操作系统中,你可以通过终端行进行测试。</target>
+        </trans-unit>
+        <trans-unit id="511761e5536cf8f170218acc8981aa0ecce25b0b" translate="yes" xml:space="preserve">
+          <source>In Python I have been using the &lt;a href=&quot;https://flask-cors.readthedocs.io/en/latest/&quot;&gt;&lt;code&gt;Flask-CORS&lt;/code&gt; library&lt;/a&gt; with great success. It makes dealing with CORS super easy and painless. I added some code from the library's documentation below.</source>
+          <target state="translated">在Python中，我一直使用&lt;a href=&quot;https://flask-cors.readthedocs.io/en/latest/&quot;&gt; &lt;code&gt;Flask-CORS&lt;/code&gt; 库&lt;/a&gt;取得了巨大的成功。 它使与CORS的交往变得超级轻松而轻松。 我从下面的库文档中添加了一些代码。</target>
+        </trans-unit>
+        <trans-unit id="ecb9b7c454fe20235af87d4ec8e149d40f0c3d94" translate="yes" xml:space="preserve">
+          <source>Installing:</source>
+          <target state="translated">Installing:</target>
+        </trans-unit>
+        <trans-unit id="59923435fe33e2e35eb67133c1bb2118e8264bb1" translate="yes" xml:space="preserve">
+          <source>It's all about cookies. Cookies are stored on a client by their domain.</source>
+          <target state="translated">这都是关于Cookie的。Cookies是通过其域名存储在客户端上。</target>
+        </trans-unit>
+        <trans-unit id="036bc79e753677ceaeb2e07cdc182e7630df8ef3" translate="yes" xml:space="preserve">
+          <source>JSON With Padding (&lt;a href=&quot;http://en.wikipedia.org/wiki/JSONP&quot;&gt;JSONP&lt;/a&gt;).</source>
+          <target state="translated">带有填充的JSON（ &lt;a href=&quot;http://en.wikipedia.org/wiki/JSONP&quot;&gt;JSONP&lt;/a&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="ca44019ded082daf451d8d84c802691d29ea6475" translate="yes" xml:space="preserve">
+          <source>Just by adding the Proxy link will work, but it can also throw error for No Access again. Hence better to add header as shown below.</source>
+          <target state="translated">只需添加代理链接就可以了,但也会出现 &quot;无法访问 &quot;的错误。所以最好是添加标题,如下图所示。</target>
+        </trans-unit>
+        <trans-unit id="990982cfd7f5181c1c4b59985f6c17c7572a78da" translate="yes" xml:space="preserve">
+          <source>Many pages on the web today load resources like &lt;strong&gt;CSS stylesheets&lt;/strong&gt;, &lt;strong&gt;images&lt;/strong&gt; and &lt;strong&gt;scripts&lt;/strong&gt; from separate domains (thus it should be cool).</source>
+          <target state="translated">如今，网络上的许多页面都从不同的域加载资源，例如&lt;strong&gt;CSS样式表&lt;/strong&gt; ， &lt;strong&gt;图像&lt;/strong&gt;和&lt;strong&gt;脚本&lt;/strong&gt; （因此应该很酷）。</target>
+        </trans-unit>
+        <trans-unit id="42aa7d0d1e4cb56cb1cdea6f9ad0ab375346d78d" translate="yes" xml:space="preserve">
+          <source>Modern browsers use &lt;strong&gt;CORS&lt;/strong&gt; in an &lt;strong&gt;API container&lt;/strong&gt; - such as &lt;code&gt;XMLHttpRequest&lt;/code&gt; or &lt;code&gt;Fetch&lt;/code&gt; - to mitigate risks of cross-origin HTTP requests.</source>
+          <target state="translated">现代浏览器在&lt;strong&gt;API容器&lt;/strong&gt; （例如 &lt;code&gt;XMLHttpRequest&lt;/code&gt; 或 &lt;code&gt;Fetch&lt;/code&gt; )中使用&lt;strong&gt;CORS&lt;/strong&gt;来减轻跨源HTTP请求的风险。</target>
+        </trans-unit>
+        <trans-unit id="c158f1129e2a1e2d82881627004ee2f4629d1c66" translate="yes" xml:space="preserve">
+          <source>Modern browsers will not block cross-domain requests outright.  If Site A requests a page from Site B, the browser will actually fetch the requested page &lt;em&gt;on the network level&lt;/em&gt; and check if the response headers list Site A as a permitted requester domain.  If Site B has not indicated that Site A is allowed to access this page, the browser will trigger the &lt;code&gt;XMLHttpRequest&lt;/code&gt;'s &lt;code&gt;error&lt;/code&gt; event and  deny the response data to the requesting JavaScript code.</source>
+          <target state="translated">现代浏览器不会完全阻止跨域请求。 如果站点A从站点B请求一个页面，则浏览器实际上将&lt;em&gt;在网络级别上&lt;/em&gt;获取请求的页面&lt;em&gt;，&lt;/em&gt;并检查响应头是否将站点A列为允许的请求者域。 如果站点B尚未指示允许站点A访问此页面，则浏览器将触发 &lt;code&gt;XMLHttpRequest&lt;/code&gt; 的 &lt;code&gt;error&lt;/code&gt; 事件，并拒绝对请求JavaScript代码的响应数据。</target>
+        </trans-unit>
+        <trans-unit id="76e7b7d6dbafadc7d02482466d004be762003b16" translate="yes" xml:space="preserve">
+          <source>Node: &lt;code&gt;app.use('Access-Control-Allow-Origin':'*');&lt;/code&gt;</source>
+          <target state="translated">节点： &lt;code&gt;app.use('Access-Control-Allow-Origin':'*');&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="0774d4e9c921c6d51ae15b2d71eb985b886205bd" translate="yes" xml:space="preserve">
+          <source>Non-simple requests</source>
+          <target state="translated">非简单要求</target>
+        </trans-unit>
+        <trans-unit id="c17d4be261192d21bdacbfa184e2f727114899f3" translate="yes" xml:space="preserve">
+          <source>Note that &lt;code&gt;Access-Control-Request-Method&lt;/code&gt; and &lt;code&gt;Access-Control-Request-Headers&lt;/code&gt; are added by the browser automatically; you do not need to add them. This OPTIONS preflight gets the successful response headers:</source>
+          <target state="translated">请注意， &lt;code&gt;Access-Control-Request-Method&lt;/code&gt; 和 &lt;code&gt;Access-Control-Request-Headers&lt;/code&gt; 是由浏览器自动添加的； 您无需添加它们。 此OPTIONS预检会获取成功的响应标头：</target>
+        </trans-unit>
+        <trans-unit id="bca29b4c27957d6c5a6dfc00cdfff94aa12e7ae5" translate="yes" xml:space="preserve">
+          <source>Noted that, you have to paste the following code under &lt;code&gt;&amp;lt;system.webServer&amp;gt;&lt;/code&gt; tag</source>
+          <target state="translated">注意，您必须将以下代码粘贴到 &lt;code&gt;&amp;lt;system.webServer&amp;gt;&lt;/code&gt; 标记下</target>
+        </trans-unit>
+        <trans-unit id="f2b757a60b81b0610f7e0143768cb1bf5f5771cb" translate="yes" xml:space="preserve">
+          <source>Once you understand why it's there, the headers and discussion becomes a lot clearer.  I'll give it a shot in a few lines.</source>
+          <target state="translated">一旦你明白了为什么会出现在这里,标题和讨论就变得清晰了很多。我用几句话来试探一下。</target>
+        </trans-unit>
+        <trans-unit id="b9fd5fe1077f37c5e40b6997c12d1c88618c93ec" translate="yes" xml:space="preserve">
+          <source>One thing is sure - I still do not understand how am I supposed to use this header.</source>
+          <target state="translated">有一点可以肯定的是--我还是不明白我应该如何使用这个标题。</target>
+        </trans-unit>
+        <trans-unit id="0c524bfd8fb631d16e1066def5e7ed1f33a402d3" translate="yes" xml:space="preserve">
+          <source>Only if the response contains &quot;Access-Control-Allow-Origin&quot; AND its value is &quot;*&quot; or contain the domain who submitted the CORS request, by satisfying this mandtory condition browser will submit the actual Cross-Domain request, and cache the result in &quot;&lt;strong&gt;Preflight-Result-Cache&lt;/strong&gt;&quot;.</source>
+          <target state="translated">仅当响应包含&amp;ldquo; Access-Control-Allow-Origin&amp;rdquo;并且其值为&amp;ldquo; *&amp;rdquo;或包含提交CORS请求的域时，通过满足此强制条件，浏览器将提交实际的跨域请求，并缓存结果在&amp;ldquo; &lt;strong&gt;预检结果缓存&lt;/strong&gt; &amp;rdquo;中。</target>
+        </trans-unit>
+        <trans-unit id="cba4c2393e21aee27e3e96781ebdf9c4f329b911" translate="yes" xml:space="preserve">
+          <source>Origin: &lt;a href=&quot;http://www.example.com&quot;&gt;http://www.example.com&lt;/a&gt;</source>
+          <target state="translated">来源： &lt;a href=&quot;http://www.example.com&quot;&gt;http&lt;/a&gt; ： //www.example.com</target>
+        </trans-unit>
+        <trans-unit id="42682c0cef7e29104cf2fb7a57155baed6c873a6" translate="yes" xml:space="preserve">
+          <source>P.S.</source>
+          <target state="translated">P.S.</target>
+        </trans-unit>
+        <trans-unit id="ef3b9fb63ad4f41fc921c9eb7daaa16c866b787c" translate="yes" xml:space="preserve">
+          <source>Php: &lt;code&gt;header('Access-Control-Allow-Origin':'*');&lt;/code&gt;</source>
+          <target state="translated">Php： &lt;code&gt;header('Access-Control-Allow-Origin':'*');&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="092830db2ae0b848e4a7fbe6ebb0dd4a586af9c1" translate="yes" xml:space="preserve">
+          <source>Question is a bit too old to answer, but I am posting this for any future reference to this question.</source>
+          <target state="translated">问题有点太老了,但我在此贴出这个问题,以备以后有机会参考。</target>
+        </trans-unit>
+        <trans-unit id="e8424d8bb7f11a8cc4b3389cc51d65e5c14d8fe2" translate="yes" xml:space="preserve">
+          <source>Same-Origin Policy</source>
+          <target state="translated">同源政策</target>
+        </trans-unit>
+        <trans-unit id="d8f49b02b468a270ab421e2d51f5d4263f1bb933" translate="yes" xml:space="preserve">
+          <source>See &lt;a href=&quot;https://stackoverflow.com/a/13400954/710446&quot;&gt;Understanding XMLHttpRequest over CORS&lt;/a&gt; for a little more information about non-simple requests.</source>
+          <target state="translated">有关非简单请求的更多信息，请参阅&lt;a href=&quot;https://stackoverflow.com/a/13400954/710446&quot;&gt;通过CORS了解XMLHttpRequest&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="4e327445570f452b897677d54af70e33b468e526" translate="yes" xml:space="preserve">
+          <source>Simple example that allows CORS for all domains on all routes:</source>
+          <target state="translated">简单的例子,允许在所有路线上的所有域的CORS。</target>
+        </trans-unit>
+        <trans-unit id="034a38a06dec45075704e4adb13cbb4ae9f733ba" translate="yes" xml:space="preserve">
+          <source>Simply paste the following code in your web.config file.</source>
+          <target state="translated">在web.config文件中粘贴以下代码即可。</target>
+        </trans-unit>
+        <trans-unit id="ff6537b92aed8439a00dd653b603494c0e54b0aa" translate="yes" xml:space="preserve">
+          <source>Since the cookies are validated as expected, the server will authorize the response.</source>
+          <target state="translated">由于cookie已被验证,所以服务器将对响应进行授权。</target>
+        </trans-unit>
+        <trans-unit id="3d6a778de145e7651342fa186ec3e751766e4556" translate="yes" xml:space="preserve">
+          <source>So now, a few questions and answers become apparent:</source>
+          <target state="translated">所以现在,几个问题和答案就变得明显了。</target>
+        </trans-unit>
+        <trans-unit id="168634b8d2a054313c9a1ffe3818f5e07f300afc" translate="yes" xml:space="preserve">
+          <source>So, a web application using &lt;code&gt;XMLHttpRequest&lt;/code&gt; or &lt;code&gt;Fetch&lt;/code&gt; could only make &lt;strong&gt;HTTP requests&lt;/strong&gt; to &lt;strong&gt;its own domain&lt;/strong&gt;.</source>
+          <target state="translated">因此，使用 &lt;code&gt;XMLHttpRequest&lt;/code&gt; 或 &lt;code&gt;Fetch&lt;/code&gt; 的Web应用程序只能&lt;strong&gt;向其自己的domain&lt;/strong&gt;发出&lt;strong&gt;HTTP请求&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="d82b9a3c342873a23c4fab6db3c55ef4ea6a66cc" translate="yes" xml:space="preserve">
+          <source>Sometimes you need to work cross domain, which is where CORS comes in. CORS relaxes the same origin policy for domainA.com, using the &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; header to list other domains (domainB.com) that are trusted to run JavaScript that can interact with domainA.com.</source>
+          <target state="translated">有时您需要跨域工作，而这正是CORS的来源。CORS使用 &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; 标头列出了可信任运行的其他域（domainB.com），从而放宽了domainA.com的原始策略。可以与domainA.com进行交互的JavaScript。</target>
+        </trans-unit>
+        <trans-unit id="d8284b007aa1410cee38f4acd287058a3c7a25bb" translate="yes" xml:space="preserve">
+          <source>Supposing that Site A wants to send a PUT request for &lt;code&gt;/somePage&lt;/code&gt;, with a non-simple &lt;code&gt;Content-Type&lt;/code&gt; value of &lt;code&gt;application/json&lt;/code&gt;, the browser would first send a preflight request:</source>
+          <target state="translated">假设站点A要发送对 &lt;code&gt;/somePage&lt;/code&gt; 的PUT请求，其非简单的 &lt;code&gt;Content-Type&lt;/code&gt; 值为 &lt;code&gt;application/json&lt;/code&gt; ，则浏览器将首先发送预检请求：</target>
+        </trans-unit>
+        <trans-unit id="da390ae4eac8720e9ebf822a8c4b20180f117363" translate="yes" xml:space="preserve">
+          <source>The &lt;strong&gt;Cross-Origin Resource Sharing (CORS)&lt;/strong&gt; mechanism gives web servers &lt;strong&gt;cross-domain access controls&lt;/strong&gt;, which enable secure cross-domain data transfers.</source>
+          <target state="translated">&lt;strong&gt;跨域资源共享（CORS）&lt;/strong&gt;机制为Web服务器&lt;strong&gt;提供了跨域访问控制&lt;/strong&gt; ，可实现安全的跨域数据传输。</target>
+        </trans-unit>
+        <trans-unit id="3f523716bd882432eaaceb8c667a9d5d0f98dab8" translate="yes" xml:space="preserve">
+          <source>The Access-Control-Allow-Origin response header indicates whether the
+  response can be shared with requesting code from the given origin.</source>
+          <target state="translated">Access-Control-Allow-Origin响应头指示了响应是否可以与来自给定来源的请求代码共享。</target>
+        </trans-unit>
+        <trans-unit id="64becf81c730d7ddecadf5494d020a3051823f23" translate="yes" xml:space="preserve">
+          <source>The CORS standard describes new HTTP headers which provide browsers and servers a way to request remote URLs only when they have permission.</source>
+          <target state="translated">CORS标准描述了新的HTTP头文件,它为浏览器和服务器提供了一种只有在有权限的情况下才能请求远程URL的方法。</target>
+        </trans-unit>
+        <trans-unit id="7579024e9c6a9814e5d551a9eae975f7eb6243e4" translate="yes" xml:space="preserve">
+          <source>The blue parts I marked above were the kernal facts, &quot;Origin&quot; request header &quot;indicates where the cross-origin request or preflight request originates from&quot;, the &quot;Access-Control-Allow-Origin&quot; response header indicates this page allows remote request from DomainA (if the value is * indicate allows remote requests from any domain).</source>
+          <target state="translated">上面我标注的蓝色部分是kernal事实,&quot;Origin &quot;请求头 &quot;表示跨源请求或预飞请求来自哪里&quot;,&quot;Access-Control-Allow-Origin &quot;响应头表示这个页面允许来自DomainA的远程请求(如果值为*表示允许来自任何域的远程请求)。</target>
+        </trans-unit>
+        <trans-unit id="b65de9513f32a4c4cc6825021c061136c01a69dd" translate="yes" xml:space="preserve">
+          <source>The browser sends the &lt;code&gt;OPTIONS&lt;/code&gt; request with an &lt;code&gt;Origin HTTP&lt;/code&gt; header.</source>
+          <target state="translated">浏览器发送带有 &lt;code&gt;Origin HTTP&lt;/code&gt; 标头的 &lt;code&gt;OPTIONS&lt;/code&gt; 请求。</target>
+        </trans-unit>
+        <trans-unit id="7d531bbe49a2d68cdc67d51711b7278da9b33732" translate="yes" xml:space="preserve">
+          <source>The browsers sends the actual request:</source>
+          <target state="translated">浏览器发送的实际请求。</target>
+        </trans-unit>
+        <trans-unit id="a934d256e0a980eeb9f6c444da2f62c93f8bf7b4" translate="yes" xml:space="preserve">
+          <source>The client triggers some functionality of MyCode.js, which in turn make requests to http://siteB, which should be fine, despite being cross-origin requests.</source>
+          <target state="translated">客户端触发了MyCode.js的一些功能,反过来向http://siteB发出请求,虽然是跨源请求,但应该没有问题。</target>
+        </trans-unit>
+        <trans-unit id="dbf7b1541a715c0443009d1f4641e7a2ee11f024" translate="yes" xml:space="preserve">
+          <source>The code that does the downloading - your html script tag or xhr from javascript or whatever - came from, let's say, &lt;a href=&quot;http://siteZ&quot;&gt;http://siteZ&lt;/a&gt;.  And, when the browser requests MyCode.js, it sends an Origin: header saying &quot;Origin: &lt;a href=&quot;http://siteZ&quot;&gt;http://siteZ&lt;/a&gt;&quot;, because it can see that you're requesting to siteA and siteZ != siteA.  (You cannot stop or interfere with this.)</source>
+          <target state="translated">进行下载的代码-您的html脚本标记或来自javascript的xhr或其他内容-假设来自&lt;a href=&quot;http://siteZ&quot;&gt;http：// siteZ&lt;/a&gt; 。 并且，当浏览器请求MyCode.js时，它将发送一个Origin：标头， &lt;a href=&quot;http://siteZ&quot;&gt;标明&lt;/a&gt; &amp;ldquo; Origin： http：// siteZ &amp;rdquo;，因为它可以看到您正在请求siteA和siteZ！= siteA。 （您不能停止或干预。）</target>
+        </trans-unit>
+        <trans-unit id="e26172510c48c8b57c33a3ae16c5818426df4b74" translate="yes" xml:space="preserve">
+          <source>The purpose of the same origin policy is to protect you from malicious JavaScript on siteA.com accessing private information you've chosen to share only with siteB.com. Without the same origin policy, JavaScript written by the authors of siteA.com could make your browser make requests to siteB.com, using your authentication cookies for siteB.com. In this way, siteA.com could steal the secret information you share with siteB.com.</source>
+          <target state="translated">同源政策的目的是为了保护您,防止在siteA.com上的恶意JavaScript访问您选择只与siteB.com共享的私人信息。如果没有相同的来源政策,siteA.com的作者编写的JavaScript可能会让您的浏览器向siteB.com提出请求,使用您的验证cookie。这样一来,siteA.com就可以窃取您与siteB.com分享的秘密信息。</target>
+        </trans-unit>
+        <trans-unit id="61bc29dae0f332e323eadbd6d92b28a19615ab02" translate="yes" xml:space="preserve">
+          <source>The response header of MyCode.js contains &lt;strong&gt;Access-Control-Allow-Origin: http://siteB&lt;/strong&gt;, which I thought meant that MyCode.js was allowed to make cross-origin references to the site B.</source>
+          <target state="translated">MyCode.js的响应标头包含&lt;strong&gt;Access-Control-Allow-Origin：http：// siteB&lt;/strong&gt; ，我认为这意味着MyCode.js被允许对站点B进行跨域引用。</target>
+        </trans-unit>
+        <trans-unit id="7da85dccb097c912fea1e023dcaa3cbcbacfb502" translate="yes" xml:space="preserve">
+          <source>The server at &lt;code&gt;service.example.com&lt;/code&gt; may respond with:</source>
+          <target state="translated">&lt;code&gt;service.example.com&lt;/code&gt; 上的服务器可能会响应：</target>
+        </trans-unit>
+        <trans-unit id="f9366f7ceb9098513bc618100e4a166fb851ac2d" translate="yes" xml:space="preserve">
+          <source>The value of this header is the domain that served the parent page. When a page from &lt;code&gt;http://www.example.com&lt;/code&gt; attempts to access a user's data in &lt;code&gt;service.example.com&lt;/code&gt;, the following request header would be sent to &lt;code&gt;service.example.com&lt;/code&gt;:</source>
+          <target state="translated">此标头的值是为父页面提供服务的域。 当来自 &lt;code&gt;http://www.example.com&lt;/code&gt; 的页面尝试访问 &lt;code&gt;service.example.com&lt;/code&gt; 中的用户数据时，以下请求标头将发​​送到 &lt;code&gt;service.example.com&lt;/code&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="657f30c61187db82d87b65e6ce81f0467605fd0d" translate="yes" xml:space="preserve">
+          <source>Then, MyCode.js comes from siteA.  When it makes requests to siteB, they are all cross-origin, the browser sends Origin: siteA, and siteB has to take the siteA, recognize it's on the short list of allowed requesters, and send back A-C-A-O: siteA.  Only then will the browser let your script get the result of those requests.</source>
+          <target state="translated">然后,MyCode.js来自于siteA。当它向siteB发出请求时,都是跨源的,浏览器会发送Origin:siteA,而siteB必须把siteA拿下,承认它在允许请求者的短名单上,然后发回A-C-A-A-O:siteA。只有这样,浏览器才会让你的脚本得到这些请求的结果。</target>
+        </trans-unit>
+        <trans-unit id="cc9aabc473d7e2d21950303f057e3358802271a9" translate="yes" xml:space="preserve">
+          <source>This will allow to share content for different domain.</source>
+          <target state="translated">这样就可以实现不同领域的内容共享。</target>
+        </trans-unit>
+        <trans-unit id="4503c23a82401d11ba63cd20aeb3e7ecf9db4793" translate="yes" xml:space="preserve">
+          <source>Those cookies get gathered up and sent along - and now, &lt;code&gt;malicious.com&lt;/code&gt; has a response from &lt;code&gt;yourbank&lt;/code&gt;.</source>
+          <target state="translated">这些cookie被收集起来并一起发送-现在， &lt;code&gt;malicious.com&lt;/code&gt; 网站得到 &lt;code&gt;yourbank&lt;/code&gt; 的回应。</target>
+        </trans-unit>
+        <trans-unit id="aa4d6d318719d478d3206b9a5fe136b655674ae9" translate="yes" xml:space="preserve">
+          <source>Those tricky ways have more or less some issues, for example JSONP might result in security hole if developers simply &quot;eval&quot; it, and #3 above, although it works, both domains should build strict contract between each other, it neither flexible nor elegant IMHO:)</source>
+          <target state="translated">那些棘手的方法或多或少都有一些问题,例如JSONP如果开发者简单地 &quot;评估 &quot;可能会导致安全漏洞,而上面的#3虽然可行,但两个领域之间应该建立严格的契约,这既不灵活也不优雅IMHO:)</target>
+        </trans-unit>
+        <trans-unit id="9ca094af81bfc3826ed4436cf83d45cb4a2e4d44" translate="yes" xml:space="preserve">
+          <source>To improve web applications, developers asked browser vendors to allow cross-domain requests.</source>
+          <target state="translated">为了改进Web应用,开发者要求浏览器厂商允许跨域请求。</target>
+        </trans-unit>
+        <trans-unit id="dec4c5b25b8efa7a70ca001140b06f9b4fc9abc0" translate="yes" xml:space="preserve">
+          <source>To understand which domain should serve the CORS headers, consider this. You visit malicious.com, which contains some JavaScript that tries to make a cross domain request to mybank.com. It should be up to mybank.com, not malicious.com, to decide whether or not it sets CORS headers that relax the same origin policy allowing the JavaScript from malicious.com to interact with it. If malicous.com could set its own CORS headers allowing its own JavaScript access to mybank.com, this would completely nullify the same origin policy.</source>
+          <target state="translated">要理解哪个域应该为CORS头文件提供服务,可以考虑这样做。你访问malicious.com,其中包含一些JavaScript,试图向mybank.com发出跨域请求。这应该由mybank.com来决定是否设置CORS头,而不是malicous.com来决定是否放宽相同的起源策略,允许来自malicous.com的JavaScript与之交互。如果malicous.com可以设置自己的CORS头,允许自己的JavaScript访问mybank.com,这将完全取消相同的起源政策。</target>
+        </trans-unit>
+        <trans-unit id="7bf85d7014db5e0169f6a290c30265c13b955563" translate="yes" xml:space="preserve">
+          <source>Use Flash/Silverlight or server side as a &quot;proxy&quot; to communicate
+with remote.</source>
+          <target state="translated">使用FlashSilverlight或服务器端作为 &quot;代理 &quot;与远程通信。</target>
+        </trans-unit>
+        <trans-unit id="54542703a4403c62702b623ce59c580d816c24ad" translate="yes" xml:space="preserve">
+          <source>Using &lt;strong&gt;React&lt;/strong&gt; and &lt;strong&gt;Axios&lt;/strong&gt;, join proxy link to the URL and add header as shown below</source>
+          <target state="translated">使用&lt;strong&gt;React&lt;/strong&gt;和&lt;strong&gt;Axios&lt;/strong&gt; ，将代理链接连接到URL并添加标题，如下所示</target>
+        </trans-unit>
+        <trans-unit id="a44858f05242a7b455ce62fdc8df88a473321dc7" translate="yes" xml:space="preserve">
+          <source>W3C had introduced Cross-Origin Resource Sharing (CORS) as a standard solution to provide a safe, flexible and a recommended standard way to solve this issue.</source>
+          <target state="translated">W3C曾推出跨源资源共享(CORS),作为一个标准的解决方案,提供了一个安全、灵活的、推荐的标准方式来解决这个问题。</target>
+        </trans-unit>
+        <trans-unit id="f1278b75a70fd6c5b6a83f2408abb534e43d6ca3" translate="yes" xml:space="preserve">
+          <source>Well, I am wrong. It does not work like this at all. So, I have read &lt;a href=&quot;http://en.wikipedia.org/wiki/Cross-origin_resource_sharing&quot;&gt;Cross-origin resource sharing&lt;/a&gt; and attempted to read &lt;a href=&quot;http://www.w3.org/TR/cors/.&quot;&gt;Cross-Origin Resource Sharing in w3c recommendation&lt;/a&gt;</source>
+          <target state="translated">好吧，我错了。 它根本不像这样工作。 因此，我已经阅读了&lt;a href=&quot;http://en.wikipedia.org/wiki/Cross-origin_resource_sharing&quot;&gt;跨域资源共享，&lt;/a&gt;并尝试阅读&lt;a href=&quot;http://www.w3.org/TR/cors/.&quot;&gt;w3c建议中的跨域资源共享&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="acd1d52dcbd73103ac06849984a12c77293f662b" translate="yes" xml:space="preserve">
+          <source>What happens on the network level can be &lt;em&gt;slightly&lt;/em&gt; more complex than explained above. If the request is a &lt;a href=&quot;http://www.html5rocks.com/en/tutorials/cors/#toc-handling-a-not-so-simple-request&quot;&gt;&quot;non-simple&quot; request&lt;/a&gt;, the browser first sends a data-less &quot;preflight&quot; OPTIONS request, to verify that the server will accept the request. A request is non-simple when either (or both):</source>
+          <target state="translated">在网络级别发生的事情可能比上面解释的更为复杂。 如果该请求是&lt;a href=&quot;http://www.html5rocks.com/en/tutorials/cors/#toc-handling-a-not-so-simple-request&quot;&gt;&amp;ldquo;非简单&amp;rdquo;请求&lt;/a&gt; ，则浏览器首先发送一个无数据的&amp;ldquo;预检&amp;rdquo; OPTIONS请求，以验证服务器将接受该请求。 当一个（或两个）同时发生时，请求是不简单的：</target>
+        </trans-unit>
+        <trans-unit id="69b9ebc5edfe8d1c244868c40d9107fcf6856520" translate="yes" xml:space="preserve">
+          <source>When Site A tries to fetch content from Site B,  Site B can send an &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; response header to tell the browser that the content of this page is accessible to certain origins. (An &lt;em&gt;origin&lt;/em&gt; is a &lt;a href=&quot;https://stackoverflow.com/a/19542686/710446&quot;&gt;domain, plus a scheme and port number&lt;/a&gt;.)  By default, Site B's pages are &lt;a href=&quot;https://en.wikipedia.org/wiki/Same-origin_policy&quot;&gt;not accessible to any other origin&lt;/a&gt;; using the &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; header opens a door for cross-origin access by specific requesting origins.</source>
+          <target state="translated">当站点A尝试从站点B获取内容时，站点B可以发送一个 &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; 响应标头，以告知浏览器某些来源可以访问此页面的内容。 （ &lt;em&gt;来源&lt;/em&gt;是&lt;a href=&quot;https://stackoverflow.com/a/19542686/710446&quot;&gt;域，再加上方案和端口号&lt;/a&gt; 。）默认情况下， &lt;a href=&quot;https://en.wikipedia.org/wiki/Same-origin_policy&quot;&gt;其他任何来源&lt;/a&gt;都无法访问站点B的页面。 使用 &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; 标头会打开一扇门，可以通过特定的请求来源进行跨域访问。</target>
+        </trans-unit>
+        <trans-unit id="e9af21b6fffa981c22773bf6561ab52a3a2c16ad" translate="yes" xml:space="preserve">
+          <source>When sending the actual request (after preflight is done), the behavior is identical to how a simple request is handled. In other words, a non-simple request whose preflight is successful is treated the same as a simple request (i.e., the server must still send &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; again for the actual response).</source>
+          <target state="translated">发送实际请求时（完成预检后），其行为与处理简单请求的方式相同。 换句话说，将预检成功的非简单请求与简单请求视为相同（即，服务器仍必须再次为实际响应发送 &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="5c2243f9a6f92171c8e09c8e839ba5cb7bfc4bc2" translate="yes" xml:space="preserve">
+          <source>Whenever I start thinking about CORS, my intuition about which site hosts the headers is incorrect, just as you described in your question. For me, it helps to think about the purpose of the same origin policy.</source>
+          <target state="translated">每当我开始思考CORS的时候,我对哪个网站承载的头像是不正确的,就像你的问题中描述的那样。对我来说,思考同源策略的目的是有帮助的。</target>
+        </trans-unit>
+        <trans-unit id="bd36019344446d4d78cea760c6728f16f73a6008" translate="yes" xml:space="preserve">
+          <source>Yikes.</source>
+          <target state="translated">Yikes.</target>
+        </trans-unit>
+        <trans-unit id="0df105fca3eb53e9f6af003aa2f59e35fafdf39f" translate="yes" xml:space="preserve">
+          <source>You browse to &lt;code&gt;malicious.com&lt;/code&gt;. Malicious makes a bunch of requests to different banks, including &lt;code&gt;yourbank.com&lt;/code&gt;.</source>
+          <target state="translated">您浏览到 &lt;code&gt;malicious.com&lt;/code&gt; 。 恶意向不同的银行（包括 &lt;code&gt;yourbank.com&lt;/code&gt; )发出大量请求。</target>
+        </trans-unit>
+        <trans-unit id="575553b8514f130229077f4c265369eae6418abf" translate="yes" xml:space="preserve">
+          <source>You're logged in on your browser to &lt;code&gt;yourbank.com&lt;/code&gt;.  You request to see all your accounts.  &lt;code&gt;yourbank.com&lt;/code&gt; receives the pile of cookies and sends back its response (your accounts).</source>
+          <target state="translated">您已在浏览器中登录到 &lt;code&gt;yourbank.com&lt;/code&gt; 。 您要求查看所有帐户。 &lt;code&gt;yourbank.com&lt;/code&gt; 会收到大量Cookie，然后将其响应（您的帐户）发送回去。</target>
+        </trans-unit>
+        <trans-unit id="76203283d6535a8379e646ae6b32fcc30abf3986" translate="yes" xml:space="preserve">
+          <source>a) server side: in file app.js i give headers to all response like:</source>
+          <target state="translated">a)服务器端:在文件app.js中,我给所有响应的头像。</target>
+        </trans-unit>
+        <trans-unit id="5131eb102c64e7b1977894cc40c9e5ca9c90ab5d" translate="yes" xml:space="preserve">
+          <source>b) client side: in send ajax you need add: &quot;withCredentials: true,&quot; like:</source>
+          <target state="translated">b)客户端:在send ajax中,你需要添加:&quot;withCredentials:true,&quot;,比如。</target>
+        </trans-unit>
+        <trans-unit id="b20f0919247dbc58bf2955f34f20d7033015f132" translate="yes" xml:space="preserve">
+          <source>but i dont need that,</source>
+          <target state="translated">但我不需要这个。</target>
+        </trans-unit>
+        <trans-unit id="2897789ee2c19bf53c9dc2e8e84ef213689a1c9b" translate="yes" xml:space="preserve">
+          <source>good luck.</source>
+          <target state="translated">好运。</target>
+        </trans-unit>
+        <trans-unit id="24178e1d2a641a4fcfd1e7606989c6d425edc0c4" translate="yes" xml:space="preserve">
+          <source>i work with express 4 and node 7.4 and angular,I had the same problem me help this:</source>
+          <target state="translated">我的工作是用Express 4和node 7.4和Angular,我也有同样的问题,请帮帮我。</target>
+        </trans-unit>
+        <trans-unit id="d066fab57be4b00b3b31353f308ec42e5e698855" translate="yes" xml:space="preserve">
+          <source>no.  It means, Only siteB is allowed to do this request.  So your request for MyCode.js from siteZ gets an error instead, and the browser typically gives you nothing.  But if you make your server return A-C-A-O: siteZ instead, you'll get MyCode.js .  Or if it sends '*', that'll work, that'll let everybody in.  Or if the server always sends the string from the Origin: header... but... for security, if you're afraid of hackers, your server should only allow origins on a shortlist, that are allowed to make those requests.</source>
+          <target state="translated">没有。这意味着,只有siteB才被允许做这个请求。所以,你从siteZ请求MyCode.js的请求反而会得到一个错误,而浏览器通常什么也不给你。但是如果你让你的服务器返回A-C-A-A-O:siteZ,你会得到MyCode.js。或者如果它发送的是'*',那就可以了,这样就可以让大家都进来了。或者如果服务器总是发送来自Origin:header的字符串...........但是..........为了安全起见,如果你害怕黑客,你的服务器应该只允许在一个短名单上的起源,即允许发出这些请求。</target>
+        </trans-unit>
+        <trans-unit id="58403ccfa5556c2cca1135361e0a2e51ef732b2a" translate="yes" xml:space="preserve">
+          <source>using an HTTP verb other than GET or POST (e.g. PUT, DELETE)</source>
+          <target state="translated">使用GET或POST以外的HTTP动词</target>
+        </trans-unit>
+        <trans-unit id="13a2ea31f53ce7d7d241eaebbc7aa4ec4fd25d28" translate="yes" xml:space="preserve">
+          <source>using non-simple request headers; the only simple requests headers are:</source>
+          <target state="translated">使用非简单的请求头;唯一的简单请求头是:。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="es" datatype="htmlbody" original="https://stackoverflow.com/questions/10714251">
+    <body>
+      <group id="10714251">
+        <trans-unit id="1583e07615db44b3aebaf031efc7dc227e1bd7fd" translate="yes" xml:space="preserve">
+          <source>&quot;... and am finding that my code would be more re-usable if I were able to use variables instead of Select functions.&quot;</source>
+          <target state="translated">&quot;...y estoy encontrando que mi código sería más reutilizable si pudiera usar variables en lugar de funciones de selección.&quot;</target>
+        </trans-unit>
+        <trans-unit id="65668430b49589fc9fbf6663610ba1ef10b4f6b9" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;.select&lt;/code&gt; can be avoided, as many posted already, by directly working with the already existing objects, which allows various indirect referencing like calculating i and j in a complex way and then editing cell(i,j), etc.</source>
+          <target state="translated">&lt;code&gt;.select&lt;/code&gt; se puede evitar, como muchos ya se publicaron, trabajando directamente con los objetos ya existentes, lo que permite varias referencias indirectas como calcular i y j de una manera compleja y luego editar la celda (i, j), etc.</target>
+        </trans-unit>
+        <trans-unit id="46aace16bb5f3e381d2482dce00631eeda077e0d" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Set&lt;/code&gt; the variable to the required range.  There are many ways to refer to a single-cell range</source>
+          <target state="translated">&lt;code&gt;Set&lt;/code&gt; la variable en el rango requerido. Hay muchas formas de referirse a un rango de celda &amp;uacute;nica</target>
+        </trans-unit>
+        <trans-unit id="dbf0a53faf54267e7d0218a3e233651058490cf8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;1)&lt;/strong&gt; Directly work with the relevant objects</source>
+          <target state="translated">&lt;strong&gt;1)&lt;/strong&gt; Trabajar directamente con los objetos relevantes.</target>
+        </trans-unit>
+        <trans-unit id="ac076fbab555f48bb12dc9a7c21d14606ed09db8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;2)&lt;/strong&gt; If required declare your variables. The same code above can be written as</source>
+          <target state="translated">&lt;strong&gt;2)&lt;/strong&gt; Si es necesario, declare sus variables. El mismo c&amp;oacute;digo anterior se puede escribir como</target>
+        </trans-unit>
+        <trans-unit id="99428b1a299a34007af83abf35330640dd4f9340" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;How do we avoid it?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&amp;iquest;C&amp;oacute;mo lo evitamos?&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="cc08b622bab6c87c5cc5be08dde9605c3175d5e4" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;This is how you may avoid &lt;code&gt;Select&lt;/code&gt; and &lt;code&gt;Activate&lt;/code&gt; in the following cases:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;As&amp;iacute; es como puede evitar &lt;code&gt;Select&lt;/code&gt; y &lt;code&gt;Activate&lt;/code&gt; en los siguientes casos:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4a036de4957f470612e6979da7ab6f0c0d8fcf0a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Two Main reasons why &lt;code&gt;.Select&lt;/code&gt;/&lt;code&gt;.Activate&lt;/code&gt;/&lt;code&gt;Selection&lt;/code&gt;/&lt;code&gt;Activecell&lt;/code&gt;/&lt;code&gt;Activesheet&lt;/code&gt;/&lt;code&gt;Activeworkbook&lt;/code&gt; etc... should be avoided&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Dos razones principales por las que &lt;code&gt;.Select&lt;/code&gt; / &lt;code&gt;.Activate&lt;/code&gt; / &lt;code&gt;Selection&lt;/code&gt; / &lt;code&gt;Activecell&lt;/code&gt; / &lt;code&gt;Activesheet&lt;/code&gt; / &lt;code&gt;Activeworkbook&lt;/code&gt; , etc. deben evitarse&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="9615b91dffdf33df5e1f2103a44c256bec9f7d7f" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt;(Yes, I know this question was about &lt;code&gt;.Select&lt;/code&gt;, not &lt;code&gt;Selection&lt;/code&gt; but I wanted to remove any misconceptions that novice VBA coders might infer.)&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt;(S&amp;iacute;, s&amp;eacute; que esta pregunta era sobre &lt;code&gt;.Select&lt;/code&gt; , no sobre &lt;code&gt;Selection&lt;/code&gt; pero quer&amp;iacute;a eliminar cualquier idea err&amp;oacute;nea que los codificadores de VBA novatos pudieran inferir).&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="60ff3ea1fbc282bfa0ebe965624896d49bcfbd15" translate="yes" xml:space="preserve">
+          <source>A common (bad) piece of code is to open a book, get some data then close again</source>
+          <target state="translated">Una pieza común (mala)de código es abrir un libro,obtener algunos datos y volver a cerrarlo.</target>
+        </trans-unit>
+        <trans-unit id="b5c432e332545ae43153b3b22f6fa7dc9543f84d" translate="yes" xml:space="preserve">
+          <source>A good example of when you could be justified in using &lt;code&gt;.Activate&lt;/code&gt; and &lt;code&gt;.Select&lt;/code&gt; is when you want make sure that a specific Worksheet is selected for visual reasons. E.g., that your Excel would always open with the cover worksheet selected first, disregarding which which was the ActiveSheet when the file was closed.</source>
+          <target state="translated">Un buen ejemplo de cu&amp;aacute;ndo podr&amp;iacute;a justificarse el uso de &lt;code&gt;.Activate&lt;/code&gt; y .Select es cuando desea asegurarse de que se selecciona una Hoja de trabajo espec&amp;iacute;fica por razones visuales. Por ejemplo, que su Excel siempre se abrir&amp;iacute;a con la hoja de c&amp;aacute;lculo de portada seleccionada primero, sin tener en cuenta cu&amp;aacute;l era la ActiveSheet cuando se cerr&amp;oacute; el archivo.</target>
+        </trans-unit>
+        <trans-unit id="a7ff9741542bb2bff5f3d5f551bf4aeac916af25" translate="yes" xml:space="preserve">
+          <source>A minus -2 would have referenced J2</source>
+          <target state="translated">Un menos -2 habría referido a J2</target>
+        </trans-unit>
+        <trans-unit id="4220e97788b8078159668a22922f256f15e54813" translate="yes" xml:space="preserve">
+          <source>Adding a new Worksheet and copying a cell on it:</source>
+          <target state="translated">Añadiendo una nueva hoja de trabajo y copiando una celda en ella:</target>
+        </trans-unit>
+        <trans-unit id="e26144a32cd81fc46c2cfab306213322549da933" translate="yes" xml:space="preserve">
+          <source>After you've done that at the top of your Sub, using them could not be simpler, just use them wherever you would use &quot;Selection&quot;:</source>
+          <target state="translated">Después de hacer eso en la parte superior de tu Sub,usarlos no podría ser más simple,sólo úsalos donde sea que uses &quot;Selección&quot;:</target>
+        </trans-unit>
+        <trans-unit id="9787f1901cdd0a4dbe1ff18d12b8cc48258584ee" translate="yes" xml:space="preserve">
+          <source>Again, this refers to the &lt;em&gt;active workbook&lt;/em&gt;.  Unless you specifically want to work only with the &lt;code&gt;ActiveWorkbook&lt;/code&gt; or &lt;code&gt;ThisWorkbook&lt;/code&gt;, it is better to Dim a &lt;code&gt;Workbook&lt;/code&gt; variable too.</source>
+          <target state="translated">Nuevamente, esto se refiere al &lt;em&gt;libro de trabajo activo&lt;/em&gt; . A menos que desee trabajar espec&amp;iacute;ficamente con &lt;code&gt;ActiveWorkbook&lt;/code&gt; o &lt;code&gt;ThisWorkbook&lt;/code&gt; , tambi&amp;eacute;n es mejor atenuar una variable de libro de trabajo.</target>
+        </trans-unit>
+        <trans-unit id="228ef87a9e7ba50e3e4ff446dac448818b7b1544" translate="yes" xml:space="preserve">
+          <source>All the above examples refer to cells on the &lt;em&gt;active sheet&lt;/em&gt;.  Unless you specifically want to work only with the active sheet, it is better to Dim a &lt;code&gt;Worksheet&lt;/code&gt; variable too</source>
+          <target state="translated">Todos los ejemplos anteriores se refieren a celdas en la &lt;em&gt;hoja activa&lt;/em&gt; . A menos que desee trabajar espec&amp;iacute;ficamente solo con la hoja activa, tambi&amp;eacute;n es mejor atenuar una variable de hoja de &lt;code&gt;Worksheet&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="ac83fe225af8cf1235a81c24e2829cbed9cf54a0" translate="yes" xml:space="preserve">
+          <source>Always state the workbook, worksheet and the cell/range.</source>
+          <target state="translated">Siempre indique el libro de ejercicios,la hoja de trabajo y el rango de la celda.</target>
+        </trans-unit>
+        <trans-unit id="0c3e8c70cfdf57f0ad7dadcf53a72e6a6a570606" translate="yes" xml:space="preserve">
+          <source>And Macro1 as:</source>
+          <target state="translated">Y Macro1 como:</target>
+        </trans-unit>
+        <trans-unit id="66a162fc9cb6af64eb431f806241eb8da0acc491" translate="yes" xml:space="preserve">
+          <source>And never use the index of a workbook.</source>
+          <target state="translated">Y nunca uses el índice de un libro de trabajo.</target>
+        </trans-unit>
+        <trans-unit id="c7a61fd49482d190e4fc8e29863bd18d71ee9b14" translate="yes" xml:space="preserve">
+          <source>And would be better like:</source>
+          <target state="translated">Y sería mejor como:</target>
+        </trans-unit>
+        <trans-unit id="e02fd59c2f4740db7b8d363450445f14ee5220cb" translate="yes" xml:space="preserve">
+          <source>Another good example is when you need to export all sheets into one PDF file, as mentioned in this case - &lt;a href=&quot;https://stackoverflow.com/questions/59107554/how-to-avoid-select-active-statements-in-vba-in-this-example&quot;&gt;How to avoid select/active statements in VBA in this example?&lt;/a&gt;</source>
+          <target state="translated">Otro buen ejemplo es cuando necesita exportar todas las hojas a un archivo PDF, como se menciona en este caso: &lt;a href=&quot;https://stackoverflow.com/questions/59107554/how-to-avoid-select-active-statements-in-vba-in-this-example&quot;&gt;&amp;iquest;C&amp;oacute;mo evitar las declaraciones select / active en VBA en este ejemplo?&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="2ca55f853d0333e2d3bea08ceb83d3f443e361ff" translate="yes" xml:space="preserve">
+          <source>As an added bonus, if you &lt;em&gt;always&lt;/em&gt; name your variables &quot;wb&quot; and &quot;ws&quot;, you can copy and paste code from one book to another and it will usually work with minimal changes needed, if any.</source>
+          <target state="translated">Como beneficio adicional, si &lt;em&gt;siempre&lt;/em&gt; nombra sus variables &quot;wb&quot; y &quot;ws&quot;, puede copiar y pegar el c&amp;oacute;digo de un libro a otro y, por lo general, funcionar&amp;aacute; con los cambios m&amp;iacute;nimos necesarios, si corresponde.</target>
+        </trans-unit>
+        <trans-unit id="29c8dfc5ba99ac1d6c7ccd6a62dfa8ae208771c6" translate="yes" xml:space="preserve">
+          <source>At best, your macro will crash, at worst you might end up writing values or changing cells in the wrong workbook with no way to &quot;Undo&quot; them.</source>
+          <target state="translated">En el mejor de los casos,tu macro se bloqueará,en el peor,podrías terminar escribiendo valores o cambiando celdas en el libro de trabajo equivocado sin posibilidad de &quot;Deshacer&quot;.</target>
+        </trans-unit>
+        <trans-unit id="c266c2aae0dfbc70617fbb635ddbd6ab8df188d3" translate="yes" xml:space="preserve">
+          <source>Avoiding &lt;code&gt;Select&lt;/code&gt; and &lt;code&gt;Activate&lt;/code&gt; is the move that makes you a bit better VBA developer. In general, &lt;code&gt;Select&lt;/code&gt; and &lt;code&gt;Activate&lt;/code&gt; are used when a macro is recorded, thus the &lt;code&gt;Parent&lt;/code&gt; worksheet or range is always considered the active one.</source>
+          <target state="translated">Evitar &lt;code&gt;Select&lt;/code&gt; y &lt;code&gt;Activate&lt;/code&gt; es el movimiento que te hace un mejor desarrollador de VBA. En general, &lt;code&gt;Select&lt;/code&gt; y &lt;code&gt;Activate&lt;/code&gt; se usan cuando se graba una macro, por lo tanto, la hoja de trabajo o rango principal siempre se considera activa.</target>
+        </trans-unit>
+        <trans-unit id="9ecb8a979e18efe477619674504f8039f77f6492" translate="yes" xml:space="preserve">
+          <source>Basically because they're called primarily to handle user input through the Application UI. Since they're the methods called when the user handles objects through the UI, they're the ones recorded by the macro-recorder, and that's why calling them is either brittle or redundant for most situations: you don't have to select an object so as to perform an action with &lt;code&gt;Selection&lt;/code&gt; right afterwards.</source>
+          <target state="translated">B&amp;aacute;sicamente porque est&amp;aacute;n llamados principalmente para manejar la entrada del usuario a trav&amp;eacute;s de la interfaz de usuario de la aplicaci&amp;oacute;n. Dado que son los m&amp;eacute;todos que se llaman cuando el usuario maneja objetos a trav&amp;eacute;s de la interfaz de usuario, son los que registra la macrograbadora, y por eso llamarlos es fr&amp;aacute;gil o redundante para la mayor&amp;iacute;a de las situaciones: no es necesario seleccionar un objeto para realizar una acci&amp;oacute;n con &lt;code&gt;Selection&lt;/code&gt; inmediatamente despu&amp;eacute;s.</target>
+        </trans-unit>
+        <trans-unit id="905437c19e84b248c8538ed51d8616749ba18a57" translate="yes" xml:space="preserve">
+          <source>Basically when you expect the &lt;em&gt;final user&lt;/em&gt; to play a role in the execution.</source>
+          <target state="translated">B&amp;aacute;sicamente cuando espera que el &lt;em&gt;usuario final&lt;/em&gt; desempe&amp;ntilde;e un papel en la ejecuci&amp;oacute;n.</target>
+        </trans-unit>
+        <trans-unit id="d53615a8a60eaf9f8057825a8088f5891dee445b" translate="yes" xml:space="preserve">
+          <source>Because end users will always just click buttons and as soon as the focus moves off of the workbook the code wants to work with then things go completely wrong.</source>
+          <target state="translated">Porque los usuarios finales siempre pulsarán botones y tan pronto como el foco se aleje del libro de trabajo con el que el código quiere trabajar,las cosas irán completamente mal.</target>
+        </trans-unit>
+        <trans-unit id="4f3ade12de7118b1fab12c29e66e2eaa28e83ea2" translate="yes" xml:space="preserve">
+          <source>Can I really never use &lt;code&gt;.Select&lt;/code&gt; or &lt;code&gt;.Activate&lt;/code&gt; for anything?</source>
+          <target state="translated">&amp;iquest;Realmente nunca puedo usar &lt;code&gt;.Activate&lt;/code&gt; o .Activate para nada?</target>
+        </trans-unit>
+        <trans-unit id="67a19b1bc7ddad4d1497ab55d5007648d46c8730" translate="yes" xml:space="preserve">
+          <source>Consider this code</source>
+          <target state="translated">Considere este código</target>
+        </trans-unit>
+        <trans-unit id="0bc8c412a86987fbdd9ffe118b5d3658448585de" translate="yes" xml:space="preserve">
+          <source>Consider, if the above example had been written like this:</source>
+          <target state="translated">Considere,si el ejemplo anterior hubiera sido escrito de esta manera:</target>
+        </trans-unit>
+        <trans-unit id="342af09d892d741e8ae4eb8e0e9c0bde9cb1610c" translate="yes" xml:space="preserve">
+          <source>Example &lt;code&gt;valOne = Range(&quot;A1&quot;).Value&lt;/code&gt;</source>
+          <target state="translated">Ejemplo &lt;code&gt;valOne = Range(&quot;A1&quot;).Value&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="25ae24e2d7c0935ba151d02c912ed006bdcab2e3" translate="yes" xml:space="preserve">
+          <source>Example &lt;code&gt;valTwo = Sheets(&quot;Sheet3&quot;).Codename&lt;/code&gt;</source>
+          <target state="translated">Ejemplo &lt;code&gt;valTwo = Sheets(&quot;Sheet3&quot;).Codename&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="c63737abd7347a7ae582cb9fbdf37d6c0e5b251e" translate="yes" xml:space="preserve">
+          <source>Example:</source>
+          <target state="translated">Example:</target>
+        </trans-unit>
+        <trans-unit id="cf7ebef2a1d6c136a006983c3fada9586f976045" translate="yes" xml:space="preserve">
+          <source>Examples of Selection-based sub framework:</source>
+          <target state="translated">Ejemplos de sub-marco basado en la selección:</target>
+        </trans-unit>
+        <trans-unit id="059c3e8cce263b2945a18ac90b2637e10a8026b1" translate="yes" xml:space="preserve">
+          <source>For example:</source>
+          <target state="translated">Por ejemplo:</target>
+        </trans-unit>
+        <trans-unit id="19ed3e227b2182a6509decf520975d8866c8c29d" translate="yes" xml:space="preserve">
+          <source>From (code generated with macro recorder):</source>
+          <target state="translated">De (código generado con la grabadora de macros):</target>
+        </trans-unit>
+        <trans-unit id="c4d63e4c56f1d2b74aaf3de1c3943ce348748d84" translate="yes" xml:space="preserve">
+          <source>From:</source>
+          <target state="translated">From:</target>
+        </trans-unit>
+        <trans-unit id="2e15feb4b1e6d46ee1b8d65de8879bda3bf04984" translate="yes" xml:space="preserve">
+          <source>Here are a couple additional reasons to make liberal use of named ranges though I am sure I could think of more.</source>
+          <target state="translated">Aquí hay un par de razones adicionales para hacer un uso liberal de las gamas de nombres,aunque estoy seguro de que podría pensar en más.</target>
+        </trans-unit>
+        <trans-unit id="d93452b537df3f534f5ef7bedc5edff439df4f87" translate="yes" xml:space="preserve">
+          <source>Here are a couple examples.</source>
+          <target state="translated">Aquí hay un par de ejemplos.</target>
+        </trans-unit>
+        <trans-unit id="70b222c6b3bdc9703cf528be11364ad5184179d0" translate="yes" xml:space="preserve">
+          <source>Hope this helps to clear things up a little bit.</source>
+          <target state="translated">Espero que esto ayude a aclarar un poco las cosas.</target>
+        </trans-unit>
+        <trans-unit id="1397360149465600f8777ba9df8d95a5e4126e51" translate="yes" xml:space="preserve">
+          <source>How to avoid using Select in Excel VBA</source>
+          <target state="translated">Cómo evitar el uso de Select en Excel VBA</target>
+        </trans-unit>
+        <trans-unit id="e6bdfe5f18421fcf3e6addabaae874e296142168" translate="yes" xml:space="preserve">
+          <source>However, this definition settles situations on which they are called for:</source>
+          <target state="translated">Sin embargo,esta definición resuelve las situaciones en las que se requieren:</target>
+        </trans-unit>
+        <trans-unit id="8f89cc294fff45750397aff3d126f9f1ee0b3ca2" translate="yes" xml:space="preserve">
+          <source>I have a simple golden rule that I follow: Add variables named &quot;wb&quot; and &quot;ws&quot; for a Workbook object and a Worksheet object and always use those to refer to my macro book. If I need to refer to more than one book, or more than one sheet, I add more variables.</source>
+          <target state="translated">Tengo una simple regla de oro que sigo:Añade variables llamadas &quot;wb&quot; y &quot;ws&quot; para un objeto de libro de trabajo y un objeto de hoja de trabajo y siempre las uso para referirme a mi libro de macros.Si necesito referirme a más de un libro,o a más de una hoja,añado más variables.</target>
+        </trans-unit>
+        <trans-unit id="c4e5a5bc6d3ac2b448ed1a7bd951468681990bc7" translate="yes" xml:space="preserve">
+          <source>I have found &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/aa139976%28v=office.10%29.aspx&quot;&gt;this article on ranges&lt;/a&gt; and &lt;a href=&quot;http://www.businessprogrammer.com/201105/power-excel-vba-secret-avoid-using-select/&quot;&gt;this example on the benefits of not using select&lt;/a&gt; but can't find anything on &lt;em&gt;how&lt;/em&gt;?</source>
+          <target state="translated">Encontr&amp;eacute; &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/aa139976%28v=office.10%29.aspx&quot;&gt;este art&amp;iacute;culo sobre rangos&lt;/a&gt; y &lt;a href=&quot;http://www.businessprogrammer.com/201105/power-excel-vba-secret-avoid-using-select/&quot;&gt;este ejemplo sobre los beneficios de no usar select&lt;/a&gt; pero no puedo encontrar nada sobre &lt;em&gt;c&amp;oacute;mo&lt;/em&gt; .</target>
+        </trans-unit>
+        <trans-unit id="406f5a70b189cd46c55531348ccb84e4fdd5b945" translate="yes" xml:space="preserve">
+          <source>I hope that helps. Let me know if you have any questions.</source>
+          <target state="translated">Espero que eso ayude.Hágame saber si tiene alguna pregunta.</target>
+        </trans-unit>
+        <trans-unit id="c82904cb28ac0559082451b3612913720cd3cedd" translate="yes" xml:space="preserve">
+          <source>I hope this helps someone.</source>
+          <target state="translated">Espero que esto ayude a alguien.</target>
+        </trans-unit>
+        <trans-unit id="0449608ca81bf5f5050ebe5831b2f71390c1c5db" translate="yes" xml:space="preserve">
+          <source>I noticed that none of these answers mention the &lt;a href=&quot;https://msdn.microsoft.com/en-us/vba/excel-vba/articles/range-offset-property-excel&quot;&gt;.Offset Property&lt;/a&gt;. This also can be used to avoid using the &lt;code&gt;Select&lt;/code&gt; action when manipulating certain cells, particularly in reference to a selected cell (as the OP mentions with &lt;code&gt;ActiveCell&lt;/code&gt;).</source>
+          <target state="translated">Not&amp;eacute; que ninguna de estas respuestas menciona la &lt;a href=&quot;https://msdn.microsoft.com/en-us/vba/excel-vba/articles/range-offset-property-excel&quot;&gt;propiedad .Offset&lt;/a&gt; . Esto tambi&amp;eacute;n se puede usar para evitar el uso de la acci&amp;oacute;n &lt;code&gt;Select&lt;/code&gt; al manipular ciertas celdas, particularmente en referencia a una celda seleccionada (como el OP menciona con &lt;code&gt;ActiveCell&lt;/code&gt; ).</target>
+        </trans-unit>
+        <trans-unit id="9cb3e9de7fe6f06115cf1d8c5c0446bf5051938c" translate="yes" xml:space="preserve">
+          <source>I will also assume the &quot;ActiveCell&quot; is &lt;strong&gt;J4&lt;/strong&gt;.</source>
+          <target state="translated">Tambi&amp;eacute;n asumir&amp;eacute; que el &quot;ActiveCell&quot; es &lt;strong&gt;J4&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="06cc60f8c75ea171652433a327d13dc8e6332b81" translate="yes" xml:space="preserve">
+          <source>I'm going to give the short answer since everyone else gave the long one.</source>
+          <target state="translated">Voy a dar la respuesta corta ya que todos los demás dieron la larga.</target>
+        </trans-unit>
+        <trans-unit id="054c04a0c52ae72376c1375e28fe08492eab52a8" translate="yes" xml:space="preserve">
+          <source>I've heard much about the understandable abhorrence of using &lt;code&gt;.Select&lt;/code&gt; in Excel VBA, but am unsure of how to avoid using it. I am finding that my code would be more re-usable if I were able to use variables instead of &lt;code&gt;Select&lt;/code&gt; functions. However, I am not sure how to refer to things (like the &lt;code&gt;ActiveCell&lt;/code&gt; etc.) if not using &lt;code&gt;Select&lt;/code&gt;.</source>
+          <target state="translated">He o&amp;iacute;do mucho sobre la comprensible aborrecimiento del uso de &lt;code&gt;.Select&lt;/code&gt; en Excel VBA, pero no estoy seguro de c&amp;oacute;mo evitar usarlo. Estoy descubriendo que mi c&amp;oacute;digo ser&amp;iacute;a m&amp;aacute;s reutilizable si pudiera usar variables en lugar de &lt;code&gt;Select&lt;/code&gt; funciones. Sin embargo, no estoy seguro de c&amp;oacute;mo referirme a cosas (como &lt;code&gt;ActiveCell&lt;/code&gt; , etc.) si no estoy usando &lt;code&gt;Select&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="70a894385d22dff1dce34826fbc2099c7cda7e04" translate="yes" xml:space="preserve">
+          <source>IMHO use of &lt;code&gt;.select&lt;/code&gt; comes from people, who like me started learning VBA by necessity through recording macros and then modifying the code without realizing that &lt;code&gt;.select&lt;/code&gt; and subsequent &lt;code&gt;selection&lt;/code&gt; is just an unnecessary middle-men.</source>
+          <target state="translated">En mi humilde opini&amp;oacute;n, el uso de &lt;code&gt;.select&lt;/code&gt; proviene de personas que, como yo, comenzaron a aprender VBA por necesidad mediante la grabaci&amp;oacute;n de macros y luego la modificaci&amp;oacute;n del c&amp;oacute;digo sin darse cuenta de que &lt;code&gt;.select&lt;/code&gt; y la posterior &lt;code&gt;selection&lt;/code&gt; son solo intermediarios innecesarios.</target>
+        </trans-unit>
+        <trans-unit id="f789aa2d6d3b11b1653e6c359b8d306d22d93e4e" translate="yes" xml:space="preserve">
+          <source>If you &lt;em&gt;do&lt;/em&gt; want to work with the &lt;code&gt;ActiveSheet&lt;/code&gt;, for clarity it's best to be explicit. But take care, as some &lt;code&gt;Worksheet&lt;/code&gt; methods change the active sheet.</source>
+          <target state="translated">Si desea trabajar con &lt;code&gt;ActiveSheet&lt;/code&gt; , para mayor claridad, es mejor ser expl&amp;iacute;cito. Pero tenga cuidado, ya que algunos m&amp;eacute;todos de &lt;code&gt;Worksheet&lt;/code&gt; cambian la hoja activa.</target>
+        </trans-unit>
+        <trans-unit id="cf37ca85c57f5f0614a801ca0fc60ed6ed1683f4" translate="yes" xml:space="preserve">
+          <source>If you &lt;em&gt;do&lt;/em&gt; want to work with the &lt;code&gt;ActiveWorkbook&lt;/code&gt;, for clarity it's best to be explicit. But take care, as many &lt;code&gt;WorkBook&lt;/code&gt; methods change the active book.</source>
+          <target state="translated">Si desea trabajar con el &lt;code&gt;ActiveWorkbook&lt;/code&gt; , para mayor claridad, es mejor ser expl&amp;iacute;cito. Pero tenga cuidado, ya que muchos m&amp;eacute;todos &lt;code&gt;WorkBook&lt;/code&gt; cambian el libro activo.</target>
+        </trans-unit>
+        <trans-unit id="dbeeee43d26bf344b7062ff2ea8aa9aede597130" translate="yes" xml:space="preserve">
+          <source>If you are developing and expect the user to choose the object instances for your code to handle, then &lt;code&gt;.Selection&lt;/code&gt; or &lt;code&gt;.ActiveObject&lt;/code&gt; are apropriate.</source>
+          <target state="translated">Si est&amp;aacute; desarrollando y espera que el usuario elija las instancias de objeto para que su c&amp;oacute;digo las maneje, entonces &lt;code&gt;.Selection&lt;/code&gt; o &lt;code&gt;.ActiveObject&lt;/code&gt; son apropiadas.</target>
+        </trans-unit>
+        <trans-unit id="cc4234df1fa6976f14bdf9d894db67a406e78e71" translate="yes" xml:space="preserve">
+          <source>If you are looping over a range of cells it is often better (faster) to copy the range values to a variant array first and loop over that</source>
+          <target state="translated">Si estás haciendo un bucle sobre un rango de células,a menudo es mejor (más rápido)copiar primero los valores del rango a un arreglo de variantes y hacer un bucle sobre eso</target>
+        </trans-unit>
+        <trans-unit id="897ca510ef4f543f54c868e4ea12e2c6c2e52698" translate="yes" xml:space="preserve">
+          <source>If you had used named ranges to begin with, the &lt;code&gt;Months&lt;/code&gt; and &lt;code&gt;Sales&lt;/code&gt; columns could be moved around all you like, and your code will continue working just fine.</source>
+          <target state="translated">Si hab&amp;iacute;a utilizado rangos con nombre para comenzar, las columnas &lt;code&gt;Months&lt;/code&gt; y &lt;code&gt;Sales&lt;/code&gt; podr&amp;iacute;an moverse alrededor de lo que desee, y su c&amp;oacute;digo continuar&amp;aacute; funcionando bien.</target>
+        </trans-unit>
+        <trans-unit id="749fce5d2ede6dcecd826470fbe76f3689d34b17" translate="yes" xml:space="preserve">
+          <source>If you want to use it for a cell that is not the active one, for instance for &quot;B2&quot;, you should select it first, like this:</source>
+          <target state="translated">Si quieres usarlo para una célula que no es la activa,por ejemplo para &quot;B2&quot;,debes seleccionarla primero,así:</target>
+        </trans-unit>
+        <trans-unit id="a653b6f01f61e4975c23afcfb8b3573413d843a9" translate="yes" xml:space="preserve">
+          <source>In short, don't discard &lt;code&gt;Selection&lt;/code&gt; due to its close association with &lt;code&gt;.Select&lt;/code&gt; and &lt;code&gt;ActiveCell&lt;/code&gt;. As a worksheet property it has many other purposes.</source>
+          <target state="translated">En resumen, no descarte la &lt;code&gt;Selection&lt;/code&gt; debido a su estrecha asociaci&amp;oacute;n con &lt;code&gt;ActiveCell&lt;/code&gt; y ActiveCell . Como una propiedad de hoja de trabajo tiene muchos otros prop&amp;oacute;sitos.</target>
+        </trans-unit>
+        <trans-unit id="cfaa76811fa329554d5f4bd88b9a6e03e0b4ad7d" translate="yes" xml:space="preserve">
+          <source>It is pretty obvious what the named ranges &lt;code&gt;Months&lt;/code&gt; and &lt;code&gt;MonthlySales&lt;/code&gt; contain, and what the procedure is doing.</source>
+          <target state="translated">Es bastante obvio lo que contienen los intervalos nombrados &lt;code&gt;Months&lt;/code&gt; y &lt;code&gt;MonthlySales&lt;/code&gt; , y lo que est&amp;aacute; haciendo el procedimiento.</target>
+        </trans-unit>
+        <trans-unit id="5ad7d1bf5793ee33867d812b4a5ba5ca5ff61785" translate="yes" xml:space="preserve">
+          <source>It is usually the main cause of runtime errors.</source>
+          <target state="translated">Suele ser la causa principal de los errores en tiempo de ejecución.</target>
+        </trans-unit>
+        <trans-unit id="201fe044a2fb275379e6872e86fe757d6a288ae0" translate="yes" xml:space="preserve">
+          <source>It really depends on what you are trying to do. Anyway a simple example could be useful. Let's suppose that you want to set the value of the active cell to &quot;foo&quot;. Using ActiveCell you would write something like this:</source>
+          <target state="translated">Realmente depende de lo que estés tratando de hacer.De todos modos un simple ejemplo podría ser útil.Supongamos que quieres establecer el valor de la celda activa en &quot;foo&quot;.Usando ActiveCell escribirías algo como esto:</target>
+        </trans-unit>
+        <trans-unit id="ff99bc44597d2d4c55a57cdf57976aef1d2bc4e6" translate="yes" xml:space="preserve">
+          <source>It slows down your code.</source>
+          <target state="translated">Ralentiza tu código.</target>
+        </trans-unit>
+        <trans-unit id="ad428f8c472dea0571feb2430daf298a70e70a94" translate="yes" xml:space="preserve">
+          <source>Named ranges ensure that your macros do not break when (not if!) the configuration of the spreadsheet changes.</source>
+          <target state="translated">Los rangos nombrados aseguran que sus macros no se rompan cuando (¡no si!)la configuración de la hoja de cálculo cambie.</target>
+        </trans-unit>
+        <trans-unit id="a58c2c2aa99585df7fde3e6747abc640a32ec180" translate="yes" xml:space="preserve">
+          <source>Named ranges make your code easier to read and understand.</source>
+          <target state="translated">Los rangos nombrados hacen que su código sea más fácil de leer y entender.</target>
+        </trans-unit>
+        <trans-unit id="13c323eb1978f7ee0ff5123b07d0ef78e67196d2" translate="yes" xml:space="preserve">
+          <source>Not copying values, but taking them</source>
+          <target state="translated">No copiando valores,sino tomándolos</target>
+        </trans-unit>
+        <trans-unit id="8d07f1f7a3605d5cbc3b8666a34b7d361ba61207" translate="yes" xml:space="preserve">
+          <source>Note that &quot;0&quot; is not needed in the offset parameter if not needed (,2)</source>
+          <target state="translated">Tenga en cuenta que &quot;0&quot; no es necesario en el parámetro de desplazamiento si no se necesita (,2)</target>
+        </trans-unit>
+        <trans-unit id="ce24df35a6acd90a6c665387396054ce7dd32a42" translate="yes" xml:space="preserve">
+          <source>On the other hand, &lt;code&gt;.Select&lt;/code&gt; and &lt;code&gt;.Activate&lt;/code&gt; are of use when you can infer the user's next action and you want your code to guide the user, possibly saving him some time and mouse clicks. For example, if your code just created a brand new instance of a chart or updated one, the user might want to check it out, and you could call &lt;code&gt;.Activate&lt;/code&gt; on it or its sheet to save the user the time searching for it; or if you know the user will need to update some range values, you can programatically select that range.</source>
+          <target state="translated">Por otro lado, &lt;code&gt;.Activate&lt;/code&gt; y .Activate son &amp;uacute;tiles cuando puede inferir la siguiente acci&amp;oacute;n del usuario y desea que su c&amp;oacute;digo gu&amp;iacute;e al usuario, posiblemente ahorr&amp;aacute;ndole algo de tiempo y clics del mouse. Por ejemplo, si su c&amp;oacute;digo acaba de crear una nueva instancia de un gr&amp;aacute;fico o una actualizada, el usuario puede desear &lt;code&gt;.Activate&lt;/code&gt; vistazo, y puede llamar. Activar en &amp;eacute;l o en su hoja para ahorrarle al usuario el tiempo que lo busca; o si sabe que el usuario necesitar&amp;aacute; actualizar algunos valores de rango, puede seleccionar ese rango mediante programaci&amp;oacute;n.</target>
+        </trans-unit>
+        <trans-unit id="8a5631d586cbbc18aba6d9d7014311024dadc2f9" translate="yes" xml:space="preserve">
+          <source>One small point of emphasis I'll add to all the excellent answers given above:</source>
+          <target state="translated">Un pequeño punto de énfasis que añadiré a todas las excelentes respuestas dadas anteriormente:</target>
+        </trans-unit>
+        <trans-unit id="761062da63f5c2dfd2f32bfa21813d6c157419fc" translate="yes" xml:space="preserve">
+          <source>Or you could</source>
+          <target state="translated">O podrías...</target>
+        </trans-unit>
+        <trans-unit id="242daa76d32fe1291a06f3b0520926d68ab2cce2" translate="yes" xml:space="preserve">
+          <source>Otherwise, there is nothing implicitly wrong with &lt;code&gt;.select&lt;/code&gt; itself and you can find uses for this easily, e.g. I have a spreadsheet that I populate with date, activate macro that does some magic with it and exports it in an acceptable format on a separate sheet, which, however, requires some final manual (unpredictable) inputs into an adjacent cell. So here comes the moment for &lt;code&gt;.select&lt;/code&gt; that saves me that additional mouse movement and click.</source>
+          <target state="translated">De lo contrario, no hay nada impl&amp;iacute;citamente incorrecto con &lt;code&gt;.select&lt;/code&gt; en s&amp;iacute; mismo y puede encontrar usos para esto f&amp;aacute;cilmente, por ejemplo, tengo una hoja de c&amp;aacute;lculo que relleno con la fecha, activo la macro que hace algo de magia y la exporta en un formato aceptable en una hoja separada , que, sin embargo, requiere algunas entradas manuales finales (impredecibles) en una celda adyacente. As&amp;iacute; que aqu&amp;iacute; llega el momento de &lt;code&gt;.select&lt;/code&gt; que me ahorra ese movimiento y clic adicionales del mouse.</target>
+        </trans-unit>
+        <trans-unit id="32b3a37f94a8c922d5c28e8c5a5f7c0bbdea6152" translate="yes" xml:space="preserve">
+          <source>Pass ranges to your &lt;code&gt;Sub&lt;/code&gt;s and &lt;code&gt;Function&lt;/code&gt;s as Range variables</source>
+          <target state="translated">Pase rangos a sus &lt;code&gt;Sub&lt;/code&gt; sy &lt;code&gt;Function&lt;/code&gt; s como variables de Rango</target>
+        </trans-unit>
+        <trans-unit id="0abd2efbaeebc3f9874d726f6b5be41e099a7bb1" translate="yes" xml:space="preserve">
+          <source>Please note that in the following I'm comparing the Select approach (the one that the OP wants to avoid), with the Range approach (and this is the answer to the question). So don't stop reading when you see the first Select.</source>
+          <target state="translated">Tenga en cuenta que en lo que sigue estoy comparando el enfoque Select (el que la OP quiere evitar),con el enfoque Range (y esta es la respuesta a la pregunta).Así que no dejes de leer cuando veas el primer Select.</target>
+        </trans-unit>
+        <trans-unit id="84b6d862dbab1b92cc220f9f74080e54427e1405" translate="yes" xml:space="preserve">
+          <source>Probably the biggest thing you can do to avoid using Select is to &lt;strong&gt;&lt;em&gt;as much as possible, use named ranges (combined with meaningful variable names) in your VBA code&lt;/em&gt;&lt;/strong&gt;. This point was mentioned above, but glossed over a bit; however, it deserves special attention.</source>
+          <target state="translated">Probablemente, lo m&amp;aacute;s importante que puede hacer para evitar el uso de Seleccionar es usar, en la &lt;strong&gt;&lt;em&gt;medida de lo posible, rangos con nombre (combinados con nombres de variables significativos) en su c&amp;oacute;digo VBA&lt;/em&gt;&lt;/strong&gt; . Este punto fue mencionado anteriormente, pero pas&amp;oacute; por alto un poco; Sin embargo, merece especial atenci&amp;oacute;n.</target>
+        </trans-unit>
+        <trans-unit id="c19b9e55c4b41a683af84fb571d28868be5285ec" translate="yes" xml:space="preserve">
+          <source>Quick Answer:</source>
+          <target state="translated">Respuesta rápida:</target>
+        </trans-unit>
+        <trans-unit id="76837e683f1ab6c8eace2b2bf42966d8b27bd806" translate="yes" xml:space="preserve">
+          <source>Similar to the previous example a minus 1 would be &lt;code&gt;i4&lt;/code&gt;</source>
+          <target state="translated">Similar al ejemplo anterior, un menos 1 ser&amp;iacute;a &lt;code&gt;i4&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="ccaa5dfd9846264e3d7b54e960eb926a1df91b66" translate="yes" xml:space="preserve">
+          <source>So to change the value of cell &quot;A1&quot; in &quot;Output&quot; to &quot;Hello&quot;, instead of:</source>
+          <target state="translated">Así que para cambiar el valor de la celda &quot;A1&quot; en &quot;Salida&quot; a &quot;Hola&quot;,en lugar de:</target>
+        </trans-unit>
+        <trans-unit id="6349bc802ce809cbc798d6a0e4404ab7b4fd0fb0" translate="yes" xml:space="preserve">
+          <source>So, you can eliminate these issues by directly referencing your cells.  Which goes:</source>
+          <target state="translated">Así que,puedes eliminar estos problemas haciendo referencia directamente a tus células.Lo cual va:</target>
+        </trans-unit>
+        <trans-unit id="3317d77437344f8effb7824986e8599bc1c40a6f" translate="yes" xml:space="preserve">
+          <source>Some examples of how to avoid select</source>
+          <target state="translated">Algunos ejemplos de cómo evitar la selección</target>
+        </trans-unit>
+        <trans-unit id="71c86c440c43a975779bcd286f8334855549bb73" translate="yes" xml:space="preserve">
+          <source>The &quot;Set wb = ThisWorkbook&quot; command is absolutely key. &quot;ThisWorkbook&quot; is a special value in Excel, and it means the workbook that your VBA code is &lt;em&gt;currently running from&lt;/em&gt;. A very helpful shortcut to set your Workbook variable with.</source>
+          <target state="translated">El comando &quot;Establecer wb = ThisWorkbook&quot; es absolutamente clave. &quot;ThisWorkbook&quot; es un valor especial en Excel, y significa el libro desde el que se &lt;em&gt;est&amp;aacute; ejecutando actualmente&lt;/em&gt; su c&amp;oacute;digo VBA. Un atajo muy &amp;uacute;til para configurar la variable de su libro de trabajo.</target>
+        </trans-unit>
+        <trans-unit id="5fee5abcdd7dbc77b9703f21e028afc5cb7a5c70" translate="yes" xml:space="preserve">
+          <source>The actual code to process could be anything from a single line to multiple modules. I have used this method to initiate long running routines on a ragged selection of cells containing the filenames of external workbooks.</source>
+          <target state="translated">El código real a procesar podría ser cualquier cosa,desde una sola línea hasta múltiples módulos.He usado este método para iniciar rutinas de larga duración en una selección de celdas que contienen los nombres de archivos de libros de trabajo externos.</target>
+        </trans-unit>
+        <trans-unit id="abe06f7a26cb0d5cb85b28afa84b21fb132154a3" translate="yes" xml:space="preserve">
+          <source>The example from above would look like this:</source>
+          <target state="translated">El ejemplo de arriba se vería así:</target>
+        </trans-unit>
+        <trans-unit id="232e072f73db13abfe2c99fdf56f713a07b7b7bd" translate="yes" xml:space="preserve">
+          <source>The main reason never to use Select or Activesheet is because most people will have at least another couple of workbooks open (sometimes dozens) when they run your macro, and if they click away from your sheet while your macro is running and click on some other book they have open, then the &quot;Activesheet&quot; changes, and the target workbook for an unqualified &quot;Select&quot; command changes as well.</source>
+          <target state="translated">La razón principal por la que no se debe utilizar nunca Select ni Activesheet es que la mayoría de la gente tendrá al menos otro par de libros de trabajo abiertos (a veces docenas)cuando ejecuten su macro,y si hacen clic lejos de su hoja mientras su macro se está ejecutando y hacen clic en algún otro libro que tengan abierto,entonces la &quot;Activesheet&quot; cambia,y el libro de trabajo objetivo para un comando &quot;Select&quot; no cualificado también cambia.</target>
+        </trans-unit>
+        <trans-unit id="2b87517a7b7db3e49616eda0b99c113c8df61e36" translate="yes" xml:space="preserve">
+          <source>Then you can rewrite Macro2 as:</source>
+          <target state="translated">Entonces puedes reescribir Macro2 como:</target>
+        </trans-unit>
+        <trans-unit id="5ccd7090c87aa3e8666028fc4b07152cb2712b92" translate="yes" xml:space="preserve">
+          <source>There are times when having short, time-saving macro sub routines assigned to hot-key combinations available with the tap of a couple of keys saves a lot of time. Being able to select a group of cells to enact the operational code on works wonders when dealing with pocketed data that does not conform to a worksheet-wide data format. Much in the same way that you might select a group of cells and apply a format change, selecting a group of cells to run special macro code against can be a major time saver.</source>
+          <target state="translated">Hay veces en que tener cortas subrutinas macro que ahorran tiempo asignadas a combinaciones de teclas calientes disponibles con el toque de un par de teclas ahorra mucho tiempo.Poder seleccionar un grupo de celdas para promulgar el código de operación en las obras,es una maravilla cuando se trata de datos embolsados que no se ajustan al formato de datos de una hoja de trabajo.De la misma manera que se puede seleccionar un grupo de celdas y aplicar un cambio de formato,la selección de un grupo de celdas para ejecutar un código de macro especial puede ser un gran ahorro de tiempo.</target>
+        </trans-unit>
+        <trans-unit id="e09d2880bfcc8b2dffdda0f2fc4363c4a3bb96b6" translate="yes" xml:space="preserve">
+          <source>There are various combinations of these methods, but that would be the general idea expressed as shortly as possible for impatient people like me.</source>
+          <target state="translated">Hay varias combinaciones de estos métodos,pero esa sería la idea general expresada lo antes posible por personas impacientes como yo.</target>
+        </trans-unit>
+        <trans-unit id="4a135e576f2a780630edd1a83b84c56e5ce6b835" translate="yes" xml:space="preserve">
+          <source>These aren't to say they are &quot;better&quot; than the above options, but just listing alternatives.</source>
+          <target state="translated">Esto no quiere decir que sean &quot;mejores&quot; que las opciones anteriores,sino que sólo se enumeran alternativas.</target>
+        </trans-unit>
+        <trans-unit id="60a34910e232eb57b418886648c46ba303e02e75" translate="yes" xml:space="preserve">
+          <source>These methods are rather stigmatized, so taking the lead of @Vityata and @Jeeped for the sake of drawing a line in the sand:</source>
+          <target state="translated">Estos métodos están bastante estigmatizados,por lo que tomar el liderazgo de @Vityata y @Jeeped con el fin de trazar una línea en la arena:</target>
+        </trans-unit>
+        <trans-unit id="929bf8332f019b9414f7499db2ba21af5d19d7a3" translate="yes" xml:space="preserve">
+          <source>This code can also be written as</source>
+          <target state="translated">Este código también puede ser escrito como</target>
+        </trans-unit>
+        <trans-unit id="8f3ca10303fe3f18ca0db94d265c340831916367" translate="yes" xml:space="preserve">
+          <source>This code will work just fine at first - that is until you or a future user decides &quot;gee wiz, I think I'm going to add a new column with the year in Column &lt;code&gt;A&lt;/code&gt;!&quot;, or put an expenses column between the months and sales columns, or add a header to each column. Now, your code is broken. And because you used terrible variable names, it will take you a lot more time to figure out how to fix it than it should take.</source>
+          <target state="translated">Este c&amp;oacute;digo funcionar&amp;aacute; bien al principio, es decir, hasta que usted o un futuro usuario decida &quot;gee wiz, creo que voy a agregar una nueva columna con el a&amp;ntilde;o en la Columna &lt;code&gt;A&lt;/code&gt; &quot; o colocar una columna de gastos entre los meses. y columnas de ventas, o agregue un encabezado a cada columna. Ahora, tu c&amp;oacute;digo est&amp;aacute; roto. Y debido a que us&amp;oacute; nombres de variables terribles, le tomar&amp;aacute; mucho m&amp;aacute;s tiempo descubrir c&amp;oacute;mo solucionarlo de lo que deber&amp;iacute;a tomar.</target>
+        </trans-unit>
+        <trans-unit id="eacc091cdbc76177f176d8b0e9bd243614c3c187" translate="yes" xml:space="preserve">
+          <source>This is a small taster for what's possible.</source>
+          <target state="translated">Esto es una pequeña muestra de lo que es posible.</target>
+        </trans-unit>
+        <trans-unit id="ae0989b74e24d3660df0f50524cb9716b7eda992" translate="yes" xml:space="preserve">
+          <source>This is an example that will clear the contents of cell &quot;A1&quot; (or more if the selection type is xllastcell, etc). All done without having to select the cells.</source>
+          <target state="translated">Este es un ejemplo que limpiará el contenido de la celda &quot;A1&quot; (o más si el tipo de selección es xllastcell,etc.).Todo ello sin tener que seleccionar las celdas.</target>
+        </trans-unit>
+        <trans-unit id="762ebf2457ee279a98fd5649ebb9cbc3cd6a7b9d" translate="yes" xml:space="preserve">
+          <source>This is bad:</source>
+          <target state="translated">Esto es malo:</target>
+        </trans-unit>
+        <trans-unit id="0d41dbd9ad4957e46b3782cd01ec1fafee48d61f" translate="yes" xml:space="preserve">
+          <source>This is probably the most common mistake in &lt;a href=&quot;/questions/tagged/vba&quot;&gt;vba&lt;/a&gt;. Whenever you copy ranges, sometimes the worksheet is not referenced and thus VBA considers the wrong sheet the ActiveWorksheet.</source>
+          <target state="translated">Este es probablemente el error m&amp;aacute;s com&amp;uacute;n en &lt;a href=&quot;/questions/tagged/vba&quot;&gt;vba&lt;/a&gt; . Siempre que copie rangos, a veces la hoja de trabajo no est&amp;aacute; referenciada y, por lo tanto, VBA considera que la hoja incorrecta es ActiveWorksheet.</target>
+        </trans-unit>
+        <trans-unit id="5e122b50935040e5fd1d6401fcf8c058d49ea198" translate="yes" xml:space="preserve">
+          <source>This will change the cell &lt;code&gt;J6&lt;/code&gt; to be a value of 12</source>
+          <target state="translated">Esto cambiar&amp;aacute; la celda &lt;code&gt;J6&lt;/code&gt; a un valor de 12</target>
+        </trans-unit>
+        <trans-unit id="08d9486971b376a463a863dc46d7024a72f24f2e" translate="yes" xml:space="preserve">
+          <source>This will clear values in all cells in the column k.</source>
+          <target state="translated">Esto borrará los valores en todas las celdas de la columna k.</target>
+        </trans-unit>
+        <trans-unit id="20b8048458adb606f2b1e1a196e5e1d0910514c8" translate="yes" xml:space="preserve">
+          <source>This will copy the cell in &lt;code&gt;k4&lt;/code&gt; to &lt;code&gt;L4&lt;/code&gt;.</source>
+          <target state="translated">Esto copiar&amp;aacute; la celda en &lt;code&gt;k4&lt;/code&gt; a &lt;code&gt;L4&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="c4280da2552c89b41daaf9e638bcff148983122b" translate="yes" xml:space="preserve">
+          <source>Thus, something like the code below is absolutely OK:</source>
+          <target state="translated">Por lo tanto,algo como el código de abajo está absolutamente bien:</target>
+        </trans-unit>
+        <trans-unit id="b29db0a9ebce0d821cd293ea4647e15fe52b8f73" translate="yes" xml:space="preserve">
+          <source>To avoid using the &lt;code&gt;.Select&lt;/code&gt; method you can set a variable equal to the property that you want.</source>
+          <target state="translated">Para evitar el uso del m&amp;eacute;todo &lt;code&gt;.Select&lt;/code&gt; , puede establecer una variable igual a la propiedad que desee.</target>
+        </trans-unit>
+        <trans-unit id="7e7fbc811015943c1c30e7ceeea8b05c76a8ee58" translate="yes" xml:space="preserve">
+          <source>To:</source>
+          <target state="translated">To:</target>
+        </trans-unit>
+        <trans-unit id="b5d0d629ad0e2b5237278acee2d84781c70e9023" translate="yes" xml:space="preserve">
+          <source>Try always to reference the Worksheet as well</source>
+          <target state="translated">Intenta siempre referirte a la hoja de trabajo también</target>
+        </trans-unit>
+        <trans-unit id="820d37aca0668bb02b9cb9b9176812569cde5943" translate="yes" xml:space="preserve">
+          <source>Use &lt;code&gt;Dim&lt;/code&gt;'d variables</source>
+          <target state="translated">Use variables &lt;code&gt;Dim&lt;/code&gt; 'd</target>
+        </trans-unit>
+        <trans-unit id="8c02248d1ef375250bb52904ec3aa6867866086e" translate="yes" xml:space="preserve">
+          <source>Using Ranges you can write a more generic macro that can be used to set the value of any cell you want to whatever you want:</source>
+          <target state="translated">Usando Ranges puedes escribir una macro más genérica que puede ser usada para establecer el valor de cualquier celda que quieras a lo que quieras:</target>
+        </trans-unit>
+        <trans-unit id="a1d131a998e15e990e02311e0e95ed6f9b0aaa23" translate="yes" xml:space="preserve">
+          <source>Using fancy named ranges</source>
+          <target state="translated">Usando rangos de nombres extravagantes</target>
+        </trans-unit>
+        <trans-unit id="6d9d1adab2b726167f433785499507aa1f2706a1" translate="yes" xml:space="preserve">
+          <source>Usually, if you are willing to &lt;code&gt;select&lt;/code&gt;, most probably you are copying something. If you are only interested in the values, this is a good option to avoid select:</source>
+          <target state="translated">Por lo general, si est&amp;aacute; dispuesto a &lt;code&gt;select&lt;/code&gt; , lo m&amp;aacute;s probable es que est&amp;eacute; copiando algo. Si solo est&amp;aacute; interesado en los valores, esta es una buena opci&amp;oacute;n para evitar seleccionar:</target>
+        </trans-unit>
+        <trans-unit id="62f1316df6e963f4c1cb189f5c550cf5322ce17d" translate="yes" xml:space="preserve">
+          <source>We can now do this:</source>
+          <target state="translated">Ahora podemos hacer esto:</target>
+        </trans-unit>
+        <trans-unit id="3db9289846abc2602cc47e2f88e6fd49aa2e29fc" translate="yes" xml:space="preserve">
+          <source>When a command only works with &lt;code&gt;ActiveWindow&lt;/code&gt; like &lt;a href=&quot;https://github.com/Vitosh/VBA_personal/blob/master/Boilerplate/Boilerplate%20VitoshAcademy/tblInput.vb&quot;&gt;ActiveWindow.Zoom&lt;/a&gt; or &lt;a href=&quot;https://github.com/Vitosh/VBA_personal/blob/master/Boilerplate/Boilerplate%20VitoshAcademy/ExcelAdditional.bas&quot;&gt;ActiveWindow.FreezePanes&lt;/a&gt;</source>
+          <target state="translated">Cuando un comando solo funciona con &lt;code&gt;ActiveWindow&lt;/code&gt; como &lt;a href=&quot;https://github.com/Vitosh/VBA_personal/blob/master/Boilerplate/Boilerplate%20VitoshAcademy/tblInput.vb&quot;&gt;ActiveWindow.Zoom&lt;/a&gt; o &lt;a href=&quot;https://github.com/Vitosh/VBA_personal/blob/master/Boilerplate/Boilerplate%20VitoshAcademy/ExcelAdditional.bas&quot;&gt;ActiveWindow.FreezePanes&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="664c3ec1724c39e9d817d23e1add267175c2243c" translate="yes" xml:space="preserve">
+          <source>When to call &lt;code&gt;.Activate&lt;/code&gt;, &lt;code&gt;.Select&lt;/code&gt;, &lt;code&gt;.Selection&lt;/code&gt;, &lt;code&gt;.ActiveSomething&lt;/code&gt; methods/properties</source>
+          <target state="translated">Cu&amp;aacute;ndo llamar &lt;code&gt;.Activate&lt;/code&gt; , &lt;code&gt;.Selection&lt;/code&gt; , &lt;code&gt;.ActiveSomething&lt;/code&gt; , .ActiveSomething m&amp;eacute;todos / propiedades</target>
+        </trans-unit>
+        <trans-unit id="18f1fbe694af57d98b927314b300825941887eef" translate="yes" xml:space="preserve">
+          <source>When you want to copy range between worksheets:</source>
+          <target state="translated">Cuando quieras copiar el rango entre las hojas de trabajo:</target>
+        </trans-unit>
+        <trans-unit id="ba9b0865f911659398740f3174b15810ea5acab0" translate="yes" xml:space="preserve">
+          <source>Which is not only much more reliable and less likely to crash if the user is working with multiple spreadsheets, it's also much shorter, quicker and easier to write.</source>
+          <target state="translated">Lo cual no sólo es mucho más fiable y menos probable que se bloquee si el usuario trabaja con varias hojas de cálculo,sino que también es mucho más corto,rápido y fácil de escribir.</target>
+        </trans-unit>
+        <trans-unit id="09932fb3aef04cea54af61c310221424cea0a4e5" translate="yes" xml:space="preserve">
+          <source>While I cannot think of any more than an isolated handful of situations where &lt;code&gt;.Select&lt;/code&gt; would be a better choice than direct cell referencing, I would rise to the defense of &lt;code&gt;Selection&lt;/code&gt; and point out that it should not be thrown out for the same reasons that &lt;code&gt;.Select&lt;/code&gt; should be avoided.</source>
+          <target state="translated">Si bien no puedo pensar en nada m&amp;aacute;s que un pu&amp;ntilde;ado de situaciones aisladas en las que &lt;code&gt;.Select&lt;/code&gt; ser&amp;iacute;a una mejor opci&amp;oacute;n que la referencia directa de celda, me levantar&amp;iacute;a en defensa de la &lt;code&gt;Selection&lt;/code&gt; y se&amp;ntilde;alar&amp;iacute;a que no deber&amp;iacute;a descartarse por las mismas razones &lt;code&gt;.Select&lt;/code&gt; debe ser evitado.</target>
+        </trans-unit>
+        <trans-unit id="0a6152210d03ead206f38c1da3eb6a5db226d13c" translate="yes" xml:space="preserve">
+          <source>Why is this important? Partially because it is easier for other people to understand it, but even if you are the only person who will ever see or use your code, you should still use named ranges and good variable names because &lt;strong&gt;&lt;em&gt;YOU WILL FORGET&lt;/em&gt;&lt;/strong&gt; what you meant to do with it a year later, and &lt;strong&gt;&lt;em&gt;you will waste&lt;/em&gt;&lt;/strong&gt; 30 minutes just figuring out what your code is doing.</source>
+          <target state="translated">&amp;iquest;Porque es esto importante? Parcialmente porque es m&amp;aacute;s f&amp;aacute;cil para otras personas entenderlo, pero incluso si usted es la &amp;uacute;nica persona que alguna vez ver&amp;aacute; o usar&amp;aacute; su c&amp;oacute;digo, a&amp;uacute;n debe usar rangos con nombre y buenos nombres de variables porque &lt;strong&gt;&lt;em&gt;OLVIDAR&amp;Aacute;&lt;/em&gt;&lt;/strong&gt; lo que quiso hacer con &amp;eacute;l un a&amp;ntilde;o despu&amp;eacute;s, y &lt;strong&gt;&lt;em&gt;perder&amp;aacute;&lt;/em&gt;&lt;/strong&gt; 30 minutos solo para descubrir qu&amp;eacute; est&amp;aacute; haciendo su c&amp;oacute;digo.</target>
+        </trans-unit>
+        <trans-unit id="132048d27141895d32dea0e4d12d74cb144590fd" translate="yes" xml:space="preserve">
+          <source>Why not call &lt;code&gt;.Activate&lt;/code&gt;, &lt;code&gt;.Select&lt;/code&gt;, &lt;code&gt;Selection&lt;/code&gt;, &lt;code&gt;ActiveSomething&lt;/code&gt; methods/properties</source>
+          <target state="translated">&amp;iquest;Por qu&amp;eacute; no llamar a los m&amp;eacute;todos / propiedades de &lt;code&gt;ActiveSomething&lt;/code&gt; , .Select , &lt;code&gt;Selection&lt;/code&gt; , ActiveSomething?</target>
+        </trans-unit>
+        <trans-unit id="e17d9b760fa5d36bbd15d9bca87074516c81d248" translate="yes" xml:space="preserve">
+          <source>Working with .Parent feature. This example shows how setting only one myRng reference enables dynamic access to the entire environment with no .Select, .Activate, .Activecell, .ActiveWorkbook, .ActiveSheet and so on. (There's no genereic .Child feature)</source>
+          <target state="translated">Trabajando con la función de los padres.Este ejemplo muestra cómo configurar una sola referencia myRng permite el acceso dinámico a todo el entorno sin...Seleccionar,...Activar,...Activecell,...ActiveWorkbook,...ActiveSheet y así sucesivamente.(No hay ninguna función .Child genérica)</target>
+        </trans-unit>
+        <trans-unit id="1508720ece33c2584914411ccc009c19c7e36381" translate="yes" xml:space="preserve">
+          <source>You &lt;em&gt;can&lt;/em&gt; use the shortcut to the &lt;code&gt;Evaluate&lt;/code&gt; method, but this is less efficient and should generally be avoided in production code.</source>
+          <target state="translated">Puede usar el acceso directo al m&amp;eacute;todo &lt;code&gt;Evaluate&lt;/code&gt; , pero esto es menos eficiente y generalmente debe evitarse en el c&amp;oacute;digo de producci&amp;oacute;n.</target>
+        </trans-unit>
+        <trans-unit id="a1de300f4a1c4b4c7e7122036a1192f5eb62c4eb" translate="yes" xml:space="preserve">
+          <source>You can also use the &lt;code&gt;ThisWorkbook&lt;/code&gt; object to refer to the book containing the running code.</source>
+          <target state="translated">Tambi&amp;eacute;n puede usar el objeto &lt;code&gt;ThisWorkbook&lt;/code&gt; para referirse al libro que contiene el c&amp;oacute;digo en ejecuci&amp;oacute;n.</target>
+        </trans-unit>
+        <trans-unit id="1b0f18f5b5700344d106581cc1ef1edf1a937cde" translate="yes" xml:space="preserve">
+          <source>You don't know what other workbooks will be open when the user runs your code.</source>
+          <target state="translated">No sabes qué otros libros de trabajo se abrirán cuando el usuario ejecute tu código.</target>
+        </trans-unit>
+        <trans-unit id="b567a50d846bbc185751ba49c0c391aab667ea78" translate="yes" xml:space="preserve">
+          <source>You may access them with &lt;code&gt;[]&lt;/code&gt;, which is really beautiful, compared to the other way. Check yourself:</source>
+          <target state="translated">Puede acceder a ellos con &lt;code&gt;[]&lt;/code&gt; , que es realmente hermoso, en comparaci&amp;oacute;n con la otra manera. Comprueba tu mismo:</target>
+        </trans-unit>
+        <trans-unit id="45f73eb1e95dbceb0d425d807da5afe4b3ce6e16" translate="yes" xml:space="preserve">
+          <source>You should also apply Methods (such as &lt;code&gt;Find&lt;/code&gt; and &lt;code&gt;Copy&lt;/code&gt;) to variables</source>
+          <target state="translated">Tambi&amp;eacute;n debe aplicar m&amp;eacute;todos (como &lt;code&gt;Find&lt;/code&gt; y &lt;code&gt;Copy&lt;/code&gt; ) a las variables</target>
+        </trans-unit>
+        <trans-unit id="d2f66f82c75e0adb5a4b880874806ebe3f59a263" translate="yes" xml:space="preserve">
+          <source>You'll get .select and .activate whenever you record macros and reuse them.  When you .select a cell or sheet it just makes it active.  From that point on whenever you use unqualified references like &lt;code&gt;Range.Value&lt;/code&gt; they just use the active cell and sheet.  This can also be problematic if you don't watch where your code is placed or a user clicks on the workbook.</source>
+          <target state="translated">Obtendr&amp;aacute; .select y .activate cada vez que grabe macros y los reutilice. Cuando selecciona una celda u hoja, solo la activa. A partir de ese momento, siempre que use referencias no calificadas como &lt;code&gt;Range.Value&lt;/code&gt; , solo usan la celda y la hoja activas. Esto tambi&amp;eacute;n puede ser problem&amp;aacute;tico si no mira d&amp;oacute;nde se coloca su c&amp;oacute;digo o si un usuario hace clic en el libro.</target>
+        </trans-unit>
+        <trans-unit id="7e2fb968a45f3910e02ba7ce0b0ea0809f985cc3" translate="yes" xml:space="preserve">
+          <source>for example</source>
+          <target state="translated">por ejemplo</target>
+        </trans-unit>
+        <trans-unit id="0ebdc211de2dfa5eadfec7af61e45b784eadf3f9" translate="yes" xml:space="preserve">
+          <source>or a multi-cell range</source>
+          <target state="translated">o una gama multicelular</target>
+        </trans-unit>
+        <trans-unit id="db79665cffa616a326a2d28c638db4c3d9635d03" translate="yes" xml:space="preserve">
+          <source>► For instance, if you want the codename of 'Sheet3` you could set a variable equal to the codename property of that worksheet.</source>
+          <target state="translated">► Por ejemplo,si quieres el nombre en clave de 'Hoja3` podrías establecer una variable igual a la propiedad de nombre en clave de esa hoja de trabajo.</target>
+        </trans-unit>
+        <trans-unit id="0c76659031ced3ca2a500590e56bef41650de411" translate="yes" xml:space="preserve">
+          <source>► For instance, if you want the value in &lt;code&gt;Cell A1&lt;/code&gt; you could set a variable equal to the value property of that cell.</source>
+          <target state="translated">► Por ejemplo, si desea el valor en la &lt;code&gt;Cell A1&lt;/code&gt; , puede establecer una variable igual a la propiedad de valor de esa celda.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

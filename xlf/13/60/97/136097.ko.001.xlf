@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/136097">
+    <body>
+      <group id="136097">
+        <trans-unit id="aa144f0df0c14097f3b8e4a435d288dd748a60f2" translate="yes" xml:space="preserve">
+          <source>1 - we can directly call static and classmethods without initializing</source>
+          <target state="translated">1-우리는 초기화하지 않고 정적 및 클래스 메소드를 직접 호출 할 수 있습니다</target>
+        </trans-unit>
+        <trans-unit id="0a9d3e4d0a97cf241ef520fe2f9fed00affd565a" translate="yes" xml:space="preserve">
+          <source>2- Static method cannot call self method but can call other static and classmethod</source>
+          <target state="translated">2- 정적 메소드는 자체 메소드를 호출 할 수 없지만 다른 정적 및 클래스 메소드를 호출 할 수 있습니다</target>
+        </trans-unit>
+        <trans-unit id="ba80ec9d2d639befa7d404721881b5c7d98cdae9" translate="yes" xml:space="preserve">
+          <source>3- Static method belong to class and will not use object at all.</source>
+          <target state="translated">3- 정적 메소드는 클래스에 속하며 객체를 전혀 사용하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="e8c0b69e76c3b6c611154e992cff7ec6523a7c8d" translate="yes" xml:space="preserve">
+          <source>4- Class method are not bound to an object but to a class.</source>
+          <target state="translated">4- 클래스 메소드는 객체가 아니라 클래스에 바인딩됩니다.</target>
+        </trans-unit>
+        <trans-unit id="2c410662ef68a73ded71a185123e3a9bdd483a53" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://rapd.wordpress.com/2008/07/02/python-staticmethod-vs-classmethod/&quot;&gt;Here&lt;/a&gt; is a short article on this question</source>
+          <target state="translated">이 질문에 대한 짧은 기사가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="ecef4db1810048a106a04d647a7cecab4f8eae51" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://julien.danjou.info/blog/2013/guide-python-static-class-abstract-methods&quot;&gt;The definitive guide on how to use static, class or abstract methods in Python&lt;/a&gt; is one good link for this topic, and summary it as following.</source>
+          <target state="translated">&lt;a href=&quot;https://julien.danjou.info/blog/2013/guide-python-static-class-abstract-methods&quot;&gt;파이썬에서 정적, 클래스 또는 추상 메소드를 사용하는 방법에 대한 결정적인 안내서&lt;/a&gt; 는이 주제에 대한 하나의 좋은 링크이며 다음과 같이 요약합니다.</target>
+        </trans-unit>
+        <trans-unit id="666e477109d5e8dbab875d1af9b39529b55a2804" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;@staticmethod&lt;/code&gt; just disables the default function as method descriptor.  classmethod wraps your function in a container callable that passes a reference to the owning class as first argument:</source>
+          <target state="translated">&lt;code&gt;@staticmethod&lt;/code&gt; 는 메소드 디스크립터로서 기본 기능을 사용하지 않습니다. classmethod는 첫 번째 인수로 소유 클래스에 대한 참조를 전달하는 호출 가능한 컨테이너에 함수를 래핑합니다.</target>
+        </trans-unit>
+        <trans-unit id="9f1da008aee7e1bacb91f2808d9ff3a6fe24d3c6" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;a&lt;/code&gt; is bound to &lt;code&gt;foo&lt;/code&gt;. That is what is meant by the term &quot;bound&quot; below:</source>
+          <target state="translated">&lt;code&gt;a&lt;/code&gt; 는 &lt;code&gt;foo&lt;/code&gt; 에 바인딩됩니다. 이것이 아래 &quot;바운드&quot;라는 용어의 의미입니다.</target>
+        </trans-unit>
+        <trans-unit id="63e351f5e858a7fd0d48a6e4d6759d19a111bf63" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;classmethod&lt;/code&gt; is mostly used for alternative constructors.</source>
+          <target state="translated">&lt;code&gt;classmethod&lt;/code&gt; 는 대체로 대체 생성자에 사용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="7f77acaab87e00fe6a0a1c10f99432922bf13570" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;foo&lt;/code&gt; is just a function, but when you call &lt;code&gt;a.foo&lt;/code&gt; you don't just get the function,
+you get a &quot;partially applied&quot; version of the function with the object instance &lt;code&gt;a&lt;/code&gt; bound as the first argument to the function. &lt;code&gt;foo&lt;/code&gt; expects 2 arguments, while &lt;code&gt;a.foo&lt;/code&gt; only expects 1 argument.</source>
+          <target state="translated">&lt;code&gt;foo&lt;/code&gt; 는 함수 &lt;code&gt;a.foo&lt;/code&gt; 를 호출하면 함수를 얻지 못할뿐 아니라 객체 인스턴스 &lt;code&gt;a&lt;/code&gt; 함수의 첫 번째 인수로 바인딩 된 &quot;부분적으로 적용되는&quot;버전의 함수를 얻습니다. &lt;code&gt;foo&lt;/code&gt; 는 2 개의 인수를 기대하지만 &lt;code&gt;a.foo&lt;/code&gt; 는 1 개의 인수 만 기대합니다.</target>
+        </trans-unit>
+        <trans-unit id="4c7321399c70f406d6b983cba08f69f8710b39a6" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;staticmethod&lt;/code&gt; does not use the state of the object. It could be a function external to a class. It only put inside the class for grouping functions with similar functionality (for example, like Java's &lt;code&gt;Math&lt;/code&gt; class static methods)</source>
+          <target state="translated">&lt;code&gt;staticmethod&lt;/code&gt; 는 객체의 상태를 사용하지 않습니다. 클래스 외부의 함수 일 수 있습니다. 비슷한 기능을 가진 함수를 그룹화하기 위해 클래스 내부에만 배치됩니다 (예 : Java의 &lt;code&gt;Math&lt;/code&gt; 클래스 정적 메소드와 같은)</target>
+        </trans-unit>
+        <trans-unit id="70ebfa84e6baeaba89a1999620a95d79a3a014c4" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Factory methods&lt;/em&gt;, that are used to create an instance for a class using for example some sort of pre-processing.</source>
+          <target state="translated">예를 들어 일종의 사전 처리를 사용하여 클래스의 인스턴스를 작성하는 데 사용되는 &lt;em&gt;팩토리 메소드&lt;/em&gt; .</target>
+        </trans-unit>
+        <trans-unit id="19768dccc2b9e420935daf19e8803203ed16eed2" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Static methods calling static methods&lt;/em&gt;: if you split a static methods in several static methods, you shouldn't hard-code the class name but use class methods</source>
+          <target state="translated">&lt;em&gt;정적 메소드를 호출하는 정적 메소드&lt;/em&gt; : 정적 메소드를 여러 정적 메소드로 분할하는 경우 클래스 이름을 하드 코딩하지 말고 클래스 메소드를 사용해야합니다</target>
+        </trans-unit>
+        <trans-unit id="3d87acdab3eddbb193a6102f1a2534880a4189a4" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;@classmethod&lt;/code&gt;&lt;/strong&gt; function also callable without instantiating the class, but its definition follows Sub class, not Parent class, via inheritance, can be overridden by subclass. That&amp;rsquo;s because the first argument for &lt;code&gt;@classmethod&lt;/code&gt; function must always be &lt;em&gt;cls&lt;/em&gt; (class).</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;@classmethod&lt;/code&gt; &lt;/strong&gt; 함수는 클래스를 인스턴스화하지 않고도 호출 할 수 있지만 그 정의는 상속을 통해 Parent 클래스가 아닌 Sub 클래스를 따릅니다. &lt;code&gt;@classmethod&lt;/code&gt; 함수의 첫 번째 인수는 항상 &lt;em&gt;cls&lt;/em&gt; (class) 여야하기 때문입니다.</target>
+        </trans-unit>
+        <trans-unit id="07183b14ce2b254988723cad943c35fde62379ba" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;@staticmethod&lt;/code&gt;&lt;/strong&gt; function is nothing more than a function defined inside a class. It is callable without instantiating the class first. It&amp;rsquo;s definition is immutable via inheritance.</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;@staticmethod&lt;/code&gt; &lt;/strong&gt; 함수는 클래스 내에 정의 된 함수에 지나지 않습니다. 클래스를 먼저 인스턴스화하지 않고 호출 할 수 있습니다. 상속을 통해 정의를 변경할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="2b6a30c8a4feebc05c4e9619c9402923e2918c46" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Benefits of Static Methods:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;정적 방법의 장점 :&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4541e7106f30501f486b234e7f532b33217c8233" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Class Method:&lt;/strong&gt; Python unlike Java and C++ doesn't have constructor overloading.  And so to achieve this you could use &lt;code&gt;classmethod&lt;/code&gt;. Following example will explain this</source>
+          <target state="translated">&lt;strong&gt;클래스 메소드 :&lt;/strong&gt; Java와 달리 Python은 C ++에 생성자 오버로드가 없습니다. 그리고 이것을 달성하기 위해 &lt;code&gt;classmethod&lt;/code&gt; 를 사용할 수 있습니다. 다음 예는 이것을 설명합니다.</target>
+        </trans-unit>
+        <trans-unit id="477db5eb89c8f164a4c2adb5b5140970f46c9422" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Class Methods:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;수업 방법 :&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="230a3084a5494570dbc2dcf3a00d2e16eaa9ab0a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Difference:&lt;/strong&gt; A classmethod will receive the class itself as the first argument, while a staticmethod does not.</source>
+          <target state="translated">&lt;strong&gt;차이점 :&lt;/strong&gt; 클래스 메서드는 클래스 자체를 첫 번째 인수로 받지만 정적 메서드는받지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="cb38e8b8db4a863b4a43406d1c1edbe185ca4988" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Official python docs:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;공식 파이썬 문서 :&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f8000d9e43119e78c3dc28894c99b6e45fdf6129" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Only the first argument differs&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;첫 번째 인수 만 다릅니다&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="f9f5eb385e646bdeefe41d0134d9298e151d0ad6" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Similarity:&lt;/strong&gt; Both of them can be called on the &lt;em&gt;Class&lt;/em&gt; itself, rather than just the &lt;em&gt;instance&lt;/em&gt; of the class. So, both of them in a sense are &lt;em&gt;Class's methods&lt;/em&gt;.</source>
+          <target state="translated">&lt;strong&gt;유사성 :&lt;/strong&gt; 둘 다 &lt;em&gt;클래스&lt;/em&gt; 의 &lt;em&gt;인스턴스&lt;/em&gt; 가 아니라 &lt;em&gt;클래스&lt;/em&gt; 자체에서 호출 될 수 있습니다. 따라서 두 가지 모두 &lt;em&gt;클래스의 메소드&lt;/em&gt; 입니다.</target>
+        </trans-unit>
+        <trans-unit id="13b294aa2a66fd79cfa2fa74b88dff29e3a58028" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Static Method:&lt;/strong&gt; This is rather simple, it's not bound to instance or class and you can simply call that using class name.</source>
+          <target state="translated">&lt;strong&gt;정적 방법 :&lt;/strong&gt; 이것은 간단하지만 인스턴스 또는 클래스에 바인딩되지 않으며 클래스 이름을 사용하여 간단히 호출 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="e01b6d5fbe10be46aaf391a840622400eeaba30e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Static Methods:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;정적 방법 :&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5e7552d839770842e4bdc41f92fe9f44d288df33" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;With classmethods&lt;/strong&gt;, the class of the object instance is implicitly passed as the first argument instead of &lt;code&gt;self&lt;/code&gt;.</source>
+          <target state="translated">&lt;strong&gt;classmethods를 사용하면&lt;/strong&gt; 객체 인스턴스 클래스가 &lt;code&gt;self&lt;/code&gt; 대신 첫 번째 인수로 암시 적으로 전달됩니다.</target>
+        </trans-unit>
+        <trans-unit id="a432d953e1017402a8688be133f46b1f6662056f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;With staticmethods&lt;/strong&gt;, neither &lt;code&gt;self&lt;/code&gt; (the object instance) nor  &lt;code&gt;cls&lt;/code&gt; (the class) is implicitly passed as the first argument. They behave like plain functions except that you can call them from an instance or the class:</source>
+          <target state="translated">&lt;strong&gt;staticmethods를 사용하면&lt;/strong&gt; &lt;code&gt;self&lt;/code&gt; (객체 인스턴스) 또는 &lt;code&gt;cls&lt;/code&gt; (클래스)가 첫 번째 인수로 암시 적으로 전달되지 않습니다. 인스턴스 또는 클래스에서 호출 할 수 있다는 점을 제외하고는 일반 함수처럼 작동합니다.</target>
+        </trans-unit>
+        <trans-unit id="90bbd0ef7a61c3f762a030a3fabe6121f8aa5f09" translate="yes" xml:space="preserve">
+          <source>@classmethod</source>
+          <target state="translated">@classmethod</target>
+        </trans-unit>
+        <trans-unit id="1b87c7f5dd2ac6a4b5c6f0928185ece8eefb7bfa" translate="yes" xml:space="preserve">
+          <source>@classmethod : can be used to create a shared global access to all the instances created of that class..... like updating a record by multiple users....
+I particulary found it use ful when creating singletons as well..:)</source>
+          <target state="translated">@classmethod : 해당 클래스에서 생성 된 모든 인스턴스에 대한 공유 전역 액세스를 만드는 데 사용할 수 있습니다 ..... 여러 사용자가 레코드를 업데이트하는 것과 같이 .... 특히 싱글 톤을 만들 때도 유용하게 사용됩니다 .. : )</target>
+        </trans-unit>
+        <trans-unit id="44ef4b40d79513b33f7f9ae604039ccb1774d51f" translate="yes" xml:space="preserve">
+          <source>@classmethod allows you easy access to private members that are associated to the class definition. this is a great way to do singletons, or factory classes that control the number of instances of the created objects exist.</source>
+          <target state="translated">@classmethod를 사용하면 클래스 정의와 연결된 개인 멤버에 쉽게 액세스 할 수 있습니다. 이것은 생성 된 객체의 인스턴스 수를 제어하는 ​​단일 클래스 또는 팩토리 클래스를 수행하는 좋은 방법입니다.</target>
+        </trans-unit>
+        <trans-unit id="cd8d342a5b4d72e4e7a0daeb849290be2f41e7e1" translate="yes" xml:space="preserve">
+          <source>@classmethod function also callable without instantiating the class, but its definition follows Sub class, not Parent class, via inheritance. That&amp;rsquo;s because the first argument for @classmethod function must always be cls (class).</source>
+          <target state="translated">@classmethod 함수는 클래스를 인스턴스화하지 않고도 호출 할 수 있지만 그 정의는 상속을 통해 Parent 클래스가 아닌 Sub 클래스를 따릅니다. @classmethod 함수의 첫 번째 인수는 항상 cls (class) 여야하기 때문입니다.</target>
+        </trans-unit>
+        <trans-unit id="1800b3976c1e687a9ed79d2d3b2072083ebcd591" translate="yes" xml:space="preserve">
+          <source>@decorators were added in python 2.4 If you're using python &amp;lt; 2.4 you can use the classmethod() and staticmethod() function.</source>
+          <target state="translated">@decorators는 python 2.4에 추가되었습니다. python &amp;lt;2.4를 사용하는 경우 classmethod () 및 staticmethod () 함수를 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="f7625edc6b9228ed3988e14a71b1981c5ed03102" translate="yes" xml:space="preserve">
+          <source>@static method:  has nothing to do with the class or instance being associated with ...but for readability can use static method</source>
+          <target state="translated">@static 메소드 : 클래스 또는 인스턴스와 관련이 없습니다 ...하지만 가독성을 위해 정적 메소드를 사용할 수 있습니다</target>
+        </trans-unit>
+        <trans-unit id="a7e9e685ffa9bc2ea7a32b2ca97495fffb98da72" translate="yes" xml:space="preserve">
+          <source>@staticmethod</source>
+          <target state="translated">@staticmethod</target>
+        </trans-unit>
+        <trans-unit id="316937114375aa711e02d313c11e07624f951988" translate="yes" xml:space="preserve">
+          <source>@staticmethod function is nothing more than a function defined inside a class. It is callable without instantiating the class first. It&amp;rsquo;s definition is immutable via inheritance.</source>
+          <target state="translated">@staticmethod 함수는 클래스 내에 정의 된 함수에 지나지 않습니다. 클래스를 먼저 인스턴스화하지 않고 호출 할 수 있습니다. 상속을 통해 정의를 변경할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="07d2b2c31d4856ae66f1901996734386b80a1c1e" translate="yes" xml:space="preserve">
+          <source>@staticmethod provides marginal performance gains, but I have yet to see a productive use of a static method within a class that couldn't be achieved as a standalone function outside the class.</source>
+          <target state="translated">@staticmethod는 약간의 성능 향상을 제공하지만 클래스 외부에서 독립형 함수로 달성 할 수없는 클래스 내에서 정적 메소드를 생산적으로 사용하는 것을 아직 보지 못했습니다.</target>
+        </trans-unit>
+        <trans-unit id="43b64154609a96d68266675199015630093e6d25" translate="yes" xml:space="preserve">
+          <source>A &lt;strong&gt;classmethod&lt;/strong&gt;, on the other hand, is a method that gets passed the class it was called on, or the class of the instance it was called on, as first argument. This is useful when you want the method to be a factory for the class: since it gets the actual class it was called on as first argument, you can always instantiate the right class, even when subclasses are involved. Observe for instance how &lt;code&gt;dict.fromkeys()&lt;/code&gt;, a classmethod, returns an instance of the subclass when called on a subclass:</source>
+          <target state="translated">반면에 &lt;strong&gt;classmethod&lt;/strong&gt; 는 호출 된 클래스 또는 호출 된 인스턴스의 클래스를 첫 번째 인수로 전달하는 메소드입니다. 메소드를 클래스의 팩토리로 만들 때 유용합니다. 첫 번째 인수로 호출 된 실제 클래스를 가져 오므로 서브 클래스가 포함 된 경우에도 항상 올바른 클래스를 인스턴스화 할 수 있습니다. 예를 들어, 클래스 &lt;code&gt;dict.fromkeys()&lt;/code&gt; 가 서브 클래스에서 호출 될 때 서브 클래스의 인스턴스를 리턴하는 방법을 관찰하십시오.</target>
+        </trans-unit>
+        <trans-unit id="ea9ca6bfe7447631d34a67f0f001a61c11f0d90e" translate="yes" xml:space="preserve">
+          <source>A &lt;strong&gt;staticmethod&lt;/strong&gt; is a method that knows nothing about the class or instance it was called on. It just gets the arguments that were passed, no implicit first argument. It is basically useless in Python -- you can just use a module function instead of a staticmethod.</source>
+          <target state="translated">&lt;strong&gt;정적&lt;/strong&gt; 메소드는 호출 된 클래스 또는 인스턴스에 대해 아무것도 모르는 메소드입니다. 전달 된 인수를 얻습니다. 암시 적 첫 번째 인수는 없습니다. 파이썬에서는 기본적으로 쓸모가 없습니다. 정적 메소드 대신 모듈 함수를 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="fdf2945b9c4df3d30c98cd6d026d7f48f4cc3d83" translate="yes" xml:space="preserve">
+          <source>A class method is a similar to an instance method in that it takes an implicit first argument, but instead of taking the instance, it takes the class. Frequently these are used as alternative constructors for better semantic usage and it will support inheritance.</source>
+          <target state="translated">클래스 메소드는 암시 적 첫 번째 인수를 취한다는 점에서 인스턴스 메소드와 유사하지만 인스턴스를 가져 오는 대신 클래스를 사용합니다. 더 나은 의미 사용을 위해 대체 생성자로 사용되는 경우가 많으며 상속을 지원합니다.</target>
+        </trans-unit>
+        <trans-unit id="7bcf63323ea71d67fbe14ff17405e56e9914d012" translate="yes" xml:space="preserve">
+          <source>A class method receives the class as
+  implicit first argument, just like an
+  instance method receives the instance.
+  To declare a class method, use this
+  idiom:</source>
+          <target state="translated">클래스 메서드는 인스턴스 메서드가 인스턴스를받는 것처럼 클래스를 암시 적 첫 번째 인수로받습니다. 클래스 메소드를 선언하려면 다음 관용구를 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="3d92730dcf5e8db0d25f10bd3fd12e7e4523c413" translate="yes" xml:space="preserve">
+          <source>A class method receives the class as implicit first argument, just like an instance method receives the instance. It is a method which is bound to the class and not the object of the class.It has access to the state of the class as it takes a class parameter that points to the class and not the object instance. It can modify a class state that would apply across all the instances of the class. For example it can modify a class variable that will be applicable to all the instances.</source>
+          <target state="translated">클래스 메서드는 인스턴스 메서드가 인스턴스를받는 것처럼 클래스를 암시 적 첫 번째 인수로받습니다. 클래스의 객체가 아닌 클래스에 바인딩 된 메소드이며 객체 인스턴스가 아닌 클래스를 가리키는 클래스 매개 변수를 취하므로 클래스의 상태에 액세스 할 수 있습니다. 클래스의 모든 인스턴스에 적용되는 클래스 상태를 수정할 수 있습니다. 예를 들어 모든 인스턴스에 적용 할 클래스 변수를 수정할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="4f544cf2ef41a072f58086b28f8ecb1cc39d4746" translate="yes" xml:space="preserve">
+          <source>A normal method of a class is an implicit &lt;strong&gt;dynamic&lt;/strong&gt; method which takes the instance as first argument.</source>
+          <target state="translated">클래스의 일반적인 메소드는 인스턴스를 첫 번째 인수로 사용하는 암시 적 &lt;strong&gt;동적&lt;/strong&gt; 메소드입니다.</target>
+        </trans-unit>
+        <trans-unit id="2b07004d7733b00054b2d72c8854d6ba07c831e3" translate="yes" xml:space="preserve">
+          <source>A quick hack-up ofotherwise identical methods in iPython reveals that &lt;code&gt;@staticmethod&lt;/code&gt; yields marginal performance gains (in the nanoseconds), but otherwise it seems to serve no function. Also, any performance gains will probably be wiped out by the additional work of processing the method through &lt;code&gt;staticmethod()&lt;/code&gt; during compilation (which happens prior to any code execution when you run a script).</source>
+          <target state="translated">iPython에서 다른 동일한 방법을 빠르게 해킹하면 &lt;code&gt;@staticmethod&lt;/code&gt; 가 (나노초 단위로) 약간의 성능 향상을 가져 오지만 그렇지 않으면 기능을 수행하지 않는 것으로 보입니다. 또한 컴파일 중에 &lt;code&gt;staticmethod()&lt;/code&gt; 통해 메서드를 처리하는 추가 작업 (스크립트를 실행할 때 코드 실행 전에 발생 )으로 인해 성능이 향상 될 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="174b86cd307a93d7ede9985e59dfb55608a534c0" translate="yes" xml:space="preserve">
+          <source>A static method does not receive an
+  implicit first argument. To declare a
+  static method, use this idiom:</source>
+          <target state="translated">정적 메소드는 내재 된 첫 번째 인수를받지 않습니다. 정적 메소드를 선언하려면 다음 관용구를 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="d1a64bfff8220829f5366f3b2a593cfff2896ad2" translate="yes" xml:space="preserve">
+          <source>A staticmethod is indeed such a normal function the same as those outside a class definition.</source>
+          <target state="translated">정적 메소드는 실제로 클래스 정의 외부의 함수와 같은 일반 함수입니다.</target>
+        </trans-unit>
+        <trans-unit id="d402c4c27f3621c9392d6c31422a842c2a7bd1bf" translate="yes" xml:space="preserve">
+          <source>Also observe that this is a good example for using a classmethod and a static method,
+The static method clearly belongs to the class, since it uses the class Cluster internally.
+The classmethod only needs information about the class, and no instance of the object.</source>
+          <target state="translated">또한 이것은 클래스 메소드와 정적 메소드를 사용하는 좋은 예입니다. 정적 메소드는 내부적으로 클러스터 클래스를 사용하기 때문에 클래스에 명확하게 속합니다. classmethod에는 클래스에 대한 정보 만 필요하며 객체의 인스턴스는 필요하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="caa569c9ae472a87f325f4b599c69c6baca55fad" translate="yes" xml:space="preserve">
+          <source>An example of a static method is &lt;code&gt;str.maketrans&lt;/code&gt;, moved from the &lt;code&gt;string&lt;/code&gt; module in Python 3.  It makes a translation table suitable for consumption by &lt;code&gt;str.translate&lt;/code&gt;. It does seem rather silly when used from an instance of a string, as demonstrated below, but importing the function from the &lt;code&gt;string&lt;/code&gt; module is rather clumsy, and it's nice to be able to call it from the class, as in &lt;code&gt;str.maketrans&lt;/code&gt;</source>
+          <target state="translated">정적 메소드의 예는 &lt;code&gt;str.maketrans&lt;/code&gt; 이며 Python 3의 &lt;code&gt;string&lt;/code&gt; 모듈에서 이동합니다. 변환 테이블이 &lt;code&gt;str.translate&lt;/code&gt; 의 소비에 적합합니다. 아래에 설명 된 것처럼 문자열 인스턴스에서 사용하면 다소 어리석은 것처럼 보이지만 &lt;code&gt;string&lt;/code&gt; 모듈에서 함수를 가져 오는 것은 다소 어색하고 &lt;code&gt;str.maketrans&lt;/code&gt; 에서와 같이 클래스에서 함수 를 호출하는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="4016333d9516bf49e82568ddb25694c7dab41ec1" translate="yes" xml:space="preserve">
+          <source>Analyze @staticmethod &lt;strong&gt;literally&lt;/strong&gt; providing different insights.</source>
+          <target state="translated">&lt;strong&gt;문자 그대로&lt;/strong&gt; 다른 통찰력을 제공하는 @staticmethod를 분석하십시오.</target>
+        </trans-unit>
+        <trans-unit id="46dc7b6eec81baff58dad68305e781177e5e36b4" translate="yes" xml:space="preserve">
+          <source>And later we can use this as a function that already has the first argument bound to it. In this way, it works like a partial function on the instance:</source>
+          <target state="translated">그리고 나중에 우리는 이미 첫 번째 인수가 바인딩 된 함수로 이것을 사용할 수 있습니다. 이런 식으로 인스턴스에서 부분 함수처럼 작동합니다.</target>
+        </trans-unit>
+        <trans-unit id="8de9d2abf5cd59c945e75988adc6ab4ac9e4ae20" translate="yes" xml:space="preserve">
+          <source>And of course the same thing happens when you call &lt;code&gt;static_foo&lt;/code&gt; with the class &lt;code&gt;A&lt;/code&gt; instead.</source>
+          <target state="translated">물론 클래스 &lt;code&gt;A&lt;/code&gt; 로 &lt;code&gt;static_foo&lt;/code&gt; 를 호출 할 때도 마찬가지 입니다.</target>
+        </trans-unit>
+        <trans-unit id="0f24da3f406bdcbf3cbb1052ac539ab58118e8b9" translate="yes" xml:space="preserve">
+          <source>And you then want to override &lt;code&gt;bar()&lt;/code&gt; in a child class:</source>
+          <target state="translated">그런 다음 자식 클래스에서 &lt;code&gt;bar()&lt;/code&gt; 를 재정의하려고합니다.</target>
+        </trans-unit>
+        <trans-unit id="1e36acde21e68ba316af8bc3e870c4b88751f9d9" translate="yes" xml:space="preserve">
+          <source>Another benefit of making the &lt;code&gt;_is_cluster_for&lt;/code&gt; method a classmethod is so a subclass can decide to change it's implementation, maybe because it is pretty generic and can handle more than one type of cluster, so just checking the name of the class would not be enough.</source>
+          <target state="translated">&lt;code&gt;_is_cluster_for&lt;/code&gt; 메소드를 클래스 메소드로 만들면 얻을 수있는 또 다른 이점은 서브 클래스가 구현을 변경하기로 결정할 수 있다는 것입니다. 아마도 일반적이고 여러 유형의 클러스터를 처리 할 수 ​​있기 때문에 클래스 이름을 확인하는 것만으로는 충분하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="7dab70172b4929776efda7b5da9421027c390a28" translate="yes" xml:space="preserve">
+          <source>Another consideration with respect to staticmethod vs classmethod comes up with inheritance.  Say you have the following class:</source>
+          <target state="translated">staticmethod와 classmethod에 대한 또 다른 고려 사항은 상속입니다. 다음과 같은 수업이 있다고 가정하십시오.</target>
+        </trans-unit>
+        <trans-unit id="5e28a0e57c66449c767e62be787a89c79b95f964" translate="yes" xml:space="preserve">
+          <source>As a matter of fact, &lt;code&gt;classmethod&lt;/code&gt; has a runtime overhead but makes it possible to access the owning class.  Alternatively I recommend using a metaclass and putting the class methods on that metaclass:</source>
+          <target state="translated">실제로 &lt;code&gt;classmethod&lt;/code&gt; 에는 런타임 오버 헤드가 있지만 소유 클래스에 액세스 할 수 있습니다. 또는 메타 클래스를 사용하고 해당 메타 클래스에 클래스 메소드를 배치하는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="0d849f64698b3cf225429211c021d253be4d70d2" translate="yes" xml:space="preserve">
+          <source>Basically &lt;code&gt;@classmethod&lt;/code&gt; makes a method whose first argument is the class it's called from (rather than the class instance), &lt;code&gt;@staticmethod&lt;/code&gt; does not have any implicit arguments.</source>
+          <target state="translated">기본적으로 &lt;code&gt;@classmethod&lt;/code&gt; 는 첫 번째 인수가 클래스 인스턴스가 아닌 호출 된 클래스 인 메소드를 작성합니다. &lt;code&gt;@staticmethod&lt;/code&gt; 에는 암시 적 인수가 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="7a9e8fbf97ca31874aa69d63a389a951865d7274" translate="yes" xml:space="preserve">
+          <source>Below is the usual way an object instance calls a method. The object instance, &lt;code&gt;a&lt;/code&gt;, is implicitly passed as the first argument.</source>
+          <target state="translated">다음은 객체 인스턴스가 메소드를 호출하는 일반적인 방법입니다. 객체 인스턴스 &lt;code&gt;a&lt;/code&gt; 가 첫 번째 인수로 암시 적으로 전달됩니다.</target>
+        </trans-unit>
+        <trans-unit id="558943de44a405cf7f92076e794bfab4df9297b3" translate="yes" xml:space="preserve">
+          <source>Both of them are non-data descriptors (It would be easier to understand them if you are familiar with &lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#implementing-descriptors&quot;&gt;descriptors&lt;/a&gt; first).</source>
+          <target state="translated">둘 다 비 데이터 디스크립터입니다 (먼저 &lt;a href=&quot;https://docs.python.org/3/reference/datamodel.html#implementing-descriptors&quot;&gt;디스크립터에&lt;/a&gt; 익숙하면 이해하기가 더 쉽습니다).</target>
+        </trans-unit>
+        <trans-unit id="96cb4b862bfd721769fe8f3891a2750e3f0d62bb" translate="yes" xml:space="preserve">
+          <source>Bound methods</source>
+          <target state="translated">바운드 방법</target>
+        </trans-unit>
+        <trans-unit id="485f0584baedc52a76dddcbdc5a384a621979991" translate="yes" xml:space="preserve">
+          <source>Can be called through both class and instance.</source>
+          <target state="translated">클래스와 인스턴스를 통해 호출 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="267824910c5cace5b6b1cc20f56a51bf416793ea" translate="yes" xml:space="preserve">
+          <source>Class Method</source>
+          <target state="translated">수업 방법</target>
+        </trans-unit>
+        <trans-unit id="96aa2b8b1142697d7bff0fdb46efcf730f9fcac9" translate="yes" xml:space="preserve">
+          <source>Class methods are different than C++
+  or Java static methods. If you want
+  those, see &lt;a href=&quot;http://docs.python.org/2/library/functions.html#staticmethod&quot;&gt;&lt;code&gt;staticmethod()&lt;/code&gt;&lt;/a&gt; in this
+  section.</source>
+          <target state="translated">클래스 메소드는 C ++ 또는 Java 정적 메소드와 다릅니다. 원하는 경우이 섹션의 &lt;a href=&quot;http://docs.python.org/2/library/functions.html#staticmethod&quot;&gt; &lt;code&gt;staticmethod()&lt;/code&gt; &lt;/a&gt; 를 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="80672eaa5ba6013d2c0fa4f9eca5fccf474819ff" translate="yes" xml:space="preserve">
+          <source>Class methods, as the name suggests, are used to make changes to classes and not the objects. To make changes to classes, they will modify the class attributes(not object attributes), since that is how you update classes.
+This is the reason that class methods take the class(conventionally denoted by 'cls') as the first argument.</source>
+          <target state="translated">이름에서 알 수 있듯이 클래스 메서드는 객체가 아닌 클래스를 변경하는 데 사용됩니다. 클래스를 변경하려면 클래스를 업데이트하는 방식이므로 클래스가 클래스 속성 (개체 속성이 아님)을 수정합니다. 이것이 클래스 메소드가 클래스 (일반적으로 'cls'로 표시됨)를 첫 번째 인수로 취하는 이유입니다.</target>
+        </trans-unit>
+        <trans-unit id="b35b086653d69dfdfe1042ce78c4bcdb48c3d279" translate="yes" xml:space="preserve">
+          <source>Difference between staticmethod and classmethod</source>
+          <target state="translated">정적 메소드와 클래스 메소드의 차이점</target>
+        </trans-unit>
+        <trans-unit id="164607916d6ea823ef7c78eb0833afe38bf3630f" translate="yes" xml:space="preserve">
+          <source>First I'll explain &lt;code&gt;a_normal_instance_method&lt;/code&gt;. This is precisely called an &quot;&lt;strong&gt;instance method&lt;/strong&gt;&quot;. When an instance method is used, it is used as a partial function (as opposed to a total function, defined for all values when viewed in source code) that is, when used, the first of the arguments is predefined as the instance of the object, with all of its given attributes. It has the instance of the object bound to it, and it must be called from an instance of the object. Typically, it will access various attributes of the instance.</source>
+          <target state="translated">먼저 &lt;code&gt;a_normal_instance_method&lt;/code&gt; 를 설명 하겠습니다 . 이것을 &quot; &lt;strong&gt;인스턴스 메소드&lt;/strong&gt; &quot;라고합니다. 인스턴스 메소드가 사용될 때, 이는 부분 함수 (소스 코드에서 볼 때 모든 값에 대해 정의 된 총 함수와 반대)로 사용됩니다. 즉, 사용될 때 첫 번째 인수는 주어진 속성을 가진 객체. 개체의 인스턴스가 바인딩되어 있으며 개체의 인스턴스에서 호출되어야합니다. 일반적으로 인스턴스의 다양한 속성에 액세스합니다.</target>
+        </trans-unit>
+        <trans-unit id="0f7fb90238ae76c6afb80f76159dd7556d88d38f" translate="yes" xml:space="preserve">
+          <source>For example, if you want to create a factory method (A function returning an instance of a different implementation of a class depending on what argument it gets) you can do something like:</source>
+          <target state="translated">예를 들어 팩토리 메소드 (어떤 인수에 따라 클래스의 다른 구현 인스턴스를 리턴하는 함수)를 작성하려는 경우 다음과 같이 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="06ec4552ced78aea82f7ba25beef8c69e6f4a32a" translate="yes" xml:space="preserve">
+          <source>For example, this binds the &lt;code&gt;str.join&lt;/code&gt; method to the &lt;code&gt;':'&lt;/code&gt; instance:</source>
+          <target state="translated">예를 들어 &lt;code&gt;str.join&lt;/code&gt; 메소드를 &lt;code&gt;':'&lt;/code&gt; 인스턴스에 바인딩합니다.</target>
+        </trans-unit>
+        <trans-unit id="e14341dc4aa4a22660bb62e64b2a9ec3f3217718" translate="yes" xml:space="preserve">
+          <source>For example, this is an instance of a string:</source>
+          <target state="translated">예를 들어 다음은 문자열의 인스턴스입니다.</target>
+        </trans-unit>
+        <trans-unit id="90faa00926d9e27636891da919e5733d1122d8b2" translate="yes" xml:space="preserve">
+          <source>For the sake of code readability I'd avoid &lt;code&gt;@staticmethod&lt;/code&gt; unless your method will be used for loads of work, where the nanoseconds count.</source>
+          <target state="translated">코드 가독성을 위해 메서드가 나노초로 계산되는 많은 작업에 사용되지 않는 한 &lt;code&gt;@staticmethod&lt;/code&gt; 를 피하십시오.</target>
+        </trans-unit>
+        <trans-unit id="9a2b129313b892462b40ddd6c79d0af830dea9c8" translate="yes" xml:space="preserve">
+          <source>Functions that have first argument as classname.</source>
+          <target state="translated">클래스 이름으로 첫 번째 인수가있는 함수</target>
+        </trans-unit>
+        <trans-unit id="807d50dce55b514a4fba42b13f8002d515f8a71b" translate="yes" xml:space="preserve">
+          <source>Gives: &lt;code&gt;In Foo2 MAGIC&lt;/code&gt;</source>
+          <target state="translated">제공 : &lt;code&gt;In Foo2 MAGIC&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="2860e65bbc0758e8d4d475d85f1680dabe52e6a1" translate="yes" xml:space="preserve">
+          <source>Here, with a staticmethod, even though it is a method, &lt;code&gt;a.static_foo&lt;/code&gt; just returns
+a good 'ole function with no arguments bound. &lt;code&gt;static_foo&lt;/code&gt; expects 1 argument, and
+&lt;code&gt;a.static_foo&lt;/code&gt; expects 1 argument too.</source>
+          <target state="translated">여기서 정적 메소드를 사용하면 메소드이지만 &lt;code&gt;a.static_foo&lt;/code&gt; 는 인수가 없는 좋은 'ole 함수를 반환합니다. &lt;code&gt;static_foo&lt;/code&gt; 는 1 개의 인수를 기대하고 &lt;code&gt;a.static_foo&lt;/code&gt; 는 1 개의 인수도 기대합니다.</target>
+        </trans-unit>
+        <trans-unit id="ce0274e0663be4ad665ddb61fc313fc1346d7b03" translate="yes" xml:space="preserve">
+          <source>Hope I was clear !</source>
+          <target state="translated">희망이 분명했다!</target>
+        </trans-unit>
+        <trans-unit id="536783112e18b97571f614392a4dc28b80515954" translate="yes" xml:space="preserve">
+          <source>However, a module level function must live in the module and be specially imported to other places where it is used.</source>
+          <target state="translated">그러나 모듈 레벨 기능은 모듈에 상주해야하며 모듈이 사용되는 다른 곳으로 특별히 가져와야합니다.</target>
+        </trans-unit>
+        <trans-unit id="8f6343acac6bb042a0e1759058bfdad64fdb5e56" translate="yes" xml:space="preserve">
+          <source>However, you could achieve the same thing using &lt;code&gt;@classmethod&lt;/code&gt; as mentioned below</source>
+          <target state="translated">그러나 &lt;code&gt;@classmethod&lt;/code&gt; 를 사용하여 아래 언급 된 것과 동일한 것을 얻을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="fe663cfec4745cf0ea4c84d7a734da467f0e2ce4" translate="yes" xml:space="preserve">
+          <source>I started learning programming language with C++ and then Java and then Python and so this question bothered me a lot as well, until I understood the simple usage of each.</source>
+          <target state="translated">C ++로 프로그래밍 언어를 배우기 시작한 다음 Java와 Python으로 시작했습니다. 그래서이 질문은 각각의 간단한 사용법을 이해할 때까지 나에게 많은 영향을 미쳤습니다.</target>
+        </trans-unit>
+        <trans-unit id="5ab2de0b5f9aebcc8092bd625d4e80db8214b56e" translate="yes" xml:space="preserve">
+          <source>I think a better question is &quot;When would you use @classmethod vs @staticmethod?&quot;</source>
+          <target state="translated">더 좋은 질문은 &quot;@classmethod와 @staticmethod를 언제 사용 하시겠습니까?&quot;입니다.</target>
+        </trans-unit>
+        <trans-unit id="e03cea799789ab3a8ab2445c8c76ff25537711d7" translate="yes" xml:space="preserve">
+          <source>I think giving a purely Python version of &lt;code&gt;staticmethod&lt;/code&gt; and &lt;code&gt;classmethod&lt;/code&gt; would help to understand the difference between them at language level.</source>
+          <target state="translated">나는 순수하게 파이썬 버전의 &lt;code&gt;staticmethod&lt;/code&gt; 와 &lt;code&gt;classmethod&lt;/code&gt; 를 제공하면 언어 수준에서 차이점을 이해하는 데 도움이 될 것이라고 생각합니다.</target>
+        </trans-unit>
+        <trans-unit id="69a1c0771c12086dd4b452a55dc59cc30ff19aca" translate="yes" xml:space="preserve">
+          <source>I will try to explain the basic difference using an example.</source>
+          <target state="translated">예제를 사용하여 기본적인 차이점을 설명하려고합니다.</target>
+        </trans-unit>
+        <trans-unit id="1bf6e736cb87adbab8ee43c998f8352378eb5f99" translate="yes" xml:space="preserve">
+          <source>If it is attached to the object, however, it will follow the object conveniently through importing and inheritance as well.</source>
+          <target state="translated">그러나 객체에 첨부 된 경우 가져 오기 및 상속을 통해 편리하게 객체를 따릅니다.</target>
+        </trans-unit>
+        <trans-unit id="b6064776a38f8588bf3204f57e4defc4d6b48090" translate="yes" xml:space="preserve">
+          <source>In contrast, a staticmethod does not take the instance as first argument, so is called &lt;strong&gt;'static'&lt;/strong&gt;.</source>
+          <target state="translated">반대로 정적 메소드는 인스턴스를 첫 번째 인수로 사용하지 않으므로 &lt;strong&gt;'static'&lt;/strong&gt; 이라고합니다.</target>
+        </trans-unit>
+        <trans-unit id="418e1f592595199710930f400b12c6648ac41d0d" translate="yes" xml:space="preserve">
+          <source>In more detail...</source>
+          <target state="translated">더 자세하게...</target>
+        </trans-unit>
+        <trans-unit id="ce1dc58e2832295d9371005f7e0507920675bea9" translate="yes" xml:space="preserve">
+          <source>In python 2, you have to import this function from the increasingly less useful string module:</source>
+          <target state="translated">파이썬 2에서는 점점 유용성이 떨어지는 문자열 모듈에서이 함수를 가져와야합니다.</target>
+        </trans-unit>
+        <trans-unit id="f6b415ed12f65f9bbf40b9142a369fba8072e05c" translate="yes" xml:space="preserve">
+          <source>Instance methods can be bound via a dotted lookup for use later.</source>
+          <target state="translated">인스턴스 메소드는 나중에 사용하기 위해 점선 조회를 통해 바인딩 될 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="fe77d4b7f35bb53ca43fe505597fa8fc7799f6f4" translate="yes" xml:space="preserve">
+          <source>It can be called either on the class
+  (such as &lt;code&gt;C.f()&lt;/code&gt;) or on an instance
+  (such as &lt;code&gt;C().f()&lt;/code&gt;). The instance is
+  ignored except for its class.</source>
+          <target state="translated">클래스 ( &lt;code&gt;C.f()&lt;/code&gt; ) 또는 인스턴스 ( &lt;code&gt;C().f()&lt;/code&gt; )에서 호출 할 수 있습니다. 클래스를 제외하고 인스턴스는 무시됩니다.</target>
+        </trans-unit>
+        <trans-unit id="c2c132e491d3b48b18fe928903a3b9627a4b7db6" translate="yes" xml:space="preserve">
+          <source>It can be called either on the class
+  (such as &lt;code&gt;C.f()&lt;/code&gt;) or on an instance
+  (such as &lt;code&gt;C().f()&lt;/code&gt;). The instance is
+  ignored except for its class. If a
+  class method is called for a derived
+  class, the derived class object is
+  passed as the implied first argument.</source>
+          <target state="translated">클래스 ( &lt;code&gt;C.f()&lt;/code&gt; ) 또는 인스턴스 ( &lt;code&gt;C().f()&lt;/code&gt; )에서 호출 할 수 있습니다. 클래스를 제외하고 인스턴스는 무시됩니다. 파생 클래스에 대해 클래스 메서드가 호출되면 파생 클래스 개체가 암시 적 첫 번째 인수로 전달됩니다.</target>
+        </trans-unit>
+        <trans-unit id="bab5a5442633b80e598ccbf398e186dbd8ee95fb" translate="yes" xml:space="preserve">
+          <source>It eases the readability of the code, and it does not depend on the state of object itself;</source>
+          <target state="translated">코드의 가독성을 높이고 객체 자체의 상태에 의존하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="939616480d0a5694951a8e24ef3733c4dcbedd3d" translate="yes" xml:space="preserve">
+          <source>It is luckily grouped into the class just in order to stand closer where it is applied, or you might scroll around to find it.</source>
+          <target state="translated">운이 좋게 적용되는 곳에 가까이 서기 위해 운 좋게 그룹으로 그룹화되거나 스크롤하여 찾을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="230b0bc30ac33392bc5367bb425ea96b284d2e75" translate="yes" xml:space="preserve">
+          <source>It is very similar to a module level function.</source>
+          <target state="translated">모듈 레벨 기능과 매우 유사합니다.</target>
+        </trans-unit>
+        <trans-unit id="bdaab6a3bf7746bf4181f9f1669e8524b277ed65" translate="yes" xml:space="preserve">
+          <source>It localizes the function name in the classscope</source>
+          <target state="translated">클래스 범위에서 함수 이름을 현지화합니다.</target>
+        </trans-unit>
+        <trans-unit id="f21f6aa25b5c058c5e292d885804e6cf2b2ef443" translate="yes" xml:space="preserve">
+          <source>It moves the function code closer to where it is used</source>
+          <target state="translated">함수 코드가 사용되는 위치에 더 가깝게 이동합니다.</target>
+        </trans-unit>
+        <trans-unit id="faebdc4b4a231fbaedbee2f66d2684f878485f0d" translate="yes" xml:space="preserve">
+          <source>Let me tell the similarity between a method decorated with @classmethod vs @staticmethod first.</source>
+          <target state="translated">@classmethod와 @staticmethod로 장식 된 메소드의 유사점을 먼저 설명하겠습니다.</target>
+        </trans-unit>
+        <trans-unit id="2b2aa4f3e36c9530575f19c9f0598e540f26891d" translate="yes" xml:space="preserve">
+          <source>Let's consider we have a &lt;code&gt;Person&lt;/code&gt; class which takes two arguments &lt;code&gt;first_name&lt;/code&gt; and &lt;code&gt;last_name&lt;/code&gt; and creates the instance of &lt;code&gt;Person&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;first_name&lt;/code&gt; 과 &lt;code&gt;last_name&lt;/code&gt; 두 개의 인수를 받아서 &lt;code&gt;Person&lt;/code&gt; 의 인스턴스를 만드는 &lt;code&gt;Person&lt;/code&gt; 클래스가 있다고 가정 해 봅시다</target>
+        </trans-unit>
+        <trans-unit id="a9b10a40e3f747fcf229fa77c0fa98a6c253c3a2" translate="yes" xml:space="preserve">
+          <source>Maybe a bit of example code will help: Notice the difference in the call signatures of &lt;code&gt;foo&lt;/code&gt;, &lt;code&gt;class_foo&lt;/code&gt; and &lt;code&gt;static_foo&lt;/code&gt;:</source>
+          <target state="translated">어쩌면 약간의 예제 코드가 도움이 될 것입니다. &lt;code&gt;foo&lt;/code&gt; , &lt;code&gt;class_foo&lt;/code&gt; 및 &lt;code&gt;static_foo&lt;/code&gt; 의 호출 서명의 차이점에 주목하십시오.</target>
+        </trans-unit>
+        <trans-unit id="7122abd306cee02d99048842c405d1b59faf3176" translate="yes" xml:space="preserve">
+          <source>More convenient to import versus module-level functions since each method does not have to be specially imported</source>
+          <target state="translated">각 메소드를 특별히 가져올 필요가 없으므로 모듈 레벨 함수보다 가져 오기가 더 편리합니다.</target>
+        </trans-unit>
+        <trans-unit id="baee456d57820da13b11bc2426c66fd95bd49685" translate="yes" xml:space="preserve">
+          <source>My contribution demonstrates the difference amongst &lt;code&gt;@classmethod&lt;/code&gt;, &lt;code&gt;@staticmethod&lt;/code&gt;, and instance methods, including how an instance can indirectly call a &lt;code&gt;@staticmethod&lt;/code&gt;. But instead of indirectly calling a &lt;code&gt;@staticmethod&lt;/code&gt; from an instance, making it private may be more &quot;pythonic.&quot; Getting something from a private method isn't demonstrated here but it's basically the same concept.</source>
+          <target state="translated">내 기여는 인스턴스가 &lt;code&gt;@staticmethod&lt;/code&gt; 를 간접적으로 호출하는 방법을 포함하여 &lt;code&gt;@classmethod&lt;/code&gt; , &lt;code&gt;@staticmethod&lt;/code&gt; 및 인스턴스 메소드의 차이점을 보여줍니다. 그러나 인스턴스에서 &lt;code&gt;@staticmethod&lt;/code&gt; 를 간접적으로 호출하는 대신 프라이빗으로 만드는 것이 &quot;파이썬&quot;일 수 있습니다. 개인 메소드에서 무언가를 얻는 것은 여기에 설명되어 있지 않지만 기본적으로 동일한 개념입니다.</target>
+        </trans-unit>
+        <trans-unit id="06bdb3d7b2f194e09ab0a51f0107d3fa31a0f2c6" translate="yes" xml:space="preserve">
+          <source>Now, if the requirement comes where you need to create a class using a single name only, just a &lt;code&gt;first_name&lt;/code&gt;, you &lt;strong&gt;can't&lt;/strong&gt; do something like this in Python.</source>
+          <target state="translated">이제 요구 사항이 하나의 이름 만 사용하여 클래스를 만들어야하는 경우 &lt;code&gt;first_name&lt;/code&gt; 만 있으면 Python에서 이와 같은 작업을 수행 할 &lt;strong&gt;수 없습니다&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="c446d44cb0d9ce8db33e3b393ea1f71b690bad22" translate="yes" xml:space="preserve">
+          <source>On the other hand, a static method does not receive an implicit first argument, compared to class methods or instance methods. And can&amp;rsquo;t access or modify class state. It only belongs to the class because from design point of view that is the correct way. But in terms of functionality is not bound, at runtime, to the class.</source>
+          <target state="translated">반면에 정적 메서드는 클래스 메서드 나 인스턴스 메서드와 비교하여 암시적인 첫 번째 인수를받지 않습니다. 클래스 상태에 액세스하거나 수정할 수 없습니다. 디자인 관점에서 올바른 방법이기 때문에 클래스에만 속합니다. 그러나 기능면에서 런타임에는 클래스에 바인딩되지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="0601259c1a596a32a613d81d7b9416a72f1706e5" translate="yes" xml:space="preserve">
+          <source>One use people have found for class methods is to create &lt;a href=&quot;https://stackoverflow.com/a/1950927/190597&quot;&gt;inheritable alternative constructors&lt;/a&gt;.</source>
+          <target state="translated">사람들이 클래스 메소드를 찾은 한 가지 용도는 &lt;a href=&quot;https://stackoverflow.com/a/1950927/190597&quot;&gt;상속 가능한 대체 생성자&lt;/a&gt; 를 만드는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="3e6e99fe2ce49b8e8aed43869178d41b3d185e3f" translate="yes" xml:space="preserve">
+          <source>Python does not have to instantiate a bound-method for object.</source>
+          <target state="translated">파이썬은 객체에 대한 바운드 메소드를 인스턴스화 할 필요가 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="f24b1de7ff195e42428cd5db28a36a5b118842b9" translate="yes" xml:space="preserve">
+          <source>See the &lt;a href=&quot;https://github.com/pydata/pandas/blob/master/pandas/core/frame.py&quot;&gt;pandas source code&lt;/a&gt; for other similar examples of alternative constructors, and see also the official Python documentation on &lt;a href=&quot;https://docs.python.org/library/functions.html#classmethod&quot;&gt;&lt;code&gt;classmethod&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;https://docs.python.org/library/functions.html#staticmethod&quot;&gt;&lt;code&gt;staticmethod&lt;/code&gt;&lt;/a&gt;.</source>
+          <target state="translated">대체 생성자의 다른 유사한 예제는 &lt;a href=&quot;https://github.com/pydata/pandas/blob/master/pandas/core/frame.py&quot;&gt;pandas 소스 코드&lt;/a&gt; 를 참조하고 &lt;a href=&quot;https://docs.python.org/library/functions.html#classmethod&quot;&gt; &lt;code&gt;classmethod&lt;/code&gt; &lt;/a&gt; 및 &lt;a href=&quot;https://docs.python.org/library/functions.html#staticmethod&quot;&gt; &lt;code&gt;staticmethod&lt;/code&gt; &lt;/a&gt; 에 대한 공식 Python 문서도 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="f01d0a8ab6576c208384ec02c477895fb03fdd00" translate="yes" xml:space="preserve">
+          <source>Simple functions with no self argument.</source>
+          <target state="translated">자기 주장이없는 간단한 기능.</target>
+        </trans-unit>
+        <trans-unit id="94dd432a314d7dfb9142b28cff141918df0ee440" translate="yes" xml:space="preserve">
+          <source>So a static method is, in a sense, not bound to the Class itself and is just hanging in there just because it may have a related functionality.</source>
+          <target state="translated">따라서 정적 메서드는 어떤 의미에서 클래스 자체에 바인딩되지 않으며 관련 기능이있을 수 있기 때문에 거기에 매달려 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="65363de032aba81ff598ab4d63be7b2e577f8cb9" translate="yes" xml:space="preserve">
+          <source>So let's say in above example you need a validation that &lt;code&gt;first_name&lt;/code&gt; should not exceed 20 characters, you can simply do this.</source>
+          <target state="translated">위의 예에서 &lt;code&gt;first_name&lt;/code&gt; 이 20자를 넘지 않아야한다는 유효성 검사가 필요하다고 가정 해 보겠습니다.</target>
+        </trans-unit>
+        <trans-unit id="182c8c616107a2457bad4250829c2d737ac45ed3" translate="yes" xml:space="preserve">
+          <source>So using  &lt;code&gt;@staticmethod&lt;/code&gt; for methods only called directly from the class has become optional in python3. If you want to call them from both class and instance, you still need to use the &lt;code&gt;@staticmethod&lt;/code&gt; decorator.</source>
+          <target state="translated">따라서 클래스에서 직접 호출 된 메소드에만 &lt;code&gt;@staticmethod&lt;/code&gt; 를 사용하는 것이 python3에서 선택 사항이되었습니다. 클래스와 인스턴스에서 호출하려면 여전히 &lt;code&gt;@staticmethod&lt;/code&gt; 데코레이터를 사용해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="9e7b56ba099663ac3dac80d5ad3bbee9b28e3d48" translate="yes" xml:space="preserve">
+          <source>Static Method</source>
+          <target state="translated">정적 방법</target>
+        </trans-unit>
+        <trans-unit id="f4eea620f6c60864e8c46d16abb4c687e8c6331d" translate="yes" xml:space="preserve">
+          <source>Static methods in Python are similar
+  to those found in Java or C++. For a
+  more advanced concept, see
+  &lt;a href=&quot;http://docs.python.org/2/library/functions.html#classmethod&quot;&gt;&lt;code&gt;classmethod()&lt;/code&gt;&lt;/a&gt; in this section.</source>
+          <target state="translated">Python의 정적 메소드는 Java 또는 C ++에서 발견되는 메소드와 유사합니다. 보다 고급 개념은이 섹션의 &lt;a href=&quot;http://docs.python.org/2/library/functions.html#classmethod&quot;&gt; &lt;code&gt;classmethod()&lt;/code&gt; &lt;/a&gt; 를 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="e562c390a784edf0b3feb04ea00ba8e2392d8d34" translate="yes" xml:space="preserve">
+          <source>Static methods on the other hand, are used to perform functionalities that are not bound to the class i.e. they will not read or write class variables. Hence, static methods do not take classes as arguments. They are used so that classes can perform functionalities that are not directly related to the purpose of the class.</source>
+          <target state="translated">반면에 정적 메서드는 클래스에 바인딩되지 않은 기능을 수행하는 데 사용됩니다. 즉, 클래스 변수를 읽거나 쓰지 않습니다. 따라서 정적 메서드는 클래스를 인수로 사용하지 않습니다. 클래스의 목적과 직접 관련이없는 기능을 클래스가 수행 할 수 있도록 사용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="5ffe8a646ab05acaf25f6688924681394d7f4b50" translate="yes" xml:space="preserve">
+          <source>Staticmethods are used to group functions which have some logical connection with a class to the class.</source>
+          <target state="translated">정적 메소드는 클래스와 클래스와 논리적으로 연결된 함수를 그룹화하는 데 사용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="ce6f2467322be66f2c66550f026cdbdd30261e17" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;@classmethod&lt;/code&gt; form is a function
+  &lt;a href=&quot;http://docs.python.org/2/glossary.html#term-decorator&quot;&gt;&lt;em&gt;decorator&lt;/em&gt;&lt;/a&gt; &amp;ndash; see the description of
+  function definitions in &lt;a href=&quot;http://docs.python.org/2/reference/compound_stmts.html#function&quot;&gt;&lt;em&gt;Function
+  definitions&lt;/em&gt;&lt;/a&gt; for details.</source>
+          <target state="translated">&lt;code&gt;@classmethod&lt;/code&gt; 형식은 함수 &lt;a href=&quot;http://docs.python.org/2/glossary.html#term-decorator&quot;&gt;&lt;em&gt;데코레이터&lt;/em&gt;&lt;/a&gt; 입니다. 자세한 내용은 함수 정의에서 &lt;a href=&quot;http://docs.python.org/2/reference/compound_stmts.html#function&quot;&gt;&lt;em&gt;함수 정의&lt;/em&gt;&lt;/a&gt; 설명을 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="9055ab2b4172076d48e20f45dc0229a7e5605442" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;@staticmethod&lt;/code&gt; form is a function
+  &lt;a href=&quot;http://docs.python.org/2/glossary.html#term-decorator&quot;&gt;&lt;em&gt;decorator&lt;/em&gt;&lt;/a&gt; &amp;ndash; see the description of
+  function definitions in &lt;a href=&quot;http://docs.python.org/2/reference/compound_stmts.html#function&quot;&gt;&lt;em&gt;Function
+  definitions&lt;/em&gt;&lt;/a&gt; for details.</source>
+          <target state="translated">&lt;code&gt;@staticmethod&lt;/code&gt; 형식은 함수 &lt;a href=&quot;http://docs.python.org/2/glossary.html#term-decorator&quot;&gt;&lt;em&gt;데코레이터&lt;/em&gt;&lt;/a&gt; 입니다. 자세한 내용은 함수 정의의 함수 정의 설명을 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="8f0986b5efbab0453d76f7f6ca9ae170f03a69d9" translate="yes" xml:space="preserve">
+          <source>The Normal Instance Method</source>
+          <target state="translated">정상적인 인스턴스 방법</target>
+        </trans-unit>
+        <trans-unit id="bd04489a697867005e789fddc84ebc4dd500b1ba" translate="yes" xml:space="preserve">
+          <source>The built-in function staticmethod()is used to create them.</source>
+          <target state="translated">내장 함수 staticmethod ()를 사용하여이를 작성합니다.</target>
+        </trans-unit>
+        <trans-unit id="6421f9367c3ff555773546cfcde71ec15b8c1b25" translate="yes" xml:space="preserve">
+          <source>The most canonical example of a builtin classmethod is &lt;code&gt;dict.fromkeys&lt;/code&gt;. It is used as an alternative constructor of dict, (well suited for when you know what your keys are and want a default value for them.)</source>
+          <target state="translated">내장 &lt;code&gt;dict.fromkeys&lt;/code&gt; 의 가장 표준적인 예는 dict.fromkeys 입니다. 그것은 dict의 대체 생성자로 사용됩니다 (키가 무엇인지 알고 기본값을 원할 때 적합합니다).</target>
+        </trans-unit>
+        <trans-unit id="5944b31af7aa8a97f6f73cdc54e88234802fe3f1" translate="yes" xml:space="preserve">
+          <source>The other cases have been well covered by unutbus answer.</source>
+          <target state="translated">다른 경우는 unutbus 답변으로 잘 다루어졌습니다.</target>
+        </trans-unit>
+        <trans-unit id="d9dcfa9ec5bb063d28e1a65b69d5c1996c83cf8c" translate="yes" xml:space="preserve">
+          <source>The static method does &lt;em&gt;not&lt;/em&gt; take the instance as an argument.</source>
+          <target state="translated">정적 메소드는 인스턴스를 인수로 사용하지 &lt;em&gt;않습니다&lt;/em&gt; .</target>
+        </trans-unit>
+        <trans-unit id="af7cb13e62642ee499a113906d710325fb97372a" translate="yes" xml:space="preserve">
+          <source>The workaround here would be to call &lt;code&gt;Foo2.magic()&lt;/code&gt; in &lt;code&gt;bar()&lt;/code&gt;, but then you're repeating yourself (if the name of &lt;code&gt;Foo2&lt;/code&gt; changes, you'll have to remember to update that &lt;code&gt;bar()&lt;/code&gt; method).</source>
+          <target state="translated">여기서 해결 방법은 &lt;code&gt;bar()&lt;/code&gt; &lt;code&gt;Foo2.magic()&lt;/code&gt; 에서 Foo2.magic () 을 호출하는 것이지만 반복하고 있습니다 ( &lt;code&gt;Foo2&lt;/code&gt; 의 이름이 변경되면 해당 &lt;code&gt;bar()&lt;/code&gt; 메서드를 업데이트해야 합니다 ).</target>
+        </trans-unit>
+        <trans-unit id="d75be3892212a0b3d72aa89d5805947b4703d4c3" translate="yes" xml:space="preserve">
+          <source>These are created with classmethod in-built function.</source>
+          <target state="translated">이들은 classmethod 내장 함수로 작성됩니다.</target>
+        </trans-unit>
+        <trans-unit id="f15cd3ae0b92af773354fba252df6a2f9c169e4b" translate="yes" xml:space="preserve">
+          <source>Think we have a class with &lt;code&gt;b=2&lt;/code&gt;, we will create an object and re-set this to &lt;code&gt;b=4&lt;/code&gt; in it.
+Staticmethod cannot access nothing from previous.
+Classmethod can access &lt;code&gt;.b==2&lt;/code&gt; only, via &lt;code&gt;cls.b&lt;/code&gt;.
+Normal method can access both: &lt;code&gt;.b==4&lt;/code&gt; via &lt;code&gt;self.b&lt;/code&gt; and &lt;code&gt;.b==2&lt;/code&gt; via &lt;code&gt;self.__class__.b&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;b=2&lt;/code&gt; 의 클래스가 있다고 생각하면 객체를 만들고 &lt;code&gt;b=4&lt;/code&gt; 로 다시 설정합니다. 정적 메소드는 이전의 아무것도 액세스 할 수 없습니다. 클래스 메소드는 cls.b를 통해 &lt;code&gt;.b==2&lt;/code&gt; 에만 액세스 할 수 있습니다. 일반 메소드는 &lt;code&gt;self.b&lt;/code&gt; 를 통해 &lt;code&gt;.b==4&lt;/code&gt; 및 &lt;code&gt;self.__class__.b&lt;/code&gt; 를 통해 &lt;code&gt;.b==2&lt;/code&gt; 모두 액세스 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="80280e49a1f8353c5b3bba30201343e829087168" translate="yes" xml:space="preserve">
+          <source>This has changed between python2 and python3:</source>
+          <target state="translated">이것은 python2와 python3 사이에서 변경되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="258f0cf75229fbcab6f2fd1285ff5938bf4aeca7" translate="yes" xml:space="preserve">
+          <source>This will give you an error when you will try to create an object (instance).</source>
+          <target state="translated">객체 (인스턴스)를 만들려고 할 때 오류가 발생합니다.</target>
+        </trans-unit>
+        <trans-unit id="4adbdfc052a06d13f49928019797c091206b0882" translate="yes" xml:space="preserve">
+          <source>This works, but note that now the &lt;code&gt;bar()&lt;/code&gt; implementation in the child class (&lt;code&gt;Foo2&lt;/code&gt;) can no longer take advantage of anything specific to that class.  For example, say &lt;code&gt;Foo2&lt;/code&gt; had a method called &lt;code&gt;magic()&lt;/code&gt; that you want to use in the &lt;code&gt;Foo2&lt;/code&gt; implementation of &lt;code&gt;bar()&lt;/code&gt;:</source>
+          <target state="translated">이것은 작동하지만 자식 클래스 ( &lt;code&gt;Foo2&lt;/code&gt; )의 &lt;code&gt;bar()&lt;/code&gt; 구현은 더 이상 해당 클래스에 특정한 것을 활용할 수 없습니다. 예를 들어, &lt;code&gt;Foo2&lt;/code&gt; 에 &lt;code&gt;bar()&lt;/code&gt; 의 Foo2 구현에 사용하려는 &lt;code&gt;magic()&lt;/code&gt; 이라는 메소드가 있다고 가정하십시오.</target>
+        </trans-unit>
+        <trans-unit id="79477ed5dad94d6833e83e3a8699a0463de9de85" translate="yes" xml:space="preserve">
+          <source>To decide whether to use &lt;a href=&quot;https://docs.python.org/3/library/functions.html?highlight=staticmethod#staticmethod&quot;&gt;@staticmethod&lt;/a&gt; or &lt;a href=&quot;https://docs.python.org/3.5/library/functions.html?highlight=classmethod#classmethod&quot;&gt;@classmethod&lt;/a&gt; you have to look inside your method. &lt;strong&gt;If your method accesses other variables/methods in your class then use @classmethod&lt;/strong&gt;. On the other hand, if your method does not touches any other parts of the class then use @staticmethod.</source>
+          <target state="translated">&lt;a href=&quot;https://docs.python.org/3/library/functions.html?highlight=staticmethod#staticmethod&quot;&gt;@staticmethod&lt;/a&gt; 또는 &lt;a href=&quot;https://docs.python.org/3.5/library/functions.html?highlight=classmethod#classmethod&quot;&gt;@classmethod&lt;/a&gt; 사용 여부를 결정하려면 메소드 내부를 살펴 봐야합니다. &lt;strong&gt;메소드가 클래스의 다른 변수 / 메소드에 액세스하는 경우 @classmethod를 사용하십시오&lt;/strong&gt; . 반면에, 메소드가 클래스의 다른 부분을 건드리지 않으면 @staticmethod를 사용하십시오.</target>
+        </trans-unit>
+        <trans-unit id="41c4939ed15126e325624c1d7f0ae8e61154e275" translate="yes" xml:space="preserve">
+          <source>To me, this is a slight violation of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Open/closed_principle&quot;&gt;open/closed principle&lt;/a&gt;, since a decision made in &lt;code&gt;Foo&lt;/code&gt; is impacting your ability to refactor common code in a derived class (ie it's less open to extension).  If &lt;code&gt;bar()&lt;/code&gt; were a &lt;code&gt;classmethod&lt;/code&gt; we'd be fine:</source>
+          <target state="translated">&lt;code&gt;Foo&lt;/code&gt; 의 결정이 파생 클래스에서 공통 코드를 리팩토링하는 능력에 영향을 미치기 때문에 (즉, 확장에 덜 개방적이므로) 이것은 &lt;a href=&quot;https://en.wikipedia.org/wiki/Open/closed_principle&quot;&gt;개방 / 폐쇄 원칙을&lt;/a&gt; 약간 위반 한 것입니다. &lt;code&gt;bar()&lt;/code&gt; 가 &lt;code&gt;classmethod&lt;/code&gt; 메소드라면 우리는 괜찮을 것입니다 :</target>
+        </trans-unit>
+        <trans-unit id="8a5223e4291f77ecc334b5a5bbcbdaa187282c18" translate="yes" xml:space="preserve">
+          <source>We could follow the KISS style (keep it simple, stupid): Don't use staticmethods and classmethods, don't use classes without instantiating them, access only the object's attributes &lt;code&gt;self.attribute(s)&lt;/code&gt;. There are languages where the OOP is implemented that way and I think it is not bad idea. :)</source>
+          <target state="translated">우리는 KISS 스타일을 따를 수 있습니다 (간단하고 바보처럼 유지하십시오) : 정적 메소드와 클래스 메소드를 사용하지 말고 인스턴스화하지 않고 클래스를 사용하지 말고 객체의 속성 &lt;code&gt;self.attribute(s)&lt;/code&gt; 만 액세스하십시오. OOP가 그런 식으로 구현되는 언어가 있으며 이것이 나쁜 생각은 아니라고 생각합니다. :)</target>
+        </trans-unit>
+        <trans-unit id="fcbb519e378d850b1b68ca11bf02470e1595d064" translate="yes" xml:space="preserve">
+          <source>What is the difference between @staticmethod and @classmethod in Python?</source>
+          <target state="translated">파이썬에서 @staticmethod와 @classmethod의 차이점은 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="eb4e5926c4dc5d5f3bc9f05359bd22b70d529258" translate="yes" xml:space="preserve">
+          <source>What is the difference between a function decorated with &lt;a href=&quot;http://docs.python.org/library/functions.html#staticmethod&quot;&gt;&lt;code&gt;@staticmethod&lt;/code&gt;&lt;/a&gt; and one decorated with &lt;a href=&quot;http://docs.python.org/library/functions.html#classmethod&quot;&gt;&lt;code&gt;@classmethod&lt;/code&gt;&lt;/a&gt;?</source>
+          <target state="translated">&lt;a href=&quot;http://docs.python.org/library/functions.html#staticmethod&quot;&gt; &lt;code&gt;@staticmethod&lt;/code&gt; 로&lt;/a&gt; 장식 된 함수와 @classmethod로 장식 된 함수의 차이점은 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="2e5c6569bb706d28e402587b1466ff95d88243e1" translate="yes" xml:space="preserve">
+          <source>When an object's method is called, it is automatically given an extra argument &lt;code&gt;self&lt;/code&gt; as its first argument. That is, method</source>
+          <target state="translated">객체의 메소드가 호출되면 첫 번째 인수로 추가 인수 &lt;code&gt;self&lt;/code&gt; 가 자동으로 부여됩니다. 즉, 방법</target>
+        </trans-unit>
+        <trans-unit id="829e8b693aed55e8328e8d5d8439f95ac3af86b9" translate="yes" xml:space="preserve">
+          <source>When the method is decorated</source>
+          <target state="translated">방법이 장식 될 때</target>
+        </trans-unit>
+        <trans-unit id="341319811e49792c2c672aa7a5e85c27a7f50380" translate="yes" xml:space="preserve">
+          <source>When we subclass dict, we can use the same constructor, which creates an instance of the subclass.</source>
+          <target state="translated">dict을 서브 클래스로 만들 때 동일한 생성자를 사용하여 서브 클래스의 인스턴스를 만들 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="68ae0e89977a649bad665ad27c89cbedc3a29ee1" translate="yes" xml:space="preserve">
+          <source>With &lt;code&gt;a.class_foo&lt;/code&gt;, &lt;code&gt;a&lt;/code&gt; is not bound to &lt;code&gt;class_foo&lt;/code&gt;, rather the class &lt;code&gt;A&lt;/code&gt; is bound to &lt;code&gt;class_foo&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;a.class_foo&lt;/code&gt; 에서는 &lt;code&gt;a&lt;/code&gt; 가 class_foo 에 바인드되지 않고 &lt;code&gt;A&lt;/code&gt; 클래스가 &lt;code&gt;class_foo&lt;/code&gt; 에 바인드됩니다.</target>
+        </trans-unit>
+        <trans-unit id="e91195e59505ea892019be8785a88af1bd3c3f6f" translate="yes" xml:space="preserve">
+          <source>Work on class attributes; not on instance attributes.</source>
+          <target state="translated">클래스 속성에 대한 작업; 인스턴스 속성이 아닙니다.</target>
+        </trans-unit>
+        <trans-unit id="adebd78a8dd903e227a396616541192276725be4" translate="yes" xml:space="preserve">
+          <source>You can also call &lt;code&gt;class_foo&lt;/code&gt; using the class. In fact, if you define something to be
+a classmethod, it is probably because you intend to call it from the class rather than from a class instance. &lt;code&gt;A.foo(1)&lt;/code&gt; would have raised a TypeError, but &lt;code&gt;A.class_foo(1)&lt;/code&gt; works just fine:</source>
+          <target state="translated">클래스를 사용하여 &lt;code&gt;class_foo&lt;/code&gt; 를 호출 할 수도 있습니다. 실제로 무언가를 클래스 메소드로 정의하면 클래스 인스턴스가 아닌 클래스에서 호출하려고하기 때문일 수 있습니다. &lt;code&gt;A.foo(1)&lt;/code&gt; 은 TypeError를 발생 시켰지만 &lt;code&gt;A.class_foo(1)&lt;/code&gt; 은 정상적으로 작동합니다.</target>
+        </trans-unit>
+        <trans-unit id="3ffe0412197d5a8f4286d21ec5576d1cbd38ecf0" translate="yes" xml:space="preserve">
+          <source>You may have seen Python code like this pseudocode, which demonstrates the signatures of the various method types and provides a docstring to explain each:</source>
+          <target state="translated">이 의사 코드와 같은 Python 코드를 보았을 것입니다.이 코드는 다양한 메소드 유형의 서명을 보여주고 각각을 설명하는 docstring을 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="aa25ff3c9b231e9b99c6cece2313f1a161111d45" translate="yes" xml:space="preserve">
+          <source>You might want to consider the difference between:</source>
+          <target state="translated">다음의 차이점을 고려할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="cffa50a32cb13a240d705317bcec65dd1f31b6ad" translate="yes" xml:space="preserve">
+          <source>and</source>
+          <target state="translated">and</target>
+        </trans-unit>
+        <trans-unit id="9d508031d4e84b7cc27af600bec98b3141da798e" translate="yes" xml:space="preserve">
+          <source>and you could simply call using &lt;code&gt;class name&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;class name&lt;/code&gt; 사용하여 간단히 전화 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="d49b88615309e95621c35de40da5fe92499b533d" translate="yes" xml:space="preserve">
+          <source>as a guideline, use static methods as utilities, use class methods for example as factory . Or maybe to define a singleton. And use instance methods to model the state and behavior of instances.</source>
+          <target state="translated">지침으로 정적 메소드를 유틸리티로 사용하고 클래스 메소드를 예를 들어 factory로 사용하십시오. 또는 싱글 톤을 정의 할 수도 있습니다. 또한 인스턴스 메소드를 사용하여 인스턴스의 상태와 동작을 모델링하십시오.</target>
+        </trans-unit>
+        <trans-unit id="d52a33eead97a71117a46cf4e95a8a4ce30467f3" translate="yes" xml:space="preserve">
+          <source>class method</source>
+          <target state="translated">수업 방법</target>
+        </trans-unit>
+        <trans-unit id="52f372dd7e7596da7a6a95d387e97222b81d84c7" translate="yes" xml:space="preserve">
+          <source>classmethod has no access to attributes of the object. It however can access attributes of the class and of parent classes in the inheritance hierarchy.
+It can be called at the class directly (without creating an object). If called at the object then it is the same as normal method which doesn't access &lt;code&gt;self.&amp;lt;attribute(s)&amp;gt;&lt;/code&gt; and accesses &lt;code&gt;self.__class__.&amp;lt;attribute(s)&amp;gt;&lt;/code&gt; only.</source>
+          <target state="translated">classmethod는 객체의 속성에 액세스 할 수 없습니다. 그러나 상속 계층 구조에서 클래스 및 상위 클래스의 속성에 액세스 할 수 있습니다. 객체를 만들지 않고 클래스에서 직접 호출 할 수 있습니다. 객체에서 호출되면 &lt;code&gt;self.&amp;lt;attribute(s)&amp;gt;&lt;/code&gt; 액세스하지 않고 &lt;code&gt;self.__class__.&amp;lt;attribute(s)&amp;gt;&lt;/code&gt; 에만 액세스하는 일반 메소드와 동일합니다.</target>
+        </trans-unit>
+        <trans-unit id="7948ad16ed2603a6348a81efc5083231e6e99599" translate="yes" xml:space="preserve">
+          <source>classmethod: &lt;strong&gt;the class of the current object&lt;/strong&gt; is automatically passed as an (additional) fist argument</source>
+          <target state="translated">classmethod : &lt;strong&gt;현재 객체의 클래스&lt;/strong&gt; 는 (추가) fist 인수로 자동 전달됩니다.</target>
+        </trans-unit>
+        <trans-unit id="040092959b9872d342ec8835eaf66a5912667aab" translate="yes" xml:space="preserve">
+          <source>if we use the instance method, &lt;code&gt;join&lt;/code&gt; on this string, to join another iterable,
+it quite obviously is a function of the instance, in addition to being a function of the iterable list, &lt;code&gt;['a', 'b', 'c']&lt;/code&gt;:</source>
+          <target state="translated">인스턴스 메소드를 사용하여이 문자열에 조인하여 다른 iterable을 조인하는 경우 반복 가능한 목록의 함수 인 &lt;code&gt;['a', 'b', 'c']&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="458d61efa24b172ec0fd06ca32a179e50bd11ce5" translate="yes" xml:space="preserve">
+          <source>must be called with 2 arguments. &lt;code&gt;self&lt;/code&gt; is automatically passed, and it is &lt;em&gt;the object itself&lt;/em&gt;.</source>
+          <target state="translated">2 개의 인수로 호출해야합니다. &lt;code&gt;self&lt;/code&gt; 는 자동으로 전달 &lt;em&gt;되며 객체 자체&lt;/em&gt; 입니다.</target>
+        </trans-unit>
+        <trans-unit id="708f8989ac21092a5c5d8c983540d9bb44c48d11" translate="yes" xml:space="preserve">
+          <source>normal method</source>
+          <target state="translated">정상적인 방법</target>
+        </trans-unit>
+        <trans-unit id="feaabadfa899129cb55b2beee5ee0ea7aabdd795" translate="yes" xml:space="preserve">
+          <source>normal method: &lt;strong&gt;the current object&lt;/strong&gt; if automatically passed as an (additional) first argument</source>
+          <target state="translated">normal 메소드 : (추가) 첫 번째 인수로 자동 전달 된 경우 &lt;strong&gt;현재 객체&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="bced6a1cd17696e1d77254556ccfcc9c6ad98d6a" translate="yes" xml:space="preserve">
+          <source>python2:</source>
+          <target state="translated">python2:</target>
+        </trans-unit>
+        <trans-unit id="e174fa5929995f67b31815ee0e9bd6d2d9fd8564" translate="yes" xml:space="preserve">
+          <source>python3:</source>
+          <target state="translated">python3:</target>
+        </trans-unit>
+        <trans-unit id="75d198e754da69d735666ee31a24c9846f114435" translate="yes" xml:space="preserve">
+          <source>static method</source>
+          <target state="translated">정적 방법</target>
+        </trans-unit>
+        <trans-unit id="6acd42d6636986fd7c20f9eddf725cc1b2a99a5e" translate="yes" xml:space="preserve">
+          <source>staticmethod has no access to attibutes of the object, of the class, or of parent classes in the inheritance hierarchy.
+It can be called at the class directly (without creating an object).</source>
+          <target state="translated">staticmethod는 상속 계층 구조에서 객체, 클래스 또는 부모 클래스의 속성에 액세스 할 수 없습니다. 객체를 만들지 않고 클래스에서 직접 호출 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="7ac95df276e52f37bfcb52496e9992dd99c61d05" translate="yes" xml:space="preserve">
+          <source>staticmethod: &lt;strong&gt;no extra arguments&lt;/strong&gt; are automatically passed. What you passed to the function is what you get.</source>
+          <target state="translated">staticmethod : &lt;strong&gt;추가 인수&lt;/strong&gt; 가 자동으로 전달 &lt;strong&gt;되지 않습니다&lt;/strong&gt; . 함수에 전달한 것은 얻는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="2fa2da2994698860ee444ff57aadffe1813adf65" translate="yes" xml:space="preserve">
+          <source>the automatically provided argument &lt;em&gt;is not&lt;/em&gt;&lt;code&gt;self&lt;/code&gt;, but &lt;em&gt;the class of&lt;/em&gt;&lt;code&gt;self&lt;/code&gt;.</source>
+          <target state="translated">자동으로 제공되는 인수 &lt;em&gt;는&lt;/em&gt; &lt;code&gt;self&lt;/code&gt; &lt;em&gt;가 아니라&lt;/em&gt; self &lt;em&gt;의 클래스입니다&lt;/em&gt; .</target>
+        </trans-unit>
+        <trans-unit id="0fbfad97aa3528afd3e7b36e34de780b77e439c1" translate="yes" xml:space="preserve">
+          <source>the method &lt;em&gt;is not given&lt;/em&gt; any automatic argument at all. It is only given the parameters that it is called with.</source>
+          <target state="translated">이 방법 &lt;em&gt;에는&lt;/em&gt; 자동 인수 &lt;em&gt;가 전혀 주어&lt;/em&gt; 지지 &lt;em&gt;않습니다&lt;/em&gt; . 호출 된 매개 변수 만 제공됩니다.</target>
+        </trans-unit>
+        <trans-unit id="2e0f976fbe142678d71e6f50a7587ee622db8c82" translate="yes" xml:space="preserve">
+          <source>usages</source>
+          <target state="translated">usages</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

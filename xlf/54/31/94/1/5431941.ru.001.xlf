@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="htmlbody" original="https://stackoverflow.com/questions/5431941">
+    <body>
+      <group id="5431941">
+        <trans-unit id="6e1b2cc5e3930b8b330394fc60c0c44a838abc25" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;feof()&lt;/code&gt; indicates if one has tried to read past the end of file. That means it has little predictive effect: if it is true, you are sure that the next input operation will fail (you aren't sure the previous one failed BTW), but if it is false, you aren't sure the next input operation will succeed.  More over, input operations may fail for other reasons than the end of file (a format error for formatted input, a pure IO failure -- disk failure, network timeout -- for all input kinds), so even if you could be predictive about the end of file (and anybody who has tried to implement Ada one, which is predictive, will tell you it can complex if you need to skip spaces, and that it has undesirable effects on interactive devices -- sometimes forcing the input of the next line before starting the handling of the previous one), you would have to be able to handle a failure.</source>
+          <target state="translated">&lt;code&gt;feof()&lt;/code&gt; указывает, пытался ли кто-нибудь прочитать после конца файла. Это означает, что он имеет небольшой прогнозирующий эффект: если это правда, вы уверены, что следующая операция ввода потерпит неудачу (вы не уверены, что предыдущая провалилась, кстати,), но если она ложна, вы не уверены, что следующий ввод операция будет успешной. Более того, операции ввода могут завершаться неудачей по другим причинам, кроме конца файла (ошибка форматирования для форматированного ввода, ошибка чистого ввода-вывода - сбой диска, тайм-аут сети - для всех типов ввода), поэтому даже если вы можете предвидеть конец файла (и любой, кто пытался реализовать Ada one, который является прогностическим, скажет вам, что он может быть сложным, если вам нужно пропустить пробелы, и что он имеет нежелательные последствия для интерактивных устройств - иногда вынуждая вводить следующее перед началом обработки предыдущего), вы должны быть в состоянии обработать сбой.</target>
+        </trans-unit>
+        <trans-unit id="afa06bf319127e946cf4e91c64db135f72173ee7" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;while(!feof)&lt;/code&gt; is wrong because it tests for something that is irrelevant and fails to test for something that you need to know. The result is that you are erroneously executing code that assumes that it is accessing data that was read successfully, when in fact this never happened.</source>
+          <target state="translated">&lt;code&gt;while(!feof)&lt;/code&gt; это неправильно, потому что он проверяет что-то, что не имеет значения и не может проверить то, что вам нужно знать. В результате вы ошибочно выполняете код, который предполагает, что он обращается к данным, которые были успешно прочитаны, хотя на самом деле этого никогда не происходило.</target>
+        </trans-unit>
+        <trans-unit id="9eb326b40426039e3d1d065ee164e2d844fa627d" translate="yes" xml:space="preserve">
+          <source>A final example that actually queries the EOF state: Suppose you have a string and want to test that it represents an integer in its entirety, with no extra bits at the end except whitespace. Using C++ iostreams, it goes like this:</source>
+          <target state="translated">Последний пример,который фактически запрашивает состояние EOF:Предположим,у вас есть строка и вы хотите проверить,что она представляет собой целое число целиком,без лишних битов в конце,за исключением пробела.Используя iostreams на C++,все пойдет так:</target>
+        </trans-unit>
+        <trans-unit id="8dc77d583dd50f5726373188a86ce687c8478084" translate="yes" xml:space="preserve">
+          <source>C stdio, &lt;code&gt;scanf&lt;/code&gt;:</source>
+          <target state="translated">C stdio, &lt;code&gt;scanf&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="1fec40ea496c0be88b250ec229e62a91f3723582" translate="yes" xml:space="preserve">
+          <source>C stdio, read from a file:</source>
+          <target state="translated">Си-дио,читай из файла:</target>
+        </trans-unit>
+        <trans-unit id="d42eafbaea2b0c2a8705dac6e80e5982ec2c04e3" translate="yes" xml:space="preserve">
+          <source>C++, iostreams formatted extraction:</source>
+          <target state="translated">C++,извлечение в формате iostreams:</target>
+        </trans-unit>
+        <trans-unit id="9819de783fd655b396980f4cc286ff286bfccab4" translate="yes" xml:space="preserve">
+          <source>C++, iostreams getline:</source>
+          <target state="translated">C++,iostreams getline:</target>
+        </trans-unit>
+        <trans-unit id="c50b4aa773448ba7d6756b6d57c20bebb5810fea" translate="yes" xml:space="preserve">
+          <source>Concurrency and simultaneity</source>
+          <target state="translated">Конкурентоспособность и синхронность</target>
+        </trans-unit>
+        <trans-unit id="4adddd0410090df891e6fa4925fe03ba5adb5c9d" translate="yes" xml:space="preserve">
+          <source>Consider the following code:</source>
+          <target state="translated">Рассмотрим следующий код:</target>
+        </trans-unit>
+        <trans-unit id="cda4aab5bcbd0ed38717196ad5a3684cd59490a3" translate="yes" xml:space="preserve">
+          <source>EOF</source>
+          <target state="translated">EOF</target>
+        </trans-unit>
+        <trans-unit id="73dc949a54f03d991a93620bb37f1f1fb97fcbe8" translate="yes" xml:space="preserve">
+          <source>Even worse, consider the case where a read error occurs.  In that case, &lt;code&gt;fgetc()&lt;/code&gt; returns &lt;code&gt;EOF&lt;/code&gt;, &lt;code&gt;feof()&lt;/code&gt; returns false, and the loop never terminates.  In all cases where &lt;code&gt;while(!feof(p))&lt;/code&gt; is used, there must be at least a check inside the loop for &lt;code&gt;ferror()&lt;/code&gt;, or at the very least the while condition should be replaced with &lt;code&gt;while(!feof(p) &amp;amp;&amp;amp; !ferror(p))&lt;/code&gt; or there is a very real possibility of an infinite loop, probably spewing all sorts of garbage as invalid data is being processed.</source>
+          <target state="translated">Еще хуже, рассмотрим случай, когда происходит ошибка чтения. В этом случае &lt;code&gt;fgetc()&lt;/code&gt; возвращает &lt;code&gt;EOF&lt;/code&gt; , &lt;code&gt;feof()&lt;/code&gt; возвращает false, и цикл никогда не завершается. Во всех случаях, когда используется &lt;code&gt;while(!feof(p))&lt;/code&gt; , должна быть как минимум проверка внутри цикла для &lt;code&gt;ferror()&lt;/code&gt; , или как минимум условие while должно быть заменено на &lt;code&gt;while(!feof(p) &amp;amp;&amp;amp; !ferror(p))&lt;/code&gt; или существует очень реальная возможность бесконечного цикла, вероятно, извергающего все виды мусора при обработке недействительных данных.</target>
+        </trans-unit>
+        <trans-unit id="eb01bf04c9a0e8a71c45816513df424f1c7ffedb" translate="yes" xml:space="preserve">
+          <source>Examples</source>
+          <target state="translated">Examples</target>
+        </trans-unit>
+        <trans-unit id="d5fb570011dd7778bf532c618109acc3eba49ca7" translate="yes" xml:space="preserve">
+          <source>I'd like to provide an abstract, high-level perspective.</source>
+          <target state="translated">Я хотел бы представить абстрактную,высокоуровневую перспективу.</target>
+        </trans-unit>
+        <trans-unit id="48a4e8d542c3e9555786d500773be3d2bcbb6f32" translate="yes" xml:space="preserve">
+          <source>I've seen people trying to read files like this in a lot of posts lately:</source>
+          <target state="translated">В последнее время я видел,как люди пытались прочитать такие файлы во многих сообщениях:</target>
+        </trans-unit>
+        <trans-unit id="391b94302281cf331dee93fdab146e79d7a9d7f6" translate="yes" xml:space="preserve">
+          <source>I/O operations interact with the environment. The environment is not part of your program, and not under your control. The environment truly exists &quot;concurrently&quot; with your program. As with all things concurrent, questions about the &quot;current state&quot; don't make sense: There is no concept of &quot;simultaneity&quot; across concurrent events. Many properties of state simply don't &lt;em&gt;exist&lt;/em&gt; concurrently.</source>
+          <target state="translated">Операции ввода / вывода взаимодействуют со средой. Среда не является частью вашей программы и не находится под вашим контролем. Среда действительно существует &amp;laquo;одновременно&amp;raquo; с вашей программой. Как и в случае с другими вещами, вопросы о &amp;laquo;текущем состоянии&amp;raquo; не имеют смысла: не существует понятия &amp;laquo;одновременности&amp;raquo; для одновременных событий. Многие свойства государства просто не &lt;em&gt;существуют&lt;/em&gt; одновременно.</target>
+        </trans-unit>
+        <trans-unit id="6cfad93b891ef97aae642f181beb8c35018a07f9" translate="yes" xml:space="preserve">
+          <source>In each of the examples, note carefully that we &lt;em&gt;first&lt;/em&gt; attempt the I/O operation and &lt;em&gt;then&lt;/em&gt; consume the result if it is valid. Note further that we &lt;em&gt;always&lt;/em&gt; must use the result of the I/O operation, though the result takes different shapes and forms in each example.</source>
+          <target state="translated">В каждом из примеров обратите внимание на то, что мы &lt;em&gt;сначала&lt;/em&gt; пытаемся выполнить операцию ввода-вывода, а &lt;em&gt;затем&lt;/em&gt; используем результат, если он действителен. Отметим далее, что мы &lt;em&gt;всегда&lt;/em&gt; должны использовать результат операции ввода-вывода, хотя результат принимает разные формы и формы в каждом примере.</target>
+        </trans-unit>
+        <trans-unit id="9f489c41d38ccf842f692e0db445abd3e48eee2b" translate="yes" xml:space="preserve">
+          <source>In the C standard library you can achieve something similar with the &lt;code&gt;strto*l&lt;/code&gt; functions by checking that the end pointer has reached the end of the input string.</source>
+          <target state="translated">В стандартной библиотеке C вы можете добиться чего-то похожего с &lt;code&gt;strto*l&lt;/code&gt; , проверив, что указатель конца достиг конца входной строки.</target>
+        </trans-unit>
+        <trans-unit id="94f320dacdbdb7b3f3c407e0a74b13947ccdf877" translate="yes" xml:space="preserve">
+          <source>In this case, &lt;code&gt;feof()&lt;/code&gt; is called before any data has been read, so it returns false.  The loop is entered, &lt;code&gt;fgetc()&lt;/code&gt; is called (and returns &lt;code&gt;EOF&lt;/code&gt;), and count is incremented.  Then &lt;code&gt;feof()&lt;/code&gt; is called and returns true, causing the loop to abort.</source>
+          <target state="translated">В этом случае &lt;code&gt;feof()&lt;/code&gt; вызывается до того, как какие-либо данные были прочитаны, поэтому возвращает false. Цикл вводится, вызывается &lt;code&gt;fgetc()&lt;/code&gt; (и возвращает &lt;code&gt;EOF&lt;/code&gt; ), и счетчик увеличивается. Затем вызывается &lt;code&gt;feof()&lt;/code&gt; и возвращает true, что приводит к прерыванию цикла.</target>
+        </trans-unit>
+        <trans-unit id="df7cb0a6afe126d638917eed2a4e224c4b44dc9f" translate="yes" xml:space="preserve">
+          <source>It is always necessary to check the return value of a read (either an &lt;code&gt;fread()&lt;/code&gt;, or an &lt;code&gt;fscanf()&lt;/code&gt;, or an &lt;code&gt;fgetc()&lt;/code&gt;) before calling &lt;code&gt;feof()&lt;/code&gt;.</source>
+          <target state="translated">Всегда необходимо проверять возвращаемое значение read (либо &lt;code&gt;fread()&lt;/code&gt; , либо &lt;code&gt;fscanf()&lt;/code&gt; , либо &lt;code&gt;fgetc()&lt;/code&gt; ) перед вызовом &lt;code&gt;feof()&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="222d991e983b86924c85aebf64b8055dafefd796" translate="yes" xml:space="preserve">
+          <source>It's wrong because (in the absence of a read error) it enters the loop one more time than the author expects.  If there is a read error, the loop never terminates.</source>
+          <target state="translated">Это неправильно,потому что (при отсутствии ошибки чтения)он входит в цикл на один раз больше,чем ожидает автор.Если есть ошибка чтения,то цикл никогда не завершается.</target>
+        </trans-unit>
+        <trans-unit id="72403131093f16a828236fe0866b652fccd6f5ee" translate="yes" xml:space="preserve">
+          <source>Let me make this more precise: Suppose you want to ask, &quot;do you have more data&quot;. You could ask this of a concurrent container, or of your I/O system. But the answer is generally unactionable, and thus meaningless. So what if the container says &quot;yes&quot; &amp;ndash; by the time you try reading, it may no longer have data. Similarly, if the answer is &quot;no&quot;, by the time you try reading, data may have arrived. The conclusion is that there simply &lt;em&gt;is&lt;/em&gt; no property like &quot;I have data&quot;, since you cannot act meaningfully in response to any possible answer. (The situation is slightly better with buffered input, where you might conceivably get a &quot;yes, I have data&quot; that constitutes some kind of guarantee, but you would still have to be able to deal with the opposite case. And with output the situation is certainly just as bad as I described: you never know if that disk or that network buffer is full.)</source>
+          <target state="translated">Позвольте мне уточнить это: предположим, вы хотите спросить: &amp;laquo;У вас есть больше данных&amp;raquo;. Вы можете запросить это у параллельного контейнера или вашей системы ввода-вывода. Но ответ, как правило, бездействующий и, следовательно, бессмысленный Так что, если контейнер скажет &amp;laquo;да&amp;raquo; - к тому времени, когда вы попытаетесь прочитать, у него больше не будет данных. Точно так же, если ответ &amp;laquo;нет&amp;raquo;, к тому времени, когда вы попытаетесь прочитать, данные, возможно, уже поступили. Вывод заключается в том, что просто нет такого свойства, как &amp;laquo;У меня есть данные&amp;raquo;, поскольку вы не можете действовать осмысленно в ответ на любой возможный ответ. (Ситуация несколько лучше с буферизованным вводом, где вы можете получить &amp;laquo;да, у меня есть данные&amp;raquo;, что представляет собой какую-то гарантию, но вам все равно придется иметь дело с противоположным случаем. И с выводом ситуации это так же плохо, как я описал: вы никогда не знаете, заполнен ли этот диск или сетевой буфер.)</target>
+        </trans-unit>
+        <trans-unit id="9a0fe292e7d9800c123efbe9d32e1657a9705bbd" translate="yes" xml:space="preserve">
+          <source>No it's not always wrong. If your loop condition is &quot;while we haven't tried to read past end of file&quot; then you use &lt;code&gt;while (!feof(f))&lt;/code&gt;. This is however not a common loop condition - usually you want to test for something else (such as &quot;can I read more&quot;). &lt;code&gt;while (!feof(f))&lt;/code&gt; isn't wrong, it's just &lt;em&gt;used&lt;/em&gt; wrong.</source>
+          <target state="translated">Нет, это не всегда неправильно. Если ваше условие цикла &amp;laquo;пока мы не пытались прочитать конец файла&amp;raquo;, тогда вы используете &lt;code&gt;while (!feof(f))&lt;/code&gt; . Это, однако, не является общим условием цикла - обычно вы хотите проверить что-то еще (например, &amp;laquo;могу я прочитать подробнее&amp;raquo;). &lt;code&gt;while (!feof(f))&lt;/code&gt; не ошибается, просто &lt;em&gt;используется&lt;/em&gt; неправильно.</target>
+        </trans-unit>
+        <trans-unit id="ddcbc1fbbf593776812d44f0c505dd66950884f6" translate="yes" xml:space="preserve">
+          <source>Note that the function explicitly returns &lt;code&gt;-1&lt;/code&gt; (and not EOF!) when an error occurs or it reaches EOF.</source>
+          <target state="translated">Обратите внимание, что функция явно возвращает &lt;code&gt;-1&lt;/code&gt; (а не EOF!), Когда возникает ошибка или она достигает EOF.</target>
+        </trans-unit>
+        <trans-unit id="c138187ee78a95264184501dc023ae49eaee3b8e" translate="yes" xml:space="preserve">
+          <source>Now we get to EOF. EOF is the &lt;em&gt;response&lt;/em&gt; you get from an &lt;em&gt;attempted&lt;/em&gt; I/O operation. It means that you were trying to read or write something, but when doing so you failed to read or write any data, and instead the end of the input or output was encountered. This is true for essentially all the I/O APIs, whether it be the C standard library, C++ iostreams, or other libraries. As long as the I/O operations succeed, you simply &lt;em&gt;cannot know&lt;/em&gt; whether further, future operations will succeed. You &lt;em&gt;must&lt;/em&gt; always first try the operation and then respond to success or failure.</source>
+          <target state="translated">Теперь мы добрались до EOF. EOF - это &lt;em&gt;ответ, который&lt;/em&gt; вы получаете от &lt;em&gt;попытки&lt;/em&gt; ввода-вывода. Это означает, что вы пытались что-то прочитать или записать, но при этом вам не удалось прочитать или записать какие-либо данные, и вместо этого был обнаружен конец ввода или вывода. Это справедливо по существу для всех API ввода-вывода, будь то стандартная библиотека C, потоки C ++ или другие библиотеки. Пока операции ввода-вывода успешны, вы просто &lt;em&gt;не можете знать,&lt;/em&gt; будут ли дальнейшие будущие операции успешными. Вы всегда &lt;em&gt;должны&lt;/em&gt; сначала попробовать операцию, а затем ответить на успех или неудачу.</target>
+        </trans-unit>
+        <trans-unit id="e6f37fa35c54fd8bca21c8861aadeeabddb790fb" translate="yes" xml:space="preserve">
+          <source>POSIX &lt;a href=&quot;http://pubs.opengroup.org/onlinepubs/9699919799/functions/getline.html&quot;&gt;&lt;code&gt;getline()&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">POSIX &lt;a href=&quot;http://pubs.opengroup.org/onlinepubs/9699919799/functions/getline.html&quot;&gt; &lt;code&gt;getline()&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="3c29f18cc80a5ab4397ce9ee67110730141c85b5" translate="yes" xml:space="preserve">
+          <source>POSIX, &lt;code&gt;write(2)&lt;/code&gt; to flush a buffer:</source>
+          <target state="translated">POSIX, &lt;code&gt;write(2)&lt;/code&gt; чтобы очистить буфер:</target>
+        </trans-unit>
+        <trans-unit id="158b03cf3f0ee84ce61146b4f5131a4764b5329d" translate="yes" xml:space="preserve">
+          <source>So the correct idiom in C is to loop with the IO operation success as loop condition, and then test the cause of the failure.  For instance:</source>
+          <target state="translated">Поэтому правильной идиомой в C является зацикливание с успешным выполнением операции ввода-вывода в качестве состояния цикла,а затем проверка причины сбоя.Например:</target>
+        </trans-unit>
+        <trans-unit id="817fc48d7d94d06d30c126604b404be0c742323a" translate="yes" xml:space="preserve">
+          <source>So we conclude that it is impossible, and in fact un&lt;em&gt;reasonable&lt;/em&gt;, to ask an I/O system whether it &lt;em&gt;will be&lt;/em&gt; able to perform an I/O operation. The only possible way we can interact with it (just as with a concurrent container) is to &lt;em&gt;attempt&lt;/em&gt; the operation and check whether it succeeded or failed. At that moment where you interact with the environment, then and only then can you know whether the interaction was actually possible, and at that point you must commit to performing the interaction. (This is a &quot;synchronisation point&quot;, if you will.)</source>
+          <target state="translated">Таким образом, мы заключаем, что невозможно и фактически &lt;em&gt;неразумно&lt;/em&gt; спросить систему ввода-вывода, сможет ли она выполнить операцию ввода-вывода. Единственный возможный способ взаимодействия с ним (так же, как с параллельным контейнером) - это &lt;em&gt;попытаться&lt;/em&gt; выполнить операцию и проверить, успешно она выполнена или нет. В тот момент, когда вы взаимодействуете со средой, тогда и только тогда вы можете узнать, действительно ли взаимодействие было возможно, и в этот момент вы должны посвятить себя выполнению взаимодействия. (Это &amp;laquo;точка синхронизации&amp;raquo;, если хотите.)</target>
+        </trans-unit>
+        <trans-unit id="846041b1f2857074a016d9e21966bce492dc7a74" translate="yes" xml:space="preserve">
+          <source>So, in summary, although I cannot state with certainty that there is never a situation in which it may be semantically correct to write &quot;&lt;code&gt;while(!feof(f))&lt;/code&gt;&quot; (although there &lt;strong&gt;must&lt;/strong&gt; be another check inside the loop with a break to avoid a infinite loop on a read error), it is the case that it is almost certainly always wrong.  And even if a case ever arose where it would be correct, it is so idiomatically wrong that it would not be the right way to write the code.  Anyone seeing that code should immediately hesitate and say, &quot;that's a bug&quot;.  And possibly slap the author (unless the author is your boss in which case discretion is advised.)</source>
+          <target state="translated">Итак, в итоге, хотя я не могу с уверенностью утверждать, что никогда не бывает ситуации, в которой может быть семантически правильно написать &amp;laquo; &lt;code&gt;while(!feof(f))&lt;/code&gt; &amp;raquo; (хотя внутри цикла &lt;strong&gt;должна&lt;/strong&gt; быть еще одна проверка с разрывом для избегайте бесконечного цикла при ошибке чтения), это почти всегда неверно. И даже если когда-либо возникнет случай, когда он будет правильным, это настолько идиоматически неправильно, что это не будет правильным способом написания кода. Любой, кто увидит этот код, должен сразу же подумать и сказать: &amp;laquo;Это ошибка&amp;raquo;. И, возможно, ударить автора (если автор не ваш начальник, в этом случае рекомендуется усмотрение.)</target>
+        </trans-unit>
+        <trans-unit id="7011b1a621a67e63735eb77a3fab573aef5632e9" translate="yes" xml:space="preserve">
+          <source>The answer</source>
+          <target state="translated">Ответ</target>
+        </trans-unit>
+        <trans-unit id="6c637ec0e42c35161dade1e8e1b6a8760f84d564" translate="yes" xml:space="preserve">
+          <source>The result we must use is &lt;code&gt;n&lt;/code&gt;, the number of elements that were read (which may be as little as zero).</source>
+          <target state="translated">Результат, который мы должны использовать, равен &lt;code&gt;n&lt;/code&gt; , числу прочитанных элементов (которое может быть равно нулю).</target>
+        </trans-unit>
+        <trans-unit id="dd8b9000013378645669f0c9713d6ab04b2f81d8" translate="yes" xml:space="preserve">
+          <source>The result we must use is &lt;code&gt;nbytes&lt;/code&gt;, the number of bytes up to and including the newline (or EOF if the file did not end with a newline).</source>
+          <target state="translated">Результат, который мы должны использовать, - это &lt;code&gt;nbytes&lt;/code&gt; , число байтов до и включая символ новой строки (или EOF, если файл не заканчивался символом новой строки).</target>
+        </trans-unit>
+        <trans-unit id="a2be6c557782f15a6fe8146ffef5463a0c52393e" translate="yes" xml:space="preserve">
+          <source>The result we must use is &lt;code&gt;std::cin&lt;/code&gt; itself, which can be evaluated in a boolean context and tells us whether the stream is still in the &lt;code&gt;good()&lt;/code&gt; state.</source>
+          <target state="translated">Результат, который мы должны использовать, - это сам &lt;code&gt;std::cin&lt;/code&gt; , который может быть оценен в логическом контексте и сообщает нам, находится ли поток в состоянии &lt;code&gt;good()&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="94f4bf47648a9a9a15729400e2bbd4e7a33fd3d8" translate="yes" xml:space="preserve">
+          <source>The result we must use is again &lt;code&gt;std::cin&lt;/code&gt;, just as before.</source>
+          <target state="translated">Результат, который мы должны использовать, снова &lt;code&gt;std::cin&lt;/code&gt; , как и прежде.</target>
+        </trans-unit>
+        <trans-unit id="e176f9e6233fcb3bd9259568ee600f922fc9b066" translate="yes" xml:space="preserve">
+          <source>The result we must use is the return value of &lt;code&gt;scanf&lt;/code&gt;, the number of elements converted.</source>
+          <target state="translated">Результат, который мы должны использовать, это возвращаемое значение &lt;code&gt;scanf&lt;/code&gt; , количество преобразованных элементов.</target>
+        </trans-unit>
+        <trans-unit id="303da19e8cd21a2b3892dcd8aaca7a9c24e2434b" translate="yes" xml:space="preserve">
+          <source>The result we use here is &lt;code&gt;k&lt;/code&gt;, the number of bytes written. The point here is that we can only know how many bytes were written &lt;em&gt;after&lt;/em&gt; the write operation.</source>
+          <target state="translated">Результат, который мы здесь используем, равен &lt;code&gt;k&lt;/code&gt; , числу записанных байтов. Дело в том, что мы можем знать только, сколько байтов было записано &lt;em&gt;после&lt;/em&gt; операции записи.</target>
+        </trans-unit>
+        <trans-unit id="b372e2f1e30a0546ffa61e565b193a1cfb9392b9" translate="yes" xml:space="preserve">
+          <source>This happens in all such cases.  &lt;code&gt;feof()&lt;/code&gt; does not return true until &lt;strong&gt;after&lt;/strong&gt; a read on the stream encounters the end of file.  The purpose of &lt;code&gt;feof()&lt;/code&gt; is NOT to check if the next read will reach the end of file.  The purpose of &lt;code&gt;feof()&lt;/code&gt; is to distinguish between a read error and having reached the end of the file.  If &lt;code&gt;fread()&lt;/code&gt; returns 0, you must use &lt;code&gt;feof&lt;/code&gt;/&lt;code&gt;ferror&lt;/code&gt; to decide whether an error was encountered or if all of the data was consumed.  Similarly if &lt;code&gt;fgetc&lt;/code&gt; returns &lt;code&gt;EOF&lt;/code&gt;.  &lt;code&gt;feof()&lt;/code&gt; is only useful &lt;strong&gt;after&lt;/strong&gt; fread has returned zero or &lt;code&gt;fgetc&lt;/code&gt; has returned &lt;code&gt;EOF&lt;/code&gt;.  Before that happens, &lt;code&gt;feof()&lt;/code&gt; will always return 0.</source>
+          <target state="translated">Это происходит во всех таких случаях. &lt;code&gt;feof()&lt;/code&gt; не возвращает true, пока &lt;strong&gt;после&lt;/strong&gt; чтения в потоке не встретится конец файла. Цель &lt;code&gt;feof()&lt;/code&gt; - НЕ проверять, достигнет ли следующее чтение конца файла. Назначение функции &lt;code&gt;feof()&lt;/code&gt; - различать ошибку чтения и достижение конца файла. Если &lt;code&gt;fread()&lt;/code&gt; возвращает 0, вы должны использовать &lt;code&gt;feof&lt;/code&gt; / &lt;code&gt;ferror&lt;/code&gt; , чтобы решить, была ли обнаружена ошибка или были использованы все данные. Аналогично, если &lt;code&gt;fgetc&lt;/code&gt; возвращает &lt;code&gt;EOF&lt;/code&gt; . &lt;code&gt;feof()&lt;/code&gt; полезна только &lt;strong&gt;после того, как&lt;/strong&gt; fread вернул ноль или &lt;code&gt;fgetc&lt;/code&gt; вернул &lt;code&gt;EOF&lt;/code&gt; . До этого &lt;code&gt;feof()&lt;/code&gt; всегда возвращает 0.</target>
+        </trans-unit>
+        <trans-unit id="1f110543f655f47775382a08be85a099094240cb" translate="yes" xml:space="preserve">
+          <source>This program will consistently print one greater than the number of characters in the input stream (assuming no read errors).  Consider the case where the input stream is empty:</source>
+          <target state="translated">Эта программа будет последовательно печатать на один символ больше,чем количество символов во входном потоке (предполагая отсутствие ошибок чтения).Рассмотрим случай,когда входной поток пуст:</target>
+        </trans-unit>
+        <trans-unit id="b0925f526af3483a02c05fdbde7c36f4875c2e14" translate="yes" xml:space="preserve">
+          <source>We use two results here. The first is &lt;code&gt;iss&lt;/code&gt;, the stream object itself, to check that the formatted extraction to &lt;code&gt;value&lt;/code&gt; succeeded. But then, after also consuming whitespace, we perform another I/O/ operation, &lt;code&gt;iss.get()&lt;/code&gt;, and expect it to fail as EOF, which is the case if the entire string has already been consumed by the formatted extraction.</source>
+          <target state="translated">Мы используем два результата здесь. Первый - это &lt;code&gt;iss&lt;/code&gt; , сам объект потока, для проверки успешности форматированного извлечения в &lt;code&gt;value&lt;/code&gt; . Но затем, после использования пустого пространства, мы выполняем еще одну операцию ввода-вывода, &lt;code&gt;iss.get()&lt;/code&gt; и ожидаем, что она завершится с ошибкой как EOF, что имеет место, если вся строка уже была использована форматированным извлечением.</target>
+        </trans-unit>
+        <trans-unit id="648647fd82435dc0507ee1805f9b069afb309877" translate="yes" xml:space="preserve">
+          <source>What is wrong with this loop?</source>
+          <target state="translated">Что не так с этой петлей?</target>
+        </trans-unit>
+        <trans-unit id="2a805c3203447610847e1ae47416a85730b84c3d" translate="yes" xml:space="preserve">
+          <source>Why is “while ( !feof (file) )” always wrong</source>
+          <target state="translated">Почему &quot;while(!feof (file))&quot; всегда неправильно.</target>
+        </trans-unit>
+        <trans-unit id="f54a4cb85ad4243779102fab2d01c2695116ea1c" translate="yes" xml:space="preserve">
+          <source>You may notice that we very rarely spell out the actual word &quot;EOF&quot;. We usually detect the error condition in some other way that is more immediately interesting to us (e.g. failure to perform as much I/O as we had desired). In every example there is some API feature that could tell us explicitly that the EOF state has been encountered, but this is in fact not a terribly useful piece of information. It is much more of a detail than we often care about. What matters is whether the I/O succeeded, more-so than how it failed.</source>
+          <target state="translated">Вы можете заметить,что мы очень редко произносим настоящее слово &quot;EOF&quot;.Обычно мы обнаруживаем состояние ошибки каким-то другим способом,который нас сразу же интересует (например,неспособность выполнить столько операций ввода-вывода,сколько мы хотели).В каждом примере есть некоторая особенность API,которая могла бы явно сказать нам,что состояние EOF было встречено,но на самом деле это не очень полезная информация.Это гораздо более подробная информация,чем та,о которой мы часто заботимся.Важно то,удалось ли IO,больше,чем то,как он провалился.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

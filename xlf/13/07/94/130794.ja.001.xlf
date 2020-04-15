@@ -1,0 +1,1196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/130794">
+    <body>
+      <group id="130794">
+        <trans-unit id="075303a37c1db7777d673503bd42ea6517e55270" translate="yes" xml:space="preserve">
+          <source>&quot;As our &lt;strong&gt;applications&lt;/strong&gt; grow and evolves, each one of our &lt;strong&gt;code entities&lt;/strong&gt; will internally require &lt;strong&gt;instances of other objects&lt;/strong&gt;, which are better known as &lt;strong&gt;dependencies&lt;/strong&gt; in the world of software engineering. The &lt;strong&gt;action&lt;/strong&gt; of passing such &lt;strong&gt;dependencies&lt;/strong&gt; to the dependent client is known as &lt;strong&gt;injection&lt;/strong&gt;, and it also entails the participation of another code entity, named the &lt;strong&gt;injector&lt;/strong&gt;. The &lt;strong&gt;injector&lt;/strong&gt; will take responsibility for &lt;strong&gt;instantiating&lt;/strong&gt; and &lt;strong&gt;bootstrapping&lt;/strong&gt; the required &lt;strong&gt;dependencies&lt;/strong&gt; so they are ready for use from the very moment they are successfully injected in the client. This is very important since the client knows nothing about how to &lt;strong&gt;instantiate&lt;/strong&gt; its own &lt;strong&gt;dependencies&lt;/strong&gt; and is only aware of the &lt;strong&gt;interface&lt;/strong&gt; they implement in order to use them.&quot;</source>
+          <target state="translated">「 &lt;strong&gt;アプリケーション&lt;/strong&gt;が成長し進化するにつれて、 &lt;strong&gt;コードエンティティのそれぞれ&lt;/strong&gt;に内部&lt;strong&gt;で他のオブジェクトのインスタンスが&lt;/strong&gt;必要になり&lt;strong&gt;ます&lt;/strong&gt; 。これは、ソフトウェアエンジニアリングの世界では&lt;strong&gt;依存関係&lt;/strong&gt;として知られています。このような&lt;strong&gt;依存関係&lt;/strong&gt;を依存型クライアントに渡す&lt;strong&gt;アクション&lt;/strong&gt;は、 &lt;strong&gt;インジェクション&lt;/strong&gt;と呼ばれます。そして、また、他のコードエンティティ、 &lt;strong&gt;インジェクター&lt;/strong&gt;という名前の参加を伴います。 &lt;strong&gt;インジェクター&lt;/strong&gt;は、必要な&lt;strong&gt;依存関係&lt;/strong&gt;を&lt;strong&gt;インスタンス化&lt;/strong&gt;して&lt;strong&gt;ブートストラップ&lt;/strong&gt;する責任を負うため、クライアントに正常にインジェクションされた瞬間から使用できるようになります。これは非常に重要です。クライアントは、自身の&lt;strong&gt;依存関係&lt;/strong&gt;を&lt;strong&gt;インスタンス化&lt;/strong&gt;する方法について何も知らず、それらを使用するために実装する&lt;strong&gt;インターフェース&lt;/strong&gt;のみを認識してい&lt;strong&gt;ます&lt;/strong&gt; 。」</target>
+        </trans-unit>
+        <trans-unit id="88ba72c68eb66f9403511df347aad31c0ffb36bb" translate="yes" xml:space="preserve">
+          <source>&quot;Dependency Injection&quot; is a 25-dollar
+  term for a 5-cent concept. [...]
+  Dependency injection means giving an
+  object its instance variables. [...].</source>
+          <target state="translated">&quot;依存性注入 &quot;は、5セントの概念のための25ドルの用語です。[....]依存性注入とは、オブジェクトにインスタンス変数を与えることです。[...].</target>
+        </trans-unit>
+        <trans-unit id="884583105d69da013b6572c7250c4e2a8f722ed6" translate="yes" xml:space="preserve">
+          <source>&quot;Dependency injection&quot; is considered a type of &quot;inversion of control&quot;, which means that some logic is taken out of the caller. That isn't the case when the caller passes in parameters, so if that were DI, DI would not imply inversion of control.</source>
+          <target state="translated">&quot;依存性注入 &quot;は &quot;制御の逆転 &quot;の一種と考えられており、呼び出し側から何らかのロジックを取り出すことを意味します。呼び出し側がパラメータを渡す場合はそうではないので、もしそれがDIであれば、DIは制御の逆転を意味するものではありません。</target>
+        </trans-unit>
+        <trans-unit id="559316cc487d0d2d80076d1938d00fe314c1d36f" translate="yes" xml:space="preserve">
+          <source>&amp;ldquo;In short, &lt;strong&gt;DI&lt;/strong&gt; helps you write code in a &lt;strong&gt;loosely coupled&lt;/strong&gt; way and makes your &lt;strong&gt;code&lt;/strong&gt; more &lt;strong&gt;testable&lt;/strong&gt; and &lt;strong&gt;reusable&lt;/strong&gt;.&amp;rdquo;</source>
+          <target state="translated">「簡単に言えば、 &lt;strong&gt;DI&lt;/strong&gt;は&lt;strong&gt;疎結合の&lt;/strong&gt;方法でコードを記述し、 &lt;strong&gt;コードの&lt;/strong&gt; &lt;strong&gt;テスト&lt;/strong&gt;と&lt;strong&gt;再利用を&lt;/strong&gt; &lt;strong&gt;容易&lt;/strong&gt;にするの&lt;strong&gt;に&lt;/strong&gt;役立ちます。」</target>
+        </trans-unit>
+        <trans-unit id="ec42628a9387e4101c1904f5ffcd31e7a85677db" translate="yes" xml:space="preserve">
+          <source>(A concrete &lt;code&gt;Clock&lt;/code&gt; needs to be provided, which of course could revert to &lt;code&gt;DateTime.Now&lt;/code&gt;, and the two dependencies need to be provided by an IoC container via constructor injection)</source>
+          <target state="translated">（具体的な &lt;code&gt;Clock&lt;/code&gt; を提供する必要があります。もちろん、これは &lt;code&gt;DateTime.Now&lt;/code&gt; に戻すことができます。また、2つの依存関係は、コンストラクター注入を介してIoCコンテナーによって提供される必要があります）</target>
+        </trans-unit>
+        <trans-unit id="7c77d04844ca55b45c4e29a2ad4bd0663b614dc7" translate="yes" xml:space="preserve">
+          <source>1) Simple manual &lt;code&gt;Injector&lt;/code&gt;</source>
+          <target state="translated">1）シンプルな手動 &lt;code&gt;Injector&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="2b8c8a3c4e4de08de9d47e21c94fca818f3e508e" translate="yes" xml:space="preserve">
+          <source>1.    Constructor-based dependency injection:</source>
+          <target state="translated">1.コンストラクタベースの依存性注入。</target>
+        </trans-unit>
+        <trans-unit id="0fd3eb9210cba499046c01b805cb7de8b0581cf6" translate="yes" xml:space="preserve">
+          <source>2) Use library: For Android &lt;a href=&quot;https://github.com/google/dagger&quot;&gt;dagger2&lt;/a&gt;</source>
+          <target state="translated">2）ライブラリを使用する：Android &lt;a href=&quot;https://github.com/google/dagger&quot;&gt;dagger2の場合&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="f1dc2ccd951284c98a3bde560294a5c88093316a" translate="yes" xml:space="preserve">
+          <source>2.    Setter-based dependency injection:</source>
+          <target state="translated">2.セッターベースの依存性注入。</target>
+        </trans-unit>
+        <trans-unit id="20d1910df8e94fb0fa91e3b643d5709d2d44f250" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://martinfowler.com/articles/injection.html#InterfaceInjection&quot;&gt;Martin Fowler&lt;/a&gt; documents a third alternative (h/t @MarcDix), where &lt;strong&gt;classes explicitly implement an interface&lt;/strong&gt; for the dependencies programmers wish injected.</source>
+          <target state="translated">&lt;a href=&quot;http://martinfowler.com/articles/injection.html#InterfaceInjection&quot;&gt;Martin Fowlerは&lt;/a&gt; 、3番目の選択肢（h / t @MarcDix）を文書化しています。この&lt;strong&gt;クラス&lt;/strong&gt;では、プログラマーが挿入したいと思っている依存関係の&lt;strong&gt;インターフェース&lt;/strong&gt;を&lt;strong&gt;明示的に実装しています&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="139cc1158c0803cacea84c6bb86ce8b3cd6a16e2" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://php-di.org/doc/understanding-di.html&quot;&gt;This&lt;/a&gt; is the most simple explanation about &lt;strong&gt;Dependency Injection&lt;/strong&gt; and &lt;strong&gt;Dependency Injection Container&lt;/strong&gt; I have ever seen:</source>
+          <target state="translated">&lt;a href=&quot;http://php-di.org/doc/understanding-di.html&quot;&gt;これ&lt;/a&gt;は、 &lt;strong&gt;依存性注入&lt;/strong&gt;と&lt;strong&gt;依存性注入コンテナについて&lt;/strong&gt;私が今まで見た中で最も簡単な説明です。</target>
+        </trans-unit>
+        <trans-unit id="ea2f6774ac13f40817f28f4fc553b644d8059a9c" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html&quot;&gt;James Shore's article shows the following examples for comparison&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html&quot;&gt;James Shoreの記事では、比較のために次の例を示しています&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="0b5dd4547c12b988e4cf971119a75e17e9ed5a4e" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://en.wikipedia.org/wiki/Dependency_injection&quot;&gt;Dependency Injection&lt;/a&gt; means a way (actually &lt;strong&gt;any-way&lt;/strong&gt;) for one part of code (e.g a class) to have access to dependencies (other parts of code, e.g other classes, it depends upon) in a modular way without them being hardcoded (so they can change or be overriden freely, or even be loaded at another time, as needed)</source>
+          <target state="translated">&lt;a href=&quot;https://en.wikipedia.org/wiki/Dependency_injection&quot;&gt;依存性注入と&lt;/a&gt;は、コードの一部（たとえば、クラス）が依存関係（コードの他の部分、たとえば、他のクラス、依存するもの）にモジュール化された方法でアクセスできるようにする（実際には&lt;strong&gt;とにかく&lt;/strong&gt; ）方法を意味します必要に応じて、自由に変更またはオーバーライドしたり、別のときにロードすることもできます）</target>
+        </trans-unit>
+        <trans-unit id="489243935980044f46caf00a1da3950eb72480f3" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;SomeClass()&lt;/code&gt; has its constructor as following:</source>
+          <target state="translated">&lt;code&gt;SomeClass()&lt;/code&gt; のコンストラクターは次のとおりです。</target>
+        </trans-unit>
+        <trans-unit id="e7be66ff5c1f2bead4f99265aacf00180d5bd3fe" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;myObject&lt;/code&gt; can be passed directly which makes testing easier.</source>
+          <target state="translated">&lt;code&gt;myObject&lt;/code&gt; を直接渡すことができるため、テストが簡単になります。</target>
+        </trans-unit>
+        <trans-unit id="9bd7701ca83f91008241672a8066b98e80ce7fa1" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;(and ps , yes it has become an overly-hyped 25$ name for a rather simple, concept)&lt;/em&gt;, my &lt;code&gt;.25&lt;/code&gt; cents</source>
+          <target state="translated">&lt;em&gt;（そしてps、はい、それはかなりシンプルなコンセプトのために過度に宣伝された25 $の名前になっています）&lt;/em&gt; 、私の &lt;code&gt;.25&lt;/code&gt; セント</target>
+        </trans-unit>
+        <trans-unit id="7c64642d978f251aeaa9e771fd6b2e4c8c2a0138" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;DI increases cohesion by removing any need to determine the direction of dependency and write any glue code.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;DIは、依存関係の方向を決定してグルーコードを記述する必要をなくすことにより、まとまりを高めます。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="8cd65eebe518df31a3d3e8b816fd1032b277e646" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;DI reduces coupling by making all of your components modular (i.e. replacable) and have well-defined interfaces to each other.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;DIは、すべてのコンポーネントをモジュール化（つまり、交換可能）することで結合を減らし、相互に明確に定義されたインターフェースを備えています。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="f2f6f530262aaa812ba33a2511d7964178350822" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;I found this funny example in terms of &lt;a href=&quot;https://en.wikipedia.org/wiki/Loose_coupling&quot;&gt;loose coupling&lt;/a&gt;:&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;私は&lt;a href=&quot;https://en.wikipedia.org/wiki/Loose_coupling&quot;&gt;疎結合の&lt;/a&gt;観点からこの面白い例を見つけました：&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="62fe0e1a78daa62d9061df07333b1c387f953b07" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Using&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Using&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="81d7f6f687485d5dc12f6f5268a195c72b70fee8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;1) 2) 3) Using&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;1）2）3）使用&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="134d462b40518572cfc8a34cb9179e98a9817f10" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;Then what does the &lt;code&gt;Dependency Injection&lt;/code&gt; do for us...?&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;次に、 &lt;code&gt;Dependency Injection&lt;/code&gt; は私たちに何をしますか？&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="427d269cef16d7dd435f53adf9f53c88581fff03" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Advantages&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Advantages&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="64e35a8a257eda0748b950b4efd25aebaab56d6c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;After using dependency injection:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;依存性注入を使用した後：&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="e118dd44c7e67af1dc63de6f5672af7d0d76495d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;All the above answers are good, my aim is to explain the concept in a simple way so that anyone without a programming knowledge can also understand concept&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;上記の答えはすべて良好です。私の目的は、プログラミングの知識がない人でもコンセプトを理解できるように、コンセプトを簡単に説明することです&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="21f37caa4106b3b41630895455450baa84ccfb77" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Alternative solution&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;代替ソリューション&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="fe080fcf8cd21d9cdaa29a5c39e27707035ab956" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;DI, DIP and SOLID&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;DI、DIP、SOLID&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="e78d489aa9f4c7df98e18605184dfcf430472ba1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Dependency Injection&lt;/strong&gt; and &lt;strong&gt;dependency Injection Containers&lt;/strong&gt; are different things:</source>
+          <target state="translated">&lt;strong&gt;依存性注入&lt;/strong&gt;と&lt;strong&gt;依存性注入コンテナ&lt;/strong&gt;は異なります。</target>
+        </trans-unit>
+        <trans-unit id="4e7a19bc0d7c4175394cf98e210ddbeaca200985" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Dependency Injection&lt;/strong&gt; is passing dependency to other &lt;strong&gt;objects&lt;/strong&gt; or &lt;strong&gt;framework&lt;/strong&gt;( dependency injector).</source>
+          <target state="translated">&lt;strong&gt;Dependency Injection&lt;/strong&gt;は、他の&lt;strong&gt;オブジェクト&lt;/strong&gt;または&lt;strong&gt;フレームワーク&lt;/strong&gt; （Dependency Injector）に依存関係を渡し&lt;strong&gt;ます&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="9050dff2d4e01dd22dab4a30a3b18b836dbca3a8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Disadvantages&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Disadvantages&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4f1f2d1ba0a7e969d5df6fdb8a7f2b397072df69" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;EDIT&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;EDIT&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="352fe1ffa66ad058937206892159aa0c751d3d51" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Example for Dependency injection&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;依存性注入の例&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="bce3f4a409dc0c67054a7e806ad3eecf69f742f8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Example&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Example&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="89779a6f30decc7c58d031e6da0ce5e9759d2d8e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Next Steps&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;次のステップ&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="73b8706173c462cc0bdd6d2632616f2d7f4a120a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Note&lt;/strong&gt; : The creation / mapping / projection (via &lt;code&gt;new ..()&lt;/code&gt;) of POCO / POJO / Serialization DTOs / Entity Graphs / Anonymous JSON projections et al - i.e. &quot;Data only&quot; classes or records - used or returned from methods are &lt;em&gt;not&lt;/em&gt; regarded as Dependencies (in the UML sense) and not subject to DI. Using &lt;code&gt;new&lt;/code&gt; to project these is just fine.</source>
+          <target state="translated">&lt;strong&gt;注&lt;/strong&gt; ：POCO / POJO /シリアライゼーションDTO /エンティティグラフ/匿名JSONプロジェクションなどの作成/マッピング/プロジェクション（ &lt;code&gt;new ..()&lt;/code&gt; による ）-つまり、「データのみ」のクラスまたはレコード-メソッドから使​​用または返されたもの&lt;em&gt;は&lt;/em&gt;考慮され&lt;em&gt;ません&lt;/em&gt;依存関係として（UMLの意味で）、DIの対象ではありません。 &lt;code&gt;new&lt;/code&gt; を使用してこれらを投影しても問題ありません。</target>
+        </trans-unit>
+        <trans-unit id="d98f2b4bd341257a9dbd8120abd05530994fcf1c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Problem&lt;/strong&gt;:
+If &lt;code&gt;myObject&lt;/code&gt; involves complex tasks such as disk access or network access, it is &lt;strong&gt;hard&lt;/strong&gt; to do unit test on &lt;code&gt;SomeClass()&lt;/code&gt;. Programmers have to mock &lt;code&gt;myObject&lt;/code&gt; and might &lt;strong&gt;intercept&lt;/strong&gt; the factory call.</source>
+          <target state="translated">&lt;strong&gt;問題&lt;/strong&gt; ： &lt;code&gt;myObject&lt;/code&gt; にディスクアクセスやネットワークアクセスなどの複雑なタスクが含まれる場合、 &lt;code&gt;SomeClass()&lt;/code&gt; で単体テストを実行するのは&lt;strong&gt;困難&lt;/strong&gt;です。 プログラマーは &lt;code&gt;myObject&lt;/code&gt; をモックする必要があり、ファクトリーコールを&lt;strong&gt;インターセプト&lt;/strong&gt;する可能性&lt;strong&gt;が&lt;/strong&gt;あります。</target>
+        </trans-unit>
+        <trans-unit id="3caa217db0a9feb519ccfb83c5360a0fd9379499" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;UPDATE:&lt;/strong&gt; Watched course about EF Core from Julie Lerman recently and also liked her short definition about DI.</source>
+          <target state="translated">&lt;strong&gt;更新：&lt;/strong&gt; Julie LermanのEF Coreに関するコースを最近視聴し、DIについての彼女の短い定義も気に入りました。</target>
+        </trans-unit>
+        <trans-unit id="bb8fdb2caf0495723a2bfa5cae2542c71d3df90c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Using&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Using&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="fed09c4b3a548192ce23e86d0d3ac85024ca7184" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Way 1)&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;方法1）&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="c5287e00dc55d1b18cf0490002f5097515ab0af5" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Way 1)&lt;/strong&gt; Constructor injection</source>
+          <target state="translated">&lt;strong&gt;方法1）&lt;/strong&gt;コンストラクターの注入</target>
+        </trans-unit>
+        <trans-unit id="cffbc9253561d5f6c70f7781944f336db2c95227" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Way 2)&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;方法2）&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="bbfccbb774df62a67ec9d3bdc2292dd944115740" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Way 2)&lt;/strong&gt; Setter injection</source>
+          <target state="translated">&lt;strong&gt;方法2）&lt;/strong&gt;セッター注入</target>
+        </trans-unit>
+        <trans-unit id="6b6b88724bc7d2fd56ed9b90ed70c1bf61d456de" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Way 3)&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;方法3）&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7be335f5337bca5a01d1e24ed56b2f2d716bba6a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Way 3)&lt;/strong&gt; Interface injection</source>
+          <target state="translated">&lt;strong&gt;方法3）&lt;/strong&gt;インターフェース注入</target>
+        </trans-unit>
+        <trans-unit id="e997684d5231d7a45924a857d44b5b8961d9a17d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What is Dependency Injection (DI)?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;依存性注入（DI）とは何ですか？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="230a57f9d5d3eb174e62bab1bb6baa6ed97f6dfb" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What is dependency injection and when/why should or shouldn't it be used?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;依存性注入とは何ですか？いつ/なぜ使用する必要があるのですか？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6b431da6264f45e0d6035801527ad040d6ae12bf" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;When to use DI?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;いつDIを使用するのですか？&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="dd3cb919485762e2f7ae20824d2553c1b374d9e7" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Why use DIP (and DI)?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;DIP（およびDI）を使用する理由&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="e626bfdc41d8d0154fb13bbccc4a07c5bdea697f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Without Dependency Injection (DI):&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;依存性注入（DI）なし：&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5b41ad2ddaf8a9d9eee7a1bdd549ad0e74faf4d1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;clean&lt;/strong&gt; of dependency initialization code</source>
+          <target state="translated">依存関係の初期化コードの&lt;strong&gt;クリーン&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="175b3654ce89f52bed835b1e1354adc55d5bff80" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;stable&lt;/strong&gt; regardless of dependency used</source>
+          <target state="translated">使用する依存関係に関係なく&lt;strong&gt;安定&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b64cc2760536699c09c33fd0c38b16350e500872" translate="yes" xml:space="preserve">
+          <source>===</source>
+          <target state="translated">===</target>
+        </trans-unit>
+        <trans-unit id="6b0acc829dd60bf821accdbecbe0f34bcc950c1b" translate="yes" xml:space="preserve">
+          <source>A &lt;code&gt;Car&lt;/code&gt; depends on wheels, engine, fuel, battery, etc. to run. Traditionally we define the brand of such dependent objects along with the definition of the &lt;code&gt;Car&lt;/code&gt; object.</source>
+          <target state="translated">&lt;code&gt;Car&lt;/code&gt; は、走るのに車輪、エンジン、燃料、バッテリーなどに依存します。 従来、このような依存オブジェクトのブランドは、 &lt;code&gt;Car&lt;/code&gt; オブジェクトの定義とともに定義されています。</target>
+        </trans-unit>
+        <trans-unit id="76a8eb0e78cd5206cc6a627c1d56ea296a18f598" translate="yes" xml:space="preserve">
+          <source>A dependency is an object that can be used (&lt;code&gt;Service&lt;/code&gt;)</source>
+          <target state="translated">依存関係は、使用できるオブジェクトです（ &lt;code&gt;Service&lt;/code&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="d726743d668b3ba1c937402de85725ec11622168" translate="yes" xml:space="preserve">
+          <source>A nice comment by Jose Maria Arranz on DI</source>
+          <target state="translated">ホセ・マリア・アランツ氏によるDIに関する素敵なコメント</target>
+        </trans-unit>
+        <trans-unit id="55bbd203453572a1a2a8545b2a4e406f89f8d6bc" translate="yes" xml:space="preserve">
+          <source>About replaceable: with a very simple .properties archive and Class.forName you can define wich classes can change. If ANY class of your code can be changed, Java is not for you, use an scripting language.  By the way: annotations cannot be changed without recompiling.</source>
+          <target state="translated">置換可能について:非常にシンプルな .properties アーカイブと Class.forName で、どのクラスを変更できるかを定義することができます。もしあなたのコードのどのクラスも変更できるのであれば、Javaはあなたには向いていないので、スクリプト言語を使ってください。ちなみに、アノテーションは再コンパイルしないと変更できません。</target>
+        </trans-unit>
+        <trans-unit id="e431d362be915c2e12e2e8aec306dfb48350104c" translate="yes" xml:space="preserve">
+          <source>Actually,Suppose in java you created two different classes as class A and class B, and whatever the function are available in class B you want to use in class A, So at that time dependency injection can be used.
+where you can crate object of one class in other,in the same way you can inject an entire class in another class to make it accessible.
+by this way dependency can be overcome.</source>
+          <target state="translated">実際には、JavaでクラスAとクラスBとして2つの異なるクラスを作成したと仮定して、クラスAで使用したいクラスBで利用可能な関数は何でも、その時点で依存性注入を使用することができます。</target>
+        </trans-unit>
+        <trans-unit id="b5e7a0d53d6a3064057c2db69d7bd1bb143ac3e8" translate="yes" xml:space="preserve">
+          <source>All the three classes can be hidden for it's own implementation. Now we can use this code for DI:</source>
+          <target state="translated">3つのクラスはすべて、それ自身の実装のために非表示にすることができます。これで、このコードをDIに使うことができるようになりました。</target>
+        </trans-unit>
+        <trans-unit id="9f4e112e7a703ff0642590623727505b80c743dd" translate="yes" xml:space="preserve">
+          <source>Allowing expensive resources or services to be created as late as possible and only when needed.</source>
+          <target state="translated">高価な資源やサービスを可能な限り遅く、必要な時にのみ作成できるようにすること。</target>
+        </trans-unit>
+        <trans-unit id="b73b678b4942a0f37f86394e629e8cffab4b632e" translate="yes" xml:space="preserve">
+          <source>Also when we have many dependencies it is very good practice to use Inversion of Control(IoC) containers which we can tell which interfaces should be mapped to which concrete implementations for all our dependencies and we can have it resolve those dependencies for us when it constructs our object. For example, we could specify in the mapping for the IoC container that the &lt;strong&gt;IEngine&lt;/strong&gt; dependency should be mapped to the &lt;strong&gt;GasEngine&lt;/strong&gt; class and when we ask the IoC container for an instance of our &lt;strong&gt;Car&lt;/strong&gt; class, it will automatically construct our &lt;strong&gt;Car&lt;/strong&gt; class with a &lt;strong&gt;GasEngine&lt;/strong&gt; dependency passed in.</source>
+          <target state="translated">また、多くの依存関係がある場合、すべての依存関係のどの具体的な実装にどのインターフェイスをマップする必要があるかを通知できるInversion of Control（IoC）コンテナーを使用することは非常に良い方法であり、構築時にこれらの依存関係を解決することができます私たちのオブジェクト。 たとえば、IoCコンテナのマッピングで、 &lt;strong&gt;IEngine&lt;/strong&gt;依存関係を&lt;strong&gt;GasEngine&lt;/strong&gt;クラスにマッピングするように指定できます&lt;strong&gt;。IoC&lt;/strong&gt;コンテナに&lt;strong&gt;Car&lt;/strong&gt;クラスのインスタンスを要求すると、 &lt;strong&gt;GasEngine&lt;/strong&gt;依存関係を持つ&lt;strong&gt;Car&lt;/strong&gt;クラスが自動的に構築されます。渡された。</target>
+        </trans-unit>
+        <trans-unit id="992414fdd7e72886a072118a7f3b02c1d3b532c2" translate="yes" xml:space="preserve">
+          <source>Although seemingly innocuous, it has two &lt;code&gt;static&lt;/code&gt; dependencies on two other classes, &lt;code&gt;System.DateTime&lt;/code&gt; and &lt;code&gt;System.Console&lt;/code&gt;, which not only limit the logging output options (logging to console will be worthless if no one is watching), but worse, it is difficult to automatically test given the dependency on a non-deterministic system clock.</source>
+          <target state="translated">一見無害なように見えますが、他の2つのクラス &lt;code&gt;System.DateTime&lt;/code&gt; と &lt;code&gt;System.Console&lt;/code&gt; に2つの &lt;code&gt;static&lt;/code&gt; 依存関係があります 。これは、ログ出力オプションを制限するだけでなく（誰にも監視されていない場合、コンソールへのログ記録は無意味です）、さらに悪いことに、非決定論的システムクロックへの依存を前提として自動的にテストします。</target>
+        </trans-unit>
+        <trans-unit id="608e86855b2a65e39ae912fd39a0fa1102aef2e4" translate="yes" xml:space="preserve">
+          <source>An automated Unit Test can be built, which definitively proves that our logger is working correctly, as we now have control over the dependencies - the time, and we can spy on the written output:</source>
+          <target state="translated">自動化されたユニットテストを構築することができ、ロガーが正しく動作していることを決定的に証明します。</target>
+        </trans-unit>
+        <trans-unit id="70687f8f4f2b763df000dbed64d4fb27b23ff917" translate="yes" xml:space="preserve">
+          <source>An injection is the passing of a dependency (&lt;code&gt;Service&lt;/code&gt;) to a dependent object (&lt;code&gt;Client&lt;/code&gt;) that would use it</source>
+          <target state="translated">インジェクションとは、依存関係（ &lt;code&gt;Service&lt;/code&gt; ）を、それを使用する依存オブジェクト（ &lt;code&gt;Client&lt;/code&gt; ）に渡すことです</target>
+        </trans-unit>
+        <trans-unit id="22de376201dcf4ad21e64690cf593a42ea12c2ce" translate="yes" xml:space="preserve">
+          <source>And to instantiate the Car class we will use next code:</source>
+          <target state="translated">そして、Carクラスのインスタンスを作成するために、次のコードを使用します。</target>
+        </trans-unit>
+        <trans-unit id="5d989001b3ba666eebb2d9b73b1ed4f8b0f5b41d" translate="yes" xml:space="preserve">
+          <source>Any application is composed of many objects that collaborate with each other to perform some useful stuff. Traditionally each object is responsible for obtaining its own references to the dependent objects (dependencies) it collaborate with. This leads to highly coupled classes and hard-to-test code.</source>
+          <target state="translated">どんなアプリケーションでも、便利なことを実行するために互いに協力し合う多くのオブジェクトで構成されています。伝統的に、各オブジェクトは協調している依存オブジェクト (依存関係)への独自の参照を取得する責任があります。これは、高度に結合されたクラスとテストが困難なコードにつながります。</target>
+        </trans-unit>
+        <trans-unit id="dcd3c9a7013d9400c6621023f7f9889b2d159708" translate="yes" xml:space="preserve">
+          <source>Any time where you will need to unit test the methods of a class in isolation of its dependencies,</source>
+          <target state="translated">クラスのメソッドを依存関係から分離してユニットテストする必要がある場合。</target>
+        </trans-unit>
+        <trans-unit id="8a5fc50e3ceaa03d10efa641f9932ed3164ec099" translate="yes" xml:space="preserve">
+          <source>Application calls Foo</source>
+          <target state="translated">アプリケーションはFooを呼び出します。</target>
+        </trans-unit>
+        <trans-unit id="ac42390e19be354858b8262243637ee16d63efc2" translate="yes" xml:space="preserve">
+          <source>Application creates Bar and gives it Bim</source>
+          <target state="translated">アプリケーションはBarを作成し、Bimを与えます。</target>
+        </trans-unit>
+        <trans-unit id="cc24fa2cfa1ade20a4b0568072650d805b3f7a37" translate="yes" xml:space="preserve">
+          <source>Application creates Bim</source>
+          <target state="translated">アプリケーションはBimを作成します。</target>
+        </trans-unit>
+        <trans-unit id="70579284eb400d7297fa45f23e86008434a5dae7" translate="yes" xml:space="preserve">
+          <source>Application creates Foo</source>
+          <target state="translated">アプリケーションはFooを作成します。</target>
+        </trans-unit>
+        <trans-unit id="c0f19361a5c397f8b9f7a8e3a097732fbca45296" translate="yes" xml:space="preserve">
+          <source>Application creates Foo and gives it Bar</source>
+          <target state="translated">アプリケーションはFooを作成し、Barを与えます。</target>
+        </trans-unit>
+        <trans-unit id="7f33a152d579b4e1ccdf69ca92b2a96ddcd2dca4" translate="yes" xml:space="preserve">
+          <source>Application gets Foo from the Container, so:</source>
+          <target state="translated">アプリケーションはコンテナからFooを取得します。</target>
+        </trans-unit>
+        <trans-unit id="1a435d46695a15e5ef97ebb4802372a00c982aa2" translate="yes" xml:space="preserve">
+          <source>Application needs Foo (e.g. a controller), so:</source>
+          <target state="translated">アプリケーションにはFoo(コントローラなど)が必要なので。</target>
+        </trans-unit>
+        <trans-unit id="63f0eb90a103bbcdae0831a58efe78a5893f2f45" translate="yes" xml:space="preserve">
+          <source>Application needs Foo so:</source>
+          <target state="translated">アプリケーションにはFooが必要です。</target>
+        </trans-unit>
+        <trans-unit id="9be6e530a74dcafa45c7b24d7025184525c1bc10" translate="yes" xml:space="preserve">
+          <source>Application needs Foo, which needs Bar, which needs Bim, so:</source>
+          <target state="translated">アプリケーションはFooを必要とし、それはBimを必要とするBarを必要とするので。</target>
+        </trans-unit>
+        <trans-unit id="41f971b49b630ecc0dbd5fbc5a28c4f03ee52f5d" translate="yes" xml:space="preserve">
+          <source>As others have said, &lt;em&gt;Dependency Injection(DI)&lt;/em&gt; removes the responsibility of direct creation, and management of the lifespan, of other object instances upon which our class of interest (consumer class) is dependent (in the &lt;a href=&quot;https://en.wikipedia.org/wiki/Class_diagram#Dependency&quot;&gt;UML sense&lt;/a&gt;). These instances are instead passed to our consumer class, typically as constructor parameters or via property setters (the management of the dependency object instancing and passing to the consumer class is usually performed by an &lt;em&gt;Inversion of Control (IoC)&lt;/em&gt; container, but that's another topic).</source>
+          <target state="translated">他の人が言ったように、 &lt;em&gt;Dependency Injection（DI）&lt;/em&gt;は、関心のあるクラス（コンシューマークラス）が（ &lt;a href=&quot;https://en.wikipedia.org/wiki/Class_diagram#Dependency&quot;&gt;UMLの意味で&lt;/a&gt; ）依存している他のオブジェクトインスタンスの直接作成および寿命の管理の責任を取り除きます。 これらのインスタンスは、代わりに通常はコンストラクターパラメーターとして、またはプロパティセッターを介してコンシューマークラスに渡されます（依存関係オブジェクトのインスタンス化とコンシューマークラスへの渡しは、通常&lt;em&gt;、制御の反転（IoC）&lt;/em&gt;コンテナーによって実行されますが、それは別のトピックです）。 。</target>
+        </trans-unit>
+        <trans-unit id="08399bcb01b547cab14e44b28e00c30b6c0663f3" translate="yes" xml:space="preserve">
+          <source>As per above example, decoupling of dependencies does require some design effort, and for the developer, there is a paradigm shift needed to break the habit of &lt;code&gt;new&lt;/code&gt;ing dependencies directly, and instead trusting the container to manage dependencies.</source>
+          <target state="translated">上記の例のように、依存関係の分離にはある程度の設計作業が必要であり、開発者にとって、 &lt;code&gt;new&lt;/code&gt; ing依存関係の習慣を直接破り、代わりにコンテナーを信頼して依存関係を管理するために必要なパラダイムシフトがあります。</target>
+        </trans-unit>
+        <trans-unit id="fff41238dbef5b816e589fb9ecf3cbde7896731e" translate="yes" xml:space="preserve">
+          <source>Bar creates Bim</source>
+          <target state="translated">バーはBimを作成します。</target>
+        </trans-unit>
+        <trans-unit id="452099fc339bb9ab1a4137666deb3f1f3b017433" translate="yes" xml:space="preserve">
+          <source>Bar does something</source>
+          <target state="translated">バーは何かをする</target>
+        </trans-unit>
+        <trans-unit id="2b2cfde5abc29f811788f8a477a12b0d271a2ada" translate="yes" xml:space="preserve">
+          <source>Bar needs Bim (a service, a repository,
+&amp;hellip;), so:</source>
+          <target state="translated">BarにはBim（サービス、リポジトリなど）が必要なので、次のようにします。</target>
+        </trans-unit>
+        <trans-unit id="ae219b96ca6e4a1b3a53e426dca90a803fe2da20" translate="yes" xml:space="preserve">
+          <source>But consider the following example&amp;hellip; Suppose you have a class with ten methods that have no dependencies, but you&amp;rsquo;re adding a new method that does have a dependency on IDAO. You could change the constructor to use Constructor Injection, but this may force you to changes to all constructor calls all over the place. Alternatively, you could just add a new constructor that takes the dependency, but then how does a developer easily know when to use one constructor over the other. Finally, if the dependency is very expensive to create, why should it be created and passed to the constructor when it may only be used rarely? &amp;ldquo;Setter Injection&amp;rdquo; is another DI technique that can be used in situations such as this.</source>
+          <target state="translated">ただし、次の例について考えてみます。依存関係のない10個のメソッドを持つクラスがあり、IDAOに依存する新しいメソッドを追加するとします。 コンストラクターインジェクションを使用するようにコンストラクターを変更することもできますが、これにより、あらゆる場所ですべてのコンストラクター呼び出しを変更しなければならない場合があります。 または、依存関係を取得する新しいコンストラクターを追加するだけで、開発者は、一方のコンストラクターをもう一方のコンストラクターをいつ使用するかを簡単に知ることができます。 最後に、依存関係の作成に非常にコストがかかる場合、めったに使用されない可能性があるのに、なぜ作成してコンストラクタに渡す必要があるのでしょうか。 「セッター注入」は、このような状況で使用できる別のDIテクニックです。</target>
+        </trans-unit>
+        <trans-unit id="1778648e0dd763c5f5a9c7958ded52526966ceb6" translate="yes" xml:space="preserve">
+          <source>But it's a generic approach to split concerns of:</source>
+          <target state="translated">しかし、それは一般的なアプローチで、懸念事項を分割するためのものです。</target>
+        </trans-unit>
+        <trans-unit id="19a17a99cb30f6d4a5536c327bad501717385b19" translate="yes" xml:space="preserve">
+          <source>But the benefits are many, especially in the ability to thoroughly test your class of interest.</source>
+          <target state="translated">しかし、メリットが多いのは、特に興味のある授業を徹底的にテストできることです。</target>
+        </trans-unit>
+        <trans-unit id="f690c20291f1b4d985514efeb98b89687022ac96" translate="yes" xml:space="preserve">
+          <source>Check &lt;a href=&quot;https://en.wikipedia.org/wiki/Dependency_injection&quot;&gt;https://en.wikipedia.org/wiki/Dependency_injection&lt;/a&gt;</source>
+          <target state="translated">&lt;a href=&quot;https://en.wikipedia.org/wiki/Dependency_injection&quot;&gt;https://en.wikipedia.org/wiki/Dependency_injectionを&lt;/a&gt;確認してください</target>
+        </trans-unit>
+        <trans-unit id="e531036736b85e446725e4e4e6164a78cdfb8c9c" translate="yes" xml:space="preserve">
+          <source>Consider simple &lt;code&gt;dependent.sh&lt;/code&gt; script:</source>
+          <target state="translated">単純な &lt;code&gt;dependent.sh&lt;/code&gt; スクリプトを検討してください。</target>
+        </trans-unit>
+        <trans-unit id="a938a98716a29fea8b403330f964cb8cf46392e9" translate="yes" xml:space="preserve">
+          <source>Constructor Injection</source>
+          <target state="translated">コンストラクタインジェクション</target>
+        </trans-unit>
+        <trans-unit id="b5773fd2800024a3f838fe7729940f9f8e15e065" translate="yes" xml:space="preserve">
+          <source>Constructor injection</source>
+          <target state="translated">コンストラクタ注入</target>
+        </trans-unit>
+        <trans-unit id="26032cadfd8928d408ef47b863c4b45733ef2d0d" translate="yes" xml:space="preserve">
+          <source>Constructor with dependency injection:</source>
+          <target state="translated">依存性インジェクションを持つコンストラクタ。</target>
+        </trans-unit>
+        <trans-unit id="3f2bf7f408c28388ad6bd617db22886b5fe56b26" translate="yes" xml:space="preserve">
+          <source>Constructor without dependency injection:</source>
+          <target state="translated">依存性インジェクションなしのコンストラクタ。</target>
+        </trans-unit>
+        <trans-unit id="b2146937a33bfcabf2430053c4204e88638eba30" translate="yes" xml:space="preserve">
+          <source>Constructor-based DI is accomplished when the container invokes a class constructor with a number of arguments, each representing a dependency on other class.</source>
+          <target state="translated">コンストラクタベースの DI は、コンテナが他のクラスへの依存関係を表す複数の引数でクラスのコンストラクタを呼び出すときに達成されます。</target>
+        </trans-unit>
+        <trans-unit id="faa2e023d8bf9a1b5e13e711551447a2e6bc4da2" translate="yes" xml:space="preserve">
+          <source>Container creates Bar and gives it Bim</source>
+          <target state="translated">コンテナはBarを作成し、Bimを与えます。</target>
+        </trans-unit>
+        <trans-unit id="e72228b222f6d8727f4e55af720a28149a261110" translate="yes" xml:space="preserve">
+          <source>Container creates Bim</source>
+          <target state="translated">コンテナはBimを作成します。</target>
+        </trans-unit>
+        <trans-unit id="6653855bc3a85ec8d066669874a2916aaf0d2c9e" translate="yes" xml:space="preserve">
+          <source>Container creates Foo and gives it Bar</source>
+          <target state="translated">コンテナはFooを作成し、Barを与えます。</target>
+        </trans-unit>
+        <trans-unit id="8ac27f6a08ba25f489c38925c6e85a272db84091" translate="yes" xml:space="preserve">
+          <source>DEPENDENCY INJECTION IS SIMPLY GLUING TWO CLASSES AND AT THE SAME TIME KEEPING THEM SEPARATE.</source>
+          <target state="translated">依存性注入とは、単純に2つのクラスを接着し、同時に別々のクラスを維持することです。</target>
+        </trans-unit>
+        <trans-unit id="08ebf9ead9196a1af9ffc22cd9c1eeb51be76894" translate="yes" xml:space="preserve">
+          <source>DI brings you closer to the Single Responsibility (SR) principle, like the &lt;code&gt;surgeon who can concentrate on surgery&lt;/code&gt;.</source>
+          <target state="translated">DIは &lt;code&gt;surgeon who can concentrate on surgery&lt;/code&gt; ように、単一責任（SR）の原則に近づけます。</target>
+        </trans-unit>
+        <trans-unit id="a43f9d298673ad95516fee4e62a2a823a586584a" translate="yes" xml:space="preserve">
+          <source>DI for short, is a technique to remove a common additional responsibility (burden) on components to fetch the dependent components, by providing them to it.</source>
+          <target state="translated">略してDIとは、依存するコンポーネントをフェッチするために、コンポーネントに提供することで、コンポーネントに共通の追加責任(負担)を取り除く技術です。</target>
+        </trans-unit>
+        <trans-unit id="4f5d36ed84699163eaf23e5a7fdfc103b0bbc15e" translate="yes" xml:space="preserve">
+          <source>DI is a particular form of IoC, whereby the process of finding your dependencies is
+  outside the direct control of your currently executing code.</source>
+          <target state="translated">DIはIoCの特定の形態であり、依存関係を見つけるプロセスは、現在実行中のコードの直接的な制御の外にあります。</target>
+        </trans-unit>
+        <trans-unit id="feb00fd97973bff59f7d3245f637dd67debab5a4" translate="yes" xml:space="preserve">
+          <source>DI is analogous to this in the world of Object Oriented programming.  The values there instead of constant literals are whole objects - but the reason to move the code creating them out from the class code is similar - the objects change more frequently then the code that uses them.  One important case where such a change is needed is tests.</source>
+          <target state="translated">DI は、オブジェクト指向プログラミングの世界ではこれに類似しています。定数リテラルではなく、値はオブジェクト全体ですが、それらを作成するコードをクラスコードから移動させる理由は似ています。このような変更が必要とされる重要なケースの一つにテストがあります。</target>
+        </trans-unit>
+        <trans-unit id="2e8b1223bba2170ce6128ed0e576d38e0241b406" translate="yes" xml:space="preserve">
+          <source>DI is not as largely emphasized and popularized as in Java frameworks.</source>
+          <target state="translated">DIは、Javaフレームワークほど大きく強調されて普及しているわけではありません。</target>
+        </trans-unit>
+        <trans-unit id="e75ded6d3588df205b0011e584a93bde9df27a8f" translate="yes" xml:space="preserve">
+          <source>DI is the implementation of IOC principal of Spring which says &quot;Don't call us we will call you&quot;. Using dependency injection programmer doesn't need to create object using the new keyword.</source>
+          <target state="translated">DIは「Don't call us we will call you」というSpringのIOCプリンシパルの実装です。依存性注入を使えば、プログラマーは新しいキーワードを使ってオブジェクトを作成する必要はありません。</target>
+        </trans-unit>
+        <trans-unit id="88de733e17606a4266cbf096951b24a70dd9b893" translate="yes" xml:space="preserve">
+          <source>DI means there is an intermediate level between the caller and the constructor which manages dependencies. A Makefile is a simple example of dependency injection. The &quot;caller&quot; is the person typing &quot;make bar&quot; on the command line, and the &quot;constructor&quot; is the compiler. The Makefile specifies that bar depends on foo, and it does a</source>
+          <target state="translated">DIは、呼び出し元とコンストラクタの間に依存関係を管理する中間レベルがあることを意味します。Makefileは依存性注入の簡単な例です。呼び出し元はコマンドラインで &quot;make bar &quot;と入力する人で、コンストラクタはコンパイラです。Makefile は bar が foo に依存していることを指定しています。</target>
+        </trans-unit>
+        <trans-unit id="007835874d333d08ff81faee651cdd6f320b4cd1" translate="yes" xml:space="preserve">
+          <source>Decoupling dependencies between classes in this way allows for &lt;em&gt;easy substitution&lt;/em&gt; of these dependency classes with other implementations which also fulfil the prerequisites of the abstraction (e.g. the dependency can be switched with another implementation of the same interface). Moreover, as others have mentioned, possibly &lt;em&gt;the&lt;/em&gt; most common reason to decouple classes via the DIP is to allow a consuming class to be tested in isolation, as these same dependencies can now be stubbed and/or mocked.</source>
+          <target state="translated">この方法でクラス間の依存関係を分離すると、これらの依存関係クラスを、抽象化の前提条件を満たす他の実装で&lt;em&gt;簡単に置き換える&lt;/em&gt;ことができます（たとえば、同じインターフェイスの別の実装で依存関係を切り替えることができます）。 さらに、他の人が述べたように、DIPを介してクラスを分離&lt;em&gt;する&lt;/em&gt;最も一般的な理由は、これらの同じ依存関係をスタブまたはモックすることができるため、消費クラスを個別にテストできるようにすることです。</target>
+        </trans-unit>
+        <trans-unit id="8373baaef22105a8574ebe7cace135c9de92ef3f" translate="yes" xml:space="preserve">
+          <source>Dependencies can be injected into objects by many means (such as constructor injection or setter injection). One can even use specialized dependency injection frameworks (e.g. Spring) to do that, but they certainly aren't required. You don't need those frameworks to have dependency injection. Instantiating and passing objects (dependencies) explicitly is just as good an injection as injection by framework.</source>
+          <target state="translated">依存関係は、多くの方法でオブジェクトに注入することができます (コンストラクタインジェクションやセッタインジェクションなど)。依存性注入に特化したフレームワーク (例えば Spring)を使うこともできますが、それは必須ではありません。依存性インジェクションを行うために、これらのフレームワークは必要ありません。オブジェクト(依存性)を明示的にインスタンス化して渡すことは、フレームワークによるインジェクションと同じくらいの効果があります。</target>
+        </trans-unit>
+        <trans-unit id="805edc480d58383c8e5e2cdbb15c0f0b990469a8" translate="yes" xml:space="preserve">
+          <source>Dependency Injection (DI) is one from Design Patterns, which uses the basic feature of OOP - the relationship in one object with another object. While inheritance inherits one object to do more complex and specific another object, relationship or association simply creates a pointer to another object from one object using attribute. The power of DI is in combination with other features of OOP as are interfaces and hiding code.
+Suppose, we have a customer (subscriber) in the library, which can borrow only one book for simplicity.</source>
+          <target state="translated">Dependency Injection (DI)はDesign Patternsの一つで、OOPの基本的な機能である、あるオブジェクトと別のオブジェクトとの関係性を利用しています。継承があるオブジェクトを継承して、より複雑で具体的な別のオブジェクトを実現するのに対し、リレーションシップやアソシエーションは、単に属性を使ってあるオブジェクトから別のオブジェクトへのポインタを作成するだけです。DIの威力は、インターフェースやコードの隠蔽など、OOPの他の機能との組み合わせにあります。例えば、図書館に顧客(購読者)がいて、簡単のために一冊だけ借りることができるとします。</target>
+        </trans-unit>
+        <trans-unit id="2eaf5885c756aab73a83e3523b8617e6e5448a02" translate="yes" xml:space="preserve">
+          <source>Dependency Injection (DI) is part of Dependency Inversion Principle (DIP) practice, which is also called Inversion of Control (IoC). Basically you need to do DIP because you want to make your code more modular and unit testable, instead of just one monolithic system. So you start identifying parts of the code that can be separated from the class and abstracted away. Now the implementation of the abstraction need to be injected from outside of the class. Normally this can be done via constructor. So you create a constructor that accepts the abstraction as a parameter, and this is called dependency injection (via constructor). For more explanation about DIP, DI, and IoC container you can read &lt;a href=&quot;http://kusnaditjung.blogspot.co.uk/2016/05/dependency-inversion-principle-dip.html&quot;&gt;Here&lt;/a&gt;</source>
+          <target state="translated">Dependency Injection（DI）は、Dependency Inversion Principle（DIP）プラクティスの一部であり、Inversion of Control（IoC）とも呼ばれます。 基本的には、1つのモノリシックシステムではなく、コードをよりモジュール化してユニットテストを実行できるようにするため、DIPを実行する必要があります。 したがって、クラスから分離して抽象化できるコードの部分の識別を開始します。 次に、抽象化の実装をクラスの外部から注入する必要があります。 通常、これはコンストラクタを介して行うことができます。 したがって、抽象化をパラメーターとして受け入れるコンストラクターを作成します。これは、（コンストラクターを介した）依存性注入と呼ばれます。 DIP、DI、IoCコンテナの詳細については、こちらをご覧ください。</target>
+        </trans-unit>
+        <trans-unit id="ec9e1e9a757b12d7ba7015b1965d7e8d66b82118" translate="yes" xml:space="preserve">
+          <source>Dependency Injection definition</source>
+          <target state="translated">依存性インジェクション定義</target>
+        </trans-unit>
+        <trans-unit id="cb2cb0f05e812293b7ad0ba1d7be1914b8ecef4e" translate="yes" xml:space="preserve">
+          <source>Dependency Injection is a method for writing better code</source>
+          <target state="translated">依存性インジェクションは、より良いコードを書くための方法です。</target>
+        </trans-unit>
+        <trans-unit id="cddf49311cde392103b798084c33da2a7ca7c60e" translate="yes" xml:space="preserve">
+          <source>Dependency Injection is a practice where objects are designed in a manner where they receive instances of the objects from other pieces of code, instead of constructing them internally. This means that any object implementing the interface which is required by the object can be substituted in without changing the code, which simplifies testing, and improves decoupling.</source>
+          <target state="translated">依存性インジェクションとは、オブジェクトを内部で構築するのではなく、他のコードからオブジェクトのインスタンスを受け取るように設計されている慣行です。これは、オブジェクトが必要とするインターフェースを実装しているオブジェクトは、コードを変更することなく置き換えることができることを意味し、テストを簡素化し、デカップリングを改善します。</target>
+        </trans-unit>
+        <trans-unit id="afcfc311b0f222c1476db1b255d403234af0b4db" translate="yes" xml:space="preserve">
+          <source>Dependency Injection is the process of creating the static, stateless
+  graph of service objects, where each service is parametrised by its
+  dependencies.</source>
+          <target state="translated">依存性インジェクションとは、サービスオブジェクトの静的でステートレスなグラフを作成するプロセスで、各サービスはその依存性によってパラメトリック化されています。</target>
+        </trans-unit>
+        <trans-unit id="64a15438c3caa440c0a5dc9eb291180789196b8d" translate="yes" xml:space="preserve">
+          <source>Dependency Injection(DI) means to decouple the objects which are dependent on each other. Say object A is dependent on Object B so the idea is to decouple these object from each other. We don&amp;rsquo;t need to hard code the object using new keyword rather sharing dependencies to objects at runtime in spite of compile time.
+If we talk about</source>
+          <target state="translated">Dependency Injection（DI）は、相互に依存しているオブジェクトを分離することを意味します。 オブジェクトAがオブジェクトBに依存しているとしましょう。そのため、これらのオブジェクトを互いに分離することが考えられます。 コンパイル時にもかかわらず、実行時にオブジェクトへの依存関係を共有するのではなく、新しいキーワードを使用してオブジェクトをハードコーディングする必要はありません。 話したら</target>
+        </trans-unit>
+        <trans-unit id="5ca81c175fbe0a8a94fd156ed8fda57771b7acaa" translate="yes" xml:space="preserve">
+          <source>Dependency injection is a pattern to allow your application to inject
+  objects on the fly to classes that need them, without forcing those
+  classes to be responsible for those objects. It allows your code to be
+  more loosely coupled, and Entity Framework Core plugs in to this same
+  system of services.</source>
+          <target state="translated">依存性の注入は、アプリケーションがそれらのオブジェクトのために責任を負うためにそれらのクラスを強制することなく、それらを必要とするクラスにオンザフライでオブジェクトを注入することができるようにするためのパターンです。これにより、コードをより疎結合にすることができ、Entity Framework Core はサービスのこの同じシステムにプラグインします。</target>
+        </trans-unit>
+        <trans-unit id="f51897ce4672efc871df38ef9ec8a1e2a4f4a7a3" translate="yes" xml:space="preserve">
+          <source>Dependency injection is a pattern used to create instances of objects that other objects rely upon without knowing at compile time which class will be used to provide that functionality or simply the way of injecting properties to an object is called dependency injection.</source>
+          <target state="translated">依存性注入とは、コンパイル時にどのクラスがその機能を提供するために使用されるかを知らずに、他のオブジェクトが依存するオブジェクトのインスタンスを作成するために使用されるパターンで、オブジェクトにプロパティを注入する方法を依存性注入と呼びます。</target>
+        </trans-unit>
+        <trans-unit id="c8bcf420f928a840f91a5b1e5c82929829ba86a5" translate="yes" xml:space="preserve">
+          <source>Dependency injection is basically providing the objects that an object needs (its dependencies) instead of having it construct them itself. It's a very useful technique for testing, since it allows dependencies to be mocked or stubbed out.</source>
+          <target state="translated">依存性インジェクションとは、基本的にはオブジェクトが必要とするオブジェクト(依存性)を、オブジェクト自身に構築させる代わりに提供することです。依存関係をモックしたり、スタブアウトしたりすることができるので、テストには非常に便利なテクニックです。</target>
+        </trans-unit>
+        <trans-unit id="eb5f2c3f9e29f385abcc1436959a966409e80529" translate="yes" xml:space="preserve">
+          <source>Dependency injection is invariably associated with an &lt;a href=&quot;http://martinfowler.com/articles/injection.html&quot;&gt;Inversion of Control container(IoC)&lt;/a&gt;, to inject (provide) the concrete dependency instances, and to manage lifespan instances. During the configuration / bootstrapping process, &lt;code&gt;IoC&lt;/code&gt; containers allow the following to be defined:</source>
+          <target state="translated">依存関係の注入は、具体的な依存関係インスタンスを注入（提供）し、寿命インスタンスを管理するために、常に&lt;a href=&quot;http://martinfowler.com/articles/injection.html&quot;&gt;Inversion of Controlコンテナー（IoC）&lt;/a&gt;に関連付けられています。 構成/ブートストラッププロセス中に、 &lt;code&gt;IoC&lt;/code&gt; コンテナーでは以下を定義できます。</target>
+        </trans-unit>
+        <trans-unit id="ca79292d85a27dbcae58c833ab50a3d5b3915751" translate="yes" xml:space="preserve">
+          <source>Dependency injection is one of the design pattern that help us to create complex systems in a simpler manner.</source>
+          <target state="translated">依存性注入は、複雑なシステムをよりシンプルに作るのに役立つ設計パターンの一つです。</target>
+        </trans-unit>
+        <trans-unit id="69c4857065501ad52a336a3696b71d18e67bed61" translate="yes" xml:space="preserve">
+          <source>Dependency injection is one possible solution to what could generally be termed the &quot;Dependency Obfuscation&quot; requirement. Dependency Obfuscation is a method of taking the 'obvious' nature out of the process of providing a dependency to a class that requires it and therefore obfuscating, in some way, the provision of said dependency to said class. This is not necessarily a bad thing. In fact, by obfuscating the manner by which a dependency is provided to a class then something outside the class is responsible for creating the dependency which means, in various scenarios, a different implementation of the dependency can be supplied to the class without making any changes to the class. This is great for switching between production and testing modes (eg., using a 'mock' service dependency).</source>
+          <target state="translated">依存性インジェクションは、一般的に「依存性難読化」と呼ばれる要件に対する解決策の一つです。依存性難読化とは、依存性を必要とするクラスに依存性を提供するプロセスから「明白な」性質を取り出し、そのため、何らかの方法で当該クラスへの当該依存性の提供を難読化する方法です。これは必ずしも悪いことではありません。実際、クラスへの依存関係の提供方法を難読化することで、クラスの外の何かが依存関係を作成する責任を負うことになり、様々なシナリオにおいて、クラスに変更を加えることなく、依存関係の異なる実装をクラスに提供することができます。これは、本番モードとテストモードの切り替えに最適です (例えば、「モック」サービスの依存関係を使用するなど)。</target>
+        </trans-unit>
+        <trans-unit id="0170849003cd6320060ea1c729c9aa49b34c7fd9" translate="yes" xml:space="preserve">
+          <source>Dependency injection is the heart of the concept related with Spring Framework.While creating the framework of any project spring may perform a vital role,and here dependency injection come in pitcher.</source>
+          <target state="translated">依存性注入は、任意のプロジェクトの春のフレームワークを作成しながら、重要な役割を果たす可能性があり、ここでは依存性注入が投手に来るスプリングFramework.Withに関連する概念の中心です。</target>
+        </trans-unit>
+        <trans-unit id="e58f7f11fd58e3edec005e7035583eb40983e40f" translate="yes" xml:space="preserve">
+          <source>Dependency injection makes testing easier. The injection can be done through &lt;strong&gt;constructor&lt;/strong&gt;.</source>
+          <target state="translated">依存性注入により、テストが容易になります。 注入は、 &lt;strong&gt;コンストラクタ&lt;/strong&gt;を介して行うことができます。</target>
+        </trans-unit>
+        <trans-unit id="f3ff309b1b6291468565c4f9a9f51b36a3e04dd3" translate="yes" xml:space="preserve">
+          <source>Dependency:</source>
+          <target state="translated">Dependency:</target>
+        </trans-unit>
+        <trans-unit id="7ffc6ee12bdc72c1564366d1210f30e558da7c21" translate="yes" xml:space="preserve">
+          <source>Difference between Inversion of Control &amp;amp; Dependency Injection</source>
+          <target state="translated">制御の反転と依存性注入の違い</target>
+        </trans-unit>
+        <trans-unit id="be57f0e0c6c38a3c5499991aa97bdbb4642cde74" translate="yes" xml:space="preserve">
+          <source>Doesn't &quot;dependency injection&quot; just mean using parameterized constructors and public setters?</source>
+          <target state="translated">依存性注入」とは、パラメータ化されたコンストラクタやパブリックセッタを使用することを意味するだけではないのでしょうか?</target>
+        </trans-unit>
+        <trans-unit id="dce70f9dbaf63e1888206b128af00b53f6dd310d" translate="yes" xml:space="preserve">
+          <source>Everytime I want to change what objects my AClass needs, I need to now look into two places - The class itself and the configuration file. How does that make life easier?</source>
+          <target state="translated">AClassが必要とするオブジェクトを変更したいときはいつも、クラス自体と設定ファイルの2つの場所を調べる必要があります。これでどうやって生活が楽になるのでしょうか?</target>
+        </trans-unit>
+        <trans-unit id="624d5b857fe09b27ef0b52a651428cfe9bdeb229" translate="yes" xml:space="preserve">
+          <source>Example, we have 2 class &lt;code&gt;Client&lt;/code&gt; and &lt;code&gt;Service&lt;/code&gt;. &lt;code&gt;Client&lt;/code&gt; will use &lt;code&gt;Service&lt;/code&gt;</source>
+          <target state="translated">例として、2つのクラス &lt;code&gt;Client&lt;/code&gt; と &lt;code&gt;Service&lt;/code&gt; があります 。 &lt;code&gt;Client&lt;/code&gt; は &lt;code&gt;Service&lt;/code&gt; を使用します</target>
+        </trans-unit>
+        <trans-unit id="4cc967eb9e93b5533d3da79d75ffcafa1c607fa2" translate="yes" xml:space="preserve">
+          <source>Example: DI with shell script</source>
+          <target state="translated">例:シェルスクリプトを使ったDI シェルスクリプトによるDI</target>
+        </trans-unit>
+        <trans-unit id="2f74df37b1ea988409f33c42af68c3062f522296" translate="yes" xml:space="preserve">
+          <source>Example: removing DI</source>
+          <target state="translated">例:DIの除去</target>
+        </trans-unit>
+        <trans-unit id="4d32216898588a9d6769484729321b2a32005852" translate="yes" xml:space="preserve">
+          <source>Externalizing dependency and looking only on responsibility.</source>
+          <target state="translated">依存関係を外部化し、責任だけを見る。</target>
+        </trans-unit>
+        <trans-unit id="f94c5803a635417a4c63406b77fcbb7801e90db0" translate="yes" xml:space="preserve">
+          <source>False. The direction of dependencies is in XML form or as annotations, your dependencies are written as XML code and annotations. XML and annotations ARE source code.</source>
+          <target state="translated">誤っています。依存関係の方向性はXML形式かアノテーションとして、あなたの依存関係はXMLコードとアノテーションとして書かれています。XMLとアノテーションはソースコードです。</target>
+        </trans-unit>
+        <trans-unit id="c66a3755f7748dad912a8f295d8660519cb19da7" translate="yes" xml:space="preserve">
+          <source>False. You do not need a DI framework to build a modular code based on interfaces.</source>
+          <target state="translated">誤りです。インターフェイスに基づいてモジュール化されたコードを構築するためのDIフレームワークは必要ありません。</target>
+        </trans-unit>
+        <trans-unit id="e9044ac31a8995f5ad62b7e9f444f33bf9e08657" translate="yes" xml:space="preserve">
+          <source>Foo calls Bar</source>
+          <target state="translated">フォーはバーを呼び出します</target>
+        </trans-unit>
+        <trans-unit id="36a8c8318b6369919a71996fd940aacf3965166d" translate="yes" xml:space="preserve">
+          <source>Foo creates Bar</source>
+          <target state="translated">FooはBarを作成します。</target>
+        </trans-unit>
+        <trans-unit id="c2cfcdd995da76d7e30b4bb8c5a58a247fe77380" translate="yes" xml:space="preserve">
+          <source>Foo needs Bar (e.g. a service), so:</source>
+          <target state="translated">FooはBar(サービスなど)が必要なので。</target>
+        </trans-unit>
+        <trans-unit id="b181ce4ed346bf93fb78e315f5b4e0fdc64a362e" translate="yes" xml:space="preserve">
+          <source>For example, consider a &lt;code&gt;Car&lt;/code&gt; object.</source>
+          <target state="translated">たとえば、 &lt;code&gt;Car&lt;/code&gt; オブジェクトを考えてみます。</target>
+        </trans-unit>
+        <trans-unit id="773f448aa74e9ddd91521dd1c2732d809239a14b" translate="yes" xml:space="preserve">
+          <source>For example, consider these clases:</source>
+          <target state="translated">例えば、これらのクラスを考えてみましょう。</target>
+        </trans-unit>
+        <trans-unit id="6301c293c982fc83aecdf06eaf96df22050f4fa1" translate="yes" xml:space="preserve">
+          <source>From Christoffer Noring, Pablo Deeleman's book &amp;ldquo;Learning Angular - Second Edition&amp;rdquo;:</source>
+          <target state="translated">Christoffer Noring著、Pablo Deelemanの本「Learning Angular-Second Edition」：</target>
+        </trans-unit>
+        <trans-unit id="d2f6f2619a4fc19e9326d217edd2b9cb13d7536f" translate="yes" xml:space="preserve">
+          <source>From the Book, '&lt;a href=&quot;https://rads.stackoverflow.com/amzn/click/com/1617290068&quot;&gt;Well-Grounded Java Developer: Vital techniques of Java 7 and polyglot programming&lt;/a&gt;</source>
+          <target state="translated">本から、 ' &lt;a href=&quot;https://rads.stackoverflow.com/amzn/click/com/1617290068&quot;&gt;整然としたJava開発者：Java 7の重要なテクニックとポリグロットプログラミング&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="565b14720ba865ef973ba05f90a124c36bd9081e" translate="yes" xml:space="preserve">
+          <source>From: Anton Moiseev. book &amp;ldquo;Angular Development with Typescript, Second Edition.&amp;rdquo;:</source>
+          <target state="translated">投稿者：アントンモイセエフ。 本「Typescriptを使用したAngular開発、第2版」：</target>
+        </trans-unit>
+        <trans-unit id="7cc777757b505d7bbd1af628607007866c70d979" translate="yes" xml:space="preserve">
+          <source>Going back to the first question. If using new object() is bad, how come we inject the implementation and not the interface? I think a lot of you are saying we're in fact injecting the interface but the configuration makes you specify the implementation of that interface ..not at runtime .. it is hardcoded during compile time.</source>
+          <target state="translated">最初の質問に戻ります。new object()を使うのが悪いのであれば、どうしてインターフェイスではなく実装を注入するのでしょうか?多くの人が、実際にはインターフェイスを注入していると言っていると思いますが、設定ではインターフェイスの実装を指定しています...実行時ではなく...コンパイル時にハードコードされています。</target>
+        </trans-unit>
+        <trans-unit id="28843d4be0ee34f253cca7cab2361c2a39ee4828" translate="yes" xml:space="preserve">
+          <source>Hard for test &lt;code&gt;Client&lt;/code&gt; class</source>
+          <target state="translated">テスト &lt;code&gt;Client&lt;/code&gt; クラスには難しい</target>
+        </trans-unit>
+        <trans-unit id="4aed8ebadb57ba9dd2776c20874fb02210f043c0" translate="yes" xml:space="preserve">
+          <source>Here is the example of how the above code would look like:</source>
+          <target state="translated">上記のコードがどのようになるかの例を示します。</target>
+        </trans-unit>
+        <trans-unit id="43c80abc12795e6e4cb2a72b1e6d9012d550d4e0" translate="yes" xml:space="preserve">
+          <source>Here we basically inject(pass) our dependency(Engine instance) to Car constructor. So now our classes have loose coupling between objects and their dependencies, and we can easily add new types of engines without changing the Car class.</source>
+          <target state="translated">ここでは、基本的にCarのコンストラクタに依存関係(エンジンのインスタンス)を注入(渡す)しています。これで、私たちのクラスはオブジェクトとその依存関係の間にゆるやかな結合を持つようになり、Carクラスを変更せずに新しいタイプのエンジンを簡単に追加することができるようになりました。</target>
+        </trans-unit>
+        <trans-unit id="371a2ec52294658d0a3b4228a46b7d8f33efffe9" translate="yes" xml:space="preserve">
+          <source>Here's a simple C# implementation. Given the below Consuming class:</source>
+          <target state="translated">ここで簡単なC#の実装を紹介します。以下のConsumingクラスを与えます。</target>
+        </trans-unit>
+        <trans-unit id="922004128193bca294dd5fdb14c71cac1cae1545" translate="yes" xml:space="preserve">
+          <source>Here, the &lt;code&gt;Car&lt;/code&gt; object &lt;em&gt;is responsible for creating the dependent objects.&lt;/em&gt;</source>
+          <target state="translated">ここでは、 &lt;code&gt;Car&lt;/code&gt; オブジェクト&lt;em&gt;が依存オブジェクトの作成を担当しています。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="a0969f6c9b11047ca63ee874c7cf8c550f36eaef" translate="yes" xml:space="preserve">
+          <source>Here, we are &lt;strong&gt;injecting&lt;/strong&gt; the &lt;strong&gt;dependencies&lt;/strong&gt; (Wheel and Battery) at runtime. Hence the term : &lt;em&gt;Dependency Injection.&lt;/em&gt;</source>
+          <target state="translated">ここでは、実行時に&lt;strong&gt;依存関係&lt;/strong&gt; （ホイールとバッテリー）を&lt;strong&gt;注入&lt;/strong&gt;しています。 したがって、用語： &lt;em&gt;依存性注入。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="379dffc1a3970a2596b05e27d433878025eb9945" translate="yes" xml:space="preserve">
+          <source>High cohesion and loose coupling.</source>
+          <target state="translated">高い結束力とゆるやかなカップリング。</target>
+        </trans-unit>
+        <trans-unit id="00bf8b24a1d88295bc7cfc6557e03947a6402c26" translate="yes" xml:space="preserve">
+          <source>How Dependency Injection works in Spring:</source>
+          <target state="translated">Springでの依存性インジェクションの仕組み</target>
+        </trans-unit>
+        <trans-unit id="57367ae4f39a638d3dbf05ee497ca936efcff588" translate="yes" xml:space="preserve">
+          <source>However, we still use &lt;code&gt;new Service()&lt;/code&gt; many time and it is not good when change &lt;code&gt;Service&lt;/code&gt; constructor. To prevent it, we can use DI injector like</source>
+          <target state="translated">ただし、私たちはまだ &lt;code&gt;new Service()&lt;/code&gt; を何度も使用しており、 &lt;code&gt;Service&lt;/code&gt; コンストラクターを変更することは好ましくありません。 それを防ぐために、私たちはDIインジェクターを使うことができます</target>
+        </trans-unit>
+        <trans-unit id="f0d455ffdb1c3dbcd06e6b82c66932dc9c227efa" translate="yes" xml:space="preserve">
+          <source>I know there are already many answers, but I found this very helpful: &lt;a href=&quot;http://tutorials.jenkov.com/dependency-injection/index.html&quot;&gt;http://tutorials.jenkov.com/dependency-injection/index.html&lt;/a&gt;</source>
+          <target state="translated">私はすでに多くの答えがあることを知っていますが、これは非常に役に立ちました： &lt;a href=&quot;http://tutorials.jenkov.com/dependency-injection/index.html&quot;&gt;http&lt;/a&gt; : //tutorials.jenkov.com/dependency-injection/index.html</target>
+        </trans-unit>
+        <trans-unit id="ed04f29160674f83a072681c6eb371dd9cb26716" translate="yes" xml:space="preserve">
+          <source>I think since everyone has written for DI, let me ask a few questions..</source>
+          <target state="translated">皆さんがDIに書かれているので、少し質問させてくださいね。</target>
+        </trans-unit>
+        <trans-unit id="2e46bcee2ea4c8bc4943d46d73203933dc4b2714" translate="yes" xml:space="preserve">
+          <source>I would propose a slightly different, short and precise definition of what Dependency Injection is, focusing on the primary goal, not on the technical means (following along from &lt;a href=&quot;https://blog.softwaremill.com/what-is-dependency-injection-8c9e7805502f&quot;&gt;here&lt;/a&gt;):</source>
+          <target state="translated">技術的手段ではなく、主な目的に焦点を当てて、依存性注入とは少し異なる、正確で正確な定義を提案します（以下の手順に従い&lt;a href=&quot;https://blog.softwaremill.com/what-is-dependency-injection-8c9e7805502f&quot;&gt;ます&lt;/a&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="af50e26570dc36b5b468480dbae632233aa97929" translate="yes" xml:space="preserve">
+          <source>IOC is a general concept and it can be expressed in many different ways and Dependency Injection is one concrete example of IOC.</source>
+          <target state="translated">IOCは一般的な概念であり、様々な表現が可能であり、依存性注入はIOCの具体例の一つである。</target>
+        </trans-unit>
+        <trans-unit id="0718ee8859576506cf86f7bd25325cd7eca7c302" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;dependent.sh&lt;/code&gt; script used dependencies directly, the approach would be called &lt;em&gt;dependency lookup&lt;/em&gt; (which is opposite to &lt;em&gt;dependency injection&lt;/em&gt;):</source>
+          <target state="translated">&lt;code&gt;dependent.sh&lt;/code&gt; スクリプトが依存関係を直接使用する場合、このアプローチは&lt;em&gt;依存関係ルックアップ&lt;/em&gt;と呼ばれ&lt;em&gt;ます&lt;/em&gt; （ &lt;em&gt;依存関係注入&lt;/em&gt;とは逆です）。</target>
+        </trans-unit>
+        <trans-unit id="ed73d2934d77992080e551028a74bcbaafd9ce4d" translate="yes" xml:space="preserve">
+          <source>If Aproperty of AClass is not injected, is it harder to mock it out?</source>
+          <target state="translated">AClassのApropertyが注入されていないと、モックアウトしにくいのでしょうか?</target>
+        </trans-unit>
+        <trans-unit id="327557f3bb6a180cff634bb5925c6178d29f71c3" translate="yes" xml:space="preserve">
+          <source>If lifespan control of dependencies by the consuming class needs to be retained, control can be re-established by injecting an (abstract) factory for creating the dependency class instances, into the consumer class. The consumer will be able to obtain instances via a &lt;code&gt;Create&lt;/code&gt; on the factory as needed, and dispose of these instances once complete.</source>
+          <target state="translated">消費クラスによる依存関係の存続期間の制御を保持する必要がある場合は、依存関係クラスインスタンスを作成するための（抽象的な）ファクトリをコンシューマクラスに注入することにより、制御を再確立できます。 コンシューマは、必要に応じてファクトリの &lt;code&gt;Create&lt;/code&gt; を介してインスタンスを取得し、完了したらこれらのインスタンスを破棄できます。</target>
+        </trans-unit>
+        <trans-unit id="17ad58325899b3161d70302101921cd886c5bcce" translate="yes" xml:space="preserve">
+          <source>If we use the first one we need to open the machine to change the reel.
+if we opt for the second one, that is placing a hook for reel, we are getting an added benefit of playing any music by changing the reel. and also reducing the function only to playing whatever in the reel.</source>
+          <target state="translated">我々は最初のものを使用する場合は、我々はリールを変更するには、マシンを開く必要があります。我々はリールのためのフックを配置している2番目のものを選ぶ場合、我々はリールを変更することにより、任意の音楽を再生することの付加的な利点を得ている。</target>
+        </trans-unit>
+        <trans-unit id="8114d9a89619251a62658a6e49b95469bb138929" translate="yes" xml:space="preserve">
+          <source>If you occasionally work outside of Java, recall how &lt;code&gt;source&lt;/code&gt; is often used in many scripting languages (Shell, Tcl, etc., or even &lt;code&gt;import&lt;/code&gt; in Python misused for this purpose).</source>
+          <target state="translated">Java以外で作業することがある場合は、多くのスクリプト言語（Shell、Tclなど）で &lt;code&gt;source&lt;/code&gt; がどのように頻繁に使用されているか、またはこの目的で誤用されているPythonに &lt;code&gt;import&lt;/code&gt; されていることを思い出してください。</target>
+        </trans-unit>
+        <trans-unit id="b06602d95600aa4bf8101370b37215812a7573e0" translate="yes" xml:space="preserve">
+          <source>If you use use &lt;code&gt;Constructor Injection&lt;/code&gt;, the &lt;code&gt;Service&lt;/code&gt; object is created when &lt;code&gt;Client&lt;/code&gt; created, sometime we use function in &lt;code&gt;Client&lt;/code&gt; class without use &lt;code&gt;Service&lt;/code&gt; so created &lt;code&gt;Service&lt;/code&gt; is wasted</source>
+          <target state="translated">&lt;code&gt;Constructor Injection&lt;/code&gt; を使用する場合、 &lt;code&gt;Client&lt;/code&gt; の作成時に &lt;code&gt;Service&lt;/code&gt; オブジェクトが作成されます。Serviceを使用せずに &lt;code&gt;Client&lt;/code&gt; クラスの関数を使用する場合があるため、作成された &lt;code&gt;Service&lt;/code&gt; は無駄になります</target>
+        </trans-unit>
+        <trans-unit id="0673d4f21f33e89f895b29060653f72b9912e5ee" translate="yes" xml:space="preserve">
+          <source>If you use use &lt;code&gt;Constructor Injection&lt;/code&gt;, when you look at constructor of &lt;code&gt;Client&lt;/code&gt;, you will see how many dependency of &lt;code&gt;Client&lt;/code&gt; class</source>
+          <target state="translated">&lt;code&gt;Constructor Injection&lt;/code&gt; を使用する場合、 &lt;code&gt;Client&lt;/code&gt; のコンストラクターを見ると、 &lt;code&gt;Client&lt;/code&gt; クラスの依存関係の数がわかります</target>
+        </trans-unit>
+        <trans-unit id="fe36ce97b13993591149a7d6ee89ed548e32abbb" translate="yes" xml:space="preserve">
+          <source>In .Net, IoC containers are aware of protocols such as &lt;code&gt;IDisposable&lt;/code&gt; and will take on the responsibility of &lt;code&gt;Disposing&lt;/code&gt; dependencies in line with the configured lifespan management.</source>
+          <target state="translated">.Netでは、IoCコンテナは &lt;code&gt;IDisposable&lt;/code&gt; などのプロトコルを認識しており、構成されたライフスパン管理に従って依存関係を &lt;code&gt;Disposing&lt;/code&gt; 責任を負います。</target>
+        </trans-unit>
+        <trans-unit id="5874ec6c4d7578e3bf3f97834e478c385a3a81da" translate="yes" xml:space="preserve">
+          <source>In 2013, when I wrote this answer, this was a major theme on the &lt;a href=&quot;http://googletesting.blogspot.com/&quot;&gt;Google Testing Blog&lt;/a&gt;. It remains the biggest advantage to me, as programmers not always need the extra flexibility in their run-time design (for instance, for service locator or similar patterns). Programmers often need to isolate the classes during testing.</source>
+          <target state="translated">2013年にこの回答を書いたとき、これは&lt;a href=&quot;http://googletesting.blogspot.com/&quot;&gt;Google Testing Blogの&lt;/a&gt;大きなテーマでした。 プログラマーがランタイム設計に追加の柔軟性を常に必要とするわけではないため（たとえば、サービスロケーターや同様のパターンの場合）、それは私にとって最大の利点です。 多くの場合、プログラマーはテスト中にクラスを分離する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="8dd39bee0cfeef6f907d686e8fca98428110580e" translate="yes" xml:space="preserve">
+          <source>In my opinion there is one only reason for DI frameworks: boiler plate reduction. With a well done factory system you can do the same, more controlled and more predictable as your preferred DI framework, DI frameworks promise code reduction (XML and annotations are source code too). The problem is this boiler plate reduction is just real in very very simple cases (one instance-per class and similar), sometimes in the real world picking the appropriated service object is not as easy as mapping a class to a singleton object.</source>
+          <target state="translated">私の考えでは、DIフレームワークが必要とされる唯一の理由は、ボイラープレートの削減です。よくできたファクトリー・システムを使えば、お好みのDIフレームワークと同じことができ、より制御され、より予測可能なことができるのですが、DIフレームワークはコードの削減を約束します(XMLやアノテーションもソースコードです)。問題は、このボイラープレートの削減は、非常に単純なケース(クラスごとに1インスタンスなど)では現実的であり、現実の世界では、適切なサービスオブジェクトを選択することは、クラスをシングルトンオブジェクトにマッピングするほど簡単ではないことがあります。</target>
+        </trans-unit>
+        <trans-unit id="945ef8affad419ee07825f142d4a71064182f46f" translate="yes" xml:space="preserve">
+          <source>In other words with this approach is that our high level Car class is dependent on the lower level GasEngine class which violate Dependency Inversion Principle(DIP) from SOLID. DIP suggests that we should depend on abstractions, not concrete classes. So to satisfy this we introduce IEngine interface and rewrite code like below:</source>
+          <target state="translated">言い換えれば、このアプローチでは、上位のCarクラスが下位のGasEngineクラスに依存していることになり、SOLIDのDependency Inversion Principle(DIP)に違反していることになる。DIPは具象クラスではなく抽象クラスに依存すべきであることを示唆している。そこで、これを満たすために、IEngineインターフェースを導入し、以下のようにコードを書き換えています。</target>
+        </trans-unit>
+        <trans-unit id="bc6abe43c16188f9d3e1b34e8bf777645960925f" translate="yes" xml:space="preserve">
+          <source>In simple words dependency injection (DI) is the way to remove dependencies or tight coupling between different object. Dependency Injection gives a cohesive behavior to each object.</source>
+          <target state="translated">簡単に言うと、依存性インジェクション(DI)とは、異なるオブジェクト間の依存性や緊密な結合を取り除く方法です。依存性インジェクションは、各オブジェクトにまとまりのある動作を与えます。</target>
+        </trans-unit>
+        <trans-unit id="2e58974612fd6fe0036631984f3609c239eab907" translate="yes" xml:space="preserve">
+          <source>In this example, the implementation of &lt;code&gt;PersonService::addManager&lt;/code&gt; and &lt;code&gt;PersonService::removeManager&lt;/code&gt; would need an instance of the &lt;code&gt;GroupMembershipService&lt;/code&gt; in order to do its work. Without Dependency Injection, the traditional way of doing this would be to instantiate a new &lt;code&gt;GroupMembershipService&lt;/code&gt; in the constructor of &lt;code&gt;PersonService&lt;/code&gt; and use that instance attribute in both functions. However, if the constructor of &lt;code&gt;GroupMembershipService&lt;/code&gt; has multiple things it requires, or worse yet, there are some initialization &quot;setters&quot; that need to be called on the &lt;code&gt;GroupMembershipService&lt;/code&gt;, the code grows rather quickly, and the &lt;code&gt;PersonService&lt;/code&gt; now depends not only on the &lt;code&gt;GroupMembershipService&lt;/code&gt; but also everything else that &lt;code&gt;GroupMembershipService&lt;/code&gt; depends on. Furthermore, the linkage to &lt;code&gt;GroupMembershipService&lt;/code&gt; is hardcoded into the &lt;code&gt;PersonService&lt;/code&gt; which means that you can't &quot;dummy up&quot; a &lt;code&gt;GroupMembershipService&lt;/code&gt; for testing purposes, or to use a strategy pattern in different parts of your application.</source>
+          <target state="translated">この例では、 &lt;code&gt;PersonService::addManager&lt;/code&gt; および &lt;code&gt;PersonService::removeManager&lt;/code&gt; の実装は、その作業を行うために &lt;code&gt;GroupMembershipService&lt;/code&gt; のインスタンスを必要とします。 依存性注入がない場合、これを行う従来の方法は、 &lt;code&gt;PersonService&lt;/code&gt; のコンストラクターで新しい &lt;code&gt;GroupMembershipService&lt;/code&gt; をインスタンス化し、両方の関数でそのインスタンス属性を使用することです。 ただし、 &lt;code&gt;GroupMembershipService&lt;/code&gt; のコンストラクターに必要なものが複数ある場合、またはさらに悪いことに、 &lt;code&gt;GroupMembershipService&lt;/code&gt; で呼び出す必要があるいくつかの初期化「セッター」があり、コードがすぐに大きくなり、 &lt;code&gt;PersonService&lt;/code&gt; が &lt;code&gt;GroupMembershipService&lt;/code&gt; だけでなく、 &lt;code&gt;GroupMembershipService&lt;/code&gt; が依存する他のすべてのものも。 さらに、 &lt;code&gt;GroupMembershipService&lt;/code&gt; へのリンケージは &lt;code&gt;PersonService&lt;/code&gt; にハードコードされています 。つまり、テスト目的で、またはアプリケーションのさまざまな部分で戦略パターンを使用するために、 &lt;code&gt;GroupMembershipService&lt;/code&gt; を「ダミー化」することはできません。</target>
+        </trans-unit>
+        <trans-unit id="3945063a7ab43002ea39d3d24e40ac75108803b6" translate="yes" xml:space="preserve">
+          <source>Instead of &lt;code&gt;source&lt;/code&gt;-ing implementation script directly in the dependent one, you use an &lt;code&gt;injector.sh&lt;/code&gt; &quot;container&quot; which wraps both &quot;components&quot;:</source>
+          <target state="translated">依存するスクリプトで直接実装スクリプトを &lt;code&gt;source&lt;/code&gt; 代わりに、両方の「コンポーネント」をラップする &lt;code&gt;injector.sh&lt;/code&gt; 「コンテナー」を使用します。</target>
+        </trans-unit>
+        <trans-unit id="a32a54b9d71ad0ec3f835fab1768f5cabb2ce808" translate="yes" xml:space="preserve">
+          <source>Interface of book:</source>
+          <target state="translated">本のインターフェース。</target>
+        </trans-unit>
+        <trans-unit id="87ce48016c0abd40898b021fa36510c98da3c3f6" translate="yes" xml:space="preserve">
+          <source>Inversion of Control (IOC)</source>
+          <target state="translated">逆転制御</target>
+        </trans-unit>
+        <trans-unit id="c6f589e1a346ddca493c03b3d62843ee5c496a03" translate="yes" xml:space="preserve">
+          <source>It helps to develop high quality components since they are independently developed they are properly tested.</source>
+          <target state="translated">それは、彼らが独立して開発され、それらが適切にテストされているので、高品質のコンポーネントを開発するのに役立ちます。</target>
+        </trans-unit>
+        <trans-unit id="fe52190c660276a5234fd25313a1d7025785a9b1" translate="yes" xml:space="preserve">
+          <source>It helps to replace the component with another if one fails.</source>
+          <target state="translated">1つが失敗した場合、コンポーネントを別のものに置き換えるのに役立ちます。</target>
+        </trans-unit>
+        <trans-unit id="12a6359f43afb8218185323269fc89edefe3a5f9" translate="yes" xml:space="preserve">
+          <source>It is harder to isolate components in unit testing without dependency injection.</source>
+          <target state="translated">ユニットテストでコンポーネントを分離するのは、依存性インジェクションを行わないと難しいです。</target>
+        </trans-unit>
+        <trans-unit id="5315cf7c004aa65a5379bfbf68f8aa368640746e" translate="yes" xml:space="preserve">
+          <source>It means that objects should only have as many dependencies as is needed to do their job and the dependencies should be few. Furthermore, an object&amp;rsquo;s dependencies should be on interfaces and not on &amp;ldquo;concrete&amp;rdquo; objects, when possible. (A concrete object is any object created with the keyword new.) Loose coupling promotes greater reusability, easier maintainability, and allows you to easily provide &amp;ldquo;mock&amp;rdquo; objects in place of expensive services.</source>
+          <target state="translated">つまり、オブジェクトは、ジョブを実行するために必要な数の依存関係のみを持ち、依存関係は少ないはずです。 さらに、オブジェクトの依存関係は、可能であれば、「具体的な」オブジェクトではなく、インターフェイスにある必要があります。 （具体的なオブジェクトは、キーワードnewで作成されたオブジェクトです。）疎結合は、再利用性と保守性を高め、高価なサービスの代わりに「模擬」オブジェクトを簡単に提供できるようにします。</target>
+        </trans-unit>
+        <trans-unit id="150a68e160c591532e3796e7a048e6a35a2b271c" translate="yes" xml:space="preserve">
+          <source>It&amp;rsquo;s the technique of passing objects dependencies to its constructor.</source>
+          <target state="translated">これは、オブジェクトの依存関係をコンストラクターに渡す手法です。</target>
+        </trans-unit>
+        <trans-unit id="aa27b9815cfca97bc09894174bbc5029fa7ea762" translate="yes" xml:space="preserve">
+          <source>Last words</source>
+          <target state="translated">最後の言葉</target>
+        </trans-unit>
+        <trans-unit id="101f50890da169b761f4204e13794649557a2715" translate="yes" xml:space="preserve">
+          <source>Let's imagine that you want to go fishing:</source>
+          <target state="translated">釣りに行きたいと想像してみましょう。</target>
+        </trans-unit>
+        <trans-unit id="3fb3f6b5b730e2955d7fc11411b3be83f4438c60" translate="yes" xml:space="preserve">
+          <source>Let's try simple example with &lt;strong&gt;Car&lt;/strong&gt; and &lt;strong&gt;Engine&lt;/strong&gt; classes, any car need an engine to go anywhere, at least for now. So below how code will look without dependency injection.</source>
+          <target state="translated">&lt;strong&gt;Car&lt;/strong&gt;クラスと&lt;strong&gt;Engine&lt;/strong&gt;クラスの簡単な例を試してみましょう。少なくとも今のところ、どの車でもどこにでもエンジンが必要です。 したがって、依存関係の注入なしでコードがどのように見えるかを以下に示します。</target>
+        </trans-unit>
+        <trans-unit id="0743bd397ad0bae662ab3527bca83ae55d5c97e6" translate="yes" xml:space="preserve">
+          <source>Like wise dependency injection is the  process of externalizing the dependencies to focus only on the specific functionality of the component so that independent components can be coupled together to form a complex system.</source>
+          <target state="translated">賢明な依存性注入と同様に、依存性を外部化してコンポーネントの特定の機能のみに焦点を当て、独立したコンポーネントを結合して複雑なシステムを形成することができるようにするプロセスです。</target>
+        </trans-unit>
+        <trans-unit id="a77c6a3de980ebb5dc42a0edc1ee999977beda1e" translate="yes" xml:space="preserve">
+          <source>Make test easier</source>
+          <target state="translated">試験を簡単にする</target>
+        </trans-unit>
+        <trans-unit id="78928cbc17b1ac78636f5d533c2894682e0a6266" translate="yes" xml:space="preserve">
+          <source>Making things as components and to combine to form a large systems with high capabilities.</source>
+          <target state="translated">物を部品として作り、高い能力を持った大規模システムを形成するために組み合わせること。</target>
+        </trans-unit>
+        <trans-unit id="04faf2b31cb2eb82166edebcf0b8fa045081749b" translate="yes" xml:space="preserve">
+          <source>Modifying &lt;a href=&quot;http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html&quot;&gt;James&lt;/a&gt; Example for Switch and Bulb:</source>
+          <target state="translated">スイッチと電球の&lt;a href=&quot;http://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html&quot;&gt;Jamesの&lt;/a&gt;例の変更：</target>
+        </trans-unit>
+        <trans-unit id="38837e9f2c549ac0d1e7a54cf6258ccf4df0c3f2" translate="yes" xml:space="preserve">
+          <source>NOTE:
+It is a good rule of thumb to use constructor arguments for mandatory dependencies and setters for optional dependencies. Note that the if we use annotation based than @Required annotation on a setter can be used to make setters as a required dependencies.</source>
+          <target state="translated">注意:コンストラクタの引数を必須の依存関係に、セッターをオプションの依存関係に使用するのが良い経験則です。セッターに @Required アノテーションよりもアノテーションに基づいたアノテーションを使用すると、セッターを必須の依存関係にすることができることに注意してください。</target>
+        </trans-unit>
+        <trans-unit id="8360dc1497a3895cbb0ae2365dd63cd62fb85433" translate="yes" xml:space="preserve">
+          <source>Next we can have many kind of books; one of type is fiction:</source>
+          <target state="translated">次に、多くの種類の本がありますが、その中の一つがフィクションです。</target>
+        </trans-unit>
+        <trans-unit id="381bcfef8f062363621c6445f025fc1ec1ecb6e0" translate="yes" xml:space="preserve">
+          <source>No Dependency:</source>
+          <target state="translated">依存性はありません。</target>
+        </trans-unit>
+        <trans-unit id="148aedccb1c30aae863f891e9230b9918c3c26e5" translate="yes" xml:space="preserve">
+          <source>Note that the constructor accepts an interface and not concrete object. Also, note that an exception is thrown if the orderDao parameter is null. This emphasizes the importance of receiving a valid dependency. Constructor Injection is, in my opinion, the preferred mechanism for giving an object its dependencies. It is clear to the developer while invoking the object which dependencies need to be given to the &amp;ldquo;Person&amp;rdquo; object for proper execution.</source>
+          <target state="translated">コンストラクタは、具象オブジェクトではなくインターフェースを受け入れることに注意してください。 また、orderDaoパラメータがnullの場合、例外がスローされることに注意してください。 これは、有効な依存関係を受け取ることの重要性を強調しています。 私の考えでは、コンストラクター注入は、オブジェクトに依存関係を与えるための推奨メカニズムです。 適切な実行のために「Person」オブジェクトにどの依存関係を与える必要があるかをオブジェクトを呼び出している間、開発者には明らかです。</target>
+        </trans-unit>
+        <trans-unit id="52a2afd82b94f21efe4003a5f77702e673692a03" translate="yes" xml:space="preserve">
+          <source>Notice how the &lt;code&gt;DataSourceImpl&lt;/code&gt; instantiation is moved into a constructor. The constructor takes four parameters which are the four values needed by the &lt;code&gt;DataSourceImpl&lt;/code&gt;. Though the &lt;code&gt;MyDao&lt;/code&gt; class still depends on these four values, it no longer satisfies these dependencies itself. They are provided by whatever class creating a &lt;code&gt;MyDao&lt;/code&gt; instance.</source>
+          <target state="translated">&lt;code&gt;DataSourceImpl&lt;/code&gt; のインスタンス化がコンストラクターにどのように移動されるかに注意してください。 コンストラクターは、 &lt;code&gt;DataSourceImpl&lt;/code&gt; が必要とする4つの値である4つのパラメーターを受け取ります。 &lt;code&gt;MyDao&lt;/code&gt; クラスはまだこれらの4つの値に依存していますが、これらの依存関係自体を満たしていません。 これらは、 &lt;code&gt;MyDao&lt;/code&gt; インスタンスを作成するクラスによって提供されます。</target>
+        </trans-unit>
+        <trans-unit id="b9bf32a5cd289e031981b513bdc34931168fff08" translate="yes" xml:space="preserve">
+          <source>Now a days these concept forms the basis of well known frameworks in programming world.
+The Spring Angular etc are the well-known software frameworks built on the top of this concept</source>
+          <target state="translated">最近では、これらのコンセプトがプログラミングの世界でよく知られたフレームワークの基礎となっています。Spring Angularなどは、このコンセプトの上に構築された有名なソフトウェアフレームワークです。</target>
+        </trans-unit>
+        <trans-unit id="3f568c10c487626292e158f1321b91077bbdfb85" translate="yes" xml:space="preserve">
+          <source>Now our Car class is dependent on only the IEngine interface, not a specific implementation of engine. 
+Now, the only trick is how do we create an instance of the Car and give it an actual concrete Engine class like GasEngine or ElectricityEngine. That's where &lt;strong&gt;Dependency Injection&lt;/strong&gt; comes in.</source>
+          <target state="translated">これで、Carクラスはエンジンの特定の実装ではなく、IEngineインターフェースのみに依存します。 さて、唯一の秘訣は、どのようにしてCarのインスタンスを作成し、それにGasEngineやElectricityEngineのような実際の具体的なEngineクラスを与えるかです。 そこで登場するのが&lt;strong&gt;Dependency Injection&lt;/strong&gt;です。</target>
+        </trans-unit>
+        <trans-unit id="294a5073bdc9a6339404dadb5c21756e099a6869" translate="yes" xml:space="preserve">
+          <source>Now subscriber can have association to the book:</source>
+          <target state="translated">現在、購読者は本との関連付けを持つことができます。</target>
+        </trans-unit>
+        <trans-unit id="3c4442a341c09f2a8337cd53e8c9d7b14c1f8d57" translate="yes" xml:space="preserve">
+          <source>Now the problem is that dependent &quot;component&quot; has to perform initialization itself.</source>
+          <target state="translated">ここで問題となるのは、依存する &quot;コンポーネント &quot;が自分自身で初期化を行わなければならないことです。</target>
+        </trans-unit>
+        <trans-unit id="244d7754a9d504a1f45d44ae1bdf5c41e24ccff1" translate="yes" xml:space="preserve">
+          <source>Now, this code is already follow &lt;code&gt;Dependency Injection&lt;/code&gt; and it is easier for test &lt;code&gt;Client&lt;/code&gt; class.</source>
+          <target state="translated">さて、このコードはすでに &lt;code&gt;Dependency Injection&lt;/code&gt; 続いており、テスト &lt;code&gt;Client&lt;/code&gt; クラスの方が簡単です。</target>
+        </trans-unit>
+        <trans-unit id="01cf15bf0efc21fae58f14423988c7d39bcbc525" translate="yes" xml:space="preserve">
+          <source>Objects are once loaded in Spring container and then we reuse them whenever we need them by fetching those objects from Spring container using getBean(String beanName) method.</source>
+          <target state="translated">オブジェクトは一度Springコンテナにロードされ、必要なときにはgetBean(String beanName)メソッドを使ってSpringコンテナからオブジェクトを取得して再利用します。</target>
+        </trans-unit>
+        <trans-unit id="6cf40f56e8e4c0d23d55ca133079493612e29b47" translate="yes" xml:space="preserve">
+          <source>One common alternative is defining a &lt;strong&gt;do-nothing constructor&lt;/strong&gt;. Dependency injection can be done through setters. (h/t @MikeVella).</source>
+          <target state="translated">一般的な1つの方法は、 &lt;strong&gt;何もしないコンストラクタを&lt;/strong&gt;定義する&lt;strong&gt;ことです&lt;/strong&gt; 。 依存性注入は、セッターを介して行うことができます。 （h / t @MikeVella）。</target>
+        </trans-unit>
+        <trans-unit id="e85085db2ea4a2409b650b063f440106471f7755" translate="yes" xml:space="preserve">
+          <source>One consequence of DI is that the lifespan management of dependency object instances is no longer controlled by a consuming class, as the dependency object is now passed into the consuming class (via constructor or setter injection).</source>
+          <target state="translated">DI の結果の 1 つは、依存性オブジェクトのインスタンスの寿命管理が消費クラスによって制御されなくなったことです。</target>
+        </trans-unit>
+        <trans-unit id="0e87d7a02651091658f2b2651ada0186577a5e58" translate="yes" xml:space="preserve">
+          <source>One requirement is that the services must be parametrised by their dependencies. What this means exactly depends on the language and approach taken in a given system. Usually, this takes the form of constructor parameters, but using setters is also an option. This also means that the dependencies of a service are hidden (when invoking a service method) from the users of the service.</source>
+          <target state="translated">要件の一つは、サービスがその依存関係によってパラメトリック化されていなければならないということです。これが正確に何を意味するかは、与えられたシステムの言語とアプローチに依存します。通常、これはコンストラクタのパラメータという形で行われますが、セッタを使用することも可能です。これは、サービスの依存関係が (サービスメソッドを呼び出すときに)サービスのユーザから隠されていることを意味します。</target>
+        </trans-unit>
+        <trans-unit id="159c3350bcfe189a7b428c479d9201ea48faf507" translate="yes" xml:space="preserve">
+          <source>Or, lifespan control of dependency instances can be relinquished to an IoC container (more about this below).</source>
+          <target state="translated">あるいは、依存性インスタンスのライフスパン制御をIoCコンテナに放棄することもできます(これについては後述します)。</target>
+        </trans-unit>
+        <trans-unit id="93d225da5e27eb45ee9a17d2a3dcf555280a505b" translate="yes" xml:space="preserve">
+          <source>Passing &lt;code&gt;myObject&lt;/code&gt; in as an argument to the constructor</source>
+          <target state="translated">コンストラクターへの引数として &lt;code&gt;myObject&lt;/code&gt; を渡す</target>
+        </trans-unit>
+        <trans-unit id="21b3ab899d3e7a2f72bd43dcfb14037ae113a442" translate="yes" xml:space="preserve">
+          <source>Practically, every design pattern separates concerns to make future changes affect minimum files.</source>
+          <target state="translated">実質的に、すべてのデザインパターンは、将来の変更が最小ファイルに影響を与えるように懸念を分離します。</target>
+        </trans-unit>
+        <trans-unit id="d9f5010baa893f9ad98e960248019e1ff603968f" translate="yes" xml:space="preserve">
+          <source>Previously we are writing code like this</source>
+          <target state="translated">これまでは以下のようなコードを書いていました。</target>
+        </trans-unit>
+        <trans-unit id="533e261383d8b2d3e59f53c2e9d59c559259294d" translate="yes" xml:space="preserve">
+          <source>Programmers have understood the dependency obfuscation requirement for years and many alternative solutions have evolved both before and after dependency injection was conceived. There are Factory patterns but there are also many options using ThreadLocal where no injection to a particular instance is needed - the dependency is effectively injected into the thread which has the benefit of making the object available (via convenience static getter methods) to &lt;em&gt;any&lt;/em&gt; class that requires it without having to add annotations to the classes that require it and set up intricate XML 'glue' to make it happen. When your dependencies are required for persistence (JPA/JDO or whatever) it allows you to achieve 'tranaparent persistence' much easier and with domain model and business model classes made up purely of POJOs (i.e. no framework specific/locked in annotations).</source>
+          <target state="translated">プログラマーは何年にもわたって依存関係の難読化の要件を理解しており、依存関係の注入が考案される前と後の両方で、多くの代替ソリューションが進化してきました。 ファクトリパターンがありますが、特定のインスタンスへの注入が不要なThreadLocalを使用する多くのオプションもあります。依存関係は、便利な静的ゲッターメソッドを介してオブジェクトを利用できるようにするという利点があるスレッドに効果的に注入されます。それを必要とするクラスに注釈を追加し、それを実現するために複雑なXML「接着剤」を設定する必要なしに、それを必要とします。 永続性（JPA / JDOなど）に依存関係が必要な場合、「透過的な永続化」を非常に簡単に実現でき、POJOだけで構成されたドメインモデルとビジネスモデルクラスを使用できます（つまり、フレームワーク固有ではなく、アノテーションにロックされていません）。</target>
+        </trans-unit>
+        <trans-unit id="6fbc5d43864c0ac8fa3636a03653618ac21757e7" translate="yes" xml:space="preserve">
+          <source>Setter Injection</source>
+          <target state="translated">セッター注入</target>
+        </trans-unit>
+        <trans-unit id="5a34561d27d0c82f9fb28bebbfcc20bc74ddc2a1" translate="yes" xml:space="preserve">
+          <source>Setter Injection does not force dependencies to be passed to the constructor. Instead, the dependencies are set onto public properties exposed by the object in need. As implied previously, the primary motivators for doing this include:</source>
+          <target state="translated">セッターインジェクションは、依存関係をコンストラクタに強制的に渡すことはありません。その代わりに、依存関係は必要なオブジェクトから公開されているパブリック プロパティに設定されます。前述したように、これを行う主な動機は次のようなものです。</target>
+        </trans-unit>
+        <trans-unit id="3ba4002363cebe927c87f145292fe23279da4fc4" translate="yes" xml:space="preserve">
+          <source>Setter injection</source>
+          <target state="translated">セッター注入</target>
+        </trans-unit>
+        <trans-unit id="b8cb1079b38327369ec318ba6d8358b7e9c456ba" translate="yes" xml:space="preserve">
+          <source>Setter-based DI is accomplished by the container calling setter methods on your beans after invoking a no-argument constructor or no-argument static factory method to instantiate your bean.</source>
+          <target state="translated">セッターベースの DI は、引数なしのコンストラクタまたは引数なしの static factory メソッドを呼び出してビーンをインスタンス化した後に、コンテナがビーンのセッターメソッドを呼び出すことで実現されます。</target>
+        </trans-unit>
+        <trans-unit id="de72ea9e60d3b0389fb7873c1d21268b088fa6d4" translate="yes" xml:space="preserve">
+          <source>Simple</source>
+          <target state="translated">Simple</target>
+        </trans-unit>
+        <trans-unit id="53b5b8696132c7f14a83c7efaf53a8df90f22d0e" translate="yes" xml:space="preserve">
+          <source>So in the end &lt;strong&gt;Dependency injection&lt;/strong&gt; is just a technique for
+  achieving loose coupling between objects and their dependencies.
+  Rather than directly instantiating dependencies that class needs in
+  order to perform its actions, dependencies are provided to the class
+  (most often) via constructor injection.</source>
+          <target state="translated">したがって、結局のところ、 &lt;strong&gt;依存性注入&lt;/strong&gt;は、オブジェクトとその依存関係の間の疎結合を実現するための手法にすぎません。 クラスがそのアクションを実行するために必要とする依存関係を直接インスタンス化するのではなく、依存関係はコンストラクター注入によってクラスに（ほとんどの場合）提供されます。</target>
+        </trans-unit>
+        <trans-unit id="7da9dbfe443ff7c3e18888265c12bc4c6d7027ed" translate="yes" xml:space="preserve">
+          <source>Source: &lt;em&gt;&lt;a href=&quot;http://ganeshtiwaridotcomdotnp.blogspot.com/2011/05/understanding-dependency-injection-and.html&quot;&gt;Understanding dependency injection&lt;/a&gt;&lt;/em&gt;</source>
+          <target state="translated">出典： &lt;em&gt;&lt;a href=&quot;http://ganeshtiwaridotcomdotnp.blogspot.com/2011/05/understanding-dependency-injection-and.html&quot;&gt;依存性注入の理解&lt;/a&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="5974b915c67629f3fb291858490061a4113d7288" translate="yes" xml:space="preserve">
+          <source>Specifically, in the paradigm of Robert C Martin's &lt;a href=&quot;http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)&quot;&gt;SOLID principles of Object Oriented Design&lt;/a&gt;, &lt;code&gt;DI&lt;/code&gt; is one of the possible implementations of the &lt;a href=&quot;http://en.wikipedia.org/wiki/Dependency_inversion_principle&quot;&gt;Dependency Inversion Principle (DIP)&lt;/a&gt;. The &lt;a href=&quot;https://stackoverflow.com/q/27978841/314291&quot;&gt;DIP is the &lt;code&gt;D&lt;/code&gt; of the &lt;code&gt;SOLID&lt;/code&gt; mantra&lt;/a&gt;  - other DIP implementations include the Service Locator, and Plugin patterns.</source>
+          <target state="translated">特に、Robert C Martinの&lt;a href=&quot;http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)&quot;&gt;オブジェクト指向設計&lt;/a&gt;のSOLID原則のパラダイムでは、 &lt;code&gt;DI&lt;/code&gt; は&lt;a href=&quot;http://en.wikipedia.org/wiki/Dependency_inversion_principle&quot;&gt;依存関係逆転原理（DIP）&lt;/a&gt;の可能な実装の1つです。 &lt;a href=&quot;https://stackoverflow.com/q/27978841/314291&quot;&gt;DIPは &lt;code&gt;SOLID&lt;/code&gt; マントラの &lt;code&gt;D&lt;/code&gt; です。&lt;/a&gt;他のDIP実装には、Service Locatorとプラグインパターンが含まれます。</target>
+        </trans-unit>
+        <trans-unit id="f4b86bb17c077dd81ce6f0d78a2ce285c974111f" translate="yes" xml:space="preserve">
+          <source>Supporting dependency injection without having to modify the constructor of a legacy class.</source>
+          <target state="translated">レガシークラスのコンストラクタを変更することなく依存性注入をサポートします。</target>
+        </trans-unit>
+        <trans-unit id="ad518a2bfe35a440dc057b8df89372141fdee4b1" translate="yes" xml:space="preserve">
+          <source>Switch -&amp;gt; Bulb1 OR Bulb2 OR NightBulb (injected dependency)</source>
+          <target state="translated">スイッチ-&amp;gt; Bulb1 OR Bulb2 OR NightBulb（注入された依存関係）</target>
+        </trans-unit>
+        <trans-unit id="1f8e6772695db9bb64683f23fba3fcc305250d9e" translate="yes" xml:space="preserve">
+          <source>Switch -&amp;gt; PermanentBulb &lt;em&gt;//switch is directly connected to permanent bulb, testing not possible easily&lt;/em&gt;</source>
+          <target state="translated">スイッチ-&amp;gt; PermanentBulb &lt;em&gt;//スイッチは永久電球に直接接続されているため、簡単にテストすることはできません&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="9c4c8437fc5346d142f060317a5f268dabd0d961" translate="yes" xml:space="preserve">
+          <source>Switch needs to know beforehand which bulb I am connected to (hard-coded dependency). So,</source>
+          <target state="translated">スイッチは、自分がどの電球に接続されているかを事前に知る必要があります(ハードコードされた依存関係)。だから</target>
+        </trans-unit>
+        <trans-unit id="4d7495d3cc88447e63485a25f72ecf731763671c" translate="yes" xml:space="preserve">
+          <source>Switch only knows I need to turn on/off whichever Bulb is passed to me. So,</source>
+          <target state="translated">スイッチは、私に渡されたバルブをオンにする必要があることを知っているだけです。だから</target>
+        </trans-unit>
+        <trans-unit id="4c1913b877e14f9958c5e5bb105932590816f59f" translate="yes" xml:space="preserve">
+          <source>The &quot;component&quot;'s source code is neither &lt;strong&gt;clean&lt;/strong&gt; nor &lt;strong&gt;stable&lt;/strong&gt; because every changes in initialization of dependencies requires new release for &quot;components&quot;'s source code file as well.</source>
+          <target state="translated">依存関係の初期化を変更するたびに、「コンポーネント」のソースコードファイルの新しいリリースも必要になるため、「コンポーネント」のソースコードは&lt;strong&gt;クリーンで&lt;/strong&gt;も&lt;strong&gt;安定で&lt;/strong&gt;もありません。</target>
+        </trans-unit>
+        <trans-unit id="73264d2706ed99c7c3cf1d84437da53a400c9eb1" translate="yes" xml:space="preserve">
+          <source>The &amp;ldquo;Dependency Injection&amp;rdquo; (DI) is also known as &amp;ldquo;Inversion of Control&amp;rdquo; (IoC), can be used as a technique for encouraging this loose coupling.</source>
+          <target state="translated">「依存性注入」（DI）は「制御の逆転」（IoC）とも呼ばれ、この疎結合を促進する手法として使用できます。</target>
+        </trans-unit>
+        <trans-unit id="4ce8e8f58189f93cac9d7dcd25f82fad19ea42c5" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;archive_files&lt;/code&gt;&lt;em&gt;dependency&lt;/em&gt; has just been &lt;em&gt;injected&lt;/em&gt; into &lt;em&gt;dependent&lt;/em&gt; script.</source>
+          <target state="translated">&lt;code&gt;archive_files&lt;/code&gt; &lt;em&gt;依存関係&lt;/em&gt;が&lt;em&gt;依存&lt;/em&gt;スクリプトに&lt;em&gt;挿入さ&lt;/em&gt;れました。</target>
+        </trans-unit>
+        <trans-unit id="57f5c2a4c3648bf44c57e0b10c21224b7534177d" translate="yes" xml:space="preserve">
+          <source>The above image is an image of Reel-to-reel portable tape recorder, mid-20th century. &lt;a href=&quot;https://www.britannica.com/technology/tape-recorder&quot;&gt;Source&lt;/a&gt;.</source>
+          <target state="translated">上の画像は、20世紀半ばのリールツーリールポータブルテープレコーダーの画像です。 &lt;a href=&quot;https://www.britannica.com/technology/tape-recorder&quot;&gt;出典&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="bc174d974fc2630ad90c3952d5479067c5370ff0" translate="yes" xml:space="preserve">
+          <source>The accepted answer is a good one - but I would like to add to this that DI is very much like the classic avoiding of hardcoded constants in the code.</source>
+          <target state="translated">受け入れられた答えは良いものです-しかし、私はこれに加えて、DIはコード内のハードコードされた定数の古典的な回避に非常に似ているということを追加したいと思います。</target>
+        </trans-unit>
+        <trans-unit id="a38ac33b8fba8d81022fa8e5992560f5f98cbdc3" translate="yes" xml:space="preserve">
+          <source>The best analogy I can think of is the surgeon and his assistant(s) in an operation theater, where the surgeon is the main person and his assistant who provides the various surgical components when he needs it so that the surgeon can concentrate on the one thing he does best (surgery). Without the assistant the surgeon has to get the components himself every time he needs one.</source>
+          <target state="translated">私が考えることができる最も良い例えは、手術室での外科医と彼のアシスタント(複数可)です。アシスタントがいないと、外科医は必要な時には毎回自分で手術部品を手に入れなければなりません。</target>
+        </trans-unit>
+        <trans-unit id="a41ea95353f5d528dfa619f0e43f5976252872f7" translate="yes" xml:space="preserve">
+          <source>The best definition I've found so far is &lt;a href=&quot;http://jamesshore.com/Blog/Dependency-Injection-Demystified.html&quot;&gt;one by James Shore&lt;/a&gt;:</source>
+          <target state="translated">これまでに見つけた最良の定義は&lt;a href=&quot;http://jamesshore.com/Blog/Dependency-Injection-Demystified.html&quot;&gt;、James Shoreによるもの&lt;/a&gt;です。</target>
+        </trans-unit>
+        <trans-unit id="888a31b520ca5d4997c6aa72d7a98329f15bff71" translate="yes" xml:space="preserve">
+          <source>The issue with this code that we tightly coupled to GasEngine and if we decide to change it to ElectricityEngine then we will need to rewrite Car class. And the bigger the application the more issues and headache we will have to add and use new type of engine.</source>
+          <target state="translated">このコードの問題点は、ガスエンジンと密接に結合していて、もしこれを電気エンジンに変更しようと思ったら、自動車のクラスを書き換える必要があるということです。また、アプリケーションが大きくなればなるほど、新しいタイプのエンジンを追加して使用しなければならない問題や頭痛の種が増えます。</target>
+        </trans-unit>
+        <trans-unit id="55cafcb834ee14f42eff09928fdaf624281b81f7" translate="yes" xml:space="preserve">
+          <source>The key to DI-friendly code is to avoid static coupling of classes, and not to use new() for the creation of Dependencies</source>
+          <target state="translated">DIフレンドリーなコードの鍵は、クラスの静的結合を避けることと、依存関係の作成にnew()を使用しないことです。</target>
+        </trans-unit>
+        <trans-unit id="5ca5815f45aca9074db82cb4273a806d37ea2c5b" translate="yes" xml:space="preserve">
+          <source>The main benefit of the &lt;strong&gt;Dependency Injection&lt;/strong&gt; that classes are more loosely coupled, because they do not have hard-coded dependencies. This follows the Dependency Inversion Principle, which was mentioned above. Instead of referencing specific implementations, classes request abstractions (usually &lt;strong&gt;interfaces&lt;/strong&gt;) which are provided to them when the class is constructed.</source>
+          <target state="translated">&lt;strong&gt;Dependency Injection&lt;/strong&gt;の主な利点は、クラスにハードコーディングされた依存関係がないため、クラスがより疎結合になることです。 これは、前述の依存関係の逆転の原則に従います。 特定の実装を参照する代わりに、クラスは、クラスの構築時に提供される抽象化（通常は&lt;strong&gt;インターフェイス&lt;/strong&gt; ）を要求し&lt;strong&gt;ます&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="473698f3e91170575e3a1dd7c3f14effd0d4dbdd" translate="yes" xml:space="preserve">
+          <source>The main benefits we achieved by using dependency injection.</source>
+          <target state="translated">依存性インジェクションを使用することで実現した主なメリット</target>
+        </trans-unit>
+        <trans-unit id="3a01d41764fb9f4deb184c6238b397910d66d4e7" translate="yes" xml:space="preserve">
+          <source>The main purpose of the intermediate level is not just to pass in the dependencies to the constructor, but to list all the dependencies in &lt;em&gt;just one place&lt;/em&gt;, and to hide them from the coder (not to make the coder provide them).</source>
+          <target state="translated">中間レベルの主な目的は、依存関係をコンストラクターに渡すだけでなく、すべての依存関係を&lt;em&gt;1か所&lt;/em&gt;にリストし、それらをコーダーから非表示にすることです（コーダーに依存関係を提供させないため）。</target>
+        </trans-unit>
+        <trans-unit id="675567e15eedcab72deecf5182fe51cdda38c6b1" translate="yes" xml:space="preserve">
+          <source>The module graph - the graph of service objects - is typically created on application startup. This can be done using a container, such as Spring, but can also be done manually, by passing parameters to object constructors. Both ways have their pros and cons, but a framework definitely isn&amp;rsquo;t necessary to use DI in your application.</source>
+          <target state="translated">モジュールグラフ（サービスオブジェクトのグラフ）は、通常、アプリケーションの起動時に作成されます。 これは、Springなどのコンテナーを使用して行うことができますが、パラメーターをオブジェクトコンストラクターに渡すことにより、手動で行うこともできます。 どちらの方法にも長所と短所がありますが、アプリケーションでDIを使用するためにフレームワークは必ずしも必要ありません。</target>
+        </trans-unit>
+        <trans-unit id="1345d93e55da0a02f0e73cb3294e155c0fcd0c41" translate="yes" xml:space="preserve">
+          <source>The objective of the DIP is to decouple tight, concrete dependencies between classes, and instead, to loosen the coupling by means of an abstraction, which can be achieved via an &lt;code&gt;interface&lt;/code&gt;, &lt;code&gt;abstract class&lt;/code&gt; or &lt;code&gt;pure virtual class&lt;/code&gt;, depending on the language and approach used.</source>
+          <target state="translated">DIPの目的は、クラス間の緊密で具体的な依存関係を切り離すことです。代わりに、抽象化によって結合を緩めることです。これは、使用する言語とアプローチに応じて、 &lt;code&gt;interface&lt;/code&gt; 、 &lt;code&gt;abstract class&lt;/code&gt; または &lt;code&gt;pure virtual class&lt;/code&gt; を介して実現できます。 。</target>
+        </trans-unit>
+        <trans-unit id="13ddfae2bc42d77fabc17f4670bf62cf40aa3c4a" translate="yes" xml:space="preserve">
+          <source>The objects that we create in our applications (regardless if we use Java, C# or other object-oriented language) usually fall into one of two categories: stateless, static and global &amp;ldquo;service objects&amp;rdquo; (modules), and stateful, dynamic and local &amp;ldquo;data objects&amp;rdquo;.</source>
+          <target state="translated">アプリケーションで作成するオブジェクト（Java、C＃、またはその他のオブジェクト指向言語を使用するかどうかに関係なく）は、通常、ステートレス、静的、グローバルの「サービスオブジェクト」（モジュール）、およびステートフル、ダイナミック、ローカルの2つのカテゴリのいずれかに分類されます。 「データオブジェクト」。</target>
+        </trans-unit>
+        <trans-unit id="fccd88c774cbd85630c6ee5e8c38793343e3457d" translate="yes" xml:space="preserve">
+          <source>The person typing &quot;make bar&quot; doesn't need to know that bar depends on foo. The dependency was injected between &quot;make bar&quot; and gcc.</source>
+          <target state="translated">make bar と入力している人は、bar が foo に依存していることを知る必要はありません。make bar と gcc の間に依存関係が注入されています。</target>
+        </trans-unit>
+        <trans-unit id="c8b03c2d69af0fb222af1edc1d1a6a786e0d51c4" translate="yes" xml:space="preserve">
+          <source>The popular answers are unhelpful, because they define dependency injection in a way that isn't useful. Let's agree that by &quot;dependency&quot; we mean some pre-existing other object that our object X needs. But we don't say we're doing &quot;dependency injection&quot; when we say</source>
+          <target state="translated">一般的な回答は、役に立たない方法で依存性の注入を定義しているので、役に立たないのです。依存関係」とは、オブジェクトXが必要とする、既存の他のオブジェクトを意味することに同意しましょう。しかし、次のように言っても「依存性注入」を行っているとは言えません。</target>
+        </trans-unit>
+        <trans-unit id="bbadfee066654ad4aea424424e4eade208a93f88" translate="yes" xml:space="preserve">
+          <source>The primary intention of a tape recorder machine is to record or playback sound.</source>
+          <target state="translated">テープレコーダー機の第一の意図は、音を録音したり再生したりすることです。</target>
+        </trans-unit>
+        <trans-unit id="72621a62fc0916c8f0e046dcd1a82521dee3ad8a" translate="yes" xml:space="preserve">
+          <source>The purpose of dependency injection is to decouple the work of
+  resolving external software components from your application business
+  logic.Without dependency injection, the details of how a component
+  accesses required services can get muddled in with the component&amp;rsquo;s
+  code. This not only increases the potential for errors, adds code
+  bloat, and magnifies maintenance complexities; it couples components
+  together more closely, making it difficult to modify dependencies when
+  refactoring or testing.</source>
+          <target state="translated">依存関係注入の目的は、アプリケーションのビジネスロジックから外部ソフトウェアコンポーネントを解決する作業を切り離すことです。依存関係注入を行わないと、コンポーネントが必要なサービスにアクセスする方法の詳細が、コンポーネントのコードに混乱する可能性があります。 これは、エラーの可能性を増大させるだけでなく、コードの膨張を追加し、メンテナンスの複雑さを増大させます。 コンポーネントをより密接に結合し、リファクタリングまたはテスト時に依存関係を変更することを困難にします。</target>
+        </trans-unit>
+        <trans-unit id="0597c45b3f09c949a793674e4746ee654b8e2e31" translate="yes" xml:space="preserve">
+          <source>The script is dependent: it won't execute successfully on its own (&lt;code&gt;archive_files&lt;/code&gt; is not defined).</source>
+          <target state="translated">スクリプトは依存しています。それ自体では正常に実行されません（ &lt;code&gt;archive_files&lt;/code&gt; が定義されていません）。</target>
+        </trans-unit>
+        <trans-unit id="1771cd5e467d2af2b6f2a767136b82451f592144" translate="yes" xml:space="preserve">
+          <source>The specific domain of DI is delegation of dependency configuration and initialization.</source>
+          <target state="translated">DIの具体的な領域は、依存関係の設定と初期化の委任です。</target>
+        </trans-unit>
+        <trans-unit id="cd6b99e6180e4829c33bd4547e92926e1044e126" translate="yes" xml:space="preserve">
+          <source>The whole point of Dependency Injection (DI) is to keep application source code &lt;strong&gt;clean&lt;/strong&gt; and &lt;strong&gt;stable&lt;/strong&gt;:</source>
+          <target state="translated">依存性注入（DI）の要点は、アプリケーションのソースコードを&lt;strong&gt;クリーン&lt;/strong&gt;で&lt;strong&gt;安定&lt;/strong&gt;した状態に保つことです。</target>
+        </trans-unit>
+        <trans-unit id="27e320b7600e5266bce3ce68ab1e42620f41d50b" translate="yes" xml:space="preserve">
+          <source>There are many different ways how to use dependency injection. It is possible to combine it with Singleton, etc., but still in basic it is only association realized by creating attribute of object type inside another object.
+The usefulness is only and only in feature, that code, which we should write again and again is always prepared and done for us forward. This is why DI so closely binded with Inversion of Control (IoC) which means, that our program passes control another running module, which does injections of beans to our code. (Each object, which can be injected can be signed or considered as a Bean.) For example in Spring it is done by creating and initialization &lt;em&gt;ApplicationContext&lt;/em&gt; container, which does this work for us. We simply in our code create the Context and invoke initialization the beans. In that moment injection has been done automatically.</source>
+          <target state="translated">依存性注入を使用する方法はたくさんあります。 シングルトンなどと組み合わせることも可能ですが、基本的には別のオブジェクト内にオブジェクト型の属性を作成することで実現される関連付けのみです。 有用性は、機能の点でのみであり、そのコードは何度も書く必要があり、常に準備され、将来のために行われます。 これが、DIが制御の反転（IoC）と緊密に結びついている理由です。つまり、プログラムは、コードへのBeanの注入を行う別の実行中のモジュールに制御を渡します。 （注入可能な各オブジェクトは、署名またはBeanと見なすことができます。）たとえば、Springでは、 &lt;em&gt;ApplicationContext&lt;/em&gt;コンテナーを作成して初期化することで行われます。 コードで単純にコンテキストを作成し、Beanの初期化を呼び出します。 その瞬間、注入は自動的に行われました。</target>
+        </trans-unit>
+        <trans-unit id="4bbc78d6e852d2e63980ceadf582e6e2cde07680" translate="yes" xml:space="preserve">
+          <source>There are two primary approaches to implementing DI:</source>
+          <target state="translated">DIの実施には、主に2つのアプローチがあります。</target>
+        </trans-unit>
+        <trans-unit id="e94b174e1d5cc2e2152c883c5d77b0f60deea3d8" translate="yes" xml:space="preserve">
+          <source>There have been several questions already posted with specific questions about &lt;a href=&quot;http://en.wikipedia.org/wiki/Dependency_injection&quot;&gt;dependency injection&lt;/a&gt;, such as when to use it and what frameworks are there for it. However,</source>
+          <target state="translated">&lt;a href=&quot;http://en.wikipedia.org/wiki/Dependency_injection&quot;&gt;依存関係注入&lt;/a&gt;についての具体的な質問を含むいくつかの質問が既に投稿されています。たとえば、それをいつ使用するか、どのフレームワークがあるかなどです。 しかしながら、</target>
+        </trans-unit>
+        <trans-unit id="bc485497e5c277af6e8ba89ddeb765c26b3e96ea" translate="yes" xml:space="preserve">
+          <source>There is &lt;a href=&quot;http://martinfowler.com/articles/injection.html&quot;&gt;an article by Martin Fowler&lt;/a&gt; that may prove useful, too.</source>
+          <target state="translated">&lt;a href=&quot;http://martinfowler.com/articles/injection.html&quot;&gt;Martin Fowlerによる記事&lt;/a&gt;も役に立つかもしれません。</target>
+        </trans-unit>
+        <trans-unit id="815c6163aa7ffe62c24c7f4421caa35a91b5752f" translate="yes" xml:space="preserve">
+          <source>This can be viewed in different ways:</source>
+          <target state="translated">これはいろいろな見方ができます。</target>
+        </trans-unit>
+        <trans-unit id="252c2fc56bbf461770e127f5279e75e5c6e1a9ef" translate="yes" xml:space="preserve">
+          <source>This is based on the answer @Adam N posted.</source>
+          <target state="translated">これは@Adam Nさんが投稿された回答を元にしています。</target>
+        </trans-unit>
+        <trans-unit id="3214625379bb5b7d1b275f45dbd054121808f8f3" translate="yes" xml:space="preserve">
+          <source>To make Dependency Injection concept simple to understand. Let's take an example of switch button to toggle(on/off) a bulb.</source>
+          <target state="translated">依存性インジェクションの概念をわかりやすくするために ここでは、電球をトグル(オンオフ)するためのスイッチボタンを例にしてみましょう。</target>
+        </trans-unit>
+        <trans-unit id="5343d4544799a720118861acb1f47462973d60f8" translate="yes" xml:space="preserve">
+          <source>Two types of Dependency Injection:</source>
+          <target state="translated">2種類の依存性インジェクション。</target>
+        </trans-unit>
+        <trans-unit id="63568b370a821de5c78ae9aa707bb16d7ed41fac" translate="yes" xml:space="preserve">
+          <source>Typically, once IoC containers have been configured / bootstrapped, they operate seamlessly in the background allowing the coder to focus on the code at hand rather than worrying about dependencies.</source>
+          <target state="translated">一般的に、一度ブートストラップされたIoCコンテナはバックグラウンドでシームレスに動作するため、コーダーは依存関係を気にすることなく、手元のコードに集中することができます。</target>
+        </trans-unit>
+        <trans-unit id="182c61d24602b96b1f93b9d02ddeddadb6b2993d" translate="yes" xml:space="preserve">
+          <source>Unfortunately the bad part is that some people have assumed you need a specialized framework to do dependency obfuscation and that you are somehow a 'lesser' programmer if you choose not to use a particular framework to do it. Another, extremely disturbing myth, believed by many, is that dependency injection is the only way of achieving dependency obfuscation. This is demonstrably and historically and obviously 100% wrong but you will have trouble convincing some people that there are alternatives to dependency injection for your dependency obfuscation requirements.</source>
+          <target state="translated">残念なことに、悪いことに、依存性難読化を行うためには専門的なフレームワークが必要であり、特定のフレームワークを使わないことを選択した場合、あなたは何らかの形で「劣った」プログラマーであると思い込んでいる人がいることです。もう一つ、多くの人が信じている、非常に不穏な神話は、依存関係の難読化を達成する唯一の方法が依存性インジェクションであるというものです。これは明らかに歴史的にも歴史的にも100%間違っていますが、依存性難読化の要件を満たすために依存性インジェクションに代わるものがあることを納得させるのに苦労するでしょう。</target>
+        </trans-unit>
+        <trans-unit id="3848296892c89c589ff3cd256248c78c171b9a63" translate="yes" xml:space="preserve">
+          <source>Use Dependency Injection</source>
+          <target state="translated">依存性注入を使用する</target>
+        </trans-unit>
+        <trans-unit id="b5b26b6f5a26c971914a39f28f7610b2ff42bb58" translate="yes" xml:space="preserve">
+          <source>Using a Dependency Injection Container</source>
+          <target state="translated">依存性インジェクションコンテナの使用</target>
+        </trans-unit>
+        <trans-unit id="38051c244ec62e5af7798f63213cc9da83353e86" translate="yes" xml:space="preserve">
+          <source>Using configuration only with &lt;em&gt;dependency lookup&lt;/em&gt; does not help as number of configuration parameters may change per dependency (e.g. new authentication type) as well as number of supported types of dependencies (e.g. new database type).</source>
+          <target state="translated">&lt;em&gt;依存関係のルックアップで&lt;/em&gt;のみ構成を使用しても、 &lt;em&gt;依存関係&lt;/em&gt;ごとに構成パラメーターの数が変わる可能性があるため（新しい認証の種類など）、サポートされている依存関係の種類の数（新しいデータベースの種類など）が異なるため、効果がありません。</target>
+        </trans-unit>
+        <trans-unit id="cd86d58fd77887709d26819ecdbbed88c3b2259e" translate="yes" xml:space="preserve">
+          <source>Usually the intermediate level provides factories for the constructed objects, which must provide a role that each requested object type must satisfy. That's because by having an intermediate level that hides the details of construction, you've already incurred the abstraction penalty imposed by factories, so you might as well use factories.</source>
+          <target state="translated">通常、中間レベルは構築されたオブジェクトのためのファクトリーを提供し、要求された各オブジェクトタイプが満たすべき役割を提供しなければなりません。これは、構築の詳細を隠す中間レベルを持つことで、 ファクトリーによって課される抽象化のペナルティをすでに受けているからです。</target>
+        </trans-unit>
+        <trans-unit id="f80646d8467ba758d39c4c0efe8023f67e2f3d51" translate="yes" xml:space="preserve">
+          <source>We can also loosen the dependency on &lt;code&gt;Console&lt;/code&gt; to an abstraction, such as a &lt;code&gt;TextWriter&lt;/code&gt;. Dependency Injection is typically implemented as either &lt;code&gt;constructor&lt;/code&gt; injection (passing an abstraction to a dependency as a parameter to the constructor of a consuming class) or &lt;code&gt;Setter Injection&lt;/code&gt; (passing the dependency via a &lt;code&gt;setXyz()&lt;/code&gt; setter or a .Net Property with &lt;code&gt;{set;}&lt;/code&gt; defined). Constructor Injection is preferred, as this guarantees the class will be in a correct state after construction, and allows the internal dependency fields to be marked as &lt;code&gt;readonly&lt;/code&gt; (C#) or &lt;code&gt;final&lt;/code&gt; (Java). So using constructor injection on the above example, this leaves us with:</source>
+          <target state="translated">また、 &lt;code&gt;Console&lt;/code&gt; への依存性を &lt;code&gt;TextWriter&lt;/code&gt; などの抽象化に緩和することもできます。 Dependency Injectionは通常、 &lt;code&gt;constructor&lt;/code&gt; 注入（依存関係への抽象化をパラメーターとして使用クラスのコンストラクターに渡す）または &lt;code&gt;Setter Injection&lt;/code&gt; （ &lt;code&gt;setXyz()&lt;/code&gt; セッターまたは.Netプロパティと &lt;code&gt;{set;}&lt;/code&gt; を使用して依存関係を渡す）として実装 されます。定義済み）。 これは、クラスが構築後に正しい状態にあることを保証し、内部依存関係フィールドを &lt;code&gt;readonly&lt;/code&gt; （C＃）または &lt;code&gt;final&lt;/code&gt; （Java）としてマークできるようにするため、コンストラクター注入が推奨されます 。 上記の例でコンストラクターインジェクションを使用すると、次のようになります。</target>
+        </trans-unit>
+        <trans-unit id="86284d96e43cd594072665725439a4504abe091b" translate="yes" xml:space="preserve">
+          <source>We can however apply &lt;code&gt;DIP&lt;/code&gt; to this class, by abstracting out the the concern of timestamping as a dependency, and coupling &lt;code&gt;MyLogger&lt;/code&gt; only to a simple interface:</source>
+          <target state="translated">ただし、タイムスタンプの問題を依存関係として抽象化し、 &lt;code&gt;MyLogger&lt;/code&gt; を単純なインターフェースにのみ結合することで、このクラスに &lt;code&gt;DIP&lt;/code&gt; を適用できます。</target>
+        </trans-unit>
+        <trans-unit id="4d76ed5465c1e8ece422b3fde5fc9eac7b93e015" translate="yes" xml:space="preserve">
+          <source>We can see a wide variety of application of this pattern in our day to day life.
+Some of the examples are Tape recorder, VCD, CD Drive etc.</source>
+          <target state="translated">私たちの日常生活の中で、このパターンの様々な応用が見られます。例のいくつかは、テープレコーダー、VCD、CDドライブなどです。</target>
+        </trans-unit>
+        <trans-unit id="699f2807e416a1b822a3e5508ecc546ba1097cee" translate="yes" xml:space="preserve">
+          <source>We don&amp;rsquo;t need to hard code the object using new keyword rather define the bean dependency in the configuration file. The spring container will be responsible for hooking up all.</source>
+          <target state="translated">新しいキーワードを使用してオブジェクトをハードコードする必要はなく、設定ファイルでBeanの依存関係を定義します。 春のコンテナは、すべてをフックする責任があります。</target>
+        </trans-unit>
+        <trans-unit id="e6a519ea1c63ceedd483bc62f122abf4b1705040" translate="yes" xml:space="preserve">
+          <source>We just call that passing parameters into the constructor. We've been doing that regularly ever since constructors were invented.</source>
+          <target state="translated">コンストラクタにパラメータを渡すことをそう呼んでいます。コンストラクタが発明されて以来、私たちはこれを定期的に行ってきました。</target>
+        </trans-unit>
+        <trans-unit id="4939eb99c093f041eb14a0ea96bcb8652ea8525e" translate="yes" xml:space="preserve">
+          <source>What if I want to change the object at runtime? For example, my config already says when I instantiate MyController, inject for FileLogger as ILogger. But I might want to inject DatabaseLogger.</source>
+          <target state="translated">実行時にオブジェクトを変更したい場合はどうすればいいのでしょうか?例えば、私の設定では MyController をインスタンス化するときに FileLogger を ILogger として注入するように設定しています。しかし、DatabaseLogger を注入したいと思うかもしれません。</target>
+        </trans-unit>
+        <trans-unit id="3e2750129099d2d658ea524bc22e6b383e10d747" translate="yes" xml:space="preserve">
+          <source>What if we want to change the type of its dependent object - say &lt;code&gt;Wheel&lt;/code&gt; - after the initial &lt;code&gt;NepaliRubberWheel()&lt;/code&gt; punctures?
+We need to recreate the Car object with its new dependency say &lt;code&gt;ChineseRubberWheel()&lt;/code&gt;, but only the &lt;code&gt;Car&lt;/code&gt; manufacturer can do that.</source>
+          <target state="translated">最初の &lt;code&gt;NepaliRubberWheel()&lt;/code&gt; パンクチャの後に、依存オブジェクトのタイプ（ &lt;code&gt;Wheel&lt;/code&gt; など)を変更したい場合はどうでしょうか。 新しい依存関係を持つCarオブジェクトを再作成する必要があります。たとえば、 &lt;code&gt;ChineseRubberWheel()&lt;/code&gt; ですが、これを行うことができるのは &lt;code&gt;Car&lt;/code&gt; メーカーだけです。</target>
+        </trans-unit>
+        <trans-unit id="d12d549f3851beb3cde5e7133f1816376aac4516" translate="yes" xml:space="preserve">
+          <source>What is dependency Injection?</source>
+          <target state="translated">依存性インジェクションとは?</target>
+        </trans-unit>
+        <trans-unit id="2a58e8a199dcdef3591f016058aadf67a10b6ea0" translate="yes" xml:space="preserve">
+          <source>What is dependency injection</source>
+          <target state="translated">依存性注入とは</target>
+        </trans-unit>
+        <trans-unit id="96816fe77c474fe522ad8e991ee6edf78f7425c0" translate="yes" xml:space="preserve">
+          <source>When to use DI : I would recommend using DI in almost all production projects ( small/big), particularly in ever changing business environments :)</source>
+          <target state="translated">DIを使用するタイミング:私は、ほとんどすべての生産プロジェクト(小規模なもの)、特に変化し続けるビジネス環境でDIを使用することをお勧めします。</target>
+        </trans-unit>
+        <trans-unit id="f48ccb208f603d34093b9d2e0d7b264d9656e30f" translate="yes" xml:space="preserve">
+          <source>When to use? I would say whenever the application is large enough that encapsulating logic into separate modules, with a dependency graph between the modules gives a gain in readability and explorability of the code.</source>
+          <target state="translated">いつ使うか?私は、アプリケーションが十分に大きい場合には、モジュール間の依存関係グラフでロジックを別々のモジュールにカプセル化することで、コードの可読性と探索性を向上させることができると考えています。</target>
+        </trans-unit>
+        <trans-unit id="eed4b47b27cb37bd0ec38f924963811f2806030d" translate="yes" xml:space="preserve">
+          <source>When using dependency injection, objects are given their dependencies &lt;em&gt;at run time rather than compile time (car manufacturing time)&lt;/em&gt;.
+So that we can now change the &lt;code&gt;Wheel&lt;/code&gt; whenever we want. Here, the &lt;code&gt;dependency&lt;/code&gt; (&lt;code&gt;wheel&lt;/code&gt;) can be injected into &lt;code&gt;Car&lt;/code&gt; at run time.</source>
+          <target state="translated">依存性注入を使用する場合、オブジェクトには&lt;em&gt;、コンパイル時（自動車の製造時）ではなく、実行時に&lt;/em&gt;依存関係が与えられます。 これで、いつでも &lt;code&gt;Wheel&lt;/code&gt; 変更できます。 ここでは、 &lt;code&gt;dependency&lt;/code&gt; （ &lt;code&gt;wheel&lt;/code&gt; ）を実行時に &lt;code&gt;Car&lt;/code&gt; に注入できます。</target>
+        </trans-unit>
+        <trans-unit id="abc4d8921a46969ecc613e5055f52eca2c65ee07" translate="yes" xml:space="preserve">
+          <source>When we change &lt;code&gt;Service&lt;/code&gt; constructor, we need to change code in all place create &lt;code&gt;Service&lt;/code&gt; object</source>
+          <target state="translated">&lt;code&gt;Service&lt;/code&gt; コンストラクターを変更する場合、 &lt;code&gt;Service&lt;/code&gt; オブジェクトを作成するすべての場所でコードを変更する必要があります</target>
+        </trans-unit>
+        <trans-unit id="60a4437333ad60740280d7819cb15d4da2c92233" translate="yes" xml:space="preserve">
+          <source>When you change the &lt;code&gt;Service&lt;/code&gt;, you only need to change it in Injector class</source>
+          <target state="translated">&lt;code&gt;Service&lt;/code&gt; を変更するときは、Injectorクラスで変更するだけです</target>
+        </trans-unit>
+        <trans-unit id="f19469b25d4ea3f9876fe4907b1de5c966b79296" translate="yes" xml:space="preserve">
+          <source>When you have a configuration of DI where all the actual implementations(not interfaces) that are going to be injected into a class (for e.g services to a controller) why is that not some sort of hard-coding?</source>
+          <target state="translated">(コントローラへのサービスなど)クラスに注入されようとしているすべての実際の実装(インターフェイスではなく)があるDIの構成を持っているとき、なぜそれはある種のハードコーディングではないのでしょうか?</target>
+        </trans-unit>
+        <trans-unit id="e0e2e926020e782ca430259f6c4e7d67c44e4d4d" translate="yes" xml:space="preserve">
+          <source>When you use some constant like a database name you'd quickly move it from the inside of the code to some config file and pass a variable containing that value to the place where it is needed.  The reason to do that is that these constants usually change more frequently than the rest of the code.  For example if you'd like to test the code in a test database.</source>
+          <target state="translated">データベース名のような定数を使用する場合は、コードの内部から設定ファイルに移動し、その値を含む変数を必要な場所に渡します。なぜそうするかというと、これらの定数は通常コードの残りの部分よりも頻繁に変更されるからです。例えば、テストデータベースでコードをテストしたい場合などです。</target>
+        </trans-unit>
+        <trans-unit id="f13093462f2a85a2c0797285aa9864b8c2e8b0bb" translate="yes" xml:space="preserve">
+          <source>Where there likely will be a need to substitute a dependency for an equivalent implementation,</source>
+          <target state="translated">依存関係を同等の実装に置き換える必要がありそうな場合。</target>
+        </trans-unit>
+        <trans-unit id="bd97b161d9e5c8373340c65f6128ec2d5bcf0fbe" translate="yes" xml:space="preserve">
+          <source>Where uncertainty of the lifespan of a dependency may warrant experimentation (e.g. Hey, &lt;code&gt;MyDepClass&lt;/code&gt; is thread safe - what if we make it a singleton and inject the same instance into all consumers?)</source>
+          <target state="translated">依存関係の寿命の不確実性が実験に &lt;code&gt;MyDepClass&lt;/code&gt; 場合（たとえば、 MyDepClassはスレッドセーフです。シングルトンにして、同じインスタンスをすべてのコンシューマーに挿入するとどうなるでしょうか。）</target>
+        </trans-unit>
+        <trans-unit id="59a5dadbd1f1b46c880e4228a933e3575c4621e6" translate="yes" xml:space="preserve">
+          <source>Whereas after application of the DIP, the requirement is loosened, and the concern of obtaining and managing the lifespan of the &lt;code&gt;Foo&lt;/code&gt; dependency has been removed:</source>
+          <target state="translated">DIPの適用後、要件は緩和され、 &lt;code&gt;Foo&lt;/code&gt; 依存関係の寿命を取得して管理するという懸念は取り除かれました。</target>
+        </trans-unit>
+        <trans-unit id="2f8fd3870a84afb43d089851d3d66aefbefd8208" translate="yes" xml:space="preserve">
+          <source>While designing a system it require a reel to record or playback sound or music. There are two possibilities for designing this system</source>
+          <target state="translated">システムを設計する際には、音や音楽を録音・再生するためのリールが必要になります。このシステムの設計には、次の2つの可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="f24455302b22cf5f3be2af86011a77cc94c7bdb3" translate="yes" xml:space="preserve">
+          <source>Why : Because you want your code to be easily testable, mockable etc so that you can quickly test your changes and push it to the market. Besides why would you not when you there are lots of awesome free tools/frameworks to support you in your journey to a codebase where you have more control.</source>
+          <target state="translated">なぜかというと、コードを簡単にテストできるようにしたい、モックできるようにしたい、などの理由からです。さらに、あなたがよりコントロールできるコードベースへの旅をサポートする無料のツール・フレームワークがたくさんあるのに、なぜそうしないのでしょうか?</target>
+        </trans-unit>
+        <trans-unit id="155c0f309806e222f377eeb338deeddb4ac2035d" translate="yes" xml:space="preserve">
+          <source>Why does PersonService no longer have to worry about GroupMembershipService? You just mentioned GroupMembership has multiple things(objects/properties) it depends on. If GMService was required in PService, you'd have it as a property. You can mock that out regardless of whether you injected it or not. The only time I'd like it to be injected is if GMService had more specific child classes, which you wouldn't know until runtime. Then you'd want to inject the subclass. Or if you wanted to use that as either singleton or prototype. To be honest, the configuration file has everything hardcoded as far as what subclass for a type (interface) it is going to inject during compile time.</source>
+          <target state="translated">なぜPersonServiceはGroupMembershipServiceを気にする必要がなくなったのか?GroupMembershipは依存する複数のもの(objectsproperties)を持っていると言ったところですね。PServiceでGMServiceが必須であれば、プロパティとして持っているはずです。それを注入したかどうかに関係なくモックアウトできます。私がそれを注入したいと思う唯一の時間は、GMServiceがより特定の子クラスを持っていた場合です。その場合、サブクラスを注入したいと思うでしょう。あるいは、それをシングルトンまたはプロトタイプとして使用したい場合です。正直に言うと、コンパイル時にどのサブクラスを注入するかは、設定ファイルにすべてハードコードされています。</target>
+        </trans-unit>
+        <trans-unit id="316cb2abaec2a090bd29421bce7b593838a6bd08" translate="yes" xml:space="preserve">
+          <source>With Dependency Injection</source>
+          <target state="translated">依存性注入で</target>
+        </trans-unit>
+        <trans-unit id="1233c83a1bf8dee2cadec4b76cd3eec49f5d8602" translate="yes" xml:space="preserve">
+          <source>With Dependency Injection, instead of instantiating the &lt;code&gt;GroupMembershipService&lt;/code&gt; within your &lt;code&gt;PersonService&lt;/code&gt;, you'd either pass it in to the &lt;code&gt;PersonService&lt;/code&gt; constructor, or else add a Property (getter and setter) to set a local instance of it. This means that your &lt;code&gt;PersonService&lt;/code&gt; no longer has to worry about how to create a &lt;code&gt;GroupMembershipService&lt;/code&gt;, it just accepts the ones it's given, and works with them.  This also means that anything which is a subclass of &lt;code&gt;GroupMembershipService&lt;/code&gt;, or implements the &lt;code&gt;GroupMembershipService&lt;/code&gt; interface can be &quot;injected&quot; into the &lt;code&gt;PersonService&lt;/code&gt;, and the &lt;code&gt;PersonService&lt;/code&gt; doesn't need to know about the change.</source>
+          <target state="translated">依存性注入では、 &lt;code&gt;PersonService&lt;/code&gt; 内で &lt;code&gt;GroupMembershipService&lt;/code&gt; をインスタンス化する代わりに、それを &lt;code&gt;PersonService&lt;/code&gt; コンストラクターに渡すか、プロパティ（ゲッターとセッター）を追加して、そのローカルインスタンスを設定します。 つまり、 &lt;code&gt;PersonService&lt;/code&gt; は &lt;code&gt;GroupMembershipService&lt;/code&gt; の作成方法を心配する必要がなくなり、 指定されたものを受け入れ、それらを操作するだけです。 これは、 &lt;code&gt;GroupMembershipService&lt;/code&gt; のサブクラスであるもの、または &lt;code&gt;GroupMembershipService&lt;/code&gt; インターフェースを実装するものは &lt;code&gt;PersonService&lt;/code&gt; 「挿入」でき、 &lt;code&gt;PersonService&lt;/code&gt; は変更について知る必要がないことも意味します。</target>
+        </trans-unit>
+        <trans-unit id="0f0a3b5beff6045bb4f3fe845c538ad21014ce5e" translate="yes" xml:space="preserve">
+          <source>With Dependency injection, the dependency injector will take off the instantiation for us</source>
+          <target state="translated">Dependency インジェクションでは、Dependency インジェクタが私たちのためにインスタンス化を解除してくれます。</target>
+        </trans-unit>
+        <trans-unit id="55cdf21af285a1570d5d341608f193842fd5a672" translate="yes" xml:space="preserve">
+          <source>With dependency injection, someone else takes care of all the preparation and makes the required equipment available to you. You will receive (&quot;be injected&quot;) the boat, the fishing rod and the bait - all ready to use.</source>
+          <target state="translated">依存性注射では、他の誰かがすべての準備の世話をし、必要な機器をあなたが利用できるようにします。あなたは、ボート、釣り竿、餌を受け取る(「注入される」)-すべてを使用する準備ができています。</target>
+        </trans-unit>
+        <trans-unit id="f9f5cf6442cf84c858a561c2c1aa9e63fe5c3866" translate="yes" xml:space="preserve">
+          <source>Without Dependency Injection</source>
+          <target state="translated">依存性注入なし</target>
+        </trans-unit>
+        <trans-unit id="3b220ed590066bbf10e392ad2dd726fec3be4180" translate="yes" xml:space="preserve">
+          <source>Without dependency injection, you need to take care of everything yourself. You need to find a boat, to buy a fishing rod, to look for bait, etc. It's possible, of course, but it puts a lot of responsibility on you. In software terms, it means that you have to perform a lookup for all these things.</source>
+          <target state="translated">依存症注射がなければ、何でも自分で面倒を見る必要があります。ボートを探したり、釣竿を買ったり、エサを探したり。もちろんそれは可能ですが、それはあなたに多くの責任を押し付けます。ソフトウェアの用語で言うと、これらのことをすべて自分で検索しなければならないということです。</target>
+        </trans-unit>
+        <trans-unit id="49f49ef1de77737ae4e3ae770e87d4b807452cda" translate="yes" xml:space="preserve">
+          <source>Without the DIP, our code (I've called this 'consuming class') is directly coupled to a concrete dependency and is also often burdened with the responsibility of knowing how to obtain, and manage, an instance of this dependency, i.e. conceptually:</source>
+          <target state="translated">DIPなしでは、私たちのコード(私はこの「消費クラス」と呼んでいます)は、具体的な依存関係に直接結合されており、また、この依存関係のインスタンスを取得し、管理する方法を知る責任、すなわち概念的な負担を負うことがよくあります。</target>
+        </trans-unit>
+        <trans-unit id="1b0617f8014f1a76dc7ba00100921c6326f40868" translate="yes" xml:space="preserve">
+          <source>You can also read</source>
+          <target state="translated">また、以下の記事を読むこともできます。</target>
+        </trans-unit>
+        <trans-unit id="e84e5e5caa3f2b230be8ecf0ca3d63c1bcbc6707" translate="yes" xml:space="preserve">
+          <source>You could have injected dependency which implements &lt;code&gt;archive_files&lt;/code&gt; using &lt;code&gt;tar&lt;/code&gt; or &lt;code&gt;xz&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;tar&lt;/code&gt; または &lt;code&gt;xz&lt;/code&gt; を使用して &lt;code&gt;archive_files&lt;/code&gt; を実装する依存関係を注入した可能性があります 。</target>
+        </trans-unit>
+        <trans-unit id="6c14f594f01f1de9fd2aab048e30d8d2194a66f7" translate="yes" xml:space="preserve">
+          <source>You define &lt;code&gt;archive_files&lt;/code&gt; in &lt;code&gt;archive_files_zip.sh&lt;/code&gt; implementation script (using &lt;code&gt;zip&lt;/code&gt; in this case):</source>
+          <target state="translated">&lt;code&gt;archive_files_zip.sh&lt;/code&gt; 実装スクリプト（この場合は &lt;code&gt;zip&lt;/code&gt; を使用）でarchive_filesを定義し &lt;code&gt;archive_files&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="7444b1acde932a72f7dd1189c7b8bfd322ca3632" translate="yes" xml:space="preserve">
+          <source>You don't need a container to do dependency injection. However a container can help you.</source>
+          <target state="translated">依存性注入を行うためにコンテナは必要ありません。しかし、コンテナはあなたを助けることができます。</target>
+        </trans-unit>
+        <trans-unit id="bbf99c4996fccfe9e7a0ac73dbccffb4a67c6cea" translate="yes" xml:space="preserve">
+          <source>a DI Container is a tool to help injecting dependencies</source>
+          <target state="translated">DIコンテナは、依存関係の注入を支援するツールです。</target>
+        </trans-unit>
+        <trans-unit id="4a4aad97c907cbb008e7b8b26d6f30985b32b8aa" translate="yes" xml:space="preserve">
+          <source>application &lt;strong&gt;deployment&lt;/strong&gt; (&lt;strong&gt;multiple&lt;/strong&gt; target environments with independent lifecycles)</source>
+          <target state="translated">アプリケーションの&lt;strong&gt;デプロイメント&lt;/strong&gt; （独立したライフサイクルを持つ&lt;strong&gt;複数の&lt;/strong&gt;ターゲット環境）</target>
+        </trans-unit>
+        <trans-unit id="a32ef176365fadc9778959691ce81fd982d81b42" translate="yes" xml:space="preserve">
+          <source>application &lt;strong&gt;development&lt;/strong&gt; (&lt;strong&gt;single&lt;/strong&gt; source code release lifecycle)</source>
+          <target state="translated">アプリケーション&lt;strong&gt;開発&lt;/strong&gt; （ &lt;strong&gt;単一&lt;/strong&gt;ソースコードリリースライフサイクル）</target>
+        </trans-unit>
+        <trans-unit id="c2ae11a3ef2bc13a293ffe2bcc4ea4cf9c7088db" translate="yes" xml:space="preserve">
+          <source>before doing a</source>
+          <target state="translated">に先立って</target>
+        </trans-unit>
+        <trans-unit id="fb1802bd1e16e969815bc074b7285e09e6c78cfd" translate="yes" xml:space="preserve">
+          <source>from Book &lt;strong&gt;Apress.Spring.Persistence.with.Hibernate.Oct.2010&lt;/strong&gt;</source>
+          <target state="translated">Book &lt;strong&gt;Apress.Spring.Persistence.with.Hibernate.Oct.2010より&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="472f32380d47285104826da06f61443568994b00" translate="yes" xml:space="preserve">
+          <source>mapping between each abstraction and the configured concrete implementation (e.g. &lt;em&gt;&quot;any time a consumer requests an &lt;code&gt;IBar&lt;/code&gt;, return a &lt;code&gt;ConcreteBar&lt;/code&gt; instance&quot;&lt;/em&gt;)</source>
+          <target state="translated">各抽象化と構成された具象実装の間のマッピング（たとえば、 &lt;em&gt;「コンシューマが &lt;code&gt;IBar&lt;/code&gt; を要求するたびに、 &lt;code&gt;ConcreteBar&lt;/code&gt; インスタンスを返す」&lt;/em&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="a89dcdc02705c87126898e6ee6b1fbd5bdb0786f" translate="yes" xml:space="preserve">
+          <source>policies can be set up for the lifespan management of each dependency, e.g. to create a new object for each consumer instance, to share a singleton dependency instance across all consumers, to share the same dependency instance only across the same thread, etc.</source>
+          <target state="translated">ポリシーは、各依存関係のライフサイクル管理のために設定することができます。例えば、各コンシューマインスタンスに対して新しいオブジェクトを作成したり、シングルトン依存関係インスタンスをすべてのコンシューマで共有したり、同じ依存関係インスタンスを同じスレッドでのみ共有したりなどです。</target>
+        </trans-unit>
+        <trans-unit id="036711eff2961f7a9eb870a48ad40790feff55dd" translate="yes" xml:space="preserve">
+          <source>we can place the reel inside the machine</source>
+          <target state="translated">私たちは、機械の中にリールを配置することができます</target>
+        </trans-unit>
+        <trans-unit id="0a91593e00bce6f1bb48c8658c6f3c6f186cbbf2" translate="yes" xml:space="preserve">
+          <source>we can provide a hook for the reel where it can be placed.</source>
+          <target state="translated">リールを設置できる場所には、フックをご用意しております。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

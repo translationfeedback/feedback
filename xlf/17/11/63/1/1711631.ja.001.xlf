@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/1711631">
+    <body>
+      <group id="1711631">
+        <trans-unit id="cdefc7d8d0f502ac2649cb2130333beb8e549c0c" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;SQLITE_STATIC&lt;/code&gt; tells it that the memory address you gave it will be valid until the query has been performed (which in this loop is always the case). This will save you several allocate, copy and deallocate operations per loop. Possibly a large improvement.</source>
+          <target state="translated">&lt;code&gt;SQLITE_STATIC&lt;/code&gt; は、指定したメモリアドレスがクエリが実行されるまで有効であることを通知します（このループでは常にそうです）。 これにより、ループごとに複数の割り当て、コピー、割り当て解除の操作を節約できます。 おそらく大幅な改善。</target>
+        </trans-unit>
+        <trans-unit id="dc841631c7f8778b9620c5a6aebf79da39172daf" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;SQLITE_TRANSIENT&lt;/code&gt; will cause SQLite to copy the string data before returning.</source>
+          <target state="translated">&lt;code&gt;SQLITE_TRANSIENT&lt;/code&gt; を使用すると、SQLiteは返される前に文字列データをコピーします。</target>
+        </trans-unit>
+        <trans-unit id="8e0bb93e0bdc0ef4869a544f1ec90a67170531be" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;I hope you're still with me!&lt;/em&gt; The reason we started down this road is that bulk-insert performance varies so wildly with SQLite, and it's not always obvious what changes need to be made to speed-up our operation. Using the same compiler (and compiler options), the same version of SQLite and the same data we've optimized our code and our usage of SQLite to go &lt;strong&gt;from a worst-case scenario of 85 inserts per second to over 96,000 inserts per second!&lt;/strong&gt;</source>
+          <target state="translated">&lt;em&gt;あなたが私と一緒にいることを願っています！&lt;/em&gt; この道を歩み始めた理由は、SQLiteを使用すると一括挿入のパフォーマンスが大きく変動するため、操作を高速化するためにどのような変更を加える必要があるかが必ずしも明確ではないためです。 同じコンパイラー（およびコンパイラーオプション）、同じバージョンのSQLite、同じデータを使用してコードを最適化し、SQLiteの使用法を、 &lt;strong&gt;1秒あたり85挿入という最悪のシナリオから1秒あたり96,000挿入を超える最悪のシナリオに移行しました！&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="651a2b8d1ad8078419cf895a15b4c0df27a8c401" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Let's write some code!&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;コードを書いてみましょう！&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="b76b98300a521ccc66355329ebd7994a2475558c" translate="yes" xml:space="preserve">
+          <source>&lt;s&gt;&lt;a href=&quot;https://github.com/rdpoor/CreateOrUpdate&quot;&gt;https://github.com/rdpoor/CreateOrUpdate&lt;/a&gt;&lt;/s&gt;</source>
+          <target state="translated">&lt;s&gt;&lt;a href=&quot;https://github.com/rdpoor/CreateOrUpdate&quot;&gt;https://github.com/rdpoor/CreateOrUpdate&lt;/a&gt;&lt;/s&gt;</target>
+        </trans-unit>
+        <trans-unit id="7ff38676434e7065905a1e026ab3bdabb754fafc" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Avoid &lt;a href=&quot;https://www.sqlite.org/c3ref/clear_bindings.html&quot;&gt;&lt;code&gt;sqlite3_clear_bindings(stmt)&lt;/code&gt;&lt;/a&gt;.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;a href=&quot;https://www.sqlite.org/c3ref/clear_bindings.html&quot;&gt; &lt;code&gt;sqlite3_clear_bindings(stmt)&lt;/code&gt; を&lt;/a&gt;回避します。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b52454c570dc6b7585dff89d6bafeb4102012edb" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Background:&lt;/strong&gt; We are using SQLite as part of a desktop application. We have large amounts of configuration data stored in XML files that are parsed and loaded into an SQLite database for further processing when the application is initialized. SQLite is ideal for this situation because it's fast, it requires no specialized configuration, and the database is stored on disk as a single file.</source>
+          <target state="translated">&lt;strong&gt;背景：&lt;/strong&gt; SQLiteをデスクトップアプリケーションの一部として使用しています。 大量の構成データがXMLファイルに格納されており、アプリケーションの初期化時にさらに処理するために解析され、SQLiteデータベースに読み込まれます。 SQLiteは高速で、特別な構成を必要とせず、データベースは単一のファイルとしてディスクに保存されるため、この状況に最適です。</target>
+        </trans-unit>
+        <trans-unit id="270000b21d15ce5fe27f22341bb7e2a04b3d7f99" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Create Index then Insert Data&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;インデックスを作成してからデータを挿入する&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="c801cbf9bc118950e73a5431424c376f22274ca3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Insert Data then Create Index&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;データを挿入してからインデックスを作成&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="dbe1b95758ace93ba6c358fe7b1aa18db2be2a7d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Note: We are back to using a real database file. In-memory databases are fast, but not necessarily practical&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;注：実際のデータベースファイルの使用に戻ります。&lt;/strong&gt; &lt;strong&gt;インメモリデータベースは高速ですが、必ずしも実用的ではありません&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="26ea07b172d510db473fb482ce4002bc7313046a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Rationale:&lt;/strong&gt;&lt;em&gt;Initially I was disappointed with the performance I was seeing.&lt;/em&gt; It turns-out that the performance of SQLite can vary significantly (both for bulk-inserts and selects) depending on how the database is configured and how you're using the API. It was not a trivial matter to figure out what all of the options and techniques were, so I thought it prudent to create this community wiki entry to share the results with Stack&amp;nbsp;Overflow readers in order to save others the trouble of the same investigations.</source>
+          <target state="translated">&lt;strong&gt;理論的根拠：&lt;/strong&gt; &lt;em&gt;最初は、私が見ているパフォーマンスにがっかりしました。&lt;/em&gt; SQLiteのパフォーマンスは、データベースの構成方法とAPIの使用方法に応じて（一括挿入と選択の両方で）大きく異なる可能性があることがわかりました。 すべてのオプションと手法が何であるかを理解することは簡単なことではなかったので、同じコミュニティのWikiエントリを作成して結果をStack Overflowリーダーと共有し、同じ調査の問題を他の人に知らせないようにするのが賢明だと思いました。</target>
+        </trans-unit>
+        <trans-unit id="a76bacf9fc05e4ab73ba39928377f27b7df97668" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Code:&lt;/strong&gt; A simple C program that reads the text file line-by-line, splits the string into values and then inserts the data into an SQLite database. In this &quot;baseline&quot; version of the code, the database is created, but we won't actually insert data:</source>
+          <target state="translated">&lt;strong&gt;コード：&lt;/strong&gt;テキストファイルを1行ずつ読み取り、文字列を値に分割し、データをSQLiteデータベースに挿入する単純なCプログラム。 この「ベースライン」バージョンのコードでは、データベースが作成されますが、実際にはデータを挿入しません。</target>
+        </trans-unit>
+        <trans-unit id="2dfc837caac3acc0839eec2ba05612c43327300d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Experiment:&lt;/strong&gt; Rather than simply talking about performance tips in the general sense (i.e. &lt;em&gt;&quot;Use a transaction!&quot;&lt;/em&gt;), I thought it best to write some C code and &lt;em&gt;actually measure&lt;/em&gt; the impact of various options. We're going to start with some simple data:</source>
+          <target state="translated">&lt;strong&gt;実験：&lt;/strong&gt;一般的な意味でのパフォーマンスのヒント（つまり、 &lt;em&gt;「トランザクションを使用する！」&lt;/em&gt; ）について単に話すのではなく、Cコードを記述して&lt;em&gt;実際&lt;/em&gt;にさまざまなオプションの影響を&lt;em&gt;測定&lt;/em&gt;するのが最善だと思いました。 いくつかの簡単なデータから始めましょう：</target>
+        </trans-unit>
+        <trans-unit id="28ff78fa5b07af5d0e3d7492a98d06fe91ed622f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;UPDATE&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;UPDATE&lt;/strong&gt;:</target>
+        </trans-unit>
+        <trans-unit id="d11a8e1d536d373238c3435a955657ece24fd305" translate="yes" xml:space="preserve">
+          <source>A 28 MB TAB-delimited text file (approximately 865,000 records) of the &lt;a href=&quot;http://www.toronto.ca/open/datasets/ttc-routes&quot;&gt;complete transit schedule for the city of Toronto&lt;/a&gt;</source>
+          <target state="translated">&lt;a href=&quot;http://www.toronto.ca/open/datasets/ttc-routes&quot;&gt;トロント市の完全な輸送スケジュール&lt;/a&gt;の28 MBのタブ区切りテキストファイル（約865,000レコード）</target>
+        </trans-unit>
+        <trans-unit id="7a43bd3a7ef7eab400ead152ddcab810fb34cbd0" translate="yes" xml:space="preserve">
+          <source>A little slower than the previous optimization at &lt;strong&gt;64,000 inserts per second.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;毎秒64,000挿入&lt;/strong&gt;という以前の最適化より少し遅い&lt;strong&gt;。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="9f763d7016e134b7f26a749db3a5f6f6a28b8a9b" translate="yes" xml:space="preserve">
+          <source>A slight refactoring to the string processing code used in our parameter binding has allowed us to perform &lt;strong&gt;96,700 inserts per second.&lt;/strong&gt; I think it's safe to say that this is &lt;em&gt;plenty fast&lt;/em&gt;. As we start to tweak other variables (i.e. page size, index creation, etc.) this will be our benchmark.</source>
+          <target state="translated">パラメータバインディングで使用される文字列処理コードを少しリファクタリングすることで、 &lt;strong&gt;毎秒96,700回の挿入&lt;/strong&gt;を実行できるようになりました&lt;strong&gt;。&lt;/strong&gt; これは&lt;em&gt;かなり高速&lt;/em&gt;だと言っても安全だと思います。 他の変数（つまり、ページサイズ、インデックスの作成など）を微調整し始めると、これがベンチマークになります。</target>
+        </trans-unit>
+        <trans-unit id="8df6f713ac0e07c6021d93f5e0c15401d3336b1d" translate="yes" xml:space="preserve">
+          <source>After reading this tutorial, I tried to implement it to my program.</source>
+          <target state="translated">このチュートリアルを読んだ後、自分のプログラムに実装してみました。</target>
+        </trans-unit>
+        <trans-unit id="ea6e032fcc1739cdfb3de8cd3a6c6dfc44b90167" translate="yes" xml:space="preserve">
+          <source>After two weeks of research and checking multiple resources: Hard Drive, Ram, Cache, I found out that some settings on your hard drive can affect the I/O rate. By clicking properties on your desired output drive you can see two options in the general tab. Opt1: Compress this drive, Opt2: Allow files of this drive to have contents indexed.</source>
+          <target state="translated">2週間かけて調べて複数のリソースを確認した結果 ハードドライブ、ラム、キャッシュなど複数のリソースを調べた結果、ハードドライブの設定によってIOレートに影響があることがわかりました。希望する出力ドライブのプロパティをクリックすると、一般タブに2つのオプションが表示されます。Opt1:このドライブを圧縮します。Opt2:このドライブを圧縮する。Opt2:このドライブのファイルの内容をインデックス化することを許可する。</target>
+        </trans-unit>
+        <trans-unit id="123802917e1e1b5959658891a69eb20a10c75487" translate="yes" xml:space="preserve">
+          <source>Also for us, SHAREDCACHE made the performance slower, so I manually put PRIVATECACHE (cause it was enabled globally for us)</source>
+          <target state="translated">また、SHAREDCACHEを使うとパフォーマンスが遅くなるので、手動でPRIVATECACHEを入れました(グローバルに有効になっていたので)。</target>
+        </trans-unit>
+        <trans-unit id="4583ff4050220eaa4631bc21a580cf8fe41b8f3b" translate="yes" xml:space="preserve">
+          <source>Although not specifically an SQLite improvement, I don't like the extra &lt;code&gt;char*&lt;/code&gt; assignment operations in the &lt;code&gt;while&lt;/code&gt; loop. Let's quickly refactor that code to pass the output of &lt;code&gt;strtok()&lt;/code&gt; directly into &lt;code&gt;sqlite3_bind_text()&lt;/code&gt;, and let the compiler try to speed things up for us:</source>
+          <target state="translated">特にSQLiteの改善ではありませんが、 &lt;code&gt;while&lt;/code&gt; ループでの余分な &lt;code&gt;char*&lt;/code&gt; 代入演算は好きではありません。 そのコードをすばやくリファクタリングして &lt;code&gt;strtok()&lt;/code&gt; の出力を直接 &lt;code&gt;sqlite3_bind_text()&lt;/code&gt; に渡し 、コンパイラーに高速化してもらいましょう。</target>
+        </trans-unit>
+        <trans-unit id="26e259678078857d966992a8f6abac77d4d0cd86" translate="yes" xml:space="preserve">
+          <source>As expected, bulk-inserts are slower if one column is indexed, but it does make a difference if the index is created after the data is inserted. Our no-index baseline is 96,000 inserts per second. &lt;strong&gt;Creating the index first then inserting data gives us 47,700 inserts per second, whereas inserting the data first then creating the index gives us 63,300 inserts per second.&lt;/strong&gt;</source>
+          <target state="translated">予想どおり、1つの列にインデックスが付けられている場合、一括挿入は遅くなりますが、データが挿入された後にインデックスが作成された場合は違いがあります。 インデックスなしのベースラインは、1秒あたり96,000挿入です。 &lt;strong&gt;最初にインデックスを作成してからデータを挿入すると、1秒あたり47,700回の挿入が行われますが、最初にデータを挿入してからインデックスを作成すると、1秒あたり63,300回の挿入が行われます。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="087e0edf98958c039e2818a7fb1853f6115bf21c" translate="yes" xml:space="preserve">
+          <source>Before we start measuring &lt;code&gt;SELECT&lt;/code&gt; performance, we know that we'll be creating indices. It's been suggested in one of the answers below that when doing bulk inserts, it is faster to create the index after the data has been inserted (as opposed to creating the index first then inserting the data). Let's try:</source>
+          <target state="translated">&lt;code&gt;SELECT&lt;/code&gt; パフォーマンスの測定を開始する前に、インデックスを作成することを知っています。 以下の回答の1つで、一括挿入を行う場合、データを挿入した後にインデックスを作成する方が（最初にインデックスを作成してからデータを挿入するのではなく）速いことが示唆されています。 やってみよう：</target>
+        </trans-unit>
+        <trans-unit id="872e67d1abe340cdbf86668e654d983f7d5c9e25" translate="yes" xml:space="preserve">
+          <source>Bulk imports seems to perform best if you can chunk your &lt;strong&gt;INSERT/UPDATE&lt;/strong&gt; statements.  A value of 10,000 or so has worked well for me on a table with only a few rows, YMMV...</source>
+          <target state="translated">一括インポートは、 &lt;strong&gt;INSERT / UPDATE&lt;/strong&gt;ステートメントをチャンクできる場合に最適に実行されます。 10,000行程度の値であれば、行数が少ないテーブル、YMMV ...</target>
+        </trans-unit>
+        <trans-unit id="671341a42a7c965624dd8daf9888d2a9ef366288" translate="yes" xml:space="preserve">
+          <source>By default, SQLite will evaluate every INSERT / UPDATE statement within a unique transaction. If performing a large number of inserts, it's advisable to wrap your operation in a transaction:</source>
+          <target state="translated">デフォルトでは、SQLite は一意のトランザクション内のすべての INSERT UPDATE ステートメントを評価します。多数の挿入を実行する場合は、トランザクション内で操作をラップすることをお勧めします。</target>
+        </trans-unit>
+        <trans-unit id="bbd325acdd91b4ca873182b6a019ce434225ae43" translate="yes" xml:space="preserve">
+          <source>By default, SQLite will pause after issuing a OS-level write command. This guarantees that the data is written to the disk. By setting &lt;code&gt;synchronous = OFF&lt;/code&gt;, we are instructing SQLite to simply hand-off the data to the OS for writing and then continue. There's a chance that the database file may become corrupted if the computer suffers a catastrophic crash (or power failure) before the data is written to the platter:</source>
+          <target state="translated">デフォルトでは、SQLiteはOSレベルの書き込みコマンドを発行した後に一時停止します。 これにより、データがディスクに書き込まれることが保証されます。 &lt;code&gt;synchronous = OFF&lt;/code&gt; 設定することにより、SQLiteにデータをOSにハンドオフして書き込みを行い、続行するように指示しています。 データがプラッタに書き込まれる前にコンピュータに壊滅的なクラッシュ（または電源障害）が発生すると、データベースファイルが破損する可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="9021172ebb7b79e513f34761501efc24dc16188c" translate="yes" xml:space="preserve">
+          <source>By disabling these two options all 3 PCs now take approximately the same time to finish (1hr and 20 to 40min). If you encounter slow inserts check whether your hard drive is configured with these options. It will save you lots of time and headaches trying to find the solution</source>
+          <target state="translated">この2つのオプションを無効にすることで、3台のPCがほぼ同じ時間(1時間と20~40分)で終了するようになりました。遅い挿入が発生した場合は、お使いのハードドライブがこれらのオプションで設定されているかどうかを確認してください。これにより、解決策を見つけるのにかかる時間と頭痛の種を大幅に減らすことができます。</target>
+        </trans-unit>
+        <trans-unit id="b433a2b1f636acc88cf161d1b849771010a891d6" translate="yes" xml:space="preserve">
+          <source>CREATE INDEX then INSERT vs. INSERT then CREATE INDEX</source>
+          <target state="translated">CREATE INDEX then INSERT vs.INSERT then CREATE INDEX</target>
+        </trans-unit>
+        <trans-unit id="3a324f600d2cc2caa3c71c2e0bb04baf34e8a893" translate="yes" xml:space="preserve">
+          <source>Call bulkInsert method :</source>
+          <target state="translated">bulkInsertメソッドを呼び出します。</target>
+        </trans-unit>
+        <trans-unit id="bcdd9e61da1685f26f0ee4233e52764e50d2bfe3" translate="yes" xml:space="preserve">
+          <source>Consider storing the rollback journal in memory by evaluating &lt;code&gt;PRAGMA journal_mode = MEMORY&lt;/code&gt;. Your transaction will be faster, but if you lose power or your program crashes during a transaction you database could be left in a corrupt state with a partially-completed transaction:</source>
+          <target state="translated">&lt;code&gt;PRAGMA journal_mode = MEMORY&lt;/code&gt; 評価して、ロールバックジャーナルをメモリに格納することを検討してください。 トランザクションは高速になりますが、電源が失われたり、トランザクション中にプログラムがクラッシュしたりすると、データベースが部分的に完了したトランザクションで破損した状態のままになる可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="9f72f2c529b0b1804a0aaf2ee6c8d2facf67621b" translate="yes" xml:space="preserve">
+          <source>Don't use &lt;code&gt;!feof(file)&lt;/code&gt;!</source>
+          <target state="translated">&lt;code&gt;!feof(file)&lt;/code&gt; を使用しないでください！</target>
+        </trans-unit>
+        <trans-unit id="4326aa174e0a3d69e5993b7a70921bb5ff0f2f6e" translate="yes" xml:space="preserve">
+          <source>Fantastic! We're able to do &lt;strong&gt;72,000 inserts per second.&lt;/strong&gt;</source>
+          <target state="translated">素晴らしい！ &lt;strong&gt;1秒あたり72,000回の挿入&lt;/strong&gt;を実行できます&lt;strong&gt;。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="bfc83a3f5364bbc68fa36baf227468de56749928" translate="yes" xml:space="preserve">
+          <source>First find the items, in the table:</source>
+          <target state="translated">まず、表の中から、項目を探します。</target>
+        </trans-unit>
+        <trans-unit id="090aa308f4299a2ee89598663268aa093622fa6a" translate="yes" xml:space="preserve">
+          <source>For older versions of SQLite - Consider a less paranoid journal mode (&lt;code&gt;pragma journal_mode&lt;/code&gt;). There is &lt;code&gt;NORMAL&lt;/code&gt;, and then there is &lt;code&gt;OFF&lt;/code&gt;, which can significantly increase insert speed if you're not too worried about the database possibly getting corrupted if the OS crashes. If your application crashes the data should be fine. Note that in newer versions, the &lt;code&gt;OFF/MEMORY&lt;/code&gt; settings are not safe for application level crashes.</source>
+          <target state="translated">SQLiteの古いバージョンの場合-それほど偏執狂的でないジャーナルモード（ &lt;code&gt;pragma journal_mode&lt;/code&gt; ）を検討してください。 &lt;code&gt;NORMAL&lt;/code&gt; と &lt;code&gt;OFF&lt;/code&gt; があり、OSがクラッシュした場合にデータベースが破損する可能性をあまり心配しなければ、挿入速度を大幅に向上させることができます。 アプリケーションがクラッシュした場合、データは問題ありません。 新しいバージョンでは、 &lt;code&gt;OFF/MEMORY&lt;/code&gt; 設定はアプリケーションレベルのクラッシュに対して安全ではないことに注意してください。</target>
+        </trans-unit>
+        <trans-unit id="2195eed65de850d03a01f0bdc090231f2d372a07" translate="yes" xml:space="preserve">
+          <source>For our small (200mb) db this made 50-75% speed-up (3.8.0.2 64-bit on Windows 7). Our tables are heavily non-normalized (1000-1500 columns, roughly 100,000 or more rows).</source>
+          <target state="translated">私たちの小さな(200mb)dbでは、これにより50-75%のスピードアップを実現しました(Windows 7では3.8.0.2 64bit)。私たちのテーブルは正規化されていません(1000~1500列、約10万行以上)。</target>
+        </trans-unit>
+        <trans-unit id="76b075177903579178f27a07d252a978c4cb462b" translate="yes" xml:space="preserve">
+          <source>Great! We can do 920,000 inserts per second, provided we don't actually do any inserts :-)</source>
+          <target state="translated">すごいですね! 1秒間に92万回の挿入が可能だが、実際に挿入をしない限りは :-)</target>
+        </trans-unit>
+        <trans-unit id="6f22b5c109f71a3ddf56af02c88cbacffcd2a204" translate="yes" xml:space="preserve">
+          <source>Here is where your suggestion fails. You use a single transaction for all the records and a single insert with no errors/fails. Let's say that you are splitting each record into multiple inserts on different tables. What happens if the record is broken?</source>
+          <target state="translated">ここで、あなたの提案が失敗するところです。あなたは、すべてのレコードに単一のトランザクションを使用し、単一の挿入でエラーが発生しないようにしています。各レコードを別のテーブルに複数のインサートに分割しているとしましょう。レコードが壊れている場合はどうなりますか?</target>
+        </trans-unit>
+        <trans-unit id="026af1bc2703948250f4b6f33ec6faec09054f5b" translate="yes" xml:space="preserve">
+          <source>I coudn't get any gain from transactions until I raised cache_size to a higher value i.e.  &lt;code&gt;PRAGMA cache_size=10000;&lt;/code&gt;</source>
+          <target state="translated">cache_sizeをより高い値、つまり &lt;code&gt;PRAGMA cache_size=10000;&lt;/code&gt; に上げるまで、トランザクションから利益を得ることはできませんでした。</target>
+        </trans-unit>
+        <trans-unit id="8eecbe52b4dec4bfb03e25ab1108fd0f15070e96" translate="yes" xml:space="preserve">
+          <source>I have 4-5 files that contain addresses. Each file has approx 30 million records. I am using the same configuration that you are suggesting but my number of INSERTs per second is way low (~10.000 records per sec).</source>
+          <target state="translated">私は住所を含むファイルを4-5個持っています。各ファイルには約3000万レコードがあります。私はあなたが提案しているのと同じ構成を使用していますが、1秒あたりのINSERTの数が非常に少ないです(〜10.000レコード/秒)。</target>
+        </trans-unit>
+        <trans-unit id="11917b0c226929497af8ba620faa1e4b102c1e64" translate="yes" xml:space="preserve">
+          <source>I'd gladly take suggestions for other scenarios to try... And will be compiling similar data for SELECT queries soon.</source>
+          <target state="translated">喜んで他のシナリオの提案を受けて試してみたいと思います...そして、すぐにSELECTクエリのための同様のデータをコンパイルする予定です。</target>
+        </trans-unit>
+        <trans-unit id="5172e4b2cd07b7be64b179445d83376ec1008f29" translate="yes" xml:space="preserve">
+          <source>I'm using it in production code where I frequently need to import large datasets, and I'm pretty happy with it.</source>
+          <target state="translated">大規模なデータセットを頻繁にインポートする必要があるプロダクションコードで使用していますが、とても満足しています。</target>
+        </trans-unit>
+        <trans-unit id="3ac5e5ce6fc4a6695514c6dae964ca288c928cef" translate="yes" xml:space="preserve">
+          <source>I'm using the SQLite &quot;Amalgamation&quot;, compiled directly into my test application. The SQLite version I happen to have is a bit older (3.6.7), but I suspect these results will be comparable to the latest release (please leave a comment if you think otherwise).</source>
+          <target state="translated">私のテストアプリケーションに直接コンパイルされたSQLite &quot;Amalgamation &quot;を使用しています。私がたまたま持っているSQLiteのバージョンは少し古い(3.6.7)ですが、これらの結果は最新のリリースと比較しても遜色ないと思います(そうでないと思われる場合はコメントを残してください)。</target>
+        </trans-unit>
+        <trans-unit id="46f70793f4a5cfd620882059cb0f77361cfd03c5" translate="yes" xml:space="preserve">
+          <source>I've also asked similar questions &lt;a href=&quot;https://stackoverflow.com/questions/784173/what-are-the-performance-characteristics-of-sqlite-with-very-large-database-files&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;https://stackoverflow.com/questions/768708/are-there-known-issues-with-using-sqlite-and-file-locking-on-different-platforms&quot;&gt;here&lt;/a&gt;.</source>
+          <target state="translated">私も&lt;a href=&quot;https://stackoverflow.com/questions/784173/what-are-the-performance-characteristics-of-sqlite-with-very-large-database-files&quot;&gt;ここ&lt;/a&gt;と&lt;a href=&quot;https://stackoverflow.com/questions/768708/are-there-known-issues-with-using-sqlite-and-file-locking-on-different-platforms&quot;&gt;ここで&lt;/a&gt;同様の質問をしました 。</target>
+        </trans-unit>
+        <trans-unit id="dfe5fd5527d0cb852bc797c4c3ee406f746ecc8c" translate="yes" xml:space="preserve">
+          <source>If anyone has any other ideas on how to speed it up, I am open to suggestions.</source>
+          <target state="translated">もし誰か他に高速化する方法があれば、提案をお待ちしています。</target>
+        </trans-unit>
+        <trans-unit id="7d973398e85df8aa77d57e79abb3b81143a022d7" translate="yes" xml:space="preserve">
+          <source>If you are using multiple threads, you can try using the &lt;a href=&quot;http://sqlite.org/c3ref/enable_shared_cache.html&quot;&gt;shared page cache&lt;/a&gt;, which will allow loaded pages to be shared between threads, which can avoid expensive I/O calls.</source>
+          <target state="translated">複数のスレッドを使用している場合は、 &lt;a href=&quot;http://sqlite.org/c3ref/enable_shared_cache.html&quot;&gt;共有ページキャッシュ&lt;/a&gt;を使用してみてください 。これにより、読み込まれたページをスレッド間で共有できるようになり、負荷の高いI / O呼び出しを回避できます。</target>
+        </trans-unit>
+        <trans-unit id="9909caa1776cc754ea391a5613c40fbd59f9912b" translate="yes" xml:space="preserve">
+          <source>If you care only about reading, somewhat faster (but might read stale data) version is to read from multiple connections from multiple threads (connection per-thread).</source>
+          <target state="translated">読み込みだけを気にするのであれば、やや高速な(しかし、古いデータを読む可能性がある)バージョンは、複数のスレッドから複数の接続から読み取ることです(スレッドごとの接続)。</target>
+        </trans-unit>
+        <trans-unit id="0b5e37f7ae64ee540105a2d6879bb33438066595" translate="yes" xml:space="preserve">
+          <source>If you have indices, consider calling &lt;code&gt;CREATE INDEX&lt;/code&gt; after doing all your inserts. This is significantly faster than creating the index and then doing your inserts.</source>
+          <target state="translated">インデックスがある場合は、すべての挿入を行った後に &lt;code&gt;CREATE INDEX&lt;/code&gt; を呼び出すことを検討してください。 これは、インデックスを作成してから挿入するよりも大幅に高速です。</target>
+        </trans-unit>
+        <trans-unit id="050d6cf06387f361bcb1b0a00b8117a50e73b6db" translate="yes" xml:space="preserve">
+          <source>Imported 864913 records in 0.94
+  seconds</source>
+          <target state="translated">864913レコードを0.94秒でインポート</target>
+        </trans-unit>
+        <trans-unit id="ffb4f30cad268801a7084f86177635a7739c17eb" translate="yes" xml:space="preserve">
+          <source>Imported 864913 records in 10.94
+  seconds</source>
+          <target state="translated">864913レコードを10.94秒でインポート</target>
+        </trans-unit>
+        <trans-unit id="ad66121de714d2631e9f96a8c355fd562e17c3d9" translate="yes" xml:space="preserve">
+          <source>Imported 864913 records in 12.00
+  seconds</source>
+          <target state="translated">12.00秒で864913レコードをインポート</target>
+        </trans-unit>
+        <trans-unit id="7581475071859f0e2df5c5baa78a47d7b29eb343" translate="yes" xml:space="preserve">
+          <source>Imported 864913 records in 12.41
+  seconds</source>
+          <target state="translated">864913レコードを12.41秒でインポート</target>
+        </trans-unit>
+        <trans-unit id="1fb6a8f5771eb996d9c96dec9c9972b1f7a9e674" translate="yes" xml:space="preserve">
+          <source>Imported 864913 records in 13.50
+  seconds</source>
+          <target state="translated">864913レコードを13.50秒でインポート</target>
+        </trans-unit>
+        <trans-unit id="d736e88540c433cf8f1e9c878c95b8f56e1ea201" translate="yes" xml:space="preserve">
+          <source>Imported 864913 records in 13.66
+  seconds</source>
+          <target state="translated">864913レコードを13.66秒でインポート</target>
+        </trans-unit>
+        <trans-unit id="9cf20009ccbdebfe12b3df7ef0636a31ba57d3da" translate="yes" xml:space="preserve">
+          <source>Imported 864913 records in 16.27
+  seconds</source>
+          <target state="translated">864913レコードを16.27秒でインポート</target>
+        </trans-unit>
+        <trans-unit id="8df99d63ed560901211f5c08656f730de84694b0" translate="yes" xml:space="preserve">
+          <source>Imported 864913 records in 18.13
+  seconds</source>
+          <target state="translated">864913レコードを18.13秒でインポート</target>
+        </trans-unit>
+        <trans-unit id="1c548ea621ed72950e828c5b68b12bf11f6ff451" translate="yes" xml:space="preserve">
+          <source>Imported 864913 records in 38.03
+  seconds</source>
+          <target state="translated">864913レコードを38.03秒でインポート</target>
+        </trans-unit>
+        <trans-unit id="154309e441b9898bacf87ed35cc90b6b605fec43" translate="yes" xml:space="preserve">
+          <source>Imported 864913 records in 8.94
+  seconds</source>
+          <target state="translated">864913レコードを8.94秒でインポート</target>
+        </trans-unit>
+        <trans-unit id="e912b781943a231d89776110872a3ee052f22c58" translate="yes" xml:space="preserve">
+          <source>Imported 864913 records in 9933.61
+  seconds</source>
+          <target state="translated">864913レコードを9933.61秒でインポート</target>
+        </trans-unit>
+        <trans-unit id="5c0542021a1c71e3d1128b2a31c3b68cde8950f7" translate="yes" xml:space="preserve">
+          <source>Improve INSERT-per-second performance of SQLite</source>
+          <target state="translated">SQLiteのINSERT毎秒パフォーマンスの向上</target>
+        </trans-unit>
+        <trans-unit id="437377a502bface456863ef3ef3ca4aa7c7b5e37" translate="yes" xml:space="preserve">
+          <source>In Addition to my answer above, you should keep in mind that inserts per second depending on the hard drive you are using too. I tested it on 3 different PCs with different hard drives and got massive differences in times. PC1 (1hr 30m), PC2 (6hrs) PC3 (14hrs), so I started wondering why would that be.</source>
+          <target state="translated">上記の私の答えに加えて、あなたもあなたが使用しているハードドライブに応じて1秒間に挿入することを念頭に置いておく必要があります。私は、異なるハードドライブを持つ3つの異なるPCでそれをテストし、時間に大きな違いを得ました。PC1(1時間30分)、PC2(6時間)、PC3(14時間)となっています。</target>
+        </trans-unit>
+        <trans-unit id="084c1b49fd936281f7874c2b66922cccc3363366" translate="yes" xml:space="preserve">
+          <source>Inspired by this post and by the Stack Overflow question that led me here -- &lt;a href=&quot;https://stackoverflow.com/questions/1609637/is-it-possible-to-insert-multiple-rows-at-a-time-in-an-sqlite-database&quot;&gt;Is it possible to insert multiple rows at a time in an SQLite database?&lt;/a&gt; -- I've posted my first &lt;a href=&quot;http://en.wikipedia.org/wiki/Git_%28software%29&quot;&gt;Git&lt;/a&gt; repository:</source>
+          <target state="translated">この投稿とここで私を導いたスタックオーバーフローの質問に触発され&lt;a href=&quot;https://stackoverflow.com/questions/1609637/is-it-possible-to-insert-multiple-rows-at-a-time-in-an-sqlite-database&quot;&gt;ました-SQLiteデータベースに一度に複数の行を挿入することは可能ですか？&lt;/a&gt; -私は最初の&lt;a href=&quot;http://en.wikipedia.org/wiki/Git_%28software%29&quot;&gt;Git&lt;/a&gt;リポジトリを投稿しました：</target>
+        </trans-unit>
+        <trans-unit id="c680b9c6bf7b7bee16783907b9286d2edf9090e1" translate="yes" xml:space="preserve">
+          <source>It's not super-practical to store our database in RAM, but it's impressive that we can perform &lt;strong&gt;79,000 inserts per second.&lt;/strong&gt;</source>
+          <target state="translated">データベースをRAMに保存することは実際的ではありませんが、 &lt;strong&gt;1秒あたり79,000回の挿入&lt;/strong&gt;を実行できることは印象的です&lt;strong&gt;。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a48a72fa6f2a189900ebabff54aef564cc57e5d1" translate="yes" xml:space="preserve">
+          <source>Just for kicks, let's build upon all of the previous optimizations and redefine the database filename so we're working entirely in RAM:</source>
+          <target state="translated">これまでの最適化の上に構築し、データベースのファイル名を再定義して、完全にRAMで動作するようにしてみましょう。</target>
+        </trans-unit>
+        <trans-unit id="def03dbbcc838f12adc51dd0a6831295811e8a51" translate="yes" xml:space="preserve">
+          <source>Let's combine the previous two optimizations. It's a little more risky (in case of a crash), but we're just importing data (not running a bank):</source>
+          <target state="translated">前の2つの最適化を組み合わせてみましょう。少しリスクが高くなりますが(クラッシュした場合)、データをインポートしているだけです(銀行を運営しているわけではありません)。</target>
+        </trans-unit>
+        <trans-unit id="fff50fdf32382d53297912d58830059c40882d48" translate="yes" xml:space="preserve">
+          <source>Link: &lt;a href=&quot;https://www.vogella.com/tutorials/AndroidSQLite/article.html&quot;&gt;https://www.vogella.com/tutorials/AndroidSQLite/article.html&lt;/a&gt;
+check Using ContentProvider Section for more details</source>
+          <target state="translated">リンク： &lt;a href=&quot;https://www.vogella.com/tutorials/AndroidSQLite/article.html&quot;&gt;https&lt;/a&gt; ://www.vogella.com/tutorials/AndroidSQLite/article.html詳細については、ContentProviderセクションの使用を確認してください</target>
+        </trans-unit>
+        <trans-unit id="cef93c612411b122f72e46695577441dc0b9538a" translate="yes" xml:space="preserve">
+          <source>More detail: &lt;a href=&quot;http://www.hoogli.com/blogs/micro/index.html#Avoid_sqlite3_clear_bindings%28%29&quot;&gt;Avoid_sqlite3_clear_bindings()&lt;/a&gt;</source>
+          <target state="translated">詳細： &lt;a href=&quot;http://www.hoogli.com/blogs/micro/index.html#Avoid_sqlite3_clear_bindings%28%29&quot;&gt;回避_sqlite3_clear_bindings（）&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="fd6066b18d7c77401d867d16f3862c393664eb4f" translate="yes" xml:space="preserve">
+          <source>My solution was to use &lt;strong&gt;multiple&lt;/strong&gt; transactions. I begin and end a transaction every 10.000 records (Don't ask why that number, it was the fastest one I tested). I created an array sized 10.000 and insert the successful records there. When the error occurs, I do a rollback, begin a transaction, insert the records from my array, commit and then begin a new transaction after the broken record.</source>
+          <target state="translated">私の解決策は、 &lt;strong&gt;複数の&lt;/strong&gt;トランザクションを使用&lt;strong&gt;する&lt;/strong&gt;ことでした。 10.000レコードごとにトランザクションを開始および終了します（なぜその数をテストしないでください。これは、私がテストしたものの中で最速でした）。 10.000サイズの配列を作成し、そこに成功したレコードを挿入しました。 エラーが発生したら、ロールバックを実行してトランザクションを開始し、配列からレコードを挿入してコミットし、壊れたレコードの後に​​新しいトランザクションを開始します。</target>
+        </trans-unit>
+        <trans-unit id="6b739c10e74293364ba0d24439f65294b7e5a99a" translate="yes" xml:space="preserve">
+          <source>My test machine is a 3.60 GHz P4 running Windows XP.</source>
+          <target state="translated">私のテストマシンは、3.60GHzのP4でWindows XPを実行しています。</target>
+        </trans-unit>
+        <trans-unit id="725b0e5796b8baedf9846345cfd466c118fc41d9" translate="yes" xml:space="preserve">
+          <source>Nice! There's a little bit more code (don't forget to call &lt;code&gt;sqlite3_clear_bindings&lt;/code&gt; and &lt;code&gt;sqlite3_reset&lt;/code&gt;), but we've more than doubled our performance to &lt;strong&gt;53,000 inserts per second.&lt;/strong&gt;</source>
+          <target state="translated">いいね！ もう少しコードがあります（ &lt;code&gt;sqlite3_clear_bindings&lt;/code&gt; と &lt;code&gt;sqlite3_reset&lt;/code&gt; を呼び出すことを忘れないでください）が、パフォーマンスを2倍以上にして、 &lt;strong&gt;毎秒53,000挿入に&lt;/strong&gt;なりました&lt;strong&gt;。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="71cb481da4769935c7cb6729efb5b6f47e162d66" translate="yes" xml:space="preserve">
+          <source>On bulk inserts</source>
+          <target state="translated">一括挿入の場合</target>
+        </trans-unit>
+        <trans-unit id="23976e24ccb5c88d260af95f9f2b0d95e8f2c905" translate="yes" xml:space="preserve">
+          <source>Optimizing SQLite is tricky. Bulk-insert performance of a C application can vary from 85 inserts per second to over 96,000 inserts per second!</source>
+          <target state="translated">SQLite の最適化はトリッキーです。Cアプリケーションのバルクインサートのパフォーマンスは、毎秒85回のインサートから毎秒96,000回以上のインサートまで様々です!</target>
+        </trans-unit>
+        <trans-unit id="b15b2b66aeaf59f9d4af467b7dce9e1e809af568" translate="yes" xml:space="preserve">
+          <source>PRAGMA journal_mode = MEMORY</source>
+          <target state="translated">PRAGMA log_mode=MEMORY</target>
+        </trans-unit>
+        <trans-unit id="03a9d7f69c55c2b9bb13076c851bb0c196528d38" translate="yes" xml:space="preserve">
+          <source>PRAGMA synchronous = OFF</source>
+          <target state="translated">PRAGMA同期=OFF</target>
+        </trans-unit>
+        <trans-unit id="e1c75641cd03f3af313aee27467012f92b04b104" translate="yes" xml:space="preserve">
+          <source>PRAGMA synchronous = OFF &lt;em&gt;and&lt;/em&gt; PRAGMA journal_mode = MEMORY</source>
+          <target state="translated">PRAGMA同期= OFF &lt;em&gt;および&lt;/em&gt; PRAGMA journal_mode = MEMORY</target>
+        </trans-unit>
+        <trans-unit id="847bfcdea40fa982b77f7b8713d9d1c6b544bfb7" translate="yes" xml:space="preserve">
+          <source>Playing with page sizes makes a difference as well (&lt;code&gt;PRAGMA page_size&lt;/code&gt;). Having larger page sizes can make reads and writes go a bit faster as larger pages are held in memory. Note that more memory will be used for your database.</source>
+          <target state="translated">ページサイズで遊ぶことも違いを &lt;code&gt;PRAGMA page_size&lt;/code&gt; ます（ PRAGMA page_size ）。 より大きなページサイズを使用すると、より大きなページがメモリに保持されるため、読み取りと書き込みが少し速くなります。 より多くのメモリがデータベースに使用されることに注意してください。</target>
+        </trans-unit>
+        <trans-unit id="e22067ebafc73b20c18e9861a705da211f5109b2" translate="yes" xml:space="preserve">
+          <source>Prior to calling &lt;a href=&quot;https://www.sqlite.org/c3ref/step.html&quot;&gt;sqlite3_step()&lt;/a&gt; for the first time or immediately
+  after &lt;a href=&quot;https://www.sqlite.org/c3ref/reset.html&quot;&gt;sqlite3_reset()&lt;/a&gt;, the application can invoke the
+  &lt;a href=&quot;https://www.sqlite.org/c3ref/bind_blob.html&quot;&gt;sqlite3_bind()&lt;/a&gt; interfaces to attach values to the parameters. Each
+  call to &lt;a href=&quot;https://www.sqlite.org/c3ref/bind_blob.html&quot;&gt;sqlite3_bind()&lt;/a&gt; overrides prior bindings on the same parameter</source>
+          <target state="translated">&lt;a href=&quot;https://www.sqlite.org/c3ref/step.html&quot;&gt;sqlite3_step（）&lt;/a&gt;を初めて呼び出す前、または&lt;a href=&quot;https://www.sqlite.org/c3ref/reset.html&quot;&gt;sqlite3_reset（）の&lt;/a&gt;直後に、アプリケーションは&lt;a href=&quot;https://www.sqlite.org/c3ref/bind_blob.html&quot;&gt;sqlite3_bind（）&lt;/a&gt;インターフェースを呼び出して、パラメーターに値をアタッチできます。 &lt;a href=&quot;https://www.sqlite.org/c3ref/bind_blob.html&quot;&gt;sqlite3_bind（）を&lt;/a&gt;呼び出すたびに、同じパラメーターの以前のバインディングがオーバーライドされます</target>
+        </trans-unit>
+        <trans-unit id="d1dc6289bf46af7ecb10109083938ec233b12f44" translate="yes" xml:space="preserve">
+          <source>Put inserts/updates in a transaction.</source>
+          <target state="translated">トランザクションにinsertsupdatesを入れます。</target>
+        </trans-unit>
+        <trans-unit id="9d00bcd205db77802eec1f76d0bfc2a4e82e6fe2" translate="yes" xml:space="preserve">
+          <source>Refactoring C Code</source>
+          <target state="translated">Cコードのリファクタリング</target>
+        </trans-unit>
+        <trans-unit id="b25e791003c46490e0166b007c32a101c17271c5" translate="yes" xml:space="preserve">
+          <source>Running the code as-is doesn't actually perform any database operations, but it will give us an idea of how fast the raw C file I/O and string processing operations are.</source>
+          <target state="translated">コードをそのまま実行しても実際にはデータベース操作は行われませんが、生のCファイルのIOと文字列処理操作がどれだけ速いかを知ることができます。</target>
+        </trans-unit>
+        <trans-unit id="7801bb5ecd32d8d6426f3434d9102bfe5f65316d" translate="yes" xml:space="preserve">
+          <source>Several tips:</source>
+          <target state="translated">いくつかのヒント。</target>
+        </trans-unit>
+        <trans-unit id="bf198eba07fea151a8fb44062f5cf968092033e2" translate="yes" xml:space="preserve">
+          <source>So here is where the rollback comes. The only issue with the rollback is that you lose all your inserts and start from the top. How can you solve this?</source>
+          <target state="translated">そこで、ここでロールバックの登場です。ロールバックの唯一の問題点は、すべてのインサートを失ってしまい、上からスタートしてしまうことです。これを解決するにはどうすればいいのでしょうか?</target>
+        </trans-unit>
+        <trans-unit id="db1afd310be73362aa7fb7a0a2c83f7cc9be9db1" translate="yes" xml:space="preserve">
+          <source>Summary (so far)</source>
+          <target state="translated">まとめ(今のところ</target>
+        </trans-unit>
+        <trans-unit id="fda992cd350165c2f1d88bde9d7d98e92fe66347" translate="yes" xml:space="preserve">
+          <source>Take advantage of saving space...smaller databases go faster. For instance, if you have key value pairs, try making the key an &lt;code&gt;INTEGER PRIMARY KEY&lt;/code&gt; if possible, which will replace the implied unique row number column in the table.</source>
+          <target state="translated">スペースの節約を活用してください...データベースが小さいほど高速になります。 たとえば、キーと値のペアがある場合、可能であればキーを &lt;code&gt;INTEGER PRIMARY KEY&lt;/code&gt; にしてみてください。これにより、テーブルの暗黙の一意の行番号列が置き換えられます。</target>
+        </trans-unit>
+        <trans-unit id="c6c60bb2b9aa2a9dcf08905210c5336ed8ba1be0" translate="yes" xml:space="preserve">
+          <source>That's better. Simply wrapping all of our inserts in a single transaction improved our performance to &lt;strong&gt;23,000 inserts per second.&lt;/strong&gt;</source>
+          <target state="translated">それは良いです。 すべての挿入を単一のトランザクションでラップするだけで、パフォーマンスが&lt;strong&gt;23,000挿入/秒に&lt;/strong&gt;向上しました&lt;strong&gt;。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="017b6041e5e97ed016693e8cbc3c4c24484ab010" translate="yes" xml:space="preserve">
+          <source>The &quot;Control&quot;</source>
+          <target state="translated">&quot;コントロール&quot;</target>
+        </trans-unit>
+        <trans-unit id="88cbff81bd98a7e52e52c7d398a52f2faba9c9c8" translate="yes" xml:space="preserve">
+          <source>The &quot;Worst-Case-Scenario&quot;</source>
+          <target state="translated">最悪のシナリオ」とは</target>
+        </trans-unit>
+        <trans-unit id="508178fc7a6c1685a9ce3f25f29c50b86c817345" translate="yes" xml:space="preserve">
+          <source>The &lt;a href=&quot;https://www.sqlite.org/cintro.html&quot;&gt;C API intro&lt;/a&gt; from the SQLite docs says:</source>
+          <target state="translated">SQLiteドキュメントからの&lt;a href=&quot;https://www.sqlite.org/cintro.html&quot;&gt;C APIイントロ&lt;/a&gt;は言う：</target>
+        </trans-unit>
+        <trans-unit id="38372a1525b1bf61a2f5f0cc1ddbbf17915e0784" translate="yes" xml:space="preserve">
+          <source>The ON CONFLICT command does not apply, cause if you have 10 elements in a record and you need each element inserted to a different table, if element 5 gets a CONSTRAINT error, then all previous 4 inserts need to go too.</source>
+          <target state="translated">ON CONFLICTコマンドは適用されません。レコードに10個の要素があり、各要素を別のテーブルに挿入する必要がある場合、要素5にCONSTRAINTエラーが発生した場合、以前の4つの挿入もすべて削除する必要があるからです。</target>
+        </trans-unit>
+        <trans-unit id="8ea1fabbe4633c8d4db54d4c842da90c9441b97d" translate="yes" xml:space="preserve">
+          <source>The algorithm I created helped me reduce my process by 2 hours. Final loading process of file 1hr 30m which is still slow but not compared to the 4hrs that it initially took. I managed to speed the inserts from 10.000/s to ~14.000/s</source>
+          <target state="translated">私が作成したアルゴリズムは、私のプロセスを2時間短縮するのに役立ちました。最終的なファイルの読み込みプロセスは1時間30分で、まだ遅いですが、最初にかかった4時間に比べれば、それほどではありません。10.000秒から~14.000秒までの挿入をなんとかスピードアップさせることができました。</target>
+        </trans-unit>
+        <trans-unit id="9f26c58828cd1c833c02f45b4f92100c4d5ab702" translate="yes" xml:space="preserve">
+          <source>The answer to your question is that the newer SQLite&amp;nbsp;3 has improved performance, use that.</source>
+          <target state="translated">あなたの質問への答えは、新しいSQLite 3はパフォーマンスが改善されているということです、それを使用してください。</target>
+        </trans-unit>
+        <trans-unit id="3987d3dbe6e66d288d9494f0c4a889acd57d2876" translate="yes" xml:space="preserve">
+          <source>The code in the test sets the bindings every time through which should be enough.</source>
+          <target state="translated">テストのコードは毎回バインディングを設定していますが、これで十分です。</target>
+        </trans-unit>
+        <trans-unit id="03189b3c8c0eb7bf3b9cf95a8e187e585d96d60f" translate="yes" xml:space="preserve">
+          <source>The code is compiled with &lt;a href=&quot;http://en.wikipedia.org/wiki/Visual_C%2B%2B#32-bit_versions&quot;&gt;Visual C++&lt;/a&gt; 2005 as &quot;Release&quot; with &quot;Full Optimization&quot; (/Ox) and Favor Fast Code (/Ot).</source>
+          <target state="translated">コードは&lt;a href=&quot;http://en.wikipedia.org/wiki/Visual_C%2B%2B#32-bit_versions&quot;&gt;Visual C ++&lt;/a&gt; 2005で「完全最適化」（/ Ox）付きの「リリース」としてコンパイルされ、高速コード（/ Ot）が優先されます。</target>
+        </trans-unit>
+        <trans-unit id="0ea5d284cecee101861f152c707c71f8fd74f317" translate="yes" xml:space="preserve">
+          <source>The improvements are now smaller, but we're up to &lt;strong&gt;69,600 inserts per second.&lt;/strong&gt;</source>
+          <target state="translated">改善点は小さくなりましたが、 &lt;strong&gt;1秒あたり&lt;/strong&gt;最大&lt;strong&gt;69,600挿入&lt;/strong&gt;です&lt;strong&gt;。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="be2689c857db56817bdb470b056a287c52a2e0c0" translate="yes" xml:space="preserve">
+          <source>There is nothing in the docs for &lt;a href=&quot;https://www.sqlite.org/c3ref/clear_bindings.html&quot;&gt;&lt;code&gt;sqlite3_clear_bindings&lt;/code&gt;&lt;/a&gt; saying you must call it in addition to simply setting the bindings.</source>
+          <target state="translated">&lt;a href=&quot;https://www.sqlite.org/c3ref/clear_bindings.html&quot;&gt; &lt;code&gt;sqlite3_clear_bindings&lt;/code&gt; &lt;/a&gt;のドキュメントには、単にバインディングを設定するだけでなく、それを呼び出す必要があると言っているものはありません。</target>
+        </trans-unit>
+        <trans-unit id="bf20f7e886b3170f117100780131fac01a688cee" translate="yes" xml:space="preserve">
+          <source>This answer &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/11769366/why-is-sqlalchemy-insert-with-sqlite-25-times-slower-than-using-sqlite3-directly/11769768#11769768&quot;&gt;Why is SQLAlchemy insert with sqlite 25 times slower than using sqlite3 directly?&lt;/a&gt;&lt;/em&gt; by SqlAlchemy Orm Author has 100k inserts in 0.5 sec, and I have seen similar results with python-sqlite and SqlAlchemy. Which leads me to believe that performance has improved with SQLite&amp;nbsp;3.</source>
+          <target state="translated">この回答&lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/11769366/why-is-sqlalchemy-insert-with-sqlite-25-times-slower-than-using-sqlite3-directly/11769768#11769768&quot;&gt;sqliteを使用したSQLAlchemyの挿入は、sqlite3を直接使用するよりも25倍遅いのはなぜですか？&lt;/a&gt;&lt;/em&gt; SqlAlchemyによるOrm Authorは0.5秒で10万回の挿入を行い、python-sqliteとSqlAlchemyで同様の結果を確認しました。 これにより、SQLite 3でパフォーマンスが向上したと思います。</target>
+        </trans-unit>
+        <trans-unit id="c6adca7440b2ae1858c40b313a78614c3cd32177" translate="yes" xml:space="preserve">
+          <source>This is going to be slow because the SQL will be compiled into VDBE code for every insert and every insert will happen in its own transaction. &lt;em&gt;How slow?&lt;/em&gt;</source>
+          <target state="translated">SQLは挿入ごとにVDBEコードにコンパイルされ、すべての挿入は独自のトランザクションで発生するため、これは遅くなります。 &lt;em&gt;どのくらい遅い？&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="db63715f64683425fd01f5904246eab4178b65d8" translate="yes" xml:space="preserve">
+          <source>This solution helped me bypass the issues I have when dealing with files containing bad/duplicate records (I had almost 4% bad records).</source>
+          <target state="translated">このソリューションは、私がbadduplicateレコードを含むファイルを扱う際に抱える問題を回避するのに役立ちました(私は4%近くの不良レコードを持っていました)。</target>
+        </trans-unit>
+        <trans-unit id="ed7f88668556c34e922129040d0b4cb1fff93abd" translate="yes" xml:space="preserve">
+          <source>Too many or too little threads won't do it, you need to benchmark and profile yourself.</source>
+          <target state="translated">スレッドが多すぎても少なすぎてもダメなんだよ、自分でベンチマークしてプロファイリングしないと。</target>
+        </trans-unit>
+        <trans-unit id="5e1b2a6b6d80f8d0e183b885c337e18d7f131c6e" translate="yes" xml:space="preserve">
+          <source>Try using &lt;code&gt;SQLITE_STATIC&lt;/code&gt; instead of &lt;code&gt;SQLITE_TRANSIENT&lt;/code&gt; for those inserts.</source>
+          <target state="translated">これらの挿入には、 &lt;code&gt;SQLITE_STATIC&lt;/code&gt; ではなく &lt;code&gt;SQLITE_TRANSIENT&lt;/code&gt; を使用してみてください。</target>
+        </trans-unit>
+        <trans-unit id="054498b4ab93a63c9779fb5e4449fc342376cebb" translate="yes" xml:space="preserve">
+          <source>Use ContentProvider for inserting the bulk data in db.
+The below method used for inserting bulk data in to database. This should Improve INSERT-per-second performance of SQLite.</source>
+          <target state="translated">データベースへのバルクデータの挿入にはContentProviderを使用します。データベースへのバルクデータの挿入には以下の方法を使用します。これにより、SQLiteのINSERT毎秒のパフォーマンスが向上するはずです。</target>
+        </trans-unit>
+        <trans-unit id="86258bb2c189f1c4b45a4e393182d5e6be34a275" translate="yes" xml:space="preserve">
+          <source>Using a Prepared Statement</source>
+          <target state="translated">用意されたステートメントを使う</target>
+        </trans-unit>
+        <trans-unit id="27bfc98a791c846a44ceefffbe8088440beb0489" translate="yes" xml:space="preserve">
+          <source>Using a Transaction</source>
+          <target state="translated">トランザクションを使用して</target>
+        </trans-unit>
+        <trans-unit id="efa798e2337da1f597bb94d66f1cd12d1cc78d2f" translate="yes" xml:space="preserve">
+          <source>Using a transaction was a huge improvement, but recompiling the SQL statement for every insert doesn't make sense if we using the same SQL over-and-over. Let's use &lt;code&gt;sqlite3_prepare_v2&lt;/code&gt; to compile our SQL statement once and then bind our parameters to that statement using &lt;code&gt;sqlite3_bind_text&lt;/code&gt;:</source>
+          <target state="translated">トランザクションを使用することは大きな改善でしたが、同じSQLを何度も使用する場合、挿入ごとにSQLステートメントを再コンパイルしても意味がありません。 &lt;code&gt;sqlite3_prepare_v2&lt;/code&gt; を使用してSQLステートメントを1回コンパイルしてから、 sqlite3_bind_textを使用してパラメーターをそのステートメントにバインドします。</target>
+        </trans-unit>
+        <trans-unit id="674be12a68db41f5e65e8f6f5288f5307643a49c" translate="yes" xml:space="preserve">
+          <source>Using an In-Memory Database</source>
+          <target state="translated">インメモリデータベースの使用</target>
+        </trans-unit>
+        <trans-unit id="a989490dc1086fbe60acc040f2077ee40bc910a4" translate="yes" xml:space="preserve">
+          <source>We're going to generate the SQL string using the values read from the file and invoke that SQL operation using sqlite3_exec:</source>
+          <target state="translated">ファイルから読み込んだ値を使ってSQL文字列を生成し、sqlite3_execを使ってそのSQL操作を呼び出します。</target>
+        </trans-unit>
+        <trans-unit id="51a38e71a882481707d999fc28f7f0fcdeaf78ba" translate="yes" xml:space="preserve">
+          <source>Yikes! 2 hours and 45 minutes! That's only &lt;strong&gt;85 inserts per second.&lt;/strong&gt;</source>
+          <target state="translated">うわぁ！ 2時間45分！ &lt;strong&gt;1秒あたりの挿入数&lt;/strong&gt;は&lt;strong&gt;85です。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="cc4e57454f2e22aeb719d5949b1a38ae2ba3ce02" translate="yes" xml:space="preserve">
+          <source>You have to be quite careful if you have concurrent access to SQLite, as the whole database is locked when writes are done, and although multiple readers are possible, writes will be locked out. This has been improved somewhat with the addition of a WAL in newer SQLite versions.</source>
+          <target state="translated">SQLiteへの同時アクセスを行っている場合、書き込みが行われるとデータベース全体がロックされ、複数の読み取りは可能ですが、書き込みはロックアウトされてしまうので、かなり注意が必要です。これは、新しいバージョンのSQLiteではWALが追加されたことで多少改善されています。</target>
+        </trans-unit>
+        <trans-unit id="f84952b103a6b1fa35391ad802ceb45691b6a3c4" translate="yes" xml:space="preserve">
+          <source>for each thread:</source>
+          <target state="translated">スレッドごとに</target>
+        </trans-unit>
+        <trans-unit id="718651ac1e4d28eed11decc1cc7b263cdac1558f" translate="yes" xml:space="preserve">
+          <source>then read in pages (LIMIT/OFFSET):</source>
+          <target state="translated">その後、ページ単位(LIMITOFFSET)で読み込みます。</target>
+        </trans-unit>
+        <trans-unit id="779e8933edaa2a8b59f69f6c48510a0f1a6cf67a" translate="yes" xml:space="preserve">
+          <source>where  and  are calculated per-thread, like this:</source>
+          <target state="translated">のように、スレッドごとに計算されます。</target>
+        </trans-unit>
+        <trans-unit id="f4c7bc63d48e550900e1d3bed8080e1b721d1e85" translate="yes" xml:space="preserve">
+          <source>which bulk loads an array of ActiveRecords into &lt;a href=&quot;http://en.wikipedia.org/wiki/MySQL&quot;&gt;MySQL&lt;/a&gt;, SQLite or &lt;a href=&quot;http://en.wikipedia.org/wiki/PostgreSQL&quot;&gt;PostgreSQL&lt;/a&gt; databases. It includes an option to ignore existing records, overwrite them or raise an error. My rudimentary benchmarks show a 10x speed improvement compared to sequential writes -- YMMV.</source>
+          <target state="translated">&lt;a href=&quot;http://en.wikipedia.org/wiki/MySQL&quot;&gt;MySQL&lt;/a&gt; 、SQLite、または&lt;a href=&quot;http://en.wikipedia.org/wiki/PostgreSQL&quot;&gt;PostgreSQL&lt;/a&gt;データベースにActiveRecordの配列を一括でロードします。 既存のレコードを無視する、それらを上書きする、またはエラーを発生させるオプションが含まれています。 私の初歩的なベンチマークは、シーケンシャル書き込みと比較して10倍の速度の向上を示しています-YMMV。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

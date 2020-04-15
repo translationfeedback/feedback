@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/79923">
+    <body>
+      <group id="79923">
+        <trans-unit id="94b77d4c21edabc0121f024c01bcc9ef48259dc3" translate="yes" xml:space="preserve">
+          <source>&quot;Static&quot; (AKA statically allocated) variables are not allocated on the stack. Do not assume so - many people do only because &quot;static&quot; sounds a lot like &quot;stack&quot;. They actually exist in neither the stack nor the heap. The are part of what's called the &lt;a href=&quot;http://en.wikipedia.org/wiki/Data_segment&quot;&gt;data segment&lt;/a&gt;.</source>
+          <target state="translated">&quot;정적&quot;(일명 정적으로 할당 된) 변수는 스택에 할당되지 않습니다. &quot;정적&quot;이 &quot;스택&quot;처럼 들리기 때문에 많은 사람들이 그렇게 생각하지 마십시오. 실제로 스택이나 힙에 없습니다. &lt;a href=&quot;http://en.wikipedia.org/wiki/Data_segment&quot;&gt;데이터 세그먼트 (data segment)&lt;/a&gt; 의 일부입니다.</target>
+        </trans-unit>
+        <trans-unit id="e7b5c0042bc6fdc5e224949119eea46897b85f96" translate="yes" xml:space="preserve">
+          <source>&quot;You can use the stack if you know exactly how much data you need to allocate before compile time, and it is not too big. You can use the heap if you don't know exactly how much data you will need at runtime or if you need to allocate a lot of data.&quot;</source>
+          <target state="translated">&quot;컴파일 시간 이전에 할당해야하는 데이터의 양을 정확히 알고 있고 너무 크지 않은 경우 스택을 사용할 수 있습니다. 런타임에 필요한 데이터의 양을 정확히 모르는 경우 힙을 사용할 수 있습니다. 많은 데이터를 할당해야합니다. &quot;</target>
+        </trans-unit>
+        <trans-unit id="6b71c1598ca48211c09537cb37ffecd0279e4352" translate="yes" xml:space="preserve">
+          <source>(I have moved this answer from another question that was more or less a dupe of this one.)</source>
+          <target state="translated">(나는이 답변을 다소 속이는 다른 질문 에서이 답변을 옮겼습니다.)</target>
+        </trans-unit>
+        <trans-unit id="61257768b7a93e136c9c290d6825931b71bdb701" translate="yes" xml:space="preserve">
+          <source>(Relatively) slower access</source>
+          <target state="translated">(상대적으로) 느린 액세스</target>
+        </trans-unit>
+        <trans-unit id="260e2615aff475120193632bb3dec58b387e3862" translate="yes" xml:space="preserve">
+          <source>1) Where and what are they (physically in a real computer's memory)?</source>
+          <target state="translated">1) 어디에 그리고 무엇입니까 (실제 컴퓨터의 메모리에서)?</target>
+        </trans-unit>
+        <trans-unit id="fdb1507c9ac6adb1fa6fa6251df8690b83ca6414" translate="yes" xml:space="preserve">
+          <source>2) To what extent are they controlled by the OS or language runtime?</source>
+          <target state="translated">2) OS 또는 언어 런타임에 의해 어느 정도까지 제어됩니까?</target>
+        </trans-unit>
+        <trans-unit id="99b4e74430a1011d0a32a5e6a68f89192d5600f4" translate="yes" xml:space="preserve">
+          <source>2b) What is their scope?</source>
+          <target state="translated">2b) 그들의 범위는 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="9888f38f3e423435fa5b8292adbdd39fb0f72092" translate="yes" xml:space="preserve">
+          <source>2c) What determines the size of each of them?</source>
+          <target state="translated">2c) 각각의 크기는 어떻게 결정됩니까?</target>
+        </trans-unit>
+        <trans-unit id="019eef749bba4958d2ffca2f9849b67199fb6815" translate="yes" xml:space="preserve">
+          <source>2d) What makes one faster?</source>
+          <target state="translated">2d) 무엇이 더 빨라 집니까?</target>
+        </trans-unit>
+        <trans-unit id="e2d2295e136ea1dc3f598156ec945a446432c714" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Local Variables&lt;/code&gt; that only need to last as long as the function invocation go in the stack. The heap is used for variables whose lifetime we don't really know up front but we expect them to last a while. In most languages it's critical that we know at compile time how large a variable is if we want to store it on the stack.</source>
+          <target state="translated">함수 호출이 스택에있는 동안에 만 지속되어야하는 &lt;code&gt;Local Variables&lt;/code&gt; . 힙은 수명을 실제로 모르지만 변수가 오래 지속되는 변수에 사용됩니다. 대부분의 언어에서 컴파일 타임에 변수를 스택에 저장하려면 변수가 얼마나 큰지를 아는 것이 중요합니다.</target>
+        </trans-unit>
+        <trans-unit id="db81e688d99a4e08a6e79477826a7c115e20208c" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;To what extent are they controlled by the OS or language runtime?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;OS 또는 언어 런타임에 의해 어느 정도까지 제어됩니까?&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="513a3b3ab4e6ae37babfa4b83b1cb3c51c31881a" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;What determines the size of each of them?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;각각의 크기는 어떻게 결정됩니까?&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="7d053678e5d47e6f07a8fde4ce00b7cddb559cbb" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;What is their scope?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;그들의 범위는 무엇입니까?&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="dcfa20263ead7486e0e7d967879203f1a13837a0" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;What makes one faster?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;무엇이 더 빨라 집니까?&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="e9a6c5f939fd49e7bad84b2be8abb7f468b02d07" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Both together&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;양자&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4168878b06eaa6917a0f012585506612f5054ea6" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Example:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Example:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="84a530a09edadff20200961546fdc028c855eefc" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Heap:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Heap:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="85e58808cd94b0b4694342607d9808c4b578db9b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Heap&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Heap&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="917e40efec8d1d189c6f18faaf670f99b1bd7e44" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Heap&lt;/strong&gt;: No order, processing gonna be slower and values are messed up together with no specific order or index... there are random and there is no relationship between them... so execution and usage time could be vary...</source>
+          <target state="translated">&lt;strong&gt;힙&lt;/strong&gt; : 주문 없음, 처리 속도가 느려지고 값이 특정 주문이나 색인없이 함께 엉망이됩니다. 임의가 있고 그들 사이에 관계가 없습니다 ... 그래서 실행 및 사용 시간이 다를 수 있습니다 ...</target>
+        </trans-unit>
+        <trans-unit id="742792f83b9d6d503d676cd5342ac745b1a51f3c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Implementation&lt;/strong&gt;
+Implementation of both the stack and heap is usually down to the runtime / OS. Often games and other applications that are performance critical create their own memory solutions that grab a large chunk of memory from the heap and then dish it out internally to avoid relying on the OS for memory.</source>
+          <target state="translated">&lt;strong&gt;구현&lt;/strong&gt; 스택과 힙 모두의 구현은 일반적으로 런타임 / OS에 달려 있습니다. 종종 성능이 중요한 게임 및 기타 응용 프로그램은 자체 메모리 솔루션을 만들어 힙에서 많은 양의 메모리를 확보 한 다음 OS에 의존하여 메모리에 의존하지 않도록 내부적으로 처리합니다.</target>
+        </trans-unit>
+        <trans-unit id="b0c3414fb835eb86d73b6be57a2a7aebafd2801c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Interesting note:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;재미있는 메모 :&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3a0e3df07fea6c0d8b408481568ec08761eb430d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;OK,&lt;/strong&gt; simply and in short words, they mean &lt;strong&gt;ordered&lt;/strong&gt; and &lt;strong&gt;not ordered&lt;/strong&gt;...!</source>
+          <target state="translated">간단하고 간단히 말해서, 그들은 &lt;strong&gt;주문&lt;/strong&gt; 하고 &lt;strong&gt;주문하지 않은 것을&lt;/strong&gt; 의미합니다 ...!</target>
+        </trans-unit>
+        <trans-unit id="8628c9ba0a73bc55254ac6ceb73adfa8e4eada2c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Physical location in memory&lt;/strong&gt;
+This is less relevant than you think because of a technology called &lt;a href=&quot;http://en.wikipedia.org/wiki/Virtual_memory&quot;&gt;Virtual Memory&lt;/a&gt; which makes your program think that you have access to a certain address where the physical data is somewhere else (even on the hard disc!). The addresses you get for the stack are in increasing order as your call tree gets deeper. The addresses for the heap are un-predictable (i.e implimentation specific) and frankly not important.</source>
+          <target state="translated">&lt;strong&gt;메모리의 실제 위치&lt;/strong&gt; &lt;a href=&quot;http://en.wikipedia.org/wiki/Virtual_memory&quot;&gt;가상 메모리&lt;/a&gt; 라는 기술 때문에 프로그램이 실제 데이터가 다른 곳 (하드 디스크에서도)에있는 특정 주소에 액세스 할 수 있다고 생각하게하므로 생각보다 덜 관련이 있습니다. 콜 트리가 깊어 질수록 스택에 대한 주소가 증가합니다. 힙의 주소는 예측할 수 없으며 (즉, 암시 적 특정) 솔직히 중요하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="e19a9343f895eca75944e60482202b71e0cbcd58" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Stack:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Stack:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="c741ee79de20716b9e2549b13bac80467d01d08f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Stack&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Stack&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a7e4ac541ac7066d86d467c49418a1b8c8ab19f5" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Stack&lt;/strong&gt;: In stack items, things get on the top of each-other, means gonna be faster and more efficient to be processed!...</source>
+          <target state="translated">&lt;strong&gt;쌓기&lt;/strong&gt; : 쌓인 물건에서 물건이 서로 닿아 서 처리하기가 더 빠르고 효율적입니다!</target>
+        </trans-unit>
+        <trans-unit id="7e7cfe5d1f60635f341d1ef4579eb83f724c5d41" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Heap&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;힙&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a6709062928227b6319f7deeb9a0847d3a67f3a7" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Heap&lt;/strong&gt;
+The heap is a generic name for where you put the data that you create on the fly. If you don't know how many spaceships your program is going to create, you are likely to use the new (or malloc or equivalent) operator to create each spaceship. This allocation is going to stick around for a while, so it is likely we will free things in a different order than we created them.</source>
+          <target state="translated">&lt;strong&gt;힙&lt;/strong&gt; 힙은 작성하는 데이터를 즉석에 배치하는 일반적인 이름입니다. 프로그램이 얼마나 많은 우주선을 만들지 모르는 경우 새로운 (또는 malloc 또는 이와 동등한) 연산자를 사용하여 각 우주선을 만들 수 있습니다. 이 할당은 잠시 동안 계속 진행될 것이므로 생성 한 순서와 다른 순서로 무료로 제공 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="bcb3f513eb6fa7ddc8d6c4dc2b21d182cce677d5" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Stack&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;스택&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a390d755244266caf60a0813cd14b6beb633141e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The Stack&lt;/strong&gt;
+When you call a function the arguments to that function plus some other overhead is put on the stack. Some info (such as where to go on return) is also stored there.
+When you declare a variable inside your function, that variable is also allocated on the stack.</source>
+          <target state="translated">&lt;strong&gt;스택&lt;/strong&gt; 함수를 호출하면 해당 함수에 대한 인수와 다른 오버 헤드가 스택에 추가됩니다. 일부 정보 (예 : 돌아가는 곳)도 저장됩니다. 함수 내에서 변수를 선언하면 해당 변수도 스택에 할당됩니다.</target>
+        </trans-unit>
+        <trans-unit id="76cc17ae17ebb267fcbd177db1d4f1d292b7ce9b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;To what extent are they controlled by the OS or language runtime?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;OS 또는 언어 런타임에 의해 어느 정도까지 제어됩니까?&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="0563b18a23e550f58bac67d459c94a52a3249acd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What determines the size of each of them?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;각각의 크기는 어떻게 결정됩니까?&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3c6c7dce19b600ea980045fc6edcd1962f6b5551" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What is a heap?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;힙이란 무엇입니까?&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b97a8d104003b830b171fde9ab6c0f738620e336" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What is a stack?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;스택이란 무엇입니까?&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a6b73e40eadb8e589a235f27b4b54d80562f2496" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What is their scope?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;그들의 범위는 무엇입니까?&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="159e5d461f5ea67df5f298bd8e4358250caeb1b3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What makes one faster?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;무엇이 더 빨라 집니까?&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="78f9413c67586527ba6c81668b7aa287b0c28430" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Which is faster &amp;ndash; the stack or the heap? And why?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;스택이나 힙 중 어느 것이 더 빠릅니까?&lt;/strong&gt; &lt;strong&gt;그리고 왜?&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="ad882499bf2a5c77de197c8c4907389551e5d253" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;stack&lt;/strong&gt;, &lt;strong&gt;heap&lt;/strong&gt; and &lt;strong&gt;data&lt;/strong&gt; of each process in virtual memory:</source>
+          <target state="translated">가상 메모리에있는 각 프로세스의 &lt;strong&gt;stack&lt;/strong&gt; , &lt;strong&gt;heap&lt;/strong&gt; 및 &lt;strong&gt;데이터&lt;/strong&gt; :</target>
+        </trans-unit>
+        <trans-unit id="2e2ab5cd39dfbdc8c03b7bbbbd7b88d895cbeb77" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt;Image source: &lt;a href=&quot;http://vikashazrati.wordpress.com/2007/10/01/quicktip-java-basics-stack-and-heap/&quot;&gt;vikashazrati.wordpress.com&lt;/a&gt;&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt;이미지 출처 : &lt;a href=&quot;http://vikashazrati.wordpress.com/2007/10/01/quicktip-java-basics-stack-and-heap/&quot;&gt;vikashazrati.wordpress.com&lt;/a&gt;&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="66efe8c438bd049d124a2fb9c161181488baa05f" translate="yes" xml:space="preserve">
+          <source>A clear demonstration:</source>
+          <target state="translated">명확한 데모 :</target>
+        </trans-unit>
+        <trans-unit id="01ce9bd8f6baf3c7c49927f90f1d012016d83e18" translate="yes" xml:space="preserve">
+          <source>A couple of cents: I think, it will be good to draw memory graphical and more simple:</source>
+          <target state="translated">몇 센트 : 메모리를 그래픽으로 그리고 더 간단하게 그리는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="a15b908bf3b3ecfd069a0fe5e01ef6e82a56da1d" translate="yes" xml:space="preserve">
+          <source>A heap is a general term for anything that can be dynamically allocated.  Depending on which way you look at it, it is constantly changing size.  In modern processors and operating systems the exact way it works is very abstracted anyway, so you don't normally need to worry much about how it works deep down, except that (in languages where it lets you) you mustn't use memory that you haven't allocated yet or memory that you have freed.</source>
+          <target state="translated">힙은 동적으로 할당 될 수있는 모든 것에 대한 일반적인 용어입니다. 당신이 그것을 보는 방법에 따라, 그것은 끊임없이 크기를 변화시키고 있습니다. 최신 프로세서와 운영 체제에서 작동하는 정확한 방식은 어쨌든 매우 추상화되어 있으므로 일반적으로 작동 방식에 대해 크게 걱정할 필요가 없습니다. 단, (사용 가능한 언어로) 메모리를 사용해서는 안됩니다. 아직 할당하지 않았거나 해제 한 메모리가 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="068dd7e9d8ed5b397b0a6eff3ba84c4edc71f672" translate="yes" xml:space="preserve">
+          <source>A heap is a general term used for any memory that is allocated dynamically and randomly; i.e. out of order.  The memory is typically allocated by the OS, with the application calling API functions to do this allocation.  There is a fair bit of overhead required in managing dynamically allocated memory, which is usually handled by the runtime code of the programming language or environment used.</source>
+          <target state="translated">힙은 동적으로 무작위로 할당되는 모든 메모리에 사용되는 일반적인 용어입니다. 즉 고장입니다. 메모리는 일반적으로 OS에 의해 할당되며, 애플리케이션은이 할당을 수행하기 위해 API 함수를 호출합니다. 동적으로 할당 된 메모리를 관리하는 데 약간의 오버 헤드가 있으며, 일반적으로 사용되는 프로그래밍 언어 또는 환경의 런타임 코드에 의해 처리됩니다.</target>
+        </trans-unit>
+        <trans-unit id="34f5d3ec6b1ce5253cef0356a62d5aa350e32ac5" translate="yes" xml:space="preserve">
+          <source>A heap is an untidy collection of things piled up haphazardly.</source>
+          <target state="translated">힙은 우연히 쌓인 물건의 어수선한 모음입니다.</target>
+        </trans-unit>
+        <trans-unit id="ee141ae29a5c83c4f8aa0cade4298cafffd77712" translate="yes" xml:space="preserve">
+          <source>A lot of answers are correct as concepts, but we must note that a stack is needed by the hardware (i.e. microprocessor) to allow calling subroutines (CALL in assembly language..). (OOP guys will call it &lt;em&gt;methods&lt;/em&gt;)</source>
+          <target state="translated">많은 답변이 개념으로 맞지만, 서브 루틴 호출 (조립 언어로 호출)을 허용하려면 하드웨어 (예 : 마이크로 프로세서)에 스택이 필요합니다. (OOP 사람들은 &lt;em&gt;메소드&lt;/em&gt; 라고 부릅니다)</target>
+        </trans-unit>
+        <trans-unit id="c31b57674dbc2b0d1d5439a1c86d854b8d2b25b9" translate="yes" xml:space="preserve">
+          <source>A particularly poignant example of why it's important to distinguish between lifetime and scope is that a variable can have local scope but static lifetime - for instance, &quot;someLocalStaticVariable&quot; in the code sample above. Such variables can make our common but informal naming habits very confusing. For instance when we say &quot;&lt;em&gt;local&lt;/em&gt;&quot; we usually mean &quot;&lt;em&gt;locally scoped automatically allocated variable&lt;/em&gt;&quot; and when we say global we usually mean &quot;&lt;em&gt;globally scoped statically allocated variable&lt;/em&gt;&quot;. Unfortunately when it comes to things like &quot;&lt;em&gt;file scoped statically allocated variables&lt;/em&gt;&quot; many people just say... &quot;&lt;em&gt;huh???&lt;/em&gt;&quot;.</source>
+          <target state="translated">수명과 범위를 구별하는 것이 중요한 이유에 대한 특별한 예는 변수가 로컬 범위를 가질 수 있지만 정적 수명을 가질 수 있다는 것입니다 (예 : 위의 코드 샘플에서 &quot;someLocalStaticVariable&quot;). 이러한 변수는 우리의 일반적이지만 비공식적 인 명명 습관을 매우 혼란스럽게 만듭니다. 예를 들어 &quot; &lt;em&gt;local&lt;/em&gt; &quot;이라고 말하면 일반적으로 &quot; &lt;em&gt;로컬 범위가 자동 할당 된 변수&lt;/em&gt; &quot;를 의미하고 global을 말할 때는 일반적으로 &quot; &lt;em&gt;전역 범위가 정적으로 할당 된 변수&lt;/em&gt; &quot;를 의미합니다. 불행히도 &quot; &lt;em&gt;파일 범위가 정적으로 할당 된 변수&lt;/em&gt; &quot;와 같은 것들에 관해서는 많은 사람들이 그냥 ... &quot; &lt;em&gt;huh ???&lt;/em&gt; &quot;라고 말합니다.</target>
+        </trans-unit>
+        <trans-unit id="cc133acebf965ce867ad157a05f353a3707fecd3" translate="yes" xml:space="preserve">
+          <source>A stack is a pile of objects, typically one that is neatly arranged.</source>
+          <target state="translated">스택은 일반적으로 깔끔하게 배열 된 객체의 더미입니다.</target>
+        </trans-unit>
+        <trans-unit id="9f4c46ea1849c89970aa6079e049594ebbd9a39c" translate="yes" xml:space="preserve">
+          <source>A stack is used for static memory allocation and a heap for dynamic memory allocation, both stored in the computer's RAM.</source>
+          <target state="translated">스택은 정적 메모리 할당에 사용되며 동적 메모리 할당에 사용되는 힙은 모두 컴퓨터의 RAM에 저장됩니다.</target>
+        </trans-unit>
+        <trans-unit id="7d53fc8a81490a3d76add68a85ec8e7f0f02250f" translate="yes" xml:space="preserve">
+          <source>A typical C program was laid out flat in memory with
+an opportunity to increase by changing the brk() value.
+Typically, the HEAP was just below this brk value
+and increasing brk increased the amount of available heap.</source>
+          <target state="translated">일반적인 C 프로그램은 brk () 값을 변경하여 증가시킬 수있는 기회를 제공하면서 메모리에 평평하게 배치되었습니다. 일반적으로 HEAP는이 brk 값 바로 아래였으며 brk를 늘리면 사용 가능한 힙의 양이 증가했습니다.</target>
+        </trans-unit>
+        <trans-unit id="0eb3c88bb9382983d9131328ce15ca6b37271be5" translate="yes" xml:space="preserve">
+          <source>Again, it depends on the language, compiler, operating system and architecture.  A stack is usually pre-allocated, because by definition it must be contiguous memory.  The language compiler or the OS determine its size.  You don't store huge chunks of data on the stack, so it'll be big enough that it should never be fully used, except in cases of unwanted endless recursion (hence, &quot;stack overflow&quot;) or other unusual programming decisions.</source>
+          <target state="translated">다시 말하지만 언어, 컴파일러, 운영 체제 및 아키텍처에 따라 다릅니다. 스택은 일반적으로 메모리가 연속적이어야하기 때문에 일반적으로 사전 할당됩니다. 언어 컴파일러 또는 OS가 크기를 결정합니다. 스택에 막대한 양의 데이터를 저장하지 않으므로 원치 않는 끝없는 재귀 ( &quot;스택 오버플로&quot;) 또는 기타 비정상적인 프로그래밍 결정을 제외하고는 완전히 사용해서는 안될 정도로 충분히 커집니다.</target>
+        </trans-unit>
+        <trans-unit id="3c53181b48366809a97c6caadb3cafb768a586d9" translate="yes" xml:space="preserve">
+          <source>Allocating and deallocating many small blocks may leave the heap in a state where there are a lot of small free blocks interspersed between the used blocks. A request to allocate a large block may fail because none of the free blocks are large enough to satisfy the allocation request even though the combined size of the free blocks may be large enough. This is called &lt;em&gt;heap fragmentation&lt;/em&gt;.</source>
+          <target state="translated">많은 작은 블록을 할당하고 할당 해제하면 사용 된 블록 사이에 많은 작은 여유 블록이 산재 된 상태로 힙이 남을 수 있습니다. 자유 블록의 결합 된 크기가 충분히 클 수 있지만, 자유 블록 중 어느 것도 할당 요청을 만족시키기에 충분히 큰 것이 없기 때문에, 큰 블록을 할당하기위한 요청은 실패 할 수있다. 이것을 &lt;em&gt;힙 조각화&lt;/em&gt; 라고합니다.</target>
+        </trans-unit>
+        <trans-unit id="038e52e8565cce864ffd7e1b894e6892fe5a1d29" translate="yes" xml:space="preserve">
+          <source>Allocating memory on the stack is as simple as moving the stack pointer up.</source>
+          <target state="translated">스택에 메모리를 할당하는 것은 스택 포인터를 위로 올리는 것만 큼 간단합니다.</target>
+        </trans-unit>
+        <trans-unit id="361ef44f8aa22b0b13d1393adb5398aff7afdb86" translate="yes" xml:space="preserve">
+          <source>Already given in top.</source>
+          <target state="translated">상단에 이미 제공되어 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="d9ac18d3c62e0844f72b69b9833ed0b09f4440d4" translate="yes" xml:space="preserve">
+          <source>Also, stack vs. heap is not only a performance consideration; it also tells you a lot about the expected lifetime of objects.</source>
+          <target state="translated">또한 스택 대 힙은 성능 고려 사항 일뿐만 아니라; 또한 예상되는 개체 수명에 대해 많은 정보를 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="1e2d387706b8a4328b31b3009e56251e7ed275fb" translate="yes" xml:space="preserve">
+          <source>Although most compilers and interpreters implement this behavior similarly in terms of using stacks, heaps, etc, a compiler may sometimes break these conventions if it wants as long as behavior is correct. For instance, due to optimization a local variable may only exist in a register or be removed entirely, even though most local variables exist in the stack. As has been pointed out in a few comments, you are free to implement a compiler that doesn't even use a stack or a heap, but instead some other storage mechanisms (rarely done, since stacks and heaps are great for this).</source>
+          <target state="translated">대부분의 컴파일러와 인터프리터는 스택, 힙 등을 사용하는 관점에서이 동작을 유사하게 구현하지만 동작이 올바른 경우 컴파일러가 원하는 경우 이러한 규칙을 위반할 수 있습니다. 예를 들어, 최적화로 인해 로컬 변수는 대부분 스택에 존재하더라도 레지스터에만 존재하거나 완전히 제거 될 수 있습니다. 몇 가지 의견에서 지적했듯이 스택이나 힙을 사용하지 않고 다른 저장소 메커니즘 (스택과 힙이 훌륭하기 때문에 드물게 수행되는)을 컴파일러로 구현할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="eeb33740077a9e43e5825d3e19723b4a66394dcc" translate="yes" xml:space="preserve">
+          <source>Arrows - show where grow stack and heap, process stack size have limit, defined in OS, thread stack size limits by parameters in thread create API usually. Heap usually limiting by process maximum virtual memory size, for 32 bit 2-4&amp;nbsp;GB for example.</source>
+          <target state="translated">화살표-스택 및 힙 증가, 프로세스 스택 크기에 OS에 정의 된 스레드 스택 크기 제한, 스레드 작성 API의 매개 변수에 의한 제한이있는 위치를 표시합니다. 일반적으로 힙은 프로세스 최대 가상 메모리 크기 (예 : 32 비트 2-4GB)로 제한합니다.</target>
+        </trans-unit>
+        <trans-unit id="24e9bfdff99d8d81e72e86eb67d28dd9afa0f779" translate="yes" xml:space="preserve">
+          <source>As mentioned, heap and stack are general terms, and can be implemented in many ways.  Computer programs typically have a stack called a &lt;a href=&quot;http://en.wikipedia.org/wiki/Call_stack&quot;&gt;call stack&lt;/a&gt; which stores information relevant to the current function such as a pointer to whichever function it was called from, and any local variables.  Because functions call other functions and then return, the stack grows and shrinks to hold information from the functions further down the call stack.  A program doesn't really have runtime control over it; it's determined by the programming language, OS and even the system architecture.</source>
+          <target state="translated">언급 한 바와 같이 힙 및 스택은 일반적인 용어이며 여러 가지 방법으로 구현할 수 있습니다. 컴퓨터 프로그램에는 일반적으로 &lt;a href=&quot;http://en.wikipedia.org/wiki/Call_stack&quot;&gt;호출&lt;/a&gt; 스택이라고하는 스택이 있습니다.이 스택에는 호출 된 기능에 대한 포인터 및 로컬 변수와 같은 현재 기능과 관련된 정보를 저장합니다. 함수는 다른 함수를 호출 한 다음 반환하기 때문에 스택의 크기가 커지거나 줄어들어 함수의 정보를 호출 스택 아래로 유지합니다. 프로그램에는 실제로 런타임 제어 기능이 없습니다. 프로그래밍 언어, OS 및 시스템 아키텍처에 따라 결정됩니다.</target>
+        </trans-unit>
+        <trans-unit id="2df8df4816fd4ed74f3ebc71f597979521860d83" translate="yes" xml:space="preserve">
+          <source>As the heap grows new blocks are often allocated from lower addresses towards higher addresses. Thus you can think of the heap as a &lt;em&gt;heap&lt;/em&gt; of memory blocks that grows in size as memory is allocated. If the heap is too small for an allocation the size can often be increased by acquiring more memory from the underlying operating system.</source>
+          <target state="translated">힙이 커짐에 따라 새로운 블록이 종종 낮은 주소에서 높은 주소로 할당됩니다. 따라서 &lt;em&gt;힙&lt;/em&gt; 은 메모리가 할당됨에 따라 크기가 커지는 메모리 블록의 힙으로 생각할 수 있습니다. 힙이 할당에 비해 너무 작은 경우 기본 운영 체제에서 더 많은 메모리를 확보하여 크기를 늘릴 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="50556eca9ce5726de27e85d02f2175c0f224c952" translate="yes" xml:space="preserve">
+          <source>As the stack is a limited block of memory, you can cause a &lt;em&gt;stack overflow&lt;/em&gt; by calling too many nested functions and/or allocating too much space for local variables. Often the memory area used for the stack is set up in such a way that writing below the bottom (the lowest address) of the stack will trigger a trap or exception in the CPU. This exceptional condition can then be caught by the runtime and converted into some kind of stack overflow exception.</source>
+          <target state="translated">스택은 제한된 메모리 블록이므로 너무 많은 중첩 함수를 호출하거나 로컬 변수에 너무 많은 공간을 할당하여 &lt;em&gt;스택 오버플&lt;/em&gt; 로를 일으킬 수 있습니다. 스택에 사용 된 메모리 영역은 스택의 맨 아래 (가장 낮은 주소) 아래에 쓰면 CPU에서 트랩 또는 예외가 발생하도록 설정되는 경우가 많습니다. 이 예외 조건은 런타임에 의해 포착되어 일종의 스택 오버플로 예외로 변환 될 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="b215c6f533c85e53fa09d968e37f28f9d39f9d4b" translate="yes" xml:space="preserve">
+          <source>At run-time, if the application needs more heap, it can allocate memory from free memory and if the stack needs memory, it can allocate memory from free memory allocated memory for the application.</source>
+          <target state="translated">런타임에 응용 프로그램에 더 많은 힙이 필요한 경우 사용 가능한 메모리에서 메모리를 할당 할 수 있으며 스택에 메모리가 필요한 경우 응용 프로그램에 사용 가능한 메모리 할당 된 메모리에서 메모리를 할당 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="54b26119365b1389f21ece7a4adac459e7df78fd" translate="yes" xml:space="preserve">
+          <source>Because the different threads share the heap in a multi-threaded application, this also means that there has to be some coordination between the threads so that they don&amp;rsquo;t try to access and manipulate the same piece(s) of memory in the heap at the same time.</source>
+          <target state="translated">여러 스레드가 다중 스레드 응용 프로그램에서 힙을 공유하기 때문에 스레드간에 동일한 메모리 조각에 액세스하고 조작하려고 시도하지 않도록 스레드간에 약간의 조정이 있어야 함을 의미합니다. 동시.</target>
+        </trans-unit>
+        <trans-unit id="ccbbb8bb2cb5a86ca4310f5e73a45cd3c134e32e" translate="yes" xml:space="preserve">
+          <source>Because the stack is small, you would want to use it when you know exactly how much memory you will need for your data, or if you know the size of your data is very small.</source>
+          <target state="translated">스택이 작기 때문에 데이터에 필요한 메모리 양을 정확히 알거나 데이터 크기가 매우 작은 경우 스택을 사용하려고합니다.</target>
+        </trans-unit>
+        <trans-unit id="85af045b5af1615c35dbbd47456bb468389824a3" translate="yes" xml:space="preserve">
+          <source>Because you've allocated the stack before launching the program, you never need to malloc before you can use the stack, so that's a slight advantage there.  In practice, it's very hard to predict what will be fast and what will be slow in modern operating systems that have virtual memory subsystems, because how the pages are implemented and where they are stored is an implementation detail.</source>
+          <target state="translated">프로그램을 시작하기 전에 스택을 할당 했으므로 스택을 사용하기 전에 malloc을 수행 할 필요가 없으므로 약간의 이점이 있습니다. 실제로, 페이지가 어떻게 구현되고 저장되는지는 구현 세부 사항이기 때문에 가상 메모리 서브 시스템이있는 최신 운영 체제에서 무엇이 빠를 지 느리게 예측할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="a1789265dfb7f69ad43a9c93ac040821d26c1139" translate="yes" xml:space="preserve">
+          <source>Both the stack and the heap are memory areas allocated from the underlying operating system (often virtual memory that is mapped to physical memory on demand).</source>
+          <target state="translated">스택과 힙은 모두 기본 운영 체제 (주로 실제 메모리에 매핑되는 가상 메모리)에서 할당 된 메모리 영역입니다.</target>
+        </trans-unit>
+        <trans-unit id="74ded9b65c26de9b34aafae7449e1393446d30f8" translate="yes" xml:space="preserve">
+          <source>Can a function be allocated on the heap instead of a stack?</source>
+          <target state="translated">스택 대신 힙에 함수를 할당 할 수 있습니까?</target>
+        </trans-unit>
+        <trans-unit id="5812990e8a5f0104b222e128474fb28611af16f1" translate="yes" xml:space="preserve">
+          <source>Can have a stack overflow when too much of the stack is used (mostly from infinite or too deep recursion, very large allocations).</source>
+          <target state="translated">너무 많은 스택이 사용되면 스택 오버플로가 발생할 수 있습니다 (주로 무한 또는 너무 깊은 재귀, 매우 큰 할당).</target>
+        </trans-unit>
+        <trans-unit id="965cae31b330377a8052d9fde41cc56a8629759e" translate="yes" xml:space="preserve">
+          <source>Can have allocation failures if too big of a buffer is requested to be allocated.</source>
+          <target state="translated">너무 큰 버퍼를 할당하도록 요청하면 할당이 실패 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="1c8dd66e84903a898b8ce09b004e11d5dd348f81" translate="yes" xml:space="preserve">
+          <source>Can have fragmentation when there are a lot of allocations and deallocations.</source>
+          <target state="translated">할당 및 할당 해제가 많은 경우 조각화가 발생할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="57ed76834f319ea80eb97efad57dfda743be40d9" translate="yes" xml:space="preserve">
+          <source>Creating Objects on the Stack and Heap</source>
+          <target state="translated">스택 및 힙에 객체 생성</target>
+        </trans-unit>
+        <trans-unit id="3c85e89113521a7aade115de0029e8e2378f88c7" translate="yes" xml:space="preserve">
+          <source>Data created on the stack can be used without pointers.</source>
+          <target state="translated">스택에서 생성 된 데이터는 포인터없이 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="10b6d2f5365d704078f50dcd64eef839102a1ac7" translate="yes" xml:space="preserve">
+          <source>Deallocating the stack is pretty simple because you always deallocate in the reverse order in which you allocate. Stack stuff is added as you enter functions, the corresponding data is removed as you exit them. This means that you tend to stay within a small region of the stack unless you call lots of functions that call lots of other functions (or create a recursive solution).</source>
+          <target state="translated">스택의 할당을 해제하는 것은 항상 할당 한 역순으로 할당을 해제하기 때문에 매우 간단합니다. 함수를 입력하면 스택 항목이 추가되고 해당 데이터를 종료하면 해당 데이터가 제거됩니다. 이것은 다른 많은 함수를 호출하는 많은 함수를 호출하거나 재귀 적 솔루션을 만들지 않는 한 스택의 작은 영역 내에 머무르는 경향이 있음을 의미합니다.</target>
+        </trans-unit>
+        <trans-unit id="2e6efb7de0e3b1a967b575cd00a39178bc6cda79" translate="yes" xml:space="preserve">
+          <source>Details can be found from &lt;strong&gt;&lt;a href=&quot;https://stackoverflow.com/questions/161053/which-is-faster-stack-allocation-or-heap-allocation&quot;&gt;here&lt;/a&gt;&lt;/strong&gt;.</source>
+          <target state="translated">자세한 내용은 &lt;strong&gt;&lt;a href=&quot;https://stackoverflow.com/questions/161053/which-is-faster-stack-allocation-or-heap-allocation&quot;&gt;여기&lt;/a&gt;&lt;/strong&gt; 에서 확인할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="3454116b814c4a540b1fa2eaa28b022a062afd97" translate="yes" xml:space="preserve">
+          <source>Don't have to explicitly de-allocate variables</source>
+          <target state="translated">변수를 명시 적으로 할당 해제 할 필요가 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="0060cdcb4b02afd4a89a6475ecd1acc3d319f929" translate="yes" xml:space="preserve">
+          <source>Due to sequential storage in stack, execution is faster. Storage in heap would have resulted in huge time consumption thus making the whole program execute slower.</source>
+          <target state="translated">스택의 순차적 스토리지로 인해 실행이 더 빠릅니다. 힙에 저장하면 시간이 많이 걸리므로 전체 프로그램 실행 속도가 느려집니다.</target>
+        </trans-unit>
+        <trans-unit id="f04d90ff7dea8c8dc11581ddfc938b88076014c3" translate="yes" xml:space="preserve">
+          <source>Dynamically created variables are stored here, which later requires freeing the allocated memory after use.</source>
+          <target state="translated">동적으로 생성 된 변수가 여기에 저장되며, 나중에 사용 후 할당 된 메모리를 해제해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="846279cf02a7a28e2eaddba31c218b6c4f28b95f" translate="yes" xml:space="preserve">
+          <source>Each thread gets a stack, while there's typically only one heap for the application (although it isn't uncommon to have multiple heaps for different types of allocation).</source>
+          <target state="translated">각 스레드는 스택을 가져 오지만 일반적으로 응용 프로그램에 대해 하나의 힙만 있습니다 (다양한 유형의 할당에 대해 여러 개의 힙이있는 경우는 드물지만).</target>
+        </trans-unit>
+        <trans-unit id="5e929f13154e75203839bfc2de286aa0a1a47dcc" translate="yes" xml:space="preserve">
+          <source>Even, more detail is given &lt;a href=&quot;http://net-informations.com/faq/net/stack-heap.htm&quot;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&quot;http://gribblelab.org/CBootcamp/7_Memory_Stack_vs_Heap.html&quot;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;.</source>
+          <target state="translated">더 자세한 것은 &lt;a href=&quot;http://net-informations.com/faq/net/stack-heap.htm&quot;&gt;&lt;strong&gt;여기&lt;/strong&gt;&lt;/a&gt; 와 &lt;a href=&quot;http://gribblelab.org/CBootcamp/7_Memory_Stack_vs_Heap.html&quot;&gt;&lt;strong&gt;여기에 있습니다&lt;/strong&gt;&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="4077dc49f1766565dde4b0c98c71c99d05d1cf12" translate="yes" xml:space="preserve">
+          <source>Every time an object is instantiated, a chunk of heap memory is set aside to hold the data (state) of that object. Since objects can contain other objects, some of this data can in fact hold references to those nested objects.</source>
+          <target state="translated">객체가 인스턴스화 될 때마다 해당 객체의 데이터 (상태)를 유지하도록 힙 메모리 청크가 따로 설정됩니다. 객체는 다른 객체를 포함 할 수 있기 때문에이 데이터 중 일부는 실제로 중첩 된 객체에 대한 참조를 보유 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="5211deda8670661ee7d1ce34e2735da4431ad6c2" translate="yes" xml:space="preserve">
+          <source>Fibers proposal to the C++ standard library is forthcoming. Also, there're some third-party &lt;a href=&quot;https://stackoverflow.com/questions/1285714/lightweight-portable-c-fibers-mit-license&quot;&gt;libraries&lt;/a&gt;. Green threads are extremely popular in languages like Python and Ruby.</source>
+          <target state="translated">C ++ 표준 라이브러리에 대한 광섬유 제안이 곧 나옵니다. 또한 타사 &lt;a href=&quot;https://stackoverflow.com/questions/1285714/lightweight-portable-c-fibers-mit-license&quot;&gt;라이브러리도&lt;/a&gt; 있습니다. 녹색 스레드는 Python 및 Ruby와 같은 언어에서 매우 인기가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="6bf6a0d4778960ac1e375eed1f1e9f0d010f59b1" translate="yes" xml:space="preserve">
+          <source>Fibers, green threads and coroutines are in many ways similar, which leads to much confusion.  The difference between fibers and green threads is that the former use cooperative multitasking, while the latter may feature either cooperative or preemptive one (or even both). For the distinction between fibers and coroutines, see &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4024.pdf&quot;&gt;here&lt;/a&gt;.</source>
+          <target state="translated">섬유, 녹색 실 및 코 루틴은 여러면에서 유사하여 많은 혼란을 초래합니다. 섬유와 녹색 스레드의 차이점은 전자는 협동 멀티 태스킹을 사용하지만 후자는 협동 또는 선점 (또는 둘 다)을 특징으로 할 수 있다는 것입니다. 섬유와 코 루틴의 차이점은 &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4024.pdf&quot;&gt;여기를&lt;/a&gt; 참조 하십시오 .</target>
+        </trans-unit>
+        <trans-unit id="9d2ac197a7a104bcd6641f6a118e10124e3a8763" translate="yes" xml:space="preserve">
+          <source>For people new to programming, it&amp;rsquo;s probably a good idea to use the stack since it&amp;rsquo;s easier.</source>
+          <target state="translated">프로그래밍에 익숙하지 않은 사람들에게는 스택을 사용하는 것이 더 쉬울 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="d9bf6ea4d7dd59b322b7679e48bc374e1b2878a5" translate="yes" xml:space="preserve">
+          <source>Fragmentation occurs when memory objects are allocated with small spaces in between that are too small to hold additional memory objects.</source>
+          <target state="translated">조각화는 메모리 개체에 추가 메모리 개체를 포함하기에 너무 작은 공간이 할당되어있을 때 발생합니다.</target>
+        </trans-unit>
+        <trans-unit id="e237e4dadd747be21907ecdd643773f2cded6948" translate="yes" xml:space="preserve">
+          <source>From WikiAnwser.</source>
+          <target state="translated">WikiAnwser에서.</target>
+        </trans-unit>
+        <trans-unit id="4e3b5b95822a6480a6ed4d32a309c404a4c107f7" translate="yes" xml:space="preserve">
+          <source>Function calls are loaded here along with the local variables and function parameters passed.</source>
+          <target state="translated">함수 호출은 전달 된 로컬 변수 및 함수 매개 변수와 함께 여기에로드됩니다.</target>
+        </trans-unit>
+        <trans-unit id="977169a2f56615065497cd1735f54129679d50ec" translate="yes" xml:space="preserve">
+          <source>Heap</source>
+          <target state="translated">Heap</target>
+        </trans-unit>
+        <trans-unit id="69c0fce84d3be50b555c1e7c6c0ace50232978e0" translate="yes" xml:space="preserve">
+          <source>Heap allocation requires maintaining a full record of what memory is allocated and what isn't, as well as some overhead maintenance to reduce fragmentation, find contiguous memory segments big enough to fit the requested size, and so on.  Memory can be deallocated at any time leaving free space.  Sometimes a memory allocator will perform maintenance tasks such as defragmenting memory by moving allocated memory around, or garbage collecting - identifying at runtime when memory is no longer in scope and deallocating it.</source>
+          <target state="translated">힙 할당에는 조각화를 줄이고 요청 된 크기에 맞도록 충분히 큰 연속 메모리 세그먼트를 찾는 등의 오버 헤드 유지 관리뿐만 아니라 할당 된 메모리와없는 메모리에 대한 전체 레코드를 유지해야합니다. 여유 공간을 남겨두고 언제든지 메모리 할당을 해제 할 수 있습니다. 때때로 메모리 할당자는 할당 된 메모리를 이동하여 메모리 조각 모음 또는 가비지 수집과 같은 유지 관리 작업을 수행합니다. 메모리가 더 이상 범위 내에 있지 않고 할당을 해제하면 런타임에 식별합니다.</target>
+        </trans-unit>
+        <trans-unit id="6df8f5905a52242ce08ad912e0566230705e916f" translate="yes" xml:space="preserve">
+          <source>Here&amp;rsquo;s a super-short summary: The stack is essentially an
+  easy-to-access memory that simply manages its items as a - well -
+  stack. Only items for which the size is known in advance can go onto
+  the stack. This is the case for numbers, strings, booleans.</source>
+          <target state="translated">요약은 다음과 같습니다. 스택은 본질적으로 항목을 잘 스택으로 관리하는 액세스하기 쉬운 메모리입니다. 크기가 미리 알려진 항목 만 스택에 놓을 수 있습니다. 숫자, 문자열, 부울의 경우입니다.</target>
+        </trans-unit>
+        <trans-unit id="c4ad91f43c7e132c0c64e796c08f23caf41b0111" translate="yes" xml:space="preserve">
+          <source>Here's how the memory is managed</source>
+          <target state="translated">메모리 관리 방법은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="bf4cd344a404d07f4320ed2b8128bc0699d576ee" translate="yes" xml:space="preserve">
+          <source>How the heap is managed is really up to the runtime environment. C uses &lt;code&gt;malloc&lt;/code&gt; and C++ uses &lt;code&gt;new&lt;/code&gt;, but many other languages have garbage collection.</source>
+          <target state="translated">힙 관리 방법은 실제로 런타임 환경에 달려 있습니다. C는 &lt;code&gt;malloc&lt;/code&gt; 을 사용하고 C ++은 &lt;code&gt;new&lt;/code&gt; 를 사용하지만 다른 많은 언어에는 가비지 콜렉션이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="e6d9adabdb8c7c013e5c6cedd3fd35a30646fc45" translate="yes" xml:space="preserve">
+          <source>However, it is generally better to consider &quot;&lt;strong&gt;scope&lt;/strong&gt;&quot; and &quot;&lt;strong&gt;lifetime&lt;/strong&gt;&quot; rather than &quot;stack&quot; and &quot;heap&quot;.</source>
+          <target state="translated">그러나 일반적으로 &quot;스택&quot;및 &quot;힙&quot;보다는 &quot; &lt;strong&gt;범위&lt;/strong&gt; &quot;및 &quot; &lt;strong&gt;수명&lt;/strong&gt; &quot;을 고려하는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="aed2fb7f74c3443670e7a902fd753397a138bf75" translate="yes" xml:space="preserve">
+          <source>However, the stack is a more low-level feature closely tied to the processor architecture. Growing the heap when there is not enough space isn't too hard since it can be implemented in the library call that handles the heap. However, growing the stack is often impossible as the stack overflow only is discovered when it is too late; and shutting down the thread of execution is the only viable option.</source>
+          <target state="translated">그러나 스택은 프로세서 아키텍처와 밀접한 관련이있는보다 낮은 수준의 기능입니다. 충분한 공간이 없을 때 힙을 늘리는 것은 힙을 처리하는 라이브러리 호출에서 구현할 수 있으므로 너무 어렵지 않습니다. 그러나 스택 오버플로는 너무 늦을 때만 발견되므로 스택을 늘리는 것은 종종 불가능합니다. 실행 스레드를 종료하는 것이 가능한 유일한 옵션입니다.</target>
+        </trans-unit>
+        <trans-unit id="369a9b90a4bdfde4e85ad68cde3ff685aa91dd1f" translate="yes" xml:space="preserve">
+          <source>I also create the image below to show how they may look like:</source>
+          <target state="translated">또한 아래 이미지를 만들어 어떻게 생겼는지 보여줍니다.</target>
+        </trans-unit>
+        <trans-unit id="b6b70f6bfb4b2dfbc4a60602e806084366a63de7" translate="yes" xml:space="preserve">
+          <source>I have something to share, although the major points are already covered.</source>
+          <target state="translated">주요 사항이 이미 다루어 져 있지만 공유 할 내용이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="9c1b11110bea9796fff4f2aa43b42de19c50096d" translate="yes" xml:space="preserve">
+          <source>I think many other people have given you mostly correct answers on this matter.</source>
+          <target state="translated">다른 많은 사람들이이 문제에 대해 대부분 정답을 주었다고 생각합니다.</target>
+        </trans-unit>
+        <trans-unit id="f84b830b40010139bb2bc50481c768d543c9849a" translate="yes" xml:space="preserve">
+          <source>I will provide some simple annotated C code to illustrate all of this. The best way to learn is to run a program under a debugger and watch the behavior. If you prefer to read python, skip to the end of the answer :)</source>
+          <target state="translated">이 모든 것을 설명하기 위해 간단한 주석이 달린 C 코드를 제공 할 것입니다. 배우는 가장 좋은 방법은 디버거에서 프로그램을 실행하고 동작을 보는 것입니다. 파이썬을 읽는 것을 선호한다면 대답의 끝으로 건너 뛰십시오. :)</target>
+        </trans-unit>
+        <trans-unit id="19be6ca3ce7acb355b8593c36bbe51f806cb3467" translate="yes" xml:space="preserve">
+          <source>If a function has parameters, these are pushed onto the stack before the call to the function. The code in the function is then able to navigate up the stack from the current stack pointer to locate these values.</source>
+          <target state="translated">함수에 매개 변수가있는 경우 함수 호출 전에 스택에 푸시됩니다. 그런 다음 함수의 코드는 현재 스택 포인터에서 스택을 탐색하여 이러한 값을 찾을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="d6fd840c486fd422511fccb949147762c4da1fa6" translate="yes" xml:space="preserve">
+          <source>If functions were stored in heap (messy storage pointed by pointer), there would have been no way to return to the caller address back (which stack gives due to sequential storage in memory).</source>
+          <target state="translated">함수가 힙에 저장된 경우 (포인터가 가리키는 지저분한 저장 공간) 호출자 주소로 돌아갈 수있는 방법이 없었습니다 (메모리의 순차적 저장으로 인해 스택이 제공함).</target>
+        </trans-unit>
+        <trans-unit id="582e735b7a23d77b1a919b1c33ed8aa128f12765" translate="yes" xml:space="preserve">
+          <source>If the private heap gets too large it will overlap the stack area, as will the stack overlap the heap if it gets too big. Because the stack starts at a higher address and works its way down to lower address, with proper hacking you can get make the stack so large that it will overrun the private heap area and overlap the code area. The trick then is to overlap enough of the code area that you can hook into the code. It's a little tricky to do and you risk a program crash, but it's easy and very effective.</source>
+          <target state="translated">개인 힙이 너무 커지면 스택 영역과 겹치며 스택이 너무 커지면 스택과 겹치게됩니다. 스택은 더 높은 주소에서 시작하여 더 낮은 주소로 내려 가기 때문에 적절한 해킹으로 스택을 너무 크게 만들어 개인 힙 영역을 오버런하고 코드 영역과 겹칠 수 있습니다. 그러면 코드에 연결할 수있는 코드 영역이 겹치게됩니다. 약간 까다 롭고 프로그램 충돌의 위험이 있지만 쉽고 효과적입니다.</target>
+        </trans-unit>
+        <trans-unit id="8164de7b8275fe6bd6610a9f1a1f510df9d0953d" translate="yes" xml:space="preserve">
+          <source>If you fail to do this, your program will have what is known as a memory leak. That is, memory on the heap will still be set aside (and won't be available to other processes). As we will see in the debugging section, there is a tool called &lt;a href=&quot;http://en.wikipedia.org/wiki/Valgrind&quot;&gt;Valgrind&lt;/a&gt; that can help you detect memory leaks.</source>
+          <target state="translated">이 작업을 수행하지 않으면 프로그램에 메모리 누수가 발생합니다. 즉, 힙의 메모리는 여전히 따로 설정되어 있으며 다른 프로세스에서는 사용할 수 없습니다. 디버깅 섹션에서 볼 수 있듯이 메모리 누수를 감지하는 데 도움이되는 &lt;a href=&quot;http://en.wikipedia.org/wiki/Valgrind&quot;&gt;Valgrind&lt;/a&gt; 라는 도구가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="5d14809b020f6dc3b1ca1b516594f7c26711d489" translate="yes" xml:space="preserve">
+          <source>Implemented with an actual stack data structure.</source>
+          <target state="translated">실제 스택 데이터 구조로 구현되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="0ec9c44eba796de6b3f45bf5b3038e9e98f84fe1" translate="yes" xml:space="preserve">
+          <source>In &quot;classic&quot; systems RAM was laid out such that the stack pointer started out at the bottom of memory, the heap pointer started out at the top, and they grew towards each other. If they overlap, you are out of RAM. That doesn't work with modern multi-threaded OSes though. Every thread has to have its own stack, and those can get created dynamicly.</source>
+          <target state="translated">&quot;클래식&quot;시스템에서는 스택 포인터가 메모리 하단에서 시작되고 힙 포인터가 상단에서 시작되어 서로를 향해 커지도록 RAM이 배치되었습니다. 겹치면 RAM이 부족한 것입니다. 그러나 최신 멀티 스레드 운영 체제에서는 작동하지 않습니다. 모든 스레드는 자체 스택을 가져야하며 동적으로 생성 될 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="9595be1b961175468df336b7cd57107f6d9e6d67" translate="yes" xml:space="preserve">
+          <source>In C you can get the benefit of variable length allocation through the use of &lt;a href=&quot;https://www.freebsd.org/cgi/man.cgi?alloca&quot;&gt;alloca&lt;/a&gt;, which allocates on the stack, as opposed to alloc, which allocates on the heap. This memory won't survive your return statement, but it's useful for a scratch buffer.</source>
+          <target state="translated">C에서는 힙에 할당하는 alloc과 달리 스택에 할당하는 &lt;a href=&quot;https://www.freebsd.org/cgi/man.cgi?alloca&quot;&gt;alloca를&lt;/a&gt; 사용하여 가변 길이 할당의 이점을 얻을 수 있습니다. 이 메모리는 return 문에서 살아남지 않지만 스크래치 버퍼에 유용합니다.</target>
+        </trans-unit>
+        <trans-unit id="4c49c1e042066fcde12cf790d1255e5d4128c6ed" translate="yes" xml:space="preserve">
+          <source>In C++ or C, data created on the heap will be pointed to by pointers and allocated with &lt;code&gt;new&lt;/code&gt; or &lt;code&gt;malloc&lt;/code&gt; respectively.</source>
+          <target state="translated">C ++ 또는 C에서 힙에서 작성된 데이터는 포인터로 가리키고 각각 &lt;code&gt;new&lt;/code&gt; 또는 &lt;code&gt;malloc&lt;/code&gt; 으로 할당됩니다.</target>
+        </trans-unit>
+        <trans-unit id="2dddb5409ddfb8bfae0332e6674cb30e4030c766" translate="yes" xml:space="preserve">
+          <source>In C++, variables on the heap must be destroyed manually and never fall out of scope. The data is freed with &lt;code&gt;delete&lt;/code&gt;, &lt;code&gt;delete[]&lt;/code&gt;, or &lt;code&gt;free&lt;/code&gt;.</source>
+          <target state="translated">C ++에서 힙의 변수는 수동으로 삭제해야하며 범위를 벗어나지 않아야합니다. 데이터는 &lt;code&gt;delete&lt;/code&gt; , &lt;code&gt;delete[]&lt;/code&gt; 또는 &lt;code&gt;free&lt;/code&gt; 로 해제 됩니다.</target>
+        </trans-unit>
+        <trans-unit id="0ab2e606ea24062674776c9630ae58f479fc3332" translate="yes" xml:space="preserve">
+          <source>In Detail</source>
+          <target state="translated">상세히</target>
+        </trans-unit>
+        <trans-unit id="d070ed182c0710ddbb3f2b533e23ff5a60e665ff" translate="yes" xml:space="preserve">
+          <source>In Java, most objects go directly into the heap. In languages like C / C++, structs and classes can often remain on the stack when you're not dealing with pointers.</source>
+          <target state="translated">Java에서 대부분의 오브젝트는 힙으로 직접 이동합니다. C / C ++와 같은 언어에서는 포인터를 다루지 않을 때 구조체와 클래스가 스택에 남아있을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="4f383e35971605d5e60dda592302a0dfbedde224" translate="yes" xml:space="preserve">
+          <source>In Short</source>
+          <target state="translated">한마디로</target>
+        </trans-unit>
+        <trans-unit id="5147749ca6668db2a2e89a21934367a8e767227a" translate="yes" xml:space="preserve">
+          <source>In a heap, there is no particular order to the way items are placed.  You can reach in and remove items in any order because there is no clear 'top' item.</source>
+          <target state="translated">힙에는 항목을 배치하는 방법에 대한 특정 순서가 없습니다. 명확한 '상위'항목이 없기 때문에 어떤 순서로든 항목을 가져오고 제거 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="c178a8267cc3e47eec2a91c3a323a8fdc32c3e39" translate="yes" xml:space="preserve">
+          <source>In a multi-threaded application, each thread will have its own stack.</source>
+          <target state="translated">다중 스레드 응용 프로그램에서 각 스레드에는 자체 스택이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="aea37718a1d7d897745b71fc7a069d9dac94a163" translate="yes" xml:space="preserve">
+          <source>In a multi-threaded application, each thread will have its own stack. But, all the different threads will share the heap.</source>
+          <target state="translated">다중 스레드 응용 프로그램에서 각 스레드에는 자체 스택이 있습니다. 그러나 다른 모든 스레드는 힙을 공유합니다.</target>
+        </trans-unit>
+        <trans-unit id="bed80375d9899ce917d044e4b57acedb6c419964" translate="yes" xml:space="preserve">
+          <source>In a multi-threaded environment each thread will have its own completely independent stack but they will share the heap. Concurrent access has to be controlled on the heap and is not possible on the stack.</source>
+          <target state="translated">다중 스레드 환경에서 각 스레드는 완전히 독립적 인 스택을 갖지만 힙을 공유합니다. 동시 액세스는 힙에서 제어되어야하며 스택에서는 불가능합니다.</target>
+        </trans-unit>
+        <trans-unit id="2afdc75d76febc6978738ba0407aee2a8e1a2690" translate="yes" xml:space="preserve">
+          <source>In a multi-threaded situation each thread will have its own completely independent stack, but they will share the heap. The stack is thread specific and the heap is application specific. The stack is important to consider in exception handling and thread executions.</source>
+          <target state="translated">다중 스레드 상황에서 각 스레드는 완전히 독립적 인 스택을 갖지만 힙을 공유합니다. 스택은 스레드마다 다르며 힙은 응용 프로그램별로 다릅니다. 스택은 예외 처리 및 스레드 실행에서 고려해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="3b5a4a1f69f2a44d7b973472f440395d38db3aef" translate="yes" xml:space="preserve">
+          <source>In a stack of items, items sit one on top of the other in the order they were placed there, and you can only remove the top one (without toppling the whole thing over).</source>
+          <target state="translated">항목 스택에서 항목은 순서대로 순서대로 배치되며 맨 위 항목 만 제거 할 수 있습니다 (전체를 뒤집지 않고).</target>
+        </trans-unit>
+        <trans-unit id="6de943cc8f12c5ab1e03aa49853e2f81f883c968" translate="yes" xml:space="preserve">
+          <source>In any case, the purpose of both fibers, green threads and coroutines is having multiple functions executing concurrently, but &lt;strong&gt;not&lt;/strong&gt; in parallel (see &lt;a href=&quot;https://stackoverflow.com/questions/1050222/concurrency-vs-parallelism-what-is-the-difference&quot;&gt;this SO question&lt;/a&gt; for the distinction) within a single OS-level thread, transferring control back and forth from one another in an organized fashion.</source>
+          <target state="translated">어쨌든, 파이버, 그린 스레드 및 코 루틴의 목적은 단일 OS 레벨 스레드 내에서 동시에 여러 가지 기능을 실행하지만 동시에 병렬 &lt;a href=&quot;https://stackoverflow.com/questions/1050222/concurrency-vs-parallelism-what-is-the-difference&quot;&gt;이&lt;/a&gt; &lt;strong&gt;아닌&lt;/strong&gt; ( 이 SO 질문 참조) 제어를 서로 앞뒤로 전송하는 것입니다. 조직 된 방식으로.</target>
+        </trans-unit>
+        <trans-unit id="6ff0d53ec18f38266dd0067ebeca5dc7b79c4307" translate="yes" xml:space="preserve">
+          <source>In computing architectures the heap is an area of dynamically-allocated memory that is managed automatically by the operating system or the memory manager library.</source>
+          <target state="translated">컴퓨팅 아키텍처에서 힙은 동적으로 할당 된 메모리 영역으로 운영 체제 또는 메모리 관리자 라이브러리에서 자동으로 관리합니다.</target>
+        </trans-unit>
+        <trans-unit id="14147c40afba7195a6e743160146832b550785ac" translate="yes" xml:space="preserve">
+          <source>In systems without virtual memory, such as some embedded systems, the same basic layout often applies, except the stack and heap are fixed in size. However, in other embedded systems (such as those based on Microchip PIC microcontrollers), the program stack is a separate block of memory that is not addressable by data movement instructions, and can only be modified or read indirectly through program flow instructions (call, return, etc.). Other architectures, such as Intel Itanium processors, have &lt;a href=&quot;http://blogs.msdn.com/oldnewthing/archive/2005/04/21/410397.aspx&quot;&gt;multiple stacks&lt;/a&gt;. In this sense, the stack is an element of the CPU architecture.</source>
+          <target state="translated">일부 임베디드 시스템과 같은 가상 메모리가없는 시스템에서는 스택과 힙의 크기가 고정 된 것을 제외하고 동일한 기본 레이아웃이 적용되는 경우가 많습니다. 그러나 다른 임베디드 시스템 (예 : Microchip PIC 마이크로 컨트롤러 기반 시스템)에서 프로그램 스택은 데이터 이동 명령으로 해결할 수없는 별도의 메모리 블록이며 프로그램 흐름 명령 (호출, 반품 등). Intel Itanium 프로세서와 같은 다른 아키텍처에는 &lt;a href=&quot;http://blogs.msdn.com/oldnewthing/archive/2005/04/21/410397.aspx&quot;&gt;여러 스택이&lt;/a&gt; 있습니다. 이런 의미에서 스택은 CPU 아키텍처의 요소입니다.</target>
+        </trans-unit>
+        <trans-unit id="9aec9cb3ea820b87a5cf73897d19e91456e49aff" translate="yes" xml:space="preserve">
+          <source>In the 1980s, UNIX propagated like bunnies with big companies rolling their own.
+Exxon had one as did dozens of brand names lost to history.
+How memory was laid out was at the discretion of the many implementors.</source>
+          <target state="translated">1980 년대에 유닉스는 대기업이 자체적으로 운영하는 토끼처럼 전파되었습니다. 엑손은 수십 개의 브랜드 이름을 잃어버린 것처럼 하나의 역사를 가지고있었습니다. 많은 구현 자들의 재량에 따라 메모리가 어떻게 배치되었는지가 결정되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="33565c031152b190e31e2e646c439179d7871e3f" translate="yes" xml:space="preserve">
+          <source>In the following C# code</source>
+          <target state="translated">다음 C # 코드에서</target>
+        </trans-unit>
+        <trans-unit id="630247c43e13b3493c95ccf3dcf571c7304c4c8f" translate="yes" xml:space="preserve">
+          <source>Is hardware, and even push/pop are very efficient.</source>
+          <target state="translated">하드웨어이며 푸시 / 팝조차 매우 효율적입니다.</target>
+        </trans-unit>
+        <trans-unit id="fbec35b1fe092a0a42603acde06323d190983ce3" translate="yes" xml:space="preserve">
+          <source>It&amp;rsquo;s better to use the heap when you know that you will need a lot of memory for your data, or you just are not sure how much memory you will need (like with a dynamic array).</source>
+          <target state="translated">데이터에 많은 메모리가 필요하다는 것을 알거나 동적 배열과 같이 필요한 메모리 양이 확실하지 않은 경우 힙을 사용하는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="457deb90d7d9b5e518927cf1c37ce9f9c8468ecf" translate="yes" xml:space="preserve">
+          <source>Java Memory Model</source>
+          <target state="translated">자바 메모리 모델</target>
+        </trans-unit>
+        <trans-unit id="ffbbcf1f84185847b6720632d5f0dd4615871ac7" translate="yes" xml:space="preserve">
+          <source>Lifetime refers to when a variable is allocated and deallocated during program execution. Usually we think of &lt;strong&gt;static allocation&lt;/strong&gt; (variable will persist through the entire duration of the program, making it useful for storing the same information across several function calls) versus &lt;strong&gt;automatic allocation&lt;/strong&gt; (variable only persists during a single call to a function, making it useful for storing information that is only used during your function and can be discarded once you are done) versus &lt;strong&gt;dynamic allocation&lt;/strong&gt; (variables whose duration is defined at runtime, instead of compile time like static or automatic).</source>
+          <target state="translated">수명은 프로그램이 실행되는 동안 변수가 할당 및 할당 해제되는시기를 나타냅니다. 일반적으로 &lt;strong&gt;정적 할당&lt;/strong&gt; (변수는 프로그램의 전체 기간 동안 지속되므로 여러 함수 호출에서 동일한 정보를 저장하는 데 유용함) 대 &lt;strong&gt;자동 할당&lt;/strong&gt; (변수는 함수를 한 번 호출하는 동안에 만 지속되므로 유용합니다. 함수 중에 만 사용되며 일단 완료되면 버릴 수있는 정보 저장) &lt;strong&gt;동적 할당&lt;/strong&gt; (정적 또는 자동과 같은 컴파일 시간 대신 런타임에 기간이 정의 된 변수) 대 &lt;strong&gt;동적 할당&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="89eb38e39ee83b4afbd53d56ba3e811dd7e4c25b" translate="yes" xml:space="preserve">
+          <source>Limit on stack size (OS-dependent)</source>
+          <target state="translated">스택 크기 제한 (OS에 따라 다름)</target>
+        </trans-unit>
+        <trans-unit id="e0b77457d171049e39cb59f6d0cc6e0aa958f4d7" translate="yes" xml:space="preserve">
+          <source>Local variables only</source>
+          <target state="translated">지역 변수 만</target>
+        </trans-unit>
+        <trans-unit id="a7063db18651eedcd045e8b41c98ba145000f990" translate="yes" xml:space="preserve">
+          <source>Making a huge temporary buffer on Windows that you don't use much of is not free. This is because the compiler will generate a stack probe loop that is called every time your function is entered to make sure the stack exists (because Windows uses a single guard page at the end of your stack to detect when it needs to grow the stack. If you access memory more than one page off the end of the stack you will crash). Example:</source>
+          <target state="translated">많이 사용하지 않는 Windows에서 거대한 임시 버퍼를 만드는 것은 무료가 아닙니다. 이는 컴파일러가 스택이 존재하는지 확인하기 위해 함수가 입력 될 때마다 호출되는 스택 프로브 루프를 생성하기 때문입니다 (Windows는 스택 끝에서 단일 가드 페이지를 사용하여 스택을 확장해야하는시기를 감지하므로). 스택 끝에서 둘 이상의 메모리에 액세스하면 충돌이 발생합니다). 예:</target>
+        </trans-unit>
+        <trans-unit id="ca52649198f4fcd9db011db1f93bf7a0fbf8fc6f" translate="yes" xml:space="preserve">
+          <source>Memory on the heap is allocated, deallocated, and resized regularly during program execution, and this can lead to a problem called fragmentation.</source>
+          <target state="translated">힙의 메모리는 프로그램 실행 중에 정기적으로 할당, 할당 해제 및 크기 조정되므로 조각화라는 문제가 발생할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="92fa2b03cecd0df74b8828996b6d8dbd49f2c6f2" translate="yes" xml:space="preserve">
+          <source>More can be found &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Memory_management&quot;&gt;here&lt;/a&gt;&lt;/strong&gt;.</source>
+          <target state="translated">자세한 내용은 &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Memory_management&quot;&gt;여기를 참조하십시오&lt;/a&gt;&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="2be48705642c1c2849cd129948c17459949f6ab7" translate="yes" xml:space="preserve">
+          <source>More can be found &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Stack_(abstract_data_type)&quot;&gt;here&lt;/a&gt;&lt;/strong&gt;.</source>
+          <target state="translated">자세한 내용은 &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Stack_(abstract_data_type)&quot;&gt;여기를 참조하십시오&lt;/a&gt;&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="cd2086a7c7de1d63c092402cee2278afc2a9fcb4" translate="yes" xml:space="preserve">
+          <source>More can be found &lt;strong&gt;&lt;a href=&quot;https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap/80113#80113&quot;&gt;here&lt;/a&gt;&lt;/strong&gt;.</source>
+          <target state="translated">자세한 내용은 &lt;strong&gt;&lt;a href=&quot;https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap/80113#80113&quot;&gt;여기를 참조하십시오&lt;/a&gt;&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="ff90893ecc13cc33b31a0c7ba89530291adf207c" translate="yes" xml:space="preserve">
+          <source>More can be found in &lt;a href=&quot;https://stackoverflow.com/questions/408670/stack-static-and-heap-in-c&quot;&gt;here&lt;/a&gt;.</source>
+          <target state="translated">자세한 내용은 &lt;a href=&quot;https://stackoverflow.com/questions/408670/stack-static-and-heap-in-c&quot;&gt;여기를 참조하십시오&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="d87631c079431a997cdc54c230389a89f964ee05" translate="yes" xml:space="preserve">
+          <source>More information can be found here:</source>
+          <target state="translated">자세한 내용은 여기를 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="daed2813a5860321bea40be47381eb4727e55905" translate="yes" xml:space="preserve">
+          <source>Much faster to allocate in comparison to variables on the heap.</source>
+          <target state="translated">힙의 변수와 비교하여 할당하는 것이 훨씬 빠릅니다.</target>
+        </trans-unit>
+        <trans-unit id="611a2d27ec35591a9d1a945571bf2c19006fe525" translate="yes" xml:space="preserve">
+          <source>Nesting function calls work like a charm. Each new call will allocate function parameters, the return address and space for local variables and these &lt;em&gt;activation records&lt;/em&gt; can be stacked for nested calls and will unwind in the correct way when the functions return.</source>
+          <target state="translated">중첩 함수 호출은 매력처럼 작동합니다. 각각의 새 호출은 함수 매개 변수, 리턴 주소 및 로컬 변수에 대한 공간을 할당하며 이러한 &lt;em&gt;활성화 레코드&lt;/em&gt; 는 중첩 된 호출에 대해 스택 될 수 있으며 함수가 리턴 될 때 올바른 방식으로 해제됩니다.</target>
+        </trans-unit>
+        <trans-unit id="f5f359ca9a7c1ab08f498e157e0409d9d76c46da" translate="yes" xml:space="preserve">
+          <source>No guaranteed efficient use of space, memory may become fragmented over time as blocks of memory are allocated, then freed</source>
+          <target state="translated">공간의 효율적인 사용을 보장하지 않으며, 메모리 블록이 할당 된 후 시간이 지남에 따라 메모리가 조각화 될 수 있습니다</target>
+        </trans-unit>
+        <trans-unit id="15c9ee58559d66b5b15a6a82aa330160c95db8c1" translate="yes" xml:space="preserve">
+          <source>No limit on memory size</source>
+          <target state="translated">메모리 크기 제한 없음</target>
+        </trans-unit>
+        <trans-unit id="50b9533f7ca93c1b7165a50cb0b44b0cfb20fb35" translate="yes" xml:space="preserve">
+          <source>No, activation records for functions (i.e. local or automatic variables) are allocated on the stack that is used not only to store these variables, but also to keep track of nested function calls.</source>
+          <target state="translated">아니요, 함수 (예 : 로컬 또는 자동 변수)의 활성화 레코드는 이러한 변수를 저장하고 중첩 된 함수 호출을 추적하는 데 사용되는 스택에 할당됩니다.</target>
+        </trans-unit>
+        <trans-unit id="4ab51a7f5c3504c0459c4e33aa2f1830407e1fa5" translate="yes" xml:space="preserve">
+          <source>Note that I said &quot;&lt;em&gt;usually&lt;/em&gt; have a separate stack per function&quot;. There're both &lt;em&gt;stackful&lt;/em&gt; and &lt;em&gt;stackless&lt;/em&gt; implementations of couroutines. Most notable stackful C++ implementations are &lt;a href=&quot;http://www.boost.org/doc/libs/1_53_0/libs/coroutine/doc/html/index.html&quot;&gt;Boost.Coroutine&lt;/a&gt; and &lt;a href=&quot;https://msdn.microsoft.com/en-us/library/dd492418.aspx&quot;&gt;Microsoft PPL&lt;/a&gt;'s &lt;code&gt;async/await&lt;/code&gt;. (However, C++'s &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4134.pdf&quot;&gt;resumable functions&lt;/a&gt; (a.k.a. &quot;&lt;code&gt;async&lt;/code&gt; and &lt;code&gt;await&lt;/code&gt;&quot;), which were proposed to C++17, are likely to use stackless coroutines.)</source>
+          <target state="translated">&quot; &lt;em&gt;보통&lt;/em&gt; 기능마다 별도의 스택이 있습니다&quot;라고 말했음을 참고하십시오. &lt;em&gt;쿠 루틴의&lt;/em&gt; &lt;em&gt;스택&lt;/em&gt; 및 &lt;em&gt;스택리스&lt;/em&gt; 구현이 있습니다. 가장 주목할만한 스택 C ++ 구현은 &lt;a href=&quot;http://www.boost.org/doc/libs/1_53_0/libs/coroutine/doc/html/index.html&quot;&gt;Boost.Coroutine&lt;/a&gt; 과 &lt;a href=&quot;https://msdn.microsoft.com/en-us/library/dd492418.aspx&quot;&gt;Microsoft PPL&lt;/a&gt; 의 &lt;code&gt;async/await&lt;/code&gt; 입니다. 그러나 C ++ 17에 제안 된 C ++의 &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4134.pdf&quot;&gt;재개 가능한 함수&lt;/a&gt; (일명 &quot; &lt;code&gt;async&lt;/code&gt; and &lt;code&gt;await&lt;/code&gt; &quot;)는 스택리스 코 루틴을 사용합니다.</target>
+        </trans-unit>
+        <trans-unit id="d2cf9d062fe2a4c663f0c8c2cedd3fc551bc3d7a" translate="yes" xml:space="preserve">
+          <source>Note that putting the keyword &quot;static&quot; in the declaration above prevents var2 from having global scope. Nevertheless, the global var1 has static allocation. This is not intuitive! For this reason, I try to never use the word &quot;static&quot; when describing scope, and instead say something like &quot;file&quot; or &quot;file limited&quot; scope. However many people use the phrase &quot;static&quot; or &quot;static scope&quot; to describe a variable that can only be accessed from one code file. In the context of lifetime, &quot;static&quot; &lt;em&gt;always&lt;/em&gt; means the variable is allocated at program start and deallocated when program exits.</source>
+          <target state="translated">위의 선언에 키워드 &quot;static&quot;을 넣으면 var2가 전역 범위를 갖지 못하게됩니다. 그럼에도 불구하고 전역 var1에는 정적 할당이 있습니다. 이것은 직관적이지 않습니다! 이러한 이유로, 범위를 설명 할 때 &quot;정적&quot;이라는 단어를 사용하지 말고 &quot;file&quot;또는 &quot;file limited&quot;범위와 같은 것을 말하려고합니다. 그러나 많은 사람들이 &quot;정적&quot;또는 &quot;정적 범위&quot;라는 문구를 사용하여 한 코드 파일에서만 액세스 할 수있는 변수를 설명합니다. 수명의 맥락에서 &quot;정적&quot;은 &lt;em&gt;항상&lt;/em&gt; 프로그램 시작시 변수가 할당되고 프로그램이 종료 될 때 할당이 해제됨을 의미합니다.</target>
+        </trans-unit>
+        <trans-unit id="0871b21874420432475c6d4351849b35d915057f" translate="yes" xml:space="preserve">
+          <source>Now come to &lt;strong&gt;your question's answers&lt;/strong&gt;.</source>
+          <target state="translated">이제 &lt;strong&gt;질문에 대한 답&lt;/strong&gt; 을 &lt;strong&gt;찾으십시오&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="74c615a4a42b31624f1cc296011324866cfe8b77" translate="yes" xml:space="preserve">
+          <source>Objects (which vary in size as we update them) go on the heap because we don't know at creation time how long they are going to last. In many languages the heap is garbage collected to find objects (such as the cls1 object) that no longer have any references.</source>
+          <target state="translated">객체를 업데이트 할 때 크기가 다른 객체는 생성 시간에 얼마나 오래 지속 될지 알 수 없기 때문에 힙에 저장됩니다. 많은 언어에서 힙은 더 이상 참조가없는 객체 (예 : cls1 객체)를 찾기 위해 가비지 수집됩니다.</target>
+        </trans-unit>
+        <trans-unit id="e4fe13843a3ecc800429114b92b44c8d355d6bed" translate="yes" xml:space="preserve">
+          <source>On the stack you save return addresses and call &amp;rarr; push / ret &amp;rarr; pop is managed directly in hardware.</source>
+          <target state="translated">스택에서 반송 주소를 저장하고 호출 &amp;rarr; 푸시 / ret &amp;rarr; 팝은 하드웨어에서 직접 관리됩니다.</target>
+        </trans-unit>
+        <trans-unit id="29a4742ef363b18a49d8dab9624425d36200ea1e" translate="yes" xml:space="preserve">
+          <source>One detail that has been missed, however, is that the &quot;heap&quot; should in fact probably be called the &quot;free store&quot;.  The reason for this distinction is that the original free store was implemented with a data structure known as a &quot;binomial heap.&quot;  For that reason, allocating from early implementations of malloc()/free() was allocation from a heap.  However, in this modern day, most free stores are implemented with very elaborate data structures that are not binomial heaps.</source>
+          <target state="translated">그러나 누락 된 세부 사항 중 하나는 &quot;힙&quot;이 실제로 &quot;무료 상점&quot;이라고하는 것입니다. 이러한 차이의 이유는 원래의 무료 저장소가 &quot;이항 힙&quot;이라는 데이터 구조로 구현 되었기 때문입니다. 따라서 malloc () / free ()의 초기 구현에서 할당하는 것은 힙에서 할당되었습니다. 그러나 오늘날의 대부분의 무료 상점은 이항 힙이 아닌 매우 정교한 데이터 구조로 구현됩니다.</target>
+        </trans-unit>
+        <trans-unit id="13d7afdda2ae69ca5bb8408fcc1546f3b6c11363" translate="yes" xml:space="preserve">
+          <source>One typical memory block was BSS (a block of zero values)
+which was accidentally not zeroed in one manufacturer's offering.
+Another was DATA containing initialized values, including strings and numbers.
+A third was CODE containing CRT (C runtime), main, functions, and libraries.</source>
+          <target state="translated">일반적인 메모리 블록 중 하나는 BSS (0 값 블록)였으며 실수로 한 제조업체의 제품에서 제로화되지 않았습니다. 다른 하나는 문자열과 숫자를 포함하여 초기화 된 값을 포함하는 DATA입니다. 세 번째는 CRT (C 런타임), 기본, 함수 및 라이브러리를 포함하는 CODE입니다.</target>
+        </trans-unit>
+        <trans-unit id="e3d075236948af076fad91d4bb43d9d26eb82acc" translate="yes" xml:space="preserve">
+          <source>Others have answered the broad strokes pretty well, so I'll throw in a few details.</source>
+          <target state="translated">다른 사람들은 넓은 스트로크에 꽤 잘 대답 했으므로 몇 가지 세부 사항을 살펴 보겠습니다.</target>
+        </trans-unit>
+        <trans-unit id="6f64e795a39ecd2c765903677e991445c7062f09" translate="yes" xml:space="preserve">
+          <source>Others have directly answered your question, but when trying to understand the stack and the heap, I think it is helpful to consider the memory layout of a traditional UNIX process (without threads and &lt;code&gt;mmap()&lt;/code&gt;-based allocators). The &lt;a href=&quot;http://www.memorymanagement.org/glossary/b.html#term-brk&quot;&gt;Memory Management Glossary&lt;/a&gt; web page has a diagram of this memory layout.</source>
+          <target state="translated">다른 사람들은 귀하의 질문에 직접 대답했지만 스택과 힙을 이해하려고 할 때 스레드와 &lt;code&gt;mmap()&lt;/code&gt; 기반 할당자가없는 전통적인 UNIX 프로세스의 메모리 레이아웃을 고려하는 것이 도움이된다고 생각합니다. &lt;a href=&quot;http://www.memorymanagement.org/glossary/b.html#term-brk&quot;&gt;Memory Management Glossary&lt;/a&gt; 웹 페이지에는이 메모리 레이아웃의 다이어그램이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="e33f67dded7084c7a1497e2d2409091903f39904" translate="yes" xml:space="preserve">
+          <source>Programming language books explain that value types are created on the &lt;strong&gt;stack&lt;/strong&gt;, and reference types are created on the &lt;strong&gt;heap&lt;/strong&gt;, without explaining what these two things are. I haven't read a clear explanation of this.  I understand what &lt;em&gt;a stack&lt;/em&gt; is. But,</source>
+          <target state="translated">프로그래밍 언어 서적에서는 값 유형이 &lt;strong&gt;스택에&lt;/strong&gt; 작성되고 참조 유형이 &lt;strong&gt;힙에&lt;/strong&gt; 작성되며이 두 가지가 무엇인지 설명하지 않습니다. 나는 이것에 대한 명확한 설명을 읽지 못했습니다. &lt;em&gt;스택&lt;/em&gt; 이 무엇인지 이해합니다. 그러나,</target>
+        </trans-unit>
+        <trans-unit id="6e6e17f4d2768e59d3304c88f5860bd92caee2a8" translate="yes" xml:space="preserve">
+          <source>REF:</source>
+          <target state="translated">REF:</target>
+        </trans-unit>
+        <trans-unit id="b5fef21aad832234d260e32f67bed2552c27b3f3" translate="yes" xml:space="preserve">
+          <source>Responsible for memory leaks.</source>
+          <target state="translated">메모리 누수를 담당합니다.</target>
+        </trans-unit>
+        <trans-unit id="69bf7896b4602d80f099d7c96e91ea211768accd" translate="yes" xml:space="preserve">
+          <source>Scope refers to what parts of the code can access a variable. Generally we think of &lt;strong&gt;local scope&lt;/strong&gt; (can only be accessed by the current function) versus &lt;strong&gt;global scope&lt;/strong&gt; (can be accessed anywhere) although scope can get much more complex.</source>
+          <target state="translated">범위는 코드에서 변수에 액세스 할 수있는 부분을 나타냅니다. 일반적으로 범위가 훨씬 복잡 해지더라도 &lt;strong&gt;로컬 범위&lt;/strong&gt; (현재 기능으로 만 액세스 할 수 있음)와 &lt;strong&gt;전역 범위&lt;/strong&gt; (어디서나 액세스 할 수 있음)를 생각합니다.</target>
+        </trans-unit>
+        <trans-unit id="509aa940c1c036efce29c8fe0c9b4b55069f2302" translate="yes" xml:space="preserve">
+          <source>Should the function calls had been stored in heap, it would had resulted in 2 messy points:</source>
+          <target state="translated">함수 호출이 힙에 저장되어 있으면 2 개의 지저분한 지점이 생겼을 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="a2185ca86acc0c919180d9c04aad21adc109c7e3" translate="yes" xml:space="preserve">
+          <source>Simply, the stack is where local variables get created. Also, every time you call a subroutine the program counter (pointer to the next machine instruction) and any important registers, and sometimes the parameters get pushed on the stack. Then any local variables inside the subroutine are pushed onto the stack (and used from there). When the subroutine finishes, that stuff all gets popped back off the stack. The PC and register data gets and put back where it was as it is popped, so your program can go on its merry way.</source>
+          <target state="translated">간단히, 스택은 지역 변수가 생성되는 곳입니다. 또한 서브 루틴을 호출 할 때마다 프로그램 카운터 (다음 기계 명령어에 대한 포인터) 및 중요한 레지스터, 때로는 매개 변수가 스택에 푸시됩니다. 그런 다음 서브 루틴 내부의 모든 로컬 변수가 스택으로 푸시되고 여기에서 사용됩니다. 서브 루틴이 끝나면 그 모든 것이 스택에서 다시 튀어 나옵니다. PC와 레지스터 데이터는 팝업 된 위치로 돌아가서 다시 가져 오므로 프로그램이 순조롭게 진행될 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="2c86213718746adf4ed3b869ab8ebf53621c0bd5" translate="yes" xml:space="preserve">
+          <source>Since some answers went nitpicking, I'm going to contribute my mite.</source>
+          <target state="translated">일부 답변은 nitpicking 갔으므로 진드기에 기여할 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="9aeb164d237567097685b40284f2116644d171b1" translate="yes" xml:space="preserve">
+          <source>Slow access comparatively to Stack.</source>
+          <target state="translated">스택에 비해 상대적으로 느리게 액세스합니다.</target>
+        </trans-unit>
+        <trans-unit id="f9fa73fb582337740b2c7cd4692dfd71eaccd2bf" translate="yes" xml:space="preserve">
+          <source>Slower to allocate in comparison to variables on the stack.</source>
+          <target state="translated">스택의 변수에 비해 할당 속도가 느립니다.</target>
+        </trans-unit>
+        <trans-unit id="84def04a560bda893e52388cc083ef70d321b378" translate="yes" xml:space="preserve">
+          <source>So simple way: process heap is general for process and all threads inside, using for memory allocation in common case with something like &lt;strong&gt;malloc()&lt;/strong&gt;.</source>
+          <target state="translated">간단한 방법 : 프로세스 힙은 프로세스와 내부의 모든 스레드에 일반적이며 &lt;strong&gt;malloc ()&lt;/strong&gt; 과 같은 일반적인 경우 메모리 할당에 사용합니다.</target>
+        </trans-unit>
+        <trans-unit id="4d6256f41ed90ef56893f4c0e80ba67b5f4b8734" translate="yes" xml:space="preserve">
+          <source>So there is always an index to point the specific item, also processing gonna be faster, there is relationship between the items as well!...</source>
+          <target state="translated">따라서 특정 항목을 가리키는 색인이 항상 있으며 처리 속도가 빨라지고 항목 사이에도 관계가 있습니다! ...</target>
+        </trans-unit>
+        <trans-unit id="26e4934add44c2df343844921794ed5d56eccfd7" translate="yes" xml:space="preserve">
+          <source>Some of the syntax choices in C/C++ exacerbate this problem - for instance many people think global variables are not &quot;static&quot; because of the syntax shown below.</source>
+          <target state="translated">C / C ++의 일부 구문 선택은이 문제를 악화시킵니다. 예를 들어, 많은 사람들이 전역 변수가 아래 표시된 구문 때문에 &quot;정적&quot;이 아니라고 생각합니다.</target>
+        </trans-unit>
+        <trans-unit id="95320488ab41410560b78b52dfa9e017b243c84d" translate="yes" xml:space="preserve">
+          <source>Some people think of these concepts as C/C++ specific. They are not. For instance, the Python sample below illustrates all three types of allocation (there are some subtle differences possible in interpreted languages that I won't get into here).</source>
+          <target state="translated">어떤 사람들은 이러한 개념을 C / C ++에 특정한 것으로 생각합니다. 그들은 아닙니다. 예를 들어 아래의 Python 샘플은 세 가지 유형의 할당을 모두 보여줍니다 (여기서는 이해할 수없는 해석 언어에는 약간의 차이가있을 수 있음).</target>
+        </trans-unit>
+        <trans-unit id="8b51efe6289458012b6c8f1356975a43aa34abc0" translate="yes" xml:space="preserve">
+          <source>Source: &lt;a href=&quot;https://academind.com/learn/javascript/reference-vs-primitive-values/&quot;&gt;Academind&lt;/a&gt;</source>
+          <target state="translated">출처 : &lt;a href=&quot;https://academind.com/learn/javascript/reference-vs-primitive-values/&quot;&gt;Academind&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="c9c53060f090e60a073e898da17d700ab9341170" translate="yes" xml:space="preserve">
+          <source>Space is freed automatically when program goes out of a scope.</source>
+          <target state="translated">프로그램이 범위를 벗어나면 공간이 자동으로 해제됩니다.</target>
+        </trans-unit>
+        <trans-unit id="a04e6278e75e6c001c297db6eeaca0f21b4f1cf9" translate="yes" xml:space="preserve">
+          <source>Space is managed efficiently by CPU, memory will not become fragmented</source>
+          <target state="translated">공간은 CPU에 의해 효율적으로 관리되며 메모리는 조각화되지 않습니다</target>
+        </trans-unit>
+        <trans-unit id="83e5a0d3d2ef19df258412a4d3ef3f9533b0c0c1" translate="yes" xml:space="preserve">
+          <source>Stack</source>
+          <target state="translated">Stack</target>
+        </trans-unit>
+        <trans-unit id="2a1e3b0bbb1f0808e4252a6f745c19b958ac4d85" translate="yes" xml:space="preserve">
+          <source>Stack allocation is much faster since all it really does is move the stack pointer. Using memory pools, you can get comparable performance out of heap allocation, but that comes with a slight added complexity and its own headaches.</source>
+          <target state="translated">실제로 스택 할당은 스택 포인터를 이동하기 때문에 스택 할당이 훨씬 빠릅니다. 메모리 풀을 사용하면 힙 할당에서 비슷한 성능을 얻을 수 있지만 약간의 복잡성과 자체 두통이 발생합니다.</target>
+        </trans-unit>
+        <trans-unit id="990b9b0ae5cb9ef33f5882c479501ea9ec73fc18" translate="yes" xml:space="preserve">
+          <source>Stack and heap need not be singular. A common situation in which you have more than one stack is if you have more than one thread in a process.  In this case each thread has its own stack. You can also have more than one heap, for example some DLL configurations can result in different DLLs allocating from different heaps, which is why it's generally a bad idea to release memory allocated by a different library.</source>
+          <target state="translated">스택과 힙은 단수 일 필요는 없습니다. 하나 이상의 스택이있는 일반적인 상황은 프로세스에 둘 이상의 스레드가있는 경우입니다. 이 경우 각 스레드에는 자체 스택이 있습니다. 또한 하나 이상의 힙을 가질 수 있습니다. 예를 들어 일부 DLL 구성으로 인해 서로 다른 힙에서 다른 DLL이 할당 될 수 있으므로 일반적으로 다른 라이브러리에서 할당 한 메모리를 해제하는 것이 좋지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="12fa9cb21a886762f171950816a55e2e59c869da" translate="yes" xml:space="preserve">
+          <source>Stack is quick memory for store in common case function return pointers and variables, processed as parameters in function call, local function variables.</source>
+          <target state="translated">스택은 일반적인 경우 함수 반환 포인터 및 변수에 저장하기위한 빠른 메모리이며, 함수 호출의 매개 변수, 로컬 함수 변수로 처리됩니다.</target>
+        </trans-unit>
+        <trans-unit id="e3f92779f11d4b0f3467f92a53682253210952a8" translate="yes" xml:space="preserve">
+          <source>Stack usage is faster as:</source>
+          <target state="translated">다음과 같이 스택 사용량이 더 빠릅니다.</target>
+        </trans-unit>
+        <trans-unit id="24de6d4cf48238082c51e345becf26e29ec1d2b0" translate="yes" xml:space="preserve">
+          <source>Stacks in computing architectures are regions of memory where data is added or removed in a last-in-first-out manner.</source>
+          <target state="translated">컴퓨팅 아키텍처의 스택은 데이터가 후입 선출 방식으로 추가되거나 제거되는 메모리 영역입니다.</target>
+        </trans-unit>
+        <trans-unit id="22877b6a12ccde62a270b7ab1193154412bb82ab" translate="yes" xml:space="preserve">
+          <source>Stored in RAM.</source>
+          <target state="translated">RAM에 저장됩니다.</target>
+        </trans-unit>
+        <trans-unit id="dc53b0aeba09646ffe4c0adfb1d92487fe376514" translate="yes" xml:space="preserve">
+          <source>Stored in computer RAM just like the heap.</source>
+          <target state="translated">힙처럼 컴퓨터 RAM에 저장됩니다.</target>
+        </trans-unit>
+        <trans-unit id="5ba923ec538ab00b7c8b1596311059a6d8275c93" translate="yes" xml:space="preserve">
+          <source>Stored in computer RAM just like the stack.</source>
+          <target state="translated">스택과 마찬가지로 컴퓨터 RAM에 저장됩니다.</target>
+        </trans-unit>
+        <trans-unit id="4cff577d64e66b1b435d415f1b04c55974ebb6a6" translate="yes" xml:space="preserve">
+          <source>Stored in sequential memory.</source>
+          <target state="translated">순차 메모리에 저장됩니다.</target>
+        </trans-unit>
+        <trans-unit id="8df107699395056ea16ab53263372585c3596bba" translate="yes" xml:space="preserve">
+          <source>Stored wherever memory allocation is done, accessed by pointer always.</source>
+          <target state="translated">메모리 할당이 완료 될 때마다 저장되며 항상 포인터로 액세스합니다.</target>
+        </trans-unit>
+        <trans-unit id="89a636351088b12243704905bf43a965507d4b10" translate="yes" xml:space="preserve">
+          <source>Stores local data, return addresses, used for parameter passing.</source>
+          <target state="translated">매개 변수 전달에 사용되는 로컬 데이터, 리턴 주소를 저장합니다.</target>
+        </trans-unit>
+        <trans-unit id="dbf8af31722360d4cd5768e22244d5f8a401c59d" translate="yes" xml:space="preserve">
+          <source>Surprisingly, no one has mentioned that multiple (i.e. not related to the number of running OS-level threads) call stacks are to be found not only in exotic languages (PostScript) or platforms (Intel Itanium), but also in &lt;a href=&quot;http://en.wikipedia.org/wiki/Fiber_(computer_science)&quot;&gt;&lt;em&gt;fibers&lt;/em&gt;&lt;/a&gt;, &lt;a href=&quot;http://en.wikipedia.org/wiki/Green_threads&quot;&gt;&lt;em&gt;green threads&lt;/em&gt;&lt;/a&gt; and some implementations of &lt;a href=&quot;http://en.wikipedia.org/wiki/Coroutine&quot;&gt;&lt;em&gt;coroutines&lt;/em&gt;&lt;/a&gt;.</source>
+          <target state="translated">놀랍게도, 아무도 (즉, 실행중인 OS 레벨 스레드의 수와 관련이 없음) 호출 스택이 이국적인 언어 (PostScript) 또는 플랫폼 (Intel Itanium)뿐만 아니라 &lt;a href=&quot;http://en.wikipedia.org/wiki/Fiber_(computer_science)&quot;&gt;&lt;em&gt;섬유&lt;/em&gt;&lt;/a&gt; , &lt;a href=&quot;http://en.wikipedia.org/wiki/Green_threads&quot;&gt;&lt;em&gt;녹색 스레드&lt;/em&gt;&lt;/a&gt; 에서도 발견되어야한다고 언급 한 사람은 없습니다. &lt;a href=&quot;http://en.wikipedia.org/wiki/Coroutine&quot;&gt;&lt;em&gt;코 루틴의&lt;/em&gt;&lt;/a&gt; 일부 구현.</target>
+        </trans-unit>
+        <trans-unit id="918fc88eb49d9688ce62b0cb92ecf74e2130215f" translate="yes" xml:space="preserve">
+          <source>That said, stack-based memory errors are some of the worst I've experienced.  If you use heap memory, and you overstep the bounds of your allocated block, you have a decent chance of triggering a segment fault.  (Not 100%: your block may be incidentally contiguous with another that you have previously allocated.)  But since variables created on the stack are always contiguous with each other, writing out of bounds can change the value of another variable.  I have learned that whenever I feel that my program has stopped obeying the laws of logic, it is probably buffer overflow.</source>
+          <target state="translated">즉, 스택 기반 메모리 오류는 내가 경험 한 최악의 것 중 일부입니다. 힙 메모리를 사용하고 할당 된 블록의 경계를 초과하면 세그먼트 오류가 발생할 가능성이 높습니다. (100 %가 아님 : 블록이 이전에 할당 한 다른 블록과 우연히 연속적 일 수 있습니다.) 그러나 스택에서 생성 된 변수는 항상 서로 인접하므로 경계를 쓰면 다른 변수의 값이 변경 될 수 있습니다. 내 프로그램이 논리 법칙을 준수하지 않는다고 느낄 때마다 버퍼 오버플로 일 수 있음을 알게되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="77e50870e9d92e46d032efa6ebe4c3cc162d7aa6" translate="yes" xml:space="preserve">
+          <source>The CPU has special instructions for &lt;em&gt;pushing&lt;/em&gt; values onto the stack and &lt;em&gt;popping&lt;/em&gt; them back from the stack. Each &lt;em&gt;push&lt;/em&gt; stores the value at the current location of the stack pointer and decreases the stack pointer.  A &lt;em&gt;pop&lt;/em&gt; retrieves the value pointed to by the stack pointer and then increases the stack pointer (don't be confused by the fact that &lt;em&gt;adding&lt;/em&gt; a value to the stack &lt;em&gt;decreases&lt;/em&gt; the stack pointer and &lt;em&gt;removing&lt;/em&gt; a value &lt;em&gt;increases&lt;/em&gt; it. Remember that the stack grows to the bottom). The values stored and retrieved are the values of the CPU registers.</source>
+          <target state="translated">CPU에는 스택으로 값을 &lt;em&gt;푸시&lt;/em&gt; 하고 스택에서 다시 값을 &lt;em&gt;올리는&lt;/em&gt; 특별한 지침이 있습니다. 각 &lt;em&gt;푸시&lt;/em&gt; 는 스택 포인터의 현재 위치에 값을 저장하고 스택 포인터를 줄입니다. &lt;em&gt;팝&lt;/em&gt; 은 스택 포인터가 가리키는 값을 검색 한 다음 스택 포인터를 증가시킵니다 (스택에 값을 &lt;em&gt;추가&lt;/em&gt; 하면 스택 포인터가 &lt;em&gt;감소&lt;/em&gt; 하고 값을 &lt;em&gt;제거&lt;/em&gt; 하면 스택 포인터가 &lt;em&gt;증가&lt;/em&gt; 한다는 사실과 혼동하지 마십시오). 바닥). 저장 및 검색된 값은 CPU 레지스터의 값입니다.</target>
+        </trans-unit>
+        <trans-unit id="acf431b632d416223fea9a3ceddf5add4bc0a95f" translate="yes" xml:space="preserve">
+          <source>The OS allocates the stack for each system-level thread when the thread is created. Typically the OS is called by the language runtime to allocate the heap for the application.</source>
+          <target state="translated">스레드가 작성 될 때 OS는 각 시스템 레벨 스레드에 스택을 할당합니다. 일반적으로 OS는 언어 런타임에 의해 호출되어 응용 프로그램의 힙을 할당합니다.</target>
+        </trans-unit>
+        <trans-unit id="38a855cabffd8eca3496aa5a7a4076cf2ab0ee27" translate="yes" xml:space="preserve">
+          <source>The advantage of using the stack to store variables, is that memory is managed for you. You don't have to allocate memory by hand, or free it once you don't need it any more. What's more, because the CPU organizes stack memory so efficiently, reading from and writing to stack variables is very fast.</source>
+          <target state="translated">스택을 사용하여 변수를 저장하면 메모리를 관리 할 수 ​​있다는 이점이 있습니다. 손으로 메모리를 할당하거나 더 이상 필요없는 메모리를 해제 할 필요가 없습니다. 또한 CPU가 스택 메모리를 효율적으로 구성하기 때문에 스택 변수를 읽고 쓰는 것이 매우 빠릅니다.</target>
+        </trans-unit>
+        <trans-unit id="8a9b474ea07882c9a3be36b7edcb52f7b0126430" translate="yes" xml:space="preserve">
+          <source>The advent of virtual memory in UNIX changes many of the constraints.
+There is no objective reason why these blocks need be contiguous,
+or fixed in size, or ordered a particular way now.
+Of course, before UNIX was Multics which didn't suffer from these constraints.
+Here is a schematic showing one of the memory layouts of that era.</source>
+          <target state="translated">UNIX에서 가상 메모리의 출현으로 많은 제약이 변경되었습니다. 이러한 블록이 연속적이거나 크기가 고정되어 있거나 특정 방식으로 주문되어야하는 객관적인 이유는 없습니다. 물론 유닉스 이전에는 이러한 제약으로 고통받지 않은 Multics였습니다. 다음은 그 시대의 메모리 레이아웃 중 하나를 보여주는 개략도입니다.</target>
+        </trans-unit>
+        <trans-unit id="ff4d4ca937c7d0d51d422534fe1735405013c379" translate="yes" xml:space="preserve">
+          <source>The answer to your question is implementation specific and may vary across compilers and processor architectures. However, here is a simplified explanation.</source>
+          <target state="translated">귀하의 질문에 대한 답변은 구현에 따라 다르며 컴파일러와 프로세서 아키텍처에 따라 다를 수 있습니다. 그러나 여기 간단한 설명이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="020c36cef487c3028c3b0a5e48330117297c3aa9" translate="yes" xml:space="preserve">
+          <source>The call stack is such a low level concept that it doesn't relate to 'scope' in the sense of programming.  If you disassemble some code you'll see relative pointer style references to portions of the stack, but as far as a higher level language is concerned, the language imposes its own rules of scope.  One important aspect of a stack, however, is that once a function returns, anything local to that function is immediately freed from the stack.  That works the way you'd expect it to work given how your programming languages work.  In a heap, it's also difficult to define.  The scope is whatever is exposed by the OS, but your programming language probably adds its rules about what a &quot;scope&quot; is in your application.  The processor architecture and the OS use virtual addressing, which the processor translates to physical addresses and there are page faults, etc.  They keep track of what pages belong to which applications.  You never really need to worry about this, though, because you just use whatever method your programming language uses to allocate and free memory, and check for errors (if the allocation/freeing fails for any reason).</source>
+          <target state="translated">콜 스택은 프로그래밍의 관점에서 '범위'와 관련이없는 저수준 개념입니다. 일부 코드를 분해하면 스택의 일부에 대한 상대 포인터 스타일 참조가 표시되지만 고급 언어와 관련하여 언어에는 자체 범위 규칙이 적용됩니다. 그러나 스택의 중요한 측면 중 하나는 함수가 반환되면 해당 함수의 로컬 항목이 스택에서 즉시 해제된다는 것입니다. 프로그래밍 언어가 작동하는 방식에 따라 예상대로 작동합니다. 힙에서는 정의하기도 어렵습니다. 범위는 OS에 의해 노출되는 모든 것이지만, 프로그래밍 언어는 아마도 응용 프로그램에 &quot;범위&quot;가 무엇인지에 대한 규칙을 추가 할 것입니다. 프로세서 아키텍처와 OS는 가상 주소 지정을 사용하는데,이 주소는 프로세서가 물리적 주소로 변환하고 페이지 오류 등이 있습니다. 어떤 페이지가 어떤 응용 프로그램에 속하는지 추적합니다. 그러나 프로그래밍 언어가 메모리를 할당하고 해제하는 데 사용하는 모든 방법을 사용하고 오류를 확인하기 때문에 (어떤 이유로 든 할당 / 해제가 실패하는 경우) 실제로 걱정할 필요가 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="71984997f1c1e6f1262af07953881c1b0a8417ca" translate="yes" xml:space="preserve">
+          <source>The difference between stack and heap memory allocation &amp;laquo;  timmurphy.org</source>
+          <target state="translated">스택과 힙 메모리 할당의 차이점&amp;laquo;timmurphy.org</target>
+        </trans-unit>
+        <trans-unit id="7a5590373ff6649f9475365f1f774384f831b25c" translate="yes" xml:space="preserve">
+          <source>The heap</source>
+          <target state="translated">힙</target>
+        </trans-unit>
+        <trans-unit id="64692d2958abffc9963293d7cc83b6289b346bca" translate="yes" xml:space="preserve">
+          <source>The heap contains a linked list of used and free blocks. New allocations on the heap (by &lt;code&gt;new&lt;/code&gt; or &lt;code&gt;malloc&lt;/code&gt;) are satisfied by creating a suitable block from one of the free blocks. This requires updating list of blocks on the heap. This &lt;em&gt;meta information&lt;/em&gt; about the blocks on the heap is also stored on the heap often in a small area just in front of every block.</source>
+          <target state="translated">힙에는 사용 된 블록과 사용 가능한 블록의 링크 된 목록이 포함됩니다. 힙에 대한 새로운 할당 ( &lt;code&gt;new&lt;/code&gt; 또는 &lt;code&gt;malloc&lt;/code&gt; )은 사용 가능한 블록 중 하나에서 적합한 블록을 작성하여 충족됩니다. 이를 위해서는 힙의 블록 목록을 업데이트해야합니다. 힙의 블록에 대한이 &lt;em&gt;메타 정보&lt;/em&gt; 는 종종 모든 블록 바로 앞의 작은 영역에 힙에 저장됩니다.</target>
+        </trans-unit>
+        <trans-unit id="e88ae6b7603411c417abd661b3310c2adee1f47c" translate="yes" xml:space="preserve">
+          <source>The heap is a memory for items of which you can&amp;rsquo;t pre-determine the
+  exact size and structure. Since objects and arrays can be mutated and
+  change at runtime, they have to go into the heap therefore.</source>
+          <target state="translated">힙은 정확한 크기와 구조를 미리 결정할 수없는 항목에 대한 메모리입니다. 객체와 배열은 런타임에 변경되고 변경 될 수 있기 때문에 힙에 들어가야합니다.</target>
+        </trans-unit>
+        <trans-unit id="4ca28207330bff52b70007af68c711c32e17159a" translate="yes" xml:space="preserve">
+          <source>The heap is a portion of memory that is given to an application by the operating system, typically through a syscall like malloc.  On modern OSes this memory is a set of pages that only the calling process has access to.</source>
+          <target state="translated">힙은 일반적으로 malloc과 같은 syscall을 통해 운영 체제에 의해 애플리케이션에 제공되는 메모리의 일부입니다. 최신 OS에서이 메모리는 호출 프로세스 만 액세스 할 수있는 일련의 페이지입니다.</target>
+        </trans-unit>
+        <trans-unit id="71f619e3570fe3e7aac533a912d787b19b6db9a4" translate="yes" xml:space="preserve">
+          <source>The heap is a region of your computer's memory that is not managed automatically for you, and is not as tightly managed by the CPU. It is a more free-floating region of memory (and is larger). To allocate memory on the heap, you must use malloc() or calloc(), which are built-in C functions. Once you have allocated memory on the heap, you are responsible for using free() to deallocate that memory once you don't need it any more.</source>
+          <target state="translated">힙은 컴퓨터 메모리에서 자동으로 관리되지 않으며 CPU에 의해 엄격하게 관리되지 않는 영역입니다. 메모리의 자유 부동 영역이며 더 큽니다. 힙에 메모리를 할당하려면 내장 C 함수 인 malloc () 또는 calloc ()을 사용해야합니다. 힙에 메모리를 할당 한 후에는 더 이상 필요하지 않은 free ()를 사용하여 해당 메모리를 할당 해제해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="7be7d8e45896d63bdae0ae933b6b0e1b8111b33b" translate="yes" xml:space="preserve">
+          <source>The heap is memory set aside for dynamic allocation.  Unlike the stack, there's no enforced pattern to the allocation and deallocation of blocks from the heap; you can allocate a block at any time and free it at any time.  This makes it much more complex to keep track of which parts of the heap are allocated or free at any given time; there are many custom heap allocators available to tune heap performance for different usage patterns.</source>
+          <target state="translated">힙은 동적 할당을위한 메모리 세트입니다. 스택과 달리, 힙에서 블록을 할당 및 할당 해제하는 데 적용되는 패턴은 없습니다. 언제든지 블록을 할당하고 언제든지 해제 할 수 있습니다. 이것은 주어진 시간에 힙의 어느 부분이 할당되거나 해제되는지 추적하는 것이 훨씬 더 복잡합니다. 다양한 사용 패턴에 대한 힙 성능을 조정하는 데 사용할 수있는 많은 사용자 지정 힙 할당자가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="408b6a604741833882cb371639a20f7a50001b81" translate="yes" xml:space="preserve">
+          <source>The heap is simply the memory used by programs to store variables.
+Element of the heap (variables) have no dependencies with each other and can always be accessed randomly at any time.</source>
+          <target state="translated">힙은 단순히 변수를 저장하기 위해 프로그램에서 사용하는 메모리입니다. 힙 요소 (변수)는 서로 종속성이 없으며 언제든지 무작위로 액세스 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="18cf12075777cee089f775e186e6f7b937d612e6" translate="yes" xml:space="preserve">
+          <source>The heap is the area of memory dynamic memory allocations are made out of (explicit &quot;new&quot; or &quot;allocate&quot; calls). It is a special data structure that can keep track of blocks of memory of varying sizes and their allocation status.</source>
+          <target state="translated">힙은 메모리의 동적 메모리 할당 영역입니다 (명시 적 &quot;새&quot;또는 ​​&quot;할당&quot;호출). 다양한 크기의 메모리 블록과 할당 상태를 추적 할 수있는 특수한 데이터 구조입니다.</target>
+        </trans-unit>
+        <trans-unit id="3aabde1f5818e4761b37f38a6704fc125ea9920e" translate="yes" xml:space="preserve">
+          <source>The most important point is that heap and stack are generic terms for ways in which memory can be allocated.  They can be implemented in many different ways, and the terms apply to the basic concepts.</source>
+          <target state="translated">가장 중요한 점은 힙과 스택이 메모리를 할당 할 수있는 방법에 대한 일반적인 용어라는 것입니다. 그것들은 여러 가지 방법으로 구현 될 수 있으며, 용어는 기본 개념에 적용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="bda899c3bb77eaf54a1599448a403c98162d7221" translate="yes" xml:space="preserve">
+          <source>The net result is a percentage of the heap space that is not usable for further memory allocations.</source>
+          <target state="translated">최종 결과는 추가 메모리 할당에 사용할 수없는 힙 공간의 백분율입니다.</target>
+        </trans-unit>
+        <trans-unit id="9db69de7d5cb25cb1dab28c5edef62348d01cbca" translate="yes" xml:space="preserve">
+          <source>The private heap begins on a 16-byte boundary (for 64-bit programs) or a 8-byte boundary (for 32-bit programs) after the last byte of code in your program, and then increases in value from there. It is also called the default heap.</source>
+          <target state="translated">개인 힙은 프로그램의 마지막 코드 바이트 다음에 16 바이트 경계 (64 비트 프로그램의 경우) 또는 8 바이트 경계 (32 비트 프로그램의 경우)에서 시작하여 그 값이 증가합니다. 기본 힙이라고도합니다.</target>
+        </trans-unit>
+        <trans-unit id="c92a151a963f47b45a4e38472c1ddbfa83a05978" translate="yes" xml:space="preserve">
+          <source>The public heap resides in it's own memory space outside of your program image space. It is this memory that will be siphoned off onto the hard disk if memory resources get scarce.</source>
+          <target state="translated">공용 힙은 프로그램 이미지 공간 외부의 자체 메모리 공간에 있습니다. 메모리 리소스가 부족한 경우 하드 디스크에 저장되는 것이이 메모리입니다.</target>
+        </trans-unit>
+        <trans-unit id="c2c0a23048e8df047bdd90c519e230882a5ebc7e" translate="yes" xml:space="preserve">
+          <source>The simplicity of a stack is that you do not need to maintain a table containing a record of each section of allocated memory; the only state information you need is a single pointer to the end of the stack.  To allocate and de-allocate, you just increment and decrement that single pointer.  Note: a stack can sometimes be implemented to start at the top of a section of memory and extend downwards rather than growing upwards.</source>
+          <target state="translated">스택의 단순성은 할당 된 메모리의 각 섹션 레코드를 포함하는 테이블을 유지 관리 할 필요가 없다는 것입니다. 필요한 유일한 상태 정보는 스택 끝을 가리키는 단일 포인터입니다. 할당하고 할당을 해제하려면 해당 단일 포인터를 늘리거나 줄이면됩니다. 참고 : 스택은 때때로 메모리 섹션의 상단에서 시작하여 위쪽으로 성장하지 않고 아래쪽으로 확장되도록 구현 될 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="0a5a7df2173b3956056001d4db19a49a57a3b1c3" translate="yes" xml:space="preserve">
+          <source>The single STACK was typically an area below HEAP which was a tract of memory
+containing nothing of value until the top of the next fixed block of memory.
+This next block was often CODE which could be overwritten by stack data
+in one of the famous hacks of its era.</source>
+          <target state="translated">단일 스택은 일반적으로 HEAP 아래 영역으로, 다음 고정 메모리 블록의 맨 위까지 값이없는 메모리 영역이었습니다. 이 다음 블록은 종종 시대의 유명한 핵 중 하나에서 스택 데이터로 덮어 쓸 수있는 CODE였습니다.</target>
+        </trans-unit>
+        <trans-unit id="011fc8ced4b02d6e5bbcdaf8c062421d1082656a" translate="yes" xml:space="preserve">
+          <source>The size of the stack and the private heap are determined by your compiler runtime options. The public heap is initialized at runtime using a size parameter.</source>
+          <target state="translated">스택 및 개인 힙의 크기는 컴파일러 런타임 옵션에 따라 결정됩니다. 공용 힙은 크기 매개 변수를 사용하여 런타임시 초기화됩니다.</target>
+        </trans-unit>
+        <trans-unit id="beb914534381f099cbd641ab522253e8764a0c7c" translate="yes" xml:space="preserve">
+          <source>The size of the stack is determined at runtime, and generally does not grow after the program launches.  In a C program, the stack needs to be large enough to hold every variable declared within each function.  The heap will grow dynamically as needed, but the OS is ultimately making the call (it will often grow the heap by more than the value requested by malloc, so that at least some future mallocs won't need to go back to the kernel to get more memory.  This behavior is often customizable)</source>
+          <target state="translated">스택의 크기는 런타임에 결정되며 일반적으로 프로그램이 시작된 후에는 커지지 않습니다. C 프로그램에서 스택은 각 함수 내에 선언 된 모든 변수를 보유 할 수있을만큼 커야합니다. 힙은 필요에 따라 동적으로 커지지 만 OS는 궁극적으로 전화를 걸고 있습니다 (종종 malloc이 요청한 값보다 힙을 많이 늘려서 적어도 일부 malloc은 커널로 돌아갈 필요가 없습니다) 더 많은 메모리를 확보하십시오.</target>
+        </trans-unit>
+        <trans-unit id="16b7e0f64c42733b20a4e51a341eddcfa754d823" translate="yes" xml:space="preserve">
+          <source>The size of the stack is set by &lt;a href=&quot;https://en.wikipedia.org/wiki/Operating_system&quot;&gt;OS&lt;/a&gt; when a thread is created. The size of the heap is set on application startup, but it can grow as space is needed (the allocator requests more memory from the operating system).</source>
+          <target state="translated">스택의 크기는 스레드가 생성 될 때 &lt;a href=&quot;https://en.wikipedia.org/wiki/Operating_system&quot;&gt;OS에&lt;/a&gt; 의해 설정됩니다. 힙 크기는 응용 프로그램 시작시 설정되지만 공간이 필요할 때 늘어날 수 있습니다 (할당자는 운영 체제에서 더 많은 메모리를 요청 함).</target>
+        </trans-unit>
+        <trans-unit id="5cc1aba664ea781e5f0b096e032491b096dd802e" translate="yes" xml:space="preserve">
+          <source>The size of the stack is set when a thread is created.  The size of the heap is set on application startup, but can grow as space is needed (the allocator requests more memory from the operating system).</source>
+          <target state="translated">스택의 크기는 스레드가 생성 될 때 설정됩니다. 힙 크기는 응용 프로그램 시작시 설정되지만 공간이 필요할 때 커질 수 있습니다 (할당자는 운영 체제에서 더 많은 메모리를 요청 함).</target>
+        </trans-unit>
+        <trans-unit id="864abb86138112e4b6d575123f37974ac0c3d5c5" translate="yes" xml:space="preserve">
+          <source>The stack</source>
+          <target state="translated">스택</target>
+        </trans-unit>
+        <trans-unit id="901c2c85d8f6f1f4b65665c0438d9a9ae1aeb6f6" translate="yes" xml:space="preserve">
+          <source>The stack and heap are traditionally located at opposite ends of the process's virtual address space. The stack grows automatically when accessed, up to a size set by the kernel (which can be adjusted with &lt;code&gt;setrlimit(RLIMIT_STACK, ...)&lt;/code&gt;). The heap grows when the memory allocator invokes the &lt;code&gt;brk()&lt;/code&gt; or &lt;code&gt;sbrk()&lt;/code&gt; system call, mapping more pages of physical memory into the process's virtual address space.</source>
+          <target state="translated">스택과 힙은 일반적으로 프로세스 가상 주소 공간의 반대쪽 끝에 있습니다. 스택은 커널이 설정 한 크기 ( &lt;code&gt;setrlimit(RLIMIT_STACK, ...)&lt;/code&gt; 로 조정할 수 있음)까지 액세스 할 때 자동으로 커집니다 . 메모리 할당자가 &lt;code&gt;brk()&lt;/code&gt; 또는 &lt;code&gt;sbrk()&lt;/code&gt; 시스템 호출을 호출 할 때 힙이 증가하여 더 많은 물리적 메모리 페이지를 프로세스의 가상 주소 공간에 맵핑합니다.</target>
+        </trans-unit>
+        <trans-unit id="5a39a45e4339d966ed8ccdb706ae6cfcecd17231" translate="yes" xml:space="preserve">
+          <source>The stack is a &quot;LIFO&quot; (last in, first out) data structure, that is managed and optimized by the CPU quite closely. Every time a function declares a new variable, it is &quot;pushed&quot; onto the stack. Then every time a function exits, all of the variables pushed onto the stack by that function, are freed (that is to say, they are deleted). Once a stack variable is freed, that region of memory becomes available for other stack variables.</source>
+          <target state="translated">스택은 &quot;LIFO&quot;(last in, first out) 데이터 구조이며 CPU에 의해 관리되고 최적화됩니다. 함수가 새로운 변수를 선언 할 때마다 스택에 &quot;푸시&quot;됩니다. 그런 다음 함수가 종료 될 때마다 해당 함수에 의해 스택에 푸시 된 모든 변수가 해제됩니다 (즉, 삭제됨). 스택 변수가 해제되면 해당 메모리 영역을 다른 스택 변수에 사용할 수있게됩니다.</target>
+        </trans-unit>
+        <trans-unit id="ed0cdd27974e8f28be5b49910ffd382fca3bd094" translate="yes" xml:space="preserve">
+          <source>The stack is a portion of memory that can be manipulated via several key assembly language instructions, such as 'pop' (remove and return a value from the stack) and 'push' (push a value to the stack), but also call (call a subroutine - this pushes the address to return to the stack) and return (return from a subroutine - this pops the address off of the stack and jumps to it).  It's the region of memory below the stack pointer register, which can be set as needed.  The stack is also used for passing arguments to subroutines, and also for preserving the values in registers before calling subroutines.</source>
+          <target state="translated">스택은 'pop'(스택에서 값 제거 및 반환) 및 'push'(스택으로 값 푸시)와 같은 여러 주요 어셈블리 언어 명령어를 통해 조작 할 수있는 메모리의 일부입니다. 서브 루틴 호출-주소를 스택으로 리턴하고 리턴 (서브 루틴에서 리턴)-스택에서 주소를 팝하여 점프합니다. 스택 포인터 레지스터 아래의 메모리 영역이며 필요에 따라 설정할 수 있습니다. 스택은 서브 루틴에 인수를 전달하고 서브 루틴을 호출하기 전에 레지스터의 값을 보존하는 데에도 사용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="8fed4d46c5dcc66fd775586df82611b6cbc4131a" translate="yes" xml:space="preserve">
+          <source>The stack is attached to a thread, so when the thread exits the stack is reclaimed.  The heap is typically allocated at application startup by the runtime, and is reclaimed when the application (technically process) exits.</source>
+          <target state="translated">스택은 스레드에 연결되므로 스레드가 종료되면 스택이 재생됩니다. 힙은 일반적으로 런타임에 의해 애플리케이션이 시작될 때 할당되며 애플리케이션 (기술적으로 프로세스)이 종료 될 때 재생됩니다.</target>
+        </trans-unit>
+        <trans-unit id="d7d4617ad45d9667a26837a2ef9396a88ed54845" translate="yes" xml:space="preserve">
+          <source>The stack is controlled by the programmer, the private heap is managed by the OS, and the public heap is not controlled by anyone because it is an OS service -- you make requests and either they are granted or denied.</source>
+          <target state="translated">스택은 프로그래머에 의해 제어되고, 개인 힙은 OS에 의해 관리되며, 공용 힙은 OS 서비스이므로 다른 사람에 의해 제어되지 않습니다. 요청을하고 요청이 승인되거나 거부됩니다.</target>
+        </trans-unit>
+        <trans-unit id="776e06a491d0e5871f9e300942fd84b17a6ca19c" translate="yes" xml:space="preserve">
+          <source>The stack is faster because all free memory is always contiguous.  No list needs to be maintained of all the segments of free memory, just a single pointer to the current top of the stack.  Compilers usually store this pointer in a special, fast &lt;a href=&quot;http://en.wikipedia.org/wiki/Stack_register&quot;&gt;register&lt;/a&gt; for this purpose.  What's more, subsequent operations on a stack are usually concentrated within very nearby areas of memory, which at a very low level is good for optimization by the processor on-die caches.</source>
+          <target state="translated">사용 가능한 모든 메모리가 항상 연속적이기 때문에 스택이 더 빠릅니다. 사용 가능한 메모리의 모든 세그먼트에 대한 목록을 유지할 필요는 없으며 스택의 현재 상단에 대한 단일 포인터입니다. 컴파일러는 일반적으로이 목적을 위해이 포인터를 특별하고 빠른 &lt;a href=&quot;http://en.wikipedia.org/wiki/Stack_register&quot;&gt;레지스터&lt;/a&gt; 에 저장합니다. 또한, 스택의 후속 작업은 일반적으로 메모리의 매우 가까운 영역에 집중되어 있으며, 매우 낮은 수준에서는 프로세서 온다이 캐시에 의한 최적화에 적합합니다.</target>
+        </trans-unit>
+        <trans-unit id="e94a30b9ac14f61035ae0f43d2216250500958c2" translate="yes" xml:space="preserve">
+          <source>The stack is faster because the access pattern makes it trivial to allocate and deallocate memory from it (a pointer/integer is simply incremented or decremented), while the heap has much more complex bookkeeping involved in an allocation or deallocation.  Also, each byte in the stack tends to be reused very frequently which means it tends to be mapped to the processor's cache, making it very fast. Another performance hit for the heap is that the heap, being mostly a global resource, typically has to be multi-threading safe, i.e. each allocation and deallocation needs to be - typically - synchronized with &quot;all&quot; other heap accesses in the program.</source>
+          <target state="translated">액세스 패턴이 메모리에서 메모리를 할당 및 할당 해제하는 것이 쉽지 않기 때문에 (포인터 / 정수는 단순히 증가 또는 감소) 스택은 더 빠르며 힙은 할당 또는 할당 해제와 관련하여 훨씬 복잡한 부기를 유지합니다. 또한 스택의 각 바이트는 매우 자주 재사용되는 경향이 있으므로 프로세서 캐시에 매핑되는 경향이있어 매우 빠릅니다. 힙에 대한 또 다른 성능 히트는 대부분 글로벌 리소스 인 힙이 일반적으로 멀티 스레딩 안전해야한다는 것입니다. 즉, 각 할당 및 할당 해제는 일반적으로 프로그램의 &quot;모든&quot;다른 힙 액세스와 동기화되어야합니다.</target>
+        </trans-unit>
+        <trans-unit id="b147220a7a5ad0a7828db4392f30462146e56ffc" translate="yes" xml:space="preserve">
+          <source>The stack is important to consider in exception handling and thread executions.</source>
+          <target state="translated">스택은 예외 처리 및 스레드 실행에서 고려해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="8ef364bf925f140fae82efa1d95fdcfda187e3d2" translate="yes" xml:space="preserve">
+          <source>The stack is memory that begins as the highest memory address allocated to your program image, and it then decrease in value from there. It is reserved for called function parameters and for all temporary variables used in functions.</source>
+          <target state="translated">스택은 프로그램 이미지에 할당 된 가장 높은 메모리 주소로 시작하는 메모리로, 거기에서 값이 감소합니다. 호출 된 함수 매개 변수 및 함수에 사용 된 모든 임시 변수를 위해 예약되어 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="f7b4a5b7d8386940ab1623f4ec51157abd70a3d1" translate="yes" xml:space="preserve">
+          <source>The stack is much faster than the heap.</source>
+          <target state="translated">스택은 힙보다 훨씬 빠릅니다.</target>
+        </trans-unit>
+        <trans-unit id="8b386c56b8fca037b071be51c145e3471e513ded" translate="yes" xml:space="preserve">
+          <source>The stack is the area of memory where local variables (including method parameters) are stored. When it comes to object variables, these are merely references (pointers) to the actual objects on the heap.</source>
+          <target state="translated">스택은 로컬 변수 (메소드 매개 변수 포함)가 저장되는 메모리 영역입니다. 객체 변수에 관해서는 힙에있는 실제 객체에 대한 참조 (포인터) 일뿐입니다.</target>
+        </trans-unit>
+        <trans-unit id="29503f92d8ce71011e0d49b669cd0afb652670e0" translate="yes" xml:space="preserve">
+          <source>The stack is the memory set aside as scratch space for a thread of execution.  When a function is called, a block is reserved on the top of the stack for local variables and some bookkeeping data.  When that function returns, the block becomes unused and can be used the next time a function is called.  The stack is always reserved in a LIFO (last in first out) order; the most recently reserved block is always the next block to be freed.  This makes it really simple to keep track of the stack; freeing a block from the stack is nothing more than adjusting one pointer.</source>
+          <target state="translated">스택은 실행 스레드를위한 스크래치 공간으로 남겨진 메모리입니다. 함수가 호출되면 블록은 로컬 변수 및 일부 부기 데이터를 위해 스택 맨 위에 예약됩니다. 해당 함수가 반환되면 블록이 사용되지 않고 다음에 함수를 호출 할 때 사용할 수 있습니다. 스택은 항상 LIFO (last in first out) 순서로 예약됩니다. 가장 최근에 예약 된 블록은 항상 해제 될 다음 블록입니다. 이렇게하면 스택을 추적하는 것이 정말 간단합니다. 스택에서 블록을 해제하는 것은 하나의 포인터를 조정하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="219301ffd0ca8cbb0f7920be42b12f92f7f93e51" translate="yes" xml:space="preserve">
+          <source>The stack often works in close tandem with a special register on the CPU named the &lt;em&gt;stack pointer&lt;/em&gt;. Initially the stack pointer points to the top of the stack (the highest address on the stack).</source>
+          <target state="translated">스택은 종종 &lt;em&gt;스택 포인터&lt;/em&gt; 라는 CPU의 특수 레지스터와 밀접하게 작동합니다. 처음에 스택 포인터는 스택의 맨 위 (스택에서 가장 높은 주소)를 가리 킵니다.</target>
+        </trans-unit>
+        <trans-unit id="44325c548d04ad0c66e804e28b38a41e97cabb5a" translate="yes" xml:space="preserve">
+          <source>There are two heaps: public and private.</source>
+          <target state="translated">공개 및 개인의 두 가지 힙이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="6947fa83d8ffd6b15a325bb26b73b21bd69379ce" translate="yes" xml:space="preserve">
+          <source>These images should do a fairly good job of describing the two ways of allocating and freeing memory in a stack and a heap.  Yum!</source>
+          <target state="translated">이러한 이미지는 스택과 힙에 메모리를 할당하고 해제하는 두 가지 방법을 설명하는 데 상당히 효과적입니다. !!</target>
+        </trans-unit>
+        <trans-unit id="98d579f7a93657771058e9e0d89785c656c03025" translate="yes" xml:space="preserve">
+          <source>They are all global to the program, but their contents can be private, public, or global.</source>
+          <target state="translated">그것들은 모두 프로그램에 대해 전 세계적이지만 그들의 내용은 개인, 공공 또는 전 세계 일 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="9ef2da64dd7345ced1b7850afdf59a57b13427ca" translate="yes" xml:space="preserve">
+          <source>They are not designed to be fast, they are designed to be useful. How the programmer utilizes them determines whether they are &quot;fast&quot; or &quot;slow&quot;</source>
+          <target state="translated">그들은 빠르도록 설계되지 않았으며 유용하도록 설계되었습니다. 프로그래머가이를 사용하는 방법에 따라 &quot;빠른&quot;또는 &quot;느린&quot;여부가 결정됩니다.</target>
+        </trans-unit>
+        <trans-unit id="d177331b2e0afe564671649c9a49a92fcc2d64f0" translate="yes" xml:space="preserve">
+          <source>This article is the source of picture above: &lt;a href=&quot;http://www.codeproject.com/Articles/76153/Six-important-NET-concepts-Stack-heap-value-types#Stack%20and%20Heap&quot;&gt;Six important .NET concepts: Stack, heap, value types, reference types, boxing, and unboxing - CodeProject&lt;/a&gt;</source>
+          <target state="translated">이 글은 위의 그림의 소스입니다. &lt;a href=&quot;http://www.codeproject.com/Articles/76153/Six-important-NET-concepts-Stack-heap-value-types#Stack%20and%20Heap&quot;&gt;6 가지 중요한 .NET 개념 : 스택, 힙, 값 유형, 참조 유형, 복싱 및 언 박싱-CodeProject&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="717f1e13592dff5b361146af2de994b4dd7d6e98" translate="yes" xml:space="preserve">
+          <source>This chain of suspended function calls is the stack, because elements in the stack (function calls) depend on each other.</source>
+          <target state="translated">스택의 요소 (함수 호출)가 서로 종속되기 때문에이 일시 중단 된 함수 호출 체인은 스택입니다.</target>
+        </trans-unit>
+        <trans-unit id="f0dbb83fd38c86e398ef0d609e84dfa07ea2c5b6" translate="yes" xml:space="preserve">
+          <source>This is because of the way that memory is allocated on the stack.</source>
+          <target state="translated">이는 메모리가 스택에 할당되는 방식 때문입니다.</target>
+        </trans-unit>
+        <trans-unit id="fb3c5c901732960cbf1b7b18121a96994d8cfa9e" translate="yes" xml:space="preserve">
+          <source>This is only practical if your memory usage is quite different from the norm - i.e for games where you load a level in one huge operation and can chuck the whole lot away in another huge operation.</source>
+          <target state="translated">이것은 메모리 사용량이 표준과 상당히 다른 경우에만 실용적입니다. 즉, 한 번의 큰 작업으로 레벨을로드하고 다른 큰 작업에서 전체 로트를 척킹 할 수있는 게임의 경우입니다.</target>
+        </trans-unit>
+        <trans-unit id="ce81aba3a9e4c22e20ebcec915d127d8ea49a173" translate="yes" xml:space="preserve">
+          <source>Thus, the heap is far more complex, because there end up being regions of memory that are unused interleaved with chunks that are - memory gets fragmented. Finding free memory of the size you need is a difficult problem. This is why the heap should be avoided (though it is still often used).</source>
+          <target state="translated">따라서 힙은 훨씬 더 복잡합니다. 사용되지 않는 메모리 영역이 청크와 인터리브되어 메모리가 조각화되기 때문입니다. 필요한 크기의 여유 메모리를 찾는 것은 어려운 문제입니다. 이것이 힙을 피해야하는 이유입니다 (아직 자주 사용 되기는하지만).</target>
+        </trans-unit>
+        <trans-unit id="3718bea08e5c6c1e1ef5855208635c1660091c56" translate="yes" xml:space="preserve">
+          <source>To answer your questions directly:</source>
+          <target state="translated">질문에 직접 대답하려면 :</target>
+        </trans-unit>
+        <trans-unit id="e510eed8b65862876804eb3fc84dd696d12ba373" translate="yes" xml:space="preserve">
+          <source>To clarify, &lt;a href=&quot;https://stackoverflow.com/a/13308092/1763801&quot;&gt;this answer&lt;/a&gt; has incorrect information (&lt;a href=&quot;https://stackoverflow.com/a/662454/1763801&quot;&gt;thomas&lt;/a&gt; fixed his answer after comments, cool :) ). Other answers just avoid explaining what static allocation means. So I will explain the three main forms of allocation and how they usually relate to the heap, stack, and data segment below. I also will show some examples in both C/C++ and Python to help people understand.</source>
+          <target state="translated">명확히하기 &lt;a href=&quot;https://stackoverflow.com/a/13308092/1763801&quot;&gt;위해이 답변&lt;/a&gt; 에는 잘못된 정보가 있습니다 ( &lt;a href=&quot;https://stackoverflow.com/a/662454/1763801&quot;&gt;토마스&lt;/a&gt; 는 의견에 따라 답변을 수정했습니다 : cool :)). 다른 답변은 정적 할당의 의미를 설명하지 않습니다. 따라서 세 가지 주요 할당 형태와 이들이 일반적으로 아래의 힙, 스택 및 데이터 세그먼트와 어떤 관련이 있는지 설명하겠습니다. 또한 사람들이 이해하도록 돕기 위해 C / C ++와 Python으로 예제를 보여줄 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="aba9caf0dd8ab1b5293cad558ca993a95a150673" translate="yes" xml:space="preserve">
+          <source>To what extent are they controlled by the OS or language run-time?</source>
+          <target state="translated">OS 또는 언어 런타임에 의해 어느 정도까지 제어됩니까?</target>
+        </trans-unit>
+        <trans-unit id="0d0079c7ce4541e2501b37e50c9d74ba8c7a5637" translate="yes" xml:space="preserve">
+          <source>To what extent are they controlled by the OS or language runtime?</source>
+          <target state="translated">OS 또는 언어 런타임에 의해 어느 정도까지 제어됩니까?</target>
+        </trans-unit>
+        <trans-unit id="38a1226205399953841a1f147c1b73da6efe0983" translate="yes" xml:space="preserve">
+          <source>Unlike the stack, the heap does not have size restrictions on variable size (apart from the obvious physical limitations of your computer). Heap memory is slightly slower to be read from and written to, because one has to use pointers to access memory on the heap. We will talk about pointers shortly.</source>
+          <target state="translated">스택과 달리 힙에는 가변 크기에 대한 크기 제한이 없습니다 (컴퓨터의 명백한 물리적 제한과는 별개). 힙 메모리는 포인터를 사용하여 힙의 메모리에 액세스해야하기 때문에 읽고 쓰는 데 약간 느립니다. 우리는 포인터에 대해 곧 이야기 할 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="5a0471929b5ff3505424261361762519c6273689" translate="yes" xml:space="preserve">
+          <source>Unlike the stack, variables created on the heap are accessible by any function, anywhere in your program. Heap variables are essentially global in scope.</source>
+          <target state="translated">스택과 달리 힙에서 생성 된 변수는 프로그램의 어느 곳에서나 모든 기능으로 액세스 할 수 있습니다. 힙 변수는 본질적으로 범위가 전역 적입니다.</target>
+        </trans-unit>
+        <trans-unit id="1c9512b6d7a011bae14a8693bd32c0ef50ceaf32" translate="yes" xml:space="preserve">
+          <source>Used on demand to allocate a block of data for use by the program.</source>
+          <target state="translated">요청시 프로그램에서 사용할 데이터 블록을 할당하는 데 사용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="350c906ec4a09c92d2b1ef4efaf9a024398e8269" translate="yes" xml:space="preserve">
+          <source>Usually has a maximum size already determined when your program starts.</source>
+          <target state="translated">일반적으로 프로그램이 시작될 때 이미 결정된 최대 크기를 갖습니다.</target>
+        </trans-unit>
+        <trans-unit id="dee4e9274b9716c1313c6fb0868f5a44bbadc5a1" translate="yes" xml:space="preserve">
+          <source>Variables allocated on the heap have their memory allocated at run time and accessing this memory is a bit slower, but the heap size is only limited by the size of virtual memory. Elements of the heap have no dependencies with each other and can always be accessed randomly at any time. You can allocate a block at any time and free it at any time. This makes it much more complex to keep track of which parts of the heap are allocated or free at any given time.</source>
+          <target state="translated">힙에 할당 된 변수는 런타임시 할당 된 메모리를 가지며이 메모리에 액세스하는 것은 약간 느리지 만 힙 크기는 가상 메모리의 크기에 의해서만 제한됩니다. 힙의 요소는 서로 종속성이 없으며 언제든지 무작위로 액세스 할 수 있습니다. 언제든지 블록을 할당하고 언제든지 해제 할 수 있습니다. 따라서 힙의 어느 부분이 할당되거나 비어 있는지 추적하는 것이 훨씬 더 복잡해집니다.</target>
+        </trans-unit>
+        <trans-unit id="33c4c29193773c536fab56f19aa3e378c611f11a" translate="yes" xml:space="preserve">
+          <source>Variables allocated on the stack are stored directly to the memory and access to this memory is very fast, and its allocation is dealt with when the program is compiled. When a function or a method calls another function which in turns calls another function, etc., the execution of all those functions remains suspended until the very last function returns its value. The stack is always reserved in a LIFO order, the most recently reserved block is always the next block to be freed. This makes it really simple to keep track of the stack, freeing a block from the stack is nothing more than adjusting one pointer.</source>
+          <target state="translated">스택에 할당 된 변수는 메모리에 직접 저장되며이 메모리에 대한 액세스는 매우 빠르며 프로그램이 컴파일 될 때 할당이 처리됩니다. 함수 또는 메소드가 다른 함수를 호출하여 다른 함수 등을 호출하는 경우 마지막 함수가 값을 리턴 할 때까지 모든 함수의 실행이 일시 중단됩니다. 스택은 항상 LIFO 순서로 예약되며 가장 최근에 예약 된 블록은 항상 해제 할 다음 블록입니다. 이것은 스택을 추적하는 것을 정말로 간단하게 만듭니다. 스택에서 블록을 해제하는 것은 하나의 포인터를 조정하는 것 이상입니다.</target>
+        </trans-unit>
+        <trans-unit id="b757f96ab6cbd88a78e6eb37e901095a0f4982d5" translate="yes" xml:space="preserve">
+          <source>Variables can be accessed globally</source>
+          <target state="translated">변수는 전 세계적으로 접근 가능</target>
+        </trans-unit>
+        <trans-unit id="e1263b2fe0ce0f9a78ac08d33e5cb650a6f890af" translate="yes" xml:space="preserve">
+          <source>Variables can be resized using realloc()</source>
+          <target state="translated">realloc ()을 사용하여 변수 크기를 조정할 수 있습니다</target>
+        </trans-unit>
+        <trans-unit id="0acb71d1ea9ad7194e7c46ab11399d5d7dc9cbc1" translate="yes" xml:space="preserve">
+          <source>Variables cannot be resized</source>
+          <target state="translated">변수 크기를 조정할 수 없습니다</target>
+        </trans-unit>
+        <trans-unit id="45bc57bc7c9a39f9e93f0ee2742931507b1a0117" translate="yes" xml:space="preserve">
+          <source>Variables created on the stack will go out of scope and are automatically deallocated.</source>
+          <target state="translated">스택에서 생성 된 변수는 범위를 벗어나 자동으로 할당이 해제됩니다.</target>
+        </trans-unit>
+        <trans-unit id="83322fdd7220f9c3561a31019be7de90f70f1113" translate="yes" xml:space="preserve">
+          <source>Very fast access</source>
+          <target state="translated">매우 빠른 액세스</target>
+        </trans-unit>
+        <trans-unit id="81465c90cda3940dcc21c6d0fc345dbf62900490" translate="yes" xml:space="preserve">
+          <source>Very fast access.</source>
+          <target state="translated">매우 빠른 액세스.</target>
+        </trans-unit>
+        <trans-unit id="d03f25431e8717de4af8cfb5712d2af28175c6de" translate="yes" xml:space="preserve">
+          <source>What and where are the stack and heap</source>
+          <target state="translated">스택과 힙은 어디에 그리고 어디에 있습니까</target>
+        </trans-unit>
+        <trans-unit id="e330f4218aa5748683c1aedc4c7ad3739182f7f9" translate="yes" xml:space="preserve">
+          <source>What determines the size of each of them?</source>
+          <target state="translated">각각의 크기는 어떻게 결정됩니까?</target>
+        </trans-unit>
+        <trans-unit id="780a2c071a1fa9df58512fef52b5d41ee762fbf5" translate="yes" xml:space="preserve">
+          <source>What is their scope?</source>
+          <target state="translated">그들의 범위는 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="b72db36173b02e399c3380ebce765f483206c5f5" translate="yes" xml:space="preserve">
+          <source>What makes one faster?</source>
+          <target state="translated">무엇이 더 빨라 집니까?</target>
+        </trans-unit>
+        <trans-unit id="7dd7be24ae5c5f3254644f00a932a8eaf93d7843" translate="yes" xml:space="preserve">
+          <source>When a function is called the CPU uses special instructions that push the current &lt;em&gt;instruction pointer&lt;/em&gt;, i.e. the address of the code executing on the stack. The CPU then jumps to the function by setting the 
+instruction pointer to the address of the function called. Later, when the function returns, the old instruction pointer is popped from the stack and execution resumes at the code just after the call to the function.</source>
+          <target state="translated">함수가 호출되면 CPU는 현재 &lt;em&gt;명령어 포인터&lt;/em&gt; 를 푸시하는 특수 명령어, 즉 스택에서 실행되는 코드의 주소를 사용합니다. 그런 다음 CPU는 명령 포인터를 호출 된 함수의 주소로 설정하여 함수로 이동합니다. 나중에 함수가 반환되면 이전 명령 포인터가 스택에서 팝되고 함수를 호출 한 직후 코드에서 실행이 다시 시작됩니다.</target>
+        </trans-unit>
+        <trans-unit id="76bfa98cbe27f31d7e7e3e9a0604cbd18ab53032" translate="yes" xml:space="preserve">
+          <source>When a function is entered, the stack pointer is decreased to allocate more space on the stack for local (automatic) variables. If the function has one local 32 bit variable four bytes are set aside on the stack. When the function returns, the stack pointer is moved back to free the allocated area.</source>
+          <target state="translated">함수가 입력되면 스택 포인터가 줄어들어 로컬 (자동) 변수를 위해 스택에 더 많은 공간을 할당합니다. 함수에 하나의 로컬 32 비트 변수가 있으면 스택에 4 바이트가 따로 설정됩니다. 함수가 반환되면 스택 포인터가 다시 이동하여 할당 된 영역을 해제합니다.</target>
+        </trans-unit>
+        <trans-unit id="7345937a4022621af869e20017f6923e9e95b153" translate="yes" xml:space="preserve">
+          <source>When a function or a method calls another function which in turns calls another function, etc., the execution of all those functions remains suspended until the very last function returns its value.</source>
+          <target state="translated">함수 또는 메소드가 다른 함수를 호출하여 다른 함수 등을 호출하는 경우 마지막 함수가 값을 리턴 할 때까지 모든 함수의 실행이 일시 중단됩니다.</target>
+        </trans-unit>
+        <trans-unit id="17eea20994cf0f8b60ad7500e16ae0d2babaffb7" translate="yes" xml:space="preserve">
+          <source>When a used block that is adjacent to a free block is deallocated the new free block may be merged with the adjacent free block to create a larger free block effectively reducing the fragmentation of the heap.</source>
+          <target state="translated">빈 블록에 인접한 사용 된 블록이 할당 해제 될 때, 새로운 빈 블록은 인접한 빈 블록과 병합되어 더 큰 빈 블록을 생성하여 힙의 단편화를 효과적으로 감소시킬 수있다.</target>
+        </trans-unit>
+        <trans-unit id="fc80e3d497340bb1dd2782f548d7a04ed5176215" translate="yes" xml:space="preserve">
+          <source>When using fibers, green threads or coroutines, you &lt;em&gt;usually&lt;/em&gt; have a separate stack per function. (Technically, not just a stack but a whole context of execution is per function. Most importantly, CPU registers.) For every thread there're as many stacks as there're concurrently running functions, and the thread is switching between executing each function according to the logic of your program. When a function runs to its end, its stack is destroyed. So, &lt;strong&gt;the number and lifetimes of stacks&lt;/strong&gt; are dynamic and &lt;strong&gt;are not determined by the number of OS-level threads!&lt;/strong&gt;</source>
+          <target state="translated">섬유, 녹색 실 또는 코 루틴을 사용할 때 &lt;em&gt;일반적으로&lt;/em&gt; 기능마다 별도의 스택이 있습니다. (기술적으로 스택뿐만 아니라 전체 실행 컨텍스트는 기능마다 다릅니다. 가장 중요한 것은 CPU 레지스터입니다.) 모든 스레드에 대해 동시에 실행중인 기능이있는만큼 많은 스택이 있으며 스레드는 각 기능 실행 사이를 전환합니다 프로그램의 논리에 따라. 함수가 끝까지 실행되면 스택이 파괴됩니다. 따라서 &lt;strong&gt;스택의 수와 수명&lt;/strong&gt; 은 동적이며 &lt;strong&gt;OS 수준 스레드의 수에 의해 결정되지 않습니다!&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a476cf0746ec4d2c4a044655c71d195262024622" translate="yes" xml:space="preserve">
+          <source>Where and what are they (physically in a real computer's memory)?</source>
+          <target state="translated">그것들은 어디에 그리고 무엇입니까 (실제로 컴퓨터의 메모리에 있습니까)?</target>
+        </trans-unit>
+        <trans-unit id="1fb0c80cb7c016fa977e4e460c6d36c71cd287e5" translate="yes" xml:space="preserve">
+          <source>Without stack &lt;strong&gt;no&lt;/strong&gt; microprocessor can work. (we can't imagine a program, even in assembly language, without subroutines/functions)</source>
+          <target state="translated">스택이 &lt;strong&gt;없으면&lt;/strong&gt; 마이크로 프로세서가 작동 &lt;strong&gt;하지 않습니다&lt;/strong&gt; . (우리는 서브 루틴 / 함수가없는 어셈블리 언어에서도 프로그램을 상상할 수 없습니다)</target>
+        </trans-unit>
+        <trans-unit id="010f37556d32304cf4397c04fe519e09ac87a1e2" translate="yes" xml:space="preserve">
+          <source>Without the heap it can. (An assembly language program can work without, as the heap is a OS concept, as malloc, that is a OS/Lib call.</source>
+          <target state="translated">힙이 없으면 가능합니다. (힙은 OS 개념이고 malloc은 OS / Lib 호출이므로 어셈블리 언어 프로그램은 작동하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="3a9de33c793289bb4824480cb8f4087bf9168010" translate="yes" xml:space="preserve">
+          <source>Wow! So many answers and I don't think one of them got it right...</source>
+          <target state="translated">와! 너무 많은 답변과 나는 그들 중 하나가 옳지 않다고 생각합니다 ...</target>
+        </trans-unit>
+        <trans-unit id="b1e7c9f013a3dbd26304d7c5054c48167a4ae117" translate="yes" xml:space="preserve">
+          <source>You can do some interesting things with the stack.  For instance, you have functions like &lt;a href=&quot;http://everything2.com/title/alloca%2528%2529&quot;&gt;alloca&lt;/a&gt; (assuming you can get past the copious warnings concerning its use), which is a form of malloc that specifically uses the stack, not the heap, for memory.</source>
+          <target state="translated">스택으로 몇 가지 흥미로운 일을 할 수 있습니다. 예를 들어, 메모리에 힙이 아닌 스택을 사용하는 malloc의 한 형태 인 &lt;a href=&quot;http://everything2.com/title/alloca%2528%2529&quot;&gt;alloca&lt;/a&gt; 와 같은 기능을 사용합니다 (사용에 관한 강력한 경고를 지나칠 수 있다고 가정).</target>
+        </trans-unit>
+        <trans-unit id="892eae56f7439ba3dcbb1ea3ea17d754f03b35eb" translate="yes" xml:space="preserve">
+          <source>You can use the stack if you know exactly how much data you need to allocate before compile time, and it is not too big. You can use the heap if you don't know exactly how much data you will need at runtime or if you need to allocate a lot of data.</source>
+          <target state="translated">컴파일 시간 전에 할당해야하는 데이터의 양을 정확히 알고 있고 너무 크지 않은 경우 스택을 사용할 수 있습니다. 런타임시 필요한 데이터 양을 정확히 모르거나 많은 데이터를 할당해야하는 경우 힙을 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="3009d59448498f75aa79426e3fa60a5f198f2ebb" translate="yes" xml:space="preserve">
+          <source>You can use the stack to pass parameters.. even if it is slower than using registers (would a microprocessor guru say or a good 1980s BIOS book...)</source>
+          <target state="translated">스택을 사용하여 매개 변수를 전달할 수 있습니다. 레지스터를 사용하는 것보다 속도가 느리더라도 (마이크로 프로세서 전문가가 말하거나 1980 년대의 좋은 BIOS 책을 ...)</target>
+        </trans-unit>
+        <trans-unit id="6406486d2198ac8633b1773b5680854692fc022d" translate="yes" xml:space="preserve">
+          <source>You must manage memory (you're in charge of allocating and freeing variables)</source>
+          <target state="translated">메모리를 관리해야합니다 (변수 할당 및 해제를 담당 함)</target>
+        </trans-unit>
+        <trans-unit id="448cd0c4ab29afd1275bb72eaa06d3f1ffbebf2e" translate="yes" xml:space="preserve">
+          <source>You would use the heap if you don't know exactly how much data you will need at run time or if you need to allocate a lot of data.</source>
+          <target state="translated">런타임시 필요한 데이터 양을 정확히 모르거나 많은 데이터를 할당해야하는 경우 힙을 사용합니다.</target>
+        </trans-unit>
+        <trans-unit id="21f0077be84d0a785692e7530efcb1dfe9e053c8" translate="yes" xml:space="preserve">
+          <source>You would use the stack if you know exactly how much data you need to allocate before compile time and it is not too big.</source>
+          <target state="translated">컴파일 시간 전에 할당해야하는 데이터의 양을 정확히 알고 너무 크지 않은 경우 스택을 사용합니다.</target>
+        </trans-unit>
+        <trans-unit id="2dd752e3a7242d730dc1ffd2af44fb8042a9cd98" translate="yes" xml:space="preserve">
+          <source>and here:</source>
+          <target state="translated">그리고 여기:</target>
+        </trans-unit>
+        <trans-unit id="e7cb8b2830bfb6729d691a0e8fc0b7ca5702106b" translate="yes" xml:space="preserve">
+          <source>but be aware it may contain some inaccuracies.</source>
+          <target state="translated">그러나 일부 부정확 한 부분이있을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="3e27b62ab595041b7d6fc3295ef65f967e4bb6d4" translate="yes" xml:space="preserve">
+          <source>malloc requires entering kernel mode, use lock/semaphore (or other synchronization primitives) executing some code and manage some structures needed to keep track of allocation.</source>
+          <target state="translated">malloc은 커널 모드로 들어가고 일부 코드를 실행하는 잠금 / 세마포어 (또는 다른 동기화 프리미티브)를 사용하고 할당을 추적하는 데 필요한 일부 구조를 관리해야합니다.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

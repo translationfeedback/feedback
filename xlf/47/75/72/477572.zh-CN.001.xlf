@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/477572">
+    <body>
+      <group id="477572">
+        <trans-unit id="e38d004047cde5eb417d48832f1998c8472bba00" translate="yes" xml:space="preserve">
+          <source>1) Every time you do &lt;code&gt;BitmapFactory.decodeXYZ()&lt;/code&gt;, make sure to pass in a &lt;code&gt;BitmapFactory.Options&lt;/code&gt; with &lt;code&gt;inPurgeable&lt;/code&gt; set to &lt;code&gt;true&lt;/code&gt; (and preferably with &lt;code&gt;inInputShareable&lt;/code&gt; also set to &lt;code&gt;true&lt;/code&gt;).</source>
+          <target state="translated">1）每次执行 &lt;code&gt;BitmapFactory.decodeXYZ()&lt;/code&gt; 时 ，请确保传入 &lt;code&gt;inPurgeable&lt;/code&gt; 设置为 &lt;code&gt;true&lt;/code&gt; 的 &lt;code&gt;BitmapFactory.Options&lt;/code&gt; （最好将 &lt;code&gt;inInputShareable&lt;/code&gt; 设置为 &lt;code&gt;true&lt;/code&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="8782c067eeb1c1f90f926f8b5ee08512104fefc2" translate="yes" xml:space="preserve">
+          <source>2) NEVER use &lt;code&gt;Bitmap.createBitmap(width, height, Config.ARGB_8888)&lt;/code&gt;. I mean NEVER! I've never had that thing not raise memory error after few passes. No amount of &lt;code&gt;recycle()&lt;/code&gt;, &lt;code&gt;System.gc()&lt;/code&gt;, whatever helped. It always raised exception. The one other way that actually works is to have a dummy image in your drawables (or another Bitmap that you decoded using step 1 above), rescale that to whatever you want, then manipulate the resulting Bitmap (such as passing it on to a Canvas for more fun). So, what you should use instead is: &lt;code&gt;Bitmap.createScaledBitmap(srcBitmap, width, height, false)&lt;/code&gt;. If for whatever reason you MUST use the brute force create method, then at least pass &lt;code&gt;Config.ARGB_4444&lt;/code&gt;.</source>
+          <target state="translated">2）永远不要使用 &lt;code&gt;Bitmap.createBitmap(width, height, Config.ARGB_8888)&lt;/code&gt; 。 我的意思是永远！ 经过数次传递之后，我再也没有出现过这样的事情不会引起内存错误的情况。 无论如何，都没有大量的 &lt;code&gt;recycle()&lt;/code&gt; ， &lt;code&gt;System.gc()&lt;/code&gt; 。 它总是引发异常。 实际工作的另一种方法是在可绘制对象（或使用上面的步骤1解码的另一个位图）中具有虚拟图像，将其缩放到所需的大小，然后处理生成的位图（例如将其传递到Canvas）以获取更多乐趣）。 因此，您应该使用的是： &lt;code&gt;Bitmap.createScaledBitmap(srcBitmap, width, height, false)&lt;/code&gt; 。 如果出于某种原因必须使用蛮力创建方法，则至少传递 &lt;code&gt;Config.ARGB_4444&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="562263b1466294b7de472ca74c4560bbeb477dfe" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;decodeFileDescriptor&lt;/code&gt; looks like it calls different native methods than the decodeStream/decodeFile.</source>
+          <target state="translated">&lt;code&gt;decodeFileDescriptor&lt;/code&gt; 看起来好像调用了与ADCStream / decodeFile不同的本机方法。</target>
+        </trans-unit>
+        <trans-unit id="c0119b41f35b7e464151bc4394e0148b6c7c4fa0" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;getView()&lt;/code&gt; gets called very often. It's normally not a good idea to download images there if we haven't implemented a check that ensure us that we won't start an infinite amount of threads per row. Cache.java checks whether the &lt;code&gt;rowObject.mBitmapUrl&lt;/code&gt; already is in a task and if it is, it won't start another. Therefore, we are most likely not exceeding the work queue restriction from the &lt;code&gt;AsyncTask&lt;/code&gt; pool.</source>
+          <target state="translated">&lt;code&gt;getView()&lt;/code&gt; 经常被调用。 如果没有执行检查以确保我们不会在每行中启动无限数量的线程，那么在那儿下载映像通常不是一个好主意。 Cache.java检查rowObject.mBitmapUrl是否已在任务中，如果已存在，它将不会启动另一个任务。 因此，我们很可能不会超出 &lt;code&gt;AsyncTask&lt;/code&gt; 池中的工作队列限制。</target>
+        </trans-unit>
+        <trans-unit id="5a2a7862a6c547b2e092e4cf80ae9639f368585c" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Retains the cache if there is an orientation change&lt;/em&gt;, using a singleton</source>
+          <target state="translated">&lt;em&gt;如果方向改变&lt;/em&gt; ， &lt;em&gt;保留缓存&lt;/em&gt; ，使用单例</target>
+        </trans-unit>
+        <trans-unit id="7baa5dc9710205332e50f61e26eb82dfa968082b" translate="yes" xml:space="preserve">
+          <source>&lt;strike&gt;By referring to the &lt;a href=&quot;http://techpalle.com/blog/wp-content/uploads/2012/03/activity_lifecycle.png&quot;&gt;Activity Life Cycle&lt;/a&gt;&lt;/strike&gt;</source>
+          <target state="translated">&lt;strike&gt;通过参考&lt;a href=&quot;http://techpalle.com/blog/wp-content/uploads/2012/03/activity_lifecycle.png&quot;&gt;活动生命周期&lt;/a&gt;&lt;/strike&gt;</target>
+        </trans-unit>
+        <trans-unit id="738f489e8fcc88ac9846e9e94707b826be87e80a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Note&lt;/strong&gt;: A power of two value is calculated because the decoder uses a
+  final value by rounding down to the nearest power of two, as per the
+  &lt;code&gt;inSampleSize&lt;/code&gt; documentation.</source>
+          <target state="translated">&lt;strong&gt;注意&lt;/strong&gt; ：计算2的幂是因为解码器根据 &lt;code&gt;inSampleSize&lt;/code&gt; 文档通过舍入到最接近的2的幂来使用最终值。</target>
+        </trans-unit>
+        <trans-unit id="3f154f989c2982b44c304392cc3fc4749629e582" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Solution&lt;/strong&gt;:
+Move the images to &quot;assets&quot; folder and use the following function to get BitmapDrawable:</source>
+          <target state="translated">&lt;strong&gt;解决方案&lt;/strong&gt; ：将图像移到&amp;ldquo;资产&amp;rdquo;文件夹，然后使用以下函数获取BitmapDrawable：</target>
+        </trans-unit>
+        <trans-unit id="27301bb33e9a932b41cd4ef280ed71c4ba67d620" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;unfortunately&lt;/strong&gt; if None of the Above works, then Add this to your &lt;strong&gt;Manifest&lt;/strong&gt; file. Inside &lt;em&gt;application&lt;/em&gt; tag</source>
+          <target state="translated">&lt;strong&gt;不幸的是，&lt;/strong&gt;如果上述方法均无效，则将其添加到&lt;strong&gt;清单&lt;/strong&gt;文件中。 内部&lt;em&gt;应用&lt;/em&gt;标签</target>
+        </trans-unit>
+        <trans-unit id="0ec8b07a0031298ce5bcdcf2e906e88cf818b728" translate="yes" xml:space="preserve">
+          <source>After I've done a lot of experiments with this App, I've got the following conclusions:</source>
+          <target state="translated">在我用这个App做了很多实验之后,我有了以下结论。</target>
+        </trans-unit>
+        <trans-unit id="5d9f33ceb54e285b1f0f546fa5ae5441f81cf547" translate="yes" xml:space="preserve">
+          <source>All the solutions here require setting a IMAGE_MAX_SIZE. This limits devices with more powerful hardware and if the image size is too low it looks ugly on the HD screen.</source>
+          <target state="translated">这里的所有解决方案都需要设置一个IMAGE_MAX_SIZE。这限制了具有更强大硬件的设备,如果图像尺寸太小,在高清屏幕上看起来很难看。</target>
+        </trans-unit>
+        <trans-unit id="1884733a3c481df7c2074ade429f3a9f9686109c" translate="yes" xml:space="preserve">
+          <source>Android API 2.1 or higher (I simply could not manage to get the available memory for an application in API 1.6 - that is the only piece of code that doesn't work in API 1.6)</source>
+          <target state="translated">Android API 2.1或更高版本(我根本无法在API 1.6中获取应用的可用内存--这是唯一在API 1.6中无法使用的代码</target>
+        </trans-unit>
+        <trans-unit id="c852378f8fd87cb6e98eea9753b7acf9191bc79d" translate="yes" xml:space="preserve">
+          <source>Android support package</source>
+          <target state="translated">安卓系统支持包</target>
+        </trans-unit>
+        <trans-unit id="15f9db5a119d042a2a0dbcd8e7a20a243027d043" translate="yes" xml:space="preserve">
+          <source>Anyways, what worked was this (note that I added some options as some had above, but that's not what made the difference. What is critical is the call to &lt;strong&gt;BitmapFactory.decodeFileDescriptor&lt;/strong&gt; instead of &lt;strong&gt;decodeStream&lt;/strong&gt; or &lt;strong&gt;decodeFile&lt;/strong&gt;):</source>
+          <target state="translated">无论如何，这是行得通的（请注意，我添加了一些上述选项，但这并没有什么不同。关键是对&lt;strong&gt;BitmapFactory.decodeFileDescriptor&lt;/strong&gt;的调用，而不是&lt;strong&gt;defineStream&lt;/strong&gt;或&lt;strong&gt;encodeFile的调用&lt;/strong&gt; ）：</target>
+        </trans-unit>
+        <trans-unit id="2a639f00f36e3a3df1f8a5ce44c1eba66c427656" translate="yes" xml:space="preserve">
+          <source>As soon as I disabled the image on the list view it worked fine again.</source>
+          <target state="translated">只要我在列表视图中禁用了图像,它又能正常工作了。</target>
+        </trans-unit>
+        <trans-unit id="e04f7f19db81d0bbf4b2eaf9335fc544b05da2a3" translate="yes" xml:space="preserve">
+          <source>Because of this I wrote an example application that demonstrates caching in an Android environment. This implementation has not yet gotten an OOM.</source>
+          <target state="translated">因为这个原因,我写了一个例子应用,在Android环境中演示了缓存。这个实现还没有得到一个OOM。</target>
+        </trans-unit>
+        <trans-unit id="ee849ef8bc77f61c239846c451384637a9839373" translate="yes" xml:space="preserve">
+          <source>Bitmap is stored in VM heap, Native memory is not counted for OOM.</source>
+          <target state="translated">位图存储在VM堆中,原生内存不计入OOM。</target>
+        </trans-unit>
+        <trans-unit id="88672ca86836327b9dde502c2e5829f39cc85ff3" translate="yes" xml:space="preserve">
+          <source>Bitmap is stored in native heap, but it will get garbage collected automatically, calling recycle() is needless.</source>
+          <target state="translated">Bitmap存储在原生堆中,但会自动得到垃圾回收,调用recycle()就没有必要了。</target>
+        </trans-unit>
+        <trans-unit id="205a822cd5bbafed369318fc3a950d9a83784750" translate="yes" xml:space="preserve">
+          <source>Bitmap memory isn't in the VM heap but rather in the native heap - see &lt;a href=&quot;https://stackoverflow.com/questions/1955410/bitmapfactory-oom-driving-me-nuts/5493182#5493182&quot;&gt;BitmapFactory OOM driving me nuts&lt;/a&gt;</source>
+          <target state="translated">位图内存不在VM堆中，而是在本机堆中-请参阅&lt;a href=&quot;https://stackoverflow.com/questions/1955410/bitmapfactory-oom-driving-me-nuts/5493182#5493182&quot;&gt;BitmapFactory OOM使我发疯&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="2850c6f9080f7ab7710c811fdf37a52b2390e539" translate="yes" xml:space="preserve">
+          <source>Cache.java's critical stuff (the &lt;code&gt;loadBitmap()&lt;/code&gt; method is the most important):</source>
+          <target state="translated">Cache.java的关键要素（ &lt;code&gt;loadBitmap()&lt;/code&gt; 方法是最重要的）：</target>
+        </trans-unit>
+        <trans-unit id="9c7abf0da6a58cae788ad7565b643389edaee688" translate="yes" xml:space="preserve">
+          <source>Callbacks are anonymous inner classes too, so if a static instance in your project holds them and do not release them, memory would be leaked.</source>
+          <target state="translated">回调也是匿名的内部类,所以如果你的项目中的静态实例持有它们而不释放它们,就会泄露内存。</target>
+        </trans-unit>
+        <trans-unit id="5328b687344df73f23830a73eb9346cab386ef68" translate="yes" xml:space="preserve">
+          <source>Calling AsyncTask.cancel(true) will not stop the execution if the task is blocked in an IO operation in background thread.</source>
+          <target state="translated">如果任务在后台线程中的IO操作被阻塞,调用AsyncTask.cancel(true)不会停止执行。</target>
+        </trans-unit>
+        <trans-unit id="671599bc1a399d2611080b182c6ec309dceb993f" translate="yes" xml:space="preserve">
+          <source>Controls &lt;em&gt;that there is an internet connection available&lt;/em&gt; before downloading the bitmaps</source>
+          <target state="translated">在下载位图之前控制&lt;em&gt;是否有Internet连接可用&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="db6569c7a3ae973546f496a86ab5b9b206ec95a5" translate="yes" xml:space="preserve">
+          <source>Dimensions of the target ImageView or UI component that the image is to be loaded into.</source>
+          <target state="translated">要加载图像的目标ImageView或UI组件的尺寸。</target>
+        </trans-unit>
+        <trans-unit id="f5a62978708306f9ae8db3e77eb70b18a55e42a7" translate="yes" xml:space="preserve">
+          <source>Disk caching. This should be easy to implement anyway - just point to a different task that grabs the bitmaps from the disk</source>
+          <target state="translated">磁盘缓存。这应该很容易实现----只要指向一个不同的任务,从磁盘上抓取位图就可以了。</target>
+        </trans-unit>
+        <trans-unit id="d41afcdf06f873159a02f2c71ff9d4ff63760f01" translate="yes" xml:space="preserve">
+          <source>Download:</source>
+          <target state="translated">Download:</target>
+        </trans-unit>
+        <trans-unit id="53a6f94106746c28ba76a2b35fa9813bee528f13" translate="yes" xml:space="preserve">
+          <source>Estimated memory usage of loading the full image in memory.</source>
+          <target state="translated">估计内存中加载完整图像的内存使用量。</target>
+        </trans-unit>
+        <trans-unit id="b09f2105d1275959687cbd96020e7a8cd8eed874" translate="yes" xml:space="preserve">
+          <source>FYI: This is how I was doing it:</source>
+          <target state="translated">参考消息:我就是这样做的。</target>
+        </trans-unit>
+        <trans-unit id="5df81ffa82179b458e1d55e350db9d88805a69b2" translate="yes" xml:space="preserve">
+          <source>Features:</source>
+          <target state="translated">Features:</target>
+        </trans-unit>
+        <trans-unit id="50966d4fa4bd11157f2c78c84f8e32c94e4dc8a1" translate="yes" xml:space="preserve">
+          <source>For example, it&amp;rsquo;s not worth loading a 1024x768 pixel image into memory if it will eventually be displayed in a 128x96 pixel thumbnail in an &lt;code&gt;ImageView&lt;/code&gt;.</source>
+          <target state="translated">例如，如果将1024x768像素的图像最终显示在 &lt;code&gt;ImageView&lt;/code&gt; 中的128x96像素的缩略图中，则不值得将其加载到内存中。</target>
+        </trans-unit>
+        <trans-unit id="08ffb9f14d4f90d0318cfb08c98680be308359bf" translate="yes" xml:space="preserve">
+          <source>Garbage collection for the native heap is lazier than the VM heap - so you need to be quite aggressive about doing bitmap.recycle and bitmap =null every time you go through an Activity's onPause or onDestroy</source>
+          <target state="translated">本机堆的垃圾收集比VM堆更懒散--所以你需要在每次通过Activity的onPause或onDestroy的时候,都要非常积极地进行bitmap.recycle和bitmap =null</target>
+        </trans-unit>
+        <trans-unit id="72d5be6ec911bd80fb8bae74de3673d72fff4bcd" translate="yes" xml:space="preserve">
+          <source>Generally android device heap size is only 16MB (varies from device/OS see post &lt;a href=&quot;https://stackoverflow.com/a/9940415/1053097&quot;&gt;Heap Sizes&lt;/a&gt;), if you are loading the images and it crosses the size of 16MB , it will throw out of memory exception, instead of using the Bitmap for , loading images from SD card or from resources or even from network try to using &lt;strong&gt;getImageUri&lt;/strong&gt; , loading bitmap require more memory , or you can set bitmap to null if your work done with that bitmap.</source>
+          <target state="translated">通常android设备的堆大小只有16MB（根据设备/操作系统的不同，请参阅post &lt;a href=&quot;https://stackoverflow.com/a/9940415/1053097&quot;&gt;Heap Sizes&lt;/a&gt; ），如果您正在加载图像并且大小超过16MB，则会抛出内存不足异常，而不是将Bitmap用于，加载来自SD卡，资源或什至来自网络的图像尝试使用&lt;strong&gt;getImageUri&lt;/strong&gt; ，加载位图需要更多内存，或者如果使用该位图完成工作，则可以将位图设置为null。</target>
+        </trans-unit>
+        <trans-unit id="1a06d0f015483587699b8a176995e7382555aa09" translate="yes" xml:space="preserve">
+          <source>Great answers here, but I wanted a &lt;strong&gt;fully usable class&lt;/strong&gt; to address this problem.. so I did one.</source>
+          <target state="translated">很好的答案，但是我想要一个&lt;strong&gt;完全可用的课程&lt;/strong&gt;来解决这个问题。所以我做了一个。</target>
+        </trans-unit>
+        <trans-unit id="3ac2685d8968e5ce7bf1f958f25f0955c33e1786" translate="yes" xml:space="preserve">
+          <source>Here is my &lt;strong&gt;BitmapHelper class&lt;/strong&gt; that is OutOfMemoryError proof :-)</source>
+          <target state="translated">这是我的&lt;strong&gt;BitmapHelper类&lt;/strong&gt; ，它是OutOfMemoryError证明的：-)</target>
+        </trans-unit>
+        <trans-unit id="19cb376555018e8823eaa695a9df2f1af042d562" translate="yes" xml:space="preserve">
+          <source>Here is my LogCat:</source>
+          <target state="translated">这是我的LogCat。</target>
+        </trans-unit>
+        <trans-unit id="cffa2bc53f11363125136f8a2ab820dca37158cd" translate="yes" xml:space="preserve">
+          <source>Here is some of my observations about Garbage Collection and Memory Leak.</source>
+          <target state="translated">以下是我对垃圾回收和记忆泄漏的一些看法。</target>
+        </trans-unit>
+        <trans-unit id="0a02f56ef5eb139e6928484a85c5a047ddea1327" translate="yes" xml:space="preserve">
+          <source>Here's a complete method. First it reads image size without decoding the content itself. Then it finds the best &lt;code&gt;inSampleSize&lt;/code&gt; value, it should be a power of 2, and finally the image is decoded.</source>
+          <target state="translated">这是一个完整的方法。 首先，它读取图像大小而不解码内容本身。 然后，它找到最佳的 &lt;code&gt;inSampleSize&lt;/code&gt; 值，应为2的幂，最后对图像进行解码。</target>
+        </trans-unit>
+        <trans-unit id="808a8de8725ef3f0318a54ee708ab3155fc4418f" translate="yes" xml:space="preserve">
+          <source>Hope this helps someone out there..</source>
+          <target state="translated">希望这能帮到你.....</target>
+        </trans-unit>
+        <trans-unit id="a6a0ce9031e0776d5fc6120b3023d51bccf114f1" translate="yes" xml:space="preserve">
+          <source>Hope this helps.</source>
+          <target state="translated">希望这对你有帮助。</target>
+        </trans-unit>
+        <trans-unit id="68dbf58b4d75dc4e6d3fcbae5f5cb30a0e0c723d" translate="yes" xml:space="preserve">
+          <source>I also have a new error when displaying an image:</source>
+          <target state="translated">我在显示图片时也有一个新的错误。</target>
+        </trans-unit>
+        <trans-unit id="d707934563266af24417ef00ad34c82d947bec0e" translate="yes" xml:space="preserve">
+          <source>I came out with a solution that works with my Samsung Galaxy S3 and several other devices including less powerful ones, with better image quality when a more powerful device is used.</source>
+          <target state="translated">我想出了一个解决方案,我的三星Galaxy S3和其他几款设备,包括功能不强的设备,在使用功能更强的设备时,图像质量更好。</target>
+        </trans-unit>
+        <trans-unit id="ac38569581f05208050b75097c3c346aaabe9718" translate="yes" xml:space="preserve">
+          <source>I come from iOS experience and I was frustrated to discover an issue with something so basic as loading and showing an image. After all, everyone that is having this issue is trying to display reasonably sized images. Anyway, here are the two changes that fixed my problem (and made my app very responsive).</source>
+          <target state="translated">我来自于iOS的经验,我很沮丧地发现了一个问题,就像加载和显示图片这样基本的问题。毕竟,每个有这个问题的人都在尝试显示合理大小的图片。不管怎么说,这里有两个改变,修复了我的问题(并使我的应用响应速度非常快)。</target>
+        </trans-unit>
+        <trans-unit id="41042d10893fe7f9878c2ee20b4903eaec26fdc6" translate="yes" xml:space="preserve">
+          <source>I did the following to take the image and resize it on the fly. Hope this helps</source>
+          <target state="translated">我做了以下的操作,将图片拍下来,并在空中调整大小。希望这对你有帮助</target>
+        </trans-unit>
+        <trans-unit id="70963af00b7f5a5eee53277c66e3856a91f2891c" translate="yes" xml:space="preserve">
+          <source>I had this same issue and solved it by avoiding the BitmapFactory.decodeStream or decodeFile functions and instead used &lt;code&gt;BitmapFactory.decodeFileDescriptor&lt;/code&gt;</source>
+          <target state="translated">我遇到了同样的问题，并通过避免使用BitmapFactory.decodeStream或encodeFile函数来解决此问题，而是使用了 &lt;code&gt;BitmapFactory.decodeFileDescriptor&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="dcefbefe16ed45ee1a19ad421413e07c13b85e21" translate="yes" xml:space="preserve">
+          <source>I have a list view with a couple of image buttons on each row. When you click the list row, it launches a new activity. I have had to build my own tabs because of an issue with the camera layout. The activity that gets launched for the result is a map. If I click on my button to launch the image preview (load an image off the SD card) the application returns from the activity back to the &lt;code&gt;listview&lt;/code&gt; activity to the result handler to relaunch my new activity which is nothing more than an image widget.</source>
+          <target state="translated">我有一个列表视图，每行上都有几个图像按钮。 当您单击列表行时，它将启动一个新活动。 由于相机布局存在问题，我不得不构建自己的标签。 为结果而启动的活动是地图。 如果单击我的按钮以启动图像预览（将图像从SD卡加载），则应用程序将从活动返回到 &lt;code&gt;listview&lt;/code&gt; 活动，返回到结果处理程序，以重新启动我的新活动，无非就是一个图像小部件。</target>
+        </trans-unit>
+        <trans-unit id="3f3b7b996420d046d3c3706a4043539fc317ca2b" translate="yes" xml:space="preserve">
+          <source>I have a much more effective solution which does not need scaling of any sort. Simply decode your bitmap only once and then cache it in a map against its name. Then simply retrieve the bitmap against the name and set it in the ImageView. There is nothing more that needs to be done.</source>
+          <target state="translated">我有一个更有效的解决方案,它不需要任何形式的缩放。只需对位图进行一次解码,然后将其缓存在地图中,并将其与名称相对应。然后只需根据名称检索该位图,并将其设置在ImageView中。没有其他需要做的事情了。</target>
+        </trans-unit>
+        <trans-unit id="80c98ac37ad76002dab413e284d77bc9b5b987a9" translate="yes" xml:space="preserve">
+          <source>I have resolved the same issue in the following manner.</source>
+          <target state="translated">我以下列方式解决了同样的问题:</target>
+        </trans-unit>
+        <trans-unit id="90e8def22b8526c77f4a89a6e67c5c7f7892ca05" translate="yes" xml:space="preserve">
+          <source>I have seen a lot of questions about OOM exceptions and caching lately. The developer guide has &lt;a href=&quot;http://developer.android.com/training/displaying-bitmaps/cache-bitmap.html&quot;&gt;a really good article&lt;/a&gt; on this, but some tends to fail on implementing it in a suitable way.</source>
+          <target state="translated">我最近看到了很多有关OOM异常和缓存的问题。 开发人员指南对此&lt;a href=&quot;http://developer.android.com/training/displaying-bitmaps/cache-bitmap.html&quot;&gt;有非常好的文章&lt;/a&gt; ，但有些人往往无法以合适的方式实现它。</target>
+        </trans-unit>
+        <trans-unit id="a92ba1c9a91a190d24c060f9480a125fd5d7a703" translate="yes" xml:space="preserve">
+          <source>I have tested this for a few weeks now, I haven't gotten a single OOM exception yet. I have tested this on the emulator, on my Nexus One and on my Nexus S. I have tested image urls that contain images that were in HD quality. The only bottleneck is that it takes more time to download.</source>
+          <target state="translated">我已经测试了几个星期了,我还没有得到一个OOM异常。我已经在模拟器上测试过,在我的Nexus One和Nexus S上测试过,我测试过的图片URL包含高清质量的图片。唯一的瓶颈是,它需要更多的时间来下载。</target>
+        </trans-unit>
+        <trans-unit id="bd3a2038e0a415d454b2b7282e042b09784ff570" translate="yes" xml:space="preserve">
+          <source>I hope this will help the buddies facing the same problem!</source>
+          <target state="translated">希望能对面临同样问题的小伙伴们有所帮助!</target>
+        </trans-unit>
+        <trans-unit id="ef445c286efa75adce24bdec51eab0b63f0b80ee" translate="yes" xml:space="preserve">
+          <source>I just ran into this issue a couple minutes ago. I solved it by doing a better job at managing my listview adapter. I thought it was an issue with the hundreds of 50x50px images I was using, turns out I was trying to inflate my custom view each time the row was being shown. Simply by testing to see if the row had been inflated I eliminated this error, and I am using hundreds of bitmaps. This is actually for a Spinner, but the base adapter works all the same for a ListView. This simple fix also greatly improved the performance of the adapter.</source>
+          <target state="translated">我几分钟前刚遇到这个问题。我通过在管理我的列表视图适配器时做得更好,解决了这个问题。我以为是我使用的数百个50x50px的图片的问题,原来是我每次显示行时,我都试图膨胀我的自定义视图。仅仅通过测试看看行是否被膨胀了,我就消除了这个错误,而且我使用的是数百个位图。这实际上是针对Spinner的,但对于ListView来说,基础适配器的工作原理都是一样的。这个简单的修复方法也大大改善了适配器的性能。</target>
+        </trans-unit>
+        <trans-unit id="cc69206e5815e05d21981036e91bc0bb1b830920" translate="yes" xml:space="preserve">
+          <source>I know I can do an out of band resize and save of my image, but that is not really what I want to do, but some sample code for that would be nice.</source>
+          <target state="translated">我知道我可以对我的图像进行带外调整大小和保存,但这不是我想做的,但如果能提供一些示例代码就更好了。</target>
+        </trans-unit>
+        <trans-unit id="f1a21cccc75a4df422b282e20e780ffcfefd2ba8" translate="yes" xml:space="preserve">
+          <source>I made an &lt;a href=&quot;https://play.google.com/store/apps/details?id=net.coocood.oomresearch&quot;&gt;app&lt;/a&gt; to intentionally cause &lt;code&gt;OutOfMemoryError&lt;/code&gt;, and monitor memory usage.</source>
+          <target state="translated">我制作了一个有意引起 &lt;code&gt;OutOfMemoryError&lt;/code&gt; 的&lt;a href=&quot;https://play.google.com/store/apps/details?id=net.coocood.oomresearch&quot;&gt;应用程序&lt;/a&gt; ，并监视内存使用情况。</target>
+        </trans-unit>
+        <trans-unit id="cfd9d3246806c0d0544d387ca159b2f1de0c5464" translate="yes" xml:space="preserve">
+          <source>I set the maximum memory used by this bitmap to be 25% of maximum allocated memory, you may need to adjust this to your needs and make sure this bitmap is cleaned up and don't stay in memory when you've finished using it. Typically I use this code to perform image rotation (source and destination bitmap) so my app needs to load 2 bitmaps in memory at the same time, and 25% gives me a good buffer without running out of memory when performing image rotation.</source>
+          <target state="translated">我把这个位图使用的最大内存设置为最大分配内存的25%,你可能需要根据自己的需要来调整,并确保这个位图被清理掉,不要在使用完后停留在内存中。通常情况下,我使用这段代码来执行图像旋转(源位图和目的位图),所以我的应用程序需要同时在内存中加载2个位图,25%的内存给了我一个很好的缓冲区,在执行图像旋转时不会耗尽内存。</target>
+        </trans-unit>
+        <trans-unit id="be1ebee6d533ac5f91df22838053b293abd1093c" translate="yes" xml:space="preserve">
+          <source>I think best way to avoid the &lt;code&gt;OutOfMemoryError&lt;/code&gt; is to face it and understand it.</source>
+          <target state="translated">我认为避免 &lt;code&gt;OutOfMemoryError&lt;/code&gt; 的最佳方法是面对它并理解它。</target>
+        </trans-unit>
+        <trans-unit id="fb7fdde6f7588fa4661d28589535e5ae66450cc5" translate="yes" xml:space="preserve">
+          <source>I think there is a problem with the native function used in decodeStream/decodeFile. I have confirmed that a different native method is called when using decodeFileDescriptor.  Also what I've read is &quot;that Images (Bitmaps) are not allocated in a standard Java way but via native calls; the allocations are done outside of the virtual heap, but are
+&lt;strong&gt;&lt;em&gt;counted against it!&lt;/em&gt;&lt;/strong&gt;&quot;</source>
+          <target state="translated">我认为在解码流/解码文件中使用的本机函数存在问题。 我已经确认，使用解码文件描述符时会调用其他本机方法。 我还读到的是&amp;ldquo;图像（位图）不是以标准Java方式分配的，而是通过本机调用分配的；分配是在虚拟堆之外完成的，但要&lt;strong&gt;&lt;em&gt;根据它&lt;/em&gt;&lt;/strong&gt;进行&lt;strong&gt;&lt;em&gt;计数！&lt;/em&gt;&lt;/strong&gt; &amp;rdquo;</target>
+        </trans-unit>
+        <trans-unit id="89d03da63fffe99b55265fa19e6085ce6f7c68b9" translate="yes" xml:space="preserve">
+          <source>I'm gonna talk about SDK versions before Honey Comb first.</source>
+          <target state="translated">我先说一下SDK版本,然后才是蜜糖梳子。</target>
+        </trans-unit>
+        <trans-unit id="949b7e396b503afc7e60ed24080a292eb274cd8c" translate="yes" xml:space="preserve">
+          <source>I've made a small improvement to Fedor's code. It basically does the same, but without the (in my opinion) ugly while loop and it always results in a power of two. Kudos to Fedor for making the original solution, I was stuck until I found his, and then I was able to make this one :)</source>
+          <target state="translated">我对Fedor的代码做了一个小小的改进。它基本上也是这样,但没有了(在我看来)丑陋的while循环,而且它的结果总是2的幂。感谢Fedor做了最初的解决方案,我一直卡住了,直到我找到了他的,然后我才得以做了这个:)</target>
+        </trans-unit>
+        <trans-unit id="f572a323e69f42f2995af8376e6833205e919d12" translate="yes" xml:space="preserve">
+          <source>I've spent the entire day testing these solutions and the only thing that worked for me is the above approaches for getting the image and manually calling the GC, which I know is not supposed to be necessary, but it is the only thing that worked when I put my app under heavy load testing switching between activities.  My app has a list of thumbnail images in a listview in (lets say activity A) and when you click on one of those images it takes you to another activity (lets say activity B) that shows a main image for that item.  When I would switch back and forth between the two activities, I would eventually get the OOM error and the app would force close.</source>
+          <target state="translated">我花了一整天的时间来测试这些解决方案,对我来说,唯一有效的方法就是上面提到的获取图片和手动调用GC的方法,我知道这不应该是必要的,但当我把我的app放在重载测试下在活动之间切换时,这是唯一有效的方法。我的应用程序有一个列表视图中的缩略图列表(让我们说活动A),当你点击其中一个图片时,它会带你到另一个活动(让我们说活动B),显示该项目的主图片。当我在这两个活动之间来回切换时,最终会出现OOM错误,应用程序会强制关闭。</target>
+        </trans-unit>
+        <trans-unit id="6d49a2855b498c0fef974a894bdc320dc6145acf" translate="yes" xml:space="preserve">
+          <source>If &lt;em&gt;you are flinging&lt;/em&gt; the &lt;code&gt;ListView&lt;/code&gt; away, it simply won't download the bitmaps between</source>
+          <target state="translated">如果&lt;em&gt;您不&lt;/em&gt;使用 &lt;code&gt;ListView&lt;/code&gt; ，它根本不会下载之间的位图</target>
+        </trans-unit>
+        <trans-unit id="aae26a8106e5c91b33735bff022f3cde761adb3a" translate="yes" xml:space="preserve">
+          <source>If you scheduled a repeating or delayed task, for example a Timer, and you do not call cancel() and purge() in onPause(), memory would be leaked.</source>
+          <target state="translated">如果你计划了一个重复或延迟的任务,例如Timer,而你没有在onPause()中调用cancel()和purge(),内存就会被泄露。</target>
+        </trans-unit>
+        <trans-unit id="8b45d3552db7a9f1666671b53d59f302a103fcd8" translate="yes" xml:space="preserve">
+          <source>If {VM heap size} + {allocated native heap memory} &amp;gt;= {VM heap size limit for the device}, and you are trying to create bitmap, OOM will be thrown.</source>
+          <target state="translated">如果{VM堆大小} + {已分配的本机堆内存}&amp;gt; = {设备的VM堆大小限制}，而您尝试创建位图，则会抛出OOM。</target>
+        </trans-unit>
+        <trans-unit id="49e7f074b8cc99d872d2d1216825c26fffff2a73" translate="yes" xml:space="preserve">
+          <source>In one of my application i need to take picture either from &lt;code&gt;Camera/Gallery&lt;/code&gt;. If user click image from Camera(may be 2MP, 5MP or 8MP), image size varies from &lt;code&gt;kB&lt;/code&gt;s to &lt;code&gt;MB&lt;/code&gt;s. If image size is less(or up to 1-2MB) above code working fine but if i have image of size above 4MB or 5MB then &lt;code&gt;OOM&lt;/code&gt; comes in frame :(</source>
+          <target state="translated">在我的一个应用程序中，我需要从 &lt;code&gt;Camera/Gallery&lt;/code&gt; 拍照 。 如果用户单击&amp;ldquo;相机&amp;rdquo;中的图像（可能是2MP，5MP或8MP），则图像大小从 &lt;code&gt;kB&lt;/code&gt; s到 &lt;code&gt;MB&lt;/code&gt; s不等。 如果图像大小小于（或高达1-2MB）以上代码工作正常，但如果我的图像大小大于4MB或5MB，则 &lt;code&gt;OOM&lt;/code&gt; 进入框架:(</target>
+        </trans-unit>
+        <trans-unit id="dd98994863f2d2fdf584dc5c4b2152d193280740" translate="yes" xml:space="preserve">
+          <source>Is there a way I can build the list adapter easily row by row, where I can resize on the fly (&lt;em&gt;bit wise&lt;/em&gt;)?</source>
+          <target state="translated">有没有一种方法可以轻松地逐行构建列表适配器，从而可以即时调整大小（逐&lt;em&gt;位&lt;/em&gt; ）？</target>
+        </trans-unit>
+        <trans-unit id="c3345639637ff08fe7c9ede8ee3564a6b1257d50" translate="yes" xml:space="preserve">
+          <source>It seems that this is a very long running problem, with a lot of differing explanations.  I took the advice of the two most common presented answers here, but neither one of these solved my problems of the VM claiming it couldn't afford the bytes to perform the &lt;strong&gt;decoding&lt;/strong&gt; part of the process.  After some digging I learned that the real problem here is the decoding process taking away from the &lt;strong&gt;NATIVE&lt;/strong&gt; heap.</source>
+          <target state="translated">似乎这是一个长期运行的问题，有很多不同的解释。 我在这里提出了两个最常见的答案，但是这些都没有解决我关于VM的问题，声称VM无法承受执行该过程的&lt;strong&gt;解码&lt;/strong&gt;部分所需的字节数。 经过一番挖掘后，我了解到真正的问题是解码过程不占用&lt;strong&gt;NATIVE&lt;/strong&gt;堆。</target>
+        </trans-unit>
+        <trans-unit id="212e829919910956b61b83294caa292f0c725558" translate="yes" xml:space="preserve">
+          <source>It's a &lt;a href=&quot;http://code.google.com/p/android/issues/detail?id=8488&quot;&gt;known bug&lt;/a&gt;, it's not because of large files. Since Android Caches the Drawables, it's going out of memory after using few images. But I've found an alternate way for it, by skipping the android default cache system.</source>
+          <target state="translated">这是一个&lt;a href=&quot;http://code.google.com/p/android/issues/detail?id=8488&quot;&gt;已知的错误&lt;/a&gt; ，不是因为文件很大。 由于Android会缓存Drawable，因此使用少量图像后，内存将耗尽。 但是我通过跳过android默认的缓存系统找到了另一种方法。</target>
+        </trans-unit>
+        <trans-unit id="87c40bac9ed5b0407f1d8f530751ca38621a14df" translate="yes" xml:space="preserve">
+          <source>Large bitmaps &lt;em&gt;gets scaled&lt;/em&gt; (you can define the maximum pixels that you want to allow)</source>
+          <target state="translated">大型位图&lt;em&gt;会缩放&lt;/em&gt; （您可以定义要允许的最大像素）</target>
+        </trans-unit>
+        <trans-unit id="8678809351d8e9e866f9fb346e60b5b2ea5382df" translate="yes" xml:space="preserve">
+          <source>Last words:</source>
+          <target state="translated">最后一句话:</target>
+        </trans-unit>
+        <trans-unit id="32aee2a63bf12b3e42d6f178b7670e25eb19b3af" translate="yes" xml:space="preserve">
+          <source>Load a scaled down version into Memory</source>
+          <target state="translated">将缩减的版本加载到内存中</target>
+        </trans-unit>
+        <trans-unit id="59d71b903d7086e09cd387175e346c3f8a597a02" translate="yes" xml:space="preserve">
+          <source>Look at the end of this answer for a link to the source code.</source>
+          <target state="translated">请看本答案的末尾,找到源码的链接。</target>
+        </trans-unit>
+        <trans-unit id="0c2bdc40e8343d1d94d6a69dc85aeca934ae99de" translate="yes" xml:space="preserve">
+          <source>MainActivity.java's critical stuff:</source>
+          <target state="translated">MainActivity.java的关键东西。</target>
+        </trans-unit>
+        <trans-unit id="83a207a33592bbc545cc207ae6453335028a666e" translate="yes" xml:space="preserve">
+          <source>Makes sure that you are only instantiating &lt;em&gt;one task&lt;/em&gt; per row</source>
+          <target state="translated">确保每行仅实例化&lt;em&gt;一个任务&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="95b33b353acf294ef83e9aa5fea20dcd94f0383c" translate="yes" xml:space="preserve">
+          <source>Manually call System.gc() is meaningless, the system will call it first before trying to grow the heap size.</source>
+          <target state="translated">手动调用System.gc()是没有意义的,系统会先调用System.gc(),然后再尝试增长堆的大小。</target>
+        </trans-unit>
+        <trans-unit id="fad3a84456f058bb312145ad5ce97cf5778734fb" translate="yes" xml:space="preserve">
+          <source>More on that topic here: &lt;a href=&quot;http://groups.google.com/group/android-developers/browse_thread/thread/146a3a354ce3e8e3/61e113036089d696&quot;&gt;Is the limit of memory heap only 6M? &lt;/a&gt;</source>
+          <target state="translated">有关此主题的更多信息： &lt;a href=&quot;http://groups.google.com/group/android-developers/browse_thread/thread/146a3a354ce3e8e3/61e113036089d696&quot;&gt;内存堆的限制是否仅为6M？&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="6a9f9d53cd957a664f586e1fac925b35dac68f30" translate="yes" xml:space="preserve">
+          <source>My 2 cents: i solved my OOM errors with bitmaps by:</source>
+          <target state="translated">我的2分钱:我用bitmaps解决了我的OOM错误。</target>
+        </trans-unit>
+        <trans-unit id="b3a39586148364aa68cde4adff75f273148bbe39" translate="yes" xml:space="preserve">
+          <source>NOTICE: VM HEAP SIZE is counted rather than VM ALLOCATED MEMORY.</source>
+          <target state="translated">注意:计算VM的HEAP大小,而不是VM分配的内存。</target>
+        </trans-unit>
+        <trans-unit id="d9a2f4e5272d151e35ec41d7fe1283ecec32b9fb" translate="yes" xml:space="preserve">
+          <source>Native Heap Size will never shrink too, but it's not counted for OOM, so no need to worry about it.</source>
+          <target state="translated">Native Heap Size也不会缩水,但它不计入OOM,所以不用担心。</target>
+        </trans-unit>
+        <trans-unit id="54879c96b74bbe786d1bd7159a8b0599d4c321f0" translate="yes" xml:space="preserve">
+          <source>None of the answers above worked for me, but I did come up with a horribly ugly workaround that solved the problem. I added a very small, 1x1 pixel image to my project as a resource, and loaded it into my ImageView before calling into garbage collection. I think it might be that the ImageView was not releasing the Bitmap, so GC never picked it up. It's ugly, but it seems to be working for now.</source>
+          <target state="translated">上面的答案对我来说没有一个是有效的,但我确实想出了一个可怕的丑陋的工作方法,解决了这个问题。我把一个很小的、1x1像素的图像作为资源添加到我的项目中,并在调用垃圾回收之前加载到我的ImageView中。我想可能是ImageView没有释放位图,所以GC一直没有把它捡起来。虽然很难看,但目前看来还能用。</target>
+        </trans-unit>
+        <trans-unit id="6f8894f2abf440bb9aeea96c883d859a08c12297" translate="yes" xml:space="preserve">
+          <source>Now since your image is in a file somewhere (or may even be coming from an external server), it is YOUR responsibility to cache the decoded bitmap instance to be reused any where it is needed.</source>
+          <target state="translated">现在,由于你的图像在某个地方的文件中(甚至可能来自外部服务器),你有责任缓存解码后的位图实例,以便在任何需要的地方重用。</target>
+        </trans-unit>
+        <trans-unit id="ad220e4cd6cb224186c1ca16f667ece57dba20f3" translate="yes" xml:space="preserve">
+          <source>Now that the image dimensions are known, they can be used to decide if the full image should be loaded into memory or if a subsampled version should be loaded instead. Here are some factors to consider:</source>
+          <target state="translated">现在知道了图像的尺寸,就可以用来决定是将完整的图像加载到内存中,还是加载子采样版本。以下是一些需要考虑的因素。</target>
+        </trans-unit>
+        <trans-unit id="c2a795044eb263e6638bc4149db07fd71cd76aac" translate="yes" xml:space="preserve">
+          <source>Now when I implement the following in activity B, I can go through the entire listview with no issue and keep going and going and going...and its plenty fast.</source>
+          <target state="translated">现在,当我在活动B中实现以下内容时,我可以毫无问题地浏览整个列表视图,并不断地去,去,去,去,去.........而且速度很快。</target>
+        </trans-unit>
+        <trans-unit id="902e1f686c28630c2a04528f7d145b6094c53aba" translate="yes" xml:space="preserve">
+          <source>Now, having said all of this, I am a complete dunce with Java and Android too.  So if you think this is a terrible way to solve this problem, you are probably right.  ;-)  But this has worked wonders for me, and I have found it impossible to run the VM out of heap cache now.  The only drawback I can find is that you are trashing your cached drawn image.  Which means if you go RIGHT back to that image, you are redrawing it each and every time.  In the case of how my application works, that is not really a problem.  Your mileage may vary.</source>
+          <target state="translated">现在,说了这么多,我对Java和Android也是一个完全的傻瓜。所以,如果你认为这是个可怕的解决方法,你可能是对的。)但是这个方法对我来说效果很好,我发现现在我发现VM已经不可能从堆缓存中运行了。我唯一能找到的缺点是,你把你的缓存中的图像丢弃了。这意味着如果你直接返回到那个图像,你每次都要重新绘制它。在我的应用程序中,这并不是一个真正的问题。你的里程可能会有所不同。</target>
+        </trans-unit>
+        <trans-unit id="035dbf096a64f11fe2822c4a18f107046d3f5703" translate="yes" xml:space="preserve">
+          <source>Read Bitmap Dimensions and Type</source>
+          <target state="translated">读取位图尺寸和类型</target>
+        </trans-unit>
+        <trans-unit id="ab9146b1673102ddbc5c7115d7b318805bd47098" translate="yes" xml:space="preserve">
+          <source>Report errors in the comments! :-)</source>
+          <target state="translated">在评论中报告错误! :-)</target>
+        </trans-unit>
+        <trans-unit id="475ffa14014bb463965306813410e4afd01a7039" translate="yes" xml:space="preserve">
+          <source>Requirements:</source>
+          <target state="translated">Requirements:</target>
+        </trans-unit>
+        <trans-unit id="bbd19d7653cc08e0948d447b0d060fac147cb4d7" translate="yes" xml:space="preserve">
+          <source>Sample code:</source>
+          <target state="translated">样本代码:</target>
+        </trans-unit>
+        <trans-unit id="ce7e680b40c93d87fca537a049ec0c6773e8cc78" translate="yes" xml:space="preserve">
+          <source>Screen size and density of the current device.</source>
+          <target state="translated">目前设备的屏幕尺寸和密度。</target>
+        </trans-unit>
+        <trans-unit id="202c0c493954cb7331141e65ff5574bc316f7006" translate="yes" xml:space="preserve">
+          <source>See here: &lt;a href=&quot;https://stackoverflow.com/questions/1955410/bitmapfactory-oom-driving-me-nuts/5493182#5493182&quot;&gt;BitmapFactory OOM driving me nuts&lt;/a&gt;</source>
+          <target state="translated">看到这里： &lt;a href=&quot;https://stackoverflow.com/questions/1955410/bitmapfactory-oom-driving-me-nuts/5493182#5493182&quot;&gt;BitmapFactory OOM让我发疯&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="34f1933bc01cc5bf7557f841a052257210fb860e" translate="yes" xml:space="preserve">
+          <source>So please check in a device. It may be run in device.</source>
+          <target state="translated">所以请在设备中检查。可以在设备中运行。</target>
+        </trans-unit>
+        <trans-unit id="1664354fdd92ce3acf492010afdff1a0f35d11b7" translate="yes" xml:space="preserve">
+          <source>So you have more available memory to create bitmap with the same heap size limit,  OOM is less likely to be thrown.</source>
+          <target state="translated">所以你有更多的可用内存,在相同的堆大小限制下创建位图,OOM被抛出的概率较小。</target>
+        </trans-unit>
+        <trans-unit id="8e003454e74d8952ecfc04329daac1b2362fc26b" translate="yes" xml:space="preserve">
+          <source>So you have to keep the peak VM memory as low as possible to keep VM Heap Size from growing too big to save available memory for Bitmaps.</source>
+          <target state="translated">所以,你必须尽可能地保持VM的峰值内存,以防止VM的Heap Size过大,从而为Bitmaps保存可用内存。</target>
+        </trans-unit>
+        <trans-unit id="0b66c6e8db0c80867e9069f6c30289a860680ca4" translate="yes" xml:space="preserve">
+          <source>Strange out of memory issue while loading an image to a Bitmap object</source>
+          <target state="translated">在加载图像到位图对象时出现了奇怪的内存不足问题</target>
+        </trans-unit>
+        <trans-unit id="72f1f2daff69d0af1a894aec65d8485be42e1160" translate="yes" xml:space="preserve">
+          <source>Such &lt;code&gt;OutofMemoryException&lt;/code&gt; cannot be totally resolved by calling the &lt;code&gt;System.gc()&lt;/code&gt; and so on .</source>
+          <target state="translated">无法通过调用 &lt;code&gt;System.gc()&lt;/code&gt; 等完全解决此类 &lt;code&gt;OutofMemoryException&lt;/code&gt; 问题。</target>
+        </trans-unit>
+        <trans-unit id="37a396c052474568e5e78e72fcb66454313d2c6e" translate="yes" xml:space="preserve">
+          <source>That lead me to another discussion thread where I found a couple more solutions to this problem.  One is to call&lt;code&gt;System.gc();&lt;/code&gt; manually after your image is displayed.  But that actually makes your app use MORE memory, in an effort to reduce the native heap.  The better solution as of the release of 2.0 (Donut) is to use the BitmapFactory option &quot;inPurgeable&quot;.  So I simply added &lt;code&gt;o2.inPurgeable=true;&lt;/code&gt; just after &lt;code&gt;o2.inSampleSize=scale;&lt;/code&gt;.</source>
+          <target state="translated">这导致我进入另一个讨论线程，在那里我找到了针对该问题的更多解决方案。 一种是调用 &lt;code&gt;System.gc();&lt;/code&gt; 在显示图像后手动进行。 但这实际上使您的应用程序使用更多的内存，以减少本机堆。 从2.0版（甜甜圈）开始，更好的解决方案是使用BitmapFactory选项&amp;ldquo; inPurgeable&amp;rdquo;。 所以我只是添加了 &lt;code&gt;o2.inPurgeable=true;&lt;/code&gt; 就在 &lt;code&gt;o2.inSampleSize=scale;&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="9ff6aebc5a428a3373320888b302b859e74ecd31" translate="yes" xml:space="preserve">
+          <source>The &lt;a href=&quot;http://developer.android.com/reference/android/util/LruCache.html&quot;&gt;&lt;code&gt;LruCache&lt;/code&gt;&lt;/a&gt; has a good way to deal with bitmaps. However, in this application I put an instance of an &lt;code&gt;LruCache&lt;/code&gt; inside another cache class that I created in order to get the application more feasible.</source>
+          <target state="translated">&lt;a href=&quot;http://developer.android.com/reference/android/util/LruCache.html&quot;&gt; &lt;code&gt;LruCache&lt;/code&gt; &lt;/a&gt;具有处理位图的好方法。 但是，在此应用程序中，我将 &lt;code&gt;LruCache&lt;/code&gt; 的实例放在我创建的另一个缓存类中，以使应用程序更可行。</target>
+        </trans-unit>
+        <trans-unit id="64f673a944a2cbfbb517a096df3685f58f381856" translate="yes" xml:space="preserve">
+          <source>The &lt;a href=&quot;http://developer.android.com/training/index.html&quot;&gt;Android Training&lt;/a&gt; class, &quot;&lt;a href=&quot;http://developer.android.com/training/displaying-bitmaps/index.html&quot;&gt;Displaying Bitmaps Efficiently&lt;/a&gt;&quot;, offers some great information for understanding and dealing with the exception &lt;code&gt;java.lang.OutOfMemoryError: bitmap size exceeds VM budget&lt;/code&gt; when loading Bitmaps.</source>
+          <target state="translated">&lt;a href=&quot;http://developer.android.com/training/index.html&quot;&gt;Android培训&lt;/a&gt;类&amp;ldquo; &lt;a href=&quot;http://developer.android.com/training/displaying-bitmaps/index.html&quot;&gt;有效显示位图&lt;/a&gt; &amp;rdquo;为理解和处理异常 &lt;code&gt;java.lang.OutOfMemoryError: bitmap size exceeds VM budget&lt;/code&gt; 提供了一些重要信息：加载位图时位图大小超出了VM预算 。</target>
+        </trans-unit>
+        <trans-unit id="6e661b93c0459b86a470bf78ee4b300cf5c24057" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;BitmapFactory&lt;/code&gt; class provides several decoding methods (&lt;code&gt;decodeByteArray()&lt;/code&gt;, &lt;code&gt;decodeFile()&lt;/code&gt;, &lt;code&gt;decodeResource()&lt;/code&gt;, etc.) for creating a &lt;code&gt;Bitmap&lt;/code&gt; from various sources. Choose the most appropriate decode method based on your image data source. These methods attempt to allocate memory for the constructed bitmap and therefore can easily result in an &lt;code&gt;OutOfMemory&lt;/code&gt; exception. Each type of decode method has additional signatures that let you specify decoding options via the &lt;code&gt;BitmapFactory.Options&lt;/code&gt; class. Setting the &lt;code&gt;inJustDecodeBounds&lt;/code&gt; property to &lt;code&gt;true&lt;/code&gt; while decoding avoids memory allocation, returning &lt;code&gt;null&lt;/code&gt; for the bitmap object but setting &lt;code&gt;outWidth&lt;/code&gt;, &lt;code&gt;outHeight&lt;/code&gt; and &lt;code&gt;outMimeType&lt;/code&gt;. This technique allows you to read the dimensions and type of the image data prior to construction (and memory allocation) of the bitmap.</source>
+          <target state="translated">&lt;code&gt;BitmapFactory&lt;/code&gt; 类提供了几种用于从各种来源创建 &lt;code&gt;Bitmap&lt;/code&gt; 解码方法（ &lt;code&gt;decodeByteArray()&lt;/code&gt; ， &lt;code&gt;decodeFile()&lt;/code&gt; ， &lt;code&gt;decodeResource()&lt;/code&gt; 等）。 根据您的图像数据源选择最合适的解码方法。 这些方法尝试为构造的位图分配内存，因此很容易导致 &lt;code&gt;OutOfMemory&lt;/code&gt; 异常。 每种类型的解码方法都有其他签名，可让您通过 &lt;code&gt;BitmapFactory.Options&lt;/code&gt; 类指定解码选项。 解码时将 &lt;code&gt;inJustDecodeBounds&lt;/code&gt; 属性设置为 &lt;code&gt;true&lt;/code&gt; 可以避免内存分配，为位图对象返回 &lt;code&gt;null&lt;/code&gt; ，但是设置 &lt;code&gt;outWidth&lt;/code&gt; ， &lt;code&gt;outHeight&lt;/code&gt; 和 &lt;code&gt;outMimeType&lt;/code&gt; 。 此技术使您可以在位图的构造（和内存分配）之前读取图像数据的尺寸和类型。</target>
+        </trans-unit>
+        <trans-unit id="617f4327d13a0a613a5190e16101142d1b68a40b" translate="yes" xml:space="preserve">
+          <source>The Activity States are determined by the OS itself subject to the memory usage for each process and the priority of each process.</source>
+          <target state="translated">活动状态是由操作系统本身决定的,取决于每个进程的内存使用情况和每个进程的优先级。</target>
+        </trans-unit>
+        <trans-unit id="417869f28c90577e509bcf77a07d44d70fbf0454" translate="yes" xml:space="preserve">
+          <source>The amount of memory you are willing to commit to loading this image given any other memory requirements of your application.</source>
+          <target state="translated">考虑到您的应用程序的任何其他内存需求,您愿意为加载此图像所投入的内存量。</target>
+        </trans-unit>
+        <trans-unit id="1a9e27d3055bbb1d01dcb44e5f8b8bb80b139083" translate="yes" xml:space="preserve">
+          <source>The condition for OOM is much simpler: {VM heap size} &amp;gt;= {VM heap size limit for the device}.</source>
+          <target state="translated">OOM的条件要简单得多：{VM堆大小}&amp;gt; = {设备的VM堆大小限制}。</target>
+        </trans-unit>
+        <trans-unit id="5c046e88d1a921489d9dffe41d8908c149e21116" translate="yes" xml:space="preserve">
+          <source>The gist of it is to calculate the maximum memory allocated for the app on a particular device, then set the scale to be lowest possible without exceeding this memory. Here's the code:</source>
+          <target state="translated">它的要领是计算出特定设备上的应用所分配的最大内存,然后在不超过这个内存的情况下,将比例设置为最低。下面是代码。</target>
+        </trans-unit>
+        <trans-unit id="c7906221e833c9985371afb28753819159d2d104" translate="yes" xml:space="preserve">
+          <source>The image preview on the list view is being done with the cursor and &lt;code&gt;ListAdapter&lt;/code&gt;. This makes it pretty simple, but I am not sure how I can put a resized image (I.e. Smaller bit size not pixel as the &lt;code&gt;src&lt;/code&gt; for the image button on the fly. So I just resized the image that came off the phone camera.</source>
+          <target state="translated">列表视图上的图像预览是使用光标和 &lt;code&gt;ListAdapter&lt;/code&gt; 完成的 。 这非常简单，但是我不确定如何放置调整大小后的图像（即，较小的位尺寸而不是像素作为飞行中图像按钮的 &lt;code&gt;src&lt;/code&gt; 。因此，我只是调整了从电话摄像头放出的图像的尺寸。</target>
+        </trans-unit>
+        <trans-unit id="881de785d39773ca03137cf7aaf2b8fb8fbc92b5" translate="yes" xml:space="preserve">
+          <source>The images that are being downloaded are images (75x75) from Flickr. However, put whatever image urls you want to be processed, and the application will scale it down if it exceeds the maximum. In this application the urls are simply in a &lt;code&gt;String&lt;/code&gt; array.</source>
+          <target state="translated">正在下载的图像是来自Flickr的图像（75x75）。 但是，请放置您要处理的任何图像URL，如果超出最大数量，应用程序将按比例缩小图像。 在此应用程序中，URL仅位于 &lt;code&gt;String&lt;/code&gt; 数组中。</target>
+        </trans-unit>
+        <trans-unit id="8f9a96a13ca2ff8309b627254b404a92c7ccfb45" translate="yes" xml:space="preserve">
+          <source>The issue is that I get an out of memory error when it tries to go back and re-launch the 2nd activity.</source>
+          <target state="translated">问题是,当它试图返回并重新启动第二个活动时,我得到了一个失忆的错误。</target>
+        </trans-unit>
+        <trans-unit id="1b3fe0b14ae50ce78dc0f11e36bb1bbae4dceb35" translate="yes" xml:space="preserve">
+          <source>Then, let's talk about SDK Starts from Honey Comb.</source>
+          <target state="translated">然后,我们再来谈谈SDK的启动,从蜜梳开始。</target>
+        </trans-unit>
+        <trans-unit id="7eb770ec595c754acc60ae25455a0c3d685c99f7" translate="yes" xml:space="preserve">
+          <source>There are two issues here....</source>
+          <target state="translated">这里有两个问题......</target>
+        </trans-unit>
+        <trans-unit id="92a822662c6a874d0c9af95dec02a3a2fec8f74d" translate="yes" xml:space="preserve">
+          <source>There is only one possible scenario where I can imagine that the OOM will appear, and that is if we download many, really big images, and before they get scaled and put into cache, will simultaneously take up more memory and cause an OOM. But that isn't even an ideal situation anyway and it most likely won't be possible to solve in a more feasible way.</source>
+          <target state="translated">只有一种可能的情况下,我可以想象到会出现OOM的情况,那就是如果我们下载了很多,非常大的图片,在这些图片还没有被缩放到缓存中,就会同时占用更多的内存,导致OOM。但无论如何这都不是一个理想的情况,很可能无法用更可行的方法来解决。</target>
+        </trans-unit>
+        <trans-unit id="00d9ad0894bf0c0ece2432d8d50bce27ee712197" translate="yes" xml:space="preserve">
+          <source>This &lt;code&gt;inSampleSize&lt;/code&gt; option reduces memory consumption.</source>
+          <target state="translated">此 &lt;code&gt;inSampleSize&lt;/code&gt; 选项可减少内存消耗。</target>
+        </trans-unit>
+        <trans-unit id="68151546c4f61ab7739aaa7c622046933070f857" translate="yes" xml:space="preserve">
+          <source>This code will help to load large bitmap from drawable</source>
+          <target state="translated">这段代码将有助于从可绘制的位图中加载大型位图。</target>
+        </trans-unit>
+        <trans-unit id="fc774592f32c7c998ede5a84451cdc61ee17210b" translate="yes" xml:space="preserve">
+          <source>This does not include:</source>
+          <target state="translated">这并不包括:</target>
+        </trans-unit>
+        <trans-unit id="49741fc52da958e447dcb1d70d7f5bc8545bbfc3" translate="yes" xml:space="preserve">
+          <source>This is almost guaranteed to save you hours if not days. All that talk about scaling the image, etc. does not really work (unless you consider getting wrong size or degraded image a solution).</source>
+          <target state="translated">这几乎可以保证为您节省几个小时,甚至几天的时间。所有关于缩放图像等的谈话并没有真正发挥作用(除非你认为得到错误的大小或退化的图像的解决方案)。</target>
+        </trans-unit>
+        <trans-unit id="1adf5fc889e0ac6a44110a0c1935d18af31dbcd2" translate="yes" xml:space="preserve">
+          <source>This is because AsyncTask is an instance of an anonymous inner class, it holds a reference of the Activity.</source>
+          <target state="translated">这是因为AsyncTask是一个匿名内部类的实例,它持有Activity的引用。</target>
+        </trans-unit>
+        <trans-unit id="31c9695f6e300ed35b6c8a9e69cc4b8ae89fc837" translate="yes" xml:space="preserve">
+          <source>This issue only happens in Android emulators. I also faced this issue in an emulator but when I checked in a device then it worked fine.</source>
+          <target state="translated">这个问题只发生在Android模拟器中。我在模拟器中也遇到了这个问题,但当我在设备中检查时,它也能正常工作。</target>
+        </trans-unit>
+        <trans-unit id="25fa0ce83b96a1bf53c72341f7de9287e367373c" translate="yes" xml:space="preserve">
+          <source>This method makes it easy to load a bitmap of arbitrarily large size into an &lt;code&gt;ImageView&lt;/code&gt; that displays a 100x100 pixel thumbnail, as shown in the following example code:</source>
+          <target state="translated">使用此方法可以轻松地将任意大尺寸的位图加载到显示100x100像素缩略图的 &lt;code&gt;ImageView&lt;/code&gt; 中，如以下示例代码所示：</target>
+        </trans-unit>
+        <trans-unit id="b412b9ffc3f40429c9fd4b3c3a6e26c29f0579ef" translate="yes" xml:space="preserve">
+          <source>This seems like the appropriate place to share my utility class for loading and processing images with the community, you are welcome to use it and modify it freely.</source>
+          <target state="translated">这似乎是个合适的地方,将我的实用类加载和处理图片的工具类分享给社区,欢迎大家自由使用和修改。</target>
+        </trans-unit>
+        <trans-unit id="3c22f297ce30d1437a3a031b9295e728495fda9d" translate="yes" xml:space="preserve">
+          <source>This will work because the actual binary data of the decoded bitmap is not stored within the dalvik VM heap. It is stored externally. So every time you decode a bitmap, it allocates memory outside of VM heap which is never reclaimed by GC</source>
+          <target state="translated">这将发挥作用,因为解码后的位图的实际二进制数据并不存储在dalvik VM堆中。它被存储在外部。所以每次解码位图的时候,它都会在VM堆外分配内存,而这些内存是不会被GC回收的。</target>
+        </trans-unit>
+        <trans-unit id="083571b73e7037527d98deb441337ef37561d9e3" translate="yes" xml:space="preserve">
+          <source>This worked for me!</source>
+          <target state="translated">这个对我很有效!</target>
+        </trans-unit>
+        <trans-unit id="ff3cc37ab695a425aff6adea4152c406e697b6ca" translate="yes" xml:space="preserve">
+          <source>This works for me.</source>
+          <target state="translated">这对我来说很有效。</target>
+        </trans-unit>
+        <trans-unit id="b83a9cea18feba16553b9bcfb40c0d66a03ef1d7" translate="yes" xml:space="preserve">
+          <source>This would be preferable as I also need to make some changes to the properties of the widgets/elements in each row as I am unable to select a row with the touch screen because of the focus issue. (&lt;em&gt;I can use roller ball.&lt;/em&gt;)</source>
+          <target state="translated">这将是更可取的，因为我还需要对每行中的小部件/元素的属性进行一些更改，因为由于焦点问题而无法使用触摸屏选择一行。 （ &lt;em&gt;我可以使用滚球。&lt;/em&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="d1c0eb4e84c2af1b6622c8a4e7d4606247637ac5" translate="yes" xml:space="preserve">
+          <source>To avoid &lt;code&gt;java.lang.OutOfMemory&lt;/code&gt; exceptions, check the dimensions of a bitmap before decoding it, unless you absolutely trust the source to provide you with predictably sized image data that comfortably fits within the available memory.</source>
+          <target state="translated">为避免 &lt;code&gt;java.lang.OutOfMemory&lt;/code&gt; 异常，请在解码位图之前检查位图的尺寸，除非您完全相信该源可为您提供大小适中且可容纳在可用内存中的可预测大小的图像数据。</target>
+        </trans-unit>
+        <trans-unit id="48d70a72fc4b6b1e69ce7fd5a7aec59543dba56c" translate="yes" xml:space="preserve">
+          <source>To fix the OutOfMemory error, you should do something like this:</source>
+          <target state="translated">要修复OutOfMemory错误,你应该这样做。</target>
+        </trans-unit>
+        <trans-unit id="65b13cbd1e14b5560d947288d163d6c54a93a42b" translate="yes" xml:space="preserve">
+          <source>To help you better appreciate this, imagine you have kept ur image in the drawable folder. You just get the image by doing a getResources().getDrwable(R.drawable.). This will NOT decode your image everytime but re-use an already decoded instance everytime you call it. So in essence it is cached.</source>
+          <target state="translated">为了帮助你更好地理解这一点,想象一下你把图片保存在drawable文件夹中。你只需要通过执行getResources().getDrwable(R.drawable.)来获取图片。这不会每次都对你的图片进行解码,而是在每次调用时重新使用一个已经解码的实例。所以本质上,它是被缓存的。</target>
+        </trans-unit>
+        <trans-unit id="71eb65994b8a42ceb4636801be75eb60cea6fbf4" translate="yes" xml:space="preserve">
+          <source>To tell the decoder to subsample the image, loading a smaller version into memory, set &lt;code&gt;inSampleSize&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; in your &lt;code&gt;BitmapFactory.Options&lt;/code&gt; object. For example, an image with resolution 2048x1536 that is decoded with an &lt;code&gt;inSampleSize&lt;/code&gt; of 4 produces a bitmap of approximately 512x384. Loading this into memory uses 0.75MB rather than 12MB for the full image (assuming a bitmap configuration of &lt;code&gt;ARGB_8888&lt;/code&gt;). Here&amp;rsquo;s a method to calculate a sample size value that is a power of two based on a target width and height:</source>
+          <target state="translated">要告诉解码器对图像进行二次采样，将较小的版本加载到内存中，请在 &lt;code&gt;BitmapFactory.Options&lt;/code&gt; 对象中将 &lt;code&gt;inSampleSize&lt;/code&gt; 设置为 &lt;code&gt;true&lt;/code&gt; 。 例如，使用 &lt;code&gt;inSampleSize&lt;/code&gt; 为4解码的分辨率为2048x1536的图像会生成大约512x384的位图。 将其加载到内存中需要使用0.75MB而不是12MB的完整图像（假设 &lt;code&gt;ARGB_8888&lt;/code&gt; 的位图配置）。 这是一种根据目标宽度和高度计算样本大小值（是2的幂）的方法：</target>
+        </trans-unit>
+        <trans-unit id="df352c8e2d07bd2d7dbdef1797f9c0346e5ecc46" translate="yes" xml:space="preserve">
+          <source>To use this method, first decode with &lt;code&gt;inJustDecodeBounds&lt;/code&gt; set to &lt;code&gt;true&lt;/code&gt;, pass the options through and then decode again using the new &lt;code&gt;inSampleSize&lt;/code&gt; value and &lt;code&gt;inJustDecodeBounds&lt;/code&gt; set to &lt;code&gt;false&lt;/code&gt;:</source>
+          <target state="translated">要使用此方法，请先将 &lt;code&gt;inJustDecodeBounds&lt;/code&gt; 设置为 &lt;code&gt;true&lt;/code&gt; 进行解码，然后传递选项，然后使用新的 &lt;code&gt;inSampleSize&lt;/code&gt; 值和 &lt;code&gt;inJustDecodeBounds&lt;/code&gt; 设置为 &lt;code&gt;false&lt;/code&gt; 再次解码：</target>
+        </trans-unit>
+        <trans-unit id="9749e1bdd9779ff26905faf23b25fa0ee6ff24a1" translate="yes" xml:space="preserve">
+          <source>Use &lt;em&gt;one eighth&lt;/em&gt; of the assigned application memory to the cache (modify if you want)</source>
+          <target state="translated">使用分配的应用程序内存的&lt;em&gt;八分&lt;/em&gt;之一到高速缓存（如果需要，可以修改）</target>
+        </trans-unit>
+        <trans-unit id="086b109c2c71c8a21f0af357fec8c21ffee53f19" translate="yes" xml:space="preserve">
+          <source>Use this &lt;code&gt;bitmap.recycle();&lt;/code&gt; This helps without any image quality issue.</source>
+          <target state="translated">使用此 &lt;code&gt;bitmap.recycle();&lt;/code&gt; 这可以帮助您解决任何图像质量问题。</target>
+        </trans-unit>
+        <trans-unit id="9b4efae91171efc758e907e192f453bd7adb8a6a" translate="yes" xml:space="preserve">
+          <source>VM Heap size will never shrink after grown, even if the allocated VM memory is shrinked.</source>
+          <target state="translated">VM Heap的大小在增长后永远不会缩小,即使分配的VM内存被缩小,也不会缩小。</target>
+        </trans-unit>
+        <trans-unit id="5e5a09a5ae7dbdb06951a426b6cf158547b19325" translate="yes" xml:space="preserve">
+          <source>When I would get half way down the listview it would crash.</source>
+          <target state="translated">当我走到一半的时候,它就会崩溃。</target>
+        </trans-unit>
+        <trans-unit id="c945a308d354091e2330620c81c8a0b0221e3e9f" translate="yes" xml:space="preserve">
+          <source>Where &lt;code&gt;R.id.imagefilename&lt;/code&gt; is a &lt;code&gt;ButtonImage&lt;/code&gt;.</source>
+          <target state="translated">其中 &lt;code&gt;R.id.imagefilename&lt;/code&gt; 是 &lt;code&gt;ButtonImage&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="684e0710b7cc05acc8e388e5c53bb6116373051f" translate="yes" xml:space="preserve">
+          <source>You can download the source code from &lt;a href=&quot;https://www.dropbox.com/s/pvr9zyl811tfeem/ListViewImageCache.zip&quot;&gt;https://www.dropbox.com/s/pvr9zyl811tfeem/ListViewImageCache.zip&lt;/a&gt;.</source>
+          <target state="translated">您可以从&lt;a href=&quot;https://www.dropbox.com/s/pvr9zyl811tfeem/ListViewImageCache.zip&quot;&gt;https://www.dropbox.com/s/pvr9zyl811tfeem/ListViewImageCache.zip&lt;/a&gt;下载源代码。</target>
+        </trans-unit>
+        <trans-unit id="73628b41fb9b25c155a21421306fbcce58da58cd" translate="yes" xml:space="preserve">
+          <source>You can follow a similar process to decode bitmaps from other sources, by substituting the appropriate &lt;code&gt;BitmapFactory.decode*&lt;/code&gt; method as needed.</source>
+          <target state="translated">您可以按照类似的过程来解码其他来源的位图，方法是根据需要替换适当的 &lt;code&gt;BitmapFactory.decode*&lt;/code&gt; 方法。</target>
+        </trans-unit>
+        <trans-unit id="d794139a87d2b32089b831dc7c4fa49a35269032" translate="yes" xml:space="preserve">
+          <source>You can see it yourself in the App. If an Activity executed an AsyncTask that was still running after the Activity was destroyed, the Activity will not get garbage collected until the AsyncTask finish.</source>
+          <target state="translated">你可以在App中自己看一下。如果一个Activity执行了一个AsyncTask,在Activity被破坏后还在运行,那么在AsyncTask完成之前,Activity不会得到垃圾回收。</target>
+        </trans-unit>
+        <trans-unit id="356ca3448e5ea9eaa98cc0e959d7e34c0f22fa35" translate="yes" xml:space="preserve">
+          <source>You may consider the size and the resolution for each of the bitmap pictures used. I recommend to reduce the size ,resample to lower resolution , refer to the design of galleries (one small picture PNG , and one original picture.)</source>
+          <target state="translated">你可以考虑每个位图图片的大小和分辨率。我建议缩小尺寸,重新采样到低分辨率,参考图库的设计(一张小图片PNG,一张原图)。</target>
+        </trans-unit>
+        <trans-unit id="bc28a9e5ebe1b3b73a20e45e1b52656870567674" translate="yes" xml:space="preserve">
+          <source>You shouldn't need to edit anything in the Cache.java file unless you want to implement disk caching.</source>
+          <target state="translated">你不需要编辑Cache.java文件中的任何东西,除非你想实现磁盘缓存。</target>
+        </trans-unit>
+        <trans-unit id="0dd213f54445d617f4d98ac140097719d49229b9" translate="yes" xml:space="preserve">
+          <source>a) scaling my images by a factor of 2</source>
+          <target state="translated">a)将我的图像按2倍的比例缩放</target>
+        </trans-unit>
+        <trans-unit id="72edad72ee3b57cafab52ff580d94c36c4e6e792" translate="yes" xml:space="preserve">
+          <source>and this is on C# monodroid.
+you can easily change the path of the image. what important here is the options to be set.</source>
+          <target state="translated">而这是在C#monodroid上,你可以很容易地改变图像的路径,这里重要的是要设置的选项。</target>
+        </trans-unit>
+        <trans-unit id="06449e6b2554561f87ea44d1680df513c4824509" translate="yes" xml:space="preserve">
+          <source>b) using &lt;a href=&quot;http://square.github.io/picasso/&quot;&gt;Picasso&lt;/a&gt; library in my custom Adapter for a ListView, with a one-call in getView like this: &lt;code&gt;Picasso.with(context).load(R.id.myImage).into(R.id.myImageView);&lt;/code&gt;</source>
+          <target state="translated">b）在自定义适配器中将&lt;a href=&quot;http://square.github.io/picasso/&quot;&gt;Picasso&lt;/a&gt;库用于ListView，在getView中进行如下调用： &lt;code&gt;Picasso.with(context).load(R.id.myImage).into(R.id.myImageView);&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="960910ee56ce1c0c3410dd1ea2d9f24f2b9318b6" translate="yes" xml:space="preserve">
+          <source>for more please refer &lt;a href=&quot;http://developer.android.com/training/displaying-bitmaps/load-bitmap.html&quot;&gt;&lt;em&gt;this&lt;/em&gt;&lt;/a&gt;</source>
+          <target state="translated">有关更多信息，请参阅&lt;a href=&quot;http://developer.android.com/training/displaying-bitmaps/load-bitmap.html&quot;&gt;&lt;em&gt;此&lt;/em&gt;&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="fe3747eb4c904bbf243426b3a4782c70145ee206" translate="yes" xml:space="preserve">
+          <source>then i have worked to solve this issue &amp;amp; finally i've made the below improvement to Fedor's(All Credit to Fedor for making such a nice solution) code :)</source>
+          <target state="translated">然后我努力解决了这个问题，最后我对Fedor做了以下改进（感谢Fedor做出了如此出色的解决方案）代码:)</target>
+        </trans-unit>
+        <trans-unit id="5f200676e9d06c0a40c448510bed16ff1a13ccc7" translate="yes" xml:space="preserve">
+          <source>use these code for every image in select from SdCard or drewable to convert bitmap object.</source>
+          <target state="translated">对SdCard或drewable中的每张图片都使用这些代码来转换位图对象。</target>
+        </trans-unit>
+        <trans-unit id="beaddbd6b6bb9f62d2328be436e8d976a5b4fe6e" translate="yes" xml:space="preserve">
+          <source>use your image path instend of &lt;strong&gt;ImageData_Path.get(img_pos).getPath()&lt;/strong&gt; .</source>
+          <target state="translated">使用&lt;strong&gt;ImageData_Path.get（img_pos）.getPath（）的&lt;/strong&gt;图像路径。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="es" datatype="htmlbody" original="https://stackoverflow.com/questions/274626">
+    <body>
+      <group id="274626">
+        <trans-unit id="96f7b3f0b27529cd69b835183a3b452d7422b38f" translate="yes" xml:space="preserve">
+          <source>&quot;Slicing&quot; is where you assign an object of a derived class to an instance of a base class, thereby losing part of the information - some of it is &quot;sliced&quot; away.</source>
+          <target state="translated">&quot;Rebanar&quot; es cuando se asigna un objeto de una clase derivada a una instancia de una clase base,perdiendo así parte de la información,parte de la cual se &quot;rebana&quot;.</target>
+        </trans-unit>
+        <trans-unit id="ee068c25670c4260986c5bab8691b86a82b69cd0" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;EXAMPLE&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;EXAMPLE&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="ef5d3a89514f059cc62b4e047d5d2ce433c1ac44" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;1. THE DEFINITION OF SLICING PROBLEM&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;1. LA DEFINICI&amp;Oacute;N DEL PROBLEMA DE CORTE&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5ffd540cc6bd87896a53692fe449010e960a05fe" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;2. HOW TO FIX THE SLICING PROBLEM&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;2. C&amp;Oacute;MO ARREGLAR EL PROBLEMA DE CORTE&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="c07c3b4c60b8ba66c8f4595e6416f9a07a097cc1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Explanation:&lt;/strong&gt;
+Consider the following class declaration:</source>
+          <target state="translated">&lt;strong&gt;Explicaci&amp;oacute;n:&lt;/strong&gt; Considere la siguiente declaraci&amp;oacute;n de clase:</target>
+        </trans-unit>
+        <trans-unit id="c2866978e9f8a2f17b06bdc707c7050d6a196064" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Here is an Example:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Aqu&amp;iacute; hay un ejemplo:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="442e03b7709e1e9794eaab012b8f14bc626c5003" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;It will generate:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Generar&amp;aacute;:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="89b8bfb208bba534eb5ce49bf615a8936ec87816" translate="yes" xml:space="preserve">
+          <source>A solution</source>
+          <target state="translated">Una solución</target>
+        </trans-unit>
+        <trans-unit id="84c46ee208f7ba0372b29ac5df262f9846bee999" translate="yes" xml:space="preserve">
+          <source>Also thought someone should also mention what you should do to avoid slicing...
+Get a copy of C++ Coding Standards, 101 rules guidlines, and best practices.  Dealing with slicing is #54.</source>
+          <target state="translated">También pensé que alguien debería mencionar lo que debería hacer para evitar el rebanado...Consigue una copia de los estándares de codificación de C++,las guías de las 101 reglas y las mejores prácticas.Tratar con el rebanado es el número 54.</target>
+        </trans-unit>
+        <trans-unit id="7d4895f678a2681f309c8b96b11e3b7adee9a087" translate="yes" xml:space="preserve">
+          <source>Although the above assignment is allowed, the value that is assigned to the variable pet loses its breed field. This is called the &lt;strong&gt;slicing problem&lt;/strong&gt;.</source>
+          <target state="translated">Aunque se permite la asignaci&amp;oacute;n anterior, el valor que se asigna a la mascota variable pierde su campo de raza. Esto se llama el &lt;strong&gt;problema de corte&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="4790faee95ffb6e6b57d91d1825335fa81937c0f" translate="yes" xml:space="preserve">
+          <source>As baseclass copy functions don't know anything about the derived only the base part of the derived is copied. This is commonly referred to as slicing.</source>
+          <target state="translated">Como las funciones de copia de base no saben nada sobre el derivado,sólo se copia la parte de base del derivado.Esto se conoce comúnmente como &quot;rebanar&quot;.</target>
+        </trans-unit>
+        <trans-unit id="232ea33869a0451a48895451cf591143de4b287f" translate="yes" xml:space="preserve">
+          <source>As you &lt;em&gt;might&lt;/em&gt; have guessed: the object has been sliced.</source>
+          <target state="translated">Como habr&amp;aacute;s adivinado: el objeto ha sido cortado.</target>
+        </trans-unit>
+        <trans-unit id="3377a71b1c4aaabe0ec4693f3e6795aab5fde707" translate="yes" xml:space="preserve">
+          <source>Assigning only to parts of an object usually makes little sense, yet C++, unfortunately, provides no built-in way to forbid this. You can, however, roll your own. The first step is making the assignment operator &lt;em&gt;virtual&lt;/em&gt;. This will guarantee that it's always the &lt;strong&gt;actual&lt;/strong&gt; type's assignment operator which is called, not the &lt;strong&gt;declared&lt;/strong&gt; type's. The second step is to use &lt;code&gt;dynamic_cast&lt;/code&gt; to verify that the assigned object has a compatible type. The third step is to do the actual assignment in a (protected!) member &lt;code&gt;assign()&lt;/code&gt;, since &lt;code&gt;B&lt;/code&gt;'s &lt;code&gt;assign()&lt;/code&gt; will probably want to use &lt;code&gt;A&lt;/code&gt;'s &lt;code&gt;assign()&lt;/code&gt; to copy &lt;code&gt;A&lt;/code&gt;'s, members.</source>
+          <target state="translated">Asignar solo a partes de un objeto generalmente tiene poco sentido, aunque C ++, desafortunadamente, no proporciona una forma integrada de prohibir esto. Sin embargo, puedes rodar el tuyo. El primer paso es hacer que el operador de asignaci&amp;oacute;n sea &lt;em&gt;virtual&lt;/em&gt; . Esto garantizar&amp;aacute; que siempre se llame al operador de asignaci&amp;oacute;n del tipo &lt;strong&gt;real&lt;/strong&gt; , no al tipo &lt;strong&gt;declarado&lt;/strong&gt; . El segundo paso es usar &lt;code&gt;dynamic_cast&lt;/code&gt; para verificar que el objeto asignado tenga un tipo compatible. El tercer paso es hacer la asignaci&amp;oacute;n real en una asignaci&amp;oacute;n de miembro (&amp;iexcl;protegida!), Ya que la &lt;code&gt;assign()&lt;/code&gt; &lt;code&gt;B&lt;/code&gt; () probablemente querr&amp;aacute; usar la &lt;code&gt;assign()&lt;/code&gt; para copiar los miembros de &lt;code&gt;A&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="b1ada17148e1e233404b966a641e77c2376bd0b2" translate="yes" xml:space="preserve">
+          <source>Class provides (accidentally, possibly compiler-generated) assignment on a polymorphic base class.</source>
+          <target state="translated">La clase proporciona (accidentalmente,posiblemente generada por el compilador)la asignación en una clase de base polimórfica.</target>
+        </trans-unit>
+        <trans-unit id="83dc4ee1104f8d5e9f703018d2d2b6b502938300" translate="yes" xml:space="preserve">
+          <source>Client calls a virtual member function that accesses the sliced-off state.</source>
+          <target state="translated">El cliente llama a una función de miembro virtual que accede al estado de corte.</target>
+        </trans-unit>
+        <trans-unit id="974a91f56d4cd2aed2a1105b95619948eb415e28" translate="yes" xml:space="preserve">
+          <source>Client copies and slices an instance of a derived class.</source>
+          <target state="translated">El cliente copia y corta una instancia de una clase derivada.</target>
+        </trans-unit>
+        <trans-unit id="2d038661c48cc8fa189c28d51e0abc29577d5660" translate="yes" xml:space="preserve">
+          <source>Consider class A, and class B derived from A. Memory corruption can happen if the A part has a pointer p, and a B instance that points p to B's additional data. Then, when the additional data gets sliced off, p is pointing to garbage.</source>
+          <target state="translated">Considere la clase A,y la clase B derivada de A.La corrupción de la memoria puede ocurrir si la parte A tiene un puntero p,y una instancia B que apunta p a los datos adicionales de B.Entonces,cuando los datos adicionales son cortados,p está apuntando a la basura.</target>
+        </trans-unit>
+        <trans-unit id="6db6725e9e7d5c088630e348048d1e73fc7657d3" translate="yes" xml:space="preserve">
+          <source>For example,</source>
+          <target state="translated">Por ejemplo,</target>
+        </trans-unit>
+        <trans-unit id="46053037889f11e4ba1e79417655c2250a17ba1e" translate="yes" xml:space="preserve">
+          <source>He passes an instance of his home-brewed class to the &lt;code&gt;push_back&lt;/code&gt; but then the program goes haywire.</source>
+          <target state="translated">Pasa una instancia de su clase casera a &lt;code&gt;push_back&lt;/code&gt; pero luego el programa se vuelve loco.</target>
+        </trans-unit>
+        <trans-unit id="fb9d634e48590cd163aafc973458162dac92008c" translate="yes" xml:space="preserve">
+          <source>I hope this example brings light about for those people who can't really imagine things when talking about &lt;code&gt;A&lt;/code&gt;s and &lt;code&gt;B&lt;/code&gt;s being derived in some manner.</source>
+          <target state="translated">Espero que este ejemplo arroje luz para aquellas personas que realmente no pueden imaginar cosas cuando hablan de que &lt;code&gt;A&lt;/code&gt; sy &lt;code&gt;B&lt;/code&gt; se derivan de alguna manera.</target>
+        </trans-unit>
+        <trans-unit id="85e83faab852b9a32b586876a340271f1e596eb5" translate="yes" xml:space="preserve">
+          <source>I just ran across the slicing problem and promptly landed here. So let me add my two cents to this.</source>
+          <target state="translated">Me encontré con el problema del corte y aterricé aquí rápidamente.Así que déjame añadir mis dos centavos a esto.</target>
+        </trans-unit>
+        <trans-unit id="93013b7742a645ec3d25d9b48cfb99929695ef8b" translate="yes" xml:space="preserve">
+          <source>If D is a derived class of the base class B, then you can assign an object of type Derived to a variable (or parameter) of type Base.</source>
+          <target state="translated">Si D es una clase derivada de la clase base B,entonces puede asignar un objeto de tipo Derivado a una variable (o parámetro)de tipo Base.</target>
+        </trans-unit>
+        <trans-unit id="f195d53fd3def730550d718c6c9f9658e3676862" translate="yes" xml:space="preserve">
+          <source>If I pass a subclass object in as a parameter to a method, which takes a parameter of type superclass, I should certainly be aware of that and know the internally, the called method will be working with the superclass (aka baseclass) object only.</source>
+          <target state="translated">Si paso un objeto de subclase como parámetro a un método,que toma un parámetro de tipo superclase,ciertamente debería ser consciente de ello y conocer el internamente,el método llamado estará trabajando con el objeto de superclase (alias baseclass)solamente.</target>
+        </trans-unit>
+        <trans-unit id="fb22970eec781b22051dd8ff19d02ffefae76c1a" translate="yes" xml:space="preserve">
+          <source>If You have a base class &lt;code&gt;A&lt;/code&gt; and a derived class &lt;code&gt;B&lt;/code&gt;, then You can do the following.</source>
+          <target state="translated">Si tiene una clase base &lt;code&gt;A&lt;/code&gt; y una clase derivada &lt;code&gt;B&lt;/code&gt; , puede hacer lo siguiente.</target>
+        </trans-unit>
+        <trans-unit id="689f952136930a7ed064aafe697ec6ce9fce025d" translate="yes" xml:space="preserve">
+          <source>If those links don't give enough info for a &quot;good answer&quot; please edit your question to let us know what more you're looking for.</source>
+          <target state="translated">Si esos enlaces no dan suficiente información para una &quot;buena respuesta&quot;,por favor,edite su pregunta para hacernos saber qué más está buscando.</target>
+        </trans-unit>
+        <trans-unit id="c20839b8bed4fbc54e56454bc66175198301dfcf" translate="yes" xml:space="preserve">
+          <source>In C++, a derived class object can be assigned to a base class object, but the other way is not possible.</source>
+          <target state="translated">En C++,un objeto de clase derivado puede asignarse a un objeto de clase base,pero la otra forma no es posible.</target>
+        </trans-unit>
+        <trans-unit id="c38ead1b6706d1b10a8421bddcacf5eaf4bd90bc" translate="yes" xml:space="preserve">
+          <source>In this case, none of the data members or member functions of the dynamic variable
+being pointed to by ptrD (descendant class object) will be lost. In addition,  if you need to use functions, the function must be a virtual function.</source>
+          <target state="translated">En este caso,no se perderá ninguno de los miembros de datos o funciones de miembros de la variable dinámica a la que apunta el ptrD (objeto de clase descendente).Además,si es necesario utilizar funciones,la función debe ser una función virtual.</target>
+        </trans-unit>
+        <trans-unit id="fc0b49a0164b222cecf4c176a63574ecd921aa98" translate="yes" xml:space="preserve">
+          <source>In this situation, C++ lets you pass an instance of &lt;code&gt;B&lt;/code&gt; to  &lt;code&gt;A&lt;/code&gt;'s assignment operator (and also to the copy constructor). This works because an instance of &lt;code&gt;B&lt;/code&gt; can be converted to a &lt;code&gt;const A&amp;amp;&lt;/code&gt;, which is what assignment operators and copy-constructors expect their arguments to be.</source>
+          <target state="translated">En esta situaci&amp;oacute;n, C ++ le permite pasar una instancia de &lt;code&gt;B&lt;/code&gt; al operador de asignaci&amp;oacute;n de A (y tambi&amp;eacute;n al constructor de la copia). Esto funciona porque una instancia de &lt;code&gt;B&lt;/code&gt; se puede convertir en una &lt;code&gt;const A&amp;amp;&lt;/code&gt; , que es lo que los operadores de asignaci&amp;oacute;n y los constructores de copias esperan que sean sus argumentos.</target>
+        </trans-unit>
+        <trans-unit id="ae67144a22cc1e129cb43bcf76007148f1821dbe" translate="yes" xml:space="preserve">
+          <source>It seems to me only the unreasonable expectation that providing a subclass where a baseclass is requested, would somehow result in subclass specific results, would cause slicing to be a problem.  Its either poor design in the use of the method or a poor subclass implementation.  I'm guessing its usually the result of sacrificing good OOP design in favor of expediency or performance gains.</source>
+          <target state="translated">Me parece que sólo la expectativa poco razonable de que proporcionar una subclase en la que se solicita una clase base,de alguna manera resultaría en resultados específicos de la subclase,haría que el corte fuera un problema.O bien es un diseño pobre en el uso del método o una pobre implementación de la subclase.Supongo que normalmente es el resultado de sacrificar un buen diseño de OOP en favor de la conveniencia o las ganancias de rendimiento.</target>
+        </trans-unit>
+        <trans-unit id="4ea02cdc39f10956300111973911bc6cdd6b9ea7" translate="yes" xml:space="preserve">
+          <source>It seems to me, that slicing isn't so much a problem other than when your own classes and program are poorly architected/designed.</source>
+          <target state="translated">Me parece que rebanar no es tanto problema como cuando tus propias clases y programa están mal diseñados.</target>
+        </trans-unit>
+        <trans-unit id="a3b13fdda77749958ecc4ce3613a917ec161dafd" translate="yes" xml:space="preserve">
+          <source>It suggests a somewhat sophisticated pattern to fully deal with the issue:  have a protected copy constructor, a protected pure virtual DoClone, and a public Clone with an assert which will tell you if a (further) derived class failed to implement DoClone correctly.  (The Clone method makes a proper deep copy of the polymorphic object.)</source>
+          <target state="translated">Sugiere un patrón un tanto sofisticado para abordar plenamente el tema:tener un constructor de copias protegido,un DoClone virtual puro protegido y un Clon público con una afirmación que le dirá si una clase derivada (más)no ha implementado correctamente el DoClone.(El método Clone hace una copia profunda adecuada del objeto polimórfico).</target>
+        </trans-unit>
+        <trans-unit id="08009f0d2f588ed82d0e84e8667066234ba6ee27" translate="yes" xml:space="preserve">
+          <source>Let's have an example from &quot;production code&quot; (or something that comes kind of close):</source>
+          <target state="translated">Veamos un ejemplo de &quot;código de producción&quot; (o algo parecido):</target>
+        </trans-unit>
+        <trans-unit id="236527dc0874d02dd5d7ceecb15eceaaa482557c" translate="yes" xml:space="preserve">
+          <source>Let's say we have something that dispatches actions. A control center UI for example.</source>
+          <target state="translated">Digamos que tenemos algo que despacha acciones.Un centro de control UI por ejemplo.</target>
+        </trans-unit>
+        <trans-unit id="e13f0710c1e483d21ae7cbd772cc5dece2fd8f55" translate="yes" xml:space="preserve">
+          <source>Most answers here fail to explain what the actual problem with slicing is. They only explain the benign cases of slicing, not the treacherous ones. Assume, like the other answers, that you're dealing with two classes &lt;code&gt;A&lt;/code&gt; and &lt;code&gt;B&lt;/code&gt;, where &lt;code&gt;B&lt;/code&gt; derives (publicly) from &lt;code&gt;A&lt;/code&gt;.</source>
+          <target state="translated">La mayor&amp;iacute;a de las respuestas aqu&amp;iacute; no explican cu&amp;aacute;l es el problema real con el corte. Solo explican los casos benignos de rebanar, no los traicioneros. Suponga, como las otras respuestas, que est&amp;aacute; tratando con dos clases &lt;code&gt;A&lt;/code&gt; y &lt;code&gt;B&lt;/code&gt; , donde &lt;code&gt;B&lt;/code&gt; deriva (p&amp;uacute;blicamente) de &lt;code&gt;A&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="719db0c99ee0441d6b479abf270a523016554d7c" translate="yes" xml:space="preserve">
+          <source>Note that, for pure convenience, &lt;code&gt;B&lt;/code&gt;'s &lt;code&gt;operator=&lt;/code&gt; covariantly overrides the return type, since it &lt;strong&gt;knows&lt;/strong&gt; that it's returning an instance of &lt;code&gt;B&lt;/code&gt;.</source>
+          <target state="translated">Tenga en cuenta que, por pura conveniencia, el &lt;code&gt;operator=&lt;/code&gt; &lt;code&gt;B&lt;/code&gt; = anula covariablemente el tipo de retorno, ya que &lt;strong&gt;sabe&lt;/strong&gt; que est&amp;aacute; devolviendo una instancia de &lt;code&gt;B&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="732d97c69c5f70f887b60e1c0384ce3d5087b2cc" translate="yes" xml:space="preserve">
+          <source>Nothing bad happens there - you asked for an instance of &lt;code&gt;A&lt;/code&gt; which is a copy of &lt;code&gt;B&lt;/code&gt;, and that's exactly what you get. Sure, &lt;code&gt;a&lt;/code&gt; won't contain some of &lt;code&gt;b&lt;/code&gt;'s members, but how should it? It's an &lt;code&gt;A&lt;/code&gt;, after all, not a &lt;code&gt;B&lt;/code&gt;, so it hasn't even &lt;em&gt;heard&lt;/em&gt; about these members, let alone would be able to store them.</source>
+          <target state="translated">No sucede nada malo: solicit&amp;oacute; una instancia de &lt;code&gt;A&lt;/code&gt; , que es una copia de &lt;code&gt;B&lt;/code&gt; , y eso es exactamente lo que obtiene. Claro, &lt;code&gt;a&lt;/code&gt; no contendr&amp;aacute; algunos de los miembros de &lt;code&gt;b&lt;/code&gt; , pero &amp;iquest;c&amp;oacute;mo deber&amp;iacute;a? Es una &lt;code&gt;A&lt;/code&gt; , despu&amp;eacute;s de todo, no una &lt;code&gt;B&lt;/code&gt; , por lo que ni siquiera ha &lt;em&gt;o&amp;iacute;do&lt;/em&gt; hablar de estos miembros, y mucho menos podr&amp;iacute;a almacenarlos.</target>
+        </trans-unit>
+        <trans-unit id="5e46f87edfe58bab858453c3d93fc576b5f4b914" translate="yes" xml:space="preserve">
+          <source>Now the method &lt;code&gt;wantAnA&lt;/code&gt; needs a copy of &lt;code&gt;derived&lt;/code&gt;. However, the object &lt;code&gt;derived&lt;/code&gt; cannot be copied completely, as the class &lt;code&gt;B&lt;/code&gt; could invent additional member variables which are not in its base class &lt;code&gt;A&lt;/code&gt;.</source>
+          <target state="translated">Ahora el m&amp;eacute;todo &lt;code&gt;wantAnA&lt;/code&gt; necesita una copia de &lt;code&gt;derived&lt;/code&gt; . Sin embargo, el objeto &lt;code&gt;derived&lt;/code&gt; no se puede copiar completamente, ya que la clase &lt;code&gt;B&lt;/code&gt; podr&amp;iacute;a inventar variables miembro adicionales que no est&amp;aacute;n en su clase base &lt;code&gt;A&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="caae1329d8af58dcad82134397a8943be46a5f69" translate="yes" xml:space="preserve">
+          <source>Now we have established how it looks from the UI's perspective. No problem so far. But some other guy who works on this project suddenly decides that there are specialized actions that need more information in the &lt;code&gt;Action&lt;/code&gt; object. For what reason ever. That could also be solved with lambda captures.  This example is not taken 1-1 from the code.</source>
+          <target state="translated">Ahora hemos establecido c&amp;oacute;mo se ve desde la perspectiva de la interfaz de usuario. No hay problema hasta ahora. Pero otro tipo que trabaja en este proyecto de repente decide que hay acciones especializadas que necesitan m&amp;aacute;s informaci&amp;oacute;n en el objeto &lt;code&gt;Action&lt;/code&gt; . Por qu&amp;eacute; raz&amp;oacute;n alguna vez. Eso tambi&amp;eacute;n podr&amp;iacute;a resolverse con capturas lambda. Este ejemplo no se toma 1-1 del c&amp;oacute;digo.</target>
+        </trans-unit>
+        <trans-unit id="e0e71bd05c604f9e5482ba1b4784d0451a14dca4" translate="yes" xml:space="preserve">
+          <source>OK, I'll give it a try after reading many posts explaining object slicing but not how it becomes problematic.</source>
+          <target state="translated">Bien,lo intentaré después de leer muchos artículos que explican el corte de objetos pero no cómo se vuelve problemático.</target>
+        </trans-unit>
+        <trans-unit id="9002eb67a255da386f8896a6d49539ddfeed3eca" translate="yes" xml:space="preserve">
+          <source>Object slicing happens when a derived class object is assigned to a base class object, additional attributes of a derived class object are sliced off to form the base class object.</source>
+          <target state="translated">El rebanado de objetos ocurre cuando un objeto de clase derivado se asigna a un objeto de clase base,los atributos adicionales de un objeto de clase derivado se rebanan para formar el objeto de clase base.</target>
+        </trans-unit>
+        <trans-unit id="50898f71166704d72332d693caefb3d03a0dfabd" translate="yes" xml:space="preserve">
+          <source>Slicing means that the data added by a subclass are discarded when an object of the subclass is passed or returned by value or from a function expecting a base class object.</source>
+          <target state="translated">La división significa que los datos añadidos por una subclase se descartan cuando un objeto de la subclase se pasa o se devuelve por valor o desde una función que espera un objeto de clase base.</target>
+        </trans-unit>
+        <trans-unit id="1ffaa953719f39c660e8b91f324eefc0cb44027a" translate="yes" xml:space="preserve">
+          <source>So ... Why is losing the derived information bad? ... because the author of the derived class may have changed the representation such that slicing off the extra information changes the value being represented by the object.  This can happen if the derived class if used to cache a representation that is more efficient for certain operations, but expensive to transform back to the base representation.</source>
+          <target state="translated">Así que...¿Por qué es malo perder la información derivada? ...porque el autor de la clase derivada puede haber cambiado la representación de tal manera que al cortar la información extra cambia el valor que está siendo representado por el objeto.Esto puede suceder si la clase derivada se utiliza para almacenar en caché una representación que es más eficiente para ciertas operaciones,pero que es costosa de transformar de nuevo a la representación base.</target>
+        </trans-unit>
+        <trans-unit id="67da6e9fc08116b45e5de7c309437931d5054895" translate="yes" xml:space="preserve">
+          <source>So an object of type &lt;code&gt;B&lt;/code&gt; has two data members, &lt;code&gt;foo&lt;/code&gt; and &lt;code&gt;bar&lt;/code&gt;.</source>
+          <target state="translated">Entonces, un objeto de tipo &lt;code&gt;B&lt;/code&gt; tiene dos miembros de datos, &lt;code&gt;foo&lt;/code&gt; y &lt;code&gt;bar&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="5576c771bb07143c60f3e0e3aa22ee9a4d4a3fd1" translate="yes" xml:space="preserve">
+          <source>So it's when you assign an object of a subclass to the super class. The superclass knows nothing of the additional information in the subclass, and hasn't got room to store it, so the additional information gets &quot;sliced off&quot;.</source>
+          <target state="translated">Así que es cuando asignas un objeto de una subclase a la superclase.La superclase no sabe nada de la información adicional de la subclase,y no tiene espacio para almacenarla,así que la información adicional se &quot;corta&quot;.</target>
+        </trans-unit>
+        <trans-unit id="53f4d7a32d19a1c0fe9135470dc1d40d622b6f39" translate="yes" xml:space="preserve">
+          <source>So the UI gets a &lt;code&gt;std::vector&amp;lt;Action&amp;gt;&lt;/code&gt; supplied. Imagine some functions like:</source>
+          <target state="translated">Entonces, la interfaz de usuario obtiene un &lt;code&gt;std::vector&amp;lt;Action&amp;gt;&lt;/code&gt; proporcionado. Imagine algunas funciones como:</target>
+        </trans-unit>
+        <trans-unit id="e4a930b6204d89a4fe5c0162bdb1611385af40d3" translate="yes" xml:space="preserve">
+          <source>So the guy derives from &lt;code&gt;Action&lt;/code&gt; to add his own flavour.</source>
+          <target state="translated">Entonces el chico deriva de &lt;code&gt;Action&lt;/code&gt; para agregar su propio sabor.</target>
+        </trans-unit>
+        <trans-unit id="312069c9e501c1ac64e803e6fdab5307267739fa" translate="yes" xml:space="preserve">
+          <source>So what happened?</source>
+          <target state="translated">¿Y qué pasó?</target>
+        </trans-unit>
+        <trans-unit id="94801b98814e71ff839015a3a53197592219b407" translate="yes" xml:space="preserve">
+          <source>Someone mentioned it in the IRC as the slicing problem.</source>
+          <target state="translated">Alguien lo mencionó en el IRC como el problema del corte.</target>
+        </trans-unit>
+        <trans-unit id="baeeb7a29450d80f0ad8595dd8d3e4bcc16943b9" translate="yes" xml:space="preserve">
+          <source>The benign case</source>
+          <target state="translated">El caso benigno</target>
+        </trans-unit>
+        <trans-unit id="63684884292dbed35dceaf9970d215608feaa7df" translate="yes" xml:space="preserve">
+          <source>The extra information from the instance has been lost, and &lt;code&gt;f&lt;/code&gt; is now prone to undefined behaviour.</source>
+          <target state="translated">La informaci&amp;oacute;n adicional de la instancia se ha perdido y ahora &lt;code&gt;f&lt;/code&gt; es propensa a comportamientos indefinidos.</target>
+        </trans-unit>
+        <trans-unit id="b74ff8ee45b0b8f3cea227a5cb8b0ca2512e0fa1" translate="yes" xml:space="preserve">
+          <source>The output is:</source>
+          <target state="translated">La salida es:</target>
+        </trans-unit>
+        <trans-unit id="f9b829cde2335dc12ea816064752c0be0bbc8cbc" translate="yes" xml:space="preserve">
+          <source>The short answers is that you slice the object by assigning a derived object to a base object &lt;em&gt;by value&lt;/em&gt;, i.e. the remaining object is only a part of the derived object. In order to preserve value semantics, slicing is a reasonable behavior and has its relatively rare uses, which doesn't exist in most other languages. Some people consider it a feature of C++, while many considered it one of the quirks/misfeatures of C++.</source>
+          <target state="translated">Las respuestas cortas son que corta el objeto asignando un objeto derivado a un objeto base &lt;em&gt;por valor&lt;/em&gt; , es decir, el objeto restante es solo una parte del objeto derivado. Para preservar la sem&amp;aacute;ntica de valor, el corte es un comportamiento razonable y tiene usos relativamente raros, que no existen en la mayor&amp;iacute;a de los otros idiomas. Algunas personas lo consideran una caracter&amp;iacute;stica de C ++, mientras que muchos lo consideran una de las peculiaridades / errores de C ++.</target>
+        </trans-unit>
+        <trans-unit id="dd82002ff948b24d6107ece53db19ed50003be81" translate="yes" xml:space="preserve">
+          <source>The slicing problem in C++ arises from the value semantics of its objects, which remained mostly due to compatibility with C structs. You need to use explicit reference or pointer syntax to achieve &quot;normal&quot; object behavior found in most other languages that do objects, i.e., objects are always passed around by reference.</source>
+          <target state="translated">El problema del rebanado en C++surge de la semántica de valores de sus objetos,que se mantuvo en su mayoría debido a la compatibilidad con las estructuras C.Es necesario utilizar una referencia explícita o una sintaxis de puntero para lograr un comportamiento &quot;normal&quot; de los objetos que se encuentra en la mayoría de los otros lenguajes que hacen objetos,es decir,los objetos siempre se pasan por referencia.</target>
+        </trans-unit>
+        <trans-unit id="43ba9549013d5f73b5a2c8783b4aea4338a8a2f8" translate="yes" xml:space="preserve">
+          <source>The slicing problem is serious because it can result in memory corruption, and it is very difficult to guarantee a program does not suffer from it. To design it out of the language, classes that support inheritance should be accessible by reference only (not by value). The D programming language has this property.</source>
+          <target state="translated">El problema del rebanado es grave porque puede resultar en la corrupción de la memoria,y es muy difícil garantizar que un programa no sufra de ello.Para diseñarlo fuera del lenguaje,las clases que soportan la herencia deben ser accesibles sólo por referencia (no por valor).El lenguaje de programación D tiene esta propiedad.</target>
+        </trans-unit>
+        <trans-unit id="50db936e092a460d4926d6fbfb2ff0e11f3315fa" translate="yes" xml:space="preserve">
+          <source>The treacherous case</source>
+          <target state="translated">El caso traicionero</target>
+        </trans-unit>
+        <trans-unit id="d9370a40dcdd656762e9b518e64889d3090a3d67" translate="yes" xml:space="preserve">
+          <source>The vicious scenario that can result in memory corruption is the following:</source>
+          <target state="translated">El escenario vicioso que puede resultar en la corrupción de la memoria es el siguiente:</target>
+        </trans-unit>
+        <trans-unit id="b54458e98c708f4219d77f2af0aca693f0d1862d" translate="yes" xml:space="preserve">
+          <source>Then if you were to write this:</source>
+          <target state="translated">Entonces si escribieras esto:</target>
+        </trans-unit>
+        <trans-unit id="8aae35e2eebae7ab19a6cb8b47f5df262f52f622" translate="yes" xml:space="preserve">
+          <source>Then the information in &lt;code&gt;b&lt;/code&gt; about member &lt;code&gt;bar&lt;/code&gt; is lost in &lt;code&gt;a&lt;/code&gt;.</source>
+          <target state="translated">Entonces la informaci&amp;oacute;n en &lt;code&gt;b&lt;/code&gt; sobre la &lt;code&gt;bar&lt;/code&gt; ra de miembros se pierde en &lt;code&gt;a&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="331a1e0260486237ecd3902be6663d06751c6d80" translate="yes" xml:space="preserve">
+          <source>Therefore, to call &lt;code&gt;wantAnA&lt;/code&gt;, the compiler will &quot;slice off&quot; all additional members of the derived class. The result might be an object you did not want to create, because</source>
+          <target state="translated">Por lo tanto, para llamar a &lt;code&gt;wantAnA&lt;/code&gt; , el compilador &quot; cortar&amp;aacute; &quot; todos los miembros adicionales de la clase derivada. El resultado podr&amp;iacute;a ser un objeto que no desea crear, porque</target>
+        </trans-unit>
+        <trans-unit id="83a3562f52501c4eb5425a01f442e1c15fd73132" translate="yes" xml:space="preserve">
+          <source>These are all good answers. I would just like to add an execution example when passing objects by value vs by reference:</source>
+          <target state="translated">Todas estas son buenas respuestas.Me gustaría añadir un ejemplo de ejecución al pasar los objetos por valor vs.por referencia:</target>
+        </trans-unit>
+        <trans-unit id="0e951a20d40826080d18427519cb8a5edd5c4e41" translate="yes" xml:space="preserve">
+          <source>Third match in google for &quot;C++ slicing&quot; gives me this Wikipedia article &lt;a href=&quot;http://en.wikipedia.org/wiki/Object_slicing&quot;&gt;http://en.wikipedia.org/wiki/Object_slicing&lt;/a&gt; and this (heated, but the first few posts define the problem) : &lt;a href=&quot;http://bytes.com/forum/thread163565.html&quot;&gt;http://bytes.com/forum/thread163565.html&lt;/a&gt;</source>
+          <target state="translated">La tercera coincidencia en Google para &quot;C ++ slicing&quot; me da este art&amp;iacute;culo de Wikipedia &lt;a href=&quot;http://en.wikipedia.org/wiki/Object_slicing&quot;&gt;http://en.wikipedia.org/wiki/Object_slicing&lt;/a&gt; y esto (acalorado, pero las primeras publicaciones definen el problema): &lt;a href=&quot;http://bytes.com/forum/thread163565.html&quot;&gt;http://bytes.com/ forum / thread163565.html&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="b3490f2ce357da06fe3a4eb047d61de5e156e219" translate="yes" xml:space="preserve">
+          <source>This UI needs to get a list of things that are currently able to be dispatched. So we define a class that contains the dispatch-information. Let's call it &lt;code&gt;Action&lt;/code&gt;. So an &lt;code&gt;Action&lt;/code&gt; has some member variables. For simplicity we just have 2, being a &lt;code&gt;std::string name&lt;/code&gt; and a &lt;code&gt;std::function&amp;lt;void()&amp;gt; f&lt;/code&gt;. Then it has an &lt;code&gt;void activate()&lt;/code&gt; which just executes the &lt;code&gt;f&lt;/code&gt; member.</source>
+          <target state="translated">Esta interfaz de usuario debe obtener una lista de las cosas que se pueden enviar actualmente. Entonces definimos una clase que contiene la informaci&amp;oacute;n de despacho. Llam&amp;eacute;moslo &lt;code&gt;Action&lt;/code&gt; . Entonces, una &lt;code&gt;Action&lt;/code&gt; tiene algunas variables miembro. Para simplificar, solo tenemos 2, que es un &lt;code&gt;std::string name&lt;/code&gt; y una &lt;code&gt;std::function&amp;lt;void()&amp;gt; f&lt;/code&gt; . Luego tiene un &lt;code&gt;void activate()&lt;/code&gt; que solo ejecuta el miembro &lt;code&gt;f&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="cdf5b524fd6d02ab284fc74f757fadd7c2a81b09" translate="yes" xml:space="preserve">
+          <source>To defeat the problem, we use pointers to dynamic variables.</source>
+          <target state="translated">Para vencer el problema,usamos punteros a las variables dinámicas.</target>
+        </trans-unit>
+        <trans-unit id="f0f39a47361de0eb57b43d1232d22d288fb9b176" translate="yes" xml:space="preserve">
+          <source>What happened? Well, C++ by default doesn't treat assignment operators as &lt;code&gt;virtual&lt;/code&gt;. Thus, the line &lt;code&gt;a_ref = b1&lt;/code&gt; will call the assignment operator of &lt;code&gt;A&lt;/code&gt;, not that of &lt;code&gt;B&lt;/code&gt;. This is because, for non-virtual functions, the &lt;strong&gt;declared&lt;/strong&gt; (formally: &lt;em&gt;static&lt;/em&gt;) type (which is &lt;code&gt;A&amp;amp;&lt;/code&gt;) determines which function is called, as opposed to the &lt;strong&gt;actual&lt;/strong&gt; (formally: &lt;em&gt;dynamic&lt;/em&gt;) type (which would be &lt;code&gt;B&lt;/code&gt;, since &lt;code&gt;a_ref&lt;/code&gt; references an instance of &lt;code&gt;B&lt;/code&gt;). Now, &lt;code&gt;A&lt;/code&gt;'s assignment operator obviously knows only about the members declared in &lt;code&gt;A&lt;/code&gt;, so it will copy only those, leaving the members added in &lt;code&gt;B&lt;/code&gt; unchanged.</source>
+          <target state="translated">&amp;iquest;Que pas&amp;oacute;? Bueno, C ++ por defecto no trata a los operadores de asignaci&amp;oacute;n como &lt;code&gt;virtual&lt;/code&gt; es . Por lo tanto, la l&amp;iacute;nea &lt;code&gt;a_ref = b1&lt;/code&gt; llamar&amp;aacute; al operador de asignaci&amp;oacute;n de &lt;code&gt;A&lt;/code&gt; , no el de &lt;code&gt;B&lt;/code&gt; . Esto se debe a que, para funciones no virtuales, el tipo &lt;strong&gt;declarado&lt;/strong&gt; (formalmente: &lt;em&gt;est&amp;aacute;tico&lt;/em&gt; ) (que es &lt;code&gt;A&amp;amp;&lt;/code&gt; ) determina qu&amp;eacute; funci&amp;oacute;n se llama, a diferencia del tipo &lt;strong&gt;real&lt;/strong&gt; (formalmente: &lt;em&gt;din&amp;aacute;mico&lt;/em&gt; ) (que ser&amp;iacute;a &lt;code&gt;B&lt;/code&gt; , ya que &lt;code&gt;a_ref&lt;/code&gt; hace referencia a un instancia de &lt;code&gt;B&lt;/code&gt; ). Ahora, el operador de asignaci&amp;oacute;n de A obviamente solo conoce los miembros declarados en &lt;code&gt;A&lt;/code&gt; , por lo que solo copiar&amp;aacute; esos, dejando los miembros agregados en &lt;code&gt;B&lt;/code&gt; sin cambios.</target>
+        </trans-unit>
+        <trans-unit id="4dd739c564654f16bef20fea762e39dd16ff22ed" translate="yes" xml:space="preserve">
+          <source>What is object slicing</source>
+          <target state="translated">¿Qué es el rebanado de objetos</target>
+        </trans-unit>
+        <trans-unit id="5f307ba956aa9318084c729d9e0b4ed1c890ae99" translate="yes" xml:space="preserve">
+          <source>When a Derived class Object is assigned to Base class Object, all the members of derived class object is copied to base class object except the members which are not present in the base class. These members are Sliced away by the compiler.
+This is called Object Slicing.</source>
+          <target state="translated">Cuando un objeto de clase derivado se asigna a la clase base Objeto,todos los miembros de la clase derivada Objeto se copian a la clase base Objeto,excepto los miembros que no están presentes en la clase base.Estos miembros son cortados por el compilador.Esto se denomina &quot;Object Slicing&quot;.</target>
+        </trans-unit>
+        <trans-unit id="d72ede022bbe7ab8af001c0bdbe63a215020ce04" translate="yes" xml:space="preserve">
+          <source>You can also mark the copy constructor on the base explicit which allows for explicit slicing if it is desired.</source>
+          <target state="translated">También puede marcar el constructor de la copia en la base explícita que permite el rebanado explícito si se desea.</target>
+        </trans-unit>
+        <trans-unit id="67dd54dbbbe60a55354560fe6b83d81e0acab546" translate="yes" xml:space="preserve">
+          <source>You might think that &lt;code&gt;b2&lt;/code&gt; will be a copy of &lt;code&gt;b1&lt;/code&gt; afterward. But, alas, it's &lt;strong&gt;not&lt;/strong&gt;! If you inspect it, you'll discover that &lt;code&gt;b2&lt;/code&gt; is a Frankensteinian creature, made from some chunks of &lt;code&gt;b1&lt;/code&gt; (the chunks that &lt;code&gt;B&lt;/code&gt; inherits from &lt;code&gt;A&lt;/code&gt;), and some chunks of &lt;code&gt;b2&lt;/code&gt; (the chunks that only &lt;code&gt;B&lt;/code&gt; contains). Ouch!</source>
+          <target state="translated">Puede pensar que &lt;code&gt;b2&lt;/code&gt; ser&amp;aacute; una copia de &lt;code&gt;b1&lt;/code&gt; despu&amp;eacute;s. Pero, &amp;iexcl;ay, no lo es! Si lo inspeccionas, descubrir&amp;aacute;s que &lt;code&gt;b2&lt;/code&gt; es una criatura frankensteiniana, hecha de algunos fragmentos de &lt;code&gt;b1&lt;/code&gt; (los fragmentos que &lt;code&gt;B&lt;/code&gt; hereda de &lt;code&gt;A&lt;/code&gt; ) y algunos fragmentos de &lt;code&gt;b2&lt;/code&gt; (los fragmentos que solo &lt;code&gt;B&lt;/code&gt; contiene). &amp;iexcl;Ay!</target>
+        </trans-unit>
+        <trans-unit id="caa7ab5b89b1d461f77ff932bb8c215a2ad0c121" translate="yes" xml:space="preserve">
+          <source>it behaves like an &lt;code&gt;A&lt;/code&gt;-object (all special behaviour of the class &lt;code&gt;B&lt;/code&gt; is lost).</source>
+          <target state="translated">se comporta como un objeto &lt;code&gt;A&lt;/code&gt; (se pierde todo el comportamiento especial de la clase &lt;code&gt;B&lt;/code&gt; ).</target>
+        </trans-unit>
+        <trans-unit id="0e4b5f39331f766abe0b42f591f9a7990190d1e7" translate="yes" xml:space="preserve">
+          <source>it may be incomplete,</source>
+          <target state="translated">puede estar incompleto,</target>
+        </trans-unit>
+        <trans-unit id="3f62ee0ef207332e73fb923b4003d3d9e9e87c14" translate="yes" xml:space="preserve">
+          <source>when a derived class object is assigned to a base class object, additional attributes of a derived class object are sliced off (discard)  form the base class object.</source>
+          <target state="translated">cuando se asigna un objeto de clase derivado a un objeto de clase base,los atributos adicionales de un objeto de clase derivado se cortan (se descartan)del objeto de clase base.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

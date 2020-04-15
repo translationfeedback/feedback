@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/5431941">
+    <body>
+      <group id="5431941">
+        <trans-unit id="6e1b2cc5e3930b8b330394fc60c0c44a838abc25" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;feof()&lt;/code&gt; indicates if one has tried to read past the end of file. That means it has little predictive effect: if it is true, you are sure that the next input operation will fail (you aren't sure the previous one failed BTW), but if it is false, you aren't sure the next input operation will succeed.  More over, input operations may fail for other reasons than the end of file (a format error for formatted input, a pure IO failure -- disk failure, network timeout -- for all input kinds), so even if you could be predictive about the end of file (and anybody who has tried to implement Ada one, which is predictive, will tell you it can complex if you need to skip spaces, and that it has undesirable effects on interactive devices -- sometimes forcing the input of the next line before starting the handling of the previous one), you would have to be able to handle a failure.</source>
+          <target state="translated">&lt;code&gt;feof()&lt;/code&gt; は、ファイルの終わりを超えて読み込もうとしたかどうかを示します。 つまり、予測効果はほとんどありません。trueの場合、次の入力操作が失敗することは確かです（前の操作が失敗したかどうかはわかりません）が、falseの場合、次の入力はわかりません。操作は成功します。 さらに、ファイルの終わり以外の理由で入力操作が失敗する可能性があります（フォーマットされた入力のフォーマットエラー、純粋なIOの失敗-ディスク障害、ネットワークタイムアウト-すべての入力の種類に対して）。ファイルの終わり（および予測的なAdaを実装しようとした人は、スペースをスキップする必要がある場合に複雑になる可能性があり、インタラクティブなデバイスに望ましくない影響があることを通知します-次の入力を強制する場合があります）前の行の処理を開始する前の行）、障害を処理できる必要があります。</target>
+        </trans-unit>
+        <trans-unit id="afa06bf319127e946cf4e91c64db135f72173ee7" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;while(!feof)&lt;/code&gt; is wrong because it tests for something that is irrelevant and fails to test for something that you need to know. The result is that you are erroneously executing code that assumes that it is accessing data that was read successfully, when in fact this never happened.</source>
+          <target state="translated">&lt;code&gt;while(!feof)&lt;/code&gt; は、無関係なものをテストし、知っておく必要のあるものをテストできないため、間違っています。 その結果、正常に読み取られたデータにアクセスしていると想定するコードが誤って実行され、実際にはこれが発生したことはありません。</target>
+        </trans-unit>
+        <trans-unit id="9eb326b40426039e3d1d065ee164e2d844fa627d" translate="yes" xml:space="preserve">
+          <source>A final example that actually queries the EOF state: Suppose you have a string and want to test that it represents an integer in its entirety, with no extra bits at the end except whitespace. Using C++ iostreams, it goes like this:</source>
+          <target state="translated">EOFの状態を実際に問い合わせる最後の例です。文字列があり、その文字列が整数であることをテストしたいとします。C++のiostreamsを使うと、次のようになります。</target>
+        </trans-unit>
+        <trans-unit id="8dc77d583dd50f5726373188a86ce687c8478084" translate="yes" xml:space="preserve">
+          <source>C stdio, &lt;code&gt;scanf&lt;/code&gt;:</source>
+          <target state="translated">C stdio、 &lt;code&gt;scanf&lt;/code&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="1fec40ea496c0be88b250ec229e62a91f3723582" translate="yes" xml:space="preserve">
+          <source>C stdio, read from a file:</source>
+          <target state="translated">C stdio、ファイルからの読み込み。</target>
+        </trans-unit>
+        <trans-unit id="d42eafbaea2b0c2a8705dac6e80e5982ec2c04e3" translate="yes" xml:space="preserve">
+          <source>C++, iostreams formatted extraction:</source>
+          <target state="translated">C++、iostreamsフォーマットされた抽出。</target>
+        </trans-unit>
+        <trans-unit id="9819de783fd655b396980f4cc286ff286bfccab4" translate="yes" xml:space="preserve">
+          <source>C++, iostreams getline:</source>
+          <target state="translated">C++、iostreams getline。</target>
+        </trans-unit>
+        <trans-unit id="c50b4aa773448ba7d6756b6d57c20bebb5810fea" translate="yes" xml:space="preserve">
+          <source>Concurrency and simultaneity</source>
+          <target state="translated">並行性と同時性</target>
+        </trans-unit>
+        <trans-unit id="4adddd0410090df891e6fa4925fe03ba5adb5c9d" translate="yes" xml:space="preserve">
+          <source>Consider the following code:</source>
+          <target state="translated">次のコードを考えてみましょう。</target>
+        </trans-unit>
+        <trans-unit id="cda4aab5bcbd0ed38717196ad5a3684cd59490a3" translate="yes" xml:space="preserve">
+          <source>EOF</source>
+          <target state="translated">EOF</target>
+        </trans-unit>
+        <trans-unit id="73dc949a54f03d991a93620bb37f1f1fb97fcbe8" translate="yes" xml:space="preserve">
+          <source>Even worse, consider the case where a read error occurs.  In that case, &lt;code&gt;fgetc()&lt;/code&gt; returns &lt;code&gt;EOF&lt;/code&gt;, &lt;code&gt;feof()&lt;/code&gt; returns false, and the loop never terminates.  In all cases where &lt;code&gt;while(!feof(p))&lt;/code&gt; is used, there must be at least a check inside the loop for &lt;code&gt;ferror()&lt;/code&gt;, or at the very least the while condition should be replaced with &lt;code&gt;while(!feof(p) &amp;amp;&amp;amp; !ferror(p))&lt;/code&gt; or there is a very real possibility of an infinite loop, probably spewing all sorts of garbage as invalid data is being processed.</source>
+          <target state="translated">さらに悪いことに、読み取りエラーが発生した場合を考えてください。 その場合、 &lt;code&gt;fgetc()&lt;/code&gt; は &lt;code&gt;EOF&lt;/code&gt; を返し、 &lt;code&gt;feof()&lt;/code&gt; はfalseを返し、ループは終了しません。 &lt;code&gt;while(!feof(p))&lt;/code&gt; が使用されるすべてのケースで、少なくともループ内で &lt;code&gt;ferror()&lt;/code&gt; のチェックが存在するか、少なくともwhile条件が &lt;code&gt;while(!feof(p) &amp;amp;&amp;amp; !ferror(p))&lt;/code&gt; 置き換えられる必要があります。 ！ferror（p））または無限ループの非常に現実的な可能性があり、おそらく無効なデータが処理されているときにあらゆる種類のゴミを吐き出します。</target>
+        </trans-unit>
+        <trans-unit id="eb01bf04c9a0e8a71c45816513df424f1c7ffedb" translate="yes" xml:space="preserve">
+          <source>Examples</source>
+          <target state="translated">Examples</target>
+        </trans-unit>
+        <trans-unit id="d5fb570011dd7778bf532c618109acc3eba49ca7" translate="yes" xml:space="preserve">
+          <source>I'd like to provide an abstract, high-level perspective.</source>
+          <target state="translated">抽象的で高度な視点を提供したいと思います。</target>
+        </trans-unit>
+        <trans-unit id="48a4e8d542c3e9555786d500773be3d2bcbb6f32" translate="yes" xml:space="preserve">
+          <source>I've seen people trying to read files like this in a lot of posts lately:</source>
+          <target state="translated">最近こういうファイルを読もうとしている人の書き込みをよく見かけるようになりました。</target>
+        </trans-unit>
+        <trans-unit id="391b94302281cf331dee93fdab146e79d7a9d7f6" translate="yes" xml:space="preserve">
+          <source>I/O operations interact with the environment. The environment is not part of your program, and not under your control. The environment truly exists &quot;concurrently&quot; with your program. As with all things concurrent, questions about the &quot;current state&quot; don't make sense: There is no concept of &quot;simultaneity&quot; across concurrent events. Many properties of state simply don't &lt;em&gt;exist&lt;/em&gt; concurrently.</source>
+          <target state="translated">I / O操作は環境と相互作用します。 環境はプログラムの一部ではなく、管理下にもありません。 環境は、プログラムと「同時に」本当に存在します。 同時発生するすべてのものと同様に、「現在の状態」についての質問は意味がありません。同時発生するイベント間で「同時性」の概念はありません。 状態の多くのプロパティは、同時には&lt;em&gt;存在&lt;/em&gt;しません。</target>
+        </trans-unit>
+        <trans-unit id="6cfad93b891ef97aae642f181beb8c35018a07f9" translate="yes" xml:space="preserve">
+          <source>In each of the examples, note carefully that we &lt;em&gt;first&lt;/em&gt; attempt the I/O operation and &lt;em&gt;then&lt;/em&gt; consume the result if it is valid. Note further that we &lt;em&gt;always&lt;/em&gt; must use the result of the I/O operation, though the result takes different shapes and forms in each example.</source>
+          <target state="translated">各例では、 &lt;em&gt;最初&lt;/em&gt;にI / O操作を試み、それが有効な場合は結果を使用することに注意してください。 さらに、I / O操作の結果は&lt;em&gt;常に&lt;/em&gt;使用する必要がありますが、結果はそれぞれの例で異なる形状と形式を取ります。</target>
+        </trans-unit>
+        <trans-unit id="9f489c41d38ccf842f692e0db445abd3e48eee2b" translate="yes" xml:space="preserve">
+          <source>In the C standard library you can achieve something similar with the &lt;code&gt;strto*l&lt;/code&gt; functions by checking that the end pointer has reached the end of the input string.</source>
+          <target state="translated">C標準ライブラリでは、終了ポインタが入力文字列の終わりに到達したことを確認することにより、 &lt;code&gt;strto*l&lt;/code&gt; 関数で同様のことを実現できます。</target>
+        </trans-unit>
+        <trans-unit id="94f320dacdbdb7b3f3c407e0a74b13947ccdf877" translate="yes" xml:space="preserve">
+          <source>In this case, &lt;code&gt;feof()&lt;/code&gt; is called before any data has been read, so it returns false.  The loop is entered, &lt;code&gt;fgetc()&lt;/code&gt; is called (and returns &lt;code&gt;EOF&lt;/code&gt;), and count is incremented.  Then &lt;code&gt;feof()&lt;/code&gt; is called and returns true, causing the loop to abort.</source>
+          <target state="translated">この場合、データが読み込まれる前に &lt;code&gt;feof()&lt;/code&gt; が呼び出されるため、falseが返されます。 ループが開始され、 &lt;code&gt;fgetc()&lt;/code&gt; が呼び出され（そして &lt;code&gt;EOF&lt;/code&gt; を返します）、countがインクリメントされます。 次に、 &lt;code&gt;feof()&lt;/code&gt; が呼び出されてtrueが返され、ループが中止されます。</target>
+        </trans-unit>
+        <trans-unit id="df7cb0a6afe126d638917eed2a4e224c4b44dc9f" translate="yes" xml:space="preserve">
+          <source>It is always necessary to check the return value of a read (either an &lt;code&gt;fread()&lt;/code&gt;, or an &lt;code&gt;fscanf()&lt;/code&gt;, or an &lt;code&gt;fgetc()&lt;/code&gt;) before calling &lt;code&gt;feof()&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;feof()&lt;/code&gt; を呼び出す前に、読み取りの戻り値（ &lt;code&gt;fread()&lt;/code&gt; 、 &lt;code&gt;fscanf()&lt;/code&gt; 、または &lt;code&gt;fgetc()&lt;/code&gt; ）を常にチェックする必要があります。</target>
+        </trans-unit>
+        <trans-unit id="222d991e983b86924c85aebf64b8055dafefd796" translate="yes" xml:space="preserve">
+          <source>It's wrong because (in the absence of a read error) it enters the loop one more time than the author expects.  If there is a read error, the loop never terminates.</source>
+          <target state="translated">(読み込みエラーがない場合)作者が思っている以上にループに1回入るから間違っている。読み込みエラーがあった場合、ループが終了することはありません。</target>
+        </trans-unit>
+        <trans-unit id="72403131093f16a828236fe0866b652fccd6f5ee" translate="yes" xml:space="preserve">
+          <source>Let me make this more precise: Suppose you want to ask, &quot;do you have more data&quot;. You could ask this of a concurrent container, or of your I/O system. But the answer is generally unactionable, and thus meaningless. So what if the container says &quot;yes&quot; &amp;ndash; by the time you try reading, it may no longer have data. Similarly, if the answer is &quot;no&quot;, by the time you try reading, data may have arrived. The conclusion is that there simply &lt;em&gt;is&lt;/em&gt; no property like &quot;I have data&quot;, since you cannot act meaningfully in response to any possible answer. (The situation is slightly better with buffered input, where you might conceivably get a &quot;yes, I have data&quot; that constitutes some kind of guarantee, but you would still have to be able to deal with the opposite case. And with output the situation is certainly just as bad as I described: you never know if that disk or that network buffer is full.)</source>
+          <target state="translated">これをより正確に説明します。「もっとデータがありますか」と質問したいとします。 これを並行コンテナーまたはI / Oシステムに要求できます。 しかし、答えは一般に実行不可能であり、したがって意味がありません。 だから、もしコンテナが「はい」と言ったらどうなるでしょう&amp;ndash;読み込もうとすると、もうデータがないかもしれません。 同様に、答えが「いいえ」の場合は、読み込もうとした時点で、データが到着した可能性があります。 結論としては、「データがあります」のようなプロパティ&lt;em&gt;は&lt;/em&gt;まったく存在しないということです。これは、考えられる答えに応じて有意義に行動することができないためです。 （状況は、バッファされた入力を使用すると少し良くなります。ある種の保証を構成する「はい、私はデータがあります」と思われるかもしれませんが、それでも逆のケースに対処できる必要があります。そして、出力の状況確かに、私が説明したのと同じくらい悪いです。そのディスクまたはそのネットワークバッファーがいっぱいであるかどうかはわかりません。）</target>
+        </trans-unit>
+        <trans-unit id="9a0fe292e7d9800c123efbe9d32e1657a9705bbd" translate="yes" xml:space="preserve">
+          <source>No it's not always wrong. If your loop condition is &quot;while we haven't tried to read past end of file&quot; then you use &lt;code&gt;while (!feof(f))&lt;/code&gt;. This is however not a common loop condition - usually you want to test for something else (such as &quot;can I read more&quot;). &lt;code&gt;while (!feof(f))&lt;/code&gt; isn't wrong, it's just &lt;em&gt;used&lt;/em&gt; wrong.</source>
+          <target state="translated">いいえ、常に間違っているとは限りません。 ループ条件が「過去のファイルの終わりを読み取ろうとしていない」場合は &lt;code&gt;while (!feof(f))&lt;/code&gt; を使用します。 ただし、これは一般的なループ状態ではありません。通常、何かをテストする必要があります（「もっと読むことができますか」など）。 &lt;code&gt;while (!feof(f))&lt;/code&gt; は間違っていませんが、間違って&lt;em&gt;使用され&lt;/em&gt;ています。</target>
+        </trans-unit>
+        <trans-unit id="ddcbc1fbbf593776812d44f0c505dd66950884f6" translate="yes" xml:space="preserve">
+          <source>Note that the function explicitly returns &lt;code&gt;-1&lt;/code&gt; (and not EOF!) when an error occurs or it reaches EOF.</source>
+          <target state="translated">エラーが発生した場合、またはEOFに達した場合、関数は明示的に &lt;code&gt;-1&lt;/code&gt; （EOFではなく）を返すことに注意してください。</target>
+        </trans-unit>
+        <trans-unit id="c138187ee78a95264184501dc023ae49eaee3b8e" translate="yes" xml:space="preserve">
+          <source>Now we get to EOF. EOF is the &lt;em&gt;response&lt;/em&gt; you get from an &lt;em&gt;attempted&lt;/em&gt; I/O operation. It means that you were trying to read or write something, but when doing so you failed to read or write any data, and instead the end of the input or output was encountered. This is true for essentially all the I/O APIs, whether it be the C standard library, C++ iostreams, or other libraries. As long as the I/O operations succeed, you simply &lt;em&gt;cannot know&lt;/em&gt; whether further, future operations will succeed. You &lt;em&gt;must&lt;/em&gt; always first try the operation and then respond to success or failure.</source>
+          <target state="translated">これでEOFに到達しました。 EOFは、 &lt;em&gt;試行された&lt;/em&gt; I / O操作から得られる&lt;em&gt;応答&lt;/em&gt;です。 これは、何かを読み書きしようとしたが、そうするとデータの読み取りまたは書き込みに失敗し、代わりに入力または出力の終わりが検出されたことを意味します。 これは、C標準ライブラリ、C ++ iostream、その他のライブラリのいずれであっても、本質的にすべてのI / O APIに当てはまります。 I / O操作が成功する限り、将来の操作が成功するかどうか&lt;em&gt;はわかりません&lt;/em&gt; 。 常に最初に操作を試行してから、成功または失敗に応答する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="e6f37fa35c54fd8bca21c8861aadeeabddb790fb" translate="yes" xml:space="preserve">
+          <source>POSIX &lt;a href=&quot;http://pubs.opengroup.org/onlinepubs/9699919799/functions/getline.html&quot;&gt;&lt;code&gt;getline()&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">POSIX &lt;a href=&quot;http://pubs.opengroup.org/onlinepubs/9699919799/functions/getline.html&quot;&gt; &lt;code&gt;getline()&lt;/code&gt; &lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="3c29f18cc80a5ab4397ce9ee67110730141c85b5" translate="yes" xml:space="preserve">
+          <source>POSIX, &lt;code&gt;write(2)&lt;/code&gt; to flush a buffer:</source>
+          <target state="translated">POSIX、バッファをフラッシュする &lt;code&gt;write(2)&lt;/code&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="158b03cf3f0ee84ce61146b4f5131a4764b5329d" translate="yes" xml:space="preserve">
+          <source>So the correct idiom in C is to loop with the IO operation success as loop condition, and then test the cause of the failure.  For instance:</source>
+          <target state="translated">ですから、C言語の正しい慣用句は、IO操作の成功をループ条件にしてループし、失敗の原因をテストすることです。例えば</target>
+        </trans-unit>
+        <trans-unit id="817fc48d7d94d06d30c126604b404be0c742323a" translate="yes" xml:space="preserve">
+          <source>So we conclude that it is impossible, and in fact un&lt;em&gt;reasonable&lt;/em&gt;, to ask an I/O system whether it &lt;em&gt;will be&lt;/em&gt; able to perform an I/O operation. The only possible way we can interact with it (just as with a concurrent container) is to &lt;em&gt;attempt&lt;/em&gt; the operation and check whether it succeeded or failed. At that moment where you interact with the environment, then and only then can you know whether the interaction was actually possible, and at that point you must commit to performing the interaction. (This is a &quot;synchronisation point&quot;, if you will.)</source>
+          <target state="translated">したがって、I / O操作を実行できるかどうかをI / Oシステムに問い合わせることは不可能であり、実際には&lt;em&gt;合理的&lt;/em&gt;ではないと結論付けます。 （コンカレントコンテナーと同様に）操作できる唯一の方法は、操作を&lt;em&gt;試行して&lt;/em&gt; 、操作が成功したか失敗したかを確認することです。 環境と対話するその瞬間に、そのとき初めて、対話が実際に可能であったかどうかを知ることができます。その時点で、対話の実行にコミットする必要があります。 （もしそうなら、これは「同期ポイント」です。）</target>
+        </trans-unit>
+        <trans-unit id="846041b1f2857074a016d9e21966bce492dc7a74" translate="yes" xml:space="preserve">
+          <source>So, in summary, although I cannot state with certainty that there is never a situation in which it may be semantically correct to write &quot;&lt;code&gt;while(!feof(f))&lt;/code&gt;&quot; (although there &lt;strong&gt;must&lt;/strong&gt; be another check inside the loop with a break to avoid a infinite loop on a read error), it is the case that it is almost certainly always wrong.  And even if a case ever arose where it would be correct, it is so idiomatically wrong that it would not be the right way to write the code.  Anyone seeing that code should immediately hesitate and say, &quot;that's a bug&quot;.  And possibly slap the author (unless the author is your boss in which case discretion is advised.)</source>
+          <target state="translated">つまり、要約すると、「 &lt;code&gt;while(!feof(f))&lt;/code&gt; 」と書くことは意味的に正しいかもしれない状況が決してないということを確実に述べることはできません（ただし、ループ内にブレークする別のチェックが&lt;strong&gt;必要です&lt;/strong&gt;が）読み取りエラーでの無限ループを回避してください）、それはほとんどの場合常に間違いです。 そして、それが正しいところに事件が起こったとしても、それはコードを書く正しい方法ではないほど慣用的に間違っている。 そのコードを見た人はすぐにためらって、「それはバグです」と言ってください。 そして、おそらく著者を平手打ちします（著者があなたの上司である場合を除き、その場合は裁量が推奨されます）。</target>
+        </trans-unit>
+        <trans-unit id="7011b1a621a67e63735eb77a3fab573aef5632e9" translate="yes" xml:space="preserve">
+          <source>The answer</source>
+          <target state="translated">答えは</target>
+        </trans-unit>
+        <trans-unit id="6c637ec0e42c35161dade1e8e1b6a8760f84d564" translate="yes" xml:space="preserve">
+          <source>The result we must use is &lt;code&gt;n&lt;/code&gt;, the number of elements that were read (which may be as little as zero).</source>
+          <target state="translated">使用する必要のある結果は、読み取られた要素の数である &lt;code&gt;n&lt;/code&gt; です （これはゼロでもかまいません）。</target>
+        </trans-unit>
+        <trans-unit id="dd8b9000013378645669f0c9713d6ab04b2f81d8" translate="yes" xml:space="preserve">
+          <source>The result we must use is &lt;code&gt;nbytes&lt;/code&gt;, the number of bytes up to and including the newline (or EOF if the file did not end with a newline).</source>
+          <target state="translated">使用しなければならない結果は、 &lt;code&gt;nbytes&lt;/code&gt; 、つまり改行までのバイト数（またはファイルが改行で終わっていない場合はEOF）です。</target>
+        </trans-unit>
+        <trans-unit id="a2be6c557782f15a6fe8146ffef5463a0c52393e" translate="yes" xml:space="preserve">
+          <source>The result we must use is &lt;code&gt;std::cin&lt;/code&gt; itself, which can be evaluated in a boolean context and tells us whether the stream is still in the &lt;code&gt;good()&lt;/code&gt; state.</source>
+          <target state="translated">使用する必要がある結果は &lt;code&gt;std::cin&lt;/code&gt; 自体です。これはブールコンテキストで評価でき、ストリームがまだ &lt;code&gt;good()&lt;/code&gt; 状態かどうかを示します。</target>
+        </trans-unit>
+        <trans-unit id="94f4bf47648a9a9a15729400e2bbd4e7a33fd3d8" translate="yes" xml:space="preserve">
+          <source>The result we must use is again &lt;code&gt;std::cin&lt;/code&gt;, just as before.</source>
+          <target state="translated">以前と同じように、使用する必要がある結果は再び &lt;code&gt;std::cin&lt;/code&gt; です。</target>
+        </trans-unit>
+        <trans-unit id="e176f9e6233fcb3bd9259568ee600f922fc9b066" translate="yes" xml:space="preserve">
+          <source>The result we must use is the return value of &lt;code&gt;scanf&lt;/code&gt;, the number of elements converted.</source>
+          <target state="translated">使用しなければならない結果は、変換された要素の数である &lt;code&gt;scanf&lt;/code&gt; の戻り値です。</target>
+        </trans-unit>
+        <trans-unit id="303da19e8cd21a2b3892dcd8aaca7a9c24e2434b" translate="yes" xml:space="preserve">
+          <source>The result we use here is &lt;code&gt;k&lt;/code&gt;, the number of bytes written. The point here is that we can only know how many bytes were written &lt;em&gt;after&lt;/em&gt; the write operation.</source>
+          <target state="translated">ここで使用する結果は、書き込まれたバイト数である &lt;code&gt;k&lt;/code&gt; です。 ここでのポイントは、書き込み操作の&lt;em&gt;後&lt;/em&gt;に書き込まれ&lt;em&gt;た&lt;/em&gt;バイト数のみを知ることができるということです。</target>
+        </trans-unit>
+        <trans-unit id="b372e2f1e30a0546ffa61e565b193a1cfb9392b9" translate="yes" xml:space="preserve">
+          <source>This happens in all such cases.  &lt;code&gt;feof()&lt;/code&gt; does not return true until &lt;strong&gt;after&lt;/strong&gt; a read on the stream encounters the end of file.  The purpose of &lt;code&gt;feof()&lt;/code&gt; is NOT to check if the next read will reach the end of file.  The purpose of &lt;code&gt;feof()&lt;/code&gt; is to distinguish between a read error and having reached the end of the file.  If &lt;code&gt;fread()&lt;/code&gt; returns 0, you must use &lt;code&gt;feof&lt;/code&gt;/&lt;code&gt;ferror&lt;/code&gt; to decide whether an error was encountered or if all of the data was consumed.  Similarly if &lt;code&gt;fgetc&lt;/code&gt; returns &lt;code&gt;EOF&lt;/code&gt;.  &lt;code&gt;feof()&lt;/code&gt; is only useful &lt;strong&gt;after&lt;/strong&gt; fread has returned zero or &lt;code&gt;fgetc&lt;/code&gt; has returned &lt;code&gt;EOF&lt;/code&gt;.  Before that happens, &lt;code&gt;feof()&lt;/code&gt; will always return 0.</source>
+          <target state="translated">これはそのようなすべての場合に起こります。 &lt;code&gt;feof()&lt;/code&gt; は、ストリームの読み取りがファイルの終わりに到達するまでtrueを返しません。 &lt;code&gt;feof()&lt;/code&gt; の目的は、次の読み取りがファイルの終わりに到達するかどうかを確認することではありません。 &lt;code&gt;feof()&lt;/code&gt; の目的は、読み取りエラーとファイルの終わりに達したことを区別することです。 &lt;code&gt;fread()&lt;/code&gt; が0を返す場合、 &lt;code&gt;feof&lt;/code&gt; / &lt;code&gt;ferror&lt;/code&gt; を使用して、エラーが発生したかどうか、またはすべてのデータが消費されたかどうかを判断する必要があります。 同様に、 &lt;code&gt;fgetc&lt;/code&gt; が &lt;code&gt;EOF&lt;/code&gt; を返した場合。 &lt;code&gt;feof()&lt;/code&gt; は&lt;strong&gt;、&lt;/strong&gt; freadがゼロを返した&lt;strong&gt;後、&lt;/strong&gt;または &lt;code&gt;fgetc&lt;/code&gt; が &lt;code&gt;EOF&lt;/code&gt; を返した&lt;strong&gt;後に&lt;/strong&gt;のみ役立ちます。 その前に、 &lt;code&gt;feof()&lt;/code&gt; は常に0を返します。</target>
+        </trans-unit>
+        <trans-unit id="1f110543f655f47775382a08be85a099094240cb" translate="yes" xml:space="preserve">
+          <source>This program will consistently print one greater than the number of characters in the input stream (assuming no read errors).  Consider the case where the input stream is empty:</source>
+          <target state="translated">このプログラムは一貫して、入力ストリームの文字数よりも大きい1文字を表示します(読み込みエラーがないと仮定します)。入力ストリームが空の場合を考えてみましょう。</target>
+        </trans-unit>
+        <trans-unit id="b0925f526af3483a02c05fdbde7c36f4875c2e14" translate="yes" xml:space="preserve">
+          <source>We use two results here. The first is &lt;code&gt;iss&lt;/code&gt;, the stream object itself, to check that the formatted extraction to &lt;code&gt;value&lt;/code&gt; succeeded. But then, after also consuming whitespace, we perform another I/O/ operation, &lt;code&gt;iss.get()&lt;/code&gt;, and expect it to fail as EOF, which is the case if the entire string has already been consumed by the formatted extraction.</source>
+          <target state="translated">ここでは2つの結果を使用します。 1つ目は、ストリームオブジェクト自体である &lt;code&gt;iss&lt;/code&gt; で、 &lt;code&gt;value&lt;/code&gt; へのフォーマットされた抽出が成功したことを確認します 。 ただし、空白も消費した後、別のI / O /操作 &lt;code&gt;iss.get()&lt;/code&gt; を実行し、EOFとして失敗することを期待します。これは、フォーマットされた抽出によって文字列全体がすでに消費されている場合です。</target>
+        </trans-unit>
+        <trans-unit id="648647fd82435dc0507ee1805f9b069afb309877" translate="yes" xml:space="preserve">
+          <source>What is wrong with this loop?</source>
+          <target state="translated">このループのどこが悪いの?</target>
+        </trans-unit>
+        <trans-unit id="2a805c3203447610847e1ae47416a85730b84c3d" translate="yes" xml:space="preserve">
+          <source>Why is “while ( !feof (file) )” always wrong</source>
+          <target state="translated">while(!feof (ファイル)))&quot; がいつも間違っているのはなぜですか?</target>
+        </trans-unit>
+        <trans-unit id="f54a4cb85ad4243779102fab2d01c2695116ea1c" translate="yes" xml:space="preserve">
+          <source>You may notice that we very rarely spell out the actual word &quot;EOF&quot;. We usually detect the error condition in some other way that is more immediately interesting to us (e.g. failure to perform as much I/O as we had desired). In every example there is some API feature that could tell us explicitly that the EOF state has been encountered, but this is in fact not a terribly useful piece of information. It is much more of a detail than we often care about. What matters is whether the I/O succeeded, more-so than how it failed.</source>
+          <target state="translated">実際に &quot;EOF &quot;という言葉を使うことはほとんどありません。通常、エラー状態を検出する際には、よりすぐに興味を惹かれる他の方法で検出しています(例えば、希望していたほどのIOの実行ができなかったなど)。どの例でも、EOF状態に遭遇したことを明示的に教えてくれるAPI機能がありますが、これは実際にはあまり有用な情報ではありません。しかし、これは実際にはあまり有用な情報ではありません。重要なのは IO が成功したかどうかであり、それがどのように失敗したかよりも重要なのです。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

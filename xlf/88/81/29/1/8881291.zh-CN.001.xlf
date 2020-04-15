@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/8881291">
+    <body>
+      <group id="8881291">
+        <trans-unit id="8b5cc79fdd91f3cbabe317bb10b94a8fc9da92e8" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://www.oracle.com/technetwork/java/seccodeguide-139067.html#2&quot;&gt;Guideline 2-2 of the Secure Coding Guidelines for the Java Programming Language, Version 4.0&lt;/a&gt; also says something similar (although it is originally in the context of logging):</source>
+          <target state="translated">&lt;a href=&quot;http://www.oracle.com/technetwork/java/seccodeguide-139067.html#2&quot;&gt;Java编程语言版本4.0的安全编码指南中的指南2-2&lt;/a&gt;也表示类似的内容（尽管它最初是在日志记录的上下文中）：</target>
+        </trans-unit>
+        <trans-unit id="e262fa514b2ff9a9cdfcbd1e05ba0e4a0e8eab24" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://security.stackexchange.com/a/83671&quot;&gt;A discussion about timing attacks&lt;/a&gt; over on Information Security Stack Exchange</source>
+          <target state="translated">&lt;a href=&quot;https://security.stackexchange.com/a/83671&quot;&gt;关于定时攻击&lt;/a&gt;信息安全堆栈交换的讨论</target>
+        </trans-unit>
+        <trans-unit id="546581ef303b186fcfa524db41590bb28383b19f" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Strings&lt;/code&gt; in Java are immutable objects. That is why they can't be modified once created, and therefore the only way for their contents to be removed from memory is to have them garbage collected. It will be only then when the memory freed by the object can be overwritten, and the data will be gone.</source>
+          <target state="translated">Java中的 &lt;code&gt;Strings&lt;/code&gt; 是不可变的对象。 这就是为什么一旦创建便无法对其进行修改，因此从内存中删除其内容的唯一方法是对其进行垃圾回收。 只有当对象释放的内存可以被覆盖并且数据将消失时，才会这样。</target>
+        </trans-unit>
+        <trans-unit id="31db751b481dd56268b798ca07bdcab69947d650" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;char[]&lt;/code&gt; is an array which you should overwrite once you used the password and this is how it should be done:</source>
+          <target state="translated">&lt;code&gt;char[]&lt;/code&gt; 是一个数组，使用密码后应该覆盖它，这是应该这样做的方式：</target>
+        </trans-unit>
+        <trans-unit id="397be38dc3f561874a0b47a76aa1154fa7e83414" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Guideline 2-2: Do not log highly sensitive information&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;准则2-2：请勿记录高度敏感的信息&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="dea03c5dc15d1e7cf9dfb8c1ea63a39c96a370f5" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;1.&lt;/strong&gt;  Since Strings are immutable in Java, if you store the password as plain text it will be available in memory until the Garbage collector clears it, and since String is used in the String pool for reusability there is a pretty high chance that it will remain in memory for a long duration, which poses a security threat.</source>
+          <target state="translated">&lt;strong&gt;1.&lt;/strong&gt;由于字符串在Java中是不可变的，因此，如果您将密码存储为纯文本格式，则密码将在内存中可用，直到垃圾回收器将其清除为止，并且由于在字符串池中使用字符串来实现可重用性，因此很有可能长时间保留在内存中，构成安全威胁。</target>
+        </trans-unit>
+        <trans-unit id="fa50fb41f6a3f808bb31590fb5c49da04a28ef18" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;2.&lt;/strong&gt;  Java itself recommends using the getPassword() method of JPasswordField which returns a char[], instead of the deprecated getText() method which returns passwords in clear text stating security reasons. It's good to follow advice from the Java team and adhere to standards rather than going against them.</source>
+          <target state="translated">&lt;strong&gt;2.&lt;/strong&gt; Java本身建议使用JPasswordField的getPassword（）方法，该方法返回char []，而不建议使用不赞成使用的getText（）方法，该方法以明文说明安全原因，返回密码。 遵循Java团队的建议并遵守标准而不是违背标准是很好的。</target>
+        </trans-unit>
+        <trans-unit id="31024e792a22c2125636d2085a3babcbaad4dd64" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;3.&lt;/strong&gt;  With String there is always a risk of printing plain text in a log file or console but if you use an Array you won't print contents of an array, but instead its memory location gets printed. Though not a real reason, it still makes sense.</source>
+          <target state="translated">&lt;strong&gt;3.&lt;/strong&gt;使用String总是有在日志文件或控制台中打印纯文本的风险，但是如果使用Array，则不会打印数组的内容，而是会打印其内存位置。 尽管不是真正的原因，但这仍然有意义。</target>
+        </trans-unit>
+        <trans-unit id="69b7f956cdb0d8e690f8921a39588f88b303dc69" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Edit:&lt;/strong&gt; Coming back to this answer after a year of security research, I realize it makes the rather unfortunate implication that you would ever actually compare plaintext passwords. Please don't. &lt;a href=&quot;https://stackoverflow.com/questions/2860943/how-can-i-hash-a-password-in-java&quot;&gt;Use a secure one-way hash with a salt and a reasonable number of iterations&lt;/a&gt;. Consider using a library: this stuff is hard to get right!</source>
+          <target state="translated">&lt;strong&gt;编辑：&lt;/strong&gt;经过一年的安全研究，回到这个答案，我意识到，这很不幸地暗示您可能会实际比较纯文本密码。 请不要。 &lt;a href=&quot;https://stackoverflow.com/questions/2860943/how-can-i-hash-a-password-in-java&quot;&gt;使用带有盐和合理迭代次数的安全单向哈希&lt;/a&gt; 。 考虑使用图书馆：这东西很难弄对！</target>
+        </trans-unit>
+        <trans-unit id="e60aa3b140458b9e42618bd0b3a05e257cc2dc56" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Original answer:&lt;/strong&gt; What about the fact that String.equals() uses &lt;a href=&quot;http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8-b132/java/lang/String.java#String.equals%28java.lang.Object%29&quot;&gt;short-circuit evaluation&lt;/a&gt;, and is therefore vulnerable to a timing attack? It may be unlikely, but you could &lt;em&gt;theoretically&lt;/em&gt; time the password comparison in order to determine the correct sequence of characters.</source>
+          <target state="translated">&lt;strong&gt;原始答案：&lt;/strong&gt; String.equals（）使用&lt;a href=&quot;http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8-b132/java/lang/String.java#String.equals%28java.lang.Object%29&quot;&gt;短路评估&lt;/a&gt; ，因此容易受到定时攻击的事实呢？ 可能不太可能，但是&lt;em&gt;理论上&lt;/em&gt;您可以安排密码比较的时间，以便确定正确的字符顺序。</target>
+        </trans-unit>
+        <trans-unit id="71c1051a13130dc057ae957211603eb7b21660e7" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Strings are immutable&lt;/strong&gt;. That means once you've created the &lt;code&gt;String&lt;/code&gt;, if another process can dump memory, there's no way (aside from &lt;a href=&quot;https://en.wikipedia.org/wiki/Reflection_%28computer_programming%29&quot;&gt;reflection&lt;/a&gt;) you can get rid of the data before &lt;a href=&quot;https://en.wikipedia.org/wiki/Garbage_collection_%28computer_science%29&quot;&gt;garbage collection&lt;/a&gt; kicks in.</source>
+          <target state="translated">&lt;strong&gt;字符串是不可变的&lt;/strong&gt; 。 这意味着一旦创建了 &lt;code&gt;String&lt;/code&gt; ，如果另一个进程可以转储内存，就无法（除了&lt;a href=&quot;https://en.wikipedia.org/wiki/Reflection_%28computer_programming%29&quot;&gt;Reflection&lt;/a&gt; ）在&lt;a href=&quot;https://en.wikipedia.org/wiki/Garbage_collection_%28computer_science%29&quot;&gt;垃圾回收&lt;/a&gt;开始之前摆脱数据。</target>
+        </trans-unit>
+        <trans-unit id="200627b0eb37efd54845f9a6bd7c0133da5e8d51" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Update&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Update&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3bf1fec4ea517ac75d82aa127b348cecaa117a7d" translate="yes" xml:space="preserve">
+          <source>A Lesson In Timing Attacks</source>
+          <target state="translated">时机攻击的一课</target>
+        </trans-unit>
+        <trans-unit id="94ac581f37ab2d56dfe8fa01845f896c48ea2c7c" translate="yes" xml:space="preserve">
+          <source>And as it turns out, there is nothing that lets you clear the private information of a &lt;code&gt;PrivateKey&lt;/code&gt; from memory, because there's no API that lets you wipe the bytes that form the corresponding information.</source>
+          <target state="translated">事实证明，没有什么可以让您从内存中清除 &lt;code&gt;PrivateKey&lt;/code&gt; 的私有信息的，因为没有API可以让您擦除构成相应信息的字节。</target>
+        </trans-unit>
+        <trans-unit id="698e47ef5df7856861e6bd29ada26e30e6c56a65" translate="yes" xml:space="preserve">
+          <source>And of course, the &lt;a href=&quot;http://en.wikipedia.org/wiki/Timing_attack&quot;&gt;Timing Attack Wikipedia page&lt;/a&gt;</source>
+          <target state="translated">当然， &lt;a href=&quot;http://en.wikipedia.org/wiki/Timing_attack&quot;&gt;定时攻击维基百科页面&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="35879106f4ed216fdb6c73f43b27a8729c325a87" translate="yes" xml:space="preserve">
+          <source>As Jon Skeet states, there is no way except by using reflection.</source>
+          <target state="translated">正如乔恩-斯基特所说,除了利用反思,没有别的办法。</target>
+        </trans-unit>
+        <trans-unit id="36331cef84c6d35142e7b76dbacd89b8ff6a7d65" translate="yes" xml:space="preserve">
+          <source>As noted in the comments, it's possible that arrays being moved by the garbage collector will leave stray copies of the data in memory. I believe this is implementation-specific - the garbage collector &lt;em&gt;may&lt;/em&gt; clear all memory as it goes, to avoid this sort of thing. Even if it does, there's still the time during which the &lt;code&gt;char[]&lt;/code&gt; contains the actual characters as an attack window.</source>
+          <target state="translated">如注释中所述，垃圾回收器移动的数组可能会将数据的零散副本保留在内存中。 我相信这是特定于实现的-垃圾收集器&lt;em&gt;可能会&lt;/em&gt;清除所有内存，以免发生这种情况。 即使这样做，仍然有一段时间 &lt;code&gt;char[]&lt;/code&gt; 包含实际角色作为攻击窗口。</target>
+        </trans-unit>
+        <trans-unit id="ea94246ffb44ab6b727efb8d392dd9232ef47c1b" translate="yes" xml:space="preserve">
+          <source>Based on the above circumstances, one can get an idea whether to go with String or to go with Char[] for their requirements.</source>
+          <target state="translated">根据以上情况,大家可以根据自己的要求,选择String还是Char[]就有了一个思路。</target>
+        </trans-unit>
+        <trans-unit id="ff08257691f084f5bb4321a9521146f84621c841" translate="yes" xml:space="preserve">
+          <source>Because of the security concern it is better to store password as a character array.</source>
+          <target state="translated">由于担心安全问题,最好是以字符数组的形式存储密码。</target>
+        </trans-unit>
+        <trans-unit id="fc94856bbf7a5446009d35b73ca294f9cc65c6ce" translate="yes" xml:space="preserve">
+          <source>But that alone isn't a good answer; why not just make sure a reference to the &lt;code&gt;char[]&lt;/code&gt; or &lt;code&gt;String&lt;/code&gt; doesn't escape? Then there's no security issue. But the thing is that &lt;code&gt;String&lt;/code&gt; objects can be &lt;code&gt;intern()&lt;/code&gt;ed in theory and kept alive inside the constant pool. I suppose using &lt;code&gt;char[]&lt;/code&gt; forbids this possibility.</source>
+          <target state="translated">但这并不是一个好的答案。 为什么不仅仅确保对 &lt;code&gt;char[]&lt;/code&gt; 或 &lt;code&gt;String&lt;/code&gt; 的引用不会转义？ 这样就没有安全问题了。 但事实是， &lt;code&gt;String&lt;/code&gt; 对象可以在理论上进行 &lt;code&gt;intern()&lt;/code&gt; 编辑，并在常量池中保持活动状态。 我想使用 &lt;code&gt;char[]&lt;/code&gt; 禁止这种可能性。</target>
+        </trans-unit>
+        <trans-unit id="f7b798d770ca2df60818ef3a16e84e4d0302362b" translate="yes" xml:space="preserve">
+          <source>Char[] is mutable, but it has the advantage that after its usage the programmer can explicitly clean the array or override values. So when it's done being used it is cleaned and no one could ever know about the information you had stored.</source>
+          <target state="translated">Char[]是可突变的,但它的优点是在使用它之后,程序员可以明确地清理数组或覆盖值。所以当它被使用完后,它就会被清理掉,没有人会知道你存储的信息。</target>
+        </trans-unit>
+        <trans-unit id="f2d5fad3855bcb5cf79c403b8fae8134166583c5" translate="yes" xml:space="preserve">
+          <source>Character arrays (&lt;code&gt;char[]&lt;/code&gt;) can be cleared after use by setting each character to zero and Strings not. If someone can somehow see the memory image, they can see a password in plain text if Strings are used, but if &lt;code&gt;char[]&lt;/code&gt; is used, after purging data with 0's, the password is secure.</source>
+          <target state="translated">使用后，可以通过将每个字符设置为零而不能将字符串设置为零来清除字符数组（ &lt;code&gt;char[]&lt;/code&gt; ）。 如果有人能以某种方式看到内存映像，则在使用字符串的情况下他们可以看到纯文本密码，但是如果使用 &lt;code&gt;char[]&lt;/code&gt; ，则在将数据清除为0后，密码是安全的。</target>
+        </trans-unit>
+        <trans-unit id="fe2e10fde78683521d4003ae2215af5b39ef6231" translate="yes" xml:space="preserve">
+          <source>Consider this:</source>
+          <target state="translated">考虑到这一点:</target>
+        </trans-unit>
+        <trans-unit id="61da8effd39d181e7d2fbf216216c68b5d82129d" translate="yes" xml:space="preserve">
+          <source>However, Java changes all the time, and some scary features like &lt;a href=&quot;https://stackoverflow.com/questions/27949213/string-deduplication-feature-of-java-8&quot;&gt;String Deduplication feature of Java 8&lt;/a&gt; might intern String objects without your knowledge. But that's a different conversation.</source>
+          <target state="translated">但是，Java一直在变化，某些令人恐惧的功能（例如&lt;a href=&quot;https://stackoverflow.com/questions/27949213/string-deduplication-feature-of-java-8&quot;&gt;Java 8的String Deduplication功能）&lt;/a&gt;可能会在您不知情的情况下插入String对象。 但这是另一回事。</target>
+        </trans-unit>
+        <trans-unit id="4085390bb3f3a972df1be47fd22afa929e468c7e" translate="yes" xml:space="preserve">
+          <source>However, if reflection is an option for you, you can do this.</source>
+          <target state="translated">然而,如果反思是你的一个选择,你可以这样做。</target>
+        </trans-unit>
+        <trans-unit id="2ce1845c70b9dc4de0441f1a0e5b0d33534ff75d" translate="yes" xml:space="preserve">
+          <source>I don't think this is a valid suggestion, but, I can at least guess at the reason.</source>
+          <target state="translated">我觉得这个建议不成立,但是,我至少能猜到原因。</target>
+        </trans-unit>
+        <trans-unit id="151bc7b0c4f1b70bc4b73e26ef103e85b31bf68d" translate="yes" xml:space="preserve">
+          <source>I think the motivation is wanting to make sure that you can erase all trace of the password in memory promptly and with certainty after it is used. With a &lt;code&gt;char[]&lt;/code&gt; you could overwrite each element of the array with a blank or something for sure. You can't edit the internal value of a &lt;code&gt;String&lt;/code&gt; that way.</source>
+          <target state="translated">我认为这样做的动机是要确保您可以在使用后立即确定地删除内存中的所有密码痕迹。 使用 &lt;code&gt;char[]&lt;/code&gt; 可以确定用空格或其他东西覆盖数组的每个元素。 您不能以这种方式编辑 &lt;code&gt;String&lt;/code&gt; 的内部值。</target>
+        </trans-unit>
+        <trans-unit id="ac37450fb5de9b14d5b22b707a61b326fc006e75" translate="yes" xml:space="preserve">
+          <source>I'm thinking of e.g. the &lt;a href=&quot;http://docs.oracle.com/javase/6/docs/api/java/security/PrivateKey.html&quot;&gt;PrivateKey&lt;/a&gt; class. Consider a scenario where you would load a private RSA key from a PKCS#12 file, using it to perform some operation. Now in this case, sniffing the password alone wouldn't help you much as long as physical access to the key file is properly restricted. As an attacker, you would be much better off if you obtained the key directly instead of the password. The desired information can be leaked manifold, core dumps, a debugger session or swap files are just some examples.</source>
+          <target state="translated">我在想例如&lt;a href=&quot;http://docs.oracle.com/javase/6/docs/api/java/security/PrivateKey.html&quot;&gt;PrivateKey&lt;/a&gt;类。 考虑一种方案，您将从PKCS＃12文件中加载私有RSA密钥，并使用它执行一些操作。 现在，在这种情况下，只要适当限制对密钥文件的物理访问，仅嗅探密码将无济于事。 作为攻击者，如果直接获得密钥而不是密码，那么情况会更好。 所需信息可能会泄漏，核心转储，调试器会话或交换文件仅是一些示例。</target>
+        </trans-unit>
+        <trans-unit id="57001b779997c68b84ea322da58afc3b9aee11b7" translate="yes" xml:space="preserve">
+          <source>If possible, disabling core dumps and the swap file would take care of both problems. However, they would require administrator rights and may reduce functionality (less memory to use) and pulling RAM from a running system would still be a valid concern.</source>
+          <target state="translated">如果可能的话,禁用内核转储和交换文件可以解决这两个问题。但是,它们需要管理员权限,可能会降低功能(减少内存使用量),而且从运行中的系统中提取RAM仍然是一个有效的问题。</target>
+        </trans-unit>
+        <trans-unit id="33fe3db7ec48beac0c68de9fcd8d0c76bda59e6e" translate="yes" xml:space="preserve">
+          <source>If the value of the string is modified then it will end up creating a new string. So both the original value and the modified value stay in the memory until it is garbage collected.</source>
+          <target state="translated">如果字符串的值被修改了,那么它最终会创建一个新的字符串。所以原始值和修改后的值都会留在内存中,直到它被垃圾回收。</target>
+        </trans-unit>
+        <trans-unit id="914d4c3b06c646d3115826f9e7120eefcb75df0a" translate="yes" xml:space="preserve">
+          <source>In Swing, the password field has a &lt;code&gt;getPassword()&lt;/code&gt; (returns &lt;code&gt;char[]&lt;/code&gt;) method instead of the usual &lt;code&gt;getText()&lt;/code&gt; (returns &lt;code&gt;String&lt;/code&gt;) method. Similarly, I have come across a suggestion not to use &lt;code&gt;String&lt;/code&gt; to handle passwords.</source>
+          <target state="translated">在Swing中，密码字段具有 &lt;code&gt;getPassword()&lt;/code&gt; （返回 &lt;code&gt;char[]&lt;/code&gt; ）方法，而不是通常的 &lt;code&gt;getText()&lt;/code&gt; （返回 &lt;code&gt;String&lt;/code&gt; ）方法。 同样，我遇到了不使用 &lt;code&gt;String&lt;/code&gt; 处理密码的建议。</target>
+        </trans-unit>
+        <trans-unit id="f3e385fc6478055a321c64cb02009cc9d7e54bd6" translate="yes" xml:space="preserve">
+          <source>It is debatable as to whether you should use String or use Char[] for this purpose because both have their advantages and disadvantages. It depends on what the user needs.</source>
+          <target state="translated">至于是使用String还是使用Char[]来实现这个目的,这是一个值得商榷的问题,因为两者都有其优缺点。这取决于用户的需求。</target>
+        </trans-unit>
+        <trans-unit id="6892d03a0b1a14ba14ef1fe5bba377b5df3f74f4" translate="yes" xml:space="preserve">
+          <source>It would seem logical to collect and store the password in an object
+  of type &lt;code&gt;java.lang.String&lt;/code&gt;. However, here's the caveat: &lt;code&gt;Object&lt;/code&gt;s of
+  type &lt;code&gt;String&lt;/code&gt; are immutable, i.e., there are no methods defined that
+  allow you to change (overwrite) or zero out the contents of a &lt;code&gt;String&lt;/code&gt;
+  after usage. This feature makes &lt;code&gt;String&lt;/code&gt; objects unsuitable for
+  storing security sensitive information such as user passwords. You
+  should always collect and store security sensitive information in a
+  &lt;code&gt;char&lt;/code&gt; array instead.</source>
+          <target state="translated">收集密码并将其存储在 &lt;code&gt;java.lang.String&lt;/code&gt; 类型的对象中似乎合乎逻辑。 但是，这是一个警告： &lt;code&gt;String&lt;/code&gt; 类型的 &lt;code&gt;Object&lt;/code&gt; 是不可变的，即，没有定义的方法允许您在使用后更改（覆盖）或将 &lt;code&gt;String&lt;/code&gt; 的内容归零。 此功能使 &lt;code&gt;String&lt;/code&gt; 对象不适合存储对安全敏感的信息，例如用户密码。 您应该始终将安全敏感信息收集并存储在 &lt;code&gt;char&lt;/code&gt; 数组中。</target>
+        </trans-unit>
+        <trans-unit id="8684c3b4018676a3106d93184438755a93bce417" translate="yes" xml:space="preserve">
+          <source>Note: if the String's char[] has been copied as a part of a GC cycle, there is a chance the previous copy is somewhere in memory.</source>
+          <target state="translated">注意:如果String的char[]作为GC循环的一部分被复制了,那么之前的副本有可能在内存中的某个地方。</target>
+        </trans-unit>
+        <trans-unit id="a4510da9e949f0f4ef9576982abd7e611df40556" translate="yes" xml:space="preserve">
+          <source>Now garbage collection in Java doesn't happen at any guaranteed interval. The &lt;code&gt;String&lt;/code&gt; can thus persist in memory for a long time, and if a process crashes during this time, the contents of the string may end up in a memory dump or some log.</source>
+          <target state="translated">现在，Java中的垃圾回收不会在任何保证的时间间隔内发生。 因此， &lt;code&gt;String&lt;/code&gt; 可以在内存中保留很长时间，并且如果在此期间进程崩溃，则字符串的内容可能最终出现在内存转储或某些日志中。</target>
+        </trans-unit>
+        <trans-unit id="009c1ad62959bdccaf0ac3c21fa53db992bb4841" translate="yes" xml:space="preserve">
+          <source>On the other side char[] are mutable as soon as the authentication is done you can overwrite them with any character like all M's or backslashes. Now even if someone takes a heap dump he might not be able to get the passwords which are not currently in use. This gives you more control in the sense like clearing the Object content yourself vs waiting for the GC to do it.</source>
+          <target state="translated">在另一边,当验证完成后,char[]是可突变的,你可以用任何字符覆盖它们,比如所有的M或反斜线。现在,即使有人采取了堆转储,他也可能无法获得当前没有使用的密码。这给了你更多的控制权,比如你可以自己清除对象内容而不是等待GC来做。</target>
+        </trans-unit>
+        <trans-unit id="808ddd5c0f070dc1407e36a6c3bd4a098c623be2" translate="yes" xml:space="preserve">
+          <source>One scenario where the attacker could use it is a crashdump - when the JVM crashes and generates a memory dump - you will be able to see the password.</source>
+          <target state="translated">攻击者可以使用的一种情况是崩溃转储--当JVM崩溃并生成内存转储时,你将能够看到密码。</target>
+        </trans-unit>
+        <trans-unit id="53bea7b855c92761fc53db7e7e657329722ff553" translate="yes" xml:space="preserve">
+          <source>Prints:</source>
+          <target state="translated">Prints:</target>
+        </trans-unit>
+        <trans-unit id="d23d8cc1d470710d96e727d64982b4e074a1ad39" translate="yes" xml:space="preserve">
+          <source>Referenced from &lt;a href=&quot;http://javarevisited.blogspot.com/2012/03/why-character-array-is-better-than.html&quot;&gt;this blog&lt;/a&gt;.
+I hope this helps.</source>
+          <target state="translated">从此&lt;a href=&quot;http://javarevisited.blogspot.com/2012/03/why-character-array-is-better-than.html&quot;&gt;博客&lt;/a&gt;引用。 我希望这有帮助。</target>
+        </trans-unit>
+        <trans-unit id="da39838ea50b051a48f69227a80db6d3ae54cb71" translate="yes" xml:space="preserve">
+          <source>Since Strings in Java are immutable, whenever some tries to manipulate your string it creates a new Object and the existing String remains unaffected. This could be seen as an advantage for storing a password as a String, but the object remains in memory even after use. So if anyone somehow got the memory location of the object, that person can easily trace your password stored at that location.</source>
+          <target state="translated">由于Java中的字符串是不可变的,所以每当有人试图操作你的字符串时,它就会创建一个新的对象,而现有的字符串不受影响。这可以看作是将密码作为String存储的一个优点,但是这个对象即使在使用后也会保留在内存中。因此,如果有人莫名其妙地得到了对象的内存位置,那人就可以很容易地追踪到你的密码存储在那个位置。</target>
+        </trans-unit>
+        <trans-unit id="6539fcd58f3cfe01d8e3345fd5cc498d2c1757ca" translate="yes" xml:space="preserve">
+          <source>Since anyone who has access to the memory dump can find the password in clear text, that's another reason you should always use an encrypted password rather than plain text. Since Strings are immutable there is no way the contents of Strings can be changed because any change will produce a new String, while if you use a char[] you can still set all the elements as blank or zero. So storing a password in a character array clearly mitigates the security risk of stealing a password.</source>
+          <target state="translated">因为任何人都可以在内存转储中找到清晰的密码,这也是你应该始终使用加密密码而不是纯文本的另一个原因。由于Strings是不可更改的,所以Strings的内容是不可能被改变的,因为任何改变都会产生一个新的String,而如果你使用char[],你仍然可以将所有元素设置为空或零。因此,将密码存储在字符数组中显然可以减轻密码被盗取的安全风险。</target>
+        </trans-unit>
+        <trans-unit id="2adb89ba4d12684aa374a2b6fe43ad82b7834618" translate="yes" xml:space="preserve">
+          <source>So yes, this &lt;em&gt;is&lt;/em&gt; a security concern - but even using &lt;code&gt;char[]&lt;/code&gt; only reduces the window of opportunity for an attacker, and it's only for this specific type of attack.</source>
+          <target state="translated">因此，是的，这&lt;em&gt;是&lt;/em&gt;一个安全性问题-但是即使使用 &lt;code&gt;char[]&lt;/code&gt; 只会减少攻击者的机会之窗，并且仅针对这种特定类型的攻击。</target>
+        </trans-unit>
+        <trans-unit id="1de0b546e683d80be916c3f763396811703e5bf0" translate="yes" xml:space="preserve">
+          <source>Some information, such as Social Security numbers (SSNs) and
+  passwords, is highly sensitive. This information should not be kept
+  for longer than necessary nor where it may be seen, even by
+  administrators. For instance, it should not be sent to log files and
+  its presence should not be detectable through searches. Some transient
+  data may be kept in mutable data structures, such as char arrays, and
+  cleared immediately after use. Clearing data structures has reduced
+  effectiveness on typical Java runtime systems as objects are moved in
+  memory transparently to the programmer.</source>
+          <target state="translated">有些信息,如社会安全号(SSN)和密码等,是高度敏感的信息。这些信息不应保存超过必要的时间,也不应被管理员看到。例如,这些信息不应该被发送到日志文件中,也不应该通过搜索来检测到它的存在。一些瞬时数据可以保存在可变数据结构中,如char数组等,使用后立即清除。清理数据结构在典型的Java运行时系统中,由于对象在内存中的移动对程序员来说是透明的,因此清空数据结构的有效性降低了。</target>
+        </trans-unit>
+        <trans-unit id="342e9eaee08708bfd19f663e2797e6c4835f202f" translate="yes" xml:space="preserve">
+          <source>Some more resources on timing attacks:</source>
+          <target state="translated">更有一些关于定时攻击的资源。</target>
+        </trans-unit>
+        <trans-unit id="70ec593d69ff444a0c4f8c40a5b655665549f9ff" translate="yes" xml:space="preserve">
+          <source>Some people believe that you have to overwrite the memory used to store the password once you no longer need it. This reduces the time window an attacker has to read the password from your system and completely ignores the fact that the attacker already needs enough access to hijack the JVM memory to do this. An attacker with that much access can catch your key events making this completely useless (AFAIK, so please correct me if I am wrong).</source>
+          <target state="translated">有些人认为,一旦你不再需要密码,就必须覆盖用于存储密码的内存。这就减少了攻击者从系统中读取密码的时间窗口,并且完全忽略了攻击者已经需要足够的访问量来劫持JVM内存的事实。一个拥有这么多访问权限的攻击者可以捕捉到你的关键事件,从而使这一点完全失去了作用(AFAIK,如果我说错了,请纠正我)。</target>
+        </trans-unit>
+        <trans-unit id="a15471736d5db023d6a76ce568c8d2f6f77e6fd4" translate="yes" xml:space="preserve">
+          <source>String in java is immutable. So whenever a string is created, it will remain in the memory until it is garbage collected. So anyone who has access to the memory can read the value of the string.</source>
+          <target state="translated">java中的String是不可变的。所以每当创建一个字符串,它就会一直保留在内存中,直到被垃圾回收。所以任何有权限访问内存的人都可以读取该字符串的值。</target>
+        </trans-unit>
+        <trans-unit id="70292d1b61c498137fcfe048ab768be8db94f7d9" translate="yes" xml:space="preserve">
+          <source>String is immutable and it goes to the string pool. Once written, it cannot be overwritten.</source>
+          <target state="translated">String是不可更改的,它进入字符串池。一旦写入,就不能被覆盖。</target>
+        </trans-unit>
+        <trans-unit id="7d63b7c3c393127b2e12ff515941706150a569e2" translate="yes" xml:space="preserve">
+          <source>Strings are immutable and cannot be altered once they have been created. Creating a password as a string will leave stray references to the password on the heap or on the String pool. Now if someone takes a heap dump of the Java process and carefully scans through he might be able to guess the passwords. Of course these non used strings will be garbage collected but that depends on when the GC kicks in.</source>
+          <target state="translated">字符串是不可更改的,一旦创建了密码,就不能更改。以字符串的形式创建密码会在堆上或String池上留下对密码的杂散引用。现在,如果有人拿一个Java进程的堆转储,仔细扫描一下,也许就能猜到密码。当然,这些未使用过的字符串会被垃圾回收,但这取决于GC什么时候启动。</target>
+        </trans-unit>
+        <trans-unit id="a50bf4dfb5987fd653ea7a3d545740bdb6a92ca3" translate="yes" xml:space="preserve">
+          <source>Take a look at the &lt;sub&gt;widely used&lt;/sub&gt; Spring Security library &lt;a href=&quot;http://grepcode.com/file/repo1.maven.org/maven2/org.springframework.security/spring-security-web/3.0.1.RELEASE/org/springframework/security/web/authentication/UsernamePasswordAuthenticationFilter.java#73&quot;&gt;here&lt;/a&gt; and ask yourself - are Spring Security guys incompetent or char[] passwords just don't make much sense. When some nasty hacker grabs memory dumps of your RAM be sure s/he'll get all the passwords even if you use sophisticated ways to hide them.</source>
+          <target state="translated">看看&lt;a href=&quot;http://grepcode.com/file/repo1.maven.org/maven2/org.springframework.security/spring-security-web/3.0.1.RELEASE/org/springframework/security/web/authentication/UsernamePasswordAuthenticationFilter.java#73&quot;&gt;这里&lt;/a&gt; &lt;sub&gt;广泛使用的&lt;/sub&gt; Spring Security库，问问自己-Spring Security家伙不称职或char []密码没有多大意义。 当一些讨厌的黑客抓取您RAM的内存转储时，请确保他/他将获得所有密码，即使您使用复杂的方式将其隐藏。</target>
+        </trans-unit>
+        <trans-unit id="a7a4c75efd48757679ac6c3d07cd60ad382ace9d" translate="yes" xml:space="preserve">
+          <source>Thanks to the comments I have to update my answer. Apparently there are two cases where this can add a (very) minor security improvement as it reduces the time a password could land on the hard drive. Still I think it's overkill for most use cases.</source>
+          <target state="translated">谢谢你的评论,我必须更新我的答案。显然,有两种情况下,这可以增加一个(非常)小的安全改进,因为它减少了密码在硬盘上登陆的时间。但我仍然认为这对大多数的使用情况来说是矫枉过正。</target>
+        </trans-unit>
+        <trans-unit id="2b26660b7b422e0609c382be6b48bf115b3c7e78" translate="yes" xml:space="preserve">
+          <source>That is not necessarily a malicious external attacker. This could be a support user that has access to the server for monitoring purposes. He could peek into a crashdump and find the passwords.</source>
+          <target state="translated">这不一定是恶意的外部攻击者。这可能是一个支持用户,他可以访问服务器进行监控。他可能会偷看到一个崩溃缓存并找到密码。</target>
+        </trans-unit>
+        <trans-unit id="87c04911712a5eca03edfca8a7dc86c33db8574d" translate="yes" xml:space="preserve">
+          <source>The OpenSSL library for example overwrites critical memory sections before private keys are freed. Since Java is garbage-collected, we would need explicit methods to wipe and invalidate private information for Java keys, which are to be applied immediately after using the key.</source>
+          <target state="translated">例如,OpenSSL库在释放私钥之前,会覆盖关键的内存部分。由于Java是垃圾收集的,所以我们需要显式的方法来擦除和失效Java密钥的私钥信息,而这些方法要在使用密钥后立即应用。</target>
+        </trans-unit>
+        <trans-unit id="5d904c18a0d5e2b983c5e3b0a1ec77093be40a8a" translate="yes" xml:space="preserve">
+          <source>The answer has already been given, but I'd like to share an issue that I discovered lately with Java standard libraries. While they take great care now of replacing password strings with &lt;code&gt;char[]&lt;/code&gt; everywhere (which of course is a good thing), other security-critical data seems to be overlooked when it comes to clearing it from memory.</source>
+          <target state="translated">答案已经给出，但是我想分享一个我最近在Java标准库中发现的问题。 尽管他们现在非常注意在任何地方都用 &lt;code&gt;char[]&lt;/code&gt; 替换密码字符串（这当然是一件好事），但是在从内存中清除它时，其他对安全性要求较高的数据却似乎被忽略了。</target>
+        </trans-unit>
+        <trans-unit id="9cdb971985ae17b650f8064ac735ff984c433ea3" translate="yes" xml:space="preserve">
+          <source>The short and straightforward answer would be because &lt;code&gt;char[]&lt;/code&gt; is mutable while &lt;code&gt;String&lt;/code&gt; objects are not.</source>
+          <target state="translated">简短而直接的答案是因为 &lt;code&gt;char[]&lt;/code&gt; 是可变的，而 &lt;code&gt;String&lt;/code&gt; 对象不是。</target>
+        </trans-unit>
+        <trans-unit id="c831e687484a08e9210ad3468fba111f383b12f4" translate="yes" xml:space="preserve">
+          <source>There is nothing that char array gives you vs String unless you clean it up manually after use, and I haven't seen anyone actually doing that. So to me the preference of char[] vs String is a bit exaggerated.</source>
+          <target state="translated">除非你在使用后手动清理,否则char数组给你带来的东西与String相比没有任何作用,而且我还没有看到有人真的这么做。所以对我来说,char[]vs String的偏好有点夸张。</target>
+        </trans-unit>
+        <trans-unit id="c29c1dc60896ca5c2015a47b5d9b6fedd7054557" translate="yes" xml:space="preserve">
+          <source>These are all the reasons, one should choose a &lt;strong&gt;char[]&lt;/strong&gt; array instead of &lt;strong&gt;String&lt;/strong&gt; for a password.</source>
+          <target state="translated">这些都是原因，应该选择一个&lt;strong&gt;char []&lt;/strong&gt;数组而不是&lt;strong&gt;String&lt;/strong&gt;作为密码。</target>
+        </trans-unit>
+        <trans-unit id="5fd0d8098dcf68fcf92acb8477b5a5f142c06ffb" translate="yes" xml:space="preserve">
+          <source>This guideline also has implications for implementation and use of
+  lower-level libraries that do not have semantic knowledge of the data
+  they are dealing with. As an example, a low-level string parsing
+  library may log the text it works on. An application may parse an SSN
+  with the library. This creates a situation where the SSNs are
+  available to administrators with access to the log files.</source>
+          <target state="translated">该准则还对不具备处理数据的语义知识的底层库的实现和使用也有影响。作为一个例子,一个低级的字符串解析库可能会记录它所处理的文本。一个应用程序可能会用该库解析一个SSN。这就造成了一种情况,即SSN是可以让有日志文件访问权限的管理员使用的。</target>
+        </trans-unit>
+        <trans-unit id="0b542944974a2f4551f2b6ab738b0d93fd70b517" translate="yes" xml:space="preserve">
+          <source>This is a bad situation, as this &lt;a href=&quot;http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.77.3297&amp;amp;rep=rep1&amp;amp;type=pdf&quot;&gt;paper&lt;/a&gt; describes how this circumstance could be potentially exploited.</source>
+          <target state="translated">这是一个糟糕的情况，因为&lt;a href=&quot;http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.77.3297&amp;amp;rep=rep1&amp;amp;type=pdf&quot;&gt;本文&lt;/a&gt;描述了如何潜在地利用这种情况。</target>
+        </trans-unit>
+        <trans-unit id="60a8a4000e8f0bc7de20f87190fb4c8e81516e21" translate="yes" xml:space="preserve">
+          <source>This old copy wouldn't appear in a heap dump, but if you have direct access to the raw memory of the process you could see it.  In general you should avoid anyone having such access.</source>
+          <target state="translated">这个旧拷贝不会出现在堆转储中,但如果你能直接访问进程的原始内存,你可以看到它。一般来说,你应该避免任何人有这样的访问权限。</target>
+        </trans-unit>
+        <trans-unit id="9c1079be9137eb36b54da5688745bf117e61534d" translate="yes" xml:space="preserve">
+          <source>To quote an official document, the &lt;a href=&quot;http://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html#PBEEx&quot;&gt;Java Cryptography Architecture guide&lt;/a&gt; says this about &lt;code&gt;char[]&lt;/code&gt; vs. &lt;code&gt;String&lt;/code&gt; passwords (about password-based encryption, but this is more generally about passwords of course):</source>
+          <target state="translated">为了引用官方文档，《 &lt;a href=&quot;http://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html#PBEEx&quot;&gt;Java密码学体系结构指南》&lt;/a&gt;说这是关于 &lt;code&gt;char[]&lt;/code&gt; 与 &lt;code&gt;String&lt;/code&gt; 密码（关于基于密码的加密，但这当然更普遍地是关于密码）：</target>
+        </trans-unit>
+        <trans-unit id="09c96217cecf5158d9c599143709c0bf43a4b916" translate="yes" xml:space="preserve">
+          <source>While other suggestions here seem valid, there is one other good reason. With plain &lt;code&gt;String&lt;/code&gt; you have much higher chances of &lt;strong&gt;accidentally printing the password to logs&lt;/strong&gt;, monitors or some other insecure place. &lt;code&gt;char[]&lt;/code&gt; is less vulnerable.</source>
+          <target state="translated">尽管这里的其他建议似乎是有效的，但还有另一个很好的理由。 使用纯 &lt;code&gt;String&lt;/code&gt; 您更有可能不&lt;strong&gt;小心将密码打印到日志&lt;/strong&gt; ，监视器或其他不安全的地方。 &lt;code&gt;char[]&lt;/code&gt; 不太容易受到攻击。</target>
+        </trans-unit>
+        <trans-unit id="f86d971b4a867c5b4b839105b6b5d514d24257f3" translate="yes" xml:space="preserve">
+          <source>Why does &lt;code&gt;String&lt;/code&gt; pose a threat to security when it comes to passwords?
+It feels inconvenient to use &lt;code&gt;char[]&lt;/code&gt;.</source>
+          <target state="translated">为什么在密码方面 &lt;code&gt;String&lt;/code&gt; 会对安全构成威胁？ 使用 &lt;code&gt;char[]&lt;/code&gt; 感觉很不方便。</target>
+        </trans-unit>
+        <trans-unit id="be87eb63b17c07d23faf558d201b11e61486e392" translate="yes" xml:space="preserve">
+          <source>Why is char[] preferred over String for passwords</source>
+          <target state="translated">为什么Char[]比String更适合做密码?</target>
+        </trans-unit>
+        <trans-unit id="96c058528af12a3ec3c0a6a4356b9a336391a6da" translate="yes" xml:space="preserve">
+          <source>With a &lt;em&gt;character array&lt;/em&gt;, you can read the password, finish working with it as soon as you can, and then immediately change the contents.</source>
+          <target state="translated">使用&lt;em&gt;字符数组&lt;/em&gt; ，您可以读取密码，尽快完成使用密码，然后立即更改内容。</target>
+        </trans-unit>
+        <trans-unit id="252e94464c28d121b2ac7065cfdc63317b907d6d" translate="yes" xml:space="preserve">
+          <source>With an array, you can explicitly wipe the data after you're done with it. You can overwrite the array with anything you like, and the password won't be present anywhere in the system, even before garbage collection.</source>
+          <target state="translated">使用数组,你可以在完成后明确地擦除数据。你可以用任何你喜欢的东西覆盖数组,而且密码在系统中的任何地方都不会出现,甚至在垃圾回收之前也不会出现。</target>
+        </trans-unit>
+        <trans-unit id="7b2e2713e36f214c8c2b0f0732ccc93580279e73" translate="yes" xml:space="preserve">
+          <source>With the character array, the contents of the array can be modified or erased once the purpose of the password is served. The original contents of the array will not be found in memory after it is modified and even before the garbage collection kicks in.</source>
+          <target state="translated">有了字符数组,一旦密码的目的达到后,数组的内容可以被修改或擦除。数组的原始内容在被修改后,甚至在垃圾回收启动之前,都不会在内存中找到。</target>
+        </trans-unit>
+        <trans-unit id="5e436ad0706341ed15fd79a042f530dfaa544abb" translate="yes" xml:space="preserve">
+          <source>Your software has to be overly paranoid to prevent data leaks with the attacker gaining access to the hardware - using things like &lt;a href=&quot;http://en.wikipedia.org/wiki/TrueCrypt&quot;&gt;TrueCrypt&lt;/a&gt; (discontinued), &lt;a href=&quot;https://veracrypt.codeplex.com/&quot;&gt;VeraCrypt&lt;/a&gt;, or &lt;a href=&quot;https://ciphershed.org/&quot;&gt;CipherShed&lt;/a&gt;.</source>
+          <target state="translated">您的软件必须过于偏执，以防止攻击者获得对硬件的访问权，从而导致数据泄漏-使用&lt;a href=&quot;http://en.wikipedia.org/wiki/TrueCrypt&quot;&gt;TrueCrypt&lt;/a&gt; （已停产）， &lt;a href=&quot;https://veracrypt.codeplex.com/&quot;&gt;VeraCrypt&lt;/a&gt;或&lt;a href=&quot;https://ciphershed.org/&quot;&gt;CipherShed之类的东西&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="6006f436777ec8eee5cc060e91d43457b96b5534" translate="yes" xml:space="preserve">
+          <source>Your target system may be badly configured or you have to assume it is and you have to be paranoid about core dumps (can be valid if the systems are not managed by an administrator).</source>
+          <target state="translated">你的目标系统可能配置很差,或者你必须假设是这样的,你必须对核心转储(如果系统不是由管理员管理,可能是有效的)。</target>
+        </trans-unit>
+        <trans-unit id="f47a56647d19f0875be1a2557456e6f93d01cc5b" translate="yes" xml:space="preserve">
+          <source>when run</source>
+          <target state="translated">运行时</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="htmlbody" original="https://stackoverflow.com/questions/661561">
+    <body>
+      <group id="661561">
+        <trans-unit id="06e8f5916a582a85868630f3154c466f7fc04910" translate="yes" xml:space="preserve">
+          <source>&quot;serviceGUI()&quot; is a GUI level method within the form (this) that can change as many controls as you want. Call &quot;updateGUI()&quot; from the other thread. Parameters can be added to pass values, or (probably faster) use class scope variables with locks on them as required if there is any possibility of a clash between threads accessing them that could cause instability.  Use BeginInvoke instead of Invoke if the non-GUI thread is time critical (keeping Brian Gideon's warning in mind).</source>
+          <target state="translated">&quot;serviceGUI()&quot;-это метод уровня GUI внутри формы (этой),который может изменить столько элементов управления,сколько вы захотите.Вызов &quot;updateGUI()&quot; из другого потока.Параметры могут быть добавлены в передаваемые значения,или (возможно,быстрее)использовать переменные класса scope с блокировками по мере необходимости,если существует возможность столкновения между потоками,обращающимися к ним,что может привести к нестабильности.Используйте BeginInvoke вместо Invoke,если не GUI-поток является критичным по времени (имея в виду предупреждение Брайана Гидеона).</target>
+        </trans-unit>
+        <trans-unit id="ef8ec856c4ab1a77f14b563ee4ef56d73621c6ac" translate="yes" xml:space="preserve">
+          <source>(The code is typed here out of my head, so I haven't checked for correct syntax, etc., but it should get you going.)</source>
+          <target state="translated">(Код набран здесь из моей головы,так что я не проверил правильный синтаксис и т.д.,но это должно заставить вас начать).</target>
+        </trans-unit>
+        <trans-unit id="0b9d4de19ed62632e2e708a5b3d176bf82f4ae93" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.tasks.task.aspx&quot;&gt;Task&lt;/a&gt; instead of &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.thread.aspx&quot;&gt;Thread&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.tasks.task.aspx&quot;&gt;Задача&lt;/a&gt; вместо &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.thread.aspx&quot;&gt;темы&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="a035d2e7e3c891ee830ddcb57bb2ffe98c02f4e3" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.tasks.taskcreationoptions.aspx&quot;&gt;TaskCreationOptions.LongRunning&lt;/a&gt; that hints to do not queue the task into &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.threadpool.aspx&quot;&gt;ThreadPool&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.tasks.taskcreationoptions.aspx&quot;&gt;TaskCreationOptions.LongRunning,&lt;/a&gt; который намекает не ставить задачу в очередь в &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.threadpool.aspx&quot;&gt;ThreadPool&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="79df28c45d995623e2b44da7f9e393555db0ba13" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156513.aspx&quot;&gt;async&lt;/a&gt; keyword, that allows to use &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156528.aspx&quot;&gt;await&lt;/a&gt; which in turn prevent the event handler from reaching the completion state till the task finished and in the meantime doesn't block the UI thread.</source>
+          <target state="translated">Ключевое слово &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156513.aspx&quot;&gt;async&lt;/a&gt; , которое позволяет использовать &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156528.aspx&quot;&gt;await,&lt;/a&gt; что, в свою очередь, препятствует достижению обработчиком события состояния завершения до завершения задачи и в то же время не блокирует поток пользовательского интерфейса.</target>
+        </trans-unit>
+        <trans-unit id="b25bb1684a5a528e8195bd99abb1e1bd38903c79" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Main Code (put this inside of your form's class code):&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Основной код (поместите его в код класса вашей формы):&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2003baf2e128c2d5d838f3388dd29fde682d6122" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Some argumentation&lt;/strong&gt;: Usually it is bad for code readability to put {} after an &lt;code&gt;if ()&lt;/code&gt; statement in one line. But in this case it is routine all-the-same &quot;mantra&quot;. It doesn't break code readability if this method is consistent over the project. And it saves your code from littering (one line of code instead of five).</source>
+          <target state="translated">&lt;strong&gt;Некоторые аргументы&lt;/strong&gt; . Обычно читаемость кода плохо ставить {} после оператора &lt;code&gt;if ()&lt;/code&gt; в одну строку. Но в данном случае это обычная все та же &amp;laquo;мантра&amp;raquo;. Это не нарушает читабельность кода, если этот метод согласован в проекте. И это спасает ваш код от мусора (одна строка кода вместо пяти).</target>
+        </trans-unit>
+        <trans-unit id="18c4f89ccd64d4745a0ce358a66f7450a781b0a3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;THAT is IT&lt;/strong&gt;.</source>
+          <target state="translated">&lt;strong&gt;ЭТО ЭТО&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="e71411d3df4fe0bd35c4b498343bf90c08652137" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;UPDATE 05/10/2010:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;ОБНОВЛЕНИЕ 05/10/2010:&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="86a9fd4506d2f1904c60a22271b325d8665578a8" translate="yes" xml:space="preserve">
+          <source>And so, I can now update the display with one line, from anywhere in the entire program in the manner which you think it would work without any threading:</source>
+          <target state="translated">И так,теперь я могу обновить дисплей одной строкой,из любой точки всей программы так,как вы думаете,она будет работать без каких-либо потоков:</target>
+        </trans-unit>
+        <trans-unit id="92eb0cd81eb0849be1e04dcb26e19c8969ffeb0e" translate="yes" xml:space="preserve">
+          <source>And the delegate can update a Label on the GUI:</source>
+          <target state="translated">И делегат может обновить этикетку на графическом интерфейсе:</target>
+        </trans-unit>
+        <trans-unit id="31cf02132c161d997ad0904997ef28bbf25cf885" translate="yes" xml:space="preserve">
+          <source>As you see &lt;code&gt;if(InvokeRequired) {something long}&lt;/code&gt; you just know &quot;this function is safe to call from another thread&quot;.</source>
+          <target state="translated">Как вы видите, &lt;code&gt;if(InvokeRequired) {something long}&lt;/code&gt; вы просто знаете &quot;эта функция безопасна для вызова из другого потока&quot;.</target>
+        </trans-unit>
+        <trans-unit id="4a35af3462ca25779e2ead4d564c4eae67de2e9a" translate="yes" xml:space="preserve">
+          <source>Asynchronous implementation of an event handler (Yes, that's all):</source>
+          <target state="translated">Асинхронная реализация обработчика событий (Да,это все):</target>
+        </trans-unit>
+        <trans-unit id="8b1c94f495b755cc182cea3bf12cd2fb5c4f86b6" translate="yes" xml:space="preserve">
+          <source>Because of the triviality of the scenario I would actually have the UI thread poll for the status. I think you will find that it can be quite elegant.</source>
+          <target state="translated">Из-за тривиальности сценария я бы на самом деле имел UI поток опрос для статуса.Я думаю,вы поймете,что это может быть довольно элегантно.</target>
+        </trans-unit>
+        <trans-unit id="a5e64b95b0c01be281f2ccfdf82bae3b8f9af418" translate="yes" xml:space="preserve">
+          <source>Call it like this:</source>
+          <target state="translated">Называй это так:</target>
+        </trans-unit>
+        <trans-unit id="b6a6569e280e9bf50679b2e7fdfde8cef142de82" translate="yes" xml:space="preserve">
+          <source>Calling &lt;code&gt;Invoke&lt;/code&gt; on the worker thread is a blocking call. It will temporarily halt the work being done in that thread.</source>
+          <target state="translated">Вызов &lt;code&gt;Invoke&lt;/code&gt; в рабочем потоке является блокирующим вызовом. Это временно остановит работу, выполняемую в этой теме.</target>
+        </trans-unit>
+        <trans-unit id="97eb2b24ef99f5fc0403791b5825f6c4dddd3dda" translate="yes" xml:space="preserve">
+          <source>Create a class variable:</source>
+          <target state="translated">Создайте переменную класса:</target>
+        </trans-unit>
+        <trans-unit id="6130f4f9231c1b4bf96ddf7abe1635202ab486a4" translate="yes" xml:space="preserve">
+          <source>Don't be confused with &lt;code&gt;Thread(() =&amp;gt; .....)&lt;/code&gt;. I use an anonymous function or lambda expression when I work on a thread. To reduce the lines of code you can use the &lt;code&gt;ThreadStart(..)&lt;/code&gt; method too which I am not supposed to explain here.</source>
+          <target state="translated">Не путайте с &lt;code&gt;Thread(() =&amp;gt; .....)&lt;/code&gt; . Я использую анонимную функцию или лямбда-выражение, когда я работаю над потоком. Чтобы уменьшить количество строк кода, вы также можете использовать метод &lt;code&gt;ThreadStart(..)&lt;/code&gt; который я не должен здесь объяснять.</target>
+        </trans-unit>
+        <trans-unit id="a0acb89cb85cc4e8876d890aa4ed05b9e360f129" translate="yes" xml:space="preserve">
+          <source>Finally, on .NET 4.5 and up you can also use &lt;code&gt;Progress&amp;lt;T&amp;gt;&lt;/code&gt; (which basically captures &lt;code&gt;SynchronizationContext.Current&lt;/code&gt; upon its creation) as demonstrated by &lt;a href=&quot;https://stackoverflow.com/a/18033198/67824&quot;&gt;Ryszard Dżegan's&lt;/a&gt; for cases where the long-running operation needs to run UI code while still working.</source>
+          <target state="translated">Наконец, в .NET 4.5 и более &lt;a href=&quot;https://stackoverflow.com/a/18033198/67824&quot;&gt;поздних версиях&lt;/a&gt; вы также можете использовать &lt;code&gt;Progress&amp;lt;T&amp;gt;&lt;/code&gt; (который в основном захватывает &lt;code&gt;SynchronizationContext.Current&lt;/code&gt; при его создании), как это продемонстрировал Ryszard Dżegan, для случаев, когда при длительной операции необходимо запускать код пользовательского интерфейса во время работы.</target>
+        </trans-unit>
+        <trans-unit id="ec398c7a3d79e8c67608a9ce86eab350611e8846" translate="yes" xml:space="preserve">
+          <source>Fire and forget extension method for .NET 3.5+</source>
+          <target state="translated">Метод расширения Fire and forget для .NET 3.5+</target>
+        </trans-unit>
+        <trans-unit id="2e35b1fb8ba3d7e2dd21da213a139491ce2a4046" translate="yes" xml:space="preserve">
+          <source>For .NET 2.0, here's a nice bit of code I wrote that does exactly what you want, and works for any property on a &lt;code&gt;Control&lt;/code&gt;:</source>
+          <target state="translated">Для .NET 2.0, вот хороший фрагмент кода, который я написал, который делает именно то, что вы хотите, и работает для любого свойства элемента &lt;code&gt;Control&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="2beba6e59821c8a1127e2df78047c54d33830c4f" translate="yes" xml:space="preserve">
+          <source>For .NET 3.0 you should use this code:</source>
+          <target state="translated">Для .NET 3.0 следует использовать этот код:</target>
+        </trans-unit>
+        <trans-unit id="98dff10044987f5f2e03ce583b305d872fa344ec" translate="yes" xml:space="preserve">
+          <source>For &lt;strong&gt;WinForms&lt;/strong&gt;:</source>
+          <target state="translated">Для &lt;strong&gt;WinForms&lt;/strong&gt; :</target>
+        </trans-unit>
+        <trans-unit id="56bbfb092f2e4518b7c0ee804f7a1dd641583300" translate="yes" xml:space="preserve">
+          <source>For a function that has arguments:</source>
+          <target state="translated">Для функции,у которой есть аргументы:</target>
+        </trans-unit>
+        <trans-unit id="1b7c73ed1ea910b060aaea933548856fef7a9a25" translate="yes" xml:space="preserve">
+          <source>For a more verbose examples see: &lt;a href=&quot;http://channel9.msdn.com/Events/TechEd/Australia/Tech-Ed-Australia-2011/DEV411&quot;&gt;The Future of C#: Good things come to those who 'await'&lt;/a&gt; by &lt;a href=&quot;http://www.linkedin.com/in/albahari&quot;&gt;Joseph Albahari&lt;/a&gt;.</source>
+          <target state="translated">Более подробные примеры см .: &lt;a href=&quot;http://channel9.msdn.com/Events/TechEd/Australia/Tech-Ed-Australia-2011/DEV411&quot;&gt;&amp;laquo;Будущее C #&amp;raquo;: хорошие вещи приходят к тем, кто &amp;laquo;ждет&amp;raquo;&lt;/a&gt; &lt;a href=&quot;http://www.linkedin.com/in/albahari&quot;&gt;Джозефа Албахари&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="6904a474c24d10e266026cccdd06550753898a0a" translate="yes" xml:space="preserve">
+          <source>For example, access a control other than in the current thread:</source>
+          <target state="translated">Например,доступ к элементам управления,не входящим в текущий поток:</target>
+        </trans-unit>
+        <trans-unit id="059c3e8cce263b2945a18ac90b2637e10a8026b1" translate="yes" xml:space="preserve">
+          <source>For example:</source>
+          <target state="translated">Например:</target>
+        </trans-unit>
+        <trans-unit id="faf13e57945a7572c6f9e83ad1f17bafee632f3d" translate="yes" xml:space="preserve">
+          <source>For many purposes it's as simple as this:</source>
+          <target state="translated">Для многих целей это так просто:</target>
+        </trans-unit>
+        <trans-unit id="3b2e156fbe1d1b92baf603cda3f080390c5c043f" translate="yes" xml:space="preserve">
+          <source>For no arguments:</source>
+          <target state="translated">Без аргументов:</target>
+        </trans-unit>
+        <trans-unit id="997bf8d685345ddc24ee54a5b37af9603b7393b0" translate="yes" xml:space="preserve">
+          <source>Handling exceptions</source>
+          <target state="translated">Обработка исключений</target>
+        </trans-unit>
+        <trans-unit id="cc36938e8dad96fe3d3b7f2b4f5f92c96a7453c7" translate="yes" xml:space="preserve">
+          <source>Handling long work</source>
+          <target state="translated">Выполнение длительной работы</target>
+        </trans-unit>
+        <trans-unit id="c8f223d1c487f7583dd813f1ecc75eddaba6910a" translate="yes" xml:space="preserve">
+          <source>Hence I added the runtime checks to ensure that the passed-in property does actually belong to the &lt;code&gt;Control&lt;/code&gt; that the method's being called on. Not perfect, but still a lot better than the .NET 2.0 version.</source>
+          <target state="translated">Поэтому я добавил проверки во время выполнения, чтобы убедиться, что переданное свойство действительно принадлежит элементу &lt;code&gt;Control&lt;/code&gt; , к которому вызывается метод. Не идеально, но все же намного лучше, чем версия .NET 2.0.</target>
+        </trans-unit>
+        <trans-unit id="91e5087eaf54fef1ea7de0b2cc2c05ec2df6078a" translate="yes" xml:space="preserve">
+          <source>How could I do that?</source>
+          <target state="translated">Как я мог это сделать?</target>
+        </trans-unit>
+        <trans-unit id="4f9b3d0143e673c727a6b3bca332d46bae2e97c3" translate="yes" xml:space="preserve">
+          <source>How do I update the GUI from another thread</source>
+          <target state="translated">Как обновить графический интерфейс из другого потока</target>
+        </trans-unit>
+        <trans-unit id="e30cbf94521432af2759b5116a560d2c9047e2d2" translate="yes" xml:space="preserve">
+          <source>I am yet to find out what the above line means, but it works.</source>
+          <target state="translated">Мне еще предстоит выяснить,что означает вышеуказанная линия,но она работает.</target>
+        </trans-unit>
+        <trans-unit id="d75f4c8516e085079c2b37c9d22d6534ebf9b1bb" translate="yes" xml:space="preserve">
+          <source>I feed my forms that get updated by another thread with an instance of this &lt;strong&gt;ThreadSafeGuiCommand&lt;/strong&gt;, and I define methods that update the GUI (in my Form) like this:</source>
+          <target state="translated">Я передаю свои формы, которые обновляются другим потоком, экземпляром этого &lt;strong&gt;ThreadSafeGuiCommand&lt;/strong&gt; , и я определяю методы, которые обновляют графический интерфейс (в моей форме) следующим образом:</target>
+        </trans-unit>
+        <trans-unit id="b3e97b17cf9ba388b9d642a6a1c3fcdebc54d0c2" translate="yes" xml:space="preserve">
+          <source>I have a &lt;code&gt;Form&lt;/code&gt; running on &lt;code&gt;thread1&lt;/code&gt;, and from that I'm starting another thread (&lt;code&gt;thread2&lt;/code&gt;).</source>
+          <target state="translated">У меня есть &lt;code&gt;Form&lt;/code&gt; работающая на &lt;code&gt;thread1&lt;/code&gt; , и с этого я &lt;code&gt;thread2&lt;/code&gt; другой поток ( thread2 ).</target>
+        </trans-unit>
+        <trans-unit id="673c3233f31fc8161d1b8335bf93aed55c89f33d" translate="yes" xml:space="preserve">
+          <source>I have a &lt;strong&gt;WPF&lt;/strong&gt; application and have defined a worker as below:</source>
+          <target state="translated">У меня есть приложение &lt;strong&gt;WPF,&lt;/strong&gt; и я определил работника, как показано ниже:</target>
+        </trans-unit>
+        <trans-unit id="0a0d08ab211012a7374ff01f309c22ef8996d5d1" translate="yes" xml:space="preserve">
+          <source>I have a dialog form called &lt;code&gt;form_Diagnostics,&lt;/code&gt; which has a richtext box, called &lt;code&gt;updateDiagWindow,&lt;/code&gt; which I am using as a sort of logging display.  I needed to be able to update its text from all threads. The extra lines allow the window to automatically scroll to the newest lines.</source>
+          <target state="translated">У меня есть диалоговая форма с именем &lt;code&gt;form_Diagnostics,&lt;/code&gt; которая имеет поле richtext, называемое &lt;code&gt;updateDiagWindow,&lt;/code&gt; которое я использую в качестве своего рода отображения журнала. Мне нужно было иметь возможность обновить его текст из всех тем. Дополнительные строки позволяют окну автоматически прокручиваться до самых новых строк.</target>
+        </trans-unit>
+        <trans-unit id="132fe4097141f95bb8edf31f41595d41d8bbe0f0" translate="yes" xml:space="preserve">
+          <source>I just read the answers and this appears to be a very hot topic. I'm currently using .NET 3.5 SP1 and Windows Forms.</source>
+          <target state="translated">Я только что прочитал ответы,и это кажется очень актуальной темой.В настоящее время я использую .NET 3.5 SP1 и Windows Forms.</target>
+        </trans-unit>
+        <trans-unit id="f7e90bc70333188d650eb16c562d30a498ce44cb" translate="yes" xml:space="preserve">
+          <source>If anyone has any further suggestions on how to improve this code for compile-time safety, please comment!</source>
+          <target state="translated">Если у кого-нибудь есть дальнейшие предложения по улучшению этого кода для безопасности во время компиляции,пожалуйста,прокомментируйте!</target>
+        </trans-unit>
+        <trans-unit id="289fd35c9b61e17d98149973f29b477c011f5190" translate="yes" xml:space="preserve">
+          <source>If the user closes the form just before &lt;code&gt;this.Invoke&lt;/code&gt; is called (remember, &lt;code&gt;this&lt;/code&gt; is the &lt;code&gt;Form&lt;/code&gt; object), an &lt;code&gt;ObjectDisposedException&lt;/code&gt; will be likely fired.</source>
+          <target state="translated">Если пользователь закрывает форму непосредственно перед &lt;code&gt;this.Invoke&lt;/code&gt; (помните, что &lt;code&gt;this&lt;/code&gt; объект &lt;code&gt;Form&lt;/code&gt; ), скорее всего, будет запущено исключение ObjectDisposedException .</target>
+        </trans-unit>
+        <trans-unit id="12ac3feffdf8fef0f3c58110db30508567a1b86d" translate="yes" xml:space="preserve">
+          <source>If you're using .NET 3.0 or above, you could rewrite the above method as an extension method of the &lt;code&gt;Control&lt;/code&gt; class, which would then simplify the call to:</source>
+          <target state="translated">Если вы используете .NET 3.0 или выше, вы можете переписать указанный выше метод как метод расширения класса &lt;code&gt;Control&lt;/code&gt; , что упростит вызов:</target>
+        </trans-unit>
+        <trans-unit id="02404b5453ff580641d38103cb594dc85397418b" translate="yes" xml:space="preserve">
+          <source>Implementation of the second thread that notifies the UI thread:</source>
+          <target state="translated">Реализация второго потока,который уведомляет поток пользовательского интерфейса:</target>
+        </trans-unit>
+        <trans-unit id="f87ff8dd949c92969afc3406bf77ce811681cb41" translate="yes" xml:space="preserve">
+          <source>In order to do this, you'll have to Invoke the event-handler instead of calling it directly.</source>
+          <target state="translated">Чтобы сделать это,вам придется вызвать обработчика событий,а не звонить ему напрямую.</target>
+        </trans-unit>
+        <trans-unit id="4bc79a4a1bcef7705ee83799ec4eecbba2db8fff" translate="yes" xml:space="preserve">
+          <source>In order to easily raise events this way, I've created an extension method, which allows me to simplify raising an event by just calling:</source>
+          <target state="translated">Для того,чтобы легко поднимать события таким образом,я создал метод расширения,который позволяет мне упростить поднятие события,просто позвонив:</target>
+        </trans-unit>
+        <trans-unit id="b830d14884e12014b9fbbb1b8c12c03362e347d8" translate="yes" xml:space="preserve">
+          <source>In order to make sure that the code above works with Windows Forms and WPF, and all other platforms, you can have a look at the &lt;code&gt;AsyncOperation&lt;/code&gt;, &lt;code&gt;AsyncOperationManager&lt;/code&gt; and &lt;code&gt;SynchronizationContext&lt;/code&gt; classes.</source>
+          <target state="translated">Чтобы убедиться, что приведенный выше код работает с Windows Forms и WPF и всеми другими платформами, вы можете взглянуть на &lt;code&gt;AsyncOperation&lt;/code&gt; , &lt;code&gt;AsyncOperationManager&lt;/code&gt; и &lt;code&gt;SynchronizationContext&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="2bafa3bcbde8b11dd6f6f8474aefd0328f29bcfe" translate="yes" xml:space="preserve">
+          <source>In this way I'm quite sure that I will have my GUI updated whatever thread will make the call, optionally waiting for a well-defined amount of time (the timeout).</source>
+          <target state="translated">Таким образом,я вполне уверен,что мой GUI будет обновляться независимо от того,какой поток будет звонить,опционально ожидая определенного количества времени (таймаута).</target>
+        </trans-unit>
+        <trans-unit id="276b67ef3fc2886fd07cc136f0032509ab969c9c" translate="yes" xml:space="preserve">
+          <source>Issue:</source>
+          <target state="translated">Issue:</target>
+        </trans-unit>
+        <trans-unit id="5c09f5610595c3681b6b9f8f860e90814d3912f2" translate="yes" xml:space="preserve">
+          <source>It adds null-checking to the result of the &quot;as MemberExpression&quot;.</source>
+          <target state="translated">Он добавляет нулевую проверку к результату &quot;как MemberExpression&quot;.</target>
+        </trans-unit>
+        <trans-unit id="1b357f202ac6a997dd222e67afc35f9fc43181a2" translate="yes" xml:space="preserve">
+          <source>It improves the static type-safety.</source>
+          <target state="translated">Улучшает статическую защиту типа.</target>
+        </trans-unit>
+        <trans-unit id="2049dc7e0c56277861206c459256923e73eae66d" translate="yes" xml:space="preserve">
+          <source>Make a delegate like this:</source>
+          <target state="translated">Сделай такого делегата:</target>
+        </trans-unit>
+        <trans-unit id="056232f0995be14e2c690931206e0b7768bc0410" translate="yes" xml:space="preserve">
+          <source>Make sure you do not call &lt;code&gt;BeginInvoke&lt;/code&gt; too frequently or it could overrun the message pump.</source>
+          <target state="translated">Убедитесь, что вы не вызываете &lt;code&gt;BeginInvoke&lt;/code&gt; слишком часто, иначе он может переполнить насос сообщений.</target>
+        </trans-unit>
+        <trans-unit id="95fbbc35d31bba9e8d7c5dfc4ef99aabafcb4a88" translate="yes" xml:space="preserve">
+          <source>Most of the other answers are a little complex for me on this question (I'm new to C#), so I am writing mine:</source>
+          <target state="translated">Большинство других ответов на этот вопрос немного сложны для меня (я новичок в C#),поэтому я пишу свой:</target>
+        </trans-unit>
+        <trans-unit id="51e734044597a111c1f012c920b2b3988f90701f" translate="yes" xml:space="preserve">
+          <source>My version is to insert &lt;strong&gt;one line&lt;/strong&gt; of recursive &quot;mantra&quot;:</source>
+          <target state="translated">Моя версия - вставить &lt;strong&gt;одну строку&lt;/strong&gt; рекурсивной &amp;laquo;мантры&amp;raquo;:</target>
+        </trans-unit>
+        <trans-unit id="2558a11cabafcc1fceb617a3bb2f29ff0e2d092a" translate="yes" xml:space="preserve">
+          <source>None of the Invoke stuff in the previous answers is necessary.</source>
+          <target state="translated">Ничего из того,что было в предыдущих ответах,не нужно.</target>
+        </trans-unit>
+        <trans-unit id="fdf42dcb4fbc864cb93f4aafe738399a8c2b9a1b" translate="yes" xml:space="preserve">
+          <source>Not only is the property name now checked at compile time, the property's type is as well, so it's impossible to (for example) assign a string value to a boolean property, and hence cause a runtime exception.</source>
+          <target state="translated">При компиляции проверяется не только имя свойства,но и его тип,поэтому невозможно (например)присвоить строковое значение булеву свойству,и,следовательно,вызвать исключение во время выполнения.</target>
+        </trans-unit>
+        <trans-unit id="f8785b60684e9800ab98a1dc1bf249b101f93460" translate="yes" xml:space="preserve">
+          <source>Note that &lt;code&gt;BeginInvoke()&lt;/code&gt; is preferred over &lt;code&gt;Invoke()&lt;/code&gt; because it's less likely to cause deadlocks (however, this is not an issue here when just assigning text to a label):</source>
+          <target state="translated">Обратите внимание, что &lt;code&gt;BeginInvoke()&lt;/code&gt; предпочтительнее, чем &lt;code&gt;Invoke()&lt;/code&gt; потому что он с меньшей вероятностью вызывает взаимные блокировки (однако, это не проблема здесь, когда просто назначаете текст метке):</target>
+        </trans-unit>
+        <trans-unit id="3b46560eddc4c2f341e378a4c3cff35634afa23f" translate="yes" xml:space="preserve">
+          <source>Note that on .NET 4.0 and up you should really be using tasks for async operations. See &lt;a href=&quot;https://stackoverflow.com/a/23596503/67824&quot;&gt;n-san's&lt;/a&gt; answer for the equivalent task-based approach (using &lt;code&gt;TaskScheduler.FromCurrentSynchronizationContext&lt;/code&gt;).</source>
+          <target state="translated">Обратите внимание, что в .NET 4.0 и выше вы действительно должны использовать задачи для асинхронных операций. Смотрите ответ &lt;a href=&quot;https://stackoverflow.com/a/23596503/67824&quot;&gt;n-san&lt;/a&gt; для эквивалентного подхода на основе задач (используя &lt;code&gt;TaskScheduler.FromCurrentSynchronizationContext&lt;/code&gt; ).</target>
+        </trans-unit>
+        <trans-unit id="8103dd89abcff6d3327db6c01953b9066dbdc3d4" translate="yes" xml:space="preserve">
+          <source>Note that the code above will not work on WPF projects, since WPF controls do not implement the &lt;code&gt;ISynchronizeInvoke&lt;/code&gt; interface.</source>
+          <target state="translated">Обратите внимание, что приведенный выше код не будет работать в проектах WPF, поскольку элементы управления WPF не реализуют интерфейс &lt;code&gt;ISynchronizeInvoke&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="c771f07cef7313574a9235981615ab2f7d9d44ab" translate="yes" xml:space="preserve">
+          <source>Notice that &lt;code&gt;Invoke&lt;/code&gt; blocks execution until it completes--this is synchronous code. The question doesn't ask about asynchronous code, but there is lots of &lt;a href=&quot;https://stackoverflow.com/search?q=c%23+await+async+pattern&quot;&gt;content on Stack Overflow&lt;/a&gt; about writing asynchronous code when you want to learn about it.</source>
+          <target state="translated">Обратите внимание, что &lt;code&gt;Invoke&lt;/code&gt; блокирует выполнение до его завершения - это синхронный код. Вопрос не касается асинхронного кода, но &lt;a href=&quot;https://stackoverflow.com/search?q=c%23+await+async+pattern&quot;&gt;в Stack Overflow&lt;/a&gt; содержится много информации о написании асинхронного кода, когда вы хотите узнать о нем.</target>
+        </trans-unit>
+        <trans-unit id="0a1c8d08a9994e288f56b821c9bf285da6f45d73" translate="yes" xml:space="preserve">
+          <source>Notice the following:</source>
+          <target state="translated">Обратите внимание на следующее:</target>
+        </trans-unit>
+        <trans-unit id="d16a100a5358238efcfc9836314ca5968079b253" translate="yes" xml:space="preserve">
+          <source>Of course, you can also make use of the BackGroundWorker class, which will abstract this matter for you.</source>
+          <target state="translated">Конечно,вы также можете воспользоваться классом BackGroundWorker,в котором для вас будет рассмотрен этот вопрос.</target>
+        </trans-unit>
+        <trans-unit id="66466dd59f9ceb2a8b17064a55b074d3b8c714ae" translate="yes" xml:space="preserve">
+          <source>One final thing, be sure to set the &lt;code&gt;WorkerReportsProgress&lt;/code&gt; flag, or the &lt;code&gt;ReportProgress&lt;/code&gt; method will be completely ignored.</source>
+          <target state="translated">И последнее: не забудьте установить флаг &lt;code&gt;WorkerReportsProgress&lt;/code&gt; , &lt;code&gt;ReportProgress&lt;/code&gt; метод ReportProgress будет полностью проигнорирован.</target>
+        </trans-unit>
+        <trans-unit id="12d48e80773109c8f6b741f7df399cd3845e0c23" translate="yes" xml:space="preserve">
+          <source>Optional stuff:
+Personally I came up coding the following:</source>
+          <target state="translated">Необязательные вещи:Лично я придумал кодировку следующего:</target>
+        </trans-unit>
+        <trans-unit id="100c1db1be5b773c9c74b97faae9575686f93549" translate="yes" xml:space="preserve">
+          <source>Or use Action delegate instead:</source>
+          <target state="translated">Или используйте вместо этого делегата Action:</target>
+        </trans-unit>
+        <trans-unit id="b61328bc36dfc2cefe53b2d82b151660926a54f0" translate="yes" xml:space="preserve">
+          <source>Otherwise, the original is a very nice solution.</source>
+          <target state="translated">В противном случае,оригинал-очень хорошее решение.</target>
+        </trans-unit>
+        <trans-unit id="23f14e23058aa2b641c25cfbb0f02248fbc6d917" translate="yes" xml:space="preserve">
+          <source>Progress class (see &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/hh138298.aspx&quot;&gt;IProgress Interface&lt;/a&gt;) that supports &lt;a href=&quot;http://en.wikipedia.org/wiki/Separation_of_concerns&quot;&gt;Separation of Concerns (SoC)&lt;/a&gt; design principle and doesn't require explicit dispatcher and invoking. It uses the current &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.synchronizationcontext.aspx&quot;&gt;SynchronizationContext&lt;/a&gt; from its creation place (here the UI thread).</source>
+          <target state="translated">Класс Progress (см. &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/hh138298.aspx&quot;&gt;Интерфейс IProgress&lt;/a&gt; ), поддерживающий принцип разработки &lt;a href=&quot;http://en.wikipedia.org/wiki/Separation_of_concerns&quot;&gt;Разделение проблем (SoC)&lt;/a&gt; и не требующий явного диспетчера и вызова. Он использует текущий &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.threading.synchronizationcontext.aspx&quot;&gt;SynchronizationContext&lt;/a&gt; из своего места создания (здесь поток пользовательского интерфейса).</target>
+        </trans-unit>
+        <trans-unit id="abdfeb8d9e9f9912b938c6b48378c1505d318136" translate="yes" xml:space="preserve">
+          <source>Salvete! Having searched for this question, I found the answers by &lt;em&gt;FrankG&lt;/em&gt; and &lt;em&gt;Oregon Ghost&lt;/em&gt; to be the easiest most useful to me. Now, I code in Visual Basic and ran this snippet through a convertor; so I'm not sure quite how it turns out.</source>
+          <target state="translated">Salvete! &lt;em&gt;Поискав&lt;/em&gt; этот вопрос, я обнаружил, что ответы &lt;em&gt;FrankG&lt;/em&gt; и &lt;em&gt;Oregon Ghost&lt;/em&gt; были самыми &lt;em&gt;простыми&lt;/em&gt; и полезными для меня. Теперь я кодирую в Visual Basic и запускаю этот фрагмент через конвертер; так что я не совсем уверен, как это получается.</target>
+        </trans-unit>
+        <trans-unit id="7365313197e7145513a48d71144c6b3db82f7f9d" translate="yes" xml:space="preserve">
+          <source>See also about &lt;a href=&quot;https://stackoverflow.com/a/19023209/2042090&quot;&gt;UI Threading Model&lt;/a&gt; concept.</source>
+          <target state="translated">Смотрите также о концепции &lt;a href=&quot;https://stackoverflow.com/a/19023209/2042090&quot;&gt;UI Threading Model&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="2f6c77a6fa91a9c251ca66971241fa23e5e5b7c3" translate="yes" xml:space="preserve">
+          <source>See here for a comparison of the two: &lt;a href=&quot;https://stackoverflow.com/questions/1167771/methodinvoker-vs-action-for-control-begininvoke&quot;&gt;MethodInvoker vs Action for Control.BeginInvoke&lt;/a&gt;</source>
+          <target state="translated">Смотрите здесь для сравнения двух: &lt;a href=&quot;https://stackoverflow.com/questions/1167771/methodinvoker-vs-action-for-control-begininvoke&quot;&gt;MethodInvoker vs Action for Control.BeginInvoke&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="40fd68e2415e8732c933a74161b6c77553357df7" translate="yes" xml:space="preserve">
+          <source>Set it in the constructor that creates your UI:</source>
+          <target state="translated">Установите его в конструкторе,который создает ваш пользовательский интерфейс:</target>
+        </trans-unit>
+        <trans-unit id="52f38ef8f878567d18c1a45521f930ba910e3908" translate="yes" xml:space="preserve">
+          <source>Short and clean code written in sequential manner without callbacks and explicit threads.</source>
+          <target state="translated">Короткий и чистый код,написанный последовательно,без обратных вызовов и явных потоков.</target>
+        </trans-unit>
+        <trans-unit id="3467985a31de5bca2f25c74837931bdba0251217" translate="yes" xml:space="preserve">
+          <source>Simply use something like this:</source>
+          <target state="translated">Просто используй что-нибудь вроде этого:</target>
+        </trans-unit>
+        <trans-unit id="36b786dba50cd33fdb52fcf04106f6a18d10f580" translate="yes" xml:space="preserve">
+          <source>Since &lt;a href=&quot;https://en.wikipedia.org/wiki/C_Sharp_%28programming_language%29#Versions&quot;&gt;.NET 4.5 and C# 5.0&lt;/a&gt; you should use &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/hh873175.aspx&quot;&gt;&lt;strong&gt;Task-based Asynchronous Pattern (TAP)&lt;/strong&gt;&lt;/a&gt; along with &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156513.aspx&quot;&gt;&lt;strong&gt;async&lt;/strong&gt;&lt;/a&gt;-&lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156528.aspx&quot;&gt;&lt;strong&gt;await&lt;/strong&gt;&lt;/a&gt; keywords &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/hh873175.aspx&quot;&gt;&lt;strong&gt;&lt;em&gt;in all areas&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt; (including the GUI):</source>
+          <target state="translated">Начиная с &lt;a href=&quot;https://en.wikipedia.org/wiki/C_Sharp_%28programming_language%29#Versions&quot;&gt;.NET 4.5 и C # 5.0,&lt;/a&gt; вы должны использовать &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/hh873175.aspx&quot;&gt;&lt;strong&gt;Асинхронный шаблон на основе задач (TAP)&lt;/strong&gt;&lt;/a&gt; вместе с &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156513.aspx&quot;&gt;&lt;strong&gt;асинхронными&lt;/strong&gt;&lt;/a&gt; - &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/vstudio/hh156528.aspx&quot;&gt;&lt;strong&gt;ожидать&lt;/strong&gt;&lt;/a&gt; ключевые слова &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/hh873175.aspx&quot;&gt;&lt;strong&gt;&lt;em&gt;во всех областях&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt; (включая GUI):</target>
+        </trans-unit>
+        <trans-unit id="4190ac35a0d65d8420cd953993197fee2c185752" translate="yes" xml:space="preserve">
+          <source>Solution:</source>
+          <target state="translated">Solution:</target>
+        </trans-unit>
+        <trans-unit id="b0adad1a41f59dfd023426181ac2ee9bbb1e5c3c" translate="yes" xml:space="preserve">
+          <source>TAP is the recommended asynchronous design pattern for new development</source>
+          <target state="translated">TAP является рекомендуемым образцом асинхронного проектирования для новых разработок.</target>
+        </trans-unit>
+        <trans-unit id="1027d988d679bf8e554c1732eadd813bbc690bca" translate="yes" xml:space="preserve">
+          <source>That's fine if you always want to update the same field. If you've got more complicated updates to make, you could define a class to represent the UI state and pass it to the ReportProgress method.</source>
+          <target state="translated">Это нормально,если ты всегда хочешь обновить одно и то же поле.Если у вас есть более сложные обновления,вы можете определить класс для представления состояния UI и передать его в метод ReportProgress.</target>
+        </trans-unit>
+        <trans-unit id="39161d34d01cd3bf75ecfbcbc1975fbc70a5af52" translate="yes" xml:space="preserve">
+          <source>The &lt;strong&gt;InvokeRequired&lt;/strong&gt; property, as described &lt;a href=&quot;http://msdn.microsoft.com/it-it/library/system.windows.forms.control.invokerequired(v=vs.90).aspx&quot;&gt;here (Control.InvokeRequired Property reference to MSDN)&lt;/a&gt; returns true if the call was made from a thread that is not the GUI thread, false either if the call was made from the GUI thread, or if the &lt;strong&gt;Handle&lt;/strong&gt; was not created yet.</source>
+          <target state="translated">Свойство &lt;strong&gt;InvokeRequired&lt;/strong&gt; , как описано &lt;a href=&quot;http://msdn.microsoft.com/it-it/library/system.windows.forms.control.invokerequired(v=vs.90).aspx&quot;&gt;здесь (ссылка на свойство Control.InvokeRequired для MSDN),&lt;/a&gt; возвращает true, если вызов был сделан из потока, который не является потоком GUI, или false, если вызов был сделан из потока GUI, или если &lt;strong&gt;Handle&lt;/strong&gt; был еще не создано.</target>
+        </trans-unit>
+        <trans-unit id="756201256fb178cf21491ba3265438d3a68f743b" translate="yes" xml:space="preserve">
+          <source>The &lt;strong&gt;simplest&lt;/strong&gt; way is an anonymous method passed into &lt;a href=&quot;https://msdn.microsoft.com/en-us/library/zyzhdc6b(v=vs.110).aspx&quot;&gt;&lt;code&gt;Label.Invoke&lt;/code&gt;&lt;/a&gt;:</source>
+          <target state="translated">Самый &lt;strong&gt;простой&lt;/strong&gt; способ - это анонимный метод, переданный в &lt;a href=&quot;https://msdn.microsoft.com/en-us/library/zyzhdc6b(v=vs.110).aspx&quot;&gt; &lt;code&gt;Label.Invoke&lt;/code&gt; &lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="8fa8a0ac6dd3403c4ef0c36c1588c7afcb068c73" translate="yes" xml:space="preserve">
+          <source>The UI and worker threads remain loosely coupled as opposed to the &lt;code&gt;Control.Invoke&lt;/code&gt; or &lt;code&gt;Control.BeginInvoke&lt;/code&gt; approach which tightly couples them.</source>
+          <target state="translated">Пользовательский интерфейс и рабочие потоки остаются слабо связанными, в отличие от подхода &lt;code&gt;Control.Invoke&lt;/code&gt; или &lt;code&gt;Control.BeginInvoke&lt;/code&gt; , который тесно связывает их.</target>
+        </trans-unit>
+        <trans-unit id="df6e6c4bb5a7f46ea2cacf1ae0fcd0a3a35bd7dd" translate="yes" xml:space="preserve">
+          <source>The UI thread gets to dictate when and how often the UI gets updated.</source>
+          <target state="translated">Поток пользовательского интерфейса должен диктовать,когда и как часто пользовательский интерфейс будет обновляться.</target>
+        </trans-unit>
+        <trans-unit id="47d01262caa2797c54cc31cd37be606cc13b9d94" translate="yes" xml:space="preserve">
+          <source>The UI thread will not impede the progress of the worker thread.</source>
+          <target state="translated">Нить пользовательского интерфейса не будет препятствовать продвижению рабочей нити.</target>
+        </trans-unit>
+        <trans-unit id="81b51d5dd17beeed7cda13dc3eeee333fe995292" translate="yes" xml:space="preserve">
+          <source>The approach avoids the marshaling operation required when using the &lt;code&gt;ISynchronizeInvoke.Invoke&lt;/code&gt; and &lt;code&gt;ISynchronizeInvoke.BeginInvoke&lt;/code&gt; methods. There is nothing wrong with using the marshaling technique, but there are a couple of caveats you need to be aware of.</source>
+          <target state="translated">Этот подход позволяет избежать операции маршалинга, необходимой при использовании методов &lt;code&gt;ISynchronizeInvoke.Invoke&lt;/code&gt; и &lt;code&gt;ISynchronizeInvoke.BeginInvoke&lt;/code&gt; . Нет ничего плохого в использовании техники маршалинга, но есть несколько предостережений, о которых нужно знать.</target>
+        </trans-unit>
+        <trans-unit id="79b47f9f0987822dc91f8dd482d9c5e991f3d35e" translate="yes" xml:space="preserve">
+          <source>The below snippet is an example of how to handle exceptions and toggle button's &lt;code&gt;Enabled&lt;/code&gt; property to prevent multiple clicks during background execution.</source>
+          <target state="translated">Приведенный ниже фрагмент кода является примером того, как обрабатывать исключения и свойство &lt;code&gt;Enabled&lt;/code&gt; кнопки переключения, чтобы предотвратить многократные щелчки во время фонового выполнения.</target>
+        </trans-unit>
+        <trans-unit id="e015ca7a822ecdf8f0e3421ccd4f5df68686553a" translate="yes" xml:space="preserve">
+          <source>The compiler will fail if the user passes the wrong data type.</source>
+          <target state="translated">Компилятор не справится,если пользователь передаст неверный тип данных.</target>
+        </trans-unit>
+        <trans-unit id="8567ff643886c694396f9e4a9d0c0d1211b1e19c" translate="yes" xml:space="preserve">
+          <source>The easiest way I think:</source>
+          <target state="translated">Самый простой способ:</target>
+        </trans-unit>
+        <trans-unit id="b39707b1e5e242357e99cdebdf24e5add3a9e092" translate="yes" xml:space="preserve">
+          <source>The intervals at which the UI and worker threads perform operations can remain independent.</source>
+          <target state="translated">Интервалы,через которые пользовательский и рабочий потоки выполняют операции,могут оставаться независимыми.</target>
+        </trans-unit>
+        <trans-unit id="55abdac7d630f4990d136d5aa079d215cae4975d" translate="yes" xml:space="preserve">
+          <source>The simple solution is to use &lt;code&gt;Control.Invoke&lt;/code&gt;.</source>
+          <target state="translated">Простое решение - использовать &lt;code&gt;Control.Invoke&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="697cecf0765f8d870b9a2135694b6c3743b72472" translate="yes" xml:space="preserve">
+          <source>The solution is to use &lt;code&gt;SynchronizationContext&lt;/code&gt;, specifically &lt;code&gt;SynchronizationContext.Current&lt;/code&gt; as &lt;a href=&quot;https://stackoverflow.com/a/21888091/67824&quot;&gt;hamilton.danielb&lt;/a&gt; suggests (other answers rely on specific &lt;code&gt;SynchronizationContext&lt;/code&gt; implementations which is completely unnecessary). I would slightly modify his code to use &lt;code&gt;SynchronizationContext.Post&lt;/code&gt; rather than &lt;code&gt;SynchronizationContext.Send&lt;/code&gt; though (as there's typically no need for the worker thread to wait):</source>
+          <target state="translated">Решение состоит в том, чтобы использовать &lt;code&gt;SynchronizationContext&lt;/code&gt; , в частности &lt;code&gt;SynchronizationContext.Current&lt;/code&gt; , как предлагает &lt;a href=&quot;https://stackoverflow.com/a/21888091/67824&quot;&gt;hamilton.danielb&lt;/a&gt; (другие ответы зависят от конкретных реализаций &lt;code&gt;SynchronizationContext&lt;/code&gt; , которые совершенно не нужны). Я бы немного изменил его код для использования &lt;code&gt;SynchronizationContext.Post&lt;/code&gt; , а не &lt;code&gt;SynchronizationContext.Send&lt;/code&gt; , хотя (поскольку обычно рабочему потоку не нужно ждать):</target>
+        </trans-unit>
+        <trans-unit id="b3f8d0f13fffd30bb077dcec3d38358ee933a1bb" translate="yes" xml:space="preserve">
+          <source>The strategy I propose in this answer reverses the communication roles of the threads. Instead of the worker thread pushing the data the UI thread polls for it. This a common pattern used in many scenarios. Since all you are wanting to do is display progress information from the worker thread then I think you will find that this solution is a great alternative to the marshaling solution. It has the following advantages.</source>
+          <target state="translated">Стратегия,которую я предлагаю в этом ответе,меняет коммуникационные роли нитей.Вместо того,чтобы рабочий поток толкает данные,поток пользовательского интерфейса опрашивает за него.Это обычный шаблон,используемый во многих сценариях.Поскольку все,что вы хотите сделать,это отображать информацию о прогрессе от рабочего потока,то я думаю,что это решение является отличной альтернативой для решения маршала.Оно имеет следующие преимущества.</target>
+        </trans-unit>
+        <trans-unit id="e2bf2df106b88f13d3a763d19ed8cd2c16ab6024" translate="yes" xml:space="preserve">
+          <source>The vast majority of answers use &lt;code&gt;Control.Invoke&lt;/code&gt; which is a &lt;a href=&quot;https://stackoverflow.com/a/7480544/67824&quot;&gt;race condition waiting to happen&lt;/a&gt;. For example, consider the accepted answer:</source>
+          <target state="translated">Подавляющее большинство ответов использует &lt;code&gt;Control.Invoke&lt;/code&gt; , который является состоянием &lt;a href=&quot;https://stackoverflow.com/a/7480544/67824&quot;&gt;гонки, ожидающим&lt;/a&gt; своего появления. Например, рассмотрим принятый ответ:</target>
+        </trans-unit>
+        <trans-unit id="604d10e37bd6af9f02cf2c7b04e768daa803e87b" translate="yes" xml:space="preserve">
+          <source>The well-known formula greatly described in the previous answers that makes use of the &lt;strong&gt;InvokeRequired&lt;/strong&gt; property covers most of the cases, but not the entire pool.</source>
+          <target state="translated">Хорошо известная формула, в значительной степени описанная в предыдущих ответах и ​​использующая свойство &lt;strong&gt;InvokeRequired,&lt;/strong&gt; охватывает большинство случаев, но не весь пул.</target>
+        </trans-unit>
+        <trans-unit id="890683f7e44a47f2e3e262a17effcf44679d2e5d" translate="yes" xml:space="preserve">
+          <source>The worker thread cannot dominate the time the UI thread spends updating.</source>
+          <target state="translated">Рабочая нить не может доминировать во времени,когда поток пользовательского интерфейса проводит обновление.</target>
+        </trans-unit>
+        <trans-unit id="24c15df597a8d91320fbb037c4c52d1c2ac1d46d" translate="yes" xml:space="preserve">
+          <source>The worker thread cannot overrun the UI thread's message pump.</source>
+          <target state="translated">Рабочая резьба не может выходить за пределы коммуникационного насоса резьбы пользовательского интерфейса.</target>
+        </trans-unit>
+        <trans-unit id="e403b384ca605c89f5c9fda03bc185ce21b30ae6" translate="yes" xml:space="preserve">
+          <source>Then in the UI you need to cross threads to change the actual control... like a label or a progress bar.</source>
+          <target state="translated">Затем в пользовательском интерфейсе необходимо перекрестить резьбу,чтобы изменить фактическое управление...как этикетка или индикатор выполнения.</target>
+        </trans-unit>
+        <trans-unit id="4aa5926b4ce72b26fddea8c5290a922f2a8c4579" translate="yes" xml:space="preserve">
+          <source>Then you can chain your tasks so that when the result is ready then another task (which is scheduled on the UI thread) picks it and assigns it to a label.</source>
+          <target state="translated">Затем вы можете связать ваши задачи так,что когда результат будет готов,другая задача (которая запланирована в потоке пользовательского интерфейса)выберет ее и назначит на метку.</target>
+        </trans-unit>
+        <trans-unit id="b493d42db3d0b22ec3d0ca66af71edce5ca57b85" translate="yes" xml:space="preserve">
+          <source>Then, the recommended solution for new development is:</source>
+          <target state="translated">Тогда,рекомендуемое решение для новой разработки:</target>
+        </trans-unit>
+        <trans-unit id="30f7e9ddf06f0e7aa560f115e09993fdf9cf8354" translate="yes" xml:space="preserve">
+          <source>There the &lt;code&gt;lblThreshold&lt;/code&gt; is a Label and &lt;code&gt;Speed_Threshold&lt;/code&gt; is a global variable.</source>
+          <target state="translated">Там &lt;code&gt;lblThreshold&lt;/code&gt; является меткой , а &lt;code&gt;Speed_Threshold&lt;/code&gt; является глобальной переменной.</target>
+        </trans-unit>
+        <trans-unit id="d8b1a4d114196a3469d1f751f037104143e931e4" translate="yes" xml:space="preserve">
+          <source>This actually caused some of our released software to hang. It was easy enough to fix by replacing &lt;code&gt;Invoke()&lt;/code&gt; with &lt;code&gt;BeginInvoke()&lt;/code&gt;. Unless you have a need for synchronous operation, which may be the case if you need a return value, use &lt;code&gt;BeginInvoke()&lt;/code&gt;.</source>
+          <target state="translated">Это фактически привело к зависанию некоторых из наших выпущенных программ. Это было достаточно легко исправить, заменив &lt;code&gt;Invoke()&lt;/code&gt; на &lt;code&gt;BeginInvoke()&lt;/code&gt; . Если вам не нужна синхронная операция, которая может иметь место, если вам нужно возвращаемое значение, используйте &lt;code&gt;BeginInvoke()&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="9e65e8d671f84a6a2a146ac8452477f963671d53" translate="yes" xml:space="preserve">
+          <source>This can be called using the following line of code:</source>
+          <target state="translated">Это может быть вызвано следующей строкой кода:</target>
+        </trans-unit>
+        <trans-unit id="5a253bbb5583b45b0a67f50671c842577192f9a8" translate="yes" xml:space="preserve">
+          <source>This can cause an &lt;strong&gt;InvalidOperationException&lt;/strong&gt; if the operations before the label's update &quot;take less time&quot; (read it and interpret it as a simplification) than the time it takes for the GUI thread to create the &lt;strong&gt;Form&lt;/strong&gt;'s &lt;strong&gt;Handle&lt;/strong&gt;. This happens within the &lt;strong&gt;ShowDialog()&lt;/strong&gt; method.</source>
+          <target state="translated">Это может вызвать &lt;strong&gt;InvalidOperationException,&lt;/strong&gt; если операции перед обновлением метки &amp;laquo;занимают меньше времени&amp;raquo; (читайте его и интерпретируйте как упрощение), чем время, необходимое потоку GUI для создания &lt;strong&gt;дескриптора формы&lt;/strong&gt; . Это происходит внутри метода &lt;strong&gt;ShowDialog ()&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="9371b80c5f5586fe1db295b43782ca3a487a2159" translate="yes" xml:space="preserve">
+          <source>This in my C# 3.0 variation of Ian Kemp's solution:</source>
+          <target state="translated">Это в моем C#3.0 варианте решения Иэна Кемпа:</target>
+        </trans-unit>
+        <trans-unit id="36837b3159c884b81f190c3ee515db09b2793b97" translate="yes" xml:space="preserve">
+          <source>This is the classic way you should do this:</source>
+          <target state="translated">Это классический способ:</target>
+        </trans-unit>
+        <trans-unit id="69600c6f800be4b97d0cb2581b0ac02d97900218" translate="yes" xml:space="preserve">
+          <source>This one is similar to the solution above using .NET Framework 3.0, but it solved the issue of &lt;strong&gt;compile-time safety support&lt;/strong&gt;.</source>
+          <target state="translated">Это похоже на решение выше с использованием .NET Framework 3.0, но оно решило проблему &lt;strong&gt;обеспечения безопасности во время компиляции&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="fa62c9094cf0e45a7e4a6063b5094a87f058c4c6" translate="yes" xml:space="preserve">
+          <source>This works for tasks (not threads) which are the &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/dd460717.aspx&quot;&gt;preferred way of writing concurrent code now&lt;/a&gt;.</source>
+          <target state="translated">Это работает для задач (не потоков), которые сейчас являются &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/dd460717.aspx&quot;&gt;предпочтительным способом написания параллельного кода&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="7f96cff712f63bde79316d19b692dfc592274706" translate="yes" xml:space="preserve">
+          <source>Threading code is often buggy and always hard to test. You don't need to write threading code to update the user interface from a background task. Just use the &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker.aspx&quot;&gt;BackgroundWorker&lt;/a&gt; class to run the task and its &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/a3zbdb1t.aspx&quot;&gt;ReportProgress&lt;/a&gt; method to update the user interface. Usually, you just report a percentage complete, but there's another overload that includes a state object. Here's an example that just reports a string object:</source>
+          <target state="translated">Потоковый код часто глючит и всегда трудно проверить. Вам не нужно писать многопоточный код для обновления пользовательского интерфейса из фоновой задачи. Просто используйте класс &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker.aspx&quot;&gt;BackgroundWorker&lt;/a&gt; для запуска задачи и его метод &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/a3zbdb1t.aspx&quot;&gt;ReportProgress&lt;/a&gt; для обновления пользовательского интерфейса. Обычно вы просто сообщаете, что процент выполнения завершен, но есть еще одна перегрузка, которая включает объект состояния. Вот пример, который просто сообщает о строковом объекте:</target>
+        </trans-unit>
+        <trans-unit id="4e2995652eca6ee4618bdd8e0460a24c8da67b5b" translate="yes" xml:space="preserve">
+          <source>To use:</source>
+          <target state="translated">Для использования:</target>
+        </trans-unit>
+        <trans-unit id="855a24afe57fcde7916916da3235b6566b77bbd3" translate="yes" xml:space="preserve">
+          <source>Try to refresh the label using this</source>
+          <target state="translated">Попробуйте обновить этикетку с помощью этого</target>
+        </trans-unit>
+        <trans-unit id="7ddd9dbab79025d426f64387b0d83c755b5e4e8e" translate="yes" xml:space="preserve">
+          <source>Unfortunately this doesn't stop anyone from doing stupid things such as passing in another &lt;code&gt;Control&lt;/code&gt;'s property and value, so the following will happily compile:</source>
+          <target state="translated">К сожалению, это не мешает никому делать глупости, такие как передача свойства и значения другого &lt;code&gt;Control&lt;/code&gt; , поэтому следующие компоненты будут успешно скомпилированы:</target>
+        </trans-unit>
+        <trans-unit id="4bddb850ecf801bcf903bcdac2f98cb8c731daf3" translate="yes" xml:space="preserve">
+          <source>Variation of &lt;a href=&quot;https://stackoverflow.com/questions/661561/how-to-update-the-gui-from-another-thread-in-c/661662#661662&quot;&gt;Marc Gravell's &lt;strong&gt;simplest&lt;/strong&gt; solution&lt;/a&gt; for .NET 4:</source>
+          <target state="translated">Вариация &lt;a href=&quot;https://stackoverflow.com/questions/661561/how-to-update-the-gui-from-another-thread-in-c/661662#661662&quot;&gt;&lt;strong&gt;простейшего&lt;/strong&gt; решения Марка Гравелла&lt;/a&gt; для .NET 4:</target>
+        </trans-unit>
+        <trans-unit id="93d59e4fac4a61382bde7634c1bf5fd82eeda470" translate="yes" xml:space="preserve">
+          <source>What if the &lt;strong&gt;Handle&lt;/strong&gt; has not been created yet?</source>
+          <target state="translated">Что, если &lt;strong&gt;дескриптор&lt;/strong&gt; еще не создан?</target>
+        </trans-unit>
+        <trans-unit id="39694840820e4b8992cae49492d54071f31619cc" translate="yes" xml:space="preserve">
+          <source>When I encountered the same issue I sought help from Google, but rather than give me a simple solution it confused me more by giving examples of &lt;code&gt;MethodInvoker&lt;/code&gt; and blah blah blah. So I decided to solve it on my own. Here is my solution:</source>
+          <target state="translated">Когда я столкнулся с той же проблемой, я обратился за помощью к Google, но вместо того, чтобы дать мне простое решение, он больше смутил меня, приведя примеры &lt;code&gt;MethodInvoker&lt;/code&gt; и бла-бла-бла. Поэтому я решил решить это самостоятельно. Вот мое решение:</target>
+        </trans-unit>
+        <trans-unit id="117b5c3090e1de4904d1018be2cb9656af1f384a" translate="yes" xml:space="preserve">
+          <source>When using &lt;code&gt;Invoke()&lt;/code&gt; you are waiting for the method to return. Now, it may be that you do something in the invoked code that will need to wait for the thread, which may not be immediately obvious if it's buried in some functions that you are calling, which itself may happen indirectly via event handlers. So you would be waiting for the thread, the thread would be waiting for you and you are deadlocked.</source>
+          <target state="translated">При использовании &lt;code&gt;Invoke()&lt;/code&gt; вы ожидаете возврата метода. Теперь может случиться так, что вы делаете что-то в вызываемом коде, который должен будет ожидать поток, что может быть неочевидно, если он скрыт в некоторых вызываемых вами функциях, что само по себе может происходить косвенно через обработчики событий. Таким образом, вы будете ждать нити, нить будет ждать вас, и вы зашли в тупик.</target>
+        </trans-unit>
+        <trans-unit id="ace168a0655e9650d03a6eb7281a0176d46125fb" translate="yes" xml:space="preserve">
+          <source>When you want to update the label:</source>
+          <target state="translated">Когда вы хотите обновить этикетку:</target>
+        </trans-unit>
+        <trans-unit id="a6c30215367b2619abb1efd599355c95d38dc78a" translate="yes" xml:space="preserve">
+          <source>When you're in the UI thread you could ask it for its synchronization context task scheduler. It would give you a &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/dd997402%28v=vs.110%29.aspx&quot;&gt;TaskScheduler&lt;/a&gt; that schedules everything on the UI thread.</source>
+          <target state="translated">Когда вы находитесь в потоке пользовательского интерфейса, вы можете запросить у него планировщик задач контекста синхронизации. Это даст вам &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/dd997402%28v=vs.110%29.aspx&quot;&gt;TaskScheduler,&lt;/a&gt; который планирует все в потоке пользовательского интерфейса.</target>
+        </trans-unit>
+        <trans-unit id="aebd548c021054503461285e4f96d9292d440588" translate="yes" xml:space="preserve">
+          <source>Which is the simplest way to update a &lt;code&gt;Label&lt;/code&gt; from another &lt;code&gt;Thread&lt;/code&gt;?</source>
+          <target state="translated">Какой самый простой способ обновить &lt;code&gt;Label&lt;/code&gt; из другого &lt;code&gt;Thread&lt;/code&gt; ?</target>
+        </trans-unit>
+        <trans-unit id="ccf1cfc0ec51766294ead6f7014e102235b667c3" translate="yes" xml:space="preserve">
+          <source>While &lt;code&gt;thread2&lt;/code&gt; is processing some files I would like to update a &lt;code&gt;Label&lt;/code&gt; on the &lt;code&gt;Form&lt;/code&gt; with the current status of &lt;code&gt;thread2&lt;/code&gt;'s work.</source>
+          <target state="translated">Пока &lt;code&gt;thread2&lt;/code&gt; обрабатывает некоторые файлы, я хотел бы обновить &lt;code&gt;Label&lt;/code&gt; в &lt;code&gt;Form&lt;/code&gt; &lt;code&gt;thread2&lt;/code&gt; текущее состояние работы thread2 .</target>
+        </trans-unit>
+        <trans-unit id="276f0c42dd06946cd66deb4e508b2933d99f22b0" translate="yes" xml:space="preserve">
+          <source>You call it like this:</source>
+          <target state="translated">Ты называешь это так:</target>
+        </trans-unit>
+        <trans-unit id="eac883ef65248c488fbe272042c9115ef0e7f11b" translate="yes" xml:space="preserve">
+          <source>You can call this function in a new thread like this</source>
+          <target state="translated">Эту функцию можно вызывать в новом потоке,например</target>
+        </trans-unit>
+        <trans-unit id="8d8577637730eec0209d28a2bfab74ba363a6e8b" translate="yes" xml:space="preserve">
+          <source>You can come across an exception if you want to have a modal form shown and updated by another thread. Because you want that form shown modally, you could do the following:</source>
+          <target state="translated">Вы можете столкнуться с исключением,если хотите,чтобы модальная форма была показана и обновлена другим потоком.Так как вы хотите,чтобы форма отображалась модально,вы можете сделать следующее:</target>
+        </trans-unit>
+        <trans-unit id="b6fc7a97eadd36502f04ede9995f8c91e25f81aa" translate="yes" xml:space="preserve">
+          <source>You can do this by raising your event like this:</source>
+          <target state="translated">Ты можешь сделать это,подняв свое мероприятие так:</target>
+        </trans-unit>
+        <trans-unit id="64d8906876b7f8391b99d6ea381a03ebd72b23b2" translate="yes" xml:space="preserve">
+          <source>You can handle the operation to perform if the &lt;strong&gt;Handle&lt;/strong&gt; has not been created yet: You can just ignore the GUI update (like shown in the code above) or you can wait (more risky).
+This should answer the question.</source>
+          <target state="translated">Вы можете обработать операцию, которую нужно выполнить, если дескриптор еще не создан: вы можете просто проигнорировать обновление GUI (как показано в коде выше) или подождать (более рискованно). Это должно ответить на вопрос.</target>
+        </trans-unit>
+        <trans-unit id="743a055c3d5e093dfdde319126585293e865c2ba" translate="yes" xml:space="preserve">
+          <source>You may use the already-existing delegate &lt;code&gt;Action&lt;/code&gt;:</source>
+          <target state="translated">Вы можете использовать уже существующий делегат &lt;code&gt;Action&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="52dda13121e4647f295e6a6c0a7d8f0aa9581409" translate="yes" xml:space="preserve">
+          <source>You must use invoke and delegate</source>
+          <target state="translated">Вы должны использовать вызов и делегирование</target>
+        </trans-unit>
+        <trans-unit id="6f8c60526ff0287a0bfb1c1dc666f1119b1e1e4d" translate="yes" xml:space="preserve">
+          <source>You need to look at WindowsFormsSynchronizationContext:</source>
+          <target state="translated">Вам нужно взглянуть на WindowsFormsSynchronizationContext:</target>
+        </trans-unit>
+        <trans-unit id="f0a9572441b9e570c583b3d7d7241c210e0bc176" translate="yes" xml:space="preserve">
+          <source>You should also check for the &lt;strong&gt;Handle&lt;/strong&gt; like this:</source>
+          <target state="translated">Вы также должны проверить &lt;strong&gt;дескриптор&lt;/strong&gt; следующим образом:</target>
+        </trans-unit>
+        <trans-unit id="2ebe7f42a2e8f4ba3bd7b673b1baede123148e84" translate="yes" xml:space="preserve">
+          <source>You'll have to make sure that the update happens on the correct thread; the UI thread.</source>
+          <target state="translated">Вы должны убедиться,что обновление происходит в правильном потоке-потоке пользовательского интерфейса.</target>
+        </trans-unit>
+        <trans-unit id="45a682c62de33d9b5b3ebe367b58c3b4d401d546" translate="yes" xml:space="preserve">
+          <source>You'll need to Invoke the method on the GUI thread. You can do that by calling Control.Invoke.</source>
+          <target state="translated">Вам нужно будет вызвать метод на потоке GUI.Вы можете сделать это,позвонив в Control.Invoke.</target>
+        </trans-unit>
+        <trans-unit id="ab978b0aa28912ee18d6dfd0c3ccd422c64d3e8d" translate="yes" xml:space="preserve">
+          <source>Your worker thread has an event. Your UI thread starts off another thread to do the work and hooks up that worker event so you can display the state of the worker thread.</source>
+          <target state="translated">У твоей рабочей нити есть событие.Ваша тема пользовательского интерфейса начинает другую тему для выполнения работы и перехватывает это событие,чтобы вы могли отобразить состояние рабочей темы.</target>
+        </trans-unit>
+        <trans-unit id="a4904d0772e515c0faa1d297969bae0f69b5dae3" translate="yes" xml:space="preserve">
+          <source>instead of &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/ms228963.aspx&quot;&gt;Asynchronous Programming Model (APM)&lt;/a&gt; and &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/wewwczdw.aspx&quot;&gt;Event-based Asynchronous Pattern (EAP)&lt;/a&gt; (the latter includes the &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker%28v=vs.95%29.aspx&quot;&gt;BackgroundWorker Class&lt;/a&gt;).</source>
+          <target state="translated">вместо модели &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/ms228963.aspx&quot;&gt;асинхронного программирования (APM)&lt;/a&gt; и &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/wewwczdw.aspx&quot;&gt;асинхронного шаблона на основе событий (EAP)&lt;/a&gt; (последний включает &lt;a href=&quot;http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker%28v=vs.95%29.aspx&quot;&gt;класс BackgroundWorker&lt;/a&gt; ).</target>
+        </trans-unit>
+        <trans-unit id="271f2b2b763ae88d25e8a52b1980ecf07d016741" translate="yes" xml:space="preserve">
+          <source>which uses LINQ and lambda expressions to allow much cleaner, simpler and safer syntax:</source>
+          <target state="translated">который использует LINQ и лямбда-выражения,чтобы обеспечить гораздо более чистый,простой и безопасный синтаксис:</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

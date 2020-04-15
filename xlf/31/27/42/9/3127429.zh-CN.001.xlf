@@ -1,0 +1,1364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/3127429">
+    <body>
+      <group id="3127429">
+        <trans-unit id="1f8742c489830fbb68ca2ba261bc508b53df7499" translate="yes" xml:space="preserve">
+          <source>&quot;this&quot; is all about scope. Every function has its own scope, and since everything in JS is an object, even a function can store some values into itself using &quot;this&quot;. OOP 101 teaches that &quot;this&quot; is only applicable to &lt;em&gt;instances&lt;/em&gt; of an object. Therefore, every-time a function executes, a new &quot;instance&quot; of that function has a new meaning of &quot;this&quot;.</source>
+          <target state="translated">&amp;ldquo;这&amp;rdquo;与范围有关。 每个函数都有自己的作用域，并且由于JS中的所有对象都是对象，所以即使一个函数也可以使用&amp;ldquo;此&amp;rdquo;将一些值存储到自身中。 OOP 101教导&amp;ldquo;此&amp;rdquo;仅适用于对象的&lt;em&gt;实例&lt;/em&gt; 。 因此，每次执行一个函数时，该函数的新&amp;ldquo;实例&amp;rdquo;就具有&amp;ldquo; this&amp;rdquo;的新含义。</target>
+        </trans-unit>
+        <trans-unit id="b087ac216caabb7017868b37aca9a9d6e2dc3acd" translate="yes" xml:space="preserve">
+          <source>&quot;this&quot; keyword is always dependant on the context of invocation. They are mentioned below.</source>
+          <target state="translated">&quot;this &quot;关键词总是取决于调用的上下文。下文中提到了这些关键词。</target>
+        </trans-unit>
+        <trans-unit id="f3a3f86fe5a29d3e243308285b4b562e5ee68cee" translate="yes" xml:space="preserve">
+          <source>&amp;hellip;by a direct call to &lt;code&gt;eval()&lt;/code&gt;
+ThisBinding is left unchanged; it is the same value as the ThisBinding of the calling execution context (&lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-10.4.2&quot;&gt;&amp;sect;10.4.2&lt;/a&gt; (2)(a)).</source>
+          <target state="translated">&amp;hellip;直接调用 &lt;code&gt;eval()&lt;/code&gt; ,此 Binding保持不变； 它与调用执行上下文的&lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-10.4.2&quot;&gt;ThisBinding&lt;/a&gt; （第10.4.2 （2）（a）节）的值相同。</target>
+        </trans-unit>
+        <trans-unit id="9cc3cef106ffb16fe471cb3389ab7a4426b808f0" translate="yes" xml:space="preserve">
+          <source>&amp;hellip;if not by a direct call to &lt;code&gt;eval()&lt;/code&gt;</source>
+          <target state="translated">&amp;hellip;如果不是通过直接调用 &lt;code&gt;eval()&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="51102ac175310aed1bea1f10200498ad1af008e5" translate="yes" xml:space="preserve">
+          <source>&amp;sect;15.1.2.1.1 defines what a direct call to &lt;code&gt;eval()&lt;/code&gt; is. Basically, &lt;code&gt;eval(...)&lt;/code&gt; is a direct call whereas something like &lt;code&gt;(0, eval)(...)&lt;/code&gt; or &lt;code&gt;var indirectEval = eval; indirectEval(...);&lt;/code&gt; is an indirect call to &lt;code&gt;eval()&lt;/code&gt;. See &lt;a href=&quot;https://stackoverflow.com/a/9107491/196844&quot;&gt;chuckj's answer&lt;/a&gt; to &lt;a href=&quot;https://stackoverflow.com/q/9107240/196844&quot;&gt;(1, eval)('this') vs eval('this') in JavaScript?&lt;/a&gt; and &lt;a href=&quot;http://dmitrysoshnikov.com/ecmascript/es5-chapter-2-strict-mode/#indirect-eval-call&quot;&gt;Dmitry Soshnikov&amp;rsquo;s ECMA-262-5 in detail. Chapter 2. Strict Mode.&lt;/a&gt; for when you might use an indirect &lt;code&gt;eval()&lt;/code&gt; call.</source>
+          <target state="translated">&amp;sect;15.1.2.1.1定义了对 &lt;code&gt;eval()&lt;/code&gt; 的直接调用。 基本上， &lt;code&gt;eval(...)&lt;/code&gt; 是直接调用，而类似 &lt;code&gt;(0, eval)(...)&lt;/code&gt; 或 &lt;code&gt;var indirectEval = eval; indirectEval(...);&lt;/code&gt; indirectEval（...）; 是对 &lt;code&gt;eval()&lt;/code&gt; 的间接调用。 看到&lt;a href=&quot;https://stackoverflow.com/a/9107491/196844&quot;&gt;chuckj对JavaScript中的&lt;/a&gt; &lt;a href=&quot;https://stackoverflow.com/q/9107240/196844&quot;&gt;（1，eval）（'this'）vs eval（'this'）&lt;/a&gt; 的回答 吗？ 和&lt;a href=&quot;http://dmitrysoshnikov.com/ecmascript/es5-chapter-2-strict-mode/#indirect-eval-call&quot;&gt;Dmitry Soshnikov的ECMA-262-5详细信息。&lt;/a&gt; 第2章严格模式。 当您可能使用间接 &lt;code&gt;eval()&lt;/code&gt; 调用时。</target>
+        </trans-unit>
+        <trans-unit id="d811f7b2b609ced44226e1cc0f2cc624eac9c4ae" translate="yes" xml:space="preserve">
+          <source>1. Initial global execution context</source>
+          <target state="translated">1.最初的全局执行背景</target>
+        </trans-unit>
+        <trans-unit id="a1fa3b35a9272755e31354f7d5e59caf11fa3cf1" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;http://bjorn.tipling.com/all-this&quot;&gt;Here&lt;/a&gt; is one good source of &lt;code&gt;this&lt;/code&gt; in &lt;code&gt;JavaScript&lt;/code&gt;.</source>
+          <target state="translated">&lt;a href=&quot;http://bjorn.tipling.com/all-this&quot;&gt;这&lt;/a&gt;是 &lt;code&gt;JavaScript&lt;/code&gt; 的一个很好的来源。</target>
+        </trans-unit>
+        <trans-unit id="b49c71fe77018d6aeff02cd966c9eb2f2def9fd9" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions&quot;&gt;Arrow functions&lt;/a&gt; (introduced in ECMA6) alter the scope of &lt;code&gt;this&lt;/code&gt;. See the existing canonical question, &lt;a href=&quot;https://stackoverflow.com/questions/34361379/arrow-function-vs-function-declaration-expressions-are-they-equivalent-exch&quot;&gt;Arrow function vs function declaration / expressions: Are they equivalent / exchangeable?&lt;/a&gt; for more information. But in short:</source>
+          <target state="translated">&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions&quot;&gt;箭头功能&lt;/a&gt; （在ECMA6中引入）改变了它的范围。 参见现有的规范问题， &lt;a href=&quot;https://stackoverflow.com/questions/34361379/arrow-function-vs-function-declaration-expressions-are-they-equivalent-exch&quot;&gt;箭头函数与函数声明/表达式：它们是否等效/可互换？&lt;/a&gt; 了解更多信息。 简而言之：</target>
+        </trans-unit>
+        <trans-unit id="7f751a15d113e0f9a8416dec1351c576d0282769" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-11.1.1&quot;&gt;&amp;sect;11.1.1&lt;/a&gt; The &lt;code&gt;this&lt;/code&gt; keyword</source>
+          <target state="translated">&lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-11.1.1&quot;&gt;&amp;sect;11.1.1this&lt;/a&gt;关键字</target>
+        </trans-unit>
+        <trans-unit id="424e6d7255bde2010b643c058d5b8f1d62241294" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;apply&lt;/code&gt; is almost the same as &lt;code&gt;call&lt;/code&gt; accept that it takes only two parameters: &lt;code&gt;thisArg&lt;/code&gt; and an array which contains the arguments to be passed to the function. So the above &lt;code&gt;call&lt;/code&gt; call can be translated to &lt;code&gt;apply&lt;/code&gt; like this:</source>
+          <target state="translated">&lt;code&gt;apply&lt;/code&gt; 几乎与 &lt;code&gt;call&lt;/code&gt; accept相同，它只接受两个参数： &lt;code&gt;thisArg&lt;/code&gt; 和一个包含要传递给函数的参数的数组。 因此，上述 &lt;code&gt;call&lt;/code&gt; 可以转换为如下 &lt;code&gt;apply&lt;/code&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="382d7e3908485b3ab834fd0e20e7a2a1529aef8b" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;bind&lt;/code&gt; is a brother of &lt;code&gt;call&lt;/code&gt; and &lt;code&gt;apply&lt;/code&gt;.  It is also a method inherited by all functions from the global &lt;code&gt;Function&lt;/code&gt; constructor in Javascript. The difference between &lt;code&gt;bind&lt;/code&gt; and &lt;code&gt;call&lt;/code&gt;/&lt;code&gt;apply&lt;/code&gt; is that both &lt;code&gt;call&lt;/code&gt; and &lt;code&gt;apply&lt;/code&gt; will actually invoke the function. &lt;code&gt;bind&lt;/code&gt;, on the other hand, returns a new function with the &lt;code&gt;thisArg&lt;/code&gt; and &lt;code&gt;arguments&lt;/code&gt; pre-set. Let's take an example to better understand this:</source>
+          <target state="translated">&lt;code&gt;bind&lt;/code&gt; 是 &lt;code&gt;call&lt;/code&gt; 和 &lt;code&gt;apply&lt;/code&gt; 的兄弟。 它也是所有函数从Javascript的全局 &lt;code&gt;Function&lt;/code&gt; 构造函数继承的方法。 &lt;code&gt;bind&lt;/code&gt; 和 &lt;code&gt;call&lt;/code&gt; / &lt;code&gt;apply&lt;/code&gt; 之间的区别在于， &lt;code&gt;call&lt;/code&gt; 和 &lt;code&gt;apply&lt;/code&gt; 都将实际调用该函数。 另一方面， &lt;code&gt;bind&lt;/code&gt; 返回一个带有 &lt;code&gt;thisArg&lt;/code&gt; 和 &lt;code&gt;arguments&lt;/code&gt; 预设的新函数。 让我们举个例子来更好地理解这一点：</target>
+        </trans-unit>
+        <trans-unit id="d372c94fc4d01f36f32e9424821af8fae90a6d1e" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;obj.foo()&lt;/code&gt; translates to &lt;code&gt;const temp = obj.foo; temp.call(obj);&lt;/code&gt; which means the arrow operator inside &lt;code&gt;foo&lt;/code&gt; will bind &lt;code&gt;obj&lt;/code&gt; to a new invisible function and return that new invisible function which is assigned to &lt;code&gt;b&lt;/code&gt;. &lt;code&gt;b()&lt;/code&gt; will work as it always has as &lt;code&gt;b.call(window)&lt;/code&gt; or &lt;code&gt;b.call(undefined)&lt;/code&gt; calling the new invisible function that &lt;code&gt;foo&lt;/code&gt; created. That invisible function ignores the &lt;code&gt;this&lt;/code&gt; passed into it and  passes &lt;code&gt;obj&lt;/code&gt; as objectForThis` to the arrow function.</source>
+          <target state="translated">&lt;code&gt;obj.foo()&lt;/code&gt; 转换为 &lt;code&gt;const temp = obj.foo; temp.call(obj);&lt;/code&gt; temp.call（obj）; 这意味着 &lt;code&gt;foo&lt;/code&gt; 中的箭头运算符会将 &lt;code&gt;obj&lt;/code&gt; 绑定到一个新的不可见函数，并返回分配给 &lt;code&gt;b&lt;/code&gt; 的那个新的不可见函数。 &lt;code&gt;b()&lt;/code&gt; 将像 &lt;code&gt;b.call(window)&lt;/code&gt; 或 &lt;code&gt;b.call(undefined)&lt;/code&gt; 一样调用 &lt;code&gt;foo&lt;/code&gt; 创建的新的不可见函数。 该不可见函数将忽略传递给它的 &lt;code&gt;this&lt;/code&gt; 并将 &lt;code&gt;obj&lt;/code&gt; 作为objectForThis`传递给arrow函数。</target>
+        </trans-unit>
+        <trans-unit id="cc4f263a38b1f6aedd93045cde762a01d7dc5a49" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;obj&lt;/code&gt; &amp;mdash; When calling a function on an object, ThisBinding is set to the object.</source>
+          <target state="translated">&lt;code&gt;obj&lt;/code&gt; &amp;mdash;在对象上调用函数时，ThisBinding设置为该对象。</target>
+        </trans-unit>
+        <trans-unit id="107d6e7f7fb924b5dc3445b4c08dd5f9aaa0aaa7" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;this&lt;/code&gt; can be used to refer to the object being created</source>
+          <target state="translated">&lt;code&gt;this&lt;/code&gt; 可以用来指代正在创建的对象</target>
+        </trans-unit>
+        <trans-unit id="c811f8b7269bca9f651630faab87a3c3f3e35ac4" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;this&lt;/code&gt; helps to get the current object (a.k.a. execution context) we work with. If you understand in which object the current function is getting executed, you can understand easily what current &lt;code&gt;this&lt;/code&gt; is</source>
+          <target state="translated">&lt;code&gt;this&lt;/code&gt; 有助于获取我们正在使用的当前对象（也称为执行上下文）。 如果您了解当前功能正在哪个对象中执行，则可以轻松了解 &lt;code&gt;this&lt;/code&gt; 是什么当前状态</target>
+        </trans-unit>
+        <trans-unit id="b4aeb36a0b116d9deb56aa0b8774cb04edd881be" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;this&lt;/code&gt; in JavaScript always refers to the 'owner' of the function that is &lt;strong&gt;being executed&lt;/strong&gt;.</source>
+          <target state="translated">JavaScript中的 &lt;code&gt;this&lt;/code&gt; 始终是指&lt;strong&gt;所执行&lt;/strong&gt;函数的&amp;ldquo;所有者&amp;rdquo;。</target>
+        </trans-unit>
+        <trans-unit id="7c3f84f931c948a2cb7f1e59f0d6dfa830ab07b8" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;this&lt;/code&gt; is one of the misunderstood concept in JavaScript because it behaves little differently from place to place. Simply, &lt;code&gt;this&lt;/code&gt; refers to the &lt;strong&gt;&quot;owner&quot; of the function we are currently executing&lt;/strong&gt;.</source>
+          <target state="translated">&lt;code&gt;this&lt;/code&gt; 是JavaScript中一个被误解的概念之一，因为它的行为因地而异。 简单来说， &lt;code&gt;this&lt;/code&gt; 是指&lt;strong&gt;我们当前正在执行的函数&lt;/strong&gt;的&lt;strong&gt;&amp;ldquo;所有者&amp;rdquo;&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="13e02a751d5916a050a8b3dc4252bc2caca654cd" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;this&lt;/code&gt; would refer to the element object. But be careful, a lot of people make this mistake.</source>
+          <target state="translated">&lt;code&gt;this&lt;/code&gt; 将引用元素对象。 但是要小心，很多人都会犯这个错误。</target>
+        </trans-unit>
+        <trans-unit id="f5240944b8f27af27e4b000a78873eeedbe95583" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;this&lt;/code&gt;&lt;strong&gt;is not assigned a value&lt;/strong&gt; until an object invokes the function where it is defined. In the global scope, all global variables and functions are defined on the &lt;code&gt;window&lt;/code&gt; object. Therefore, &lt;code&gt;this&lt;/code&gt; in a global function refers to (and has the value of) the global &lt;code&gt;window&lt;/code&gt; object.</source>
+          <target state="translated">在对象调用定义它的函数之前，不会为它&lt;strong&gt;分配值&lt;/strong&gt; 。 在全局范围内，所有全局变量和函数都在 &lt;code&gt;window&lt;/code&gt; 对象上定义。 因此，全局函数中的 &lt;code&gt;this&lt;/code&gt; 引用全局 &lt;code&gt;window&lt;/code&gt; 对象（并具有其值）。</target>
+        </trans-unit>
+        <trans-unit id="2017743fc4e80e00beebfb42e3038d8fb7f5b026" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;window&lt;/code&gt; &amp;mdash; The marked line is evaluated in the initial global execution context.</source>
+          <target state="translated">&lt;code&gt;window&lt;/code&gt; &amp;mdash;在初始全局执行上下文中评估标记的行。</target>
+        </trans-unit>
+        <trans-unit id="f4be438a760254b14a91ab09c03d45c80ef71f1b" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Few places where &lt;code&gt;this&lt;/code&gt; can be differentiated&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;几个地方可以区分&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="09380dc0b6ee6bdf73de503a58ea18d71700e94d" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;I recommend to better try this in &lt;a href=&quot;http://jsfiddle.net/Mahesha999/xKtzC/8/embedded/html,js,result&quot;&gt;JSFiddle&lt;/a&gt;.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;我建议最好在&lt;a href=&quot;http://jsfiddle.net/Mahesha999/xKtzC/8/embedded/html,js,result&quot;&gt;JSFiddle中&lt;/a&gt;尝试一下 。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="89af8ce5b9c6ddaddba039f802cac788a61fd49a" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Since this thread has bumped up, I have compiled few points for readers new to &lt;code&gt;this&lt;/code&gt; topic.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;由于该主题的发展，我为刚接触 &lt;code&gt;this&lt;/code&gt; 主题的读者提供了几点建议。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="cf09c380c346a11478b95850016d50cc8b3825f2" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;To reveal the answers, mouse over the light yellow boxes.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;要显示答案，请将鼠标悬停在浅黄色框上。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="5ff1f9889e4b9c65093673c35d707361ce7a29d6" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;1. When used in global context&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;1.在全球范围内使用&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="1cb747759f0fbb0bff69036f9d6d60f4aa3fa28d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;2. When used inside object method&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;2.当在内部对象方法中使用时&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3a912f1682aefdda6a1d36527df19cad6af2400d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;3. When invoking context-less function&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;3.调用无上下文功能时&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="bc4963b484aa9c5ab6a24d462de6d79d10013299" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;4. When used inside constructor function&lt;/strong&gt;.</source>
+          <target state="translated">&lt;strong&gt;4.在构造函数内部使用时&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="1151d51ab92181c7cb05dad8e085d7369e1d980f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;5. When used inside function defined on prototype chain&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;5.在原型链上定义的内部函数中使用时&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b1836a9a4449c1ab65274d2b92c93146cbd04cfc" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;6. Inside call(), apply() and bind() functions&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;6.在call（），apply（）和bind（）函数内部&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a5eb140bea3b13dba943d1a806bc843988b98056" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;7. &lt;code&gt;this&lt;/code&gt; inside event handlers&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;7. &lt;code&gt;this&lt;/code&gt; 内部事件处理程序&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="e9d21ab1911b874d328796c84c4b427f924e6226" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;8. &lt;code&gt;this&lt;/code&gt; in ES6 arrow function&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;8. ES6中的箭头功能&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="718494e8c6739afd0ac4b8944ca72f98a1b42d96" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;fun.apply(obj1 [, argsArray])&lt;/code&gt;&lt;/strong&gt; Sets &lt;code&gt;obj1&lt;/code&gt; as the value of &lt;code&gt;this&lt;/code&gt; inside &lt;code&gt;fun()&lt;/code&gt; and calls &lt;code&gt;fun()&lt;/code&gt; passing elements of &lt;code&gt;argsArray&lt;/code&gt; as its arguments.</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;fun.apply(obj1 [, argsArray])&lt;/code&gt; &lt;/strong&gt; &lt;code&gt;obj1&lt;/code&gt; 设置为 &lt;code&gt;fun()&lt;/code&gt; 内部的 &lt;code&gt;this&lt;/code&gt; 值，并调用传递给 &lt;code&gt;argsArray&lt;/code&gt; 元素的 &lt;code&gt;fun()&lt;/code&gt; 作为其参数。</target>
+        </trans-unit>
+        <trans-unit id="9efe54b50d151a789da3c3d7e3f5f9c6142683ab" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;fun.bind(obj1 [, arg1 [, arg2 [,arg3 [, ...]]]])&lt;/code&gt;&lt;/strong&gt; - Returns the reference to the function &lt;code&gt;fun&lt;/code&gt; with &lt;code&gt;this&lt;/code&gt; inside fun bound to &lt;code&gt;obj1&lt;/code&gt; and parameters of &lt;code&gt;fun&lt;/code&gt; bound to the   parameters specified &lt;code&gt;arg1, arg2, arg3,...&lt;/code&gt;.</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;fun.bind(obj1 [, arg1 [, arg2 [,arg3 [, ...]]]])&lt;/code&gt; &lt;/strong&gt; -返回对该函数 &lt;code&gt;fun&lt;/code&gt; 的引用，其中 &lt;code&gt;this&lt;/code&gt; 内部fun绑定到 &lt;code&gt;obj1&lt;/code&gt; ，将 &lt;code&gt;fun&lt;/code&gt; 参数绑定到指定的 &lt;code&gt;arg1, arg2, arg3,...&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="2fa93f1be283db9398b00d14dcb4562d31a96a58" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;fun.call(obj1 [, arg1 [, arg2 [,arg3 [, ...]]]])&lt;/code&gt;&lt;/strong&gt; - Sets &lt;code&gt;obj1&lt;/code&gt; as the value of &lt;code&gt;this&lt;/code&gt; inside &lt;code&gt;fun()&lt;/code&gt; and calls &lt;code&gt;fun()&lt;/code&gt; passing &lt;code&gt;arg1, arg2, arg3, ...&lt;/code&gt; as its arguments.</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;fun.call(obj1 [, arg1 [, arg2 [,arg3 [, ...]]]])&lt;/code&gt; &lt;/strong&gt; -将 &lt;code&gt;obj1&lt;/code&gt; 设置 &lt;code&gt;this&lt;/code&gt; &lt;code&gt;fun()&lt;/code&gt; 的值，并通过 &lt;code&gt;arg1, arg2, arg3, ...&lt;/code&gt; 调用 &lt;code&gt;fun()&lt;/code&gt; 。 。作为其论点。</target>
+        </trans-unit>
+        <trans-unit id="418f0b4779a9d1418d184d2b02d0207c370e9e79" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;References:&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;References:&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="78d38ee0591e57aa045e4c0f056e77a623a22b30" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;DOM event this&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;DOM事件&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="0611618ab4bef86d4217dc74878abb5876ef1d1f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Everything else is syntactic sugar for &lt;code&gt;functionObject.call&lt;/code&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;其他所有内容都是 &lt;code&gt;functionObject.call&lt;/code&gt; 的语法糖&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="085e18e665d8e1d81d0ca5c6a9023f7d3da54da0" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;FUNCTION IS CALLED EXPLICITLY USING CALL AND APPLY METHODS.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;使用呼叫和应用方法明确调用功能。&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d75456f909e4fd7563b46975c382623f3dc3c8e9" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;FUNCTION IS CALLED WITH NEW KEYWORD&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;使用新关键字调用功能&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="1325e530872f52dae1b1e7bc729151d7fd17b95d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;For event handlers:&lt;/strong&gt; inline event handlers, such as &lt;code&gt;&amp;lt;element onclick=&quot;foo&quot;&amp;gt;&lt;/code&gt;, override any other handlers attached earlier and before, so be careful and it's better to stay off of inline event delegation at all.
+And thanks to Zara Alaverdyan who inspired me to this list of examples through a dissenting debate :)</source>
+          <target state="translated">&lt;strong&gt;对于事件处理程序：&lt;/strong&gt;内联事件处理程序（例如 &lt;code&gt;&amp;lt;element onclick=&quot;foo&quot;&amp;gt;&lt;/code&gt; ）会覆盖之前和之前附加的所有其他处理程序，因此请当心，最好不要使用内联事件委托。 感谢Zara Alaverdyan，他通过一次持异议的辩论启发了我列举了这些示例：)</target>
+        </trans-unit>
+        <trans-unit id="894baeb26ee211c848adbf141fef8ea332f2d512" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Global Context&lt;/strong&gt; (i.e. Outside all functions):</source>
+          <target state="translated">&lt;strong&gt;全局上下文&lt;/strong&gt; （即在所有功能之外）：</target>
+        </trans-unit>
+        <trans-unit id="168e0b60ab24edf5659b7603a5e6761ba4b78bc1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Global&lt;/strong&gt; (i.e. Outside all functions)</source>
+          <target state="translated">&lt;strong&gt;全局&lt;/strong&gt; （即在所有功能之外）</target>
+        </trans-unit>
+        <trans-unit id="a9b296c5fddc1bb4ff71359ff1b16bcabd27c0ee" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;HTML this&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;HTML本&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="917118becd0e6d67a05db3eed2df871405cda7a7" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;IF FUNCTION IS CALLED WITH OBJECT IMPLICITLY THEN THIS WILL BE BOUND TO THAT OBJECT&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;如果隐式调用了功能，则将其绑定到该对象&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2ba8db8e3f1fc0f64367058719c6e34521b6988c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;IN STRICT MODE THIS WILL BE UNDEFINED&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;在严格模式下，这将是不确定的&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6d0ea3429b59410b8f4d00a4cc84074280bda9ab" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Inside &quot;Bound Function&quot; Call&lt;/strong&gt; (i.e. a function that &lt;strong&gt;has been bound&lt;/strong&gt; by calling &lt;strong&gt;&lt;em&gt;functionName.bind&lt;/em&gt;&lt;/strong&gt;)</source>
+          <target state="translated">&lt;strong&gt;内部&amp;ldquo;绑定函数&amp;rdquo;调用&lt;/strong&gt; （即， &lt;strong&gt;已&lt;/strong&gt;通过调用&lt;strong&gt;&lt;em&gt;functionName.bind&lt;/em&gt;&lt;/strong&gt; &lt;strong&gt;绑定&lt;/strong&gt;的&lt;strong&gt;&lt;em&gt;函数&lt;/em&gt;&lt;/strong&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="173ec8ce03dcc96425b564f955f3e8db1cca03ff" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Inside &quot;Bound Function&quot; Call&lt;/strong&gt; (i.e. a function that has been bound by calling &lt;strong&gt;&lt;em&gt;functionName.bind&lt;/em&gt;&lt;/strong&gt;):</source>
+          <target state="translated">&lt;strong&gt;在&amp;ldquo;绑定函数&amp;rdquo;内部调用&lt;/strong&gt; （即已通过调用&lt;strong&gt;&lt;em&gt;functionName.bind&lt;/em&gt;&lt;/strong&gt;绑定的&lt;strong&gt;&lt;em&gt;函数&lt;/em&gt;&lt;/strong&gt; ）：</target>
+        </trans-unit>
+        <trans-unit id="3e875249daa0473a8fdf23ad502cdf3367b1cde8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Inside Direct &quot;Non Bound Function&quot; Call&lt;/strong&gt; (i.e. a function that has &lt;strong&gt;not been&lt;/strong&gt; bound by calling &lt;strong&gt;&lt;em&gt;functionName.bind&lt;/em&gt;&lt;/strong&gt;)</source>
+          <target state="translated">&lt;strong&gt;内部直接&amp;ldquo;非绑定函数&amp;rdquo;调用&lt;/strong&gt; （即， &lt;strong&gt;尚未&lt;/strong&gt;通过调用&lt;strong&gt;&lt;em&gt;functionName.bind&lt;/em&gt;&lt;/strong&gt;绑定的&lt;strong&gt;&lt;em&gt;函数&lt;/em&gt;&lt;/strong&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="8c57485accd3f8de730dc301d4b4402bc9d5ff6a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Inside Direct &quot;Non Bound Function&quot; Call&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;内部直接&amp;ldquo;无界函数&amp;rdquo;调用&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="20b6606bfe8a1a339672457b5987c0bbe9801b32" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Inside Indirect &quot;Non Bound Function&quot; Call&lt;/strong&gt; through &lt;strong&gt;&lt;em&gt;functionName.call&lt;/em&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;em&gt;functionName.apply&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;内部间接&amp;ldquo;非绑定函数&amp;rdquo;&lt;/strong&gt;通过&lt;strong&gt;&lt;em&gt;functionName.call&lt;/em&gt;&lt;/strong&gt;和&lt;strong&gt;&lt;em&gt;functionName.apply调用&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6f6bbd439250c2f70bd753a9c1867ff4ae0334cd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Inside Indirect &quot;Non Bound Function&quot; Call&lt;/strong&gt; through &lt;strong&gt;&lt;em&gt;functionName.call&lt;/em&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;em&gt;functionName.apply&lt;/em&gt;&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;内部间接&amp;ldquo;非绑定函数&amp;rdquo;&lt;/strong&gt;通过&lt;strong&gt;&lt;em&gt;functionName.call&lt;/em&gt;&lt;/strong&gt;和&lt;strong&gt;&lt;em&gt;functionName.apply调用&lt;/em&gt;&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="b687e55bef18e96403dcec84a064997fff961ba4" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Inside Inline DOM event handler&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;内部内联DOM事件处理程序&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7b733413aa17352a3e9b6ca5623c81d22f47452b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Inside Inline DOM event handler&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;内部内联DOM事件处理程序&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="266e0d16f0275a7b45db6e40b0e84253044c47e0" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Trying it all with functions&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;尝试所有功能&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b798c488f44ac56ef97819e55be72d13bc6ae204" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;WHEN FUNCTION IS CALLED WITHOUT ANY CONTEXT THEN THIS WILL BE BOUND TO GLOBAL OBJECT&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;在没有任何上下文的情况下调用功能时，它将被绑定到全局对象中&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="1ff4d1e2e595c31a6b0764e1ad94e2fa48fffb37" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;While Object Creation through &quot;new&quot;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;而通过&amp;ldquo;新建&amp;rdquo;创建对象&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b8198d31ce2fb4af76a276cd2353f3b893b2b3c6" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;While Object Creation through &quot;new&quot;&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;通过&amp;ldquo; new&amp;rdquo;创建对象时&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="bd0054da704663fa349cd05f6dec86874b0a5b98" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;eval this&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;评估这个&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5b6e7cb5e761aba02987ecc24374a500c50b2f3b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;function this&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;发挥这个作用&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d575ef4572a4d0f70d88145f3266940c01dbe092" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;global this&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;全球这个&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="cf73e6df87566417c40b38e407048179eb72abf0" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;jQuery this&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;jQuery的这个&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="267215baf52fd6931b04140eff3d560dfdf04823" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;object this&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;反对这个&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f6993e186af398b71572f7532218e7b60a53b53e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;prototype this&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;原型&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f609ef0b01e29c7688ac86f84c3b2fd9542bc770" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;this &amp;amp; Object Prototypes&lt;/strong&gt;, by Kyle Simpson. &amp;copy; 2014 Getify Solutions.</source>
+          <target state="translated">&lt;strong&gt;this＆Object Prototypes&lt;/strong&gt; ，作者：凯尔&amp;middot;辛普森（Kyle Simpson）。 &amp;copy;2014 Getify解决方案。</target>
+        </trans-unit>
+        <trans-unit id="d68567ba0092c29c333f4067dcc1219804e03507" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;with this&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;有了这个&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="9bb486259298102ba39377e4ed03a0fb81bf8790" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;1&lt;/sup&gt;&lt;code&gt;apply&lt;/code&gt; is another function similar to &lt;code&gt;call&lt;/code&gt;</source>
+          <target state="translated">&lt;sup&gt;1&lt;/sup&gt; &lt;code&gt;apply&lt;/code&gt; 是另一个类似于 &lt;code&gt;call&lt;/code&gt; 的功能</target>
+        </trans-unit>
+        <trans-unit id="521d8887a5ef2e61310029a52ca75b452424b493" translate="yes" xml:space="preserve">
+          <source>A bound function is a function whose &lt;strong&gt;&quot;this&quot;&lt;/strong&gt; value has been
+fixed. The following code demonstrated how &lt;strong&gt;&quot;this&quot;&lt;/strong&gt; works in case
+of bound function</source>
+          <target state="translated">绑定函数是其&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;值已固定的函数。 以下代码演示了在绑定函数的情况下&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;如何工作</target>
+        </trans-unit>
+        <trans-unit id="ef2db31f656b33473e747f5be7b06a3421bd96e7" translate="yes" xml:space="preserve">
+          <source>A little bit info about &lt;strong&gt;this&lt;/strong&gt; keyword</source>
+          <target state="translated">有关&lt;strong&gt;此&lt;/strong&gt;关键字的一点信息</target>
+        </trans-unit>
+        <trans-unit id="bba748cf8bf63af49cb69595a0f4e85a54d40178" translate="yes" xml:space="preserve">
+          <source>Above &lt;code&gt;f1&lt;/code&gt; is made a method of global object. Thus we can also call it on &lt;code&gt;window&lt;/code&gt; object as follows:</source>
+          <target state="translated">在 &lt;code&gt;f1&lt;/code&gt; 之上是全局对象的方法。 因此，我们还可以在 &lt;code&gt;window&lt;/code&gt; 对象上调用它，如下所示：</target>
+        </trans-unit>
+        <trans-unit id="b753f43e6cc93cab6d731a784a044886d520b74f" translate="yes" xml:space="preserve">
+          <source>Above I have put the word immediate in double quotes. It is to make the point that if you nest the object inside another object, then &lt;code&gt;this&lt;/code&gt; is bound to the immediate parent.</source>
+          <target state="translated">在上面，我将单词立即用双引号引起来。 要指出的是，如果将对象嵌套在另一个对象中，则 &lt;code&gt;this&lt;/code&gt; 对象将绑定到直接父对象。</target>
+        </trans-unit>
+        <trans-unit id="d0e03fe81743bbdb1803208b752058307d77c7c9" translate="yes" xml:space="preserve">
+          <source>Above we added members to objects using object literal notation. We can add members to functions by using &lt;code&gt;this&lt;/code&gt;. to specify them.</source>
+          <target state="translated">上面我们使用对象文字符号将成员添加到对象中。 我们可以使用 &lt;code&gt;this&lt;/code&gt; 将成员添加到函数中。 指定它们。</target>
+        </trans-unit>
+        <trans-unit id="378cd99eed8979a93e73069d633b7546f12e1467" translate="yes" xml:space="preserve">
+          <source>Above we create 3 variables with same name 'val'. One in global context, one inside obj and the other inside innerMethod of obj. JavaScript resolves identifiers within a particular context by going up the scope chain from local go global.</source>
+          <target state="translated">上面我们创建了3个同名的变量 &quot;val&quot;。一个在全局上下文中,一个在obj内部,另一个在obj的innerMethod内部。JavaScript通过从本地到全局的范围链来解析特定上下文中的标识符。</target>
+        </trans-unit>
+        <trans-unit id="4fbc9235f1c80f74cce8e944e82472b1cf3e26c7" translate="yes" xml:space="preserve">
+          <source>Again these all are just syntactic sugar for</source>
+          <target state="translated">还是那句话,这些都只是句法的糖分。</target>
+        </trans-unit>
+        <trans-unit id="44f5606c7c264327eaf36478d243b0e4ee2e66c7" translate="yes" xml:space="preserve">
+          <source>All functions inherit from the global &lt;code&gt;Function&lt;/code&gt;, and two of its many methods are &lt;code&gt;call&lt;/code&gt; and &lt;code&gt;apply&lt;/code&gt;, and both can be used to manipulate the value of &lt;code&gt;this&lt;/code&gt; in the function on which they are called.</source>
+          <target state="translated">所有函数均从全局 &lt;code&gt;Function&lt;/code&gt; 继承，并且其许多方法中的两个被 &lt;code&gt;call&lt;/code&gt; 和 &lt;code&gt;apply&lt;/code&gt; ，这两个方法均可用于在调用它们的函数中操纵此方法的值。</target>
+        </trans-unit>
+        <trans-unit id="65bb256adbc34f0e662f2e6886cf45e5da2fe2e0" translate="yes" xml:space="preserve">
+          <source>All these methods are defined on &lt;code&gt;Function.prototype&lt;/code&gt;.</source>
+          <target state="translated">所有这些方法都在 &lt;code&gt;Function.prototype&lt;/code&gt; 上定义。</target>
+        </trans-unit>
+        <trans-unit id="2f3251d2eefcb2ea293e403dfdf0b701c95967f7" translate="yes" xml:space="preserve">
+          <source>Also in an object literal approach, we can explicitly add members to already defined object using dot operator. This gets added to the specific instance only. However I have added variable to the function prototype so that it gets reflected in all instances of the function.</source>
+          <target state="translated">同样,在对象字面的方法中,我们可以使用点运算符将成员显式添加到已经定义的对象中。这只会被添加到特定的实例中。但是我在函数原型中添加了变量,这样它就会在函数的所有实例中得到反映。</target>
+        </trans-unit>
+        <trans-unit id="42a17cccb4a20658564c0ef8e45cbac226648a85" translate="yes" xml:space="preserve">
+          <source>Also note that neither of these three functions do any change to the original function. &lt;code&gt;call&lt;/code&gt; and &lt;code&gt;apply&lt;/code&gt; would return the value from freshly constructed functions while &lt;code&gt;bind&lt;/code&gt; will return the freshly constructed function itself, ready to be called.</source>
+          <target state="translated">另请注意，这三个功能均未对原始功能进行任何更改。 &lt;code&gt;call&lt;/code&gt; 和 &lt;code&gt;apply&lt;/code&gt; 将从新构造的函数返回值，而 &lt;code&gt;bind&lt;/code&gt; 将返回新构造的函数本身，随时可以调用。</target>
+        </trans-unit>
+        <trans-unit id="96bacdecd2f20c6e4133c59029163b3a5024cc7a" translate="yes" xml:space="preserve">
+          <source>Angus Croll - &lt;a href=&quot;http://goo.gl/Z2RacU&quot;&gt;http://goo.gl/Z2RacU&lt;/a&gt;</source>
+          <target state="translated">安格斯卡罗尔-http: &lt;a href=&quot;http://goo.gl/Z2RacU&quot;&gt;//goo.gl/Z2RacU&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="fc6d0b4a3431a2895e9d69a29dd7c9026e676f98" translate="yes" xml:space="preserve">
+          <source>Arrow functions</source>
+          <target state="translated">箭头功能</target>
+        </trans-unit>
+        <trans-unit id="0c6f0eb1c1ab36699d24af9b8c41dcdfa8f179e2" translate="yes" xml:space="preserve">
+          <source>Arrow functions don't have their own &lt;code&gt;this&lt;/code&gt;.... binding.
+  Instead, those identifiers are resolved in the lexical scope like any
+  other variable. That means that inside an arrow function, &lt;code&gt;this&lt;/code&gt;...refer(s) to the values of &lt;code&gt;this&lt;/code&gt; in the environment
+  the arrow function is defined in.</source>
+          <target state="translated">箭头函数没有自己的....绑定。 相反，这些标识符像任何其他变量一样在词法范围内解析。 这意味着在箭头函数内部， &lt;code&gt;this&lt;/code&gt; ...指的是在定义箭头函数的环境中的 &lt;code&gt;this&lt;/code&gt; 的值。</target>
+        </trans-unit>
+        <trans-unit id="b50c4e79c0e3f7852862c14187e6ddd0825a3bd5" translate="yes" xml:space="preserve">
+          <source>Arrow functions, the &lt;code&gt;=&amp;gt;&lt;/code&gt; operator are syntactic sugar for bind</source>
+          <target state="translated">箭头函数， &lt;code&gt;=&amp;gt;&lt;/code&gt; 运算符是绑定的语法糖</target>
+        </trans-unit>
+        <trans-unit id="203d51646bb4fd08eace6d614d8c939e2e57a916" translate="yes" xml:space="preserve">
+          <source>As given in the code above, &lt;strong&gt;&quot;this&quot; value for any &quot;Bound Function&quot;
+CANNOT be altered through call/apply&lt;/strong&gt;. Also, if the &lt;strong&gt;&quot;this&quot;&lt;/strong&gt;
+parameter is  not explicitly passed to bind, &lt;strong&gt;&quot;current object&quot;&lt;/strong&gt;
+(and hence the value of &lt;strong&gt;&quot;this&quot;&lt;/strong&gt; ) is set to &lt;strong&gt;&quot;window&quot;&lt;/strong&gt; in Non
+strict mode and &lt;strong&gt;&quot;undefined&quot;&lt;/strong&gt; in strict mode.  One more thing.
+Binding an already bound function does not change the value of &lt;strong&gt;&quot;this&quot;&lt;/strong&gt;.
+It remains set as the value set by first bind function.</source>
+          <target state="translated">如上面的代码中所给， &lt;strong&gt;任何&amp;ldquo;绑定函数&amp;rdquo;的&amp;ldquo; this&amp;rdquo;值都不能通过call / apply更改&lt;/strong&gt; 。 另外，如果未明确传递&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;参数进行绑定，则在&lt;strong&gt;&amp;ldquo;&lt;/strong&gt;非严格&amp;rdquo;模式下将&lt;strong&gt;&amp;ldquo;当前对象&amp;rdquo;&lt;/strong&gt; （因此将&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;的值）设置为&lt;strong&gt;&amp;ldquo; window&amp;rdquo;，&lt;/strong&gt;在严格模式下将设置为&lt;strong&gt;&amp;ldquo; undefined&amp;rdquo;&lt;/strong&gt; 。 还有一件事。 绑定已经绑定的函数不会更改&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;的值。 它仍然设置为第一个绑定函数设置的值。</target>
+        </trans-unit>
+        <trans-unit id="d5edefb33540455ad04404ac360e751fa53a32fc" translate="yes" xml:space="preserve">
+          <source>Below I tried out all the things that we did with Object and &lt;code&gt;this&lt;/code&gt; above, but by first creating function instead of directly writing an object.</source>
+          <target state="translated">下面，我尝试了使用Object和上面所做的所有事情，但是首先创建函数而不是直接编写对象。</target>
+        </trans-unit>
+        <trans-unit id="1304a85574c9a47bfc387cb1181284252d8be183" translate="yes" xml:space="preserve">
+          <source>Binding and already bound function does not change the value of &quot;this&quot;. It remains set as the value set by first bind function.</source>
+          <target state="translated">绑定和已经绑定的函数不会改变 &quot;this &quot;的值。它仍然作为第一个绑定函数所设定的值。</target>
+        </trans-unit>
+        <trans-unit id="21140ee58286bc8b79afc046971cefc9d15813d9" translate="yes" xml:space="preserve">
+          <source>But as of ES6 conceptually you can even translate that into</source>
+          <target state="translated">但从ES6的概念上来说,你甚至可以将其翻译成</target>
+        </trans-unit>
+        <trans-unit id="65a473e0027f5ed69ce186b407bc8fdb48bdca1e" translate="yes" xml:space="preserve">
+          <source>By default, and what confuses most beginners, when a listener is called after an event is raised on a DOM element, the &lt;em&gt;this&lt;/em&gt; value of the function is the DOM element.</source>
+          <target state="translated">默认情况下，这使大多数初学者感到困惑，当在DOM元素上引发事件后调用侦听器时，该函数的&lt;em&gt;this&lt;/em&gt;值为DOM元素。</target>
+        </trans-unit>
+        <trans-unit id="d6d441b4209195e14353f9a1f6054d514dd9abbd" translate="yes" xml:space="preserve">
+          <source>By now the difference between &lt;code&gt;apply&lt;/code&gt;, &lt;code&gt;call&lt;/code&gt; and &lt;code&gt;bind&lt;/code&gt; must have become apparent. &lt;code&gt;apply&lt;/code&gt; allows to specify the arguments to function as array-like object i.e. an object with a numeric &lt;code&gt;length&lt;/code&gt; property and corresponding non-negative integer properties. Whereas &lt;code&gt;call&lt;/code&gt; allows to specify the arguments to the function directly. Both &lt;code&gt;apply&lt;/code&gt; and &lt;code&gt;call&lt;/code&gt; immediately invokes the function in the specified context and with the specified arguments. On the other hand, &lt;code&gt;bind&lt;/code&gt; simply returns the function bound to the specified &lt;code&gt;this&lt;/code&gt; value and the arguments. We can capture the reference to this returned function by assigning it to a variable and later we can call it any time.</source>
+          <target state="translated">至此， &lt;code&gt;apply&lt;/code&gt; ， &lt;code&gt;call&lt;/code&gt; 和 &lt;code&gt;bind&lt;/code&gt; 之间的区别必须变得显而易见。 &lt;code&gt;apply&lt;/code&gt; 允许指定参数以充当类似数组的对象，即具有数字 &lt;code&gt;length&lt;/code&gt; 属性和相应的非负整数属性的对象。 而 &lt;code&gt;call&lt;/code&gt; 允许直接指定函数的参数。 &lt;code&gt;apply&lt;/code&gt; 和 &lt;code&gt;call&lt;/code&gt; 都立即在指定的上下文中使用指定的参数调用该函数。 另一方面， &lt;code&gt;bind&lt;/code&gt; 仅返回绑定到指定的 &lt;code&gt;this&lt;/code&gt; 值和参数的函数。 我们可以通过将其分配给变量来捕获对该返回函数的引用，以后我们可以随时调用它。</target>
+        </trans-unit>
+        <trans-unit id="f4ff7db3d2943e81347a74ac6f68ad3f64995792" translate="yes" xml:space="preserve">
+          <source>Calling a function on an object</source>
+          <target state="translated">调用一个对象上的函数</target>
+        </trans-unit>
+        <trans-unit id="8967949e0052bf4fec471f1e862bcdb2f857d888" translate="yes" xml:space="preserve">
+          <source>Calling a method of a object</source>
+          <target state="translated">调用对象的一个方法</target>
+        </trans-unit>
+        <trans-unit id="2a0f01b7dbab312f469277a939897da668bb1530" translate="yes" xml:space="preserve">
+          <source>Calling functions on Functions: &lt;code&gt;call&lt;/code&gt; and &lt;code&gt;apply&lt;/code&gt;</source>
+          <target state="translated">在函数上调用函数： &lt;code&gt;call&lt;/code&gt; 并 &lt;code&gt;apply&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="3a2d9c2f761f313e12a3f59af3ad126c32d5b68b" translate="yes" xml:space="preserve">
+          <source>Calling the function with the &lt;code&gt;new&lt;/code&gt; keyword would immediately initialize an &lt;code&gt;Object&lt;/code&gt; of type &lt;code&gt;Person&lt;/code&gt;.</source>
+          <target state="translated">使用 &lt;code&gt;new&lt;/code&gt; 关键字调用该函数将立即初始化 &lt;code&gt;Person&lt;/code&gt; 类型的 &lt;code&gt;Object&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="8c59fcda4559bb7741c9e317275c16e64acbc60a" translate="yes" xml:space="preserve">
+          <source>Consider a constructor function in Javascript:</source>
+          <target state="translated">考虑一个Javascript中的构造函数。</target>
+        </trans-unit>
+        <trans-unit id="908dded501f1eb025abaae1e462f1b9398ed9b15" translate="yes" xml:space="preserve">
+          <source>Consider the following function:</source>
+          <target state="translated">考虑以下功能:</target>
+        </trans-unit>
+        <trans-unit id="88d43b78335fb71e23d3a8324b00ba1dcbae38f4" translate="yes" xml:space="preserve">
+          <source>Considering a more commonly practical scenario:</source>
+          <target state="translated">考虑到一个比较常见的实际情况:</target>
+        </trans-unit>
+        <trans-unit id="e15054647d5d4825673bec78e395e8f11fd5d1bd" translate="yes" xml:space="preserve">
+          <source>Copying &lt;code&gt;this&lt;/code&gt; to solve nested-scope issues.</source>
+          <target state="translated">复制 &lt;code&gt;this&lt;/code&gt; 可解决嵌套范围问题。</target>
+        </trans-unit>
+        <trans-unit id="04b00eef3c0f84d63c5bf373bc4fbfa1f1f1f418" translate="yes" xml:space="preserve">
+          <source>Daniel, awesome explanation! A couple of words on this and good list of &lt;code&gt;this&lt;/code&gt; execution context pointer in case of event handlers.</source>
+          <target state="translated">丹尼尔，很棒的解释！ 在事件处理程序的情况下，在 &lt;code&gt;this&lt;/code&gt; 上下文上下文指针以及此列表中列出了几个单词。</target>
+        </trans-unit>
+        <trans-unit id="df12cce3f2c22b0cfea79b58f42e474a2d9806ee" translate="yes" xml:space="preserve">
+          <source>Defined in &lt;a href=&quot;https://leanpub.com/understandinges6/read&quot;&gt;ECMA Script 6&lt;/a&gt;, arrow-functions adopt the &lt;code&gt;this&lt;/code&gt; binding from the
+enclosing (function or global) scope.</source>
+          <target state="translated">在&lt;a href=&quot;https://leanpub.com/understandinges6/read&quot;&gt;ECMA脚本6中&lt;/a&gt;定义，箭头功能从封闭的（功能或全局）范围采用 &lt;code&gt;this&lt;/code&gt; 绑定。</target>
+        </trans-unit>
+        <trans-unit id="128f370e01dcc41eacea0f41d2c828ef2ac1d087" translate="yes" xml:space="preserve">
+          <source>Entering eval code</source>
+          <target state="translated">输入评估代码</target>
+        </trans-unit>
+        <trans-unit id="2ee3bc84b3cdd8c94c92611d8db5e0176f368f84" translate="yes" xml:space="preserve">
+          <source>Entering function code</source>
+          <target state="translated">输入功能代码</target>
+        </trans-unit>
+        <trans-unit id="6d5f131f63e2b46f200e419e32d757a476bff5fb" translate="yes" xml:space="preserve">
+          <source>Even if you add function explicitly to the object as a method, it still follows above rules, that is &lt;code&gt;this&lt;/code&gt; still points to the immediate parent object.</source>
+          <target state="translated">即使您将函数显式添加为对象的方法，它仍然遵循上述规则，也就是说，它仍然指向直接父对象。</target>
+        </trans-unit>
+        <trans-unit id="5bd2dbf0b8d00773801e52b8a0a2d5c918eeff2f" translate="yes" xml:space="preserve">
+          <source>Every &lt;em&gt;execution context&lt;/em&gt; in javascript has a &lt;em&gt;this&lt;/em&gt; parameter that is set by:</source>
+          <target state="translated">javascript中的每个&lt;em&gt;执行上下文&lt;/em&gt;都有一个&lt;em&gt;this&lt;/em&gt;参数， &lt;em&gt;该&lt;/em&gt;参数由&lt;em&gt;以下&lt;/em&gt;参数设置：</target>
+        </trans-unit>
+        <trans-unit id="0f01ed56a1e32a05e5ef96e4d779f34784af9a96" translate="yes" xml:space="preserve">
+          <source>Example</source>
+          <target state="translated">Example</target>
+        </trans-unit>
+        <trans-unit id="05376964e6969860e3233532567e5c90c576ce63" translate="yes" xml:space="preserve">
+          <source>Example constructor:</source>
+          <target state="translated">例子构造函数。</target>
+        </trans-unit>
+        <trans-unit id="4e8e909da4d8e05122cc933de6fde902781e02f1" translate="yes" xml:space="preserve">
+          <source>Example event listeners:</source>
+          <target state="translated">例子事件的听众。</target>
+        </trans-unit>
+        <trans-unit id="c63737abd7347a7ae582cb9fbdf37d6c0e5b251e" translate="yes" xml:space="preserve">
+          <source>Example:</source>
+          <target state="translated">Example:</target>
+        </trans-unit>
+        <trans-unit id="27a003083ab2583d3a2ad4eed814443aff4033fd" translate="yes" xml:space="preserve">
+          <source>Except in the case of DOM event handlers or when a &lt;code&gt;thisArg&lt;/code&gt; is provided (see further down), both in node and in a browser using &lt;code&gt;this&lt;/code&gt; in a function that is not called with &lt;code&gt;new&lt;/code&gt; references the global scope&amp;hellip;</source>
+          <target state="translated">除了在DOM事件处理程序中或在提供 &lt;code&gt;thisArg&lt;/code&gt; 时（请参阅下文），在节点和浏览器中都使用 &lt;code&gt;this&lt;/code&gt; 函数，而该函数未使用 &lt;code&gt;new&lt;/code&gt; 引用调用全局范围&amp;hellip;</target>
+        </trans-unit>
+        <trans-unit id="49c2bd6aa6f23d62660e81e7508644de0747ce48" translate="yes" xml:space="preserve">
+          <source>Expand snippet</source>
+          <target state="translated">扩展片段</target>
+        </trans-unit>
+        <trans-unit id="ee189376deeee0556de246c1ff07244efeae84a9" translate="yes" xml:space="preserve">
+          <source>Extra stuff, copy this</source>
+          <target state="translated">额外的东西,复制这个</target>
+        </trans-unit>
+        <trans-unit id="a79ebf936a8f65b125ea48abc5225b5dc6cabb06" translate="yes" xml:space="preserve">
+          <source>Following the translation to use &lt;code&gt;call&lt;/code&gt;, &lt;code&gt;obj.bar()&lt;/code&gt; becomes &lt;code&gt;const temp = obj.bar; temp.call(obj);&lt;/code&gt;. When we enter the &lt;code&gt;bar&lt;/code&gt; function we call &lt;code&gt;foo&lt;/code&gt; but we explicitly passed in another object for objectForThis so when we arrive at foo &lt;code&gt;this&lt;/code&gt; is that inner object.</source>
+          <target state="translated">经过翻译后可以使用 &lt;code&gt;call&lt;/code&gt; ， &lt;code&gt;obj.bar()&lt;/code&gt; 变为 &lt;code&gt;const temp = obj.bar; temp.call(obj);&lt;/code&gt; temp.call（obj）; 。 当我们输入 &lt;code&gt;bar&lt;/code&gt; 函数时，我们将调用 &lt;code&gt;foo&lt;/code&gt; ,但是我们为objectForThis显式传递了另一个对象，因此，当我们到达foo时， &lt;code&gt;this&lt;/code&gt; 就是该内部对象。</target>
+        </trans-unit>
+        <trans-unit id="987a7929690e08340ed411e619558b9514d1934d" translate="yes" xml:space="preserve">
+          <source>For an arrow function (special case of context transparency) ask yourself:</source>
+          <target state="translated">对于一个箭头函数(上下文透明的特殊情况)问自己。</target>
+        </trans-unit>
+        <trans-unit id="f14045db7fd843c69383648cf94f75fb3d176a15" translate="yes" xml:space="preserve">
+          <source>Function call</source>
+          <target state="translated">函数调用</target>
+        </trans-unit>
+        <trans-unit id="845fc2d1f33b0159fa8601b6b79fdc1e053598bf" translate="yes" xml:space="preserve">
+          <source>Functions you create become function objects. They automatically get a special &lt;code&gt;prototype&lt;/code&gt; property, which is something you can assign values to. When you create an instance by calling your function with &lt;code&gt;new&lt;/code&gt; you get access to the values you assigned to the &lt;code&gt;prototype&lt;/code&gt; property. You access those values using &lt;code&gt;this&lt;/code&gt;.</source>
+          <target state="translated">您创建的函数成为函数对象。 它们会自动获得一个特殊的 &lt;code&gt;prototype&lt;/code&gt; 属性，您可以为其分配值。 通过使用 &lt;code&gt;new&lt;/code&gt; 调用函数来创建实例时，您可以访问分配给 &lt;code&gt;prototype&lt;/code&gt; 属性的值。 您可以使用 &lt;code&gt;this&lt;/code&gt; 访问这些值。</target>
+        </trans-unit>
+        <trans-unit id="469e0788e79d852a9a805ea846c580f27362cc2a" translate="yes" xml:space="preserve">
+          <source>Gentle explanation of 'this' keyword in JavaScript</source>
+          <target state="translated">在JavaScript中对 &quot;这个 &quot;关键词的温柔解释</target>
+        </trans-unit>
+        <trans-unit id="14a9ca90c670d793e8de8f4b937b4808ca9a99f8" translate="yes" xml:space="preserve">
+          <source>He gives code examples, explanations, and solutions, which I thought was very helpful.</source>
+          <target state="translated">他给出的代码示例、解释和解决方案,我觉得很有帮助。</target>
+        </trans-unit>
+        <trans-unit id="542541ad020f39c0dd65066d67e5d1be86126656" translate="yes" xml:space="preserve">
+          <source>Here is the summary:</source>
+          <target state="translated">下面是总结。</target>
+        </trans-unit>
+        <trans-unit id="1d75950e5613f2d50e01a7e225b9725bf0505513" translate="yes" xml:space="preserve">
+          <source>How do we manipulate &lt;code&gt;this&lt;/code&gt; with &lt;code&gt;call&lt;/code&gt; and &lt;code&gt;apply&lt;/code&gt;?</source>
+          <target state="translated">我们如何通过 &lt;code&gt;call&lt;/code&gt; 操作并 &lt;code&gt;apply&lt;/code&gt; ？</target>
+        </trans-unit>
+        <trans-unit id="509b1a748402f9fa1f52f877d915151ea7eacf7c" translate="yes" xml:space="preserve">
+          <source>How does &lt;code&gt;this&lt;/code&gt; work and when should it be used?</source>
+          <target state="translated">它是如何工作的以及何时应使用？</target>
+        </trans-unit>
+        <trans-unit id="c59a24b0ebdaf81d21086f1154af537b99a98f5d" translate="yes" xml:space="preserve">
+          <source>How does the “this” keyword work</source>
+          <target state="translated">&quot;这 &quot;这个关键词是如何运作的</target>
+        </trans-unit>
+        <trans-unit id="8f5642913527f63ddc8d0489b7f04d5dca4b4e15" translate="yes" xml:space="preserve">
+          <source>How does this work? Well, let's see what happens when we use the &lt;code&gt;new&lt;/code&gt; keyword.</source>
+          <target state="translated">这是如何运作的？ 好，让我们看看使用 &lt;code&gt;new&lt;/code&gt; 关键字时会发生什么。</target>
+        </trans-unit>
+        <trans-unit id="25cd4eb543ab592a2c8fdba2a85b8eac25657436" translate="yes" xml:space="preserve">
+          <source>How is the function &lt;em&gt;invoked&lt;/em&gt;?</source>
+          <target state="translated">该函数如何&lt;em&gt;调用&lt;/em&gt; ？</target>
+        </trans-unit>
+        <trans-unit id="6f351646cb35f88a1be59388fbb15c6a9a0a2c91" translate="yes" xml:space="preserve">
+          <source>How is the value of &lt;code&gt;this&lt;/code&gt; determined?</source>
+          <target state="translated">如何确定其价值？</target>
+        </trans-unit>
+        <trans-unit id="2e8b8683e60bc5d1aab340b438427ac67cec8ead" translate="yes" xml:space="preserve">
+          <source>How the function is called (including as an object method, use of &lt;em&gt;call&lt;/em&gt; and &lt;em&gt;apply&lt;/em&gt;, use of &lt;em&gt;new&lt;/em&gt;)</source>
+          <target state="translated">函数的调用方式（包括作为对象方法， &lt;em&gt;调用&lt;/em&gt;和&lt;em&gt;应用的&lt;/em&gt;使用， &lt;em&gt;new的&lt;/em&gt;使用）</target>
+        </trans-unit>
+        <trans-unit id="41df7a9ac498fb8701396ea8333d73de768c8a4f" translate="yes" xml:space="preserve">
+          <source>However use of &lt;code&gt;this&lt;/code&gt; indirectly through the other function called inside the event handling function or event property resolves to the global object &lt;code&gt;window&lt;/code&gt;.</source>
+          <target state="translated">但是，通过在事件处理函数或事件属性内部调用的另一个函数间接使用 &lt;code&gt;this&lt;/code&gt; 函数将解析为全局对象 &lt;code&gt;window&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="b57106c514445ec802e1cd473722a5a17ec00810" translate="yes" xml:space="preserve">
+          <source>However, invoking it explicitly using window object shall result in
+the following</source>
+          <target state="translated">然而,使用窗口对象明确地调用它将导致以下结果</target>
+        </trans-unit>
+        <trans-unit id="f29f3dcc991cc0d0219d93627781059b44927c91" translate="yes" xml:space="preserve">
+          <source>I have a different take on &lt;code&gt;this&lt;/code&gt; from the other answers that I hope is helpful.</source>
+          <target state="translated">对于其他答案，我有不同的看法，希望对您有所帮助。</target>
+        </trans-unit>
+        <trans-unit id="12126d6f03dcab3e8bc1580e1ffa7e034bb107bc" translate="yes" xml:space="preserve">
+          <source>I have noticed that there doesn't appear to be a clear explanation of what the &lt;code&gt;this&lt;/code&gt; keyword is and how it is correctly (and incorrectly) used in JavaScript on the Stack Overflow site.</source>
+          <target state="translated">我注意到，对于Stack Overflow网站上的JavaScript， &lt;code&gt;this&lt;/code&gt; 关键字是什么以及如何正确（以及错误地）使用该关键字似乎没有明确的解释。</target>
+        </trans-unit>
+        <trans-unit id="1460f7d950fc7da3126879c166cd50e7e5efc4dc" translate="yes" xml:space="preserve">
+          <source>I have witnessed some very strange behaviour with it and have failed to understand why it has occurred.</source>
+          <target state="translated">我亲眼目睹了它的一些非常奇怪的行为,不明白为什么会出现这种情况。</target>
+        </trans-unit>
+        <trans-unit id="5a8ffb9e545c5cf5851a2f18d53651ef1e65e1af" translate="yes" xml:space="preserve">
+          <source>I recommend reading &lt;a href=&quot;https://mikewest.org&quot;&gt;Mike West&lt;/a&gt;'s article &lt;a href=&quot;http://www.digital-web.com/articles/scope_in_javascript/&quot;&gt;Scope in JavaScript&lt;/a&gt; (&lt;a href=&quot;http://web.archive.org/web/20110725013125/http://www.digital-web.com/articles/scope_in_javascript/&quot;&gt;mirror&lt;/a&gt;) first. It is an excellent, friendly introduction to the concepts of &lt;code&gt;this&lt;/code&gt; and scope chains in JavaScript.</source>
+          <target state="translated">我建议先阅读&lt;a href=&quot;https://mikewest.org&quot;&gt;Mike West&lt;/a&gt;的文章&lt;a href=&quot;http://www.digital-web.com/articles/scope_in_javascript/&quot;&gt;javascript中的作用域&lt;/a&gt; （ &lt;a href=&quot;http://web.archive.org/web/20110725013125/http://www.digital-web.com/articles/scope_in_javascript/&quot;&gt;镜像&lt;/a&gt; ）。 这是对JavaScript和范围链的概念的出色而友好的介绍。</target>
+        </trans-unit>
+        <trans-unit id="2f8031248cc83596d7bde88186a31b74ce913e61" translate="yes" xml:space="preserve">
+          <source>If an &lt;code&gt;Object&lt;/code&gt; contains a property which holds a &lt;code&gt;Function&lt;/code&gt;, the property is called a method. This method, when called, will always have it's &lt;code&gt;this&lt;/code&gt; variable set to the &lt;code&gt;Object&lt;/code&gt; it is associated with. This is true for both strict and non-strict modes.</source>
+          <target state="translated">如果 &lt;code&gt;Object&lt;/code&gt; 包含一个包含 &lt;code&gt;Function&lt;/code&gt; 的属性，则该属性称为方法。 调用此方法时，将始终 &lt;code&gt;this&lt;/code&gt; 变量设置为与之关联的 &lt;code&gt;Object&lt;/code&gt; 。 对于严格和非严格模式都是如此。</target>
+        </trans-unit>
+        <trans-unit id="f9f88fafad52186ab62424ffeb6795041b66ab36" translate="yes" xml:space="preserve">
+          <source>If no explicit owner is defined, then the top most owner, the window object, is referenced.</source>
+          <target state="translated">如果没有定义明确的所有者,则引用最上面的所有者,即窗口对象。</target>
+        </trans-unit>
+        <trans-unit id="abea008c9ccdd3ff813706bd9d78b13581e069ae" translate="yes" xml:space="preserve">
+          <source>If the event handler is inline, &lt;code&gt;this&lt;/code&gt; refers to global object</source>
+          <target state="translated">如果事件处理程序为内联， &lt;code&gt;this&lt;/code&gt; 引用全局对象</target>
+        </trans-unit>
+        <trans-unit id="f545568898aa3f9f5ee670cd77b9d433d0a46089" translate="yes" xml:space="preserve">
+          <source>If the function is called with NEW keyword then THIS will be bound to the newly created object.</source>
+          <target state="translated">如果用new关键字调用函数,那么this将被绑定到新创建的对象上。</target>
+        </trans-unit>
+        <trans-unit id="6ee87374d289abdd7ecf8ddb47adfb37ca1d1d0e" translate="yes" xml:space="preserve">
+          <source>If the method is on an object's prototype chain, &lt;code&gt;this&lt;/code&gt; inside such method refers to the object the method was called on, as if the method is defined on the object.</source>
+          <target state="translated">如果该方法在对象的原型链上，则 &lt;code&gt;this&lt;/code&gt; 方法内部的对象将引用该方法在其上调用的对象，就好像该方法是在对象上定义的一样。</target>
+        </trans-unit>
+        <trans-unit id="0f184b072ae7cca9bec0b9152d5ee281a0952b2c" translate="yes" xml:space="preserve">
+          <source>If we miss &lt;code&gt;new&lt;/code&gt; keyword, &lt;code&gt;whatIsThis&lt;/code&gt; referes to the most global context it can find(&lt;code&gt;window&lt;/code&gt;)</source>
+          <target state="translated">如果我们错过了 &lt;code&gt;new&lt;/code&gt; 关键字， &lt;code&gt;whatIsThis&lt;/code&gt; 指的是它可以找到的最全局的上下文（ &lt;code&gt;window&lt;/code&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="08b356112172b63c41e869c9033bb2d83cf69377" translate="yes" xml:space="preserve">
+          <source>If you are wondering how a JavaScript library manipulates the value of &lt;code&gt;this&lt;/code&gt;, the library is simply using one of the built-in JavaScript functions accepting a &lt;code&gt;thisArg&lt;/code&gt;. You, too, can write your own function taking a callback function and &lt;code&gt;thisArg&lt;/code&gt;:</source>
+          <target state="translated">如果您想知道JavaScript库如何处理 &lt;code&gt;this&lt;/code&gt; 的值，则该库仅使用接受 &lt;code&gt;thisArg&lt;/code&gt; 的内置JavaScript函数之一 。 您也可以使用回调函数和 &lt;code&gt;thisArg&lt;/code&gt; 编写自己的函数：</target>
+        </trans-unit>
+        <trans-unit id="a05e4a50ca55b0ab68c8d4be4da417b51bf22da0" translate="yes" xml:space="preserve">
+          <source>If you call a function with &lt;code&gt;new&lt;/code&gt; the &lt;code&gt;this&lt;/code&gt; will be a new context, it will not reference the global &lt;code&gt;this&lt;/code&gt;.</source>
+          <target state="translated">如果使用 &lt;code&gt;new&lt;/code&gt; 调用函数 &lt;code&gt;this&lt;/code&gt; 将是一个新的上下文，它将不会引用全局 &lt;code&gt;this&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="02cbcf4e964a2153e423ad418b22f8c3fd0762a2" translate="yes" xml:space="preserve">
+          <source>If you just call a function then &lt;code&gt;this&lt;/code&gt; is the &quot;global object&quot; which in the browser is the window</source>
+          <target state="translated">如果只调用一个函数，则 &lt;code&gt;this&lt;/code&gt; 是&amp;ldquo;全局对象&amp;rdquo;，在浏览器中是窗口</target>
+        </trans-unit>
+        <trans-unit id="d0e810fa1822dca8618162a82abee010cf8edbef" translate="yes" xml:space="preserve">
+          <source>If you run this same piece of code in an environment like node.js, &lt;code&gt;this&lt;/code&gt; would refer to the global variable in your app.</source>
+          <target state="translated">如果您在诸如node.js之类的环境中运行同一段代码，则将引用您应用程序中的全局变量。</target>
+        </trans-unit>
+        <trans-unit id="d3d6688717298c61d86ba4872a3543c0973adcae" translate="yes" xml:space="preserve">
+          <source>If you use &lt;code&gt;use strict;&lt;/code&gt;, in which case &lt;code&gt;this&lt;/code&gt; will be &lt;code&gt;undefined&lt;/code&gt;</source>
+          <target state="translated">如果使用 &lt;code&gt;use strict;&lt;/code&gt; ，在这种情况下 &lt;code&gt;this&lt;/code&gt; 将是 &lt;code&gt;undefined&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="4534c020e272fd844f4a0447a32701b45e3c9a14" translate="yes" xml:space="preserve">
+          <source>In &quot;Non Strict Mode&quot;, Calling/Invoking this function directly through   &lt;strong&gt;&quot;UserDefinedFunction()&quot;&lt;/strong&gt; will automatically call/invoke
+it as &lt;strong&gt;&quot;window.UserDefinedFunction()&quot;&lt;/strong&gt; making &lt;strong&gt;&quot;window&quot;&lt;/strong&gt; as the
+&lt;strong&gt;&quot;current object&quot;&lt;/strong&gt; (and hence the value of &lt;strong&gt;&quot;this&quot;&lt;/strong&gt;) within &lt;strong&gt;&quot;UserDefinedFunction&quot;&lt;/strong&gt;.Invoking this function in &quot;Non Strict Mode&quot; will result in the following</source>
+          <target state="translated">在&amp;ldquo;非严格模式&amp;rdquo;下，直接通过&lt;strong&gt;&amp;ldquo; UserDefinedFunction（）&amp;rdquo;&lt;/strong&gt;调用/调用此函数会自动将其作为&lt;strong&gt;&amp;ldquo; window.UserDefinedFunction（）&amp;rdquo;&lt;/strong&gt;进行调用/调用，从而使&lt;strong&gt;&amp;ldquo; window&amp;rdquo;&lt;/strong&gt;成为&lt;strong&gt;&amp;ldquo;当前对象&amp;rdquo;&lt;/strong&gt; （因此， &lt;strong&gt;&amp;ldquo; &amp;ldquo;&amp;rdquo;&lt;/strong&gt;在&lt;strong&gt;&amp;ldquo; UserDefinedFunction&lt;/strong&gt; &lt;strong&gt;&amp;rdquo;中。&lt;/strong&gt; ）在&amp;ldquo;非严格模式&amp;rdquo;下调用此函数将导致以下情况：</target>
+        </trans-unit>
+        <trans-unit id="a86f46ab5fd04ce187322c9dacbc63583d2300ac" translate="yes" xml:space="preserve">
+          <source>In &quot;Strict Mode&quot;, Calling/Invoking the function directly through
+&lt;strong&gt;&quot;UserDefinedFunction()&quot;&lt;/strong&gt; will &lt;strong&gt;&quot;NOT&quot;&lt;/strong&gt; automatically call/invoke it as &lt;strong&gt;&quot;window.UserDefinedFunction()&quot;&lt;/strong&gt;.Hence the &lt;strong&gt;&quot;current
+object&quot;&lt;/strong&gt; (and the value of &lt;strong&gt;&quot;this&quot;&lt;/strong&gt;) within
+&lt;strong&gt;&quot;UserDefinedFunction&quot;&lt;/strong&gt; shall be &lt;strong&gt;undefined&lt;/strong&gt;. Invoking this function in &quot;Strict Mode&quot; will result in the following</source>
+          <target state="translated">在&amp;ldquo;严格模式&amp;rdquo;下，直接通过&lt;strong&gt;&amp;ldquo; UserDefinedFunction（）&amp;rdquo;&lt;/strong&gt;调用/调用函数将&lt;strong&gt;&amp;ldquo;不&amp;rdquo;&lt;/strong&gt;自动将其作为&lt;strong&gt;&amp;ldquo; window.UserDefinedFunction（）&amp;rdquo;&lt;/strong&gt;调用/调用。因此， &lt;strong&gt;&amp;ldquo;当前对象&amp;rdquo;&lt;/strong&gt; （以及&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;的值） ） &lt;strong&gt;&amp;ldquo; UserDefinedFunction&amp;rdquo;中的）&lt;/strong&gt;应为&lt;strong&gt;undefined&lt;/strong&gt; 。 在&amp;ldquo;严格模式&amp;rdquo;下调用此功能将导致以下情况</target>
+        </trans-unit>
+        <trans-unit id="324ac6a318b326d5cd6ec138a5535c67787f43fe" translate="yes" xml:space="preserve">
+          <source>In &lt;code&gt;node&lt;/code&gt; executing from a script, &lt;code&gt;this&lt;/code&gt; at the global scope starts as an empty object. It is not the same as &lt;code&gt;global&lt;/code&gt;</source>
+          <target state="translated">在通过脚本执行的 &lt;code&gt;node&lt;/code&gt; ， &lt;code&gt;this&lt;/code&gt; 在全局范围内从一个空对象开始。 与 &lt;code&gt;global&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="e86f9b9c713dc09a44f881bdef02363ebb098cc7" translate="yes" xml:space="preserve">
+          <source>In &lt;code&gt;node&lt;/code&gt; using the repl, &lt;code&gt;this&lt;/code&gt; is the top namespace. You can refer to it as &lt;code&gt;global&lt;/code&gt;.</source>
+          <target state="translated">在使用repl的 &lt;code&gt;node&lt;/code&gt; ， &lt;code&gt;this&lt;/code&gt; 是顶级名称空间。 您可以将其称为 &lt;code&gt;global&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="ffab00b98bc67260544caac0fccb102e726b7819" translate="yes" xml:space="preserve">
+          <source>In &lt;strong&gt;Client/Browser&lt;/strong&gt;&lt;code&gt;this&lt;/code&gt; keyword is a global object which is &lt;code&gt;window&lt;/code&gt;</source>
+          <target state="translated">在&lt;strong&gt;客户端/浏览器中，&lt;/strong&gt; &lt;code&gt;this&lt;/code&gt; 关键字是一个全局对象，即 &lt;code&gt;window&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="1f8bea0a49922aa0e3476e6f13ff485166460709" translate="yes" xml:space="preserve">
+          <source>In &lt;strong&gt;Server/Node/Javascript runtime&lt;/strong&gt;&lt;code&gt;this&lt;/code&gt; keyword is also a global object which is &lt;code&gt;module.exports&lt;/code&gt;</source>
+          <target state="translated">在&lt;strong&gt;服务器/节点/ Javascript运行时中，&lt;/strong&gt; &lt;code&gt;this&lt;/code&gt; 关键字也是一个全局对象，它是 &lt;code&gt;module.exports&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="4079e8901c7bbc5e93844e5cba0c225cbd71f87b" translate="yes" xml:space="preserve">
+          <source>In Global Context &lt;strong&gt;&quot;this&quot;&lt;/strong&gt; always refers to the &lt;strong&gt;&quot;window&quot;&lt;/strong&gt; object</source>
+          <target state="translated">在全局上下文中， &lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;始终引用&lt;strong&gt;&amp;ldquo; window&amp;rdquo;&lt;/strong&gt;对象</target>
+        </trans-unit>
+        <trans-unit id="2878a1d2151511dedfc3b49078b6bb8743b5e514" translate="yes" xml:space="preserve">
+          <source>In JavaScript there are operators like &lt;code&gt;+&lt;/code&gt; and &lt;code&gt;-&lt;/code&gt; and &lt;code&gt;*&lt;/code&gt;. There is also the dot operator which is &lt;code&gt;.&lt;/code&gt;</source>
+          <target state="translated">在JavaScript中，有 &lt;code&gt;+&lt;/code&gt; 和 &lt;code&gt;-&lt;/code&gt; 和 &lt;code&gt;*&lt;/code&gt; 之类的运算符。 还有点运算符 &lt;code&gt;.&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="6efa6728b16de4e8625617c966cac872299fcc61" translate="yes" xml:space="preserve">
+          <source>In a browser, at the global scope, &lt;code&gt;this&lt;/code&gt; is the &lt;code&gt;window&lt;/code&gt;object</source>
+          <target state="translated">在浏览器中，在全局范围内， &lt;code&gt;this&lt;/code&gt; 是 &lt;code&gt;window&lt;/code&gt; 对象</target>
+        </trans-unit>
+        <trans-unit id="471827f41377d6ddd619a309af3ab2d6e951cd2c" translate="yes" xml:space="preserve">
+          <source>In an HTML DOM event handler, &lt;code&gt;this&lt;/code&gt; is always a reference to the DOM element the event was attached to</source>
+          <target state="translated">在HTML DOM事件处理程序中， &lt;code&gt;this&lt;/code&gt; 始终是对事件附加到的DOM元素的引用</target>
+        </trans-unit>
+        <trans-unit id="f43a8566d5e8782dd6106131e8e134eb235d04cf" translate="yes" xml:space="preserve">
+          <source>In an arrow function, &lt;code&gt;this&lt;/code&gt; will behave like common variables: it will be inherited from its lexical scope. The function's &lt;code&gt;this&lt;/code&gt;, where the arrow function is defined, will be the arrow function's &lt;code&gt;this&lt;/code&gt;.</source>
+          <target state="translated">在箭头函数中， &lt;code&gt;this&lt;/code&gt; 行为类似于常见变量：它将从其词法范围继承。 该函数的 &lt;code&gt;this&lt;/code&gt; ，其中定义了arrow函数，将是arrow函数的 &lt;code&gt;this&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="e0ed578783f6c0844fb69401e88c46b1d4c812d5" translate="yes" xml:space="preserve">
+          <source>In both cases, this is set to window.</source>
+          <target state="translated">在这两种情况下,都被设置为窗口。</target>
+        </trans-unit>
+        <trans-unit id="3c2d641383f797d7802108f589e4b9aefd246bdb" translate="yes" xml:space="preserve">
+          <source>In event listeners the value of &lt;code&gt;this&lt;/code&gt;  refers to the DOM element on which the event was called.</source>
+          <target state="translated">在事件侦听器中， &lt;code&gt;this&lt;/code&gt; 值引用调用事件的DOM元素。</target>
+        </trans-unit>
+        <trans-unit id="21221c02e3ea6b186925dee47bb0aff97b3c7622" translate="yes" xml:space="preserve">
+          <source>In other words &lt;code&gt;bar.foo()&lt;/code&gt; translates into &lt;code&gt;const temp = bar.foo; temp.call(bar);&lt;/code&gt;</source>
+          <target state="translated">换句话说， &lt;code&gt;bar.foo()&lt;/code&gt; 转换为 &lt;code&gt;const temp = bar.foo; temp.call(bar);&lt;/code&gt; temp.call（bar）;</target>
+        </trans-unit>
+        <trans-unit id="e583468a15187c915f71a5317544c6b871de6462" translate="yes" xml:space="preserve">
+          <source>In other words,</source>
+          <target state="translated">换句话说。</target>
+        </trans-unit>
+        <trans-unit id="27d6a458ca3d5e041f95d454ee2e6dbc62b5e228" translate="yes" xml:space="preserve">
+          <source>In pseudoclassical terms, the way many lectures teach the 'this' keyword is as an object instantiated by a class or object constructor. Each time a new object is constructed from a class, imagine that under the hood a local instance of a 'this' object is created and returned. I remember it taught like this:</source>
+          <target state="translated">用伪古典主义的术语来说,许多讲授 &quot;this &quot;关键字的方式是作为类或对象构造器实例化的对象。每次从类中构造一个新的对象时,想象一下,在表象下,一个'this'对象的本地实例被创建并返回。我记得教的时候是这样的。</target>
+        </trans-unit>
+        <trans-unit id="cd2387ea5c279e482429632a93ee4100a845238a" translate="yes" xml:space="preserve">
+          <source>In the above code, we see that the value of &lt;code&gt;this&lt;/code&gt; changed with the nested scope, but we wanted the value of &lt;code&gt;this&lt;/code&gt; from the original scope. So we 'copied' &lt;code&gt;this&lt;/code&gt; to &lt;code&gt;that&lt;/code&gt; and used the copy instead of &lt;code&gt;this&lt;/code&gt;. Clever, eh?</source>
+          <target state="translated">在上面的代码中，我们看到此值随嵌套作用域而变化，但我们希望此值来自原始作用域。 因此，我们将其&amp;ldquo;复制&amp;rdquo;到 &lt;code&gt;that&lt;/code&gt; 并使用副本而不是 &lt;code&gt;this&lt;/code&gt; 。 聪明吧？</target>
+        </trans-unit>
+        <trans-unit id="43224f60c133b11951481d44412c4fce99a0226f" translate="yes" xml:space="preserve">
+          <source>In the above example we see that when &lt;strong&gt;&quot;UserDefinedFunction&quot;&lt;/strong&gt; was
+invoked through &lt;strong&gt;o1&lt;/strong&gt;, &lt;strong&gt;&quot;this&quot;&lt;/strong&gt; takes value of &lt;strong&gt;o1&lt;/strong&gt; and the
+value of its properties &lt;strong&gt;&quot;a&quot;&lt;/strong&gt; and &lt;strong&gt;&quot;b&quot;&lt;/strong&gt; get displayed. The value
+of &lt;strong&gt;&quot;c&quot;&lt;/strong&gt; and &lt;strong&gt;&quot;d&quot;&lt;/strong&gt; were shown as &lt;strong&gt;undefined&lt;/strong&gt; as &lt;strong&gt;o1&lt;/strong&gt; does
+not define these properties</source>
+          <target state="translated">在上面的示例中，我们看到当通过&lt;strong&gt;o1&lt;/strong&gt;调用&lt;strong&gt;&amp;ldquo; UserDefinedFunction&amp;rdquo;&lt;/strong&gt;时， &lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;的值为&lt;strong&gt;o1，&lt;/strong&gt;并且显示其属性&lt;strong&gt;&amp;ldquo; a&amp;rdquo;&lt;/strong&gt;和&lt;strong&gt;&amp;ldquo; b&amp;rdquo;&lt;/strong&gt;的值。 &lt;strong&gt;&amp;ldquo; c&amp;rdquo;&lt;/strong&gt;和&lt;strong&gt;&amp;ldquo; d&amp;rdquo;&lt;/strong&gt;的值显示为&lt;strong&gt;未定义，&lt;/strong&gt;因为&lt;strong&gt;o1&lt;/strong&gt; &lt;strong&gt;未定义&lt;/strong&gt;这些属性</target>
+        </trans-unit>
+        <trans-unit id="96cc1a99aaa4e2084ab88b3ca40dccb578c47d7d" translate="yes" xml:space="preserve">
+          <source>In the above this will be bound to 'myCar' object</source>
+          <target state="translated">在上图中,这将被绑定到 &quot;myCar &quot;对象中。</target>
+        </trans-unit>
+        <trans-unit id="c83013fb1cd27e083ad60085d21979e56ba40fe5" translate="yes" xml:space="preserve">
+          <source>In the case of the &lt;code&gt;Array.prototype&lt;/code&gt; functions, the given &lt;code&gt;callbackfn&lt;/code&gt; is called in an execution context where ThisBinding is set to &lt;code&gt;thisArg&lt;/code&gt; if supplied; otherwise, to the global object.</source>
+          <target state="translated">对于 &lt;code&gt;Array.prototype&lt;/code&gt; 函数，在执行上下文中调用给定的 &lt;code&gt;callbackfn&lt;/code&gt; ，其中，如果提供，则将ThisBinding设置为 &lt;code&gt;thisArg&lt;/code&gt; 。 否则，转到全局对象。</target>
+        </trans-unit>
+        <trans-unit id="c033f7496c40486ad987d93a68b83caa6838c09d" translate="yes" xml:space="preserve">
+          <source>In the case of the &lt;code&gt;Function.prototype&lt;/code&gt; functions, they are called on a function object, but rather than setting ThisBinding to the function object, ThisBinding is set to the &lt;code&gt;thisArg&lt;/code&gt;.</source>
+          <target state="translated">对于 &lt;code&gt;Function.prototype&lt;/code&gt; 函数，它们是在函数对象上调用的，而不是将ThisBinding设置为函数对象，而是将ThisBinding设置为 &lt;code&gt;thisArg&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="aaeae9315cfc2930a15076b4cb90e923ca76ddd7" translate="yes" xml:space="preserve">
+          <source>In the first example, the font color of the button shall be set to
+white when it is clicked.</source>
+          <target state="translated">在第一个例子中,点击按钮时,按钮的字体颜色应设置为白色。</target>
+        </trans-unit>
+        <trans-unit id="2e598c3cda0bdc325d8abb172c4e83c3b44ff6a8" translate="yes" xml:space="preserve">
+          <source>In the following cases, we would see how to manipulate the value of &lt;code&gt;this&lt;/code&gt;.</source>
+          <target state="translated">在以下情况下，我们将看到如何操纵 &lt;code&gt;this&lt;/code&gt; 的值。</target>
+        </trans-unit>
+        <trans-unit id="430cd67bcc3100745a24d8b9fbad17bfca3af311" translate="yes" xml:space="preserve">
+          <source>In the latter case, you merely reference the function, not hand it over to the element. Therefore, &lt;code&gt;this&lt;/code&gt; will refer to the window object.</source>
+          <target state="translated">在后一种情况下，您仅引用函数，而不将其移交给元素。 因此， &lt;code&gt;this&lt;/code&gt; 将引用窗口对象。</target>
+        </trans-unit>
+        <trans-unit id="1dd405f2048b51f3afad5fd52c3f9bfc8120d1ae" translate="yes" xml:space="preserve">
+          <source>In the second example when the &lt;strong&gt;&quot;div&quot;&lt;/strong&gt; element is clicked it shall
+call the &lt;strong&gt;OnDivClick&lt;/strong&gt; function with its second parameter
+referencing the clicked div element. However the value of &lt;strong&gt;&quot;this&quot;&lt;/strong&gt;
+within OnDivClick &lt;strong&gt;SHALL NOT&lt;/strong&gt; reference the clicked &lt;strong&gt;div&lt;/strong&gt;
+element. It shall be set as the &lt;strong&gt;&quot;window object&quot;&lt;/strong&gt; or
+&lt;strong&gt;&quot;undefined&quot;&lt;/strong&gt; in &lt;strong&gt;Non strict&lt;/strong&gt; and &lt;strong&gt;Strict Modes&lt;/strong&gt; respectively (if &lt;strong&gt;OnDivClick&lt;/strong&gt; is an &lt;strong&gt;unbound function&lt;/strong&gt;) or set to a predefined
+Bound value (if &lt;strong&gt;OnDivClick&lt;/strong&gt; is a &lt;strong&gt;bound function&lt;/strong&gt;)</source>
+          <target state="translated">在第二个示例中，当单击&lt;strong&gt;&amp;ldquo; div&amp;rdquo;&lt;/strong&gt;元素时，它将使用其第二个参数引用被单击的div元素来调用&lt;strong&gt;OnDivClick&lt;/strong&gt;函数。 但是，OnDivClick中的&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;值&lt;strong&gt;不应&lt;/strong&gt;引用被单击的&lt;strong&gt;div&lt;/strong&gt;元素。 应分别在&lt;strong&gt;&amp;ldquo;&lt;/strong&gt; &lt;strong&gt;非严格&amp;rdquo;&lt;/strong&gt;和&amp;ldquo; &lt;strong&gt;严格&amp;rdquo;模式下&lt;/strong&gt;将其设置为&lt;strong&gt;&amp;ldquo;窗口对象&amp;rdquo;&lt;/strong&gt;或&lt;strong&gt;&amp;ldquo;未定义&amp;rdquo;&lt;/strong&gt; （如果&lt;strong&gt;OnDivClick&lt;/strong&gt;是&lt;strong&gt;未绑定函数&lt;/strong&gt; ）或设置为预定义的&amp;ldquo;绑定&amp;rdquo;值（如果&lt;strong&gt;OnDivClick&lt;/strong&gt;是已&lt;strong&gt;绑定函数&lt;/strong&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="81ed2e6a494f7f2dc46f5d18d6632785957e98bc" translate="yes" xml:space="preserve">
+          <source>In this case, THIS will be bound to the object which is explicitly passed to the function.</source>
+          <target state="translated">在这种情况下,this将被绑定到明确传递给函数的对象上。</target>
+        </trans-unit>
+        <trans-unit id="0df985536051bb82097890e1a0953285b688bcea" translate="yes" xml:space="preserve">
+          <source>In this example, the JavaScript interpreter enters function code, but because &lt;code&gt;myFun&lt;/code&gt;/&lt;code&gt;obj.myMethod&lt;/code&gt; is not called on an object, ThisBinding is set to &lt;code&gt;window&lt;/code&gt;.</source>
+          <target state="translated">在此示例中，JavaScript解释器输入函数代码，但是由于未在对象上调用 &lt;code&gt;myFun&lt;/code&gt; / &lt;code&gt;obj.myMethod&lt;/code&gt; ，因此ThisBinding设置为 &lt;code&gt;window&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="2bb2e91de5338b6aa278265043941f191287a902" translate="yes" xml:space="preserve">
+          <source>In two words, &lt;code&gt;this&lt;/code&gt; in JavaScript points the object from whom (or from whose execution context) the current function was run and it's always read-only, you can't set it anyway (such an attempt will end up with 'Invalid left-hand side in assignment' message.</source>
+          <target state="translated">用两个词来说，JavaScript中的该对象指向运行当前函数的对象（或从其执行上下文），并且该对象始终是只读的，您无论如何都无法设置它（这样的尝试将以'Invalid left-手在作业中的讯息&amp;rdquo;。</target>
+        </trans-unit>
+        <trans-unit id="934e0a8e43701b41d397444e208dc6649f33774f" translate="yes" xml:space="preserve">
+          <source>Index:</source>
+          <target state="translated">Index:</target>
+        </trans-unit>
+        <trans-unit id="8659b0f0077283eb99e2d1bd963b7db35f13f69b" translate="yes" xml:space="preserve">
+          <source>Inside HTML attributes in which you can put JavaScript, &lt;code&gt;this&lt;/code&gt; is a reference to the element.</source>
+          <target state="translated">在可以放置JavaScript的HTML属性内， &lt;code&gt;this&lt;/code&gt; 是对该元素的引用。</target>
+        </trans-unit>
+        <trans-unit id="9e308c1af402a51e3c742eaeb80b4ffd7fa67c95" translate="yes" xml:space="preserve">
+          <source>Inside a Direct  &quot;Non Bound Function&quot; Call, &lt;strong&gt;the object that
+invoked the function call becomes the &quot;current object&quot;&lt;/strong&gt; (and hence
+the value of &lt;strong&gt;&quot;this&quot;&lt;/strong&gt;). If a function is called without a explicit &lt;strong&gt;current object&lt;/strong&gt;, the &lt;strong&gt;current object&lt;/strong&gt; is either the &lt;strong&gt;&quot;window&quot;&lt;/strong&gt; object (For Non Strict Mode) or &lt;strong&gt;undefined&lt;/strong&gt; (For Strict Mode)  . Any function (or variable) defined in
+&lt;strong&gt;Global Context&lt;/strong&gt; automatically becomes a property of the &lt;strong&gt;&quot;window&quot;&lt;/strong&gt; object.For e.g Suppose function is defined in Global Context as</source>
+          <target state="translated">在直接的&amp;ldquo;非绑定函数&amp;rdquo;调用中， &lt;strong&gt;调用该函数调用的对象将成为&amp;ldquo;当前对象&amp;rdquo;&lt;/strong&gt; （并因此成为&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;的值）。 如果在没有显式&lt;strong&gt;当前对象的&lt;/strong&gt;情况下调用函数，则&lt;strong&gt;当前对象&lt;/strong&gt;是&lt;strong&gt;&amp;ldquo;窗口&amp;rdquo;&lt;/strong&gt;对象（对于非严格模式）或&lt;strong&gt;未定义&lt;/strong&gt; （对于严格模式）。 &lt;strong&gt;全局上下文中&lt;/strong&gt;定义的任何函数（或变量）都会自动成为&lt;strong&gt;&amp;ldquo;窗口&amp;rdquo;对象&lt;/strong&gt;的属性。例如，假设函数在全局上下文中定义为</target>
+        </trans-unit>
+        <trans-unit id="e90ac117b0316d7973d69a03502107870607096b" translate="yes" xml:space="preserve">
+          <source>Inside a constructor function, the &lt;strong&gt;&quot;current object&quot;&lt;/strong&gt; (and hence the value of 
+&lt;strong&gt;&quot;this&quot;&lt;/strong&gt;) references the object that is currently being created
+through &lt;strong&gt;&quot;new&quot;&lt;/strong&gt; irrespective of the bind status of the function. However
+if the constructor is a bound function it shall get called with 
+predefined set of arguments as set for the bound function.</source>
+          <target state="translated">在构造函数内部， &lt;strong&gt;&amp;ldquo;当前对象&amp;rdquo;&lt;/strong&gt; （因此是&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;的值）引用当前通过&lt;strong&gt;&amp;ldquo; new&amp;rdquo;&lt;/strong&gt;创建的对象，而与函数的绑定状态无关。 但是，如果构造函数是绑定函数，则应使用为绑定函数设置的预定义参数集来调用它。</target>
+        </trans-unit>
+        <trans-unit id="07896e58b529f3fb8b5b73a6120efa70bb3ab536" translate="yes" xml:space="preserve">
+          <source>Irrespective of the context in which it is used, &lt;strong&gt;&quot;this&quot;&lt;/strong&gt; always references the &lt;strong&gt;&quot;current object&quot;&lt;/strong&gt; in Javascript. However, what the &lt;strong&gt;&quot;current object&quot;&lt;/strong&gt; is  differs according to &lt;strong&gt;context&lt;/strong&gt;. The &lt;strong&gt;context&lt;/strong&gt; may be exactly &lt;strong&gt;1 of the 6&lt;/strong&gt; following:</source>
+          <target state="translated">无论使用哪种上下文， &lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;始终引用Javascript中的&lt;strong&gt;&amp;ldquo;当前对象&amp;rdquo;&lt;/strong&gt; 。 但是， &lt;strong&gt;&amp;ldquo;当前对象&amp;rdquo;的&lt;/strong&gt;含义根据&lt;strong&gt;上下文&lt;/strong&gt;而有所不同。 &lt;strong&gt;上下文&lt;/strong&gt;可能恰好&lt;strong&gt;是以下6个中的1个&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="0ddbde6677e66a2eef6ce94f5856c81e48273985" translate="yes" xml:space="preserve">
+          <source>It is difficult to get a good grasp of JS, or write more than anything trivial in it, if you don't understand it thoroughly. You cannot just afford to take a quick dip :) I think the best way to get started with JS is to first watch these video lectures by Douglas Crockford - &lt;a href=&quot;http://yuiblog.com/crockford/&quot;&gt;http://yuiblog.com/crockford/&lt;/a&gt;, which covers this and that, and everything else about JS.</source>
+          <target state="translated">如果您不完全了解JS，那么很难掌握或编写比其他琐碎的东西还要多的东西。 您不能只是快速浏览一下：)我认为入门JS的最佳方法是先观看Douglas Crockford的这些视频讲座-http: &lt;a href=&quot;http://yuiblog.com/crockford/&quot;&gt;//yuiblog.com/crockford/&lt;/a&gt; ，其中涵盖了这一点以及关于JS的所有其他信息。</target>
+        </trans-unit>
+        <trans-unit id="7126c04f305ed904207b61e181769dea029be5b6" translate="yes" xml:space="preserve">
+          <source>It is usually a mistake to assign &lt;em&gt;arrays&lt;/em&gt; or &lt;em&gt;objects&lt;/em&gt; on the &lt;code&gt;prototype&lt;/code&gt;. If you want instances to each have their own arrays, create them in the function, not the prototype.</source>
+          <target state="translated">在 &lt;code&gt;prototype&lt;/code&gt; 上分配&lt;em&gt;数组&lt;/em&gt;或&lt;em&gt;对象&lt;/em&gt;通常是一个错误。 如果要让实例各自具有自己的数组，请在函数（而不是原型）中创建它们。</target>
+        </trans-unit>
+        <trans-unit id="992dc5d399c1eb9c5819d08e8cdc27405e9a0bff" translate="yes" xml:space="preserve">
+          <source>JQuery proxy is another way you can use to make sure this in a function will be the value you desire. (Check &lt;a href=&quot;https://stackoverflow.com/q/4986329/340046&quot;&gt;Understanding $.proxy()&lt;/a&gt;, &lt;a href=&quot;https://stackoverflow.com/q/3349380/340046&quot;&gt;jQuery.proxy() usage&lt;/a&gt;)</source>
+          <target state="translated">jQuery代理是您可以用来确保函数中的值是您想要的值的另一种方法。 （检查&lt;a href=&quot;https://stackoverflow.com/q/4986329/340046&quot;&gt;了解$ .proxy（）&lt;/a&gt; ， &lt;a href=&quot;https://stackoverflow.com/q/3349380/340046&quot;&gt;jQuery.proxy（）的用法&lt;/a&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="be6b0ab456696ba8d67592a42d2412b774842021" translate="yes" xml:space="preserve">
+          <source>Javascript's &lt;code&gt;this&lt;/code&gt;</source>
+          <target state="translated">Javascript的 &lt;code&gt;this&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="2453951365a295c5909c9ed643507672357709f3" translate="yes" xml:space="preserve">
+          <source>Just for fun, test your understanding with some examples</source>
+          <target state="translated">只是为了好玩,用一些例子来测试一下你的理解。</target>
+        </trans-unit>
+        <trans-unit id="894c85eb8e48c996ee7525b62829676432dc120f" translate="yes" xml:space="preserve">
+          <source>Just like &lt;code&gt;bind&lt;/code&gt;, a new invisible function is created that calls the given function with a bound value for &lt;code&gt;objectForThis&lt;/code&gt; but unlike &lt;code&gt;bind&lt;/code&gt; the object to be bound is implicit. It's whatever &lt;code&gt;this&lt;/code&gt; happens to be when the &lt;code&gt;=&amp;gt;&lt;/code&gt; operator is used.</source>
+          <target state="translated">就像 &lt;code&gt;bind&lt;/code&gt; 一样，会创建一个新的不可见函数，该函数使用 &lt;code&gt;objectForThis&lt;/code&gt; 的绑定值调用给定函数，但与 &lt;code&gt;bind&lt;/code&gt; 不同，要绑定的对象是隐式的。 无论使用 &lt;code&gt;=&amp;gt;&lt;/code&gt; 运算符时发生什么情况。</target>
+        </trans-unit>
+        <trans-unit id="fcbd5d2a27f1bec48bd69a467c70b7017b49d1da" translate="yes" xml:space="preserve">
+          <source>Keep in mind &lt;code&gt;exports&lt;/code&gt; is just a reference to &lt;code&gt;module.exports&lt;/code&gt;</source>
+          <target state="translated">请记住， &lt;code&gt;exports&lt;/code&gt; 只是对 &lt;code&gt;module.exports&lt;/code&gt; 的引用</target>
+        </trans-unit>
+        <trans-unit id="5fa70764a0750c44aea026597b2b0bb54778bd69" translate="yes" xml:space="preserve">
+          <source>Let us look at another example. Please look at the following code</source>
+          <target state="translated">让我们再看一个例子。请看下面的代码</target>
+        </trans-unit>
+        <trans-unit id="674fee26bf2169d5b7390a8d6cb04650d870ce43" translate="yes" xml:space="preserve">
+          <source>Let's log &lt;code&gt;this&lt;/code&gt; keyword to the console in global scope without any more code but</source>
+          <target state="translated">让我们 &lt;code&gt;this&lt;/code&gt; 关键字记录到全局范围内的控制台中，无需任何其他代码，但</target>
+        </trans-unit>
+        <trans-unit id="347a6545cb2fdbde1b257137e4557d5c3e7376d9" translate="yes" xml:space="preserve">
+          <source>Lexically for arrow functions (they adopt the &lt;em&gt;this&lt;/em&gt; of their outer execution context)</source>
+          <target state="translated">用词法表示箭头函数（它们采用其外部执行上下文的&lt;em&gt;this&lt;/em&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="4b794c51b008429d9440459755a0aea70b021d1b" translate="yes" xml:space="preserve">
+          <source>Most people get confused when they try to use &quot;this&quot; inside of anonymous closure functions like:</source>
+          <target state="translated">大多数人在尝试在匿名封闭函数中使用 &quot;这个 &quot;的时候都会感到困惑,比如说。</target>
+        </trans-unit>
+        <trans-unit id="24a1c5ba7f20054e6cc97447ca4ff99819209a36" translate="yes" xml:space="preserve">
+          <source>Note that &lt;code&gt;call&lt;/code&gt; and &lt;code&gt;apply&lt;/code&gt; can override the value of &lt;code&gt;this&lt;/code&gt; set by dot method invocation we discussed in the second bullet.
+Simple enough :)</source>
+          <target state="translated">请注意， &lt;code&gt;call&lt;/code&gt; 和 &lt;code&gt;apply&lt;/code&gt; 可以通过我们在第二个项目符号中讨论的点方法调用来覆盖 &lt;code&gt;this&lt;/code&gt; 设置的值。 很简单:)</target>
+        </trans-unit>
+        <trans-unit id="d5fda3afa616c2908147257d1b4538bffe1f96f3" translate="yes" xml:space="preserve">
+          <source>Note that if &lt;code&gt;functionObject.bind&lt;/code&gt; did not exist we could make our own like this</source>
+          <target state="translated">请注意，如果不存在 &lt;code&gt;functionObject.bind&lt;/code&gt; ,我们可以像这样制作自己的</target>
+        </trans-unit>
+        <trans-unit id="fd156fe39e6cb3e81a3dc10a1d0665f3a2485dfd" translate="yes" xml:space="preserve">
+          <source>Note that if a method is stored (or rather, copied) in another variable, the reference to &lt;code&gt;this&lt;/code&gt; is no longer preserved in the new variable. For example:</source>
+          <target state="translated">请注意，如果方法存储（或复制）在另一个变量中，则对该方法的引用将不再保留在新变量中。 例如：</target>
+        </trans-unit>
+        <trans-unit id="767a361d58ea1665f1185636ce54e8f7e4d5a7b8" translate="yes" xml:space="preserve">
+          <source>Note that if you use strict mode then &lt;code&gt;this&lt;/code&gt; will be &lt;code&gt;undefined&lt;/code&gt;</source>
+          <target state="translated">请注意，如果您使用严格模式，那么它将是 &lt;code&gt;undefined&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="235f4aca4b6e147c89ad215706ae8a6e2deabb75" translate="yes" xml:space="preserve">
+          <source>Note that it doesn't matter how the function was created (mostly...). All of these will produce the same results</source>
+          <target state="translated">请注意,函数是如何创建的(主要是...........),这并不重要。所有这些都会产生相同的结果</target>
+        </trans-unit>
+        <trans-unit id="2b700c221638ceb27ecd2fe681cd4c26833c39cf" translate="yes" xml:space="preserve">
+          <source>Note that the official ECMAScript spec nowhere states that such types of functions are actual &lt;code&gt;constructor&lt;/code&gt; functions. They are just normal functions, and &lt;code&gt;new&lt;/code&gt; can be used on any function. It's just that we use them as such, and so we call them as such only.</source>
+          <target state="translated">请注意，官方ECMAScript规范中没有任何地方声明此类函数是实际的 &lt;code&gt;constructor&lt;/code&gt; 函数。 它们只是正常功能， &lt;code&gt;new&lt;/code&gt; 功能可用于任何功能。 只是我们原样使用它们，因此我们仅如此称呼它们。</target>
+        </trans-unit>
+        <trans-unit id="bd960096fd51dca1613866611c29d9d73d149c0d" translate="yes" xml:space="preserve">
+          <source>Note that we are running this in the normal mode, i.e. strict mode is not used.</source>
+          <target state="translated">注意,我们是在正常模式下运行的,也就是说,不使用严格模式。</target>
+        </trans-unit>
+        <trans-unit id="81c5b121bb3b104b797c415c59fc9f82cf7e31ea" translate="yes" xml:space="preserve">
+          <source>Now if we run this in strict mode by adding the statement &lt;code&gt;&quot;use strict&quot;;&lt;/code&gt; to the beginning of the function declaration, &lt;code&gt;this&lt;/code&gt; would no longer refer to the global variable in either of the environments. This is done to avoid confusions in strict mode. &lt;code&gt;this&lt;/code&gt; would, in this case just log &lt;code&gt;undefined&lt;/code&gt;, because that is what it is, it is not defined.</source>
+          <target state="translated">现在，如果我们在严格模式下通过添加语句 &lt;code&gt;&quot;use strict&quot;;&lt;/code&gt; 到函数声明的开头， &lt;code&gt;this&lt;/code&gt; 将不再引用这两种环境中的全局变量。 这样做是为了避免在严格模式下造成混淆。 在这种情况下，这只是记录 &lt;code&gt;undefined&lt;/code&gt; ，因为这是实际的，没有定义。</target>
+        </trans-unit>
+        <trans-unit id="bdb993d7f3927fbada79fbc0cdf43dcb01f54dc1" translate="yes" xml:space="preserve">
+          <source>Now. Let's imagine we make a function that explicitly sets &lt;code&gt;this&lt;/code&gt; before calling another function and then call it with the &lt;code&gt;.&lt;/code&gt; (dot) operator</source>
+          <target state="translated">现在。 假设我们创建了一个函数，该函数在调用另一个函数之前显式设置 &lt;code&gt;this&lt;/code&gt; 函数，然后使用调用它 &lt;code&gt;.&lt;/code&gt; （点）运算符</target>
+        </trans-unit>
+        <trans-unit id="f7c9c2091cfaff21dd7fae4ea95609c87cb2899e" translate="yes" xml:space="preserve">
+          <source>Object literal notation creates an instance of object which we can use immediately. With function we may need to first create its instance using &lt;code&gt;new&lt;/code&gt; operator.</source>
+          <target state="translated">对象文字表示法创建了一个对象实例，我们可以立即使用它。 使用函数，我们可能需要首先使用 &lt;code&gt;new&lt;/code&gt; 运算符创建其实例。</target>
+        </trans-unit>
+        <trans-unit id="25ff51b9b77d4e3cd4a459c2231b84b262b58dee" translate="yes" xml:space="preserve">
+          <source>Once you start getting used to &lt;code&gt;this&lt;/code&gt;, the rules are actually pretty simple. The &lt;a href=&quot;https://ecma-international.org/ecma-262/5.1&quot;&gt;ECMAScript 5.1 Standard&lt;/a&gt; defines &lt;code&gt;this&lt;/code&gt;:</source>
+          <target state="translated">一旦开始习惯了，规则实际上就非常简单了。 &lt;a href=&quot;https://ecma-international.org/ecma-262/5.1&quot;&gt;ECMAScript 5.1标准&lt;/a&gt; &lt;code&gt;this&lt;/code&gt; 定义：</target>
+        </trans-unit>
+        <trans-unit id="ba28d64a842cc863e8fd947ef8b2d2761787ca76" translate="yes" xml:space="preserve">
+          <source>One other wrinkle is the prototype chain. When you use &lt;code&gt;a.b&lt;/code&gt; JavaScript first looks on the object referenced directly by &lt;code&gt;a&lt;/code&gt; for the property &lt;code&gt;b&lt;/code&gt;. If &lt;code&gt;b&lt;/code&gt; is not found on the object then JavaScript will look in the object's prototype to find &lt;code&gt;b&lt;/code&gt;.</source>
+          <target state="translated">原型链是另一个难题。 当您使用 &lt;code&gt;a.b&lt;/code&gt; JavaScript首先查看a直接为属性 &lt;code&gt;b&lt;/code&gt; 引用的对象。 如果在对象上未找到 &lt;code&gt;b&lt;/code&gt; ，则JavaScript将在对象的原型中查找 &lt;code&gt;b&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="519ab8586252702931098aa46525bc513da1698f" translate="yes" xml:space="preserve">
+          <source>One way to look at JavaScript is to see that there are only 1 way to call a function&lt;sup&gt;1&lt;/sup&gt;. It is</source>
+          <target state="translated">查看JavaScript的一种方法是看到只有一种方法可以调用函数&lt;sup&gt;1&lt;/sup&gt; 。 它是</target>
+        </trans-unit>
+        <trans-unit id="e6cc1f21389aeed3c994d1fb9ea99f0e63bb1e99" translate="yes" xml:space="preserve">
+          <source>Outside all functions (i.e. in global context) the &lt;strong&gt;&quot;current
+object&quot;&lt;/strong&gt; (and hence the value of &lt;strong&gt;&quot;this&quot;&lt;/strong&gt;) is always the
+&lt;strong&gt;&quot;window&quot;&lt;/strong&gt; object for browsers.</source>
+          <target state="translated">在所有函数之外（即，在全局上下文中）， &lt;strong&gt;&amp;ldquo;当前对象&amp;rdquo;&lt;/strong&gt; （因此是&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;的值）始终是浏览器的&lt;strong&gt;&amp;ldquo;窗口&amp;rdquo;&lt;/strong&gt;对象。</target>
+        </trans-unit>
+        <trans-unit id="458f4f8a250f5217e985cebc8035a133a4cc6496" translate="yes" xml:space="preserve">
+          <source>Please look at the following HTML Snippet</source>
+          <target state="translated">请看下面的HTML片段</target>
+        </trans-unit>
+        <trans-unit id="c23e76e8d97b29eedd68eb763eb4329893b8b3a7" translate="yes" xml:space="preserve">
+          <source>Presenting.... &lt;code&gt;bind&lt;/code&gt;!</source>
+          <target state="translated">提出...。</target>
+        </trans-unit>
+        <trans-unit id="5dff48a80d21897b1a7b4ec4d3e064bd791cf0a7" translate="yes" xml:space="preserve">
+          <source>Pretty straightforward, eh?</source>
+          <target state="translated">很简单,是吗?</target>
+        </trans-unit>
+        <trans-unit id="d68dbd2ff1e0f0c272d49f9c85bec5340d93f7ba" translate="yes" xml:space="preserve">
+          <source>Probably the most detailed and comprehensive article on &lt;code&gt;this&lt;/code&gt; is the following:</source>
+          <target state="translated">可能有关 &lt;code&gt;this&lt;/code&gt; 内容的最详细，最全面的文章如下：</target>
+        </trans-unit>
+        <trans-unit id="aec57670cb741243fb4b52dc59dfa257130956b6" translate="yes" xml:space="preserve">
+          <source>See the difference between the three? It is subtle, but they are used differently. Like &lt;code&gt;call&lt;/code&gt; and &lt;code&gt;apply&lt;/code&gt;, &lt;code&gt;bind&lt;/code&gt; will also over-ride the value of &lt;code&gt;this&lt;/code&gt; set by dot-method invocation.</source>
+          <target state="translated">看到两者之间的区别了吗？ 它很微妙，但是用法不同。 像 &lt;code&gt;call&lt;/code&gt; 和 &lt;code&gt;apply&lt;/code&gt; 一样， &lt;code&gt;bind&lt;/code&gt; 也将通过点方法调用来覆盖 &lt;code&gt;this&lt;/code&gt; 设置的值。</target>
+        </trans-unit>
+        <trans-unit id="d6a6db24764ce1a8198a5fb69df54904ebb96362" translate="yes" xml:space="preserve">
+          <source>See the following code:</source>
+          <target state="translated">请看下面的代码。</target>
+        </trans-unit>
+        <trans-unit id="044b35bd261da09f7c8b736e9469b64b95b16433" translate="yes" xml:space="preserve">
+          <source>Similarly when &lt;strong&gt;&quot;UserDefinedFunction&quot;&lt;/strong&gt; was invoked through &lt;strong&gt;o2&lt;/strong&gt;,
+&lt;strong&gt;&quot;this&quot;&lt;/strong&gt; takes value of &lt;strong&gt;o2&lt;/strong&gt; and the value of its properties &lt;strong&gt;&quot;c&quot;&lt;/strong&gt; and &lt;strong&gt;&quot;d&quot;&lt;/strong&gt; get displayed.The value of &lt;strong&gt;&quot;a&quot;&lt;/strong&gt; and &lt;strong&gt;&quot;b&quot;&lt;/strong&gt; were shown as &lt;strong&gt;undefined&lt;/strong&gt; as &lt;strong&gt;o2&lt;/strong&gt; does not define these properties.</source>
+          <target state="translated">类似地，当通过&lt;strong&gt;o2&lt;/strong&gt;调用&lt;strong&gt;&amp;ldquo; UserDefinedFunction&amp;rdquo;&lt;/strong&gt;时， &lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;的值为&lt;strong&gt;o2&lt;/strong&gt;并显示其属性&lt;strong&gt;&amp;ldquo; c&amp;rdquo;&lt;/strong&gt;和&lt;strong&gt;&amp;ldquo; d&amp;rdquo;的&lt;/strong&gt;值。与&lt;strong&gt;o2&lt;/strong&gt;一样， &lt;strong&gt;&amp;ldquo; a&amp;rdquo;&lt;/strong&gt;和&lt;strong&gt;&amp;ldquo; b&amp;rdquo;&lt;/strong&gt;的值显示为&lt;strong&gt;未定义&lt;/strong&gt;没有定义这些属性。</target>
+        </trans-unit>
+        <trans-unit id="4681c4e7dfd2de2b681bc6a9a880fb39de0fc724" translate="yes" xml:space="preserve">
+          <source>Similarly, when you use &lt;code&gt;this&lt;/code&gt; directly inside the event property (like &lt;code&gt;&amp;lt;button onclick=&quot;...this...&quot; &amp;gt;&lt;/code&gt;) of the element, it refers to the element.</source>
+          <target state="translated">类似地，当您直接在元素的事件属性（例如 &lt;code&gt;&amp;lt;button onclick=&quot;...this...&quot; &amp;gt;&lt;/code&gt; ）内使用它时，它引用该元素。</target>
+        </trans-unit>
+        <trans-unit id="fc5642eed954e43be8c2b08ea6204f5beae34cb6" translate="yes" xml:space="preserve">
+          <source>Simple answer:</source>
+          <target state="translated">答案很简单:</target>
+        </trans-unit>
+        <trans-unit id="cd0c21407e549024fd8ebade4d9db293fa35da67" translate="yes" xml:space="preserve">
+          <source>Simple function invocation</source>
+          <target state="translated">简单的函数调用</target>
+        </trans-unit>
+        <trans-unit id="d7af4d79d12ac932a60b3bcbb4551442c40a1a19" translate="yes" xml:space="preserve">
+          <source>So here, inside each(), &quot;this&quot; doesn't hold the &quot;value&quot; that you expect it to (from</source>
+          <target state="translated">所以在这里,在每个()里面,&quot;this &quot;并不像你所期望的那样持有 &quot;值&quot;(从</target>
+        </trans-unit>
+        <trans-unit id="2dedd77da3beb2baf299eed38237e8b9cb499c92" translate="yes" xml:space="preserve">
+          <source>So if I did</source>
+          <target state="translated">所以,如果我做了</target>
+        </trans-unit>
+        <trans-unit id="f9ad9f9ed5dfd5b4e3d833b6c8840ad972fab14b" translate="yes" xml:space="preserve">
+          <source>So the Semantic of &quot;this&quot; is different from the traditional OOP languages. And it causes problems:
+1. when a function is passed to another variable (most likely, a callback); and 2. when a closure is invoked from a member method of a class.</source>
+          <target state="translated">所以 &quot;this &quot;的语义与传统的OOP语言不同。而且它带来的问题是:1.当一个函数被传递给另一个变量时(很可能是回调);2.当从类的成员方法中调用闭包时。</target>
+        </trans-unit>
+        <trans-unit id="40cd6970e0b84898911ea5a78a1e7dfb515b5bcf" translate="yes" xml:space="preserve">
+          <source>So the above code will log &lt;code&gt;{myObj: &quot;is cool&quot;}, [1, 2, 3]&lt;/code&gt; in the console. Pretty nice way to change the value of &lt;code&gt;this&lt;/code&gt; in any function.</source>
+          <target state="translated">因此，上面的代码将在控制台中记录 &lt;code&gt;{myObj: &quot;is cool&quot;}, [1, 2, 3]&lt;/code&gt; 。 在任何函数中更改此值的好方法。</target>
+        </trans-unit>
+        <trans-unit id="522ff2123214afbd475283a209499ed36291eb73" translate="yes" xml:space="preserve">
+          <source>So yeah, since &lt;code&gt;function&lt;/code&gt;s are also &lt;code&gt;Objects&lt;/code&gt; (and in-fact first class variables in Javascript), even functions have methods which are... well, functions themselves.</source>
+          <target state="translated">是的，因为 &lt;code&gt;function&lt;/code&gt; 也是 &lt;code&gt;Objects&lt;/code&gt; （实际上是Javascript中的第一类变量），所以即使函数也具有本身就是函数的方法。</target>
+        </trans-unit>
+        <trans-unit id="0f3b2a9afffa56a30d094f3e24ed8cf50303768c" translate="yes" xml:space="preserve">
+          <source>So, everything else can be described by how it translates into &lt;code&gt;functionObject.call&lt;/code&gt;.</source>
+          <target state="translated">因此，其他所有内容都可以通过将其转换为 &lt;code&gt;functionObject.call&lt;/code&gt; 来描述。</target>
+        </trans-unit>
+        <trans-unit id="790a624bffefadda17b70c21c4b01c0c58df0ee7" translate="yes" xml:space="preserve">
+          <source>So, just like the rules above</source>
+          <target state="translated">所以,就像上面的规则一样</target>
+        </trans-unit>
+        <trans-unit id="914ff3d89be46de1e5d463f23bd9e8ec17bc3b6b" translate="yes" xml:space="preserve">
+          <source>So, that's the same behavior as:</source>
+          <target state="translated">所以,这种行为是一样的。</target>
+        </trans-unit>
+        <trans-unit id="3752107636af96b291a982ec3e8aba9fd5bc3976" translate="yes" xml:space="preserve">
+          <source>Sometimes, you don't like the fact that &lt;code&gt;this&lt;/code&gt; changes with scope, especially nested scope. Take a look at the following example.</source>
+          <target state="translated">有时，您不喜欢随范围（尤其是嵌套范围）而变化的事实。 看下面的例子。</target>
+        </trans-unit>
+        <trans-unit id="3dcb878280db0a0ee997fedf6a06a9e25d983362" translate="yes" xml:space="preserve">
+          <source>Summary &lt;code&gt;this&lt;/code&gt; Javascript:</source>
+          <target state="translated">总结 &lt;code&gt;this&lt;/code&gt; JavaScript：</target>
+        </trans-unit>
+        <trans-unit id="870ae78c66193024be4337db8b9c61bdcf897d92" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;.&lt;/code&gt; operator when used with a function on the right and an object on the left effectively means &quot;pass object as &lt;code&gt;this&lt;/code&gt; to function.</source>
+          <target state="translated">的 &lt;code&gt;.&lt;/code&gt; 运算符与右侧的功能和左侧的对象一起使用时，实际上表示&amp;ldquo;将对象作为 &lt;code&gt;this&lt;/code&gt; 函数传递。</target>
+        </trans-unit>
+        <trans-unit id="5dc19a793d0ce3f7b84a548e2b6a4dbb98f0fbaf" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;new&lt;/code&gt; keyword</source>
+          <target state="translated">&lt;code&gt;new&lt;/code&gt; 关键字</target>
+        </trans-unit>
+        <trans-unit id="5c7d3a19cb8b6bc930a3cf143fd794ae8cdebd95" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;this&lt;/code&gt; keyword behaves differently in JavaScript compared to other languages. In Object Oriented languages, the &lt;code&gt;this&lt;/code&gt; keyword refers to the current instance of the class. In JavaScript the value of &lt;code&gt;this&lt;/code&gt; is determined by the invocation context of function (&lt;em&gt;&lt;code&gt;context.function()&lt;/code&gt;&lt;/em&gt;) and where it is called.</source>
+          <target state="translated">与其他语言相比， &lt;code&gt;this&lt;/code&gt; 关键字在JavaScript中的行为有所不同。 在面向对象的语言中， &lt;code&gt;this&lt;/code&gt; 关键字引用该类的当前实例。 在JavaScript中， &lt;code&gt;this&lt;/code&gt; 值取决于函数的调用上下文（ &lt;em&gt; &lt;code&gt;context.function()&lt;/code&gt; &lt;/em&gt; ）及其调用位置。</target>
+        </trans-unit>
+        <trans-unit id="8118d827d29ceed5b5f484813a32a7dbdecf8a1e" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;this&lt;/code&gt; keyword evaluates to the value of the ThisBinding of the current execution context</source>
+          <target state="translated">&lt;code&gt;this&lt;/code&gt; 关键字的值为当前执行上下文的ThisBinding的值</target>
+        </trans-unit>
+        <trans-unit id="21236dd5251fb6c854cd82db5d7b667a4cfa5baa" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;this&lt;/code&gt; keyword is &lt;a href=&quot;http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/#When_this_is_most_misunderstood_and_becomes_tricky&quot;&gt;most misunderstood&lt;/a&gt; when: 1) we borrow a method that uses &lt;code&gt;this&lt;/code&gt;, 2) we assign a method that uses &lt;code&gt;this&lt;/code&gt; to a variable, 3) a function that uses &lt;code&gt;this&lt;/code&gt; is passed as a callback function, and 4) &lt;code&gt;this&lt;/code&gt; is used inside a closure &amp;mdash; an inner function. &lt;sup&gt;(2)&lt;/sup&gt;</source>
+          <target state="translated">在以下情况下， &lt;code&gt;this&lt;/code&gt; 关键字&lt;a href=&quot;http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/#When_this_is_most_misunderstood_and_becomes_tricky&quot;&gt;最容易被误解&lt;/a&gt; ：1）我们借用了一个使用 &lt;code&gt;this&lt;/code&gt; 的方法，2）将使用 &lt;code&gt;this&lt;/code&gt; 方法的方法分配给变量，3）使用 &lt;code&gt;this&lt;/code&gt; 方法的函数作为回调函数传递，4）在闭包内部使用-内部函数。 &lt;sup&gt;（2）&lt;/sup&gt;</target>
+        </trans-unit>
+        <trans-unit id="0273a69ad15752e42d17d46c263b491390395350" translate="yes" xml:space="preserve">
+          <source>The &lt;em&gt;this&lt;/em&gt; reference ALWAYS refers to (and holds the value of) an
+  object&amp;mdash;a singular object&amp;mdash;and it is usually used inside a function or a
+  method, although it can be used outside a function in the global
+  scope. Note that when we use strict mode, this holds the value of
+  undefined in global functions and in anonymous functions that are not
+  bound to any object.</source>
+          <target state="translated">&lt;em&gt;此&lt;/em&gt;引用始终引用（并保持其值）一个对象（单个对象），并且它通常在函数或方法内部使用，尽管它可以在全局范围内的函数外部使用。 请注意，当我们使用严格模式时，它在全局函数和未绑定到任何对象的匿名函数中都具有未定义的值。</target>
+        </trans-unit>
+        <trans-unit id="0bfa8fcb62a7f1e00d91e50841a62afe63da5f55" translate="yes" xml:space="preserve">
+          <source>The &lt;strong&gt;&quot;this&quot;&lt;/strong&gt; in above examples refer to &quot;button&quot; element and the
+&quot;div&quot; element respectively.</source>
+          <target state="translated">上面示例中的&lt;strong&gt;&amp;ldquo; this&amp;rdquo;分别&lt;/strong&gt;指&amp;ldquo; button&amp;rdquo;元素和&amp;ldquo; div&amp;rdquo;元素。</target>
+        </trans-unit>
+        <trans-unit id="f95de8ec5b813d1517bdbcb77f6c0c1a7fb9c6c1" translate="yes" xml:space="preserve">
+          <source>The above code clearly shows that the &quot;this&quot; value for any &quot;NON
+Bound Function&quot; can be altered through &lt;strong&gt;call/apply&lt;/strong&gt;. Also,if the
+&lt;strong&gt;&quot;this&quot;&lt;/strong&gt; parameter is  not explicitly passed to &lt;strong&gt;call/apply&lt;/strong&gt;, &lt;strong&gt;&quot;current object&quot;&lt;/strong&gt; (and hence the value of &quot;this&quot;) is set to &lt;strong&gt;&quot;window&quot;&lt;/strong&gt; in Non strict mode and &lt;strong&gt;&quot;undefined&quot;&lt;/strong&gt; in strict mode.</source>
+          <target state="translated">上面的代码清楚地表明，可以通过&lt;strong&gt;call / apply&lt;/strong&gt;更改任何&amp;ldquo; NON Bound Function&amp;rdquo;的&amp;ldquo; this&amp;rdquo;值。 另外，如果未将&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;参数显式传递给&lt;strong&gt;call / apply&lt;/strong&gt; ，则在&lt;strong&gt;&amp;ldquo;&lt;/strong&gt;非严格&amp;rdquo;模式下， &lt;strong&gt;&amp;ldquo;当前对象&amp;rdquo;&lt;/strong&gt; （因此，&amp;ldquo; this&amp;rdquo;的值）将设置为&lt;strong&gt;&amp;ldquo;窗口&amp;rdquo;，&lt;/strong&gt;在严格模式下将设置为&lt;strong&gt;&amp;ldquo;未定义&amp;rdquo;&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="c6c331ad3ba8cbd437f9af0ab0775ebb81b757f7" translate="yes" xml:space="preserve">
+          <source>The code above translates to</source>
+          <target state="translated">上面的代码翻译成</target>
+        </trans-unit>
+        <trans-unit id="48a4deba793f1321a1d058e028490a18d81f4854" translate="yes" xml:space="preserve">
+          <source>The constructor of this &lt;code&gt;Object&lt;/code&gt; has its constructor set to &lt;code&gt;Person&lt;/code&gt;. Also, note that &lt;code&gt;typeof awal&lt;/code&gt; would return &lt;code&gt;Object&lt;/code&gt; only.</source>
+          <target state="translated">此 &lt;code&gt;Object&lt;/code&gt; 的构造函数将其构造函数设置为 &lt;code&gt;Person&lt;/code&gt; 。 另外，请注意 &lt;code&gt;typeof awal&lt;/code&gt; 将仅返回 &lt;code&gt;Object&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="598e31c8f2d3b5ebb3d9a975927bac31dd78c17d" translate="yes" xml:space="preserve">
+          <source>The following describes each of this contexts one by one:</source>
+          <target state="translated">下面逐一介绍这种语境。</target>
+        </trans-unit>
+        <trans-unit id="5ffc86b9fbcb86bd5ce90c80ade9aac7f6674126" translate="yes" xml:space="preserve">
+          <source>The following summarizes the entire article</source>
+          <target state="translated">以下是对整篇文章的总结</target>
+        </trans-unit>
+        <trans-unit id="b9c4aa48554b8690755f430230adc7aead0e4875" translate="yes" xml:space="preserve">
+          <source>The function &lt;code&gt;Person&lt;/code&gt; itself is now invoked; &lt;code&gt;this&lt;/code&gt; being a reference to the newly constructed object &lt;code&gt;awal&lt;/code&gt;.</source>
+          <target state="translated">现在，功能 &lt;code&gt;Person&lt;/code&gt; 本身被调用； &lt;code&gt;this&lt;/code&gt; 是对新建物体 &lt;code&gt;awal&lt;/code&gt; 的引用 。</target>
+        </trans-unit>
+        <trans-unit id="d26b585e0f11b2474001731ad046d99b221862ac" translate="yes" xml:space="preserve">
+          <source>The idea behind &lt;code&gt;this&lt;/code&gt; is to understand that the function invocation types have the significant importance on setting &lt;code&gt;this&lt;/code&gt; value.</source>
+          <target state="translated">其背后的想法是要了解，函数调用类型对于设置 &lt;code&gt;this&lt;/code&gt; 值非常重要。</target>
+        </trans-unit>
+        <trans-unit id="cd9df2dd9475c12d7d70a035ffbc3060e8d9dccf" translate="yes" xml:space="preserve">
+          <source>The line &lt;code&gt;myFun.call(obj);&lt;/code&gt; is invoking the special built-in function &lt;code&gt;Function.prototype.call()&lt;/code&gt;, which accepts &lt;code&gt;thisArg&lt;/code&gt; as the first argument.</source>
+          <target state="translated">行 &lt;code&gt;myFun.call(obj);&lt;/code&gt; 正在调用特殊的内置函数 &lt;code&gt;Function.prototype.call()&lt;/code&gt; ，该函数接受 &lt;code&gt;thisArg&lt;/code&gt; 作为第一个参数。</target>
+        </trans-unit>
+        <trans-unit id="205b8665ab9d83e5add811cf8bd2f784d1caf68a" translate="yes" xml:space="preserve">
+          <source>The reason for writing &quot;in most other cases&quot; is because there are eight ECMAScript 5 built-in functions that allow ThisBinding to be specified in the arguments list. These special functions take a so-called &lt;code&gt;thisArg&lt;/code&gt; which becomes the ThisBinding when calling the function (&lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-10.4.3&quot;&gt;&amp;sect;10.4.3&lt;/a&gt;).</source>
+          <target state="translated">之所以写&amp;ldquo;在大多数情况下&amp;rdquo;，是因为有八个ECMAScript 5内置函数可以在参数列表中指定ThisBinding。 这些特殊功能采用了一个所谓的 &lt;code&gt;thisArg&lt;/code&gt; ，当调用该函数时，它会成为ThisBinding（第&lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-10.4.3&quot;&gt;10.4.3节&lt;/a&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="a1d54f980faedf5c96fee5c403683ca230e1320f" translate="yes" xml:space="preserve">
+          <source>The same above behavior is achieved when we attach the function to the event handler using Microsoft's Event Registration model method &lt;code&gt;attachEvent&lt;/code&gt;. Instead of assigning the function to the event handler (and the thus making the function method of the element), it calls the function on the event (effectively calling it in global context).</source>
+          <target state="translated">当我们使用Microsoft的事件注册模型方法 &lt;code&gt;attachEvent&lt;/code&gt; 将函数附加到事件处理程序时，可以实现上述相同的行为。 它没有将功能分配给事件处理程序（因而没有将其分配为元素的功能方法），而是对事件进行了调用（在全局上下文中有效地对其进行了调用）。</target>
+        </trans-unit>
+        <trans-unit id="f835f6ede39f09721b6b3a08a6766f6a816b4a55" translate="yes" xml:space="preserve">
+          <source>The value of &quot;this&quot; depends on the &quot;context&quot; in which the function is executed. The context can be any object or the global object, i.e., window.</source>
+          <target state="translated">&quot;this &quot;的值取决于函数执行的 &quot;上下文&quot;。上下文可以是任何对象或全局对象,即窗口。</target>
+        </trans-unit>
+        <trans-unit id="8f71afcd2f8c39c35d17ede8ea64967e5b3dabc9" translate="yes" xml:space="preserve">
+          <source>The value of &lt;code&gt;this&lt;/code&gt; is determined by &lt;strong&gt;how the function is invoked not, where it was created!&lt;/strong&gt;</source>
+          <target state="translated">此值取决于&lt;strong&gt;函数的调用方式（在何处创建）！&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="85a035ea25fb197d75ddcfad6ad7ecc47bbf83df" translate="yes" xml:space="preserve">
+          <source>The value of &lt;strong&gt;&quot;this&quot;&lt;/strong&gt; is fixed for a Bound function and cannot be
+overriden by &lt;strong&gt;call&lt;/strong&gt; and &lt;strong&gt;apply&lt;/strong&gt; methods of the function.</source>
+          <target state="translated">对于绑定函数， &lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;的值是固定的，不能被该函数的&lt;strong&gt;调用&lt;/strong&gt;和&lt;strong&gt;应用&lt;/strong&gt;方法覆盖。</target>
+        </trans-unit>
+        <trans-unit id="732a7262b87dd35272a2fefa011c384eaf4c1806" translate="yes" xml:space="preserve">
+          <source>The value of &lt;strong&gt;&quot;this&quot;&lt;/strong&gt; within a Non Bound function can be overriden by
+&lt;strong&gt;call&lt;/strong&gt; and &lt;strong&gt;apply&lt;/strong&gt; methods of the function.</source>
+          <target state="translated">Non Bound函数中的&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;值可以通过&lt;strong&gt;调用&lt;/strong&gt;和&lt;strong&gt;应用&lt;/strong&gt;函数的方法来覆盖。</target>
+        </trans-unit>
+        <trans-unit id="986983b3bc829dee13e4af0f6cd58cc64ea6a541" translate="yes" xml:space="preserve">
+          <source>The value of &lt;strong&gt;&quot;this&quot;&lt;/strong&gt; within a Non Bound function is the reference to object in context of which the function is invoked (&lt;strong&gt;&quot;current object&quot;&lt;/strong&gt;)</source>
+          <target state="translated">Non Bound函数中的&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;的值是对调用该函数的上下文中的对象的引用（ &lt;strong&gt;&amp;ldquo;当前对象&amp;rdquo;&lt;/strong&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="94e5e1e54d6e891723770f7f55f8c8aa368f150f" translate="yes" xml:space="preserve">
+          <source>The value of &lt;strong&gt;&quot;this&quot;&lt;/strong&gt; within a constructor is the object that is being
+created and initialized</source>
+          <target state="translated">构造函数中&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;的值是正在创建和初始化的对象</target>
+        </trans-unit>
+        <trans-unit id="5ff56d075173f67c99015d872ca5e48d81c42ed8" translate="yes" xml:space="preserve">
+          <source>The value of &lt;strong&gt;&quot;this&quot;&lt;/strong&gt; within an inline DOM event handler is reference
+to the element for which the event handler is given.</source>
+          <target state="translated">内联DOM事件处理程序中的&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;的值引用为其提供事件处理程序的元素。</target>
+        </trans-unit>
+        <trans-unit id="23a806a2918ae62d9efe5b8e4d50db0d562119c4" translate="yes" xml:space="preserve">
+          <source>There are Four Scenarios where &lt;em&gt;this&lt;/em&gt; can be confusing:</source>
+          <target state="translated">有四种情况可能会使您感到困惑：</target>
+        </trans-unit>
+        <trans-unit id="e38bf69ca4f13895c35d97268be9b7f0be29ccd7" translate="yes" xml:space="preserve">
+          <source>There are different ways to do this. If you have called native methods in Javascript like &lt;code&gt;forEach&lt;/code&gt; and &lt;code&gt;slice&lt;/code&gt;, you should already know that the &lt;code&gt;this&lt;/code&gt; variable in that case refers to the &lt;code&gt;Object&lt;/code&gt; on which you called that function (Note that in javascript, just about everything is an &lt;code&gt;Object&lt;/code&gt;, including &lt;code&gt;Array&lt;/code&gt;s and &lt;code&gt;Function&lt;/code&gt;s). Take the following code for example.</source>
+          <target state="translated">有不同的方法可以做到这一点。 如果您已经在Javascript中调用了 &lt;code&gt;forEach&lt;/code&gt; 和 &lt;code&gt;slice&lt;/code&gt; 之类的本机方法，则应该已经知道，在 &lt;code&gt;this&lt;/code&gt; 情况下， 此变量引用了您在其上调用了该函数的 &lt;code&gt;Object&lt;/code&gt; （请注意，在javascript中，几乎所有东西都是 &lt;code&gt;Object&lt;/code&gt; ，包括 &lt;code&gt;Array&lt;/code&gt; )和 &lt;code&gt;Function&lt;/code&gt; ）。 以下面的代码为例。</target>
+        </trans-unit>
+        <trans-unit id="279973f865726145d86bc2b948936a3c5ea84f1b" translate="yes" xml:space="preserve">
+          <source>There are various ways to define an object's prototype, the most common in 2019 is the &lt;code&gt;class&lt;/code&gt; keyword. For the purposes of &lt;code&gt;this&lt;/code&gt; though it doesn't matter. What matters is that as it looks in object &lt;code&gt;a&lt;/code&gt; for property &lt;code&gt;b&lt;/code&gt; if it finds property &lt;code&gt;b&lt;/code&gt; on the object or in it's prototype chain if &lt;code&gt;b&lt;/code&gt; ends up being a function then the same rules as above apply. The function &lt;code&gt;b&lt;/code&gt; references will be called using the &lt;code&gt;call&lt;/code&gt; method and passing &lt;code&gt;a&lt;/code&gt; as objectForThis as shown a the top of this answer.</source>
+          <target state="translated">有多种定义对象原型的方法，2019年最常见的是 &lt;code&gt;class&lt;/code&gt; 关键字。 出于此目的， &lt;code&gt;this&lt;/code&gt; 并不重要。 重要的是，如果它在对象 &lt;code&gt;b&lt;/code&gt; 上找到属性b ，则在对象a上查找；如果 &lt;code&gt;b&lt;/code&gt; 最终成为函数，则在原型链中查找，则适用与上述相同的规则。 函数 &lt;code&gt;b&lt;/code&gt; 引用将使用 &lt;code&gt;call&lt;/code&gt; 方法并传递as objectForThis来调用 ，如该答案的顶部所示。</target>
+        </trans-unit>
+        <trans-unit id="4b176e3b91607484833f86d66ef5e37c3e87f616" translate="yes" xml:space="preserve">
+          <source>There is a lot of confusion regarding how &lt;strong&gt;&quot;this&quot;&lt;/strong&gt; keyword is interpreted in JavaScript. Hopefully this article will lay all those to rest once and for all. And a lot more. Please read the entire article carefully. Be forewarned that this article is long.</source>
+          <target state="translated">关于如何在JavaScript中解释&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;关键字有很多困惑。 希望本文能使所有这些人一劳永逸。 还有更多。 请仔细阅读整篇文章。 请注意，本文篇幅较长。</target>
+        </trans-unit>
+        <trans-unit id="9bf2606f55ac02610bfeca5231ecaa8045e7e025" translate="yes" xml:space="preserve">
+          <source>There is always some value supplied for &lt;code&gt;objectForThis&lt;/code&gt;.</source>
+          <target state="translated">始终为 &lt;code&gt;objectForThis&lt;/code&gt; 提供一些值。</target>
+        </trans-unit>
+        <trans-unit id="6f5b72ee2e27b15caab5b155ad2ccf879983f917" translate="yes" xml:space="preserve">
+          <source>There&amp;rsquo;s a special case I didn&amp;rsquo;t yet mention. When constructing a new object via the &lt;code&gt;new&lt;/code&gt; operator, the JavaScript interpreter creates a new, empty object, sets some internal properties, and then calls the constructor function on the new object. Thus, when a function is called in a constructor context, the value of &lt;code&gt;this&lt;/code&gt; is the new object that the interpreter created:</source>
+          <target state="translated">我还没有提到一个特殊情况。 通过 &lt;code&gt;new&lt;/code&gt; 运算符构造新对象时，JavaScript解释器会创建一个新的空对象，设置一些内部属性，然后在新对象上调用构造函数。 因此，当在构造函数上下文中调用函数时，该函数的值就是解释器创建的新对象：</target>
+        </trans-unit>
+        <trans-unit id="2d3a18e72bf0f045f8f3de4d4504d75c62e5dcda" translate="yes" xml:space="preserve">
+          <source>These methods allows to write a function once and invoke it in different context. In other words, they allows to specify the value of &lt;code&gt;this&lt;/code&gt; which will be used while the function is being executed. They also take any parameters to be passed to the original function when it is invoked.</source>
+          <target state="translated">这些方法允许一次编写一个函数，然后在不同的上下文中调用它。 换句话说，它们允许指定在执行函数时将使用的值。 它们还可以在调用原始函数时采用任何要传递给原始函数的参数。</target>
+        </trans-unit>
+        <trans-unit id="4ade0a7126aef80885995d3c6e7d2a3b5b9a749a" translate="yes" xml:space="preserve">
+          <source>These special built-in functions are:</source>
+          <target state="translated">这些特殊的内置功能是:</target>
+        </trans-unit>
+        <trans-unit id="85527d5006265cfde99894b7c55c9fb14d1c3dc8" translate="yes" xml:space="preserve">
+          <source>This is a typical example of using &lt;code&gt;call&lt;/code&gt;. It basically takes the first parameter and sets &lt;code&gt;this&lt;/code&gt; in the function &lt;code&gt;foo&lt;/code&gt; as a reference to &lt;code&gt;thisArg&lt;/code&gt;.  All other parameters passed to &lt;code&gt;call&lt;/code&gt; is passed to the function &lt;code&gt;foo&lt;/code&gt; as arguments.</source>
+          <target state="translated">这是使用 &lt;code&gt;call&lt;/code&gt; 的典型示例。 它基本上采用第一个参数，并在函数 &lt;code&gt;foo&lt;/code&gt; 中 &lt;code&gt;this&lt;/code&gt; 参数设置为对 &lt;code&gt;thisArg&lt;/code&gt; 的引用。 传递给 &lt;code&gt;call&lt;/code&gt; 的所有其他参数作为参数传递给 &lt;code&gt;foo&lt;/code&gt; 函数。</target>
+        </trans-unit>
+        <trans-unit id="29ed5f10284269291bb711c4ff11d342e2767871" translate="yes" xml:space="preserve">
+          <source>This is different from Python, in which accessing a method (&lt;code&gt;obj.myMethod&lt;/code&gt;) creates a &lt;a href=&quot;http://docs.python.org/3/library/stdtypes.html#methods&quot;&gt;bound method object&lt;/a&gt;.</source>
+          <target state="translated">这与Python不同，在Python中，访问方法（ &lt;code&gt;obj.myMethod&lt;/code&gt; ）创建&lt;a href=&quot;http://docs.python.org/3/library/stdtypes.html#methods&quot;&gt;绑定的方法对象&lt;/a&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="a132674b519e683c1c771b823eb5a1e2de6af493" translate="yes" xml:space="preserve">
+          <source>This is the best explanation I've seen: &lt;a href=&quot;http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/&quot;&gt;Understand JavaScripts &lt;em&gt;this&lt;/em&gt; with Clarity&lt;/a&gt;</source>
+          <target state="translated">这是我见过的最好的解释： &lt;a href=&quot;http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/&quot;&gt;清晰地理解JavaScript&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="b0808c58b0591e7278bd423057d577254441336b" translate="yes" xml:space="preserve">
+          <source>This is the case for JavaScript code that is evaluated at the top-level, e.g. when directly inside a &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;:</source>
+          <target state="translated">在顶级代码中评估的JavaScript代码就是这种情况，例如，直接在 &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; 内部时：</target>
+        </trans-unit>
+        <trans-unit id="802391aac07cdb035195e6978ec32a12d3125ef9" translate="yes" xml:space="preserve">
+          <source>This is what both &lt;code&gt;bind&lt;/code&gt; and &lt;code&gt;=&amp;gt;&lt;/code&gt; functions effectively do. They are more syntactic sugar. They effectively build a new invisible function exactly like &lt;code&gt;bar&lt;/code&gt; above that explicitly sets &lt;code&gt;this&lt;/code&gt; before it calls whatever function is specified. In the case of bind &lt;code&gt;this&lt;/code&gt; is set to whatever you pass to &lt;code&gt;bind&lt;/code&gt;.</source>
+          <target state="translated">这是 &lt;code&gt;bind&lt;/code&gt; 和 &lt;code&gt;=&amp;gt;&lt;/code&gt; 函数有效执行的操作。 它们是语法糖。 他们有效地构建了一个新的不可见函数，就像上面的 &lt;code&gt;bar&lt;/code&gt; 一样，它在调用指定的任何函数之前显式设置了 &lt;code&gt;this&lt;/code&gt; 函数。 在bind的情况下，它设置为您传递给 &lt;code&gt;bind&lt;/code&gt; 的任何值。</target>
+        </trans-unit>
+        <trans-unit id="3f377690fefdec48899ec0d15066da36044d96e2" translate="yes" xml:space="preserve">
+          <source>This mindset is correct when dealing with &lt;code&gt;this&lt;/code&gt; and will save you from headache.</source>
+          <target state="translated">在处理 &lt;code&gt;this&lt;/code&gt; 问题时， 这种心态是正确的， 它将使您免于头痛。</target>
+        </trans-unit>
+        <trans-unit id="fe922a11381e67c113153def83bf53886fc17c59" translate="yes" xml:space="preserve">
+          <source>This new &lt;code&gt;Object&lt;/code&gt; would be assigned the prototype of &lt;code&gt;Person.prototype&lt;/code&gt;. This means that any method or property in the &lt;code&gt;Person&lt;/code&gt; prototype would be available to all instances of &lt;code&gt;Person&lt;/code&gt;, including &lt;code&gt;awal&lt;/code&gt;.</source>
+          <target state="translated">将为该新 &lt;code&gt;Object&lt;/code&gt; 分配 &lt;code&gt;Person.prototype&lt;/code&gt; 的原型。 这意味着 &lt;code&gt;Person&lt;/code&gt; 原型中的任何方法或属性都可用于 &lt;code&gt;Person&lt;/code&gt; 的所有实例，包括 &lt;code&gt;awal&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="8390b31573bde1e5e11596eda14bd9837b0066dd" translate="yes" xml:space="preserve">
+          <source>This occurs when calling a function. If a function is called on an object, such as in &lt;code&gt;obj.myMethod()&lt;/code&gt; or the equivalent &lt;code&gt;obj[&quot;myMethod&quot;]()&lt;/code&gt;, then ThisBinding is set to the object (&lt;code&gt;obj&lt;/code&gt; in the example; &lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-13.2.1&quot;&gt;&amp;sect;13.2.1&lt;/a&gt;). In most other cases, ThisBinding is set to the global object (&lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-10.4.3&quot;&gt;&amp;sect;10.4.3&lt;/a&gt;).</source>
+          <target state="translated">调用函数时会发生这种情况。 如果在对象上调用了函数，例如 &lt;code&gt;obj.myMethod()&lt;/code&gt; 或等效的 &lt;code&gt;obj[&quot;myMethod&quot;]()&lt;/code&gt; ，则ThisBinding设置为对象（示例中为 &lt;code&gt;obj&lt;/code&gt; ；第&lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-13.2.1&quot;&gt;13.2.1节&lt;/a&gt; ）。 在大多数其他情况下，ThisBinding设置为全局对象（第&lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-10.4.3&quot;&gt;10.4.3节&lt;/a&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="31e21fd5682329c65723d9fdb2afb15437924824" translate="yes" xml:space="preserve">
+          <source>This one was tricky. When evaluating the eval code, &lt;code&gt;this&lt;/code&gt; is &lt;code&gt;obj&lt;/code&gt;. However, in the eval code, &lt;code&gt;myFun&lt;/code&gt; is not called on an object, so ThisBinding is set to &lt;code&gt;window&lt;/code&gt; for the call.</source>
+          <target state="translated">这个很棘手。 在评估评估代码时， &lt;code&gt;this&lt;/code&gt; 是 &lt;code&gt;obj&lt;/code&gt; 。 但是，在评估代码中，未在对象上调用myFun，因此ThisBinding设置为该调用的 &lt;code&gt;window&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="906f21f1345827c9f5f29e264d69b70a0a4c77a2" translate="yes" xml:space="preserve">
+          <source>ThisBinding is set to the global object &lt;em&gt;as if&lt;/em&gt; executing in the initial global execution context (&lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-10.4.2&quot;&gt;&amp;sect;10.4.2&lt;/a&gt; (1)).</source>
+          <target state="translated">将这个Binding设置为全局对象&lt;em&gt;，就像&lt;/em&gt;在初始全局执行上下文中执行一样（第&lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-10.4.2&quot;&gt;10.4.2&lt;/a&gt; （1）节）。</target>
+        </trans-unit>
+        <trans-unit id="05a9ff5b30e366baba755d7af02bdee90564da08" translate="yes" xml:space="preserve">
+          <source>ThisBinding is something that the JavaScript interpreter maintains as it evaluates JavaScript code, like a special CPU register which holds a reference to an object. The interpreter updates the ThisBinding whenever establishing an execution context in one of only three different cases:</source>
+          <target state="translated">ThisBinding是JavaScript解释器在评估JavaScript代码时维护的东西,就像一个特殊的CPU寄存器一样,它持有对对象的引用。每当建立一个执行上下文时,解释器就会更新ThisBinding。</target>
+        </trans-unit>
+        <trans-unit id="99dd9cee0f0141c71707204de7a8eb68227dcb58" translate="yes" xml:space="preserve">
+          <source>Those are the rules for plain JavaScript. When you begin using JavaScript libraries (e.g. jQuery), you may find that certain library functions manipulate the value of &lt;code&gt;this&lt;/code&gt;. The developers of those JavaScript libraries do this because it tends to support the most common use cases, and users of the library typically find this behavior to be more convenient. When passing callback functions referencing &lt;code&gt;this&lt;/code&gt; to library functions, you should refer to the documentation for any guarantees about what the value of &lt;code&gt;this&lt;/code&gt; is when the function is called.</source>
+          <target state="translated">这些是纯JavaScript的规则。 当您开始使用JavaScript库（例如jQuery）时，您可能会发现某些库函数会操纵 &lt;code&gt;this&lt;/code&gt; 的值。 这些JavaScript库的开发人员这样做是因为它倾向于支持最常见的用例，并且该库的用户通常会发现此行为更加方便。 将引用 &lt;code&gt;this&lt;/code&gt; 回调函数传递给库函数时，应确保所有有关调用该函数时的值的保证，请参考文档。</target>
+        </trans-unit>
+        <trans-unit id="e2e075f690095f8a07098f5032ffef152a676d5a" translate="yes" xml:space="preserve">
+          <source>Try it out; you'll begin to like this pattern of programming</source>
+          <target state="translated">尝试一下,你会开始喜欢上这种编程模式</target>
+        </trans-unit>
+        <trans-unit id="b31340518b4d3450382a16fe42d7b550a535da55" translate="yes" xml:space="preserve">
+          <source>Unless you &lt;code&gt;bind&lt;/code&gt; the context</source>
+          <target state="translated">除非您 &lt;code&gt;bind&lt;/code&gt; 上下文</target>
+        </trans-unit>
+        <trans-unit id="44c1de29d488c2efbb55dbbf89180707d408e09f" translate="yes" xml:space="preserve">
+          <source>Use of &lt;em&gt;bind&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;绑定的&lt;/em&gt;使用</target>
+        </trans-unit>
+        <trans-unit id="130803684886f32a73870ec3182481aa18a857a0" translate="yes" xml:space="preserve">
+          <source>Using &lt;code&gt;bind&lt;/code&gt;.</source>
+          <target state="translated">使用 &lt;code&gt;bind&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="c9f1a654f7867f9709c86fb54556d6b1085312f6" translate="yes" xml:space="preserve">
+          <source>Usually the value of &lt;code&gt;this&lt;/code&gt; is determined by the Object which is left of the dot. (&lt;code&gt;window&lt;/code&gt; in global space)</source>
+          <target state="translated">通常，此值由点左侧的对象确定。 （全球空间 &lt;code&gt;window&lt;/code&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="3fe0e54dcbb7644fba3d3f361c514bd846e8caf6" translate="yes" xml:space="preserve">
+          <source>We can try above points with functions too. However there are some differences.</source>
+          <target state="translated">我们也可以用函数来尝试以上几点。但也有一些区别。</target>
+        </trans-unit>
+        <trans-unit id="02ee79a3f4e52fa8dc6015c8800e56de11fbd2ff" translate="yes" xml:space="preserve">
+          <source>We use this similar to the way we use pronouns in natural languages like English:  &amp;ldquo;John is running fast because &lt;strong&gt;&lt;em&gt;he&lt;/em&gt;&lt;/strong&gt; is trying to catch the train.&amp;rdquo; Instead we could have written &amp;ldquo;&amp;hellip; &lt;strong&gt;&lt;em&gt;John&lt;/em&gt;&lt;/strong&gt; is trying to catch the train&amp;rdquo;.</source>
+          <target state="translated">我们使用这种方式类似于在英语等自然语言中使用代词的方式：&amp;ldquo;约翰飞速行驶，因为&lt;strong&gt;&lt;em&gt;他&lt;/em&gt;&lt;/strong&gt;正试图赶上火车。&amp;rdquo; 取而代之的是，我们可以写成&amp;ldquo;&amp;hellip;&amp;hellip; &lt;strong&gt;&lt;em&gt;约翰&lt;/em&gt;&lt;/strong&gt;正试图赶上火车&amp;rdquo;。</target>
+        </trans-unit>
+        <trans-unit id="59c84c3a56d40f1298569aad07647b4063c6d313" translate="yes" xml:space="preserve">
+          <source>What does &lt;code&gt;var that = this&lt;/code&gt; means in JavaScript</source>
+          <target state="translated">&lt;code&gt;var that = this&lt;/code&gt; 在JavaScript中意味着什么</target>
+        </trans-unit>
+        <trans-unit id="d6960afa81986e4b8866c2cd069e74c4a085e98a" translate="yes" xml:space="preserve">
+          <source>What holds the future</source>
+          <target state="translated">是什么决定了未来</target>
+        </trans-unit>
+        <trans-unit id="8522002fd86f4ae1d009f9373919bcfac6e5aa3c" translate="yes" xml:space="preserve">
+          <source>What if we call the function as a method with Object-dot notation?</source>
+          <target state="translated">如果我们用Object-dot符号将函数作为方法调用呢?</target>
+        </trans-unit>
+        <trans-unit id="e90a818f0c0f181348f3ffa33436750e9c56414d" translate="yes" xml:space="preserve">
+          <source>What if we use the &lt;code&gt;new&lt;/code&gt; keyword?</source>
+          <target state="translated">如果我们使用 &lt;code&gt;new&lt;/code&gt; 关键字怎么办？</target>
+        </trans-unit>
+        <trans-unit id="0b741f1c36a30a2f39adb4807b11baf832686d62" translate="yes" xml:space="preserve">
+          <source>What is held in &lt;code&gt;this&lt;/code&gt; by default?</source>
+          <target state="translated">默认情况下， &lt;code&gt;this&lt;/code&gt; 是什么？</target>
+        </trans-unit>
+        <trans-unit id="f31de30789ea80d6b68979bdfc23922eb652ecfe" translate="yes" xml:space="preserve">
+          <source>What is the value of &lt;code&gt;this&lt;/code&gt; at the marked line when &lt;code&gt;obj.staticFunction()&lt;/code&gt; is executed? Why?</source>
+          <target state="translated">当执行 &lt;code&gt;obj.staticFunction()&lt;/code&gt; 时，在标记的行上的值是什么？ 为什么？</target>
+        </trans-unit>
+        <trans-unit id="19602fe263ba02a9e70190487cdbb1f5d8295602" translate="yes" xml:space="preserve">
+          <source>What is the value of &lt;code&gt;this&lt;/code&gt; at the marked line? Why?</source>
+          <target state="translated">标记的行的值是什么？ 为什么？</target>
+        </trans-unit>
+        <trans-unit id="10b02218e944261b661613e959beb9dc45a0a0c1" translate="yes" xml:space="preserve">
+          <source>What value has &lt;code&gt;this&lt;/code&gt; where the arrow function is &lt;em&gt;defined&lt;/em&gt;?</source>
+          <target state="translated">在&lt;em&gt;定义&lt;/em&gt;箭头功能的情况下， &lt;code&gt;this&lt;/code&gt; 值有什么值？</target>
+        </trans-unit>
+        <trans-unit id="e78621a0c74b5518e2c62eeba51b08b351f0dc5e" translate="yes" xml:space="preserve">
+          <source>When &lt;code&gt;use strict&lt;/code&gt;, &lt;code&gt;this&lt;/code&gt; in global and in anonymous functions that are not bound to any object holds a value of &lt;code&gt;undefined&lt;/code&gt;.</source>
+          <target state="translated">当 &lt;code&gt;use strict&lt;/code&gt; ，在未绑定到任何对象的全局函数和匿名函数中， &lt;code&gt;this&lt;/code&gt; 函数的值为 &lt;code&gt;undefined&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="7834bcbc1ad278f4ac5802fab1061efa51a8ede7" translate="yes" xml:space="preserve">
+          <source>When a &lt;strong&gt;&quot;Non Bound Function&quot;&lt;/strong&gt; is called through
+&lt;strong&gt;&lt;em&gt;functionName.call&lt;/em&gt;&lt;/strong&gt; or &lt;strong&gt;&lt;em&gt;functionName.apply&lt;/em&gt;&lt;/strong&gt;, the &lt;strong&gt;&quot;current object&quot;&lt;/strong&gt; (and hence the value of &lt;strong&gt;&quot;this&quot;&lt;/strong&gt;) is set to the value of
+&lt;strong&gt;&quot;this&quot;&lt;/strong&gt; parameter (first parameter) passed to &lt;strong&gt;call/apply&lt;/strong&gt;. The following code demonstrates the same.</source>
+          <target state="translated">通过&lt;strong&gt;&lt;em&gt;functionName.call&lt;/em&gt;&lt;/strong&gt;或&lt;strong&gt;&lt;em&gt;functionName.apply&lt;/em&gt;&lt;/strong&gt;调用&lt;strong&gt;&amp;ldquo;非绑定函数&amp;rdquo;时&lt;/strong&gt; ， &lt;strong&gt;&amp;ldquo;当前对象&amp;rdquo;&lt;/strong&gt; （因此是&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;的值）被设置为传递给&lt;strong&gt;call&lt;/strong&gt;的&lt;strong&gt;&amp;ldquo; this&amp;rdquo;&lt;/strong&gt;参数（第一个参数）的值&lt;strong&gt;/应用&lt;/strong&gt; 。 以下代码演示了相同的内容。</target>
+        </trans-unit>
+        <trans-unit id="51ee7e3f1872cc53a0ea74134a7dcd791782c6b5" translate="yes" xml:space="preserve">
+          <source>When a method which relies on &lt;em&gt;this&lt;/em&gt; is assigned to a variable across contexts, in which case &lt;em&gt;this&lt;/em&gt; references another object than originally intended.</source>
+          <target state="translated">当将依赖&lt;em&gt;于此&lt;/em&gt;的方法跨上下文分配给变量时，在这种情况下，它引用的对象与最初的目的不同。</target>
+        </trans-unit>
+        <trans-unit id="c21e1c0cd6eaa7a56b15d8a8d9f7696b5ea3ba0b" translate="yes" xml:space="preserve">
+          <source>When adding event handler through JavaScript, &lt;code&gt;this&lt;/code&gt; refers to DOM element that generated the event.</source>
+          <target state="translated">通过JavaScript添加事件处理程序时， &lt;code&gt;this&lt;/code&gt; 是指生成事件的DOM元素。</target>
+        </trans-unit>
+        <trans-unit id="f9cdfe0773a82ce634e71531211148636519905c" translate="yes" xml:space="preserve">
+          <source>When evaluating code in the initial global execution context, ThisBinding is set to the global object, &lt;code&gt;window&lt;/code&gt; (&lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-10.4.1.1&quot;&gt;&amp;sect;10.4.1.1&lt;/a&gt;).</source>
+          <target state="translated">在初始的全局执行上下文中评估代码时，ThisBinding设置为全局对象 &lt;code&gt;window&lt;/code&gt; （第&lt;a href=&quot;https://ecma-international.org/ecma-262/5.1/#sec-10.4.1.1&quot;&gt;10.0.4.1.1节&lt;/a&gt; ）。</target>
+        </trans-unit>
+        <trans-unit id="a6a1241496a32c546213391c9684a37c3f770157" translate="yes" xml:space="preserve">
+          <source>When having troubles identifying &lt;code&gt;this&lt;/code&gt;, &lt;strong&gt;do not&lt;/strong&gt; ask yourself:</source>
+          <target state="translated">遇到困难时， &lt;strong&gt;不要&lt;/strong&gt;问自己：</target>
+        </trans-unit>
+        <trans-unit id="21c5f0557070fcbb938fbc68a83481429de1ab57" translate="yes" xml:space="preserve">
+          <source>When in function is called with the &lt;code&gt;new&lt;/code&gt; keyword the value of &lt;code&gt;this&lt;/code&gt; refers to the newly created object</source>
+          <target state="translated">当使用 &lt;code&gt;new&lt;/code&gt; 关键字调用in函数时， &lt;code&gt;this&lt;/code&gt; 值引用新创建的对象</target>
+        </trans-unit>
+        <trans-unit id="72b6f37ac72430df1d8593cb30420726f4ef738c" translate="yes" xml:space="preserve">
+          <source>When line1 is executed, JavaScript establishes an execution context (EC) for the function call, setting &lt;code&gt;this&lt;/code&gt; to the &lt;strong&gt;object referenced by whatever came before the last &quot;.&quot;&lt;/strong&gt;. so in the last line you can understand that &lt;code&gt;a()&lt;/code&gt; was executed in the global context which is the &lt;code&gt;window&lt;/code&gt;.</source>
+          <target state="translated">当执行line1时，JavaScript将为函数调用建立执行上下文（EC），并将其设置&lt;strong&gt;为最后一个&amp;ldquo;&amp;rdquo;之前的内容所引用&lt;/strong&gt;的&lt;strong&gt;对象。&lt;/strong&gt; 。 因此，在最后一行中，您可以了解 &lt;code&gt;a()&lt;/code&gt; 是在作为 &lt;code&gt;window&lt;/code&gt; 的全局上下文中执行的。</target>
+        </trans-unit>
+        <trans-unit id="d92af4bea245247c6b438883984c33bed622ea0a" translate="yes" xml:space="preserve">
+          <source>When new &lt;code&gt;Person()&lt;/code&gt; is executed, a completely new object is created. &lt;code&gt;Person&lt;/code&gt; is called and its &lt;code&gt;this&lt;/code&gt; is set to reference that new object.</source>
+          <target state="translated">当执行new &lt;code&gt;Person()&lt;/code&gt; 时 ，将创建一个全新的对象。 &lt;code&gt;Person&lt;/code&gt; 被调用，并将其设置为引用该新对象。</target>
+        </trans-unit>
+        <trans-unit id="306c3e489768ae032ad521b39781632f59757922" translate="yes" xml:space="preserve">
+          <source>When running in a browser, the value of &lt;code&gt;this&lt;/code&gt; would be logged as &lt;code&gt;window&lt;/code&gt;. This is because &lt;code&gt;window&lt;/code&gt; is the global variable in a web browser's scope.</source>
+          <target state="translated">在浏览器中运行时，此值将记录为 &lt;code&gt;window&lt;/code&gt; 。 这是因为 &lt;code&gt;window&lt;/code&gt; 是Web浏览器范围内的全局变量。</target>
+        </trans-unit>
+        <trans-unit id="c446d142725f86e5cae11afca3f3dc6b1b2b729d" translate="yes" xml:space="preserve">
+          <source>When the function is used as a constructor (that is when it is called with &lt;code&gt;new&lt;/code&gt; keyword), &lt;code&gt;this&lt;/code&gt; inside function body points to the new object being constructed.</source>
+          <target state="translated">当函数用作构造函数时（即使用 &lt;code&gt;new&lt;/code&gt; 关键字调用时）， &lt;code&gt;this&lt;/code&gt; 函数内部指向正在构造的新对象。</target>
+        </trans-unit>
+        <trans-unit id="9363e1921613ca1efc56fe00d3f9bed0e7ff0634" translate="yes" xml:space="preserve">
+          <source>When using &lt;em&gt;this&lt;/em&gt; along with the bind, apply, and call methods.</source>
+          <target state="translated">与绑定一起使用时，应用和调用方法。</target>
+        </trans-unit>
+        <trans-unit id="3f06c3fcab4e5f6d63f2ca2b14de2f0e5c884eca" translate="yes" xml:space="preserve">
+          <source>When we pass a method (that uses &lt;em&gt;this&lt;/em&gt;) as an argument to be used as a callback function.</source>
+          <target state="translated">当我们传递一个方法（使用&lt;em&gt;this&lt;/em&gt; ）作为参数用作回调函数时。</target>
+        </trans-unit>
+        <trans-unit id="90f8c4932f81072077b5e29262c1cb9a5e197bac" translate="yes" xml:space="preserve">
+          <source>When we use an inner function (a closure). It is important to take note that closures cannot access the outer function&amp;rsquo;s &lt;em&gt;this&lt;/em&gt; variable by using the this keyword because the this variable is accessible only by the function itself, not by inner functions.</source>
+          <target state="translated">当我们使用内部函数（闭包）时。 请务必注意，闭包无法使用this关键字访问外部函数的&lt;em&gt;this&lt;/em&gt;变量，因为this变量只能由函数本身访问，而不能由内部函数访问。</target>
+        </trans-unit>
+        <trans-unit id="53aef58f636acbf9068698d4996ade0921bbfa2d" translate="yes" xml:space="preserve">
+          <source>When you assign function directly to event handlers of an element, use of &lt;code&gt;this&lt;/code&gt; directly inside event handling function refers to the corresponding element. Such direct function assignment can be done using &lt;code&gt;addeventListener&lt;/code&gt; method or through the traditional event registration methods like &lt;code&gt;onclick&lt;/code&gt;.</source>
+          <target state="translated">当直接将函数分配给元素的事件处理程序时，在事件处理函数内部直接使用 &lt;code&gt;this&lt;/code&gt; 函数将引用相应的元素。 可以使用 &lt;code&gt;addeventListener&lt;/code&gt; 方法或通过传统的事件注册方法（如 &lt;code&gt;onclick&lt;/code&gt; )来完成此类直接功能分配。</target>
+        </trans-unit>
+        <trans-unit id="baae7a28429ffc8ffa19c066579bec164fbe4c42" translate="yes" xml:space="preserve">
+          <source>When you use &lt;code&gt;this&lt;/code&gt; in global context, it is bound to global object (&lt;code&gt;window&lt;/code&gt; in browser)</source>
+          <target state="translated">在全局上下文中使用 &lt;code&gt;this&lt;/code&gt; 时，它将绑定到全局对象（浏览器中的 &lt;code&gt;window&lt;/code&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="2cd00de08c1b80d16d90bbb50289443efdf1c856" translate="yes" xml:space="preserve">
+          <source>When you use &lt;code&gt;this&lt;/code&gt; inside a function defined in the global context, &lt;code&gt;this&lt;/code&gt; is still bound to global object since the function is actually made a method of global context.</source>
+          <target state="translated">当您在全局上下文中定义的函数中使用 &lt;code&gt;this&lt;/code&gt; 函数时，由于该函数实际上已成为全局上下文的方法， &lt;code&gt;this&lt;/code&gt; 它仍然绑定到全局对象。</target>
+        </trans-unit>
+        <trans-unit id="8d179ffca69128a51c69505a9563d82ba3e8c1a4" translate="yes" xml:space="preserve">
+          <source>When you use &lt;code&gt;this&lt;/code&gt; inside function that is invoked without any context (i.e. not on any object), it is bound to the global object (&lt;code&gt;window&lt;/code&gt; in browser)(even if the function is defined inside the object) .</source>
+          <target state="translated">当您使用在没有任何上下文的情况下（即不在任何对象上）调用的内部函数时，它会绑定到全局对象（浏览器中的 &lt;code&gt;window&lt;/code&gt; ）（即使函数是在对象内部定义的）。</target>
+        </trans-unit>
+        <trans-unit id="7909d383b2cdb2682dbc516d4d07f2a0250ff82b" translate="yes" xml:space="preserve">
+          <source>When you use &lt;code&gt;this&lt;/code&gt; keyword inside an object method, &lt;code&gt;this&lt;/code&gt; is bound to the &quot;immediate&quot; enclosing object.</source>
+          <target state="translated">当在对象方法中使用 &lt;code&gt;this&lt;/code&gt; 关键字时， 该关键字将绑定到&amp;ldquo;立即&amp;rdquo;封闭对象。</target>
+        </trans-unit>
+        <trans-unit id="83b1b8689f73a2750a7952c4091b19bcec3490d7" translate="yes" xml:space="preserve">
+          <source>Whenever a function is invoked, it is invoked in context of an
+object (&lt;strong&gt;&quot;current object&quot;&lt;/strong&gt;). If the &lt;strong&gt;current object&lt;/strong&gt; is not explicitly provided,
+the &lt;strong&gt;current object&lt;/strong&gt;  is the &lt;strong&gt;&quot;window object&quot;&lt;/strong&gt; in &lt;strong&gt;NON Strict
+Mode&lt;/strong&gt; and &lt;strong&gt;&quot;undefined&quot;&lt;/strong&gt; in Strict Mode by default.</source>
+          <target state="translated">每当调用函数时，都会在对象（ &lt;strong&gt;&amp;ldquo;当前对象&amp;rdquo;&lt;/strong&gt; ）的上下文中调用该函数。 如果未显式提供&lt;strong&gt;当前对象，&lt;/strong&gt;则默认情况下， &lt;strong&gt;当前对象&lt;/strong&gt;是&lt;strong&gt;NON Strict模式下&lt;/strong&gt;的&lt;strong&gt;&amp;ldquo;窗口对象&amp;rdquo;&lt;/strong&gt; ，而&lt;strong&gt;Strict模式下是&lt;/strong&gt; &lt;strong&gt;&amp;ldquo;未定义&amp;rdquo;&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="c1e2d9b7e33f4aae1fb2ee3c05579c089c455131" translate="yes" xml:space="preserve">
+          <source>Where is &lt;em&gt;&lt;code&gt;this&lt;/code&gt; taken from&lt;/em&gt;?</source>
+          <target state="translated">&lt;em&gt; &lt;code&gt;this&lt;/code&gt; &lt;/em&gt;是&lt;em&gt;从哪里来的&lt;/em&gt; ？</target>
+        </trans-unit>
+        <trans-unit id="9b9fe2edee77fa966a9bca11a2314adc27b17dde" translate="yes" xml:space="preserve">
+          <source>Whether the code is in strict or non-strict mode</source>
+          <target state="translated">代码是否处于严格或不严格模式下</target>
+        </trans-unit>
+        <trans-unit id="c67697bc299f31a4867d9e3ec63fd31a1acb34d6" translate="yes" xml:space="preserve">
+          <source>Whether the code was invoked using &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval&quot;&gt;&lt;code&gt;eval&lt;/code&gt;&lt;/a&gt;</source>
+          <target state="translated">是否使用&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval&quot;&gt; &lt;code&gt;eval&lt;/code&gt; &lt;/a&gt;调用了代码</target>
+        </trans-unit>
+        <trans-unit id="95b195c331d5df50ce3d94202285a5aa9dff77e9" translate="yes" xml:space="preserve">
+          <source>While arrow-functions provide an alternative to using &lt;code&gt;bind()&lt;/code&gt;, it&amp;rsquo;s important to note that they essentially are disabling the traditional &lt;code&gt;this&lt;/code&gt; mechanism in favor of more widely understood lexical scoping. &lt;sup&gt;(1)&lt;/sup&gt;</source>
+          <target state="translated">尽管箭头函数提供了使用 &lt;code&gt;bind()&lt;/code&gt; 的替代方法，但要注意的是，它们实际上是在禁用传统的 &lt;code&gt;this&lt;/code&gt; 机制，而希望使用更广泛理解的词法作用域。 &lt;sup&gt;（1）&lt;/sup&gt;</target>
+        </trans-unit>
+        <trans-unit id="1ed94bc080271febddcf89764199947c7c3fdafb" translate="yes" xml:space="preserve">
+          <source>Whould &lt;a href=&quot;http://www.quirksmode.org/js/this.html&quot;&gt;this&lt;/a&gt; help? (Most confusion of 'this' in javascript is coming from the fact that it generally is not linked to your object, but to the current executing scope -- that might not be exactly how it works but is always feels like that to me -- see the article for a complete explanation)</source>
+          <target state="translated">对谁有帮助？ （JavaScript中的'this'最令人困惑的原因是它通常不链接到您的对象，而是链接到当前的执行范围-可能不完全是它的工作原理，但对我来说始终像是-请参阅文章以获取完整说明）</target>
+        </trans-unit>
+        <trans-unit id="b4fb795b23dbff94bf4305a128bec5ae7d7ea74e" translate="yes" xml:space="preserve">
+          <source>With Constructor</source>
+          <target state="translated">用构造函数</target>
+        </trans-unit>
+        <trans-unit id="3b1aa9ad3adbb8fddf6c31fef8a04fbd8c6ce154" translate="yes" xml:space="preserve">
+          <source>With event handlers</source>
+          <target state="translated">有了事件处理程序</target>
+        </trans-unit>
+        <trans-unit id="15ce445da4009f96d02170197211759e9e416399" translate="yes" xml:space="preserve">
+          <source>You can also manipulate the context using &lt;code&gt;.apply()&lt;/code&gt;&lt;code&gt;.call()&lt;/code&gt; and &lt;code&gt;.bind()&lt;/code&gt;</source>
+          <target state="translated">您还可以使用 &lt;code&gt;.apply()&lt;/code&gt; .call &lt;code&gt;.call()&lt;/code&gt; 和 &lt;code&gt;.bind()&lt;/code&gt; 操作上下文</target>
+        </trans-unit>
+        <trans-unit id="d4c81bc669883bad79d12946f0cdcef3cb41ac57" translate="yes" xml:space="preserve">
+          <source>You can manipulate the value of &lt;code&gt;this&lt;/code&gt; with the functions: &lt;code&gt;call&lt;/code&gt;, &lt;code&gt;apply&lt;/code&gt;, &lt;code&gt;bind&lt;/code&gt;</source>
+          <target state="translated">您可以使用以下函数来操纵 &lt;code&gt;this&lt;/code&gt; 的值： &lt;code&gt;call&lt;/code&gt; ， &lt;code&gt;apply&lt;/code&gt; ， &lt;code&gt;bind&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="9aafe015410fc61c26eb7b85e5f45fd78ded6a07" translate="yes" xml:space="preserve">
+          <source>You can set the value of &lt;em&gt;this&lt;/em&gt; using &lt;code&gt;func.call&lt;/code&gt;, &lt;code&gt;func.apply&lt;/code&gt; or &lt;code&gt;func.bind&lt;/code&gt;.</source>
+          <target state="translated">您可以使用 &lt;code&gt;func.call&lt;/code&gt; ， &lt;code&gt;func.apply&lt;/code&gt; 或 &lt;code&gt;func.bind&lt;/code&gt; 设置此值。</target>
+        </trans-unit>
+        <trans-unit id="3bc00565d4384be2eef6cc38bfd42c85cf8d0315" translate="yes" xml:space="preserve">
+          <source>You can use &lt;code&gt;eval&lt;/code&gt; to access &lt;code&gt;this&lt;/code&gt;.</source>
+          <target state="translated">您可以使用 &lt;code&gt;eval&lt;/code&gt; 来访问 &lt;code&gt;this&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="cca5c93685569cae1cf0ccae89b950fa2dccdaf8" translate="yes" xml:space="preserve">
+          <source>You can use &lt;code&gt;this&lt;/code&gt; in any function on an object to refer to other properties on that object. This is not the same as an instance created with &lt;code&gt;new&lt;/code&gt;.</source>
+          <target state="translated">您可以在对象的任何函数中使用 &lt;code&gt;this&lt;/code&gt; 来引用该对象的其他属性。 这与使用 &lt;code&gt;new&lt;/code&gt; 创建的实例不同。</target>
+        </trans-unit>
+        <trans-unit id="b4d5df9ef1b310c884c8d57fbfb242857d89270e" translate="yes" xml:space="preserve">
+          <source>You can use &lt;code&gt;with&lt;/code&gt; to add &lt;code&gt;this&lt;/code&gt; to the current scope to read and write to values on &lt;code&gt;this&lt;/code&gt; without referring to &lt;code&gt;this&lt;/code&gt; explicitly.</source>
+          <target state="translated">您可以使用 &lt;code&gt;with&lt;/code&gt; 将其添加到当前作用域中，以在不明确引用 &lt;code&gt;this&lt;/code&gt; 值的情况下读写 &lt;code&gt;this&lt;/code&gt; 值。</target>
+        </trans-unit>
+        <trans-unit id="54e27d188f0d38ee9602bf7437198a4746e2a173" translate="yes" xml:space="preserve">
+          <source>above it). So, to get over this (no pun intended) problem, a developer could:</source>
+          <target state="translated">以上)。)所以,为了克服这个问题(没有双关语),开发商可以。</target>
+        </trans-unit>
+        <trans-unit id="cffa50a32cb13a240d705317bcec65dd1f31b6ad" translate="yes" xml:space="preserve">
+          <source>and</source>
+          <target state="translated">and</target>
+        </trans-unit>
+        <trans-unit id="9515c8375c0b70748ad0886b201ac47811d74397" translate="yes" xml:space="preserve">
+          <source>and then we could call it like this</source>
+          <target state="translated">然后我们可以这样称呼它</target>
+        </trans-unit>
+        <trans-unit id="226abeaecd5ff1c4ed49f5e280892fe18bd8990d" translate="yes" xml:space="preserve">
+          <source>but &lt;strong&gt;do&lt;/strong&gt; ask yourself:</source>
+          <target state="translated">但请问自己：</target>
+        </trans-unit>
+        <trans-unit id="841108c86e9fbb4edafbf1fc269ca06fbd9c2aa7" translate="yes" xml:space="preserve">
+          <source>is the same as</source>
+          <target state="translated">等于</target>
+        </trans-unit>
+        <trans-unit id="52bf064bbb0874e1615c452b86946146a06f7150" translate="yes" xml:space="preserve">
+          <source>it becomes the property of the window object, as if you have defined
+it as</source>
+          <target state="translated">成为窗口对象的属性,就像你把它定义为</target>
+        </trans-unit>
+        <trans-unit id="030861400725df2cccdbd01f8186798d77f7e41a" translate="yes" xml:space="preserve">
+          <source>jQuery makes this trivial to change with jQuery.proxy.</source>
+          <target state="translated">jQuery让这一点可以用jQuery.proxy来改变。</target>
+        </trans-unit>
+        <trans-unit id="f36f025d3a5f8c92288a34e977b81bdd71e6227d" translate="yes" xml:space="preserve">
+          <source>javascriptissexy.com - &lt;a href=&quot;http://goo.gl/pvl0GX&quot;&gt;http://goo.gl/pvl0GX&lt;/a&gt;</source>
+          <target state="translated">javascriptissexy.com- &lt;a href=&quot;http://goo.gl/pvl0GX&quot;&gt;http://goo.gl/pvl0GX&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="4049836cfbefc8188779c17bb3962e791ecad445" translate="yes" xml:space="preserve">
+          <source>the jQuery will in many places have &lt;code&gt;this&lt;/code&gt; refer to a DOM element.</source>
+          <target state="translated">jQuery在许多地方都 &lt;code&gt;this&lt;/code&gt; 引用DOM元素。</target>
+        </trans-unit>
+        <trans-unit id="3be4a57468f0408033e4ea27c9512e741f1fbc8b" translate="yes" xml:space="preserve">
+          <source>this use for Scope just like this</source>
+          <target state="translated">此种用途,就像这样</target>
+        </trans-unit>
+        <trans-unit id="0be011b10726d85ae6873c3f4ffc235cfde3ceb9" translate="yes" xml:space="preserve">
+          <source>value of txt1 and txt is same
+in Above example 
+$(this)=$('#tbleName tbody tr') is Same</source>
+          <target state="translated">在上面的例子中,txt1和txt的值是相同的 $(this)=$('#tbleName tbody tr')是相同的</target>
+        </trans-unit>
+        <trans-unit id="a40cac89bb894a88e8ef678122403134449a72d5" translate="yes" xml:space="preserve">
+          <source>was effectively translated into</source>
+          <target state="translated">被有效地翻译成</target>
+        </trans-unit>
+        <trans-unit id="eee2fd622722c8b192547f36dd5b9891b7a1ad1e" translate="yes" xml:space="preserve">
+          <source>which means</source>
+          <target state="translated">意思是</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

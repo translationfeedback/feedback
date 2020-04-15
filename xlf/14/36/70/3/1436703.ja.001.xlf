@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/1436703">
+    <body>
+      <group id="1436703">
+        <trans-unit id="f4e25ec010738edfa81015df5c8d0540f8058b4f" translate="yes" xml:space="preserve">
+          <source>(you can probably also figure out what to do about dictionaries.</source>
+          <target state="translated">(辞書をどうするかは、たぶん、辞書をどうするかということも考えられると思います。</target>
+        </trans-unit>
+        <trans-unit id="7d103faabf761c02013a9ffc061d63b9651e1f88" translate="yes" xml:space="preserve">
+          <source>1) &lt;code&gt;__repr__()&lt;/code&gt; is invoked when you simply write object's name on interactive python console and press enter.</source>
+          <target state="translated">1） &lt;code&gt;__repr__()&lt;/code&gt; は、対話型のPythonコンソールでオブジェクトの名前を入力してEnterキーを押すと呼び出されます。</target>
+        </trans-unit>
+        <trans-unit id="b9c72ee953d43911c466e0ca7aef8427b918dad3" translate="yes" xml:space="preserve">
+          <source>2) &lt;code&gt;__str__()&lt;/code&gt; is invoked when you use object with print statement.</source>
+          <target state="translated">2） &lt;code&gt;__str__()&lt;/code&gt; は、printステートメントでオブジェクトを使用するときに呼び出されます。</target>
+        </trans-unit>
+        <trans-unit id="b2259cc53b4beb00ea0cb5f21e02d5747ef33b70" translate="yes" xml:space="preserve">
+          <source>3) In case, if &lt;code&gt;__str__&lt;/code&gt; is missing, then print and any function using &lt;code&gt;str()&lt;/code&gt; invokes &lt;code&gt;__repr__()&lt;/code&gt; of object.</source>
+          <target state="translated">3） &lt;code&gt;__str__&lt;/code&gt; が欠落している場合、printと &lt;code&gt;str()&lt;/code&gt; を使用する関数はオブジェクトの &lt;code&gt;__repr__()&lt;/code&gt; を呼び出します。</target>
+        </trans-unit>
+        <trans-unit id="68209245d4a6dff79cdd29404b330579c8dc403f" translate="yes" xml:space="preserve">
+          <source>4) &lt;code&gt;__str__()&lt;/code&gt; of containers, when invoked will execute &lt;code&gt;__repr__()&lt;/code&gt; method of its contained elements.</source>
+          <target state="translated">4）コンテナの &lt;code&gt;__str__()&lt;/code&gt; 、呼び出されると、含まれている要素の &lt;code&gt;__repr__()&lt;/code&gt; メソッドを実行します。</target>
+        </trans-unit>
+        <trans-unit id="bd4781db3f8860ef56abf646f6d70c15a94cac7c" translate="yes" xml:space="preserve">
+          <source>5) &lt;code&gt;str()&lt;/code&gt; called within &lt;code&gt;__str__()&lt;/code&gt; could potentially recurse without a base case, and error on maximum recursion depth.</source>
+          <target state="translated">5） &lt;code&gt;__str__()&lt;/code&gt; &lt;code&gt;str()&lt;/code&gt; __（）内で呼び出されたstr（）は、基本ケースなしで再帰する可能性があり、最大再帰深度でエラーが発生する可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="f944eb318831eb3307673ad51e244207b807a90e" translate="yes" xml:space="preserve">
+          <source>6) &lt;code&gt;__repr__()&lt;/code&gt; can call &lt;code&gt;repr()&lt;/code&gt; which will attempt to avoid infinite recursion automatically, replacing an already represented object with &lt;code&gt;...&lt;/code&gt;.</source>
+          <target state="translated">6） &lt;code&gt;__repr__()&lt;/code&gt; &lt;code&gt;repr()&lt;/code&gt; __（）はrepr（）を呼び出して、無限再帰を自動的に回避し、すでに表現されているオブジェクトを &lt;code&gt;...&lt;/code&gt; に置き換えることができます 。</target>
+        </trans-unit>
+        <trans-unit id="b63fbdd60bc6bc4b249dc838669a14dc09a22ace" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://stackoverflow.com/users/95810/alex-martelli&quot;&gt;Alex&lt;/a&gt; summarized well but, surprisingly, was too succinct.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/users/95810/alex-martelli&quot;&gt;アレックス&lt;/a&gt;はうまくまとめましたが、驚くべきことに、あまりにも簡潔すぎました。</target>
+        </trans-unit>
+        <trans-unit id="cdccd33bc551383c9f81019018903d0deaca740a" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__repr__&lt;/code&gt; can be invoked on an object by calling &lt;code&gt;repr(obj)&lt;/code&gt; and should return internal object (object fields/attributes)</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; は &lt;code&gt;repr(obj)&lt;/code&gt; を呼び出すことによってオブジェクトで呼び出すことができ、内部オブジェクト（オブジェクトフィールド/属性）を返す必要があります</target>
+        </trans-unit>
+        <trans-unit id="faf0d1f1312e3f35b3c3e35c73e72580ea5fad40" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__repr__&lt;/code&gt; goal is to be unambiguous</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; の目標は、明確にすることです</target>
+        </trans-unit>
+        <trans-unit id="38772fe6e2a92c7f9e19245ea20f3baa852d9c88" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__repr__&lt;/code&gt; is used everywhere, except by &lt;code&gt;print&lt;/code&gt; and &lt;code&gt;str&lt;/code&gt; methods (when a &lt;code&gt;__str__&lt;/code&gt;is defined !)</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; は、 &lt;code&gt;print&lt;/code&gt; および &lt;code&gt;str&lt;/code&gt; メソッドを除いて、どこでも使用されます （ &lt;code&gt;__str__&lt;/code&gt; が定義されている場合！）</target>
+        </trans-unit>
+        <trans-unit id="2f5f7a48c655f0e14ca4c1f56eae9dca508f1fce" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__repr__&lt;/code&gt; is used to show a string representation of &lt;strong&gt;the&lt;/strong&gt; object.</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; は&lt;strong&gt;、&lt;/strong&gt;オブジェクトの文字列表現を示すために使用されます。</target>
+        </trans-unit>
+        <trans-unit id="c5f10753db206b6a0a329be9c1b34de815311211" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__repr__&lt;/code&gt; provides backup behavior if &lt;code&gt;__str__&lt;/code&gt; is missing.</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; は、 &lt;code&gt;__str__&lt;/code&gt; がない場合のバックアップ動作を提供します。</target>
+        </trans-unit>
+        <trans-unit id="c119ea20bcd02e26639d32bba5faa3419cb0eb92" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__repr__&lt;/code&gt; return the real flesh body of a given object (return itself) for unambiguity to identify.</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; は、明確にするために、特定のオブジェクトの実際の肉体を返します（それ自体を返します）。</target>
+        </trans-unit>
+        <trans-unit id="d5c28cf192c3f3a579db8549c627a82851b6d844" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; &quot;&lt;em&gt;computes the &quot;informal&quot; string representation of an object. This differs from &lt;code&gt;__repr__&lt;/code&gt; in that it does not have to be a valid Python expression: a more convenient or concise representation may be used instead.&lt;/em&gt;&quot;</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; &quot; &lt;em&gt;は、オブジェクトの「非公式」文字列表現を計算します。これは、有効なPython式である必要がないという点で &lt;code&gt;__repr__&lt;/code&gt; とは異なります。代わりに、より便利で簡潔な表現を使用できます。&lt;/em&gt; &quot;</target>
+        </trans-unit>
+        <trans-unit id="5bfa620b1a7431c4859f2c8da452e6862250529f" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; (read as &quot;dunder (double-underscore) string&quot;) and &lt;code&gt;__repr__&lt;/code&gt; (read as &quot;dunder-repper&quot; (for &quot;representation&quot;)) are both special methods that return strings based on the state of the object.</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; （ &quot;dunder（double-underscore）string&quot;として読み取られます）および &lt;code&gt;__repr__&lt;/code&gt; （ &quot;dunder-repper&quot;（ &quot;representation&quot;として読み取られます））はどちらも、オブジェクトの状態に基づいて文字列を返す特別なメソッドです。</target>
+        </trans-unit>
+        <trans-unit id="7c651efa9bf24f2b31c5de5fc79e0b5e3ff3b352" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; can be invoked on an object by calling &lt;code&gt;str(obj)&lt;/code&gt; and should return a human readable string.</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; は、 &lt;code&gt;str(obj)&lt;/code&gt; を呼び出すことによってオブジェクトで呼び出すことができ、人間が読める文字列を返す必要があります。</target>
+        </trans-unit>
+        <trans-unit id="1fe48568b7333a75afde0885d338596099b0b9ee" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; goal is to be readable</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; ゴールは読みやすくすることです</target>
+        </trans-unit>
+        <trans-unit id="55ddd6314708d8a0588442c30c939e61ded9378b" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; is used in to show a string representation of your object &lt;strong&gt;to be read easily&lt;/strong&gt; by others.</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; は、他のユーザー&lt;strong&gt;が簡単に読み取ることができる&lt;/strong&gt;オブジェクトの文字列表現を示すために使用されます。</target>
+        </trans-unit>
+        <trans-unit id="f171aea17d3f084f44acd3a77fda54fd0106bd50" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; must return string object whereas &lt;code&gt;__repr__&lt;/code&gt; can return any python expression.</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; は文字列オブジェクトを返す必要がありますが、 &lt;code&gt;__repr__&lt;/code&gt; は任意のPython式を返すことができます。</target>
+        </trans-unit>
+        <trans-unit id="7cbf41af4e945d63d8a427626efbd9a8369e420d" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; return the string disguised body of a given object for readable of eyes</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; は、目を読み取れるように、指定されたオブジェクトの文字列を偽装したボディで返します</target>
+        </trans-unit>
+        <trans-unit id="d0148184e035bb53e9299f20ce4d944cfa214ba1" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;repr&lt;/code&gt; - Returns the canonical string representation of the object.</source>
+          <target state="translated">&lt;code&gt;repr&lt;/code&gt; -オブジェクトの正規の文字列表現を返します。</target>
+        </trans-unit>
+        <trans-unit id="3c97d0c508bd7f652eb5099d0d84685d4a198697" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;str&lt;/code&gt; - Creates a new string object from the given object.</source>
+          <target state="translated">&lt;code&gt;str&lt;/code&gt; -指定されたオブジェクトから新しい文字列オブジェクトを作成します。</target>
+        </trans-unit>
+        <trans-unit id="5f4d2fa5ab3c6b599a4287372ac939b133314c0e" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Python favors unambiguity over readability&lt;/em&gt;, the &lt;code&gt;__str__&lt;/code&gt; call of a &lt;code&gt;tuple&lt;/code&gt; calls the contained objects' &lt;code&gt;__repr__&lt;/code&gt;, the &lt;em&gt;&quot;formal&quot;&lt;/em&gt; representation of an object. Although the formal representation is harder to read than an informal one, it is unambiguous and more robust against bugs.</source>
+          <target state="translated">&lt;em&gt;Pythonは、読みやすさ&lt;/em&gt;よりも &lt;code&gt;__str__&lt;/code&gt; ます。 &lt;code&gt;tuple&lt;/code&gt; __str__呼び出しは、含まれているオブジェクトの &lt;code&gt;__repr__&lt;/code&gt; を呼び出します。これは、オブジェクトの&lt;em&gt;「正式な」&lt;/em&gt;表現です。 形式的な表現は、非形式的な表現よりも読みにくいですが、明確であり、バグに対してより堅牢です。</target>
+        </trans-unit>
+        <trans-unit id="2eb102ea6ac8d0cf17aff98429ed0b3c3f7cbcf9" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;__repr__&lt;/code&gt;&lt;/strong&gt;: representation of python object usually eval will convert it back to that object</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;__repr__&lt;/code&gt; &lt;/strong&gt; ：Pythonオブジェクトの表現は通常evalで変換されてそのオブジェクトに戻されます</target>
+        </trans-unit>
+        <trans-unit id="014fecb0e8589f0d9e987d41a97f853e2d9063f6" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;__str__&lt;/code&gt;&lt;/strong&gt;: is whatever you think is that object in text form</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;__str__&lt;/code&gt; &lt;/strong&gt; ：テキスト形式のオブジェクトだと思うもの</target>
+        </trans-unit>
+        <trans-unit id="fe2ca45a3f9fe5c28bd8698502e23200d2fe1e5f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Container&amp;rsquo;s &lt;code&gt;__str__&lt;/code&gt; uses contained objects&amp;rsquo; &lt;code&gt;__repr__&lt;/code&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;コンテナの &lt;code&gt;__str__&lt;/code&gt; は、含まれているオブジェクトの__repr__を使用します&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="313fdb212ef7d654563fd68a4dbe97b36573af9d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Default implementation is useless&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;デフォルトの実装は役に立たない&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2dcd8fc71e05cf69f2f4aedf034ba98a76d6ae8c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Summary&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Summary&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b638660706a1e4d9b0bfc3894141750f70ecc431" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The goal of &lt;code&gt;__repr__&lt;/code&gt; is to be unambiguous&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;__repr__&lt;/code&gt; の目標は、明確にすることです&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3dffbc9fa2806a68ab5b88a6dc66d657557e6645" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The goal of &lt;code&gt;__str__&lt;/code&gt; is to be readable&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;__str__&lt;/code&gt; の目的は、読みやすくすることです&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d7bff912bc70a87ac98674f745266dc1fd1ed585" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;repr = reproduce&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;repr =再現&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="aed7370515328b7386d9c2d92149f875c62b2f66" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;repr():&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;repr():&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d0c1ca48e2a313fb24ab9d23a999e9c6f0750466" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;str = string (representation)&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;str =文字列（表現）&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="00c5743fa341fadec53dc7207f7b70b9f864ec69" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;str():&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;str():&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="ff67b9f7a4b9f4c8c271c3bb05146fb2115fc542" translate="yes" xml:space="preserve">
+          <source>A basic requirement for a Python object is to provide usable 
+       string   representations of itself, one used for debugging and
+       logging, another for presentation to end users. That is why the</source>
+          <target state="translated">Pythonオブジェクトの基本的な要件は、それ自体の使用可能な文字列表現を提供することであり、1つはデバッグやロギングのために使用され、もう1つはエンドユーザに提示するために使用されます。これが</target>
+        </trans-unit>
+        <trans-unit id="da308aeb7ec2f80344365b3a4d9fc4bfb4791053" translate="yes" xml:space="preserve">
+          <source>A small but good example is also given on the same page as follows:</source>
+          <target state="translated">同じページには、小さいながらも良い例が以下のように記載されています。</target>
+        </trans-unit>
+        <trans-unit id="9f008c6ab79e7861bf8d9ef2ff2fd5300056f5d4" translate="yes" xml:space="preserve">
+          <source>Another example.</source>
+          <target state="translated">別の例です。</target>
+        </trans-unit>
+        <trans-unit id="0c01c6cca37e136fdbf85630b4cfeb648b4e77e3" translate="yes" xml:space="preserve">
+          <source>Apart from all the answers given, I would like to add few points :-</source>
+          <target state="translated">与えられたすべての答えから離れて、私はいくつかのポイントを追加したいと思います :-。</target>
+        </trans-unit>
+        <trans-unit id="18289ef151e4e90c453904ba3b24e3b9634a21c7" translate="yes" xml:space="preserve">
+          <source>As to &lt;code&gt;__repr__&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; について</target>
+        </trans-unit>
+        <trans-unit id="32497f78a61159dd2d671ec8052a0c2d71c59903" translate="yes" xml:space="preserve">
+          <source>As you see -- no difference, and no info beyond the class and object's &lt;code&gt;id&lt;/code&gt;.  If you only override one of the two...:</source>
+          <target state="translated">ご覧のとおり、違いはなく、クラスとオブジェクトの &lt;code&gt;id&lt;/code&gt; 以外の情報はありません。 2つのうち1つだけをオーバーライドする場合...：</target>
+        </trans-unit>
+        <trans-unit id="84962694189a72510e0996db2aa3ca43180bfbc9" translate="yes" xml:space="preserve">
+          <source>As you're developing, you'll want to be able to reproduce objects in the same state, if possible. This, for example, is how the datetime object defines &lt;code&gt;__repr__&lt;/code&gt; (&lt;a href=&quot;https://github.com/python/cpython/blob/v3.7.3/Lib/datetime.py#L1876&quot;&gt;Python source&lt;/a&gt;). It is fairly complex, because of all of the attributes needed to reproduce such an object:</source>
+          <target state="translated">開発中は、可能であれば、オブジェクトを同じ状態で再現できるようにする必要があります。 これは、たとえば、datetimeオブジェクトが &lt;code&gt;__repr__&lt;/code&gt; （ &lt;a href=&quot;https://github.com/python/cpython/blob/v3.7.3/Lib/datetime.py#L1876&quot;&gt;Pythonソース&lt;/a&gt; ）を定義する方法です。 そのようなオブジェクトを再現するために必要なすべての属性のため、これはかなり複雑です。</target>
+        </trans-unit>
+        <trans-unit id="de00522a3ff15a155a60dc6d8db9a728ede4b85d" translate="yes" xml:space="preserve">
+          <source>At any time later, one can write a &lt;code&gt;__str__&lt;/code&gt; for a user-readable string representation of the instance, when one believes it to be necessary.</source>
+          <target state="translated">後でいつでも、ユーザーが読み取り可能なインスタンスの文字列表現の &lt;code&gt;__str__&lt;/code&gt; を書くことができます。</target>
+        </trans-unit>
+        <trans-unit id="40c9c9f611104210a4ec1ca0fe8d653c89cd780a" translate="yes" xml:space="preserve">
+          <source>But you have to do the last step &amp;mdash; make sure every object you implement has a useful repr, so code like that can just work. This is why the &amp;ldquo;eval&amp;rdquo; thing comes up: if you have enough information so &lt;code&gt;eval(repr(c))==c&lt;/code&gt;, that means you know everything there is to know about &lt;code&gt;c&lt;/code&gt;. If that&amp;rsquo;s easy enough, at least in a fuzzy way, do it. If not, make sure you have enough information about &lt;code&gt;c&lt;/code&gt; anyway. I usually use an eval-like format: &lt;code&gt;&quot;MyClass(this=%r,that=%r)&quot; % (self.this,self.that)&lt;/code&gt;. It does not mean that you can actually construct MyClass, or that those are the right constructor arguments &amp;mdash; but it is a useful form to express &amp;ldquo;this is everything you need to know about this instance&amp;rdquo;.</source>
+          <target state="translated">ただし、最後の手順を実行する必要があります。実装するすべてのオブジェクトに有効なreprがあることを確認して、そのようなコードが機能するようにします。 これが「eval」の事柄が浮かび上がる理由です。十分な情報があり、 &lt;code&gt;eval(repr(c))==c&lt;/code&gt; の場合、それは &lt;code&gt;c&lt;/code&gt; について知っておくべきことがすべてわかっていることを意味します。 それが十分に簡単な場合は、少なくともあいまいな方法で実行してください。 そうでない場合は、とにかく &lt;code&gt;c&lt;/code&gt; に関する十分な情報があることを確認してください。 私は通常evalのような形式を使用します： &lt;code&gt;&quot;MyClass(this=%r,that=%r)&quot; % (self.this,self.that)&lt;/code&gt; 。 これは、実際にMyClassを構築できること、またはそれらが正しいコンストラクター引数であることを意味するものではありませんが、「これは、このインスタンスについて知っておく必要があるすべてのものです」と表現するのに便利です。</target>
+        </trans-unit>
+        <trans-unit id="e39262defe80a83fac1b793497417432c8b1a879" translate="yes" xml:space="preserve">
+          <source>Conclusion</source>
+          <target state="translated">Conclusion</target>
+        </trans-unit>
+        <trans-unit id="4e523dace7302e3a2b6c27d81b9e20886d0d761f" translate="yes" xml:space="preserve">
+          <source>Container&amp;rsquo;s &lt;code&gt;__str__&lt;/code&gt; uses contained objects&amp;rsquo; &lt;code&gt;__repr__&lt;/code&gt;</source>
+          <target state="translated">コンテナの &lt;code&gt;__str__&lt;/code&gt; は、含まれているオブジェクトの__repr__を使用します</target>
+        </trans-unit>
+        <trans-unit id="864d1d58c0dc2b08ee9255a38de949183c561b18" translate="yes" xml:space="preserve">
+          <source>Default Implementation of &lt;code&gt;__repr__&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; のデフォルト実装</target>
+        </trans-unit>
+        <trans-unit id="aaaac60719b4c68f3e6efde310393b8c1d9847fe" translate="yes" xml:space="preserve">
+          <source>Define &lt;code&gt;__repr__&lt;/code&gt; for objects you write so you and other developers have a reproducible example when using it as you develop. Define &lt;code&gt;__str__&lt;/code&gt; when you need a human readable string representation of it.</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; したオブジェクトの__repr__を定義して、開発者や他の開発者が開発中に使用するときに再現可能な例を使用できるようにします。 人間が読める形式の文字列表現が必要な場合は、 &lt;code&gt;__str__&lt;/code&gt; を定義します。</target>
+        </trans-unit>
+        <trans-unit id="4e236371232f495613ed6a39714358170d0d9f34" translate="yes" xml:space="preserve">
+          <source>Difference between __str__ and __repr__</source>
+          <target state="translated">str__と__repr__の違い</target>
+        </trans-unit>
+        <trans-unit id="0f01ed56a1e32a05e5ef96e4d779f34784af9a96" translate="yes" xml:space="preserve">
+          <source>Example</source>
+          <target state="translated">Example</target>
+        </trans-unit>
+        <trans-unit id="4f369676493c631748ef19bfb6774924b7209730" translate="yes" xml:space="preserve">
+          <source>Excellent answers already cover the difference between &lt;code&gt;__str__&lt;/code&gt; and &lt;code&gt;__repr__&lt;/code&gt;, which for me boils down to the former being readable even by an end user, and the latter being as useful as possible to developers. Given that, I find that the default implementation of &lt;code&gt;__repr__&lt;/code&gt; often fails to achieve this goal because it &lt;em&gt;omits&lt;/em&gt; information useful to developers.</source>
+          <target state="translated">優れた回答は、 &lt;code&gt;__str__&lt;/code&gt; と &lt;code&gt;__repr__&lt;/code&gt; の違いをすでにカバーしています。 つまり 、私にとっては前者はエンドユーザーでも読み取り可能であり、後者は開発者にとって可能な限り有用です。 そのため、 &lt;code&gt;__repr__&lt;/code&gt; のデフォルトの実装では、開発者に役立つ情報が&lt;em&gt;省略さ&lt;/em&gt;れているため、この目標を達成できないことがよくあります。</target>
+        </trans-unit>
+        <trans-unit id="c4a1dd8c15a07bca489be9628dc1f211ec440334" translate="yes" xml:space="preserve">
+          <source>First, let me reiterate the main points in &lt;a href=&quot;https://stackoverflow.com/a/1436756/3798217&quot;&gt;Alex&amp;rsquo;s post&lt;/a&gt;:</source>
+          <target state="translated">まず、 &lt;a href=&quot;https://stackoverflow.com/a/1436756/3798217&quot;&gt;アレックスの投稿の&lt;/a&gt;要点を繰り返します。</target>
+        </trans-unit>
+        <trans-unit id="5e3c852250fcf645e78568a651ad7742888eb8a2" translate="yes" xml:space="preserve">
+          <source>For this reason, if I have a simple enough &lt;code&gt;__str__&lt;/code&gt;, I generally just try to get the best of both worlds with something like:</source>
+          <target state="translated">このため、単純な &lt;code&gt;__str__&lt;/code&gt; を使用している場合は、通常、次のようなものを使用して両方の長所を最大限に活かそうとします。</target>
+        </trans-unit>
+        <trans-unit id="d8b2bba95481c8588d12d05e331a3236798bb686" translate="yes" xml:space="preserve">
+          <source>From &lt;a href=&quot;https://web.archive.org/web/20071127054034/http://pyref.infogami.com/__str__&quot;&gt;an (An Unofficial) Python Reference Wiki (archive copy)&lt;/a&gt; by effbot:</source>
+          <target state="translated">effbotによる&lt;a href=&quot;https://web.archive.org/web/20071127054034/http://pyref.infogami.com/__str__&quot;&gt;（非公式の）PythonリファレンスWiki（アーカイブコピー）&lt;/a&gt;から：</target>
+        </trans-unit>
+        <trans-unit id="68f24431a884f7a1a772f9f71c64bbfc2b1cd09e" translate="yes" xml:space="preserve">
+          <source>From the book &lt;em&gt;Fluent Python&lt;/em&gt;:</source>
+          <target state="translated">&lt;em&gt;Fluent Python&lt;/em&gt;の本から：</target>
+        </trans-unit>
+        <trans-unit id="af15b0cba5831475a6213180b44b72662c5c0098" translate="yes" xml:space="preserve">
+          <source>Goal of &lt;code&gt;__repr__&lt;/code&gt;: unambiguous, possibly machine-readable via &lt;code&gt;eval&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; の目標：明確で、おそらく &lt;code&gt;eval&lt;/code&gt; を介してマシンが読み取り可能</target>
+        </trans-unit>
+        <trans-unit id="0105a7007fd970dd8263d8d0ae6f24d9c2892859" translate="yes" xml:space="preserve">
+          <source>Goal of &lt;code&gt;__str__&lt;/code&gt;: human-readable</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; の目標：人間が読める形式</target>
+        </trans-unit>
+        <trans-unit id="e0704423e912c87444daf4cf0591f6672b380ee4" translate="yes" xml:space="preserve">
+          <source>Here is a good example:</source>
+          <target state="translated">ここに良い例があります。</target>
+        </trans-unit>
+        <trans-unit id="b8278191aeedfa8063b69965a5b1296db0545f8f" translate="yes" xml:space="preserve">
+          <source>Here is the documentation for str:</source>
+          <target state="translated">以下は str のドキュメントです。</target>
+        </trans-unit>
+        <trans-unit id="6a609178fdb8d21ef587ebbb9a3a93386555889b" translate="yes" xml:space="preserve">
+          <source>Here's the builtin help on &lt;code&gt;repr&lt;/code&gt;:</source>
+          <target state="translated">&lt;code&gt;repr&lt;/code&gt; の組み込みヘルプは次のとおりです。</target>
+        </trans-unit>
+        <trans-unit id="0fc3e81e03b099edcb9f91f49f2a17d2385c23c4" translate="yes" xml:space="preserve">
+          <source>Hope this help you build concrete grounds to explore more answers.</source>
+          <target state="translated">これはあなたがより多くの答えを探求するための具体的な根拠を構築するのに役立つことを願っています。</target>
+        </trans-unit>
+        <trans-unit id="43c6e54c0ea380985172fb9258afb936529b9683" translate="yes" xml:space="preserve">
+          <source>How can &lt;code&gt;__repr__&lt;/code&gt; be useful?</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; はどのように役立ちますか？</target>
+        </trans-unit>
+        <trans-unit id="d13e0fa96adfcce8fde14c989cb30f63091e1e29" translate="yes" xml:space="preserve">
+          <source>How do I implement them?</source>
+          <target state="translated">どうやって実装すればいいの?</target>
+        </trans-unit>
+        <trans-unit id="04b4dc21ec648f5aec0e86365a2e5648ee7f2c14" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;__repr__&lt;/code&gt; function is returning String representation of the object, we can skip implementation of &lt;code&gt;__str__&lt;/code&gt; function.</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; 関数がオブジェクトの文字列表現を返す場合、 __ str__関数の実装をスキップできます。</target>
+        </trans-unit>
+        <trans-unit id="ef49c726f39f583e5b3279b1fb0572c8420ec9ae" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;__str__&lt;/code&gt; implementation is missing then &lt;code&gt;__repr__&lt;/code&gt; function is used as fallback. There is no fallback if &lt;code&gt;__repr__&lt;/code&gt; function implementation is missing.</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; 実装がない場合、 &lt;code&gt;__repr__&lt;/code&gt; 関数がフォールバックとして使用されます。 &lt;code&gt;__repr__&lt;/code&gt; 関数の実装がない場合、フォールバックはありません。</target>
+        </trans-unit>
+        <trans-unit id="eaeb3628e2001cf7b36aab29fab6dd6a73818457" translate="yes" xml:space="preserve">
+          <source>If we call &lt;code&gt;datetime.now&lt;/code&gt; in the shell, we'll see everything we need to recreate an equivalent datetime object. This is created by the datetime &lt;code&gt;__repr__&lt;/code&gt;:</source>
+          <target state="translated">シェルで &lt;code&gt;datetime.now&lt;/code&gt; を呼び出すと、同等のdatetimeオブジェクトを再作成するために必要なものがすべて表示されます。 これは、日時 &lt;code&gt;__repr__&lt;/code&gt; によって作成されます 。</target>
+        </trans-unit>
+        <trans-unit id="60df7928f256d4c1c316638019355408b8d03315" translate="yes" xml:space="preserve">
+          <source>If we print a datetime object, we see a nice human readable (in fact, ISO) format. This is implemented by datetime's &lt;code&gt;__str__&lt;/code&gt;:</source>
+          <target state="translated">日時オブジェクトを出力すると、人間が読める形式（実際にはISO）で表示されます。 これは、datetimeの &lt;code&gt;__str__&lt;/code&gt; によって実装されます 。</target>
+        </trans-unit>
+        <trans-unit id="fe3e77348f584666cc0292c5252ffc936156bae2" translate="yes" xml:space="preserve">
+          <source>If you print an object, or pass it to &lt;code&gt;format&lt;/code&gt;, &lt;code&gt;str.format&lt;/code&gt;, or &lt;code&gt;str&lt;/code&gt;, then if a &lt;code&gt;__str__&lt;/code&gt; method is defined, that method will be called, otherwise, &lt;code&gt;__repr__&lt;/code&gt; will be used.</source>
+          <target state="translated">オブジェクトを出力するか、それを &lt;code&gt;format&lt;/code&gt; 、 &lt;code&gt;str.format&lt;/code&gt; 、または &lt;code&gt;str&lt;/code&gt; に渡すと、 &lt;code&gt;__str__&lt;/code&gt; メソッドが定義されている場合はそのメソッドが呼び出され、そうでない場合は &lt;code&gt;__repr__&lt;/code&gt; が使用されます。</target>
+        </trans-unit>
+        <trans-unit id="805626cceba2f927b93f675018fe4b6001406454" translate="yes" xml:space="preserve">
+          <source>If you want your object to have a more human readable representation, you can implement &lt;code&gt;__str__&lt;/code&gt; next. Here's how the datetime object (&lt;a href=&quot;https://github.com/python/cpython/blob/v3.7.3/Lib/datetime.py#L1895&quot;&gt;Python source&lt;/a&gt;) implements &lt;code&gt;__str__&lt;/code&gt;, which it easily does because it already has a function to display it in ISO format:</source>
+          <target state="translated">オブジェクトをより人間が読める形式にしたい場合は、次に &lt;code&gt;__str__&lt;/code&gt; を実装できます。 datetimeオブジェクト（ &lt;a href=&quot;https://github.com/python/cpython/blob/v3.7.3/Lib/datetime.py#L1895&quot;&gt;Pythonソース&lt;/a&gt; ）が &lt;code&gt;__str__&lt;/code&gt; を実装する方法を次に示します。ISO形式で表示する関数がすでにあるため、簡単に実装できます。</target>
+        </trans-unit>
+        <trans-unit id="073430142b98e2a3a71e88d7faacd82c17a8334f" translate="yes" xml:space="preserve">
+          <source>Implement &lt;code&gt;__repr__&lt;/code&gt; for any class you implement. This should be second nature. Implement &lt;code&gt;__str__&lt;/code&gt; if you think it would be useful to have a string version which errs on the side of readability.</source>
+          <target state="translated">実装するクラスに &lt;code&gt;__repr__&lt;/code&gt; を実装します。 これは第二の性質であるべきです。 読みやすくするためにエラーになる文字列バージョンがあると便利だと思う場合は、 &lt;code&gt;__str__&lt;/code&gt; を実装してください 。</target>
+        </trans-unit>
+        <trans-unit id="d7d488b9cb5355ef57328f1752264bf34aca81b8" translate="yes" xml:space="preserve">
+          <source>In a nutshell:</source>
+          <target state="translated">一言で言えば</target>
+        </trans-unit>
+        <trans-unit id="f632be7662be43e79ba5419e904ac5f988c7adb9" translate="yes" xml:space="preserve">
+          <source>In all honesty, &lt;code&gt;eval(repr(obj))&lt;/code&gt; is never used. If you find yourself using it, you should stop, because &lt;code&gt;eval&lt;/code&gt; is dangerous, and strings are a very inefficient way to serialize your objects (use &lt;code&gt;pickle&lt;/code&gt; instead).</source>
+          <target state="translated">正直なところ、 &lt;code&gt;eval(repr(obj))&lt;/code&gt; は決して使用されません。 &lt;code&gt;eval&lt;/code&gt; は危険であり、文字列はオブジェクトをシリアル化するための非常に非効率的な方法です（代わりに &lt;code&gt;pickle&lt;/code&gt; を使用してください）。</target>
+        </trans-unit>
+        <trans-unit id="292e4e3ccb8e900f7e45bea52808de8bb334eee9" translate="yes" xml:space="preserve">
+          <source>In short, the goal of &lt;code&gt;__repr__&lt;/code&gt; is to be unambiguous and &lt;code&gt;__str__&lt;/code&gt; is to be
+  readable.</source>
+          <target state="translated">つまり、 &lt;code&gt;__repr__&lt;/code&gt; の目的は明確にすることであり、 &lt;code&gt;__str__&lt;/code&gt; は読みやすくすることです。</target>
+        </trans-unit>
+        <trans-unit id="6c8531c2d32b10443b839413379f6984d3ce1679" translate="yes" xml:space="preserve">
+          <source>It is a simple matter to recreate the object we lost because we didn't assign it to a variable by copying and pasting from the &lt;code&gt;__repr__&lt;/code&gt; output, and then printing it, and we get it in the same human readable output as the other object:</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; 出力からコピーアンドペーストして変数に割り当てなかったために失われたオブジェクトを再作成するのは簡単なことであり、それを印刷して、他のオブジェクトと同じ人間が読める出力で取得します。</target>
+        </trans-unit>
+        <trans-unit id="6b8e2060bed2c0d2f56ab93a4f32e7f1ef3c311b" translate="yes" xml:space="preserve">
+          <source>Let me come right out and say it &amp;mdash; I do not believe in debuggers. I don&amp;rsquo;t really know how to use any debugger, and have never used one seriously. Furthermore, I believe that the big fault in debuggers is their basic nature &amp;mdash; most failures I debug happened a long long time ago, in a galaxy far far away. This means that I do believe, with religious fervor, in logging. Logging is the lifeblood of any decent fire-and-forget server system. Python makes it easy to log: with maybe some project specific wrappers, all you need is a</source>
+          <target state="translated">私はすぐに出て言ってみましょう&amp;mdash;私はデバッガを信じていません。 私はデバッガの使い方を本当に知りませんし、真剣にデバッガを使ったことがありません。 さらに、デバッガーの大きな障害はその基本的な性質であると私は信じています。私がデバッグするほとんどの障害は、はるか昔に遠く離れた銀河で発生しました。 つまり、私は、宗教的な熱意をもって、伐採を信じています。 ロギングは、きちんとしたファイアアンドフォーゲットサーバーシステムの生命線です。 Pythonを使用すると、簡単にログを記録できます。プロジェクト固有のラッパーを使用すると、必要なのは</target>
+        </trans-unit>
+        <trans-unit id="6c16523da5289e715510cd8ddc824ce517fad569" translate="yes" xml:space="preserve">
+          <source>Let's look at how useful it can be, using the Python shell and &lt;code&gt;datetime&lt;/code&gt; objects. First we need to import the &lt;code&gt;datetime&lt;/code&gt; module:</source>
+          <target state="translated">Pythonシェルと &lt;code&gt;datetime&lt;/code&gt; オブジェクトを使用して、それがいかに便利かを見てみましょう。 最初に、 &lt;code&gt;datetime&lt;/code&gt; モジュールをインポートする必要があります。</target>
+        </trans-unit>
+        <trans-unit id="f5512e6b973186ee3d6e68271fdb6743c05107de" translate="yes" xml:space="preserve">
+          <source>Let's say I want to create a &lt;code&gt;Fraction&lt;/code&gt; class where the string representation of a fraction is '(1/2)' and the object (Fraction class) is to be represented as 'Fraction (1,2)'</source>
+          <target state="translated">&lt;code&gt;Fraction&lt;/code&gt; の文字列表現が '（1/2）'であり、オブジェクト（Fractionクラス）が 'Fraction（1,2）'として表されるFractionクラスを作成するとします。</target>
+        </trans-unit>
+        <trans-unit id="0e9c67e09191353606a84fab248a3ac997049f12" translate="yes" xml:space="preserve">
+          <source>My rule of thumb:  &lt;code&gt;__repr__&lt;/code&gt; is for developers, &lt;code&gt;__str__&lt;/code&gt; is for customers.</source>
+          <target state="translated">私の経験則： &lt;code&gt;__repr__&lt;/code&gt; は開発者向け、 &lt;code&gt;__str__&lt;/code&gt; は顧客向けです。</target>
+        </trans-unit>
+        <trans-unit id="7f94091f9bf63a214597fc0363dfb00129777f2a" translate="yes" xml:space="preserve">
+          <source>Not very. Specifically, the strings in a container would find it way too easy to disturb its string representation. In the face of ambiguity, remember, Python resists the temptation to guess. If you want the above behavior when you&amp;rsquo;re printing a list, just</source>
+          <target state="translated">それほどではありません。 具体的には、コンテナ内の文字列は、文字列表現を乱すことが非常に簡単であることがわかります。 あいまいさに直面して、Pythonは推測する誘惑に抵抗します。 リストを印刷するときに上記の動作が必要な場合は、</target>
+        </trans-unit>
+        <trans-unit id="fd5f9deaf020d8b6861722b040fb7e4f5080e355" translate="yes" xml:space="preserve">
+          <source>Note: I used &lt;code&gt;%r&lt;/code&gt; above, not &lt;code&gt;%s&lt;/code&gt;. You always want to use &lt;code&gt;repr()&lt;/code&gt; [or &lt;code&gt;%r&lt;/code&gt; formatting character, equivalently] inside &lt;code&gt;__repr__&lt;/code&gt; implementation, or you&amp;rsquo;re defeating the goal of repr. You want to be able to differentiate &lt;code&gt;MyClass(3)&lt;/code&gt; and &lt;code&gt;MyClass(&quot;3&quot;)&lt;/code&gt;.</source>
+          <target state="translated">注：上記では &lt;code&gt;%s&lt;/code&gt; ではなく％ &lt;code&gt;%r&lt;/code&gt; を使用しました。 &lt;code&gt;__repr__&lt;/code&gt; 実装内で常に &lt;code&gt;repr()&lt;/code&gt; [または &lt;code&gt;%r&lt;/code&gt; フォーマット文字、同等に]を使用したい場合、またはreprの目標を打ち負かしている場合。 &lt;code&gt;MyClass(3)&lt;/code&gt; と &lt;code&gt;MyClass(&quot;3&quot;)&lt;/code&gt; を区別できるようにしたい。</target>
+        </trans-unit>
+        <trans-unit id="b6e8a0912dda5254ca8b3e57cb69ed14130cdaaa" translate="yes" xml:space="preserve">
+          <source>On page 358 of the book &lt;strong&gt;&lt;em&gt;Python scripting for computational science&lt;/em&gt;&lt;/strong&gt; by Hans Petter Langtangen, it clearly states that</source>
+          <target state="translated">ハンス・ペッター・ラングタンゲンの著書「 &lt;strong&gt;&lt;em&gt;計算科学のためのPythonスクリプト&lt;/em&gt;&lt;/strong&gt; 」の358ページには、</target>
+        </trans-unit>
+        <trans-unit id="f09747914187d47d66fb2f95e301adcb194fd8a5" translate="yes" xml:space="preserve">
+          <source>One aspect that is missing in other answers. It's true that in general the pattern is:</source>
+          <target state="translated">他の回答に欠けている一面 確かに一般的なパターンですね。</target>
+        </trans-unit>
+        <trans-unit id="c7287b52c2d22c06ad4a63d14f2310d541b138bf" translate="yes" xml:space="preserve">
+          <source>One important thing to keep in mind is that container's &lt;code&gt;__str__&lt;/code&gt; uses contained objects' &lt;code&gt;__repr__&lt;/code&gt;.</source>
+          <target state="translated">覚えておくべき重要なことの1つは、コンテナの &lt;code&gt;__str__&lt;/code&gt; が、含まれているオブジェクトの__repr__を使用すること &lt;code&gt;__repr__&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="43b2e3cacce0653ce3967339fc290266006b6ec3" translate="yes" xml:space="preserve">
+          <source>Other crucial tidbits to know: &lt;code&gt;__str__&lt;/code&gt; on a built-on container uses the &lt;code&gt;__repr__&lt;/code&gt;, NOT the &lt;code&gt;__str__&lt;/code&gt;, for the items it contains. And, despite the words on the subject found in typical docs, hardly anybody bothers making the &lt;code&gt;__repr__&lt;/code&gt; of objects be a string that &lt;code&gt;eval&lt;/code&gt; may use to build an equal object (it's just too hard, AND not knowing how the relevant module was actually imported makes it actually flat out impossible).</source>
+          <target state="translated">知っておくべきその他の重要な &lt;code&gt;__str__&lt;/code&gt; ： 組み込みコンテナの &lt;code&gt;__repr__&lt;/code&gt; 、それが含む項目に &lt;code&gt;__str__&lt;/code&gt; ではなく__repr__を使用します。 そして、典型的なドキュメントで見つかった件名の言葉にもかかわらず、オブジェクトの &lt;code&gt;__repr__&lt;/code&gt; を、 &lt;code&gt;eval&lt;/code&gt; が等しいオブジェクトを構築するために使用できる文字列にすることを誰も気にしません（それはあまりに難しいです、そして関連するモジュールが実際にどのようにインポートされたかを知らないことそれは実際には不可能不可能です）。</target>
+        </trans-unit>
+        <trans-unit id="bd2862cf0464e07a303cac55a775c88696076e0b" translate="yes" xml:space="preserve">
+          <source>Read this documentation for repr:</source>
+          <target state="translated">再発行のためにこのドキュメントをお読みください。</target>
+        </trans-unit>
+        <trans-unit id="ce32a625388e3e4b97a5e1992ffdb3d71282f194" translate="yes" xml:space="preserve">
+          <source>Return a string containing a nicely printable
+  representation of an object. For strings, this returns the string
+  itself. The difference with &lt;code&gt;repr(object)&lt;/code&gt; is that &lt;code&gt;str(object)&lt;/code&gt; does not
+  always attempt to return a string that is acceptable to &lt;code&gt;eval()&lt;/code&gt;; its
+  goal is to return a printable string. If no argument is given, returns
+  the empty string, &lt;code&gt;''&lt;/code&gt;.</source>
+          <target state="translated">オブジェクトの適切に印刷可能な表現を含む文字列を返します。 文字列の場合、これは文字列自体を返します。 &lt;code&gt;repr(object)&lt;/code&gt; との違いは、 &lt;code&gt;str(object)&lt;/code&gt; が &lt;code&gt;eval()&lt;/code&gt; に受け入れられる文字列を常に返そうとするわけではないことです。 その目的は、印刷可能な文字列を返すことです。 引数が指定されていない場合、空の文字列 &lt;code&gt;''&lt;/code&gt; を返します。</target>
+        </trans-unit>
+        <trans-unit id="f2458a576572440d423de195dfad3208ee454921" translate="yes" xml:space="preserve">
+          <source>Return a string containing a printable representation of an object. This is the same value yielded by conversions (reverse
+  quotes). It is sometimes useful to be able to access this operation as
+  an ordinary function. For many types, this function makes an attempt
+  to return a string that would yield an object with the same value when
+  passed to &lt;code&gt;eval()&lt;/code&gt;, otherwise the representation is a string enclosed in
+  angle brackets that contains the name of the type of the object
+  together with additional information often including the name and
+  address of the object. A class can control what this function returns
+  for its instances by defining a &lt;code&gt;__repr__()&lt;/code&gt; method.</source>
+          <target state="translated">オブジェクトの印刷可能な表現を含む文字列を返します。 これは、変換（逆引用符）によって得られる値と同じです。 この操作に通常の関数としてアクセスできると便利な場合があります。 多くのタイプの場合、この関数は &lt;code&gt;eval()&lt;/code&gt; に渡されたときに同じ値のオブジェクトを生成する文字列を返そうとします。それ以外の場合、表現は、オブジェクトのタイプの名前を含む山括弧で囲まれた文字列です。多くの場合、オブジェクトの名前とアドレスを含む追加情報が含まれます。 クラスは、 &lt;code&gt;__repr__()&lt;/code&gt; メソッドを定義することにより、この関数がインスタンスに対して返すものを制御できます。</target>
+        </trans-unit>
+        <trans-unit id="3035c2da1436a67b6c4120172175da8e5d57def0" translate="yes" xml:space="preserve">
+          <source>Returns nothing but error.</source>
+          <target state="translated">エラー以外は何も返しません。</target>
+        </trans-unit>
+        <trans-unit id="b8270cef946d8069e43fdd480b8dcd6353712786" translate="yes" xml:space="preserve">
+          <source>See it in an example</source>
+          <target state="translated">例で見る</target>
+        </trans-unit>
+        <trans-unit id="0021e4289b6f8431d60ebd3598f12c0417e6cc77" translate="yes" xml:space="preserve">
+          <source>Set &lt;code&gt;__repr__ = __str__&lt;/code&gt;?</source>
+          <target state="translated">&lt;code&gt;__repr__ = __str__&lt;/code&gt; 設定しますか？</target>
+        </trans-unit>
+        <trans-unit id="644756de68adbf936b72fd6b6c5cab6f7c43ee78" translate="yes" xml:space="preserve">
+          <source>Setting &lt;code&gt;__repr__ = __str__&lt;/code&gt; is silly - &lt;code&gt;__repr__&lt;/code&gt; is a fallback for &lt;code&gt;__str__&lt;/code&gt; and a &lt;code&gt;__repr__&lt;/code&gt;, written for developers usage in debugging, should be written before you write a &lt;code&gt;__str__&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;__repr__ = __str__&lt;/code&gt; 設定はばかげています &lt;code&gt;__repr__&lt;/code&gt; は__str__のフォールバックであり、開発者がデバッグで使用するために作成された &lt;code&gt;__str__&lt;/code&gt; は、 __str__を作成する前に作成する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="56f313c1fd657f2c4ef725602441c7bd15f8ce8d" translate="yes" xml:space="preserve">
+          <source>Since it provides a backup for &lt;code&gt;__str__&lt;/code&gt;, if you can only write one, start with &lt;code&gt;__repr__&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; のバックアップを提供するため、1つしか記述できない場合は、 &lt;code&gt;__repr__&lt;/code&gt; から始めます。</target>
+        </trans-unit>
+        <trans-unit id="877b072c30445f6c706ce3a5afb6e8eb2eaa14f9" translate="yes" xml:space="preserve">
+          <source>So one should first write a &lt;code&gt;__repr__&lt;/code&gt; that allows you to reinstantiate an equivalent object from the string it returns e.g. using &lt;code&gt;eval&lt;/code&gt; or by typing it in character-for-character in a Python shell.</source>
+          <target state="translated">したがって、最初に &lt;code&gt;__repr__&lt;/code&gt; を記述して、たとえば &lt;code&gt;eval&lt;/code&gt; を使用するか、Pythonシェルで文字ごとに入力して、返される文字列から同等のオブジェクトをインスタンス化できるようにする必要があります。</target>
+        </trans-unit>
+        <trans-unit id="2498fecbd0f66d3d905b8b1ba674c8e645743a5c" translate="yes" xml:space="preserve">
+          <source>So we can create a simple Fraction class:</source>
+          <target state="translated">そこで、簡単なFractionクラスを作成してみましょう。</target>
+        </trans-unit>
+        <trans-unit id="fb2d4262f867454c0debc4ffffb1db8c8ed1958a" translate="yes" xml:space="preserve">
+          <source>So, I prefer to understand them as</source>
+          <target state="translated">というように理解するのが良いと思います。</target>
+        </trans-unit>
+        <trans-unit id="9959e6a37cfa7f2a99846efe7b90651a3176e243" translate="yes" xml:space="preserve">
+          <source>So, my advice: focus on making &lt;code&gt;__str__&lt;/code&gt; reasonably human-readable, and &lt;code&gt;__repr__&lt;/code&gt; as unambiguous as you possibly can, even if that interferes with the fuzzy unattainable goal of making &lt;code&gt;__repr__&lt;/code&gt;'s returned value acceptable as input to &lt;code&gt;__eval__&lt;/code&gt;!</source>
+          <target state="translated">したがって、私のアドバイス： &lt;code&gt;__repr__&lt;/code&gt; の返り値を &lt;code&gt;__eval__&lt;/code&gt; への入力として受け入れられるというあいまいな達成不可能な目標に干渉する場合でも、 &lt;code&gt;__str__&lt;/code&gt; を合理的に人間が読めるようにし、 &lt;code&gt;__repr__&lt;/code&gt; を可能な限り明確にすることに焦点を当ててください ！</target>
+        </trans-unit>
+        <trans-unit id="a56e63eaa5cc8becd3c7a2fe2d48751e646af5e3" translate="yes" xml:space="preserve">
+          <source>Source: &lt;a href=&quot;https://www.journaldev.com/22460/python-str-repr-functions&quot;&gt;https://www.journaldev.com/22460/python-str-repr-functions&lt;/a&gt;</source>
+          <target state="translated">ソース： &lt;a href=&quot;https://www.journaldev.com/22460/python-str-repr-functions&quot;&gt;https&lt;/a&gt; : //www.journaldev.com/22460/python-str-repr-functions</target>
+        </trans-unit>
+        <trans-unit id="77e9d650548e453d78784a686ed816f82f0a086a" translate="yes" xml:space="preserve">
+          <source>Specifically, it is not intended to be unambiguous &amp;mdash; notice that &lt;code&gt;str(3)==str(&quot;3&quot;)&lt;/code&gt;. Likewise, if you implement an IP abstraction, having the str of it look like 192.168.1.1 is just fine. When implementing a date/time abstraction, the str can be &quot;2010/4/12 15:35:22&quot;, etc. The goal is to represent it in a way that a user, not a programmer, would want to read it. Chop off useless digits, pretend to be some other class &amp;mdash; as long is it supports readability, it is an improvement.</source>
+          <target state="translated">具体的には、明確にすることを意図したものではありません &lt;code&gt;str(3)==str(&quot;3&quot;)&lt;/code&gt; ことに注意してください。 同様に、IP抽象化を実装する場合、そのstrが192.168.1.1のように見えることで十分です。 日付/時刻の抽象化を実装する場合、strは「2010/4/12 15:35:22」などにすることができます。目標は、プログラマではなくユーザーがそれを読みたいように表現することです。 不要な数字を切り捨て、他のクラスのふりをします&amp;mdash;読みやすさをサポートしている限り、それは改善です。</target>
+        </trans-unit>
+        <trans-unit id="9a9ecf8f5d08776b3b2d8df998d3987bdc39a73d" translate="yes" xml:space="preserve">
+          <source>That is, for most objects, if you type in what is printed by &lt;code&gt;repr&lt;/code&gt;, you should be able to create an equivalent object. &lt;em&gt;But this is not the default implementation.&lt;/em&gt;</source>
+          <target state="translated">つまり、ほとんどのオブジェクトでは、 &lt;code&gt;repr&lt;/code&gt; によって出力されたものを入力すると、同等のオブジェクトを作成できるはずです。 &lt;em&gt;しかし、これはデフォルトの実装ではありません。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="0b4dbc589e1fe42f258f8c10b02cabf8cbb7dfc5" translate="yes" xml:space="preserve">
+          <source>That means by default you'll print the module the object is from, the class name, and the hexadecimal representation of its location in memory - for example:</source>
+          <target state="translated">つまり、デフォルトでは、オブジェクトが使用されているモジュール、クラス名、メモリ内の位置を16進数で表したものが表示されます。</target>
+        </trans-unit>
+        <trans-unit id="29e212700ab6021fa4ca48619a674b68b76e1376" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;__repr__&lt;/code&gt; aims at a complete string representation of the object;</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; は、オブジェクトの完全な文字列表現を目的としています。</target>
+        </trans-unit>
+        <trans-unit id="bb716d12482cdc344c24a75b7af653b25739bbfc" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;__repr__&lt;/code&gt; method is called by the builtin function &lt;code&gt;repr&lt;/code&gt; and is what is echoed on your python shell when it evaluates an expression that returns an object.</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; メソッドは組み込み関数 &lt;code&gt;repr&lt;/code&gt; によって呼び出され、オブジェクトを返す式を評価するときにPythonシェルにエコーされます。</target>
+        </trans-unit>
+        <trans-unit id="6571b1c17c83bfab38282b2f6a794fa3308f64bd" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;__str__&lt;/code&gt; is to return a nice string for printing.</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; は、印刷用の適切な文字列を返すためのものです。</target>
+        </trans-unit>
+        <trans-unit id="ecbc7a93e0d86ff638ad9d89dbe3b826db5b1d3d" translate="yes" xml:space="preserve">
+          <source>The default implementation is useless (it&amp;rsquo;s hard to think of one which wouldn&amp;rsquo;t be, but yeah)</source>
+          <target state="translated">デフォルトの実装は役に立たない（そうでないものを考えるのは難しいが、そうだ）</target>
+        </trans-unit>
+        <trans-unit id="af957f3a06259040cf9a2014cff25a442327a067" translate="yes" xml:space="preserve">
+          <source>The default object &lt;code&gt;__repr__&lt;/code&gt; is (&lt;a href=&quot;https://github.com/python/cpython/blob/v3.7.3/Objects/object.c#L496&quot;&gt;C Python source&lt;/a&gt;) something like:</source>
+          <target state="translated">デフォルトのオブジェクト &lt;code&gt;__repr__&lt;/code&gt; は（ &lt;a href=&quot;https://github.com/python/cpython/blob/v3.7.3/Objects/object.c#L496&quot;&gt;C Python source&lt;/a&gt; ）のようなものです：</target>
+        </trans-unit>
+        <trans-unit id="6b121b39fc748ed516c66693a33cd8bd64b94d71" translate="yes" xml:space="preserve">
+          <source>The differences:</source>
+          <target state="translated">その違い。</target>
+        </trans-unit>
+        <trans-unit id="44f0edbd69c35ab3950af893859b5abe2da44d9a" translate="yes" xml:space="preserve">
+          <source>Therefore, I would recommend setting &lt;code&gt;__repr__ = __str__&lt;/code&gt;. The reason is that &lt;code&gt;str(list)&lt;/code&gt; calls &lt;code&gt;repr&lt;/code&gt; on the elements (I consider this to be one of the biggest design flaws of Python that was not addressed by Python 3). An actual &lt;code&gt;repr&lt;/code&gt; will probably not be very helpful as the output of &lt;code&gt;print [your, objects]&lt;/code&gt;.</source>
+          <target state="translated">したがって、 &lt;code&gt;__repr__ = __str__&lt;/code&gt; 設定することをお勧めします。 その理由は、 &lt;code&gt;str(list)&lt;/code&gt; が要素に対して &lt;code&gt;repr&lt;/code&gt; を呼び出すためです（これは、Python 3で対処されなかったPythonの最大の設計上の欠陥の1つと考えています）。 実際の &lt;code&gt;repr&lt;/code&gt; はおそらく &lt;code&gt;print [your, objects]&lt;/code&gt; 出力としてあまり役に立ちません。</target>
+        </trans-unit>
+        <trans-unit id="6ea0102b1ade3a32471b836651590fb17bbb31a8" translate="yes" xml:space="preserve">
+          <source>This example may help:</source>
+          <target state="translated">この例は参考になるかもしれません。</target>
+        </trans-unit>
+        <trans-unit id="49339628670c6a3832e3bdbcaeca84f8623045b6" translate="yes" xml:space="preserve">
+          <source>This information isn't very useful, but there's no way to derive how one might accurately create a canonical representation of any given instance, and it's better than nothing, at least telling us how we might uniquely identify it in memory.</source>
+          <target state="translated">この情報はあまり有用ではありませんが、与えられたインスタンスの正準表現を正確に作成する方法を導き出す方法はありません。</target>
+        </trans-unit>
+        <trans-unit id="b9b41556bd7fa50eaa70e88b983e740b35a9b000" translate="yes" xml:space="preserve">
+          <source>This is a critique of another answer here that suggests setting &lt;code&gt;__repr__ = __str__&lt;/code&gt;.</source>
+          <target state="translated">これは、 &lt;code&gt;__repr__ = __str__&lt;/code&gt; 設定することを提案する別の回答に対する批評です。</target>
+        </trans-unit>
+        <trans-unit id="a2fd6fdc3ad7fb96e0d7fc2971066e31ecfbeeae" translate="yes" xml:space="preserve">
+          <source>This is mostly a surprise because Python&amp;rsquo;s defaults tend to be fairly useful. However, in this case, having a default for &lt;code&gt;__repr__&lt;/code&gt; which would act like:</source>
+          <target state="translated">Pythonのデフォルトはかなり役立つ傾向があるため、これはほとんど驚きです。 ただし、この場合、次のように動作する &lt;code&gt;__repr__&lt;/code&gt; のデフォルトがあります。</target>
+        </trans-unit>
+        <trans-unit id="67cd48518a2a8df13e502456c444a68d3cfdbbf9" translate="yes" xml:space="preserve">
+          <source>This means, in simple terms: almost every object you implement should have a functional &lt;code&gt;__repr__&lt;/code&gt; that&amp;rsquo;s usable for understanding the object. Implementing &lt;code&gt;__str__&lt;/code&gt; is optional: do that if you need a &amp;ldquo;pretty print&amp;rdquo; functionality (for example, used by a report generator).</source>
+          <target state="translated">つまり、簡単に言うと、実装するほとんどすべてのオブジェクトには、オブジェクトを理解するために使用できる機能的な &lt;code&gt;__repr__&lt;/code&gt; が必要です。 &lt;code&gt;__str__&lt;/code&gt; の実装はオプションです。「きれいな印刷」機能（たとえば、レポートジェネレーターで使用される）が必要な場合は、これを実行します。</target>
+        </trans-unit>
+        <trans-unit id="42085e7e4d2aee0832344073213dbd133d70c2a0" translate="yes" xml:space="preserve">
+          <source>This seems surprising, doesn&amp;rsquo;t it? It is a little, but how readable would it be if it used their &lt;code&gt;__str__&lt;/code&gt;?</source>
+          <target state="translated">これは意外ですね。 少しですが、 &lt;code&gt;__str__&lt;/code&gt; を使用すると、どの程度読みやすくなりますか？</target>
+        </trans-unit>
+        <trans-unit id="a26f3ae40c34f7b11fe02427fe4fd04cac5639d4" translate="yes" xml:space="preserve">
+          <source>To put it simply:</source>
+          <target state="translated">簡単に言うと</target>
+        </trans-unit>
+        <trans-unit id="8378907aa75c6caee84a72343bf30d33e3a7b53b" translate="yes" xml:space="preserve">
+          <source>To qualify this, in my experience, the most useful use case of the &lt;code&gt;repr&lt;/code&gt; function is to put a string inside another string (using string formatting). This way, you don't have to worry about escaping quotes or anything. But note that there is no &lt;code&gt;eval&lt;/code&gt; happening here.</source>
+          <target state="translated">これを修飾するために、私の経験では、 &lt;code&gt;repr&lt;/code&gt; 関数の最も有用な使用例は、（文字列フォーマットを使用して）別の文字列の中に文字列を置くことです。 これにより、引用符などのエスケープを心配する必要がなくなります。 ただし、ここでは &lt;code&gt;eval&lt;/code&gt; は発生していません。</target>
+        </trans-unit>
+        <trans-unit id="6f1a00ebb57a83f5f0b7867da20932536b2febbd" translate="yes" xml:space="preserve">
+          <source>Understand &lt;code&gt;__str__&lt;/code&gt; and &lt;code&gt;__repr__&lt;/code&gt; intuitively and permanently distinguish them at all.</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; と &lt;code&gt;__repr__&lt;/code&gt; を直感的に理解し、永続的に区別します。</target>
+        </trans-unit>
+        <trans-unit id="03a79c8a50c4a59545b4bfb6d58909546121fd13" translate="yes" xml:space="preserve">
+          <source>Unfortunately, this differentiation is flawed, because the Python REPL and also IPython use &lt;code&gt;__repr__&lt;/code&gt; for printing objects in a REPL console (see related questions for &lt;a href=&quot;https://stackoverflow.com/questions/28304092/when-i-am-in-the-python-or-ipython-console-what-is-called-when-i-am-returned-an&quot;&gt;Python&lt;/a&gt; and &lt;a href=&quot;https://stackoverflow.com/questions/41453624/tell-ipython-to-use-an-objects-str-instead-of-repr-for-output&quot;&gt;IPython&lt;/a&gt;). Thus, projects which are targeted for interactive console work (e.g., Numpy or Pandas) have started to ignore above rules and provide a human-readable &lt;code&gt;__repr__&lt;/code&gt; implementation instead.</source>
+          <target state="translated">残念ながら、Python REPLおよびIPythonはREPLコンソールでオブジェクトを印刷するために &lt;code&gt;__repr__&lt;/code&gt; を使用するため、この区別には欠陥があります（ &lt;a href=&quot;https://stackoverflow.com/questions/28304092/when-i-am-in-the-python-or-ipython-console-what-is-called-when-i-am-returned-an&quot;&gt;Python&lt;/a&gt;および&lt;a href=&quot;https://stackoverflow.com/questions/41453624/tell-ipython-to-use-an-objects-str-instead-of-repr-for-output&quot;&gt;IPythonの&lt;/a&gt;関連する質問を参照してください）。 したがって、インタラクティブなコンソール作業の対象となるプロジェクト（NumpyやPandasなど）は、上記のルールを無視し、代わりに人間が読める &lt;code&gt;__repr__&lt;/code&gt; 実装を提供し始めています。</target>
+        </trans-unit>
+        <trans-unit id="d425552c3ea6d5d498f843a30f17f4e97f960f37" translate="yes" xml:space="preserve">
+          <source>Unless you specifically act to ensure otherwise, most classes don't have helpful results for either:</source>
+          <target state="translated">あなたが特別に保証するために行動しない限り、ほとんどのクラスでは、どちらのための有益な結果を持っていません。</target>
+        </trans-unit>
+        <trans-unit id="8da03d1937c4a6f4140683d4255b1796a31a529c" translate="yes" xml:space="preserve">
+          <source>We can do arithmetic operation on &lt;code&gt;__repr__&lt;/code&gt; results conveniently.</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; の結果に対して便利に算術演算を行うことができます。</target>
+        </trans-unit>
+        <trans-unit id="4f85f4ba7750e93da922add9cea508b1a67639d0" translate="yes" xml:space="preserve">
+          <source>What is the difference between &lt;code&gt;__str__&lt;/code&gt; and &lt;code&gt;__repr__&lt;/code&gt; in Python?</source>
+          <target state="translated">Pythonの &lt;code&gt;__str__&lt;/code&gt; と &lt;code&gt;__repr__&lt;/code&gt; の違いは何ですか？</target>
+        </trans-unit>
+        <trans-unit id="c5101c72b933fdbfd13fbfd1e0e23863211f1a5e" translate="yes" xml:space="preserve">
+          <source>When &lt;code&gt;print()&lt;/code&gt; is called on the result of &lt;code&gt;decimal.Decimal(23) / decimal.Decimal(&quot;1.05&quot;)&lt;/code&gt; the raw number is printed; this output is in &lt;strong&gt;string form&lt;/strong&gt; which can be achieved with &lt;code&gt;__str__()&lt;/code&gt;. If we simply enter the expression we get a &lt;code&gt;decimal.Decimal&lt;/code&gt; output &amp;mdash; this output is in &lt;strong&gt;representational form&lt;/strong&gt; which can be achieved with &lt;code&gt;__repr__()&lt;/code&gt;. All Python objects have two output forms. String form is designed to be human-readable. The representational form is designed to produce output that if fed to a Python interpreter would (when possible) reproduce the represented object.</source>
+          <target state="translated">&lt;code&gt;decimal.Decimal(23) / decimal.Decimal(&quot;1.05&quot;)&lt;/code&gt; の結果に対して &lt;code&gt;print()&lt;/code&gt; が呼び出されると、生の数値が出力されます。 この出力は、 &lt;code&gt;__str__()&lt;/code&gt; &lt;strong&gt;str&lt;/strong&gt; __（）で実現できる&lt;strong&gt;文字列形式&lt;/strong&gt;です。 式を入力するだけで、 &lt;code&gt;decimal.Decimal&lt;/code&gt; 出力が得られます&amp;mdash;この出力は、 &lt;code&gt;__repr__()&lt;/code&gt; 実現できる&lt;strong&gt;表現形式&lt;/strong&gt;です。 すべてのPythonオブジェクトには2つの出力形式があります。 文字列形式は人間が読めるように設計されています。 表現形式は、Pythonインタープリターに渡された場合に（可能な場合）表現されたオブジェクトを再現する出力を生成するように設計されています。</target>
+        </trans-unit>
+        <trans-unit id="0f54f9c4d4034fe5f804a43aaeebd27a2f5995e3" translate="yes" xml:space="preserve">
+          <source>You need a &lt;code&gt;__str__&lt;/code&gt; only when you need a textual representation of the object.</source>
+          <target state="translated">オブジェクトのテキスト表現が必要な場合のみ、 &lt;code&gt;__str__&lt;/code&gt; が必要です。</target>
+        </trans-unit>
+        <trans-unit id="441f895c8ec78551715258a5a5e15e8d6f1eb05f" translate="yes" xml:space="preserve">
+          <source>as you see, if you override &lt;code&gt;__repr__&lt;/code&gt;, that's ALSO used for &lt;code&gt;__str__&lt;/code&gt;, but not vice versa.</source>
+          <target state="translated">ご覧の &lt;code&gt;__repr__&lt;/code&gt; 、 __repr__をオーバーライドすると、 __str__にも使用され &lt;code&gt;__str__&lt;/code&gt; 、その逆は行われません。</target>
+        </trans-unit>
+        <trans-unit id="7f53a68d324346fc8457a1665141697dcc97ee86" translate="yes" xml:space="preserve">
+          <source>e.g.</source>
+          <target state="translated">e.g.</target>
+        </trans-unit>
+        <trans-unit id="cda45dcc611254ff3003bdde139ca894ff86175f" translate="yes" xml:space="preserve">
+          <source>from the user's point of view
+although this is a misunderstanding I made when learning python.</source>
+          <target state="translated">これは私がpythonを学習する際に行った誤解ですが、ユーザーの立場からすると</target>
+        </trans-unit>
+        <trans-unit id="a093e3695065483806b6abbf8429d3c8e7d63e13" translate="yes" xml:space="preserve">
+          <source>generates output for developer</source>
+          <target state="translated">開発者用の出力を生成します。</target>
+        </trans-unit>
+        <trans-unit id="2dc2c28c640022872f2c7552cb1fa62da2343b41" translate="yes" xml:space="preserve">
+          <source>generates output for end-user</source>
+          <target state="translated">エンドユーザー用の出力を生成します。</target>
+        </trans-unit>
+        <trans-unit id="8855b3b6fcd8640700c4cf2c777aa5cc7b5fc8c1" translate="yes" xml:space="preserve">
+          <source>if apply the operation on &lt;code&gt;__str__&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; に操作を適用する場合</target>
+        </trans-unit>
+        <trans-unit id="554a037b9e24b4770efca72ff88127f0f613f664" translate="yes" xml:space="preserve">
+          <source>makes object readable</source>
+          <target state="translated">オブジェクトを読み取り可能にする</target>
+        </trans-unit>
+        <trans-unit id="1030251168f82df0ed6176d6dfe47466406fc394" translate="yes" xml:space="preserve">
+          <source>needs code that reproduces object</source>
+          <target state="translated">オブジェクトを再現するコードが必要</target>
+        </trans-unit>
+        <trans-unit id="ed33972dc101924f80759b318ee2e02762394857" translate="yes" xml:space="preserve">
+          <source>special methods &lt;code&gt;__repr__&lt;/code&gt; and &lt;code&gt;__str__&lt;/code&gt; exist in the data model.</source>
+          <target state="translated">特別なメソッド &lt;code&gt;__repr__&lt;/code&gt; および &lt;code&gt;__str__&lt;/code&gt; がデータモデルに存在します。</target>
+        </trans-unit>
+        <trans-unit id="513cad09fa5d2989c48873b47d2411bf423f3483" translate="yes" xml:space="preserve">
+          <source>would have been too dangerous (for example, too easy to get into infinite recursion if objects reference each other). So Python cops out. Note that there is one default which is true: if &lt;code&gt;__repr__&lt;/code&gt; is defined, and &lt;code&gt;__str__&lt;/code&gt; is not, the object will behave as though &lt;code&gt;__str__=__repr__&lt;/code&gt;.</source>
+          <target state="translated">危険すぎる（たとえば、オブジェクトが相互に参照している場合、無限再帰に入るのは簡単すぎる）。 したがって、Pythonは対処します。 trueであるデフォルトが1つあることに注意してください &lt;code&gt;__repr__&lt;/code&gt; が定義されていて、 __ str__が定義されていない場合、オブジェクトは &lt;code&gt;__str__=__repr__&lt;/code&gt; ように動作します。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

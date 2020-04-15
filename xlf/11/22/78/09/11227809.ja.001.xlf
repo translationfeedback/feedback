@@ -29,7 +29,7 @@
         </trans-unit>
         <trans-unit id="23f6fd5b0c8ae0b7004305abd5527096f2e1cd0b" translate="yes" xml:space="preserve">
           <source>&lt;code&gt;ADDS R1, R2, R3&lt;/code&gt; performs the addition and then updates the &lt;code&gt;N&lt;/code&gt;, &lt;code&gt;Z&lt;/code&gt;, &lt;code&gt;C&lt;/code&gt; and &lt;code&gt;V&lt;/code&gt; flags in the Processor Status Register based on whether the result was Negative, Zero, Carried (for unsigned addition), or oVerflowed (for signed addition).</source>
-          <target state="translated">&lt;code&gt;ADDS R1, R2, R3&lt;/code&gt; は加算を実行し、結果が負、ゼロ、キャリー（符号なし加算の場合）、またはoVerflowed（符号付き加算の場合）に基づいてプロセッサステータスレジスタの &lt;code&gt;N&lt;/code&gt; 、 &lt;code&gt;Z&lt;/code&gt; 、 &lt;code&gt;C&lt;/code&gt; および &lt;code&gt;V&lt;/code&gt; フラグを更新します。 。</target>
+          <target state="translated">&lt;code&gt;ADDS R1, R2, R3&lt;/code&gt; は加算を実行し、結果が負、ゼロ、キャリー（符号なし加算の場合）、またはoVerflowed（符号付き加算の場合）に基づいて、プロセッサステータスレジスタの &lt;code&gt;N&lt;/code&gt; 、 &lt;code&gt;Z&lt;/code&gt; 、 &lt;code&gt;C&lt;/code&gt; および &lt;code&gt;V&lt;/code&gt; フラグを更新します。 。</target>
         </trans-unit>
         <trans-unit id="9dc9f762599510b8def52bb6b16ab86d5b605418" translate="yes" xml:space="preserve">
           <source>&lt;code&gt;ADDSGE R1, R2, R3&lt;/code&gt; performs the addition only if the &lt;code&gt;GE&lt;/code&gt; test is true, and then subsequently updates the status bits based on the result of the addition.</source>
@@ -37,7 +37,7 @@
         </trans-unit>
         <trans-unit id="6c4200c52c77a8809e0c28b82431a4fcd7fb0319" translate="yes" xml:space="preserve">
           <source>&lt;code&gt;CMP&lt;/code&gt; opcodes always update the status bits in the Processor Status Register (PSR), because that is their purpose, but most other instructions do not touch the PSR unless you add an optional &lt;code&gt;S&lt;/code&gt; suffix to the instruction, specifying that the PSR should be updated based on the result of the instruction. &lt;strong&gt;Just like the 4-bit condition suffix, being able to execute instructions without affecting the PSR is a mechanism that reduces the need for branches on ARM, and also facilitates out of order dispatch at the hardware level&lt;/strong&gt;, because after performing some operation X that updates the status bits, subsequently (or in parallel) you can do a bunch of other work that explicitly should not affect the status bits, then you can test the state of the status bits set earlier by X.</source>
-          <target state="translated">&lt;code&gt;CMP&lt;/code&gt; オペコードは常に目的のため、プロセッサステータスレジスタ（PSR）のステータスビットを更新しますが、オプションの &lt;code&gt;S&lt;/code&gt; サフィックスを命令に追加しない限り、他のほとんどの命令はPSRに触れません。命令の結果について。 &lt;strong&gt;4ビットの条件サフィックスと同様に、PSRに影響を与えずに命令を実行できることは、ARMでの分岐の必要性を減らし、ハードウェアレベルでの順不同のディスパッチを容易にするメカニズムです。&lt;/strong&gt;ステータスビット、その後（または並行して）明示的にステータスビットに影響を与えない他の一連の作業を実行できます。その後、Xによって以前に設定されたステータスビットの状態をテストできます。</target>
+          <target state="translated">&lt;code&gt;CMP&lt;/code&gt; オペコードは常に目的のため、プロセッサステータスレジスタ（PSR）のステータスビットを更新しますが、他のほとんどの命令は、オプションの &lt;code&gt;S&lt;/code&gt; サフィックスを命令に追加しない限り、PSRに影響を与えません。命令の結果について。 &lt;strong&gt;4ビットの条件サフィックスと同様に、PSRに影響を与えずに命令を実行できることは、ARMでの分岐の必要性を減らし、ハードウェアレベルでの順不同のディスパッチを容易にするメカニズムです。&lt;/strong&gt;ステータスビット、その後（または並行して）明示的にステータスビットに影響を与えない他の一連の作業を実行できます。その後、Xによって以前に設定されたステータスビットの状態をテストできます。</target>
         </trans-unit>
         <trans-unit id="391873c374a8ded8013438f8a2663a8948bf98aa" translate="yes" xml:space="preserve">
           <source>&lt;code&gt;a &amp;amp;&amp;amp; b&lt;/code&gt; cannot be replaced with &lt;code&gt;a &amp;amp; b&lt;/code&gt; if &lt;code&gt;b&lt;/code&gt; is an expression that should not be evaluated if &lt;code&gt;a&lt;/code&gt; is &lt;code&gt;false&lt;/code&gt; ( &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; will not evaluate &lt;code&gt;b&lt;/code&gt;, &lt;code&gt;&amp;amp;&lt;/code&gt; will). Likewise, &lt;code&gt;a || b&lt;/code&gt; can not be replaced with &lt;code&gt;a | b&lt;/code&gt; if &lt;code&gt;b&lt;/code&gt; is an expression that should not be evaluated if &lt;code&gt;a&lt;/code&gt; is &lt;code&gt;true&lt;/code&gt;.</source>
@@ -213,7 +213,7 @@
         </trans-unit>
         <trans-unit id="6315a32d6eff633cf664b3192d3c2b8360df6c43" translate="yes" xml:space="preserve">
           <source>&lt;strong&gt;Unconditional branches&lt;/strong&gt; - this includes jumps, procedure calls and returns that have no specific condition. For example, an unconditional jump instruction might be coded in assembly language as simply &quot;jmp&quot;, and the instruction stream must immediately be directed to the target location pointed to by the jump instruction, whereas a conditional jump that might be coded as &quot;jmpne&quot; would redirect the instruction stream only if the result of a comparison of two values in a previous &quot;compare&quot; instructions shows the values to not be equal. (The segmented addressing scheme used by the x86 architecture adds extra complexity, since jumps can be either &quot;near&quot; (within a segment) or &quot;far&quot; (outside the segment). Each type has different effects on branch prediction algorithms.)</source>
-          <target state="translated">&lt;strong&gt;無条件分岐&lt;/strong&gt; -これには、特定の条件のないジャンプ、プロシージャコール、リターンが含まれます。 たとえば、無条件ジャンプ命令は単に「jmp」としてアセンブリ言語でコーディングされ、命令ストリームはジャンプ命令が指すターゲットの場所にすぐに送られる必要がありますが、「jmpne」としてコーディングされる条件付きジャンプ以前の「比較」命令で2つの値を比較した結果、値が等しくないことが示された場合にのみ、命令ストリームをリダイレクトします。 （x86アーキテクチャで使用されるセグメント化されたアドレッシングスキームは、ジャンプが「セグメント内」または「セグメント外」のいずれかになるため、さらに複雑になります。各タイプは、分岐予測アルゴリズムに異なる影響を与えます。）</target>
+          <target state="translated">&lt;strong&gt;無条件分岐&lt;/strong&gt; -これには、特定の条件のないジャンプ、プロシージャコール、リターンが含まれます。 たとえば、無条件ジャンプ命令は単に「jmp」としてアセンブリ言語でコーディングでき、命令ストリームはジャンプ命令が指すターゲットの場所にすぐに送られる必要がありますが、「jmpne」としてコーディングされる条件付きジャンプ以前の「比較」命令で2つの値を比較した結果、値が等しくないことが示された場合にのみ、命令ストリームをリダイレクトします。 （x86アーキテクチャで使用されるセグメント化されたアドレッシングスキームは、ジャンプが「セグメント内」または「セグメント外」のいずれかになるため、さらに複雑になります。各タイプは、分岐予測アルゴリズムに異なる影響を与えます。）</target>
         </trans-unit>
         <trans-unit id="d1721438d4fa087c689f86212f2138f7505dcb3c" translate="yes" xml:space="preserve">
           <source>&lt;strong&gt;Unsorted:&lt;/strong&gt;</source>
@@ -374,7 +374,7 @@ Consider example:</source>
         </trans-unit>
         <trans-unit id="bf6354b6953e28aa0b0401d2ab4cdf0bab9f9a80" translate="yes" xml:space="preserve">
           <source>Branch predictor will try to guess which way a branch (an if-then-else structure) will go before this is known for sure. It will not wait for the instruction A to reach the EX stage of the pipeline, but it will guess the decision and go to that instruction (B or C in case of our example).</source>
-          <target state="translated">ブランチ予測器は、これが確実に判明する前に、あるブランチ(if-then-else構造)がどちらに行くかを推測しようとします。A命令がパイプラインのEX段階に到達するのを待つのではなく、決定を推測してその命令(この例の場合はBかC)に向かう。</target>
+          <target state="translated">ブランチ予測器は、これが確実に判明する前に、あるブランチ(if-then-else構造)がどちらに行くかを推測しようとします。A命令がパイプラインのEXステージに到達するのを待つのではなく、決定を推測してその命令(この例の場合はBかC)に向かう。</target>
         </trans-unit>
         <trans-unit id="167e8ac318227dcb55522a65e67d450259397b78" translate="yes" xml:space="preserve">
           <source>But in case of a random unsorted array, the prediction will need to discard the partially executed instructions and start over with the correct branch most of the time and result in more CPU cycles compared to the sorted array.</source>
@@ -687,7 +687,7 @@ For an array sorted in ascending order, there are three possibilities:</source>
         </trans-unit>
         <trans-unit id="87b5594f2643cba7d46d5fb490ed0d38e2cf1230" translate="yes" xml:space="preserve">
           <source>Making a wrong prediction leads to going back to the previous step, and executing with another prediction. Assuming the prediction is correct, the code will continue to the next step. A wrong prediction results in repeating the same step, until a correct prediction occurs.</source>
-          <target state="translated">間違った予測をすると、前のステップに戻り、別の予測で実行することになります。予測が正しければ、コードは次のステップに進みます。予測が間違っていると、正しい予測が発生するまで同じステップを繰り返すことになります。</target>
+          <target state="translated">予測を間違えると、前のステップに戻り、別の予測で実行することになります。予測が正しければ、コードは次のステップに進みます。予測が間違っていると、正しい予測が発生するまで同じステップを繰り返すことになります。</target>
         </trans-unit>
         <trans-unit id="a1ebbba208d4225ea0cbac50fe08bb6ace4451a3" translate="yes" xml:space="preserve">
           <source>Most applications have well-behaved branches. So modern branch predictors will typically achieve &amp;gt;90% hit rates. But when faced with unpredictable branches with no recognizable patterns, branch predictors are virtually useless.</source>
@@ -695,7 +695,7 @@ For an array sorted in ascending order, there are three possibilities:</source>
         </trans-unit>
         <trans-unit id="edc45563f2af123495a6f4d5820e01d67e592ac5" translate="yes" xml:space="preserve">
           <source>Most processor architectures do not have this ability to specify whether or not the status bits should be updated for a given operation, which can necessitate writing additional code to save and later restore status bits, or may require additional branches, or may limit the processor's out of order execution efficiency: one of the side effects of most CPU instruction set architectures forcibly updating status bits after most instructions is that it is much harder to tease apart which instructions can be run in parallel without interfering with each other. Updating status bits has side effects, therefore has a linearizing effect on code. &lt;strong&gt;ARM's ability to mix and match branch-free condition testing on any instruction with the option to either update or not update the status bits after any instruction is extremely powerful, for both assembly language programmers and compilers, and produces very efficient code.&lt;/strong&gt;</source>
-          <target state="translated">ほとんどのプロセッサアーキテクチャには、特定の操作でステータスビットを更新する必要があるかどうかを指定する機能がないため、ステータスビットを保存して後で復元するために追加のコードを書く必要があり、追加のブランチが必要になるか、プロセッサの出力が制限される場合があります。ほとんどの命令の後でステータスビットを強制的に更新するほとんどのCPU命令セットアーキテクチャの副作用の1つは、互いに干渉することなく並列に実行できる命令を切り離すことがはるかに難しいことです。 ステータスビットの更新には副作用があるため、コードに線形化効果があります。 &lt;strong&gt;命令の分岐なしの条件テストを組み合わせて一致させるARMの機能は、命令の後にステータスビットを更新するかどうかを更新するオプションを備えており、アセンブリ言語のプログラマーとコンパイラーの両方にとって非常に強力で、非常に効率的なコードを生成します。&lt;/strong&gt;</target>
+          <target state="translated">ほとんどのプロセッサアーキテクチャには、特定の操作でステータスビットを更新する必要があるかどうかを指定する機能がありません。ステータスビットを保存して後で復元するために追加のコードを書く必要がある場合や、追加の分岐が必要な場合や、プロセッサのアウトを制限する場合があります。ほとんどの命令の後でステータスビットを強制的に更新するほとんどのCPU命令セットアーキテクチャの副作用の1つは、互いに干渉することなく並列に実行できる命令を切り離すことがはるかに難しいことです。 ステータスビットの更新には副作用があるため、コードに線形化効果があります。 &lt;strong&gt;命令の分岐なしの条件テストを組み合わせて一致させるARMの機能は、命令の後にステータスビットを更新するかどうかを更新するオプションを備えており、アセンブリ言語のプログラマーとコンパイラーの両方にとって非常に強力で、非常に効率的なコードを生成します。&lt;/strong&gt;</target>
         </trans-unit>
         <trans-unit id="6714e326ddf3827a45bf7845db0659793dffdc78" translate="yes" xml:space="preserve">
           <source>Moving back to the above question let's consider the following instructions:</source>
@@ -951,7 +951,7 @@ In the 3rd case, it will initially predict correctly till the elements are less 
         </trans-unit>
         <trans-unit id="dfc876aaa5431ea7d4210f0979641e4dbe4d96a9" translate="yes" xml:space="preserve">
           <source>The technique of indexing into an array, instead of using an if statement, can be used for deciding which pointer to use. I saw a library that implemented binary trees, and instead of having two named pointers (pLeft and pRight or whatever) had a length-2 array of pointers and used the &quot;decision bit&quot; technique to decide which one to follow. For example, instead of:</source>
-          <target state="translated">if 文を使う代わりに、配列にインデックスを付けるというテクニックは、どちらのポインタを使うかを決めるために使うことができます。バイナリツリーを実装したライブラリを見ましたが、2つの名前付きポインタ(pLeftとpRightか何か)を持つ代わりに、ポインタの長さ2の配列を持ち、どちらに従うかを決定するために &quot;決定ビット &quot;のテクニックを使いました。例えば、代わりに</target>
+          <target state="translated">配列へのインデキシングのテクニックは、if文を使う代わりに、どちらのポインタを使うかを決めるために使うことができます。バイナリツリーを実装したライブラリを見ましたが、2つの名前付きポインタ(pLeftとpRightか何か)を持つ代わりに、ポインタの長さ2の配列を持ち、どちらに従うかを決定するために &quot;決定ビット &quot;のテクニックを使いました。例えば、代わりに</target>
         </trans-unit>
         <trans-unit id="b6cfe976487000bd1e4d79b8ceec46016b036b7e" translate="yes" xml:space="preserve">
           <source>The time that is wasted in case of a branch misprediction is equal to

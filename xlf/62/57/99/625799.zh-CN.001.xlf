@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/625799">
+    <body>
+      <group id="625799">
+        <trans-unit id="6bb813c68e1859e65e92bca695625c23917445ae" translate="yes" xml:space="preserve">
+          <source>...and doing the same in &lt;code&gt;B.h&lt;/code&gt;</source>
+          <target state="translated">...并在 &lt;code&gt;B.h&lt;/code&gt; 做同样的事情</target>
+        </trans-unit>
+        <trans-unit id="7ba2500b2f0258d476be0e35ff5c00fc8e5284cf" translate="yes" xml:space="preserve">
+          <source>...then recompilation of the code for &quot;A&quot; will be triggered by the changes to the included &lt;code&gt;b.fwd.h&lt;/code&gt; and should complete cleanly.</source>
+          <target state="translated">...然后，将对包含的 &lt;code&gt;b.fwd.h&lt;/code&gt; 进行更改，从而触发&amp;ldquo; A&amp;rdquo;代码的重新编译，并且应该完全完成。</target>
+        </trans-unit>
+        <trans-unit id="f3b65964bdf99cbe98067783c24d8ce3adf9f202" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;#include&lt;/code&gt;, for all extents and purposes (if you take the preprocessor out) just copies the file into the &lt;strong&gt;.cc&lt;/strong&gt;. So really, the &lt;strong&gt;.cc&lt;/strong&gt; looks like:</source>
+          <target state="translated">&lt;code&gt;#include&lt;/code&gt; 在所有范围和目的（如果您将预处理器取出）中，只需将文件复制到&lt;strong&gt;.cc中即可&lt;/strong&gt; 。 所以实际上， &lt;strong&gt;.cc&lt;/strong&gt;看起来像：</target>
+        </trans-unit>
+        <trans-unit id="1298eafb968f0e641e677b8ee988ed2825e630ad" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;I'm late answering this, but there's not one reasonable answer to date, despite being a popular question with highly upvoted answers....&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;我来晚了，但是到目前为止，还没有一个合理的答案，尽管这是一个广受好评的答案。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="3d85779947a2f80f766ef45cabd10708de8749af" translate="yes" xml:space="preserve">
+          <source>And in &lt;strong&gt;B.h&lt;/strong&gt;, at this point, you can just &lt;code&gt;#include &quot;A.h&quot;&lt;/code&gt; directly.</source>
+          <target state="translated">在&lt;strong&gt;Bh中&lt;/strong&gt; ，此时，您可以直接 &lt;code&gt;#include &quot;A.h&quot;&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="7164b6a015a5b99b1726bcda20563641b04e1413" translate="yes" xml:space="preserve">
+          <source>And then, A.h and B.h will contain this:</source>
+          <target state="translated">然后,A.h和B.h将包含这。</target>
+        </trans-unit>
+        <trans-unit id="ac1184497beca27b3659c5091326446420c61bde" translate="yes" xml:space="preserve">
+          <source>As illustrated by the Standard library's &lt;code&gt;&amp;lt;iosfwd&amp;gt;&lt;/code&gt; header, the proper way to provide forward declarations for others is to have a &lt;strong&gt;&lt;em&gt;forward declaration header&lt;/em&gt;&lt;/strong&gt;.  For example:</source>
+          <target state="translated">如标准库的 &lt;code&gt;&amp;lt;iosfwd&amp;gt;&lt;/code&gt; 标头所示，为其他人提供前向声明的正确方法是拥有一个&lt;strong&gt;&lt;em&gt;前向声明头&lt;/em&gt;&lt;/strong&gt; 。 例如：</target>
+        </trans-unit>
+        <trans-unit id="77683cf3abd005f165bb506342d65293c00de62e" translate="yes" xml:space="preserve">
+          <source>Best practice: forward declaration headers</source>
+          <target state="translated">最佳做法:前言声明标题</target>
+        </trans-unit>
+        <trans-unit id="74deff191fda857d68d3bc15f5c93ee8ded3a54f" translate="yes" xml:space="preserve">
+          <source>But his illustration is not really good. Because both classes (A and B) only need an incomplete type of each other (pointer fields / parameters).</source>
+          <target state="translated">但他的说明其实并不好。因为两个类(A和B)都只需要一个不完整的类型的对方(指针字段参数)。</target>
+        </trans-unit>
+        <trans-unit id="75fc1aa2d190377184c20ea93fcb905a3f793550" translate="yes" xml:space="preserve">
+          <source>Clearly a circular reference that you must break.</source>
+          <target state="translated">很明显,这是你必须打破的一个循环参考。</target>
+        </trans-unit>
+        <trans-unit id="6040c18d82d48918fbc4d731c452e2e20e0d5ad9" translate="yes" xml:space="preserve">
+          <source>Create two files, A_def.h, B_def.h. These will contain only &lt;code&gt;A&lt;/code&gt;'s and &lt;code&gt;B&lt;/code&gt;'s definition:</source>
+          <target state="translated">创建两个文件，A_def.h，B_def.h。 这些将仅包含 &lt;code&gt;A&lt;/code&gt; 和 &lt;code&gt;B&lt;/code&gt; 的定义：</target>
+        </trans-unit>
+        <trans-unit id="9b16ab6892fe30ec91d4d7d0f6987f7846cab18b" translate="yes" xml:space="preserve">
+          <source>Doing like this makes it possible to still have a bunch of inlines in both(or multiple) header files. But it's necessary to have &lt;em&gt;include guards&lt;/em&gt;.</source>
+          <target state="translated">这样可以使两个（或多个）头文件中仍然有很多内联。 但是有必要&lt;em&gt;包括守卫&lt;/em&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="81c16b0b2bc90f7f91e5cf3ee2c0bac5abc351e9" translate="yes" xml:space="preserve">
+          <source>File '''a.h''':</source>
+          <target state="translated">文件''''a.h''''。</target>
+        </trans-unit>
+        <trans-unit id="de16fa2ea7929e19489f5e9846b72fe1b89c19c7" translate="yes" xml:space="preserve">
+          <source>File '''b.h''':</source>
+          <target state="translated">文件&quot;''''b.h''''。</target>
+        </trans-unit>
+        <trans-unit id="387c15524fe17924ad63c766cd614d16ea296e8e" translate="yes" xml:space="preserve">
+          <source>File '''main.cpp''':</source>
+          <target state="translated">文件''''''主.cpp''''''。</target>
+        </trans-unit>
+        <trans-unit id="0dc6dc624e5e946076ade7fdb218e4914345198b" translate="yes" xml:space="preserve">
+          <source>Forward declaration is way to go.</source>
+          <target state="translated">转发声明是一种方式。</target>
+        </trans-unit>
+        <trans-unit id="4607da7704e13445b53226db5ba9a20543b4b49a" translate="yes" xml:space="preserve">
+          <source>HTH.</source>
+          <target state="translated">HTH.</target>
+        </trans-unit>
+        <trans-unit id="8c8ca565ab5aa7031937c4de83f510564059d503" translate="yes" xml:space="preserve">
+          <source>He is not just saying &quot;put forward declarations into a separate header&quot;. He says that you have to spilt class definition headers and inline function definitions into different header files to allow &quot;defered dependencies&quot;.</source>
+          <target state="translated">他并不是说 &quot;把转发声明放到一个单独的头文件中&quot;。他说,你必须把类定义头和内联函数定义分到不同的头文件中去,这样才能实现 &quot;递延依赖&quot;。</target>
+        </trans-unit>
+        <trans-unit id="13b338a7985effc7cabc1733321362ea88780210" translate="yes" xml:space="preserve">
+          <source>Here is the solution for templates: &lt;a href=&quot;https://studiofreya.com/cpp/how-to-handle-circular-dependencies-with-templates-in-c/&quot;&gt;How to handle circular dependencies with templates&lt;/a&gt;</source>
+          <target state="translated">这是模板的解决方案： &lt;a href=&quot;https://studiofreya.com/cpp/how-to-handle-circular-dependencies-with-templates-in-c/&quot;&gt;如何使用模板处理循环依赖关系&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="97511feb4f598817ee61734e3169117c515f2180" translate="yes" xml:space="preserve">
+          <source>Here's how you can do this, exactly retaining all the details, and usability:</source>
+          <target state="translated">下面我们来看看如何做到这一点,准确地保留了所有的细节,以及可用性。</target>
+        </trans-unit>
+        <trans-unit id="20f3c7e77b0608d75066808c459e2e9945b5daa9" translate="yes" xml:space="preserve">
+          <source>How can I create two classes that both know about each other?</source>
+          <target state="translated">如何才能建立两个班级都知道的班级?</target>
+        </trans-unit>
+        <trans-unit id="c6d2a1cd051f34708d70b7656212532a2164b343" translate="yes" xml:space="preserve">
+          <source>I often find myself in a situation where I am facing multiple compilation/linker errors in a C++ project due to some bad design decisions (made by someone else :) ) which lead to circular dependencies between C++ classes in different header files &lt;em&gt;(can happen also in the same file)&lt;/em&gt;. But fortunately(?) this doesn't happen often enough for me to remember the solution to this problem for the next time it happens again.</source>
+          <target state="translated">我经常遇到这样的情况：由于一些错误的设计决策（由其他人做出的:)，我在C ++项目中遇到多个编译/链接器错误，这导致不同头文件中C ++类之间的循环依赖&lt;em&gt;（也可能发生）在同一文件中）&lt;/em&gt; 。 但是幸运的是（？）发生的次数不够多，以至于我下次再次遇到该问题时仍记得该问题的解决方案。</target>
+        </trans-unit>
+        <trans-unit id="b1a6b70bdc70c07e677f7773e517919114388c46" translate="yes" xml:space="preserve">
+          <source>I once solved this kind of problem by moving all &lt;em&gt;inlines&lt;/em&gt; after the class definition and putting the &lt;code&gt;#include&lt;/code&gt; for the other classes just before the &lt;em&gt;inlines&lt;/em&gt; in the header file. This way one make sure all definitions+inlines are set prior the inlines are parsed.</source>
+          <target state="translated">我曾经通过将所有内&lt;em&gt;联&lt;/em&gt;移动到类定义之后并将其他类的 &lt;code&gt;#include&lt;/code&gt; 放在头文件中的内&lt;em&gt;联&lt;/em&gt;之前来解决这种问题。 这样一来，可以确保在解析内联之前设置所有定义+内联。</target>
+        </trans-unit>
+        <trans-unit id="da2fc2402ebf6a219d39046e92bd6af32dfb31c9" translate="yes" xml:space="preserve">
+          <source>I've written a post about this once: &lt;a href=&quot;https://ewirch.github.io/2013/12/resolving-circular-dependencies.html&quot;&gt;Resolving circular dependencies in c++&lt;/a&gt;</source>
+          <target state="translated">我曾经写过一篇关于此的文章： &lt;a href=&quot;https://ewirch.github.io/2013/12/resolving-circular-dependencies.html&quot;&gt;解决c ++中的循环依赖&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="cece9a731862164a65c9b4dce98bf7a4d58cb7da" translate="yes" xml:space="preserve">
+          <source>If A's code has template specialisations / &quot;traits&quot; for the old &lt;code&gt;B&lt;/code&gt;, they won't take effect.</source>
+          <target state="translated">如果A的代码具有旧 &lt;code&gt;B&lt;/code&gt; 的模板专业化/&amp;ldquo;特征&amp;rdquo;，则它们不会生效。</target>
+        </trans-unit>
+        <trans-unit id="8c6b9b3d6a6df2e72dccf31147c614f0473001ee" translate="yes" xml:space="preserve">
+          <source>If both classes call functions of the other, you have to move the definitions out.</source>
+          <target state="translated">如果两个类都调用对方的函数,就要把定义移出。</target>
+        </trans-unit>
+        <trans-unit id="95c4bb8d12a4563a8e0aaf52f1e8dff97f93cf47" translate="yes" xml:space="preserve">
+          <source>Imagine you are writing a compiler. And you see code like this.</source>
+          <target state="translated">假设你正在编写一个编译器。而你看到的代码是这样的。</target>
+        </trans-unit>
+        <trans-unit id="b6adf836b15b71e6d4a4faf8d4b7c043a030e6fa" translate="yes" xml:space="preserve">
+          <source>In some cases it is possible to &lt;em&gt;define&lt;/em&gt; a method or a constructor of class B in the header file of class A to resolve circular dependencies involving definitions.
+In this way you can avoid having to put definitions in &lt;code&gt;.cc&lt;/code&gt; files, for example if you want to implement a header only library.</source>
+          <target state="translated">在某些情况下，可以在类A的头文件中&lt;em&gt;定义&lt;/em&gt;类B的方法或构造函数，以解决涉及定义的循环依赖关系。 这样，您可以避免将定义放入 &lt;code&gt;.cc&lt;/code&gt; 文件中，例如，如果您想实现仅标头的库。</target>
+        </trans-unit>
+        <trans-unit id="74f6724118fdf9e8782645d9c398335943723329" translate="yes" xml:space="preserve">
+          <source>It would result in the following code:</source>
+          <target state="translated">这将导致以下代码:</target>
+        </trans-unit>
+        <trans-unit id="99e48bd024350ae66199fb4bdc8f9ce56482b3cb" translate="yes" xml:space="preserve">
+          <source>Like this</source>
+          <target state="translated">像这样的</target>
+        </trans-unit>
+        <trans-unit id="06b204a42dd43a60a1edbdaff87caff360918ad7" translate="yes" xml:space="preserve">
+          <source>Note that A_def.h and B_def.h are &quot;private&quot; headers, users of &lt;code&gt;A&lt;/code&gt; and &lt;code&gt;B&lt;/code&gt; should not use them. The public header is A.h and B.h.</source>
+          <target state="translated">请注意，A_def.h和B_def.h是&amp;ldquo;专用&amp;rdquo;头， &lt;code&gt;A&lt;/code&gt; 和 &lt;code&gt;B&lt;/code&gt; 的用户不应使用它们。 公开标头是Ah和Bh</target>
+        </trans-unit>
+        <trans-unit id="421e787d5be309f635285a9fa87fc31b0c2c7573" translate="yes" xml:space="preserve">
+          <source>Now things are better. Somewhat. &lt;code&gt;main()&lt;/code&gt; still says:</source>
+          <target state="translated">现在情况变好了。 有些。 &lt;code&gt;main()&lt;/code&gt; 仍然说：</target>
+        </trans-unit>
+        <trans-unit id="5522389abcdcb2f44350da49c971b70e49fc26a7" translate="yes" xml:space="preserve">
+          <source>Order of declaration matters (which is why you are moving out the definitions).</source>
+          <target state="translated">申报的顺序很重要(这也是你把定义搬出来的原因)。</target>
+        </trans-unit>
+        <trans-unit id="772ed62a5348f7500932ae3d7afc2e74c082ead4" translate="yes" xml:space="preserve">
+          <source>Poor but common practice: forward declare stuff in other libs</source>
+          <target state="translated">差劲但常见的做法:在其他lib中转发声明的东西</target>
+        </trans-unit>
+        <trans-unit id="517081acc1bfe64dad04fd896e5e967ccd952c46" translate="yes" xml:space="preserve">
+          <source>Read the FAQ:</source>
+          <target state="translated">阅读常见问题。</target>
+        </trans-unit>
+        <trans-unit id="2309355c3ea8f996a00fa38198819142da113849" translate="yes" xml:space="preserve">
+          <source>Resolve build errors due to circular dependency amongst classes</source>
+          <target state="translated">解决由于类之间的循环依赖导致的构建错误。</target>
+        </trans-unit>
+        <trans-unit id="dcd4d8fc79d1043fddd5ad14508f46729fb0455a" translate="yes" xml:space="preserve">
+          <source>Say - instead of using a forward declaration header as explained above - code in &lt;code&gt;a.h&lt;/code&gt; or &lt;code&gt;a.cc&lt;/code&gt; instead forward-declares &lt;code&gt;class B;&lt;/code&gt; itself:</source>
+          <target state="translated">说-而不是如上所述使用前向声明标头-在 &lt;code&gt;a.h&lt;/code&gt; 或 &lt;code&gt;a.cc&lt;/code&gt; 中的代码代替前向声明 &lt;code&gt;class B;&lt;/code&gt; 本身：</target>
+        </trans-unit>
+        <trans-unit id="621dd8cec0802a26dd1824800d7292b9666ba339" translate="yes" xml:space="preserve">
+          <source>So for the purposes of easy recall in the future I am going to post a representative problem and a solution along with it. Better solutions are of-course welcome.</source>
+          <target state="translated">所以,为了便于日后回忆,我将在此贴出一个有代表性的问题和解决方案。当然也欢迎大家提出更好的解决方案。</target>
+        </trans-unit>
+        <trans-unit id="918271f6bede6bfd0286c73dd240da7cc1429f01" translate="yes" xml:space="preserve">
+          <source>So let's tell the compiler about &lt;code&gt;B&lt;/code&gt;. This is known as a &lt;a href=&quot;http://en.cppreference.com/w/cpp/language/class&quot;&gt;forward declaration&lt;/a&gt;, and is discussed further in &lt;a href=&quot;https://stackoverflow.com/a/4757718/391161&quot;&gt;this answer&lt;/a&gt;.</source>
+          <target state="translated">因此，让我们告诉编译器有关 &lt;code&gt;B&lt;/code&gt; 的信息 。 这称为&lt;a href=&quot;http://en.cppreference.com/w/cpp/language/class&quot;&gt;前向声明&lt;/a&gt; ，并将在&lt;a href=&quot;https://stackoverflow.com/a/4757718/391161&quot;&gt;此答案中进行&lt;/a&gt;进一步讨论。</target>
+        </trans-unit>
+        <trans-unit id="9f30ee659c9eb0d399d76133970197e5e7745d6b" translate="yes" xml:space="preserve">
+          <source>The basic technique is to decouple the classes using interfaces. So in your case:</source>
+          <target state="translated">基本的技巧是使用接口解耦类。所以在你的情况下。</target>
+        </trans-unit>
+        <trans-unit id="76cb7d14f4106dab17b2a3411cce1aeb9af6d4c1" translate="yes" xml:space="preserve">
+          <source>The clue to solving this problem is to declare both classes before providing the definitions (implementations). It&amp;rsquo;s not possible to split the declaration and definition into separate files, but you can structure them as if they were in separate files.</source>
+          <target state="translated">解决此问题的线索是在提供定义（实现）之前先声明两个类。 不可能将声明和定义拆分到单独的文件中，但是您可以像在单独的文件中一样构造它们。</target>
+        </trans-unit>
+        <trans-unit id="964876ba5525b8da7c2b18a45e74b2efe3110bdf" translate="yes" xml:space="preserve">
+          <source>The down side of the following solution is (assuming that you had placed the methods in the header file to inline them) that the methods are no longer inlined by the compiler and trying to use the inline keyword produces linker errors.</source>
+          <target state="translated">下面这个解决方案的缺点是(假设你在头文件中放置了方法来内联的方法),编译器不再对这些方法进行内联,并且试图使用内联关键字会产生链接器错误。</target>
+        </trans-unit>
+        <trans-unit id="3785912cdfe31e3ef7ee69bb9533f28f410f1984" translate="yes" xml:space="preserve">
+          <source>The maintainers of the &lt;code&gt;A&lt;/code&gt; and &lt;code&gt;B&lt;/code&gt; libraries should each be responsible for keeping their forward declaration headers in sync with their headers and implementation files, so - for example - if the maintainer of &quot;B&quot; comes along and rewrites the code to be...</source>
+          <target state="translated">&lt;code&gt;A&lt;/code&gt; 和 &lt;code&gt;B&lt;/code&gt; 库的维护者应各自负责使其前向声明标头与其标头和实现文件保持同步，因此-例如-如果&amp;ldquo; B&amp;rdquo;的维护者来了并将其重写为...</target>
+        </trans-unit>
+        <trans-unit id="03de7e5e237e1dfc343937c7767442570b591bae" translate="yes" xml:space="preserve">
+          <source>The reason this fix is bad is because the next person to &lt;code&gt;#include &quot;A.h&quot;&lt;/code&gt; will have to declare &lt;code&gt;B&lt;/code&gt; before they can use it and will get a terrible &lt;code&gt;#include&lt;/code&gt; error. So let's move the declaration into &lt;strong&gt;A.h&lt;/strong&gt; itself.</source>
+          <target state="translated">此修补程序不好的原因是，下一个 &lt;code&gt;#include &quot;A.h&quot;&lt;/code&gt; 将必须声明 &lt;code&gt;B&lt;/code&gt; 才能使用它，并且会出现严重的 &lt;code&gt;#include&lt;/code&gt; 错误。 因此，让我们将声明移到&lt;strong&gt;Ah&lt;/strong&gt;本身。</target>
+        </trans-unit>
+        <trans-unit id="9db328ea36a8dea61565be6561a6fa8ba17f27d1" translate="yes" xml:space="preserve">
+          <source>The simple example presented on Wikipedia worked for me.
+(you can read the complete description at &lt;a href=&quot;http://en.wikipedia.org/wiki/Circular_dependency#Example_of_circular_dependencies_in_C.2B.2B&quot;&gt;http://en.wikipedia.org/wiki/Circular_dependency#Example_of_circular_dependencies_in_C.2B.2B&lt;/a&gt; )</source>
+          <target state="translated">Wikipedia上提供的简单示例为我工作。 （您可以在&lt;a href=&quot;http://en.wikipedia.org/wiki/Circular_dependency#Example_of_circular_dependencies_in_C.2B.2B&quot;&gt;http://en.wikipedia.org/wiki/Circular_dependency#Example_of_circular_dependencies_in_C.2B.2B中&lt;/a&gt;阅读完整的说明）</target>
+        </trans-unit>
+        <trans-unit id="726a148f2714a29f2b81e70df9012bf68874e4e1" translate="yes" xml:space="preserve">
+          <source>The way to think about this is to &quot;think like a compiler&quot;.</source>
+          <target state="translated">思考的方法是 &quot;像编译器一样思考&quot;。</target>
+        </trans-unit>
+        <trans-unit id="d02efca86e66ddac497e623f13ad84f059c26ada" translate="yes" xml:space="preserve">
+          <source>Things to remember:</source>
+          <target state="translated">要记住的事情。</target>
+        </trans-unit>
+        <trans-unit id="677d178e50c7529e22802741eca44b5a4d630ea1" translate="yes" xml:space="preserve">
+          <source>This &lt;em&gt;works&lt;/em&gt;. It is not &lt;em&gt;great&lt;/em&gt;. But at this point you should have an understanding of the circular reference problem and what we did to &quot;fix&quot; it, albeit the fix is bad.</source>
+          <target state="translated">这&lt;em&gt;有效&lt;/em&gt; 。 这不是&lt;em&gt;很好&lt;/em&gt; 。 但是在这一点上，您应该已经了解了循环引用问题以及我们为修复此问题所做的工作，尽管修复效果很差。</target>
+        </trans-unit>
+        <trans-unit id="0d05028a139bfbdc640ca995cdae5b0e9170344a" translate="yes" xml:space="preserve">
+          <source>This code does not compile because B::Do needs a complete type of A which is defined later.</source>
+          <target state="translated">这段代码无法编译,因为B:::Do需要一个完整的A的类型,而A的类型将在后面定义。</target>
+        </trans-unit>
+        <trans-unit id="e408199cdeea50714b0aa0fe985cbf1eb9e19850" translate="yes" xml:space="preserve">
+          <source>This directive should defer the processing of the current file and complete all pending includes.</source>
+          <target state="translated">此指令应推迟处理当前文件,并完成所有待处理的包括。</target>
+        </trans-unit>
+        <trans-unit id="889c7f1b4663e1318562106d30f679e883e3e711" translate="yes" xml:space="preserve">
+          <source>This is exactly possible with these two header files for each class wich needs to define inline functions.
+The only issue is that the circular classes can't just include the &quot;public header&quot;.</source>
+          <target state="translated">这完全可以通过每个需要定义内联函数的类的这两个头文件来实现。唯一的问题是,循环类不能只包含 &quot;公共头文件&quot;。</target>
+        </trans-unit>
+        <trans-unit id="781b08e9652d1374708b49eb627b045b2e7a40fc" translate="yes" xml:space="preserve">
+          <source>This simple code would not work:</source>
+          <target state="translated">这个简单的代码是不行的。</target>
+        </trans-unit>
+        <trans-unit id="88ffd7e2f24612377695e3d257fa460de5ac406c" translate="yes" xml:space="preserve">
+          <source>This won't work if &lt;code&gt;class A&lt;/code&gt; has an object of &lt;code&gt;class B&lt;/code&gt; as a member or vice versa.</source>
+          <target state="translated">如果 &lt;code&gt;class A&lt;/code&gt; &lt;code&gt;class B&lt;/code&gt; 类的对象作为成员，反之亦然。</target>
+        </trans-unit>
+        <trans-unit id="b923ee0d714b0e4db9a18d6fae060d4f0c4c7f31" translate="yes" xml:space="preserve">
+          <source>To make sure that it compiles the source code should look like this:</source>
+          <target state="translated">为了确保它编译的源码应该是这样的。</target>
+        </trans-unit>
+        <trans-unit id="14a94b58b2296c47a62b7815c3f2cee32b940bb0" translate="yes" xml:space="preserve">
+          <source>To solve this issue I would like to suggest a preprocessor extension: &lt;code&gt;#pragma process_pending_includes&lt;/code&gt;</source>
+          <target state="translated">为了解决此问题，我想建议一个预处理程序扩展： &lt;code&gt;#pragma process_pending_includes&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="5128f234d09a3ac6cd4efa0b4d8bca399c480210" translate="yes" xml:space="preserve">
+          <source>To understand it better imagine that class A has a field of type B not B*. In addition class A and B want to define an inline function with parameters of the other type:</source>
+          <target state="translated">为了更好地理解它,想象一下,类A有一个类型为B的字段,而不是B*。此外,类A和类B想定义一个内联函数,参数为另一个类型的参数。</target>
+        </trans-unit>
+        <trans-unit id="c1c080399aaa5f1044d101f7c55fa5c28cfd080b" translate="yes" xml:space="preserve">
+          <source>Unfortunately I can't comment the answer from geza.</source>
+          <target state="translated">不幸的是,我不能评论Geza的答案。</target>
+        </trans-unit>
+        <trans-unit id="2cb3cf90eb4311dac6ef7e6db021df01a4e8510d" translate="yes" xml:space="preserve">
+          <source>Unfortunately, all the previous answers are missing some details. The correct solution is a little bit cumbersome, but this is the only way to do it properly. And it scales easily, handles more complex dependencies as well.</source>
+          <target state="translated">遗憾的是,之前的答案中都缺少了一些细节问题。正确的解决方案是有点麻烦,但只有这样做才是正确的方法。而且它很容易扩展,处理更复杂的依赖关系也很好。</target>
+        </trans-unit>
+        <trans-unit id="1e45dba7c7024685dc4586b56849004ec847bda5" translate="yes" xml:space="preserve">
+          <source>What special considerations are needed when forward declarations are used with inline functions?</source>
+          <target state="translated">前向声明与内联函数一起使用时,有哪些特殊的注意事项?</target>
+        </trans-unit>
+        <trans-unit id="92b1bad012b996a0bc6851c2bfca4e5dbbb401a3" translate="yes" xml:space="preserve">
+          <source>What special considerations are needed when forward declarations are used with member objects?</source>
+          <target state="translated">前向声明与成员对象一起使用时,有哪些特殊的注意事项?</target>
+        </trans-unit>
+        <trans-unit id="e240359c6981a1b2612797039e784ab3a7e60fd6" translate="yes" xml:space="preserve">
+          <source>When you are compiling the &lt;strong&gt;.cc&lt;/strong&gt; file (remember that the &lt;strong&gt;.cc&lt;/strong&gt; and not the &lt;strong&gt;.h&lt;/strong&gt; is the unit of compilation), you need to allocate space for object &lt;code&gt;A&lt;/code&gt;. So, well, how much space then? Enough to store &lt;code&gt;B&lt;/code&gt;! What's the size of &lt;code&gt;B&lt;/code&gt; then? Enough to store &lt;code&gt;A&lt;/code&gt;! Oops.</source>
+          <target state="translated">在编译&lt;strong&gt;.cc&lt;/strong&gt;文件时（请记住， &lt;strong&gt;.cc&lt;/strong&gt;而不是&lt;strong&gt;.h&lt;/strong&gt;是编译单元），需要为对象 &lt;code&gt;A&lt;/code&gt; 分配空间。 那么，那么多少空间呢？ 足够存储 &lt;code&gt;B&lt;/code&gt; 了 ！ 那么 &lt;code&gt;B&lt;/code&gt; 的大小是多少？ 足以存储 &lt;code&gt;A&lt;/code&gt; ！ 哎呀</target>
+        </trans-unit>
+        <trans-unit id="2e7cdfc5bd5d6d6eb4f7c32ffb09ee264781d06a" translate="yes" xml:space="preserve">
+          <source>You can avoid compilation errors if you remove the method definitions from the header files and let the classes contain only the method declarations and variable declarations/definitions. The method definitions should be placed in a .cpp file (just like a best practice guideline says).</source>
+          <target state="translated">如果你把方法定义从头文件中删除,让类只包含方法声明和变量声明definitions,就可以避免编译错误。方法定义应该放在一个.cpp文件中(就像最佳实践指南所说的那样)。</target>
+        </trans-unit>
+        <trans-unit id="dd91a98542fc87ffc1090838a46ff06e65953c16" translate="yes" xml:space="preserve">
+          <source>You can break it by allowing the compiler to instead reserve as much space as it knows about upfront - pointers and references, for example, will always be 32 or 64 bits (depending on the architecture) and so if you replaced (either one) by a pointer or reference, things would be great. Let's say we replace in &lt;code&gt;A&lt;/code&gt;:</source>
+          <target state="translated">您可以通过允许编译器保留预知的最大空间来破坏它-例如，指针和引用将始终为32位或64位（取决于体系结构），因此如果您将（替换为）指针或参考，事情会很棒。 假设我们替换为 &lt;code&gt;A&lt;/code&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="58dd4fc03b3183d34495adb76c399fa4c23906e0" translate="yes" xml:space="preserve">
+          <source>You can see why the compiler can't deal with this - it has no idea what &lt;code&gt;B&lt;/code&gt; is - it has never even seen the symbol before.</source>
+          <target state="translated">您可以看到为什么编译器无法处理这个问题-它不知道 &lt;code&gt;B&lt;/code&gt; 是什么-之前从未见过该符号。</target>
+        </trans-unit>
+        <trans-unit id="334716d86bd9d03a9b1ca74f4acae1d373b51013" translate="yes" xml:space="preserve">
+          <source>a.fwd.h:</source>
+          <target state="translated">a.fwd.h:</target>
+        </trans-unit>
+        <trans-unit id="5cb1315d250ae93e604c5200c412e1ce59bd335a" translate="yes" xml:space="preserve">
+          <source>a.h:</source>
+          <target state="translated">a.h:</target>
+        </trans-unit>
+        <trans-unit id="9b217404d46524413c5e8204995ad0e799490a4b" translate="yes" xml:space="preserve">
+          <source>b.fwd.h:</source>
+          <target state="translated">b.fwd.h:</target>
+        </trans-unit>
+        <trans-unit id="7b01869b936c6f06b0b65bfbcc2eaf8a238f6400" translate="yes" xml:space="preserve">
+          <source>b.h:</source>
+          <target state="translated">b.h:</target>
+        </trans-unit>
+        <trans-unit id="64566382bb3e54d62d59cdd32e72baee64249f2e" translate="yes" xml:space="preserve">
+          <source>build tools relying on &lt;code&gt;#include&lt;/code&gt; analysis and changed file timestamps won't rebuild &lt;code&gt;A&lt;/code&gt; (and its further-dependent code) after the change to B, causing errors at link time or run time.  If B is distributed as a runtime loaded DLL, code in &quot;A&quot; may fail to find the differently-mangled symbols at runtime, which may or may not be handled well enough to trigger orderly shutdown or acceptably reduced functionality.</source>
+          <target state="translated">依赖 &lt;code&gt;#include&lt;/code&gt; 分析和更改的文件时间戳的构建工具在将B更改为B之后，将不会重建 &lt;code&gt;A&lt;/code&gt; （及其进一步相关的代码），从而在链接时或运行时导致错误。 如果将B作为运行时加载的DLL分发，则&amp;ldquo; A&amp;rdquo;中的代码可能无法在运行时找到不同角度的符号，这可能会或可能不会得到足够好的处理以触发有序关闭或可接受的功能降低。</target>
+        </trans-unit>
+        <trans-unit id="d1ee4e91278afe33a3ee30ba9b7a04c3ef83a1f0" translate="yes" xml:space="preserve">
+          <source>compilation of A will terminate with an error once it gets to the conflicting declaration/definition of &lt;code&gt;B&lt;/code&gt; (i.e. the above change to B broke A and any other clients abusing forward declarations, instead of working transparently).</source>
+          <target state="translated">一旦到达 &lt;code&gt;B&lt;/code&gt; 的声明/定义冲突，A的编译将以错误终止（即，对B的上述更改破坏了A且任何其他滥用正向声明的客户，而不是透明地工作）。</target>
+        </trans-unit>
+        <trans-unit id="f9048fd12b1e61b10c0a533226d367f5f45f59ca" translate="yes" xml:space="preserve">
+          <source>if &lt;code&gt;a.h&lt;/code&gt; or &lt;code&gt;a.cc&lt;/code&gt; did include &lt;code&gt;b.h&lt;/code&gt; later:</source>
+          <target state="translated">如果 &lt;code&gt;a.h&lt;/code&gt; 或 &lt;code&gt;a.cc&lt;/code&gt; 之后确实包含了 &lt;code&gt;b.h&lt;/code&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="aa6f7b44888bbdbecec2dd011d394e881b515ef4" translate="yes" xml:space="preserve">
+          <source>inline functions still inline</source>
+          <target state="translated">内联功能仍为内联</target>
+        </trans-unit>
+        <trans-unit id="99401692aa69fba656f0bcf654657ddc1f88b0cf" translate="yes" xml:space="preserve">
+          <source>otherwise (if A didn't eventually include &lt;code&gt;b.h&lt;/code&gt; - possible if A just stores/passes around Bs by pointer and/or reference)</source>
+          <target state="translated">否则（如果A最终没有包含 &lt;code&gt;b.h&lt;/code&gt; 如果A只是通过指针和/或引用在B周围存储/传递，则可能）</target>
+        </trans-unit>
+        <trans-unit id="63e287eac53f9dc1ae4fa91bc6f97afded9483ca" translate="yes" xml:space="preserve">
+          <source>the solution is exactly the same as originally intended</source>
+          <target state="translated">一模一样</target>
+        </trans-unit>
+        <trans-unit id="535f59137c60800ddc3e6bb55a5e87e93d4f248c" translate="yes" xml:space="preserve">
+          <source>users of &lt;code&gt;A&lt;/code&gt; and &lt;code&gt;B&lt;/code&gt; can include A.h and B.h in any order</source>
+          <target state="translated">&lt;code&gt;A&lt;/code&gt; 和 &lt;code&gt;B&lt;/code&gt; 的用户可以任意顺序包含Ah和Bh</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

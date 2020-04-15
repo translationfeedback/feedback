@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/6470651">
+    <body>
+      <group id="6470651">
+        <trans-unit id="ce551772d925b8244e0871a46c5c62edabde5ab0" translate="yes" xml:space="preserve">
+          <source>&quot;A memory leak, in computer science (or leakage, in this context), occurs when a computer program consumes memory but is unable to release it back to the operating system.&quot; (Wikipedia)</source>
+          <target state="translated">&quot;컴퓨터 과학에서 메모리 누수 (또는이 맥락에서 누수)는 컴퓨터 프로그램이 메모리를 소비하지만 운영 체제로 다시 해제 할 수 없을 때 발생합니다.&quot; (위키 백과)</target>
+        </trans-unit>
+        <trans-unit id="5e57ac3aff18b19898d770571f33488ff49c0558" translate="yes" xml:space="preserve">
+          <source>(*edited*)</source>
+          <target state="translated">(*edited*)</target>
+        </trans-unit>
+        <trans-unit id="5bdafb56fc1b00b73f2a4f5cd91af94f858da2b7" translate="yes" xml:space="preserve">
+          <source>(The &lt;code&gt;ClassLoader&lt;/code&gt; doesn't really play a role in creating the leak, it just makes the leak worse because of this additional reference chain: example class &amp;rarr; &lt;code&gt;ClassLoader&lt;/code&gt; &amp;rarr; all the classes it has loaded. It was even worse in many JVM implementations, especially prior to Java 7, because classes and &lt;code&gt;ClassLoader&lt;/code&gt;s were allocated straight into permgen and were never garbage-collected at all.)</source>
+          <target state="translated">( &lt;code&gt;ClassLoader&lt;/code&gt; 는 실제로 누출을 생성하는 역할을하지 않습니다. 예제 클래스 &amp;rarr; &lt;code&gt;ClassLoader&lt;/code&gt; &amp;rarr;로드 된 모든 클래스와 같은 추가 참조 체인으로 인해 누출이 더 악화됩니다. 특히 많은 JVM 구현에서는 더욱 악화되었습니다. 특히 Java 7 이전에는 클래스와 &lt;code&gt;ClassLoader&lt;/code&gt; 가 permgen에 직접 할당되어 결코 가비지 수집되지 않았기 때문에)</target>
+        </trans-unit>
+        <trans-unit id="8a2cb5badd06d28955e6dd5187697ae3899dae98" translate="yes" xml:space="preserve">
+          <source>-Wes Tarle</source>
+          <target state="translated">웨스 탈레</target>
+        </trans-unit>
+        <trans-unit id="9f33ee22495c88b28752411615696d9e6cd9b883" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;File.deleteOnExit()&lt;/code&gt; - always leaks the string, &lt;del&gt;if the string is a substring, the leak is even worse (the underlying char[] is also leaked)&lt;/del&gt; - &lt;em&gt;in Java&amp;nbsp;7 substring also copies the &lt;code&gt;char[]&lt;/code&gt;, so the later doesn't apply&lt;/em&gt;; @Daniel, no needs for votes, though.</source>
+          <target state="translated">&lt;code&gt;File.deleteOnExit()&lt;/code&gt; -항상 문자열을 누출 &lt;del&gt; 문자열이 하위 문자열 인 경우 누출이 더욱 악화됩니다 (기본 char []도 누출 됨) &lt;/del&gt; &lt;em&gt;-Java 7에서 하위 문자열도 &lt;code&gt;char[]&lt;/code&gt; 복사하므로 나중에 적용되지 않습니다&lt;/em&gt; . @Daniel, 투표 할 필요는 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="3b29da849034672fbeff563c8ca560e1f28825fb" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Runtime.addShutdownHook&lt;/code&gt; and not remove... and then even with removeShutdownHook due to a bug in ThreadGroup class regarding unstarted threads it may not get collected, effectively leak the ThreadGroup. JGroup has the leak in GossipRouter.</source>
+          <target state="translated">&lt;code&gt;Runtime.addShutdownHook&lt;/code&gt; and not remove ... 그리고 심지어 시작되지 않은 스레드에 관한 ThreadGroup 클래스의 버그로 인해 removeShutdownHook을 사용하더라도 수집되지 않을 수 있으며 효과적으로 ThreadGroup을 누출시킵니다. JGroup은 GossipRouter에서 누출이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="b5fe4e1a6cd0ea146ce3183821fd7ded9f7fddcd" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;Thread&lt;/code&gt; object &amp;rarr; &lt;code&gt;threadLocals&lt;/code&gt; map &amp;rarr; instance of example class &amp;rarr; example class &amp;rarr; static &lt;code&gt;ThreadLocal&lt;/code&gt; field &amp;rarr; &lt;code&gt;ThreadLocal&lt;/code&gt; object.</source>
+          <target state="translated">&lt;code&gt;Thread&lt;/code&gt; 오브젝트 &amp;rarr; &lt;code&gt;threadLocals&lt;/code&gt; 맵 &amp;rarr; 예제 클래스 인스턴스 &amp;rarr; 예제 클래스 &amp;rarr; 정적 &lt;code&gt;ThreadLocal&lt;/code&gt; 필드 &amp;rarr; &lt;code&gt;ThreadLocal&lt;/code&gt; 오브젝트.</target>
+        </trans-unit>
+        <trans-unit id="a9416d962c9ac52f5046b355062720b3a6a912a5" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;ThreadLocal&lt;/code&gt; caches; those are evil in many cases. I am sure everyone has seen quite a bit of simple caches based on ThreadLocal, well the bad news: if the thread keeps going more than expected the life the context ClassLoader, it is a pure nice little leak. Do not use ThreadLocal caches unless really needed.</source>
+          <target state="translated">&lt;code&gt;ThreadLocal&lt;/code&gt; 캐시; 그것들은 많은 경우에 악합니다. 모든 사람들이 ThreadLocal을 기반으로 아주 간단한 캐시를 보았을 것입니다. 나쁜 소식입니다. 스레드가 컨텍스트 ClassLoader의 수명을 기대 이상으로 계속한다면 순수한 작은 누출입니다. 실제로 필요한 경우가 아니면 ThreadLocal 캐시를 사용하지 마십시오.</target>
+        </trans-unit>
+        <trans-unit id="1c6aba7a78f8385e0ba3e00b9761fe99aed8a72b" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;(I can add some more time wasters I have encountered upon request.)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;(요청에 따라 더 많은 시간 낭비자를 추가 할 수 있습니다.)&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="83c6a1eadabdd69897dc450376fab516908bf374" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Typical example:&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;전형적인 예 :&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="e8a4892207dc4108ead9ad94e3c06ab543f3489f" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;What often happens:&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;자주 발생하는 일 :&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="4a9b98791a2ab9361faf8fde0f4c41f252b82e19" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;(Unclosed) open streams ( file , network etc... )&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;(닫히지 않은) 열린 스트림 (파일, 네트워크 등)&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f79c87db599bf20aaa050617e73ebbe69aaa028b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Areas that are unreachable from JVM's garbage collector&lt;/strong&gt;, such as memory allocated through native methods</source>
+          <target state="translated">기본 메소드를 통해 할당 된 메모리와 같이 &lt;strong&gt;JVM의 가비지 수집기에서 도달 할 수없는 영역&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4699b0f1f0227f0142005faa185d17f92b4d4515" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Calling &lt;a href=&quot;http://download.oracle.com/javase/6/docs/api/java/lang/String.html#intern%28%29&quot;&gt;&lt;code&gt;String.intern()&lt;/code&gt;&lt;/a&gt; on lengthy String&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;긴 문자열에서 &lt;a href=&quot;http://download.oracle.com/javase/6/docs/api/java/lang/String.html#intern%28%29&quot;&gt; &lt;code&gt;String.intern()&lt;/code&gt; &lt;/a&gt; 호출&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3726fbd1251a5fadd54dc665b5e59b41e631b1b1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Incorrect or inappropriate JVM options&lt;/strong&gt;, such as the &lt;code&gt;noclassgc&lt;/code&gt; option on IBM JDK that prevents unused class garbage collection</source>
+          <target state="translated">사용하지 않는 클래스 가비지 콜렉션을 방지하는 IBM JDK의 &lt;code&gt;noclassgc&lt;/code&gt; 옵션과 같은 &lt;strong&gt;올바르지 않거나 부적절한 JVM 옵션&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="9120e3e844c455e48acd2e25895a159800ab3a73" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;It gets worse over time.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;시간이 지남에 따라 악화됩니다.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6c5741c3dad69ebb3321e2c35668a7815931d415" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Real-life scenario:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;실제 시나리오 :&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7bf99711d32dc7b8bc74ee8adecf080bd76fa985" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Static field holding object reference [esp final field]&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;정적 필드 유지 객체 참조 [esp final field]&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2815984d9739ac637be39c602500deddc0cd3d1c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The garbage collector cannot clean it.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;가비지 수집기가 청소할 수 없습니다.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="8573fafe482d5317550f13754962a332336456f1" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The solution?&lt;/strong&gt; Just directly save the key / value (as you probably already do) rather than saving the &lt;code&gt;Map.Entry&lt;/code&gt;.</source>
+          <target state="translated">&lt;strong&gt;해결책?&lt;/strong&gt; &lt;code&gt;Map.Entry&lt;/code&gt; 를 저장하는 대신 키 / 값을 직접 저장하십시오 (아마도 이미 수행 했듯이) .</target>
+        </trans-unit>
+        <trans-unit id="d21ebb21d17f7c002c95a9430a5725826affb75d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Unclosed connections&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;닫히지 않은 연결&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="ef7c13da50873fcd8c19bd2ad40c8d7de85846ff" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Update&lt;/strong&gt;: Since lots of people keep asking for it, &lt;a href=&quot;https://gist.github.com/dpryden/b2bb29ee2d146901b4ae&quot;&gt;here's some example code that shows this behavior in action&lt;/a&gt;.</source>
+          <target state="translated">&lt;strong&gt;업데이트&lt;/strong&gt; : 많은 사람들이 계속 요구하기 &lt;a href=&quot;https://gist.github.com/dpryden/b2bb29ee2d146901b4ae&quot;&gt;때문에이 동작을 보여주는 예제 코드가 있습니다&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="e6b659a120e5d6112b5b7ab03de7d6b71d2f7026" translate="yes" xml:space="preserve">
+          <source>A cache of objects is a good starting point to mess things up.</source>
+          <target state="translated">객체 캐시는 일을 망칠 수있는 좋은 출발점입니다.</target>
+        </trans-unit>
+        <trans-unit id="bb7cb15522cb5a211052ea6472969db685b66046" translate="yes" xml:space="preserve">
+          <source>A common example of this in GUI code is when creating a widget/component and adding a listener to some static/application scoped object and then not removing the listener when the widget is destroyed. Not only do you get a memory leak, but also a performance hit as when whatever you are listening to fires events, all your old listeners are called too.</source>
+          <target state="translated">GUI 코드에서 이것의 일반적인 예는 위젯 / 컴포넌트를 생성하고 정적 / 애플리케이션 범위 객체에 리스너를 추가 한 다음 위젯이 파괴 될 때 리스너를 제거하지 않는 경우입니다. 메모리 누수뿐만 아니라 듣고있는 것이 이벤트를 발생시킬 때 성능이 저하 될뿐 아니라 모든 이전 리스너도 호출됩니다.</target>
+        </trans-unit>
+        <trans-unit id="9a0673a585c795ac28cf1e0c0cf4a751e109fd26" translate="yes" xml:space="preserve">
+          <source>A memory leak is indeed truly possible and is perfectly predictable. No need for special language features or corner cases. Memory leaks are either an indicator that something is maybe missing or even of design problems.</source>
+          <target state="translated">메모리 누수는 실제로 가능하며 완벽하게 예측할 수 있습니다. 특별한 언어 기능이나 코너 케이스가 필요하지 않습니다. 메모리 누수는 무언가 빠졌거나 설계 문제가 있음을 나타내는 지표입니다.</target>
+        </trans-unit>
+        <trans-unit id="baefde2ecc16522348f8de06b13e699e98c478ed" translate="yes" xml:space="preserve">
+          <source>A simple thing to do is to use a HashSet with an incorrect (or non-existent) &lt;code&gt;hashCode()&lt;/code&gt; or &lt;code&gt;equals()&lt;/code&gt;, and then keep adding &quot;duplicates&quot;.  Instead of ignoring duplicates as it should, the set will only ever grow and you won't be able to remove them.</source>
+          <target state="translated">간단한 방법은 잘못된 (또는 존재하지 않는) &lt;code&gt;hashCode()&lt;/code&gt; 또는 &lt;code&gt;equals()&lt;/code&gt; 로 HashSet을 사용하고 &quot;중복&quot;을 계속 추가하는 것입니다. 복제본을 무시하는 대신 세트는 계속 커져서 제거 할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="a80d8e5173a3525de31e5ab2033ddb3b6ec29dd6" translate="yes" xml:space="preserve">
+          <source>A variation on this pattern is why application containers (like Tomcat) can leak memory like a sieve if you frequently redeploy applications which happen to use &lt;code&gt;ThreadLocal&lt;/code&gt;s that in some way point back to themselves. This can happen for a number of subtle reasons and is often hard to debug and/or fix.</source>
+          <target state="translated">이 패턴의 변형은 어떤 이유로 &lt;code&gt;ThreadLocal&lt;/code&gt; 을 사용하는 응용 프로그램을 자주 재배치하는 경우 Tomcat과 같은 응용 프로그램 컨테이너가 체처럼 메모리를 누출 할 수있는 이유입니다. 이것은 여러 가지 미묘한 이유로 발생할 수 있으며 종종 디버그 및 / 또는 수정하기가 어렵습니다.</target>
+        </trans-unit>
+        <trans-unit id="588772519dca67090e1685f2821715a70d9cedbd" translate="yes" xml:space="preserve">
+          <source>After each &lt;code&gt;pseudoQueryDatabase()&lt;/code&gt; call, the &lt;code&gt;map&lt;/code&gt; instances should be ready for collection, but it won't happen, as at least one &lt;code&gt;Entry&lt;/code&gt; is stored somewhere else.</source>
+          <target state="translated">각 &lt;code&gt;pseudoQueryDatabase()&lt;/code&gt; 호출 후 &lt;code&gt;map&lt;/code&gt; 인스턴스는 수집 할 준비가되어야하지만 하나 이상의 &lt;code&gt;Entry&lt;/code&gt; 가 다른 곳에 저장되어 있으므로 발생하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="9b59729415ee481439bfee253d53a21559efa0a8" translate="yes" xml:space="preserve">
+          <source>All the other answers so far are in my definition not really memory leaks. They all aim at filling the memory with pointless stuff real fast. But at any time you could still dereference the objects you created and thus freeing the memory --&amp;gt; NO LEAK. &lt;a href=&quot;https://stackoverflow.com/a/4948560/327301&quot;&gt;acconrad's answer&lt;/a&gt; comes pretty close though as I have to admit since his solution is effectively to just &quot;crash&quot; the garbage collector by forcing it in an endless loop).</source>
+          <target state="translated">지금까지 다른 모든 대답은 실제로 메모리 누수가 아니라는 정의에 있습니다. 그들은 모두 무의미한 물건으로 메모리를 채우는 것을 목표로합니다. 그러나 언제든지 생성 한 객체를 역 참조하여 메모리를 확보 할 수 있습니다-&amp;gt; NO LEAK. &lt;a href=&quot;https://stackoverflow.com/a/4948560/327301&quot;&gt;acconrad의 대답&lt;/a&gt; 은 그의 솔루션이 가비지 수집기를 끝없이 반복하여 강제로 &quot;충돌&quot;하는 것이므로 인정해야하지만 꽤 가깝습니다.</target>
+        </trans-unit>
+        <trans-unit id="d14d9c81cd606cffaec50cf1e4ba0a95ee66650b" translate="yes" xml:space="preserve">
+          <source>All you need is a jar file with a file inside which will be referenced from Java code. The bigger the jar file, the quicker memory gets allocated.</source>
+          <target state="translated">Java 코드에서 참조 할 파일이있는 jar 파일 만 있으면됩니다. jar 파일이 클수록 메모리가 더 빨리 할당됩니다.</target>
+        </trans-unit>
+        <trans-unit id="92796050257ee31b4669322aedc4e14a1f4e1bac" translate="yes" xml:space="preserve">
+          <source>Another way to create potentially huge memory leaks is to hold references to &lt;code&gt;Map.Entry&amp;lt;K,V&amp;gt;&lt;/code&gt; of a &lt;code&gt;TreeMap&lt;/code&gt;.</source>
+          <target state="translated">잠재적으로 큰 메모리 누수를 생성하는 또 다른 방법은 &lt;code&gt;TreeMap&lt;/code&gt; 의 &lt;code&gt;Map.Entry&amp;lt;K,V&amp;gt;&lt;/code&gt; 에 대한 참조를 보유하는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="15208722c8d9d35afacae07addaaa54d89ae1c80" translate="yes" xml:space="preserve">
+          <source>Any time you keep references around to objects that you no longer need you have a memory leak.  See &lt;a href=&quot;http://www.ibm.com/developerworks/library/j-leaks/&quot;&gt;Handling memory leaks in Java programs&lt;/a&gt; for examples of how memory leaks manifest themselves in Java and what you can do about it.</source>
+          <target state="translated">더 이상 필요하지 않은 객체에 대한 참조를 유지할 때마다 메모리 누수가 발생합니다. &lt;a href=&quot;http://www.ibm.com/developerworks/library/j-leaks/&quot;&gt;Java에서 메모리 누수&lt;/a&gt; 가 어떻게 나타나는지와 이에 대해 수행 할 수있는 작업에 대한 예제는 Java 프로그램에서 메모리 누수 처리를 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="3eb29554094059e5e094f60940cd4967c16b94c3" translate="yes" xml:space="preserve">
+          <source>Application:</source>
+          <target state="translated">Application:</target>
+        </trans-unit>
+        <trans-unit id="2160b097141acc1504e1eceb949c5dcc5858756e" translate="yes" xml:space="preserve">
+          <source>As a lot of people have suggested, Resource Leaks are fairly easy to cause - like the JDBC examples. Actual Memory leaks are a bit harder - especially if you aren't relying on broken bits of the JVM to do it for you...</source>
+          <target state="translated">많은 사람들이 제안한 바와 같이, Resource Leaks는 JDBC 예제와 같이 쉽게 발생할 수 있습니다. 실제 메모리 누수는 좀 더 어려워집니다. 특히 JVM의 깨진 비트에 의존하지 않는 경우 ...</target>
+        </trans-unit>
+        <trans-unit id="a4b08c6fe4ec7a0e9b4c24d40b76337ca881783d" translate="yes" xml:space="preserve">
+          <source>As a toy example:</source>
+          <target state="translated">장난감 예제로 :</target>
+        </trans-unit>
+        <trans-unit id="6ed7302d22555afde81c52261097b368f125c935" translate="yes" xml:space="preserve">
+          <source>At the end of the day, with a modern JVM, you need to write some Java code that allocates a native resource outside the normal scope of the JVM's awareness.</source>
+          <target state="translated">하루가 끝나면 최신 JVM을 사용하여 일반적인 JVM 인식 범위를 벗어난 기본 리소스를 할당하는 Java 코드를 작성해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="a4a0b6d34474218b90f7179c656bff731e8f4ed4" translate="yes" xml:space="preserve">
+          <source>Because the substring refers to the internal representation of the original, much longer string, the original stays in memory. Thus, as long as you have a StringLeaker in play, you have the whole original string in memory, too, even though you might think you're just holding on to a single-character string.</source>
+          <target state="translated">부분 문자열은 원래의 훨씬 긴 문자열의 내부 표현을 나타내므로 원본은 메모리에 유지됩니다. 따라서 StringLeaker를 사용하는 한 단일 문자 문자열을 잡고 있다고 생각하더라도 원래의 전체 문자열도 메모리에 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="ec66d55aea6163734b225b0eaee1f4aff2d21c20" translate="yes" xml:space="preserve">
+          <source>Below there will be a non-obvious case where Java leaks, besides the standard case of forgotten listeners, static references, bogus/modifiable keys in hashmaps, or just threads stuck without any chance to end their life-cycle.</source>
+          <target state="translated">아래에는 잊혀진 리스너의 표준 사례, 정적 참조, 해시 맵의 가짜 / 수정 가능 키 또는 수명주기를 종료 할 기회없이 스레드가 멈춘 경우 외에 Java가 유출되는 명백한 사례가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="d6890f5c871bf813320eebb7769e31ce3e0862eb" translate="yes" xml:space="preserve">
+          <source>But any long-lived application tend to have shared state. It can be anything, statics, singletons... Often non-trivial applications tend to make complex objects graphs. Just forgetting to set a reference to null or more often forgetting to remove one object from a collection is enough to make a memory leak.</source>
+          <target state="translated">그러나 오래 지속되는 응용 프로그램은 공유 상태를 갖는 경향이 있습니다. 정적, 단일 등 무엇이든 될 수 있습니다. 종종 사소한 응용 프로그램은 복잡한 객체 그래프를 만드는 경향이 있습니다. 참조를 null로 설정하는 것을 잊어 버리거나 컬렉션에서 하나의 객체를 제거하는 것을 잊어 버리면 메모리 누수가 발생하기에 충분합니다.</target>
+        </trans-unit>
+        <trans-unit id="5d2e7eace75767ecc3750ad43683978a9ba57abb" translate="yes" xml:space="preserve">
+          <source>But each &lt;em&gt;value&lt;/em&gt; is a strong reference, so when a value (directly or indirectly) points to the &lt;code&gt;ThreadLocal&lt;/code&gt; object that is its &lt;em&gt;key&lt;/em&gt;, that object will neither be garbage-collected nor removed from the map as long as the thread lives.</source>
+          <target state="translated">그러나 각 &lt;em&gt;값&lt;/em&gt; 은 강력한 참조이므로 값이 (직접 또는 간접적으로) &lt;em&gt;키인&lt;/em&gt; &lt;code&gt;ThreadLocal&lt;/code&gt; 객체를 가리키는 경우 해당 객체는 스레드가 존재하는 한 가비지 수집되거나 맵에서 제거되지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="6dc882c31ef2333a4cb2ce12871d12e4568e39ef" translate="yes" xml:space="preserve">
+          <source>But that is about a &quot;standard&quot; type of memory leak, when you cannot access the memory anymore, but it is still owned by the application. You can instead keep references to unused objects, or open streams without closing them afterwards.</source>
+          <target state="translated">그러나 이는 더 이상 메모리에 액세스 할 수없는 &quot;표준&quot;유형의 메모리 누수에 관한 것이지만 여전히 응용 프로그램에서 소유합니다. 대신 사용하지 않는 객체에 대한 참조를 유지하거나 나중에 닫지 않고 스트림을 열 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="789320444cb7767260264a9cc9e9745ad7e7b191" translate="yes" xml:space="preserve">
+          <source>But there are multiple meta-questions that may have been being asked?</source>
+          <target state="translated">그러나 여러 가지 메타 질문이있을 수 있습니까?</target>
+        </trans-unit>
+        <trans-unit id="06b82e17900450ead4189c16a2dab375e08481ce" translate="yes" xml:space="preserve">
+          <source>But there are really simpler cases for memory leaks. The garbage collector only frees what is no longer referenced. We as Java developers don't care about memory. We allocate it when needed and let it be freed automatically. Fine.</source>
+          <target state="translated">그러나 메모리 누수에 대한 간단한 사례가 있습니다. 가비지 수집기는 더 이상 참조되지 않은 항목 만 해제합니다. 우리는 Java 개발자로서 메모리에 관심이 없습니다. 필요할 때 할당하고 자동으로 해제합니다. 좋아.</target>
+        </trans-unit>
+        <trans-unit id="ce4161afe55f67a0294d9c668e44e8d09476c61c" translate="yes" xml:space="preserve">
+          <source>Call &lt;code&gt;System.gc()&lt;/code&gt; all you like, but the object passed to &lt;code&gt;leakMe&lt;/code&gt; will never die.</source>
+          <target state="translated">원하는대로 &lt;code&gt;System.gc()&lt;/code&gt; 호출하지만 &lt;code&gt;leakMe&lt;/code&gt; 에 전달 된 객체는 절대 죽지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="d152e2fcb524abf55287ceec73755ba1b51b9525" translate="yes" xml:space="preserve">
+          <source>Call the native method.</source>
+          <target state="translated">기본 메소드를 호출하십시오.</target>
+        </trans-unit>
+        <trans-unit id="32c8fac6d96245359d4955074230160abf920c47" translate="yes" xml:space="preserve">
+          <source>Calling &lt;code&gt;ThreadGroup.destroy()&lt;/code&gt; when the ThreadGroup has no threads itself, but it still keeps child ThreadGroups. A bad leak that will prevent the ThreadGroup to remove from its parent, but all the children become un-enumerateable.</source>
+          <target state="translated">&lt;code&gt;ThreadGroup.destroy()&lt;/code&gt; 스레드 자체가 없지만 여전히 ThreadGroups를 유지하는 경우 ThreadGroup.destroy ()를 호출합니다. 스레드 그룹이 상위에서 제거되지 못하게하는 누수로 인해 모든 하위 항목을 열거 할 수 없게됩니다.</target>
+        </trans-unit>
+        <trans-unit id="96d2be15f0142d38fff9f1d0710b8a2950d9695e" translate="yes" xml:space="preserve">
+          <source>Code doesn't compile in Eclipse IDE - compile it using command &lt;code&gt;javac&lt;/code&gt; (during compilation you'll get warnings)</source>
+          <target state="translated">코드가 Eclipse IDE에서 컴파일되지 않음 &lt;code&gt;javac&lt;/code&gt; 명령을 사용하여 컴파일하십시오 (컴파일 중에 경고가 표시됨)</target>
+        </trans-unit>
+        <trans-unit id="f90dd378d13e2f5f863d95c5043b9eb2f5314f2d" translate="yes" xml:space="preserve">
+          <source>Consider the following wrapper class:</source>
+          <target state="translated">다음 랩퍼 클래스를 고려하십시오.</target>
+        </trans-unit>
+        <trans-unit id="58fab44360252f01998a02b0103a0562094b38f5" translate="yes" xml:space="preserve">
+          <source>Consider: the basic pattern to terminate a worker thread is to set some condition variable seen by the thread. The thread can check the variable periodically and use that as a signal to terminate. If the variable is not declared &lt;code&gt;volatile&lt;/code&gt;, then the change to the variable might not be seen by the thread, so it won't know to terminate. Or imagine if some threads want to update a shared object, but deadlock while trying to lock on it.</source>
+          <target state="translated">작업자 스레드를 종료하는 기본 패턴은 스레드에서 볼 수있는 일부 조건 변수를 설정하는 것입니다. 스레드는 변수를 주기적으로 확인하고이를 종료 신호로 사용할 수 있습니다. 변수가 &lt;code&gt;volatile&lt;/code&gt; 로 선언되지 않으면 변수가 스레드에 표시되지 않을 수 있으므로 종료를 알 수 없습니다. 또는 일부 스레드가 공유 객체를 업데이트하려고하지만 잠그는 동안 교착 상태가 발생한다고 상상해보십시오.</target>
+        </trans-unit>
+        <trans-unit id="208d1932659651cdfcd8d8bc76e9e21d0d4d0246" translate="yes" xml:space="preserve">
+          <source>Create a static Map and keep adding hard references to it.  Those will never be GC'd.</source>
+          <target state="translated">정적지도를 만들고 하드 참조를 계속 추가하십시오. 그것들은 결코 GC되지 않을 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="d1bddb5b37195d2b9cfc511e087351b8b37fc258" translate="yes" xml:space="preserve">
+          <source>Creating a thread inherits the &lt;code&gt;ContextClassLoader&lt;/code&gt; and &lt;code&gt;AccessControlContext&lt;/code&gt;, plus the &lt;code&gt;ThreadGroup&lt;/code&gt; and any &lt;code&gt;InheritedThreadLocal&lt;/code&gt;, all those references are potential leaks, along with the entire classes loaded by the classloader and all static references, and ja-ja. The effect is especially visible with the entire j.u.c.Executor framework that features a super simple &lt;code&gt;ThreadFactory&lt;/code&gt; interface, yet most developers have no clue of the lurking danger. Also a lot of libraries do start threads upon request (way too many industry popular libraries).</source>
+          <target state="translated">스레드를 만들면 &lt;code&gt;ContextClassLoader&lt;/code&gt; 및 &lt;code&gt;AccessControlContext&lt;/code&gt; 와 &lt;code&gt;ThreadGroup&lt;/code&gt; 및 &lt;code&gt;InheritedThreadLocal&lt;/code&gt; 을 상속받습니다. 이러한 모든 참조는 클래스 로더에 의해로드 된 전체 클래스와 모든 정적 참조 및 ja-ja와 함께 잠재적 인 누수입니다. 이 효과는 매우 단순한 &lt;code&gt;ThreadFactory&lt;/code&gt; 인터페이스를 특징으로하는 전체 jucExecutor 프레임 워크에서 볼 수 있지만 대부분의 개발자는 숨어있는 위험에 대한 단서가 없습니다. 또한 많은 라이브러리가 요청에 따라 스레드를 시작합니다 (업계에서 많이 사용되는 라이브러리는 너무 많습니다).</target>
+        </trans-unit>
+        <trans-unit id="2e6cf4701335cb5f59429515d569b0d29f77d768" translate="yes" xml:space="preserve">
+          <source>Creating, but not starting, a &lt;code&gt;Thread&lt;/code&gt; goes into the same category as above.</source>
+          <target state="translated">&lt;code&gt;Thread&lt;/code&gt; 작성하지만 시작하지는 않으면 위와 동일한 카테고리로 이동합니다.</target>
+        </trans-unit>
+        <trans-unit id="7294b77309edefafefe2bd3f45c66bab000f3d7c" translate="yes" xml:space="preserve">
+          <source>Declare native method.</source>
+          <target state="translated">기본 메소드를 선언하십시오.</target>
+        </trans-unit>
+        <trans-unit id="23728e6f1e8c32e9d0000075eebf66661982db5b" translate="yes" xml:space="preserve">
+          <source>Depending on your &lt;code&gt;jvm&lt;/code&gt; settings, the application may crash in the early stage due to a &lt;code&gt;OutOfMemoryError&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;jvm&lt;/code&gt; 설정에 따라 &lt;code&gt;OutOfMemoryError&lt;/code&gt; 로 인해 애플리케이션이 초기 단계에서 중단 될 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="58816422485d099c26b663bf93adbe40a467f347" translate="yes" xml:space="preserve">
+          <source>Do they know they can call other languages through native interfaces?</source>
+          <target state="translated">기본 인터페이스를 통해 다른 언어를 호출 할 수 있다는 것을 알고 있습니까?</target>
+        </trans-unit>
+        <trans-unit id="f5c9fcb2ac63bb6c6c32913f8fefe3bb71d7ed08" translate="yes" xml:space="preserve">
+          <source>Do they know to leak memory in those other languages?</source>
+          <target state="translated">그들은 다른 언어로 메모리를 유출하는 것을 알고 있습니까?</target>
+        </trans-unit>
+        <trans-unit id="69aab9c5dfbb16547f4fc2c5abaf1344cf95a14c" translate="yes" xml:space="preserve">
+          <source>Does the candidate even know what memory management is, and what is going on behind the scene in Java?</source>
+          <target state="translated">응시자는 메모리 관리가 무엇인지, Java에서 어떤 일이 벌어지고 있는지 알고 있습니까?</target>
+        </trans-unit>
+        <trans-unit id="4dd2014adcd814735e78bd1371951597f5a3eea0" translate="yes" xml:space="preserve">
+          <source>Does the candidate understand how garbage collection works?</source>
+          <target state="translated">후보자는 가비지 수집 작동 방식을 이해합니까?</target>
+        </trans-unit>
+        <trans-unit id="0bf3c2bfc81fd20031b3e9b9d609f7dd6aaaaf29" translate="yes" xml:space="preserve">
+          <source>Does the candidate understand the difference between theory and reality?</source>
+          <target state="translated">응시자는 이론과 현실의 차이를 이해합니까?</target>
+        </trans-unit>
+        <trans-unit id="f2811d869f66aa43f58c855c0b8b1856517b1f02" translate="yes" xml:space="preserve">
+          <source>Doing so will keep both the original long string and the derived substring in memory even after the StringLeaker instance has been discarded.</source>
+          <target state="translated">그렇게하면 StringLeaker 인스턴스가 삭제 된 후에도 원래의 긴 문자열과 파생 된 하위 문자열이 모두 메모리에 유지됩니다.</target>
+        </trans-unit>
+        <trans-unit id="595b1741483d7d383832f58de31ab4ccfd5ae979" translate="yes" xml:space="preserve">
+          <source>Due to the way &lt;code&gt;ThreadLocal&lt;/code&gt; is implemented in Oracle's JDK, this creates a memory leak:</source>
+          <target state="translated">&lt;code&gt;ThreadLocal&lt;/code&gt; 이 Oracle의 JDK에서 구현되는 방식으로 인해 메모리 누수가 발생합니다.</target>
+        </trans-unit>
+        <trans-unit id="6612e728c6376d049be0c52a45c0cafe2f871430" translate="yes" xml:space="preserve">
+          <source>Each &lt;code&gt;Thread&lt;/code&gt; has a private field &lt;code&gt;threadLocals&lt;/code&gt;, which actually stores the thread-local values.</source>
+          <target state="translated">각 &lt;code&gt;Thread&lt;/code&gt; 에는 스레드 로컬 값을 실제로 저장하는 개인 필드 &lt;code&gt;threadLocals&lt;/code&gt; 가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="651924eafe2e5c299685cb6d3c0296106ddc4229" translate="yes" xml:space="preserve">
+          <source>Each &lt;em&gt;key&lt;/em&gt; in this map is a weak reference to a &lt;code&gt;ThreadLocal&lt;/code&gt; object, so after that &lt;code&gt;ThreadLocal&lt;/code&gt; object is garbage-collected, its entry is removed from the map.</source>
+          <target state="translated">이 맵의 각 &lt;em&gt;키&lt;/em&gt; 는 &lt;code&gt;ThreadLocal&lt;/code&gt; 객체에 대한 약한 참조이므로 &lt;code&gt;ThreadLocal&lt;/code&gt; 객체가 가비지 수집 된 후 해당 항목이 맵에서 제거됩니다.</target>
+        </trans-unit>
+        <trans-unit id="2f85102b6f29d40dee4486317764bdc96c07bfac" translate="yes" xml:space="preserve">
+          <source>Et voil&amp;agrave;: you find a jar archive in your current working directory with two files inside.</source>
+          <target state="translated">정보 : 현재 작업중인 디렉토리에 두 개의 파일이있는 jar 아카이브가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="3fc97cb36795d349336e2937cf57eba4d88c6f85" translate="yes" xml:space="preserve">
+          <source>Even if the JDBC driver were to implement &lt;code&gt;finalize&lt;/code&gt;, it is possible for exceptions to be thrown during finalization. The resulting behavior is that any memory associated with the now &quot;dormant&quot; object will not be reclaimed, as &lt;code&gt;finalize&lt;/code&gt; is guaranteed to be invoked only once.</source>
+          <target state="translated">JDBC 드라이버가 &lt;code&gt;finalize&lt;/code&gt; 를 구현하더라도 최종화 중에 예외가 발생할 수 있습니다. 결과적으로 &lt;code&gt;finalize&lt;/code&gt; 는 한 번만 호출되므로 현재 &quot;휴면&quot;오브젝트와 연관된 메모리는 회수되지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="16c7bc550059cf92961fbeac4004677360337532" translate="yes" xml:space="preserve">
+          <source>Everyone always forgets the native code route.  Here's a simple formula for a leak:</source>
+          <target state="translated">누구나 항상 기본 코드 경로를 잊어 버립니다. 누출에 대한 간단한 공식은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="85ba58bac97a3e55de6e391b4dcfef4a1a7a69b4" translate="yes" xml:space="preserve">
+          <source>For added badness, you might also &lt;code&gt;.intern()&lt;/code&gt; the substring:</source>
+          <target state="translated">추가로 &lt;code&gt;.intern()&lt;/code&gt; 하위 문자열을 .intern () 할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="3c74b0583eca451f3949e324127e22834986bacd" translate="yes" xml:space="preserve">
+          <source>For instance, using ThreadLocal variables in Servlets to communicate with other web components, having the threads being created by the container and maintaining the idle ones in a pool. ThreadLocal variables, if not correctly cleaned up, will live there until, possibly, the same web component overwrites their values.</source>
+          <target state="translated">예를 들어, 서블릿에서 ThreadLocal 변수를 사용하여 다른 웹 구성 요소와 통신하고 컨테이너에 의해 스레드가 생성되고 유휴 상태의 개체는 풀에 유지됩니다. 올바르게 정리되지 않은 경우 ThreadLocal 변수는 동일한 웹 구성 요소가 해당 값을 겹쳐 쓸 때까지 계속 존재합니다.</target>
+        </trans-unit>
+        <trans-unit id="a550b50fecea603dd7d627a3a2a7718b13bdaa32" translate="yes" xml:space="preserve">
+          <source>Good luck and stay safe; leaks are evil!</source>
+          <target state="translated">행운을 빌어 안전 유지; 누출은 악하다!</target>
+        </trans-unit>
+        <trans-unit id="d4becfb3fb0bc45134001f050666b7e0050d978e" translate="yes" xml:space="preserve">
+          <source>Here's a good way to create a true memory leak (objects inaccessible by running code but still stored in memory) in pure Java:</source>
+          <target state="translated">다음은 순수 Java에서 실제 메모리 누수 (코드를 실행하여 액세스 할 수 없지만 여전히 메모리에 저장된 객체)를 생성하는 좋은 방법입니다.</target>
+        </trans-unit>
+        <trans-unit id="2f2b740f4900d7a6978f8315f2f1a8035106b9da" translate="yes" xml:space="preserve">
+          <source>Here's a simple/sinister one via &lt;a href=&quot;http://wiki.eclipse.org/Performance_Bloopers#String.substring.28.29&quot;&gt;http://wiki.eclipse.org/Performance_Bloopers#String.substring.28.29&lt;/a&gt;.</source>
+          <target state="translated">다음은 &lt;a href=&quot;http://wiki.eclipse.org/Performance_Bloopers#String.substring.28.29&quot;&gt;http://wiki.eclipse.org/Performance_Bloopers#String.substring.28.29&lt;/a&gt; 를 통한 단순하고 불쾌한 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="1b7f86efaf6f1be9a4631614110e3a1d163c3c9e" translate="yes" xml:space="preserve">
+          <source>How to create a memory leak in Java</source>
+          <target state="translated">Java에서 메모리 누수를 만드는 방법</target>
+        </trans-unit>
+        <trans-unit id="01b6c42de1549d8f57e267f836caf27305ce373f" translate="yes" xml:space="preserve">
+          <source>I came across a more subtle kind of resource leak recently.
+We open resources via class loader's getResourceAsStream and it happened that the input stream handles were not closed.</source>
+          <target state="translated">최근에 더 미묘한 종류의 리소스 누수가 발생했습니다. 클래스 로더의 getResourceAsStream을 통해 리소스를 열면 입력 스트림 핸들이 닫히지 않았습니다.</target>
+        </trans-unit>
+        <trans-unit id="e00a7aee2c9e1ea43ccd97f28e1044cddc2c12bb" translate="yes" xml:space="preserve">
+          <source>I can copy my answer from here:
+&lt;a href=&quot;https://stackoverflow.com/questions/4948529/easiest-way-to-cause-memory-leak-in-java/4948763&quot;&gt;Easiest way to cause memory leak in Java?&lt;/a&gt;</source>
+          <target state="translated">여기에서 답변을 복사 할 수 있습니다 : &lt;a href=&quot;https://stackoverflow.com/questions/4948529/easiest-way-to-cause-memory-leak-in-java/4948763&quot;&gt;Java에서 메모리 누수를 일으키는 가장 쉬운 방법은 무엇입니까?&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="4c593eeadc2fb1717b13d6e06d4149bb1f7cea59" translate="yes" xml:space="preserve">
+          <source>I don't think anyone has said this yet: you can resurrect an object by overriding the finalize() method such that finalize() stores a reference of this somewhere. The garbage collector will only be called once on the object so after that the object will never destroyed.</source>
+          <target state="translated">나는 아무도 이것을 아직 말하지 않았다고 생각합니다 : finalize () 메서드를 재정 의하여 finalize ()이 참조를 어딘가에 저장하여 객체를 부활시킬 수 있습니다. 가비지 콜렉터는 오브젝트에서 한 번만 호출되므로 오브젝트는 절대 파괴되지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="c6a50503d1ed9c1772a9fcbd93fa55757fa057ca" translate="yes" xml:space="preserve">
+          <source>I have had a nice &quot;memory leak&quot; in relation to PermGen and XML parsing once.
+The XML parser we used (I can't remember which one it was) did a String.intern() on tag names, to make comparison faster.
+One of our customers had the great idea to store data values not in XML attributes or text, but as tagnames, so we had a document like:</source>
+          <target state="translated">PermGen 및 XML 구문 분석과 관련하여 멋진 &quot;메모리 누수&quot;가 발생했습니다. 태그 이름에 String.intern ()을 사용하여 XML 구문 분석기를 사용하여 XML 구문 분석기를 사용했습니다 (어떤 것이 있는지 기억이 나지 않습니다). 고객 중 한 명이 XML 속성이나 텍스트가 아니라 태그 이름으로 데이터 값을 저장하는 것이 좋았 기 때문에 다음과 같은 문서가있었습니다.</target>
+        </trans-unit>
+        <trans-unit id="21b20ac27c46030b96ee7a4c65ccb09c92ac0b95" translate="yes" xml:space="preserve">
+          <source>I have written a more extensive benchmark &lt;a href=&quot;https://stackoverflow.com/a/49430255/8524301&quot;&gt;here&lt;/a&gt;.</source>
+          <target state="translated">더 광범위한 벤치 마크를 작성했습니다.</target>
+        </trans-unit>
+        <trans-unit id="e6ecf084ad53032ca17349b056ec1fdcf8050143" translate="yes" xml:space="preserve">
+          <source>I just had an interview, and I was asked to create a &lt;strong&gt;&lt;em&gt;memory leak&lt;/em&gt;&lt;/strong&gt; with Java.</source>
+          <target state="translated">방금 인터뷰를했는데 Java로 &lt;strong&gt;&lt;em&gt;메모리 누수&lt;/em&gt;&lt;/strong&gt; 를 만들라는 요청을 받았습니다.</target>
+        </trans-unit>
+        <trans-unit id="92126881424ebbbf07602882ed701925fe7eb526" translate="yes" xml:space="preserve">
+          <source>I recently encountered a memory leak situation caused in a way by log4j.</source>
+          <target state="translated">최근에 log4j에 의한 메모리 누수 상황이 발생했습니다.</target>
+        </trans-unit>
+        <trans-unit id="7a504850de91ebafb452ca1440f20c4063b46f8a" translate="yes" xml:space="preserve">
+          <source>I think that a valid example could be using ThreadLocal variables in an environment where threads are pooled.</source>
+          <target state="translated">올바른 예제는 스레드가 풀링되는 환경에서 ThreadLocal 변수를 사용할 수 있다고 생각합니다.</target>
+        </trans-unit>
+        <trans-unit id="45f7a3d9f100654fd1c34bd75e3eb9d5a83eae86" translate="yes" xml:space="preserve">
+          <source>I thought it was interesting that no one used the internal class examples.  If you have an internal class; it inherently maintains a reference to the containing class.  Of course it is not technically a memory leak because Java WILL eventually clean it up; but this can cause classes to hang around longer than anticipated.</source>
+          <target state="translated">아무도 내부 클래스 예제를 사용하지 않았다는 것이 흥미로웠다. 내부 수업이있는 경우 그것은 본질적으로 포함하는 클래스에 대한 참조를 유지합니다. 물론 Java WILL이 결국 정리하기 때문에 기술적으로 메모리 누수가 아닙니다. 그러나 이로 인해 클래스가 예상보다 오래 걸려있을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="7d429b0485d7a2ac23d7e784ee85f99d6b65f029" translate="yes" xml:space="preserve">
+          <source>I'll concentrate on threads to show the danger of unmanaged threads mostly, don't wish to even touch swing.</source>
+          <target state="translated">관리되지 않는 스레드의 위험을 대부분 보여주기 위해 스레드에 집중하고 스윙을 만지고 싶지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="1fe18c2a2477f6295792e994a397c93f0806a8eb" translate="yes" xml:space="preserve">
+          <source>I'm reading your meta-question as &quot;What's an answer I could have used in this interview situation&quot;. And hence, I'm going to focus on interview skills instead of Java. I believe you're more likely to repeat the situation of not knowing the answer to a question in an interview than you are to be in a place of needing to know how to make Java leak. So, hopefully, this will help.</source>
+          <target state="translated">귀하의 메타 질문을 &quot;이 인터뷰 상황에서 사용할 수있는 답변은 무엇입니까?&quot; 따라서 Java 대신 인터뷰 기술에 중점을 둘 것입니다. 인터뷰에서 질문에 대한 답을 알지 못하는 상황을 Java 누출 방법을 알아야 할 필요가있는 곳보다 반복 할 가능성이 더 큽니다. 희망적으로 이것은 도움이 될 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="4b275ac46db4fdaa491bf5408c4f45e1255c8d27" translate="yes" xml:space="preserve">
+          <source>I've also heard a rumor that if you have a variable that exists for longer than a specific amount of time; Java assumes that it will always exist and will actually never try to clean it up if cannot be reached in code anymore.  But that is completely unverified.</source>
+          <target state="translated">또한 특정 시간보다 오래 존재하는 변수가 있다면 소문도 들었습니다. Java는 항상 존재한다고 가정하고 코드에서 더 이상 도달 할 수 없으면 실제로 정리하려고 시도하지 않습니다. 그러나 그것은 완전히 검증되지 않았습니다.</target>
+        </trans-unit>
+        <trans-unit id="3fb2a5a45b0633c5ecfa4de6234eeb7c9b8db692" translate="yes" xml:space="preserve">
+          <source>If the query was called lots of times and, for each query (so, for each &lt;code&gt;Map&lt;/code&gt; returned) you save an &lt;code&gt;Entry&lt;/code&gt; somewhere, the memory would constantly keep growing.</source>
+          <target state="translated">쿼리를 여러 번 호출하고 각 쿼리에 대해 (즉, 반환 된 각 &lt;code&gt;Map&lt;/code&gt; 에 대해) &lt;code&gt;Entry&lt;/code&gt; 어딘가에 저장하면 메모리가 계속 증가합니다.</target>
+        </trans-unit>
+        <trans-unit id="e728ed31e7836138e4e1b214963390f9f9d63680" translate="yes" xml:space="preserve">
+          <source>If there is just one reference surviving the undeployment of your web app, the corresponding classloader and by consequence all classes of your web app cannot be garbage collected.</source>
+          <target state="translated">웹앱의 배포 제거를 유지하는 참조가 하나만있는 경우 해당 클래스 로더 및 결과적으로 웹앱의 모든 클래스를 가비지 수집 할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="a844f39481ac36271eb7582aa6ffdda4fd58a0aa" translate="yes" xml:space="preserve">
+          <source>If this Info object has references to other objects, which again have references to other objects. In a way you could also consider this to be some kind of memory leak, (caused by bad design).</source>
+          <target state="translated">이 Info 객체에 다른 객체에 대한 참조가 있고 다른 객체에 대한 참조가있는 경우 어떤 방식으로도 이것을 나쁜 디자인으로 인해 일종의 메모리 누수로 간주 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="3dec03b2417923a03f07454056bdbc6a069e20ca" translate="yes" xml:space="preserve">
+          <source>If you only have a handful of threads these bugs will probably be obvious because your program will stop working properly. If you have a thread pool that creates more threads as needed, then the obsolete/stuck threads might not be noticed, and will accumulate indefinitely, causing a memory leak. Threads are likely to use other data in your application, so will also prevent anything they directly reference from ever being collected.</source>
+          <target state="translated">소수의 스레드 만있는 경우 프로그램이 제대로 작동하지 않기 때문에 이러한 버그가 분명합니다. 필요에 따라 더 많은 스레드를 작성하는 스레드 풀이있는 경우 사용되지 않는 / 중단 된 스레드가 발견되지 않고 무한정 누적되어 메모리 누수가 발생합니다. 스레드는 응용 프로그램에서 다른 데이터를 사용할 가능성이 있으므로 직접 참조하는 데이터가 수집되는 것을 방지합니다.</target>
+        </trans-unit>
+        <trans-unit id="07183207e77909e1bfc147b3897805b040b19554" translate="yes" xml:space="preserve">
+          <source>If you want the application to play safe, close the input stream right where it's created:</source>
+          <target state="translated">응용 프로그램이 안전하게 재생되도록하려면 입력 스트림이 생성 된 곳에서 바로 닫으십시오.</target>
+        </trans-unit>
+        <trans-unit id="b77776fc1bc27a6e9d7f17108863ff3131c7112a" translate="yes" xml:space="preserve">
+          <source>If you want these bad keys/elements to hang around you can use a static field like</source>
+          <target state="translated">이 잘못된 키 / 요소를 걸어두고 싶다면 다음과 같은 정적 필드를 사용할 수 있습니다</target>
+        </trans-unit>
+        <trans-unit id="1f4a041a2b50b2a53250f8f05e6166af2d9e5d37" translate="yes" xml:space="preserve">
+          <source>If you were implementing it yourself, would you have thought to clear the array element that is no longer used (&lt;code&gt;elementData[--size] = null&lt;/code&gt;)? That reference might keep a huge object alive ...</source>
+          <target state="translated">직접 구현했다면 더 이상 사용되지 않는 배열 요소를 지우고 싶습니까 ( &lt;code&gt;elementData[--size] = null&lt;/code&gt; )? 그 참조는 거대한 물체를 살릴 수 있습니다 ...</target>
+        </trans-unit>
+        <trans-unit id="fd37c731da6ece7675c58bbe7d98346fdbaa4cda" translate="yes" xml:space="preserve">
+          <source>If you're doubtful, try to compile and start the class above, but make sure to chose a decent heap size (2 MB):</source>
+          <target state="translated">의심스러운 경우 위의 클래스를 컴파일하고 시작하지만 알맞은 힙 크기 (2MB)를 선택하십시오.</target>
+        </trans-unit>
+        <trans-unit id="d47133a89c6ee68265054f24bec9f1e818d65900" translate="yes" xml:space="preserve">
+          <source>Imagine having a db query that returns a big &lt;code&gt;TreeMap&lt;/code&gt; data structure. People usually use &lt;code&gt;TreeMap&lt;/code&gt;s as the element insertion order is retained.</source>
+          <target state="translated">큰 &lt;code&gt;TreeMap&lt;/code&gt; 데이터 구조를 반환하는 db 쿼리가 있다고 상상해보십시오. 사람들은 일반적으로 요소 삽입 순서가 유지되므로 &lt;code&gt;TreeMap&lt;/code&gt; 을 사용합니다.</target>
+        </trans-unit>
+        <trans-unit id="616351eed8e13ed77018420d9f5f8f9e135a2f8b" translate="yes" xml:space="preserve">
+          <source>In fact, they did not use numbers but longer textual IDs (around 20 characters), which were unique and came in at a rate of 10-15 million a day. That makes 200&amp;nbsp;MB of rubbish a day, which is never needed again, and never GCed (since it is in PermGen). We had permgen set to 512&amp;nbsp;MB, so it took around two days for the out-of-memory exception (OOME) to arrive...</source>
+          <target state="translated">실제로, 그들은 숫자가 아닌 더 긴 텍스트 ID (약 20 자)를 사용했습니다.이 ID는 고유하고 하루에 10-15 백만의 비율로 들어 왔습니다. 그것은 하루에 200MB의 쓰레기를 만듭니다. 다시는 필요하지 않으며 GCed도 아닙니다 (PermGen에 있기 때문에). permgen을 512MB로 설정 했으므로 메모리 부족 예외 (OOME)가 도착하는 데 약 2 일이 걸렸습니다.</target>
+        </trans-unit>
+        <trans-unit id="7d3a9486d4f2eefbc274d2aae1c983235c4f0060" translate="yes" xml:space="preserve">
+          <source>In native method, call &lt;code&gt;malloc&lt;/code&gt;.  Don't call &lt;code&gt;free&lt;/code&gt;.</source>
+          <target state="translated">기본 메소드에서 &lt;code&gt;malloc&lt;/code&gt; 을 호출하십시오. &lt;code&gt;free&lt;/code&gt; 전화하지 마십시오.</target>
+        </trans-unit>
+        <trans-unit id="814f901888930bb38be0968e58de23b51f29ac3b" translate="yes" xml:space="preserve">
+          <source>In order to store thread specific tags, log4j's NDC class uses a Hashtable which is keyed by the Thread object itself (as opposed to say the thread id), and thus till the NDC tag stays in memory all the objects that hang off of the thread object also stay in memory. In our web application we use NDC to tag logoutputs with a request id to distinguish logs from a single request separately. The container that associates the NDC tag with a thread, also removes it while returning the response from a request. The problem occurred when during the course of processing a request, a child thread was spawned, something like the following code:</source>
+          <target state="translated">스레드 특정 태그를 저장하기 위해 log4j의 NDC 클래스는 스레드 개체 자체가 키를 갖는 Hashtable을 사용하므로 스레드 스레드와 달리 NDC 태그가 메모리에 남아있을 때까지 스레드에서 중단됩니다. 객체는 또한 메모리에 남아 있습니다. 웹 애플리케이션에서 NDC를 사용하여 로그 ID를 요청 ID로 태그 지정하여 단일 요청과 로그를 개별적으로 구분합니다. NDC 태그를 스레드와 연관시키는 컨테이너는 요청에서 응답을 리턴하는 동안이를 제거합니다. 요청을 처리하는 과정에서 다음 코드와 같은 자식 스레드가 생성 될 때 문제가 발생했습니다.</target>
+        </trans-unit>
+        <trans-unit id="1151b20bb174dcd65ae8dc89e7062e26b2f1ceff" translate="yes" xml:space="preserve">
+          <source>In such an event where the &lt;code&gt;Connection&lt;/code&gt;'s &lt;code&gt;finalize&lt;/code&gt; method does not clean up everything, one might actually find that the physical connection to the database server will last several garbage collection cycles, until the database server eventually figures out that the connection is not alive (if it does), and should be closed.</source>
+          <target state="translated">&lt;code&gt;Connection&lt;/code&gt; 의 &lt;code&gt;finalize&lt;/code&gt; 메소드가 모든 것을 정리하지 않는 경우 데이터베이스 서버에 대한 실제 연결은 데이터베이스 서버가 연결이 아직 존재하지 않음을 알 때까지 여러 가비지 콜렉션주기를 지속한다는 것을 실제로 알 수 있습니다 ( 그렇다면) 닫혀 있어야합니다.</target>
+        </trans-unit>
+        <trans-unit id="a086d2d8fc03e322322053a853925ae19c3f6771" translate="yes" xml:space="preserve">
+          <source>In this example, the chain of strong references looks like this:</source>
+          <target state="translated">이 예에서 강력한 참조 체인은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="d62d178029de1efea2203c23a23efb70a4696661" translate="yes" xml:space="preserve">
+          <source>In web applications, some objects are stored in application scope until the application is explicitly stopped or removed.</source>
+          <target state="translated">웹 응용 프로그램에서 일부 개체는 응용 프로그램이 명시 적으로 중지되거나 제거 될 때까지 응용 프로그램 범위에 저장됩니다.</target>
+        </trans-unit>
+        <trans-unit id="68aec4830681344f2b93563671f2dff71f1bbf04" translate="yes" xml:space="preserve">
+          <source>Is a theoretically &quot;perfect&quot; Java implementation vulnerable to leaks?</source>
+          <target state="translated">이론적으로 &quot;완벽한&quot;Java 구현이 누출에 취약합니까?</target>
+        </trans-unit>
+        <trans-unit id="05f78f8106fbe6329e286863d22b4d75d685d7ed" translate="yes" xml:space="preserve">
+          <source>Is it possible in practice to make Java leak? Of course it is, and there are plenty of examples in the other answers.</source>
+          <target state="translated">실제로 Java 유출이 가능합니까? 물론 다른 대답에는 많은 예가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="72344f67ba500872a5868aea32be6d2ec2ff0948" translate="yes" xml:space="preserve">
+          <source>It is hard to asses why this applies only to &lt;code&gt;TreeMap&lt;/code&gt;s, but by looking at the implementation the reason might be that: a &lt;code&gt;TreeMap.Entry&lt;/code&gt; stores references to its siblings, therefore if a &lt;code&gt;TreeMap&lt;/code&gt; is ready to be collected, but some other class holds a reference to any of its &lt;code&gt;Map.Entry&lt;/code&gt;, then the &lt;strong&gt;entire&lt;/strong&gt; Map will be retained into memory.</source>
+          <target state="translated">이것이 &lt;code&gt;TreeMap&lt;/code&gt; 에만 적용되는 이유를 판단하기는 어렵지만 구현을 보면 그 이유는 다음과 같습니다. &lt;code&gt;TreeMap.Entry&lt;/code&gt; 는 형제에 대한 참조를 저장하므로 &lt;code&gt;TreeMap&lt;/code&gt; 을 수집 할 준비가되었지만 다른 클래스는 보유 &lt;code&gt;Map.Entry&lt;/code&gt; 에 대한 참조가 있으면 &lt;strong&gt;전체&lt;/strong&gt; 맵이 메모리에 유지됩니다.</target>
+        </trans-unit>
+        <trans-unit id="561fe384bd30b46ac778a1ce06a62ef27c82a798" translate="yes" xml:space="preserve">
+          <source>It's a waste of memory.</source>
+          <target state="translated">메모리 낭비입니다.</target>
+        </trans-unit>
+        <trans-unit id="3214ee93295d6c88e9d4e29520c16ecb1e48337f" translate="yes" xml:space="preserve">
+          <source>It's caused by a &lt;strong&gt;bug&lt;/strong&gt; or &lt;strong&gt;bad design.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;버그&lt;/strong&gt; 나 &lt;strong&gt;디자인이 잘못 되었기 때문입니다.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="05faaf871b0d1119fafda19c7fdc687954cbd451" translate="yes" xml:space="preserve">
+          <source>Just paste into a file named BigJarCreator.java, compile and run it from command line:</source>
+          <target state="translated">BigJarCreator.java라는 파일에 붙여넣고 명령 행에서 컴파일하고 실행하십시오.</target>
+        </trans-unit>
+        <trans-unit id="f6a8033007fd6ec98535faec7a65097b14dd4f72" translate="yes" xml:space="preserve">
+          <source>Let's create a second class:</source>
+          <target state="translated">두 번째 클래스를 만들어 봅시다 :</target>
+        </trans-unit>
+        <trans-unit id="d4bc67a5ed72fede9fcad90c9bb44a98798af683" translate="yes" xml:space="preserve">
+          <source>Like we have to close SQL connections or files. We need to set proper references to null and remove elements from the collection. We shall have proper caching strategies (maximum memory size, number of elements, or timers). All objects that allow a listener to be notified must provide both a addListener and removeListener method. And when these notifiers are no longer used, they must clear their listener list.</source>
+          <target state="translated">우리는 SQL 연결이나 파일을 닫아야합니다. null에 대한 적절한 참조를 설정하고 컬렉션에서 요소를 제거해야합니다. 적절한 캐싱 전략 (최대 메모리 크기, 요소 수 또는 타이머)이 있어야합니다. 리스너에게 알릴 수있는 모든 객체는 addListener 및 removeListener 메소드를 모두 제공해야합니다. 이러한 알리미가 더 이상 사용되지 않으면 리스너 목록을 지워야합니다.</target>
+        </trans-unit>
+        <trans-unit id="3b458dced83c8ab074875078d1d91f33a9d27043" translate="yes" xml:space="preserve">
+          <source>Log4j has this mechanism called &lt;a href=&quot;http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/NDC.html&quot;&gt;Nested Diagnostic Context(NDC)&lt;/a&gt;  which is an instrument to distinguish interleaved log output from different sources. The granularity at which NDC works is threads, so it distinguishes log outputs from different threads separately.</source>
+          <target state="translated">Log4j에는 &lt;a href=&quot;http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/NDC.html&quot;&gt;NDC (Nested Diagnostic Context)&lt;/a&gt; 라고하는이 메커니즘이 있으며, 이는 서로 다른 소스의 인터리브 로그 출력을 구별하는 도구입니다. NDC가 작동하는 단위는 스레드이므로 다른 스레드의 로그 출력을 개별적으로 구분합니다.</target>
+        </trans-unit>
+        <trans-unit id="a74d4d9b42b3c1615e4d56d4f582ad45b2655049" translate="yes" xml:space="preserve">
+          <source>Managing a &lt;code&gt;List&lt;/code&gt; instance where you are only adding to the list and not deleting from it (although you should be getting rid of elements you no longer need), or</source>
+          <target state="translated">&lt;code&gt;List&lt;/code&gt; 추가 만하고 삭제하지 않는 목록 인스턴스 관리 (더 이상 필요없는 요소는 제거해야 함) 또는</target>
+        </trans-unit>
+        <trans-unit id="b465c99f288420225f974ac507b411ef070d8d63" translate="yes" xml:space="preserve">
+          <source>Maybe by using external native code through JNI?</source>
+          <target state="translated">아마도 JNI를 통해 외부 네이티브 코드를 사용하여?</target>
+        </trans-unit>
+        <trans-unit id="8175a245c08fc481438f6815596d0da7c146e50e" translate="yes" xml:space="preserve">
+          <source>Most examples here are &quot;too complex&quot;. They are edge cases. With these examples, the programmer made a mistake (like don't redefining equals/hashcode), or has been bitten by a corner case of the JVM/JAVA (load of class with static...). I think that's not the type of example an interviewer want or even the most common case.</source>
+          <target state="translated">여기에있는 대부분의 예는 &quot;너무 복잡합니다&quot;. 그들은 엣지 케이스입니다. 이 예제에서 프로그래머는 실수 (등호 / 해시 코드를 재정의하지 않는 것과 같이)를 실수로 만들거나 JVM / JAVA의 코너 사례 (정적 클래스로드 ...)에 물린 적이 있습니다. 나는 그것이 면접관이 원하거나 가장 일반적인 경우가 아니라고 생각합니다.</target>
+        </trans-unit>
+        <trans-unit id="da0e531c2d2164c2c5e59501901aa030bdfe6f3b" translate="yes" xml:space="preserve">
+          <source>Needless to say, I felt pretty dumb having no clue on how to even start creating one.</source>
+          <target state="translated">말할 것도없이, 나는 하나를 만들기 시작하는 방법에 대한 실마리가 전혀없는 바보 같은 느낌이 들었다.</target>
+        </trans-unit>
+        <trans-unit id="c19ee64f2381d0ee2609515e17669080e93f414f" translate="yes" xml:space="preserve">
+          <source>Next you might explain creating an Object that has an underlying native resource, like this:</source>
+          <target state="translated">다음으로 다음과 같이 기본 고유 자원이있는 오브젝트 작성에 대해 설명 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="6fd38b422389649a368e74b0ac97cd5537e46b9f" translate="yes" xml:space="preserve">
+          <source>Not unloading Singletons when bringing down a Java EE application. Apparently, the Classloader that loaded the singleton class will retain a reference to the class, and hence the singleton instance will never be collected. When a new instance of the application is deployed, a new class loader is usually created, and the former class loader will continue to exist due to the singleton.</source>
+          <target state="translated">Java EE 애플리케이션을 종료 할 때 싱글 톤을 언로드하지 않습니다. 분명히 싱글 톤 클래스를로드 한 클래스 로더는 클래스에 대한 참조를 유지하므로 싱글 톤 인스턴스는 수집되지 않습니다. 애플리케이션의 새 인스턴스가 배치되면 일반적으로 새 클래스 로더가 작성되며 단일 클래스로 인해 이전 클래스 로더가 계속 존재합니다.</target>
+        </trans-unit>
+        <trans-unit id="9998b1000c5178e2b3e94d9693a3bf2b4281faec" translate="yes" xml:space="preserve">
+          <source>Now if you call Example1 and get an Example2 discarding Example1, you will inherently still have a link to an Example1 object.</source>
+          <target state="translated">이제 Example1을 호출하고 Example2를 폐기하는 Example2를 가져와도 본질적으로 여전히 Example1 오브젝트에 대한 링크가 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="31d4698f19da02d2be9e8fdd5e63c35ecbb2df33" translate="yes" xml:space="preserve">
+          <source>Of course all sort of listeners (like UI listeners), caches, or any long-lived shared state tend to produce memory leak if not properly handled. What shall be understood is that this is not a Java corner case, or a problem with the garbage collector. It is a design problem. We design that we add a listener to a long-lived object, but we don't remove the listener when no longer needed. We cache objects, but we have no strategy to remove them from the cache.</source>
+          <target state="translated">물론 모든 종류의 리스너 (예 : UI 리스너), 캐시 또는 오래 지속되는 공유 상태는 올바르게 처리하지 않으면 메모리 누수가 발생하는 경향이 있습니다. 이해할 수있는 것은 Java 코너 사례가 아니거나 가비지 수집기의 문제가 아니라는 것입니다. 디자인 문제입니다. 수명이 긴 객체에 리스너를 추가하도록 설계되었지만 더 이상 필요하지 않은 경우 리스너를 제거하지 않습니다. 우리는 객체를 캐시하지만 캐시에서 객체를 제거하는 전략은 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="f39c96ac84791daa94456083a1e63b12c3b34e64" translate="yes" xml:space="preserve">
+          <source>Of course, once identified, the problem can be solved easily.</source>
+          <target state="translated">물론 일단 확인되면 문제를 쉽게 해결할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="359f9517116d8da7b1550c5bd1475ce1ff8ac81b" translate="yes" xml:space="preserve">
+          <source>One of the most important skills you can develop for interviewing is learning to actively listen to the questions and working with the interviewer to extract their intent. Not only does this let you answer their question the way they want, but also shows that you have some vital communication skills. And when it comes down to a choice between many equally talented developers, I'll hire the one who listens, thinks, and understands before they respond every time.</source>
+          <target state="translated">면접을 위해 개발할 수있는 가장 중요한 기술 중 하나는 질문을 적극적으로 듣고 면담 자와 함께 그들의 의도를 추출하는 법을 배우는 것입니다. 이를 통해 원하는 방식으로 질문에 답변 할 수있을뿐만 아니라 의사 소통에 필수적인 기술이 있음을 알 수 있습니다. 그리고 동등한 재능을 가진 많은 개발자들 사이에서 선택을 할 때마다, 나는 매번 응답하기 전에 듣고, 생각하고, 이해하는 사람을 고용 할 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="36a5e6b2c91adbb6a3e2aab7e879640729801965" translate="yes" xml:space="preserve">
+          <source>One way that &lt;em&gt;used&lt;/em&gt; to work though - and I don't know if it still does - is to have a three-deep circular chain. As in Object A has a reference to Object B, Object B has a reference to Object C and Object C has a reference to Object A. The GC was clever enough to know that a two deep chain - as in A &amp;lt;--&amp;gt; B - can safely be collected if A and B aren't accessible by anything else, but couldn't handle the three-way chain...</source>
+          <target state="translated">그래도 작동하는 한 가지 방법은 여전히 ​​알지 못하지만 3 개의 깊은 원형 체인을 갖는 것입니다. 객체 A에서 객체 B에 대한 참조가 있고 객체 B에 객체 C에 대한 참조가 있고 객체 C에 객체 A에 대한 참조가 있습니다. -A와 B가 다른 것에 의해 접근 할 수 없지만 3 방향 체인을 처리 할 수없는 경우 안전하게 수집 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="5b917237b7467dac31648fbc59206979ce55dfd9" translate="yes" xml:space="preserve">
+          <source>Opening &lt;code&gt;Socket&lt;/code&gt;s or &lt;code&gt;File&lt;/code&gt;s, but not closing them when they are no longer needed (similar to the above example involving the &lt;code&gt;Connection&lt;/code&gt; class).</source>
+          <target state="translated">&lt;code&gt;Socket&lt;/code&gt; 또는 &lt;code&gt;File&lt;/code&gt; 을 열지 만 더 이상 필요하지 않을 때는 닫지 않습니다 ( &lt;code&gt;Connection&lt;/code&gt; 클래스와 관련된 위의 예와 유사).</target>
+        </trans-unit>
+        <trans-unit id="76869464027089f768f29feb0983c01df9f013f8" translate="yes" xml:space="preserve">
+          <source>Or how garbage collection is supposed to work in an ideal case?</source>
+          <target state="translated">아니면 가비지 수집이 이상적인 경우 어떻게 작동합니까?</target>
+        </trans-unit>
+        <trans-unit id="a6c25b025c686e8f9dc74431fd57522f3d862d94" translate="yes" xml:space="preserve">
+          <source>Probably one of the simplest examples of a potential memory leak, and how to avoid it, is the implementation of ArrayList.remove(int):</source>
+          <target state="translated">잠재적 인 메모리 누수의 가장 간단한 예 중 하나이며이를 피하는 방법은 ArrayList.remove (int)의 구현입니다.</target>
+        </trans-unit>
+        <trans-unit id="17fed754c98c700a1e917a4eff83b7503478c1c4" translate="yes" xml:space="preserve">
+          <source>Quite simple and surprising.</source>
+          <target state="translated">아주 간단하고 놀라운.</target>
+        </trans-unit>
+        <trans-unit id="f8be3060c2f0cc0e7ea1d276209efffb79b9da26" translate="yes" xml:space="preserve">
+          <source>Remember, memory allocations in native code come from the JVM heap.</source>
+          <target state="translated">기본 코드의 메모리 할당은 JVM 힙에서옵니다.</target>
+        </trans-unit>
+        <trans-unit id="f93f18734a59d8cc05e84f1d83da3ae5a1b3c541" translate="yes" xml:space="preserve">
+          <source>Repeat.</source>
+          <target state="translated">Repeat.</target>
+        </trans-unit>
+        <trans-unit id="fa7a78b153a99b91ec29c754c3a203c8e71690c7" translate="yes" xml:space="preserve">
+          <source>See &lt;a href=&quot;http://publib.boulder.ibm.com/infocenter/wasinfo/v6r0/index.jsp?topic=/com.ibm.websphere.express.doc/info/exp/ae/tprf_tunejvm.html&quot;&gt;IBM jdk settings&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;http://publib.boulder.ibm.com/infocenter/wasinfo/v6r0/index.jsp?topic=/com.ibm.websphere.express.doc/info/exp/ae/tprf_tunejvm.html&quot;&gt;IBM jdk 설정을&lt;/a&gt; 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="4342f1aa1b6f38f7d64ecef7db9d19d2d3e75a62" translate="yes" xml:space="preserve">
+          <source>So an NDC context was associated with inline thread that was spawned. The thread object that was the key for this NDC context, is the inline thread which has the hugeList object hanging off of it. Hence even after the thread finished doing what it was doing, the reference to the hugeList was kept alive by the NDC context Hastable, thus causing a memory leak.</source>
+          <target state="translated">따라서 NDC 컨텍스트는 생성 된 인라인 스레드와 연관되었습니다. 이 NDC 컨텍스트의 핵심이었던 스레드 개체는 hugeList 개체가 매달려있는 인라인 스레드입니다. 따라서 스레드가 수행 한 작업을 완료 한 후에도 hugeList에 대한 참조는 NDC 컨텍스트 Hastable에 의해 유지되어 메모리 누수가 발생합니다.</target>
+        </trans-unit>
+        <trans-unit id="7d67985467b958c5652d6e83679a4c218ed1543a" translate="yes" xml:space="preserve">
+          <source>Sure, you can make things a lot more complicated:</source>
+          <target state="translated">물론 일을 훨씬 더 복잡하게 만들 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="cd8d76ac2082269dbea658a5d224bb45032f49e4" translate="yes" xml:space="preserve">
+          <source>Take any web application running in any servlet container (Tomcat, Jetty, Glassfish, whatever...). Redeploy the app 10 or 20 times in a row (it may be enough to simply touch the WAR in the server's autodeploy directory.</source>
+          <target state="translated">서블릿 컨테이너 (Tomcat, Jetty, Glassfish 등)에서 실행중인 웹 응용 프로그램을 가져옵니다. 앱을 10 회 또는 20 회 연속으로 재배포하십시오 (서버의 자동 배포 디렉토리에서 WAR을 간단히 터치하기에 충분할 수 있습니다).</target>
+        </trans-unit>
+        <trans-unit id="3f0ddb50199ce6aa646038cf3549d10733a974bc" translate="yes" xml:space="preserve">
+          <source>The above scenario of encountering exceptions during object finalization is related to another other scenario that could possibly lead to a memory leak - object resurrection. Object resurrection is often done intentionally by creating a strong reference to the object from being finalized, from another object. When object resurrection is misused it will lead to a memory leak in combination with other sources of memory leaks.</source>
+          <target state="translated">위의 객체 종료 중 예외가 발생하는 시나리오는 메모리 누수 (객체 부활)로 이어질 수있는 다른 시나리오와 관련이 있습니다. 객체 부활은 종종 다른 객체에서 마무리되지 않은 객체에 대한 강력한 참조를 만들어 의도적으로 수행됩니다. 객체 부활이 잘못 사용되면 다른 메모리 누수 소스와 함께 메모리 누수가 발생합니다.</target>
+        </trans-unit>
+        <trans-unit id="2b9ff2a3549857707ad2be7dd1a55940374de5a7" translate="yes" xml:space="preserve">
+          <source>The answer depends entirely on what the interviewer thought they were asking.</source>
+          <target state="translated">답은 전적으로 면접관이 생각한 것에 달려 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="e3695b3f538930610ef2063781d02d8ad60759f2" translate="yes" xml:space="preserve">
+          <source>The application clears all references to the custom class or the &lt;code&gt;ClassLoader&lt;/code&gt; it was loaded from.</source>
+          <target state="translated">응용 프로그램은 사용자 정의 클래스 또는 클래스 &lt;code&gt;ClassLoader&lt;/code&gt; 대한 모든 참조를 지 웁니다.</target>
+        </trans-unit>
+        <trans-unit id="eb7caa9734b5c2cfa40c6dd7a093614c5ac2b370" translate="yes" xml:space="preserve">
+          <source>The application creates a long-running thread (or use a thread pool to leak even faster).</source>
+          <target state="translated">응용 프로그램은 오래 실행되는 스레드를 생성합니다 (또는 스레드 풀을 사용하여 더 빨리 누출).</target>
+        </trans-unit>
+        <trans-unit id="7f743f017b4a20fdb5c358a933b5c9d5b39a31e1" translate="yes" xml:space="preserve">
+          <source>The class allocates a large chunk of memory (e.g. &lt;code&gt;new byte[1000000]&lt;/code&gt;), stores a strong reference to it in a static field, and then stores a reference to itself in a &lt;code&gt;ThreadLocal&lt;/code&gt;.  Allocating the extra memory is optional (leaking the class instance is enough), but it will make the leak work that much faster.</source>
+          <target state="translated">이 클래스는 큰 메모리 청크를 할당하고 (예 : &lt;code&gt;new byte[1000000]&lt;/code&gt; ) 강력한 참조를 정적 필드에 저장 한 다음 자신에 대한 참조를 &lt;code&gt;ThreadLocal&lt;/code&gt; 에 저장합니다. 추가 메모리 할당은 선택 사항이지만 (클래스 인스턴스를 사용하는 것으로 충분 함) 누출 작업이 훨씬 빨라집니다.</target>
+        </trans-unit>
+        <trans-unit id="d1d4b11ad55598d70c016aed843e15846eb38a95" translate="yes" xml:space="preserve">
+          <source>The easy answer is: You can't. Java does automatic memory management and will free resources that are not needed for you. You can't stop this from happening. It will ALWAYS be able to release the resources. In programs with manual memory management, this is different. You cann get some memory in C using malloc(). To free the memory, you need the pointer that malloc returned and call free() on it. But if you don't have the pointer anymore (overwritten, or lifetime exceeded), then you are unfortunately incapable of freeing this memory and thus you have a memory leak.</source>
+          <target state="translated">쉬운 대답은 : 당신은 할 수 없습니다. Java는 자동 메모리 관리를 수행하며 필요하지 않은 자원을 비 웁니다. 이것을 막을 수는 없습니다. 항상 리소스를 해제 할 수 있습니다. 수동 메모리 관리가있는 프로그램에서는 다릅니다. malloc ()을 사용하여 C에서 약간의 메모리를 얻을 수 있습니다. 메모리를 비우려면 malloc이 리턴 한 포인터가 필요하며 free ()를 호출하십시오. 그러나 더 이상 포인터를 쓰지 않거나 (수명을 초과하거나 수명을 초과 한 경우) 불행히도이 메모리를 해제 할 수 없으므로 메모리 누수가 발생합니다.</target>
+        </trans-unit>
+        <trans-unit id="b424fdf14efd0565b16910fc197e737854e5dbbb" translate="yes" xml:space="preserve">
+          <source>The following is a pretty pointless example, if you do not understand &lt;a href=&quot;http://en.wikipedia.org/wiki/Java_Database_Connectivity&quot;&gt;JDBC&lt;/a&gt;. Or at least how JDBC expects a developer to close &lt;code&gt;Connection&lt;/code&gt;, &lt;code&gt;Statement&lt;/code&gt; and &lt;code&gt;ResultSet&lt;/code&gt; instances before discarding them or losing references to them, instead of relying on the implementation of &lt;code&gt;finalize&lt;/code&gt;.</source>
+          <target state="translated">다음은 &lt;a href=&quot;http://en.wikipedia.org/wiki/Java_Database_Connectivity&quot;&gt;JDBC를&lt;/a&gt; 이해하지 못하는 경우 무의미한 예입니다. 또는 최소한 JDBC가 개발자가 &lt;code&gt;Connection&lt;/code&gt; , &lt;code&gt;Statement&lt;/code&gt; 및 &lt;code&gt;ResultSet&lt;/code&gt; 인스턴스를 종료하거나 &lt;code&gt;finalize&lt;/code&gt; 구현에 의존하지 않고 인스턴스를 삭제하거나 참조를 잃기 전에 닫는 방법을 예상합니다.</target>
+        </trans-unit>
+        <trans-unit id="8b24917f88855c09f743fed66380957ea6ac7f32" translate="yes" xml:space="preserve">
+          <source>The ideas of creating objects that have a very large footprint and then not being able to access them aren't real memory leaks either. If nothing can access it then it will be garbage collected, and if something can access it then it's not a leak...</source>
+          <target state="translated">설치 공간이 매우 커서 객체에 액세스 할 수없는 객체를 만드는 아이디어는 실제 메모리 누수가 아닙니다. 아무것도 접근 할 수 없다면 가비지 수집되며, 접근 할 수 있다면 누출이 아닙니다 ...</target>
+        </trans-unit>
+        <trans-unit id="498384654cf1a60837b9c1e363e1194c26e66a19" translate="yes" xml:space="preserve">
+          <source>The interviewer might have be looking for a circular reference solution:</source>
+          <target state="translated">면접관은 순환 참조 솔루션을 찾고 있었을 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="412ce2817e5c890b4523cb4a740d986a34dfcdb5" translate="yes" xml:space="preserve">
+          <source>The interviewer was probably looking for a circular reference like the code below (which incidentally only leak memory in very old JVMs that used reference counting, which isn't the case any more).  But it's a pretty vague question, so it's a prime opportunity to show off your understanding of JVM memory management.</source>
+          <target state="translated">면접관은 아마도 아래 코드와 같은 순환 참조를 찾고 있었을 것입니다 (실제로 참조 계산을 사용하는 아주 오래된 JVM에서는 메모리가 누출되어 더 이상은 아닙니다). 그러나 매우 모호한 질문이므로 JVM 메모리 관리에 대한 이해를 과시 할 수있는 최고의 기회입니다.</target>
+        </trans-unit>
+        <trans-unit id="8dc73d2ce0e83223aa03d41ab80d35a989d7f58c" translate="yes" xml:space="preserve">
+          <source>The long answer is: You can get a memory leak by writing a library for Java using the JNI, which can have manual memory management and thus have memory leaks. If you call this library, your java process will leak memory. Or, you can have bugs in the JVM, so that the JVM looses memory. There are probably bugs in the JVM, there may even be some known ones since garbage collection is not that trivial, but then it's still a bug. By design this is not possible. You may be asking for some java code that is effected by such a bug. Sorry I don't know one and it might well not be a bug anymore in the next Java version anyway.</source>
+          <target state="translated">긴 대답은 다음과 같습니다. JNI를 사용하여 Java 용 라이브러리를 작성하면 메모리 누수가 발생할 수 있습니다. JNI는 수동 메모리 관리가 가능하므로 메모리 누수가 발생할 수 있습니다. 이 라이브러리를 호출하면 Java 프로세스에서 메모리가 누출됩니다. 또는 JVM에 버그가있어 JVM이 메모리를 잃을 수 있습니다. JVM에는 버그가있을 수 있습니다. 가비지 수집은 그다지 중요하지 않지만 여전히 버그이기 때문에 알려진 버그가있을 수 있습니다. 설계 상으로는 불가능합니다. 그러한 버그로 인해 영향을받는 일부 Java 코드를 요구할 수 있습니다. 미안하지만 하나도 모르고 다음 Java 버전에서는 더 이상 버그가 아닐 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="adea7071c985a58f8fd610cc024525873a3aa3a3" translate="yes" xml:space="preserve">
+          <source>The problem is, the lifetime of the container is longer than the lifetime of your application. You have to make sure that all references the container might have to objects or classes of your application can be garbage collected.</source>
+          <target state="translated">문제는 컨테이너의 수명이 응용 프로그램의 수명보다 길다는 것입니다. 컨테이너가 응용 프로그램의 객체 또는 클래스에 대한 모든 참조를 가비지 수집 할 수 있는지 확인해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="32354f8645f398ec02633b310f2fbfabd89963a0" translate="yes" xml:space="preserve">
+          <source>The problem with the above is that the &lt;code&gt;Connection&lt;/code&gt; object is not closed, and hence the physical connection will remain open, until the garbage collector comes around and sees that it is unreachable. GC will invoke the &lt;code&gt;finalize&lt;/code&gt; method, but there are JDBC drivers that do not implement the &lt;code&gt;finalize&lt;/code&gt;, at least not in the same way that &lt;code&gt;Connection.close&lt;/code&gt; is implemented. The resulting behavior is that while memory will be reclaimed due to unreachable objects being collected, resources (including memory) associated with the &lt;code&gt;Connection&lt;/code&gt; object might simply not be reclaimed.</source>
+          <target state="translated">위의 문제는 &lt;code&gt;Connection&lt;/code&gt; 객체가 닫히지 않았으므로 가비지 수집기가 돌아 와서 도달 할 수 없을 때까지 물리적 연결이 열린 상태로 유지된다는 것입니다. GC는 &lt;code&gt;finalize&lt;/code&gt; 메소드를 호출하지만 최소한 &lt;code&gt;Connection.close&lt;/code&gt; 가 구현되는 것과 같은 방식으로 &lt;code&gt;finalize&lt;/code&gt; 를 구현하지 않는 JDBC 드라이버가 있습니다. 결과적으로 도달 할 수없는 오브젝트가 수집되어 메모리가 회수되는 동안 &lt;code&gt;Connection&lt;/code&gt; 오브젝트와 연관된 자원 (메모리 포함)이 단순히 회수되지 않을 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="c0492784502ac7b023338bf1861aa0d6c1111248" translate="yes" xml:space="preserve">
+          <source>The same case with &lt;code&gt;java.util.zip.Deflater&lt;/code&gt;. This one is far worse since Deflater is memory hungry in Java, i.e. always uses 15&amp;nbsp;bits (max) and 8&amp;nbsp;memory levels (9 is max) allocating several hundreds KB of native memory. Fortunately, &lt;code&gt;Deflater&lt;/code&gt; is not widely used and to my knowledge JDK contains no misuses. Always call &lt;code&gt;end()&lt;/code&gt; if you manually create a &lt;code&gt;Deflater&lt;/code&gt; or &lt;code&gt;Inflater&lt;/code&gt;. The best part of the last two: &lt;em&gt;you can't find them via normal profiling tools available.&lt;/em&gt;</source>
+          <target state="translated">&lt;code&gt;java.util.zip.Deflater&lt;/code&gt; 와 같은 경우입니다. Deflater는 Java에서 메모리가 부족한 상태이므로 훨씬 더 나쁩니다. 즉, 항상 수백 KB의 기본 메모리를 할당하는 15 비트 (최대) 및 8 개의 메모리 레벨 (9는 최대)을 사용합니다. 다행히 &lt;code&gt;Deflater&lt;/code&gt; 는 널리 사용되지 않으며 JDK에는 오용이 없습니다. &lt;code&gt;Deflater&lt;/code&gt; 또는 &lt;code&gt;Inflater&lt;/code&gt; 를 수동으로 작성하는 경우 항상 &lt;code&gt;end()&lt;/code&gt; 호출하십시오. 마지막 두 가지 중 가장 중요한 부분 : &lt;em&gt;사용 가능한 일반 프로파일 링 도구로는 찾을 수 없습니다.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="f7730755a141a588beb950cf6c7f3e8017ee4066" translate="yes" xml:space="preserve">
+          <source>The same does not happen with a hashed data-structure (&lt;code&gt;HashMap&lt;/code&gt;).</source>
+          <target state="translated">해시 데이터 구조 ( &lt;code&gt;HashMap&lt;/code&gt; )에서도 마찬가지입니다.</target>
+        </trans-unit>
+        <trans-unit id="0352f2341f5f449ba06bcda30149e5f08b413dbd" translate="yes" xml:space="preserve">
+          <source>The thread loads a class via an (optionally custom) &lt;code&gt;ClassLoader&lt;/code&gt;.</source>
+          <target state="translated">스레드는 (선택적으로 사용자 정의 된) &lt;code&gt;ClassLoader&lt;/code&gt; 를 통해 클래스를로드합니다.</target>
+        </trans-unit>
+        <trans-unit id="6fedeb1df7f6b88de765c27a7adbb0fdeb28d8aa" translate="yes" xml:space="preserve">
+          <source>The way to avoid storing an unwanted reference to the original string is to do something like this:</source>
+          <target state="translated">원래 문자열에 대한 원치 않는 참조를 저장하지 않는 방법은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="45629db4e3dbdc5582d4bb13414ae467af08c8bb" translate="yes" xml:space="preserve">
+          <source>Then you can explain that with reference counting, the above code would leak memory.  But most modern JVMs don't use reference counting any longer, most use a sweep garbage collector, which will in fact collect this memory.</source>
+          <target state="translated">그런 다음 참조 카운트를 사용하면 위 코드에서 메모리가 누출 될 수 있다고 설명 할 수 있습니다. 그러나 대부분의 최신 JVM은 더 이상 참조 계산을 사용하지 않으며 대부분이 메모리를 수집하는 스윕 가비지 수집기를 사용합니다.</target>
+        </trans-unit>
+        <trans-unit id="66d4e8703685eff6d732f6391330bb34727fe15c" translate="yes" xml:space="preserve">
+          <source>Then you can explain this is technically a memory leak, but really the leak is caused by native code in the JVM allocating underlying native resources, which weren't freed by your Java code.</source>
+          <target state="translated">그런 다음 이것이 기술적으로 메모리 누수라고 설명 할 수 있지만 실제로 누수는 기본 원시 자원을 할당하는 JVM의 원시 코드로 인해 발생하며 Java 코드에서 해제하지 않았습니다.</target>
+        </trans-unit>
+        <trans-unit id="ffc5e9bb3e214badc001c96e9c2a5a49f5a27f5e" translate="yes" xml:space="preserve">
+          <source>There are plenty more examples that you can conjure up - like</source>
+          <target state="translated">당신이 쓸 수있는 더 많은 예가 있습니다-</target>
+        </trans-unit>
+        <trans-unit id="904011d1f23e7492eaba27cbc41be9c7c5b6df7a" translate="yes" xml:space="preserve">
+          <source>This class basically does nothing, but create unreferenced InputStream objects. Those objects will be garbage collected immediately and thus, do not contribute to heap size.
+It is important for our example to load an existing resource from a jar file, and size does matter here!</source>
+          <target state="translated">이 클래스는 기본적으로 아무것도하지 않지만 참조되지 않은 InputStream 객체를 만듭니다. 이러한 객체는 즉시 가비지 수집되므로 힙 크기에 영향을 미치지 않습니다. 이 예제에서는 jar 파일에서 기존 리소스를로드하는 것이 중요하며 여기서 크기는 중요합니다!</target>
+        </trans-unit>
+        <trans-unit id="aafd3bef6db7342b162f90ff472dde6af8ff6c40" translate="yes" xml:space="preserve">
+          <source>This is a classic problem with reference counting garbage collectors.  You would then politely explain that JVMs use a much more sophisticated algorithm that doesn't have this limitation.</source>
+          <target state="translated">이것은 참조 카운트 가비지 수집기의 고전적인 문제입니다. 그런 다음 JVM이이 제한이없는 훨씬 더 정교한 알고리즘을 사용한다고 정중하게 설명합니다.</target>
+        </trans-unit>
+        <trans-unit id="c4fe560b3789232951558a324f943b367a22a050" translate="yes" xml:space="preserve">
+          <source>This is the graph when using a &lt;code&gt;HashMap&lt;/code&gt;.</source>
+          <target state="translated">이것은 &lt;code&gt;HashMap&lt;/code&gt; 을 사용할 때의 그래프입니다.</target>
+        </trans-unit>
+        <trans-unit id="b145c727efa517020a8f1c0a55c1c2da20a12547" translate="yes" xml:space="preserve">
+          <source>Threads are not collected until they terminate. They serve as &lt;a href=&quot;https://stackoverflow.com/questions/6366211/what-are-the-roots&quot;&gt;roots&lt;/a&gt; of garbage collection. They are one of the few objects that won't be reclaimed simply by forgetting about them or clearing references to them.</source>
+          <target state="translated">스레드는 종료 될 때까지 수집되지 않습니다. 가비지 수집의 &lt;a href=&quot;https://stackoverflow.com/questions/6366211/what-are-the-roots&quot;&gt;근간&lt;/a&gt; 이됩니다. 그것들은 단순히 잊어 버렸거나 참조를 지우는 것으로 간단하게 되찾지 않는 몇 안되는 물건 중 하나입니다.</target>
+        </trans-unit>
+        <trans-unit id="a4085f8f26ad02cf20cca7df5130111f289a5f5a" translate="yes" xml:space="preserve">
+          <source>Threads started by your application, ThreadLocal variables, logging appenders are some of the usual suspects to cause classloader leaks.</source>
+          <target state="translated">응용 프로그램에서 시작한 스레드, ThreadLocal 변수, 로깅 어 펜더는 클래스 로더 누수를 일으키는 일반적인 용의자 중 일부입니다.</target>
+        </trans-unit>
+        <trans-unit id="19e95f717de5b1ff354994ef88c03939a32c2c41" translate="yes" xml:space="preserve">
+          <source>Uhm, you might say, what an idiot.</source>
+          <target state="translated">음, 당신은 바보라고 말할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="0008cf97a597cccd424ebf9a467479cf5807f825" translate="yes" xml:space="preserve">
+          <source>Unless anybody has actually tested this, chances are high that you'll get an OutOfMemoryError after a couple of redeployments, because the application did not take care to clean up after itself. You may even find a bug in your server with this test.</source>
+          <target state="translated">아무도 실제로 이것을 테스트하지 않으면 응용 프로그램 자체를 정리하지 않았기 때문에 몇 번의 재배포 후에 OutOfMemoryError가 발생할 가능성이 높습니다. 이 테스트를 통해 서버에서 버그를 발견 할 수도 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="128a6307eefbc715ecb4699ab3da65a0639066f2" translate="yes" xml:space="preserve">
+          <source>Using &lt;code&gt;InflaterInputStream&lt;/code&gt; passing &lt;code&gt;new java.util.zip.Inflater()&lt;/code&gt; in the constructor (&lt;code&gt;PNGImageDecoder&lt;/code&gt; for instance) and not calling &lt;code&gt;end()&lt;/code&gt; of the inflater. Well, if you pass in the constructor with just &lt;code&gt;new&lt;/code&gt;, no chance... And yes, calling &lt;code&gt;close()&lt;/code&gt; on the stream does not close the inflater if it's manually passed as constructor parameter. This is not a true leak since it'd be released by the finalizer... when it deems it necessary. Till that moment it eats native memory so badly it can cause Linux oom_killer to kill the process with impunity. The main issue is that finalization in Java is very unreliable and G1 made it worse till 7.0.2. Moral of the story: release native resources as soon as you can; the finalizer is just too poor.</source>
+          <target state="translated">생성자 (예 : &lt;code&gt;PNGImageDecoder&lt;/code&gt; &lt;code&gt;new java.util.zip.Inflater()&lt;/code&gt; 에서 새 java.util.zip.Inflater () 를 전달하고 팽창기의 &lt;code&gt;end()&lt;/code&gt; 를 호출하지 않는 &lt;code&gt;InflaterInputStream&lt;/code&gt; 사용 음, &lt;code&gt;new&lt;/code&gt; 로만 생성자를 전달하면 기회가 없습니다 ... 그리고 예를 들어 스트림에서 &lt;code&gt;close()&lt;/code&gt; 를 호출하면 생성자 매개 변수로 수동으로 전달 된 인플레이터가 닫히지 않습니다. 이것은 파이널 라이저가 필요하다고 생각할 때 릴리스되기 때문에 실제 누출이 아닙니다. 그 순간까지 네이티브 메모리를 너무 많이 먹어서 리눅스 oom_killer가 프로세스를 무의식적으로 죽일 수 있습니다. 주요 문제는 Java의 최종화가 매우 신뢰할 수 없으며 G1이 7.0.2까지 악화되었다는 것입니다. 이야기의 교훈 : 가능한 한 빨리 기본 리소스를 해제하십시오. 파이널 라이저는 너무 가난합니다.</target>
+        </trans-unit>
+        <trans-unit id="db7f83d9c472fa43a63151a5e4c317b7c3bbf627" translate="yes" xml:space="preserve">
+          <source>Using &lt;code&gt;java.net.URL&lt;/code&gt; with the HTTP(S) protocol and loading the resource from(!). This one is special, the &lt;code&gt;KeepAliveCache&lt;/code&gt; creates a new thread in the system ThreadGroup which leaks the current thread's context classloader. The thread is created upon the first request when no alive thread exists, so either you may get lucky or just leak. &lt;em&gt;The leak is already fixed in Java&amp;nbsp;7 and the code that creates thread properly removes the context classloader.&lt;/em&gt; There are few more cases (&lt;del&gt;like ImageFetcher&lt;/del&gt;, &lt;em&gt;also fixed&lt;/em&gt;) of creating similar threads.</source>
+          <target state="translated">HTTP (S) 프로토콜과 함께 &lt;code&gt;java.net.URL&lt;/code&gt; 을 사용하고 from (!)에서 자원을로드합니다. 이것은 특별한 것입니다. &lt;code&gt;KeepAliveCache&lt;/code&gt; 는 시스템 ThreadGroup에 새로운 스레드를 생성하여 현재 스레드의 컨텍스트 클래스 로더를 누출시킵니다. 스레드는 살아있는 스레드가 없을 때 첫 번째 요청에 따라 생성되므로 운이 좋거나 누수가 발생할 수 있습니다. &lt;em&gt;누출은 이미 Java 7에서 수정되었으며 스레드를 작성하는 코드는 컨텍스트 클래스 로더를 올바르게 제거합니다.&lt;/em&gt; 더 적은 경우가 있습니다 ( &lt;del&gt; ImageFetcher와 같은 &lt;/del&gt; 유사한 스레드를 만들 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="7e2bd08997e52249f29d0c756352856016775283" translate="yes" xml:space="preserve">
+          <source>Using WeakHashMap and the value (in)directly references the key. This is a hard one to find without a heap dump. That applies to all extended &lt;code&gt;Weak/SoftReference&lt;/code&gt; that might keep a hard reference back to the guarded object.</source>
+          <target state="translated">WeakHashMap 및 값 (in)을 사용하면 키를 직접 참조합니다. 힙 덤프 없이는 찾기가 어렵습니다. 보호 된 객체에 대한 하드 참조를 다시 유지할 수있는 모든 확장 된 &lt;code&gt;Weak/SoftReference&lt;/code&gt; 에 적용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="5fa1d1f56ee0faa7d0cf56ebc24c98388dcc729f" translate="yes" xml:space="preserve">
+          <source>We maybe have a complex graph that store the previous state that is needed by a computation. But the previous state is itself linked to the state before and so on.</source>
+          <target state="translated">계산에 필요한 이전 상태를 저장하는 복잡한 그래프가있을 수 있습니다. 그러나 이전 상태 자체는 이전 상태와 연결되어 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="5fd7c424bc08d42aa85bcb6558d5264996a2b57a" translate="yes" xml:space="preserve">
+          <source>Well, what makes this interesting is: this way, you can leak heap memory of the underlying process, rather than from JVM's heap.</source>
+          <target state="translated">글쎄, 이것이 흥미로운 점은이 방법으로 JVM의 힙이 아닌 기본 프로세스의 힙 메모리를 누출시킬 수 있다는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="1e8f1a2cab2a1e8c521b8499a326ad722ac22533" translate="yes" xml:space="preserve">
+          <source>What would an example be?</source>
+          <target state="translated">예는 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="2bcbc0f27e355df9586f60612ed6c419c0b76ba0" translate="yes" xml:space="preserve">
+          <source>What's a memory leak:</source>
+          <target state="translated">메모리 누수 란 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="8e57ea67c0d0d56590c6fc284fb243c6af72b231" translate="yes" xml:space="preserve">
+          <source>With pure Java, it is almost impossible.</source>
+          <target state="translated">순수한 Java를 사용하면 거의 불가능합니다.</target>
+        </trans-unit>
+        <trans-unit id="e3503ae94b2d7d671b690c78d933fef4b9fd517a" translate="yes" xml:space="preserve">
+          <source>You are able to make memory leak with &lt;strong&gt;sun.misc.Unsafe&lt;/strong&gt; class. In fact this service class is used in different standard classes (for example in &lt;strong&gt;java.nio&lt;/strong&gt; classes). &lt;strong&gt;You can't create instance of this class directly&lt;/strong&gt;, but you may &lt;strong&gt;use reflection to do that&lt;/strong&gt;.</source>
+          <target state="translated">&lt;strong&gt;sun.misc.Unsafe&lt;/strong&gt; 클래스를 사용하면 메모리 누수가 &lt;strong&gt;발생할 수&lt;/strong&gt; 있습니다. 실제로이 서비스 클래스는 다른 표준 클래스 (예 : &lt;strong&gt;java.nio&lt;/strong&gt; 클래스)에서 사용됩니다. &lt;strong&gt;이 클래스의 인스턴스를 직접 만들 수는 없지만&lt;/strong&gt; &lt;strong&gt;리플렉션을 사용하여이를 수행&lt;/strong&gt; 할 수 &lt;strong&gt;있습니다&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="495db2d0ecb2b5d6486e34663aac96fb78fd63b3" translate="yes" xml:space="preserve">
+          <source>You can create a moving memory leak by creating a new instance of a class in that class's finalize method. Bonus points if the finalizer creates multiple instances. Here's a simple program that leaks the entire heap in sometime between a few seconds and a few minutes depending on your heap size:</source>
+          <target state="translated">해당 클래스의 finalize 메소드에서 클래스의 새 인스턴스를 작성하여 이동 메모리 누수를 작성할 수 있습니다. 종료자가 여러 인스턴스를 만드는 경우 보너스 포인트. 다음은 힙 크기에 따라 몇 초에서 몇 분 사이에 전체 힙을 유출하는 간단한 프로그램입니다.</target>
+        </trans-unit>
+        <trans-unit id="c72266e96293bbdf8f5fe332a36656dce96d27dc" translate="yes" xml:space="preserve">
+          <source>You can easily create such a jar with the following class:</source>
+          <target state="translated">다음 클래스를 사용하여 이러한 항아리를 쉽게 만들 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="fefe0fe4e4d641d9025b925dd7404b2aa130fb61" translate="yes" xml:space="preserve">
+          <source>You can see from this &lt;code&gt;visualvm&lt;/code&gt; graph how the memory keeps growing.</source>
+          <target state="translated">이 &lt;code&gt;visualvm&lt;/code&gt; 그래프에서 메모리가 어떻게 계속 커지는 지 알 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="d8c3ed8ac3489419651ba518cc481631d2dc3ca9" translate="yes" xml:space="preserve">
+          <source>You will not encounter an OOM error here, as no references are kept, the application will keep running no matter how large you chose ITERATIONS in the above example.
+The memory consumption of your process (visible in top (RES/RSS) or process explorer) grows unless the application gets to the wait command. In the setup above, it will allocate around 150 MB in memory.</source>
+          <target state="translated">참조가 유지되지 않기 때문에 여기에서 OOM 오류가 발생하지 않으며 위 예제에서 ITERATIONS를 선택한 크기에 관계없이 응용 프로그램이 계속 실행됩니다. 응용 프로그램이 대기 명령에 도달하지 않으면 프로세스의 메모리 소비 (맨 위 (RES / RSS) 또는 프로세스 탐색기)가 증가합니다. 위의 설정에서 약 150MB의 메모리를 할당합니다.</target>
+        </trans-unit>
+        <trans-unit id="86f8f434981fb71a8e76491c4a7a343cf03466a0" translate="yes" xml:space="preserve">
+          <source>Your cache grows and grows. And pretty soon the entire database gets sucked into memory. A better design uses an LRUMap (Only keeps recently used objects in cache).</source>
+          <target state="translated">캐시가 커지고 커집니다. 그리고 곧 전체 데이터베이스가 메모리로 빨려 들어갑니다. 더 나은 디자인은 LRUMap을 사용합니다 (최근에 사용한 객체 만 캐시에 유지).</target>
+        </trans-unit>
+        <trans-unit id="ad36d9e69cb6c7cf2acdd873fd137df990e16c0b" translate="yes" xml:space="preserve">
+          <source>adding more &lt;strong&gt;complex reference trees&lt;/strong&gt;.</source>
+          <target state="translated">더 &lt;strong&gt;복잡한 참조 트리&lt;/strong&gt; 추가.</target>
+        </trans-unit>
+        <trans-unit id="dff532b2bed649cb51e0055c618ee5a7df1d5e3b" translate="yes" xml:space="preserve">
+          <source>and your process will not exceed 35 MB, independent of the iteration count.</source>
+          <target state="translated">프로세스는 반복 횟수와 상관없이 35MB를 초과하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="5d0578d4d75c5bea4841ed0d843dfa4511871bc3" translate="yes" xml:space="preserve">
+          <source>or leaks caused by &lt;strong&gt;3rd party libraries&lt;/strong&gt;.</source>
+          <target state="translated">또는 &lt;strong&gt;타사 라이브러리로&lt;/strong&gt; 인한 누수.</target>
+        </trans-unit>
+        <trans-unit id="6dc2a9f3e198de9ab5c44591f007d29eb6dce64c" translate="yes" xml:space="preserve">
+          <source>using &lt;strong&gt;ThreadLocal&lt;/strong&gt; constructions.</source>
+          <target state="translated">&lt;strong&gt;ThreadLocal&lt;/strong&gt; 구성을 사용합니다.</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

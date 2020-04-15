@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/4421706">
+    <body>
+      <group id="4421706">
+        <trans-unit id="ebdeccffb9c593d5235ca8b75391edfe495210fe" translate="yes" xml:space="preserve">
+          <source>(However, &lt;em&gt;if&lt;/em&gt; you make an exception, do not forget the issue of &lt;code&gt;const&lt;/code&gt;-ness for the operand that, for member functions, becomes the implicit &lt;code&gt;this&lt;/code&gt; argument. If the operator as a non-member function would take its left-most argument as a &lt;code&gt;const&lt;/code&gt; reference, the same operator as a member function needs to have a &lt;code&gt;const&lt;/code&gt; at the end to make &lt;code&gt;*this&lt;/code&gt; a &lt;code&gt;const&lt;/code&gt; reference.)</source>
+          <target state="translated">（ただし、例外を作成する&lt;em&gt;場合&lt;/em&gt; 、メンバー関数の場合、暗黙の &lt;code&gt;this&lt;/code&gt; 引数になるオペランドの &lt;code&gt;const&lt;/code&gt; -nessの問題を忘れないでください。非メンバー関数としての演算子が左端の引数を &lt;code&gt;const&lt;/code&gt; 参照。メンバー関数と同じ演算子は、 &lt;code&gt;*this&lt;/code&gt; を &lt;code&gt;const&lt;/code&gt; 参照にするために、末尾に &lt;code&gt;const&lt;/code&gt; が必要です。）</target>
+        </trans-unit>
+        <trans-unit id="a932915cc63f83451fad890ba330a2fe5b0e1013" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;operator+=&lt;/code&gt; returns its result per reference, while &lt;code&gt;operator+&lt;/code&gt; returns a copy of its result. Of course, returning a reference is usually more efficient than returning a copy, but in the case of &lt;code&gt;operator+&lt;/code&gt;, there is no way around the copying. When you write &lt;code&gt;a + b&lt;/code&gt;, you expect the result to be a new value, which is why &lt;code&gt;operator+&lt;/code&gt; has to return a new value.&lt;sup&gt;3&lt;/sup&gt;
+Also note that &lt;code&gt;operator+&lt;/code&gt; takes its left operand &lt;strong&gt;&lt;em&gt;by copy&lt;/em&gt;&lt;/strong&gt; rather than by const reference. The reason for this is the same as the reason giving for &lt;code&gt;operator=&lt;/code&gt; taking its argument per copy.</source>
+          <target state="translated">&lt;code&gt;operator+=&lt;/code&gt; は参照ごとに結果を返しますが、 &lt;code&gt;operator+&lt;/code&gt; は結果のコピーを返します。 もちろん、参照を返すことは通常、コピーを返すよりも効率的ですが、 &lt;code&gt;operator+&lt;/code&gt; の場合、コピーを回避する方法はありません。 &lt;code&gt;a + b&lt;/code&gt; を記述する場合、結果は新しい値であることが期待されます。そのため、 &lt;code&gt;operator+&lt;/code&gt; は新しい値を返す必要があります。 &lt;sup&gt;3&lt;/sup&gt; &lt;code&gt;operator+&lt;/code&gt; は左オペランドをconst参照ではなく&lt;strong&gt;&lt;em&gt;コピー&lt;/em&gt;&lt;/strong&gt;で取得&lt;strong&gt;&lt;em&gt;する&lt;/em&gt;&lt;/strong&gt;ことにも注意してください。 これの理由は、 &lt;code&gt;operator=&lt;/code&gt; がコピーごとに引数をとる理由と同じです。</target>
+        </trans-unit>
+        <trans-unit id="338efc32f9cb83e0dd8331e45788ecc57787ef85" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Operators are related to each other&lt;/em&gt; and to other operations. If your type supports &lt;code&gt;a + b&lt;/code&gt;, users will expect to be able to call &lt;code&gt;a += b&lt;/code&gt;, too. If it supports prefix increment &lt;code&gt;++a&lt;/code&gt;, they will expect &lt;code&gt;a++&lt;/code&gt; to work as well. If they can check whether &lt;code&gt;a &amp;lt; b&lt;/code&gt;, they will most certainly expect to also to be able to check whether &lt;code&gt;a &amp;gt; b&lt;/code&gt;. If they can copy-construct your type, they expect assignment to work as well.</source>
+          <target state="translated">&lt;em&gt;オペレーターは相互に関連し、他の操作に関連してい&lt;/em&gt;ます。 タイプが &lt;code&gt;a + b&lt;/code&gt; サポートしている場合、ユーザーは &lt;code&gt;a += b&lt;/code&gt; も呼び出すことができると期待します。 プレフィックスインクリメント &lt;code&gt;++a&lt;/code&gt; をサポートしている場合、彼らは &lt;code&gt;a++&lt;/code&gt; も同様に機能することを期待します。 彼らが &lt;code&gt;a &amp;lt; b&lt;/code&gt; であるかどうかを確認できる場合、彼らは最も確実に &lt;code&gt;a &amp;gt; b&lt;/code&gt; かどうかも確認できると期待します。 彼らがあなたのタイプをコピー構築できるなら、彼らは割り当てが同様に機能することを期待しています。</target>
+        </trans-unit>
+        <trans-unit id="aa5bd5f45a48b221e418619d95cdcc6b6c6e44a4" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;Always provide all out of a set of related operations.&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;関連する一連の操作のすべてを常に提供します。&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="9489b9f4b1bac05ddb2354a51560ad5b088a8f70" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;Always stick to the operator&amp;rsquo;s well-known semantics.&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;常にオペレーターのよく知られたセマンティクスに固執してください。&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="09e12a464818e248f8bb9ed843a88d4b181a6616" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;Whenever the meaning of an operator is not obviously clear and undisputed, it should not be overloaded.&lt;/em&gt;&lt;/strong&gt;&lt;em&gt;Instead, provide a function with a well-chosen name.&lt;/em&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;演算子の意味が明らかに明確で議論の余地がない場合は常に、オーバーロードしないでください。&lt;/em&gt;&lt;/strong&gt; &lt;em&gt;代わりに、適切に選択された名前の関数を提供してください。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="620ae72342c6c376f4c4a1a08f78905e1878296d" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt;
+&lt;em&gt;(Note: This is meant to be an entry to &lt;a href=&quot;https://stackoverflow.com/questions/tagged/c++-faq&quot;&gt;Stack Overflow's C++ FAQ&lt;/a&gt;. If you want to critique the idea of providing an FAQ in this form, then &lt;a href=&quot;https://meta.stackexchange.com/questions/68647/setting-up-a-faq-for-the-c-tag&quot;&gt;the posting on meta that started all this&lt;/a&gt; would be the place to do that. Answers to that question are monitored in the &lt;a href=&quot;http://chat.stackoverflow.com/rooms/10/c-lounge&quot;&gt;C++ chatroom&lt;/a&gt;, where the FAQ idea started out in the first place, so your answer is very likely to get read by those who came up with the idea.)&lt;/em&gt;
+&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt;&lt;em&gt;（注：これは、 &lt;a href=&quot;https://stackoverflow.com/questions/tagged/c++-faq&quot;&gt;Stack OverflowのC ++ FAQ&lt;/a&gt;へのエントリになることを意図しています。このフォームでFAQを提供するという考えを批評したい場合は、これ&lt;a href=&quot;https://meta.stackexchange.com/questions/68647/setting-up-a-faq-for-the-c-tag&quot;&gt;をすべて開始したメタへの投稿&lt;/a&gt;がそのための場所になります。回答その質問は&lt;a href=&quot;http://chat.stackoverflow.com/rooms/10/c-lounge&quot;&gt;C ++チャットルーム&lt;/a&gt;で監視され、FAQのアイデアはそもそも始まったので、アイデアを思いついた人があなたの答えを読む可能性が非常に高くなります。&lt;/em&gt;&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="14f3efc38fad533ae15f4148f1a61fdd2dd11ee7" translate="yes" xml:space="preserve">
+          <source>&lt;sub&gt;(Note the &lt;code&gt;const&lt;/code&gt; at the end.)&lt;/sub&gt;</source>
+          <target state="translated">&lt;sub&gt;（最後の &lt;code&gt;const&lt;/code&gt; に注意してください。）&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="c0ca582ae5768203060cbf81ae5d446fdbadce13" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;1&lt;/sup&gt;&lt;sub&gt;As with all rules of thumb, sometimes there might be reasons to break this one, too. If so, do not forget that the left-hand operand of the binary comparison operators, which for member functions will be &lt;code&gt;*this&lt;/code&gt;, needs to be &lt;code&gt;const&lt;/code&gt;, too. So a comparison operator implemented as a member function would have to have this signature:&lt;/sub&gt;</source>
+          <target state="translated">&lt;sup&gt;1&lt;/sup&gt; &lt;sub&gt;すべての経験則と同様に、これを破る理由もある場合があります。&lt;/sub&gt; &lt;sub&gt;その場合、メンバー関数では &lt;code&gt;*this&lt;/code&gt; となる2項比較演算子の左側のオペランドも &lt;code&gt;const&lt;/code&gt; である必要があることを忘れないでください。&lt;/sub&gt; &lt;sub&gt;したがって、メンバー関数として実装された比較演算子には、次のシグネチャが必要です。&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="9a7c0de90272aa0b4c0f2ec37dbe7d8ba11b179a" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;1&lt;/sup&gt;&lt;sub&gt;The term &amp;ldquo;user-defined&amp;rdquo; might be slightly misleading. C++ makes the distinction between built-in types and user-defined types. To the former belong for example int, char, and double; to the latter belong all struct, class, union, and enum types, including those from the standard library, even though they are not, as such, defined by users.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sup&gt;1&lt;/sup&gt; &lt;sub&gt;「ユーザー定義」という用語は、少し誤解を招く可能性があります。&lt;/sub&gt; &lt;sub&gt;C ++は、組み込み型とユーザー定義型を区別します。&lt;/sub&gt; &lt;sub&gt;前者には、たとえば、int、char、doubleが属します。&lt;/sub&gt; &lt;sub&gt;後者には、標準ライブラリからのものを含め、すべての構造体、クラス、共用体、および列挙型が属します。これらは、ユーザーによって定義されていない場合でも同様です。&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="4d522b0d5a3ee143d4b55a7eefa9657f18b4f0ea" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;2&lt;/sup&gt;&lt;sub&gt;Also note that the postfix variant does more work and is therefore less efficient to use than the prefix variant. This is a good reason to generally prefer prefix increment over postfix increment. While compilers can usually optimize away the additional work of postfix increment for built-in types, they might not be able to do the same for user-defined types (which could be something as innocently looking as a list iterator). Once you got used to do &lt;code&gt;i++&lt;/code&gt;, it becomes very hard to remember to do &lt;code&gt;++i&lt;/code&gt; instead when &lt;code&gt;i&lt;/code&gt; is not of a built-in type (plus you'd have to change code when changing a type), so it is better to make a habit of always using prefix increment, unless postfix is explicitly needed.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sup&gt;2&lt;/sup&gt; &lt;sub&gt;接尾辞バリアントは接頭辞バリアントよりも多くの作業を行うため、使用する効率が悪いことにも注意してください。&lt;/sub&gt; &lt;sub&gt;これは、一般に接尾辞の増分よりも接頭辞の増分を優先する良い理由です。&lt;/sub&gt; &lt;sub&gt;コンパイラーは通常、組み込み型のpostfixインクリメントの追加作業を最適化できますが、ユーザー定義型（リストイテレーターのように無邪気に見える可能性があるもの）に対しては同じことができない場合があります。&lt;/sub&gt; &lt;sub&gt; &lt;code&gt;i++&lt;/code&gt; と、組み込み型ではないときに &lt;code&gt;++i&lt;/code&gt; を行うことを覚えるのが非常に難しくなります（さらに、型を変更するときにコードを変更する必要があります）。 postfixが明示的に必要でない限り、常に接頭辞インクリメントを使用する習慣をつけます。&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="3f5b8f85cc67312e85c8eb294398952de5c9070e" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;2&lt;/sup&gt;&lt;sub&gt;It should be noted that the built-in version of &lt;code&gt;||&lt;/code&gt; and &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; use shortcut semantics. While the user defined ones (because they are syntactic sugar for method calls) do not use shortcut semantics. User will expect these operators to have shortcut semantics, and their code may depend on it, Therefore it is highly advised NEVER to define them.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sup&gt;2&lt;/sup&gt; &lt;sub&gt; &lt;code&gt;||&lt;/code&gt; の組み込みバージョンは&lt;/sub&gt; &lt;sub&gt; &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; はショートカットセマンティクスを使用します。&lt;/sub&gt; &lt;sub&gt;ユーザーが定義したもの（メソッド呼び出しのシンタックスシュガーであるため）は、ショートカットセマンティクスを使用しません。&lt;/sub&gt; &lt;sub&gt;ユーザーはこれらの演算子にショートカットセマンティクスがあることを期待し、それらのコードはそれに依存する可能性があるため、絶対に定義しないことを強くお勧めします。&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="e3c92f172f9d6a21e1edbee610bd748896095eab" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;2&lt;/sup&gt;&lt;sub&gt;This is covered in &lt;a href=&quot;https://stackoverflow.com/questions/4421706/operator-overloading/4421729#4421729&quot;&gt;a later part&lt;/a&gt; of this FAQ.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sup&gt;2&lt;/sup&gt; &lt;sub&gt;これについては、このFAQの&lt;a href=&quot;https://stackoverflow.com/questions/4421706/operator-overloading/4421729#4421729&quot;&gt;後半で説明し&lt;/a&gt;ます。&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="2d81bca5cf7dc6ada15492470100c9698c01c407" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;3&lt;/sup&gt;&lt;sub&gt;Again, the lesson to be taken from this is that &lt;code&gt;a += b&lt;/code&gt; is, in general, more efficient than &lt;code&gt;a + b&lt;/code&gt; and should be preferred if possible.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sup&gt;3&lt;/sup&gt; &lt;sub&gt;繰り返しますが、これから得られる教訓は、 &lt;code&gt;a += b&lt;/code&gt; は一般に &lt;code&gt;a + b&lt;/code&gt; よりも効率的であり、可能であれば推奨されるということです。&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="5cca32e7a575b9db399f83cf13cfe08fee093572" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;3&lt;/sup&gt;&lt;sub&gt;The &lt;code&gt;@&lt;/code&gt; is not a valid operator in C++ which is why I use it as a placeholder.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sup&gt;3&lt;/sup&gt; &lt;sub&gt; &lt;code&gt;@&lt;/code&gt; はC ++では有効な演算子ではないため、プレースホルダーとして使用しています。&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="fb4e0ac4049821674fc6813ec9ef8cfd305f5ca1" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;4&lt;/sup&gt;&lt;sub&gt;The only ternary operator in C++ cannot be overloaded and the only n-ary operator must always be implemented as a member function.&lt;/sub&gt;</source>
+          <target state="translated">&lt;sup&gt;4&lt;/sup&gt; &lt;sub&gt;C ++の唯一の3項演算子はオーバーロードできず、唯一のn項演算子は常にメンバー関数として実装する必要があります。&lt;/sub&gt;</target>
+        </trans-unit>
+        <trans-unit id="276a8f6944c21a071705fa227dcf9ba993594a29" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;&lt;strong&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/strong&gt; This only deals with the &lt;strong&gt;&lt;em&gt;syntax&lt;/em&gt;&lt;/strong&gt; of overloading &lt;code&gt;new&lt;/code&gt; and &lt;code&gt;delete&lt;/code&gt;, not with the &lt;strong&gt;&lt;em&gt;implementation&lt;/em&gt;&lt;/strong&gt; of such overloaded operators. I think that the semantics of overloading &lt;strong&gt;&lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/7149461/&quot;&gt;&lt;code&gt;new&lt;/code&gt; and &lt;code&gt;delete&lt;/code&gt; deserve their own FAQ&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;, within the topic of operator overloading I can never do it justice.&lt;/sup&gt;</source>
+          <target state="translated">&lt;sup&gt;&lt;strong&gt;&lt;em&gt;注：&lt;/em&gt;&lt;/strong&gt;これは、オーバーロードされた &lt;code&gt;new&lt;/code&gt; および &lt;code&gt;delete&lt;/code&gt; の &lt;strong&gt;&lt;em&gt;構文&lt;/em&gt;&lt;/strong&gt;のみを扱い、そのようなオーバーロードされた演算子の&lt;strong&gt;&lt;em&gt;実装&lt;/em&gt;&lt;/strong&gt;は扱いません。&lt;/sup&gt; &lt;sup&gt;&lt;strong&gt;&lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/7149461/&quot;&gt; &lt;code&gt;new&lt;/code&gt; と &lt;code&gt;delete&lt;/code&gt; &lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;のオーバーロードのセマンティクスは&lt;strong&gt;&lt;em&gt;独自のFAQ&lt;/em&gt;&lt;/strong&gt;に&lt;strong&gt;&lt;em&gt;値するもの&lt;/em&gt;&lt;/strong&gt;だと思います。オペレーターのオーバーロードのトピックでは、正直に言うことはできません。&lt;/sup&gt;</target>
+        </trans-unit>
+        <trans-unit id="421a43341da00165d391cdef2aecb500589bd6e0" translate="yes" xml:space="preserve">
+          <source>According to our rules of thumb, &lt;code&gt;+&lt;/code&gt; and its companions should be non-members, while their compound assignment counterparts (&lt;code&gt;+=&lt;/code&gt; etc.), changing their left argument, should be a member. Here is the exemplary code for &lt;code&gt;+=&lt;/code&gt; and &lt;code&gt;+&lt;/code&gt;; the other binary arithmetic operators should be implemented in the same way:</source>
+          <target state="translated">経験則によると、 &lt;code&gt;+&lt;/code&gt; とそのコンパニオンは非メンバーである必要がありますが、左側の引数を変更するそれらの複合代入の対応物（ &lt;code&gt;+=&lt;/code&gt; など）はメンバーである必要があります。 &lt;code&gt;+=&lt;/code&gt; と &lt;code&gt;+&lt;/code&gt; のコード例を次に示します。 他の2項算術演算子も同じ方法で実装する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="f3952c5c15a5c4f059ce1db8233deaaeda4f28a8" translate="yes" xml:space="preserve">
+          <source>Among the operators that can be overloaded in C++ are these:</source>
+          <target state="translated">C++でオーバーロードできる演算子には、以下のようなものがあります。</target>
+        </trans-unit>
+        <trans-unit id="be759ec493e1844e284eba0ba8febc88ff79e21f" translate="yes" xml:space="preserve">
+          <source>An implicit conversion operator allows the compiler to implicitly convert (like the conversion between &lt;code&gt;int&lt;/code&gt; and &lt;code&gt;long&lt;/code&gt;) the value of a user-defined type to some other type.</source>
+          <target state="translated">暗黙的な変換演算子を使用すると、コンパイラーはユーザー定義型の値を他の型に暗黙的に変換できます（ &lt;code&gt;int&lt;/code&gt; と &lt;code&gt;long&lt;/code&gt; 間の変換のように）。</target>
+        </trans-unit>
+        <trans-unit id="6104f39ed22a2cd32e98536a3447a01c4b9f4781" translate="yes" xml:space="preserve">
+          <source>Arithmetic Operators</source>
+          <target state="translated">算術演算子</target>
+        </trans-unit>
+        <trans-unit id="aecc43fc2fe547cd50965b231d35b4682af12f07" translate="yes" xml:space="preserve">
+          <source>Array Subscripting</source>
+          <target state="translated">配列のサブスクリプト</target>
+        </trans-unit>
+        <trans-unit id="67c1b1f3ed026dea13ed68968e94e0a7d893d152" translate="yes" xml:space="preserve">
+          <source>Assignment Operator</source>
+          <target state="translated">割り当てオペレータ</target>
+        </trans-unit>
+        <trans-unit id="93070e8acd1b2a07488cdde5f031a65133a6cf12" translate="yes" xml:space="preserve">
+          <source>At first this seems very helpful, but the problem with this is that the implicit conversion even kicks in when it isn&amp;rsquo;t expected to. In the following code, &lt;code&gt;void f(const char*)&lt;/code&gt; will be called because &lt;code&gt;my_string()&lt;/code&gt; is not an &lt;a href=&quot;https://stackoverflow.com/questions/3601602/what-are-rvalues-lvalues-xvalues-glvalues-and-prvalues&quot;&gt;lvalue&lt;/a&gt;, so the first does not match:</source>
+          <target state="translated">最初はこれは非常に役立つように見えますが、これの問題は、暗黙の変換が予期されていないときにも発生することです。 次のコードでは、 &lt;code&gt;my_string()&lt;/code&gt; が&lt;a href=&quot;https://stackoverflow.com/questions/3601602/what-are-rvalues-lvalues-xvalues-glvalues-and-prvalues&quot;&gt;左辺値&lt;/a&gt;ではないため、最初のものが一致しないため、 &lt;code&gt;void f(const char*)&lt;/code&gt; が呼び出されます。</target>
+        </trans-unit>
+        <trans-unit id="0ee8de3eebacd7c638e4729172a904422deca61b" translate="yes" xml:space="preserve">
+          <source>Basically, the first and foremost rule for overloading operators, at its very heart, says: &lt;em&gt;Don&amp;rsquo;t do it&lt;/em&gt;. That might seem strange, because there is a lot to be known about operator overloading and so a lot of articles, book chapters, and other texts deal with all this. But despite this seemingly obvious evidence, &lt;em&gt;there are only a surprisingly few cases where operator overloading is appropriate&lt;/em&gt;. The reason is that actually it is hard to understand the semantics behind the application of an operator unless the use of the operator in the application domain is well known and undisputed. Contrary to popular belief, this is hardly ever the case.</source>
+          <target state="translated">基本的に、演算子をオーバーロードするための最初の、そして最も重要なルールは、まさにその中心で、次のように述べ&lt;em&gt;てい&lt;/em&gt;ます。 これは奇妙に思えるかもしれません。演算子のオーバーロードについては多くのことが知られているため、多くの記事、本の章、およびその他のテキストがこれを扱っています。 しかし、この一見明白な証拠にもかかわらず&lt;em&gt;、演算子のオーバーロードが適切であるのは驚くほど少ないケース&lt;/em&gt;です。 その理由は、アプリケーションドメインでのオペレーターの使用がよく知られていて議論の余地がない限り、実際にはオペレーターのアプリケーションの背後にあるセマンティクスを理解するのが難しいためです。 一般に信じられていることとは逆に、これはほとんどありません。</target>
+        </trans-unit>
+        <trans-unit id="5fcebeefad3cdbbf8733aa928160dec7dc90c1a1" translate="yes" xml:space="preserve">
+          <source>Basics</source>
+          <target state="translated">Basics</target>
+        </trans-unit>
+        <trans-unit id="4d0acd385943a19aff1dd079c0d333f73eeda130" translate="yes" xml:space="preserve">
+          <source>Because the compiler will not cast &quot;past&quot; &lt;code&gt;bool&lt;/code&gt;, explicit conversion operators now remove the need for the &lt;a href=&quot;http://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/Safe_bool&quot;&gt;Safe Bool idiom&lt;/a&gt;.   For example, smart pointers before C++11 used the Safe Bool idiom to prevent conversions to integral types.  In C++11, the smart pointers use an explicit operator instead because the compiler is not allowed to implicitly convert to an integral type after it explicitly converted a type to bool.</source>
+          <target state="translated">コンパイラーは「過去の」 &lt;code&gt;bool&lt;/code&gt; をキャストしないため、明示的な変換演算子により&lt;a href=&quot;http://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/Safe_bool&quot;&gt;Safe Boolイディオム&lt;/a&gt;が不要になりました。 たとえば、C ++ 11より前のスマートポインタでは、Safe Boolイディオムを使用して、整数型への変換を防止していました。 C ++ 11では、コンパイラが明示的に型をブールに変換した後、コンパイラが暗黙的に整数型に変換することができないため、スマートポインターは明示的な演算子を使用します。</target>
+        </trans-unit>
+        <trans-unit id="71c42caac2d9ddf4204de8698243a11cfa04f910" translate="yes" xml:space="preserve">
+          <source>Beginners easily get this wrong and even experienced C++ programmers are sometimes surprised because the compiler picks an overload they didn&amp;rsquo;t suspect.  These problems can be mitigated by explicit conversion operators.</source>
+          <target state="translated">初心者はこれを簡単に間違えやすく、経験の浅いC ++プログラマーでも、コンパイラーが疑わなかったオーバーロードを選択するので驚かされることがあります。 これらの問題は、明示的な変換演算子によって軽減できます。</target>
+        </trans-unit>
+        <trans-unit id="91150bd6516ac5f77628d936130ba9cf5ec13ae6" translate="yes" xml:space="preserve">
+          <source>Binary arithmetic operators</source>
+          <target state="translated">二項演算子</target>
+        </trans-unit>
+        <trans-unit id="ae37c4e20a55a6ef0b50c1ce0e0f71802dbf0111" translate="yes" xml:space="preserve">
+          <source>Bitshift Operators (used for Stream I/O)</source>
+          <target state="translated">ビットシフト演算子 (ストリーム IO に使用)</target>
+        </trans-unit>
+        <trans-unit id="db69b09b584ceff2f01a827a244f4ddf0bcc8bfa" translate="yes" xml:space="preserve">
+          <source>C++ allows new and delete operators to take additional arguments.</source>
+          <target state="translated">C++では、新規演算子および削除演算子で追加の引数を取ることができます。</target>
+        </trans-unit>
+        <trans-unit id="cea3dbd2ef365f97b36a9803e63877ab2a2dcd07" translate="yes" xml:space="preserve">
+          <source>C++ allows you to tune both of these operations: memory management and the construction/destruction of the object at the allocated memory. The latter is done by writing constructors and destructors for a class. Fine-tuning memory management is done by writing your own &lt;code&gt;operator new&lt;/code&gt; and &lt;code&gt;operator delete&lt;/code&gt;.</source>
+          <target state="translated">C ++では、メモリ管理と割り当てられたメモリでのオブジェクトの構築/破棄の両方の操作を調整できます。 後者は、クラスのコンストラクタとデストラクタを記述することによって行われます。 メモリー管理の微調整は、独自の &lt;code&gt;operator new&lt;/code&gt; および &lt;code&gt;operator delete&lt;/code&gt; 作成することによって行われます。</target>
+        </trans-unit>
+        <trans-unit id="53e1ae4928af9f305e18ff9d9d702bea83c43afc" translate="yes" xml:space="preserve">
+          <source>C++ poses no limitations on the semantics of overloaded operators. Your compiler will happily accept code that implements the binary &lt;code&gt;+&lt;/code&gt; operator to subtract from its right operand. However, the users of such an operator would never suspect the expression &lt;code&gt;a + b&lt;/code&gt; to subtract &lt;code&gt;a&lt;/code&gt; from &lt;code&gt;b&lt;/code&gt;. Of course, this supposes that the semantics of the operator in the application domain is undisputed.</source>
+          <target state="translated">C ++では、オーバーロードされた演算子のセマンティクスに制限はありません。 コンパイラーは、バイナリー演算子 &lt;code&gt;+&lt;/code&gt; を実装して正しいオペランドから減算するコードを喜んで受け入れます。 ただし、このような演算子のユーザーは、式 &lt;code&gt;a + b&lt;/code&gt; からaを減算 &lt;code&gt;a&lt;/code&gt; ことを疑うことはありません。 もちろん、これは、アプリケーション・ドメイン内のオペレーターのセマンティクスが議論の余地がないことを前提としています。</target>
+        </trans-unit>
+        <trans-unit id="7c17731e50f62eea89cf01a119386ba15a466c77" translate="yes" xml:space="preserve">
+          <source>Class-specific new and delete</source>
+          <target state="translated">クラス固有の新規作成と削除</target>
+        </trans-unit>
+        <trans-unit id="7266bf079b182acba7043970de462e41b2663d92" translate="yes" xml:space="preserve">
+          <source>Common operators to overload</source>
+          <target state="translated">オーバーロードする一般的な演算子</target>
+        </trans-unit>
+        <trans-unit id="9461d4c9f916ad7df5538225ed552fb6e7e3284b" translate="yes" xml:space="preserve">
+          <source>Comparison operators</source>
+          <target state="translated">比較演算子</target>
+        </trans-unit>
+        <trans-unit id="d8ddbec0b26e694dbe2e4392c23c80e62413f2d4" translate="yes" xml:space="preserve">
+          <source>Continue to &lt;a href=&quot;https://stackoverflow.com/questions/4421706/operator-overloading-in-c/4421708#4421708&quot;&gt;The Three Basic Rules of Operator Overloading in C++&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/questions/4421706/operator-overloading-in-c/4421708#4421708&quot;&gt;C ++での演算子のオーバーロードの3つの基本ルールに&lt;/a&gt;進みます 。</target>
+        </trans-unit>
+        <trans-unit id="9a650afcae173aef7cbc03df980e79ab8dcfc031" translate="yes" xml:space="preserve">
+          <source>Continue to &lt;a href=&quot;https://stackoverflow.com/questions/4421706/operator-overloading-in-c/4421719#4421719&quot;&gt;Common operators to overload&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/questions/4421706/operator-overloading-in-c/4421719#4421719&quot;&gt;一般的な演算子に&lt;/a&gt;進み、 オーバーロードします。</target>
+        </trans-unit>
+        <trans-unit id="49e07535d312dbe3a4fc30e2d414ba6a141b3abe" translate="yes" xml:space="preserve">
+          <source>Continue to &lt;a href=&quot;https://stackoverflow.com/questions/4421706/operator-overloading-in-c/4421729#4421729&quot;&gt;The Decision between Member and Non-member&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/questions/4421706/operator-overloading-in-c/4421729#4421729&quot;&gt;会員と非会員の決定に&lt;/a&gt;進みます。</target>
+        </trans-unit>
+        <trans-unit id="390e8f97087fe4c33287f0dec7d962032d84d2b0" translate="yes" xml:space="preserve">
+          <source>Continue to &lt;a href=&quot;https://stackoverflow.com/questions/4421706/operator-overloading-in-c/4421791#4421791&quot;&gt;Overloading &lt;code&gt;new&lt;/code&gt; and &lt;code&gt;delete&lt;/code&gt;&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/questions/4421706/operator-overloading-in-c/4421791#4421791&quot;&gt; &lt;code&gt;new&lt;/code&gt; および &lt;code&gt;delete&lt;/code&gt; オーバーロードに&lt;/a&gt;進みます。</target>
+        </trans-unit>
+        <trans-unit id="0c4829881d2b9099fb960d607315a36454fc1c0d" translate="yes" xml:space="preserve">
+          <source>Continue to &lt;a href=&quot;https://stackoverflow.com/questions/4421706/operator-overloading/16615725#16615725&quot;&gt;Conversion Operators&lt;/a&gt;</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/questions/4421706/operator-overloading/16615725#16615725&quot;&gt;変換演算子に進む&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="cce1bda201abe07a87309c10681fbc4836893a50" translate="yes" xml:space="preserve">
+          <source>Conversion Operators</source>
+          <target state="translated">変換演算子</target>
+        </trans-unit>
+        <trans-unit id="97921336d267bc620b6817f8d0fbd3946c8e1724" translate="yes" xml:space="preserve">
+          <source>Conversion Operators (also known as User Defined Conversions)</source>
+          <target state="translated">変換演算子(ユーザー定義変換とも呼ばれる</target>
+        </trans-unit>
+        <trans-unit id="06916bcd529378cd7be8d494e6a076cdff280dfb" translate="yes" xml:space="preserve">
+          <source>Explicit Conversion Operators (C++11)</source>
+          <target state="translated">明示的な変換演算子(C++11</target>
+        </trans-unit>
+        <trans-unit id="bb0bf432160bebf9e28e99e45037098df491690e" translate="yes" xml:space="preserve">
+          <source>For &lt;code&gt;operator-&amp;gt;*()&lt;/code&gt; see &lt;a href=&quot;https://stackoverflow.com/q/8777845/140719&quot;&gt;this question&lt;/a&gt;. It's rarely used and thus rarely ever overloaded. In fact, even iterators do not overload it.</source>
+          <target state="translated">&lt;code&gt;operator-&amp;gt;*()&lt;/code&gt; については、 &lt;a href=&quot;https://stackoverflow.com/q/8777845/140719&quot;&gt;この質問を&lt;/a&gt;参照してください。 これはめったに使用されないため、めったにオーバーロードされません。 実際、イテレータでさえそれをオーバーロードしません。</target>
+        </trans-unit>
+        <trans-unit id="f6ea334ff6ce5f1423f350e93f69641ce7406130" translate="yes" xml:space="preserve">
+          <source>For all operators where you have to choose to either implement them as a member function or a non-member function, &lt;strong&gt;&lt;em&gt;use the following rules of thumb&lt;/em&gt;&lt;/strong&gt; to decide:</source>
+          <target state="translated">メンバー関数として実装するか、非メンバー関数として実装するかを選択する必要があるすべての演算子について&lt;strong&gt;&lt;em&gt;、次の経験則&lt;/em&gt;&lt;/strong&gt;を&lt;strong&gt;&lt;em&gt;使用し&lt;/em&gt;&lt;/strong&gt;て決定します。</target>
+        </trans-unit>
+        <trans-unit id="d69d65276d05cacbd13652fa039509c5c7448719" translate="yes" xml:space="preserve">
+          <source>For defining your own iterators or smart pointers, you have to overload the unary prefix dereference operator &lt;code&gt;*&lt;/code&gt; and the binary infix pointer member access operator &lt;code&gt;-&amp;gt;&lt;/code&gt;:</source>
+          <target state="translated">独自のイテレータまたはスマートポインタを定義するには、単項プレフィックス逆参照演算子 &lt;code&gt;*&lt;/code&gt; とバイナリ中置ポインタメンバアクセス演算子 &lt;code&gt;-&amp;gt;&lt;/code&gt; をオーバーロードする必要があります。</target>
+        </trans-unit>
+        <trans-unit id="1587e1394f773c588778fbe18bdd8ed62ff6821b" translate="yes" xml:space="preserve">
+          <source>For the binary arithmetic operators, do not forget to obey the third basic rule operator overloading: If you provide &lt;code&gt;+&lt;/code&gt;, also provide &lt;code&gt;+=&lt;/code&gt;, if you provide &lt;code&gt;-&lt;/code&gt;, do not omit &lt;code&gt;-=&lt;/code&gt;, etc. Andrew Koenig is said to have been the first to observe that the compound assignment operators can be used as a base for their non-compound counterparts. That is, operator &lt;code&gt;+&lt;/code&gt; is implemented in terms of &lt;code&gt;+=&lt;/code&gt;, &lt;code&gt;-&lt;/code&gt; is implemented in terms of &lt;code&gt;-=&lt;/code&gt; etc.</source>
+          <target state="translated">2項算術演算子の場合、3番目の基本ルール演算子のオーバーロードに従うことを忘れないでください。 &lt;code&gt;+&lt;/code&gt; を指定する場合は、 &lt;code&gt;+=&lt;/code&gt; も指定し 、 &lt;code&gt;-&lt;/code&gt; を指定する場合は、 &lt;code&gt;-=&lt;/code&gt; を省略しないでください。アンドリューケーニッヒが最初の複合代入演算子が非複合対応のベースとして使用できることを確認します。 つまり、演算子 &lt;code&gt;+&lt;/code&gt; は &lt;code&gt;+=&lt;/code&gt; の観点から実装され、 &lt;code&gt;-&lt;/code&gt; は &lt;code&gt;-=&lt;/code&gt; の観点から実装されます。</target>
+        </trans-unit>
+        <trans-unit id="25056cd4f19ab3cf2ddbe426ca4f88659c9ecb1f" translate="yes" xml:space="preserve">
+          <source>Function call operator</source>
+          <target state="translated">関数呼び出しオペレータ</target>
+        </trans-unit>
+        <trans-unit id="266781763563b15feb1a51bb6a9014424ae1126a" translate="yes" xml:space="preserve">
+          <source>Given that, you cannot use:</source>
+          <target state="translated">それを考えると、使えません。</target>
+        </trans-unit>
+        <trans-unit id="90be49000bdd6cb11fcaf3b36883081fc56eaccc" translate="yes" xml:space="preserve">
+          <source>Global new and delete</source>
+          <target state="translated">グローバル新規・削除</target>
+        </trans-unit>
+        <trans-unit id="40ccf2f37dd214c6d5991f8f2094c0e81dc4e65d" translate="yes" xml:space="preserve">
+          <source>Here's an example of the syntax:</source>
+          <target state="translated">構文の例です。</target>
+        </trans-unit>
+        <trans-unit id="2f19bc6ee55c37f3c7803fde5dc79430596476a8" translate="yes" xml:space="preserve">
+          <source>However, the fact that you &lt;em&gt;can&lt;/em&gt; overload all of these does not mean you &lt;em&gt;should&lt;/em&gt; do so. See the basic rules of operator overloading.</source>
+          <target state="translated">ただし、これらすべてをオーバーロード&lt;em&gt;できる&lt;/em&gt;という事実は、そうする&lt;em&gt;必要&lt;/em&gt;があるという意味では&lt;em&gt;あり&lt;/em&gt;ません。 演算子のオーバーロードの基本的なルールをご覧ください。</target>
+        </trans-unit>
+        <trans-unit id="d1df6c2555df05f2e2d7b30909ceaba1a04419ac" translate="yes" xml:space="preserve">
+          <source>However, there is one exception to this:  The compiler is allowed to implicitly convert to &lt;code&gt;bool&lt;/code&gt;.  In addition, the compiler is not allowed to do another implicit conversion after it converts to &lt;code&gt;bool&lt;/code&gt; (a compiler is allowed to do 2 implicit conversions at a time, but only 1 user-defined conversion at max).</source>
+          <target state="translated">ただし、これには1つの例外があります。コンパイラは暗黙的に &lt;code&gt;bool&lt;/code&gt; に変換できます。 さらに、コンパイラーは &lt;code&gt;bool&lt;/code&gt; に変換された後、別の暗黙的な変換を行うことはできません（コンパイラーは、一度に2つの暗黙的な変換を行うことができますが、最大でユーザー定義の変換は1つだけです）。</target>
+        </trans-unit>
+        <trans-unit id="52ab79f2235a5be84cd7d66fe9e8c1206c27da29" translate="yes" xml:space="preserve">
+          <source>If a binary operator does &lt;strong&gt;&lt;em&gt;not&lt;/em&gt;&lt;/strong&gt; treat both of its operands &lt;strong&gt;&lt;em&gt;equally&lt;/em&gt;&lt;/strong&gt; (usually it will change its left operand), it might be useful to make it a &lt;strong&gt;&lt;em&gt;member&lt;/em&gt;&lt;/strong&gt; function of its left operand&amp;rsquo;s type, if it has to access the operand's private parts.</source>
+          <target state="translated">二項演算子が両方のオペランドを&lt;strong&gt;&lt;em&gt;同等に&lt;/em&gt;&lt;/strong&gt;扱わ&lt;strong&gt;&lt;em&gt;ない&lt;/em&gt;&lt;/strong&gt;場合（通常は、左側のオペランドを変更します）、オペランドのプライベート部分にアクセスする必要がある場合は、それを左側のオペランドの型の&lt;strong&gt;&lt;em&gt;メンバー&lt;/em&gt;&lt;/strong&gt;関数にすると便利です。</target>
+        </trans-unit>
+        <trans-unit id="9dbf7e58fa487fdde1f10120a1e361214ac8d248" translate="yes" xml:space="preserve">
+          <source>If a binary operator treats &lt;strong&gt;&lt;em&gt;both operands equally&lt;/em&gt;&lt;/strong&gt; (it leaves them unchanged), implement this operator as a &lt;strong&gt;&lt;em&gt;non-member&lt;/em&gt;&lt;/strong&gt; function.</source>
+          <target state="translated">2項演算子が&lt;strong&gt;&lt;em&gt;両方のオペランドを同等に&lt;/em&gt;&lt;/strong&gt;処理&lt;strong&gt;&lt;em&gt;する&lt;/em&gt;&lt;/strong&gt; （変更しないままにする）場合は、この演算子を&lt;strong&gt;&lt;em&gt;非メンバー&lt;/em&gt;&lt;/strong&gt;関数として実装します。</target>
+        </trans-unit>
+        <trans-unit id="ed6a13f07242d7d741efc0c6314f4777012e50e3" translate="yes" xml:space="preserve">
+          <source>If it is a &lt;strong&gt;&lt;em&gt;unary operator&lt;/em&gt;&lt;/strong&gt;, implement it as a &lt;strong&gt;&lt;em&gt;member&lt;/em&gt;&lt;/strong&gt; function.</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;単項演算子の&lt;/em&gt;&lt;/strong&gt;場合は、 &lt;strong&gt;&lt;em&gt;メンバー&lt;/em&gt;&lt;/strong&gt;関数として実装します。</target>
+        </trans-unit>
+        <trans-unit id="262c7f3eacf6b4b4a482e67f29ed9ce4d067684f" translate="yes" xml:space="preserve">
+          <source>If value_type is known to refer to a built-in type, the const variant of the operator should better return a copy instead of a const reference:</source>
+          <target state="translated">value_typeが組み込み型を参照していることがわかっている場合、演算子のconst variantはconst参照ではなくコピーを返すのがよいでしょう。</target>
+        </trans-unit>
+        <trans-unit id="f4c82304b319df56b3a1e32bbe46b626dd2db4cf" translate="yes" xml:space="preserve">
+          <source>If you define it as a non-member function,</source>
+          <target state="translated">非メンバー関数として定義した場合。</target>
+        </trans-unit>
+        <trans-unit id="c3222f784f51643651a73e25ba26b59a34a1a97e" translate="yes" xml:space="preserve">
+          <source>If you overload &lt;code&gt;new&lt;/code&gt; and &lt;code&gt;delete&lt;/code&gt;, you should consider overloading the array variants, too.</source>
+          <target state="translated">&lt;code&gt;new&lt;/code&gt; と &lt;code&gt;delete&lt;/code&gt; をオーバーロードする場合は、配列バリアントのオーバーロードも検討する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="f13af45755f6d4b1682363cc396a98d01a7f9a22" translate="yes" xml:space="preserve">
+          <source>If you overload &lt;code&gt;operator new&lt;/code&gt;, you should always also overload the matching &lt;code&gt;operator delete&lt;/code&gt;, even if you never intend to call it. The reason is that, if a constructor throws during the evaluation of a new expression, the run-time system will return the memory to the &lt;code&gt;operator delete&lt;/code&gt; matching the &lt;code&gt;operator new&lt;/code&gt; that was called to allocate the memory to create the object in. If you do not provide a matching &lt;code&gt;operator delete&lt;/code&gt;, the default one is called, which is almost always wrong.</source>
+          <target state="translated">&lt;code&gt;operator new&lt;/code&gt; をオーバーロードする場合は、それを呼び出すつもりがなくても、対応する &lt;code&gt;operator delete&lt;/code&gt; も常にオーバーロードする必要があります。 その理由は、新しい式の評価中にコンストラクターがスローした場合、ランタイムシステムは、オブジェクトを作成するためにメモリを割り当てるために呼び出された &lt;code&gt;operator new&lt;/code&gt; と一致する演算 &lt;code&gt;operator delete&lt;/code&gt; メモリを返すからです。対応する &lt;code&gt;operator delete&lt;/code&gt; 提供しない場合、デフォルトの演算子が呼び出されますが、これはほとんどの場合間違っています。</target>
+        </trans-unit>
+        <trans-unit id="826dbaa31e10b50624ed6f5bcb81e5a26a59de5f" translate="yes" xml:space="preserve">
+          <source>Implicit Conversion Operators (C++98/C++03 and C++11)</source>
+          <target state="translated">暗黙の変換演算子(C++98C++03 および C++11</target>
+        </trans-unit>
+        <trans-unit id="64b3307a85f7de1505aa3f37db4699689e2030a6" translate="yes" xml:space="preserve">
+          <source>Implicit conversion operators, like one-argument constructors, are user-defined conversions. Compilers will grant one user-defined conversion when trying to match a call to an overloaded function.</source>
+          <target state="translated">1引数のコンストラクタのような暗黙の変換演算子は,ユーザ定義の変換です。コンパイラは,オーバーロードされた関数の呼び出しにマッチさせようとするときに,ユーザ定義の変換を1つ付与します。</target>
+        </trans-unit>
+        <trans-unit id="40caa674c8cd189d440009873823c8ee2f813b8c" translate="yes" xml:space="preserve">
+          <source>In C++ you can create conversion operators, operators that allow the compiler to convert between your types and other defined types.  There are two types of conversion operators, implicit and explicit ones.</source>
+          <target state="translated">C++では、変換演算子を作成することができます。これは、コンパイラが自分の型と他の定義された型の間で変換することを可能にする演算子です。変換演算子には、暗黙的なものと明示的なものの2種類があります。</target>
+        </trans-unit>
+        <trans-unit id="49ef7e77ad3309f43ce0a0c931ad5b00264bdae6" translate="yes" xml:space="preserve">
+          <source>In C++, operators are overloaded in the form of &lt;strong&gt;&lt;em&gt;functions with special names&lt;/em&gt;&lt;/strong&gt;. As with other functions, overloaded operators can generally be implemented either as a &lt;strong&gt;&lt;em&gt;member function of their left operand's type&lt;/em&gt;&lt;/strong&gt; or as &lt;strong&gt;&lt;em&gt;non-member functions&lt;/em&gt;&lt;/strong&gt;. Whether you are free to choose or bound to use either one depends on several criteria.&lt;sup&gt;2&lt;/sup&gt; A unary operator &lt;code&gt;@&lt;/code&gt;&lt;sup&gt;3&lt;/sup&gt;, applied to an object x, is invoked either as &lt;code&gt;operator@(x)&lt;/code&gt; or as &lt;code&gt;x.operator@()&lt;/code&gt;. A binary infix operator &lt;code&gt;@&lt;/code&gt;, applied to the objects &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt;, is called either as &lt;code&gt;operator@(x,y)&lt;/code&gt; or as &lt;code&gt;x.operator@(y)&lt;/code&gt;.&lt;sup&gt;4&lt;/sup&gt;</source>
+          <target state="translated">C ++では、演算子は&lt;strong&gt;&lt;em&gt;特別な名前&lt;/em&gt;&lt;/strong&gt;を&lt;strong&gt;&lt;em&gt;持つ関数&lt;/em&gt;&lt;/strong&gt;の形式でオーバーロードされ&lt;strong&gt;&lt;em&gt;ます&lt;/em&gt;&lt;/strong&gt; 。 他の関数と同様に、オーバーロードされた演算子は通常&lt;strong&gt;&lt;em&gt;、左のオペランドの型の&lt;/em&gt;&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;メンバー関数&lt;/em&gt;&lt;/strong&gt;または&lt;strong&gt;&lt;em&gt;非&lt;/em&gt;&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;メンバー関数&lt;/em&gt;&lt;/strong&gt;として実装でき&lt;strong&gt;&lt;em&gt;ます&lt;/em&gt;&lt;/strong&gt; 。 自由に選択できるか、どちらを使用するかは、いくつかの基準によって異なります。 &lt;sup&gt;2&lt;/sup&gt;オブジェクトxに適用される単項演算子 &lt;code&gt;@&lt;/code&gt; &lt;sup&gt;3は&lt;/sup&gt; 、 &lt;code&gt;operator@(x)&lt;/code&gt; または &lt;code&gt;x.operator@()&lt;/code&gt; として呼び出されます。 オブジェクト &lt;code&gt;x&lt;/code&gt; と &lt;code&gt;y&lt;/code&gt; に適用されるバイナリのイン &lt;code&gt;x.operator@(y)&lt;/code&gt; &lt;code&gt;operator@(x,y)&lt;/code&gt; は、 operator @（x、y）またはx.operator @（y）と呼ばれます。 &lt;sup&gt;4&lt;/sup&gt;</target>
+        </trans-unit>
+        <trans-unit id="7bc8481881e8590c8face179b924af1ea4a5fe0a" translate="yes" xml:space="preserve">
+          <source>In C++, when you write a &lt;strong&gt;&lt;em&gt;new expression&lt;/em&gt;&lt;/strong&gt; like &lt;code&gt;new T(arg)&lt;/code&gt; two things happen when this expression is evaluated: First &lt;strong&gt;&lt;em&gt;&lt;code&gt;operator new&lt;/code&gt;&lt;/em&gt;&lt;/strong&gt; is invoked to obtain raw memory, and then the appropriate constructor of &lt;code&gt;T&lt;/code&gt; is invoked to turn this raw memory into a valid object. Likewise, when you delete an object, first its destructor is called, and then the memory is returned to &lt;code&gt;operator delete&lt;/code&gt;.</source>
+          <target state="translated">C ++では、 &lt;code&gt;new T(arg)&lt;/code&gt; のような &lt;strong&gt;&lt;em&gt;新しい式&lt;/em&gt;&lt;/strong&gt;を記述すると、この式が評価されるときに2つのことが起こります。最初の&lt;strong&gt;&lt;em&gt; &lt;code&gt;operator new&lt;/code&gt; &lt;/em&gt;&lt;/strong&gt;が呼び出されてrawメモリが取得され、次に &lt;code&gt;T&lt;/code&gt; の適切なコンストラクターが呼び出されてこのrawメモリがaに変換されます。有効なオブジェクト。 同様に、オブジェクトを削除すると、まずそのデストラクタが呼び出され、次にメモリが &lt;code&gt;operator delete&lt;/code&gt; に返されます。</target>
+        </trans-unit>
+        <trans-unit id="9d9a856b351238fc8815cf318816c5839249dbd0" translate="yes" xml:space="preserve">
+          <source>Input and Output Operators</source>
+          <target state="translated">入出力演算子</target>
+        </trans-unit>
+        <trans-unit id="aff987919c1c656b540f21e98fcd457a77a08632" translate="yes" xml:space="preserve">
+          <source>Let's say you have:</source>
+          <target state="translated">あるとしましょう。</target>
+        </trans-unit>
+        <trans-unit id="1da0a13b5d45735843a1a97b7d80a3c4e94a7d15" translate="yes" xml:space="preserve">
+          <source>Most commonly you will want to fine-tune memory management because measurement has shown that instances of a specific class, or of a group of related classes, are created and destroyed often and that the default memory management of the run-time system, tuned for general performance, deals inefficiently in this specific case. To improve this, you can overload new and delete for a specific class:</source>
+          <target state="translated">なぜなら、特定のクラスや関連するクラスのグループのインスタンスが頻繁に生成・破棄されること、また、一般的なパフォーマンスに合わせて調整されたランタイムシステムのデフォルトのメモリ管理は、この特定のケースでは非効率的に処理されることが測定で明らかになっているからです。これを改善するには、特定のクラスに対して new や delete をオーバーロードすることができます。</target>
+        </trans-unit>
+        <trans-unit id="7bc4f7a69868fbbebd9b1aa75e004a5d424231ae" translate="yes" xml:space="preserve">
+          <source>Most of the work in overloading operators is boiler-plate code. That is little wonder, since operators are merely syntactic sugar, their actual work could be done by (and often is forwarded to) plain functions. But it is important that you get this boiler-plate code right. If you fail, either your operator&amp;rsquo;s code won&amp;rsquo;t compile or your users&amp;rsquo; code won&amp;rsquo;t compile or your users&amp;rsquo; code will behave surprisingly.</source>
+          <target state="translated">演算子のオーバーロードにおける作業のほとんどは、ボイラープレートコードです。 演算子は単なる構文上の糖なので、実際の作業は単純な関数で行うことができます（多くの場合、転送されます）。 ただし、この定型コードを正しく取得することが重要です。 失敗すると、オペレーターのコードがコンパイルされないか、ユーザーのコードがコンパイルされないか、ユーザーのコードが驚くほど動作します。</target>
+        </trans-unit>
+        <trans-unit id="308ac793bd96cffbd3257f710242d8d6baa8c5f9" translate="yes" xml:space="preserve">
+          <source>Not all operators can be overloaded in C++. Among the operators that cannot be overloaded are: &lt;code&gt;.&lt;/code&gt;&lt;code&gt;::&lt;/code&gt;&lt;code&gt;sizeof&lt;/code&gt;&lt;code&gt;typeid&lt;/code&gt;&lt;code&gt;.*&lt;/code&gt; and the only ternary operator in C++, &lt;code&gt;?:&lt;/code&gt;</source>
+          <target state="translated">C ++では、すべての演算子をオーバーロードできるわけではありません。 オーバーロードできない演算子には次のものがあります &lt;code&gt;.&lt;/code&gt; &lt;code&gt;::&lt;/code&gt; &lt;code&gt;sizeof&lt;/code&gt; &lt;code&gt;typeid&lt;/code&gt; &lt;code&gt;.*&lt;/code&gt; およびC ++で唯一の三項演算子 &lt;code&gt;?:&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="ba5b304e147804bebb9771281e8f850c466d01fa" translate="yes" xml:space="preserve">
+          <source>Note that the postfix variant is implemented in terms of prefix. Also note that postfix does an extra copy.&lt;sup&gt;2&lt;/sup&gt;</source>
+          <target state="translated">接尾辞バリアントは接頭辞に関して実装されることに注意してください。 また、postfixは余分なコピーを行うことに注意してください。 &lt;sup&gt;2&lt;/sup&gt;</target>
+        </trans-unit>
+        <trans-unit id="a98223f6637a4998c4f367f083b8d38397dc9316" translate="yes" xml:space="preserve">
+          <source>Note that these, too, will almost always need both a const and a non-const version.
+For the &lt;code&gt;-&amp;gt;&lt;/code&gt; operator, if &lt;code&gt;value_type&lt;/code&gt; is of &lt;code&gt;class&lt;/code&gt; (or &lt;code&gt;struct&lt;/code&gt; or &lt;code&gt;union&lt;/code&gt;) type, another &lt;code&gt;operator-&amp;gt;()&lt;/code&gt; is called recursively, until an &lt;code&gt;operator-&amp;gt;()&lt;/code&gt; returns a value of non-class type.</source>
+          <target state="translated">これらも、ほとんど常にconstバージョンと非constバージョンの両方を必要とすることに注意してください。 &lt;code&gt;-&amp;gt;&lt;/code&gt; 演算子の場合、 &lt;code&gt;value_type&lt;/code&gt; が &lt;code&gt;class&lt;/code&gt; （または &lt;code&gt;struct&lt;/code&gt; または &lt;code&gt;union&lt;/code&gt; ）タイプである場合、 &lt;code&gt;operator-&amp;gt;()&lt;/code&gt; が非クラスタイプの値を返すまで、別のoperator-&amp;gt;（）が再帰的に呼び出されます。</target>
+        </trans-unit>
+        <trans-unit id="2b329ad0d568d6f8e12b0e15d54437e0b250ccda" translate="yes" xml:space="preserve">
+          <source>Note that, in the example code for placement new given above, &lt;code&gt;operator delete&lt;/code&gt; is never called, unless the constructor of X throws an exception.</source>
+          <target state="translated">上記の配置newのサンプルコードでは、Xのコンストラクターが例外をスローしない限り、 &lt;code&gt;operator delete&lt;/code&gt; は呼び出されないことに注意してください。</target>
+        </trans-unit>
+        <trans-unit id="e34f82c929e61f88c2610287d88fb521a0cf8bf6" translate="yes" xml:space="preserve">
+          <source>Note: The answers were given in &lt;em&gt;a specific order&lt;/em&gt;, but since many users sort answers according to votes, rather than the time they were given, here's an &lt;strong&gt;&lt;em&gt;index of the answers&lt;/em&gt;&lt;/strong&gt; in the order in which they make most sense:</source>
+          <target state="translated">注：回答は&lt;em&gt;特定の順序&lt;/em&gt;で与えられまし&lt;em&gt;た&lt;/em&gt;が、多くのユーザーは、与えられた時間ではなく投票に従って回答を並べ替えるため、最も意味のある順序で&lt;strong&gt;&lt;em&gt;回答のインデックスを次に示します&lt;/em&gt;&lt;/strong&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="88ae2678453b7004e74233094e1cdf9026fbf332" translate="yes" xml:space="preserve">
+          <source>Notice the &lt;code&gt;explicit&lt;/code&gt;.  Now when you try to execute the unexpected code from the implicit conversion operators, you get a compiler error:</source>
+          <target state="translated">&lt;code&gt;explicit&lt;/code&gt; 注意してください。 暗黙の変換演算子から予期しないコードを実行しようとすると、コンパイラエラーが発生します。</target>
+        </trans-unit>
+        <trans-unit id="5ed5a83cf4720e09bb656ff2ed60cc35eca54b74" translate="yes" xml:space="preserve">
+          <source>Of course, as with all rules of thumb, there are exceptions. If you have a type</source>
+          <target state="translated">もちろん、すべての経験則と同様に、例外もあります。もしも、あなたが</target>
+        </trans-unit>
+        <trans-unit id="71635eee6d0e7a43c1616fdd99b28d55662b9781" translate="yes" xml:space="preserve">
+          <source>Operators for Pointer-like Types</source>
+          <target state="translated">ポインタ型のための演算子</target>
+        </trans-unit>
+        <trans-unit id="232c32ffd9745850f7cd1967b4a1a159748cf1ff" translate="yes" xml:space="preserve">
+          <source>Operators that are implemented as non-member functions are sometimes friend of their operand&amp;rsquo;s type.</source>
+          <target state="translated">非メンバー関数として実装されている演算子は、そのオペランドの型のフレンドである場合があります。</target>
+        </trans-unit>
+        <trans-unit id="fbf47cfe86efefa771f3ac5016a6dee10f74b19c" translate="yes" xml:space="preserve">
+          <source>Other operators can be implemented either as members or as non-members. Some of them, however, usually have to be implemented as non-member functions, because their left operand cannot be modified by you. The most prominent of these are the input and output operators &lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt; and &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;, whose left operands are stream classes from the standard library which you cannot change.</source>
+          <target state="translated">他のオペレーターは、メンバーまたは非メンバーとして実装できます。 ただし、それらの一部は、左のオペランドを変更できないため、通常は非メンバー関数として実装する必要があります。 これらの中で最も顕著なのは、入力および出力演算子 &lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt; および &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; です。これらの左オペランドは、変更できない標準ライブラリのストリームクラスです。</target>
+        </trans-unit>
+        <trans-unit id="61c0c26e0870099af93b41d7ed973fe4422b7163" translate="yes" xml:space="preserve">
+          <source>Overloaded thus, new and delete behave like static member functions. For objects of &lt;code&gt;my_class&lt;/code&gt;, the &lt;code&gt;std::size_t&lt;/code&gt; argument will always be &lt;code&gt;sizeof(my_class)&lt;/code&gt;. However, these operators are also called for dynamically allocated objects of &lt;strong&gt;&lt;em&gt;derived classes&lt;/em&gt;&lt;/strong&gt;, in which case it might be greater than that.</source>
+          <target state="translated">したがって、オーバーロードされたnewおよびdeleteは、静的メンバー関数のように動作します。 &lt;code&gt;my_class&lt;/code&gt; のオブジェクトの場合 、 &lt;code&gt;std::size_t&lt;/code&gt; 引数は常に &lt;code&gt;sizeof(my_class)&lt;/code&gt; になります。 ただし、これらの演算子は、 &lt;strong&gt;&lt;em&gt;派生クラスの&lt;/em&gt;&lt;/strong&gt;動的に割り当てられたオブジェクトに対しても呼び出されます。その場合、それよりも大きくなる可能性があります。</target>
+        </trans-unit>
+        <trans-unit id="387a1adda403a18b38d6933171fc8f31a2cbd62c" translate="yes" xml:space="preserve">
+          <source>Overloading &lt;code&gt;new&lt;/code&gt; and &lt;code&gt;delete&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;new&lt;/code&gt; および &lt;code&gt;delete&lt;/code&gt; オーバーロード</target>
+        </trans-unit>
+        <trans-unit id="918f907f18107b5038a28b4f7a181b670ec203fa" translate="yes" xml:space="preserve">
+          <source>Overloading new and delete</source>
+          <target state="translated">新規・削除のオーバーロード</target>
+        </trans-unit>
+        <trans-unit id="6c74c5e2cff52e6b3146c3c1bffab6eeaab7158c" translate="yes" xml:space="preserve">
+          <source>Overloading unary minus and plus is not very common and probably best avoided. If needed, they should probably be overloaded as member functions.</source>
+          <target state="translated">単項のマイナスとプラスをオーバーロードすることはあまり一般的ではありませんし、おそらく避けた方が良いでしょう。必要であれば、メンバ関数としてオーバーロードすべきでしょう。</target>
+        </trans-unit>
+        <trans-unit id="aef51910b519e257f69e8e603e5cc6e63bd7c663" translate="yes" xml:space="preserve">
+          <source>Placement &lt;code&gt;new&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;new&lt;/code&gt; 配置</target>
+        </trans-unit>
+        <trans-unit id="2f35e5b7132ff39e177d6482815cbd394c998601" translate="yes" xml:space="preserve">
+          <source>Since &lt;code&gt;operator&amp;lt;&amp;lt;&lt;/code&gt; is overloaded as a member function of &lt;code&gt;Foo&lt;/code&gt;, the LHS of the operator must be a &lt;code&gt;Foo&lt;/code&gt; object. Which means, you will be required to use:</source>
+          <target state="translated">&lt;code&gt;operator&amp;lt;&amp;lt;&lt;/code&gt; は &lt;code&gt;Foo&lt;/code&gt; のメンバー関数としてオーバーロードされるため、演算子のLHSは &lt;code&gt;Foo&lt;/code&gt; オブジェクトでなければなりません。 つまり、以下を使用する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="48b7d95d9adba62275ebb23b2739fe7185d38c3e" translate="yes" xml:space="preserve">
+          <source>So-called placement new allows you to create an object at a certain address which is passed to:</source>
+          <target state="translated">いわゆるプレースメントニューでは、特定のアドレスにオブジェクトを作成し、そのアドレスに渡されたオブジェクトを作成することができます。</target>
+        </trans-unit>
+        <trans-unit id="410499869878cd2bd1c723022f7e89e241865fba" translate="yes" xml:space="preserve">
+          <source>The C++ standard library comes with a set of predefined &lt;code&gt;new&lt;/code&gt; and &lt;code&gt;delete&lt;/code&gt; operators. The most important ones are these:</source>
+          <target state="translated">C ++標準ライブラリには、事前定義された &lt;code&gt;new&lt;/code&gt; および &lt;code&gt;delete&lt;/code&gt; 演算子のセットが付属しています。 最も重要なものは次のとおりです。</target>
+        </trans-unit>
+        <trans-unit id="c5b39f9cfeee4e22210663bbd7c842296748cdf0" translate="yes" xml:space="preserve">
+          <source>The Decision between Member and Non-member</source>
+          <target state="translated">会員と非会員の判断</target>
+        </trans-unit>
+        <trans-unit id="2cdaded69a5ba8bbbc434264bc52e9dff47315be" translate="yes" xml:space="preserve">
+          <source>The General Syntax of operator overloading in C++</source>
+          <target state="translated">C++における演算子オーバーロードの一般的な構文</target>
+        </trans-unit>
+        <trans-unit id="daa94d71b00e6fe8d0332493c4413afa5cc89105" translate="yes" xml:space="preserve">
+          <source>The Three Basic Rules of Operator Overloading in C++</source>
+          <target state="translated">C++における演算子オーバーロードの3つの基本ルール</target>
+        </trans-unit>
+        <trans-unit id="1ed425865c7b999b506d3bd64bd342aef7d971fa" translate="yes" xml:space="preserve">
+          <source>The array subscript operator is a binary operator which must be implemented as a class member. It is used for container-like types that allow access to their data elements by a key.
+The canonical form of providing these is this:</source>
+          <target state="translated">配列の添え字演算子は、クラスのメンバとして実装する必要があるバイナリ演算子です。これは、キーによるデータ要素へのアクセスを可能にするコンテナのような型に使用されます。これらを提供する定型的な形式はこれです。</target>
+        </trans-unit>
+        <trans-unit id="5071b272c7cacc200a739ff1600233700cde5f39" translate="yes" xml:space="preserve">
+          <source>The binary infix comparison operators should, according to the rules of thumb, be implemented as non-member functions&lt;sup&gt;1&lt;/sup&gt;. The unary prefix negation &lt;code&gt;!&lt;/code&gt; should (according to the same rules) be implemented as a member function. (but it is usually not a good idea to overload it.)</source>
+          <target state="translated">バイナリのインフィックス比較演算子は、経験則に従って、非メンバー関数として実装する必要があります&lt;sup&gt;1&lt;/sup&gt; 。 単項接頭辞否定 &lt;code&gt;!&lt;/code&gt; （同じルールに従って）メンバー関数として実装する必要があります。 （ただし、通常、オーバーロードすることはお勧めしません。）</target>
+        </trans-unit>
+        <trans-unit id="1f4eebeeaa95cd1e3a1f5148b3b1cf80c882d651" translate="yes" xml:space="preserve">
+          <source>The binary operators &lt;code&gt;=&lt;/code&gt; (assignment), &lt;code&gt;[]&lt;/code&gt; (array subscription), &lt;code&gt;-&amp;gt;&lt;/code&gt; (member access), as well as the n-ary &lt;code&gt;()&lt;/code&gt; (function call) operator, must always be implemented as &lt;strong&gt;&lt;em&gt;member functions&lt;/em&gt;&lt;/strong&gt;, because the syntax of the language requires them to.</source>
+          <target state="translated">二項演算子 &lt;code&gt;=&lt;/code&gt; （代入）、 &lt;code&gt;[]&lt;/code&gt; （配列サブスクリプション）、 &lt;code&gt;-&amp;gt;&lt;/code&gt; （メンバーアクセス）、およびn-ary &lt;code&gt;()&lt;/code&gt; （関数呼び出し）演算子は、常に&lt;strong&gt;&lt;em&gt;メンバー関数&lt;/em&gt;&lt;/strong&gt;として実装する必要があります。言語はそれらをする必要があります。</target>
+        </trans-unit>
+        <trans-unit id="e752b73d2516a901950b1881135e09ba982f3610" translate="yes" xml:space="preserve">
+          <source>The bit manipulation operators &lt;code&gt;~&lt;/code&gt;&lt;code&gt;&amp;amp;&lt;/code&gt;&lt;code&gt;|&lt;/code&gt;&lt;code&gt;^&lt;/code&gt;&lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt;&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; should be implemented in the same way as the arithmetic operators. However, (except for overloading &lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt; and &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; for output and input) there are very few reasonable use cases for overloading these.</source>
+          <target state="translated">ビット操作演算子 &lt;code&gt;~&lt;/code&gt; &lt;code&gt;&amp;amp;&lt;/code&gt; &lt;code&gt;|&lt;/code&gt; &lt;code&gt;^&lt;/code&gt; &lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt; &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; は、算術演算子と同じ方法で実装する必要があります。 ただし、（出力と入力の &lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt; および &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; のオーバーロードを除いて）これらをオーバーロードするための合理的なユースケースはほとんどありません。</target>
+        </trans-unit>
+        <trans-unit id="945991f17734d3341c52c64409c763fa696537b0" translate="yes" xml:space="preserve">
+          <source>The bitshift operators &lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt; and &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;, although still used in hardware interfacing for the bit-manipulation functions they inherit from C, have become more prevalent as overloaded stream input and output operators in most applications.  For guidance overloading as bit-manipulation operators, see the section below on Binary Arithmetic Operators.  For implementing your own custom format and parsing logic when your object is used with iostreams, continue.</source>
+          <target state="translated">ビットシフト演算子 &lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt; および &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; は 、Cから継承するビット操作関数のハードウェアインターフェイスで引き続き使用されますが、ほとんどのアプリケーションでオーバーロードされたストリーム入力および出力演算子として普及しています。 ビット操作演算子としてのオーバーロードのガイダンスについては、以下の2項算術演算子のセクションを参照してください。 オブジェクトがiostreamで使用されているときに独自のカスタム形式と解析ロジックを実装する場合は、続行します。</target>
+        </trans-unit>
+        <trans-unit id="fff84f3d926b7bdd40f1cf1bda8210cabce8f711" translate="yes" xml:space="preserve">
+          <source>The first of the basic rules of operator overloading &amp;ndash; &lt;em&gt;don&amp;rsquo;t do it&lt;/em&gt; &amp;ndash; applies especially to overloading &lt;code&gt;new&lt;/code&gt; and &lt;code&gt;delete&lt;/code&gt;. Almost the only reasons to overload these operators are &lt;strong&gt;&lt;em&gt;performance problems&lt;/em&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;em&gt;memory constraints&lt;/em&gt;&lt;/strong&gt;, and in many cases, other actions, like &lt;em&gt;changes to the algorithms&lt;/em&gt; used, will provide a much &lt;strong&gt;&lt;em&gt;higher cost/gain ratio&lt;/em&gt;&lt;/strong&gt; than attempting to tweak memory management.</source>
+          <target state="translated">演算子のオーバーロードの最初の基本ルール&amp;ndash; &lt;em&gt;しないでください&lt;/em&gt; &amp;ndash;は、特に &lt;code&gt;new&lt;/code&gt; および &lt;code&gt;delete&lt;/code&gt; のオーバーロードに適用されます。 これらの演算子をオーバーロードするほとんど唯一の理由は、 &lt;strong&gt;&lt;em&gt;パフォーマンスの問題&lt;/em&gt;&lt;/strong&gt;と&lt;strong&gt;&lt;em&gt;メモリの制約&lt;/em&gt;&lt;/strong&gt;であり、多くの場合、使用される&lt;em&gt;アルゴリズムの変更&lt;/em&gt;などの他のアクションは、メモリ管理を微調整するよりもはるかに&lt;strong&gt;&lt;em&gt;高いコスト/ゲイン比&lt;/em&gt;&lt;/strong&gt;を提供します。</target>
+        </trans-unit>
+        <trans-unit id="d34b042bc12c1d81ad05fa8ab3868d83da8eb700" translate="yes" xml:space="preserve">
+          <source>The first two allocate/deallocate memory for an object, the latter two for an array of objects. If you provide your own versions of these, they will &lt;strong&gt;&lt;em&gt;not overload, but replace&lt;/em&gt;&lt;/strong&gt; the ones from the standard library.</source>
+          <target state="translated">最初の2つはオブジェクトにメモリを割り当て/割り当て解除し、後の2つはオブジェクトの配列に割り当てます。 これらの独自のバージョンを提供する場合、それらは&lt;strong&gt;&lt;em&gt;過負荷&lt;/em&gt;&lt;/strong&gt;になることはあり&lt;strong&gt;&lt;em&gt;ませんが&lt;/em&gt;&lt;/strong&gt; 、標準ライブラリからのものを&lt;strong&gt;&lt;em&gt;置き換え&lt;/em&gt;&lt;/strong&gt;ます。</target>
+        </trans-unit>
+        <trans-unit id="3913d839e0e0cdca08e79893f8e7739eb1267dab" translate="yes" xml:space="preserve">
+          <source>The following is a simple class with an implicit conversion operator:</source>
+          <target state="translated">以下は、暗黙の変換演算子を持つシンプルなクラスです。</target>
+        </trans-unit>
+        <trans-unit id="633d4c2f5c9eede69578ed2b0fb1b8a6678e93f3" translate="yes" xml:space="preserve">
+          <source>The function call operator, used to create function objects, also known as functors, must be defined as a &lt;strong&gt;&lt;em&gt;member&lt;/em&gt;&lt;/strong&gt; function, so it always has the implicit &lt;code&gt;this&lt;/code&gt; argument of member functions. Other than this, it can be overloaded to take any number of additional arguments, including zero.</source>
+          <target state="translated">関数オブジェクト（ファンクターとも呼ばれる）の作成に使用される関数呼び出し演算子は、 &lt;strong&gt;&lt;em&gt;メンバー&lt;/em&gt;&lt;/strong&gt;関数として定義する必要があるため、 &lt;strong&gt;&lt;em&gt;メンバー&lt;/em&gt;&lt;/strong&gt;関数の暗黙の &lt;code&gt;this&lt;/code&gt; 引数が常に含まれます。 これ以外に、オーバーロードしてゼロを含む任意の数の追加の引数を取ることができます。</target>
+        </trans-unit>
+        <trans-unit id="f09b5b0acfb377a7aa0dcf24a9a4828f0e1de877" translate="yes" xml:space="preserve">
+          <source>The important thing to note here is that only two of these operators actually do anything, the others are just forwarding their arguments to either of these two to do the actual work.</source>
+          <target state="translated">ここで注意すべき重要なことは、これらの演算子のうち2つだけが実際に何かをしているということで、他の演算子は、実際の作業を行うために、この2つのどちらかに引数を転送しているだけです。</target>
+        </trans-unit>
+        <trans-unit id="c8a7556a69847cd86a1a393d720af19a6fe22b5a" translate="yes" xml:space="preserve">
+          <source>The standard library comes with the appropriate overloads of the new and delete operators for this:</source>
+          <target state="translated">標準ライブラリには、このためのnew演算子とdelete演算子の適切なオーバーロードが付属しています。</target>
+        </trans-unit>
+        <trans-unit id="6c83c7c063a1665405b1d98712a057d5666d471e" translate="yes" xml:space="preserve">
+          <source>The standard library&amp;rsquo;s algorithms (e.g. &lt;code&gt;std::sort()&lt;/code&gt;) and types (e.g. &lt;code&gt;std::map&lt;/code&gt;) will always only expect &lt;code&gt;operator&amp;lt;&lt;/code&gt; to be present. However, the &lt;em&gt;users of your type will expect all the other operators to be present&lt;/em&gt;, too, so if you define &lt;code&gt;operator&amp;lt;&lt;/code&gt;, be sure to follow the third fundamental rule of operator overloading and also define all the other boolean comparison operators. The canonical way to implement them is this:</source>
+          <target state="translated">標準ライブラリのアルゴリズム（例： &lt;code&gt;std::sort()&lt;/code&gt; ）とタイプ（例： &lt;code&gt;std::map&lt;/code&gt; ）は、常に &lt;code&gt;operator&amp;lt;&lt;/code&gt; が存在することだけを期待します。 ただし、 &lt;em&gt;同じタイプ&lt;/em&gt;の&lt;em&gt;ユーザーは、他のすべての演算子も存在することを期待している&lt;/em&gt;ため、 &lt;code&gt;operator&amp;lt;&lt;/code&gt; を定義する場合は、演算子のオーバーロードの3番目の基本ルールに従い、他のすべてのブール比較演算子も定義してください。 それらを実装する正規の方法はこれです：</target>
+        </trans-unit>
+        <trans-unit id="7b0324536b2aff8b5056489442124903baa2f6fb" translate="yes" xml:space="preserve">
+          <source>The stream operators, among the most commonly overloaded operators, are binary infix operators for which the syntax specifies no restriction on whether they should be members or non-members.
+Since they change their left argument (they alter the stream&amp;rsquo;s state), they should, according to the rules of thumb, be implemented as members of their left operand&amp;rsquo;s type. However, their left operands are streams from the standard library, and while most of the stream output and input operators defined by the standard library are indeed defined as members of the stream classes, when you implement output and input operations for your own types, you cannot change the standard library&amp;rsquo;s stream types. That&amp;rsquo;s why you need to implement these operators for your own types as non-member functions.
+The canonical forms of the two are these:</source>
+          <target state="translated">ストリーム演算子は、最も一般的にオーバーロードされた演算子の1つであり、構文がメンバーまたは非メンバーであるかどうかの制限を指定しない2項中置演算子です。 それらは左引数を変更する（ストリームの状態を変更する）ため、経験則に従って、左オペランドの型のメンバーとして実装する必要があります。 ただし、それらの左側のオペランドは標準ライブラリからのストリームであり、標準ライブラリによって定義されたほとんどのストリーム出力および入力演算子は実際にストリームクラスのメンバーとして定義されていますが、独自のタイプの出力および入力操作を実装すると、標準ライブラリのストリームタイプを変更できません。 そのため、独自の型に対してこれらの演算子を非メンバー関数として実装する必要があります。 2つの正規形は次のとおりです。</target>
+        </trans-unit>
+        <trans-unit id="e742cb5d317ff843e4d40ebac2e6b8a129167116" translate="yes" xml:space="preserve">
+          <source>The syntax for overloading the remaining binary boolean operators (&lt;code&gt;||&lt;/code&gt;, &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;) follows the rules of the comparison operators. However, it is &lt;em&gt;very&lt;/em&gt; unlikely that you would find a reasonable use case for these&lt;sup&gt;2&lt;/sup&gt;.</source>
+          <target state="translated">残りの2項ブール演算子（ &lt;code&gt;||&lt;/code&gt; 、 &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; ）をオーバーロードするための構文は、比較演算子の規則に従います。 ただし、これらの&lt;sup&gt;2の&lt;/sup&gt;合理的なユースケースを見つけることは&lt;em&gt;ほとんど&lt;/em&gt;ありません。</target>
+        </trans-unit>
+        <trans-unit id="43b92ed49085008f088b6b20f2dff39e47616f03" translate="yes" xml:space="preserve">
+          <source>The unary address-of operator should never be overloaded.</source>
+          <target state="translated">単項の address-of 演算子は決してオーバーロードしてはいけません。</target>
+        </trans-unit>
+        <trans-unit id="4e69702ccb56e46c30152ff70d54bcafe1d3b79d" translate="yes" xml:space="preserve">
+          <source>The unary increment and decrement operators come in both prefix and postfix flavor. To tell one from the other, the postfix variants take an additional dummy int argument. If you overload increment or decrement, be sure to always implement both prefix and postfix versions.
+Here is the canonical implementation of increment, decrement follows the same rules:</source>
+          <target state="translated">単項演算子のインクリメントとデクリメントには、接頭辞と接尾辞があります。どちらか一方を見分けるために、postfix の場合はダミーの int 引数を追加しています。もし increment や decrement をオーバーロードする場合は、常に prefix と postfix の両方を実装するようにしてください。以下に increment と decrement の標準的な実装を示します。</target>
+        </trans-unit>
+        <trans-unit id="fafebafed54733670be4bdb8f0f077c58939e2eb" translate="yes" xml:space="preserve">
+          <source>There's a lot to be said about assignment. However, most of it has already been said in &lt;a href=&quot;https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom&quot;&gt;GMan's famous Copy-And-Swap FAQ&lt;/a&gt;, so I'll skip most of it here, only listing the perfect assignment operator for reference:</source>
+          <target state="translated">割り当てについては、多くのことを言う必要があります。 ただし、そのほとんどは&lt;a href=&quot;https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom&quot;&gt;GManの有名なコピーアンドスワップFAQ&lt;/a&gt;ですでに述べられているので、ここではそのほとんどを省略し、参照用に完全な代入演算子のみをリストします。</target>
+        </trans-unit>
+        <trans-unit id="7d5a6745e57fd584e32c48350df5cf7b6c97a053" translate="yes" xml:space="preserve">
+          <source>Throughout the C++ standard library, function objects are always copied. Your own function objects should therefore be cheap to copy. If a function object absolutely needs to use data which is expensive to copy, it is better to store that data elsewhere and have the function object refer to it.</source>
+          <target state="translated">C++標準ライブラリ全体を通して、関数オブジェクトは常にコピーされています。したがって、独自の関数オブジェクトは、コピーするのにコストがかからないものでなければなりません。関数オブジェクトがどうしてもコピーするのに高価なデータを使用する必要がある場合は、そのデータを別の場所に保存して、関数オブジェクトがそれを参照するようにした方が良いでしょう。</target>
+        </trans-unit>
+        <trans-unit id="d096ebff9a794e9192a29686de4113ddeb056fa5" translate="yes" xml:space="preserve">
+          <source>To invoke the explicit cast operator, you have to use &lt;code&gt;static_cast&lt;/code&gt;, a C-style cast, or a constructor style cast ( i.e. &lt;code&gt;T(value)&lt;/code&gt; ).</source>
+          <target state="translated">明示的なキャスト演算子を呼び出すには、 &lt;code&gt;static_cast&lt;/code&gt; 、Cスタイルのキャスト、またはコンストラクタスタイルのキャスト（つまり &lt;code&gt;T(value)&lt;/code&gt; ）を使用する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="d8020d5538e9765d456a055193c573dc6171a136" translate="yes" xml:space="preserve">
+          <source>To overload the global new and delete, simply replace the pre-defined operators of the standard library with our own. However, this rarely ever needs to be done.</source>
+          <target state="translated">グローバルなnewとdeleteをオーバーロードするには、標準ライブラリのあらかじめ定義された演算子を独自のものに置き換えるだけです。しかし、これを行う必要はほとんどありません。</target>
+        </trans-unit>
+        <trans-unit id="f5a792933066b9a9e2ac32f6f06b8c7c9b9c310a" translate="yes" xml:space="preserve">
+          <source>Unary arithmetic operators</source>
+          <target state="translated">単項演算子</target>
+        </trans-unit>
+        <trans-unit id="97ec28a8a9251fa1cb37b5b5d4e4408efdf02f8b" translate="yes" xml:space="preserve">
+          <source>Unless you do not want users of your class to be able to change data elements returned by &lt;code&gt;operator[]&lt;/code&gt; (in which case you can omit the non-const variant), you should always provide both variants of the operator.</source>
+          <target state="translated">クラスのユーザーが &lt;code&gt;operator[]&lt;/code&gt; によって返されるデータ要素を変更できないようにする場合を除き（非constバリアントを省略できる場合）、常に演算子の両方のバリアントを提供する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="4f28b9e24ebd784a9282ef8b29671b29756db1ae" translate="yes" xml:space="preserve">
+          <source>Unlike implicit conversion operators, explicit conversion operators will never kick in when you don't expect them to.  The following is a simple class with an explicit conversion operator:</source>
+          <target state="translated">暗黙の変換演算子とは異なり、明示的な変換演算子は、期待していないときには決してキックインしません。以下は,明示的な変換演算子を持つ単純なクラスです。</target>
+        </trans-unit>
+        <trans-unit id="861a0e430ffac5e4ae6e11b7a947f2c32d388cf4" translate="yes" xml:space="preserve">
+          <source>Usage:</source>
+          <target state="translated">Usage:</target>
+        </trans-unit>
+        <trans-unit id="7a38cdb12264364efc9478d485dd17ef42cde482" translate="yes" xml:space="preserve">
+          <source>What are the basic rules and idioms for operator overloading</source>
+          <target state="translated">オペレーターオーバーロードの基本的なルールと熟語とは?</target>
+        </trans-unit>
+        <trans-unit id="919377897e90c6bc8567a475cc62dd42597b7240" translate="yes" xml:space="preserve">
+          <source>When implementing &lt;code&gt;operator&amp;gt;&amp;gt;&lt;/code&gt;, manually setting the stream&amp;rsquo;s state is only necessary when the reading itself succeeded, but the result is not what would be expected.</source>
+          <target state="translated">&lt;code&gt;operator&amp;gt;&amp;gt;&lt;/code&gt; 実装する場合、ストリーム自体の状態を手動で設定する必要があるのは、読み取り自体が成功した場合のみですが、期待どおりの結果は得られません。</target>
+        </trans-unit>
+        <trans-unit id="f20d7d9e25980a2df4f9c97a919afac20cc35de6" translate="yes" xml:space="preserve">
+          <source>When it comes to operator overloading in C++, there are &lt;strong&gt;&lt;em&gt;three basic rules you should follow&lt;/em&gt;&lt;/strong&gt;. As with all such rules, there are indeed exceptions. Sometimes people have deviated from them and the outcome was not bad code, but such positive deviations are few and far between. At the very least, 99 out of 100 such deviations I have seen were unjustified. However, it might just as well have been 999 out of 1000. So you&amp;rsquo;d better stick to the following rules.</source>
+          <target state="translated">C ++での演算子のオーバーロードに関しては、 &lt;strong&gt;&lt;em&gt;3つの基本的な規則に従う必要があります&lt;/em&gt;&lt;/strong&gt; 。 そのようなすべてのルールと同様に、確かに例外があります。 時々人々はそれらから逸脱し、結果は悪いコードではありませんでしたが、そのような正の逸脱はほとんどありません。 少なくとも、私が見たそのような逸脱の100のうち99は正当化されませんでした。 ただし、1000のうちの999である可能性もあります。そのため、次のルールに従うことをお勧めします。</target>
+        </trans-unit>
+        <trans-unit id="37f76d33dcd336dfa74e1a497620ddd35c0ff0ac" translate="yes" xml:space="preserve">
+          <source>Why can't &lt;code&gt;operator&amp;lt;&amp;lt;&lt;/code&gt; function for streaming objects to &lt;code&gt;std::cout&lt;/code&gt; or to a file be a member function?</source>
+          <target state="translated">オブジェクトを &lt;code&gt;std::cout&lt;/code&gt; またはファイルにストリーミングする &lt;code&gt;operator&amp;lt;&amp;lt;&lt;/code&gt; 関数がメンバー関数にならないのはなぜですか？</target>
+        </trans-unit>
+        <trans-unit id="39d720caae827c7c0b9c7f668fcb211ea7a7c1d0" translate="yes" xml:space="preserve">
+          <source>You can also overload &lt;code&gt;new&lt;/code&gt; and &lt;code&gt;delete&lt;/code&gt; with other arguments. As with the additional argument for placement new, these arguments are also listed within parentheses after the keyword &lt;code&gt;new&lt;/code&gt;. Merely for historical reasons, such variants are often also called placement new, even if their arguments are not for placing an object at a specific address.</source>
+          <target state="translated">&lt;code&gt;new&lt;/code&gt; をオーバーロードして、他の引数で &lt;code&gt;delete&lt;/code&gt; こともできます。 配置newの追加の引数と同様に、これらの引数もキーワード &lt;code&gt;new&lt;/code&gt; の後の括弧内にリストされます。 単に歴史的な理由から、そのようなバリアントは、特定のアドレスにオブジェクトを配置するための引数ではない場合でも、新しい配置とも呼ばれます。</target>
+        </trans-unit>
+        <trans-unit id="7528cb53fda223cd367475e992221703ed9fdc71" translate="yes" xml:space="preserve">
+          <source>You cannot change the meaning of operators for built-in types in C++, operators can only be overloaded for user-defined types&lt;sup&gt;1&lt;/sup&gt;. That is, at least one of the operands has to be of a user-defined type. As with other overloaded functions, operators can be overloaded for a certain set of parameters only once.</source>
+          <target state="translated">C ++の組み込み型の演算子の意味を変更することはできません。演算子は、ユーザー定義型&lt;sup&gt;1&lt;/sup&gt;に対してのみオーバーロードできます。 つまり、オペランドの少なくとも1つはユーザー定義型である必要があります。 他のオーバーロードされた関数と同様に、オペレーターは特定のパラメーターのセットに対して一度だけオーバーロードできます。</target>
+        </trans-unit>
+        <trans-unit id="9e8e2f1d8db91fd84d40e7c67b7a78f2b63f8119" translate="yes" xml:space="preserve">
+          <source>You will be able to use:</source>
+          <target state="translated">使えるようになります。</target>
+        </trans-unit>
+        <trans-unit id="216956e088f4509625dab4a52801ab781c0e31b0" translate="yes" xml:space="preserve">
+          <source>and you want to overload the increment and decrement operators for it, you cannot do this as a member functions, since in C++, enum types cannot have member functions. So you have to overload it as a free function. And &lt;code&gt;operator&amp;lt;()&lt;/code&gt; for a class template nested within a class template is much easier to write and read when done as a member function inline in the class definition. But these are indeed rare exceptions.</source>
+          <target state="translated">C ++では列挙型はメンバー関数を持つことができないので、そのためにインクリメント演算子とデクリメント演算子をオーバーロードしたい場合、これをメンバー関数として実行することはできません。 したがって、フリー関数としてオーバーロードする必要があります。 また、クラステンプレート内にネストされたクラステンプレートの &lt;code&gt;operator&amp;lt;()&lt;/code&gt; は、クラス定義のインラインでメンバー関数として実行すると、書き込みと読み取りがはるかに簡単になります。 しかし、これらは確かにまれな例外です。</target>
+        </trans-unit>
+        <trans-unit id="a8876728833443b597fddaff948d8ef7d8b6d6fb" translate="yes" xml:space="preserve">
+          <source>arithmetic operators: &lt;code&gt;+&lt;/code&gt;&lt;code&gt;-&lt;/code&gt;&lt;code&gt;*&lt;/code&gt;&lt;code&gt;/&lt;/code&gt;&lt;code&gt;%&lt;/code&gt; and &lt;code&gt;+=&lt;/code&gt;&lt;code&gt;-=&lt;/code&gt;&lt;code&gt;*=&lt;/code&gt;&lt;code&gt;/=&lt;/code&gt;&lt;code&gt;%=&lt;/code&gt; (all binary infix); &lt;code&gt;+&lt;/code&gt;&lt;code&gt;-&lt;/code&gt; (unary prefix); &lt;code&gt;++&lt;/code&gt;&lt;code&gt;--&lt;/code&gt; (unary prefix and postfix)</source>
+          <target state="translated">算術演算子： &lt;code&gt;+&lt;/code&gt; &lt;code&gt;-&lt;/code&gt; &lt;code&gt;*&lt;/code&gt; &lt;code&gt;/&lt;/code&gt; &lt;code&gt;%&lt;/code&gt; および &lt;code&gt;+=&lt;/code&gt; &lt;code&gt;-=&lt;/code&gt; &lt;code&gt;*=&lt;/code&gt; &lt;code&gt;/=&lt;/code&gt; &lt;code&gt;%=&lt;/code&gt; （すべて2進インフィクス）; &lt;code&gt;+&lt;/code&gt; &lt;code&gt;-&lt;/code&gt; （単項接頭辞）; &lt;code&gt;++&lt;/code&gt; &lt;code&gt;--&lt;/code&gt; （単項接頭辞と後置）</target>
+        </trans-unit>
+        <trans-unit id="5a5099434f36ef0494a734223946a9f17c108f31" translate="yes" xml:space="preserve">
+          <source>bit manipulation: &lt;code&gt;&amp;amp;&lt;/code&gt;&lt;code&gt;|&lt;/code&gt;&lt;code&gt;^&lt;/code&gt;&lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt;&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;amp;=&lt;/code&gt;&lt;code&gt;|=&lt;/code&gt;&lt;code&gt;^=&lt;/code&gt;&lt;code&gt;&amp;lt;&amp;lt;=&lt;/code&gt;&lt;code&gt;&amp;gt;&amp;gt;=&lt;/code&gt; (all binary infix); &lt;code&gt;~&lt;/code&gt; (unary prefix)</source>
+          <target state="translated">ビット操作： &lt;code&gt;&amp;amp;&lt;/code&gt; &lt;code&gt;|&lt;/code&gt; &lt;code&gt;^&lt;/code&gt; &lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt; &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt; および &lt;code&gt;&amp;amp;=&lt;/code&gt; &lt;code&gt;|=&lt;/code&gt; &lt;code&gt;^=&lt;/code&gt; &lt;code&gt;&amp;lt;&amp;lt;=&lt;/code&gt; &lt;code&gt;&amp;gt;&amp;gt;=&lt;/code&gt; （すべてのバイナリのインフィックス）; &lt;code&gt;~&lt;/code&gt; （単項接頭辞）</target>
+        </trans-unit>
+        <trans-unit id="f93156b243321d1cbdfc482620959e7bf4ed1bf9" translate="yes" xml:space="preserve">
+          <source>boolean algebra: &lt;code&gt;==&lt;/code&gt;&lt;code&gt;!=&lt;/code&gt;&lt;code&gt;&amp;lt;&lt;/code&gt;&lt;code&gt;&amp;gt;&lt;/code&gt;&lt;code&gt;&amp;lt;=&lt;/code&gt;&lt;code&gt;&amp;gt;=&lt;/code&gt;&lt;code&gt;||&lt;/code&gt;&lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; (all binary infix); &lt;code&gt;!&lt;/code&gt; (unary prefix)</source>
+          <target state="translated">ブール代数： &lt;code&gt;==&lt;/code&gt; &lt;code&gt;!=&lt;/code&gt; &lt;code&gt;&amp;lt;&lt;/code&gt; &lt;code&gt;&amp;gt;&lt;/code&gt; &amp;lt;=&amp;gt; &lt;code&gt;&amp;gt;=&lt;/code&gt; &lt;code&gt;||&lt;/code&gt; &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; （すべてバイナリのインフィックス）; &lt;code&gt;!&lt;/code&gt; （単項接頭辞）</target>
+        </trans-unit>
+        <trans-unit id="dfc056418cb491e7998e6f590c77a4dc4c43f3cf" translate="yes" xml:space="preserve">
+          <source>implicit conversion operators</source>
+          <target state="translated">暗黙変換演算子</target>
+        </trans-unit>
+        <trans-unit id="5a8540091878a4d7ea3c96c572645994df60c30a" translate="yes" xml:space="preserve">
+          <source>memory management: &lt;code&gt;new&lt;/code&gt;&lt;code&gt;new[]&lt;/code&gt;&lt;code&gt;delete&lt;/code&gt;&lt;code&gt;delete[]&lt;/code&gt;</source>
+          <target state="translated">メモリ管理： &lt;code&gt;new&lt;/code&gt; &lt;code&gt;new[]&lt;/code&gt; &lt;code&gt;delete&lt;/code&gt; &lt;code&gt;delete[]&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="81b2763337b529b56fc828c4327b362d3740d4ac" translate="yes" xml:space="preserve">
+          <source>miscellany: &lt;code&gt;=&lt;/code&gt;&lt;code&gt;[]&lt;/code&gt;&lt;code&gt;-&amp;gt;&lt;/code&gt;&lt;code&gt;-&amp;gt;*&lt;/code&gt;&lt;code&gt;,&lt;/code&gt;  (all binary infix); &lt;code&gt;*&lt;/code&gt;&lt;code&gt;&amp;amp;&lt;/code&gt; (all unary prefix) &lt;code&gt;()&lt;/code&gt; (function call, n-ary infix)</source>
+          <target state="translated">その他： &lt;code&gt;=&lt;/code&gt; &lt;code&gt;[]&lt;/code&gt; &lt;code&gt;-&amp;gt;&lt;/code&gt; &lt;code&gt;-&amp;gt;*&lt;/code&gt; &lt;code&gt;,&lt;/code&gt; （すべてバイナリのインフィックス）; &lt;code&gt;*&lt;/code&gt; &lt;code&gt;&amp;amp;&lt;/code&gt; （すべて単項接頭辞） &lt;code&gt;()&lt;/code&gt; （関数呼び出し、n項接頭辞）</target>
+        </trans-unit>
+        <trans-unit id="c824aa9ad53891d9b5e9c118b4ffd5c133b27edd" translate="yes" xml:space="preserve">
+          <source>which is very intuitive.</source>
+          <target state="translated">というのは、非常に直感的です。</target>
+        </trans-unit>
+        <trans-unit id="0b24478dfb20b5a8671b13a521b4573226f340db" translate="yes" xml:space="preserve">
+          <source>which is very non-intuitive.</source>
+          <target state="translated">これは非常に直感的ではありません。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

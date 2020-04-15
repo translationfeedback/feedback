@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/588004">
+    <body>
+      <group id="588004">
+        <trans-unit id="9a77327f76e62f6925f45c2be16539ae6c9d0041" translate="yes" xml:space="preserve">
+          <source>(Skip to the bottom for the TL;DR version)</source>
+          <target state="translated">(TL; DR 버전의 하단으로 건너 뛰기)</target>
+        </trans-unit>
+        <trans-unit id="84f229d061d11f481f1f19df8986961ca0da2d64" translate="yes" xml:space="preserve">
+          <source>(The difference between those two numbers is the &quot;smallest slice&quot; that we must decide to either include, which introduces an upward bias, or exclude, which introduces a downward bias. The technical term for that smallest slice is an &lt;a href=&quot;https://en.wikipedia.org/wiki/Unit_in_the_last_place&quot;&gt;ulp&lt;/a&gt;.)</source>
+          <target state="translated">(이 두 숫자의 차이는 &quot;가장 작은 슬라이스&quot;입니다. 여기에는 상향 바이어스를 도입하거나 제외를 포함하여 하향 바이어스를 도입하기로 결정해야합니다.이 최소 슬라이스의 기술적 용어는 &lt;a href=&quot;https://en.wikipedia.org/wiki/Unit_in_the_last_place&quot;&gt;ulp&lt;/a&gt; 입니다.)</target>
+        </trans-unit>
+        <trans-unit id="9b6d1bf18ecd6ade5e73ff28141534f5496bb1f2" translate="yes" xml:space="preserve">
+          <source>** Of course, that's not exactly how floating-point numbers are stored in memory (they use a form of scientific notation). However, it does illustrate the point that binary floating-point precision errors tend to crop up because the &quot;real world&quot; numbers we are usually interested in working with are so often powers of ten - but only because we use a decimal number system day-to-day. This is also why we'll say things like 71% instead of &quot;5 out of every 7&quot; (71% is an approximation, since 5/7 can't be represented exactly with any decimal number).</source>
+          <target state="translated">** 물론 부동 소수점 숫자가 메모리에 저장되는 방식이 아닙니다 (과학 표기법의 형태를 사용함). 그러나 이진 부동 소수점 정밀도 오류는 일반적으로 우리가 작업하고자하는 &quot;실제 세계&quot;숫자가 10의 거듭 제곱이기 때문에 발생하는 경향을 보여줍니다. 오늘. 그렇기 때문에 우리는 &quot;7/5마다&quot;대신 71 %와 같은 것을 말할 것입니다 (71 %는 근사치입니다. 5/7은 정확히 10 진수로 표현 될 수 없기 때문입니다).</target>
+        </trans-unit>
+        <trans-unit id="46c3af8134de9a9765655ad80ac49c39423553fd" translate="yes" xml:space="preserve">
+          <source>*15% and 34% are indeed huge, so always use BigDecimal when precision is of big importance. With 2 decimal digits (step 0.01) the situation worsens a bit more (18% and 36%).</source>
+          <target state="translated">* 15 % 및 34 %는 실제로 매우 크므로 정밀도가 중요 할 때는 항상 BigDecimal을 사용하십시오. 소수점 이하 두 자리수 (단계 0.01)를 사용하면 상황이 조금 더 악화됩니다 (18 % 및 36 %).</target>
+        </trans-unit>
+        <trans-unit id="5b2e8d72a1ce0dbc9f2e00162aba5643d6cfbaec" translate="yes" xml:space="preserve">
+          <source>... instead of:</source>
+          <target state="translated">... 대신에:</target>
+        </trans-unit>
+        <trans-unit id="8d173aa16ecb116af67a70b11ccf3319c4101b1a" translate="yes" xml:space="preserve">
+          <source>0.1 converts to 0.1000000000000000055511151231257827021181583404541015625,</source>
+          <target state="translated">0.1은 0.1000000000000000055511151231257827021181583404541015625로 변환됩니다.</target>
+        </trans-unit>
+        <trans-unit id="fc11127f4be6e6f34950718f135c62cf3c856839" translate="yes" xml:space="preserve">
+          <source>0.2 converts to 0.200000000000000011102230246251565404236316680908203125,</source>
+          <target state="translated">0.2는 0.200000000000000011102230246251565404236316680908203125로 변환합니다.</target>
+        </trans-unit>
+        <trans-unit id="dd51d97fda6bb2ff93baf6b6621a7896bd5958f5" translate="yes" xml:space="preserve">
+          <source>0.3 converts to 0.299999999999999988897769753748434595763683319091796875, and</source>
+          <target state="translated">0.3은 0.299999999999999988897769753748434595763683319091796875로 변환하고</target>
+        </trans-unit>
+        <trans-unit id="b16b3417bc17ee7e5d7eb955c6af5486031aa6cc" translate="yes" xml:space="preserve">
+          <source>0.30000000000000004 converts to 0.3000000000000000444089209850062616169452667236328125.</source>
+          <target state="translated">0.30000000000000004는 0.3000000000000000444089209850062616169452667236328125로 변환됩니다.</target>
+        </trans-unit>
+        <trans-unit id="4a0ab3bf371766a011aeec8dab96140796667719" translate="yes" xml:space="preserve">
+          <source>1. Overview</source>
+          <target state="translated">1. 개요</target>
+        </trans-unit>
+        <trans-unit id="280ddd4621ebc589f7f4d720fc9808f147099965" translate="yes" xml:space="preserve">
+          <source>2. Standards</source>
+          <target state="translated">2. 표준</target>
+        </trans-unit>
+        <trans-unit id="f78082cab95c63bf0ca557926b7ee9c2fb55cdbf" translate="yes" xml:space="preserve">
+          <source>3. Cause of Rounding Error in Division</source>
+          <target state="translated">3. 나눗셈에서 반올림 오류의 원인</target>
+        </trans-unit>
+        <trans-unit id="2224e1de8ddee1360d6dbff9997ab8effced5fe5" translate="yes" xml:space="preserve">
+          <source>4. Rounding Errors in Other Operations: Truncation</source>
+          <target state="translated">4. 다른 작업에서 반올림 오류 : 잘림</target>
+        </trans-unit>
+        <trans-unit id="983153e4c20b316f5664ccc0384312b6738b022a" translate="yes" xml:space="preserve">
+          <source>5. Repeated Operations</source>
+          <target state="translated">5. 반복 작업</target>
+        </trans-unit>
+        <trans-unit id="8b9a12652ebaf55470a7b2d8569d105d465e8862" translate="yes" xml:space="preserve">
+          <source>6. Summary</source>
+          <target state="translated">6. 요약</target>
+        </trans-unit>
+        <trans-unit id="7de70e9b0e9505394d0b85bbae95dc555ccf5cac" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://stackoverflow.com/users/62118/cato-johnston&quot;&gt;Cato Johnston&lt;/a&gt; (the question asker) asked why 0.1 + 0.2 != 0.3.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/users/62118/cato-johnston&quot;&gt;Cato Johnston&lt;/a&gt; (질문자)은 왜 0.1 + 0.2! = 0.3인지 물었습니다.</target>
+        </trans-unit>
+        <trans-unit id="2d2e7cb5a614c281b71ef36c79d5cb65b4ba2509" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://www.python.org/dev/peps/pep-0485/&quot;&gt;Since Python 3.5&lt;/a&gt; you can use &lt;code&gt;math.isclose()&lt;/code&gt; function for testing approximate equality:</source>
+          <target state="translated">&lt;a href=&quot;https://www.python.org/dev/peps/pep-0485/&quot;&gt;Python 3.5부터는&lt;/a&gt; 대략적인 동등성을 테스트하기 위해 &lt;code&gt;math.isclose()&lt;/code&gt; 함수를 사용할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="401d8936879d8ca8394aee47a4c1ff1c1a185d3b" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;0.1000000000000000055511151231257827021181583404541015625&lt;/code&gt; in decimal, or</source>
+          <target state="translated">소수점 이하 &lt;code&gt;0.1000000000000000055511151231257827021181583404541015625&lt;/code&gt; 또는</target>
+        </trans-unit>
+        <trans-unit id="9ae555a82a2e499fc6d7d060a859ab15f217f180" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;0.1&lt;/code&gt; in decimal, or</source>
+          <target state="translated">10 진수로 &lt;code&gt;0.1&lt;/code&gt; 또는</target>
+        </trans-unit>
+        <trans-unit id="938bfc27c36837e08b1fe976025499db2a6ca7de" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;0x1.99999999999999...p-4&lt;/code&gt; in an analogue of C99 hexfloat notation, where the &lt;code&gt;...&lt;/code&gt; represents an unending sequence of 9's.</source>
+          <target state="translated">C99 hexfloat 표기법의 아날로그에서 &lt;code&gt;0x1.99999999999999...p-4&lt;/code&gt; . 여기서 &lt;code&gt;...&lt;/code&gt; 는 끝없는 9의 시퀀스를 나타냅니다.</target>
+        </trans-unit>
+        <trans-unit id="89651913f83ecb14efed483cec782827a6bc114c" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;0x1.999999999999ap-4&lt;/code&gt; in &lt;a href=&quot;http://www.exploringbinary.com/hexadecimal-floating-point-constants/&quot;&gt;C99 hexfloat notation&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;http://www.exploringbinary.com/hexadecimal-floating-point-constants/&quot;&gt;C99 hexfloat 표기법의&lt;/a&gt; &lt;code&gt;0x1.999999999999ap-4&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="1e817d9c8c705bf74fdcfcbf1e77b875d1d9ad5d" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;(Originally posted on Quora.)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;(원래 Quora에 게시되었습니다.)&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="f786024ccd8f2f5e7d1892462aac5f45ffcefb9b" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;1/10 = 0.0001100110011001100... (base 2)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;1/10 = 0.0001100110011001100 ... (기본 2)&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="63b72feaf47b4ec3136591d2e2faba0c081c5044" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;1/3 = 0.333....&lt;/em&gt; and &lt;em&gt;2/3 = 0.666....&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;1/3 = 0.333 ....&lt;/em&gt; 및 &lt;em&gt;2/3 = 0.666 ....&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="b00475b1e86d24dc6b485e60d7c73b28919a7639" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;1/5 = 0.0011001100110011001... (base 2)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;1/5 = 0.0011001100110011001 ... (기본 2)&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="16b45f9e57fbd951f4deea5d5a84d2d6a2e244b1" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;3/10 = 0.01001100110011... (base 2)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;3/10 = 0.01001100110011 ... (기본 2)&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="8dcbfaacbdfbc6d2f50d8a56a068e40e1261d6e7" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Dealing with it&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;다루기&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="0c628db72c8314407e7db73c5c8d371039653296" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;How did this happen?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;어떻게 이런일이 일어 났습니까?&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="114257217f3e4024fab9c8d736f74795530ded13" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;In C++, why is the result of &lt;code&gt;cout &amp;lt;&amp;lt; x&lt;/code&gt; different from the value that a debugger is showing for &lt;code&gt;x&lt;/code&gt;?&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;C ++에서 &lt;code&gt;cout &amp;lt;&amp;lt; x&lt;/code&gt; 의 결과가 디버거가 &lt;code&gt;x&lt;/code&gt; 에 대해 표시하는 값과 다른 이유는 무엇입니까?&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="fb29457a5c4a57bd14902466b53747ea1841155b" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Most answers here address this question in very dry, technical terms. I'd like to address this in terms that normal human beings can understand.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;대부분의 답변은이 질문을 매우 건조하고 기술적 인 용어로 해결합니다.&lt;/em&gt; &lt;em&gt;정상적인 인간이 이해할 수있는 용어로이 문제를 해결하고 싶습니다.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="812dea3da634f1bfe85f35d342dfc49090ae7e35" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;My answer is quite long, so I've split it into three sections. Since the question is about floating point mathematics, I've put the emphasis on what the machine actually does. I've also made it specific to double (64 bit) precision, but the argument applies equally to any floating point arithmetic.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;내 대답은 꽤 길기 때문에 세 부분으로 나눕니다.&lt;/em&gt; &lt;em&gt;문제는 부동 소수점 수학에 관한 것이기 때문에 기계가 실제로하는 일에 중점을 두었습니다.&lt;/em&gt; &lt;em&gt;또한 두 배 (64 비트) 정밀도로 특정화했지만 인수는 모든 부동 소수점 산술에 동일하게 적용됩니다.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="65bea6bb1ae17a4b9f7a3bd71f9fa6d20638dc20" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Summary&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;Summary&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="410b8c8555b9687d089ded3e44b46bfe83e53270" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Thanks to @a_guest for pointing that out to me.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;저에게 지적 해 주신 @a_guest에게 감사드립니다.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="419db0b8ed72e080cefb0589020b58af00048586" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;a / (2&lt;sup&gt;n&lt;/sup&gt; x 5&lt;sup&gt;m&lt;/sup&gt;)&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;a / ( &lt;sup&gt;2n&lt;/sup&gt; x &lt;sup&gt;5m&lt;/sup&gt; )&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="03859a6a2231a6787e7d8d22083fb8ea3dd47552" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;a / 2&lt;sup&gt;n&lt;/sup&gt;&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;a / &lt;sup&gt;2n&lt;/sup&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="d8490feafcf8730008f92d1c10a76f3c806c53c2" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;precision&lt;/em&gt; refers to the number of digits you want to preserve after the decimal point during addition.</source>
+          <target state="translated">&lt;em&gt;정밀도&lt;/em&gt; 는 추가하는 동안 소수점 이후에 유지하려는 자릿수를 나타냅니다.</target>
+        </trans-unit>
+        <trans-unit id="1e3ee7af3fba4d45fa593681a54a346b038b05dd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;3.1 Division Rounding Error: Approximation of Reciprocal&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;3.1 구간 반올림 오차 : 역수 근사&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3e6bc1e3e005f88dbf93220a210a0fde73485d05" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;A Hardware Designer's Perspective&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;하드웨어 디자이너의 관점&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a96efce74d6c9dba462233167c7749ee6864dd04" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Getting to the point: the original question&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;요점 파악 : 원래 질문&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7791bf2ab0b52173b0ccf2e8bcaba860d7f299bd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Math.sum&lt;/strong&gt; ( javascript )     .... kind of operator replacement</source>
+          <target state="translated">&lt;strong&gt;Math.sum&lt;/strong&gt; (자바 스크립트) .... 종류의 연산자 교체</target>
+        </trans-unit>
+        <trans-unit id="991cc4a1d9e4964b8a4f30616ab0b042a2270ceb" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Preamble&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Preamble&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7c64deca575044ac6f1b7a2c724063d8e9be011c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Side Note: All positional (base-N) number systems share this problem with precision&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;참고 : 모든 위치 (base-N) 숫자 시스템은이 문제를 정밀하게 공유합니다.&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="42c15268639d23d22e1869e6bd3d9e33364a9ea3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Side Side Note: Working with Floats in Programming&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;측면 참고 : 프로그래밍에서 플로트 작업&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="284c0cc1c16634ee278d62d9da4d70563394d278" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;TL;DR&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;TL;DR&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4f7a6a4259ba35f3a392f787d9eda8541de9ad1d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;This happens because of the double-precision binary: IEEE 754 double-precision binary floating-point format: binary64&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;이것은 배정도 바이너리 때문에 발생합니다 : IEEE 754 배정도 바이너리 부동 소수점 형식 : binary64&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="a74449c94d4167a6330ce9884c610a9f3e63e10a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Turning a double precision number to binary&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;배정도 숫자를 이진수로 바꾸기&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="42704c7e9e47a44a6be48d355b7d236b9cd0b77f" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;1&lt;/sup&gt; - IEEE 754 allows for the concept of a &lt;a href=&quot;http://en.wikipedia.org/wiki/Signed_zero&quot;&gt;signed zero&lt;/a&gt; - &lt;code&gt;+0&lt;/code&gt; and &lt;code&gt;-0&lt;/code&gt; are treated differently: &lt;code&gt;1 / (+0)&lt;/code&gt; is positive infinity; &lt;code&gt;1 / (-0)&lt;/code&gt; is negative infinity. For zero values, the mantissa and exponent bits are all zero. Note: zero values (+0 and -0) are explicitly not classed as denormal&lt;sup&gt;2&lt;/sup&gt;.</source>
+          <target state="translated">&lt;sup&gt;1&lt;/sup&gt; -IEEE 754는 &lt;a href=&quot;http://en.wikipedia.org/wiki/Signed_zero&quot;&gt;부호있는 0&lt;/a&gt; 의 개념을 허용 합니다 .- &lt;code&gt;+0&lt;/code&gt; 0 및 &lt;code&gt;-0&lt;/code&gt; 은 다르게 취급됩니다. &lt;code&gt;1 / (+0)&lt;/code&gt; 은 양의 무한대입니다. &lt;code&gt;1 / (-0)&lt;/code&gt; 은 음의 무한대입니다. 0 값의 경우 가수 및 지수 비트는 모두 0입니다. 참고 : 0 값 (+0 및 -0)은 명시 적으로 비정규 &lt;sup&gt;2&lt;/sup&gt; 로 분류되지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="1a547f62556031e29e245098a0954c909bff3ea3" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;1&lt;/sup&gt; Douglas Crockford: &lt;a href=&quot;http://books.google.com/books?id=PXa2bby0oQ0C&amp;amp;pg=PA105&amp;amp;dq=douglas+crockford+javascript+good+parts+dollar+values+can+be+converted&amp;amp;rview=1&amp;amp;cd=1#v=onepage&amp;amp;q=&amp;amp;f=false&quot;&gt;&lt;strong&gt;JavaScript: The Good Parts&lt;/strong&gt;: Appendix A - Awful Parts (page 105)&lt;/a&gt;.</source>
+          <target state="translated">&lt;sup&gt;1&lt;/sup&gt; Douglas Crockford : &lt;a href=&quot;http://books.google.com/books?id=PXa2bby0oQ0C&amp;amp;pg=PA105&amp;amp;dq=douglas+crockford+javascript+good+parts+dollar+values+can+be+converted&amp;amp;rview=1&amp;amp;cd=1#v=onepage&amp;amp;q=&amp;amp;f=false&quot;&gt;&lt;strong&gt;JavaScript : 좋은 부분&lt;/strong&gt; : 부록 A-끔찍한 부분 (105 페이지)&lt;/a&gt; .</target>
+        </trans-unit>
+        <trans-unit id="5ee1c19795ff8f472035c1d76b8687b9760c48eb" translate="yes" xml:space="preserve">
+          <source>&lt;sup&gt;2&lt;/sup&gt; - This is not the case for &lt;a href=&quot;http://en.wikipedia.org/wiki/Denormal_number&quot;&gt;denormal numbers&lt;/a&gt;, which have an offset exponent of zero (and an implied &lt;code&gt;0.&lt;/code&gt;). The range of denormal double precision numbers is d&lt;sub&gt;min&lt;/sub&gt; &amp;le; |x| &amp;le; d&lt;sub&gt;max&lt;/sub&gt;, where d&lt;sub&gt;min&lt;/sub&gt; (the smallest representable nonzero number) is 2&lt;sup&gt;-1023 - 51&lt;/sup&gt; (&amp;asymp; 4.94 * 10&lt;sup&gt;-324&lt;/sup&gt;) and d&lt;sub&gt;max&lt;/sub&gt; (the largest denormal number, for which the mantissa consists entirely of &lt;code&gt;1&lt;/code&gt;s) is 2&lt;sup&gt;-1023 + 1&lt;/sup&gt; - 2&lt;sup&gt;-1023 - 51&lt;/sup&gt; (&amp;asymp; 2.225 * 10&lt;sup&gt;-308&lt;/sup&gt;).</source>
+          <target state="translated">&lt;sup&gt;2-&lt;/sup&gt; 오프셋 지수가 0 (및 묵시적 &lt;code&gt;0.&lt;/code&gt; ) 인 &lt;a href=&quot;http://en.wikipedia.org/wiki/Denormal_number&quot;&gt;비정규 숫자&lt;/a&gt; 의 경우에는 해당되지 않습니다. 비정규 배정 밀도 숫자의 범위는 d &lt;sub&gt;min&lt;/sub&gt; &amp;le; | x | &amp;le; d &lt;sub&gt;max&lt;/sub&gt; , 여기서 d &lt;sub&gt;min&lt;/sub&gt; (가장 작은 숫자가 아닌 가장 작은 숫자)은 &lt;sup&gt;2-1023-51&lt;/sup&gt; (&amp;asymp; 4.94 * &lt;sup&gt;10-324&lt;/sup&gt; )이고 d &lt;sub&gt;max&lt;/sub&gt; (가장 큰 숫자는 가수가 전체적으로 &lt;code&gt;1&lt;/code&gt; 초로 구성됨)는 2- &lt;sup&gt;1023 +&lt;/sup&gt; 1-2-1023-51 (&amp;asymp; 2.225 * &lt;sup&gt;10-308&lt;/sup&gt; ).</target>
+        </trans-unit>
+        <trans-unit id="e4b88838f3d945e3111f2ac846b7fe40186f08dc" translate="yes" xml:space="preserve">
+          <source>A different question has been named as a duplicate to this one:</source>
+          <target state="translated">다른 질문은이 질문에 대한 중복으로 명명되었습니다.</target>
+        </trans-unit>
+        <trans-unit id="67d09660cb9d94f97c922d190c9da304946bbc56" translate="yes" xml:space="preserve">
+          <source>A fairly comprehensive treatment of floating-point arithmetic issues is &lt;a href=&quot;http://download.oracle.com/docs/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;&lt;em&gt;What Every Computer Scientist Should Know About Floating-Point Arithmetic&lt;/em&gt;&lt;/a&gt;. For an easier-to-digest explanation, see &lt;a href=&quot;http://floating-point-gui.de&quot;&gt;floating-point-gui.de&lt;/a&gt;.</source>
+          <target state="translated">부동 소수점 산술 문제의 상당히 포괄적 인 처리는 &lt;a href=&quot;http://download.oracle.com/docs/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;&lt;em&gt;모든 컴퓨터 과학자&lt;/em&gt;&lt;/a&gt; 가 부동 소수점 산술에 대해 &lt;em&gt;알아야 할 것&lt;/em&gt; 입니다. 보다 이해하기 쉬운 설명은 &lt;a href=&quot;http://floating-point-gui.de&quot;&gt;floating-point-gui.de를&lt;/a&gt; 참조하십시오.</target>
+        </trans-unit>
+        <trans-unit id="292327f21cc858d8c2a42811ceaf2d0a17de5a22" translate="yes" xml:space="preserve">
+          <source>A lot of good answers have been posted, but I'd like to append one more.</source>
+          <target state="translated">많은 좋은 답변이 게시되었지만 하나 더 추가하고 싶습니다.</target>
+        </trans-unit>
+        <trans-unit id="87561d6f9557f1f5e17ba3afef835a06d4a73163" translate="yes" xml:space="preserve">
+          <source>Adding the first two numbers manually or in a decimal calculator such as &lt;a href=&quot;https://www.mathsisfun.com/calculator-precision.html&quot;&gt;Full Precision Calculator&lt;/a&gt;, shows the exact sum of the actual inputs is 0.3000000000000000166533453693773481063544750213623046875.</source>
+          <target state="translated">처음 두 숫자를 수동으로 또는 &lt;a href=&quot;https://www.mathsisfun.com/calculator-precision.html&quot;&gt;전체 정밀도 계산기&lt;/a&gt; 와 같은 10 진수 계산기에 추가하면 실제 입력의 정확한 합계는 0.3000000000000000166533453693773481063544750213623046875입니다.</target>
+        </trans-unit>
+        <trans-unit id="0a7ff54c3760c59eab90eb97d484608c8d05aaa7" translate="yes" xml:space="preserve">
+          <source>After the code I attach a console session, in which I compute the sum of terms for both constants (minus PI and 999999999) that really exists in hardware, inserted there by the compiler.</source>
+          <target state="translated">코드가 끝나면 콘솔 세션을 연결하여 실제로 하드웨어에 존재하는 두 상수 (마이너스 PI 및 999999999)에 대한 항의 합계를 계산하여 컴파일러에 삽입합니다.</target>
+        </trans-unit>
+        <trans-unit id="d6dc17a99e9f681bdfd19158552338365662636c" translate="yes" xml:space="preserve">
+          <source>Also note that we can decrease the power in the exponent by 52 and shift the point in the binary representation to the right by 52 places (much like 10&lt;sup&gt;-3&lt;/sup&gt; * 1.23 == 10&lt;sup&gt;-5&lt;/sup&gt; * 123). This then enables us to represent the binary representation as the exact value that it represents in the form a * 2&lt;sup&gt;p&lt;/sup&gt;. where 'a' is an integer.</source>
+          <target state="translated">또한 지수의 거듭 제곱을 52만큼 줄이고 이진 표현의 점을 52 자리만큼 오른쪽으로 옮길 수 있습니다 ( &lt;sup&gt;10-3&lt;/sup&gt; * 1.23 == &lt;sup&gt;10-5&lt;/sup&gt; * 123과 유사). 그러면 이진 표현을 a * 2 &lt;sup&gt;p&lt;/sup&gt; 형식으로 나타내는 정확한 값으로 표현할 수 있습니다. 여기서 'a'는 정수입니다.</target>
+        </trans-unit>
+        <trans-unit id="25c2f42952dddc1442cd3fea4ee45931c75bd99d" translate="yes" xml:space="preserve">
+          <source>Also, on real number-crunching problems (the problems that FP was invented for on early, frightfully expensive computers) the physical constants of the universe and all other measurements are only known to a relatively small number of significant figures, so the entire problem space was &quot;inexact&quot; anyway. FP &quot;accuracy&quot; isn't a problem in this kind of application.</source>
+          <target state="translated">또한 실제 숫자를 차지하는 문제 (초기, 엄청나게 비싼 컴퓨터에서 FP가 발명 한 문제)에서 우주의 물리적 상수와 다른 모든 측정은 상대적으로 적은 수의 중요한 수치로만 알려져 있으므로 전체 문제 공간 어쨌든 &quot;inexact&quot;였습니다. FP &quot;정확도&quot;는 이러한 종류의 응용 프로그램에서 문제가되지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="85160f78ccb1d3807347386aa0d2ca7539bc234b" translate="yes" xml:space="preserve">
+          <source>An &lt;a href=&quot;http://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;IEEE 754 double-precision binary floating-point format (binary64)&lt;/a&gt; number represents a number of the form</source>
+          <target state="translated">&lt;a href=&quot;http://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;IEEE 754 배정도 이진 부동 소수점 형식 (binary64)&lt;/a&gt; 숫자는 형식의 숫자를 나타냅니다.</target>
+        </trans-unit>
+        <trans-unit id="717a2779595b0983db47fc60af6d89e183d0f462" translate="yes" xml:space="preserve">
+          <source>Another cause of the rounding errors in all operations are the different modes of truncation of the final answer that IEEE-754 allows. There's truncate, round-towards-zero, &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;round-to-nearest (default),&lt;/a&gt; round-down, and round-up. All methods introduce an element of error of less than one unit in the last place for a single operation. Over time and repeated operations, truncation also adds cumulatively to the resultant error. This truncation error is especially problematic in exponentiation, which involves some form of repeated multiplication.</source>
+          <target state="translated">모든 작업에서 반올림 오류의 또 다른 원인은 IEEE-754가 허용하는 최종 응답의 다른 절단 모드입니다. 잘림, 0으로 &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;반올림&lt;/a&gt; , 가장 가까운 반올림 (기본값), 반올림 및 반올림이 있습니다. 모든 방법은 단일 작업을 위해 마지막에 한 단위 미만의 오차 요소를 도입합니다. 시간이 지남에 따라 작업을 반복하면 잘림도 결과 오류에 누적됩니다. 이 잘림 오류는 지수에 특히 문제가 있으며, 여기에는 어떤 형태의 반복 곱셈이 포함됩니다.</target>
+        </trans-unit>
+        <trans-unit id="9ead24f56ead1006e9506dd4e4f2be6e9b288737" translate="yes" xml:space="preserve">
+          <source>Another way to look at this: Used are 64 bits to represent numbers. As consequence there is no way more than 2**64 = 18,446,744,073,709,551,616 different numbers can be precisely represented.</source>
+          <target state="translated">이것을 보는 또 다른 방법 : 숫자를 나타내는 64 비트가 사용됩니다. 결과적으로 2 ** 64 = 18,446,744,073,709,551,616을 초과하는 방법은 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="197629060526b0bc6ba54e0d54e8621c108bd09e" translate="yes" xml:space="preserve">
+          <source>Applying it to the numbers in the question, treated as doubles:</source>
+          <target state="translated">질문의 숫자에 적용하면 복식으로 처리됩니다.</target>
+        </trans-unit>
+        <trans-unit id="acd3695ef743a5217426fec2538dd807e2248e19" translate="yes" xml:space="preserve">
+          <source>As &lt;a href=&quot;https://www.w3schools.com/js/js_numbers.asp&quot;&gt;W3SCHOOLS&lt;/a&gt; suggests there is another solution too, you can multiply and divide to solve the problem above:</source>
+          <target state="translated">&lt;a href=&quot;https://www.w3schools.com/js/js_numbers.asp&quot;&gt;W3SCHOOLS&lt;/a&gt; 가 또 다른 해결책이 있다고 제안했듯이 위의 문제를 해결하기 위해 곱하고 나눌 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="5c873182ceb9b32f52a27c7ab3af44165c7183f5" translate="yes" xml:space="preserve">
+          <source>As a practical example, to avoid floating-point problems where accuracy is paramount, it is recommended&lt;sup&gt;1&lt;/sup&gt; to handle money as an integer representing the number of cents: &lt;code&gt;2550&lt;/code&gt; cents instead of &lt;code&gt;25.50&lt;/code&gt; dollars.</source>
+          <target state="translated">실제적인 예로, 정확도가 가장 중요한 부동 소수점 문제를 피하려면 &lt;sup&gt;1&lt;/sup&gt; 을 &lt;code&gt;25.50&lt;/code&gt; 달러 대신 &lt;code&gt;2550&lt;/code&gt; 센트를 나타내는 정수로 처리하는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="14b3dd03f473733c807181d4f25005fdb4b3c92f" translate="yes" xml:space="preserve">
+          <source>Binary &lt;a href=&quot;https://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;floating point&lt;/a&gt; math is like this. In most programming languages, it is based on the &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_754#Basic_formats&quot;&gt;IEEE 754 standard&lt;/a&gt;. The crux of the problem is that numbers are represented in this format as a whole number times a power of two; rational numbers (such as &lt;code&gt;0.1&lt;/code&gt;, which is &lt;code&gt;1/10&lt;/code&gt;) whose denominator is not a power of two cannot be exactly represented.</source>
+          <target state="translated">이진 &lt;a href=&quot;https://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;부동 소수점&lt;/a&gt; 수학은 다음과 같습니다. 대부분의 프로그래밍 언어에서는 &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_754#Basic_formats&quot;&gt;IEEE 754 표준을&lt;/a&gt; 기반으로합니다. 문제의 요점은 숫자가이 형식으로 정수에 2의 거듭 제곱으로 표시된다는 것입니다. 분모가 2의 거듭 제곱이 아닌 유리수 (예 : &lt;code&gt;0.1&lt;/code&gt; , &lt;code&gt;1/10&lt;/code&gt; )는 정확하게 표현할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="7422ac70577b1628784c436e3c108b8f745d86f7" translate="yes" xml:space="preserve">
+          <source>But if you're okay with the idea that sometimes floating-point math is fuzzy in value and logic and errors can accumulate quickly, and you can write your requirements and tests to allow for that, then your code can frequently get by with what's in your FPU.</source>
+          <target state="translated">그러나 부동 소수점 수학의 가치가 불분명하고 논리와 오류가 빠르게 누적 될 수 있다는 아이디어에 만족한다면이를 위해 필요한 요구 사항과 테스트를 작성할 수 있습니다. 당신의 FPU.</target>
+        </trans-unit>
+        <trans-unit id="55a69cb7e5983987538ca8b12860d952d6b39dfb" translate="yes" xml:space="preserve">
+          <source>Can I just add; people always assume this to be a computer problem, but if you count with your hands (base 10), you can't get &lt;code&gt;(1/3+1/3=2/3)=true&lt;/code&gt; unless you have infinity to add 0.333... to 0.333... so just as with the &lt;code&gt;(1/10+2/10)!==3/10&lt;/code&gt; problem in base 2, you truncate it to 0.333 + 0.333 = 0.666 and probably round it to 0.667 which would be also be technically inaccurate.</source>
+          <target state="translated">그냥 추가해도됩니까? 사람들은 항상 이것이 컴퓨터 문제라고 가정하지만, 손으로 계산하면 (기본 10) 0.333을 더할 무한대가 없다면 &lt;code&gt;(1/3+1/3=2/3)=true&lt;/code&gt; 를 얻을 수 없습니다. .. ~ 0.333 ... &lt;code&gt;(1/10+2/10)!==3/10&lt;/code&gt; 의 (1 / 10 + 2 / 10)! == 3/10 문제와 마찬가지로 0.333 + 0.333 = 0.666으로 자르고 아마 0.667로 반올림합니다. 기술적으로 부정확합니다.</target>
+        </trans-unit>
+        <trans-unit id="82a3e020f14e0b35ca683a0e8ec46b87242aae47" translate="yes" xml:space="preserve">
+          <source>Comparing the last few bits of a floating point number is inherently dangerous, as anyone who reads the famous &quot;&lt;a href=&quot;http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;What Every Computer Scientist Should Know About Floating-Point Arithmetic&lt;/a&gt;&quot; (which covers all the major parts of this answer) will know.</source>
+          <target state="translated">부동 소수점 숫자의 마지막 몇 비트를 비교하는 것은 본질적으로 위험합니다. 유명한 &quot; &lt;a href=&quot;http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;모든 컴퓨터 과학자가 부동 소수점 산술에 대해 알아야 할 것&lt;/a&gt; &quot;(이 답변의 모든 주요 부분을 포함)을 읽는 사람은 누구나 알 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="7b9418257eb36cecc68969da2f0e00be78afe4f0" translate="yes" xml:space="preserve">
+          <source>Computers don't usually work in base 10, they work in base 2. You can still get exact results for some values, for example &lt;code&gt;0.5&lt;/code&gt; is &lt;code&gt;1 x 2⁻&amp;sup1;&lt;/code&gt; and &lt;code&gt;0.25&lt;/code&gt; is &lt;code&gt;1 x 2⁻&amp;sup2;&lt;/code&gt;, and adding them results in &lt;code&gt;3 x 2⁻&amp;sup2;&lt;/code&gt;, or &lt;code&gt;0.75&lt;/code&gt;. Exactly.</source>
+          <target state="translated">컴퓨터는 일반적으로 기본 10에서 작동하지 않고 기본 2에서 작동합니다. 예를 들어 &lt;code&gt;0.5&lt;/code&gt; 는 &lt;code&gt;1 x 2⁻&amp;sup1;&lt;/code&gt; 및 &lt;code&gt;0.25&lt;/code&gt; 는 &lt;code&gt;1 x 2⁻&amp;sup2;&lt;/code&gt; 와 같은 일부 값에 대한 정확한 결과를 얻을 수 있습니다. &lt;code&gt;3 x 2⁻&amp;sup2;&lt;/code&gt; 또는 &lt;code&gt;0.75&lt;/code&gt; . 바로 그거죠.</target>
+        </trans-unit>
+        <trans-unit id="e39262defe80a83fac1b793497417432c8b1a879" translate="yes" xml:space="preserve">
+          <source>Conclusion</source>
+          <target state="translated">Conclusion</target>
+        </trans-unit>
+        <trans-unit id="4adddd0410090df891e6fa4925fe03ba5adb5c9d" translate="yes" xml:space="preserve">
+          <source>Consider the following code:</source>
+          <target state="translated">다음 코드를 고려하십시오.</target>
+        </trans-unit>
+        <trans-unit id="e7f1f3b25b7e705aa363815a9723229ad35c0cc4" translate="yes" xml:space="preserve">
+          <source>Consider the following results:</source>
+          <target state="translated">다음 결과를 고려하십시오.</target>
+        </trans-unit>
+        <trans-unit id="12b7b76dc8d2ea9eb4ff8748b10d88e4a85a6169" translate="yes" xml:space="preserve">
+          <source>Converted back to decimal, these values are:</source>
+          <target state="translated">십진수로 다시 변환하면이 값은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="aeb57143b3ba83c7c3b04839d7f666efe4124f05" translate="yes" xml:space="preserve">
+          <source>Converting the exponents to decimal, removing the offset, and re-adding the implied &lt;code&gt;1&lt;/code&gt; (in square brackets), 0.1 and 0.2 are:</source>
+          <target state="translated">지수를 10 진수로 변환하고 오프셋을 제거하고 묵시적 &lt;code&gt;1&lt;/code&gt; 을 대괄호로 다시 추가하면 0.1과 0.2는 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="78e4c9a6d77baf375b421e266552930eb4f9337f" translate="yes" xml:space="preserve">
+          <source>Count in ternary, and thirds are not a problem though - maybe some race with 15 fingers on each hand would ask why your decimal math was broken...</source>
+          <target state="translated">삼항으로 계산하고 1/3은 문제가되지 않습니다. 어쩌면 각 손에 15 개의 손가락이있는 인종은 왜 십진법이 깨 졌는지 묻습니다 ...</target>
+        </trans-unit>
+        <trans-unit id="a3dd9179dce397e9e1b5fccb9b0cd27f6c3bd5cf" translate="yes" xml:space="preserve">
+          <source>Damn! What are you going to do with those unwanted zeros after 9?
+It's the time to convert it to float to make it as you desire:</source>
+          <target state="translated">제길! 9 이후의 원치 않는 제로로 무엇을 할 것입니까? 그것은 당신이 원하는대로 그것을 플로트로 변환 할 때입니다 :</target>
+        </trans-unit>
+        <trans-unit id="9e27f7f948ef21b303c1370a1dec7590701f7df7" translate="yes" xml:space="preserve">
+          <source>Decimal numbers such as &lt;code&gt;0.1&lt;/code&gt;, &lt;code&gt;0.2&lt;/code&gt;, and &lt;code&gt;0.3&lt;/code&gt; are not represented exactly in binary encoded floating point types. The sum of the approximations for &lt;code&gt;0.1&lt;/code&gt; and &lt;code&gt;0.2&lt;/code&gt; differs from the approximation used for &lt;code&gt;0.3&lt;/code&gt;, hence the falsehood of &lt;code&gt;0.1 + 0.2 == 0.3&lt;/code&gt; as can be seen more clearly here:</source>
+          <target state="translated">&lt;code&gt;0.1&lt;/code&gt; , &lt;code&gt;0.2&lt;/code&gt; 및 &lt;code&gt;0.3&lt;/code&gt; 과 같은 10 진수는 이진 인코딩 된 부동 소수점 유형으로 정확하게 표현되지 않습니다. &lt;code&gt;0.1&lt;/code&gt; 과 &lt;code&gt;0.2&lt;/code&gt; 에 대한 근사의 합은 &lt;code&gt;0.3&lt;/code&gt; 에 사용 된 근사와 다르므로 여기에서 더 명확하게 볼 수 있듯이 &lt;code&gt;0.1 + 0.2 == 0.3&lt;/code&gt; 의 거짓은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="6b03123e729e0d99d8829d657b6396043e2860f2" translate="yes" xml:space="preserve">
+          <source>Decimals are very nice when dealing with money: ten cents plus twenty cents are always exactly thirty cents:</source>
+          <target state="translated">10 센트와 20 센트는 항상 정확히 30 센트입니다.</target>
+        </trans-unit>
+        <trans-unit id="343253c3ffda2f7f610024078888336d7bfcc2d8" translate="yes" xml:space="preserve">
+          <source>Developers are usually instructed to do &lt;em&gt;&amp;lt; epsilon&lt;/em&gt; comparisons, better advice might be to round to integral values (in the C library: round() and roundf(), i.e., stay in the FP format) and then compare. Rounding to a specific decimal fraction length solves most problems with output.</source>
+          <target state="translated">개발자는 일반적으로 &lt;em&gt;&amp;lt;epsilon&lt;/em&gt; 비교를 수행하도록 지시받습니다. C 라이브러리에서 정수 값 (round () 및 roundf (), 즉 FP 형식으로 유지)으로 반올림 한 다음 비교하는 것이 좋습니다. 특정 소수점 이하 자릿수로 반올림하면 출력과 관련된 대부분의 문제가 해결됩니다.</target>
+        </trans-unit>
+        <trans-unit id="dafd8ed5e4bb8b26b1f077f8e5b7a321cbc63112" translate="yes" xml:space="preserve">
+          <source>Did you try the duct tape solution?</source>
+          <target state="translated">덕트 테이프 솔루션을 사용해 보셨습니까?</target>
+        </trans-unit>
+        <trans-unit id="a8c0d91bbd12171df34d46bb5ca5e22a008105f7" translate="yes" xml:space="preserve">
+          <source>Do &lt;em&gt;not&lt;/em&gt; do &lt;code&gt;if (x == y) { ... }&lt;/code&gt;</source>
+          <target state="translated">&lt;code&gt;if (x == y) { ... }&lt;/code&gt; 수행하지 마십시오</target>
+        </trans-unit>
+        <trans-unit id="49af704836c31c31268ad85bee269007d1863899" translate="yes" xml:space="preserve">
+          <source>Double-precision binary floating-point is a commonly used format on PCs, due to its wider range over single-precision floating point, in spite of its performance and bandwidth cost. As with single-precision floating-point format, it lacks precision on integer numbers when compared with an integer format of the same size. It is commonly known simply as double. The IEEE 754 standard specifies a binary64 as having:</source>
+          <target state="translated">배정도 이진 부동 소수점은 성능 및 대역폭 비용에도 불구하고 단 정밀도 부동 소수점보다 넓은 범위로 인해 PC에서 일반적으로 사용되는 형식입니다. 단 정밀도 부동 소수점 형식과 마찬가지로 동일한 크기의 정수 형식과 비교할 때 정수의 정밀도가 부족합니다. 일반적으로 간단히 이중이라고합니다. IEEE 754 표준은 binary64를 다음과 같이 지정합니다.</target>
+        </trans-unit>
+        <trans-unit id="e94dc886af9a6005f7b61c7e670cccaf284c7871" translate="yes" xml:space="preserve">
+          <source>Even simple numbers like 0.01, 0.02, 0.03, 0.04 ... 0.24 are not representable exactly as binary fractions. If you count up 0.01, .02, .03 ..., not until you get to 0.25 will you get the first fraction representable in base&lt;sub&gt;2&lt;/sub&gt;.  If you tried that using FP, your 0.01 would have been slightly off, so the only way to add 25 of them up to a nice exact 0.25 would have required a long chain of causality involving guard bits and rounding. It's hard to predict so we throw up our hands and say &lt;em&gt;&quot;FP is inexact&quot;,&lt;/em&gt; but that's not really true.</source>
+          <target state="translated">0.01, 0.02, 0.03, 0.04 ... 0.24와 같은 간단한 숫자조차도 이진 분수로 정확하게 표현할 수 없습니다. 0.01, .02, .03 ...을 세어도 0.25가 될 때까지는 밑이 &lt;sub&gt;2로&lt;/sub&gt; 표현되는 첫 번째 분수를 얻지 못합니다. FP를 사용하려고 시도하면 0.01이 약간 벗어 났으므로 25를 더 정확하게 0.25에 더하는 유일한 방법은 가드 비트 및 반올림과 관련된 긴 인과 관계가 필요했을 것입니다. 예측하기 어렵 기 때문에 우리는 손을 &lt;em&gt;내밀고 &quot;FP는 정확하지&lt;/em&gt; 않습니다 &lt;em&gt;&quot;&lt;/em&gt; 라고 말하지만 실제로는 그렇지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="bcc82060c0b5843a747559c24154d4b0cbe17504" translate="yes" xml:space="preserve">
+          <source>Even though you can type &lt;code&gt;0.2&lt;/code&gt; easily, &lt;code&gt;FLT_RADIX&lt;/code&gt; and &lt;code&gt;DBL_RADIX&lt;/code&gt; is 2; not 10 for a computer with FPU which uses &quot;IEEE Standard for Binary Floating-Point Arithmetic (ISO/IEEE Std 754-1985)&quot;.</source>
+          <target state="translated">&lt;code&gt;0.2&lt;/code&gt; 를 쉽게 입력 할 수 있지만 &lt;code&gt;DBL_RADIX&lt;/code&gt; 및 DBL_RADIX 는 2입니다. &quot;이진 부동 소수점 산술에 대한 IEEE 표준 (ISO / IEEE 표준 754-1985)&quot;을 사용하는 FPU가있는 컴퓨터의 경우 10이 아닙니다.</target>
+        </trans-unit>
+        <trans-unit id="49c2bd6aa6f23d62660e81e7508644de0747ce48" translate="yes" xml:space="preserve">
+          <source>Expand snippet</source>
+          <target state="translated">스 니펫 확장</target>
+        </trans-unit>
+        <trans-unit id="f90ebb584a41f5789fdcea6141d54540d284f0c6" translate="yes" xml:space="preserve">
+          <source>Exponent: 11 bits</source>
+          <target state="translated">지수 : 11 비트</target>
+        </trans-unit>
+        <trans-unit id="119f8de999f99beecfdb18c6f4554359a130b523" translate="yes" xml:space="preserve">
+          <source>Floating point arithmetic &lt;em&gt;is&lt;/em&gt; exact, unfortunately, it doesn't match up well with our usual base-10 number representation, so it turns out we are often giving it input that is slightly off from what we wrote.</source>
+          <target state="translated">부동 소수점 산술 &lt;em&gt;은&lt;/em&gt; 정확하지만 불행히도 일반적인 10 진수 숫자 표현과 잘 맞지 않으므로 종종 우리가 쓴 내용에서 약간 벗어난 입력을주는 것으로 나타났습니다.</target>
+        </trans-unit>
+        <trans-unit id="565fecd9d4386f3183fb30121458f3c6a47002c6" translate="yes" xml:space="preserve">
+          <source>Floating point numbers stored in the computer consist of two parts, an integer and an exponent that the base is taken to and multiplied by the integer part.</source>
+          <target state="translated">컴퓨터에 저장된 부동 소수점 숫자는 정수와 밑 수가 정수 부분에 곱해지는 지수와 정수의 두 부분으로 구성됩니다.</target>
+        </trans-unit>
+        <trans-unit id="124150fb130cdf0860699c9a2d7daf578bd58ed1" translate="yes" xml:space="preserve">
+          <source>Floating point rounding error.  From &lt;a href=&quot;https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;What Every Computer Scientist Should Know About Floating-Point Arithmetic&lt;/a&gt;:</source>
+          <target state="translated">부동 소수점 반올림 오류. &lt;a href=&quot;https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html&quot;&gt;모든 컴퓨터 과학자가 부동 소수점 산술에 대해 알아야 할 것&lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="027c694de6b12a19a2844cf999e923212e996491" translate="yes" xml:space="preserve">
+          <source>Floating point rounding errors. 0.1 cannot be represented as accurately in base-2 as in base-10 due to the missing prime factor of 5. Just as 1/3 takes an infinite number of digits to represent in decimal, but is &quot;0.1&quot; in base-3, 0.1 takes an infinite number of digits in base-2 where it does not in base-10. And computers don't have an infinite amount of memory.</source>
+          <target state="translated">부동 소수점 반올림 오류. 소수점 이하 자릿수 5가 누락되어 10을 밑으로하는 것처럼 0.1을 밑이 2로 정확하게 표현할 수 없습니다. 1/3은 소수를 나타 내기 위해 무한한 자릿수를 취하지 만 밑이 3이면 &quot;0.1&quot;입니다. 0.1은 10 진수가 아닌 2 진수의 무한 자릿수를 사용합니다. 그리고 컴퓨터에는 무한한 메모리 용량이 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="4448487d8eb4f64196dcf615ef11a481b88faaf8" translate="yes" xml:space="preserve">
+          <source>For &lt;code&gt;0.1&lt;/code&gt; in the standard &lt;code&gt;binary64&lt;/code&gt; format, the representation can be written exactly as</source>
+          <target state="translated">표준 &lt;code&gt;binary64&lt;/code&gt; 형식의 &lt;code&gt;0.1&lt;/code&gt; 인 경우 다음과 같이 정확하게 표현할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="2eb8375a66f402510365e9906afeaf34cf9ace9f" translate="yes" xml:space="preserve">
+          <source>For double-precision numbers (which is the precision that allows you to halve your pizza 53 times), the numbers immediately less and greater than 0.1 are 0.09999999999999999167332731531132594682276248931884765625 and 0.1000000000000000055511151231257827021181583404541015625. The latter is quite a bit closer to 0.1 than the former, so a numeric parser will, given an input of 0.1, favour the latter.</source>
+          <target state="translated">배정 밀도 숫자 (피자 53 배를 반으로 줄일 수있는 정밀도)의 경우 0.1보다 작거나 큰 숫자는 0.099999999999999991671672731131132594682276248931884765625 및 0.1000000000000000055511151231257827021181583404541015625입니다. 후자는 전자보다 0.1에 훨씬 가깝기 때문에 0.1의 입력이 주어지면 숫자 파서는 후자를 선호합니다.</target>
+        </trans-unit>
+        <trans-unit id="059c3e8cce263b2945a18ac90b2637e10a8026b1" translate="yes" xml:space="preserve">
+          <source>For example:</source>
+          <target state="translated">예를 들면 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="8977c37ba4ab06faaeb4917f5aef431002e8e3a1" translate="yes" xml:space="preserve">
+          <source>For these computations to be evaluated more reliably, you would need to use a decimal-based representation for floating point values. The C Standard does not specify such types by default but as an extension described in a &lt;a href=&quot;http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1312.pdf&quot;&gt;technical Report&lt;/a&gt;.</source>
+          <target state="translated">이러한 계산을보다 안정적으로 평가하려면 부동 소수점 값에 10 진수 기반 표현을 사용해야합니다. C 표준은 기본적으로 이러한 유형을 지정하지 않지만 &lt;a href=&quot;http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1312.pdf&quot;&gt;기술 보고서에&lt;/a&gt; 설명 된 확장으로 지정합니다.</target>
+        </trans-unit>
+        <trans-unit id="438fbe9727771de7094dfe372c89a3c249901587" translate="yes" xml:space="preserve">
+          <source>From &lt;a href=&quot;https://0.30000000000000004.com/&quot;&gt;https://0.30000000000000004.com/&lt;/a&gt;</source>
+          <target state="translated">&lt;a href=&quot;https://0.30000000000000004.com/&quot;&gt;https://0.30000000000000004.com/에서&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="c2be387ecb7c744b80f6deca0a884e77b7dc5083" translate="yes" xml:space="preserve">
+          <source>From an engineering perspective, most floating point operations will have some element of error since the hardware that does the floating point computations is only required to have an error of less than one half of one unit in the last place. Therefore, much hardware will stop at a precision that's only necessary to yield an error of less than one half of one unit in the last place for a &lt;em&gt;single operation&lt;/em&gt; which is especially problematic in floating point division. What constitutes a single operation depends upon how many operands the unit takes. For most, it is two, but some units take 3 or more operands. Because of this, there is no guarantee that repeated operations will result in a desirable error since the errors add up over time.</source>
+          <target state="translated">엔지니어링 관점에서 볼 때 대부분의 부동 소수점 연산에는 부동 소수점 계산을 수행하는 하드웨어에 마지막 한 단위의 절반 미만의 오류 만 있으면되므로 일부 오류 요소가 있습니다. 따라서 대부분의 하드웨어는 부동 소수점 나누기에 특히 문제가되는 &lt;em&gt;단일 작업&lt;/em&gt; 에 대해 마지막 위치에서 한 단위의 절반 미만의 오류를 생성하는 데 필요한 정밀도로 중지됩니다. 단일 연산을 구성하는 것은 장치가 수행하는 피연산자 수에 따라 다릅니다. 대부분 2 개이지만 일부 단위에는 3 개 이상의 피연산자가 필요합니다. 이 때문에 시간이 지남에 따라 오류가 더해 지므로 반복 된 작업으로 인해 원하는 오류가 발생한다고 보장 할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="71e6fce755adf54b2e2cee041a1ce78a23d295a2" translate="yes" xml:space="preserve">
+          <source>From the Wikipedia page for &lt;a href=&quot;https://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;Double-precision floating-point format&lt;/a&gt;:</source>
+          <target state="translated">&lt;a href=&quot;https://en.wikipedia.org/wiki/Double-precision_floating-point_format&quot;&gt;배정도 부동 소수점 형식에&lt;/a&gt; 대한 Wikipedia 페이지에서 :</target>
+        </trans-unit>
+        <trans-unit id="13c8d9d9bb5ff174c47e9c103abdfb35251afc02" translate="yes" xml:space="preserve">
+          <source>Given that nobody has mentioned this...</source>
+          <target state="translated">아무도 이것을 언급하지 않았다면 ...</target>
+        </trans-unit>
+        <trans-unit id="b98e9326cacd57433010c27db8d9ac95dd07cf4d" translate="yes" xml:space="preserve">
+          <source>Here is a console session in which I compute the real value of the float that exists in hardware.  I used &lt;code&gt;bc&lt;/code&gt; to print the sum of terms outputted by the main program.  One can insert that sum in python &lt;code&gt;repl&lt;/code&gt; or something similar also.</source>
+          <target state="translated">다음은 하드웨어에 존재하는 float의 실제 값을 계산하는 콘솔 세션입니다. 주 프로그램에서 출력되는 용어의 합계를 인쇄하기 위해 &lt;code&gt;bc&lt;/code&gt; 를 사용했습니다. 파이썬 합이나 그와 비슷한 것에 합을 삽입 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="2408136ec0c44b738b07e0b8bf11d10f475c0d40" translate="yes" xml:space="preserve">
+          <source>However, Math says there are already infinitely many decimals between 0 and 1. IEE 754 defines an encoding to use these 64 bits efficiently for a much larger number space plus NaN and +/- Infinity, so there are gaps between accurately represented numbers filled with numbers only approximated.</source>
+          <target state="translated">그러나 Math는 이미 0과 1 사이의 소수는 무한대라고 말합니다. IEE 754는 훨씬 더 큰 숫자 공간과 NaN 및 +/- 무한대에이 64 비트를 효율적으로 사용하도록 인코딩을 정의하므로 정확하게 표현 된 숫자 사이에 공백이 있습니다. 대략적인 숫자입니다.</target>
+        </trans-unit>
+        <trans-unit id="46f05586e0302c09020d0bad2f9c90dcbc102d16" translate="yes" xml:space="preserve">
+          <source>I believe I should add a hardware designer&amp;rsquo;s perspective to this since I design and build floating point hardware. Knowing the origin of the error may help in understanding what is happening in the software, and ultimately, I hope this helps explain the reasons for why floating point errors happen and seem to accumulate over time.</source>
+          <target state="translated">부동 소수점 하드웨어를 디자인하고 빌드하기 때문에 하드웨어 디자이너의 관점을 추가해야한다고 생각합니다. 오류의 원인을 아는 것은 소프트웨어에서 일어나는 일을 이해하는 데 도움이 될 수 있으며 궁극적으로 이것이 부동 소수점 오류가 발생하고 시간이 지남에 따라 누적되는 이유를 설명하는 데 도움이되기를 바랍니다.</target>
+        </trans-unit>
+        <trans-unit id="139c3720a5570c1cec83ed7a353859c0807f05fc" translate="yes" xml:space="preserve">
+          <source>I had the same problem in a scientific simulation project in c#, and I can tell you that if you ignore the butterfly effect it's gonna turn to a big fat dragon and bite you in the a**</source>
+          <target state="translated">나는 C #의 과학 시뮬레이션 프로젝트에서 같은 문제를 겪었습니다. 나비 효과를 무시하면 큰 뚱뚱한 용으로 변하고 a에서</target>
+        </trans-unit>
+        <trans-unit id="a07562d9120e098fcdb0a15f037dd208a8327be6" translate="yes" xml:space="preserve">
+          <source>I just saw this interesting issue around floating points:</source>
+          <target state="translated">부동 소수점 주위 에이 흥미로운 문제를 보았습니다.</target>
+        </trans-unit>
+        <trans-unit id="c7cb01d8032bc4b8a88bb1e2f14b9cea42ff093e" translate="yes" xml:space="preserve">
+          <source>I love the Pizza answer by &lt;a href=&quot;https://stackoverflow.com/users/13/chris-jester-young&quot;&gt;Chris&lt;/a&gt;, because it describes the actual problem, not just the usual handwaving about &quot;inaccuracy&quot;. If FP were simply &quot;inaccurate&quot;, we could &lt;em&gt;fix&lt;/em&gt; that and would have done it decades ago. The reason we haven't is because the FP format is compact and fast and it's the best way to crunch a lot of numbers. Also, it's a legacy from the space age and arms race and early attempts to solve big problems with very slow computers using small memory systems. (Sometimes, individual &lt;em&gt;magnetic cores&lt;/em&gt; for 1-bit storage, but that's &lt;a href=&quot;https://en.wikipedia.org/wiki/Magnetic-core_memory&quot;&gt;another story.&lt;/a&gt;)</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/users/13/chris-jester-young&quot;&gt;Chris&lt;/a&gt; 의 피자 답변이 마음에 들었습니다 . 왜냐하면 &quot;정확하지 않은 것&quot;에 대한 일반적인 손글씨가 아니라 실제 문제를 설명하기 때문입니다. FP가 단순히 &quot;정확하지 않은&quot;경우이를 &lt;em&gt;수정&lt;/em&gt; 하여 수십 년 전에 수행했을 수 있습니다. 우리가하지 않은 이유는 FP 형식이 작고 빠르며 많은 숫자를 처리하는 가장 좋은 방법이기 때문입니다. 또한, 이는 우주 시대와 무기 경쟁의 유산이며 소규모 메모리 시스템을 사용하는 매우 느린 컴퓨터의 큰 문제를 해결하려는 초기 시도입니다. (때로는 1 비트 스토리지를위한 개별 &lt;em&gt;자기 코어&lt;/em&gt; 이지만 &lt;a href=&quot;https://en.wikipedia.org/wiki/Magnetic-core_memory&quot;&gt;다른 이야기입니다.&lt;/a&gt; )</target>
+        </trans-unit>
+        <trans-unit id="086419f7e4f00c4240acc2a8cf8724a0a0440d52" translate="yes" xml:space="preserve">
+          <source>If it were rounded down to the equivalent of 0.3 the rounding error would be 0.0000000000000000277555756156289135105907917022705078125. Rounding up to the equivalent of 0.30000000000000004 also gives rounding error 0.0000000000000000277555756156289135105907917022705078125. The round-to-even tie breaker applies.</source>
+          <target state="translated">반올림 오류가 0.3에 해당하는 반올림 인 경우 반올림 오류는 0.0000000000000000277555756156289135105907917022705078125입니다. 0.30000000000000004에 해당하는 반올림도 0.0000000000000000277555756156289135105907917022705078125의 반올림 오류를 발생시킵니다. 둥글고 균일 한 타이 브레이커가 적용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="fccfcfa3bf25426d4d6621dd068fd42d65e9ed23" translate="yes" xml:space="preserve">
+          <source>If the computer were working in base 10, &lt;code&gt;0.1&lt;/code&gt; would be &lt;code&gt;1 x 10⁻&amp;sup1;&lt;/code&gt;, &lt;code&gt;0.2&lt;/code&gt; would be &lt;code&gt;2 x 10⁻&amp;sup1;&lt;/code&gt;, and &lt;code&gt;0.3&lt;/code&gt; would be &lt;code&gt;3 x 10⁻&amp;sup1;&lt;/code&gt;. Integer math is easy and exact, so adding &lt;code&gt;0.1 + 0.2&lt;/code&gt; will obviously result in &lt;code&gt;0.3&lt;/code&gt;.</source>
+          <target state="translated">컴퓨터가 10 진법으로 작동하는 경우 &lt;code&gt;0.1&lt;/code&gt; 은 &lt;code&gt;1 x 10⁻&amp;sup1;&lt;/code&gt; , &lt;code&gt;0.2&lt;/code&gt; 는 &lt;code&gt;2 x 10⁻&amp;sup1;&lt;/code&gt; , &lt;code&gt;0.3&lt;/code&gt; 은 &lt;code&gt;3 x 10⁻&amp;sup1;&lt;/code&gt; 입니다. 정수 수학은 쉽고 정확하므로 &lt;code&gt;0.1 + 0.2&lt;/code&gt; 를 추가하면 분명히 &lt;code&gt;0.3&lt;/code&gt; 이 됩니다.</target>
+        </trans-unit>
+        <trans-unit id="ee2e12a76bfd81d38307a18631db4c3240b59b5c" translate="yes" xml:space="preserve">
+          <source>If we truncated these to, say, seven bits, then we'd get</source>
+          <target state="translated">예를 들어 7 비트로 잘라 내면</target>
+        </trans-unit>
+        <trans-unit id="57680ac773e9bbe3d4b63cff8433ef37f4eccd11" translate="yes" xml:space="preserve">
+          <source>If you are just counting beans at a bank, software solutions that use decimal string representations in the first place work perfectly well. But you can't do quantum chromodynamics or aerodynamics that way.</source>
+          <target state="translated">은행에서 빈을 계산하는 경우, 10 진수 문자열 표현을 사용하는 소프트웨어 솔루션은 처음부터 완벽하게 작동합니다. 그러나 양자 색채 역학이나 공기 역학을 그렇게 할 수는 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="5271cb4c5315d5f9a2c1b7d2e6439177b9ed5f51" translate="yes" xml:space="preserve">
+          <source>If you need infinite precision (using the number &amp;pi;, for example, instead of one of its many shorter stand-ins), you should write or use a symbolic math program instead.</source>
+          <target state="translated">무한 정밀도가 필요한 경우 (예 : 여러 개의 짧은 스탠드 인 대신 숫자 &amp;pi; 사용) 대신 기호 수학 프로그램을 작성하거나 사용해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="aa080c09b62ae1dce37814f75cd51aab41b3d4c1" translate="yes" xml:space="preserve">
+          <source>Imagine that you are trying to slice up pizzas. You have a robotic pizza cutter that can cut pizza slices &lt;em&gt;exactly&lt;/em&gt; in half. It can halve a whole pizza, or it can halve an existing slice, but in any case, the halving is always exact.</source>
+          <target state="translated">피자를 자르려고한다고 상상해보십시오. 피자 조각을 &lt;em&gt;정확히&lt;/em&gt; 반으로자를 수있는 로봇 피자 커터가 있습니다. 피자 전체를 반으로 줄이거 나 기존 슬라이스를 반으로 줄 수 있지만 어쨌든 절반은 항상 정확합니다.</target>
+        </trans-unit>
+        <trans-unit id="23fd14fd5cc6f36afaf62617f86f1c6323f8f5d0" translate="yes" xml:space="preserve">
+          <source>Imagine working in base ten with, say, 8 digits of accuracy.  You check whether</source>
+          <target state="translated">예를 들어 8 자리의 정확도로 10 진법으로 작업한다고 상상해보십시오. 당신은 여부를 확인</target>
+        </trans-unit>
+        <trans-unit id="99cb5d12f8afe87e5f2199dd7832164a30028595" translate="yes" xml:space="preserve">
+          <source>Imagine you are going to add up two float numbers like &lt;code&gt;0.2&lt;/code&gt; and &lt;code&gt;0.7&lt;/code&gt; here it is: &lt;code&gt;0.2 + 0.7 = 0.8999999999999999&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;0.2&lt;/code&gt; 및 &lt;code&gt;0.7&lt;/code&gt; 과 같은 두 개의 부동 소수점 숫자를 더한다고 가정하십시오 &lt;code&gt;0.2 + 0.7 = 0.8999999999999999&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="a2b1148919cbaacaaf9135169d3d2fdb6dafcf25" translate="yes" xml:space="preserve">
+          <source>In addition to the other correct answers, you may want to consider scaling your values to avoid problems with floating-point arithmetic.</source>
+          <target state="translated">다른 정답 외에도 부동 소수점 산술 문제를 피하기 위해 값의 스케일링을 고려할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="d2b3c535762ccb723471ca3d19c266d59819e435" translate="yes" xml:space="preserve">
+          <source>In base&lt;sub&gt;10&lt;/sub&gt; we can't represent &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;3&lt;/sub&gt;. But in binary, we can't do &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;10&lt;/sub&gt;&lt;em&gt;or&lt;/em&gt;&lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;3&lt;/sub&gt;.</source>
+          <target state="translated">&lt;sub&gt;10&lt;/sub&gt; 진법에서는 &lt;sup&gt;1/3을&lt;/sup&gt; 표현할 수 없습니다. 그러나 바이너리에서는 &lt;sub&gt;1/10&lt;/sub&gt; &lt;em&gt;또는&lt;/em&gt; &lt;sup&gt;1/3을&lt;/sup&gt; 수행 할 수 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="8f38a9914f49411cfba349dfdb8630e09f562340" translate="yes" xml:space="preserve">
+          <source>In binary, we only get the &lt;em&gt;2&lt;sup&gt;n&lt;/sup&gt;&lt;/em&gt; term, that is:</source>
+          <target state="translated">이진수로 우리는 &lt;em&gt;2 &lt;sup&gt;n&lt;/sup&gt;&lt;/em&gt; 항만 얻습니다.</target>
+        </trans-unit>
+        <trans-unit id="4ef2cdaba6d234b05bee8a68976633267a094852" translate="yes" xml:space="preserve">
+          <source>In contrast, the rational number &lt;code&gt;0.1&lt;/code&gt;, which is &lt;code&gt;1/10&lt;/code&gt;, can be written exactly as</source>
+          <target state="translated">대조적으로, &lt;code&gt;1/10&lt;/code&gt; 인 유리수 &lt;code&gt;0.1&lt;/code&gt; 은 다음과 같이 정확하게 쓸 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="b961be3443aab68ceeec29a5220e6f9ed3ea8cb9" translate="yes" xml:space="preserve">
+          <source>In order to offer The &lt;strong&gt;best solution&lt;/strong&gt; I can say I discovered following method:</source>
+          <target state="translated">&lt;strong&gt;최고의 솔루션&lt;/strong&gt; 을 제공하기 위해 다음과 같은 방법을 발견했습니다.</target>
+        </trans-unit>
+        <trans-unit id="2e914e63df1d23846968db54c322cfcde5d441c1" translate="yes" xml:space="preserve">
+          <source>In particular, 0.1 + 0.2 is really 0.1000000000000000055511151231257827021181583404541015625 + 0.200000000000000011102230246251565404236316680908203125 = 0.3000000000000000444089209850062616169452667236328125, whereas the number closest to 0.3 is actually 0.299999999999999988897769753748434595763683319091796875.</source>
+          <target state="translated">특히 0.1 + 0.2는 실제로 0.1000000000000000055511151231257827021181583404541015625 + 0.200000000000000011102230246251565404236316680908203125 = 0.3000000000000000444089209850062616169452667236328125 인 반면, 0.3에 가장 가까운 숫자는 실제로 0.299999999999999988897769753748434595763683319091796875입니다.</target>
+        </trans-unit>
+        <trans-unit id="4228e410bba6241e580bda13c93c5be682de4fe0" translate="yes" xml:space="preserve">
+          <source>In practice, this problem of precision means you need to use rounding functions to round your floating point numbers off to however many decimal places you're interested in before you display them.</source>
+          <target state="translated">실제로,이 정밀도 문제는 부동 소수점 숫자를 표시하기 전에 원하는 소수 자릿수로 반올림하기 위해 반올림 함수를 사용해야 함을 의미합니다.</target>
+        </trans-unit>
+        <trans-unit id="ac42fff92fa17be820acdfc20ad21aaa24d67e47" translate="yes" xml:space="preserve">
+          <source>In reality, this sum is only an approximation.  For the number 999,999,999  the compiler will insert in bit representation of the float the number 1,000,000,000</source>
+          <target state="translated">실제로이 합계는 근사치 일뿐입니다. 숫자 999,999,999의 경우 컴파일러는 부동 소수점의 비트 표현으로 숫자 1,000,000,000을 삽입합니다.</target>
+        </trans-unit>
+        <trans-unit id="d361ff6e0befd1e900ea2d2a691af9c88a12a12e" translate="yes" xml:space="preserve">
+          <source>In short, the fundamental reason for the errors in floating point operations is a combination of the truncation in hardware, and the truncation of a reciprocal in the case of division. Since the IEEE-754 standard only requires an error of less than one half of one unit in the last place for a single operation, the floating point errors over repeated operations will add up unless corrected.</source>
+          <target state="translated">요컨대, 부동 소수점 연산에서 오류가 발생하는 근본적인 이유는 하드웨어에서 잘림과 나눗셈에서 역수가 잘림의 조합입니다. IEEE-754 표준은 단일 작업의 마지막 위치에서 한 장치의 절반 미만의 오류 만 필요로하기 때문에 반복 작업에 대한 부동 소수점 오류는 수정하지 않으면 더해집니다.</target>
+        </trans-unit>
+        <trans-unit id="e5fabd55d2fd5b1b6baf316413574a320dcf8783" translate="yes" xml:space="preserve">
+          <source>In the IEEE-754 standard, hardware designers are allowed any value of error/epsilon as long as it's less than one half of one unit in the last place, and the result only has to be less than one half of one unit in the last place for one operation. This explains why when there are repeated operations, the errors add up. For IEEE-754 double precision, this is the 54th bit, since 53 bits are used to represent the numeric part (normalized), also called the mantissa, of the floating point number (e.g. the 5.3 in 5.3e5). The next sections go into more detail on the causes of hardware error on various floating point operations.</source>
+          <target state="translated">IEEE-754 표준에서, 하드웨어 설계자들은 마지막 장소에서 한 단위의 절반보다 작은 오류 / 엡실론의 값이 허용되며 결과는 마지막 한 단위의 절반보다 작아야합니다. 하나의 작업 장소. 이는 반복 작업이있을 때 오류가 발생하는 이유를 설명합니다. IEEE-754 배정도의 경우 53 비트는 부동 소수점 숫자 (예 : 5.3e5의 5.3)의 가수 (mantissa)라고하는 숫자 부분 (정규화 된)을 나타내는 데 사용되므로 54 번째 비트입니다. 다음 섹션에서는 다양한 부동 소수점 연산에서 하드웨어 오류의 원인에 대해 자세히 설명합니다.</target>
+        </trans-unit>
+        <trans-unit id="d2adcf90f9007e61cdec953379088b5fa66be386" translate="yes" xml:space="preserve">
+          <source>In the case of 0.2, the numbers are all the same, just scaled up by a factor of 2. Again, we favour the value that's slightly higher than 0.2.</source>
+          <target state="translated">0.2의 경우 숫자는 모두 동일하며 2 배로 확장되었습니다. 다시, 0.2보다 약간 큰 값을 선호합니다.</target>
+        </trans-unit>
+        <trans-unit id="e4922ee598bf50ce8a8aa97294d719a5f025128d" translate="yes" xml:space="preserve">
+          <source>In this example you need 2 digits precision so it should be &lt;code&gt;toFixed(2)&lt;/code&gt;, so what should be the paramter to fit every given float number?</source>
+          <target state="translated">이 예제에서는 2 자리의 정밀도가 필요하므로 &lt;code&gt;toFixed(2)&lt;/code&gt; 이어야합니다. 따라서 주어진 모든 부동 수에 맞는 매개 변수는 무엇입니까?</target>
+        </trans-unit>
+        <trans-unit id="d307899e3a9faf88be765042e4c814a072993a93" translate="yes" xml:space="preserve">
+          <source>Instead do &lt;code&gt;if (abs(x - y) &amp;lt; myToleranceValue) { ... }&lt;/code&gt;.</source>
+          <target state="translated">대신 &lt;code&gt;if (abs(x - y) &amp;lt; myToleranceValue) { ... }&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="af2d9d553cd8ff9919717f84680c53a32ea7fd20" translate="yes" xml:space="preserve">
+          <source>Is floating point math broken</source>
+          <target state="translated">부동 소수점 수학이 깨졌습니까?</target>
+        </trans-unit>
+        <trans-unit id="7ae4f138c29e2b8ddf6d3e604ad8ec17b30e1885" translate="yes" xml:space="preserve">
+          <source>It's actually pretty simple. When you have a base 10 system (like ours), it can only express fractions that use a prime factor of the base. The prime factors of 10 are 2 and 5. So 1/2, 1/4, 1/5, 1/8, and 1/10 can all be expressed cleanly because the denominators all use prime factors of 10. In contrast, 1/3, 1/6, and 1/7 are all repeating decimals because their denominators use a prime factor of 3 or 7. In binary (or base 2), the only prime factor is 2. So you can only express fractions cleanly which only contain 2 as a prime factor. In binary, 1/2, 1/4, 1/8 would all be expressed cleanly as decimals. While, 1/5 or 1/10 would be repeating decimals. So 0.1 and 0.2 (1/10 and 1/5) while clean decimals in a base 10 system, are repeating decimals in the base 2 system the computer is operating in. When you do math on these repeating decimals, you end up with leftovers which carry over when you convert the computer's base 2 (binary) number into a more human readable base 10 number.</source>
+          <target state="translated">실제로는 매우 간단합니다. 베이스 10 시스템 (예 : 우리 시스템)을 사용하는 경우베이스의 소인수를 사용하는 분수 만 표현할 수 있습니다. 10의 소인수는 2와 5입니다. 따라서 분모가 모두 10의 소인수를 사용하므로 1/2, 1/4, 1/5, 1/8 및 1/10은 모두 깨끗하게 표현 될 수 있습니다. 대조적으로, 1 / 3, 1/6 및 1/7은 분모가 3 또는 7의 소인수를 사용하기 때문에 모두 반복되는 10 진수입니다. 이진 (또는 밑수 2)에서 유일한 소인수는 2입니다. 따라서 분수는 깨끗하게 표현할 수 있습니다. 주요 요인으로 2 만 포함합니다. 이진수로 1/2, 1/4, 1/8은 모두 소수로 깔끔하게 표현됩니다. 반면 1/5 또는 1/10은 소수를 반복합니다. 따라서 기본 10 시스템에서 10 진수를 깨끗하게하는 동안 0.1과 0.2 (1/10 및 1/5)는 컴퓨터가 작동하는 기본 2 시스템에서 10 진수를 반복합니다.이 반복 10 진수에 대해 수학을 수행하면 남은 결과가 나타납니다. 이것은 컴퓨터의 기본 2 (이진수) 숫자를 사람이 읽을 수있는 기본 10 숫자로 변환 할 때 적용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="9bedf433c947094cc3f7cbfb70b1b08a6b15157f" translate="yes" xml:space="preserve">
+          <source>Just for fun, I played with the representation of floats, following the definitions from the Standard C99 and I wrote the code below.</source>
+          <target state="translated">재미를 위해 표준 C99의 정의에 따라 플로트 표현을 연주했으며 아래 코드를 작성했습니다.</target>
+        </trans-unit>
+        <trans-unit id="132f6e2254fa1dd608decdd2acee6a977411ff01" translate="yes" xml:space="preserve">
+          <source>Keep in mind that &lt;code&gt;(0.2 + 0.1) * 10 / 10&lt;/code&gt; won't work at all although it seems the same!
+I prefer the first solution since I can apply it as a function which converts the input float to accurate output float.</source>
+          <target state="translated">&lt;code&gt;(0.2 + 0.1) * 10 / 10&lt;/code&gt; 은 동일하게 보이지만 전혀 작동하지 않습니다. 입력 플로트를 정확한 출력 플로트로 변환하는 함수로 적용 할 수 있기 때문에 첫 번째 솔루션을 선호합니다.</target>
+        </trans-unit>
+        <trans-unit id="2799ad7660549a72b5a827dbb592f0ec6f37f29b" translate="yes" xml:space="preserve">
+          <source>Let me explain why it's the best solution.
+As others mentioned in above answers it's a good idea to use ready to use Javascript toFixed() function to solve the problem. But most likely you'll encounter with some problems.</source>
+          <target state="translated">왜 이것이 최고의 솔루션인지 설명하겠습니다. 위에서 언급 한 다른 사람들이 대답했듯이 Javascript toFixed () 함수를 사용할 준비가되어 문제를 해결하는 것이 좋습니다. 그러나 대부분 문제가 발생할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="a86e0321652ded6bea22752519aa3d0aa14fe1fd" translate="yes" xml:space="preserve">
+          <source>Let's try it yourself:</source>
+          <target state="translated">직접 해보자 :</target>
+        </trans-unit>
+        <trans-unit id="71a6be33e3fd9f8758c62adc390facaf65d03f2f" translate="yes" xml:space="preserve">
+          <source>Many of this question's numerous duplicates ask about the effects of floating point rounding on specific numbers. In practice, it is easier to get a feeling for how it works by looking at exact results of calculations of interest rather than by just reading about it. Some languages provide ways of doing that - such as converting a &lt;code&gt;float&lt;/code&gt; or &lt;code&gt;double&lt;/code&gt; to &lt;code&gt;BigDecimal&lt;/code&gt; in Java.</source>
+          <target state="translated">이 질문의 많은 중복 중 많은 부분이 부동 소수점 반올림이 특정 숫자에 미치는 영향에 대해 묻습니다. 실제로, 관심있는 계산의 결과를 읽는 것보다는 정확한 결과를 보아 작동 방식에 대한 느낌을 얻는 것이 더 쉽습니다. 일부 언어는 Java에서 &lt;code&gt;float&lt;/code&gt; 또는 &lt;code&gt;double&lt;/code&gt; 을 &lt;code&gt;BigDecimal&lt;/code&gt; 로 변환하는 등의 방법을 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="8934b0ad8a8f5b6d10b480c6e3fb04ebd566c062" translate="yes" xml:space="preserve">
+          <source>Many online converters exist to convert a double precision floating point number to binary (e.g. at &lt;a href=&quot;http://www.binaryconvert.com/convert_double.html&quot;&gt;binaryconvert.com&lt;/a&gt;), but here is some sample C# code to obtain the IEEE 754 representation for a double precision number (I separate the three parts with colons (&lt;code&gt;:&lt;/code&gt;):</source>
+          <target state="translated">배정도 부동 소수점 숫자를 이진수로 변환하는 많은 온라인 변환기가 존재하지만 (예 : &lt;a href=&quot;http://www.binaryconvert.com/convert_double.html&quot;&gt;binaryconvert.com&lt;/a&gt; ) 배정도 숫자에 대한 IEEE 754 표현을 얻기위한 샘플 C # 코드가 있습니다 (세 부분을 콜론 (:)으로 구분합니다 ( &lt;code&gt;:&lt;/code&gt; ) :</target>
+        </trans-unit>
+        <trans-unit id="5594903df7afb92532bede50aa19f8bc44b9b936" translate="yes" xml:space="preserve">
+          <source>Math.sum accepts any number of arguments</source>
+          <target state="translated">Math.sum은 여러 인수를 허용합니다.</target>
+        </trans-unit>
+        <trans-unit id="a7da8c89426f6244ba27410665d12c52debd6422" translate="yes" xml:space="preserve">
+          <source>Model for store real numbers under the hood represent float numbers as</source>
+          <target state="translated">후드 아래에 실수를 저장하기위한 모델은 다음과 같이 실수를 나타냅니다.</target>
+        </trans-unit>
+        <trans-unit id="3c239885b8ff7c9107ab26b704ba9e20dc93111d" translate="yes" xml:space="preserve">
+          <source>Most calculators use additional &lt;a href=&quot;https://en.wikipedia.org/wiki/Guard_digit&quot;&gt;guard digits&lt;/a&gt; to get around this problem, which is how &lt;code&gt;0.1 + 0.2&lt;/code&gt; would give &lt;code&gt;0.3&lt;/code&gt;: the final few bits are rounded.</source>
+          <target state="translated">대부분의 계산기는이 문제를 해결하기 위해 추가 &lt;a href=&quot;https://en.wikipedia.org/wiki/Guard_digit&quot;&gt;가드 숫자&lt;/a&gt; 를 사용하는데, 이는 &lt;code&gt;0.1 + 0.2&lt;/code&gt; 가 &lt;code&gt;0.3&lt;/code&gt; 을주는 방법입니다 : 마지막 몇 비트는 반올림됩니다.</target>
+        </trans-unit>
+        <trans-unit id="b944713acbfeaefa185fd6b02b29866cbcd20f3a" translate="yes" xml:space="preserve">
+          <source>Most experienced programmers, of course, know the real answer, which is that there is no way to piece together an &lt;em&gt;exact&lt;/em&gt; tenth or fifth of the pizza using those slices, no matter how finely you slice them. You can do a pretty good approximation, and if you add up the approximation of 0.1 with the approximation of 0.2, you get a pretty good approximation of 0.3, but it's still just that, an approximation.</source>
+          <target state="translated">물론 대부분의 숙련 된 프로그래머는 실제 해답을 알고 있습니다. 즉, 슬라이스를 사용하여 피자를 &lt;em&gt;정확히&lt;/em&gt; 10 분의 5 또는 5 분의 1로 분할 할 수있는 방법이 없다는 것입니다. 당신은 꽤 좋은 근사를 할 수 있고, 대략 0.2의 근사치 0.1을 더하면 대략 0.3의 근사치를 얻지 만 여전히 근사치입니다.</target>
+        </trans-unit>
+        <trans-unit id="db20f0baebe5ae74b4f5ca1ba310ce4d2dac041e" translate="yes" xml:space="preserve">
+          <source>Most processors follow the &lt;a href=&quot;http://en.wikipedia.org/wiki/IEEE_754-2008&quot;&gt;IEEE-754&lt;/a&gt; standard but some use denormalized, or different standards
+. For example, there is a denormalized mode in IEEE-754 which allows representation of very small floating point numbers at the expense of precision. The following, however, will cover the normalized mode of IEEE-754 which is the typical mode of operation.</source>
+          <target state="translated">대부분의 프로세서는 &lt;a href=&quot;http://en.wikipedia.org/wiki/IEEE_754-2008&quot;&gt;IEEE-754&lt;/a&gt; 표준을 따르지만 일부는 비정규 화 된 표준 또는 다른 표준을 사용합니다. 예를 들어 IEEE-754에는 비정규 화 된 모드가있어 정밀도를 희생시키면서 매우 작은 부동 소수점 숫자를 표시 할 수 있습니다. 그러나 다음은 일반적인 작동 모드 인 IEEE-754의 정규화 된 모드를 다룹니다.</target>
+        </trans-unit>
+        <trans-unit id="5cf99f8f009932fb02161551e41e5b27ef9ccc1d" translate="yes" xml:space="preserve">
+          <source>My workaround:</source>
+          <target state="translated">내 해결 방법 :</target>
+        </trans-unit>
+        <trans-unit id="fe2cee7e86246cc3c67f2c8393c324743271be71" translate="yes" xml:space="preserve">
+          <source>Neither of these solutions is perfect (especially if we look at performances, or if we require a very high precision), but still they solve a great number of problems with binary floating point arithmetic.</source>
+          <target state="translated">이러한 솔루션 중 어느 것도 완벽하지는 않지만 (특히 성능을 보거나 매우 높은 정밀도를 요구하는 경우) 이진 부동 소수점 산술과 관련된 많은 문제를 해결합니다.</target>
+        </trans-unit>
+        <trans-unit id="2b33a1cd6bfe955729a61c6c2378164276c976df" translate="yes" xml:space="preserve">
+          <source>No, not broken, but most decimal fractions must be approximated</source>
+          <target state="translated">아니요, 깨지지는 않지만 대부분의 소수는 근사값이어야합니다</target>
+        </trans-unit>
+        <trans-unit id="64a768dd81380b6d830fc7ba6f606946def99de5" translate="yes" xml:space="preserve">
+          <source>Not all numbers can be represented via &lt;strong&gt;floats&lt;/strong&gt;/&lt;strong&gt;doubles&lt;/strong&gt;
+For example, the number &quot;0.2&quot; will be represented as &quot;0.200000003&quot; in single precision in IEEE754 float point standard.</source>
+          <target state="translated">모든 숫자를 &lt;strong&gt;float&lt;/strong&gt; / &lt;strong&gt;doubles&lt;/strong&gt; 로 표현할 수있는 것은 아닙니다. 예를 들어 IEEE0.2 float 포인트 표준에서 숫자 &quot;0.2&quot;는 단 정밀도로 &quot;0.200000003&quot;으로 표시됩니다.</target>
+        </trans-unit>
+        <trans-unit id="173f07d87b229443d640ce3489ba411e8746ea11" translate="yes" xml:space="preserve">
+          <source>Note that &lt;em&gt;a&lt;/em&gt; and &lt;em&gt;b&lt;/em&gt; differ only in the last bit; &lt;code&gt;...0011&lt;/code&gt; + &lt;code&gt;1&lt;/code&gt; = &lt;code&gt;...0100&lt;/code&gt;. In this case, the value with the least significant bit of zero is &lt;em&gt;b&lt;/em&gt;, so the sum is:</source>
+          <target state="translated">&lt;em&gt;a&lt;/em&gt; 와 &lt;em&gt;b&lt;/em&gt; 는 마지막 비트에서만 다릅니다. &lt;code&gt;...0011&lt;/code&gt; + &lt;code&gt;1&lt;/code&gt; = &lt;code&gt;...0100&lt;/code&gt; 입니다. 이 경우 최하위 비트가 0 인 값은 &lt;em&gt;b&lt;/em&gt; 이므로 합은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="fb1682df5506dc738031d2049d0fe97e609c88dc" translate="yes" xml:space="preserve">
+          <source>Note that the default rounding mode, round-to-nearest &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;even digit in the last place&lt;/a&gt;, guarantees an error of less than one half of one unit in the last place for one operation. Using the truncation, round-up, and round down alone may result in an error that is greater than one half of one unit in the last place, but less than one unit in the last place, so these modes are not recommended unless they are used in Interval Arithmetic.</source>
+          <target state="translated">기본 반올림 모드 인 &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;마지막 자리에서&lt;/a&gt; 가장 가까운 자리수까지도 한 번의 작업으로 마지막 자리에서 한 단위의 절반 미만의 오류를 보장합니다. 잘림, 반올림 및 반올림 만 사용하면 마지막 위치에서 한 단위의 절반보다 크지 만 마지막 위치에서 하나보다 적은 오류가 발생할 수 있으므로 이러한 모드는 그렇지 않은 경우 권장되지 않습니다. 간격 산술에 사용됩니다.</target>
+        </trans-unit>
+        <trans-unit id="e275cd62fb5f11144c70906280ad00b0caaae18d" translate="yes" xml:space="preserve">
+          <source>Note that the mantissa is composed of recurring digits of &lt;code&gt;0011&lt;/code&gt;. This is &lt;strong&gt;key&lt;/strong&gt; to why there is any error to the calculations - 0.1, 0.2 and 0.3 cannot be represented in binary &lt;strong&gt;precisely&lt;/strong&gt; in a &lt;em&gt;finite&lt;/em&gt; number of binary bits any more than 1/9, 1/3 or 1/7 can be represented precisely in &lt;em&gt;decimal digits&lt;/em&gt;.</source>
+          <target state="translated">가수는 &lt;code&gt;0011&lt;/code&gt; 의 반복 숫자로 구성됩니다. 이것은 계산에 오류가있는 이유의 &lt;strong&gt;핵심입니다&lt;/strong&gt; -0.1, 0.2 및 0.3은 1 / 9, 1/3 또는 1/7을 초과하는 &lt;em&gt;유한&lt;/em&gt; 수의 이진 비트로 &lt;strong&gt;정확하게&lt;/strong&gt; 이진수로 표현 될 수 없습니다. &lt;em&gt;십진수&lt;/em&gt; .</target>
+        </trans-unit>
+        <trans-unit id="d1e48ccd7591a347088699ef49149eac61dd4272" translate="yes" xml:space="preserve">
+          <source>Notice that in both cases, the approximations for 0.1 and 0.2 have a slight upward bias. If we add enough of these biases in, they will push the number further and further away from what we want, and in fact, in the case of 0.1 + 0.2, the bias is high enough that the resulting number is no longer the closest number to 0.3.</source>
+          <target state="translated">두 경우 모두 0.1과 0.2의 근사치에는 약간의 상향 바이어스가 있습니다. 이러한 바이어스를 충분히 추가하면 원하는 수에서 멀어지고 멀어지게됩니다. 실제로 0.1 + 0.2의 경우 바이어스는 결과 숫자가 더 이상 가장 가까운 숫자가 아닐 정도로 충분히 높습니다. ~ 0.3.</target>
+        </trans-unit>
+        <trans-unit id="9520be12da7f5411c118335231ed0c5f7a84ec09" translate="yes" xml:space="preserve">
+          <source>Now that you found the solution, it's better to offer it as a function like this:</source>
+          <target state="translated">이제 솔루션을 찾았으므로 다음과 같은 기능으로 제공하는 것이 좋습니다.</target>
+        </trans-unit>
+        <trans-unit id="61b21a44286dfe92732888d44bc4a742729e3bcc" translate="yes" xml:space="preserve">
+          <source>Now, how would you piece all the slices in such a way that would add up to one-tenth (0.1) or one-fifth (0.2) of a pizza? Really think about it, and try working it out. You can even try to use a real pizza, if you have a mythical precision pizza cutter at hand. :-)</source>
+          <target state="translated">이제 피자의 1/10 (0.1) 또는 1/5 (0.2)를 추가하는 방식으로 모든 슬라이스를 어떻게 조각 하시겠습니까? 실제로 그것에 대해 생각하고 해결해보십시오. 신화적인 정밀 피자 커터가 있다면 실제 피자를 사용해보십시오. :-)</target>
+        </trans-unit>
+        <trans-unit id="105e5e7696e347e9fea2b0bfb4ac95627ef03c36" translate="yes" xml:space="preserve">
+          <source>One example would be</source>
+          <target state="translated">한 가지 예는</target>
+        </trans-unit>
+        <trans-unit id="f3c8c95c5e534bcd2ea0034a0d83177efa6923f4" translate="yes" xml:space="preserve">
+          <source>Output:</source>
+          <target state="translated">Output:</target>
+        </trans-unit>
+        <trans-unit id="a96f5425027bc80f50fbfd4f9264ef5dadb0389c" translate="yes" xml:space="preserve">
+          <source>P.S. Some programming languages also provide pizza cutters that can &lt;a href=&quot;https://en.wikipedia.org/wiki/Decimal_floating_point&quot;&gt;split slices into exact tenths&lt;/a&gt;. Although such pizza cutters are uncommon, if you do have access to one, you should use it when it's important to be able to get exactly one-tenth or one-fifth of a slice.</source>
+          <target state="translated">PS 일부 프로그래밍 언어는 &lt;a href=&quot;https://en.wikipedia.org/wiki/Decimal_floating_point&quot;&gt;슬라이스를 정확히 10 분할로 분할&lt;/a&gt; 할 수있는 피자 절단기를 제공합니다. 그러한 피자 절단기는 흔하지 않지만, 하나에 접근 할 수 있다면 정확히 10 분의 1 또는 5 분의 1의 슬라이스를 얻을 수 있어야 할 때 사용해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="29dfe574f408d995f2185483c55dbffde4813a84" translate="yes" xml:space="preserve">
+          <source>Plain old decimal (base 10) numbers have the same issues, which is why numbers like 1/3 end up as 0.333333333...</source>
+          <target state="translated">평범한 오래된 십진수 (기본 10) 숫자는 같은 문제가 있으므로 1/3과 같은 숫자는 0.333333333으로 끝나는 것입니다 ...</target>
+        </trans-unit>
+        <trans-unit id="27e3ae8dbaba8a0d1b82dbf5add12c954885d1e0" translate="yes" xml:space="preserve">
+          <source>Python's &lt;a href=&quot;https://docs.python.org/dev/library/decimal.html&quot;&gt;&lt;code&gt;decimal&lt;/code&gt; module&lt;/a&gt; and Java's &lt;a href=&quot;http://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html&quot;&gt;&lt;code&gt;BigDecimal&lt;/code&gt; class&lt;/a&gt;, that represent numbers internally with decimal notation (as opposed to binary notation). Both have limited precision, so they are still error prone, however they solve most common problems with binary floating point arithmetic.</source>
+          <target state="translated">파이썬의 &lt;a href=&quot;https://docs.python.org/dev/library/decimal.html&quot;&gt; &lt;code&gt;decimal&lt;/code&gt; 모듈&lt;/a&gt; 및 Java의 &lt;a href=&quot;http://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html&quot;&gt; &lt;code&gt;BigDecimal&lt;/code&gt; 클래스&lt;/a&gt; 는 내부적으로 2 진수 표기법으로 이진수 표기법이 아닌 숫자를 나타냅니다. 둘 다 정밀도가 제한되어 있기 때문에 여전히 오류가 발생하기 쉽지만 이진 부동 소수점 산술과 관련된 가장 일반적인 문제를 해결합니다.</target>
+        </trans-unit>
+        <trans-unit id="eb619cf9a5eaa0e9433e5e33fece2c06bd48ff6d" translate="yes" xml:space="preserve">
+          <source>Python's &lt;a href=&quot;https://docs.python.org/dev/library/fractions.html&quot;&gt;&lt;code&gt;fractions&lt;/code&gt; module&lt;/a&gt; and Apache Common's &lt;a href=&quot;https://commons.apache.org/proper/commons-math/apidocs/org/apache/commons/math3/fraction/BigFraction.html&quot;&gt;&lt;code&gt;BigFraction&lt;/code&gt; class&lt;/a&gt;. Both represent rational numbers as &lt;code&gt;(numerator, denominator)&lt;/code&gt; pairs and they may give more accurate results than decimal floating point arithmetic.</source>
+          <target state="translated">파이썬의 &lt;a href=&quot;https://docs.python.org/dev/library/fractions.html&quot;&gt; &lt;code&gt;fractions&lt;/code&gt; 모듈&lt;/a&gt; 과 Apache Common의 &lt;a href=&quot;https://commons.apache.org/proper/commons-math/apidocs/org/apache/commons/math3/fraction/BigFraction.html&quot;&gt; &lt;code&gt;BigFraction&lt;/code&gt; 클래스&lt;/a&gt; 둘 다 유리수를 &lt;code&gt;(numerator, denominator)&lt;/code&gt; 쌍으로 나타내며 십진 부동 소수점 산술보다 더 정확한 결과를 제공 할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="3ac876068bdeda94095d3a7511721e8436f028d3" translate="yes" xml:space="preserve">
+          <source>Python's &lt;code&gt;decimal&lt;/code&gt; module is based on &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_854-1987&quot;&gt;IEEE standard 854-1987&lt;/a&gt;.</source>
+          <target state="translated">파이썬의 &lt;code&gt;decimal&lt;/code&gt; 모듈은 &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_854-1987&quot;&gt;IEEE 표준 854-1987을&lt;/a&gt; 기반으로합니다.</target>
+        </trans-unit>
+        <trans-unit id="d9c70cbcdb978515e306b58ad0407fb758f03a30" translate="yes" xml:space="preserve">
+          <source>Returning to the floating point converter, the raw hexadecimal for 0.30000000000000004 is 3fd3333333333334, which ends in an even digit and therefore is the correct result.</source>
+          <target state="translated">부동 소수점 변환기로 돌아 가면 0.30000000000000004의 원시 16 진수는 3fd3333333333334이며 이는 짝수로 끝나므로 올바른 결과입니다.</target>
+        </trans-unit>
+        <trans-unit id="92b1e4641ea8b0a754e7afa9dfb128e28b38b3b3" translate="yes" xml:space="preserve">
+          <source>See &lt;a href=&quot;http://en.cppreference.com/w/cpp/io/basic_ios/init&quot;&gt;here&lt;/a&gt; for reference</source>
+          <target state="translated">참조 &lt;a href=&quot;http://en.cppreference.com/w/cpp/io/basic_ios/init&quot;&gt;를&lt;/a&gt; 위해 여기 를보십시오</target>
+        </trans-unit>
+        <trans-unit id="eb3bdffb7759683f4114fd367d5b967cb10277b0" translate="yes" xml:space="preserve">
+          <source>Sign bit: 1 bit</source>
+          <target state="translated">부호 비트 : 1 비트</target>
+        </trans-unit>
+        <trans-unit id="8b804a9ed868fea0acf8c3224434cb421a49c76d" translate="yes" xml:space="preserve">
+          <source>Significant precision: 53 bits (52 explicitly stored)</source>
+          <target state="translated">중요한 정밀도 : 53 비트 (52 개 명시 적으로 저장 됨)</target>
+        </trans-unit>
+        <trans-unit id="b1ccc6268f35cc5a5baa2d8213bd1bff5a0a1766" translate="yes" xml:space="preserve">
+          <source>Since the hardware that does the floating point calculations only needs to yield a result with an error of less than one half of one unit in the last place for a single operation, the error will grow over repeated operations if not watched. This is the reason that in computations that require a bounded error, mathematicians use methods such as using the round-to-nearest &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;even digit in the last place&lt;/a&gt; of IEEE-754, because, over time, the errors are more likely to cancel each other out, and &lt;a href=&quot;http://en.wikipedia.org/wiki/Interval_arithmetic&quot;&gt;Interval Arithmetic&lt;/a&gt; combined with variations of the &lt;a href=&quot;http://en.wikipedia.org/wiki/IEEE_754-2008#Rounding_rules&quot;&gt;IEEE 754 rounding modes&lt;/a&gt; to predict rounding errors, and correct them. Because of its low relative error compared to other rounding modes, round to nearest even digit (in the last place), is the default rounding mode of IEEE-754.</source>
+          <target state="translated">부동 소수점 계산을 수행하는 하드웨어는 단일 작업의 마지막 위치에서 한 단위의 절반 미만의 오류로 결과를 생성하기 만하면되기 때문에 오류를 보지 않으면 반복 된 작업보다 오류가 커집니다. 이것이 한계 오차를 요구하는 계산에서 수학자들이 IEEE-754 &lt;a href=&quot;http://en.wikipedia.org/wiki/Floating_point#Rounding_modes&quot;&gt;의 마지막 장소에서&lt;/a&gt; 가장 가까운 반올림 짝수 를 사용하는 것과 같은 방법을 사용하는 이유입니다. 시간이 지남에 따라 오차가 서로 상쇄 될 가능성이 더 높기 때문입니다 반올림 오류를 예측하고 수정하기 위해 &lt;a href=&quot;http://en.wikipedia.org/wiki/IEEE_754-2008#Rounding_rules&quot;&gt;IEEE 754 반올림 모드&lt;/a&gt; 의 변형과 결합 된 &lt;a href=&quot;http://en.wikipedia.org/wiki/Interval_arithmetic&quot;&gt;간격 산술&lt;/a&gt; . IEEE-754의 기본 반올림 모드는 다른 반올림 모드에 비해 상대적 오류가 낮기 때문에 가장 가까운 짝수로 반올림합니다 (마지막).</target>
+        </trans-unit>
+        <trans-unit id="4264ec05ffbfc8a229c5efdd658651538e8f7d77" translate="yes" xml:space="preserve">
+          <source>Since the sum is not of the form 2&lt;sup&gt;n&lt;/sup&gt; * 1.{bbb} we increase the exponent by one and shift the decimal (&lt;em&gt;binary&lt;/em&gt;) point to get:</source>
+          <target state="translated">합이 2 &lt;sup&gt;n&lt;/sup&gt; * 1. {bbb} 형식이 아니므로 지수를 1 씩 늘리고 소수 ( &lt;em&gt;binary&lt;/em&gt; ) 점을 이동하여 다음을 얻습니다.</target>
+        </trans-unit>
+        <trans-unit id="8fe15c45bd8b7e17a57d9e6c07bb827360bf9a63" translate="yes" xml:space="preserve">
+          <source>Since this is a language-agnostic question, it needs language-agnostic tools, such as a &lt;a href=&quot;http://www.exploringbinary.com/floating-point-converter/&quot;&gt;Decimal to Floating-Point Converter&lt;/a&gt;.</source>
+          <target state="translated">이것은 언어에 구애받지 않는 질문이므로 &lt;a href=&quot;http://www.exploringbinary.com/floating-point-converter/&quot;&gt;10 진수를 부동 소수점으로 변환&lt;/a&gt; 하는 것과 같은 언어에 구애받지 않는 도구가 필요합니다.</target>
+        </trans-unit>
+        <trans-unit id="5c9a3661043362988247e665a5ff40a889bcfbde" translate="yes" xml:space="preserve">
+          <source>Since this thread branched off a bit into a general discussion over current floating point implementations I'd add that there are projects on fixing their issues.</source>
+          <target state="translated">이 스레드는 현재 부동 소수점 구현에 대한 일반적인 토론으로 약간 분기되었으므로 문제를 해결하는 프로젝트가 있다고 덧붙였습니다.</target>
+        </trans-unit>
+        <trans-unit id="8d7e45d0733415a3bee40ed99c227b8a4fcc55c9" translate="yes" xml:space="preserve">
+          <source>So in decimal, we can't represent &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;3&lt;/sub&gt;. Because base 10 includes 2 as a prime factor, every number we can write as a binary fraction &lt;em&gt;also&lt;/em&gt; can be written as a base 10 fraction. However, hardly anything we write as a base&lt;sub&gt;10&lt;/sub&gt; fraction is representable in binary. In the range from 0.01, 0.02, 0.03 ... 0.99, only &lt;em&gt;three&lt;/em&gt; numbers can be represented in our FP format: 0.25, 0.50, and 0.75, because they are 1/4, 1/2, and 3/4, all numbers with a prime factor using only the 2&lt;sup&gt;n&lt;/sup&gt; term.</source>
+          <target state="translated">따라서 십진수로 &lt;sup&gt;1/3을&lt;/sup&gt; 표현할 수 없습니다. 기수 10은 2를 소인수로 포함하므로 이진 분수로 쓸 수있는 모든 수는 10 진수로 쓸 &lt;em&gt;수도&lt;/em&gt; 있습니다. 그러나 기본 &lt;sub&gt;10&lt;/sub&gt; 분수로 쓰는 것은 거의 이진법으로 표현할 수 없습니다. 0.01, 0.02, 0.03 ... 0.99 범위에서 FP 형식으로 &lt;em&gt;3 개의&lt;/em&gt; 숫자 만 표현할 수 있습니다 : 0.25, 0.50 및 0.75, 1/4, 1/2 및 3/4이므로 모든 숫자 2 &lt;sup&gt;n&lt;/sup&gt; 항만 사용하는 소수입니다.</target>
+        </trans-unit>
+        <trans-unit id="f0b724f7d5e93bef7ba979ca2b6db6331ea8ad1c" translate="yes" xml:space="preserve">
+          <source>So it is a bit hard to represent such numbers exactly. Even if you specify this variable explicitly without any intermediate calculation.</source>
+          <target state="translated">따라서 그러한 숫자를 정확하게 나타내는 것은 약간 어렵습니다. 중간 계산없이이 변수를 명시 적으로 지정하더라도</target>
+        </trans-unit>
+        <trans-unit id="6d0912fcda429b68b9e0994a73b85abb7d8f001c" translate="yes" xml:space="preserve">
+          <source>So no: binary floating point numbers are not broken, they just happen to be as imperfect as every other base-N number system :)</source>
+          <target state="translated">따라서 아니오 : 이진 부동 소수점 숫자는 손상되지 않으며 다른 모든 base-n 숫자 시스템만큼 불완전합니다. :)</target>
+        </trans-unit>
+        <trans-unit id="38123450cd5a2b687471df50e3e3541c514a8630" translate="yes" xml:space="preserve">
+          <source>So when you write &lt;code&gt;float x = 999...&lt;/code&gt;, the compiler will transform that number in a bit representation printed by the function &lt;code&gt;xx&lt;/code&gt; such that the sum printed by the function &lt;code&gt;yy&lt;/code&gt; be equal to the given number.</source>
+          <target state="translated">따라서 &lt;code&gt;float x = 999...&lt;/code&gt; 를 쓰면 컴파일러는 해당 숫자를 &lt;code&gt;xx&lt;/code&gt; 함수가 인쇄 한 비트 표현으로 변환하여 &lt;code&gt;yy&lt;/code&gt; 함수가 인쇄 한 합계가 주어진 숫자와 같도록합니다.</target>
+        </trans-unit>
+        <trans-unit id="459b7f35474c9c93ae8fcd79868b828ff68a08ab" translate="yes" xml:space="preserve">
+          <source>So while every binary fraction can be written in decimal, the reverse is not true. And in fact most decimal fractions repeat in binary.</source>
+          <target state="translated">따라서 모든 이진 분수는 십진수로 쓸 수 있지만 그 반대는 아닙니다. 실제로 대부분의 소수는 이진수로 반복됩니다.</target>
+        </trans-unit>
+        <trans-unit id="0f7d8fe8c6fbc3cfacb76978a4bcc7cb719ecf0a" translate="yes" xml:space="preserve">
+          <source>Some high level languages such as Python and Java come with tools to overcome binary floating point limitations. For example:</source>
+          <target state="translated">Python 및 Java와 같은 일부 고급 언어에는 이진 부동 소수점 제한을 극복하기위한 도구가 제공됩니다. 예를 들면 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="791b5e413bc079e206d5f368f16ef6fac171632c" translate="yes" xml:space="preserve">
+          <source>Some statistics related to this famous double precision question.</source>
+          <target state="translated">이 유명한 배정도 문제와 관련된 통계입니다.</target>
+        </trans-unit>
+        <trans-unit id="ec3fa9530fa475d8f36d0f7a062d084a2bb45c03" translate="yes" xml:space="preserve">
+          <source>Squeezing infinitely many real numbers into a finite number of bits requires an approximate representation. Although there are infinitely many integers, in most programs the result of integer computations can be stored in 32 bits. In contrast, given any fixed number of bits, most calculations with real numbers will produce quantities that cannot be exactly represented using that many bits. Therefore the result of a floating-point calculation must often be rounded in order to fit back into its finite representation. This rounding error is the characteristic feature of floating-point computation.</source>
+          <target state="translated">무한히 많은 실수를 유한 한 비트 수로 압축하려면 대략적인 표현이 필요합니다. 정수는 무한히 많지만 대부분의 프로그램에서 정수 계산 결과는 32 비트로 저장 될 수 있습니다. 반대로, 고정 된 수의 비트가 주어지면 실수를 사용한 대부분의 계산은 많은 비트를 사용하여 정확하게 표현할 수없는 수량을 생성합니다. 따라서 부동 소수점 계산 결과를 유한 표현에 맞추려면 종종 반올림해야합니다. 이 반올림 오류는 부동 소수점 계산의 특징입니다.</target>
+        </trans-unit>
+        <trans-unit id="c141085414843405292b7e3811baac9439881af4" translate="yes" xml:space="preserve">
+          <source>Take a look at &lt;a href=&quot;https://posithub.org/&quot;&gt;https://posithub.org/&lt;/a&gt; for example, which showcases a number type called posit (and its predecessor unum) that promises to offer better accuracy with fewer bits. If my understanding is correct, it also fixes the kind of problems in the question. Quite interesting project, the person behind it is a mathematician it &lt;a href=&quot;http://www.johngustafson.net/&quot;&gt;Dr. John Gustafson&lt;/a&gt;. The whole thing is open source, with many actual implementations in C/C++, Python, Julia and C# (&lt;a href=&quot;https://hastlayer.com/arithmetics&quot;&gt;https://hastlayer.com/arithmetics&lt;/a&gt;).</source>
+          <target state="translated">예를 들어 &lt;a href=&quot;https://posithub.org/&quot;&gt;https://posithub.org/&lt;/a&gt; 를 살펴보십시오. 여기에는 적은 비트로 더 나은 정확도를 제공 할 것을 약속하는 posit (및 이전 모델 unum)라는 숫자 유형이 나와 있습니다. 내 이해가 정확하면 질문의 종류도 해결합니다. 매우 흥미로운 프로젝트, 그 뒤에있는 사람은 수학자 &lt;a href=&quot;http://www.johngustafson.net/&quot;&gt;John Gustafson&lt;/a&gt; 입니다. 모든 것은 오픈 소스이며 C / C ++, Python, Julia 및 C # ( &lt;a href=&quot;https://hastlayer.com/arithmetics&quot;&gt;https://hastlayer.com/arithmetics&lt;/a&gt; )에 많은 실제 구현이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="f8995c49b038cd4a41a4b96a4e4e6ee914279da4" translate="yes" xml:space="preserve">
+          <source>That pizza cutter has very fine movements, and if you start with a whole pizza, then halve that, and continue halving the smallest slice each time, you can do the halving &lt;em&gt;53 times&lt;/em&gt; before the slice is too small for even its high-precision abilities. At that point, you can no longer halve that very thin slice, but must either include or exclude it as is.</source>
+          <target state="translated">그 피자 커터는 매우 미세한 움직임을 가지고 있으며, 전체 피자로 시작해서 반으로 줄인 후 매번 가장 작은 슬라이스를 계속 반으로 자르면 슬라이스가 너무 작아서 고정밀 능력을 갖기 전에 절반을 절반으로 줄일 수 있습니다 . 이 시점에서 더 이상 해당 슬라이스를 절반으로 줄일 수 없지만 그대로 포함하거나 제외해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="9521ab333644ac6fc5a178f9282365b2b72a2e19" translate="yes" xml:space="preserve">
+          <source>That's it.  The value of 999999999 is in fact</source>
+          <target state="translated">그게 다야. 999999999의 값은 실제로</target>
+        </trans-unit>
+        <trans-unit id="37fd206bff80a7a4aad65b53473445ec4e6045d1" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;_Decimal32&lt;/code&gt;, &lt;code&gt;_Decimal64&lt;/code&gt; and &lt;code&gt;_Decimal128&lt;/code&gt; types might be available on your system (for example, &lt;a href=&quot;http://en.wikipedia.org/wiki/GNU_Compiler_Collection&quot;&gt;GCC&lt;/a&gt; supports them on &lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/Decimal-Float.html&quot;&gt;selected targets&lt;/a&gt;, but &lt;a href=&quot;http://en.wikipedia.org/wiki/Clang&quot;&gt;Clang&lt;/a&gt; does not support them on &lt;a href=&quot;http://en.wikipedia.org/wiki/OS_X&quot;&gt;OS&amp;nbsp;X&lt;/a&gt;).</source>
+          <target state="translated">&lt;code&gt;_Decimal32&lt;/code&gt; , &lt;code&gt;_Decimal64&lt;/code&gt; 및 &lt;code&gt;_Decimal128&lt;/code&gt; 유형은 시스템에서 사용 가능할 수 있습니다 (예 : &lt;a href=&quot;http://en.wikipedia.org/wiki/GNU_Compiler_Collection&quot;&gt;GCC&lt;/a&gt; 는 &lt;a href=&quot;https://gcc.gnu.org/onlinedocs/gcc-4.2.4/gcc/Decimal-Float.html&quot;&gt;선택된 대상&lt;/a&gt; 에서이를 지원하지만 &lt;a href=&quot;http://en.wikipedia.org/wiki/Clang&quot;&gt;Clang&lt;/a&gt; 은 &lt;a href=&quot;http://en.wikipedia.org/wiki/OS_X&quot;&gt;OS X에서&lt;/a&gt; 이를 지원하지 않습니다).</target>
+        </trans-unit>
+        <trans-unit id="b8283a2be83322370e2eff49b9d2031176a2a623" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;x&lt;/code&gt; in the question is a &lt;code&gt;float&lt;/code&gt; variable.</source>
+          <target state="translated">문제의 &lt;code&gt;x&lt;/code&gt; 는 &lt;code&gt;float&lt;/code&gt; 변수입니다.</target>
+        </trans-unit>
+        <trans-unit id="b94d896b02c25729113497c920111423c44c9588" translate="yes" xml:space="preserve">
+          <source>The answer turns out to be that &lt;code&gt;cout&lt;/code&gt;'s default precision for &lt;code&gt;float&lt;/code&gt; is 6, so it rounds to 6 decimal digits.</source>
+          <target state="translated">대답은 &lt;code&gt;float&lt;/code&gt; 에 대한 &lt;code&gt;cout&lt;/code&gt; 의 기본 정밀도는 6이므로 10 진수로 반올림됩니다.</target>
+        </trans-unit>
+        <trans-unit id="c1e1a2f14e6221a38e01e8ea88f8536a4a118f00" translate="yes" xml:space="preserve">
+          <source>The binary representation of 0.1 and 0.2 are the &lt;em&gt;most accurate&lt;/em&gt; representations of the numbers allowable by IEEE 754. The addition of these representation, due to the default rounding mode, results in a value which differs only in the least-significant-bit.</source>
+          <target state="translated">0.1과 0.2의 이진 표현은 IEEE 754가 허용하는 숫자를 &lt;em&gt;가장 정확하게&lt;/em&gt; 표현한 것입니다. 기본 반올림 모드로 인해 이러한 표현을 추가하면 최하위 비트에서만 값이 달라집니다.</target>
+        </trans-unit>
+        <trans-unit id="dc3714342c0c169296b30554e4c7240280cd30d7" translate="yes" xml:space="preserve">
+          <source>The code prints the binary representation of floats in 3 separated groups</source>
+          <target state="translated">이 코드는 3 개의 분리 된 그룹으로 부동의 이진 표현을 인쇄합니다</target>
+        </trans-unit>
+        <trans-unit id="cb9787d2beabdc5d5af158f30db785c40d9c4be1" translate="yes" xml:space="preserve">
+          <source>The constants &lt;code&gt;0.2&lt;/code&gt; and &lt;code&gt;0.3&lt;/code&gt; in your program will also be approximations to their true values.  It happens that the closest &lt;code&gt;double&lt;/code&gt; to &lt;code&gt;0.2&lt;/code&gt; is larger than the rational number &lt;code&gt;0.2&lt;/code&gt; but that the closest &lt;code&gt;double&lt;/code&gt; to &lt;code&gt;0.3&lt;/code&gt; is smaller than the rational number &lt;code&gt;0.3&lt;/code&gt;.  The sum of &lt;code&gt;0.1&lt;/code&gt; and &lt;code&gt;0.2&lt;/code&gt; winds up being larger than the rational number &lt;code&gt;0.3&lt;/code&gt; and hence disagreeing with the constant in your code.</source>
+          <target state="translated">프로그램의 상수 &lt;code&gt;0.2&lt;/code&gt; 와 &lt;code&gt;0.3&lt;/code&gt; 도 실제 값과 비슷합니다. &lt;code&gt;0.2&lt;/code&gt; 에 가장 가까운 &lt;code&gt;double&lt;/code&gt; 은 유리수 0.2 보다 크지 만 &lt;code&gt;0.3&lt;/code&gt; 에 가장 가까운 &lt;code&gt;double&lt;/code&gt; 은 유리수 &lt;code&gt;0.3&lt;/code&gt; 보다 작습니다. &lt;code&gt;0.1&lt;/code&gt; 과 &lt;code&gt;0.2&lt;/code&gt; 의 합은 합리적 &lt;code&gt;0.3&lt;/code&gt; 보다 커지므로 코드의 상수에 동의하지 않습니다.</target>
+        </trans-unit>
+        <trans-unit id="aa4988ab132f87fefeb86fd1af7dafa6f7833b5a" translate="yes" xml:space="preserve">
+          <source>The debugger shows &lt;code&gt;9.89999962&lt;/code&gt;, the output of &lt;code&gt;cout&lt;/code&gt; operation is &lt;code&gt;9.9&lt;/code&gt;.</source>
+          <target state="translated">디버거에 &lt;code&gt;9.89999962&lt;/code&gt; 가 표시 되고 &lt;code&gt;cout&lt;/code&gt; 연산의 출력은 &lt;code&gt;9.9&lt;/code&gt; 입니다.</target>
+        </trans-unit>
+        <trans-unit id="217f6b6cf725f84a8efc542a480c3ef1cad6009d" translate="yes" xml:space="preserve">
+          <source>The difference is exactly 2&lt;sup&gt;-54&lt;/sup&gt;, which is ~5.5511151231258 &amp;times; 10&lt;sup&gt;-17&lt;/sup&gt; - insignificant (for many applications) when compared to the original values.</source>
+          <target state="translated">차이는 정확히 2 &lt;sup&gt;-54&lt;/sup&gt; 이며 이는 원래 값과 비교할 때 ~ 5.5511151231258 &amp;times; 10-17-중요하지 않습니다 (많은 응용 프로그램의 경우).</target>
+        </trans-unit>
+        <trans-unit id="a43c42712f7d96522e8b0f31af33a5949c98d6ac" translate="yes" xml:space="preserve">
+          <source>The displayed sum is what inside the hardware.  The value you obtain by computing it depends on the scale you set.  I did set the &lt;code&gt;scale&lt;/code&gt; factor to 15.  Mathematically, with infinite precision, it seems it is 1,000,000,000.</source>
+          <target state="translated">표시된 합계는 하드웨어 내부의 금액입니다. 계산하여 얻은 값은 설정 한 스케일에 따라 다릅니다. &lt;code&gt;scale&lt;/code&gt; 팩터를 15로 설정했습니다. 수학적으로 무한 정밀도로 1,000,000,000 인 것 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="a93b23943bc3274c1d99364225ccdea1ccea1185" translate="yes" xml:space="preserve">
+          <source>The exact situation is slightly more subtle because these numbers are typically stored in scientific notation.  So, for instance, instead of storing 1/10 as &lt;code&gt;0.0001100&lt;/code&gt; we may store it as something like &lt;code&gt;1.10011 * 2^-4&lt;/code&gt;, depending on how many bits we've allocated for the exponent and the mantissa.  This affects how many digits of precision you get for your calculations.</source>
+          <target state="translated">정확한 숫자는 일반적으로 과학적 표기법으로 저장되므로 약간 더 미묘합니다. 예를 들어 1/10을 &lt;code&gt;0.0001100&lt;/code&gt; 으로 저장하는 대신 지수와 가수에 할당 한 비트 수에 따라 &lt;code&gt;1.10011 * 2^-4&lt;/code&gt; 와 같이 저장할 수 있습니다. 이것은 계산에 필요한 자릿수에 영향을줍니다.</target>
+        </trans-unit>
+        <trans-unit id="de1b6c0fe71a68b90695b392838785ffd95aa6e3" translate="yes" xml:space="preserve">
+          <source>The expression &lt;code&gt;0.1 + 0.2 === 0.3&lt;/code&gt; returns &lt;code&gt;false&lt;/code&gt; in JavaScript, but fortunately integer arithmetic in floating-point is exact, so decimal representation errors can be avoided by scaling.</source>
+          <target state="translated">&lt;code&gt;0.1 + 0.2 === 0.3&lt;/code&gt; 표현식은 JavaScript에서 &lt;code&gt;false&lt;/code&gt; 를 반환하지만 다행스럽게도 부동 소수점의 정수 산술은 정확하므로 소수 자릿수 표시 오류를 스케일링으로 피할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="429fc3ca14c02cbeba6e5198aedde1d7338c24e1" translate="yes" xml:space="preserve">
+          <source>The first bit is the &lt;a href=&quot;http://en.wikipedia.org/wiki/Sign_bit&quot;&gt;sign bit&lt;/a&gt;: &lt;code&gt;1&lt;/code&gt; if the number is negative, &lt;code&gt;0&lt;/code&gt; otherwise&lt;sup&gt;1&lt;/sup&gt;.</source>
+          <target state="translated">첫 번째 비트는 &lt;a href=&quot;http://en.wikipedia.org/wiki/Sign_bit&quot;&gt;부호 비트입니다&lt;/a&gt; . 숫자가 음수 &lt;code&gt;0&lt;/code&gt; &lt;sup&gt;1&lt;/sup&gt; , 그렇지 않으면 0</target>
+        </trans-unit>
+        <trans-unit id="069711b8888abcc0778a98d9c8f87b1230fc0f79" translate="yes" xml:space="preserve">
+          <source>The kind of floating-point math that can be implemented in a digital computer necessarily uses an approximation of the real numbers and operations on them. (The &lt;em&gt;standard&lt;/em&gt; version runs to over fifty pages of documentation and has a committee to deal with its errata and further refinement.)</source>
+          <target state="translated">디지털 컴퓨터에서 구현할 수있는 일종의 부동 소수점 수학은 반드시 실제 숫자의 근사와 그에 대한 연산을 사용합니다. ( &lt;em&gt;표준&lt;/em&gt; 버전은 50 페이지가 넘는 문서로 구성되며 정오표 및 정교화를 처리 할위원회가 있습니다.)</target>
+        </trans-unit>
+        <trans-unit id="5e8f519edb4b0ab1dc30849c2350c221631c53b5" translate="yes" xml:space="preserve">
+          <source>The main cause of the error in floating point division is the division algorithms used to calculate the quotient. Most computer systems calculate division using multiplication by an inverse, mainly in &lt;code&gt;Z=X/Y&lt;/code&gt;, &lt;code&gt;Z = X * (1/Y)&lt;/code&gt;.  A division is computed iteratively i.e. each cycle computes some bits of the quotient until the desired precision is reached, which for IEEE-754 is anything with an error of less than one unit in the last place. The table of reciprocals of Y (1/Y) is known as the quotient selection table (QST) in the slow division, and the size in bits of the quotient selection table is usually the width of the radix, or a number of bits of the quotient computed in each iteration,  plus a few guard bits. For the IEEE-754 standard, double precision (64-bit), it would be the size of the radix of the divider, plus a few guard bits k, where &lt;code&gt;k&amp;gt;=2&lt;/code&gt;. So for example, a typical Quotient Selection Table for a divider that computes 2 bits of the quotient at a time (radix 4) would be &lt;code&gt;2+2= 4&lt;/code&gt; bits (plus a few optional bits).</source>
+          <target state="translated">부동 소수점 나누기 오류의 주요 원인은 몫을 계산하는 데 사용되는 나누기 알고리즘입니다. 대부분의 컴퓨터 시스템은 주로 &lt;code&gt;Z=X/Y&lt;/code&gt; , &lt;code&gt;Z = X * (1/Y)&lt;/code&gt; 의 역수를 곱하여 나눗셈을 계산합니다. 나누기는 반복적으로 계산됩니다. 즉, 각 사이클은 원하는 정밀도에 도달 할 때까지 몫의 일부 비트를 계산합니다. IEEE-754의 경우 마지막 위치에서 1 단위 미만의 오류가있는 항목입니다. Y (1 / Y)의 역수 표는 느린 나눗셈에서 몫 선택 표 (QST)라고하며 몫 선택 표의 비트 크기는 일반적으로 기수의 폭 또는 비트 수입니다. 각 반복에서 계산 된 몫과 가드 비트. IEEE-754 표준의 배정도 (64 비트)의 경우, 디바이더의 기수 크기에 몇 개의 가드 비트 k를 더한 값은 &lt;code&gt;k&amp;gt;=2&lt;/code&gt; 입니다. 예를 들어, 한 번에 몫의 2 비트 (기수 4)를 계산하는 디바이더에 대한 일반적인 몫 선택 표는 &lt;code&gt;2+2= 4&lt;/code&gt; 비트 (몇 가지 선택적 비트)가됩니다.</target>
+        </trans-unit>
+        <trans-unit id="98a67d42a6af5d2090dc3a5053a67f6ad508ac3c" translate="yes" xml:space="preserve">
+          <source>The next 11 bits are the &lt;a href=&quot;http://en.wikipedia.org/wiki/Exponentiation&quot;&gt;exponent&lt;/a&gt;, which is &lt;a href=&quot;http://en.wikipedia.org/wiki/Offset_binary&quot;&gt;offset&lt;/a&gt; by 1023. In other words, after reading the exponent bits from a double-precision number, 1023 must be subtracted to obtain the power of two.</source>
+          <target state="translated">다음 11 비트는 &lt;a href=&quot;http://en.wikipedia.org/wiki/Exponentiation&quot;&gt;지수&lt;/a&gt; 이며 1023으로 &lt;a href=&quot;http://en.wikipedia.org/wiki/Offset_binary&quot;&gt;오프셋&lt;/a&gt; 됩니다. 즉, 배정 밀도 숫자에서 지수 비트를 읽은 후 2의 거듭 제곱을 얻으려면 1023을 빼야합니다.</target>
+        </trans-unit>
+        <trans-unit id="7bd1be1af16864d63e8e4e2dd6cd731c917703fa" translate="yes" xml:space="preserve">
+          <source>The problem comes with numbers that can be represented exactly in base 10, but not in base 2. Those numbers need to be rounded to their closest equivalent. Assuming the very common IEEE 64-bit floating point format, the closest number to &lt;code&gt;0.1&lt;/code&gt; is &lt;code&gt;3602879701896397 x 2⁻⁵⁵&lt;/code&gt;, and the closest number to &lt;code&gt;0.2&lt;/code&gt; is &lt;code&gt;7205759403792794 x 2⁻⁵⁵&lt;/code&gt;; adding them together results in &lt;code&gt;10808639105689191 x 2⁻⁵⁵&lt;/code&gt;, or an exact decimal value of &lt;code&gt;0.3000000000000000444089209850062616169452667236328125&lt;/code&gt;. Floating point numbers are generally rounded for display.</source>
+          <target state="translated">문제는 10 진수로 정확하게 표현할 수 있지만 2 진수로는 표현할 수없는 숫자와 함께 제공됩니다. 매우 일반적인 IEEE 64 비트 부동 소수점 형식을 가정하면 &lt;code&gt;0.1&lt;/code&gt; 에 가장 가까운 숫자는 &lt;code&gt;3602879701896397 x 2⁻⁵⁵&lt;/code&gt; 이고 &lt;code&gt;0.2&lt;/code&gt; 에 가장 가까운 숫자는 &lt;code&gt;7205759403792794 x 2⁻⁵⁵&lt;/code&gt; 입니다 . 함께 &lt;code&gt;10808639105689191 x 2⁻⁵⁵&lt;/code&gt; 또는 정확한 10 진수 값은 &lt;code&gt;0.3000000000000000444089209850062616169452667236328125&lt;/code&gt; 입니다. 부동 소수점 숫자는 일반적으로 표시를 위해 반올림됩니다.</target>
+        </trans-unit>
+        <trans-unit id="fc15ca46635e5191a5253547d7e67b8dfff4d9d3" translate="yes" xml:space="preserve">
+          <source>The real value assumed by a given 64-bit double-precision datum with a given biased exponent and a 52-bit fraction is</source>
+          <target state="translated">주어진 바이어스 지수와 52 비트 비율을 가진 주어진 64 비트 배정도 데이텀으로 가정 한 실제 값은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="6c48d666356850a34b3ed56a627c4baa4371b82e" translate="yes" xml:space="preserve">
+          <source>The remaining 52 bits are the &lt;a href=&quot;http://en.wikipedia.org/wiki/Significand&quot;&gt;significand&lt;/a&gt; (or mantissa). In the mantissa, an 'implied' &lt;code&gt;1.&lt;/code&gt; is always&lt;sup&gt;2&lt;/sup&gt; omitted since the most significant bit of any binary value is &lt;code&gt;1&lt;/code&gt;.</source>
+          <target state="translated">나머지 52 비트는 &lt;a href=&quot;http://en.wikipedia.org/wiki/Significand&quot;&gt;유효&lt;/a&gt; (또는 가수)입니다. 가수에서 '임시적인' &lt;code&gt;1.&lt;/code&gt; 은 항상 &lt;sup&gt;2&lt;/sup&gt; 이며 &lt;sup&gt;2&lt;/sup&gt; 진 값의 최상위 비트는 &lt;code&gt;1&lt;/code&gt; 이므로 생략됩니다.</target>
+        </trans-unit>
+        <trans-unit id="c619f9812cce49ddbec068ed67d1e31806109213" translate="yes" xml:space="preserve">
+          <source>The situation for binary numbers with a fixed number of bits is exactly analogous. As real numbers, we have</source>
+          <target state="translated">고정 된 비트 수를 가진 이진수의 상황은 정확히 유사합니다. 실수로, 우리는</target>
+        </trans-unit>
+        <trans-unit id="410bde0aed8816e1edf6c276a59f933a4741b733" translate="yes" xml:space="preserve">
+          <source>The upshot is that because of these rounding errors you essentially never want to use == on floating-point numbers.  Instead, you can check if the absolute value of their difference is smaller than some fixed small number.</source>
+          <target state="translated">결론은 이러한 반올림 오류로 인해 부동 소수점 숫자에 ==를 사용하고 싶지 않다는 것입니다. 대신 차이의 절대 값이 고정 된 작은 숫자보다 작은 지 확인할 수 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="c3f1ba633847618bf6fb98771611c1a94db112dc" translate="yes" xml:space="preserve">
+          <source>The whole issue really arises when people try to use FP for bean counting. It does work for that, but only if you stick to integral values, which kind of defeats the point of using it. &lt;em&gt;This is why we have all those decimal fraction software libraries.&lt;/em&gt;</source>
+          <target state="translated">사람들이 콩 계산에 FP를 사용하려고 할 때 전체 문제가 실제로 발생합니다. 그것은 그것을 위해 효과가 있지만, 당신이 적분 값을 고수하는 경우에만 사용합니다. &lt;em&gt;이것이 우리가 십진 분수 소프트웨어 라이브러리를 모두 가지고있는 이유입니다.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="d808cc026a4e31fe6892bd37e2a4afe8b2d0a1c2" translate="yes" xml:space="preserve">
+          <source>There are a majority of fractional numbers that cannot be represented precisely either in binary or in decimal or both. Result - A rounded up (but precise) number results.</source>
+          <target state="translated">이진수 나 십진수 또는 둘 다로 정확하게 표현할 수없는 대부분의 소수가 있습니다. 결과-반올림 (그러나 정확한) 숫자 결과입니다.</target>
+        </trans-unit>
+        <trans-unit id="8cb434dd902f101ef41bbec16086530ea8d35b0d" translate="yes" xml:space="preserve">
+          <source>There are now 53 bits in the mantissa (the 53rd is in square brackets in the line above). The default &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_754-1985#Rounding_floating-point_numbers&quot;&gt;rounding mode&lt;/a&gt; for IEEE 754 is '&lt;em&gt;Round to Nearest&lt;/em&gt;' - i.e. if a number &lt;em&gt;x&lt;/em&gt; falls between two values &lt;em&gt;a&lt;/em&gt; and &lt;em&gt;b&lt;/em&gt;, the value where the least significant bit is zero is chosen.</source>
+          <target state="translated">가수에 53 비트가 있습니다 (53 번째는 위의 꺾쇠 괄호 안에 있음). IEEE 754의 기본 &lt;a href=&quot;https://en.wikipedia.org/wiki/IEEE_754-1985#Rounding_floating-point_numbers&quot;&gt;반올림 모드&lt;/a&gt; 는 ' &lt;em&gt;가장&lt;/em&gt; 반올림 '입니다. 즉, 숫자 &lt;em&gt;x&lt;/em&gt; 가 두 값 &lt;em&gt;a&lt;/em&gt; 와 &lt;em&gt;b&lt;/em&gt; 사이에 있으면 가장 중요도가 낮은 비트가 0 인 값이 선택됩니다.</target>
+        </trans-unit>
+        <trans-unit id="8a5c579792acf30f381ea21b217f8f45dcbf2591" translate="yes" xml:space="preserve">
+          <source>This approximation is a mixture of approximations of different kinds, each of which can either be ignored or carefully accounted for due to its specific manner of deviation from exactitude. It also involves a number of explicit exceptional cases at both the hardware and software levels that most people walk right past while pretending not to notice.</source>
+          <target state="translated">이 근사값은 서로 다른 종류의 근사값을 혼합 한 것으로, 정확도와의 특정 편차 방식으로 인해 무시되거나 신중하게 설명 될 수 있습니다. 또한 대부분의 사람들이 눈치 채지 못한 채 지나가는 하드웨어 및 소프트웨어 수준에서 명백한 예외적 인 사례가 많이 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="fa73b5a554bb0627f1ba0d745b75294785495d01" translate="yes" xml:space="preserve">
+          <source>Those weird numbers appear because computers use binary(base 2) number system for calculation purposes, while we use decimal(base 10).</source>
+          <target state="translated">컴퓨터가 계산 목적으로 이진수 (기본 2) 숫자 시스템을 사용하고 10 진수 (기본 10)를 사용하기 때문에 이상한 숫자가 나타납니다.</target>
+        </trans-unit>
+        <trans-unit id="5181ccaf1ee2c8739257e60d503eec3d8be665e6" translate="yes" xml:space="preserve">
+          <source>To add two numbers, the exponent needs to be the same, i.e.:</source>
+          <target state="translated">두 개의 숫자를 더하려면 지수는 동일해야합니다.</target>
+        </trans-unit>
+        <trans-unit id="debb7281577780d4752f82cdabebcd636735a6dd" translate="yes" xml:space="preserve">
+          <source>Truncating at eight decimal places, we get</source>
+          <target state="translated">소수점 이하 8 자리에서 자르면</target>
+        </trans-unit>
+        <trans-unit id="34cefea3b795b99cb53c238c42c45eca37fb7b1a" translate="yes" xml:space="preserve">
+          <source>Try to determine when errors occur and fix them with short if statements, it's not pretty but for some problems it is the only solution and this is one of them.</source>
+          <target state="translated">오류가 언제 발생하는지 확인하고 짧은 if 문으로 오류를 수정하십시오. 예쁘지는 않지만 일부 문제는 유일한 해결책이며 이것이 그 중 하나입니다.</target>
+        </trans-unit>
+        <trans-unit id="ac5454415e7599b3fa86d8e5365f65ffab330f36" translate="yes" xml:space="preserve">
+          <source>Unfortunately 0.3 sits in a gap.</source>
+          <target state="translated">불행히도 0.3은 틈새에 있습니다.</target>
+        </trans-unit>
+        <trans-unit id="1496a09c9b892ec5642faa5112f45b0d303e2129" translate="yes" xml:space="preserve">
+          <source>We can clearly see a breakpoint when &lt;code&gt;2**53+1&lt;/code&gt; - all works fine until &lt;code&gt;2**53&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;2**53+1&lt;/code&gt; &lt;code&gt;2**53&lt;/code&gt; 까지는 모두 제대로 작동하면 중단 점이 분명하게 나타납니다.</target>
+        </trans-unit>
+        <trans-unit id="a203fd809d4ad1cc5e5284e631e856900a9d174a" translate="yes" xml:space="preserve">
+          <source>We constantly give the FP hardware something that seems simple in base 10 but is a repeating fraction in base 2.</source>
+          <target state="translated">우리는 FP 하드웨어에베이스 10에서 단순 해 보이지만베이스 2에서 반복되는 부분을 지속적으로 제공합니다.</target>
+        </trans-unit>
+        <trans-unit id="90bb045aec56dda5712dc977aa590d5634f9d4f3" translate="yes" xml:space="preserve">
+          <source>What reciprocals are in the quotient selection table depend on the &lt;a href=&quot;http://en.wikipedia.org/wiki/Division_%28digital%29&quot;&gt;division method&lt;/a&gt;: slow division such as SRT division, or fast division such as Goldschmidt division; each entry is modified according to the division algorithm in an attempt to yield the lowest possible error. In any case, though, all reciprocals are &lt;em&gt;approximations&lt;/em&gt; of the actual reciprocal and introduce some element of error. Both slow division and fast division methods calculate the quotient iteratively, i.e. some number of bits of the quotient are calculated each step, then the result is subtracted from the dividend, and the divider repeats the steps until the error is less than one half of one unit in the last place. Slow division methods calculate a fixed number of digits of the quotient in each step and are usually less expensive to build, and fast division methods calculate a variable number of digits per step and are usually more expensive to build. The most important part of the division methods is that most of them rely upon repeated multiplication by an &lt;em&gt;approximation&lt;/em&gt; of a reciprocal, so they are prone to error.</source>
+          <target state="translated">몫 선택 테이블에있는 왕복 수는 &lt;a href=&quot;http://en.wikipedia.org/wiki/Division_%28digital%29&quot;&gt;나누기 방법&lt;/a&gt; 에 따라 다릅니다. SRT 나누기와 같은 느린 나누기 또는 Goldschmidt 나누기와 같은 빠른 나누기; 각 항목은 가능한 가장 낮은 오류를 생성하기 위해 나누기 알고리즘에 따라 수정됩니다. 어쨌든 모든 왕복은 실제 왕복의 &lt;em&gt;근사치&lt;/em&gt; 이며 일부 오차 요소를 발생시킵니다. 느린 나눗셈과 빠른 나눗셈 방법은 몫을 반복적으로 계산합니다. 즉, 몫의 일부 비트가 각 단계에서 계산 된 다음 결과가 피제수에서 빼고 디바이더가 오차가 1의 절반보다 작을 때까지 단계를 반복합니다. 마지막 장소에서 단위. 느린 나눗셈 방법은 각 단계에서 몫의 고정 자릿수를 계산하며 일반적으로 작성 비용이 저렴하며 빠른 나눗셈 방법은 단계 당 가변 자릿수를 계산하며 일반적으로 작성 비용이 더 비쌉니다. 나누기 방법의 가장 중요한 부분은 대부분의 역수를 &lt;em&gt;근사&lt;/em&gt; 하여 반복 곱셈에 의존하므로 오류가 발생하기 쉽다는 것입니다.</target>
+        </trans-unit>
+        <trans-unit id="9af6bd16dcbaed2435e0ad81259607a927b61175" translate="yes" xml:space="preserve">
+          <source>When adding all values (&lt;em&gt;a + b&lt;/em&gt;) using a step of 0.1 (from 0.1 to 100) we have &lt;strong&gt;~15% chance of precision error&lt;/strong&gt;. Note that the error could result in slightly bigger or smaller values.
+Here are some examples:</source>
+          <target state="translated">0.1의 단계 (0.1에서 100까지)를 사용하여 모든 값 ( &lt;em&gt;a + b&lt;/em&gt; )을 추가 할 때 &lt;strong&gt;~ 15 %의 정확도 오차가 발생&lt;/strong&gt; 합니다. 오류로 인해 값이 약간 커지거나 작아 질 수 있습니다. 여기 예시들이 있습니다 :</target>
+        </trans-unit>
+        <trans-unit id="d692b99fcf87e7edff857861503848f5a6fb925e" translate="yes" xml:space="preserve">
+          <source>When subtracting all values (&lt;em&gt;a - b&lt;/em&gt; where &lt;em&gt;a &amp;gt; b&lt;/em&gt;) using a step of 0.1 (from 100 to 0.1) we have &lt;strong&gt;~34% chance of precision error&lt;/strong&gt;.
+Here are some examples:</source>
+          <target state="translated">0.1의 단계 (100에서 0.1까지)를 사용하여 모든 값 ( &lt;em&gt;a-b&lt;/em&gt; 여기서 &lt;em&gt;a&amp;gt; b&lt;/em&gt; )을 뺄 때 &lt;strong&gt;~ 34 %의 정확도 오차가 발생&lt;/strong&gt; 합니다. 여기 예시들이 있습니다 :</target>
+        </trans-unit>
+        <trans-unit id="dad29e497d84d7d97e26e14b971f5527c35ad106" translate="yes" xml:space="preserve">
+          <source>When we write in decimal, every fraction (specifically, every &lt;em&gt;terminating decimal)&lt;/em&gt; is a rational number of the form</source>
+          <target state="translated">우리가 10 진수로 쓸 때 모든 분수 (특히 모든 &lt;em&gt;종료 소수점)&lt;/em&gt; 는 형식의 합리적인 수입니다.</target>
+        </trans-unit>
+        <trans-unit id="cb40a8a2fcac0429d8dc60783983d5e8b6477e35" translate="yes" xml:space="preserve">
+          <source>When you convert .1 or 1/10 to base 2 (binary) you get a repeating pattern after the decimal point, just like trying to represent 1/3 in base 10.  The value is not exact, and therefore you can't do exact math with it using normal floating point methods.</source>
+          <target state="translated">.1 또는 1/10을 기수 2 (이진)로 변환하면 기수 10에서 1/3을 나타내려고하는 것과 같이 소수점 이후에 반복되는 패턴이 나타납니다. 값이 정확하지 않으므로 수행 할 수 없습니다 일반 부동 소수점 방법을 사용하여 정확한 수학.</target>
+        </trans-unit>
+        <trans-unit id="d4a55fd6552568d32b38f3c40d30b4c2bc522d88" translate="yes" xml:space="preserve">
+          <source>Why do these inaccuracies happen?</source>
+          <target state="translated">왜 이러한 부정확성이 발생합니까?</target>
+        </trans-unit>
+        <trans-unit id="66881614284e2ba88332cf86401c026f9088c6ae" translate="yes" xml:space="preserve">
+          <source>Writing &lt;code&gt;0.1 + 0.2&lt;/code&gt; in a IEEE 754 binary representation (with colons separating the three parts) and comparing it to &lt;code&gt;0.3&lt;/code&gt;, this is (I've put the distinct bits in square brackets):</source>
+          <target state="translated">IEEE 754 이진 표현으로 &lt;code&gt;0.1 + 0.2&lt;/code&gt; 를 작성하고 (세 부분을 분리하는 콜론으로) &lt;code&gt;0.3&lt;/code&gt; 과 비교하면 다음과 같습니다 (각각의 비트를 대괄호로 묶었습니다).</target>
+        </trans-unit>
+        <trans-unit id="24836426f0d15e21562f81deb9ad1c23bb7dfa13" translate="yes" xml:space="preserve">
+          <source>Written in binary (with colons separating the three parts), the IEEE 754 representations of the values are:</source>
+          <target state="translated">바이너리로 작성 (콜론으로 세 부분을 분리)하면 IEEE 754 값은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="ff2de9d5beb4dd93e3d80141b6eae1dadd2675ee" translate="yes" xml:space="preserve">
+          <source>You also need to replace equality tests with comparisons that allow some amount of tolerance, which means:</source>
+          <target state="translated">또한 동등성 테스트를 약간의 공차를 허용하는 비교로 대체해야합니다. 이는 다음을 의미합니다.</target>
+        </trans-unit>
+        <trans-unit id="8a0f504f8802330bcd73041e639d23b64060aede" translate="yes" xml:space="preserve">
+          <source>You can also check with &lt;code&gt;bc&lt;/code&gt; that -3.14 is also perturbed.  Do not forget to set a &lt;code&gt;scale&lt;/code&gt; factor in &lt;code&gt;bc&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;bc&lt;/code&gt; 를 통해 -3.14도 교란되는지 확인할 수 있습니다. &lt;code&gt;bc&lt;/code&gt; 에서 &lt;code&gt;scale&lt;/code&gt; 팩터를 설정하는 것을 잊지 마십시오.</target>
+        </trans-unit>
+        <trans-unit id="f8ff3e42e624592a61f01313f784d510526d8c60" translate="yes" xml:space="preserve">
+          <source>You can use it this way:</source>
+          <target state="translated">이 방법으로 사용할 수 있습니다 :</target>
+        </trans-unit>
+        <trans-unit id="d5be9a6ea2f8a6e508af9e23eaa095f999692ed9" translate="yes" xml:space="preserve">
+          <source>You might say let it be 10 in every situation then:</source>
+          <target state="translated">모든 상황에서 10이라고하자 :</target>
+        </trans-unit>
+        <trans-unit id="0b6f6f83839ca8e821efbbb35c9e1e1b3662a91c" translate="yes" xml:space="preserve">
+          <source>You've just stumbled on a number (3/10) that happens to be easy to represent with the decimal system, but doesn't fit the binary system. It goes both ways (to some small degree) as well: 1/16 is an ugly number in decimal (0.0625), but in binary it looks as neat as a 10,000th does in decimal (0.0001)** - if we were in the habit of using a base-2 number system in our daily lives, you'd even look at that number and instinctively understand you could arrive there by halving something, halving it again, and again and again.</source>
+          <target state="translated">십진법으로 표현하기 쉽지만 이진법에 맞지 않는 숫자 (3/10)를 우연히 발견했습니다. 1/16은 십진수 (0.0625)의 못생긴 숫자이지만, 이진수에서는 10,000의 십진수 (0.0001)만큼 깔끔한 것처럼 보입니다. **- 우리의 일상 생활에서 기본 2 수 체계를 사용하는 습관, 당신은 심지어 그 숫자를보고 무언가를 반으로, 반으로 반복하여 도착할 수 있다는 것을 본능적으로 이해합니다.</target>
+        </trans-unit>
+        <trans-unit id="ceb4d2a3636a0cc03450ad3fabafb42a06fc9c6a" translate="yes" xml:space="preserve">
+          <source>Your expected result was &lt;code&gt;0.9&lt;/code&gt; it means you need a result with 1 digit precision in this case.
+So you should have used &lt;code&gt;(0.2 + 0.7).tofixed(1)&lt;/code&gt;
+but you can't just give a certain parameter to toFixed() since it depends on the given number, for instance</source>
+          <target state="translated">예상 결과는 &lt;code&gt;0.9&lt;/code&gt; 였으며이 경우 1 자리 정밀도의 결과가 필요합니다. 따라서 &lt;code&gt;(0.2 + 0.7).tofixed(1)&lt;/code&gt; 했지만 toFixed ()에 특정 매개 변수를 제공 할 수는 없습니다.</target>
+        </trans-unit>
+        <trans-unit id="ff6c01e4df0a5ca8aefe0c40e07d5e4feff2abb7" translate="yes" xml:space="preserve">
+          <source>also note that Math.diff and Math.sum auto-detect the precision to use</source>
+          <target state="translated">또한 Math.diff 및 Math.sum은 사용할 정밀도를 자동 감지합니다.</target>
+        </trans-unit>
+        <trans-unit id="cffa50a32cb13a240d705317bcec65dd1f31b6ad" translate="yes" xml:space="preserve">
+          <source>and</source>
+          <target state="translated">and</target>
+        </trans-unit>
+        <trans-unit id="2cb33ad31829e0e19a43ec07f7a00e44d6300496" translate="yes" xml:space="preserve">
+          <source>and after that it prints a sum, that, when summed with enough precision, it will show the value that really exists in hardware.</source>
+          <target state="translated">그런 다음 합계를 인쇄하여 충분한 정밀도로 합산하면 실제로 하드웨어에 존재하는 값을 표시합니다.</target>
+        </trans-unit>
+        <trans-unit id="2733dda989a75e652de2d2c22f2c0c6c32aceeee" translate="yes" xml:space="preserve">
+          <source>and learn that this returns &lt;code&gt;false&lt;/code&gt;.  Why?  Well, as real numbers we have</source>
+          <target state="translated">그리고 이것이 &lt;code&gt;false&lt;/code&gt; 를 반환한다는 것을 배우십시오. 왜? 음, 우리가 가진 실제 숫자</target>
+        </trans-unit>
+        <trans-unit id="99e2d00acf76f763377d20265efa63bd193e4795" translate="yes" xml:space="preserve">
+          <source>in 64 bits:</source>
+          <target state="translated">64 비트로 :</target>
+        </trans-unit>
+        <trans-unit id="1758356db21759f7c5a0da9b4dd1db8fd6feab3f" translate="yes" xml:space="preserve">
+          <source>or</source>
+          <target state="translated">or</target>
+        </trans-unit>
+        <trans-unit id="efa695af86576c8d47d0d32b2fff911c6f442850" translate="yes" xml:space="preserve">
+          <source>the idea is to use Math instead operators to avoid float errors</source>
+          <target state="translated">아이디어는 실수 대신 실수를 피하기 위해 연산자를 사용하는 것입니다</target>
+        </trans-unit>
+        <trans-unit id="0b18dc6530e72b787150c3516e6eb9959c507b37" translate="yes" xml:space="preserve">
+          <source>value = (-1)^s * (1.m&lt;sub&gt;51&lt;/sub&gt;m&lt;sub&gt;50&lt;/sub&gt;...m&lt;sub&gt;2&lt;/sub&gt;m&lt;sub&gt;1&lt;/sub&gt;m&lt;sub&gt;0&lt;/sub&gt;)&lt;sub&gt;2&lt;/sub&gt; * 2&lt;sup&gt;e-1023&lt;/sup&gt;</source>
+          <target state="translated">값 = (-1) ^ s * (1.m &lt;sub&gt;51&lt;/sub&gt; m &lt;sub&gt;50&lt;/sub&gt; ... m &lt;sub&gt;2&lt;/sub&gt; m &lt;sub&gt;1&lt;/sub&gt; m &lt;sub&gt;0&lt;/sub&gt; ) &lt;sub&gt;2&lt;/sub&gt; * 2 &lt;sup&gt;e-1023&lt;/sup&gt;</target>
+        </trans-unit>
+        <trans-unit id="d39bd96be9502f3ebbfa8d63484dcd808be51d4c" translate="yes" xml:space="preserve">
+          <source>where &lt;code&gt;abs&lt;/code&gt; is the absolute value. &lt;code&gt;myToleranceValue&lt;/code&gt; needs to be chosen for your particular application - and it will have a lot to do with how much &quot;wiggle room&quot; you are prepared to allow, and what the largest number you are going to be comparing may be (due to loss of precision issues). Beware of &quot;epsilon&quot; style constants in your language of choice. These are &lt;em&gt;not&lt;/em&gt; to be used as tolerance values.</source>
+          <target state="translated">여기서 &lt;code&gt;abs&lt;/code&gt; 는 절대 값입니다. &lt;code&gt;myToleranceValue&lt;/code&gt; 는 특정 응용 프로그램에 대해 선택해야합니다. 허용 할 &quot;흔들기 방&quot;의 양과 비교할 최대 개수 (정밀도 손실로 인해)와 관련이 있습니다. 문제). 선택한 언어에서 &quot;엡실론&quot;스타일 상수를주의하십시오. 이들은 공차 값으로 사용 &lt;em&gt;되지 않습니다&lt;/em&gt; .</target>
+        </trans-unit>
+        <trans-unit id="636e0e25e23956183d01befb3188bbeda7dd79ab" translate="yes" xml:space="preserve">
+          <source>whereas the binary representation of 0.3 is:</source>
+          <target state="translated">0.3의 이진 표현은 다음과 같습니다.</target>
+        </trans-unit>
+        <trans-unit id="a54c3657d718a97760530877785faf3f0af60915" translate="yes" xml:space="preserve">
+          <source>which is, of course, different from &lt;code&gt;1.00000000&lt;/code&gt; by exactly &lt;code&gt;0.00000001&lt;/code&gt;.</source>
+          <target state="translated">물론 &lt;code&gt;1.00000000&lt;/code&gt; 과 정확히 &lt;code&gt;0.00000001&lt;/code&gt; 이 다릅니다.</target>
+        </trans-unit>
+        <trans-unit id="df6fbb7d0f8bd941c592564fd908669aafff2758" translate="yes" xml:space="preserve">
+          <source>which only differs from the binary representation of the sum of 0.1 and 0.2 by 2&lt;sup&gt;-54&lt;/sup&gt;.</source>
+          <target state="translated">이는 0.1과 0.2의 합을 &lt;sup&gt;2-54&lt;/sup&gt; 의 이진 표현과 만 다릅니다.</target>
+        </trans-unit>
+        <trans-unit id="054a411e4463eeebff1fb0a84361000a6d7e65a7" translate="yes" xml:space="preserve">
+          <source>which, truncated to seven bits, is &lt;code&gt;0.0100110&lt;/code&gt;, and these differ by exactly &lt;code&gt;0.0000001&lt;/code&gt;.</source>
+          <target state="translated">7 비트로 잘린이 &lt;code&gt;0.0100110&lt;/code&gt; 은 0.0100110 이며 이들은 정확히 &lt;code&gt;0.0000001&lt;/code&gt; 만큼 다릅니다.</target>
+        </trans-unit>
+        <trans-unit id="8b30c99097f9b6a416b08022ec4f86195a695b8b" translate="yes" xml:space="preserve">
+          <source>while on the other hand,</source>
+          <target state="translated">반면에</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
