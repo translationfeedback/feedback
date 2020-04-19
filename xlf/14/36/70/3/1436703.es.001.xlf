@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="es" datatype="htmlbody" original="https://stackoverflow.com/questions/1436703">
+    <body>
+      <group id="1436703">
+        <trans-unit id="f4e25ec010738edfa81015df5c8d0540f8058b4f" translate="yes" xml:space="preserve">
+          <source>(you can probably also figure out what to do about dictionaries.</source>
+          <target state="translated">(probablemente también puedes averiguar qué hacer con los diccionarios.</target>
+        </trans-unit>
+        <trans-unit id="7d103faabf761c02013a9ffc061d63b9651e1f88" translate="yes" xml:space="preserve">
+          <source>1) &lt;code&gt;__repr__()&lt;/code&gt; is invoked when you simply write object's name on interactive python console and press enter.</source>
+          <target state="translated">1) &lt;code&gt;__repr__()&lt;/code&gt; se invoca cuando simplemente escribe el nombre del objeto en la consola interactiva de python y presiona enter.</target>
+        </trans-unit>
+        <trans-unit id="b9c72ee953d43911c466e0ca7aef8427b918dad3" translate="yes" xml:space="preserve">
+          <source>2) &lt;code&gt;__str__()&lt;/code&gt; is invoked when you use object with print statement.</source>
+          <target state="translated">2) &lt;code&gt;__str__()&lt;/code&gt; se invoca cuando utiliza un objeto con una declaraci&amp;oacute;n de impresi&amp;oacute;n.</target>
+        </trans-unit>
+        <trans-unit id="b2259cc53b4beb00ea0cb5f21e02d5747ef33b70" translate="yes" xml:space="preserve">
+          <source>3) In case, if &lt;code&gt;__str__&lt;/code&gt; is missing, then print and any function using &lt;code&gt;str()&lt;/code&gt; invokes &lt;code&gt;__repr__()&lt;/code&gt; of object.</source>
+          <target state="translated">3) En caso de que falte &lt;code&gt;__str__&lt;/code&gt; , entonces print y cualquier funci&amp;oacute;n que use &lt;code&gt;str()&lt;/code&gt; invoca &lt;code&gt;__repr__()&lt;/code&gt; del objeto.</target>
+        </trans-unit>
+        <trans-unit id="68209245d4a6dff79cdd29404b330579c8dc403f" translate="yes" xml:space="preserve">
+          <source>4) &lt;code&gt;__str__()&lt;/code&gt; of containers, when invoked will execute &lt;code&gt;__repr__()&lt;/code&gt; method of its contained elements.</source>
+          <target state="translated">4) &lt;code&gt;__str__()&lt;/code&gt; de contenedores, cuando se invoca ejecutar&amp;aacute; el &lt;code&gt;__repr__()&lt;/code&gt; de sus elementos contenidos.</target>
+        </trans-unit>
+        <trans-unit id="bd4781db3f8860ef56abf646f6d70c15a94cac7c" translate="yes" xml:space="preserve">
+          <source>5) &lt;code&gt;str()&lt;/code&gt; called within &lt;code&gt;__str__()&lt;/code&gt; could potentially recurse without a base case, and error on maximum recursion depth.</source>
+          <target state="translated">5) &lt;code&gt;str()&lt;/code&gt; llamado dentro de &lt;code&gt;__str__()&lt;/code&gt; podr&amp;iacute;a potencialmente repetirse sin un caso base y un error en la profundidad m&amp;aacute;xima de recursi&amp;oacute;n.</target>
+        </trans-unit>
+        <trans-unit id="f944eb318831eb3307673ad51e244207b807a90e" translate="yes" xml:space="preserve">
+          <source>6) &lt;code&gt;__repr__()&lt;/code&gt; can call &lt;code&gt;repr()&lt;/code&gt; which will attempt to avoid infinite recursion automatically, replacing an already represented object with &lt;code&gt;...&lt;/code&gt;.</source>
+          <target state="translated">6) &lt;code&gt;__repr__()&lt;/code&gt; puede llamar a &lt;code&gt;repr()&lt;/code&gt; que intentar&amp;aacute; evitar la recursi&amp;oacute;n infinita autom&amp;aacute;ticamente, reemplazando un objeto ya representado con &lt;code&gt;...&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="b63fbdd60bc6bc4b249dc838669a14dc09a22ace" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://stackoverflow.com/users/95810/alex-martelli&quot;&gt;Alex&lt;/a&gt; summarized well but, surprisingly, was too succinct.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/users/95810/alex-martelli&quot;&gt;Alex&lt;/a&gt; resumi&amp;oacute; bien pero, sorprendentemente, fue demasiado sucinto.</target>
+        </trans-unit>
+        <trans-unit id="cdccd33bc551383c9f81019018903d0deaca740a" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__repr__&lt;/code&gt; can be invoked on an object by calling &lt;code&gt;repr(obj)&lt;/code&gt; and should return internal object (object fields/attributes)</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; puede invocar __repr__ en un objeto llamando a &lt;code&gt;repr(obj)&lt;/code&gt; y debe devolver un objeto interno (campos / atributos del objeto)</target>
+        </trans-unit>
+        <trans-unit id="faf0d1f1312e3f35b3c3e35c73e72580ea5fad40" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__repr__&lt;/code&gt; goal is to be unambiguous</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; objetivo es ser inequ&amp;iacute;voco</target>
+        </trans-unit>
+        <trans-unit id="38772fe6e2a92c7f9e19245ea20f3baa852d9c88" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__repr__&lt;/code&gt; is used everywhere, except by &lt;code&gt;print&lt;/code&gt; and &lt;code&gt;str&lt;/code&gt; methods (when a &lt;code&gt;__str__&lt;/code&gt;is defined !)</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; se usa en todas partes, excepto por los m&amp;eacute;todos &lt;code&gt;print&lt;/code&gt; y &lt;code&gt;str&lt;/code&gt; (&amp;iexcl;cuando se define un &lt;code&gt;__str__&lt;/code&gt; !)</target>
+        </trans-unit>
+        <trans-unit id="2f5f7a48c655f0e14ca4c1f56eae9dca508f1fce" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__repr__&lt;/code&gt; is used to show a string representation of &lt;strong&gt;the&lt;/strong&gt; object.</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; se usa para mostrar una representaci&amp;oacute;n de cadena del objeto.</target>
+        </trans-unit>
+        <trans-unit id="c5f10753db206b6a0a329be9c1b34de815311211" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__repr__&lt;/code&gt; provides backup behavior if &lt;code&gt;__str__&lt;/code&gt; is missing.</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; proporciona un comportamiento de respaldo si falta &lt;code&gt;__str__&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="c119ea20bcd02e26639d32bba5faa3419cb0eb92" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__repr__&lt;/code&gt; return the real flesh body of a given object (return itself) for unambiguity to identify.</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; devuelve el cuerpo de carne real de un objeto dado (se devuelve a s&amp;iacute; mismo) para que no se identifique la ambig&amp;uuml;edad.</target>
+        </trans-unit>
+        <trans-unit id="d5c28cf192c3f3a579db8549c627a82851b6d844" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; &quot;&lt;em&gt;computes the &quot;informal&quot; string representation of an object. This differs from &lt;code&gt;__repr__&lt;/code&gt; in that it does not have to be a valid Python expression: a more convenient or concise representation may be used instead.&lt;/em&gt;&quot;</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; &quot; &lt;em&gt;calcula la representaci&amp;oacute;n de cadena&quot; informal &quot;de un objeto. Esto difiere de &lt;code&gt;__repr__&lt;/code&gt; en que no tiene que ser una expresi&amp;oacute;n de Python v&amp;aacute;lida: en su lugar, se puede usar una representaci&amp;oacute;n m&amp;aacute;s conveniente o concisa&lt;/em&gt; &quot; &lt;em&gt;.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="5bfa620b1a7431c4859f2c8da452e6862250529f" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; (read as &quot;dunder (double-underscore) string&quot;) and &lt;code&gt;__repr__&lt;/code&gt; (read as &quot;dunder-repper&quot; (for &quot;representation&quot;)) are both special methods that return strings based on the state of the object.</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; (le&amp;iacute;do como &quot;cadena dunder (doble gui&amp;oacute;n bajo)&quot;) y &lt;code&gt;__repr__&lt;/code&gt; (le&amp;iacute;do como &quot;dunder-repper&quot; (para &quot;representaci&amp;oacute;n&quot;)) son m&amp;eacute;todos especiales que devuelven cadenas basadas en el estado del objeto.</target>
+        </trans-unit>
+        <trans-unit id="7c651efa9bf24f2b31c5de5fc79e0b5e3ff3b352" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; can be invoked on an object by calling &lt;code&gt;str(obj)&lt;/code&gt; and should return a human readable string.</source>
+          <target state="translated">Se puede invocar &lt;code&gt;__str__&lt;/code&gt; en un objeto llamando a &lt;code&gt;str(obj)&lt;/code&gt; y debe devolver una cadena legible por humanos.</target>
+        </trans-unit>
+        <trans-unit id="1fe48568b7333a75afde0885d338596099b0b9ee" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; goal is to be readable</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; objetivo es ser legible</target>
+        </trans-unit>
+        <trans-unit id="55ddd6314708d8a0588442c30c939e61ded9378b" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; is used in to show a string representation of your object &lt;strong&gt;to be read easily&lt;/strong&gt; by others.</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; se utiliza para mostrar una representaci&amp;oacute;n de cadena de su objeto &lt;strong&gt;para que otros lo puedan leer f&amp;aacute;cilmente&lt;/strong&gt; .</target>
+        </trans-unit>
+        <trans-unit id="f171aea17d3f084f44acd3a77fda54fd0106bd50" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; must return string object whereas &lt;code&gt;__repr__&lt;/code&gt; can return any python expression.</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; debe devolver un objeto de cadena, mientras que &lt;code&gt;__repr__&lt;/code&gt; puede devolver cualquier expresi&amp;oacute;n de Python.</target>
+        </trans-unit>
+        <trans-unit id="7cbf41af4e945d63d8a427626efbd9a8369e420d" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;__str__&lt;/code&gt; return the string disguised body of a given object for readable of eyes</source>
+          <target state="translated">&lt;code&gt;__str__&lt;/code&gt; devuelve el cuerpo encubierto de cadena de un objeto dado para que los ojos puedan leerlo</target>
+        </trans-unit>
+        <trans-unit id="d0148184e035bb53e9299f20ce4d944cfa214ba1" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;repr&lt;/code&gt; - Returns the canonical string representation of the object.</source>
+          <target state="translated">&lt;code&gt;repr&lt;/code&gt; - Devuelve la representaci&amp;oacute;n de cadena can&amp;oacute;nica del objeto.</target>
+        </trans-unit>
+        <trans-unit id="3c97d0c508bd7f652eb5099d0d84685d4a198697" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;str&lt;/code&gt; - Creates a new string object from the given object.</source>
+          <target state="translated">&lt;code&gt;str&lt;/code&gt; : crea un nuevo objeto de cadena a partir del objeto dado.</target>
+        </trans-unit>
+        <trans-unit id="5f4d2fa5ab3c6b599a4287372ac939b133314c0e" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Python favors unambiguity over readability&lt;/em&gt;, the &lt;code&gt;__str__&lt;/code&gt; call of a &lt;code&gt;tuple&lt;/code&gt; calls the contained objects' &lt;code&gt;__repr__&lt;/code&gt;, the &lt;em&gt;&quot;formal&quot;&lt;/em&gt; representation of an object. Although the formal representation is harder to read than an informal one, it is unambiguous and more robust against bugs.</source>
+          <target state="translated">&lt;em&gt;Python favorece la ambig&amp;uuml;edad sobre la legibilidad&lt;/em&gt; , la llamada &lt;code&gt;__str__&lt;/code&gt; de una &lt;code&gt;tuple&lt;/code&gt; llama a los objetos contenidos ' &lt;code&gt;__repr__&lt;/code&gt; , la representaci&amp;oacute;n &lt;em&gt;&quot;formal&quot;&lt;/em&gt; de un objeto. Aunque la representaci&amp;oacute;n formal es m&amp;aacute;s dif&amp;iacute;cil de leer que una informal, es inequ&amp;iacute;voca y m&amp;aacute;s robusta contra los errores.</target>
+        </trans-unit>
+        <trans-unit id="2eb102ea6ac8d0cf17aff98429ed0b3c3f7cbcf9" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;__repr__&lt;/code&gt;&lt;/strong&gt;: representation of python object usually eval will convert it back to that object</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;__repr__&lt;/code&gt; &lt;/strong&gt; : la representaci&amp;oacute;n del objeto python generalmente eval lo convertir&amp;aacute; de nuevo a ese objeto</target>
+        </trans-unit>
+        <trans-unit id="014fecb0e8589f0d9e987d41a97f853e2d9063f6" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;__str__&lt;/code&gt;&lt;/strong&gt;: is whatever you think is that object in text form</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;__str__&lt;/code&gt; &lt;/strong&gt; : es lo que creas que es ese objeto en forma de texto</target>
+        </trans-unit>
+        <trans-unit id="fe2ca45a3f9fe5c28bd8698502e23200d2fe1e5f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Container&amp;rsquo;s &lt;code&gt;__str__&lt;/code&gt; uses contained objects&amp;rsquo; &lt;code&gt;__repr__&lt;/code&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;El contenedor &lt;code&gt;__str__&lt;/code&gt; utiliza objetos contenidos ' &lt;code&gt;__repr__&lt;/code&gt; &lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="313fdb212ef7d654563fd68a4dbe97b36573af9d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Default implementation is useless&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;La implementaci&amp;oacute;n predeterminada es in&amp;uacute;til&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2dcd8fc71e05cf69f2f4aedf034ba98a76d6ae8c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Summary&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Summary&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b638660706a1e4d9b0bfc3894141750f70ecc431" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The goal of &lt;code&gt;__repr__&lt;/code&gt; is to be unambiguous&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;El objetivo de &lt;code&gt;__repr__&lt;/code&gt; es ser inequ&amp;iacute;voco&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3dffbc9fa2806a68ab5b88a6dc66d657557e6645" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;The goal of &lt;code&gt;__str__&lt;/code&gt; is to be readable&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;El objetivo de &lt;code&gt;__str__&lt;/code&gt; es ser legible&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d7bff912bc70a87ac98674f745266dc1fd1ed585" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;repr = reproduce&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;repr = reproducir&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="aed7370515328b7386d9c2d92149f875c62b2f66" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;repr():&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;repr():&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d0c1ca48e2a313fb24ab9d23a999e9c6f0750466" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;str = string (representation)&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;str = cadena (representaci&amp;oacute;n)&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="00c5743fa341fadec53dc7207f7b70b9f864ec69" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;str():&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;str():&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="ff67b9f7a4b9f4c8c271c3bb05146fb2115fc542" translate="yes" xml:space="preserve">
+          <source>A basic requirement for a Python object is to provide usable 
+       string   representations of itself, one used for debugging and
+       logging, another for presentation to end users. That is why the</source>
+          <target state="translated">Un requisito básico de un objeto Python es proporcionar representaciones de cadena utilizables de sí mismo,una utilizada para la depuración y el registro,otra para la presentación a los usuarios finales.Por eso el</target>
+        </trans-unit>
+        <trans-unit id="da308aeb7ec2f80344365b3a4d9fc4bfb4791053" translate="yes" xml:space="preserve">
+          <source>A small but good example is also given on the same page as follows:</source>
+          <target state="translated">También se da un pequeño pero buen ejemplo en la misma página como sigue:</target>
+        </trans-unit>
+        <trans-unit id="9f008c6ab79e7861bf8d9ef2ff2fd5300056f5d4" translate="yes" xml:space="preserve">
+          <source>Another example.</source>
+          <target state="translated">Otro ejemplo.</target>
+        </trans-unit>
+        <trans-unit id="0c01c6cca37e136fdbf85630b4cfeb648b4e77e3" translate="yes" xml:space="preserve">
+          <source>Apart from all the answers given, I would like to add few points :-</source>
+          <target state="translated">Aparte de todas las respuestas dadas,me gustaría añadir algunos puntos :-</target>
+        </trans-unit>
+        <trans-unit id="18289ef151e4e90c453904ba3b24e3b9634a21c7" translate="yes" xml:space="preserve">
+          <source>As to &lt;code&gt;__repr__&lt;/code&gt;</source>
+          <target state="translated">En cuanto a &lt;code&gt;__repr__&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="32497f78a61159dd2d671ec8052a0c2d71c59903" translate="yes" xml:space="preserve">
+          <source>As you see -- no difference, and no info beyond the class and object's &lt;code&gt;id&lt;/code&gt;.  If you only override one of the two...:</source>
+          <target state="translated">Como puede ver, no hay diferencia y no hay informaci&amp;oacute;n m&amp;aacute;s all&amp;aacute; de la clase y la &lt;code&gt;id&lt;/code&gt; entificaci&amp;oacute;n del objeto. Si solo anula uno de los dos ...:</target>
+        </trans-unit>
+        <trans-unit id="84962694189a72510e0996db2aa3ca43180bfbc9" translate="yes" xml:space="preserve">
+          <source>As you're developing, you'll want to be able to reproduce objects in the same state, if possible. This, for example, is how the datetime object defines &lt;code&gt;__repr__&lt;/code&gt; (&lt;a href=&quot;https://github.com/python/cpython/blob/v3.7.3/Lib/datetime.py#L1876&quot;&gt;Python source&lt;/a&gt;). It is fairly complex, because of all of the attributes needed to reproduce such an object:</source>
+          <target state="translated">A medida que desarrolles, querr&amp;aacute;s poder reproducir objetos en el mismo estado, si es posible. As&amp;iacute;, por ejemplo, as&amp;iacute; es como el objeto datetime define &lt;code&gt;__repr__&lt;/code&gt; ( &lt;a href=&quot;https://github.com/python/cpython/blob/v3.7.3/Lib/datetime.py#L1876&quot;&gt;fuente de Python&lt;/a&gt; ). Es bastante complejo, debido a todos los atributos necesarios para reproducir dicho objeto:</target>
+        </trans-unit>
+        <trans-unit id="de00522a3ff15a155a60dc6d8db9a728ede4b85d" translate="yes" xml:space="preserve">
+          <source>At any time later, one can write a &lt;code&gt;__str__&lt;/code&gt; for a user-readable string representation of the instance, when one believes it to be necessary.</source>
+          <target state="translated">En cualquier momento posterior, se puede escribir un &lt;code&gt;__str__&lt;/code&gt; para una representaci&amp;oacute;n de cadena legible por el usuario de la instancia, cuando se cree que es necesario.</target>
+        </trans-unit>
+        <trans-unit id="40c9c9f611104210a4ec1ca0fe8d653c89cd780a" translate="yes" xml:space="preserve">
+          <source>But you have to do the last step &amp;mdash; make sure every object you implement has a useful repr, so code like that can just work. This is why the &amp;ldquo;eval&amp;rdquo; thing comes up: if you have enough information so &lt;code&gt;eval(repr(c))==c&lt;/code&gt;, that means you know everything there is to know about &lt;code&gt;c&lt;/code&gt;. If that&amp;rsquo;s easy enough, at least in a fuzzy way, do it. If not, make sure you have enough information about &lt;code&gt;c&lt;/code&gt; anyway. I usually use an eval-like format: &lt;code&gt;&quot;MyClass(this=%r,that=%r)&quot; % (self.this,self.that)&lt;/code&gt;. It does not mean that you can actually construct MyClass, or that those are the right constructor arguments &amp;mdash; but it is a useful form to express &amp;ldquo;this is everything you need to know about this instance&amp;rdquo;.</source>
+          <target state="translated">Pero tiene que hacer el &amp;uacute;ltimo paso: aseg&amp;uacute;rese de que cada objeto que implemente tenga una repr &amp;uacute;til, por lo que un c&amp;oacute;digo como ese puede funcionar. Esta es la raz&amp;oacute;n por la que surge la cuesti&amp;oacute;n &quot;eval&quot;: si tiene suficiente informaci&amp;oacute;n para &lt;code&gt;eval(repr(c))==c&lt;/code&gt; , eso significa que sabe todo lo que hay que saber sobre &lt;code&gt;c&lt;/code&gt; . Si eso es bastante f&amp;aacute;cil, al menos de manera difusa, hazlo. De lo contrario, aseg&amp;uacute;rese de tener suficiente informaci&amp;oacute;n sobre &lt;code&gt;c&lt;/code&gt; de todos modos. Usualmente uso un formato de evaluaci&amp;oacute;n: &lt;code&gt;&quot;MyClass(this=%r,that=%r)&quot; % (self.this,self.that)&lt;/code&gt; . No significa que pueda construir MyClass, o que esos son los argumentos de constructor correctos, pero es una forma &amp;uacute;til para expresar &quot;esto es todo lo que necesita saber sobre esta instancia&quot;.</target>
+        </trans-unit>
+        <trans-unit id="e39262defe80a83fac1b793497417432c8b1a879" translate="yes" xml:space="preserve">
+          <source>Conclusion</source>
+          <target state="translated">Conclusion</target>
+        </trans-unit>
+        <trans-unit id="4e523dace7302e3a2b6c27d81b9e20886d0d761f" translate="yes" xml:space="preserve">
+          <source>Container&amp;rsquo;s &lt;code&gt;__str__&lt;/code&gt; uses contained objects&amp;rsquo; &lt;code&gt;__repr__&lt;/code&gt;</source>
+          <target state="translated">El contenedor &lt;code&gt;__str__&lt;/code&gt; utiliza objetos contenidos ' &lt;code&gt;__repr__&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="864d1d58c0dc2b08ee9255a38de949183c561b18" translate="yes" xml:space="preserve">
+          <source>Default Implementation of &lt;code&gt;__repr__&lt;/code&gt;</source>
+          <target state="translated">Implementaci&amp;oacute;n predeterminada de &lt;code&gt;__repr__&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="aaaac60719b4c68f3e6efde310393b8c1d9847fe" translate="yes" xml:space="preserve">
+          <source>Define &lt;code&gt;__repr__&lt;/code&gt; for objects you write so you and other developers have a reproducible example when using it as you develop. Define &lt;code&gt;__str__&lt;/code&gt; when you need a human readable string representation of it.</source>
+          <target state="translated">Defina &lt;code&gt;__repr__&lt;/code&gt; para los objetos que escriba para que usted y otros desarrolladores tengan un ejemplo reproducible cuando lo usen mientras desarrolla. Defina &lt;code&gt;__str__&lt;/code&gt; cuando necesite una representaci&amp;oacute;n de cadena legible por humanos.</target>
+        </trans-unit>
+        <trans-unit id="4e236371232f495613ed6a39714358170d0d9f34" translate="yes" xml:space="preserve">
+          <source>Difference between __str__ and __repr__</source>
+          <target state="translated">Diferencia entre __str__y __repr__</target>
+        </trans-unit>
+        <trans-unit id="0f01ed56a1e32a05e5ef96e4d779f34784af9a96" translate="yes" xml:space="preserve">
+          <source>Example</source>
+          <target state="translated">Example</target>
+        </trans-unit>
+        <trans-unit id="4f369676493c631748ef19bfb6774924b7209730" translate="yes" xml:space="preserve">
+          <source>Excellent answers already cover the difference between &lt;code&gt;__str__&lt;/code&gt; and &lt;code&gt;__repr__&lt;/code&gt;, which for me boils down to the former being readable even by an end user, and the latter being as useful as possible to developers. Given that, I find that the default implementation of &lt;code&gt;__repr__&lt;/code&gt; often fails to achieve this goal because it &lt;em&gt;omits&lt;/em&gt; information useful to developers.</source>
+          <target state="translated">Las respuestas excelentes ya cubren la diferencia entre &lt;code&gt;__str__&lt;/code&gt; y &lt;code&gt;__repr__&lt;/code&gt; , lo que para m&amp;iacute; se reduce a que el primero sea legible incluso para un usuario final, y el &amp;uacute;ltimo sea lo m&amp;aacute;s &amp;uacute;til posible para los desarrolladores. Dado eso, encuentro que la implementaci&amp;oacute;n predeterminada de &lt;code&gt;__repr__&lt;/code&gt; a menudo no logra este objetivo porque &lt;em&gt;omite&lt;/em&gt; informaci&amp;oacute;n &amp;uacute;til para los desarrolladores.</target>
+        </trans-unit>
+        <trans-unit id="c4a1dd8c15a07bca489be9628dc1f211ec440334" translate="yes" xml:space="preserve">
+          <source>First, let me reiterate the main points in &lt;a href=&quot;https://stackoverflow.com/a/1436756/3798217&quot;&gt;Alex&amp;rsquo;s post&lt;/a&gt;:</source>
+          <target state="translated">Primero, perm&amp;iacute;tanme reiterar los puntos principales en &lt;a href=&quot;https://stackoverflow.com/a/1436756/3798217&quot;&gt;la publicaci&amp;oacute;n de Alex&lt;/a&gt; :</target>
+        </trans-unit>
+        <trans-unit id="5e3c852250fcf645e78568a651ad7742888eb8a2" translate="yes" xml:space="preserve">
+          <source>For this reason, if I have a simple enough &lt;code&gt;__str__&lt;/code&gt;, I generally just try to get the best of both worlds with something like:</source>
+          <target state="translated">Por esta raz&amp;oacute;n, si tengo un &lt;code&gt;__str__&lt;/code&gt; lo suficientemente simple, generalmente trato de obtener lo mejor de ambos mundos con algo como:</target>
+        </trans-unit>
+        <trans-unit id="d8b2bba95481c8588d12d05e331a3236798bb686" translate="yes" xml:space="preserve">
+          <source>From &lt;a href=&quot;https://web.archive.org/web/20071127054034/http://pyref.infogami.com/__str__&quot;&gt;an (An Unofficial) Python Reference Wiki (archive copy)&lt;/a&gt; by effbot:</source>
+          <target state="translated">De &lt;a href=&quot;https://web.archive.org/web/20071127054034/http://pyref.infogami.com/__str__&quot;&gt;un Wiki de referencia de Python (no oficial) (copia de archivo)&lt;/a&gt; de effbot:</target>
+        </trans-unit>
+        <trans-unit id="68f24431a884f7a1a772f9f71c64bbfc2b1cd09e" translate="yes" xml:space="preserve">
+          <source>From the book &lt;em&gt;Fluent Python&lt;/em&gt;:</source>
+          <target state="translated">Del libro &lt;em&gt;Fluent Python&lt;/em&gt; :</target>
+        </trans-unit>
+        <trans-unit id="af15b0cba5831475a6213180b44b72662c5c0098" translate="yes" xml:space="preserve">
+          <source>Goal of &lt;code&gt;__repr__&lt;/code&gt;: unambiguous, possibly machine-readable via &lt;code&gt;eval&lt;/code&gt;</source>
+          <target state="translated">Objetivo de &lt;code&gt;__repr__&lt;/code&gt; : inequ&amp;iacute;voco, posiblemente legible por m&amp;aacute;quina a trav&amp;eacute;s de &lt;code&gt;eval&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="0105a7007fd970dd8263d8d0ae6f24d9c2892859" translate="yes" xml:space="preserve">
+          <source>Goal of &lt;code&gt;__str__&lt;/code&gt;: human-readable</source>
+          <target state="translated">Objetivo de &lt;code&gt;__str__&lt;/code&gt; : legible por humanos</target>
+        </trans-unit>
+        <trans-unit id="e0704423e912c87444daf4cf0591f6672b380ee4" translate="yes" xml:space="preserve">
+          <source>Here is a good example:</source>
+          <target state="translated">Aquí hay un buen ejemplo:</target>
+        </trans-unit>
+        <trans-unit id="b8278191aeedfa8063b69965a5b1296db0545f8f" translate="yes" xml:space="preserve">
+          <source>Here is the documentation for str:</source>
+          <target state="translated">Aquí está la documentación para str:</target>
+        </trans-unit>
+        <trans-unit id="6a609178fdb8d21ef587ebbb9a3a93386555889b" translate="yes" xml:space="preserve">
+          <source>Here's the builtin help on &lt;code&gt;repr&lt;/code&gt;:</source>
+          <target state="translated">Aqu&amp;iacute; est&amp;aacute; la ayuda incorporada en &lt;code&gt;repr&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="0fc3e81e03b099edcb9f91f49f2a17d2385c23c4" translate="yes" xml:space="preserve">
+          <source>Hope this help you build concrete grounds to explore more answers.</source>
+          <target state="translated">Espero que esto te ayude a construir un terreno concreto para explorar más respuestas.</target>
+        </trans-unit>
+        <trans-unit id="43c6e54c0ea380985172fb9258afb936529b9683" translate="yes" xml:space="preserve">
+          <source>How can &lt;code&gt;__repr__&lt;/code&gt; be useful?</source>
+          <target state="translated">&amp;iquest;C&amp;oacute;mo puede ser &amp;uacute;til &lt;code&gt;__repr__&lt;/code&gt; ?</target>
+        </trans-unit>
+        <trans-unit id="d13e0fa96adfcce8fde14c989cb30f63091e1e29" translate="yes" xml:space="preserve">
+          <source>How do I implement them?</source>
+          <target state="translated">¿Cómo las implemento?</target>
+        </trans-unit>
+        <trans-unit id="04b4dc21ec648f5aec0e86365a2e5648ee7f2c14" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;__repr__&lt;/code&gt; function is returning String representation of the object, we can skip implementation of &lt;code&gt;__str__&lt;/code&gt; function.</source>
+          <target state="translated">Si la funci&amp;oacute;n &lt;code&gt;__repr__&lt;/code&gt; devuelve una representaci&amp;oacute;n de cadena del objeto, podemos omitir la implementaci&amp;oacute;n de la funci&amp;oacute;n &lt;code&gt;__str__&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="ef49c726f39f583e5b3279b1fb0572c8420ec9ae" translate="yes" xml:space="preserve">
+          <source>If &lt;code&gt;__str__&lt;/code&gt; implementation is missing then &lt;code&gt;__repr__&lt;/code&gt; function is used as fallback. There is no fallback if &lt;code&gt;__repr__&lt;/code&gt; function implementation is missing.</source>
+          <target state="translated">Si falta la implementaci&amp;oacute;n &lt;code&gt;__str__&lt;/code&gt; ,la funci&amp;oacute;n &lt;code&gt;__repr__&lt;/code&gt; se usa como reserva. No hay &lt;code&gt;__repr__&lt;/code&gt; si falta la implementaci&amp;oacute;n de la funci&amp;oacute;n __repr__ .</target>
+        </trans-unit>
+        <trans-unit id="eaeb3628e2001cf7b36aab29fab6dd6a73818457" translate="yes" xml:space="preserve">
+          <source>If we call &lt;code&gt;datetime.now&lt;/code&gt; in the shell, we'll see everything we need to recreate an equivalent datetime object. This is created by the datetime &lt;code&gt;__repr__&lt;/code&gt;:</source>
+          <target state="translated">Si llamamos &lt;code&gt;datetime.now&lt;/code&gt; en el shell, veremos todo lo que necesitamos para recrear un objeto datetime equivalente. Esto es creado por la fecha &lt;code&gt;__repr__&lt;/code&gt; hora __repr__ :</target>
+        </trans-unit>
+        <trans-unit id="60df7928f256d4c1c316638019355408b8d03315" translate="yes" xml:space="preserve">
+          <source>If we print a datetime object, we see a nice human readable (in fact, ISO) format. This is implemented by datetime's &lt;code&gt;__str__&lt;/code&gt;:</source>
+          <target state="translated">Si imprimimos un objeto de fecha y hora, vemos un buen formato legible por humanos (de hecho, ISO). Esto se implementa mediante &lt;code&gt;__str__&lt;/code&gt; de datetime:</target>
+        </trans-unit>
+        <trans-unit id="fe3e77348f584666cc0292c5252ffc936156bae2" translate="yes" xml:space="preserve">
+          <source>If you print an object, or pass it to &lt;code&gt;format&lt;/code&gt;, &lt;code&gt;str.format&lt;/code&gt;, or &lt;code&gt;str&lt;/code&gt;, then if a &lt;code&gt;__str__&lt;/code&gt; method is defined, that method will be called, otherwise, &lt;code&gt;__repr__&lt;/code&gt; will be used.</source>
+          <target state="translated">Si imprime un objeto o lo pasa a &lt;code&gt;format&lt;/code&gt; o , &lt;code&gt;str.format&lt;/code&gt; o &lt;code&gt;str&lt;/code&gt; , entonces si se define un m&amp;eacute;todo &lt;code&gt;__str__&lt;/code&gt; , se llamar&amp;aacute; a ese m&amp;eacute;todo; de lo contrario, se &lt;code&gt;__repr__&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="805626cceba2f927b93f675018fe4b6001406454" translate="yes" xml:space="preserve">
+          <source>If you want your object to have a more human readable representation, you can implement &lt;code&gt;__str__&lt;/code&gt; next. Here's how the datetime object (&lt;a href=&quot;https://github.com/python/cpython/blob/v3.7.3/Lib/datetime.py#L1895&quot;&gt;Python source&lt;/a&gt;) implements &lt;code&gt;__str__&lt;/code&gt;, which it easily does because it already has a function to display it in ISO format:</source>
+          <target state="translated">Si desea que su objeto tenga una representaci&amp;oacute;n m&amp;aacute;s legible para humanos, puede implementar &lt;code&gt;__str__&lt;/code&gt; a continuaci&amp;oacute;n. As&amp;iacute; es como el objeto datetime ( &lt;a href=&quot;https://github.com/python/cpython/blob/v3.7.3/Lib/datetime.py#L1895&quot;&gt;fuente de Python&lt;/a&gt; ) implementa &lt;code&gt;__str__&lt;/code&gt; , lo que hace f&amp;aacute;cilmente porque ya tiene una funci&amp;oacute;n para mostrarlo en formato ISO:</target>
+        </trans-unit>
+        <trans-unit id="073430142b98e2a3a71e88d7faacd82c17a8334f" translate="yes" xml:space="preserve">
+          <source>Implement &lt;code&gt;__repr__&lt;/code&gt; for any class you implement. This should be second nature. Implement &lt;code&gt;__str__&lt;/code&gt; if you think it would be useful to have a string version which errs on the side of readability.</source>
+          <target state="translated">Implemente &lt;code&gt;__repr__&lt;/code&gt; para cualquier clase que implemente. Esto deber&amp;iacute;a ser una segunda naturaleza. Implemente &lt;code&gt;__str__&lt;/code&gt; si cree que ser&amp;iacute;a &amp;uacute;til tener una versi&amp;oacute;n de cadena que tenga un error de legibilidad.</target>
+        </trans-unit>
+        <trans-unit id="d7d488b9cb5355ef57328f1752264bf34aca81b8" translate="yes" xml:space="preserve">
+          <source>In a nutshell:</source>
+          <target state="translated">En pocas palabras:</target>
+        </trans-unit>
+        <trans-unit id="f632be7662be43e79ba5419e904ac5f988c7adb9" translate="yes" xml:space="preserve">
+          <source>In all honesty, &lt;code&gt;eval(repr(obj))&lt;/code&gt; is never used. If you find yourself using it, you should stop, because &lt;code&gt;eval&lt;/code&gt; is dangerous, and strings are a very inefficient way to serialize your objects (use &lt;code&gt;pickle&lt;/code&gt; instead).</source>
+          <target state="translated">Con toda honestidad, &lt;code&gt;eval(repr(obj))&lt;/code&gt; nunca se usa. Si te encuentras us&amp;aacute;ndolo, debes detenerte, porque &lt;code&gt;eval&lt;/code&gt; es peligroso y las cadenas son una forma muy ineficiente de serializar tus objetos (usa &lt;code&gt;pickle&lt;/code&gt; en su lugar).</target>
+        </trans-unit>
+        <trans-unit id="292e4e3ccb8e900f7e45bea52808de8bb334eee9" translate="yes" xml:space="preserve">
+          <source>In short, the goal of &lt;code&gt;__repr__&lt;/code&gt; is to be unambiguous and &lt;code&gt;__str__&lt;/code&gt; is to be
+  readable.</source>
+          <target state="translated">En resumen, el objetivo de &lt;code&gt;__repr__&lt;/code&gt; es no ser ambiguo y &lt;code&gt;__str__&lt;/code&gt; es legible.</target>
+        </trans-unit>
+        <trans-unit id="6c8531c2d32b10443b839413379f6984d3ce1679" translate="yes" xml:space="preserve">
+          <source>It is a simple matter to recreate the object we lost because we didn't assign it to a variable by copying and pasting from the &lt;code&gt;__repr__&lt;/code&gt; output, and then printing it, and we get it in the same human readable output as the other object:</source>
+          <target state="translated">Es simple recrear el objeto que perdimos porque no lo asignamos a una variable copiando y pegando desde la salida &lt;code&gt;__repr__&lt;/code&gt; , y luego imprimi&amp;eacute;ndolo, y lo obtenemos en la misma salida legible por humanos que el otro objeto:</target>
+        </trans-unit>
+        <trans-unit id="6b8e2060bed2c0d2f56ab93a4f32e7f1ef3c311b" translate="yes" xml:space="preserve">
+          <source>Let me come right out and say it &amp;mdash; I do not believe in debuggers. I don&amp;rsquo;t really know how to use any debugger, and have never used one seriously. Furthermore, I believe that the big fault in debuggers is their basic nature &amp;mdash; most failures I debug happened a long long time ago, in a galaxy far far away. This means that I do believe, with religious fervor, in logging. Logging is the lifeblood of any decent fire-and-forget server system. Python makes it easy to log: with maybe some project specific wrappers, all you need is a</source>
+          <target state="translated">D&amp;eacute;jame salir y decirlo: no creo en depuradores. Realmente no s&amp;eacute; c&amp;oacute;mo usar ning&amp;uacute;n depurador, y nunca he usado uno en serio. Adem&amp;aacute;s, creo que la gran falla en los depuradores es su naturaleza b&amp;aacute;sica: la mayor&amp;iacute;a de las fallas que depuro ocurrieron hace mucho, mucho tiempo, en una galaxia muy lejana. Esto significa que s&amp;iacute; creo, con fervor religioso, en la tala. El registro es el elemento vital de cualquier sistema de servidor decente para disparar y olvidar. Python facilita el registro: tal vez con algunos contenedores espec&amp;iacute;ficos del proyecto, todo lo que necesita es un</target>
+        </trans-unit>
+        <trans-unit id="6c16523da5289e715510cd8ddc824ce517fad569" translate="yes" xml:space="preserve">
+          <source>Let's look at how useful it can be, using the Python shell and &lt;code&gt;datetime&lt;/code&gt; objects. First we need to import the &lt;code&gt;datetime&lt;/code&gt; module:</source>
+          <target state="translated">Veamos qu&amp;eacute; tan &amp;uacute;til puede ser, usando el shell de Python y los objetos de &lt;code&gt;datetime&lt;/code&gt; y hora . Primero necesitamos importar el m&amp;oacute;dulo de &lt;code&gt;datetime&lt;/code&gt; :</target>
+        </trans-unit>
+        <trans-unit id="f5512e6b973186ee3d6e68271fdb6743c05107de" translate="yes" xml:space="preserve">
+          <source>Let's say I want to create a &lt;code&gt;Fraction&lt;/code&gt; class where the string representation of a fraction is '(1/2)' and the object (Fraction class) is to be represented as 'Fraction (1,2)'</source>
+          <target state="translated">Digamos que quiero crear una clase &lt;code&gt;Fraction&lt;/code&gt; donde la representaci&amp;oacute;n de cadena de una fracci&amp;oacute;n es '(1/2)' y el objeto (clase Fraction) se representar&amp;aacute; como 'Fraction (1,2)'</target>
+        </trans-unit>
+        <trans-unit id="0e9c67e09191353606a84fab248a3ac997049f12" translate="yes" xml:space="preserve">
+          <source>My rule of thumb:  &lt;code&gt;__repr__&lt;/code&gt; is for developers, &lt;code&gt;__str__&lt;/code&gt; is for customers.</source>
+          <target state="translated">Mi regla general: &lt;code&gt;__repr__&lt;/code&gt; es para desarrolladores, &lt;code&gt;__str__&lt;/code&gt; es para clientes.</target>
+        </trans-unit>
+        <trans-unit id="7f94091f9bf63a214597fc0363dfb00129777f2a" translate="yes" xml:space="preserve">
+          <source>Not very. Specifically, the strings in a container would find it way too easy to disturb its string representation. In the face of ambiguity, remember, Python resists the temptation to guess. If you want the above behavior when you&amp;rsquo;re printing a list, just</source>
+          <target state="translated">No muy. Espec&amp;iacute;ficamente, las cadenas en un contenedor encontrar&amp;iacute;an demasiado f&amp;aacute;cil alterar su representaci&amp;oacute;n de cadena. Ante la ambig&amp;uuml;edad, recuerde, Python resiste la tentaci&amp;oacute;n de adivinar. Si desea el comportamiento anterior cuando imprime una lista, solo</target>
+        </trans-unit>
+        <trans-unit id="fd5f9deaf020d8b6861722b040fb7e4f5080e355" translate="yes" xml:space="preserve">
+          <source>Note: I used &lt;code&gt;%r&lt;/code&gt; above, not &lt;code&gt;%s&lt;/code&gt;. You always want to use &lt;code&gt;repr()&lt;/code&gt; [or &lt;code&gt;%r&lt;/code&gt; formatting character, equivalently] inside &lt;code&gt;__repr__&lt;/code&gt; implementation, or you&amp;rsquo;re defeating the goal of repr. You want to be able to differentiate &lt;code&gt;MyClass(3)&lt;/code&gt; and &lt;code&gt;MyClass(&quot;3&quot;)&lt;/code&gt;.</source>
+          <target state="translated">Nota: Utilic&amp;eacute; &lt;code&gt;%r&lt;/code&gt; arriba, no &lt;code&gt;%s&lt;/code&gt; . Siempre desea utilizar &lt;code&gt;repr()&lt;/code&gt; [o el car&amp;aacute;cter de formato &lt;code&gt;%r&lt;/code&gt; , de manera equivalente] dentro de la implementaci&amp;oacute;n de &lt;code&gt;__repr__&lt;/code&gt; , o est&amp;aacute; derrotando el objetivo de repr. Desea poder diferenciar &lt;code&gt;MyClass(3)&lt;/code&gt; y &lt;code&gt;MyClass(&quot;3&quot;)&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="b6e8a0912dda5254ca8b3e57cb69ed14130cdaaa" translate="yes" xml:space="preserve">
+          <source>On page 358 of the book &lt;strong&gt;&lt;em&gt;Python scripting for computational science&lt;/em&gt;&lt;/strong&gt; by Hans Petter Langtangen, it clearly states that</source>
+          <target state="translated">En la p&amp;aacute;gina 358 del libro de &lt;strong&gt;&lt;em&gt;secuencias de comandos Python para la ciencia computacional&lt;/em&gt;&lt;/strong&gt; de Hans Petter Langtangen, se afirma claramente que</target>
+        </trans-unit>
+        <trans-unit id="f09747914187d47d66fb2f95e301adcb194fd8a5" translate="yes" xml:space="preserve">
+          <source>One aspect that is missing in other answers. It's true that in general the pattern is:</source>
+          <target state="translated">Un aspecto que falta en otras respuestas.Es cierto que en general el patrón es:</target>
+        </trans-unit>
+        <trans-unit id="c7287b52c2d22c06ad4a63d14f2310d541b138bf" translate="yes" xml:space="preserve">
+          <source>One important thing to keep in mind is that container's &lt;code&gt;__str__&lt;/code&gt; uses contained objects' &lt;code&gt;__repr__&lt;/code&gt;.</source>
+          <target state="translated">Una cosa importante a tener en cuenta es que &lt;code&gt;__str__&lt;/code&gt; del contenedor utiliza objetos contenidos &lt;code&gt;__repr__&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="43b2e3cacce0653ce3967339fc290266006b6ec3" translate="yes" xml:space="preserve">
+          <source>Other crucial tidbits to know: &lt;code&gt;__str__&lt;/code&gt; on a built-on container uses the &lt;code&gt;__repr__&lt;/code&gt;, NOT the &lt;code&gt;__str__&lt;/code&gt;, for the items it contains. And, despite the words on the subject found in typical docs, hardly anybody bothers making the &lt;code&gt;__repr__&lt;/code&gt; of objects be a string that &lt;code&gt;eval&lt;/code&gt; may use to build an equal object (it's just too hard, AND not knowing how the relevant module was actually imported makes it actually flat out impossible).</source>
+          <target state="translated">Otros datos cruciales que debe conocer: &lt;code&gt;__str__&lt;/code&gt; en un contenedor incorporado utiliza &lt;code&gt;__repr__&lt;/code&gt; , NO &lt;code&gt;__str__&lt;/code&gt; , para los elementos que contiene. Y, a pesar de las palabras sobre el tema que se encuentran en documentos t&amp;iacute;picos, casi nadie se molesta en hacer que la &lt;code&gt;__repr__&lt;/code&gt; de los objetos sea una cadena que &lt;code&gt;eval&lt;/code&gt; puede usar para construir un objeto igual (es demasiado dif&amp;iacute;cil, Y no saber c&amp;oacute;mo se import&amp;oacute; realmente el m&amp;oacute;dulo relevante en realidad es completamente imposible).</target>
+        </trans-unit>
+        <trans-unit id="bd2862cf0464e07a303cac55a775c88696076e0b" translate="yes" xml:space="preserve">
+          <source>Read this documentation for repr:</source>
+          <target state="translated">Lea esta documentación para la representación:</target>
+        </trans-unit>
+        <trans-unit id="ce32a625388e3e4b97a5e1992ffdb3d71282f194" translate="yes" xml:space="preserve">
+          <source>Return a string containing a nicely printable
+  representation of an object. For strings, this returns the string
+  itself. The difference with &lt;code&gt;repr(object)&lt;/code&gt; is that &lt;code&gt;str(object)&lt;/code&gt; does not
+  always attempt to return a string that is acceptable to &lt;code&gt;eval()&lt;/code&gt;; its
+  goal is to return a printable string. If no argument is given, returns
+  the empty string, &lt;code&gt;''&lt;/code&gt;.</source>
+          <target state="translated">Devuelve una cadena que contiene una representaci&amp;oacute;n muy bien imprimible de un objeto. Para cadenas, esto devuelve la cadena en s&amp;iacute;. La diferencia con &lt;code&gt;repr(object)&lt;/code&gt; es que &lt;code&gt;str(object)&lt;/code&gt; no siempre intenta devolver una cadena que sea aceptable para &lt;code&gt;eval()&lt;/code&gt; ; Su objetivo es devolver una cadena imprimible. Si no se proporciona ning&amp;uacute;n argumento, devuelve la cadena vac&amp;iacute;a, &lt;code&gt;''&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="f2458a576572440d423de195dfad3208ee454921" translate="yes" xml:space="preserve">
+          <source>Return a string containing a printable representation of an object. This is the same value yielded by conversions (reverse
+  quotes). It is sometimes useful to be able to access this operation as
+  an ordinary function. For many types, this function makes an attempt
+  to return a string that would yield an object with the same value when
+  passed to &lt;code&gt;eval()&lt;/code&gt;, otherwise the representation is a string enclosed in
+  angle brackets that contains the name of the type of the object
+  together with additional information often including the name and
+  address of the object. A class can control what this function returns
+  for its instances by defining a &lt;code&gt;__repr__()&lt;/code&gt; method.</source>
+          <target state="translated">Devuelve una cadena que contiene una representaci&amp;oacute;n imprimible de un objeto. Este es el mismo valor producido por las conversiones (comillas inversas). A veces es &amp;uacute;til poder acceder a esta operaci&amp;oacute;n como una funci&amp;oacute;n ordinaria. Para muchos tipos, esta funci&amp;oacute;n intenta devolver una cadena que arrojar&amp;iacute;a un objeto con el mismo valor cuando se pasa a &lt;code&gt;eval()&lt;/code&gt; , de lo contrario, la representaci&amp;oacute;n es una cadena entre corchetes angulares que contiene el nombre del tipo del objeto juntos con informaci&amp;oacute;n adicional que a menudo incluye el nombre y la direcci&amp;oacute;n del objeto. Una clase puede controlar lo que devuelve esta funci&amp;oacute;n para sus instancias definiendo un &lt;code&gt;__repr__()&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="3035c2da1436a67b6c4120172175da8e5d57def0" translate="yes" xml:space="preserve">
+          <source>Returns nothing but error.</source>
+          <target state="translated">No devuelve nada más que errores.</target>
+        </trans-unit>
+        <trans-unit id="b8270cef946d8069e43fdd480b8dcd6353712786" translate="yes" xml:space="preserve">
+          <source>See it in an example</source>
+          <target state="translated">Véalo en un ejemplo</target>
+        </trans-unit>
+        <trans-unit id="0021e4289b6f8431d60ebd3598f12c0417e6cc77" translate="yes" xml:space="preserve">
+          <source>Set &lt;code&gt;__repr__ = __str__&lt;/code&gt;?</source>
+          <target state="translated">Establecer &lt;code&gt;__repr__ = __str__&lt;/code&gt; ?</target>
+        </trans-unit>
+        <trans-unit id="644756de68adbf936b72fd6b6c5cab6f7c43ee78" translate="yes" xml:space="preserve">
+          <source>Setting &lt;code&gt;__repr__ = __str__&lt;/code&gt; is silly - &lt;code&gt;__repr__&lt;/code&gt; is a fallback for &lt;code&gt;__str__&lt;/code&gt; and a &lt;code&gt;__repr__&lt;/code&gt;, written for developers usage in debugging, should be written before you write a &lt;code&gt;__str__&lt;/code&gt;.</source>
+          <target state="translated">Establecer &lt;code&gt;__repr__ = __str__&lt;/code&gt; es una tonter&amp;iacute;a: &lt;code&gt;__repr__&lt;/code&gt; es una alternativa para &lt;code&gt;__str__&lt;/code&gt; y un &lt;code&gt;__repr__&lt;/code&gt; , escrito para el uso de los desarrolladores en la depuraci&amp;oacute;n, debe escribirse antes de escribir un &lt;code&gt;__str__&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="56f313c1fd657f2c4ef725602441c7bd15f8ce8d" translate="yes" xml:space="preserve">
+          <source>Since it provides a backup for &lt;code&gt;__str__&lt;/code&gt;, if you can only write one, start with &lt;code&gt;__repr__&lt;/code&gt;</source>
+          <target state="translated">Como proporciona una copia de seguridad para &lt;code&gt;__str__&lt;/code&gt; , si solo puede escribir una, comience con &lt;code&gt;__repr__&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="877b072c30445f6c706ce3a5afb6e8eb2eaa14f9" translate="yes" xml:space="preserve">
+          <source>So one should first write a &lt;code&gt;__repr__&lt;/code&gt; that allows you to reinstantiate an equivalent object from the string it returns e.g. using &lt;code&gt;eval&lt;/code&gt; or by typing it in character-for-character in a Python shell.</source>
+          <target state="translated">Por lo tanto, primero debe escribir un &lt;code&gt;__repr__&lt;/code&gt; que le permita reinstalar un objeto equivalente de la cadena que devuelve, por ejemplo, utilizando &lt;code&gt;eval&lt;/code&gt; o escribi&amp;eacute;ndolo car&amp;aacute;cter por car&amp;aacute;cter en un shell de Python.</target>
+        </trans-unit>
+        <trans-unit id="2498fecbd0f66d3d905b8b1ba674c8e645743a5c" translate="yes" xml:space="preserve">
+          <source>So we can create a simple Fraction class:</source>
+          <target state="translated">Así que podemos crear una clase de Fracción simple:</target>
+        </trans-unit>
+        <trans-unit id="fb2d4262f867454c0debc4ffffb1db8c8ed1958a" translate="yes" xml:space="preserve">
+          <source>So, I prefer to understand them as</source>
+          <target state="translated">Por lo tanto,prefiero entenderlos como</target>
+        </trans-unit>
+        <trans-unit id="9959e6a37cfa7f2a99846efe7b90651a3176e243" translate="yes" xml:space="preserve">
+          <source>So, my advice: focus on making &lt;code&gt;__str__&lt;/code&gt; reasonably human-readable, and &lt;code&gt;__repr__&lt;/code&gt; as unambiguous as you possibly can, even if that interferes with the fuzzy unattainable goal of making &lt;code&gt;__repr__&lt;/code&gt;'s returned value acceptable as input to &lt;code&gt;__eval__&lt;/code&gt;!</source>
+          <target state="translated">Entonces, mi consejo: &amp;iexcl;enf&amp;oacute;quese en hacer que &lt;code&gt;__str__&lt;/code&gt; sea razonablemente legible para los humanos, y &lt;code&gt;__repr__&lt;/code&gt; tan inequ&amp;iacute;voco como sea posible, incluso si eso interfiere con el objetivo difuso inalcanzable de hacer que el valor devuelto de &lt;code&gt;__repr__&lt;/code&gt; sea ​​aceptable como entrada para &lt;code&gt;__eval__&lt;/code&gt; !</target>
+        </trans-unit>
+        <trans-unit id="a56e63eaa5cc8becd3c7a2fe2d48751e646af5e3" translate="yes" xml:space="preserve">
+          <source>Source: &lt;a href=&quot;https://www.journaldev.com/22460/python-str-repr-functions&quot;&gt;https://www.journaldev.com/22460/python-str-repr-functions&lt;/a&gt;</source>
+          <target state="translated">Fuente: &lt;a href=&quot;https://www.journaldev.com/22460/python-str-repr-functions&quot;&gt;https://www.journaldev.com/22460/python-str-repr-functions&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="77e9d650548e453d78784a686ed816f82f0a086a" translate="yes" xml:space="preserve">
+          <source>Specifically, it is not intended to be unambiguous &amp;mdash; notice that &lt;code&gt;str(3)==str(&quot;3&quot;)&lt;/code&gt;. Likewise, if you implement an IP abstraction, having the str of it look like 192.168.1.1 is just fine. When implementing a date/time abstraction, the str can be &quot;2010/4/12 15:35:22&quot;, etc. The goal is to represent it in a way that a user, not a programmer, would want to read it. Chop off useless digits, pretend to be some other class &amp;mdash; as long is it supports readability, it is an improvement.</source>
+          <target state="translated">Espec&amp;iacute;ficamente, no est&amp;aacute; destinado a ser inequ&amp;iacute;voco: observe que &lt;code&gt;str(3)==str(&quot;3&quot;)&lt;/code&gt; . Del mismo modo, si implementa una abstracci&amp;oacute;n de IP, hacer que la cadena se vea como 192.168.1.1 est&amp;aacute; bien. Al implementar una abstracci&amp;oacute;n de fecha / hora, el str puede ser &quot;2010/4/12 15:35:22&quot;, etc. El objetivo es representarlo de una manera que un usuario, no un programador, quiera leerlo. Corta los d&amp;iacute;gitos in&amp;uacute;tiles, finge ser otra clase, siempre y cuando sea compatible con la legibilidad, es una mejora.</target>
+        </trans-unit>
+        <trans-unit id="9a9ecf8f5d08776b3b2d8df998d3987bdc39a73d" translate="yes" xml:space="preserve">
+          <source>That is, for most objects, if you type in what is printed by &lt;code&gt;repr&lt;/code&gt;, you should be able to create an equivalent object. &lt;em&gt;But this is not the default implementation.&lt;/em&gt;</source>
+          <target state="translated">Es decir, para la mayor&amp;iacute;a de los objetos, si escribe lo que imprime &lt;code&gt;repr&lt;/code&gt; , deber&amp;iacute;a poder crear un objeto equivalente. &lt;em&gt;Pero esta no es la implementaci&amp;oacute;n predeterminada.&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="0b4dbc589e1fe42f258f8c10b02cabf8cbb7dfc5" translate="yes" xml:space="preserve">
+          <source>That means by default you'll print the module the object is from, the class name, and the hexadecimal representation of its location in memory - for example:</source>
+          <target state="translated">Esto significa que por defecto se imprimirá el módulo del que procede el objeto,el nombre de la clase y la representación hexadecimal de su ubicación en la memoria,por ejemplo:</target>
+        </trans-unit>
+        <trans-unit id="29e212700ab6021fa4ca48619a674b68b76e1376" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;__repr__&lt;/code&gt; aims at a complete string representation of the object;</source>
+          <target state="translated">El &lt;code&gt;__repr__&lt;/code&gt; apunta a una representaci&amp;oacute;n de cadena completa del objeto;</target>
+        </trans-unit>
+        <trans-unit id="bb716d12482cdc344c24a75b7af653b25739bbfc" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;__repr__&lt;/code&gt; method is called by the builtin function &lt;code&gt;repr&lt;/code&gt; and is what is echoed on your python shell when it evaluates an expression that returns an object.</source>
+          <target state="translated">El m&amp;eacute;todo &lt;code&gt;__repr__&lt;/code&gt; es llamado por la funci&amp;oacute;n incorporada &lt;code&gt;repr&lt;/code&gt; y es lo que se repite en su shell de Python cuando eval&amp;uacute;a una expresi&amp;oacute;n que devuelve un objeto.</target>
+        </trans-unit>
+        <trans-unit id="6571b1c17c83bfab38282b2f6a794fa3308f64bd" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;__str__&lt;/code&gt; is to return a nice string for printing.</source>
+          <target state="translated">El &lt;code&gt;__str__&lt;/code&gt; es devolver una buena cadena para imprimir.</target>
+        </trans-unit>
+        <trans-unit id="ecbc7a93e0d86ff638ad9d89dbe3b826db5b1d3d" translate="yes" xml:space="preserve">
+          <source>The default implementation is useless (it&amp;rsquo;s hard to think of one which wouldn&amp;rsquo;t be, but yeah)</source>
+          <target state="translated">La implementaci&amp;oacute;n predeterminada es in&amp;uacute;til (es dif&amp;iacute;cil pensar en una que no lo sea, pero s&amp;iacute;)</target>
+        </trans-unit>
+        <trans-unit id="af957f3a06259040cf9a2014cff25a442327a067" translate="yes" xml:space="preserve">
+          <source>The default object &lt;code&gt;__repr__&lt;/code&gt; is (&lt;a href=&quot;https://github.com/python/cpython/blob/v3.7.3/Objects/object.c#L496&quot;&gt;C Python source&lt;/a&gt;) something like:</source>
+          <target state="translated">El objeto predeterminado &lt;code&gt;__repr__&lt;/code&gt; es ( &lt;a href=&quot;https://github.com/python/cpython/blob/v3.7.3/Objects/object.c#L496&quot;&gt;fuente C Python&lt;/a&gt; ) algo as&amp;iacute; como:</target>
+        </trans-unit>
+        <trans-unit id="6b121b39fc748ed516c66693a33cd8bd64b94d71" translate="yes" xml:space="preserve">
+          <source>The differences:</source>
+          <target state="translated">Las diferencias:</target>
+        </trans-unit>
+        <trans-unit id="44f0edbd69c35ab3950af893859b5abe2da44d9a" translate="yes" xml:space="preserve">
+          <source>Therefore, I would recommend setting &lt;code&gt;__repr__ = __str__&lt;/code&gt;. The reason is that &lt;code&gt;str(list)&lt;/code&gt; calls &lt;code&gt;repr&lt;/code&gt; on the elements (I consider this to be one of the biggest design flaws of Python that was not addressed by Python 3). An actual &lt;code&gt;repr&lt;/code&gt; will probably not be very helpful as the output of &lt;code&gt;print [your, objects]&lt;/code&gt;.</source>
+          <target state="translated">Por lo tanto, recomendar&amp;iacute;a configurar &lt;code&gt;__repr__ = __str__&lt;/code&gt; . La raz&amp;oacute;n es que &lt;code&gt;str(list)&lt;/code&gt; llama a &lt;code&gt;repr&lt;/code&gt; en los elementos (considero que este es uno de los mayores defectos de dise&amp;ntilde;o de Python que no fue abordado por Python 3). Una &lt;code&gt;repr&lt;/code&gt; oducci&amp;oacute;n real probablemente no ser&amp;aacute; muy &amp;uacute;til como salida de &lt;code&gt;print [your, objects]&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="6ea0102b1ade3a32471b836651590fb17bbb31a8" translate="yes" xml:space="preserve">
+          <source>This example may help:</source>
+          <target state="translated">Este ejemplo puede ayudar:</target>
+        </trans-unit>
+        <trans-unit id="49339628670c6a3832e3bdbcaeca84f8623045b6" translate="yes" xml:space="preserve">
+          <source>This information isn't very useful, but there's no way to derive how one might accurately create a canonical representation of any given instance, and it's better than nothing, at least telling us how we might uniquely identify it in memory.</source>
+          <target state="translated">Esta información no es muy útil,pero no hay manera de derivar cómo se podría crear con precisión una representación canónica de un caso dado,y es mejor que nada,al menos diciéndonos cómo podríamos identificarlo de forma única en la memoria.</target>
+        </trans-unit>
+        <trans-unit id="b9b41556bd7fa50eaa70e88b983e740b35a9b000" translate="yes" xml:space="preserve">
+          <source>This is a critique of another answer here that suggests setting &lt;code&gt;__repr__ = __str__&lt;/code&gt;.</source>
+          <target state="translated">Esta es una cr&amp;iacute;tica de otra respuesta aqu&amp;iacute; que sugiere establecer &lt;code&gt;__repr__ = __str__&lt;/code&gt; .</target>
+        </trans-unit>
+        <trans-unit id="a2fd6fdc3ad7fb96e0d7fc2971066e31ecfbeeae" translate="yes" xml:space="preserve">
+          <source>This is mostly a surprise because Python&amp;rsquo;s defaults tend to be fairly useful. However, in this case, having a default for &lt;code&gt;__repr__&lt;/code&gt; which would act like:</source>
+          <target state="translated">Esto es sobre todo una sorpresa porque los valores predeterminados de Python tienden a ser bastante &amp;uacute;tiles. Sin embargo, en este caso, tener un valor predeterminado para &lt;code&gt;__repr__&lt;/code&gt; que actuar&amp;iacute;a como:</target>
+        </trans-unit>
+        <trans-unit id="67cd48518a2a8df13e502456c444a68d3cfdbbf9" translate="yes" xml:space="preserve">
+          <source>This means, in simple terms: almost every object you implement should have a functional &lt;code&gt;__repr__&lt;/code&gt; that&amp;rsquo;s usable for understanding the object. Implementing &lt;code&gt;__str__&lt;/code&gt; is optional: do that if you need a &amp;ldquo;pretty print&amp;rdquo; functionality (for example, used by a report generator).</source>
+          <target state="translated">Esto significa, en t&amp;eacute;rminos simples: casi todos los objetos que implemente deben tener un &lt;code&gt;__repr__&lt;/code&gt; funcional que se pueda usar para comprender el objeto. La implementaci&amp;oacute;n de &lt;code&gt;__str__&lt;/code&gt; es opcional: h&amp;aacute;galo si necesita una funcionalidad de &quot;impresi&amp;oacute;n bonita&quot; (por ejemplo, utilizada por un generador de informes).</target>
+        </trans-unit>
+        <trans-unit id="42085e7e4d2aee0832344073213dbd133d70c2a0" translate="yes" xml:space="preserve">
+          <source>This seems surprising, doesn&amp;rsquo;t it? It is a little, but how readable would it be if it used their &lt;code&gt;__str__&lt;/code&gt;?</source>
+          <target state="translated">Esto parece sorprendente, &amp;iquest;no? Es un poco, pero &amp;iquest;qu&amp;eacute; tan legible ser&amp;iacute;a si usara su &lt;code&gt;__str__&lt;/code&gt; ?</target>
+        </trans-unit>
+        <trans-unit id="a26f3ae40c34f7b11fe02427fe4fd04cac5639d4" translate="yes" xml:space="preserve">
+          <source>To put it simply:</source>
+          <target state="translated">En pocas palabras:</target>
+        </trans-unit>
+        <trans-unit id="8378907aa75c6caee84a72343bf30d33e3a7b53b" translate="yes" xml:space="preserve">
+          <source>To qualify this, in my experience, the most useful use case of the &lt;code&gt;repr&lt;/code&gt; function is to put a string inside another string (using string formatting). This way, you don't have to worry about escaping quotes or anything. But note that there is no &lt;code&gt;eval&lt;/code&gt; happening here.</source>
+          <target state="translated">Para calificar esto, en mi experiencia, el caso de uso m&amp;aacute;s &amp;uacute;til de la funci&amp;oacute;n &lt;code&gt;repr&lt;/code&gt; es poner una cadena dentro de otra cadena (usando el formato de cadena). De esta manera, no tiene que preocuparse por escapar de citas ni nada. Pero tenga en cuenta que aqu&amp;iacute; no hay &lt;code&gt;eval&lt;/code&gt; uaci&amp;oacute;n .</target>
+        </trans-unit>
+        <trans-unit id="6f1a00ebb57a83f5f0b7867da20932536b2febbd" translate="yes" xml:space="preserve">
+          <source>Understand &lt;code&gt;__str__&lt;/code&gt; and &lt;code&gt;__repr__&lt;/code&gt; intuitively and permanently distinguish them at all.</source>
+          <target state="translated">Comprenda &lt;code&gt;__str__&lt;/code&gt; y &lt;code&gt;__repr__&lt;/code&gt; de manera intuitiva y permanente para distinguirlos.</target>
+        </trans-unit>
+        <trans-unit id="03a79c8a50c4a59545b4bfb6d58909546121fd13" translate="yes" xml:space="preserve">
+          <source>Unfortunately, this differentiation is flawed, because the Python REPL and also IPython use &lt;code&gt;__repr__&lt;/code&gt; for printing objects in a REPL console (see related questions for &lt;a href=&quot;https://stackoverflow.com/questions/28304092/when-i-am-in-the-python-or-ipython-console-what-is-called-when-i-am-returned-an&quot;&gt;Python&lt;/a&gt; and &lt;a href=&quot;https://stackoverflow.com/questions/41453624/tell-ipython-to-use-an-objects-str-instead-of-repr-for-output&quot;&gt;IPython&lt;/a&gt;). Thus, projects which are targeted for interactive console work (e.g., Numpy or Pandas) have started to ignore above rules and provide a human-readable &lt;code&gt;__repr__&lt;/code&gt; implementation instead.</source>
+          <target state="translated">Desafortunadamente, esta diferenciaci&amp;oacute;n es err&amp;oacute;nea, porque Python REPL y tambi&amp;eacute;n IPython usan &lt;code&gt;__repr__&lt;/code&gt; para imprimir objetos en una consola REPL (ver preguntas relacionadas para &lt;a href=&quot;https://stackoverflow.com/questions/28304092/when-i-am-in-the-python-or-ipython-console-what-is-called-when-i-am-returned-an&quot;&gt;Python&lt;/a&gt; e &lt;a href=&quot;https://stackoverflow.com/questions/41453624/tell-ipython-to-use-an-objects-str-instead-of-repr-for-output&quot;&gt;IPython&lt;/a&gt; ). Por lo tanto, los proyectos destinados al trabajo de la consola interactiva (por ejemplo, Numpy o Pandas) han comenzado a ignorar las reglas anteriores y en su lugar proporcionan una implementaci&amp;oacute;n &lt;code&gt;__repr__&lt;/code&gt; legible para los humanos .</target>
+        </trans-unit>
+        <trans-unit id="d425552c3ea6d5d498f843a30f17f4e97f960f37" translate="yes" xml:space="preserve">
+          <source>Unless you specifically act to ensure otherwise, most classes don't have helpful results for either:</source>
+          <target state="translated">A menos que actúe específicamente para asegurar lo contrario,la mayoría de las clases no tienen resultados útiles para ninguno de los dos:</target>
+        </trans-unit>
+        <trans-unit id="8da03d1937c4a6f4140683d4255b1796a31a529c" translate="yes" xml:space="preserve">
+          <source>We can do arithmetic operation on &lt;code&gt;__repr__&lt;/code&gt; results conveniently.</source>
+          <target state="translated">Podemos hacer operaciones aritm&amp;eacute;ticas en &lt;code&gt;__repr__&lt;/code&gt; resultados convenientemente.</target>
+        </trans-unit>
+        <trans-unit id="4f85f4ba7750e93da922add9cea508b1a67639d0" translate="yes" xml:space="preserve">
+          <source>What is the difference between &lt;code&gt;__str__&lt;/code&gt; and &lt;code&gt;__repr__&lt;/code&gt; in Python?</source>
+          <target state="translated">&amp;iquest;Cu&amp;aacute;l es la diferencia entre &lt;code&gt;__str__&lt;/code&gt; y &lt;code&gt;__repr__&lt;/code&gt; en Python?</target>
+        </trans-unit>
+        <trans-unit id="c5101c72b933fdbfd13fbfd1e0e23863211f1a5e" translate="yes" xml:space="preserve">
+          <source>When &lt;code&gt;print()&lt;/code&gt; is called on the result of &lt;code&gt;decimal.Decimal(23) / decimal.Decimal(&quot;1.05&quot;)&lt;/code&gt; the raw number is printed; this output is in &lt;strong&gt;string form&lt;/strong&gt; which can be achieved with &lt;code&gt;__str__()&lt;/code&gt;. If we simply enter the expression we get a &lt;code&gt;decimal.Decimal&lt;/code&gt; output &amp;mdash; this output is in &lt;strong&gt;representational form&lt;/strong&gt; which can be achieved with &lt;code&gt;__repr__()&lt;/code&gt;. All Python objects have two output forms. String form is designed to be human-readable. The representational form is designed to produce output that if fed to a Python interpreter would (when possible) reproduce the represented object.</source>
+          <target state="translated">Cuando se llama a &lt;code&gt;print()&lt;/code&gt; en el resultado de &lt;code&gt;decimal.Decimal(23) / decimal.Decimal(&quot;1.05&quot;)&lt;/code&gt; se imprime el n&amp;uacute;mero sin procesar; esta salida est&amp;aacute; en &lt;strong&gt;forma de cadena&lt;/strong&gt; que se puede lograr con &lt;code&gt;__str__()&lt;/code&gt; . Si simplemente ingresamos la expresi&amp;oacute;n, obtenemos un &lt;code&gt;decimal.Decimal&lt;/code&gt; Salida decimal : esta salida est&amp;aacute; en &lt;strong&gt;forma de representaci&amp;oacute;n&lt;/strong&gt; que se puede lograr con &lt;code&gt;__repr__()&lt;/code&gt; . Todos los objetos de Python tienen dos formas de salida. La forma de cadena est&amp;aacute; dise&amp;ntilde;ada para ser legible por humanos. La forma de representaci&amp;oacute;n est&amp;aacute; dise&amp;ntilde;ada para producir resultados que, si se alimentan a un int&amp;eacute;rprete de Python, reproducir&amp;iacute;an (cuando sea posible) el objeto representado.</target>
+        </trans-unit>
+        <trans-unit id="0f54f9c4d4034fe5f804a43aaeebd27a2f5995e3" translate="yes" xml:space="preserve">
+          <source>You need a &lt;code&gt;__str__&lt;/code&gt; only when you need a textual representation of the object.</source>
+          <target state="translated">Necesita un &lt;code&gt;__str__&lt;/code&gt; solo cuando necesita una representaci&amp;oacute;n textual del objeto.</target>
+        </trans-unit>
+        <trans-unit id="441f895c8ec78551715258a5a5e15e8d6f1eb05f" translate="yes" xml:space="preserve">
+          <source>as you see, if you override &lt;code&gt;__repr__&lt;/code&gt;, that's ALSO used for &lt;code&gt;__str__&lt;/code&gt;, but not vice versa.</source>
+          <target state="translated">como puede ver, si anula &lt;code&gt;__repr__&lt;/code&gt; , TAMBI&amp;Eacute;N se usa para &lt;code&gt;__str__&lt;/code&gt; , pero no al rev&amp;eacute;s.</target>
+        </trans-unit>
+        <trans-unit id="7f53a68d324346fc8457a1665141697dcc97ee86" translate="yes" xml:space="preserve">
+          <source>e.g.</source>
+          <target state="translated">e.g.</target>
+        </trans-unit>
+        <trans-unit id="cda45dcc611254ff3003bdde139ca894ff86175f" translate="yes" xml:space="preserve">
+          <source>from the user's point of view
+although this is a misunderstanding I made when learning python.</source>
+          <target state="translated">desde el punto de vista del usuario,aunque este es un malentendido que hice al aprender pitón.</target>
+        </trans-unit>
+        <trans-unit id="a093e3695065483806b6abbf8429d3c8e7d63e13" translate="yes" xml:space="preserve">
+          <source>generates output for developer</source>
+          <target state="translated">genera la salida para el desarrollador</target>
+        </trans-unit>
+        <trans-unit id="2dc2c28c640022872f2c7552cb1fa62da2343b41" translate="yes" xml:space="preserve">
+          <source>generates output for end-user</source>
+          <target state="translated">genera la salida para el usuario final</target>
+        </trans-unit>
+        <trans-unit id="8855b3b6fcd8640700c4cf2c777aa5cc7b5fc8c1" translate="yes" xml:space="preserve">
+          <source>if apply the operation on &lt;code&gt;__str__&lt;/code&gt;</source>
+          <target state="translated">si aplica la operaci&amp;oacute;n en &lt;code&gt;__str__&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="554a037b9e24b4770efca72ff88127f0f613f664" translate="yes" xml:space="preserve">
+          <source>makes object readable</source>
+          <target state="translated">hace que el objeto sea legible</target>
+        </trans-unit>
+        <trans-unit id="1030251168f82df0ed6176d6dfe47466406fc394" translate="yes" xml:space="preserve">
+          <source>needs code that reproduces object</source>
+          <target state="translated">necesita un código que reproduzca el objeto</target>
+        </trans-unit>
+        <trans-unit id="ed33972dc101924f80759b318ee2e02762394857" translate="yes" xml:space="preserve">
+          <source>special methods &lt;code&gt;__repr__&lt;/code&gt; and &lt;code&gt;__str__&lt;/code&gt; exist in the data model.</source>
+          <target state="translated">&lt;code&gt;__repr__&lt;/code&gt; m&amp;eacute;todos especiales __repr__ y &lt;code&gt;__str__&lt;/code&gt; en el modelo de datos.</target>
+        </trans-unit>
+        <trans-unit id="513cad09fa5d2989c48873b47d2411bf423f3483" translate="yes" xml:space="preserve">
+          <source>would have been too dangerous (for example, too easy to get into infinite recursion if objects reference each other). So Python cops out. Note that there is one default which is true: if &lt;code&gt;__repr__&lt;/code&gt; is defined, and &lt;code&gt;__str__&lt;/code&gt; is not, the object will behave as though &lt;code&gt;__str__=__repr__&lt;/code&gt;.</source>
+          <target state="translated">habr&amp;iacute;a sido demasiado peligroso (por ejemplo, demasiado f&amp;aacute;cil entrar en una recursi&amp;oacute;n infinita si los objetos se refieren entre s&amp;iacute;). Entonces Python se las arregla. Tenga en cuenta que hay un valor predeterminado que es verdadero: si &lt;code&gt;__repr__&lt;/code&gt; est&amp;aacute; definido y &lt;code&gt;__str__&lt;/code&gt; no, el objeto se comportar&amp;aacute; como si &lt;code&gt;__str__=__repr__&lt;/code&gt; .</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

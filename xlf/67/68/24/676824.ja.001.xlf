@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/676824">
+    <body>
+      <group id="676824">
+        <trans-unit id="2c98d30d0997b24e047eba73192882cb0462f5d1" translate="yes" xml:space="preserve">
+          <source>&quot;if&quot; the date is stored in MySQL, I find it easier to do the difference calculation at the database level... Then based on the Day, Hour, Min, Sec output, parse and display results as appropriate...</source>
+          <target state="translated">&quot;日付がMySQLに保存されている場合、私はデータベースレベルで差分計算を行う方が簡単だと思います...そして、日、時、分、秒の出力に基づいて、結果を適切に解析して表示する...</target>
+        </trans-unit>
+        <trans-unit id="efd7b19fb74eddf1c7a1da8c8e552293868768f3" translate="yes" xml:space="preserve">
+          <source>20 days 6 hours 56 minutes 30 seconds</source>
+          <target state="translated">20日6時間56分30秒</target>
+        </trans-unit>
+        <trans-unit id="844cc372c76edc25a259e00bfd64345daeb62f4c" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;$difference&lt;/code&gt; now holds a &lt;a href=&quot;http://il.php.net/manual/en/class.dateinterval.php&quot;&gt;&lt;code&gt;DateInterval&lt;/code&gt;&lt;/a&gt; object with the difference information. A &lt;code&gt;var_dump()&lt;/code&gt; looks like this:</source>
+          <target state="translated">&lt;code&gt;$difference&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;は&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、差分情報を持つ&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://il.php.net/manual/en/class.dateinterval.php&quot;&gt; &lt;code&gt;DateInterval&lt;/code&gt; &lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;オブジェクトを&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;保持し&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ます。&lt;/font&gt;&lt;/font&gt; &lt;code&gt;var_dump()&lt;/code&gt; は&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;次のようになります。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="53a4a8cc6addfd11dc4df07ff47a4af582491c69" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;DateInterval&lt;/code&gt; is great but it has a couple of caveats:</source>
+          <target state="translated">&lt;code&gt;DateInterval&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;はすばらしいですが、いくつかの注意事項があります。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="626dd6aa07a00782899c41f478d9ae3e57f14487" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Edit:&lt;/strong&gt; Obviously the preferred way of doing this is like described by jurka below. My code is generally only recommended if you don't have PHP 5.3 or better.</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;編集：&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;明らかにこれを行う好ましい方法は、以下のジュルカによって説明されているようなものです。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;私のコードは、PHP 5.3以降がない場合にのみ推奨されます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="05a65ad821e7536be49dfcd32d1147e1db39a867" translate="yes" xml:space="preserve">
+          <source>According to manual &lt;code&gt;date_diff&lt;/code&gt; is an alias of
+  &lt;a href=&quot;http://php.net/manual/en/datetime.diff.php&quot;&gt;DateTime::diff()&lt;/a&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;マニュアルに&lt;/font&gt;&lt;/font&gt; &lt;code&gt;date_diff&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;と、&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;date_diff&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;は&lt;/font&gt;&lt;a href=&quot;http://php.net/manual/en/datetime.diff.php&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;DateTime :: diff（）の&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;エイリアスです。 &lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ba90847380fdee5752f681e08695aaa002cbd235" translate="yes" xml:space="preserve">
+          <source>After both objects were instantiated, you substract one from the other with &lt;strong&gt;&lt;a href=&quot;http://il.php.net/manual/en/datetime.diff.php&quot;&gt;&lt;code&gt;DateTime::diff()&lt;/code&gt;&lt;/a&gt;&lt;/strong&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;両方のオブジェクトがインスタンス化された後、&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;a href=&quot;http://il.php.net/manual/en/datetime.diff.php&quot;&gt; &lt;code&gt;DateTime::diff()&lt;/code&gt; &lt;/a&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;して一方から他方を&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;差し引き&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="a299dd051edbd7b69c797d2b5ac0205ff7430037" translate="yes" xml:space="preserve">
+          <source>All that's left now is to call our function on the &lt;code&gt;$difference&lt;/code&gt;&lt;code&gt;DateInterval&lt;/code&gt; object:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;あとは、&lt;/font&gt;&lt;/font&gt; &lt;code&gt;$difference&lt;/code&gt; &lt;code&gt;DateInterval&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;オブジェクトの&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;関数を呼び出すだけです&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="b900227016efa9cce4685eb03bd9435e61ae5550" translate="yes" xml:space="preserve">
+          <source>An easy function</source>
+          <target state="translated">簡単な機能</target>
+        </trans-unit>
+        <trans-unit id="b00ab31ea9f3e9d17c6a99582402859197ca6bf4" translate="yes" xml:space="preserve">
+          <source>And the result:</source>
+          <target state="translated">そして、その結果。</target>
+        </trans-unit>
+        <trans-unit id="c3a2c36693e8a621ba0f5230d669c6e9f8a4e9ab" translate="yes" xml:space="preserve">
+          <source>And the test:</source>
+          <target state="translated">そしてテスト。</target>
+        </trans-unit>
+        <trans-unit id="12ddeb19eb2b54c3e4da3d4301a2b080969ee0bf" translate="yes" xml:space="preserve">
+          <source>And we get the correct result:</source>
+          <target state="translated">そして、正しい結果が得られます。</target>
+        </trans-unit>
+        <trans-unit id="a787d9d69008c87d7c9e9de53d001b37474e856d" translate="yes" xml:space="preserve">
+          <source>As of PHP 5.2.2, DateTime objects can be compared using comparison operators.</source>
+          <target state="translated">PHP 5.2.2.2 以降、DateTime オブジェクトは比較演算子を使用して比較することができます。</target>
+        </trans-unit>
+        <trans-unit id="7b5b07d71c7f3001dc247248a39f8045f99510e7" translate="yes" xml:space="preserve">
+          <source>Calculate the difference between two Dates (and time) using PHP. The following page provides a range of different methods (7 in total) for performing date / time calculations using PHP, to determine the difference in time (hours, munites), days, months or years between two dates.</source>
+          <target state="translated">PHP を使用して、2 つの日付 (および時間)の差を計算します。次のページでは、PHP を使用して日付の時刻を計算するためのさまざまな方法 (合計 7 種類)を紹介します。</target>
+        </trans-unit>
+        <trans-unit id="ca567dda33cdf7058994a40bb9ef4db135c7d283" translate="yes" xml:space="preserve">
+          <source>Code:</source>
+          <target state="translated">Code:</target>
+        </trans-unit>
+        <trans-unit id="0ecb2c91182d599dbbaceb0db0e9426a08b847e7" translate="yes" xml:space="preserve">
+          <source>Despite all that, I've decided to address the complaints. If you truly need an exact range but haven't got access to PHP 5.3, use the code below (it should work in PHP 4 as well). This is a direct port of the code that PHP uses internally to calculate ranges, with the exception that it doesn't take daylight savings time into account. That means that it's off by an hour at most, but except for that it should be correct.</source>
+          <target state="translated">にもかかわらず、私はこの苦情に対処することにしました。もし本当に正確な範囲が必要でPHP 5.3にアクセスできない場合は、以下のコードを使用してください (PHP 4でも動作するはずです)。これは、PHPが内部的に範囲を計算するために使用しているコードを直接移植したものですが、例外としてサマータイムを考慮していません。つまり、せいぜい1時間ずれていることになりますが、それ以外は正しいはずです。</target>
+        </trans-unit>
+        <trans-unit id="5ab7721397827b925456d2a147cb5704105a62a7" translate="yes" xml:space="preserve">
+          <source>Example usage:</source>
+          <target state="translated">使用例。</target>
+        </trans-unit>
+        <trans-unit id="39b6a73021747d4eef6ee1fd0048ca8d3b7540ca" translate="yes" xml:space="preserve">
+          <source>For example CodeIgniter has the &lt;code&gt;timespan()&lt;/code&gt; function. Simply input two Unix timestamps and it will automatically generate a result like this:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;たとえば、CodeIgniterには&lt;/font&gt;&lt;/font&gt; &lt;code&gt;timespan()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;関数があります。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;2つのUnixタイムスタンプを入力するだけで、次のような結果が自動的に生成されます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="b3b36bb2c21376a1ae1bb1f355d5008b0379df98" translate="yes" xml:space="preserve">
+          <source>For example, the difference (as returned by the above function)
+  between 2013-02-09 and 2013-02-14 is 5. But the number of days or
+  dates represented by the date range 2013-02-09 - 2013-02-14 is 6.</source>
+          <target state="translated">例えば、2013-02-09 と 2013-02-14 の差は (上記の関数が返す)5 ですが、2013-02-09-2013-02-14 の範囲で表される日数は 6 です。</target>
+        </trans-unit>
+        <trans-unit id="17f996c57ebd549211385e0c0d6e4d4844c89d0b" translate="yes" xml:space="preserve">
+          <source>For more info read &lt;a href=&quot;http://php.net/manual/en/function.date-diff.php&quot;&gt;PHP &lt;code&gt;date_diff&lt;/code&gt; manual&lt;/a&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;詳細については、&lt;/font&gt;&lt;a href=&quot;http://php.net/manual/en/function.date-diff.php&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;PHPの&lt;/font&gt;&lt;/a&gt; &lt;code&gt;date_diff&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;マニュアルを&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ご覧ください。&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="38798922d57723a3b4897286af31cef09335cc89" translate="yes" xml:space="preserve">
+          <source>For php version &amp;gt;=5.3 : Create two date objects and then use &lt;code&gt;date_diff()&lt;/code&gt; function. It will return php &lt;a href=&quot;http://php.net/manual/en/class.dateinterval.php&quot;&gt;DateInterval&lt;/a&gt; object. &lt;a href=&quot;http://php.net/manual/en/function.date-diff.php&quot;&gt;see documentation&lt;/a&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;date_diff()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;バージョン&amp;gt; = 5.3の場合：2つの日付オブジェクトを作成してから、&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;date_diff（）&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;関数を&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;使用し&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ます。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;php &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://php.net/manual/en/class.dateinterval.php&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;DateInterval&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;オブジェクト&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;を返し&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ます。&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://php.net/manual/en/function.date-diff.php&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ドキュメントを参照&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="576600fe5b36c06a2f10560b1b69be9038f340ee" translate="yes" xml:space="preserve">
+          <source>From the manual:</source>
+          <target state="translated">マニュアルから。</target>
+        </trans-unit>
+        <trans-unit id="90135f37caea110ef7b661c508d0bd69f66bdb3b" translate="yes" xml:space="preserve">
+          <source>Function :</source>
+          <target state="translated">機能 .</target>
+        </trans-unit>
+        <trans-unit id="33a998a6480e73ac7456771fac433e5684942118" translate="yes" xml:space="preserve">
+          <source>Here is the runnable code</source>
+          <target state="translated">以下は実行可能なコードです。</target>
+        </trans-unit>
+        <trans-unit id="e71bacb4821c6db42884062589852b4cf1407385" translate="yes" xml:space="preserve">
+          <source>How can I do this in PHP?</source>
+          <target state="translated">PHPではどうすればいいのでしょうか?</target>
+        </trans-unit>
+        <trans-unit id="43be267e75ee24b180b78d91b0f33041ba2996ff" translate="yes" xml:space="preserve">
+          <source>How to calculate the difference between two dates using PHP</source>
+          <target state="translated">PHPを使って2つの日付の差を計算する方法</target>
+        </trans-unit>
+        <trans-unit id="59676f461482c51951b6a8cd763648aa579f2399" translate="yes" xml:space="preserve">
+          <source>I don't know if you are using a PHP framework or not, but a lot of PHP frameworks have date/time libraries and helpers to help keep you from reinventing the wheel.</source>
+          <target state="translated">PHPフレームワークを使っているかどうかはわかりませんが、多くのPHPフレームワークにはdatetimeライブラリやヘルパーがあり、ホイールの再発明を防ぐことができます。</target>
+        </trans-unit>
+        <trans-unit id="52cabd7a66e3f5a22ffda78ea2efcc3b2e7d2e7c" translate="yes" xml:space="preserve">
+          <source>I found myself working on a similar problem - which is how I got to this question in the first place - but just needed a difference in hours.  But my function solved this one pretty nicely as well and I don't have anywhere in my own library to keep it where it won't get lost and forgotten, so... hope this is useful to someone.</source>
+          <target state="translated">私は自分自身が似たような問題に取り組んでいるのを見つけました-それは私が最初の場所でこの質問に到達した方法です-しかし、ちょうど時間の違いを必要としていました。しかし、私の関数はこの問題をかなりうまく解決してくれましたし、私自身のライブラリには、これを紛失したり忘れたりしないように保管する場所がありません。</target>
+        </trans-unit>
+        <trans-unit id="202b6d936a2678bb5419b41bdf06ad003a9143d3" translate="yes" xml:space="preserve">
+          <source>I found your article on the following page, which contains a number of references for &lt;a href=&quot;http://en.wikipedia.org/wiki/PHP&quot;&gt;PHP&lt;/a&gt; date time calculations.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;次のページであなたの記事を見つけました。このページには、&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/PHP&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;PHPの&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;日付と時刻の計算&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;に関する多数のリファレンスが含まれて&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;います。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="02702af1f9462d09b398516833e28ac5436787cc" translate="yes" xml:space="preserve">
+          <source>I got the original idea from &lt;a href=&quot;http://www.php.net/manual/en/datetime.diff.php#97810&quot;&gt;here&lt;/a&gt;, which I modified for my uses (and I hope my modification will show on that page as well).</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;私は&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://www.php.net/manual/en/datetime.diff.php#97810&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ここ&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;から元のアイデアを得て&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、それを自分の用途に合わせて変更しました（そして、私の変更がそのページにも表示されることを願っています）。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e507168852a74fad5050bc37cd16125d5d892f32" translate="yes" xml:space="preserve">
+          <source>I had the same problem with PHP 5.2 and solved it with MySQL. Might not be exactly what you're looking for, but this will do the trick and return the number of days:</source>
+          <target state="translated">私はPHP 5.2で同じ問題を抱えていましたが、MySQLで解決しました。求めているものとは違うかもしれませんが、これはトリックを実行して日数を返してくれます。</target>
+        </trans-unit>
+        <trans-unit id="2a9cff6bdd36d97e9b3e0cd2ef2060a1a91a1efe" translate="yes" xml:space="preserve">
+          <source>I have some simple logic for that:</source>
+          <target state="translated">そのための簡単な理屈があるんです。</target>
+        </trans-unit>
+        <trans-unit id="ccea296d4e6beebb8fc887d9ea69085a311404bc" translate="yes" xml:space="preserve">
+          <source>I have two dates of the form:</source>
+          <target state="translated">書式の日付が2つあるのですが</target>
+        </trans-unit>
+        <trans-unit id="104549b3623028ecf79d50653d58da12a4f30543" translate="yes" xml:space="preserve">
+          <source>I suggest to use DateTime and DateInterval objects.</source>
+          <target state="translated">私はDateTimeとDateIntervalオブジェクトを使用することをお勧めします。</target>
+        </trans-unit>
+        <trans-unit id="c0168388b9fa8fb4b8b4072a8c53ca1071f55fb1" translate="yes" xml:space="preserve">
+          <source>I voted for &lt;a href=&quot;https://stackoverflow.com/users/474405/jurka&quot;&gt;jurka&lt;/a&gt;'s &lt;a href=&quot;https://stackoverflow.com/questions/676824/how-to-calculate-the-date-difference-between-2-dates-using-php/3923228#3923228&quot;&gt;answer&lt;/a&gt; as that's my favorite, but I have a pre-php.5.3 version...</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;私は&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/users/474405/jurka&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ジュルカ&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;の&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/questions/676824/how-to-calculate-the-date-difference-between-2-dates-using-php/3923228#3923228&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;答え&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;が好きなので&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;投票しましたが、&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;php.5.3より&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;前のバージョンを持っています...&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="0b92cb700cfd3d095562565f3d503756cc9f1645" translate="yes" xml:space="preserve">
+          <source>I wanted a function to display differences from seconds to years (just one unit). For periods over 1 day, I wanted it to rollover at midnight (10am Monday seen from 9am Wednesday is 2 days ago, not 1). And for periods over a month, I wanted the rollover to be on the same day of the month (including for 30/31 day months &amp;amp; leap years).</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;秒単位から年単位までの差を表示する機能（ほんの1単位）が欲しかった。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;1日を超える期間の場合は、午前0時にロールオーバーしたいと思っていました（月曜日の午前10時から水曜日の午前9時までは、1日ではなく2日前です）。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;また、1か月を超える期間については、ロールオーバーをその月の同じ日にしたい（30/31日の月とうるう年を含む）。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="2b7fd554a2b5b2995be20c1ec9072aad225b43c2" translate="yes" xml:space="preserve">
+          <source>I would prefer to use &lt;code&gt;date_create&lt;/code&gt; and &lt;code&gt;date_diff&lt;/code&gt; objects.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;私は&lt;/font&gt;&lt;/font&gt; &lt;code&gt;date_create&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;と&lt;/font&gt;&lt;/font&gt; &lt;code&gt;date_diff&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;オブジェクト&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;を使用し&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;たい&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;と&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;思い&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="3c09a0858993ebdc045dfb86e7f008c165936bc9" translate="yes" xml:space="preserve">
+          <source>I'm using the following function which I wrote, when PHP 5.3 (respectively date_diff()) is not available:</source>
+          <target state="translated">PHP5.3(それぞれdate_diff()が使えない時に書いた以下の関数を使っています。</target>
+        </trans-unit>
+        <trans-unit id="8f185d2d366f3a44cc15e7e482192d855ba8716b" translate="yes" xml:space="preserve">
+          <source>If you use floor method of php instead of ceil it will return you the round fraction down. Please check the difference here, some times if your staging servers timezone is different then the live site time zone in that case you may get different results so change the conditions accordingly.</source>
+          <target state="translated">ceilの代わりにphpのfloorメソッドを使用すると、端数の丸い値を返してくれます。あなたのステージングサーバーのタイムゾーンがライブサイトのタイムゾーンと異なる場合は、その場合には、異なる結果を得ることができるので、それに応じて条件を変更してください。</target>
+        </trans-unit>
+        <trans-unit id="e1e510fc4e9143f92026b3031b8608df4f2975ee" translate="yes" xml:space="preserve">
+          <source>If your start and end dates are in string format then use</source>
+          <target state="translated">開始日と終了日が文字列形式の場合は</target>
+        </trans-unit>
+        <trans-unit id="c6a4140748ecd3a0f3723dd88f26a6e0fc9be2ca" translate="yes" xml:space="preserve">
+          <source>It doesn't matter which date is earlier or later when you pass in the
+  date parameters. The function uses the PHP ABS() absolute value to
+  always return a postive number as the number of days between the two
+  dates.</source>
+          <target state="translated">日付のパラメータを渡す際に、どちらの日付が前か後かは関係ありません。この関数は、PHP の ABS()の絶対値を使用して、2 つの日付の間の日数を常に後置数として返します。</target>
+        </trans-unit>
+        <trans-unit id="5f56089f358b662803a510be893aea100137ac6a" translate="yes" xml:space="preserve">
+          <source>It runs two loops; the first one deals with the relative intervals (years and months) via brute-forcing, and the second one computes the additional absolute intervals with simple arithmetic (so it's faster):</source>
+          <target state="translated">最初のものはブルートフォースで相対的な間隔(年と月)を処理し、2番目のものは単純な算術で追加の絶対間隔を計算します(その方が速いです)。</target>
+        </trans-unit>
+        <trans-unit id="a9d07fba61aded041ac054dc4af31fbc0aba9342" translate="yes" xml:space="preserve">
+          <source>Keep in mind that the number of days between the two dates is NOT
+  inclusive of both dates. So if you are looking for the number of days
+  represented by all the dates between and including the dates entered,
+  you will need to add one (1) to the result of this function.</source>
+          <target state="translated">2つの日付の間の日数は、両方の日付を含むものではないことに注意してください。したがって、入力された日付を含むすべての日付の間の日数を求めたい場合は、この関数の結果に1を追加する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="a45b2c67ba779caebeab3f635deb7782a35aa23e" translate="yes" xml:space="preserve">
+          <source>More info here &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_datediff&quot;&gt;http://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_datediff&lt;/a&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;詳細はこちら&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_datediff&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;http://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_datediff&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="bc5d84db31035e238bdf2ffa7382116f7d32e635" translate="yes" xml:space="preserve">
+          <source>Note that it's for PHP  5.3.0 or greater.</source>
+          <target state="translated">PHP 5.3.0以上用であることに注意してください。</target>
+        </trans-unit>
+        <trans-unit id="71260ba4abcea48bb1fe1fe46cf4ad151de33478" translate="yes" xml:space="preserve">
+          <source>Now I need to find the difference between these two in the following form:</source>
+          <target state="translated">さて、この2つの違いを次のような形で見つける必要があります。</target>
+        </trans-unit>
+        <trans-unit id="00fcdda14949d42c1610edfba9ca80d41d59564f" translate="yes" xml:space="preserve">
+          <source>Or:</source>
+          <target state="translated">Or:</target>
+        </trans-unit>
+        <trans-unit id="e05424a323bcb65461ca7f73ba902a8cd6e1aef2" translate="yes" xml:space="preserve">
+          <source>Output :</source>
+          <target state="translated">出力 .</target>
+        </trans-unit>
+        <trans-unit id="f3c8c95c5e534bcd2ea0034a0d83177efa6923f4" translate="yes" xml:space="preserve">
+          <source>Output:</source>
+          <target state="translated">Output:</target>
+        </trans-unit>
+        <trans-unit id="29d05326e7c2446dffb5d1e1ea28f9cfa7414e7a" translate="yes" xml:space="preserve">
+          <source>PHP: date_diff - Manual</source>
+          <target state="translated">PHP:date_diff-マニュアル</target>
+        </trans-unit>
+        <trans-unit id="16a478fbb1b24d2067329b5ea2deb48fdacb49cd" translate="yes" xml:space="preserve">
+          <source>Please checkout the following link for details:</source>
+          <target state="translated">詳細は下記リンク先をご確認ください。</target>
+        </trans-unit>
+        <trans-unit id="164f747d57d1bbc2c2dbbfbe2b3629072058ac31" translate="yes" xml:space="preserve">
+          <source>See &lt;a href=&quot;http://forums.webmasterhub.net/viewtopic.php?f=23&amp;amp;t=1831&quot;&gt;PHP Date Time &amp;ndash; 7 Methods to Calculate the Difference between 2 dates&lt;/a&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;a href=&quot;http://forums.webmasterhub.net/viewtopic.php?f=23&amp;amp;t=1831&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;PHPの日付時刻-2つの日付の差を計算する7つの方法を&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;参照してください&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="67d9d56e3a2f2469e8ad0ad9855f59137e69a864" translate="yes" xml:space="preserve">
+          <source>Several people in the comments have pointed out that the code above is only an approximation. I still believe that for most purposes that's fine, since the usage of a range is more to provide a sense of how much time has passed or remains rather than to provide precision - if you want to do that, just output the date.</source>
+          <target state="translated">コメントの中で何人かの人が、上のコードはあくまでも近似値であると指摘しています。なぜなら、範囲の使用は精度を提供するというよりも、どのくらいの時間が経過したか、あるいはどのくらい残っているかという感覚を提供するためのものだからです。</target>
+        </trans-unit>
+        <trans-unit id="a0d4af94ac78374b30979e00c8489f89e9adfe24" translate="yes" xml:space="preserve">
+          <source>Since everyone is posting code samples, here is another version.</source>
+          <target state="translated">みんながコードサンプルを投稿しているので、ここでは別バージョンを紹介します。</target>
+        </trans-unit>
+        <trans-unit id="50aaa42e32514f29e19f0440f246805012735f29" translate="yes" xml:space="preserve">
+          <source>Some time ago I wrote a &lt;code&gt;format_date&lt;/code&gt; function as this gives &lt;strong&gt;many options on how you want your date&lt;/strong&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;少し前に&lt;/font&gt;&lt;/font&gt; &lt;code&gt;format_date&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;関数を作成しました。これにより&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、日付をどのようにしたいかについて多くのオプションが提供されます&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="a49727dcfc9ca40feef33a9386df42b291e646a8" translate="yes" xml:space="preserve">
+          <source>Take a look at the following link. This is the best answer I've found so far.. :)</source>
+          <target state="translated">以下のリンクを見てみてください。これが今のところ私が見つけたベストアンサーです...:)</target>
+        </trans-unit>
+        <trans-unit id="fa898e7be2f67873962ee155028a45952b269bcd" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;DateTime&lt;/code&gt; object will accept any format &lt;code&gt;strtotime()&lt;/code&gt; would. If an even more specific date format is needed, &lt;strong&gt;&lt;a href=&quot;http://il.php.net/manual/en/datetime.createfromformat.php&quot;&gt;&lt;code&gt;DateTime::createFromFormat()&lt;/code&gt;&lt;/a&gt;&lt;/strong&gt; can be used to create the &lt;code&gt;DateTime&lt;/code&gt; object.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;DateTime&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;オブジェクトは、任意の形式の受け付けます&lt;/font&gt;&lt;/font&gt; &lt;code&gt;strtotime()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;でしょう。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;さらに具体的な日付形式が必要な場合は、&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;a href=&quot;http://il.php.net/manual/en/datetime.createfromformat.php&quot;&gt; &lt;code&gt;DateTime::createFromFormat()&lt;/code&gt; &lt;/a&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;を使用して&lt;/font&gt;&lt;/font&gt; &lt;code&gt;DateTime&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;オブジェクト&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;を作成でき&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="dc314d9949904c5ae505fe639b4c9d507de27641" translate="yes" xml:space="preserve">
+          <source>The best course of action is using PHP's &lt;strong&gt;&lt;a href=&quot;http://il.php.net/manual/en/class.datetime.php&quot;&gt;&lt;code&gt;DateTime&lt;/code&gt;&lt;/a&gt;&lt;/strong&gt; (and &lt;strong&gt;&lt;a href=&quot;http://il.php.net/manual/en/class.dateinterval.php&quot;&gt;&lt;code&gt;DateInterval&lt;/code&gt;&lt;/a&gt;&lt;/strong&gt;) objects. Each date is encapsulated in a &lt;code&gt;DateTime&lt;/code&gt; object, and then a difference between the two can be made:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;最善の方法は、PHPの&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;a href=&quot;http://il.php.net/manual/en/class.datetime.php&quot;&gt; &lt;code&gt;DateTime&lt;/code&gt; &lt;/a&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;（および&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;a href=&quot;http://il.php.net/manual/en/class.dateinterval.php&quot;&gt; &lt;code&gt;DateInterval&lt;/code&gt; &lt;/a&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;）オブジェクトを使用することです。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;各日付は&lt;/font&gt;&lt;/font&gt; &lt;code&gt;DateTime&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;オブジェクトに&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;カプセル化され、&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;次に2つの間の違いを作成できます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ba122cc3b4388a8c328fa936705df78eef0363a7" translate="yes" xml:space="preserve">
+          <source>The complete code used to achieve the goal:</source>
+          <target state="translated">目標を達成するために使用される完全なコード。</target>
+        </trans-unit>
+        <trans-unit id="666dea677264c281d64faa10a262e1bde42de6da" translate="yes" xml:space="preserve">
+          <source>This is my function. Required PHP &amp;gt;= 5.3.4. It use DateTime class. Very fast, quick and can do the difference between two dates or even the so called &quot;time since&quot;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;これは私の機能です。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;必要なPHP&amp;gt; = 5.3.4。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;DateTimeクラスを使用します。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;非常に速く、速く、2つの日付の差、またはいわゆる「経過時間」を計算できます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="4ea63fd604882c5ebe3a1c8558cdce4547720a86" translate="yes" xml:space="preserve">
+          <source>This is what I came up with:</source>
+          <target state="translated">私が思いついたのはこんな感じです。</target>
+        </trans-unit>
+        <trans-unit id="5c24403277d18ba67bfa67ab050978a78bb8b4f4" translate="yes" xml:space="preserve">
+          <source>This will try to detect whether a timestamp was given or not, and will also return future dates/times as negative values:</source>
+          <target state="translated">これは、タイムスタンプが与えられたかどうかを検出しようとし、将来の日付を負の値として返します。</target>
+        </trans-unit>
+        <trans-unit id="b4b61b4554871b2fe3d2291e6343ca9b9eaa4cb2" translate="yes" xml:space="preserve">
+          <source>To format the &lt;code&gt;DateInterval&lt;/code&gt; object, we'll need check each value and exclude it if it's 0:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;DateInterval&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;オブジェクト&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;をフォーマットするには、&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;各値を確認し、0の場合は除外する必要があります。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="4f7f00c5cfe8b7a6fe41741c925f7e11dfe5667c" translate="yes" xml:space="preserve">
+          <source>To overcome that, I coded the following (improved from &lt;a href=&quot;https://stackoverflow.com/a/3959860/89771&quot;&gt;&lt;em&gt;@enobrev&lt;/em&gt; answer&lt;/a&gt;):</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;それを克服するために、私は以下をコーディングしました（&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/a/3959860/89771&quot;&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;@enobrevの&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;回答&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;から改善され&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;まし&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;た&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;）：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="5396a506f8bb074e2c836b6d779b647fe9fa87fa" translate="yes" xml:space="preserve">
+          <source>Try this very simple answer using &lt;a href=&quot;https://www.php.net/manual/en/function.date-diff.php&quot;&gt;&lt;strong&gt;date_diff()&lt;/strong&gt;&lt;/a&gt;, this is tested.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;a href=&quot;https://www.php.net/manual/en/function.date-diff.php&quot;&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;date_diff（）&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;を使用してこの非常に単純な答えを試してください&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。これはテストされています。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="5ef27c3143ab1c63bfb39928b8fd3a134702ec41" translate="yes" xml:space="preserve">
+          <source>Use example :</source>
+          <target state="translated">例を使用してください。</target>
+        </trans-unit>
+        <trans-unit id="2f91ace5f8fcbdf2a41054d153dce8abccec38cd" translate="yes" xml:space="preserve">
+          <source>Use like</source>
+          <target state="translated">のように使用します。</target>
+        </trans-unit>
+        <trans-unit id="cf6d7218ffc6d0c05a2d28dace373f9a53276732" translate="yes" xml:space="preserve">
+          <source>Use this for legacy code (PHP &amp;lt; 5.3). For up to date solution see jurka's answer below</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;これをレガシーコード（PHP &amp;lt;5.3）に使用します。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;最新の解決策については、以下のジュルカの答えを参照してください&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="2e8c45454bd27243e102ada4bd8f06b34cbc707b" translate="yes" xml:space="preserve">
+          <source>Very simple:</source>
+          <target state="translated">とてもシンプルです。</target>
+        </trans-unit>
+        <trans-unit id="9625fa5498e47aa3e6806da11abad500da235937" translate="yes" xml:space="preserve">
+          <source>View Hours and Minuts and Seconds..</source>
+          <target state="translated">時間と分と秒を表示します。</target>
+        </trans-unit>
+        <trans-unit id="b0fbc39858c35928e37da19406ab51f0c9f1f629" translate="yes" xml:space="preserve">
+          <source>Will return like &lt;code&gt;2 years 8 months 2 days&lt;/code&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt; &lt;code&gt;2 years 8 months 2 days&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;ように返され&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ます&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="bb73bf56026ae0201a077d2fc5b97d42a5dbdcad" translate="yes" xml:space="preserve">
+          <source>You can also use following code to return date diff by round fractions up
+    $date1 = $duedate; // assign due date
+    echo $date2 = date(&quot;Y-m-d&quot;); // current date 
+    $ts1 = strtotime($date1); 
+    $ts2 = strtotime($date2);
+    $seconds_diff = $ts1 - $ts2;
+    echo $datediff = ceil(($seconds_diff/3600)/24); // return in days</source>
+          <target state="translated">また、以下のコードを使用して、端数を丸めて日付の差分を返すこともできます $date1=$duedate;/期限を指定する echo $date2=date(&quot;Y-m-d&quot;);/現在の日付 $ts1=strtotime($date1);$ts2=strtotime($date2);$seconds_diff=$ts1-$ts2;echo $datediff=ceil(($seconds_diff3600)24);/日単位で返す</target>
+        </trans-unit>
+        <trans-unit id="748772fe084e6500fa6dca0da3ceec7033c3b3ac" translate="yes" xml:space="preserve">
+          <source>You can use strtotime() to convert two dates to unix time and then calculate the number of seconds between them. From this it's rather easy to calculate different time periods.</source>
+          <target state="translated">strtotime()を使用して、2 つの日付を unix 時間に変換し、その間の秒数を計算することができます。これにより、異なる時間帯を計算することが簡単にできます。</target>
+        </trans-unit>
+        <trans-unit id="3fb1ba31b7bb70797db8871d22e8485dc4a5fb88" translate="yes" xml:space="preserve">
+          <source>You can use the</source>
+          <target state="translated">を使用することができます。</target>
+        </trans-unit>
+        <trans-unit id="7c4ba444a433cfa8dda1c04899a066d9cb3dee4e" translate="yes" xml:space="preserve">
+          <source>You can very easily remove intervals you don't want (say &quot;week&quot;) by removing them from the &lt;code&gt;$aIntervals&lt;/code&gt; array, or maybe adding an &lt;code&gt;$aExclude&lt;/code&gt; parameter, or just filter them out when you output the string.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;$aIntervals&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;配列&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;から間隔を削除する&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;か、&lt;/font&gt;&lt;/font&gt; &lt;code&gt;$aExclude&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;パラメーターを&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;追加する&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;か、文字列を出力するときにフィルターで除外することで、&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;不要な&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;間隔（ &quot;週&quot;など）を簡単に削除でき&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="da52862e36a3d2c0ffbe6ae8f21dd33d5f151c89" translate="yes" xml:space="preserve">
+          <source>before the above code</source>
+          <target state="translated">上記のコードの前に</target>
+        </trans-unit>
+        <trans-unit id="1c08cc86e4dc00f3df1eddad720af2b6eef53475" translate="yes" xml:space="preserve">
+          <source>function which returns an array containing all elements of the date/time supplied:</source>
+          <target state="translated">関数は、指定されたdatetimeのすべての要素を含む配列を返します。</target>
+        </trans-unit>
+        <trans-unit id="5cf0e4193b4f4aaacef06e8a1d9ce8eb69feb783" translate="yes" xml:space="preserve">
+          <source>it calculates the difference with all of the above + days (you can't get the difference in months only)</source>
+          <target state="translated">上記のすべて+日数で差を計算します(月単位でしか差は出ません)。</target>
+        </trans-unit>
+        <trans-unit id="727dd61e2b0a1eed857d6f7a12ad84585f9b8485" translate="yes" xml:space="preserve">
+          <source>only for PHP 5.3+ (&lt;em&gt;but that's really not a good excuse anymore&lt;/em&gt;)</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;PHP 5.3以降のみ（&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ただし、これは実際には言い訳にはなりません&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;）&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="419197aaa4e93122e5f5b55f2a35e4ae07d7c6fc" translate="yes" xml:space="preserve">
+          <source>only supports years, months, days, hours, minutes and seconds (no weeks)</source>
+          <target state="translated">年月日時分秒のみサポートしています。</target>
+        </trans-unit>
+        <trans-unit id="6cfb8cd61ab95b76c426e517ccd8ba59070ef2e7" translate="yes" xml:space="preserve">
+          <source>or if you want the age to be calculated at the current date, you can use</source>
+          <target state="translated">または、現在の日付で年齢を計算したい場合は</target>
+        </trans-unit>
+        <trans-unit id="f52126b4331f92063d758925e66dd54b97001ba7" translate="yes" xml:space="preserve">
+          <source>read more &lt;a href=&quot;http://www.php.net/manual/en/datetime.diff.php&quot;&gt;php DateTime::diff manual&lt;/a&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;a href=&quot;http://www.php.net/manual/en/datetime.diff.php&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;php DateTime :: diffマニュアルを&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;もっと読む&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="b993230a2195bdd32c80ddb7de1c490e22af1729" translate="yes" xml:space="preserve">
+          <source>the output is:</source>
+          <target state="translated">が出力されます。</target>
+        </trans-unit>
+        <trans-unit id="d7049b3a91db7917345c879b6c0b78437c78921b" translate="yes" xml:space="preserve">
+          <source>you can always use the following function that can return the age in years and months (ie. 1 Year 4 Months)</source>
+          <target state="translated">を使用すると、年齢を年と月で返すことができる次の関数を常に使用することができます (例:1年4ヶ月)</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

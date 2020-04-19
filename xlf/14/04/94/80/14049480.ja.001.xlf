@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/14049480">
+    <body>
+      <group id="14049480">
+        <trans-unit id="362bc9e9f2395367fb43cf442b2292ab7399efc1" translate="yes" xml:space="preserve">
+          <source>(I colored one line gray just so that it is clear where it is going.)</source>
+          <target state="translated">(一本の線をグレーに着色したのは、どこに向かっているのかがはっきりするようにするためです)</target>
+        </trans-unit>
+        <trans-unit id="9c2aca2ce080196d80035e8f58fd11cf1e5830a2" translate="yes" xml:space="preserve">
+          <source>(If you really want to share data via controllers scope inheritance, there is nothing you need to do.  The child scope will have access to all of the parent scope properties.
+See also &lt;a href=&quot;https://stackoverflow.com/questions/13825419/controller-load-order-differs-when-loading-or-navigating/13843771#13843771&quot;&gt;Controller load order differs when loading or navigating&lt;/a&gt;)</source>
+          <target state="translated">（コントローラースコープの継承を介して実際にデータを共有する場合は、何もする必要はありません。子スコープは、すべての親スコーププロパティにアクセスできます。参照&lt;a href=&quot;https://stackoverflow.com/questions/13825419/controller-load-order-differs-when-loading-or-navigating/13843771#13843771&quot;&gt;またはコントローラーのロード順序は、ロードまたはナビゲート時に異なります&lt;/a&gt; ）</target>
+        </trans-unit>
+        <trans-unit id="6abdf5e252c173cf61f961b6ff4d944694989e8b" translate="yes" xml:space="preserve">
+          <source>(Note that to save space, I show the &lt;code&gt;anArray&lt;/code&gt; object as a single blue object with its three values, rather than an single blue object with three separate gray literals.)</source>
+          <target state="translated">（スペースを節約するために、 &lt;code&gt;anArray&lt;/code&gt; オブジェクトは、3つの個別の灰色のリテラルを持つ単一の青いオブジェクトではなく、3つの値を持つ単一の青いオブジェクトとして表示しています 。）</target>
+        </trans-unit>
+        <trans-unit id="8941d57a8e655af45677490b9e8bcf3f00abc03d" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;&amp;lt;my-directive interpolated=&quot;{{parentProp1}}&quot; twowayBinding=&quot;parentProp2&quot;&amp;gt;&lt;/code&gt; and</source>
+          <target state="translated">&lt;code&gt;&amp;lt;my-directive interpolated=&quot;{{parentProp1}}&quot; twowayBinding=&quot;parentProp2&quot;&amp;gt;&lt;/code&gt; および</target>
+        </trans-unit>
+        <trans-unit id="b352e34f8d41798496797eea2a8bb57e8ed408f6" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;scope: true&lt;/code&gt; - the directive creates a new child scope that prototypically inherits from the parent scope.  If more than one directive (on the same DOM element) requests a new scope, only one new child scope is created.  Since we have &quot;normal&quot; prototypal inheritance, this is like ng-include and ng-switch, so be wary of 2-way data binding to parent scope primitives, and child scope hiding/shadowing of parent scope properties.</source>
+          <target state="translated">&lt;code&gt;scope: true&lt;/code&gt; ディレクティブは、親スコープからプロトタイプ的に継承する新しい子スコープを作成します。 （同じDOM要素上の）複数のディレクティブが新しい​​スコープを要求する場合、1つの新しい子スコープのみが作成されます。 「通常の」プロトタイプ継承があるため、これはng-includeやng-switchに似ているため、親スコーププリミティブへの双方向データバインディング、および親スコーププロパティの子スコープ非表示/シャドウイングに注意してください。</target>
+        </trans-unit>
+        <trans-unit id="835213763afd5946d0090cecedf505f83435ec77" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;scope: { ... }&lt;/code&gt; - the directive creates a new isolate/isolated scope.  It does not prototypically inherit.  This is usually your best choice when creating reusable components, since the directive cannot accidentally read or modify the parent scope.  However, such directives often need access to a few parent scope properties.  The object hash is used to set up two-way binding (using '=') or one-way binding (using '@') between the parent scope and the isolate scope.  There is also '&amp;amp;' to bind to parent scope expressions.  So, these all create local scope properties that are derived from the parent scope.
+Note that attributes are used to help set up the binding -- you can't just reference parent scope property names in the object hash, you have to use an attribute.  E.g., this won't work if you want to bind to parent property &lt;code&gt;parentProp&lt;/code&gt; in the isolated scope: &lt;code&gt;&amp;lt;div my-directive&amp;gt;&lt;/code&gt; and &lt;code&gt;scope: { localProp: '@parentProp' }&lt;/code&gt;.  An attribute must be used to specify each parent property that the directive wants to bind to: &lt;code&gt;&amp;lt;div my-directive the-Parent-Prop=parentProp&amp;gt;&lt;/code&gt; and &lt;code&gt;scope: { localProp: '@theParentProp' }&lt;/code&gt;.</source>
+          <target state="translated">&lt;code&gt;scope: { ... }&lt;/code&gt; -ディレクティブは新しい分離/分離スコープを作成します。 それはプロトタイプ的に継承しません。 ディレクティブが誤って親スコープを読み取ったり変更したりすることがないため、これは通常、再利用可能なコンポーネントを作成するときに最良の選択です。 ただし、このようなディレクティブは多くの場合、いくつかの親スコーププロパティにアクセスする必要があります。 オブジェクトハッシュは、親スコープと分離スコープ間の双方向バインディング（ '='を使用）または一方向バインディング（ '@'を使用）をセットアップするために使用されます。 親スコープ式にバインドする '＆'もあります。 したがって、これらはすべて、親スコープから派生したローカルスコーププロパティを作成します。 属性はバインディングのセットアップを支援するために使用されることに注意してください。オブジェクトハッシュで親スコープのプロパティ名を参照するだけではなく、属性を使用する必要があります。 たとえば、分離されたスコープ： &lt;code&gt;&amp;lt;div my-directive&amp;gt;&lt;/code&gt; および &lt;code&gt;scope: { localProp: '@parentProp' }&lt;/code&gt; 親プロパティ &lt;code&gt;parentProp&lt;/code&gt; にバインドする場合、これは機能しません。 ディレクティブがバインドする各親プロパティを指定するには、属性を使用する必要があります： &lt;code&gt;&amp;lt;div my-directive the-Parent-Prop=parentProp&amp;gt;&lt;/code&gt; and &lt;code&gt;scope: { localProp: '@theParentProp' }&lt;/code&gt; 。</target>
+        </trans-unit>
+        <trans-unit id="63c2b4504aad72d404557032a2480a14ed8d5ff5" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;transclude: true&lt;/code&gt; - the directive creates a new &quot;transcluded&quot; child scope, which prototypically inherits from the parent scope.  The transcluded and the isolated scope (if any) are siblings -- the $parent property of each scope references the same parent scope.  When a transcluded and an isolate scope both exist, isolate scope property $$nextSibling will reference the transcluded scope.  I'm not aware of any nuances with the transcluded scope.</source>
+          <target state="translated">&lt;code&gt;transclude: true&lt;/code&gt; ディレクティブは、新しい「トランスクルードされた」子スコープを作成します。子スコープは、典型的には親スコープから継承します。 隠されたスコープと分離されたスコープ（存在する場合）は兄弟です。各スコープの$ parentプロパティは同じ親スコープを参照します。 トランスクルードスコープと分離スコープの両方が存在する場合、分離スコーププロパティ$$ nextSiblingはトランスクルードスコープを参照します。 トランスクルードされたスコープのニュアンスは知りません。</target>
+        </trans-unit>
+        <trans-unit id="bbff377660b20abffad7a6d418423be860f4fc17" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Check the results.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;結果を確認してください。&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="0b15b86c1b80fabe2aabd774598b38aa8e612eb2" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Also placed on the AngularJS wiki:&lt;/strong&gt;&lt;a href=&quot;https://github.com/angular/angular.js/wiki/Understanding-Scopes&quot;&gt;https://github.com/angular/angular.js/wiki/Understanding-Scopes&lt;/a&gt;</source>
+          <target state="translated">&lt;strong&gt;AngularJS wikiにも配置されています：&lt;/strong&gt; &lt;a href=&quot;https://github.com/angular/angular.js/wiki/Understanding-Scopes&quot;&gt;https&lt;/a&gt; &lt;strong&gt;:&lt;/strong&gt; //github.com/angular/angular.js/wiki/Understanding-Scopes</target>
+        </trans-unit>
+        <trans-unit id="0449a09c1348a6a0f43c8e8b64a0a9bf4e617d86" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;L-o-n-g answer&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;長い答え&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="1d556e0b5d60936a8ec25e7a4314e53c446c74b3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Only property reads search the prototype chain, not writes.&lt;/strong&gt; So when you set</source>
+          <target state="translated">&lt;strong&gt;プロパティの読み取りのみがプロトタイプチェーンを検索し、書き込みは行いません。&lt;/strong&gt; だからあなたが設定したとき</target>
+        </trans-unit>
+        <trans-unit id="8cfea32fb3dfc1fc810909a8f8a65f811513413f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Quick answer&lt;/strong&gt;:</source>
+          <target state="translated">&lt;strong&gt;簡単な答え&lt;/strong&gt; ：</target>
+        </trans-unit>
+        <trans-unit id="e06154976179776fe34c6a025af4919585fcf6bf" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;there's a subtle read going on within that write operation&lt;/strong&gt; that tries to look up myThing before writing to its prop. So that's why writing to object.properties from the child gets at the parent's objects.</source>
+          <target state="translated">プロップに書き込む前にmyThingを検索しようとする&lt;strong&gt;書き込み操作内で行われている微妙な読み取りがあり&lt;/strong&gt;ます。 したがって、子からobject.propertiesへの書き込みが親のオブジェクトに到達するのはそのためです。</target>
+        </trans-unit>
+        <trans-unit id="13c918f981c68e456ab5bc890ab4c0ec502977dc" translate="yes" xml:space="preserve">
+          <source>A child scope normally prototypically inherits from its parent scope, but not always.  One exception to this rule is a directive with &lt;code&gt;scope: { ... }&lt;/code&gt; -- this creates an &quot;isolate&quot; scope that does not prototypically inherit.  This construct is often used when creating a &quot;reusable component&quot; directive.</source>
+          <target state="translated">子スコープは通常、親スコープから継承しますが、常にそうとは限りません。 このルールの1つの例外は、 &lt;code&gt;scope: { ... }&lt;/code&gt; ディレクティブです。これにより、プロトタイプ的に継承しない「分離」スコープが作成されます。 この構成は、「再利用可能なコンポーネント」ディレクティブを作成するときによく使用されます。</target>
+        </trans-unit>
+        <trans-unit id="fe358764520311848c1bc91fb5c17d29cb979406" translate="yes" xml:space="preserve">
+          <source>A scope (prototypically) inherits properties from its parent scope.</source>
+          <target state="translated">スコープ (プロトタイプ)は親スコープからプロパティを継承します。</target>
+        </trans-unit>
+        <trans-unit id="d1d8bffbf559d5536f6500ea0a1d093618886336" translate="yes" xml:space="preserve">
+          <source>A scope &lt;em&gt;can&lt;/em&gt; inherit from a parent scope.</source>
+          <target state="translated">スコープ&lt;em&gt;は&lt;/em&gt;親スコープから継承&lt;em&gt;でき&lt;/em&gt;ます。</target>
+        </trans-unit>
+        <trans-unit id="5ddc19a49f4aeae5b69a08fb93c799e9c9d7b697" translate="yes" xml:space="preserve">
+          <source>Add method &quot;changeProps&quot; to a child prototype, which will rewrite &quot;primitive&quot; property value in Child object and change &quot;object.one&quot; value  both in Child and Parent objects</source>
+          <target state="translated">子オブジェクトにchangePropsメソッドを追加し、子オブジェクトのprimitiveプロパティの値を書き換え、子オブジェクトと親オブジェクトの両方でobject.oneの値を変更します。</target>
+        </trans-unit>
+        <trans-unit id="d81280e6f9424c6ac30ad9caa6dffbfbd01910fa" translate="yes" xml:space="preserve">
+          <source>Also, assume the directive does this in its linking function: &lt;code&gt;scope.someIsolateProp = &quot;I'm isolated&quot;&lt;/code&gt;</source>
+          <target state="translated">また、ディレクティブがリンク関数でこれを行うと想定します &lt;code&gt;scope.someIsolateProp = &quot;I'm isolated&quot;&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="6a451079fcc06fda672c9171e72986125dacf31a" translate="yes" xml:space="preserve">
+          <source>And in our HTML:</source>
+          <target state="translated">そして、私たちのHTMLの中では</target>
+        </trans-unit>
+        <trans-unit id="a9a0f24354599619f9de8e6d6028a558064ab0cb" translate="yes" xml:space="preserve">
+          <source>Angular Scope Inheritance</source>
+          <target state="translated">Angularスコープの継承</target>
+        </trans-unit>
+        <trans-unit id="04edf7c89b9f81715bbe002e006477ad0ecd1ebf" translate="yes" xml:space="preserve">
+          <source>As for the nuances, scope inheritance is normally straightfoward... until you need &lt;strong&gt;2-way data binding&lt;/strong&gt; (i.e., form elements, ng-model) in the child scope.  Ng-repeat, ng-switch, and ng-include can trip you up if you try to bind to a &lt;strong&gt;primitive&lt;/strong&gt; (e.g., number, string, boolean) in the parent scope from inside the child scope.  It doesn't work the way most people expect it should work.  The child scope gets its own property that hides/shadows the parent property of the same name.  Your workarounds are</source>
+          <target state="translated">ニュアンスに関しては、スコープの継承は通常、子スコープで&lt;strong&gt;双方向のデータバインディング&lt;/strong&gt; （つまり、フォーム要素、ng-model）が必要になるまで、単純明快です。 ng-repeat、ng-switch、およびng-includeは、子スコープ内から親スコープ内の&lt;strong&gt;プリミティブ&lt;/strong&gt; （たとえば、数値、文字列、ブール）にバインドしようとすると、トリップする可能性があります。 ほとんどの人が期待するようには動作しません。 子スコープは、同じ名前の親プロパティを非表示/シャドウにする独自のプロパティを取得します。 あなたの回避策は</target>
+        </trans-unit>
+        <trans-unit id="4ed249b8cae7519efef1d54e83355e59137f1469" translate="yes" xml:space="preserve">
+          <source>Assign child prototype (Make child prototype inherit from parent prototype)</source>
+          <target state="translated">子プロトタイプの割り当て(子プロトタイプを親プロトタイプから継承させる)</target>
+        </trans-unit>
+        <trans-unit id="2996f5993b5b26bf797d1e78ed5e38759f07c7bb" translate="yes" xml:space="preserve">
+          <source>Assign proper &quot;Child&quot; prototype constructor</source>
+          <target state="translated">適切な &quot;Child &quot;プロトタイプのコンストラクタを割り当てる</target>
+        </trans-unit>
+        <trans-unit id="b5081c09c76c448c8f28cf7a987c299007621686" translate="yes" xml:space="preserve">
+          <source>Call Child (son) changeProps method</source>
+          <target state="translated">子(息子)のchangePropsメソッドを呼び出す</target>
+        </trans-unit>
+        <trans-unit id="8a364885c600d88f272a42d908f8846ef75358c2" translate="yes" xml:space="preserve">
+          <source>Child primitive property changed (rewritten)</source>
+          <target state="translated">子プリミティブプロパティの変更(書き換え</target>
+        </trans-unit>
+        <trans-unit id="1ffec34742859a8b858a2042f314ba6bb9712a26" translate="yes" xml:space="preserve">
+          <source>Create &quot;Child&quot; object function</source>
+          <target state="translated">子」オブジェクトの作成機能</target>
+        </trans-unit>
+        <trans-unit id="d05ba29982ee4adb0294fdfc09f8849d4dae68fb" translate="yes" xml:space="preserve">
+          <source>Diagrams were generated with &lt;a href=&quot;/questions/tagged/graphviz&quot;&gt;graphviz&lt;/a&gt; &quot;*.dot&quot; files, which are on &lt;a href=&quot;https://github.com/mrajcok/angularjs-prototypal-inheritance-diagrams&quot;&gt;github&lt;/a&gt;. Tim Caswell's &quot;&lt;a href=&quot;http://howtonode.org/object-graphs&quot;&gt;Learning JavaScript with Object Graphs&lt;/a&gt;&quot; was the inspiration for using GraphViz for the diagrams.</source>
+          <target state="translated">図は、 &lt;a href=&quot;https://github.com/mrajcok/angularjs-prototypal-inheritance-diagrams&quot;&gt;github&lt;/a&gt;にある&lt;a href=&quot;/questions/tagged/graphviz&quot;&gt;graphviz&lt;/a&gt; &quot;* .dot&quot;ファイルで生成されました。 Tim Caswellの「 &lt;a href=&quot;http://howtonode.org/object-graphs&quot;&gt;オブジェクトグラフを使用したJavaScriptの学習&lt;/a&gt; 」は、図にGraphVizを使用するための着想です。</target>
+        </trans-unit>
+        <trans-unit id="224f881f49f35e408bbcfa7028d153590b37fec0" translate="yes" xml:space="preserve">
+          <source>Each ng-include generates a new child scope, which prototypically inherits from the parent scope.</source>
+          <target state="translated">各 ng-include は新しい子スコープを生成し、その子スコープは親スコープをプロトタイプとして継承します。</target>
+        </trans-unit>
+        <trans-unit id="f0f83f9d583818dd44d3f9d04d8204b2b0d352a8" translate="yes" xml:space="preserve">
+          <source>First we create &quot;Parent&quot; object function</source>
+          <target state="translated">まず、&quot;Parent &quot;オブジェクト関数を作成します。</target>
+        </trans-unit>
+        <trans-unit id="76003c9c8e1d358158e7998b80eba506f2cddf5c" translate="yes" xml:space="preserve">
+          <source>For all scopes (prototypal or not), Angular always tracks a parent-child relationship (i.e., a hierarchy), via properties $parent and $$childHead and $$childTail.</source>
+          <target state="translated">すべてのスコープ(プロトタイプであるかどうかに関わらず)において、Angularは常に親子関係(つまり階層)を追跡します。</target>
+        </trans-unit>
+        <trans-unit id="d68a226c6237d24500cc2414bd86f74041060caa" translate="yes" xml:space="preserve">
+          <source>For all scopes (prototypal or not), Angular always tracks a parent-child relationship (i.e., a hierarchy), via scope properties $parent, $$childHead and $$childTail.  I normally don't show these scope properties in the diagrams.</source>
+          <target state="translated">すべてのスコープ(プロトタイプかどうかに関わらず)に対して、Angularは常に親子関係(つまり階層)をトラッキングしていて、スコーププロパティの$parent、$$$childHead、$$$childTailを経由しています。通常、これらのスコーププロパティは図には表示しません。</target>
+        </trans-unit>
+        <trans-unit id="b883a122a0ff99a0160d4dd55f990d7e4e400f28" translate="yes" xml:space="preserve">
+          <source>For each item/iteration, ng-repeat creates a new scope, which prototypically inherits from the parent scope, &lt;strong&gt;but it also assigns the item's value to a new property on the new child scope&lt;/strong&gt;.  (The name of the new property is the loop variable's name.)  Here's what the Angular source code for ng-repeat actually is:</source>
+          <target state="translated">ng-repeatは、アイテム/反復ごとに新しいスコープを作成します。これは、典型的には親スコープから継承します&lt;strong&gt;が、アイテムの値を新しい子スコープの新しいプロパティに割り当てます&lt;/strong&gt; 。 （新しいプロパティの名前はループ変数の名前です。）これが実際にng-repeatのAngularソースコードです。</target>
+        </trans-unit>
+        <trans-unit id="d22a4e3b74d54cfd3eda148ac16ef352c95fcccd" translate="yes" xml:space="preserve">
+          <source>For more information on isolate scopes see &lt;a href=&quot;http://onehungrymind.com/angularjs-sticky-notes-pt-2-isolated-scope/&quot;&gt;http://onehungrymind.com/angularjs-sticky-notes-pt-2-isolated-scope/&lt;/a&gt;</source>
+          <target state="translated">分離スコープの詳細については、 &lt;a href=&quot;http://onehungrymind.com/angularjs-sticky-notes-pt-2-isolated-scope/&quot;&gt;http：&lt;/a&gt; //onehungrymind.com/angularjs-sticky-notes-pt-2-isolated-scope/を参照してください</target>
+        </trans-unit>
+        <trans-unit id="5f28c07f801f81133a48ea659f76557041efbb55" translate="yes" xml:space="preserve">
+          <source>For scenarios where form elements are not involved, another solution is to define a function on the parent scope to modify the primitive.  Then ensure the child always calls this function, which will be available to the child scope due to prototypal inheritance. E.g.,</source>
+          <target state="translated">フォーム要素が関与しないシナリオの場合、別の解決策としては、プリミティブを修正するための関数を親スコープで定義することです。そして、子は常にこの関数を呼び出すようにします。例えば、以下のようになります。</target>
+        </trans-unit>
+        <trans-unit id="39de2c52b338823dcf28717c0da794fd864f6e31" translate="yes" xml:space="preserve">
+          <source>For the picture below we have</source>
+          <target state="translated">下の写真のために我々は持っています。</target>
+        </trans-unit>
+        <trans-unit id="25a4a3b828e0fdd290235d69c7a56465278b9b20" translate="yes" xml:space="preserve">
+          <source>For the picture below, assume the same directive as above with this addition: &lt;code&gt;transclude: true&lt;/code&gt;</source>
+          <target state="translated">以下の図では、上記と同じディレクティブにこの追加を追加したと想定します &lt;code&gt;transclude: true&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="a17ac04579a8099173830d945d577b08efd0e95c" translate="yes" xml:space="preserve">
+          <source>Having a '.' in your models will ensure that prototypal inheritance is in play. So, use</source>
+          <target state="translated">モデルに'.'をつけることで、プロトタイプの継承が確実に行われるようになります。ですから、以下のように</target>
+        </trans-unit>
+        <trans-unit id="cf13bf79e05888c8ce47a05548ac7b8463808a88" translate="yes" xml:space="preserve">
+          <source>Here is a &lt;a href=&quot;http://jsfiddle.net/mrajcok/jNxyE/&quot;&gt;sample fiddle&lt;/a&gt; that uses this &quot;parent function&quot; approach.  (The fiddle was written as part of this answer: &lt;a href=&quot;https://stackoverflow.com/a/14104318/215945&quot;&gt;https://stackoverflow.com/a/14104318/215945&lt;/a&gt;.)</source>
+          <target state="translated">この「親関数」アプローチを使用する&lt;a href=&quot;http://jsfiddle.net/mrajcok/jNxyE/&quot;&gt;フィドル&lt;/a&gt;の例を次に示します。 （フィドルはこの回答の一部として書かれました： &lt;a href=&quot;https://stackoverflow.com/a/14104318/215945&quot;&gt;https&lt;/a&gt; : //stackoverflow.com/a/14104318/215945 ）</target>
+        </trans-unit>
+        <trans-unit id="78d9d8c7814ea8c0bc54dc3db2d80fadc8541048" translate="yes" xml:space="preserve">
+          <source>I in no way want to compete with Mark's answer, but just wanted to highlight the piece that finally made everything click as someone new to &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain&quot;&gt;Javascript inheritance and its prototype chain&lt;/a&gt;.</source>
+          <target state="translated">私はマークの答えと競合したくはありませんが、 &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain&quot;&gt;Javascriptの継承とそのプロトタイプチェーンの初心者&lt;/a&gt;としてすべてが最後にすべてをクリックするようにした作品を強調したかっただけです 。</target>
+        </trans-unit>
+        <trans-unit id="343a19234efc27bcc15d07110b0015da8503ed16" translate="yes" xml:space="preserve">
+          <source>I would like to add an example of prototypical inheritance with javascript to @Scott Driscoll answer. We'll be using classical inheritance pattern with Object.create() which is a part of  EcmaScript 5 specification.</source>
+          <target state="translated">Scott Driscollさんの@Scott Driscollさんの回答にjavascriptを使ったプロトタイピング継承の例を追加したいと思います。今回はEcmaScript 5の仕様の一部であるObject.create()を使った古典的な継承パターンを使います。</target>
+        </trans-unit>
+        <trans-unit id="802781ec18af22b8b318435ab4f3e32318e26ccc" translate="yes" xml:space="preserve">
+          <source>If item is a primitive (as in myArrayOfPrimitives), essentially a copy of the value is assigned to the new child scope property.  Changing the child scope property's value (i.e., using ng-model, hence child scope &lt;code&gt;num&lt;/code&gt;) does &lt;strong&gt;not&lt;/strong&gt; change the array the parent scope references.  So in the first ng-repeat above, each child scope gets a &lt;code&gt;num&lt;/code&gt; property that is independent of the myArrayOfPrimitives array:</source>
+          <target state="translated">（myArrayOfPrimitivesのように）itemがプリミティブである場合、基本的には値のコピーが新しい子スコーププロパティに割り当てられます。 子スコーププロパティの値を変更しても（つまり、ng-modelを使用しているため、子スコープ &lt;code&gt;num&lt;/code&gt; を使用 ）、親スコープが参照する配列は変更されませ&lt;strong&gt;ん&lt;/strong&gt; 。 したがって、上記の最初のng-repeatでは、各子スコープはmyArrayOfPrimitives配列から独立した &lt;code&gt;num&lt;/code&gt; プロパティを取得します。</target>
+        </trans-unit>
+        <trans-unit id="4866d5c72997fb88595861f951b716f4b48a2c00" translate="yes" xml:space="preserve">
+          <source>If we read childScope.propertyX, and childScope has propertyX, then the prototype chain is not consulted.</source>
+          <target state="translated">childScope.propertyXを読み込んで、childScopeがpropertyXを持っている場合は、プロトタイプチェーンは参照されません。</target>
+        </trans-unit>
+        <trans-unit id="557b0df6a8ad1c719a17070ca1480aff70f73067" translate="yes" xml:space="preserve">
+          <source>If we set childScope.propertyX, the prototype chain is not consulted.</source>
+          <target state="translated">childScope.propertyXを設定すると、プロトタイプチェーンは参照されません。</target>
+        </trans-unit>
+        <trans-unit id="d680be6d3dd2682e10431ab13158d61b069cf24d" translate="yes" xml:space="preserve">
+          <source>If we try to access a property defined on the parentScope from the child scope, JavaScript will first look in the child scope, not find the property, then look in the inherited scope, and find the property.  (If it didn't find the property in the parentScope, it would continue up the prototype chain... all the way up to the root scope). So, these are all true:</source>
+          <target state="translated">親スコープで定義されているプロパティに子スコープからアクセスしようとすると、JavaScript はまず子スコープを見てプロパティを見つけられず、次に継承されたスコープを見てプロパティを見つけます。(親スコープでプロパティが見つからなかった場合は、プロトタイプの連鎖をさかのぼって、ルートスコープにたどり着きます)つまり、これらはすべて真です。</target>
+        </trans-unit>
+        <trans-unit id="4aa54311fd9a9a8128dded66c00d21f4fcfb64e3" translate="yes" xml:space="preserve">
+          <source>Initiate Parent (dad) and Child (son) objects.</source>
+          <target state="translated">イニシエート 親(父)と子(子)のオブジェクト。</target>
+        </trans-unit>
+        <trans-unit id="19e47d935ce82b089f07b281873a3517222fa41b" translate="yes" xml:space="preserve">
+          <source>Isolate scope's &lt;code&gt;__proto__&lt;/code&gt; references Object.
+Isolate scope's $parent references the parent scope, so although it is isolated and doesn't inherit prototypically from the parent scope, it is still a child scope.</source>
+          <target state="translated">スコープの &lt;code&gt;__proto__&lt;/code&gt; 参照オブジェクトを分離します。 分離スコープの$ parentは親スコープを参照するため、分離され、親スコープからプロトタイプを継承しませんが、それでも子スコープです。</target>
+        </trans-unit>
+        <trans-unit id="a1cb23b18b0ca50c3a0a704b077fee50b3d6f174" translate="yes" xml:space="preserve">
+          <source>It doesn't look up the chain, but when you set</source>
+          <target state="translated">チェーンを見上げるわけではありませんが</target>
+        </trans-unit>
+        <trans-unit id="b0be3f5d2d9159cde42e618e5abe2a242f9b35b2" translate="yes" xml:space="preserve">
+          <source>It is important to first have a solid understanding of prototypal inheritance, especially if you are coming from a server-side background and you are more familiar with class-ical inheritance.  So let's review that first.</source>
+          <target state="translated">特にサーバーサイドのバックグラウンドから来ていて、クラス継承に慣れている場合は、まずプロトタイプ継承をしっかりと理解しておくことが重要です。そこで、まずそれを復習しましょう。</target>
+        </trans-unit>
+        <trans-unit id="1851c59bc3075bb17267a2a94b26d1a8cbcc1f23" translate="yes" xml:space="preserve">
+          <source>JavaScript Prototypal Inheritance</source>
+          <target state="translated">JavaScriptのプロトタイピング継承</target>
+        </trans-unit>
+        <trans-unit id="81e79922be316c42d992eacbd258ccdc9e61e020" translate="yes" xml:space="preserve">
+          <source>More info on Object.create here &lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/create&quot;&gt;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/create&lt;/a&gt;</source>
+          <target state="translated">Object.createの詳細については、 &lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/create&quot;&gt;https：&lt;/a&gt; //developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/createをご覧ください。</target>
+        </trans-unit>
+        <trans-unit id="17b26fc30b1512c9e24a72c572b1f77391a20540" translate="yes" xml:space="preserve">
+          <source>Nesting controllers using ng-controller results in normal prototypal inheritance, just like ng-include and ng-switch, so the same techniques apply.
+However, &quot;it is considered bad form for two controllers to share information via $scope inheritance&quot; -- &lt;a href=&quot;http://onehungrymind.com/angularjs-sticky-notes-pt-1-architecture/&quot;&gt;http://onehungrymind.com/angularjs-sticky-notes-pt-1-architecture/&lt;/a&gt;
+A service should be used to share data between controllers instead.</source>
+          <target state="translated">ng-controllerを使用してコントローラーをネストすると、ng-includeやng-switchと同様に、通常のプロトタイプの継承が行われるため、同じ手法が適用されます。 ただし、「2つのコントローラーが$ scopeの継承を介して情報を共有するのは不適切な形式と見なされます」 &lt;a href=&quot;http://onehungrymind.com/angularjs-sticky-notes-pt-1-architecture/&quot;&gt;-http://onehungrymind.com/angularjs-sticky-notes-pt-1-architecture/&lt;/a&gt;サービスは、データを共有するために使用する必要があります代わりにコントローラ。</target>
+        </trans-unit>
+        <trans-unit id="bdfea434bdc407230ae5f60034419d37fb129edd" translate="yes" xml:space="preserve">
+          <source>New AngularJS developers often do not realize that &lt;code&gt;ng-repeat&lt;/code&gt;, &lt;code&gt;ng-switch&lt;/code&gt;, &lt;code&gt;ng-view&lt;/code&gt;, &lt;code&gt;ng-include&lt;/code&gt; and &lt;code&gt;ng-if&lt;/code&gt; all create new child scopes, so the problem often shows up when these directives are involved. (See &lt;a href=&quot;http://plnkr.co/edit/zZfUQN?p=preview&quot;&gt;this example&lt;/a&gt; for a quick illustration of the problem.)</source>
+          <target state="translated">新しいAngularJS開発者は、 &lt;code&gt;ng-repeat&lt;/code&gt; 、 &lt;code&gt;ng-switch&lt;/code&gt; 、 &lt;code&gt;ng-view&lt;/code&gt; 、 &lt;code&gt;ng-include&lt;/code&gt; 、および &lt;code&gt;ng-if&lt;/code&gt; がすべて新しい子スコープを作成することを認識していないことがよくあります。そのため、これらのディレクティブが関係するときに問題が発生することがよくあります。 （問題の簡単な説明については、 &lt;a href=&quot;http://plnkr.co/edit/zZfUQN?p=preview&quot;&gt;この例&lt;/a&gt;を参照してください。）</target>
+        </trans-unit>
+        <trans-unit id="3c51eaa7a8ebfbc7717269ec1e43a6a1a4e5edd9" translate="yes" xml:space="preserve">
+          <source>Ng-repeat works a little differently.  Suppose we have in our controller:</source>
+          <target state="translated">Ng-repeat の動作は少し異なります。コントローラの中に</target>
+        </trans-unit>
+        <trans-unit id="c7ee5ad42887cfc364ac2ae6c87e55321fd13ccc" translate="yes" xml:space="preserve">
+          <source>Note, by default, directives do not create new scope -- i.e., the default is &lt;code&gt;scope: false&lt;/code&gt;.</source>
+          <target state="translated">デフォルトでは、ディレクティブは新しいスコープを作成しないことに注意してください。つまり、デフォルトは &lt;code&gt;scope: false&lt;/code&gt; です。</target>
+        </trans-unit>
+        <trans-unit id="c221036d1055470cf610288db1253caab6ef6104" translate="yes" xml:space="preserve">
+          <source>One last scenario:</source>
+          <target state="translated">最後のシナリオを一つ。</target>
+        </trans-unit>
+        <trans-unit id="e0f4a686f88d43bf71f098468123a0d1b2480522" translate="yes" xml:space="preserve">
+          <source>Parent and Child object.one properties changed</source>
+          <target state="translated">親と子のobject.oneプロパティが変更されました。</target>
+        </trans-unit>
+        <trans-unit id="f1755d0d23e3e1b31d2d35a7c30e78c25e37675e" translate="yes" xml:space="preserve">
+          <source>Parent primitive property did not change</source>
+          <target state="translated">親プリミティブプロパティは変更されませんでした。</target>
+        </trans-unit>
+        <trans-unit id="33e340f444883767e95f1138224ae3c363df1354" translate="yes" xml:space="preserve">
+          <source>See also &lt;a href=&quot;https://stackoverflow.com/a/13782671/215945&quot;&gt;https://stackoverflow.com/a/13782671/215945&lt;/a&gt; and &lt;a href=&quot;https://github.com/angular/angular.js/issues/1267&quot;&gt;https://github.com/angular/angular.js/issues/1267&lt;/a&gt;.</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/a/13782671/215945&quot;&gt;https://stackoverflow.com/a/13782671/215945&lt;/a&gt;および&lt;a href=&quot;https://github.com/angular/angular.js/issues/1267&quot;&gt;https://github.com/angular/angular.js/issues/1267&lt;/a&gt;も参照してください 。</target>
+        </trans-unit>
+        <trans-unit id="fec6ce6579046ec5e7f88479a74428b8d21a89a9" translate="yes" xml:space="preserve">
+          <source>See also &lt;a href=&quot;https://stackoverflow.com/questions/12405005/angularjs-bind-scope-of-a-switch-case/12414410&quot;&gt;AngularJS, bind scope of a switch-case?&lt;/a&gt;</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/questions/12405005/angularjs-bind-scope-of-a-switch-case/12414410&quot;&gt;AngularJS&lt;/a&gt;も参照してください、switch-caseのスコープをバインドしますか？</target>
+        </trans-unit>
+        <trans-unit id="e719ff46b30c8a375d9fec4a2f353bfcc4f0efc2" translate="yes" xml:space="preserve">
+          <source>See also &lt;a href=&quot;https://stackoverflow.com/questions/13714884/difficulty-with-ng-model-ng-repeat-and-inputs&quot;&gt;Difficulty with ng-model, ng-repeat, and inputs&lt;/a&gt; and 
+&lt;a href=&quot;https://stackoverflow.com/a/13782671/215945&quot;&gt;https://stackoverflow.com/a/13782671/215945&lt;/a&gt;</source>
+          <target state="translated">&lt;a href=&quot;https://stackoverflow.com/questions/13714884/difficulty-with-ng-model-ng-repeat-and-inputs&quot;&gt;ng-model、ng-repeat、inputsの難易度&lt;/a&gt;および&lt;a href=&quot;https://stackoverflow.com/a/13782671/215945&quot;&gt;https://stackoverflow.com/a/13782671/215945も参照してください。&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="9a4b9917ddd787e8d62b82f045df5b9f2c17092e" translate="yes" xml:space="preserve">
+          <source>So, does a child scope always prototypically inherit from its parent scope? Are there exceptions? When it does inherit, is it always normal JavaScript prototypal inheritance?</source>
+          <target state="translated">では、子スコープは常に親スコープをプロトタイピングで継承するのでしょうか?例外はあるのでしょうか?継承する場合、常に通常のJavaScriptのプロトタイピング継承なのでしょうか?</target>
+        </trans-unit>
+        <trans-unit id="9e6369804c78f7f810d1a2f16ee7cb0a8e521992" translate="yes" xml:space="preserve">
+          <source>So, if item is an object, a reference to the original object (not a copy) is assigned to the new child scope property.  Changing the child scope property's value (i.e., using ng-model, hence &lt;code&gt;obj.num&lt;/code&gt;) &lt;strong&gt;does&lt;/strong&gt; change the object the parent scope references.  So in the second ng-repeat above, we have:</source>
+          <target state="translated">したがって、アイテムがオブジェクトの場合、元のオブジェクトへの参照（コピーではない）が新しい子スコーププロパティに割り当てられます。 子スコーププロパティの値を変更すると（つまり、ng-modelを使用し、したがって &lt;code&gt;obj.num&lt;/code&gt; を使用して ）、親スコープが参照するオブジェクト&lt;strong&gt;が&lt;/strong&gt;変更されます。 上記の2回目のng-repeatでは、次のようになります。</target>
+        </trans-unit>
+        <trans-unit id="12b71c3e0fe5f7c0b8d17cc03186e281412da4a8" translate="yes" xml:space="preserve">
+          <source>Summary</source>
+          <target state="translated">Summary</target>
+        </trans-unit>
+        <trans-unit id="cc4d3539063b02aa54ad5dda83c79896a3067f88" translate="yes" xml:space="preserve">
+          <source>Suppose parentScope has properties aString, aNumber, anArray, anObject, and aFunction.  If childScope prototypically inherits from parentScope, we have:</source>
+          <target state="translated">parentScope が aString,aNumber,anArray,anObject,aFunction というプロパティを持っているとします。childScopeがprototypicにparentScopeを継承しているとすると、次のようになります。</target>
+        </trans-unit>
+        <trans-unit id="e425db46930aa754cb8074fc1c831cb164b51bd2" translate="yes" xml:space="preserve">
+          <source>Suppose we have in our controller:</source>
+          <target state="translated">コントローラの中にあるとします。</target>
+        </trans-unit>
+        <trans-unit id="a1633172dfdf4a530f7d467aceec66485f144710" translate="yes" xml:space="preserve">
+          <source>Suppose we then do this:</source>
+          <target state="translated">次に、このようにするとしましょう。</target>
+        </trans-unit>
+        <trans-unit id="bba48911b62c99d44cbc4f4088dedb4a1a4ee050" translate="yes" xml:space="preserve">
+          <source>Takeaways:</source>
+          <target state="translated">Takeaways:</target>
+        </trans-unit>
+        <trans-unit id="2cb274acb022d6adbcd46abc2c49043f6a50a791" translate="yes" xml:space="preserve">
+          <source>The &lt;a href=&quot;http://docs.angularjs.org/api/ng.$rootScope.Scope&quot;&gt;API Reference Scope page&lt;/a&gt; says:</source>
+          <target state="translated">&lt;a href=&quot;http://docs.angularjs.org/api/ng.$rootScope.Scope&quot;&gt;APIリファレンススコープページに&lt;/a&gt;は次のように記載されています。</target>
+        </trans-unit>
+        <trans-unit id="6ece9a032e06e6d7a13d6f923e60f3c3759a8bf2" translate="yes" xml:space="preserve">
+          <source>The &lt;a href=&quot;http://docs.angularjs.org/guide/scope&quot;&gt;Developer Guide Scope page&lt;/a&gt; says:</source>
+          <target state="translated">&lt;a href=&quot;http://docs.angularjs.org/guide/scope&quot;&gt;デベロッパーガイドのスコープページに&lt;/a&gt;は次のように記載されています。</target>
+        </trans-unit>
+        <trans-unit id="1effa6eab1a807614c56859066cc710880afa491" translate="yes" xml:space="preserve">
+          <source>The contenders:</source>
+          <target state="translated">競争相手。</target>
+        </trans-unit>
+        <trans-unit id="5a245f54b8cc6be3fdde1e33a7363c01930e01fe" translate="yes" xml:space="preserve">
+          <source>The following create new scopes, and inherit prototypically: ng-repeat, ng-include, ng-switch, ng-controller, directive with &lt;code&gt;scope: true&lt;/code&gt;, directive with &lt;code&gt;transclude: true&lt;/code&gt;.</source>
+          <target state="translated">以下は新しいスコープを作成し、プロトタイプ的に継承します：ng-repeat、ng-include、ng-switch、ng-controller、 &lt;code&gt;scope: true&lt;/code&gt; ディレクティブ、 &lt;code&gt;transclude: true&lt;/code&gt; ディレクティブ。</target>
+        </trans-unit>
+        <trans-unit id="a8cbb9552e324fab0129a77cc1ae823eb0817c84" translate="yes" xml:space="preserve">
+          <source>The following creates a new scope which does not inherit prototypically: directive with &lt;code&gt;scope: { ... }&lt;/code&gt;.  This creates an &quot;isolate&quot; scope instead.</source>
+          <target state="translated">以下は、プロトタイプを継承しない新しいスコープを作成し &lt;code&gt;scope: { ... }&lt;/code&gt; 付きのディレクティブ：{...} 。 これにより、代わりに「分離」スコープが作成されます。</target>
+        </trans-unit>
+        <trans-unit id="e3193a8d2f9764731db9796b762232331fe4c06e" translate="yes" xml:space="preserve">
+          <source>The prototype chain is consulted because the objects (anArray and anObject) are not found in the childScope.  The objects are found in the parentScope, and the property values are updated on the original objects.  No new properties are added to the childScope;  no new objects are created.  (Note that in JavaScript arrays and functions are also objects.)</source>
+          <target state="translated">オブジェクト(anArrayとanObject)が子スコープにないため、プロトタイプチェーンが参照されます。オブジェクトは親スコープで見つかり、プロパティ値は元のオブジェクトに更新されます。子スコープに新しいプロパティは追加されず、新しいオブジェクトも作成されません。(JavaScriptでは配列や関数もオブジェクトであることに注意)</target>
+        </trans-unit>
+        <trans-unit id="ddc297ce30d1c5e731cb81f6c86632fa1dfaa612" translate="yes" xml:space="preserve">
+          <source>The prototype chain is not consulted, and a new aString property is added to the childScope.  &lt;strong&gt;This new property hides/shadows the parentScope property with the same name.&lt;/strong&gt;  This will become very important when we discuss ng-repeat and ng-include below.</source>
+          <target state="translated">プロトタイプチェーンは参照されず、新しいaStringプロパティがchildScopeに追加されます。 &lt;strong&gt;この新しいプロパティは、同じ名前のparentScopeプロパティを非表示/シャドウにします。&lt;/strong&gt; これは、以下でng-repeatとng-includeについて説明するときに非常に重要になります。</target>
+        </trans-unit>
+        <trans-unit id="942d42a24d1cc10fb1ea338258bb011bcb714618" translate="yes" xml:space="preserve">
+          <source>The prototype chain is not consulted, and child scope gets two new object properties that hide/shadow the parentScope object properties with the same names.</source>
+          <target state="translated">プロトタイプチェーンは参照されず、子スコープは、同じ名前の parentScope オブジェクトプロパティの影に隠れている 2 つの新しいオブジェクトプロパティを取得します。</target>
+        </trans-unit>
+        <trans-unit id="5872b3ca634f4e1f14cb4befbf0b13a06e096db5" translate="yes" xml:space="preserve">
+          <source>Then add a prototype to &quot;Parent&quot; object function</source>
+          <target state="translated">そして、&quot;Parent &quot;オブジェクト関数にプロトタイプを追加します。</target>
+        </trans-unit>
+        <trans-unit id="35f7fbf3fa1d3a4b9cdfa29fa721275206b27d50" translate="yes" xml:space="preserve">
+          <source>There are four types of scopes:</source>
+          <target state="translated">スコープには4種類あります。</target>
+        </trans-unit>
+        <trans-unit id="58fda558452d6dbbc530387b7a71b1f7218fc6f2" translate="yes" xml:space="preserve">
+          <source>This &lt;a href=&quot;http://jsfiddle.net/mrajcok/7g3QM/&quot;&gt;fiddle&lt;/a&gt; has a &lt;code&gt;showScope()&lt;/code&gt; function that can be used to examine an isolate and transcluded scope.  See the instructions in the comments in the fiddle.</source>
+          <target state="translated">この&lt;a href=&quot;http://jsfiddle.net/mrajcok/7g3QM/&quot;&gt;フィドル&lt;/a&gt;には &lt;code&gt;showScope()&lt;/code&gt; 関数があり、分離および変換されたスコープを調べるために使用できます。 フィドルのコメントの説明を参照してください。</target>
+        </trans-unit>
+        <trans-unit id="4b6a5000175f5778b88f085776bf0da1c77aa040" translate="yes" xml:space="preserve">
+          <source>This issue with primitives can be easily avoided by following the &quot;best practice&quot; of &lt;a href=&quot;http://www.youtube.com/watch?v=ZhfUv0spHCY&amp;amp;feature=youtu.be&amp;amp;t=30m&quot;&gt;always have a '.' in your ng-models&lt;/a&gt; &amp;ndash; watch 3 minutes worth. Misko demonstrates the primitive binding issue with &lt;code&gt;ng-switch&lt;/code&gt;.</source>
+          <target state="translated">プリミティブに関するこの問題は、 &lt;a href=&quot;http://www.youtube.com/watch?v=ZhfUv0spHCY&amp;amp;feature=youtu.be&amp;amp;t=30m&quot;&gt;常に「。」を持つ&lt;/a&gt; 「ベストプラクティス」に従うことで簡単に回避できます。 ng-modelsで &amp;ndash; 3分の価値を見てください 。 Miskoは &lt;code&gt;ng-switch&lt;/code&gt; の基本的なバインディングの問題を示しています。</target>
+        </trans-unit>
+        <trans-unit id="4c0202c6ca940503ffce3f2fa915f6ef7f7755ae" translate="yes" xml:space="preserve">
+          <source>This ng-repeat will not work (like you want/expect it to).  Typing into the textboxes changes the values in the gray boxes, which are only visible in the child scopes.  What we want is for the inputs to affect the myArrayOfPrimitives array, not a child scope primitive property.  To accomplish this, we need to change the model to be an array of objects.</source>
+          <target state="translated">この ng-repeat は動作しません (期待しているようには動作しません)。テキストボックスに入力すると、グレーのボックスの値が変更され、子スコープでのみ表示されます。入力は、子スコープのプリミティブ プロパティではなく、myArrayOfPrimitives 配列に影響を与えたいのです。そのためには、モデルをオブジェクトの配列に変更する必要があります。</target>
+        </trans-unit>
+        <trans-unit id="b1a9027cd710b57f1f8bc341338c25f8f6fcef46" translate="yes" xml:space="preserve">
+          <source>This works as expected.  Typing into the textboxes changes the values in the gray boxes, which are visible to both the child and parent scopes.</source>
+          <target state="translated">これは期待通りに動作します。テキストボックスに入力すると、グレーのボックスの値が変更され、子スコープと親スコープの両方から見えるようになります。</target>
+        </trans-unit>
+        <trans-unit id="2735a892bde0fac77b60fc1ad9ecb60ccdef800d" translate="yes" xml:space="preserve">
+          <source>Typing (say, &quot;22&quot;) into this input textbox does not result in a new child property.  The model is now bound to a property of the parent scope (because $parent is a child scope property that references the parent scope).</source>
+          <target state="translated">この入力テキストボックスに (例:&quot;22&quot; と入力しても、新しい子プロパティは生成されません。モデルは親スコープのプロパティにバインドされます ($parent は親スコープを参照する子スコープ・プロパティなので)。</target>
+        </trans-unit>
+        <trans-unit id="47d0d3a86ac79a9f76da91b2fd9f3a8aedb85fae" translate="yes" xml:space="preserve">
+          <source>Typing (say, &quot;77&quot;) into the first input textbox causes the child scope to get a new &lt;code&gt;myPrimitive&lt;/code&gt; scope property that hides/shadows the parent scope property of the same name.  This is probably not what you want/expect.</source>
+          <target state="translated">最初の入力テキストボックスに入力（たとえば「77」） &lt;code&gt;myPrimitive&lt;/code&gt; 、子スコープは同じ名前の親スコーププロパティを非表示/シャドウにする新しいmyPrimitiveスコーププロパティを取得します。 これはおそらくあなたが望む/期待するものではありません。</target>
+        </trans-unit>
+        <trans-unit id="c3ad716f56bb492e391fbe53da39e07eb8b12282" translate="yes" xml:space="preserve">
+          <source>Typing (say, &quot;99&quot;) into the second input textbox does not result in a new child property.  Because tpl2.html binds the model to an object property, prototypal inheritance kicks in when the ngModel looks for object myObject -- it finds it in the parent scope.</source>
+          <target state="translated">2 番目の入力テキストボックスに (例えば &quot;99&quot; と入力しても)新しい子プロパティは生成されません。tpl2.html はモデルをオブジェクトプロパティにバインドしているため、ngModel がオブジェクト myObject を探す際にプロトタイプ継承が行われ、親スコープ内で見つかります。</target>
+        </trans-unit>
+        <trans-unit id="ab8ed7a4dd8872f800f71c44f823cffbdd129693" translate="yes" xml:space="preserve">
+          <source>We can rewrite the first template to use $parent, if we don't want to change our model from a primitive to an object:</source>
+          <target state="translated">モデルをプリミティブからオブジェクトに変更したくない場合は、最初のテンプレートを $parent を使うように書き換えます。</target>
+        </trans-unit>
+        <trans-unit id="7625c1d4a0c7673afd934025f8f220fcfab5353d" translate="yes" xml:space="preserve">
+          <source>We deleted the childScope property first, then when we try to access the property again, the prototype chain is consulted.</source>
+          <target state="translated">最初にchildScopeプロパティを削除し、再度アクセスしようとするとプロトタイプチェーンが参照されるようにしました。</target>
+        </trans-unit>
+        <trans-unit id="2bc2e06693640b04d006a3e5bfec8b61c441b22a" translate="yes" xml:space="preserve">
+          <source>What are the nuances of scope prototypal / prototypical inheritance in AngularJS</source>
+          <target state="translated">AngularJSのスコープ・プロトタイピング継承のニュアンスとは?</target>
+        </trans-unit>
+        <trans-unit id="1c8fa7a6cb664f88272907fcc27cd0145f211d78" translate="yes" xml:space="preserve">
+          <source>Working example here &lt;a href=&quot;http://jsbin.com/xexurukiso/1/edit/&quot;&gt;http://jsbin.com/xexurukiso/1/edit/&lt;/a&gt;</source>
+          <target state="translated">ここでの作業例&lt;a href=&quot;http://jsbin.com/xexurukiso/1/edit/&quot;&gt;http://jsbin.com/xexurukiso/1/edit/&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="5d0dec12c98280606d2778a4bcb1abfb0e7f8d0c" translate="yes" xml:space="preserve">
+          <source>default (&lt;code&gt;scope: false&lt;/code&gt;) - the directive does not create a new scope, so there is no inheritance here.  This is easy, but also dangerous because, e.g., a directive might think it is creating a new property on the scope, when in fact it is clobbering an existing property.  This is not a good choice for writing directives that are intended as reusable components.</source>
+          <target state="translated">default（ &lt;code&gt;scope: false&lt;/code&gt; ）-ディレクティブは新しいスコープを作成しないため、ここには継承はありません。 これは簡単ですが、危険です。たとえば、ディレクティブはスコープに新しいプロパティを作成していると見なす場合があるため、実際には既存のプロパティを破棄しているためです。 これは、再利用可能なコンポーネントとして意図されているディレクティブを作成する場合には適していません。</target>
+        </trans-unit>
+        <trans-unit id="ba1842f28a57fe23a90d2efec05d224744c39651" translate="yes" xml:space="preserve">
+          <source>define a function on the parent scope, and call it from the child (not always possible)</source>
+          <target state="translated">親スコープ上で関数を定義し、子スコープからそれを呼び出す (常に可能というわけではありません)</target>
+        </trans-unit>
+        <trans-unit id="27ea3d35983ed18a7ab56325d8423ae0f39bbc5b" translate="yes" xml:space="preserve">
+          <source>define objects in the parent for your model, then reference a property of that object  in the child:  parentObj.someProp</source>
+          <target state="translated">モデルの親でオブジェクトを定義し、子でそのオブジェクトのプロパティを参照します:parentObj.someProp</target>
+        </trans-unit>
+        <trans-unit id="5b41ba2601e37104d54d7666ca68c4f5e11a1c4c" translate="yes" xml:space="preserve">
+          <source>directives</source>
+          <target state="translated">directives</target>
+        </trans-unit>
+        <trans-unit id="f4549b6f57b926059ceb24f113afc3e54afffa58" translate="yes" xml:space="preserve">
+          <source>isolate scope -- directive with &lt;code&gt;scope: {...}&lt;/code&gt;.  This one is not prototypal, but '=', '@', and '&amp;amp;' provide a mechanism to access parent scope properties, via attributes.</source>
+          <target state="translated">スコープを分離する- &lt;code&gt;scope: {...}&lt;/code&gt; ディレクティブ。 これはプロトタイプではありませんが、「=」、「@」、および「＆」は、属性を介して親スコープのプロパティにアクセスするためのメカニズムを提供します。</target>
+        </trans-unit>
+        <trans-unit id="c942ad93a5be36ba73a8752c3c44b6797b79ac69" translate="yes" xml:space="preserve">
+          <source>ng-controller</source>
+          <target state="translated">ng-controller</target>
+        </trans-unit>
+        <trans-unit id="19a68c5679f612b19da24843d5d39d5c934d28f4" translate="yes" xml:space="preserve">
+          <source>ng-include</source>
+          <target state="translated">ng-include</target>
+        </trans-unit>
+        <trans-unit id="0e45397994cf73af09c27e90f79ceb5606ed2a7d" translate="yes" xml:space="preserve">
+          <source>ng-repeat</source>
+          <target state="translated">ng-repeat</target>
+        </trans-unit>
+        <trans-unit id="18b8f4fb887d618b0516df6042f780fb3da97f38" translate="yes" xml:space="preserve">
+          <source>ng-switch</source>
+          <target state="translated">ng-switch</target>
+        </trans-unit>
+        <trans-unit id="4e8683d937e4339a8c800fa795e3f1be28867631" translate="yes" xml:space="preserve">
+          <source>ng-switch scope inheritance works just like ng-include.  So if you need 2-way data binding to a primitive in the parent scope, use $parent, or change the model to be an object and then bind to a property of that object.  This will avoid child scope hiding/shadowing of parent scope properties.</source>
+          <target state="translated">ng-switch スコープ継承は ng-include と同じように動作します。そのため、親スコープのプリミティブに双方向のデータバインディングが必要な場合は $parent を使用するか、モデルをオブジェクトに変更してからそのオブジェクトのプロパティにバインディングします。これにより、子スコープが親スコープのプロパティに隠れてしまうことを避けることができます。</target>
+        </trans-unit>
+        <trans-unit id="0ab5ad0e9b0dd449ed7192dc1a78c8e697023091" translate="yes" xml:space="preserve">
+          <source>normal prototypal scope inheritance -- ng-include, ng-switch, ng-controller, directive with &lt;code&gt;scope: true&lt;/code&gt;</source>
+          <target state="translated">通常のプロトタイプのスコープ継承-ng-include、ng-switch、ng-controller、 &lt;code&gt;scope: true&lt;/code&gt; ディレクティブ：true</target>
+        </trans-unit>
+        <trans-unit id="2ddefe75ff60bb0b45a230e1492152cbebae9d6e" translate="yes" xml:space="preserve">
+          <source>normal prototypal scope inheritance with a copy/assignment -- ng-repeat.  Each iteration of ng-repeat creates a new child scope, and that new child scope always gets a new property.</source>
+          <target state="translated">コピーアサインメントによる通常のプロトタイピングスコープの継承 --ng-repeat.ng-repeat の繰り返しのたびに新しい子スコープが作成され、その新しい子スコープは常に新しいプロパティを取得します。</target>
+        </trans-unit>
+        <trans-unit id="135c88242dc85baeb3e79543a0c7a8e5a6803c4e" translate="yes" xml:space="preserve">
+          <source>transcluded scope -- directive with &lt;code&gt;transclude: true&lt;/code&gt;.  This one is also normal prototypal scope inheritance, but it is also a sibling of any isolate scope.</source>
+          <target state="translated">transcludedスコープ &lt;code&gt;transclude: true&lt;/code&gt; ディレクティブ。 これも通常のプロトタイプスコープの継承ですが、分離スコープの兄弟でもあります。</target>
+        </trans-unit>
+        <trans-unit id="995ad0b731059826a9125c627e28cc9351e5bcf3" translate="yes" xml:space="preserve">
+          <source>use $parent.parentScopeProperty (not always possible, but easier than 1. where possible)</source>
+          <target state="translated">use $parent.parent.parentScopeProperty (常に可能というわけではありませんが、可能であれば1.よりも簡単です)</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

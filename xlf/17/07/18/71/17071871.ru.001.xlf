@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="htmlbody" original="https://stackoverflow.com/questions/17071871">
+    <body>
+      <group id="17071871">
+        <trans-unit id="a7b22c458094e284abcbfc1d9c85178a88408a8e" translate="yes" xml:space="preserve">
+          <source>(Note on performance: For each base type, we can keep things simple by using the pandas API or we can venture outside the API, usually into &lt;code&gt;numpy&lt;/code&gt;, and speed things up.)</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;(Примечание по производительности: для каждого базового типа мы можем упростить задачу с помощью API pandas, или мы можем выйти за пределы API, как правило, в &lt;/font&gt;&lt;/font&gt; &lt;code&gt;numpy&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; , и ускорить процесс.)&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="1dc20c09b863adda399a2a551cf4e1938b5b146f" translate="yes" xml:space="preserve">
+          <source>... Boolean indexing requires finding the true value of each row's &lt;code&gt;'A'&lt;/code&gt; column being equal to &lt;code&gt;'foo'&lt;/code&gt;, then using those truth values to identify which rows to keep.  Typically, we'd name this series, an array of truth values, &lt;code&gt;mask&lt;/code&gt;.  We'll do so here as well.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;... Булева индексация требует нахождения истинного значения &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;столбца &lt;/font&gt;&lt;/font&gt; &lt;code&gt;'A'&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; каждой строки, &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;равного &lt;/font&gt;&lt;/font&gt; &lt;code&gt;'foo'&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; , а затем использования этих значений истинности, чтобы определить, какие строки следует сохранить. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Обычно мы называем эту серию массивом значений истинности, &lt;/font&gt;&lt;/font&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; . &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Мы сделаем это и здесь.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e78d7a85aad85951f98ef33d5463db7f24d41987" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;isin&lt;/code&gt; returns a boolean Series, so to select rows whose value is &lt;em&gt;not&lt;/em&gt; in &lt;code&gt;some_values&lt;/code&gt;, negate the boolean Series using &lt;code&gt;~&lt;/code&gt;:</source>
+          <target state="translated">&lt;code&gt;isin&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; возвращает логическую серию, поэтому для выбора строк, значение которых &lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;отсутствует&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; в &lt;/font&gt;&lt;/font&gt; &lt;code&gt;some_values&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; , &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;отмените&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; логическую серию с помощью &lt;/font&gt;&lt;/font&gt; &lt;code&gt;~&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="228eafa649a706785b0d72a03e8a2e690d59b9eb" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;&lt;code&gt;pd.DataFrame.query&lt;/code&gt;&lt;/em&gt; is a very elegant/intuitive way to perform this task, but is often slower. &lt;strong&gt;However&lt;/strong&gt;, if you pay attention to the timings below, for large data, the query is very efficient.  More so than the standard approach and of similar magnitude as my best suggestion.</source>
+          <target state="translated">&lt;em&gt; &lt;code&gt;pd.DataFrame.query&lt;/code&gt; &lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; - это очень элегантный / интуитивно понятный способ выполнения этой задачи, но часто он медленнее. &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Однако&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; , если вы обратите внимание на временные параметры ниже, для больших данных запрос будет очень эффективным. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Больше, чем стандартный подход и такой же величины, как мое лучшее предложение.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="3eca48a7971161a5e4845c5d3d3ea48cabe3e604" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;August 2019 updated answer&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Август 2019 обновленный ответ&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="16befab24725b0245f989a42647bc93359e1c964" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Code Below&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Код ниже&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="13d7fb223fd7b72b8960b988970f2e7d9d52935c" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Label&lt;/em&gt; indexing can be very handy, but in this case, we are again doing more work for no benefit</source>
+          <target state="translated">&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Индексирование меток&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; может быть очень удобным, но в этом случае мы снова делаем больше работы без пользы&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="974678caa8fc4fd9535b595c9a3a6f23fd116298" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Use the underlying &lt;code&gt;numpy&lt;/code&gt; array and forgo the overhead of creating another &lt;code&gt;pd.Series&lt;/code&gt;&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Используйте базовый &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;массив &lt;/font&gt;&lt;/font&gt; &lt;code&gt;numpy&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; и &lt;/font&gt; &lt;code&gt;pd.Series&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt; от накладных расходов на создание другого &lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;pd.Series.&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="de3354b8e310c197276fcfffc67747f0bc30d963" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;1. Boolean indexing&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;1. Булева индексация&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="0aab10155c917d0d59d5fe5e2fb53e3da6be9887" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;2. Positional indexing&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;2. Позиционная индексация&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2e5c3edeb161498925962a8cbfe9f29d05331903" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;3. Label indexing&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;3. Индексирование этикетки&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b56fbb1c4bcc2e164445f16445c1ffd9e8479cb9" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;4. &lt;code&gt;df.query()&lt;/code&gt; API&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;4. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;API &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.query()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f528bf491f475e912ec5c0a5f4ea292d1f035d57" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;df.query(...)&lt;/code&gt; API&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;df.query(...)&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; API&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="908f30d6d4f499078aa16ff13751925324298526" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;mask&lt;/code&gt; alternative 1&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; альтернатива 1&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="ccbbcbee015515a070a3b882f68b33b352e1971b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;mask&lt;/code&gt; alternative 2&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; альтернатива 2&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2a88bc743eb1d71c2ab9ae22d974e4653153580e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;mask&lt;/code&gt; alternative 3&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; альтернатива 3&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d0fc42a4ca04af19bb4a12c30f16ddac5a0285fc" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Boolean indexing (&lt;code&gt;df[df['col'] == value&lt;/code&gt;] )&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Булево индексирование ( &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df[df['col'] == value&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; ])&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="606bb751af03382c47244583534e55ec145c9979" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Functions&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Functions&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5ce57e8714a102565b14cc6e509533ccac4066c6" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Label indexing (&lt;code&gt;df.xs(...)&lt;/code&gt;)&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;df.xs(...)&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; меток ( &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;df.xs (...)&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; )&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d12b121dd20db5c6fbdbda026bff85f6c3142492" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Output&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Output&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="9c6282d6fda2c2cfe833412d634ab0bafcf31516" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Positional indexing (&lt;code&gt;df.iloc[...]&lt;/code&gt;)&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Позиционная индексация ( &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.iloc[...]&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; )&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="c2da519c63e0a0dcb916dcc8106c80db9ce3931b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Setup&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Setup&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d0a0852269c23ca2383146a5ce00c68135f53bcd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Special Timing&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Специальное время&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="e74f0989090749e17b513ffbf095e578c1e2d334" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Testing&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Testing&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="e498f59583c8201196dd92961edccb2a97424185" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Timing&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Timing&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="748e655a9c46015805817dedcdfff38c8b0e02fc" translate="yes" xml:space="preserve">
+          <source>@unutbu also shows us how to use &lt;code&gt;pd.Series.isin&lt;/code&gt; to account for each element of &lt;code&gt;df['A']&lt;/code&gt; being in a set of values.  This evaluates to the same thing if our set of values is a set of one value, namely &lt;code&gt;'foo'&lt;/code&gt;.  But it also generalizes to include larger sets of values if needed.  Turns out, this is still pretty fast even though it is a more general solution.  The only real loss is in intuitiveness for those not familiar with the concept.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;@unutbu также показывает нам, как использовать &lt;/font&gt;&lt;/font&gt; &lt;code&gt;pd.Series.isin&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; для учета каждого элемента &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df['A']&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; в наборе значений. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Это оценивает то же самое, если наш набор значений является набором одного значения, а именно &lt;/font&gt;&lt;/font&gt; &lt;code&gt;'foo'&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; . &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Но это также обобщает включение больших наборов значений, если это необходимо. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Оказывается, это все еще довольно быстро, хотя это более общее решение. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Единственная реальная потеря заключается в интуитивности для тех, кто не знаком с концепцией.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="b2f5c98aa070d314fa7f513b311ce404d6601800" translate="yes" xml:space="preserve">
+          <source>Actual improvements can be made by modifying how we create our &lt;code&gt;Boolean&lt;/code&gt;&lt;code&gt;mask&lt;/code&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Фактические улучшения могут быть сделаны путем изменения способа создания нашей &lt;/font&gt;&lt;/font&gt; &lt;code&gt;Boolean&lt;/code&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; .&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="996150c9140feb1dd42ac35629fee778a8652227" translate="yes" xml:space="preserve">
+          <source>Also we can use local variables by prefixing it with an &lt;code&gt;@&lt;/code&gt; in our query:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Также мы можем использовать локальные переменные, добавив &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;в нашем запросе &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;префикс &lt;/font&gt;&lt;/font&gt; &lt;code&gt;@&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="b8f70b4fca8e54d0149fe9fd17a94d2ef3e45b83" translate="yes" xml:space="preserve">
+          <source>Below I show you examples of each, with advice when to use certain techniques. Assume our criterion is column &lt;code&gt;'A'&lt;/code&gt; == &lt;code&gt;'foo'&lt;/code&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Ниже я покажу вам примеры каждого из них, с советами, когда использовать определенные методы. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Предположим, что наш критерий - столбец &lt;/font&gt;&lt;/font&gt; &lt;code&gt;'A'&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; == &lt;/font&gt;&lt;/font&gt; &lt;code&gt;'foo'&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="a4e45a991eb3eebeeeebd3cbaaf9d76adec9ad51" translate="yes" xml:space="preserve">
+          <source>Borrowing from @unutbu:</source>
+          <target state="translated">Одолжил у @unutbu:</target>
+        </trans-unit>
+        <trans-unit id="c53955c600890f840ee1380c4cf731a6bdecdd18" translate="yes" xml:space="preserve">
+          <source>But at that point I would recommend using the &lt;a href=&quot;https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html&quot;&gt;query&lt;/a&gt; function, since it's less verbose and yields the same result:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Но в этот момент я бы рекомендовал использовать &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;функцию &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;запроса&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; , так как она менее многословна и дает тот же результат:&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="f46c72bf4ae7eb48d96f55e4013ee3f2d7142778" translate="yes" xml:space="preserve">
+          <source>Code example</source>
+          <target state="translated">Пример кода</target>
+        </trans-unit>
+        <trans-unit id="9c958de12d7ea3e316da57b5a7d7c81d71508360" translate="yes" xml:space="preserve">
+          <source>Combine multiple conditions with &lt;code&gt;&amp;amp;&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Объедините несколько условий с &lt;/font&gt;&lt;/font&gt; &lt;code&gt;&amp;amp;&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="aff92c354080dcdb8babf603e49bcd6865035b38" translate="yes" xml:space="preserve">
+          <source>Each Column in this table represents a different length data frame over which we test each function. Each column shows relative time taken, with the fastest function given a base index of &lt;code&gt;1.0&lt;/code&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Каждый столбец в этой таблице представляет фрейм данных различной длины, в котором мы тестируем каждую функцию. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Каждый столбец показывает относительное время, с самой быстрой функцией с базовым индексом &lt;/font&gt;&lt;/font&gt; &lt;code&gt;1.0&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; .&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e9e2f93b5416c89a1c674071b552117d03720cf9" translate="yes" xml:space="preserve">
+          <source>Evaluating the &lt;code&gt;mask&lt;/code&gt; with the &lt;code&gt;numpy&lt;/code&gt; array is ~ 30 times faster.  This is partly due to &lt;code&gt;numpy&lt;/code&gt; evaluation often being faster.  It is also partly due to the lack of overhead necessary to build an index and a corresponding &lt;code&gt;pd.Series&lt;/code&gt; object.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Оценка &lt;/font&gt;&lt;/font&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; с помощью &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;массива &lt;/font&gt;&lt;/font&gt; &lt;code&gt;numpy&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; происходит в ~ 30 раз быстрее. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Отчасти это связано с &lt;/font&gt;&lt;/font&gt; &lt;code&gt;numpy&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; оценки часто быть быстрее. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Это также отчасти связано с отсутствием накладных расходов, необходимых для создания индекса и соответствующего &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;объекта &lt;/font&gt;&lt;/font&gt; &lt;code&gt;pd.Series&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; .&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ea5a4de56f68c199e4cef4c9af0c967c80b54c01" translate="yes" xml:space="preserve">
+          <source>Faster results can be achieved using &lt;a href=&quot;https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html&quot;&gt;numpy.where&lt;/a&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Более быстрых результатов можно достичь, используя &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;numpy.where&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; .&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6db6725e9e7d5c088630e348048d1e73fc7657d3" translate="yes" xml:space="preserve">
+          <source>For example,</source>
+          <target state="translated">Например,</target>
+        </trans-unit>
+        <trans-unit id="0a2b68604dba18c646ffe46cb84516537b802c6d" translate="yes" xml:space="preserve">
+          <source>For example, with &lt;a href=&quot;https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas/17071908#17071908&quot;&gt;unubtu's setup&lt;/a&gt; -</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Например, с &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas/17071908#17071908&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;настройкой unubtu&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; -&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="4efd865d83f2bee6ee2473fb721bae9cc27e4549" translate="yes" xml:space="preserve">
+          <source>For selecting only specific columns out of multiple columns for a given value in pandas:</source>
+          <target state="translated">Для выбора только определенных столбцов из нескольких столбцов для заданного значения в пандах:</target>
+        </trans-unit>
+        <trans-unit id="6839d82e03f5268d9a7cc97802db76c48c8cce6e" translate="yes" xml:space="preserve">
+          <source>Given</source>
+          <target state="translated">Given</target>
+        </trans-unit>
+        <trans-unit id="a3634b43244a54f3afca9b0502044c96546e99c4" translate="yes" xml:space="preserve">
+          <source>Here is a simple example</source>
+          <target state="translated">Вот простой пример</target>
+        </trans-unit>
+        <trans-unit id="5d3d04125ef2a026b9a7bc12b17cc8a2e3522d75" translate="yes" xml:space="preserve">
+          <source>How to select rows from a &lt;code&gt;DataFrame&lt;/code&gt; based on values in some column in Python Pandas?</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Как выбрать строки из &lt;/font&gt;&lt;/font&gt; &lt;code&gt;DataFrame&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; на основе значений в некотором столбце в Python Pandas?&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="5d14a504ed9a3614235417aa198101e3a5e08da7" translate="yes" xml:space="preserve">
+          <source>How to select rows from a DataFrame based on column values</source>
+          <target state="translated">Как выбирать строки из DataFrame на основе значений столбцов</target>
+        </trans-unit>
+        <trans-unit id="55ef8b2a5e11d38d80a31ecb322baf665d2e4a6d" translate="yes" xml:space="preserve">
+          <source>However, as before, we can utilize &lt;code&gt;numpy&lt;/code&gt; to improve performance while sacrificing virtually nothing.  We'll use &lt;code&gt;np.in1d&lt;/code&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Тем не менее, как и прежде, мы можем использовать &lt;/font&gt;&lt;/font&gt; &lt;code&gt;numpy&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; для повышения производительности, практически ничего не жертвуя. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Мы будем использовать &lt;/font&gt;&lt;/font&gt; &lt;code&gt;np.in1d&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="e218da224d52e901093869a83b8e3451bf89a6c2" translate="yes" xml:space="preserve">
+          <source>However, if the data frame is not of mixed type, this is a very useful way to do it.</source>
+          <target state="translated">Однако,если фрейм данных не имеет смешанного типа,то это очень полезный способ.</target>
+        </trans-unit>
+        <trans-unit id="54673404f4e4da2b80252f68516be3aa01fb9290" translate="yes" xml:space="preserve">
+          <source>I find the syntax of the previous answers to be redundant and difficult to remember. Pandas introduced the &lt;code&gt;query()&lt;/code&gt; method in v0.13 and I much prefer it. For your question, you could do &lt;code&gt;df.query('col == val')&lt;/code&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Я нахожу синтаксис предыдущих ответов излишним и трудным для запоминания. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Панда ввел метод &lt;/font&gt;&lt;/font&gt; &lt;code&gt;query()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; в v0.13, и я предпочитаю его. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;По вашему вопросу вы можете сделать &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.query('col == val')&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="76715a830ae328d6accf2222dd4ab8c98d4726ba" translate="yes" xml:space="preserve">
+          <source>I tried to look at pandas documentation but did not immediately find the answer.</source>
+          <target state="translated">Я пытался посмотреть документацию на панд,но не сразу нашел ответ.</target>
+        </trans-unit>
+        <trans-unit id="9ead0fdcd3610645cab6a5de1063c673b0c51df2" translate="yes" xml:space="preserve">
+          <source>I'll include other concepts mentioned in other posts as well for reference.</source>
+          <target state="translated">Я включу и другие понятия,упомянутые в других постах,для справки.</target>
+        </trans-unit>
+        <trans-unit id="e34c39025b58fa28cf17b109f4c662c7cea617d6" translate="yes" xml:space="preserve">
+          <source>I'll show more complete time tests at the end, but just take a look at the performance gains we get using the sample data frame.  First, we look at the difference in creating the &lt;code&gt;mask&lt;/code&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;В конце я покажу более полные временные тесты, но просто взглянем на прирост производительности, который мы получаем, используя образец фрейма данных. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Сначала мы посмотрим на разницу в создании &lt;/font&gt;&lt;/font&gt; &lt;code&gt;mask&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="ff2c1a3b307aeaa2833bc1e60c421c38417402ea" translate="yes" xml:space="preserve">
+          <source>If the data frame is of mixed type, which our example is, then when we get &lt;code&gt;df.values&lt;/code&gt; the resulting array is of &lt;code&gt;dtype&lt;/code&gt;&lt;code&gt;object&lt;/code&gt; and consequently, all columns of the new data frame will be of &lt;code&gt;dtype&lt;/code&gt;&lt;code&gt;object&lt;/code&gt;.  Thus requiring the &lt;code&gt;astype(df.dtypes)&lt;/code&gt; and killing any potential performance gains.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Если фрейм данных имеет смешанный тип, как в нашем примере, то когда мы получим &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.values&lt;/code&gt; ,&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; результирующий массив будет &lt;/font&gt;&lt;/font&gt; &lt;code&gt;dtype&lt;/code&gt; &lt;code&gt;object&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;dtype&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; и, следовательно, все столбцы нового фрейма данных будут иметь &lt;/font&gt; &lt;code&gt;object&lt;/code&gt; &lt;/font&gt; &lt;code&gt;dtype&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; . &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Таким образом, требуется &lt;/font&gt; &lt;code&gt;astype(df.dtypes)&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt; и &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;уничтожается&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; любой потенциальный прирост производительности&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="7a8b9afffa52f6e7658743792ca2087f30fdb1bd" translate="yes" xml:space="preserve">
+          <source>If you have multiple values you want to include, put them in a
+list (or more generally, any iterable) and use &lt;code&gt;isin&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Если у вас есть несколько значений, которые вы хотите включить, поместите их в список (или, в более общем случае, любой итерируемый) и используйте &lt;/font&gt;&lt;/font&gt; &lt;code&gt;isin&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="87900a335ff8a7105a4d56339a860fa45c74b7e7" translate="yes" xml:space="preserve">
+          <source>In SQL, I would use:</source>
+          <target state="translated">В SQL я бы использовал:</target>
+        </trans-unit>
+        <trans-unit id="5983a02b430150d48ce0417d77ac6f6735879884" translate="yes" xml:space="preserve">
+          <source>In the above code it is the line &lt;code&gt;df[df.foo == 222]&lt;/code&gt; that gives the rows based on the column value, &lt;code&gt;222&lt;/code&gt; in this case.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;В приведенном выше коде это строка &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df[df.foo == 222]&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; которая задает строки на основе значения столбца, &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;в данном случае &lt;/font&gt;&lt;/font&gt; &lt;code&gt;222&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; .&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="bb59373a8d58060594fc4f375945299dd6f6e7ac" translate="yes" xml:space="preserve">
+          <source>Instead of &lt;code&gt;df[mask]&lt;/code&gt; we will do this</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Вместо &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df[mask]&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; мы сделаем это&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="5fce0107f922427843dbb60a573eba2440f7ac4a" translate="yes" xml:space="preserve">
+          <source>It actually works row-wise (i.e., applies the function to each row).</source>
+          <target state="translated">На самом деле она работает по рядку (т.е.применяет функцию к каждой строке).</target>
+        </trans-unit>
+        <trans-unit id="f81eb96b461bb6a017b3fa95062eb5eb4212ee46" translate="yes" xml:space="preserve">
+          <source>Looking at the special case when we have a single non-object &lt;code&gt;dtype&lt;/code&gt; for the entire data frame.
+&lt;em&gt;Code Below&lt;/em&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;dtype&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; особый случай, когда у нас есть один необъектный &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;d&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; - &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;тип&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; для всего фрейма данных. &lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Код ниже&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="019f02c5e661a42690a3b694e0c9a89fe8e5bd95" translate="yes" xml:space="preserve">
+          <source>More flexibility using &lt;code&gt;.query&lt;/code&gt; with &lt;code&gt;pandas &amp;gt;= 0.25.0&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Больше гибкости при использовании &lt;/font&gt;&lt;/font&gt; &lt;code&gt;.query&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; с &lt;/font&gt;&lt;/font&gt; &lt;code&gt;pandas &amp;gt;= 0.25.0&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="080fa5d83e854bcfa26d1bcaaa7ca1a5b4c99e04" translate="yes" xml:space="preserve">
+          <source>Multiple conditions are also possible:</source>
+          <target state="translated">Также возможно несколько условий:</target>
+        </trans-unit>
+        <trans-unit id="76dcfa5467845edb3330e03c715a03b79b31318d" translate="yes" xml:space="preserve">
+          <source>Multiple conditions:</source>
+          <target state="new"/>
+        </trans-unit>
+        <trans-unit id="3cb9d5764cdd77a284114829bb28d8070c58b047" translate="yes" xml:space="preserve">
+          <source>My preference is to use the &lt;code&gt;Boolean&lt;/code&gt;&lt;code&gt;mask&lt;/code&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Я предпочитаю использовать &lt;/font&gt;&lt;/font&gt; &lt;code&gt;Boolean&lt;/code&gt; &lt;code&gt;mask&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="6cb292440464d723841e6e2dca0972ce5d456876" translate="yes" xml:space="preserve">
+          <source>Next, we'll look at the timing for slicing with one &lt;code&gt;mask&lt;/code&gt; versus the other.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Далее мы рассмотрим время нарезки одной &lt;/font&gt;&lt;/font&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; против другой.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="2de32e0ea9bf07280a18459407037cc0046bf0f7" translate="yes" xml:space="preserve">
+          <source>Note the parentheses. Due to Python's &lt;a href=&quot;https://docs.python.org/3/reference/expressions.html#operator-precedence&quot;&gt;operator precedence rules&lt;/a&gt;, &lt;code&gt;&amp;amp;&lt;/code&gt; binds more tightly than &lt;code&gt;&amp;lt;=&lt;/code&gt; and &lt;code&gt;&amp;gt;=&lt;/code&gt;. Thus, the parentheses in the last example are necessary. Without the parentheses</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Обратите внимание на круглые скобки. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Благодаря Питон &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://docs.python.org/3/reference/expressions.html#operator-precedence&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;правила оператора очередности&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; , &lt;/font&gt;&lt;/font&gt; &lt;code&gt;&amp;amp;&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; связывает более плотно , &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;чем &lt;/font&gt;&lt;/font&gt; &lt;code&gt;&amp;lt;=&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; и &lt;/font&gt;&lt;/font&gt; &lt;code&gt;&amp;gt;=&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; . &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Таким образом, скобки в последнем примере необходимы. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Без скобок&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="c22070ff59ac71c310e0885945d725a3a9da394f" translate="yes" xml:space="preserve">
+          <source>Note, however, that if you wish to do this many times, it is more efficient to
+make an index first, and then use &lt;code&gt;df.loc&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Однако обратите внимание, что если вы хотите сделать это много раз, более эффективно сначала создать индекс, а затем использовать &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.loc&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="bdd0b506837a990803d8edf137f2934329835748" translate="yes" xml:space="preserve">
+          <source>Options:</source>
+          <target state="translated">Options:</target>
+        </trans-unit>
+        <trans-unit id="b0fa7fb1d03fec163d9b41984e36616f32c9dca0" translate="yes" xml:space="preserve">
+          <source>Positional indexing (&lt;code&gt;df.iloc[...]&lt;/code&gt;) has its use cases, but this isn't one of them.  In order to identify where to slice, we first need to perform the same boolean analysis we did above.  This leaves us performing one extra step to accomplish the same task.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Позиционная индексация ( &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.iloc[...]&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; ) имеет свои варианты использования, но это не один из них. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Чтобы определить, где нарезать, нам сначала нужно выполнить тот же логический анализ, который мы сделали выше. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Это оставляет нам выполнение одного дополнительного шага, чтобы выполнить ту же задачу.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="d7c0ffddba7b23c24c1db9c6cc51c12ff7f3ebf7" translate="yes" xml:space="preserve">
+          <source>Reproduced from &lt;a href=&quot;http://pandas.pydata.org/pandas-docs/version/0.17.0/indexing.html#indexing-query&quot;&gt;http://pandas.pydata.org/pandas-docs/version/0.17.0/indexing.html#indexing-query&lt;/a&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Воспроизводится с &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://pandas.pydata.org/pandas-docs/version/0.17.0/indexing.html#indexing-query&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;http://pandas.pydata.org/pandas-docs/version/0.17.0/indexing.html#indexing-query&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="eec53b723ce2fc539a6a0660f6c70d045ff15374" translate="yes" xml:space="preserve">
+          <source>Run this gives:</source>
+          <target state="translated">Запускай это дает:</target>
+        </trans-unit>
+        <trans-unit id="ef32994ab6fb48b0f09093bb7b033be895086bf9" translate="yes" xml:space="preserve">
+          <source>Since &lt;code&gt;pandas &amp;gt;= 0.25.0&lt;/code&gt; we can use the &lt;code&gt;query&lt;/code&gt; method to filter dataframes with pandas methods and even column names which have spaces. Normally the spaces in column names would give an error, but now we can solve that using a backtick (`) see &lt;a href=&quot;https://github.com/pandas-dev/pandas/issues/6508&quot;&gt;GitHub&lt;/a&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Поскольку &lt;/font&gt;&lt;/font&gt; &lt;code&gt;pandas &amp;gt;= 0.25.0&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; мы можем использовать &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;метод &lt;/font&gt;&lt;/font&gt; &lt;code&gt;query&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; для фильтрации кадров данных с помощью методов pandas и даже имен столбцов с пробелами. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Обычно пробелы в именах столбцов приводят к ошибке, но теперь мы можем решить эту проблему, используя backtick (`), см. &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://github.com/pandas-dev/pandas/issues/6508&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;GitHub&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="77b946aa9856edf50fdf3d0d6fd78c2a575feb89" translate="yes" xml:space="preserve">
+          <source>The first thing we'll need is to identify a condition that will act as our criterion for selecting rows.  We'll start with the OP's case &lt;code&gt;column_name == some_value&lt;/code&gt;, and include some other common use cases.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Первое, что нам нужно, это определить условие, которое будет служить нашим критерием для выбора строк. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Мы начнем с &lt;/font&gt;&lt;/font&gt; &lt;code&gt;column_name == some_value&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; OP: &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;column_name == some_value&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; и включим некоторые другие распространенные варианты использования.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="c55395401359835a6e3f32b3f23a39a7f4f78ecc" translate="yes" xml:space="preserve">
+          <source>The output is</source>
+          <target state="translated">На выходе</target>
+        </trans-unit>
+        <trans-unit id="abf08ba7eb4f13dd3411718dbc9bec9738abfc14" translate="yes" xml:space="preserve">
+          <source>The pandas equivalent to</source>
+          <target state="translated">Панды,эквивалентные</target>
+        </trans-unit>
+        <trans-unit id="15a5c73d6688578c5ab57955e7a9578da7765b55" translate="yes" xml:space="preserve">
+          <source>The performance gains aren't as pronounced.  We'll see if this holds up over more robust testing.</source>
+          <target state="translated">Прирост производительности не так выражен.Посмотрим,выдержит ли это более тщательное тестирование.</target>
+        </trans-unit>
+        <trans-unit id="ad7c9f4bb3d21e52731fb21b7772b299a25822f9" translate="yes" xml:space="preserve">
+          <source>The results is the same as using as mentioned by @unutbu</source>
+          <target state="translated">Результаты такие же,как и при использовании,как указано в @unutbu</target>
+        </trans-unit>
+        <trans-unit id="2a1c479aa55202eca1fcd8d24b800a6af604fdce" translate="yes" xml:space="preserve">
+          <source>There are several ways to select rows from a pandas data frame:</source>
+          <target state="translated">Существует несколько способов выбора строк из фрейма данных панд:</target>
+        </trans-unit>
+        <trans-unit id="4e19f25eb874a210fa11383137f6e76494420e5f" translate="yes" xml:space="preserve">
+          <source>This is one of the simplest ways to accomplish this task and if performance or intuitiveness isn't an issue, this should be your chosen method.  However, if performance is a concern, then you might want to consider an alternative way of creating the &lt;code&gt;mask&lt;/code&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Это один из самых простых способов выполнить эту задачу, и если производительность или интуитивность не являются проблемой, это должен быть выбранный вами метод. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Однако, если производительность является проблемой, то вы можете рассмотреть альтернативный способ создания &lt;/font&gt;&lt;/font&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; .&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="83384d44626fae4be0f67596d72688e2de01d1dc" translate="yes" xml:space="preserve">
+          <source>Timing comparisons:</source>
+          <target state="translated">Сравнение по времени:</target>
+        </trans-unit>
+        <trans-unit id="ec94c28679df5a4b903fe6132de487c514737aee" translate="yes" xml:space="preserve">
+          <source>To append to this famous question (though a bit too late): You can also do &lt;code&gt;df.groupby('column_name').get_group('column_desired_value').reset_index()&lt;/code&gt; to make a new data frame with specified column having a particular value. E.g.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Чтобы добавить к этому известному вопросу (хотя и с некоторым опозданием): Вы также можете сделать &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.groupby('column_name').get_group('column_desired_value').reset_index()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; чтобы создать новый фрейм данных с указанным столбцом, имеющим определенное значение. , &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Например&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="1470103548e4efaed128b1f5d6a6f2092609010c" translate="yes" xml:space="preserve">
+          <source>To select rows whose column value &lt;em&gt;does not equal&lt;/em&gt;&lt;code&gt;some_value&lt;/code&gt;, use &lt;code&gt;!=&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Чтобы выбрать строки, значение столбца которых &lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;не равно &lt;/font&gt;&lt;/font&gt;&lt;/em&gt; &lt;code&gt;some_value&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; , используйте &lt;/font&gt;&lt;/font&gt; &lt;code&gt;!=&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="96bf98b76cd08c788cfc61bb30c1b2e927806e7d" translate="yes" xml:space="preserve">
+          <source>To select rows whose column value equals a scalar, &lt;code&gt;some_value&lt;/code&gt;, use &lt;code&gt;==&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Чтобы выбрать строки, значение столбца которых равно скаляру, &lt;/font&gt;&lt;/font&gt; &lt;code&gt;some_value&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; , используйте &lt;/font&gt;&lt;/font&gt; &lt;code&gt;==&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="238306b9ae5b22d99b12f07f1e62b2239be76256" translate="yes" xml:space="preserve">
+          <source>To select rows whose column value is in an iterable, &lt;code&gt;some_values&lt;/code&gt;, use &lt;code&gt;isin&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Чтобы выбрать строки, чье значение столбца находится в итерируемой &lt;/font&gt;&lt;/font&gt; &lt;code&gt;some_values&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; , используйте &lt;/font&gt;&lt;/font&gt; &lt;code&gt;isin&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="986928b2927681b257fb28c8b30502cb24d660aa" translate="yes" xml:space="preserve">
+          <source>Turns out, reconstruction isn't worth it past a few hundred rows.</source>
+          <target state="translated">Оказывается,реконструкция не стоит нескольких сотен рядов.</target>
+        </trans-unit>
+        <trans-unit id="8be33334d8e6a6b78c0847a94e27af5abf4c5c10" translate="yes" xml:space="preserve">
+          <source>Using &lt;code&gt;.query&lt;/code&gt; with method &lt;code&gt;str.endswith&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Использование &lt;/font&gt;&lt;/font&gt; &lt;code&gt;.query&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; с методом &lt;/font&gt;&lt;/font&gt; &lt;code&gt;str.endswith&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6c2a9ad9d5afa593beebde44fdababc7ff75a34e" translate="yes" xml:space="preserve">
+          <source>Versus</source>
+          <target state="translated">Versus</target>
+        </trans-unit>
+        <trans-unit id="3dd405fe51fa289fd7032efbc8a9e6b6eb315552" translate="yes" xml:space="preserve">
+          <source>We can then use this mask to slice or index the data frame</source>
+          <target state="translated">Затем мы можем использовать эту маску для нарезки или индексирования фрейма данных.</target>
+        </trans-unit>
+        <trans-unit id="75e9bfc5cdd0112c3f50a92589de1e20de9d6f6d" translate="yes" xml:space="preserve">
+          <source>We could have reconstructed the data frame as well.  There is a big caveat when reconstructing a dataframe&amp;mdash;you must take care of the &lt;code&gt;dtypes&lt;/code&gt; when doing so!</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Мы могли бы также восстановить фрейм данных. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Существует большое предостережение при реконструкции фрейма данных - вы должны позаботиться о &lt;/font&gt;&lt;/font&gt; &lt;code&gt;dtypes&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; при этом!&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="22b0c8ec10e58a73f21ba5be05c450ccc9324013" translate="yes" xml:space="preserve">
+          <source>We cut the time in half.</source>
+          <target state="translated">Мы сокращаем время пополам.</target>
+        </trans-unit>
+        <trans-unit id="aa64a4f2c1675d12afa136bf44515e43a524edfc" translate="yes" xml:space="preserve">
+          <source>You can also access variables in the environment by prepending an &lt;code&gt;@&lt;/code&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Вы также можете получить доступ к переменным в среде, добавив &lt;/font&gt;&lt;/font&gt; &lt;code&gt;@&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; .&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="d65d4b5d99ce1f92190d4e16394e4cef0de402ab" translate="yes" xml:space="preserve">
+          <source>You can also use .apply:</source>
+          <target state="translated">Вы также можете использовать .apply:</target>
+        </trans-unit>
+        <trans-unit id="d6d67d9546d83e530b53da7aceae1dca8c093156" translate="yes" xml:space="preserve">
+          <source>You'll notice that fastest times seem to be shared between &lt;code&gt;mask_with_values&lt;/code&gt; and &lt;code&gt;mask_with_in1d&lt;/code&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Вы заметите, что самые быстрые времена, кажется, разделены между &lt;/font&gt;&lt;/font&gt; &lt;code&gt;mask_with_values&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; и &lt;/font&gt;&lt;/font&gt; &lt;code&gt;mask_with_in1d&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="b47f363e2b430c0647f14deea3eced9b0ef300ce" translate="yes" xml:space="preserve">
+          <source>is</source>
+          <target state="new"/>
+        </trans-unit>
+        <trans-unit id="538b34b8684a78d947c7313936f6bd6e0ad13197" translate="yes" xml:space="preserve">
+          <source>is parsed as</source>
+          <target state="translated">считается</target>
+        </trans-unit>
+        <trans-unit id="1758356db21759f7c5a0da9b4dd1db8fd6feab3f" translate="yes" xml:space="preserve">
+          <source>or</source>
+          <target state="translated">or</target>
+        </trans-unit>
+        <trans-unit id="13c7fb9f548a08ee2268112e4b5a8ef2aa2adadf" translate="yes" xml:space="preserve">
+          <source>or, to include multiple values from the index use &lt;code&gt;df.index.isin&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;или, чтобы включить несколько значений из индекса, используйте &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.index.isin&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6ef706998cf17ef7293cdb6fad421229fb5f8d93" translate="yes" xml:space="preserve">
+          <source>tl;dr</source>
+          <target state="translated">tl;dr</target>
+        </trans-unit>
+        <trans-unit id="0eed10cc9b9cf6b7ada561bf125695f5201c30dc" translate="yes" xml:space="preserve">
+          <source>which results in a &lt;a href=&quot;https://stackoverflow.com/questions/36921951/truth-value-of-a-series-is-ambiguous-use-a-empty-a-bool-a-item-a-any-o&quot;&gt;Truth value of a Series is ambiguous error&lt;/a&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;что приводит к &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/questions/36921951/truth-value-of-a-series-is-ambiguous-use-a-empty-a-bool-a-item-a-any-o&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;значению Истины Серии - неоднозначная ошибка&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; .&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="edb0f5b1f639a3886e3180c47fe86c3a6a263842" translate="yes" xml:space="preserve">
+          <source>yields</source>
+          <target state="translated">yields</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

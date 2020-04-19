@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/17071871">
+    <body>
+      <group id="17071871">
+        <trans-unit id="a7b22c458094e284abcbfc1d9c85178a88408a8e" translate="yes" xml:space="preserve">
+          <source>(Note on performance: For each base type, we can keep things simple by using the pandas API or we can venture outside the API, usually into &lt;code&gt;numpy&lt;/code&gt;, and speed things up.)</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;(성능에 대한 참고 사항 : 각 기본 유형에 대해 팬더 API를 사용하여 작업을 단순하게 유지하거나 API 외부에서 일반적으로 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;numpy&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 로 모험을 수행 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;하고 속도를 높일 수 있습니다.)&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="1dc20c09b863adda399a2a551cf4e1938b5b146f" translate="yes" xml:space="preserve">
+          <source>... Boolean indexing requires finding the true value of each row's &lt;code&gt;'A'&lt;/code&gt; column being equal to &lt;code&gt;'foo'&lt;/code&gt;, then using those truth values to identify which rows to keep.  Typically, we'd name this series, an array of truth values, &lt;code&gt;mask&lt;/code&gt;.  We'll do so here as well.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;... 부울 인덱싱은 각 행의 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;'A'&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 열에서 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;'foo'&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 와 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;동일한 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;값을 찾은 다음 해당 값을 사용하여 유지할 행을 식별해야합니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;일반적으로, 우리는이 시리즈의 진리 값의 배열의 이름을 것, &lt;/font&gt;&lt;/font&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; . &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;우리는 여기서도 그렇게 할 것입니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e78d7a85aad85951f98ef33d5463db7f24d41987" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;isin&lt;/code&gt; returns a boolean Series, so to select rows whose value is &lt;em&gt;not&lt;/em&gt; in &lt;code&gt;some_values&lt;/code&gt;, negate the boolean Series using &lt;code&gt;~&lt;/code&gt;:</source>
+          <target state="translated">&lt;code&gt;isin&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 반환 부울 시리즈는, 그래서 그 값 행을 선택 &lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;하지&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 에 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;some_values&lt;/code&gt; 를&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 사용하여 부울 시리즈를 부정 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;~&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="228eafa649a706785b0d72a03e8a2e690d59b9eb" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;&lt;code&gt;pd.DataFrame.query&lt;/code&gt;&lt;/em&gt; is a very elegant/intuitive way to perform this task, but is often slower. &lt;strong&gt;However&lt;/strong&gt;, if you pay attention to the timings below, for large data, the query is very efficient.  More so than the standard approach and of similar magnitude as my best suggestion.</source>
+          <target state="translated">&lt;em&gt; &lt;code&gt;pd.DataFrame.query&lt;/code&gt; &lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 는이 작업을 수행하는 매우 우아하고 직관적 인 방법이지만 종종 속도가 느립니다. &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그러나&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 아래의 타이밍에주의를 기울이면 대용량 데이터의 경우 쿼리가 매우 효율적입니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;표준 접근법보다 더 많고 내 제안과 비슷한 크기입니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="3eca48a7971161a5e4845c5d3d3ea48cabe3e604" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;August 2019 updated answer&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;2019 년 8 월 업데이트 된 답변&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="16befab24725b0245f989a42647bc93359e1c964" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Code Below&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;아래 코드&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="13d7fb223fd7b72b8960b988970f2e7d9d52935c" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Label&lt;/em&gt; indexing can be very handy, but in this case, we are again doing more work for no benefit</source>
+          <target state="translated">&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;라벨&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 인덱싱은 매우 유용 할 수 있지만이 경우 더 많은 작업을 수행하고 있습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="974678caa8fc4fd9535b595c9a3a6f23fd116298" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Use the underlying &lt;code&gt;numpy&lt;/code&gt; array and forgo the overhead of creating another &lt;code&gt;pd.Series&lt;/code&gt;&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;기본 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;numpy&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 배열을 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;사용하고 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;다른 &lt;/font&gt; &lt;code&gt;pd.Series&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt; 를 작성하는 오버 헤드를 &lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;피하십시오.&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="de3354b8e310c197276fcfffc67747f0bc30d963" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;1. Boolean indexing&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;부울 인덱싱&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="0aab10155c917d0d59d5fe5e2fb53e3da6be9887" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;2. Positional indexing&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;2. 위치 인덱싱&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2e5c3edeb161498925962a8cbfe9f29d05331903" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;3. Label indexing&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;3. 라벨 색인&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b56fbb1c4bcc2e164445f16445c1ffd9e8479cb9" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;4. &lt;code&gt;df.query()&lt;/code&gt; API&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;4. &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.query()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; API&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f528bf491f475e912ec5c0a5f4ea292d1f035d57" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;df.query(...)&lt;/code&gt; API&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;df.query(...)&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; API&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="908f30d6d4f499078aa16ff13751925324298526" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;mask&lt;/code&gt; alternative 1&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 대안 1&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="ccbbcbee015515a070a3b882f68b33b352e1971b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;mask&lt;/code&gt; alternative 2&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 대안 2&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="2a88bc743eb1d71c2ab9ae22d974e4653153580e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;mask&lt;/code&gt; alternative 3&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 대안 3&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d0fc42a4ca04af19bb4a12c30f16ddac5a0285fc" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Boolean indexing (&lt;code&gt;df[df['col'] == value&lt;/code&gt;] )&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;부울 인덱싱 ( &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df[df['col'] == value&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; ])&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="606bb751af03382c47244583534e55ec145c9979" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Functions&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Functions&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="5ce57e8714a102565b14cc6e509533ccac4066c6" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Label indexing (&lt;code&gt;df.xs(...)&lt;/code&gt;)&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;라벨 색인 생성 ( &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.xs(...)&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; )&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d12b121dd20db5c6fbdbda026bff85f6c3142492" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Output&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Output&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="9c6282d6fda2c2cfe833412d634ab0bafcf31516" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Positional indexing (&lt;code&gt;df.iloc[...]&lt;/code&gt;)&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;위치 인덱싱 ( &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.iloc[...]&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; )&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="c2da519c63e0a0dcb916dcc8106c80db9ce3931b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Setup&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Setup&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d0a0852269c23ca2383146a5ce00c68135f53bcd" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Special Timing&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;특별 타이밍&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="e74f0989090749e17b513ffbf095e578c1e2d334" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Testing&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Testing&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="e498f59583c8201196dd92961edccb2a97424185" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Timing&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Timing&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="748e655a9c46015805817dedcdfff38c8b0e02fc" translate="yes" xml:space="preserve">
+          <source>@unutbu also shows us how to use &lt;code&gt;pd.Series.isin&lt;/code&gt; to account for each element of &lt;code&gt;df['A']&lt;/code&gt; being in a set of values.  This evaluates to the same thing if our set of values is a set of one value, namely &lt;code&gt;'foo'&lt;/code&gt;.  But it also generalizes to include larger sets of values if needed.  Turns out, this is still pretty fast even though it is a more general solution.  The only real loss is in intuitiveness for those not familiar with the concept.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;또한 방송 @unutbu 미국 사용 방법 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;pd.Series.isin&lt;/code&gt; 을&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 각 요소를 고려하여 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df['A']&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 값들의 세트에있는. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이는 우리의 값 집합이 하나의 값 집합 인 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;'foo'&lt;/code&gt; 인&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 경우에도 동일한 것으로 평가됩니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그러나 필요한 경우 더 큰 값 세트를 포함하도록 일반화합니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;더 일반적인 솔루션이지만 여전히 매우 빠릅니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;유일한 손실은 개념에 익숙하지 않은 사람들에게 직관적입니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="b2f5c98aa070d314fa7f513b311ce404d6601800" translate="yes" xml:space="preserve">
+          <source>Actual improvements can be made by modifying how we create our &lt;code&gt;Boolean&lt;/code&gt;&lt;code&gt;mask&lt;/code&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;Boolean&lt;/code&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 만드는 방법을 수정하여 실제로 개선 할 수 있습니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="996150c9140feb1dd42ac35629fee778a8652227" translate="yes" xml:space="preserve">
+          <source>Also we can use local variables by prefixing it with an &lt;code&gt;@&lt;/code&gt; in our query:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;또한 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;쿼리에서 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;지역 변수 앞에 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;@&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 를 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;붙여서 사용할 수 있습니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="b8f70b4fca8e54d0149fe9fd17a94d2ef3e45b83" translate="yes" xml:space="preserve">
+          <source>Below I show you examples of each, with advice when to use certain techniques. Assume our criterion is column &lt;code&gt;'A'&lt;/code&gt; == &lt;code&gt;'foo'&lt;/code&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;아래에서는 특정 기술을 사용할 때 조언과 함께 각각의 예를 보여줍니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;우리의 기준이 열 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;'A'&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; == &lt;/font&gt; &lt;code&gt;'foo'&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;라고&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 가정하십시오.&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="a4e45a991eb3eebeeeebd3cbaaf9d76adec9ad51" translate="yes" xml:space="preserve">
+          <source>Borrowing from @unutbu:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;@unutbu에서 빌리기 :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="c53955c600890f840ee1380c4cf731a6bdecdd18" translate="yes" xml:space="preserve">
+          <source>But at that point I would recommend using the &lt;a href=&quot;https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html&quot;&gt;query&lt;/a&gt; function, since it's less verbose and yields the same result:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그러나 그 시점에서 &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;쿼리&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 함수를 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;사용하는 것이 좋습니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;덜 장황하고 같은 결과를 낳습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="f46c72bf4ae7eb48d96f55e4013ee3f2d7142778" translate="yes" xml:space="preserve">
+          <source>Code example</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;코드 예&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9c958de12d7ea3e316da57b5a7d7c81d71508360" translate="yes" xml:space="preserve">
+          <source>Combine multiple conditions with &lt;code&gt;&amp;amp;&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;여러 조건을 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;&amp;amp;&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 와 결합 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;:&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="aff92c354080dcdb8babf603e49bcd6865035b38" translate="yes" xml:space="preserve">
+          <source>Each Column in this table represents a different length data frame over which we test each function. Each column shows relative time taken, with the fastest function given a base index of &lt;code&gt;1.0&lt;/code&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이 테이블의 각 열은 각 함수를 테스트하는 다른 길이의 데이터 프레임을 나타냅니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;각 열은 기준 인덱스 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;1.0&lt;/code&gt; 으로&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 가장 빠른 함수를 사용하여 취한 상대 시간을 보여줍니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e9e2f93b5416c89a1c674071b552117d03720cf9" translate="yes" xml:space="preserve">
+          <source>Evaluating the &lt;code&gt;mask&lt;/code&gt; with the &lt;code&gt;numpy&lt;/code&gt; array is ~ 30 times faster.  This is partly due to &lt;code&gt;numpy&lt;/code&gt; evaluation often being faster.  It is also partly due to the lack of overhead necessary to build an index and a corresponding &lt;code&gt;pd.Series&lt;/code&gt; object.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt; &lt;code&gt;numpy&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt; 배열로 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 를 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;평가하는 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;것이 ~ 30 배 빠릅니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이것은 부분적으로 &lt;/font&gt; &lt;code&gt;numpy&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt; 평가가 더 빠르기 때문입니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;또한 인덱스 및 해당 &lt;/font&gt; &lt;code&gt;pd.Series&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt; 오브젝트 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;를 빌드하는 데 필요한 오버 헤드가 부족하기 때문입니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ea5a4de56f68c199e4cef4c9af0c967c80b54c01" translate="yes" xml:space="preserve">
+          <source>Faster results can be achieved using &lt;a href=&quot;https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html&quot;&gt;numpy.where&lt;/a&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;a href=&quot;https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;numpy.where를&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 사용 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;하면&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 더 빠른 결과를 얻을 수 있습니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6db6725e9e7d5c088630e348048d1e73fc7657d3" translate="yes" xml:space="preserve">
+          <source>For example,</source>
+          <target state="translated">예를 들어</target>
+        </trans-unit>
+        <trans-unit id="0a2b68604dba18c646ffe46cb84516537b802c6d" translate="yes" xml:space="preserve">
+          <source>For example, with &lt;a href=&quot;https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas/17071908#17071908&quot;&gt;unubtu's setup&lt;/a&gt; -</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;예를 들어, &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas/17071908#17071908&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;unubtu의 설정으로&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; -&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="4efd865d83f2bee6ee2473fb721bae9cc27e4549" translate="yes" xml:space="preserve">
+          <source>For selecting only specific columns out of multiple columns for a given value in pandas:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;팬더에서 주어진 값에 대해 여러 열 중에서 특정 열만 선택하는 경우 :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6839d82e03f5268d9a7cc97802db76c48c8cce6e" translate="yes" xml:space="preserve">
+          <source>Given</source>
+          <target state="translated">Given</target>
+        </trans-unit>
+        <trans-unit id="a3634b43244a54f3afca9b0502044c96546e99c4" translate="yes" xml:space="preserve">
+          <source>Here is a simple example</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;다음은 간단한 예입니다&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="5d3d04125ef2a026b9a7bc12b17cc8a2e3522d75" translate="yes" xml:space="preserve">
+          <source>How to select rows from a &lt;code&gt;DataFrame&lt;/code&gt; based on values in some column in Python Pandas?</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Python Pandas의 일부 열 값을 기반으로 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;DataFrame&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 에서 행을 선택하는 방법은 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;무엇입니까?&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="5d14a504ed9a3614235417aa198101e3a5e08da7" translate="yes" xml:space="preserve">
+          <source>How to select rows from a DataFrame based on column values</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;열 값을 기준으로 DataFrame에서 행을 선택하는 방법&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="55ef8b2a5e11d38d80a31ecb322baf665d2e4a6d" translate="yes" xml:space="preserve">
+          <source>However, as before, we can utilize &lt;code&gt;numpy&lt;/code&gt; to improve performance while sacrificing virtually nothing.  We'll use &lt;code&gt;np.in1d&lt;/code&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그러나 이전과 마찬가지로 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;numpy&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 를 사용하여 성능을 향상시키면서 거의 아무것도 희생하지 않습니다. &lt;/font&gt; &lt;code&gt;np.in1d&lt;/code&gt; 를&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 사용 &lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;합니다&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e218da224d52e901093869a83b8e3451bf89a6c2" translate="yes" xml:space="preserve">
+          <source>However, if the data frame is not of mixed type, this is a very useful way to do it.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그러나 데이터 프레임이 혼합 유형이 아닌 경우이를 수행하는 데 매우 유용한 방법입니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="54673404f4e4da2b80252f68516be3aa01fb9290" translate="yes" xml:space="preserve">
+          <source>I find the syntax of the previous answers to be redundant and difficult to remember. Pandas introduced the &lt;code&gt;query()&lt;/code&gt; method in v0.13 and I much prefer it. For your question, you could do &lt;code&gt;df.query('col == val')&lt;/code&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이전 답변의 구문이 중복되어 기억하기 어렵다는 것을 알았습니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;팬더는 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;v0.13에서 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;query()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 메소드를 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;도입했으며 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;훨씬 선호합니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;귀하의 질문에 대해 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.query('col == val')&lt;/code&gt;</target>
+        </trans-unit>
+        <trans-unit id="76715a830ae328d6accf2222dd4ab8c98d4726ba" translate="yes" xml:space="preserve">
+          <source>I tried to look at pandas documentation but did not immediately find the answer.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;팬더 문서를 보려고했지만 즉시 답을 찾지 못했습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9ead0fdcd3610645cab6a5de1063c673b0c51df2" translate="yes" xml:space="preserve">
+          <source>I'll include other concepts mentioned in other posts as well for reference.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;다른 게시물에 언급 된 다른 개념도 참조 용으로 포함하겠습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e34c39025b58fa28cf17b109f4c662c7cea617d6" translate="yes" xml:space="preserve">
+          <source>I'll show more complete time tests at the end, but just take a look at the performance gains we get using the sample data frame.  First, we look at the difference in creating the &lt;code&gt;mask&lt;/code&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;마지막에 더 완전한 시간 테스트를 보여 드리지만 샘플 데이터 프레임을 사용하여 얻을 수있는 성능 이점을 살펴보십시오. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;먼저 &lt;/font&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt; 만들기의 차이점을 살펴 봅니다.&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ff2c1a3b307aeaa2833bc1e60c421c38417402ea" translate="yes" xml:space="preserve">
+          <source>If the data frame is of mixed type, which our example is, then when we get &lt;code&gt;df.values&lt;/code&gt; the resulting array is of &lt;code&gt;dtype&lt;/code&gt;&lt;code&gt;object&lt;/code&gt; and consequently, all columns of the new data frame will be of &lt;code&gt;dtype&lt;/code&gt;&lt;code&gt;object&lt;/code&gt;.  Thus requiring the &lt;code&gt;astype(df.dtypes)&lt;/code&gt; and killing any potential performance gains.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;예를 들어, 데이터 프레임이 혼합 유형 인 경우 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.values&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 를 가져 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;오면&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 결과 배열은 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;dtype&lt;/code&gt; &lt;code&gt;object&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 이며 결과적으로 새 데이터 프레임의 모든 열은 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;dtype&lt;/code&gt; &lt;code&gt;object&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 됩니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;따라서 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;astype(df.dtypes)&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 필요하고 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;잠재적 인 성능 향상이 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;없어집니다&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; .&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="7a8b9afffa52f6e7658743792ca2087f30fdb1bd" translate="yes" xml:space="preserve">
+          <source>If you have multiple values you want to include, put them in a
+list (or more generally, any iterable) and use &lt;code&gt;isin&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;포함하려는 여러 값이있는 경우 목록 (또는 일반적으로 반복 가능)에 넣고 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;isin&lt;/code&gt; 을&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 사용하십시오 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="87900a335ff8a7105a4d56339a860fa45c74b7e7" translate="yes" xml:space="preserve">
+          <source>In SQL, I would use:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;SQL에서는 다음을 사용합니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="5983a02b430150d48ce0417d77ac6f6735879884" translate="yes" xml:space="preserve">
+          <source>In the above code it is the line &lt;code&gt;df[df.foo == 222]&lt;/code&gt; that gives the rows based on the column value, &lt;code&gt;222&lt;/code&gt; in this case.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;위의 코드에서 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df[df.foo == 222]&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 는 열 값 ( &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이 경우 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;222&lt;/code&gt; )&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 을 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;기준으로 행을 제공합니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="bb59373a8d58060594fc4f375945299dd6f6e7ac" translate="yes" xml:space="preserve">
+          <source>Instead of &lt;code&gt;df[mask]&lt;/code&gt; we will do this</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;df[mask]&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 대신에 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;우리는 이것을 할 것입니다&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="5fce0107f922427843dbb60a573eba2440f7ac4a" translate="yes" xml:space="preserve">
+          <source>It actually works row-wise (i.e., applies the function to each row).</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;실제로 행 단위로 작동합니다 (즉, 각 행에 함수를 적용 함).&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="f81eb96b461bb6a017b3fa95062eb5eb4212ee46" translate="yes" xml:space="preserve">
+          <source>Looking at the special case when we have a single non-object &lt;code&gt;dtype&lt;/code&gt; for the entire data frame.
+&lt;em&gt;Code Below&lt;/em&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;전체 데이터 프레임에 대해 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;단일 비 객체 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;dtype&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 이있는 특수한 경우를 살펴 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;봅니다&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; . &lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;아래 코드&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="019f02c5e661a42690a3b694e0c9a89fe8e5bd95" translate="yes" xml:space="preserve">
+          <source>More flexibility using &lt;code&gt;.query&lt;/code&gt; with &lt;code&gt;pandas &amp;gt;= 0.25.0&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt; &lt;code&gt;pandas &amp;gt;= 0.25.0&lt;/code&gt; &lt;/font&gt; &lt;code&gt;.query&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 를 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;사용하면 유연성이 향상됩니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="080fa5d83e854bcfa26d1bcaaa7ca1a5b4c99e04" translate="yes" xml:space="preserve">
+          <source>Multiple conditions are also possible:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;여러 조건도 가능합니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="76dcfa5467845edb3330e03c715a03b79b31318d" translate="yes" xml:space="preserve">
+          <source>Multiple conditions:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;여러 조건 :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="3cb9d5764cdd77a284114829bb28d8070c58b047" translate="yes" xml:space="preserve">
+          <source>My preference is to use the &lt;code&gt;Boolean&lt;/code&gt;&lt;code&gt;mask&lt;/code&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;선호하는 것은 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;Boolean&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt; 를 사용하는 것입니다&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6cb292440464d723841e6e2dca0972ce5d456876" translate="yes" xml:space="preserve">
+          <source>Next, we'll look at the timing for slicing with one &lt;code&gt;mask&lt;/code&gt; versus the other.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;다음으로 한 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 와 다른 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;마스크&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 로 슬라이싱하는 타이밍을 살펴 보겠습니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="2de32e0ea9bf07280a18459407037cc0046bf0f7" translate="yes" xml:space="preserve">
+          <source>Note the parentheses. Due to Python's &lt;a href=&quot;https://docs.python.org/3/reference/expressions.html#operator-precedence&quot;&gt;operator precedence rules&lt;/a&gt;, &lt;code&gt;&amp;amp;&lt;/code&gt; binds more tightly than &lt;code&gt;&amp;lt;=&lt;/code&gt; and &lt;code&gt;&amp;gt;=&lt;/code&gt;. Thus, the parentheses in the last example are necessary. Without the parentheses</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;괄호에 유의하십시오. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;때문에 파이썬에 &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://docs.python.org/3/reference/expressions.html#operator-precedence&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;연산자 우선 순위 규칙&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; , &lt;/font&gt;&lt;/font&gt; &lt;code&gt;&amp;amp;&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 바인딩보다 긴밀 이상의 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;&amp;lt;=&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 및 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;&amp;gt;=&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; . &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;따라서 마지막 예에서 괄호가 필요합니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;괄호없이&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="c22070ff59ac71c310e0885945d725a3a9da394f" translate="yes" xml:space="preserve">
+          <source>Note, however, that if you wish to do this many times, it is more efficient to
+make an index first, and then use &lt;code&gt;df.loc&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그러나이 작업을 여러 번 수행하려면 먼저 색인을 만든 다음 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.loc&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 을 사용하는 것이 더 효율적입니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="bdd0b506837a990803d8edf137f2934329835748" translate="yes" xml:space="preserve">
+          <source>Options:</source>
+          <target state="translated">Options:</target>
+        </trans-unit>
+        <trans-unit id="b0fa7fb1d03fec163d9b41984e36616f32c9dca0" translate="yes" xml:space="preserve">
+          <source>Positional indexing (&lt;code&gt;df.iloc[...]&lt;/code&gt;) has its use cases, but this isn't one of them.  In order to identify where to slice, we first need to perform the same boolean analysis we did above.  This leaves us performing one extra step to accomplish the same task.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;위치 인덱싱 ( &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.iloc[...]&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; )에는 사용 사례가 있지만 그중 하나가 아닙니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;슬라이스 할 위치를 식별하려면 먼저 위에서와 동일한 부울 분석을 수행해야합니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이를 통해 동일한 작업을 수행하기위한 추가 단계를 수행 할 수 있습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="d7c0ffddba7b23c24c1db9c6cc51c12ff7f3ebf7" translate="yes" xml:space="preserve">
+          <source>Reproduced from &lt;a href=&quot;http://pandas.pydata.org/pandas-docs/version/0.17.0/indexing.html#indexing-query&quot;&gt;http://pandas.pydata.org/pandas-docs/version/0.17.0/indexing.html#indexing-query&lt;/a&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;a href=&quot;http://pandas.pydata.org/pandas-docs/version/0.17.0/indexing.html#indexing-query&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;http://pandas.pydata.org/pandas-docs/version/0.17.0/indexing.html#indexing-query&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 에서 재현&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="eec53b723ce2fc539a6a0660f6c70d045ff15374" translate="yes" xml:space="preserve">
+          <source>Run this gives:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이것을 실행하면 :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ef32994ab6fb48b0f09093bb7b033be895086bf9" translate="yes" xml:space="preserve">
+          <source>Since &lt;code&gt;pandas &amp;gt;= 0.25.0&lt;/code&gt; we can use the &lt;code&gt;query&lt;/code&gt; method to filter dataframes with pandas methods and even column names which have spaces. Normally the spaces in column names would give an error, but now we can solve that using a backtick (`) see &lt;a href=&quot;https://github.com/pandas-dev/pandas/issues/6508&quot;&gt;GitHub&lt;/a&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;pandas &amp;gt;= 0.25.0&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 이므로 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;query&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 메소드를 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;사용하여 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;pandas 메소드 및 공백이있는 열 이름으로 데이터 프레임을 필터링 할 수 있습니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;일반적으로 열 이름에 공백이 있으면 오류가 발생하지만 백틱 (`)을 사용하면 &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://github.com/pandas-dev/pandas/issues/6508&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;GitHub를&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 볼 수 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;있습니다&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; .&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="77b946aa9856edf50fdf3d0d6fd78c2a575feb89" translate="yes" xml:space="preserve">
+          <source>The first thing we'll need is to identify a condition that will act as our criterion for selecting rows.  We'll start with the OP's case &lt;code&gt;column_name == some_value&lt;/code&gt;, and include some other common use cases.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;가장 먼저 필요한 것은 행을 선택하기위한 기준으로 작용할 조건을 식별하는 것입니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;OP의 경우 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;column_name == some_value&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 로 시작하고 다른 일반적인 사용 사례를 포함시킵니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="c55395401359835a6e3f32b3f23a39a7f4f78ecc" translate="yes" xml:space="preserve">
+          <source>The output is</source>
+          <target state="translated">출력은</target>
+        </trans-unit>
+        <trans-unit id="abf08ba7eb4f13dd3411718dbc9bec9738abfc14" translate="yes" xml:space="preserve">
+          <source>The pandas equivalent to</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;팬더는&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="15a5c73d6688578c5ab57955e7a9578da7765b55" translate="yes" xml:space="preserve">
+          <source>The performance gains aren't as pronounced.  We'll see if this holds up over more robust testing.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;성능 향상은 뚜렷하지 않습니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;더 강력한 테스트를 견뎌 낼 수 있는지 살펴 보겠습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ad7c9f4bb3d21e52731fb21b7772b299a25822f9" translate="yes" xml:space="preserve">
+          <source>The results is the same as using as mentioned by @unutbu</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;결과는 @unutbu가 언급 한 것과 동일합니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="2a1c479aa55202eca1fcd8d24b800a6af604fdce" translate="yes" xml:space="preserve">
+          <source>There are several ways to select rows from a pandas data frame:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;팬더 데이터 프레임에서 행을 선택하는 방법에는 여러 가지가 있습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="4e19f25eb874a210fa11383137f6e76494420e5f" translate="yes" xml:space="preserve">
+          <source>This is one of the simplest ways to accomplish this task and if performance or intuitiveness isn't an issue, this should be your chosen method.  However, if performance is a concern, then you might want to consider an alternative way of creating the &lt;code&gt;mask&lt;/code&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이것은이 작업을 수행 할 수있는 가장 간단한 방법 중 하나이며 성능 또는 직관적 성이 문제가되지 않는 경우이 방법을 선택해야합니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그러나 성능이 중요한 경우 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;mask&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 를 만드는 대체 방법을 고려할 수 있습니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="83384d44626fae4be0f67596d72688e2de01d1dc" translate="yes" xml:space="preserve">
+          <source>Timing comparisons:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;타이밍 비교 :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ec94c28679df5a4b903fe6132de487c514737aee" translate="yes" xml:space="preserve">
+          <source>To append to this famous question (though a bit too late): You can also do &lt;code&gt;df.groupby('column_name').get_group('column_desired_value').reset_index()&lt;/code&gt; to make a new data frame with specified column having a particular value. E.g.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이 유명한 질문에 추가하려면 (너무 늦었지만) &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.groupby('column_name').get_group('column_desired_value').reset_index()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 를 수행하여 특정 값을 가진 지정된 열이있는 새로운 데이터 프레임을 만들 수도 있습니다 . &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;예 :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="1470103548e4efaed128b1f5d6a6f2092609010c" translate="yes" xml:space="preserve">
+          <source>To select rows whose column value &lt;em&gt;does not equal&lt;/em&gt;&lt;code&gt;some_value&lt;/code&gt;, use &lt;code&gt;!=&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;열 값 &lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이 &lt;/font&gt;&lt;/font&gt;&lt;/em&gt; &lt;code&gt;some_value&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;가 아닌&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 행을 선택하려면 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;!=&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 사용하십시오 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="96bf98b76cd08c788cfc61bb30c1b2e927806e7d" translate="yes" xml:space="preserve">
+          <source>To select rows whose column value equals a scalar, &lt;code&gt;some_value&lt;/code&gt;, use &lt;code&gt;==&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;열 값이 스칼라 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;some_value&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 와 같은 행을 선택하려면 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;==&lt;/code&gt; 를&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 사용하십시오 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="238306b9ae5b22d99b12f07f1e62b2239be76256" translate="yes" xml:space="preserve">
+          <source>To select rows whose column value is in an iterable, &lt;code&gt;some_values&lt;/code&gt;, use &lt;code&gt;isin&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;열 값이 iterable &lt;/font&gt;&lt;/font&gt; &lt;code&gt;some_values&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 인 행을 선택하려면 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;isin&lt;/code&gt; 을&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 사용하십시오 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="986928b2927681b257fb28c8b30502cb24d660aa" translate="yes" xml:space="preserve">
+          <source>Turns out, reconstruction isn't worth it past a few hundred rows.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;재건은 몇 백 행을 넘을 가치가 없다는 것이 밝혀졌습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="8be33334d8e6a6b78c0847a94e27af5abf4c5c10" translate="yes" xml:space="preserve">
+          <source>Using &lt;code&gt;.query&lt;/code&gt; with method &lt;code&gt;str.endswith&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;사용 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;.query&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 방법으로 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;str.endswith&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6c2a9ad9d5afa593beebde44fdababc7ff75a34e" translate="yes" xml:space="preserve">
+          <source>Versus</source>
+          <target state="translated">Versus</target>
+        </trans-unit>
+        <trans-unit id="3dd405fe51fa289fd7032efbc8a9e6b6eb315552" translate="yes" xml:space="preserve">
+          <source>We can then use this mask to slice or index the data frame</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그런 다음이 마스크를 사용하여 데이터 프레임을 슬라이스하거나 인덱싱 할 수 있습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="75e9bfc5cdd0112c3f50a92589de1e20de9d6f6d" translate="yes" xml:space="preserve">
+          <source>We could have reconstructed the data frame as well.  There is a big caveat when reconstructing a dataframe&amp;mdash;you must take care of the &lt;code&gt;dtypes&lt;/code&gt; when doing so!</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;데이터 프레임도 재구성 할 수있었습니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;데이터 프레임을 재구성 할 때주의해야 할 사항이 있습니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그렇게 할 때는 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;dtypes&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 을주의해야합니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;!&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="22b0c8ec10e58a73f21ba5be05c450ccc9324013" translate="yes" xml:space="preserve">
+          <source>We cut the time in half.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;시간을 반으로 줄였습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="aa64a4f2c1675d12afa136bf44515e43a524edfc" translate="yes" xml:space="preserve">
+          <source>You can also access variables in the environment by prepending an &lt;code&gt;@&lt;/code&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;@&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 를 앞에 추가하여 환경의 변수에 액세스 할 수도 있습니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="d65d4b5d99ce1f92190d4e16394e4cef0de402ab" translate="yes" xml:space="preserve">
+          <source>You can also use .apply:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.apply를 사용할 수도 있습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="d6d67d9546d83e530b53da7aceae1dca8c093156" translate="yes" xml:space="preserve">
+          <source>You'll notice that fastest times seem to be shared between &lt;code&gt;mask_with_values&lt;/code&gt; and &lt;code&gt;mask_with_in1d&lt;/code&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;가장 빠른 시간은 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;mask_with_values&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 와 &lt;/font&gt; &lt;code&gt;mask_with_in1d&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt; 간에 공유되는 것으로 보입니다.&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="b47f363e2b430c0647f14deea3eced9b0ef300ce" translate="yes" xml:space="preserve">
+          <source>is</source>
+          <target state="translated">is</target>
+        </trans-unit>
+        <trans-unit id="538b34b8684a78d947c7313936f6bd6e0ad13197" translate="yes" xml:space="preserve">
+          <source>is parsed as</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;로 파싱&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="1758356db21759f7c5a0da9b4dd1db8fd6feab3f" translate="yes" xml:space="preserve">
+          <source>or</source>
+          <target state="translated">or</target>
+        </trans-unit>
+        <trans-unit id="13c7fb9f548a08ee2268112e4b5a8ef2aa2adadf" translate="yes" xml:space="preserve">
+          <source>or, to include multiple values from the index use &lt;code&gt;df.index.isin&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;또는 색인에서 여러 값을 포함하려면 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;df.index.isin&lt;/code&gt; 을&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 사용 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;하십시오&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; .&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6ef706998cf17ef7293cdb6fad421229fb5f8d93" translate="yes" xml:space="preserve">
+          <source>tl;dr</source>
+          <target state="translated">tl;dr</target>
+        </trans-unit>
+        <trans-unit id="0eed10cc9b9cf6b7ada561bf125695f5201c30dc" translate="yes" xml:space="preserve">
+          <source>which results in a &lt;a href=&quot;https://stackoverflow.com/questions/36921951/truth-value-of-a-series-is-ambiguous-use-a-empty-a-bool-a-item-a-any-o&quot;&gt;Truth value of a Series is ambiguous error&lt;/a&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이로 인해 &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/questions/36921951/truth-value-of-a-series-is-ambiguous-use-a-empty-a-bool-a-item-a-any-o&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Series&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 의 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Truth 값은 모호한 오류&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 입니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="edb0f5b1f639a3886e3180c47fe86c3a6a263842" translate="yes" xml:space="preserve">
+          <source>yields</source>
+          <target state="translated">yields</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
