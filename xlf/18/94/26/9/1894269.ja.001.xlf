@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/1894269">
+    <body>
+      <group id="1894269">
+        <trans-unit id="0efa36d79f4277cd0a1634134e19c449ff1d8c3e" translate="yes" xml:space="preserve">
+          <source>&lt;a href=&quot;https://docs.python.org/library/ast.html#ast.literal_eval&quot;&gt;ast.literal_eval&lt;/a&gt;:</source>
+          <target state="translated">&lt;a href=&quot;https://docs.python.org/library/ast.html#ast.literal_eval&quot;&gt;ast.literal_eval&lt;/a&gt;:</target>
+        </trans-unit>
+        <trans-unit id="3d10339196a81962d0d1e9b813c2ebbf2f1c024b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Method 1: ast&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;方法1：ast&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f58347e9ebee23af87e44396802111fa64d512ad" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Method 2: json&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;方法2：json&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b50716922eeadc66b2c972743fb015cbfaf5afc0" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Method 3: no import&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;方法3：インポートしない&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="cfb5d50304308b17ebe90d8546b1db6443b3e87d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Stepwise explanation:&lt;/strong&gt;
+You remove all whitespacing,bracketing and value_separators (provided they are not part of the values you want to extract, else make the regex more complex). Then you split the cleaned string on single or double quotes and take the non-empty values (or odd indexed values, whatever the preference).</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;段階的な説明：&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; すべてのwhitespacing、bracketing、およびvalue_separatorsを削除します（ただし、それらが抽出する値の一部でない場合は、正規表現をより複雑にします）。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;次に、クリーンアップされた文字列を一重引用符または二重引用符で分割し、空でない値（または設定に関係なく、奇数のインデックス値）を取得します。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="bf94990c867270f3099a34a94ba3c7096ab1eda3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;testsample&lt;/strong&gt;: &quot;['21',&quot;foo&quot; '6', '0', &quot; A&quot;]&quot;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;testsample&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;： &quot;['21'、&quot; foo &quot;'6'、 '0'、&quot; A &quot;]&quot;&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e8cbfde7c4cc21636bc649f60d12f565114cb0d8" translate="yes" xml:space="preserve">
+          <source>Assuming that all your inputs are lists and that the double quotes in the input actually don't matter, this can be done with a simple regexp replace.  It is a bit perl-y but works like a charm.  Note also that the output is now a list of unicode strings, you didn't specify that you needed that, but it seems to make sense given unicode input.</source>
+          <target state="translated">すべての入力がリストであり、入力中の二重引用符は実際には重要ではないと仮定すると、これは単純な正規表現の置換で行うことができます。これは少しperl的ですが、魅力的に動作します。出力がユニコード文字列のリストになったことにも注意してください。</target>
+        </trans-unit>
+        <trans-unit id="f97d7fef6c365f9ab4ada340798413b18b7da5c0" translate="yes" xml:space="preserve">
+          <source>Convert string representation of list to list</source>
+          <target state="translated">リストの文字列表現をリストに変換</target>
+        </trans-unit>
+        <trans-unit id="603de3067137b63bad6fd195e5e19c3d52e80fd3" translate="yes" xml:space="preserve">
+          <source>Even in case user puts spaces in between the commas, and spaces inside of the quotes. I need to handle that as well to:</source>
+          <target state="translated">カンマとカンマの間にスペースを入れたり、引用符の中にスペースを入れたりした場合でも、そのような処理をする必要があります。にも対応する必要がありますね。</target>
+        </trans-unit>
+        <trans-unit id="6dbad64345284e58c377473ea568ef0aa37305e8" translate="yes" xml:space="preserve">
+          <source>I know I can strip spaces with &lt;code&gt;strip()&lt;/code&gt; and &lt;code&gt;split()&lt;/code&gt; using the split operator and check for non alphabets. But the code was getting very kludgy. Is there a quick function that I'm not aware of?</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;私は&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、split演算子を使用&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;して&lt;/font&gt;&lt;/font&gt; &lt;code&gt;strip()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;および&lt;/font&gt;&lt;/font&gt; &lt;code&gt;split()&lt;/code&gt; で&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;スペースを&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;削除&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;し、アルファベット以外をチェック&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;できることを知ってい&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ます。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;しかし、コードは非常にぎこちなくなりました。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;気づかないクイック機能はありますか？&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e8120b59cab0e80b79772ba15069e171c182442e" translate="yes" xml:space="preserve">
+          <source>I was disappointed to see what I considered the method with the worst readability was the method with the best performance... there are tradeoffs to consider when going with the most readable option... for the type of workloads I use python for I usually value readability over a slightly more performant option, but as usual it depends.</source>
+          <target state="translated">私が考えていた読みやすさが最悪の方法が最高のパフォーマンスを持つ方法だったのを見てがっかりしました...最も読みやすいオプションを使うときに考慮すべきトレードオフがあります...私がpythonを使うワークロードのタイプでは、通常はもう少しパフォーマンスの高いオプションよりも読みやすさを重視しますが、いつものようにそれは依存しています。</target>
+        </trans-unit>
+        <trans-unit id="4cd53bb83a5fd1a235d97d838d4c0d1c617a578f" translate="yes" xml:space="preserve">
+          <source>I was wondering what the simplest way is to convert a &lt;code&gt;string&lt;/code&gt; list like the following to a &lt;code&gt;list&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;私は最も簡単な方法は、変換することであると思いまして&lt;/font&gt;&lt;/font&gt; &lt;code&gt;string&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;に次のようなリストを&lt;/font&gt;&lt;/font&gt; &lt;code&gt;list&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="a2f9cb454f77f58eb776888eafbb9e728ebb6d0f" translate="yes" xml:space="preserve">
+          <source>I would like to provide a more intuitive patterning solution with regex. 
+The below function takes as input a stringified list containing arbitrary strings.</source>
+          <target state="translated">正規表現を使った、より直感的なパターニングソリューションを提供したいと思います。以下の関数は、任意の文字列を含む文字列化されたリストを入力として受け取ります。</target>
+        </trans-unit>
+        <trans-unit id="2530df1ee2adb8c504ac203a87dd3b84ec87380e" translate="yes" xml:space="preserve">
+          <source>If it's only a one dimensional list, this can be done without importing anything:</source>
+          <target state="translated">一次元のリストだけであれば、何もインポートせずに行うことができます。</target>
+        </trans-unit>
+        <trans-unit id="bf5eb87eccfe44518713e7e54b7221154b583758" translate="yes" xml:space="preserve">
+          <source>If you have 2.6 or newer, use ast instead of eval:</source>
+          <target state="translated">2.6 以降の場合は eval の代わりに ast を使ってください。</target>
+        </trans-unit>
+        <trans-unit id="6e662462389f1cccebd25e20fd2ed0696c9d854f" translate="yes" xml:space="preserve">
+          <source>If you know that your lists only contain quoted strings, this pyparsing example will give you your list of stripped strings (even preserving the original Unicode-ness).</source>
+          <target state="translated">あなたのリストが引用符付きの文字列しか含まれていないことがわかっている場合、この pyparsing の例は、(元のユニコード性を維持したままで)ストリップされた文字列のリストを提供します。</target>
+        </trans-unit>
+        <trans-unit id="dee2f4331a22bd0f33d553e2b2c1990f2917c8c7" translate="yes" xml:space="preserve">
+          <source>If you're on an older version of Python, you can get very close to what you want with a simple regular expression:</source>
+          <target state="translated">古いバージョンのPythonを使っている場合は、簡単な正規表現を使えば、欲しいものに非常に近づけることができます。</target>
+        </trans-unit>
+        <trans-unit id="fa6afad9114bc19a76d434a86204c3de63ff1130" translate="yes" xml:space="preserve">
+          <source>If your lists can have more datatypes, or even contain lists within lists, then you will need a more complete grammar - like &lt;a href=&quot;http://pyparsing.wikispaces.com/file/view/parsePythonValue.py&quot;&gt;this one&lt;/a&gt; on the pyparsing wiki, which will handle tuples, lists, ints, floats, and quoted strings.  Will work with Python versions back to 2.4.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;リストがより多くのデータ型を持つことができる場合、またはリスト内にリストを含めることさえできる場合、&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;タプル、リスト、int、float、および引用符付き文字列を処理するpyparsing wikiの&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://pyparsing.wikispaces.com/file/view/parsePythonValue.py&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;この&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ようなより完全な文法が必要&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;になります。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;2.4までのPythonバージョンで動作します。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="7b6f4306c142c3439b8fd5ddccd05e09bd8af288" translate="yes" xml:space="preserve">
+          <source>Inspired from some of the answers above that work with base python packages I compared the performance of a few (using Python 3.7.3):</source>
+          <target state="translated">上記のいくつかの回答からインスピレーションを得て、私はいくつかのパフォーマンスを比較しました(Python 3.7.3を使用して)。</target>
+        </trans-unit>
+        <trans-unit id="9f6030eec115bfd1e882a1da65b755577ffce083" translate="yes" xml:space="preserve">
+          <source>Note that this also removes spaces from inside entries u'[&quot;oh no&quot;]' ---&amp;gt; [u'ohno'].  If this is not what you wanted, the regexp needs to be souped up a bit.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;これにより、エントリu '[&quot;oh no&quot;]' ---&amp;gt; [u'ohno ']内のスペースも削除されることに注意してください。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;これがあなたが望んだものではない場合、正規表現を少し上げる必要があります。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ba67616a01a6a8ba22f315db01324b08cc2ad101" translate="yes" xml:space="preserve">
+          <source>Once you have that, &lt;code&gt;strip&lt;/code&gt; the strings.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;あなたはそれを持っていたら、&lt;/font&gt;&lt;/font&gt; &lt;code&gt;strip&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;の文字列を。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="0df5b62317eeac762d6d8de8ded61c204a2aa13c" translate="yes" xml:space="preserve">
+          <source>Similarly</source>
+          <target state="translated">Similarly</target>
+        </trans-unit>
+        <trans-unit id="cd04b1ec2991881e605bd02d37de6c6cb9938f51" translate="yes" xml:space="preserve">
+          <source>So in the end regex wins!</source>
+          <target state="translated">結局はregexの勝ちですね。</target>
+        </trans-unit>
+        <trans-unit id="fd22c75c773ebc2d342cfbc24898ddb766a34812" translate="yes" xml:space="preserve">
+          <source>So, following all the answers I decided to time the most common methods:</source>
+          <target state="translated">だから、すべての答えに続いて、私は最も一般的な方法を時間にすることにしました。</target>
+        </trans-unit>
+        <trans-unit id="1f698e6b1ed9e81b9608b1514ecbe071fc4fa8d2" translate="yes" xml:space="preserve">
+          <source>The &lt;a href=&quot;https://docs.python.org/3/library/json.html&quot;&gt;&lt;code&gt;json&lt;/code&gt;&lt;/a&gt; module is a better solution whenever there is a &lt;em&gt;stringified&lt;/em&gt; list of dictionaries. The &lt;code&gt;json.loads(your_data)&lt;/code&gt; function can be used to convert it to a list.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;a href=&quot;https://docs.python.org/3/library/json.html&quot;&gt; &lt;code&gt;json&lt;/code&gt; &lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;があるたびモジュールは、よりよい解決策である&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;文字列化&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;辞書のリストが。&lt;/font&gt;&lt;/font&gt; &lt;code&gt;json.loads(your_data)&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;関数は、それをリストに変換するために使用することができます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6c5b0b44257587afda77ff680c44935ab531756a" translate="yes" xml:space="preserve">
+          <source>The &lt;code&gt;eval&lt;/code&gt; is dangerous - you shouldn't execute user input.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;eval&lt;/code&gt; のは&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;危険です-あなたはユーザー入力を実行するべきではありません。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="4f3168d7567a8d43a62598fe530c90e926c14adf" translate="yes" xml:space="preserve">
+          <source>The junkers variable contains a compiled regexp (for speed) of all characters we don't want, using ] as a character required some backslash trickery.
+The re.sub replaces all these characters with nothing, and we split the resulting string at the commas.</source>
+          <target state="translated">junkers変数には、不要な文字の再正規表現をコンパイルしたものが含まれています(高速化のため)。re.subはこれらすべての文字を何もない文字に置き換え、結果の文字列をカンマで分割します。</target>
+        </trans-unit>
+        <trans-unit id="1ebbb64de4eec42600853af376ecfc03cde47566" translate="yes" xml:space="preserve">
+          <source>There is a quick solution:</source>
+          <target state="translated">即効性のある解決策があります。</target>
+        </trans-unit>
+        <trans-unit id="bd39b45eb2ccadcecf8956fe7b5632ce26216ec6" translate="yes" xml:space="preserve">
+          <source>This isn't as good as the ast solution, for example it doesn't correctly handle escaped quotes in strings. But it's simple, doesn't involve a dangerous eval, and might be good enough for your purpose if you're on an older Python without ast.</source>
+          <target state="translated">これは ast の解決策ほどではありません。例えば、文字列中のエスケープされた引用符を正しく処理できません。しかし、これはシンプルで、危険な eval を伴わないので、古い Python を使っていて ast を使用していないのであれば、あなたの目的には十分良いかもしれません。</target>
+        </trans-unit>
+        <trans-unit id="867924488b11ec5baa310ee5351933f41ca0a04b" translate="yes" xml:space="preserve">
+          <source>To further complete @Ryan 's answer using json, one very convenient function to convert unicode is the one posted here: &lt;a href=&quot;https://stackoverflow.com/a/13105359/7599285&quot;&gt;https://stackoverflow.com/a/13105359/7599285&lt;/a&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;jsonを使用して@Ryanの回答をさらに完成させるために、ユニコードを変換する1つの非常に便利な関数は、ここに投稿されたものです：&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/a/13105359/7599285&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;https&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; ://stackoverflow.com/a/13105359/7599285&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="410f97e7aa72854f653d86dfe60ee8e72dc60612" translate="yes" xml:space="preserve">
+          <source>Unwanted whitespaces in the list elements may be removed in this way:</source>
+          <target state="translated">リスト要素内の不要な空白は、このようにして削除することができます。</target>
+        </trans-unit>
+        <trans-unit id="b3d4a5a715efd7316e589fb57cf2cc32579f5147" translate="yes" xml:space="preserve">
+          <source>With ast.literal_eval, you can safely evaluate an expression node or a string containing a Python expression. The string or node provided may only consist of the following Python literal structures: strings, numbers, tuples, lists, dicts, booleans, and None.</source>
+          <target state="translated">ast.iteral_eval を使うと、Python の式を含む式ノードや文字列を安全に評価することができます。提供される文字列やノードは、以下のPythonリテラル構造体のみで構成されます:文字列、数値、タプル、リスト、ディクショナリ、ブーリアン、None。</target>
+        </trans-unit>
+        <trans-unit id="60dbddabab938d2b293738c76a498da356686737" translate="yes" xml:space="preserve">
+          <source>and with pure python - not importing any libraries</source>
+          <target state="translated">そして純粋な python で-ライブラリをインポートしない</target>
+        </trans-unit>
+        <trans-unit id="f4a38ad66467dfd300b032d84366205f68ffb5c5" translate="yes" xml:space="preserve">
+          <source>ex with double or single quotes:</source>
+          <target state="translated">EXをダブルクォートまたはシングルクォートで指定します。</target>
+        </trans-unit>
+        <trans-unit id="4e0199865f4846b71da5f878a3bcdfe65cefb43c" translate="yes" xml:space="preserve">
+          <source>in Python.</source>
+          <target state="translated">を、Pythonで使用しています。</target>
+        </trans-unit>
+        <trans-unit id="1f47380510539f8ba23dec4976ef86cd792f1a7b" translate="yes" xml:space="preserve">
+          <source>you can save yourself the .strip() fcn by just slicing off the first and last characters from the string representation of the list (see third line below)</source>
+          <target state="translated">リストの文字列表現から最初と最後の文字を切り離せば、 .strip()fcn の手間を省くことができます (以下の三行目を参照してください)。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

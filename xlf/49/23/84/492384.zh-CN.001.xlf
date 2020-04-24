@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/492384">
+    <body>
+      <group id="492384">
+        <trans-unit id="10ce61d5fc7ebd47aabd8eb8b72014f7f2340586" translate="yes" xml:space="preserve">
+          <source>Another trick is the one mentioned by &lt;a href=&quot;https://stackoverflow.com/users/13422/zan-lynx&quot;&gt;Zan&lt;/a&gt;, which is to stash the size somewhere.  For example, if you're dynamically allocating the array, allocate a block one int bigger than the one you need, stash the size in the first int, and return ptr+1 as the pointer to the array.  When you need the size, decrement the pointer and peek at the stashed value.  Just remember to free the whole block starting from the beginning, and not just the array.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/users/13422/zan-lynx&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Zan&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;提到的另一个技巧是&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;将大小存储在某个地方。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;例如，如果要动态分配数组，请分配一个比所需块大一个int的块，将大小存储在第一个int中，并返回ptr + 1作为指向数组的指针。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;当需要大小时，减少指针并偷看隐藏的值。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;只要记住要从头开始释放整个块，而不仅仅是数组。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="d11b1c1385532dc8067a903d480e65fd81e46980" translate="yes" xml:space="preserve">
+          <source>As all the correct answers have stated, you cannot get this information from the decayed pointer value of the array alone. If the decayed pointer is the argument received by the function, then the size of the originating array has to be provided in some other way for the function to come to know that size.</source>
+          <target state="translated">正如所有的正确答案所言,你不能仅仅从数组的衰落指针值中得到这些信息。如果衰落的指针是函数接收到的参数,那么必须通过其他方式提供源数组的大小,函数才能知道这个大小。</target>
+        </trans-unit>
+        <trans-unit id="dd32328a6e77149b4b9b14f965cf8ff8566078c3" translate="yes" xml:space="preserve">
+          <source>But you have many choices:</source>
+          <target state="translated">但是,你有很多选择。</target>
+        </trans-unit>
+        <trans-unit id="602fedc5c9b2886487ee5b0fcc672af11be840a3" translate="yes" xml:space="preserve">
+          <source>But you have to care about set the right length of the array you want to store, because the is no way to check this length, like our friends massively explained.</source>
+          <target state="translated">但你要关心的是设置好你要存储的数组长度,因为没有办法检查这个长度,就像我们的朋友大体上解释的那样。</target>
+        </trans-unit>
+        <trans-unit id="0acd6640891f3785aa71d20d3ffa1780f5e658db" translate="yes" xml:space="preserve">
+          <source>But, this suggestion is kind of silly for your problem, since the function is defined to know exactly the size of the array that is passed in (hence, there is little need to use sizeof at all on the array). What it does do, though, is offer some type safety. It will prohibit you from passing in an array of an unwanted size.</source>
+          <target state="translated">但是,这个建议对于你的问题来说有点傻,因为函数的定义是为了准确地知道被传入的数组的大小(因此,几乎没有必要在数组上使用sizeof)。不过,它的作用是提供了一些类型安全。它将禁止你传入一个不需要的数组的大小。</target>
+        </trans-unit>
+        <trans-unit id="6c8c0c8ecdad45c167a9ff434b56aa2d590f0229" translate="yes" xml:space="preserve">
+          <source>First off, here is some code:</source>
+          <target state="translated">首先,这里有一些代码。</target>
+        </trans-unit>
+        <trans-unit id="fe6d9ac415a8ad19cfbf47f30ac3e96aa0762e2e" translate="yes" xml:space="preserve">
+          <source>For dynamic arrays (&lt;em&gt;malloc&lt;/em&gt; or C++ &lt;em&gt;new&lt;/em&gt;) you need to store the size of the array as mentioned by others or perhaps build an array manager structure which handles add, remove, count, etc. Unfortunately C doesn't do this nearly as well as C++ since you basically have to build it for each different array type you are storing which is cumbersome if you have multiple types of arrays that you need to manage.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;对于动态数组（&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;malloc&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;或C ++ &lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;new&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;），您需要存储其他人提到的数组大小，或者可能构建一个数组管理器结构来处理添加，删除，计数等操作。不幸的是，C不能做到C ++，因为您基本上必须为要存储的每种不同的数组类型构建它，如果您需要管理多种类型的数组，这将很麻烦。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="2f23b59c4687d469d303210de520e977023550b7" translate="yes" xml:space="preserve">
+          <source>For static arrays, such as the one in your example, there is a common macro used to get the size, but it is &lt;strong&gt;not recommended&lt;/strong&gt; as it does not check if the parameter is really a static array. The macro is used in real code though, e.g. in the Linux kernel headers although it may be slightly different than the one below:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;对于静态数组（例如您的示例中的数组），有一个公共宏用于获取大小，但是&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;不建议&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;这样做，因为它不会检查参数是否真的是静态数组。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;不过，该宏用于实际代码中，例如在Linux内核标头中，尽管它可能与以下代码略有不同：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="14ed25bd9732c3c36bf129f1b5cc33c92a8346cd" translate="yes" xml:space="preserve">
+          <source>For this specific example, yes, there is, IF you use typedefs (see below). Of course, if you do it this way, you're just as well off to use SIZEOF_DAYS, since you know what the pointer is pointing to.</source>
+          <target state="translated">在这个具体的例子中,是的,如果你使用 typedefs(见下文),就会有。当然,如果你这样做,你也可以使用SIZEOF_DAYS,因为你知道指针指向的是什么。</target>
+        </trans-unit>
+        <trans-unit id="141956d01f14a420a3dc5c201376daa2dee674fc" translate="yes" xml:space="preserve">
+          <source>Here is an example with a &lt;strong&gt;foo_t&lt;/strong&gt; structure:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;这是一个具有&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;foo_t&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;结构&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;的示例&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="86f2f936b59fab1ab3ec6f71cdd72cccfb575caa" translate="yes" xml:space="preserve">
+          <source>Here's a suggestion different from what has been provided thus far,that will work: Pass a pointer to the array instead. This suggestion is similar to the C++ style suggestions, except that C does not support templates or references:</source>
+          <target state="translated">这里有一个与目前提供的不同的建议,这也是可行的。传递一个指向数组的指针来代替。这个建议与C++风格的建议类似,只是C语言不支持模板或引用。</target>
+        </trans-unit>
+        <trans-unit id="46693e03cf22d90d0f93108a25e489f5d3a92d46" translate="yes" xml:space="preserve">
+          <source>How to find the 'sizeof' (a pointer pointing to an array)</source>
+          <target state="translated">如何找到 &quot;sizeof&quot;(指向数组的指针)?</target>
+        </trans-unit>
+        <trans-unit id="9ab07dd61fdfd8627c1a331bdae0022bd7ae1119" translate="yes" xml:space="preserve">
+          <source>If possible, the C++ stdlib such as vector which is much safer and easier to use.</source>
+          <target state="translated">如果可能的话,C++的stdlib,比如vector,这样更安全,更容易使用。</target>
+        </trans-unit>
+        <trans-unit id="d0b46d6ef49ee3d75a4dbba073222fed24d0661e" translate="yes" xml:space="preserve">
+          <source>If the function is supposed to be able to operate on any size of array, then you will have to provide the size to the function as additional information.</source>
+          <target state="translated">如果函数应该能够对任何大小的数组进行操作,那么你必须提供大小作为附加信息给函数。</target>
+        </trans-unit>
+        <trans-unit id="c6062a3e19049053872338bed9d33476e2751f18" translate="yes" xml:space="preserve">
+          <source>If you have a (void *) pointer, as is returned by malloc()  or the like, then, no, there is no way to determine what data structure the pointer is pointing to and thus, no way to determine its size.</source>
+          <target state="translated">如果你有一个(void *)指针,就像malloc()之类的东西返回的那样,那么,没有办法确定这个指针指向的是什么数据结构,因此没有办法确定它的大小。</target>
+        </trans-unit>
+        <trans-unit id="e6958f12750bb26b0bccaf4848ffff1b524b5436" translate="yes" xml:space="preserve">
+          <source>In strings there is a &lt;code&gt;'\0'&lt;/code&gt; character at the end so the length of the string can be gotten using functions like &lt;code&gt;strlen&lt;/code&gt;. The problem with an integer array, for example, is that you can't use any value as an end value so one possible solution is to address the array and use as an end value the &lt;code&gt;NULL&lt;/code&gt; pointer.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;在字符串&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;的末尾&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;有一个&lt;/font&gt;&lt;/font&gt; &lt;code&gt;'\0'&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;字符，因此可以使用诸如&lt;/font&gt;&lt;/font&gt; &lt;code&gt;strlen&lt;/code&gt; 之类的&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;函数来获得字符串的长度&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;例如，整数数组的问题是您不能将任何值用作结束值，因此一种可能的解决方案是对数组进行寻址并使用&lt;/font&gt;&lt;/font&gt; &lt;code&gt;NULL&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;指针&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;作为结束值&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="39198bb1f7eaf58b699e3f8e53d3bcc1dcd2c877" translate="yes" xml:space="preserve">
+          <source>Is there a way to find out the size of the array that &lt;code&gt;ptr&lt;/code&gt; is pointing to (instead of just giving its size, which is four bytes on a 32-bit system)?</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;有没有办法找出&lt;/font&gt;&lt;/font&gt; &lt;code&gt;ptr&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;指向&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;的数组的大小&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;（而不是仅仅给出其大小，在32位系统上为4个字节）？&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="07880985c52909f262ace43c24cfd089828a2e49" translate="yes" xml:space="preserve">
+          <source>My solution to this problem is to save the length of the array into a struct Array as a meta-information about the array.</source>
+          <target state="translated">我解决这个问题的方法是将数组的长度保存到一个struct Array中,作为数组的元信息。</target>
+        </trans-unit>
+        <trans-unit id="601fc31e19a62dcede16df70c47db1339186e28f" translate="yes" xml:space="preserve">
+          <source>No, you can't use &lt;code&gt;sizeof(ptr)&lt;/code&gt; to find the size of array &lt;code&gt;ptr&lt;/code&gt; is pointing to.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;不，您不能使用&lt;/font&gt;&lt;/font&gt; &lt;code&gt;sizeof(ptr)&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;查找&lt;/font&gt;&lt;/font&gt; &lt;code&gt;ptr&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;指向&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;的数组的大小&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="2fc50448bc90a910ae322337b63940c931383c72" translate="yes" xml:space="preserve">
+          <source>No, you can't.  The compiler doesn't know what the pointer is pointing to.  There are tricks, like ending the array with a known out-of-band value and then counting the size up until that value, but that's not using sizeof.</source>
+          <target state="translated">不,你不能。编译器不知道指针指向的是什么。有一些小技巧,比如用一个已知的带外值结束数组,然后计数直到该值为止,但这不是使用sizeof。</target>
+        </trans-unit>
+        <trans-unit id="9bec2e0a2ab5d7914b00e66063347a28366e65e1" translate="yes" xml:space="preserve">
+          <source>Obviously, add a parameter</source>
+          <target state="translated">很明显,添加一个参数</target>
+        </trans-unit>
+        <trans-unit id="f3c8c95c5e534bcd2ea0034a0d83177efa6923f4" translate="yes" xml:space="preserve">
+          <source>Output:</source>
+          <target state="translated">Output:</target>
+        </trans-unit>
+        <trans-unit id="cd5ec5f9a89b02a08d6ef27b687b10468a768634" translate="yes" xml:space="preserve">
+          <source>Size of days[] is 20 which is no of elements * size of it's data type.
+While the size of pointer is 4 no matter what it is pointing to.
+Because a pointer points to other element by storing it's address.</source>
+          <target state="translated">天数[]的大小是20,也就是元素数*数据类型的大小。而指针的大小是4,不管它指向什么,都是4。因为指针是通过存储地址来指向其他元素的。</target>
+        </trans-unit>
+        <trans-unit id="67c386b96a00f5de86c613e320fc011c37e08ea4" translate="yes" xml:space="preserve">
+          <source>The answer is, &quot;No.&quot;</source>
+          <target state="translated">答案是:&quot;没有。&quot;</target>
+        </trans-unit>
+        <trans-unit id="fa9c39995dd1ff8dce2e476e17f4e93ea18afd56" translate="yes" xml:space="preserve">
+          <source>There is a clean solution with C++ templates, without using &lt;strong&gt;sizeof()&lt;/strong&gt;. The following &lt;strong&gt;getSize()&lt;/strong&gt; function returns the size of any static array:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;使用C ++模板有一个干净的解决方案，而不使用&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;sizeof（）&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;以下&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;getSize（）&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;函数返回任何静态数组的大小：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e44dd688381f034ce96a93c3bd130b3b8764b361" translate="yes" xml:space="preserve">
+          <source>There is no magic solution. C is not a reflective language. Objects don't automatically know what they are.</source>
+          <target state="translated">没有什么神奇的解决方案。C语言不是一种反射式语言。物体不会自动知道它们是什么。</target>
+        </trans-unit>
+        <trans-unit id="7c3b2b478f2ad5676d40019bf7757cd287e9c0ab" translate="yes" xml:space="preserve">
+          <source>Though allocating extra memory(more than the size of array) will be helpful if you want  to store the length in extra space.</source>
+          <target state="translated">虽然如果你想把长度存储在额外的空间里,分配额外的内存(超过数组的大小)会有帮助。</target>
+        </trans-unit>
+        <trans-unit id="1d0f061328b0e92a7b111b41701869da1907b7af" translate="yes" xml:space="preserve">
+          <source>Usage is:</source>
+          <target state="translated">用法是:</target>
+        </trans-unit>
+        <trans-unit id="3d875ab8efb66ba19251aecc0b3be5ad3c5ae8d0" translate="yes" xml:space="preserve">
+          <source>Use a more complex object. Define a structure which contains the dynamic array and also the size of the array. Then, pass the address of the structure.</source>
+          <target state="translated">使用一个更复杂的对象。定义一个包含动态数组的结构,同时定义一个动态数组的大小。然后,传递结构的地址。</target>
+        </trans-unit>
+        <trans-unit id="5df51d8bd29ca933544649e006ec229ebaebb906" translate="yes" xml:space="preserve">
+          <source>What C programmers do is store the size of the array somewhere.  It can be part of a structure, or the programmer can cheat a bit and malloc() more memory than requested in order to store a length value before the start of the array.</source>
+          <target state="translated">C语言程序员要做的是将数组的大小存储在某个地方。它可以是结构的一部分,或者程序员也可以作弊一点,将malloc()比请求的内存多一点,以便在数组开始之前存储一个长度值。</target>
+        </trans-unit>
+        <trans-unit id="9545e86ebbefbb4457f0124949eefa1a6c018333" translate="yes" xml:space="preserve">
+          <source>Wrap the call in a macro and automatically add a parameter</source>
+          <target state="translated">在宏中封装调用并自动添加一个参数</target>
+        </trans-unit>
+        <trans-unit id="1e68b7703215e610fbb0873d6069896a37f3eb0f" translate="yes" xml:space="preserve">
+          <source>You can do something like this:</source>
+          <target state="translated">你可以做这样的事情。</target>
+        </trans-unit>
+        <trans-unit id="b257f0e600c75b1962e5a51ef1795eb149a8574c" translate="yes" xml:space="preserve">
+          <source>You can google for reasons to be wary of macros like this. Be careful.</source>
+          <target state="translated">你可以在谷歌上找理由,对这样的宏要警惕。要小心点。</target>
+        </trans-unit>
+        <trans-unit id="6665a8e783ec08ddbaf4aed1389a74ddfe999e6d" translate="yes" xml:space="preserve">
+          <source>array_size is passing to the &lt;strong&gt;&lt;em&gt;size&lt;/em&gt;&lt;/strong&gt; variable:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;array_size传递给&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;size&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;变量：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

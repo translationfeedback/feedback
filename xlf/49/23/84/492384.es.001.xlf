@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="es" datatype="htmlbody" original="https://stackoverflow.com/questions/492384">
+    <body>
+      <group id="492384">
+        <trans-unit id="10ce61d5fc7ebd47aabd8eb8b72014f7f2340586" translate="yes" xml:space="preserve">
+          <source>Another trick is the one mentioned by &lt;a href=&quot;https://stackoverflow.com/users/13422/zan-lynx&quot;&gt;Zan&lt;/a&gt;, which is to stash the size somewhere.  For example, if you're dynamically allocating the array, allocate a block one int bigger than the one you need, stash the size in the first int, and return ptr+1 as the pointer to the array.  When you need the size, decrement the pointer and peek at the stashed value.  Just remember to free the whole block starting from the beginning, and not just the array.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Otro truco es el mencionado por &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/users/13422/zan-lynx&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Zan&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; , que consiste en esconder el tama&amp;ntilde;o en alguna parte. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Por ejemplo, si est&amp;aacute; asignando din&amp;aacute;micamente la matriz, asigne un bloque uno m&amp;aacute;s grande que el que necesita, guarde el tama&amp;ntilde;o en la primera int y devuelva ptr + 1 como puntero a la matriz. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Cuando necesite el tama&amp;ntilde;o, disminuya el puntero y mire el valor oculto. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Solo recuerde liberar todo el bloque desde el principio, y no solo la matriz.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="d11b1c1385532dc8067a903d480e65fd81e46980" translate="yes" xml:space="preserve">
+          <source>As all the correct answers have stated, you cannot get this information from the decayed pointer value of the array alone. If the decayed pointer is the argument received by the function, then the size of the originating array has to be provided in some other way for the function to come to know that size.</source>
+          <target state="translated">Como todas las respuestas correctas han indicado,no puedes obtener esta información sólo del valor del puntero decaído de la matriz.Si el puntero decaído es el argumento recibido por la función,entonces el tamaño de la matriz de origen tiene que ser proporcionado de alguna otra manera para que la función llegue a conocer ese tamaño.</target>
+        </trans-unit>
+        <trans-unit id="dd32328a6e77149b4b9b14f965cf8ff8566078c3" translate="yes" xml:space="preserve">
+          <source>But you have many choices:</source>
+          <target state="translated">Pero tienes muchas opciones:</target>
+        </trans-unit>
+        <trans-unit id="602fedc5c9b2886487ee5b0fcc672af11be840a3" translate="yes" xml:space="preserve">
+          <source>But you have to care about set the right length of the array you want to store, because the is no way to check this length, like our friends massively explained.</source>
+          <target state="translated">Pero tienes que preocuparte por establecer la longitud correcta de la matriz que quieres almacenar,porque no hay manera de comprobar esta longitud,como nuestros amigos explicaron masivamente.</target>
+        </trans-unit>
+        <trans-unit id="0acd6640891f3785aa71d20d3ffa1780f5e658db" translate="yes" xml:space="preserve">
+          <source>But, this suggestion is kind of silly for your problem, since the function is defined to know exactly the size of the array that is passed in (hence, there is little need to use sizeof at all on the array). What it does do, though, is offer some type safety. It will prohibit you from passing in an array of an unwanted size.</source>
+          <target state="translated">Pero,esta sugerencia es un poco tonta para su problema,ya que la función se define para saber exactamente el tamaño de la matriz que se pasa (por lo tanto,hay poca necesidad de usar el tamaño en absoluto en la matriz).Lo que hace,sin embargo,es ofrecer algún tipo de seguridad.Le prohibirá pasar en una matriz de un tamaño no deseado.</target>
+        </trans-unit>
+        <trans-unit id="6c8c0c8ecdad45c167a9ff434b56aa2d590f0229" translate="yes" xml:space="preserve">
+          <source>First off, here is some code:</source>
+          <target state="translated">En primer lugar,aquí hay un código:</target>
+        </trans-unit>
+        <trans-unit id="fe6d9ac415a8ad19cfbf47f30ac3e96aa0762e2e" translate="yes" xml:space="preserve">
+          <source>For dynamic arrays (&lt;em&gt;malloc&lt;/em&gt; or C++ &lt;em&gt;new&lt;/em&gt;) you need to store the size of the array as mentioned by others or perhaps build an array manager structure which handles add, remove, count, etc. Unfortunately C doesn't do this nearly as well as C++ since you basically have to build it for each different array type you are storing which is cumbersome if you have multiple types of arrays that you need to manage.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Para las matrices din&amp;aacute;micas ( &lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;malloc&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; o C ++ &lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;nuevas&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; ) necesita almacenar el tama&amp;ntilde;o de la matriz como lo mencionan otros o tal vez construir una estructura de administrador de matriz que maneje agregar, eliminar, contar, etc. Desafortunadamente, C no hace esto tan bien como C ++ ya que b&amp;aacute;sicamente tiene que compilarlo para cada tipo de matriz diferente que est&amp;aacute; almacenando, lo cual es engorroso si tiene m&amp;uacute;ltiples tipos de matrices que necesita administrar.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="2f23b59c4687d469d303210de520e977023550b7" translate="yes" xml:space="preserve">
+          <source>For static arrays, such as the one in your example, there is a common macro used to get the size, but it is &lt;strong&gt;not recommended&lt;/strong&gt; as it does not check if the parameter is really a static array. The macro is used in real code though, e.g. in the Linux kernel headers although it may be slightly different than the one below:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Para las matrices est&amp;aacute;ticas, como la de su ejemplo, hay una macro com&amp;uacute;n utilizada para obtener el tama&amp;ntilde;o, pero no se &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;recomienda&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; ya que no comprueba si el par&amp;aacute;metro es realmente una matriz est&amp;aacute;tica. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Sin embargo, la macro se usa en c&amp;oacute;digo real, por ejemplo, en los encabezados del kernel de Linux, aunque puede ser ligeramente diferente de la siguiente:&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="14ed25bd9732c3c36bf129f1b5cc33c92a8346cd" translate="yes" xml:space="preserve">
+          <source>For this specific example, yes, there is, IF you use typedefs (see below). Of course, if you do it this way, you're just as well off to use SIZEOF_DAYS, since you know what the pointer is pointing to.</source>
+          <target state="translated">Para este ejemplo concreto,sí,hay,SI se utiliza typedefs (véase más abajo).Por supuesto,si lo haces de esta manera,es mejor usar SIZEOF_DAYS,ya que sabes a qué apunta el puntero.</target>
+        </trans-unit>
+        <trans-unit id="141956d01f14a420a3dc5c201376daa2dee674fc" translate="yes" xml:space="preserve">
+          <source>Here is an example with a &lt;strong&gt;foo_t&lt;/strong&gt; structure:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Aqu&amp;iacute; hay un ejemplo con una &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;estructura &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;foo_t&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="86f2f936b59fab1ab3ec6f71cdd72cccfb575caa" translate="yes" xml:space="preserve">
+          <source>Here's a suggestion different from what has been provided thus far,that will work: Pass a pointer to the array instead. This suggestion is similar to the C++ style suggestions, except that C does not support templates or references:</source>
+          <target state="translated">Aquí hay una sugerencia diferente a la que se ha proporcionado hasta ahora,que funcionará:Pase un puntero a la matriz en su lugar.Esta sugerencia es similar a las sugerencias de estilo C++,excepto que C no soporta plantillas o referencias:</target>
+        </trans-unit>
+        <trans-unit id="46693e03cf22d90d0f93108a25e489f5d3a92d46" translate="yes" xml:space="preserve">
+          <source>How to find the 'sizeof' (a pointer pointing to an array)</source>
+          <target state="translated">Cómo encontrar el &quot;tamaño&quot; (un puntero que apunta a una matriz)</target>
+        </trans-unit>
+        <trans-unit id="9ab07dd61fdfd8627c1a331bdae0022bd7ae1119" translate="yes" xml:space="preserve">
+          <source>If possible, the C++ stdlib such as vector which is much safer and easier to use.</source>
+          <target state="translated">Si es posible,el C++stdlib como vector que es mucho más seguro y fácil de usar.</target>
+        </trans-unit>
+        <trans-unit id="d0b46d6ef49ee3d75a4dbba073222fed24d0661e" translate="yes" xml:space="preserve">
+          <source>If the function is supposed to be able to operate on any size of array, then you will have to provide the size to the function as additional information.</source>
+          <target state="translated">Si se supone que la función puede funcionar con cualquier tamaño de matriz,entonces tendrá que proporcionar el tamaño a la función como información adicional.</target>
+        </trans-unit>
+        <trans-unit id="c6062a3e19049053872338bed9d33476e2751f18" translate="yes" xml:space="preserve">
+          <source>If you have a (void *) pointer, as is returned by malloc()  or the like, then, no, there is no way to determine what data structure the pointer is pointing to and thus, no way to determine its size.</source>
+          <target state="translated">Si tienes un puntero (vacío *),como es devuelto por malloc()o similar,entonces,no,no hay manera de determinar qué estructura de datos está apuntando el puntero y por lo tanto,no hay manera de determinar su tamaño.</target>
+        </trans-unit>
+        <trans-unit id="e6958f12750bb26b0bccaf4848ffff1b524b5436" translate="yes" xml:space="preserve">
+          <source>In strings there is a &lt;code&gt;'\0'&lt;/code&gt; character at the end so the length of the string can be gotten using functions like &lt;code&gt;strlen&lt;/code&gt;. The problem with an integer array, for example, is that you can't use any value as an end value so one possible solution is to address the array and use as an end value the &lt;code&gt;NULL&lt;/code&gt; pointer.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;En las cadenas hay un car&amp;aacute;cter &lt;/font&gt;&lt;/font&gt; &lt;code&gt;'\0'&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; al final para que la longitud de la cadena se pueda obtener utilizando funciones como &lt;/font&gt;&lt;/font&gt; &lt;code&gt;strlen&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; . &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;El problema con una matriz entera, por ejemplo, es que no puede usar ning&amp;uacute;n valor como valor final, por lo que una posible soluci&amp;oacute;n es abordar la matriz y usar como valor final el &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;puntero &lt;/font&gt;&lt;/font&gt; &lt;code&gt;NULL&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; .&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="39198bb1f7eaf58b699e3f8e53d3bcc1dcd2c877" translate="yes" xml:space="preserve">
+          <source>Is there a way to find out the size of the array that &lt;code&gt;ptr&lt;/code&gt; is pointing to (instead of just giving its size, which is four bytes on a 32-bit system)?</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&amp;iquest;Hay alguna manera de averiguar el tama&amp;ntilde;o de la matriz a la que &lt;/font&gt;&lt;/font&gt; &lt;code&gt;ptr&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; (en lugar de simplemente dar su tama&amp;ntilde;o, que es de cuatro bytes en un sistema de 32 bits)?&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="07880985c52909f262ace43c24cfd089828a2e49" translate="yes" xml:space="preserve">
+          <source>My solution to this problem is to save the length of the array into a struct Array as a meta-information about the array.</source>
+          <target state="translated">Mi solución a este problema es guardar la longitud de la matriz en una estructura de matriz como una meta-información sobre la matriz.</target>
+        </trans-unit>
+        <trans-unit id="601fc31e19a62dcede16df70c47db1339186e28f" translate="yes" xml:space="preserve">
+          <source>No, you can't use &lt;code&gt;sizeof(ptr)&lt;/code&gt; to find the size of array &lt;code&gt;ptr&lt;/code&gt; is pointing to.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;No, no puede usar &lt;/font&gt;&lt;/font&gt; &lt;code&gt;sizeof(ptr)&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; para encontrar el tama&amp;ntilde;o de la matriz a la que &lt;/font&gt;&lt;/font&gt; &lt;code&gt;ptr&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; .&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="2fc50448bc90a910ae322337b63940c931383c72" translate="yes" xml:space="preserve">
+          <source>No, you can't.  The compiler doesn't know what the pointer is pointing to.  There are tricks, like ending the array with a known out-of-band value and then counting the size up until that value, but that's not using sizeof.</source>
+          <target state="translated">No,no puede.El compilador no sabe a qué apunta el puntero.Hay trucos,como terminar la matriz con un valor conocido fuera de banda y luego contar el tamaño hasta ese valor,pero eso no es usar el tamaño.</target>
+        </trans-unit>
+        <trans-unit id="9bec2e0a2ab5d7914b00e66063347a28366e65e1" translate="yes" xml:space="preserve">
+          <source>Obviously, add a parameter</source>
+          <target state="translated">Obviamente,añade un parámetro</target>
+        </trans-unit>
+        <trans-unit id="f3c8c95c5e534bcd2ea0034a0d83177efa6923f4" translate="yes" xml:space="preserve">
+          <source>Output:</source>
+          <target state="translated">Output:</target>
+        </trans-unit>
+        <trans-unit id="cd5ec5f9a89b02a08d6ef27b687b10468a768634" translate="yes" xml:space="preserve">
+          <source>Size of days[] is 20 which is no of elements * size of it's data type.
+While the size of pointer is 4 no matter what it is pointing to.
+Because a pointer points to other element by storing it's address.</source>
+          <target state="translated">El tamaño de los días[]es de 20,que es el tamaño de los elementos*de su tipo de datos.Mientras que el tamaño del puntero es 4 sin importar a qué apunta.Porque un puntero apunta a otro elemento almacenando su dirección.</target>
+        </trans-unit>
+        <trans-unit id="67c386b96a00f5de86c613e320fc011c37e08ea4" translate="yes" xml:space="preserve">
+          <source>The answer is, &quot;No.&quot;</source>
+          <target state="translated">La respuesta es:&quot;No&quot;.</target>
+        </trans-unit>
+        <trans-unit id="fa9c39995dd1ff8dce2e476e17f4e93ea18afd56" translate="yes" xml:space="preserve">
+          <source>There is a clean solution with C++ templates, without using &lt;strong&gt;sizeof()&lt;/strong&gt;. The following &lt;strong&gt;getSize()&lt;/strong&gt; function returns the size of any static array:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Hay una soluci&amp;oacute;n limpia con plantillas C ++, sin usar &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;sizeof ()&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; . &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;La siguiente funci&amp;oacute;n &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;getSize ()&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; devuelve el tama&amp;ntilde;o de cualquier matriz est&amp;aacute;tica:&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e44dd688381f034ce96a93c3bd130b3b8764b361" translate="yes" xml:space="preserve">
+          <source>There is no magic solution. C is not a reflective language. Objects don't automatically know what they are.</source>
+          <target state="translated">No hay una solución mágica.La C no es un lenguaje reflexivo.Los objetos no saben automáticamente lo que son.</target>
+        </trans-unit>
+        <trans-unit id="7c3b2b478f2ad5676d40019bf7757cd287e9c0ab" translate="yes" xml:space="preserve">
+          <source>Though allocating extra memory(more than the size of array) will be helpful if you want  to store the length in extra space.</source>
+          <target state="translated">Aunque asignar memoria extra (más que el tamaño de la matriz)será útil si quieres almacenar la longitud en un espacio extra.</target>
+        </trans-unit>
+        <trans-unit id="1d0f061328b0e92a7b111b41701869da1907b7af" translate="yes" xml:space="preserve">
+          <source>Usage is:</source>
+          <target state="translated">El uso es:</target>
+        </trans-unit>
+        <trans-unit id="3d875ab8efb66ba19251aecc0b3be5ad3c5ae8d0" translate="yes" xml:space="preserve">
+          <source>Use a more complex object. Define a structure which contains the dynamic array and also the size of the array. Then, pass the address of the structure.</source>
+          <target state="translated">Usar un objeto más complejo.Definir una estructura que contenga el conjunto dinámico y también el tamaño del conjunto.Luego,pasa la dirección de la estructura.</target>
+        </trans-unit>
+        <trans-unit id="5df51d8bd29ca933544649e006ec229ebaebb906" translate="yes" xml:space="preserve">
+          <source>What C programmers do is store the size of the array somewhere.  It can be part of a structure, or the programmer can cheat a bit and malloc() more memory than requested in order to store a length value before the start of the array.</source>
+          <target state="translated">Lo que hacen los programadores de C es almacenar el tamaño de la matriz en algún lugar.Puede ser parte de una estructura,o el programador puede engañar un poco y malloc()más memoria de la solicitada para almacenar un valor de longitud antes del inicio del array.</target>
+        </trans-unit>
+        <trans-unit id="9545e86ebbefbb4457f0124949eefa1a6c018333" translate="yes" xml:space="preserve">
+          <source>Wrap the call in a macro and automatically add a parameter</source>
+          <target state="translated">Envuelve la llamada en una macro y añade automáticamente un parámetro</target>
+        </trans-unit>
+        <trans-unit id="1e68b7703215e610fbb0873d6069896a37f3eb0f" translate="yes" xml:space="preserve">
+          <source>You can do something like this:</source>
+          <target state="translated">Puedes hacer algo como esto:</target>
+        </trans-unit>
+        <trans-unit id="b257f0e600c75b1962e5a51ef1795eb149a8574c" translate="yes" xml:space="preserve">
+          <source>You can google for reasons to be wary of macros like this. Be careful.</source>
+          <target state="translated">Puedes buscar en Google por razones para desconfiar de macros como esta.Tengan cuidado.</target>
+        </trans-unit>
+        <trans-unit id="6665a8e783ec08ddbaf4aed1389a74ddfe999e6d" translate="yes" xml:space="preserve">
+          <source>array_size is passing to the &lt;strong&gt;&lt;em&gt;size&lt;/em&gt;&lt;/strong&gt; variable:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;array_size pasa a la &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;variable de &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;tama&amp;ntilde;o&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

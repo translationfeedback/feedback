@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ja" datatype="htmlbody" original="https://stackoverflow.com/questions/588866">
+    <body>
+      <group id="588866">
+        <trans-unit id="29411947b64337d949e3249a16a8087de5059836" translate="yes" xml:space="preserve">
+          <source>'atomic' means it cannot be broken down. 
+  In OS/programming terms an atomic function call is one that cannot be interrupted - the entire function must be executed, and not swapped out of the CPU by the OS's usual context switching until it's complete. Just in case you didn't know: since the CPU can only do one thing at a time, the OS rotates access to the CPU to all running processes in little time-slices, to give the &lt;em&gt;illusion&lt;/em&gt; of multitasking. The CPU scheduler can (and does) interrupt a process at any point in its execution - even in mid function call. So for actions like updating shared counter variables where two processes could try to update the variable at the same time, they must be executed 'atomically', i.e., each update action has to finish in its entirety before any other process can be swapped onto the CPU.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;「アトミック」とは、分解できないことを意味します。 OS /プログラミング用語では、アトミック関数呼び出しは中断できないものです-関数全体を実行する必要があり、完了するまで、OSの通常のコンテキスト切り替えによってCPUからスワップアウトされません。あなたが知らなかった場合に備えて：CPUは一度に1つのことしかできないので、OSはCPUへのアクセスを回転させて、すべての実行中のプロセスを小さなタイムスライスで回転させ、&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;錯覚&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;を与えます&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;マルチタスクの。 CPUスケジューラーは、実行中の任意の時点で（たとえ関数呼び出しの途中であっても）プロセスを中断することができます（実際に中断します）。したがって、2つのプロセスが同時に変数を更新しようとする可能性がある共有カウンタ変数の更新などのアクションの場合、それらは「原子的に」実行する必要があります。つまり、他のプロセスを他のプロセスにスワップする前に、各更新アクションが完全に終了する必要があります。 CPU。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="65736baa892bc6f32d06472e7079b5cff8c9af94" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;assign&lt;/code&gt;             // Default</source>
+          <target state="translated">&lt;code&gt;assign&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; //デフォルト&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="bac17a28340bcd4bfb53b1b5e3a83f2a13250a9f" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;atomic&lt;/code&gt;             // Default</source>
+          <target state="translated">&lt;code&gt;atomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; //デフォルト&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="01d882e76c1163761e47b5a0bb408737608a9242" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;atomic&lt;/code&gt; is the default behavior</source>
+          <target state="translated">&lt;code&gt;atomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;はデフォルトの動作です&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="cd25f9b1ee3c8eaa4226923ff82b96fd6eca134a" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;atomic&lt;/code&gt; is thread safe.</source>
+          <target state="translated">&lt;code&gt;atomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;はスレッドセーフです。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="80e3a512b8083c4567a879d96cc0303bf08edd67" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;atomic&lt;/code&gt; means only one thread access the variable (static type).</source>
+          <target state="translated">&lt;code&gt;atomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;は、1つのスレッドのみが変数にアクセスすることを意味します（静的タイプ）。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ff1d83cc3154ada7d25a25cffb2c0f316485b818" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;atomicity&lt;/code&gt; of a single property also cannot guarantee thread safety when multiple dependent properties are in play.</source>
+          <target state="translated">&lt;code&gt;atomicity&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;また、単一のプロパティの&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;原子性&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;は、複数の依存プロパティが関係している場合、スレッドの安全性を保証できません。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e0676c9bf1fac4480032641cbb6a68b1b7b2be56" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;nonatomic&lt;/code&gt; is NOT default behavior. We need to add the &lt;code&gt;nonatomic&lt;/code&gt; keyword in the property attribute.</source>
+          <target state="translated">&lt;code&gt;nonatomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;はデフォルトの動作ではありません。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;property属性に&lt;/font&gt;&lt;/font&gt; &lt;code&gt;nonatomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;キーワード&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;を追加する必要があり&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="b453d3a7a5746cdfc0be6127c5ee1332e4ae20b5" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;nonatomic&lt;/code&gt; is thread-unsafe.</source>
+          <target state="translated">&lt;code&gt;nonatomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;はスレッド&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;セーフで&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;はありません。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="144c4b12fa77d18882a8cd254b25ce6824a3fd33" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;nonatomic&lt;/code&gt; means multiple thread access the variable (dynamic type).</source>
+          <target state="translated">&lt;code&gt;nonatomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;は、複数のスレッドが変数にアクセスすることを意味します（動的型）。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="94704458ff99f8b43566a1a29d92a57098a31b7b" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;readwrite&lt;/code&gt;                 // Default</source>
+          <target state="translated">&lt;code&gt;readwrite&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; //デフォルト&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="16fdeec49d31d634e8dd057a685b6f1a125f2dc2" translate="yes" xml:space="preserve">
+          <source>&lt;code&gt;strong = retain&lt;/code&gt;        // Default</source>
+          <target state="translated">&lt;code&gt;strong = retain&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; //デフォルト&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="1817be6d1b19c950de8c9a2fd3ae06f454649a42" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;Thats why non atomic is called thread unsafe But but it is fast in performance because of parallel execution&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;そのため、非アトミックはスレッドセーフでないと呼ばれますが、並列実行のため、パフォーマンスは高速です&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="5cdd7cb3f0962dd785ee980cc0728796fe1f9761" translate="yes" xml:space="preserve">
+          <source>&lt;em&gt;The keywords doesn't have to be written as first property attribute at all.&lt;/em&gt;</source>
+          <target state="translated">&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;キーワードを最初のプロパティ属性として記述する必要はまったくありません。&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;</target>
+        </trans-unit>
+        <trans-unit id="6a10d89828ebaa54d8102b7cb13ba8665b0b81b2" translate="yes" xml:space="preserve">
+          <source>&lt;strike&gt;Note that there is no &quot;atomic&quot; keyword, if you do not specify &quot;nonatomic&quot;, then the property is atomic, but specifying &quot;atomic&quot; explicitly will result in an error.&lt;/strike&gt;</source>
+          <target state="translated">&lt;strike&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;「アトミック」キーワードがないことに注意してください。「非アトミック」を指定しない場合、プロパティはアトミックですが、「アトミック」を明示的に指定するとエラーが発生します。&lt;/font&gt;&lt;/font&gt;&lt;/strike&gt;</target>
+        </trans-unit>
+        <trans-unit id="ffd409aa01eefdb8323b9fe5351b0b0a2ae95d7a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;-  Nonatomic means multiple thread access the variable(dynamic type).&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;-非アトミックとは、複数のスレッドが変数（動的型）にアクセスすることを意味します。&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="466db7383e12a27164e85bd429689284264834b8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;- Nonatomic is thread unsafe.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;-非アトミックはスレッドに対して安全ではありません。&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="36549c905b7712f2a9bd3e65321c0b4716e2e567" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;- but it is fast in performance&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;-しかし、パフォーマンスは速い&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="4ffaa095c82217a0d20db0b7833a8f1b5ded92da" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;-Atomic is thread safe.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;-Atomicはスレッドセーフです。&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="386c6c59efb1ceedd21973ad7d42db9e83d58724" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;-Atomic means only one thread access the variable(static type).&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;-Atomicは、1つのスレッドのみが変数（静的型）にアクセスすることを意味します。&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d9289b20dbb4a5dfc44402b984b9b7fb71c00550" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;-Nonatomic is NOT default behavior, we need to add nonatomic keyword    in property attribute.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;-Nonatomicはデフォルトの動作ではありません。プロパティ属性に非アトミックキーワードを追加する必要があります。&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f0c853f0aa5af920ea97541fcad5a333859dd74d" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;-but it is slow in performance&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;-しかし、パフォーマンスが遅い&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="e4f84e82d964d65d5331ec4dc31848f2f7892ac9" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;atomic&lt;/code&gt; will ALWAYS guarantee&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt; &lt;code&gt;atomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;は常に保証します&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="ddde3b23162bbee9de624e2f156bcd96875a1c35" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;atomic&lt;/code&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;code&gt;atomic&lt;/code&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="0bb576a1c9d49b79e806ea0099e6c66b36101634" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;code&gt;nonatomic&lt;/code&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;code&gt;nonatomic&lt;/code&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="716a0725bfe701eef013b5666a762ce35538990b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;Atomicity
+atomic (default)&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;原子性（デフォルト）&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="568741eb5bb25f08010362cde0dec871c3a27255" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;That's why atomic is called thread Safe&lt;/em&gt;&lt;/strong&gt; and 
+&lt;strong&gt;&lt;em&gt;That's why it is called read-write safe&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;これが、アトミックがスレッドセーフ&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;と &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;呼ばれる理由であり、それが読み取り/書き込みセーフと呼ばれる理由です。&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6db8014b9ff772505aa968a0f3cb71151a1dfeb5" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;&lt;em&gt;nonatomic&lt;/em&gt;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;em&gt;nonatomic&lt;/em&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="86bb8a493b4f26c9d609a3571320b145e83a3265" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;And&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;And&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="9ae1919a56a424217d7942d186776bb7154473a3" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Atomic :&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;原子：&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="8847114c556e5aa0915a5a58f41de257fd15603b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Atomic properties&lt;/strong&gt; :- When a variable assigned with atomic property that means it has only one thread access and it will be thread safe and will be good in performance perspective, will have default behaviour.</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;アトミックプロパティ&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;：- &lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;アトミックプロパティで&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;割り当てられた変数は、スレッドアクセスが1つだけであり、スレッドセーフであり、パフォーマンスの観点で優れている場合、デフォルトの動作になります。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="10970c29b4e931a96e449c43e2331815ca29c267" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Atomic&lt;/strong&gt;     = thread safety</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;アトミック&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; =スレッドセーフ&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="bf1acd29fac53602f47b91d7c8afc125f052e57a" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Atomicity property attributes (atomic and nonatomic) are not reflected in the corresponding Swift property declaration, but the atomicity guarantees of the Objective-C implementation still hold when the imported property is accessed from Swift.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;原子性プロパティの属性（原子的および非原子的）は、対応するSwiftプロパティ宣言には反映されませんが、Objective-C実装の原子性の保証は、インポートされたプロパティがSwiftからアクセスされた場合でも保持されます。&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3d30e499b268ef956cffe268c4793a9718b721f8" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Cons :&lt;/strong&gt;
+Chances of garbage value in case of multi-threading.</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;短所：&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; マルチスレッドの場合のガベージバリューの可能性。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6e4911144287afea7fb4bf6a0ef3999b2bb29492" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Cons :&lt;/strong&gt;
+Performance hit, makes execution a little slower</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;短所：&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; パフォーマンスが&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;低下&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;し、実行が少し遅くなります&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="234b4527dee6fe4a00dfe2bbf7a4bb066e7ff877" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Don't forget, this doesn't mean that the property as a whole is thread-safe. Only the method call of the setter/getter is. But if you use a setter and after that a getter at the same time with 2 different threads, it could be broken too!&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;忘れないでください。これは、プロパティ全体がスレッドセーフであることを意味するものではありません。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;setter / getterのメソッド呼び出しのみです。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;しかし、セッターを使用し、その後2つの異なるスレッドで同時にゲッターを使用した場合も、壊れる可能性があります。&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="dd1385db75a313e27cd1eb8e32ba179bf7f05987" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Execution&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Execution&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f1d5591d26cb3f294591f3efdff8f6b9e2481e94" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;How to declare:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;宣言する方法：&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="7811690ec89311f10f21d909af0798328148ae64" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Non Atomic Properties&lt;/strong&gt; :- When a variable assigned with atomic property that means it has multi thread access and it will not be thread safe and will be slow in performance perspective, will have default behaviour and when two different threads want to access variable at same time it will give unexpected results.</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;非アトミックプロパティ&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;：- &lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;アトミックプロパティで&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;割り当てられた変数、つまりマルチスレッドアクセスがあり、スレッドセーフではなく、パフォーマンスの観点から遅くなる場合、デフォルトの動作があり、2つの異なるスレッドが同時に変数にアクセスする場合予期しない結果が生じます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6678f00c71129c25e8fad8de4d6883b313b1be14" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Non-Atomic :&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;非原子：&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="f8545b1c7ebcf7fbb96a330cc7553c4639fcd04f" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Non-atomic&lt;/strong&gt; = No thread safety</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;非アトミック&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; =スレッドセーフなし&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="8601d32aec89322e75d4db57f8a0bc0221121029" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Now If *name property is atomic&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;* nameプロパティがアトミックの場合&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="151983afa96ad8bf924e8cee40345c29148887cb" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Now If *name property is nonatomic&lt;/strong&gt; then</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;* nameプロパティが非アトミックの&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;場合&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="48bf5499e3ac63560ca0e0106a29021adb072bfb" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Performance&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;Performance&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="cc771fd41033a77969a605ae1d4d583af20dfab0" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Pros :&lt;/strong&gt;
+Extremely fast execution.</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;長所：&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 非常に高速な実行。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="d428c41cc97f21b9ed84d34ebd585cbf9424fe05" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Pros :&lt;/strong&gt;
+Return of fully initialised objects each time makes it best choice in case of multi-threading.</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;長所：&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 完全に初期化されたオブジェクトを毎回返すため、マルチスレッドの場合に最適です。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="5dd2654f3ebc510659995067c7118d35b3e88d2e" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;So &amp;mdash; if you define an atomic property in Objective-C it will remain atomic when used by Swift.&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;したがって、Objective-Cでアトミックプロパティを定義した場合、Swiftで使用してもアトミックなままになります。&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="6d99c357ae636e2b3295a9622db183d6bbd34fa0" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;There is no such keyword &quot;atomic&quot;&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;「原子」というキーワードはありません&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="0b354ff06cc9df3b63e2688468d4f8a55f30ccb5" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;What?! Are multithreading and &lt;a href=&quot;https://stackoverflow.com/questions/261683/what-is-meant-by-thread-safe-code&quot;&gt;thread safety&lt;/a&gt; different?&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;何？！&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;マルチスレッドと&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/questions/261683/what-is-meant-by-thread-safe-code&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;スレッドセーフティは&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;異なりますか？&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d1c255bfcdaf01e1eed156159bb65466687e8bbb" translate="yes" xml:space="preserve">
+          <source>AND in implementation file</source>
+          <target state="translated">実装ファイルのAND</target>
+        </trans-unit>
+        <trans-unit id="031026e6565f207b619d61f36867d2bad1a58089" translate="yes" xml:space="preserve">
+          <source>ARC | atomic | synthesized getter: 47</source>
+          <target state="translated">atomic</target>
+        </trans-unit>
+        <trans-unit id="5cdbb3f5ce65e619a74e436ca69abc9e558570a5" translate="yes" xml:space="preserve">
+          <source>ARC | nonatomic | synthesized getter: 38 (note: ARC's adding ref count cycling here)</source>
+          <target state="translated">nonatomic</target>
+        </trans-unit>
+        <trans-unit id="4f64e38a90d15b8a6b6573bc690e9e02e460bc3e" translate="yes" xml:space="preserve">
+          <source>Adding to this:</source>
+          <target state="translated">これに加えて</target>
+        </trans-unit>
+        <trans-unit id="005fcaf14fcbfa73d92d1ddda41994d6c9b6572e" translate="yes" xml:space="preserve">
+          <source>After reading so many articles, Stack&amp;nbsp;Overflow posts and making demo applications to check variable property attributes, I decided to put all the attributes information together:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;非常に多くの記事を読み、スタックオーバーフローの投稿を読み、変数のプロパティ属性をチェックするデモアプリケーションを作成した後、すべての属性情報をまとめることにしました。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="97743bd8dd615d016758a893c5cacd3619f8ec85" translate="yes" xml:space="preserve">
+          <source>All properties work parallelly (like asynchronously).</source>
+          <target state="translated">すべてのプロパティは並列に動作します(非同期のように)。</target>
+        </trans-unit>
+        <trans-unit id="3dea8ae48d01239709fc42013945ab309b71b9be" translate="yes" xml:space="preserve">
+          <source>Allowing to be read right in the middle of a 'not yet finished write or empty value' or not allowing and only allowing to read when the value is &lt;em&gt;fully&lt;/em&gt; written.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;「まだ完了していない書き込みまたは空の値」の途中で読み取りを許可するか、または値が&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;完全に&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;書き込まれた&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ときにのみ読み取りを許可および許可しない&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ffe57890eea72d085b8c1756cf6ca03abeaf9aee" translate="yes" xml:space="preserve">
+          <source>Although I pay close attention to performance, I still say &lt;strong&gt;Semantics First!&lt;/strong&gt;. Meanwhile, performance is a low priority for many projects. However, knowing execution details and costs of technologies you use certainly doesn't hurt. You should use the right technology for your needs, purposes, and abilities. Hopefully this will save you a few hours of comparisons, and help you make a better informed decision when designing your programs.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;パフォーマンスには細心の注意を払っていますが、それでも&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;セマンティクスファースト&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;と言います&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;一方、多くのプロジェクトではパフォーマンスは優先度が低くなっています。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ただし、使用するテクノロジーの実行の詳細とコストを知っていても問題はありません。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ニーズ、目的、および能力に適したテクノロジーを使用する必要があります。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;うまくいけば、これにより数時間の比較が節約され、プログラムを設計するときに情報に基づいたより良い決定を行うのに役立ちます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="2cbd9d8863eeb2645be04a094bcbed84ed0f52b0" translate="yes" xml:space="preserve">
+          <source>Another difference is that atomic properties will retain/release cycle your objects within the getter.</source>
+          <target state="translated">もう一つの違いは、アトミックプロパティがゲッター内でオブジェクトを保持して解放するということです。</target>
+        </trans-unit>
+        <trans-unit id="b90a1bc53199071cf2f05cf74dce10673fc22174" translate="yes" xml:space="preserve">
+          <source>As atomic is default so,</source>
+          <target state="translated">atomicがデフォルトなので</target>
+        </trans-unit>
+        <trans-unit id="669dc440babc6ff197e609915366d3ba4ec76a8c" translate="yes" xml:space="preserve">
+          <source>As you have probably guessed, reference count activity/cycling is a significant contributor with atomics and under ARC. You would also see greater differences in contested cases.</source>
+          <target state="translated">おそらくお察しの通り、ア トミックとアークの下では、参照カウントのアクティビティサイクルが大きく寄与しています。争われているケースでは、より大きな違いが見られるでしょう。</target>
+        </trans-unit>
+        <trans-unit id="5b1dca09059391e6197dc9be1c6f3ad674bb8c11" translate="yes" xml:space="preserve">
+          <source>Assuming that you are @synthesizing the method implementations, atomic vs. non-atomic changes the generated code.  If you are writing your own setter/getters, atomic/nonatomic/retain/assign/copy are merely advisory.  (Note:  @synthesize is now the default behavior in recent versions of LLVM.  There is also no need to declare instance variables;  they will be synthesized automatically, too, and will have an &lt;code&gt;_&lt;/code&gt; prepended to their name to prevent accidental direct access).</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;メソッドの実装を@synthesizingしていると仮定すると、アトミック対非アトミックは生成されたコードを変更します。独自のセッター/ゲッターを作成している場合、atomic / nonatomic / retain / assign / copyは単なる助言です。 （注：LLVMの最近のバージョンでは、@ synthesizeがデフォルトの動作になりました。インスタンス変数を宣言する必要もありません。インスタンス変数も自動的に合成&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;され、誤って直接アクセスしないように、名前の前に&lt;/font&gt;&lt;/font&gt; &lt;code&gt;_&lt;/code&gt; が&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;付加されます）。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="51aecdcbd1fa29f5e17a19748f03b1a72c7b0d7c" translate="yes" xml:space="preserve">
+          <source>At the same time if you call</source>
+          <target state="translated">同時に、もしあなたが</target>
+        </trans-unit>
+        <trans-unit id="f3023cb8188912c321e51f84008e15af7ab75428" translate="yes" xml:space="preserve">
+          <source>Atomic</source>
+          <target state="translated">Atomic</target>
+        </trans-unit>
+        <trans-unit id="9b160c50dc810596cdf78df71886c71571d64371" translate="yes" xml:space="preserve">
+          <source>Atomic - it can't be broken down, so the result is expected. With nonatomic - when another thread access the memory zone it can modify it, so the result is unexpected.</source>
+          <target state="translated">アトミック-それは分解できないので、結果は期待されています。nonatomicの場合-他のスレッドがメモリゾーンにアクセスしたときに、それを修正できるので、結果は予想外のものになります。</target>
+        </trans-unit>
+        <trans-unit id="56787168e1c9b9ef3ae0cf3dad2217f8eba7d6c7" translate="yes" xml:space="preserve">
+          <source>Atomic &lt;strong&gt;doesn't&lt;/strong&gt; guarantee thread safety, though it's useful for achieving thread safety. Thread Safety is relative to how you write your code/ which thread queue you are reading/writing from. It only guarantees non-crashable multithreading.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Atomic &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;は&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;スレッドの安全性を保証&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;しませ&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;んが、スレッドの安全性を実現するのに役立ちます。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;スレッドセーフティは、コードの記述方法/読み取り/書き込み元のスレッドキューに関連しています。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;クラッシュしないマルチスレッドのみを保証します。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="158d5f3bbf986fce8d6f3929fb7a0ecce795cd2b" translate="yes" xml:space="preserve">
+          <source>Atomic accessors in a non garbage collected environment (i.e. when using retain/release/autorelease) will use a lock to ensure that another thread doesn't interfere with the correct setting/getting of the value.</source>
+          <target state="translated">ガベージコレクションされていない環境(すなわち、retainreleleaseautoreleaseを使用している場合)でのアトミックアクセサは、他のスレッドが値の正しい設定値の取得に干渉しないことを保証するためにロックを使用します。</target>
+        </trans-unit>
+        <trans-unit id="89e66db1ad91cce7b2d346303a7b197d5ece77a4" translate="yes" xml:space="preserve">
+          <source>Atomic guarantees that access to the property will be performed in an atomic manner. E.g. it always return a fully initialised objects, any get/set of a property on one thread must complete before another can access it.</source>
+          <target state="translated">アトミックは、プロパティへのアクセスがアトミックな方法で実行されることを保証します。例えば、常に完全に初期化されたオブジェクトを返し、あるスレッドでのプロパティの取得は、他のスレッドがアクセスする前に完了しなければなりません。</target>
+        </trans-unit>
+        <trans-unit id="f5f7dedc45052e0d3aeb0e9c80106066a594e4ba" translate="yes" xml:space="preserve">
+          <source>Atomic is &lt;strong&gt;thread safe&lt;/strong&gt;, it is &lt;strong&gt;slow&lt;/strong&gt; and it &lt;strong&gt;well-assures (not guaranteed)&lt;/strong&gt; that only the locked value is provided no matter how many threads are attempting access over the same zone. When using atomic, a piece of code written inside this function becomes the part of the critical section, to which only one thread can execute at a time.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Atomicは&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;スレッドセーフであり&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;低速で&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;あり&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、同じゾーン上でアクセスを試行しているスレッドの数に関係なく、ロックされた値のみが提供さ&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;れることを保証します（保証されません）&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;アトミックを使用する場合、この関数内に記述されたコードの一部は、一度に1つのスレッドしか実行できないクリティカルセクションの一部になります。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="7585badc81fcfc702a4b9198178ff361601c32cd" translate="yes" xml:space="preserve">
+          <source>Atomic is the default: if you don&amp;rsquo;t type anything, your property is
+  atomic. An atomic property is guaranteed that if you try to read from
+  it, you will get back a valid value. It does not make any guarantees
+  about what that value might be, but you will get back good data, not
+  just junk memory. What this allows you to do is if you have multiple
+  threads or multiple processes pointing at a single variable, one
+  thread can read and another thread can write. If they hit at the same
+  time, the reader thread is guaranteed to get one of the two values:
+  either before the change or after the change. What atomic does not
+  give you is any sort of guarantee about which of those values you
+  might get. Atomic is really commonly confused with being thread-safe,
+  and that is not correct. You need to guarantee your thread safety
+  other ways. However, atomic will guarantee that if you try to read,
+  you get back some kind of value.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Atomicがデフォルトです。何も入力しない場合、プロパティはAtomicです。アトミックプロパティは、そこから読み取ろうとすると、有効な値が返されることが保証されています。その値が何であるかについては保証されませんが、ジャンクメモリだけでなく、適切なデータが返されます。これにより、1つの変数を指す複数のスレッドまたは複数のプロセスがある場合、1つのスレッドが読み取り、別のスレッドが書き込みを行うことができます。それらが同時にヒットした場合、リーダースレッドは、変更前または変更後の2つの値のいずれかを取得することが保証されます。アトミックがあなたに与えないものは、あなたがそれらの値のどれを得るかについてのある種の保証です。 Atomicは一般的にスレッドセーフであると混乱していますが、それは正しくありません。スレッドの安全性を他の方法で保証する必要があります。ただし、アトミックは、読み込もうとすると、何らかの値が返されることを保証します。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="c26403b797c5d1768fd18ce45b0e96426d55041b" translate="yes" xml:space="preserve">
+          <source>Atomic make getter and setter of the property thread safe. for example if u have written :</source>
+          <target state="translated">アトミックでは、プロパティのゲッターとセッターをスレッドセーフにします。</target>
+        </trans-unit>
+        <trans-unit id="ea657186686dc25af58658f7340d085ea2354148" translate="yes" xml:space="preserve">
+          <source>Atomic means only one thread accesses the variable (static type). Atomic is thread-safe, but it is slow.</source>
+          <target state="translated">アトミックとは、1 つのスレッドのみが変数 (静的型)にアクセスすることを意味します。アトミックはスレッドセーフですが、遅いです。</target>
+        </trans-unit>
+        <trans-unit id="f6d05505130392ddbaadc6fa8e2fe878cbaf0010" translate="yes" xml:space="preserve">
+          <source>Atomic means only one thread can access the variable at a time (static type). Atomic is thread-safe, but it is slow.</source>
+          <target state="translated">アトミックとは、一度に1つのスレッドのみが変数にアクセスできることを意味します(静的型)。アトミックはスレッドセーフですが、速度が遅くなります。</target>
+        </trans-unit>
+        <trans-unit id="2c29d43758bf4c1706fdf7c909cd8aef22678f57" translate="yes" xml:space="preserve">
+          <source>Atomic: Ensure thread-safety by locking the thread using NSLOCK.</source>
+          <target state="translated">アトミック。NSLOCK を使用してスレッドをロックすることでスレッドの安全性を確保します。</target>
+        </trans-unit>
+        <trans-unit id="cd7773c6a864e0691a1de774e8c8593a1e851ce9" translate="yes" xml:space="preserve">
+          <source>Basically, the atomic version has to take a lock in order to guarantee thread safety, and also is bumping the ref count on the object (and the autorelease count to balance it) so that the object is guaranteed to exist for the caller, otherwise there is a potential race condition if another thread is setting the value, causing the ref count to drop to 0.</source>
+          <target state="translated">基本的に、アトミック版はスレッドの安全性を保証するためにロックを取らなければならず、また、オブジェクトが呼び出し元にとって存在することが保証されるように、オブジェクトの ref カウント (およびバランスを取るためのオートリリースカウント)をバンプしています。</target>
+        </trans-unit>
+        <trans-unit id="dfc88261cc9b67c90909d642678537e41c4ff870" translate="yes" xml:space="preserve">
+          <source>Because the &lt;code&gt;atomic&lt;/code&gt; variables can not be interrupted, the value contained by them at any point is (thread-lock) guaranteed to be &lt;strong&gt;uncorrupted&lt;/strong&gt;, although, ensuring this thread lock makes access to them slower. &lt;code&gt;non-atomic&lt;/code&gt; variables, on the other hand, make no such guarantee but do offer the luxury of quicker access. To sum it up, go with &lt;code&gt;non-atomic&lt;/code&gt; when you know your variables won't be accessed by multiple threads simultaneously and speed things up.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;atomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;変数は中断できない&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ため、&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;任意の時点でそれらに含まれる値は（スレッドロック）が&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;破損していない&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ことが保証されます&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;が、このスレッドロックを確保すると、アクセスが遅くなります。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;一方、&lt;/font&gt;&lt;/font&gt; &lt;code&gt;non-atomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;変数はそのような保証をしませんが、より高速なアクセスの贅沢を提供します。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;まとめると&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、変数が複数のスレッドによって同時にアクセスされず、処理が高速化されることがわかっている場合&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;は、&lt;/font&gt;&lt;/font&gt; &lt;code&gt;non-atomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;します。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="5def4d181c0b234f6030c20a1065db3aa1e7656e" translate="yes" xml:space="preserve">
+          <source>Before you begin: You must know that every object in memory needs to be deallocated from memory for a new writer to happen. You can't just simply write on top of something as you do on paper. You &lt;strong&gt;must&lt;/strong&gt; first erase (dealloc) it and then you can write onto it. If at the moment that the erase is done (or half done) and nothing &lt;strong&gt;has yet&lt;/strong&gt; been wrote (or half wrote) and you try to read it could be very problematic! Atomic and nonatomic help you treat this problem in different ways.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;始める前に：新しいライターを実行するには、メモリ内のすべてのオブジェクトをメモリから解放する必要があることを知っておく必要があります。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;紙に書いているように、単に何かの上に単に書くことはできません。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;最初にそれを消去（dealloc）&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;する&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;必要&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;が&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;あり&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、次にそれに書き込むことができます。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;消去が完了した（または半分完了した）時点で&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;まだ&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;何も&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;書き込まれ&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ていない&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;（または半分書き込まれている）場合、それを読み取ろうとすると、非常に問題が発生する可能性があります。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;アトミックおよび非アトミックは、この問題をさまざまな方法で処理するのに役立ちます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e19bbd7c23d0c7c4056f980c7f2cc203506c4688" translate="yes" xml:space="preserve">
+          <source>But it is fast in performance</source>
+          <target state="translated">しかし、性能的には速い</target>
+        </trans-unit>
+        <trans-unit id="59d1bb168c787f2090eeb85af65c9e07fbd0c969" translate="yes" xml:space="preserve">
+          <source>But it is slow in performance</source>
+          <target state="translated">しかし、性能的には遅い</target>
+        </trans-unit>
+        <trans-unit id="466385388946acc99f6af4e50599b87b0caa1038" translate="yes" xml:space="preserve">
+          <source>Code Talk :</source>
+          <target state="translated">コードトーク .</target>
+        </trans-unit>
+        <trans-unit id="75e291169a2ebb63c935a5de7382990c0513d618" translate="yes" xml:space="preserve">
+          <source>Consider:</source>
+          <target state="translated">Consider:</target>
+        </trans-unit>
+        <trans-unit id="1bababff006e8f53086ecf6a193ae7c2dc1436a1" translate="yes" xml:space="preserve">
+          <source>Crashing or not because of having or not having an autorelease pool.</source>
+          <target state="translated">クラッシュするかしないかは、オートリリースプールを持っているか持っていないかで決まる。</target>
+        </trans-unit>
+        <trans-unit id="4cf9c3f11dca2f6a00e2d96ff2141da6323e8c8b" translate="yes" xml:space="preserve">
+          <source>Doesn't guarantee full written values to be read!</source>
+          <target state="translated">書き込まれた値が完全に読み込まれることを保証するものではありません!</target>
+        </trans-unit>
+        <trans-unit id="2a68c2b3f3d3b9d7f59544dacf5f1d2373fa8a26" translate="yes" xml:space="preserve">
+          <source>Due to the number of optimizations and variations in implementations, it's quite difficult to measure real-world impacts in these contexts. You might often hear something like &quot;Trust it, unless you profile and find it is a problem&quot;. Due to the abstraction level, it's actually quite difficult to measure actual impact. Gleaning actual costs from profiles can be very time consuming, and due to abstractions, quite inaccurate. As well, ARC vs MRC can make a big difference.</source>
+          <target state="translated">最適化の数や実装のバリエーションが多いため、これらの文脈で実世界への影響を測定するのはかなり困難です。プロファイリングして問題がない限り、信用してください」というようなことをよく聞くかもしれません。抽象度が高いため、実際の影響を測定するのは非常に困難です。プロファイルから実際のコストを割り出すのは非常に時間がかかりますし、抽象度の関係上、非常に不正確です。同様に、ARCとMRCでは大きな違いが出てきます。</target>
+        </trans-unit>
+        <trans-unit id="dc588869b460d7a7c0dde78b8f7455e69c812d3c" translate="yes" xml:space="preserve">
+          <source>Easiest answer first: There's no difference between your second two examples. By default, property accessors are atomic.</source>
+          <target state="translated">一番簡単な答えが先。2番目の2つの例に違いはありません。デフォルトでは、プロパティアクセサはアトミックです。</target>
+        </trans-unit>
+        <trans-unit id="757cc03a89227c519cc7dc5a2bfb3c7e09103b83" translate="yes" xml:space="preserve">
+          <source>Ensuring data integrity -- one of the primary challenges of multi-threaded programming -- is achieved by other means.</source>
+          <target state="translated">データの完全性の確保-マルチスレッドプログラミングの主要な課題の一つ-は、他の方法で実現されています。</target>
+        </trans-unit>
+        <trans-unit id="952a7acd4884031a827584cd959102d7c27e63db" translate="yes" xml:space="preserve">
+          <source>Example with MRC of a property with an ivar _internal:</source>
+          <target state="translated">ivar_internalを持つプロパティのMRCでの例。</target>
+        </trans-unit>
+        <trans-unit id="c63737abd7347a7ae582cb9fbdf37d6c0e5b251e" translate="yes" xml:space="preserve">
+          <source>Example:</source>
+          <target state="translated">Example:</target>
+        </trans-unit>
+        <trans-unit id="af66993b461bd3431cadd690caf86ea36449e356" translate="yes" xml:space="preserve">
+          <source>First read &lt;a href=&quot;https://stackoverflow.com/questions/21098494/atomic-properties-vs-thread-safe-in-objective-c&quot;&gt;this&lt;/a&gt; question and then read &lt;a href=&quot;https://stackoverflow.com/a/589392/5175709&quot;&gt;Bbum's answer&lt;/a&gt;. In addition, then read my summary.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;まず&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/questions/21098494/atomic-properties-vs-thread-safe-in-objective-c&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;この&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;質問を読んでから、&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/a/589392/5175709&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Bbumの回答を&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;読んで&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ください&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;さらに、私の要約を読んでください。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="0cecd6711aec49678ad292677bfd067b2bfe459b" translate="yes" xml:space="preserve">
+          <source>For In Swift
+Confirming that Swift properties are nonatomic in the ObjC sense. One reason is so you think about whether per-property atomicity is sufficient for your needs.</source>
+          <target state="translated">For In Swift の場合 Swift のプロパティが ObjC の意味で非原子的であることを確認する。理由の一つは、プロパティごとのアトミック性が必要に応じて十分かどうかを考えるためです。</target>
+        </trans-unit>
+        <trans-unit id="0ea1177f91a4c498d582627a0507f246eb7808be" translate="yes" xml:space="preserve">
+          <source>Fro more info please visit the website 
+&lt;a href=&quot;http://rdcworld-iphone.blogspot.in/2012/12/variable-property-attributes-or.html&quot;&gt;http://rdcworld-iphone.blogspot.in/2012/12/variable-property-attributes-or.html&lt;/a&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;詳細については、ウェブサイトをご覧ください &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://rdcworld-iphone.blogspot.in/2012/12/variable-property-attributes-or.html&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;http://rdcworld-iphone.blogspot.in/2012/12/variable-property-attributes-or.html&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="db368e14ab7f01e913bc2e2e6d175b2110a3c9c9" translate="yes" xml:space="preserve">
+          <source>Here's the interesting part: Performance using atomic property accesses in &lt;strong&gt;uncontested&lt;/strong&gt; (e.g. single-threaded) cases can be really very fast in some cases. In less than ideal cases, use of atomic accesses can cost more than 20 times the overhead of &lt;code&gt;nonatomic&lt;/code&gt;. While the &lt;strong&gt;Contested&lt;/strong&gt; case using 7 threads was 44 times slower for the three-byte struct (2.2&amp;nbsp;GHz &lt;a href=&quot;https://en.wikipedia.org/wiki/Intel_Core#Core_i7&quot;&gt;Core&amp;nbsp;i7&lt;/a&gt; Quad Core, x86_64). The three-byte struct is an example of a very slow property.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;興味深い部分は次のとおりです。&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;競合&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;し&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ない&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;（たとえば、シングルスレッド）ケース&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;でアトミックプロパティアクセスを使用したパフォーマンスは、&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;場合によっては非常に高速になることがあります。理想よりも少ない場合には、アトミックなアクセスの使用は、20倍のオーバーヘッドよりもコストができる&lt;/font&gt;&lt;/font&gt; &lt;code&gt;nonatomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;3スレッド構造体（2.2 GHz &lt;/font&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Intel_Core#Core_i7&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;コアi7&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;クアッドコア、x86_64）の&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;場合、7つのスレッドを使用し&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;た&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;コンテストの&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ケースは44倍遅くなりました&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。 3バイトの構造体は、非常に遅いプロパティの例です。&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="42e679fd3d38e1ac2ae9fb1fd1602697916fa1ae" translate="yes" xml:space="preserve">
+          <source>I found a pretty well put explanation of atomic and non-atomic properties &lt;a href=&quot;http://archive.atomicmpc.com.au/forums.asp?s=2&amp;amp;c=10&amp;amp;t=4594&quot;&gt;here&lt;/a&gt;. Here's some relevant text from the same:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;私は、&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://archive.atomicmpc.com.au/forums.asp?s=2&amp;amp;c=10&amp;amp;t=4594&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ここに&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;原子的および非原子的性質のかなりよく説明された説明を見つけました&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;以下は、同じものからの関連テキストです。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="0dcf329e22e36816a065b09cb8ea101357ebfd69" translate="yes" xml:space="preserve">
+          <source>I'd always considered atomic as a default quite curious. At the abstraction level we work at, using atomic properties for a class as a vehicle to achieve 100% thread-safety is a corner case. For truly correct multithreaded programs, intervention by the programmer is almost certainly a requirement. Meanwhile, performance characteristics and execution have not&amp;nbsp;yet been detailed in depth. Having written some heavily multithreaded programs over the years, I had been declaring my properties as &lt;code&gt;nonatomic&lt;/code&gt; the entire time because atomic was not sensible for any purpose. During discussion of the details of atomic and nonatomic properties &lt;a href=&quot;https://stackoverflow.com/questions/12010211/use-of-atomic-properties-in-objective-c-any-side-effects&quot;&gt;this question&lt;/a&gt;, I did some profiling encountered some curious results.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;私はいつもデフォルトをかなり好奇心が強いと考えていました。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;私たちが取り組んでいる抽象化レベルでは、クラスのアトミックプロパティをビークルとして使用して100％スレッドセーフティを達成することは、例外的なケースです。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;本当に正しいマルチスレッドプログラムの場合、プログラマによる介入はほぼ確実に必要です。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;一方、パフォーマンス特性と実行については、まだ詳しく説明されていません。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;何年にもわたってマルチスレッドのプログラムをいくつか書いてき&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;たので、アトミックはどんな目的にも適していなかったので&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、私はずっとプロパティを&lt;/font&gt;&lt;/font&gt; &lt;code&gt;nonatomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;として宣言してい&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;まし&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;た。&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/questions/12010211/use-of-atomic-properties-in-objective-c-any-side-effects&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;この質問の&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;原子的および非原子的特性の詳細の議論中に&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、私はいくつかのプロファイリングを行っていくつかの奇妙な結果に遭遇しました。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="53df0d90dbfd2e8b81a9c6bdb363f7adf147a62d" translate="yes" xml:space="preserve">
+          <source>If &lt;strong&gt;before&lt;/strong&gt; writing you &lt;strong&gt;have&lt;/strong&gt; erased that which was previously written on paper and then someone wants to read you &lt;em&gt;can&lt;/em&gt; still read. How? You will be reading from something similar to Mac OS Trash bin ( as Trash bin is not still 100% erased...it's in a limbo) ---&amp;gt; If ThreadA is to read while ThreadB has already deallocated to write, you would get a value from either the final fully written value by ThreadB or get something from autorelease pool.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;もし&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;前に&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;あなたが書い&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ている&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;以前に紙に書かれた後、誰かがあなたが読みたいたことを消去&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;することができ&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、まだ読んで。どうやって？ Mac OSのゴミ箱に似たものから読み取ります（ゴミ箱はまだ100％消去されていないので...リンボにあります）---&amp;gt; ThreadBが書き込みのために割り当て解除されている間にThreadAが読み取られる場合、次のようになります。 ThreadBによって完全に書き込まれた最後の値からの値、または自動解放プールから何かを取得します。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="aeb0ab7ed38eced8087358822adc1caacc3f25eb" translate="yes" xml:space="preserve">
+          <source>If a thread changes the value of the instance the changed value is available to all the threads, and only one thread can change the value at a time.</source>
+          <target state="translated">スレッドがインスタンスの値を変更した場合、変更された値はすべてのスレッドで利用可能で、一度に値を変更できるのは1つのスレッドのみです。</target>
+        </trans-unit>
+        <trans-unit id="9cd5b7f015914683553101835da5c0b4775c2c87" translate="yes" xml:space="preserve">
+          <source>If one person is trying to write and has only written 4 of the 8 letters to write, then no can read in the middle, the reading can only be done when all 8 letters is written --&amp;gt; No read(get) will happen on 'a thread that is still writing', i.e. if there are 8 bytes to bytes to be written, and only 4 bytes are written&amp;mdash;&amp;mdash;up to that moment, you are not allowed to read from it. But since I said it won't crash then it would read from the value of an &lt;em&gt;autoreleased&lt;/em&gt; object.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;1人が書き込みをしようとしていて、書き込む8文字のうち4文字しか書き込んでいない場合、途中で読み取ることができません。読み取りは、8文字すべてが書き込まれたときにのみ実行できます-&amp;gt;読み取り（取得）は行われません「まだ書き込み中のスレッド」、つまり、8バイトから書き込むバイトがあり、4バイトしか書き込まれていない場合&amp;mdash;その瞬間まで、そこから読み取ることはできません。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;しかし、クラッシュしないと言ったので、&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;自動解放された&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;オブジェクトの&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;値から読み取り&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="0e60a837b656fdb2a0431c6bc1d827b07c77b719" translate="yes" xml:space="preserve">
+          <source>If the instance variable is not gonna be changed by multiple threads you can use it. It improves the performance.</source>
+          <target state="translated">インスタンス変数が複数のスレッドで変更されない場合は、それを使用することができます。パフォーマンスが向上します。</target>
+        </trans-unit>
+        <trans-unit id="fa7d0e9c8949d2b6aa328a9fec0cb7a660ef020c" translate="yes" xml:space="preserve">
+          <source>If the property &quot;name&quot; was nonatomic, then all threads in above example - A,B, C and D will execute simultaneously producing any unpredictable result. In case of atomic, either one of A, B or C will execute first, but D can still execute in parallel.</source>
+          <target state="translated">もしプロパティ &quot;name &quot;が非アトミックであれば、上の例のすべてのスレッド-A,B,C,D-が同時に実行され、予測不可能な結果を生み出すことになります。アトミックの場合、A,B,C のいずれかが最初に実行されますが、D はまだ並列に実行することができます。</target>
+        </trans-unit>
+        <trans-unit id="fe485326675d7d2b88c23e0f595ee6a297fa4017" translate="yes" xml:space="preserve">
+          <source>If two different people want to read and write at the same time, your paper won't just burn! --&amp;gt; Your application will never crash, even in a race condition.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;2人の異なる人が同時に読み書きしたい場合、あなたの論文は燃えるだけではありません！&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;-&amp;gt;アプリケーションが競合状態になってもクラッシュすることはありません。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="2907fa671a851246609e65b92f375972d2b090d5" translate="yes" xml:space="preserve">
+          <source>If you are using atomic, it means the thread will be safe and read-only. If you are using nonatomic, it means the multiple threads access the variable and is thread unsafe, but it is executed fast, done a read and write operations; this is a dynamic type.</source>
+          <target state="translated">あなたがアトミックを使用している場合、それはスレッドが安全で読み取り専用になることを意味します。あなたがnonatomicを使用している場合、それは複数のスレッドが変数にアクセスし、スレッドが安全ではないことを意味しますが、それは高速に実行され、読み書き操作を行い、これは動的な型です。</target>
+        </trans-unit>
+        <trans-unit id="428f7d87b20e0ac4a9aac645a9382a64497f95b5" translate="yes" xml:space="preserve">
+          <source>If you are using your property in multi-threaded code then you would be able to see the difference between nonatomic and atomic attributes. Nonatomic is faster than atomic and atomic is thread-safe, not nonatomic.</source>
+          <target state="translated">マルチスレッドのコードでプロパティを使用している場合は、nonatomic属性とatomic属性の違いがわかるでしょう。非アトミックはアトミックよりも速く、アトミックはスレッドセーフであり、非アトミックではありません。</target>
+        </trans-unit>
+        <trans-unit id="bf0fc3cb78576b4927e58b55e16dad60b50135e6" translate="yes" xml:space="preserve">
+          <source>If you call &quot;name&quot; from thread &lt;strong&gt;A&lt;/strong&gt;,</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;スレッド&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;A&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;から「名前」を呼び出すと&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6bed63c9b598ff3c1689b7a172b312f05c94268c" translate="yes" xml:space="preserve">
+          <source>If you do not specify &quot;nonatomic&quot;, then the property is atomic, but you can still specify &quot;atomic&quot; explicitly in recent versions if you want to.</source>
+          <target state="translated">nonatomic」を指定しない場合、プロパティはアトミックになりますが、最近のバージョンでは「atomic」を明示的に指定することができるようになっています。</target>
+        </trans-unit>
+        <trans-unit id="b3d25d57cfcaf0f91a92c71b555c13ca24c48562" translate="yes" xml:space="preserve">
+          <source>If you imagine the following function occurring on two threads at once you can see why the results would not be pretty.</source>
+          <target state="translated">以下のような機能が2つのスレッドで同時に発生していることを想像していただければ、結果が可愛くない理由がお分かりいただけると思います。</target>
+        </trans-unit>
+        <trans-unit id="ad0bd596c87dee16e9b201c0db38575508e5f5f7" translate="yes" xml:space="preserve">
+          <source>Implication of &lt;code&gt;atomic&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;atomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;含意&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="83e77580a4c5ad2c6ae90254011081aed2807ee6" translate="yes" xml:space="preserve">
+          <source>In &lt;code&gt;nonatomic&lt;/code&gt;, no such guarantees are made.   Thus, &lt;code&gt;nonatomic&lt;/code&gt; is considerably faster than &quot;atomic&quot;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;で&lt;/font&gt;&lt;/font&gt; &lt;code&gt;nonatomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、そのような保証は行われません。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;したがって、&lt;/font&gt;&lt;/font&gt; &lt;code&gt;nonatomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;原子は「原子」よりもかなり高速です。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="8933d5f65d5f09ff3f586e9b3d5961e4504e9a90" translate="yes" xml:space="preserve">
+          <source>In iOS, &lt;code&gt;@sychronise&lt;/code&gt; also provides the mutex lock .Now it serves in FIFO mode and ensures the flow is not affected by two classes sharing the same instance. However, if the task is on main thread, avoid accessing object using atomic properties as it may hold your UI and degrade the performance.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;iOSでは、&lt;/font&gt;&lt;/font&gt; &lt;code&gt;@sychronise&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;はミューテックスロックも提供します。これでFIFOモードで機能し、同じインスタンスを共有する2つのクラスによってフローが影響を受けないようになりました。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ただし、タスクがメインスレッド上にある場合は、UIを保持してパフォーマンスを低下させる可能性があるため、アトミックプロパティを使用してオブジェクトにアクセスしないでください。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="78dcc05a8b48a89d78a8a925227ef5c773900b55" translate="yes" xml:space="preserve">
+          <source>In our context:</source>
+          <target state="translated">私たちの文脈では</target>
+        </trans-unit>
+        <trans-unit id="b2fc2a31bbb825f80a48c090d06d5637549e56ef" translate="yes" xml:space="preserve">
+          <source>In the article &lt;em&gt;&lt;a href=&quot;http://rdcworld-iphone.blogspot.in/2012/12/variable-property-attributes-or.html&quot;&gt;&lt;strong&gt;Variable property attributes or modifiers in iOS&lt;/strong&gt;&lt;/a&gt;&lt;/em&gt; you can find all the above-mentioned attributes, and that will definitely help you.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;記事&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;a href=&quot;http://rdcworld-iphone.blogspot.in/2012/12/variable-property-attributes-or.html&quot;&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;iOSの変数プロパティの属性または修飾子で&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;/a&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、上記のすべての属性を見つけることができます。これは間違いなく役立ちます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="b510c07af1689d04e0c92073219c7e5327f2a972" translate="yes" xml:space="preserve">
+          <source>In this case, thread A could be renaming the object by calling &lt;code&gt;setFirstName:&lt;/code&gt; and then calling &lt;code&gt;setLastName:&lt;/code&gt;.   In the meantime, thread B may call &lt;code&gt;fullName&lt;/code&gt; in between thread A's two calls and will receive the new first name coupled with the old last name.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;この場合、スレッドAは&lt;/font&gt;&lt;/font&gt; &lt;code&gt;setFirstName:&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;を呼び出してから&lt;/font&gt;&lt;/font&gt; &lt;code&gt;setLastName:&lt;/code&gt; を&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;呼び出すことで&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;オブジェクトの名前を変更している可能性があります&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;その間、スレッドBは&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;スレッドAの2つの呼び出しの間に&lt;/font&gt;&lt;/font&gt; &lt;code&gt;fullName&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;を呼び出すことができ、新しい姓と古い姓を組み合わせて受け取ります。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="da9491d2fb2ea9a679ca39f1170f07c876da3d2d" translate="yes" xml:space="preserve">
+          <source>Instance variables are thread-safe if they behave correctly when accessed from multiple threads, regardless of the scheduling or interleaving of the execution of those threads by the runtime environment, and with no additional synchronization or other coordination on the part of the calling code.</source>
+          <target state="translated">インスタンス変数は、複数のスレッドからアクセスされたときに、実行時環境によるスレッドの実行のスケジューリングやインターリーブに関係なく、呼び出したコード側での追加の同期やその他の調整がなくても、正しく動作する場合にスレッドセーフとなります。</target>
+        </trans-unit>
+        <trans-unit id="88955b39760efe23b0a168fea5c46d327d69b8c0" translate="yes" xml:space="preserve">
+          <source>Interesting side note: User-defined accessors of the three-byte struct were 52 times faster than the synthesized atomic accessors; or 84% the speed of synthesized nonatomic accessors.</source>
+          <target state="translated">興味深い側面もあります。3バイト構造体のユーザー定義アクセサは、合成された原子アクセサよりも52倍速く、合成された非原子アクセサの84%の速度でした。</target>
+        </trans-unit>
+        <trans-unit id="bd5f7aa29cdb5852e9c6134812d23c81d4c91dde" translate="yes" xml:space="preserve">
+          <source>Is faster than atomic</source>
+          <target state="translated">原子よりも速い</target>
+        </trans-unit>
+        <trans-unit id="d9935d8df3697bfdf2e3d1810a602d26ae25554e" translate="yes" xml:space="preserve">
+          <source>It is not actually a keyword.</source>
+          <target state="translated">実際にはキーワードではありません。</target>
+        </trans-unit>
+        <trans-unit id="965f4053d5f6a421d7a99992699acc65a44280ac" translate="yes" xml:space="preserve">
+          <source>It may result in unexpected behavior, when two different process (threads) access the same variable at the same time.</source>
+          <target state="translated">2つの異なるプロセス(スレッド)が同時に同じ変数にアクセスすると、予期せぬ動作をすることがあります。</target>
+        </trans-unit>
+        <trans-unit id="ff986039c13fe411fa26a6360a02bf568a2527f8" translate="yes" xml:space="preserve">
+          <source>It only assures the thread safety; it does not guarantee that. &lt;strong&gt;What I mean is you hire an expert driver for you car, still it doesn't guarantees car won't meet an accident. However, probability remains the slightest.&lt;/strong&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;スレッドの安全性を保証するだけです。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;それを保証するものではありません。&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;つまり、あなたはあなたの車のエキスパートドライバーを雇っていますが、それでも車が事故に遭わないことを保証するものではありません。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ただし、確率はわずかです。&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="d7e4c133e544fa1549014a474b3fdd79ecdd9b91" translate="yes" xml:space="preserve">
+          <source>It will ensure value &quot;Sourov&quot; for A</source>
+          <target state="translated">それは、Aのための値 &quot;Sourov &quot;を確保します。</target>
+        </trans-unit>
+        <trans-unit id="8aabb46c24820f1082cacf15fbe9319e591e75fa" translate="yes" xml:space="preserve">
+          <source>It will return value &quot;Datta&quot; for A</source>
+          <target state="translated">A の値 &quot;Datta&quot; を返します。</target>
+        </trans-unit>
+        <trans-unit id="d1d66b8948b48962f8898cfc2c57c109d82eec4c" translate="yes" xml:space="preserve">
+          <source>It will return value &quot;Datta&quot; for B</source>
+          <target state="translated">B の値 &quot;Datta&quot; を返します。</target>
+        </trans-unit>
+        <trans-unit id="5a101e022a872ea8b43a671dbba37801c695a1a0" translate="yes" xml:space="preserve">
+          <source>MRC | atomic | synthesized getter: 47</source>
+          <target state="translated">atomic</target>
+        </trans-unit>
+        <trans-unit id="a9c588343e9c4452aa8db91f654be503b1635cd7" translate="yes" xml:space="preserve">
+          <source>MRC | nonatomic | manually implemented getters: 2</source>
+          <target state="translated">nonatomic</target>
+        </trans-unit>
+        <trans-unit id="3e6e15d6a8cbe6913bff385297e0082e4e14a0e8" translate="yes" xml:space="preserve">
+          <source>MRC | nonatomic | synthesized getter: 7</source>
+          <target state="translated">nonatomic</target>
+        </trans-unit>
+        <trans-unit id="f936ab0c829c9aaa1ec757b6c0fe8638f4147e53" translate="yes" xml:space="preserve">
+          <source>Mutex lock, as per the name, locks the mutability of the object. So if the object is accessed by a class, no other class can access the same object.</source>
+          <target state="translated">Mutex ロックはその名の通り、オブジェクトの変異性をロックします。つまり、あるクラスからオブジェクトにアクセスされた場合、他のクラスから同じオブジェクトにアクセスすることはできません。</target>
+        </trans-unit>
+        <trans-unit id="cf200f6a5c12c6aa0c00f246af59f0794bb918fd" translate="yes" xml:space="preserve">
+          <source>Non atomic: Doesn't ensure thread-safety as there is no thread-locking mechanism.</source>
+          <target state="translated">アトミックではない。スレッドロック機構がないため、スレッドの安全性が保証されません。</target>
+        </trans-unit>
+        <trans-unit id="cef6468ab63b7d41ecdaa4adabb0e5f0fb04e3f5" translate="yes" xml:space="preserve">
+          <source>Non-Atomic</source>
+          <target state="translated">Non-Atomic</target>
+        </trans-unit>
+        <trans-unit id="7265a45814aa6aabd0873b14668bcf5e20b299da" translate="yes" xml:space="preserve">
+          <source>Nonatomic means multiple threads access the variable (dynamic type). Nonatomic is thread-unsafe, but it is fast.</source>
+          <target state="translated">ノンアトミックとは、複数のスレッドが変数(動的型)にアクセスすることを意味します。ノンアトミックはスレッドセーフではありませんが、高速です。</target>
+        </trans-unit>
+        <trans-unit id="40adcfc307e315b6e42a566334895747663e1977" translate="yes" xml:space="preserve">
+          <source>Nonatomic means multiple threads can access the variable at same time (dynamic type). Nonatomic is thread-unsafe, but it is fast.</source>
+          <target state="translated">ノンアトミックとは、複数のスレッドが同時に変数にアクセスできることを意味します(動的型)。ノンアトミックはスレッドセーフではありませんが、高速です。</target>
+        </trans-unit>
+        <trans-unit id="3bbe9a95845165551fded485e043fff87beb015a" translate="yes" xml:space="preserve">
+          <source>Not as fast as &lt;code&gt;nonatomic&lt;/code&gt; because &lt;code&gt;nonatomic&lt;/code&gt; doesn't require any watchdog work on that from runtime .</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt; &lt;code&gt;nonatomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;はランタイムからのウォッチドッグ処理を必要としない&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ため&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、&lt;/font&gt;&lt;/font&gt; &lt;code&gt;nonatomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ほど高速で&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;はありません。&lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9b35330b19eb26e776ba809c005b85869c82196c" translate="yes" xml:space="preserve">
+          <source>Now, the atomic variant is a bit more complicated:</source>
+          <target state="translated">さて、原子変種はもう少し複雑です。</target>
+        </trans-unit>
+        <trans-unit id="476e89eb6fdf9059091b1eff94b8ef25b54472b1" translate="yes" xml:space="preserve">
+          <source>Objects in contested cases can also exceed 50 times.</source>
+          <target state="translated">争われている場合のオブジェクトは、50回を超えることもあります。</target>
+        </trans-unit>
+        <trans-unit id="2b4b3304ba3417b0a99cb67827234158af1d91b0" translate="yes" xml:space="preserve">
+          <source>Ok. The first thing I would like to clear up is that the locking implementation is implementation-defined and abstracted. Louis uses &lt;code&gt;@synchronized(self)&lt;/code&gt; in his example -- I have seen this as a common source of confusion. The implementation does not &lt;em&gt;actually&lt;/em&gt; use &lt;code&gt;@synchronized(self)&lt;/code&gt;; it uses object level &lt;em&gt;spin locks&lt;/em&gt;. Louis's illustration is good for a high-level illustration using constructs we are all familiar with, but it's important to know it does not use &lt;code&gt;@synchronized(self)&lt;/code&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;OK。最初に明らかにしたいのは、ロックの実装は実装定義であり、抽象化されているということです。 Louisは&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;彼の例で&lt;/font&gt;&lt;/font&gt; &lt;code&gt;@synchronized(self)&lt;/code&gt; を&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;使用&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;しています-私はこれを混乱の一般的な原因として見ました。実装は&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;実際に&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;は&lt;/font&gt;&lt;/font&gt; &lt;code&gt;@synchronized(self)&lt;/code&gt; を&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;使用&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;しません&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。オブジェクトレベルの&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;スピンロックを&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;使用します&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。ルイのイラストは、私たちがよく知っている構造を使用した高レベルのイラストには適していますが、&lt;/font&gt;&lt;/font&gt; &lt;code&gt;@synchronized(self)&lt;/code&gt; を&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;使用しないことを知っておくことが重要&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;です。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="8eda76917b36b5a0223c73aefb7f0094260633e0" translate="yes" xml:space="preserve">
+          <source>On the flip side, non-atomic, as you can probably guess, just means,
+  &amp;ldquo;don&amp;rsquo;t do that atomic stuff.&amp;rdquo; What you lose is that guarantee that you
+  always get back something. If you try to read in the middle of a
+  write, you could get back garbage data. But, on the other hand, you go
+  a little bit faster. Because atomic properties have to do some magic
+  to guarantee that you will get back a value, they are a bit slower. If
+  it is a property that you are accessing a lot, you may want to drop
+  down to nonatomic to make sure that you are not incurring that speed
+  penalty.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;反対に、おそらく非アトミックなことは、おそらく推測できるように、「そのアトミックなことをしないでください」という意味です。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;あなたが失うものは、あなたが常に何かを取り戻すという保証です。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;書き込みの途中で読み込もうとすると、ガベージデータが返される可能性があります。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;しかし、その一方で、あなたは少し速く行きます。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;アトミックプロパティは、値が返されることを保証するために何らかの魔法をかける必要があるため、少し遅くなります。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;頻繁にアクセスしているプロパティの場合は、非アトミックにドロップして、速度のペナルティが発生しないことを確認してください。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9c81a07baf1e0c099e90ee1555e3bf169d497d6a" translate="yes" xml:space="preserve">
+          <source>On the flip side, non-atomic, as you can probably guess, just means,
+  &amp;ldquo;don&amp;rsquo;t do that atomic stuff.&amp;rdquo; What you lose is that guarantee that you
+  always get back something. If you try to read in the middle of a
+  write, you could get back garbage data. But, on the other hand, you go
+  a little bit faster. Because atomic properties have to do some magic
+  to guarantee that you will get back a value, they are a bit slower. If
+  it is a property that you are accessing a lot, you may want to drop
+  down to nonatomic to make sure that you are not incurring that speed
+  penalty. Access</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;反対に、おそらく非アトミックなことは、おそらく推測できるように、「そのアトミックなことをしないでください」という意味です。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;あなたが失うものは、あなたが常に何かを取り戻すという保証です。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;書き込みの途中で読み込もうとすると、ガベージデータが返される可能性があります。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;しかし、その一方で、あなたは少し速く行きます。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;アトミックプロパティは、値が返されることを保証するために何らかの魔法をかける必要があるため、少し遅くなります。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;頻繁にアクセスしているプロパティの場合は、非アトミックにドロップして、速度のペナルティが発生しないことを確認してください。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;アクセス&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ede7fdf8394bacfee2c5d9d6c6715fcc80fd5ca2" translate="yes" xml:space="preserve">
+          <source>On the other hand does &lt;code&gt;nonatomic&lt;/code&gt; add nothing to your code. So it is only thread safe if you code security mechanism yourself.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;一方、&lt;/font&gt;&lt;/font&gt; &lt;code&gt;nonatomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;はコードに何も追加しません。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;したがって、セキュリティメカニズムを自分でコーディングした場合にのみ、スレッドセーフになります。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6f9e4693c5de190a913db87e5fffad315df67cf0" translate="yes" xml:space="preserve">
+          <source>Overall they are different in 2 aspects:</source>
+          <target state="translated">全体的に2つの面で違いがあります。</target>
+        </trans-unit>
+        <trans-unit id="a8d21ad08d8d73e7da30d9ddc531902648d50e29" translate="yes" xml:space="preserve">
+          <source>Reference: &lt;a href=&quot;https://forums.developer.apple.com/thread/25642&quot;&gt;https://forums.developer.apple.com/thread/25642&lt;/a&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;リファレンス：&lt;/font&gt;&lt;a href=&quot;https://forums.developer.apple.com/thread/25642&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;https&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; : &lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;//forums.developer.apple.com/thread/25642&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="8fecd72ac5703d1f089cc77fd529233801bb3a26" translate="yes" xml:space="preserve">
+          <source>Retain counts are the way in which memory is managed in Objective-C.
+  When you create an object, it has a retain count of 1. When you send
+  an object a retain message, its retain count is incremented by 1. When
+  you send an object a release message, its retain count is decremented
+  by 1. When you send an object an &lt;strong&gt;autorelease message&lt;/strong&gt;, its retain count
+  is decremented by 1 at some stage in the future. If an objectʼs retain
+  count is reduced to 0, it is deallocated.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;保持カウントは、Objective-Cでメモリを管理する方法です。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;オブジェクトを作成すると、保持カウントは1になります。オブジェクトに保持メッセージを送信すると、保持カウントは1ずつ増加します。オブジェクトにリリースメッセージを送信すると、保持カウントは1ずつ減少します。オブジェクトに&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;自動解放メッセージを送信します&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。その保持カウントは、将来のある段階で1ずつ減少します。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;オブジェクトの保持カウントが0に減ると、割り当てが解除されます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ebe6555b66f03eb95c37f29257ced7d32e7dc117" translate="yes" xml:space="preserve">
+          <source>See Stack Overflow question &lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/8036604&quot;&gt;I am getting issues if I use @property(atomic,retain)NSString *myString&lt;/a&gt;&lt;/em&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/8036604&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;@property（atomic、retain）NSString * myStringを使用すると問題が発生する&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; Stack Overflowの質問&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;を&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;参照してください&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9da147f788793e65a0755d642c4bb0e545a250a7" translate="yes" xml:space="preserve">
+          <source>See more here: &lt;a href=&quot;https://realm.io/news/tmi-objective-c-property-attributes/&quot;&gt;https://realm.io/news/tmi-objective-c-property-attributes/&lt;/a&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;詳細はこちら：&lt;/font&gt;&lt;a href=&quot;https://realm.io/news/tmi-objective-c-property-attributes/&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;https&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; : &lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;//realm.io/news/tmi-objective-c-property-attributes/&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="d7f269e276c1c10bb04cd4f5d00a647d81224fcd" translate="yes" xml:space="preserve">
+          <source>See the &quot;&lt;a href=&quot;http://www.scribd.com/doc/121014348/89/Performance-and-Threading&quot;&gt;Performance and Threading&lt;/a&gt;&quot; section of Apple's Objective-C 2.0 documentation for some more information and for other considerations when creating multi-threaded apps.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;マルチスレッドアプリを作成する場合の詳細やその他の考慮事項については、AppleのObjective-C 2.0ドキュメント&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;の「&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://www.scribd.com/doc/121014348/89/Performance-and-Threading&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;パフォーマンスとスレッド&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;」セクションを&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;参照してください&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="48821aa7a0680f5b53cb1a6360cb3b3f30d0e1f3" translate="yes" xml:space="preserve">
+          <source>Since there is no such thing like Mac OS Trash Bin, then nobody cares whether or not you always get a value (&amp;lt;-- This could potentially lead to a crash), nor anybody cares if someone tries to read halfway through your writing (although halfway writing in memory is very different from halfway writing on paper, on memory it could give you a crazy stupid value from before, while on paper you only see half of what's been written) --&amp;gt; Doesn't guarantee to not crash, because it doesn't use autorelease mechanism.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Mac OSのゴミ箱のようなものはないので、常に値を取得するかどうか（&amp;lt;-これは潜在的にクラッシュにつながる可能性があります）も、誰かがあなたの書き込みの途中で読み込もうとしたかどうかも気にしません。メモリへの途中書き込みは紙への途中書き込みとは非常に異なります。メモリでは、以前からクレイジーな愚かな値を与える可能性がありますが、紙では書き込まれた内容の半分しか表示されません）-&amp;gt;クラッシュしないことを保証しないため、自動解放メカニズムは使用しません。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="113d393b69e044789d1b6366771234113f38b14f" translate="yes" xml:space="preserve">
+          <source>So I'd be guessing that atomic in this case means the attribute reader methods cannot be interrupted - in effect meaning that the variable(s) being read by the method cannot change their value half way through because some other thread/call/function gets swapped onto the CPU.</source>
+          <target state="translated">つまり、この場合のアトミックは、属性リーダのメソッドを中断できないことを意味しているのではないかと推測しています。</target>
+        </trans-unit>
+        <trans-unit id="69377ccc9052efea495fe71ce1907c01a47348e0" translate="yes" xml:space="preserve">
+          <source>So let's step back, &lt;em&gt;not&lt;/em&gt; focussing on the implementation of property accesses, we'll include the usual suspects like &lt;code&gt;objc_msgSend&lt;/code&gt;, and examine some real-world high-level results for many calls to a &lt;code&gt;NSString&lt;/code&gt; getter in &lt;em&gt;uncontested&lt;/em&gt; cases (values in seconds):</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;そこで&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、プロパティアクセスの実装に焦点を当て&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ずに&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、一歩&lt;/font&gt;&lt;/font&gt; &lt;code&gt;objc_msgSend&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ましょう&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。objc_msgSendの&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ような通常の容疑者を&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;含めて&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;競合&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;し&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ない&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ケース（秒単位の値）での&lt;/font&gt;&lt;/font&gt; &lt;code&gt;NSString&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ゲッター&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;への多くの呼び出しに対する実際の高レベルの結果を調べ&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ます。&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="4e73cec755e1a5861f24f2339a99f042aded44c4" translate="yes" xml:space="preserve">
+          <source>So these last two are the same:</source>
+          <target state="translated">この最後の2つは同じなんですね。</target>
+        </trans-unit>
+        <trans-unit id="0fa399823cc9a3b9c6fc88614e72860a2970f673" translate="yes" xml:space="preserve">
+          <source>Such situation operation will perform serially.
+ &lt;strong&gt;And Slow in performance&lt;/strong&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;このようなシチュエーション操作は順次実行されます。 &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;そしてパフォーマンスが遅い&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="aef6c1df292141223c4225f95d65f2f8dd8d1cd6" translate="yes" xml:space="preserve">
+          <source>Suppose a task related to three properties are</source>
+          <target state="translated">3つの性質に関連するタスクが</target>
+        </trans-unit>
+        <trans-unit id="7fc22c24b2c8b9f7f69f63e17474f6fc605495d1" translate="yes" xml:space="preserve">
+          <source>Suppose there is an atomic string property called &quot;name&quot;, and if you call &lt;code&gt;[self setName:@&quot;A&quot;]&lt;/code&gt; from thread A, call &lt;code&gt;[self setName:@&quot;B&quot;]&lt;/code&gt; from thread B, and call &lt;code&gt;[self name]&lt;/code&gt; from thread C, then all operations on different threads will be performed serially which means if one thread is executing a setter or getter, then other threads will wait.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;「名前」と呼ばれるアトミック文字列プロパティがあると、あなたが呼び出す場合&lt;/font&gt;&lt;/font&gt; &lt;code&gt;[self setName:@&quot;A&quot;]&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;スレッドA、呼び出しから&lt;/font&gt;&lt;/font&gt; &lt;code&gt;[self setName:@&quot;B&quot;]&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;スレッドBから、通話&lt;/font&gt;&lt;/font&gt; &lt;code&gt;[self name]&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;からスレッドCの場合、異なるスレッドでのすべての操作は順次実行されます。つまり、1つのスレッドがセッターまたはゲッターを実行している場合、他のスレッドは待機します。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="64bbc7da00d041882553632c9d6151a6047024d2" translate="yes" xml:space="preserve">
+          <source>The &lt;strong&gt;default&lt;/strong&gt; is &lt;code&gt;atomic&lt;/code&gt;, this means it does cost you performance whenever you use the property, but it is thread safe. What Objective-C does, is set a lock, so only the actual thread may access the variable, as long as the setter/getter is executed.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;デフォルトでは、&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ある&lt;/font&gt;&lt;/font&gt; &lt;code&gt;atomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、それはあなたがプロパティを使用するたびにあなたのパフォーマンスを要しないこの手段が、それは、スレッドセーフです。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Objective-Cが行うのはロックの設定です。そのため、setter / getterが実行されている限り、実際のスレッドだけが変数にアクセスできます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9d29141c6d63a5b7ea6a09f9b7af2c90594dc0ae" translate="yes" xml:space="preserve">
+          <source>The atomic property ensures to retain a fully initialised value irrespective of how many threads are doing getter &amp;amp; setter on it.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;アトミックプロパティは、ゲッターとセッターを実行しているスレッドの数に関係なく、完全に初期化された値を保持することを保証します。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6640dea145fe359abf70ed10c4ea9eb6bb728dda" translate="yes" xml:space="preserve">
+          <source>The best way to understand the difference is using the following example.</source>
+          <target state="translated">を使って理解するのが一番です。</target>
+        </trans-unit>
+        <trans-unit id="3134cf91b76122f389197dac0a38627d8e34e79b" translate="yes" xml:space="preserve">
+          <source>The last two are identical; &quot;atomic&quot; is the default behavior (&lt;strike&gt;note that it is not actually a keyword; it is specified only by the absence of &lt;code&gt;nonatomic&lt;/code&gt;&lt;/strike&gt; -- &lt;code&gt;atomic&lt;/code&gt; was added as a keyword in recent versions of llvm/clang).</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;最後の2つは同じです。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;「アトミック」デフォルトの動作である（&lt;/font&gt;&lt;/font&gt;&lt;strike&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;それは実際にはキーワードではないことに注意してください。それが唯一の不在によって指定された&lt;/font&gt;&lt;/font&gt; &lt;code&gt;nonatomic&lt;/code&gt; &lt;/strike&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; - &lt;/font&gt;&lt;/font&gt; &lt;code&gt;atomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; LLVM /打ち鳴らすの最近のバージョンでキーワードとして追加されました）。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="54da41fe44eb73968148a077b290f8b60c74912e" translate="yes" xml:space="preserve">
+          <source>The nonatomic property specifies that synthesized accessors simply set or return a value directly, with no guarantees about what happens if that same value is accessed simultaneously from different threads.</source>
+          <target state="translated">nonatomic プロパティは、合成されたアクセサが単に値を直接設定または返すだけで、同じ値が異なるスレッドから同時にアクセスされた場合に何が起こるかは保証されていないことを指定します。</target>
+        </trans-unit>
+        <trans-unit id="96d01ce85b72880373e3c0dcd3f3bc35a68d5182" translate="yes" xml:space="preserve">
+          <source>The syntax and semantics are already well-defined by other excellent answers to this question. Because &lt;em&gt;execution&lt;/em&gt; and &lt;em&gt;performance&lt;/em&gt; are not detailed well, I will add my answer.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;構文とセマンティクスは、この質問に対する他の優れた回答によってすでに明確に定義されています。&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;実行&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;と&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;パフォーマンス&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;は詳しく説明されていない&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ので&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、答えを追加します。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9dd04fd3b87b8e6634cb35ae09b1210f69bb26fd" translate="yes" xml:space="preserve">
+          <source>The truth is that they use spin lock to implement atomic property. The code as below:</source>
+          <target state="translated">本当はスピンロックを使ってアトミックプロパティを実装しているのです。以下のようなコードです。</target>
+        </trans-unit>
+        <trans-unit id="90d87c12b9e2bb4e32e509af94e1f228c0cf3ed3" translate="yes" xml:space="preserve">
+          <source>Then It will return value &quot;Datta&quot; for B</source>
+          <target state="translated">すると、B の値 &quot;Datta&quot; が返されます。</target>
+        </trans-unit>
+        <trans-unit id="12a3f33c0a6d700d8d23d40a430ab7d0d07c038c" translate="yes" xml:space="preserve">
+          <source>There are actually a large number of different variants of how these things work depending on whether the properties are scalar values or objects, and how retain, copy, readonly, nonatomic, etc interact. In general the property synthesizers just know how to do the &quot;right thing&quot; for all combinations.</source>
+          <target state="translated">実際には、プロパティがスカラー値なのかオブジェクトなのか、また、retain、copy、readonly、nonatomicなどの相互作用の仕方によって、これらがどのように動作するのか、非常に多くの異なるバリエーションがあります。一般的に、プロパティシンセサイザは、すべての組み合わせに対して「正しいこと」を行う方法を知っているだけです。</target>
+        </trans-unit>
+        <trans-unit id="1ca1757c9d44592c31915b42da6f23bdd121ea3e" translate="yes" xml:space="preserve">
+          <source>This is explained in Apple's &lt;a href=&quot;http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocProperties.html&quot;&gt;documentation&lt;/a&gt;, but below are some examples of what is actually happening.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;これはAppleの&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocProperties.html&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ドキュメント&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;で&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;説明されて&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;いますが、実際に何が起こっているかの例を以下に示します。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="066c6b0a7801dd6a2523303a92225758599fcded" translate="yes" xml:space="preserve">
+          <source>This makes property &quot;name&quot; read/write safe, but if another thread, D, calls &lt;code&gt;[name release]&lt;/code&gt; simultaneously then this operation might produce a crash because there is no setter/getter call involved here. Which means an object is read/write safe (ATOMIC), but not thread-safe as another threads can simultaneously send any type of messages to the object. The developer should ensure thread-safety for such objects.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;これにより、プロパティ &quot;name&quot;の読み取り/書き込みが安全になりますが、別のスレッドDが&lt;/font&gt;&lt;/font&gt; &lt;code&gt;[name release]&lt;/code&gt; を&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;同時に&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;呼び出す&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;と、この操作に関係するsetter / getter呼び出しがないため、この操作がクラッシュする可能性があります。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;つまり、オブジェクトは読み取り/書き込みセーフ（ATOMIC）ですが、別のスレッドがオブジェクトに任意のタイプのメッセージを同時に送信できるため、スレッドセーフではありません。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;開発者は、そのようなオブジェクトのスレッドセーフを確保する必要があります。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e11028386ce8d3ec51e22188331a6eee4d25d4eb" translate="yes" xml:space="preserve">
+          <source>Thread safety:</source>
+          <target state="translated">スレッドの安全性</target>
+        </trans-unit>
+        <trans-unit id="e0add02488dd9fb38cb10fde62581151af49ced0" translate="yes" xml:space="preserve">
+          <source>To address this, you need a &lt;em&gt;transactional model&lt;/em&gt;.   I.e. some other kind of synchronization and/or exclusion that allows one to exclude access to &lt;code&gt;fullName&lt;/code&gt; while the dependent properties are being updated.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;これに対処するには、&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;トランザクションモデル&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;が必要&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;です。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;つまり&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、依存するプロパティが更新されている間、&lt;/font&gt;&lt;/font&gt; &lt;code&gt;fullName&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;へのアクセスを除外できるようにする、他の種類の同期や除外です&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="5110af47a6444933e62ac77d9ec23d8337442dd9" translate="yes" xml:space="preserve">
+          <source>To simplify the entire confusion, let us understand mutex lock.</source>
+          <target state="translated">全体の混乱を簡単にするために、ミューテックスロックを理解しておきましょう。</target>
+        </trans-unit>
+        <trans-unit id="bc1c0153c9c58e2e9e7658c0005457d1997dea11" translate="yes" xml:space="preserve">
+          <source>Unlike Atomic, it doesn't ensure fully initialised object return each time.</source>
+          <target state="translated">アトミックとは異なり、毎回完全に初期化されたオブジェクトを確実に返すわけではありません。</target>
+        </trans-unit>
+        <trans-unit id="b24c7b3b63fa45274145ca8bf271886c92e41e64" translate="yes" xml:space="preserve">
+          <source>Vijayendra Tripathi has already given an example for a multi-threaded environment.</source>
+          <target state="translated">Vijayendra Tripathi氏はすでにマルチスレッド環境の例を挙げています。</target>
+        </trans-unit>
+        <trans-unit id="282a30d041d8affe9efa43d4e1dc9b43e44779fb" translate="yes" xml:space="preserve">
+          <source>We can use the above like</source>
+          <target state="translated">上記のような使い方ができます。</target>
+        </trans-unit>
+        <trans-unit id="e3ba9e816602170c61a435a2bd6558fcc1491c60" translate="yes" xml:space="preserve">
+          <source>What &quot;atomic&quot; does &lt;strong&gt;not&lt;/strong&gt; do is make any guarantees about thread safety.  If thread A is calling the getter simultaneously with thread B and C calling the setter with different values, thread A may get any one of the three values returned -- the one prior to any setters being called or either of the values passed into the setters in B and C.  Likewise, the object may end up with the value from B or C, no way to tell.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;「アトミック」が&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;行わない&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ことは、スレッドの安全性を保証することです。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;スレッドAがスレッドBとCが異なる値でセッターを呼び出すと同時にゲッターを呼び出している場合、スレッドAは3つの値のいずれか1つを返します-セッターが呼び出される前の値、またはセッターに渡される値のいずれか同様に、オブジェクトは、BまたはCからの値で終了する可能性があります。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="75b417c352b35dcb29960132183fac99bea8692c" translate="yes" xml:space="preserve">
+          <source>What do &lt;code&gt;atomic&lt;/code&gt; and &lt;code&gt;nonatomic&lt;/code&gt; mean in property declarations?</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;プロパティ宣言での&lt;/font&gt;&lt;/font&gt; &lt;code&gt;atomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;および&lt;/font&gt;&lt;/font&gt; &lt;code&gt;nonatomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;意味は&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;何&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;ですか？&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="f88aa3645b681f6cb9c6ef6394fafdf9591974e9" translate="yes" xml:space="preserve">
+          <source>What is the functional difference between these 3?</source>
+          <target state="translated">この3つの機能的な違いは何でしょうか?</target>
+        </trans-unit>
+        <trans-unit id="b724b678520bf6613baa4fd73257c08dd17931cd" translate="yes" xml:space="preserve">
+          <source>What is the operational difference between these three?</source>
+          <target state="translated">この3つの運用上の違いは?</target>
+        </trans-unit>
+        <trans-unit id="f756614cb11bcdd5b59e27f02d997161f296ea51" translate="yes" xml:space="preserve">
+          <source>What's the difference between the atomic and nonatomic attributes</source>
+          <target state="translated">原子属性と非原子属性の違いは?</target>
+        </trans-unit>
+        <trans-unit id="c64b1d527fee8009f5adc6a83e6a239d59e0ea51" translate="yes" xml:space="preserve">
+          <source>Where to use &lt;code&gt;atomic&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;atomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;を使用する場所&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="7e7bc1f7a764eaa33b78b0b105cc9acc35d0b510" translate="yes" xml:space="preserve">
+          <source>Where to use &lt;code&gt;nonatomic&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;nonatomic&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;を使用する&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;場所&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="54566271c0cda41c75f32f014925fd367b3560c7" translate="yes" xml:space="preserve">
+          <source>With &quot;atomic&quot;, the synthesized setter/getter will ensure that a &lt;em&gt;whole&lt;/em&gt; value is always returned from the getter or set by the setter, regardless of setter activity on any other thread.   That is, if thread A is in the middle of the getter while thread B calls the setter, an actual viable value -- an autoreleased object, most likely -- will be returned to the caller in A.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;「アトミック」の場合、合成されたセッター/ゲッターは&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;、他のスレッドのセッターアクティビティに関係なく、常に値&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;全体&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;がゲッターから返されるか、セッターによって設定されるようにします。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;つまり、スレッドBがセッターを呼び出している間にスレッドAがゲッターの真ん中にある場合、実際に実行可能な値（自動解放されたオブジェクト）がAの呼び出し元に返されます。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6c9a3225e3bb61264813e6bc22cf4e00afcb6175" translate="yes" xml:space="preserve">
+          <source>Yes. Multithreading means: multiple threads can read a shared piece of data at the same time and we will not crash, yet it doesn't guarantee that you aren't reading from a non-autoreleased value. With thread safety, it's guaranteed that what you read is not auto-released. 
+The reason that we don't make everything atomic by default is, that there is a performance cost and for most things don't really need thread safety. A few parts of our code need it and for those few parts, we need to write our code in a thread-safe way using locks, mutex or synchronization.</source>
+          <target state="translated">そうですね。マルチスレッドとは、複数のスレッドが同時にデータを読み込んでもクラッシュしないことを意味しますが、自動解放されていない値を読み込まないことは保証されません。スレッドセーフでは、読み込んだデータが自動解放されないことが保証されています。デフォルトですべてをアトミックにしない理由は、パフォーマンスコストがかかることと、スレッドセーフティーを必要としないものがほとんどだからです。コードの一部にはスレッドセーフが必要な部分があり、そのためにはロックやミューテックス、同期を使ってスレッドセーフな方法でコードを書く必要があります。</target>
+        </trans-unit>
+        <trans-unit id="4eeca7ec366447fc5ec19a0b9ad7e6b1fe0fb298" translate="yes" xml:space="preserve">
+          <source>atomic (default)</source>
+          <target state="translated">アトミック</target>
+        </trans-unit>
+        <trans-unit id="4a63e825f62c5da736e35e342ff2c8a54bca26cd" translate="yes" xml:space="preserve">
+          <source>courtesy
+&lt;a href=&quot;https://medium.com/@YogevSitton/atomic-vs-non-atomic-properties-crash-course-d11c23f4366c&quot;&gt;https://medium.com/@YogevSitton/atomic-vs-non-atomic-properties-crash-course-d11c23f4366c&lt;/a&gt;</source>
+          <target state="translated">courtesy
+&lt;a href=&quot;https://medium.com/@YogevSitton/atomic-vs-non-atomic-properties-crash-course-d11c23f4366c&quot;&gt;https://medium.com/@YogevSitton/atomic-vs-non-atomic-properties-crash-course-d11c23f4366c&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="f124574f61bdf32374632af0108e67664713163a" translate="yes" xml:space="preserve">
+          <source>courtesy &lt;a href=&quot;https://academy.realm.io/posts/tmi-objective-c-property-attributes/&quot;&gt;https://academy.realm.io/posts/tmi-objective-c-property-attributes/&lt;/a&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;礼儀&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://academy.realm.io/posts/tmi-objective-c-property-attributes/&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;https://academy.realm.io/posts/tmi-objective-c-property-attributes/&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;</target>
+        </trans-unit>
+        <trans-unit id="32e276343305029c03cdcb3816d31d9b48ec3b8a" translate="yes" xml:space="preserve">
+          <source>faster (for synthesized code, that is, for variables created using @property and @synthesize)</source>
+          <target state="translated">高速化 (合成されたコード、つまり @property と @synthesize を使用して作成された変数に対して)</target>
+        </trans-unit>
+        <trans-unit id="b87d9f5aa62d639719db3c1cba82e1a8056395ba" translate="yes" xml:space="preserve">
+          <source>from thread &lt;strong&gt;B&lt;/strong&gt;,</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;スレッド&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;B&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;から&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ea03bbce1bf33f2a2f1f731974a10c0b4d23d189" translate="yes" xml:space="preserve">
+          <source>if the instance variable is gonna be accessed in a multithreaded environment.</source>
+          <target state="translated">インスタンス変数がマルチスレッド環境でアクセスされるかどうか。</target>
+        </trans-unit>
+        <trans-unit id="2a72dfc65f7a451001d4950d531af6251bac7c29" translate="yes" xml:space="preserve">
+          <source>is NOT the default behavior</source>
+          <target state="translated">はデフォルトの動作ではありません。</target>
+        </trans-unit>
+        <trans-unit id="f84f249f927c1237bd8d3f9d8beee88f0e82e524" translate="yes" xml:space="preserve">
+          <source>is NOT thread safe.</source>
+          <target state="translated">はスレッドセーフではありません。</target>
+        </trans-unit>
+        <trans-unit id="c3f9636d3c7898c47849a2e162812438d24bdcd9" translate="yes" xml:space="preserve">
+          <source>is not fast, as it ensures the process is completed entirely</source>
+          <target state="translated">は高速ではありません。</target>
+        </trans-unit>
+        <trans-unit id="73a390d781fdc2811cea29373d9b4ebafddb1cd6" translate="yes" xml:space="preserve">
+          <source>is the default behavior</source>
+          <target state="translated">はデフォルトの動作です。</target>
+        </trans-unit>
+        <trans-unit id="4490b997d646a855de50058e749d8a90da0b8e08" translate="yes" xml:space="preserve">
+          <source>is thread safe.</source>
+          <target state="translated">はスレッドセーフです。</target>
+        </trans-unit>
+        <trans-unit id="f05572b4d0844e4f8ee101746d55eb4ac8f137e3" translate="yes" xml:space="preserve">
+          <source>may result in unexpected behavior, when two different process access the same variable at the same time</source>
+          <target state="translated">は、2つの異なるプロセスが同時に同じ変数にアクセスした場合に、予期せぬ動作をすることがあります。</target>
+        </trans-unit>
+        <trans-unit id="3f5ed1fe4cc1bdb26194014d8b09d207046b8cce" translate="yes" xml:space="preserve">
+          <source>nonatomic</source>
+          <target state="translated">nonatomic</target>
+        </trans-unit>
+        <trans-unit id="c749558b48cd7f85853939c44d043c5ce6c52a24" translate="yes" xml:space="preserve">
+          <source>not thread-safe</source>
+          <target state="translated">いとがまわらない</target>
+        </trans-unit>
+        <trans-unit id="4983137fc7b12c4757b165db2c0980a574bdd040" translate="yes" xml:space="preserve">
+          <source>will ensure the present process is completed by the CPU, before another process accesses the variable</source>
+          <target state="translated">は、他のプロセスが変数</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

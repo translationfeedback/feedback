@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="zh-CN" datatype="htmlbody" original="https://stackoverflow.com/questions/70689">
+    <body>
+      <group id="70689">
+        <trans-unit id="d0e7abff310a4025796fb8127bff3a00cdf49cf9" translate="yes" xml:space="preserve">
+          <source>&quot;This approach is functionally equivalent to the public field approach, except that it is more concise, provides the serialization machinery for free, and provides an ironclad guarantee against multiple instantiation, even in the face of sophisticated serialization or reflection attacks. While this approach has yet to be widely adopted, &lt;strong&gt;a single-element enum type is the best way to implement a singleton&lt;/strong&gt;.&quot;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&amp;ldquo;这种方法在功能上等同于公共领域方法，除了它更简洁，免费提供序列化机制，甚至在面对复杂的序列化或反射攻击时也提供了防止多重实例化的坚强保证。尚未被广泛采用&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;的单元素枚举类型是实现单例的最佳方法&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&amp;rdquo;&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="03d92bd02c3c63ee0ed64ba4245fb3a982d203b6" translate="yes" xml:space="preserve">
+          <source>-Joshua Bloch in &quot;Effective Java&quot;</source>
+          <target state="translated">-Joshua Bloch在 &quot;有效的Java &quot;一书中写道。</target>
+        </trans-unit>
+        <trans-unit id="08d9fe87472c62e1e954d12a6dac491ca298dd21" translate="yes" xml:space="preserve">
+          <source>1) Enum</source>
+          <target state="translated">1)Enum</target>
+        </trans-unit>
+        <trans-unit id="d2d52ad19eaadabdfadda897ef4c0d186a866fd7" translate="yes" xml:space="preserve">
+          <source>1. Lazy loading</source>
+          <target state="translated">1.懒惰装载</target>
+        </trans-unit>
+        <trans-unit id="079dc82c2bdf9ccd588072d932c3947e40fede85" translate="yes" xml:space="preserve">
+          <source>1.12    Serialization of Enum Constants</source>
+          <target state="translated">1.12 Enum常量的序列化</target>
+        </trans-unit>
+        <trans-unit id="2cd0140a25a4d1a85fb94d0761891417c4dc4984" translate="yes" xml:space="preserve">
+          <source>2) Double checked Locking /Lazy loading</source>
+          <target state="translated">2)双重检查锁定懒惰加载</target>
+        </trans-unit>
+        <trans-unit id="08f82b326d21f0209551fd37f400406131162a05" translate="yes" xml:space="preserve">
+          <source>2. Early loading</source>
+          <target state="translated">2.2.早期装载</target>
+        </trans-unit>
+        <trans-unit id="4c7750893106bc2853b3923c39390400fecd2f63" translate="yes" xml:space="preserve">
+          <source>3) Static factory method</source>
+          <target state="translated">3)静态工厂法</target>
+        </trans-unit>
+        <trans-unit id="5ff5ef5674939ac9c059ad5c77a4b4e9f1e23eca" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Disclaimer:&lt;/strong&gt; I have just summarized all of the awesome answers and wrote it in my words.</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;免责声明：&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;我刚刚总结了所有很棒的答案，并用我的话写下来。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="30628e72df671cf84d40652d24c88b86db31f004" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Double checked locking&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;双重检查锁定&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="3195614dcff1f3528172d85cbffa6b9a4089c087" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;EDIT 2&lt;/strong&gt;: 
+@Bno 's answer details the approach recommended by Bill Pugh (FindBugs) and is arguable better.  Go read and vote up his answer too.</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;编辑2&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;：@Bno的答案详细说明了比尔&amp;middot;普格（FindBugs）建议的方法，并且可以说是更好的方法。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;去阅读并投票支持他的答案。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="4c62c92240dd0a4c0e46e65c24fd4c21e1a44e94" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;EDIT&lt;/strong&gt;: Pay attention to the &lt;code&gt;volatile&lt;/code&gt; modifier here.  :)  It is important because without it, other threads are not guaranteed by the JMM (Java Memory Model) to see changes to its value.  The synchronization &lt;em&gt;does not&lt;/em&gt; take care of that--it only serializes access to that block of code.</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;编辑&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;：&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;在这里&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;注意&lt;/font&gt;&lt;/font&gt; &lt;code&gt;volatile&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;修饰符。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;:)这很重要，因为如果没有它，JMM（Java内存模型）将无法保证其他线程无法看到其值的更改。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;同步&lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;并不会解决&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;这个问题，它只会序列化对该代码块的访问。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="bb36a38fdf6c84e6a71484fcd968f8d949b0141b" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Early loading Singleton (works even before Java 1.5)&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;早期加载Singleton（甚至在Java 1.5之前都可以使用）&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="72cbea399de93731f0e7101d06f9d2d1a574c4ec" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Edit:&lt;/strong&gt; An &lt;a href=&quot;http://www.ddj.com/java/208403883?pgno=3&quot;&gt;online portion of &quot;Effective Java&quot;&lt;/a&gt; says:</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;编辑：&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;a href=&quot;http://www.ddj.com/java/208403883?pgno=3&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&amp;ldquo;有效Java&amp;rdquo;&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;的&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;在线部分&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;说：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="307bb6f80695a03d34d6fd0a9d21d290e3ad9313" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Enum singleton&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;枚举单例&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="56dddc61df291744c7df167e2ba5c4fbc619af1c" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Good Read&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;好读&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="b768ec3d338078db9ffc311717a61b05c7f46cf7" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Version 1:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;版本1：&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="ed1d2772abb6c6974f7deddced2292b250baa718" translate="yes" xml:space="preserve">
+          <source>&lt;strong&gt;Version 2:&lt;/strong&gt;</source>
+          <target state="translated">&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;版本2：&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;</target>
+        </trans-unit>
+        <trans-unit id="bda23d30aeb1eeb2070de09f96721b3c09f96127" translate="yes" xml:space="preserve">
+          <source>And we have came so far, here is the best way to achieve everything we did is best possible way</source>
+          <target state="translated">我们已经走了这么远,这里是最好的方式来实现我们所做的一切,是最好的方式。</target>
+        </trans-unit>
+        <trans-unit id="38bb16500de69328e3b17998a373f42c6fa738bb" translate="yes" xml:space="preserve">
+          <source>Another argument often used against Singletons are their testability problems. Singletons are not easily mockable for testing purposes. If this turns out to be a problem, I like to make the following slight modification:</source>
+          <target state="translated">另一个经常被用来反对Singletons的理由是它们的可测试性问题。Singletons不容易模拟测试的目的。如果事实证明这是个问题,我喜欢做以下的轻微修改。</target>
+        </trans-unit>
+        <trans-unit id="5a305003db33fc59491a9b2510c4cad977d2c3c3" translate="yes" xml:space="preserve">
+          <source>Another problem with conventional Singletons are that once you implement &lt;code&gt;Serializable&lt;/code&gt; interface, they no longer remain Singleton because &lt;code&gt;readObject()&lt;/code&gt; method always return a new instance  like constructor in Java. This can be avoided by using &lt;code&gt;readResolve()&lt;/code&gt; and discarding newly created instance by replacing with singleton like below</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;传统Singleton的另一个问题是，一旦实现&lt;/font&gt;&lt;/font&gt; &lt;code&gt;Serializable&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;接口，它们就不再保持Singleton的状态，因为&lt;/font&gt;&lt;/font&gt; &lt;code&gt;readObject()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;方法总是返回新的实例，例如Java中的构造函数。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;可以通过使用&lt;/font&gt;&lt;/font&gt; &lt;code&gt;readResolve()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;避免这种情况，&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;并通过如下所示替换为singleton来丢弃新创建的实例&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="81316ae241d3865f37b7d5da2e372416ecd88025" translate="yes" xml:space="preserve">
+          <source>As per Joshua Bloch - Enum would be the best.</source>
+          <target state="translated">按照约书亚-布洛赫的说法---恩纳姆将是最好的。</target>
+        </trans-unit>
+        <trans-unit id="3c3778d4d24f299f28881cec97f7840ac08f30c0" translate="yes" xml:space="preserve">
+          <source>As the double checking pattern is not guaranteed to work (due to some issue with compilers, I don't know anything more about that.), you could also try to synchronize the whole getInstance-method or create a registry for all your Singletons.</source>
+          <target state="translated">由于双重检查模式并不保证能正常工作(由于编译器的一些问题,我不知道更多的事情),你也可以尝试同步整个getInstance-method或者为你的所有Singletons创建一个注册表。</target>
+        </trans-unit>
+        <trans-unit id="b23dd736696f30fd3946f179df3014700e480a54" translate="yes" xml:space="preserve">
+          <source>As we have added the Synchronized keyword before getInstance, we have avoided the race condition in the case when two threads call the getInstance at the same time.</source>
+          <target state="translated">由于我们在getInstance之前添加了Synchronized关键字,所以我们避免了两个线程同时调用getInstance时的竞赛条件。</target>
+        </trans-unit>
+        <trans-unit id="9872f9d1cf5a148d81f6618ffcfb77b475ddd945" translate="yes" xml:space="preserve">
+          <source>But this implementation has a problem. Multi-threaded applications will have a race condition on the creation of the single instance. If multiple threads of execution hit the getInstance() method at (or around) the same time, they will each see the INSTANCE member as null. This will result in each thread creating a new MySingleton instance and subsequently setting the INSTANCE member.</source>
+          <target state="translated">但这种实现有一个问题。多线程应用程序在创建单实例时,会有一个竞赛条件。如果多个执行的线程在同一时间(或前后)击打getInstance()方法,它们将各自看到INSTANCE成员为空。这将导致每个线程创建一个新的MySingleton实例并随后设置INSTANCE成员。</target>
+        </trans-unit>
+        <trans-unit id="4bffec330193be3f47d3dd37823b7f72184fbd13" translate="yes" xml:space="preserve">
+          <source>But this simple change comes at a cost. Because we are bypassing the CPU cache, we will take a performance hit each time we operate on the volatile INSTANCE member &amp;mdash; which we do 4 times. We double-check existence (1 and 2), set the value (3), and then return the value (4). One could argue that this path is the fringe case as we only create the instance during the first call of the method. Perhaps a performance hit on creation is tolerable. But even our main use-case, reads, will operate on the volatile member twice. Once to check existence, and again to return its value.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;但是这种简单的改变是有代价的。由于我们绕过CPU缓存，因此每次对易失性INSTANCE成员进行操作时，都会造成性能下降，这是我们的4次。我们仔细检查存在性（1和2），设置值（3），然后返回值（4）。有人可能会说这条路径是边缘情况，因为我们仅在方法的第一次调用期间创建实例。也许对创作的性能冲击是可以容忍的。但是即使是我们的主要用例，也将对易失性成员运行两次。一次检查是否存在，再次返回其值。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="17e7851eae8628811d4f175deed2ffc97753ae75" translate="yes" xml:space="preserve">
+          <source>Depending on the usage, there are several &quot;correct&quot; answers.</source>
+          <target state="translated">根据用法,有几种 &quot;正确 &quot;的答案。</target>
+        </trans-unit>
+        <trans-unit id="6376ee8d7ecb240ca2e7ac33a3adc4bc45c9c27e" translate="yes" xml:space="preserve">
+          <source>Double-checked locking and the Singleton pattern</source>
+          <target state="translated">双重检查锁定和单顿模式</target>
+        </trans-unit>
+        <trans-unit id="db9d8df06d494bd593e263605d3d29426f3aacc6" translate="yes" xml:space="preserve">
+          <source>Enum constants are serialized differently than ordinary serializable or externalizable objects. The serialized form of an enum constant consists solely of its name; field values of the constant are not present in the form. To serialize an enum constant, &lt;code&gt;ObjectOutputStream&lt;/code&gt; writes the value returned by the enum constant's name method. To deserialize an enum constant, &lt;code&gt;ObjectInputStream&lt;/code&gt; reads the constant name from the stream; the deserialized constant is then obtained by calling the &lt;code&gt;java.lang.Enum.valueOf&lt;/code&gt; method, passing the constant's enum type along with the received constant name as arguments. Like other serializable or externalizable objects, enum constants can function as the targets of back references appearing subsequently in the serialization stream.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;枚举常量的序列化与普通可序列化或可外部化的对象不同。枚举常量的序列化形式仅由其名称组成；常量的字段值不存在于表单中。为了序列化枚举常量，&lt;/font&gt;&lt;/font&gt; &lt;code&gt;ObjectOutputStream&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;写入由枚举常量的name方法返回的值。为了反序列化一个枚举常量，&lt;/font&gt;&lt;/font&gt; &lt;code&gt;ObjectInputStream&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;从流中读取常量名称。然后，通过调用&lt;/font&gt;&lt;/font&gt; &lt;code&gt;java.lang.Enum.valueOf&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;方法，将常量的枚举类型与接收到的常量名称一起作为参数来&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;获取反序列化的常量&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。像其他可序列化或可外部化的对象一样，枚举常量可以用作随后出现在序列化流中的反向引用的目标。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="8ceb04d0bf6d359988aa55fd0ab46e6fbd0ac88d" translate="yes" xml:space="preserve">
+          <source>Enums, Singletons and Deserialization</source>
+          <target state="translated">枚举、单子和反序列化</target>
+        </trans-unit>
+        <trans-unit id="ad7444993cf50fd2b00245cc896506e7174251b7" translate="yes" xml:space="preserve">
+          <source>Even inner static class can be used.</source>
+          <target state="translated">即使是内部静态类也可以使用。</target>
+        </trans-unit>
+        <trans-unit id="e8407c8536a920696620341c8d56ee215bf8ab27" translate="yes" xml:space="preserve">
+          <source>Everything is good except its early loaded singleton. Lets try lazy loaded singleton</source>
+          <target state="translated">除了早装单人车,其他都很好。让我们来试试懒惰的单人装车</target>
+        </trans-unit>
+        <trans-unit id="13c1641e1e78a21a27ed901675c0fb58e566e905" translate="yes" xml:space="preserve">
+          <source>Examples of GoF Design Patterns in Java's core libraries</source>
+          <target state="translated">Java核心库中的GoF设计模式示例</target>
+        </trans-unit>
+        <trans-unit id="694f20fe271ac257cf93f8c43bbc55ae37aea518" translate="yes" xml:space="preserve">
+          <source>Finally we have added enough protection  against threads and serialization but our code is looking bulky and ugly. Lets give our hero a make over</source>
+          <target state="translated">终于,我们添加了足够的线程和序列化保护,但我们的代码看起来很笨重,很难看。让我们给我们的英雄来个改造</target>
+        </trans-unit>
+        <trans-unit id="669d1ad80c1897dcc9c350b124bcb770181e306a" translate="yes" xml:space="preserve">
+          <source>Following are 3 different approaches</source>
+          <target state="translated">以下是3种不同的方法</target>
+        </trans-unit>
+        <trans-unit id="87c36aa5ed8b30192f0a868029407fecc727cc10" translate="yes" xml:space="preserve">
+          <source>For JSE 5.0 and above take the Enum approach, otherwise use static singleton holder approach ( (a lazy loading approach described by Bill Pugh). Latter solution is also thread-safe without requiring special language constructs (i.e. volatile or synchronized).</source>
+          <target state="translated">对于JSE 5.0及以上版本,采用Enum方法,否则使用静态单子座方法(Bill Pugh描述的懒惰加载方法)。Latter方案也是线程安全的,不需要特殊的语言构造(即易失性或同步)。</target>
+        </trans-unit>
+        <trans-unit id="9b9714e50bd4daa7b29e38926f2d72e66aa42aa0" translate="yes" xml:space="preserve">
+          <source>For details :  &lt;a href=&quot;http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html&quot;&gt;http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html&lt;/a&gt;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;有关详细信息：&lt;/font&gt;&lt;a href=&quot;http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;http&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; : &lt;/font&gt;&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;//www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ea40150d9fb3a40c99b1e699a4f5bc78fddf39bf" translate="yes" xml:space="preserve">
+          <source>Forget &lt;a href=&quot;https://en.wikipedia.org/wiki/Lazy_initialization&quot;&gt;lazy initialization&lt;/a&gt;, it's too problematic. This is the simplest solution:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;忘了&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Lazy_initialization&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;懒惰的初始化&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;，这太成问题了。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;这是最简单的解决方案：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="59059ebb0b7402bf9c92da6476af7654cefbc8a2" translate="yes" xml:space="preserve">
+          <source>From the best answer's &quot;Singleton&quot; section,</source>
+          <target state="translated">来自最佳答案的 &quot;单顿 &quot;部分。</target>
+        </trans-unit>
+        <trans-unit id="625479fdef81f36c1ab97a359b96e9e84c247479" translate="yes" xml:space="preserve">
+          <source>Have a look at this post.</source>
+          <target state="translated">看一下这个帖子。</target>
+        </trans-unit>
+        <trans-unit id="2c84fb11ab9057630b8bfa9b38aec5ad9e99c0a2" translate="yes" xml:space="preserve">
+          <source>Here we have the MySingleton class which has a private static member called INSTANCE, and a public static method called getInstance(). The first time getInstance() is called, the INSTANCE member is null. The flow will then fall into the creation condition and create a new instance of the MySingleton class. Subsequent calls to getInstance() will find that the INSTANCE variable is already set, and therefore not create another MySingleton instance. This ensures there is only one instance of MySingleton which is shared among all callers of getInstance().</source>
+          <target state="translated">这里我们有MySingleton类,它有一个名为INSTANCE的私有静态成员,和一个名为getInstance()的公共静态方法。当第一次调用getInstance()时,INSTANCE成员为空。这时,流将落入创建条件,并创建一个MySingleton类的新实例。后续调用getInstance()会发现INSTANCE变量已经被设置,因此不会创建另一个MySingleton实例。这样可以确保MySingleton只有一个实例,它在所有调用getInstance()的用户中共享。</target>
+        </trans-unit>
+        <trans-unit id="2e5384598935f29c9b1e729f63a7964aa522e9b7" translate="yes" xml:space="preserve">
+          <source>Here we issue another check from INSIDE the block. If the INSTANCE member has already been set, we&amp;rsquo;ll skip initialization. This is called double-checked locking.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;在这里，我们从INSIDE块发出另一张支票。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;如果已经设置了INSTANCE成员，我们将跳过初始化。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;这称为双重检查锁定。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="d4d2ad2ed1e46d507a87415c705db9a38a9c8631" translate="yes" xml:space="preserve">
+          <source>Here we&amp;rsquo;ve moved synchronization from the method signature, to a synchronized block that wraps the creation of the MySingleton instance. But does this solve our problem? Well, we are no longer blocking on reads, but we&amp;rsquo;ve also taken a step backward. Multiple threads will hit the getInstance() method at or around the same time and they will all see the INSTANCE member as null. They will then hit the synchronized block where one will obtain the lock and create the instance. When that thread exits the block, the other threads will contend for the lock, and one by one each thread will fall through the block and create a new instance of our class. So we are right back where we started.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;在这里，我们将同步从方法签名移到了一个同步块，该块包装了MySingleton实例的创建。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;但这能解决我们的问题吗？&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;好了，我们不再阻止读取，但是我们也向后退了一步。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;多个线程将同时或大约同时访问getInstance（）方法，并且它们都将INSTANCE成员视为null。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;然后，他们将命中同步块，在该块中将获得锁并创建实例。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;当该线程退出该块时，其他线程将争夺该锁，每个线程将一个一个地掉入该块并创建我们类的新实例。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;现在我们回到了起点。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="df8f4dd0518f2a157d601eef2563a409c8be073f" translate="yes" xml:space="preserve">
+          <source>Here we&amp;rsquo;ve used the synchronized keyword in the method signature to synchronize the getInstance() method. This will certainly fix our race condition. Threads will now block and enter the method one at a time. But it also creates a performance problem. Not only does this implementation synchronize the creation of the single instance, it synchronizes all calls to getInstance(), including reads. Reads do not need to be synchronized as they simply return the value of INSTANCE. Since reads will make up the bulk of our calls (remember, instantiation only happens on the first call), we will incur an unnecessary performance hit by synchronizing the entire method.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;在这里，我们在方法签名中使用了synced关键字来同步getInstance（）方法。这肯定会解决我们的比赛条件。现在，线程将一次阻塞并进入一种方法。但这也会造成性能问题。此实现不仅同步单个实例的创建，还将同步对getInstance（）的所有调用，包括读取。读取不需要同步，因为它们仅返回INSTANCE的值。由于读操作将占我们调用的大部分（请记住，实例化仅在第一次调用时发生），因此通过同步整个方法将导致不必要的性能损失。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="78bce48dfe4ac1df6adfc647b4139137aa6d82ec" translate="yes" xml:space="preserve">
+          <source>I still think after java 1.5, enum is the best available singleton implementation available as it also ensures that even in the multi threaded environments - only one instance is created.</source>
+          <target state="translated">我仍然认为在java 1.5之后,enum是现有的最好的单体实现,因为它还可以确保即使在多线程环境下也只创建一个实例。</target>
+        </trans-unit>
+        <trans-unit id="889368f1848c86a7463020ef822a9db09e8274ba" translate="yes" xml:space="preserve">
+          <source>I use the Spring Framework to manage my singletons.  It doesn't enforce the &quot;singleton-ness&quot; of the class (which you can't really do anyway if there are multiple class loaders involved) but provides a really easy way to build and configure different factories for creating different types of objects.</source>
+          <target state="translated">我使用Spring框架来管理我的单体类。它并不强制要求类的 &quot;单体性&quot;(如果有多个类加载器的话,你就无法真正做到这一点),但它提供了一个非常简单的方法来构建和配置不同的工厂,以创建不同类型的对象。</target>
+        </trans-unit>
+        <trans-unit id="ed23e9e9e4913fecc55d825c0498fb0496c7f8a6" translate="yes" xml:space="preserve">
+          <source>I would say Enum singleton</source>
+          <target state="translated">我想说的是Enum singleton</target>
+        </trans-unit>
+        <trans-unit id="afa6bc6c9963a7910bf3a4b45b55b520b11cb54d" translate="yes" xml:space="preserve">
+          <source>I wrote an article about this recently. &lt;a href=&quot;https://medium.com/@michael.andrews/deconstructing-the-singleton-b5f881f85f5&quot;&gt;Deconstructing The Singleton&lt;/a&gt;. You can find more info on these examples and an example of the &quot;holder&quot; pattern there. There is also a real-world example showcasing the double-checked volatile approach. Hope this helps.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;我最近写了一篇有关此的文章。&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://medium.com/@michael.andrews/deconstructing-the-singleton-b5f881f85f5&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;解构Singleton&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;您可以在这些示例中找到更多信息以及&amp;ldquo; holder&amp;rdquo;模式的示例。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;还有一个真实的示例，展示了双重检查的易失性方法。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;希望这可以帮助。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="ab17279cd20fd4b1687c230a64664d6a72159390" translate="yes" xml:space="preserve">
+          <source>I'm mystified by some of the answers that suggest DI as an alternative to using singletons; these are unrelated concepts. You can use DI to inject either singleton or non-singleton (e.g. per-thread) instances. At least this is true if you use Spring 2.x, I can't speak for other DI frameworks.</source>
+          <target state="translated">我对一些建议用DI替代单子的答案感到困惑;这些都是不相关的概念。你可以使用DI来注入单子或非单子(如按线程)实例。至少在你使用Spring 2.x的情况下是这样的,我不能为其他DI框架说话。</target>
+        </trans-unit>
+        <trans-unit id="577011040f77feb24314bebcebb9dd9fde8ba1ea" translate="yes" xml:space="preserve">
+          <source>If you do not need lazy loading then simply try</source>
+          <target state="translated">如果你不需要懒惰加载,那么只需尝试一下</target>
+        </trans-unit>
+        <trans-unit id="710c65236f4c85b7918088ab9764fa4fe32f4e52" translate="yes" xml:space="preserve">
+          <source>If you really need one then wikipedia has a good example of a proper implementation of a singleton.</source>
+          <target state="translated">如果你真的需要一个,那么wikipedia有一个很好的例子来说明单子的正确实现。</target>
+        </trans-unit>
+        <trans-unit id="6577d11ba941eea89cd233d6d86c997fce516f3c" translate="yes" xml:space="preserve">
+          <source>If you want lazy loading and you want your Singleton to be thread-safe, try the double-checking pattern</source>
+          <target state="translated">如果你想要懒惰的加载,又想让你的Singleton的线程安全,请尝试双重检查模式</target>
+        </trans-unit>
+        <trans-unit id="a3855b5c69e8ee65b0b5745f601e591577ad0129" translate="yes" xml:space="preserve">
+          <source>If you want to code a &amp;ldquo;classic&amp;rdquo; singleton that works in a multithreaded environment (starting from Java 1.5) you should use this one.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;如果要编写在多线程环境（从Java 1.5开始）中工作的&amp;ldquo;经典&amp;rdquo;单例代码，则应使用此代码。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="0d8270ca97b87f403744a722f1dc68510486cf68" translate="yes" xml:space="preserve">
+          <source>In addition, if the singleton needs to be seriliazble, all other fields needs to be transient and readResolve() method needs to be implemented in order to maintain the singleton object invariant. Otherwise, each time the object is deserialized, a new instance of the object will be created. What readResolve() does is replace the new object read by readObject(), which forced that new object to be garbage collected as there is no variable referring to it.</source>
+          <target state="translated">此外,如果单体对象需要seriliazble,那么其他所有的字段都需要暂态,并且需要实现readResolve()方法,以保持单体对象的不变性。否则,每次对象被反序列化时,都会创建一个新的对象实例。readResolve()方法所做的是将读取到的新对象替换成readObject()方法,因为没有变量引用,所以这个新对象被迫被垃圾回收。</target>
+        </trans-unit>
+        <trans-unit id="c7d8c92f19b91f623b57babd3358dff0e0040f4a" translate="yes" xml:space="preserve">
+          <source>It supports lazy initialization</source>
+          <target state="translated">它支持懒惰初始化</target>
+        </trans-unit>
+        <trans-unit id="ebcba64c45c23ff901884aec98da59f574d38bb0" translate="yes" xml:space="preserve">
+          <source>It's easy to forget the volatile statement and difficult to understand why it is necessary. Without the volatile this code would not be thread safe anymore due to the double-checked locking antipattern. See more about this in paragraph 16.2.4 of &lt;a href=&quot;http://jcip.net/&quot;&gt;Java Concurrency in Practice&lt;/a&gt;. In short: This pattern (prior to Java5.0 or without the volatile statement) could return a reference to the Bar object that is (still) in an incorrect state.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;容易忘记易失性陈述，也很难理解为什么必须这样做。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;如果没有volatile，由于经过了双重检查的锁定反模式，该代码将不再是线程安全的。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;有关更多信息，请参见《&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://jcip.net/&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Java并发实践》&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;第16.2.4段&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;简而言之：这种模式（在Java5.0之前或没有volatile语句）可能返回对（仍然）处于错误状态的Bar对象的引用。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="aed94d32746ef6f2b1030893cf2c63e4473de7b9" translate="yes" xml:space="preserve">
+          <source>It's generic and reusable</source>
+          <target state="translated">它是通用的、可重复使用的</target>
+        </trans-unit>
+        <trans-unit id="80ce64e9d168cca4d45ad01dd786a3a3d622a3eb" translate="yes" xml:space="preserve">
+          <source>It's only synchronized until it has been initialized, then the blocking supplier is replaced with a non-blocking supplier.</source>
+          <target state="translated">直到初始化后才会同步,然后用非阻塞供应商来代替阻塞供应商。</target>
+        </trans-unit>
+        <trans-unit id="449c13963dfa95bddabe3876c74d3b40442953df" translate="yes" xml:space="preserve">
+          <source>Joshua Bloch explained this approach in his &lt;a href=&quot;http://sites.google.com/site/io/effective-java-reloaded&quot;&gt;Effective Java Reloaded&lt;/a&gt; talk at Google I/O 2008: &lt;a href=&quot;http://www.youtube.com/watch?v=pi_I7oD_uGI#t=28m50s&quot;&gt;link to video&lt;/a&gt;. Also see slides 30-32 of his presentation (&lt;a href=&quot;https://14b1424d-a-62cb3a1a-s-sites.googlegroups.com/site/io/effective-java-reloaded/effective_java_reloaded.pdf?attachauth=ANoY7crKCOet2NEUGW7RV1XfM-Jn4z8YJhs0qJM11OhLRnFW_JbExkJtvJ3UJvTE40dhAciyWcRIeGJ-n3FLGnMOapHShHINh8IY05YViOJoZWzaohMtM-s4HCi5kjREagi8awWtcYD0_6G7GhKr2BndToeqLk5sBhZcQfcYIyAE5A4lGNosDCjODcBAkJn8EuO6572t2wU1LMSEUgjvqcf4I-Fp6VDhDvih_XUEmL9nuVJQynd2DRpxyuNH1SpJspEIdbLw-WWZ&amp;amp;attredirects=0&quot;&gt;effective_java_reloaded.pdf&lt;/a&gt;):</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;约书亚&amp;middot;布洛赫（Joshua Bloch）&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;在Google I / O 2008上的&amp;ldquo; &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://sites.google.com/site/io/effective-java-reloaded&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;有效的Java重新加载&amp;rdquo;&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;演讲中&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;解释了这种方法&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;：&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://www.youtube.com/watch?v=pi_I7oD_uGI#t=28m50s&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;链接到视频&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;另见幻灯片他的介绍（30-32 &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://14b1424d-a-62cb3a1a-s-sites.googlegroups.com/site/io/effective-java-reloaded/effective_java_reloaded.pdf?attachauth=ANoY7crKCOet2NEUGW7RV1XfM-Jn4z8YJhs0qJM11OhLRnFW_JbExkJtvJ3UJvTE40dhAciyWcRIeGJ-n3FLGnMOapHShHINh8IY05YViOJoZWzaohMtM-s4HCi5kjREagi8awWtcYD0_6G7GhKr2BndToeqLk5sBhZcQfcYIyAE5A4lGNosDCjODcBAkJn8EuO6572t2wU1LMSEUgjvqcf4I-Fp6VDhDvih_XUEmL9nuVJQynd2DRpxyuNH1SpJspEIdbLw-WWZ&amp;amp;attredirects=0&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;effective_java_reloaded.pdf&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;）：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="793c23aca34d846cb2973e2995675836910ca030" translate="yes" xml:space="preserve">
+          <source>Lazy loading adds bit overhead(lots of to be honest) so use it only when you have a very large object or heavy construction code AND also have other accessible static methods or fields that might be used before an instance is needed, then and only then you need to use lazy initialization.Otherwise choosing early loading is a good choice.</source>
+          <target state="translated">懒惰加载会增加位开销(老实说有很多),所以只有当你有一个非常大的对象或者很重的构造代码,并且在需要一个实例之前有其他可访问的静态方法或字段时,才会使用懒惰初始化,否则选择早期加载是个不错的选择。</target>
+        </trans-unit>
+        <trans-unit id="02fefdeb69ee5d29a7c948927ea167ebab436a0f" translate="yes" xml:space="preserve">
+          <source>Lazy loading, thread safe with blocking, low performance because of &lt;code&gt;synchronized&lt;/code&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;延迟加载，线程安全的，因为有阻塞，低性能&lt;/font&gt;&lt;/font&gt; &lt;code&gt;synchronized&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9d407b886496d8e0094a35acef4bd5685c8ff45f" translate="yes" xml:space="preserve">
+          <source>Lazy loading, thread safe with non-blocking, high performance.</source>
+          <target state="translated">懒惰装载,螺纹安全无堵塞,性能高。</target>
+        </trans-unit>
+        <trans-unit id="f54e23f25888e8257c17de0c8827649ac27396d2" translate="yes" xml:space="preserve">
+          <source>Let's go over the code. First, you want the class to be final. In this case, I've used the &lt;code&gt;final&lt;/code&gt; keyword to let the users know it is final. Then you need to make the constructor private to prevent users to create their own Foo. Throwing an exception from the constructor prevents users to use reflection to create a second Foo. Then you create a &lt;code&gt;private static final Foo&lt;/code&gt; field to hold the only instance, and a &lt;code&gt;public static Foo getInstance()&lt;/code&gt; method to return it. The Java specification makes sure that the constructor is only called when the class is first used.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;让我们来看一下代码。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;首先，您希望课程是最终的。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;在这种情况下，我使用了&lt;/font&gt;&lt;/font&gt; &lt;code&gt;final&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;关键字让用户知道它是最终的。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;然后，您需要将构造函数设为私有，以防止用户创建自己的Foo。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;从构造函数中引发异常会阻止用户使用反射创建第二个Foo。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;然后，创建一个&lt;/font&gt;&lt;/font&gt; &lt;code&gt;private static final Foo&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;字段来保存唯一的实例，并创建一个&lt;/font&gt;&lt;/font&gt; &lt;code&gt;public static Foo getInstance()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;方法来返回它。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Java规范确保仅在首次使用该类时才调用构造函数。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e9c873dc1a8784c864c5dd3081fbf40b67576f0d" translate="yes" xml:space="preserve">
+          <source>Make it part of your DI configuration whether your dependencies are singletons, request scoped, session scoped, or whatever.</source>
+          <target state="translated">让它成为你的DI配置的一部分,无论你的依赖关系是单子,请求范围,会话范围,还是其他什么的。</target>
+        </trans-unit>
+        <trans-unit id="fd66bccb948073440dd0db12f2ca6e04f0d6a6dc" translate="yes" xml:space="preserve">
+          <source>Make sure that you really need it. Do a google for &quot;singleton anti-pattern&quot; to see some arguments against it. There's nothing inherently wrong with it I suppose but it's just a mechanism for exposing some global resource/data so make sure that this is the best way. In particular I've found dependency injection more useful particularly if you are also using unit tests because DI allows you to use mocked resources for testing purposes.</source>
+          <target state="translated">确保你真的需要它。在google上搜索一下 &quot;singleton anti-pattern&quot;,可以看到一些反对它的论点。我想这没有什么本质上的问题,但它只是一种暴露全局资源数据的机制,所以要确保这是最好的方式。特别是我发现,如果你也在使用单元测试,依赖注入更有用,因为DI允许你使用模拟资源进行测试。</target>
+        </trans-unit>
+        <trans-unit id="9cf1fc929b39778cf9f0128785173350eab34054" translate="yes" xml:space="preserve">
+          <source>Might be a little late to the game on this, but there is a lot of nuance around implementing a singleton. The holder pattern can not be used in many situations. And IMO when using a volatile - you should also use a local variable. Let's start at the beginning and iterate on the problem. You'll see what I mean.</source>
+          <target state="translated">在这一点上可能有点晚了,但围绕着实施单子,有很多细微的差别。在很多情况下不能使用 holder 模式。而且IMO在使用volatile时,你也应该使用一个本地变量。让我们从一开始就开始迭代这个问题。你就知道我的意思了。</target>
+        </trans-unit>
+        <trans-unit id="1a476004e24909d4497d2c94b9c51634c0fb9800" translate="yes" xml:space="preserve">
+          <source>Most simple way of implementing Singleton is</source>
+          <target state="translated">最简单的Singleton实现方法是</target>
+        </trans-unit>
+        <trans-unit id="684056e9a0e6e7d9bfae63756efde4ae038ff5d9" translate="yes" xml:space="preserve">
+          <source>Now we are sure about evil thread but what about the cruel serialization? We have to make sure even while de-serialiaztion no new object is created</source>
+          <target state="translated">现在我们确定了邪恶线程,但残酷的序列化怎么办?我们必须确保即使在去序列化的同时,也不会创建新的对象。</target>
+        </trans-unit>
+        <trans-unit id="9484e9bddcf6bf03ecbdd460165f19a93ef91143" translate="yes" xml:space="preserve">
+          <source>Now what happens? The class is loaded via the class loader. Directly after the class was interpreted from a byte Array, the VM executes the &lt;strong&gt;static { }&lt;/strong&gt; - block. that's the whole secret: The static-block is only called once, the time the given class (name) of the given package is loaded by this one class loader.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;现在会发生什么？&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;该类通过类加载器加载。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;从字节数组解释了类之后，VM会立即执行&lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;静态{}&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; -块。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;这就是全部秘密：在此类加载器加载给定包的给定类（名称）时，只会调用一次static-block。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="7e283fe450ff620ebec87128aa5b3eb6c0c2f057" translate="yes" xml:space="preserve">
+          <source>Now you might have realized why ENUMS are considered as best way to implement Singleton and thanks for your patience :)</source>
+          <target state="translated">现在你可能已经明白为什么ENUMS被认为是实现Singleton的最佳方法了,谢谢你的耐心等待:)</target>
+        </trans-unit>
+        <trans-unit id="e20b619471537c9fdf4fce2cd0526492d4dbf263" translate="yes" xml:space="preserve">
+          <source>On the other hand you would have to synchronize any method that instantiates the singleton variable as such. Synchronisation is not bad as such, but it can lead to performance issues or locking (in very very rare situations using this example. The solution is</source>
+          <target state="translated">另一方面,你必须对任何实例化单子变量的方法进行同步。同步并不是坏事,但它可能会导致性能问题或锁定(在非常罕见的情况下使用这个例子)。解决的方法是</target>
+        </trans-unit>
+        <trans-unit id="e192152615641c437ec6823a4905298484aa4fcd" translate="yes" xml:space="preserve">
+          <source>Personally I try to avoid singletons as often as possible for many reasons, again most of which can be found by googling singletons. I feel that quite often singletons are abused because they're easy to understand by everybody, they're used as a mechanism for getting &quot;global&quot; data into an OO design and they are used because it is easy to circumvent object lifecycle management (or really thinking about how you can do A from inside B). Look at things like Inversion of Control (IoC) or Dependency Injection (DI) for a nice middleground.</source>
+          <target state="translated">就我个人而言,我尽量避免使用singleletons,原因有很多,其中大部分都可以通过google搜索singleletons来找到。我觉得很多时候singleletons被滥用,因为它们很容易被大家理解,它们被作为一种机制来获取 &quot;全局 &quot;数据到OO设计中,而且它们被使用是因为很容易规避对象生命周期管理(或者说真正的思考如何从B内部做A)。看看像反转控制(IoC)或依赖注入(DI)这样的东西,就可以得到一个很好的中间地带。</target>
+        </trans-unit>
+        <trans-unit id="1e5603ff1860ef0178d46a84735151ebbc81412b" translate="yes" xml:space="preserve">
+          <source>Pre java5, the most simple case is:</source>
+          <target state="translated">java5之前,最简单的情况是。</target>
+        </trans-unit>
+        <trans-unit id="60cf150afaede3481521c6a09f00d10fa2b78c34" translate="yes" xml:space="preserve">
+          <source>Quoted from Oracle docs</source>
+          <target state="translated">引自Oracle文档</target>
+        </trans-unit>
+        <trans-unit id="35da73343bd35c600a36425fc3769d474da87faf" translate="yes" xml:space="preserve">
+          <source>Really consider why you need a singleton before writing it. There is a quasi-religious debate about using them which you can quite easily stumble over if you google singletons in Java.</source>
+          <target state="translated">在写之前真的要考虑一下为什么你需要一个singleton。有一个关于使用它们的准宗教争论,如果你在Java中google singletons的话,你可以很容易地找到它。</target>
+        </trans-unit>
+        <trans-unit id="a4b911bd10db59f7158b81f9dff1479d45dabc42" translate="yes" xml:space="preserve">
+          <source>See below:</source>
+          <target state="translated">见下文。</target>
+        </trans-unit>
+        <trans-unit id="144acf1b25f939cc5a71dac3e66a60314aa55a25" translate="yes" xml:space="preserve">
+          <source>Since java5 the best way to do it is to use an enum:</source>
+          <target state="translated">由于java5最好的方法是使用enum。</target>
+        </trans-unit>
+        <trans-unit id="b08f78b4f933e670f21e1a2a72f765390500cf67" translate="yes" xml:space="preserve">
+          <source>Since the line &lt;code&gt;private static final Foo INSTANCE = new Foo();&lt;/code&gt; is only executed when the class &lt;code&gt;FooLoader&lt;/code&gt; is actually used, this takes care of the lazy instantiation,</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;由于该行的&lt;/font&gt;&lt;/font&gt; &lt;code&gt;private static final Foo INSTANCE = new Foo();&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;仅在&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;实际使用&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;类&lt;/font&gt;&lt;/font&gt; &lt;code&gt;FooLoader&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;时执行&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;，这会处理惰性实例化，&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="cc6c6e20bf4d28fc65ba4aa328fe47d239aea652" translate="yes" xml:space="preserve">
+          <source>Since the line &lt;code&gt;private static final Foo INSTANCE = new Foo();&lt;/code&gt; is only executed when the class FooLoader is actually used, this takes care of the lazy instantiation, and is it guaranteed to be thread safe.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;由于该行的&lt;/font&gt;&lt;/font&gt; &lt;code&gt;private static final Foo INSTANCE = new Foo();&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;仅在实际使用类FooLoader时才执行，这会处理延迟实例化，并确保它是线程安全的。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="8fa48287c77b71caf8e74418a2ae9c9d8f0b884f" translate="yes" xml:space="preserve">
+          <source>Since the performance hit is due to operating directly on the volatile member, let&amp;rsquo;s set a local variable to the value of the volatile and operate on the local variable instead. This will decrease the number of times we operate on the volatile, thereby reclaiming some of our lost performance. Note that we have to set our local variable again when we enter the synchronized block. This ensures it is up to date with any changes that occured while we were waiting for the lock.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;由于性能下降是由于直接对volatile成员进行操作，所以我们将局部变量设置为volatile的值，然后对局部变量进行操作。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;这将减少我们对挥发物进行操作的次数，从而收回我们损失的部分性能。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;注意，当我们进入同步块时，我们必须再次设置局部变量。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;这可以确保它与我们等待锁时发生的任何更改保持最新。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="4036b3be660b1f0e9d9c15b854523b4c11df6c63" translate="yes" xml:space="preserve">
+          <source>Singleton (recognizeable by creational methods returning the same instance (usually of itself) everytime)</source>
+          <target state="translated">单一子(可通过创建方法每次返回相同的实例(通常是本身)来识别</target>
+        </trans-unit>
+        <trans-unit id="b01dd5022b1a1f15d490b388905b81ca48501f60" translate="yes" xml:space="preserve">
+          <source>Singleton Pattern</source>
+          <target state="translated">单人模式</target>
+        </trans-unit>
+        <trans-unit id="3690b32d31a6ee5fca52025e9ed22a94485b652a" translate="yes" xml:space="preserve">
+          <source>Singleton using enum in Java is generally way to declare enum singleton. Enum singleton may contain instance variable and instance method. For simplicity's sake, also note that if you are using any instance method than you need to ensure thread safety of that method if at all it affect the state of object.</source>
+          <target state="translated">在Java中使用enum的单体,一般是用enum单体声明的方式。enum singleton可以包含实例变量和实例方法。为了简单起见,还需要注意的是,如果你使用任何实例方法,如果它影响到对象的状态,你需要确保该方法的线程安全。</target>
+        </trans-unit>
+        <trans-unit id="52b2eff37dbeec148fff787e7ff7e6de02054d3d" translate="yes" xml:space="preserve">
+          <source>So far so good but our hero will not survive while fighting alone with multiple evil threads who want many many instance of our hero.
+So lets protect it from evil multi threading</source>
+          <target state="translated">到目前为止还算不错,但我们的英雄将无法在与多个邪恶的线程单打独斗时生存下来,因为他们想让我们的英雄有很多很多的实例。所以,让我们保护它免受邪恶的多线程</target>
+        </trans-unit>
+        <trans-unit id="a431deea175954e157c5356235834f7184a5c3d9" translate="yes" xml:space="preserve">
+          <source>So my answer to the OP would be (in all but the most trivial sample code) to:</source>
+          <target state="translated">因此,我对这个问题的回答是(除了最简单的样本代码外,其他的答案都是:</target>
+        </trans-unit>
+        <trans-unit id="e9825624dff86ece92a2bc0d1f8028de08b5275e" translate="yes" xml:space="preserve">
+          <source>Sometimes a simple &quot;&lt;strong&gt;&lt;code&gt;static Foo foo = new Foo();&lt;/code&gt;&lt;/strong&gt;&quot; is not enough. Just think of some basic data insertion you want to do.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;有时，简单的&amp;ldquo; &lt;/font&gt;&lt;/font&gt;&lt;strong&gt; &lt;code&gt;static Foo foo = new Foo();&lt;/code&gt; &lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; &amp;rdquo;是不够的。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;只需考虑您要执行的一些基本数据插入。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="1cf01eb108e908af4fc931855b27b85753afa4b3" translate="yes" xml:space="preserve">
+          <source>Still, for the possibility of mockup-testing (when needed), this code exposure may be an acceptable price to pay.</source>
+          <target state="translated">尽管如此,对于模拟测试的可能性(在需要的时候),这种代码曝光也许是可以接受的代价。</target>
+        </trans-unit>
+        <trans-unit id="7637ce39b2a6ccf5b15f95d3348e1a81e9a82645" translate="yes" xml:space="preserve">
+          <source>That's it! No more fear of serialization, threads and ugly code. Also &lt;a href=&quot;https://stackoverflow.com/questions/16771373/singleton-via-enum-way-is-lazy-initialized&quot;&gt;&lt;strong&gt;ENUMS singleton are lazily initialized&lt;/strong&gt;&lt;/a&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;而已！&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;不再担心序列化，线程和丑陋的代码。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;此外&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/questions/16771373/singleton-via-enum-way-is-lazy-initialized&quot;&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;枚举单被延迟初始化&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="f67dd2a7db1a7c3fc3cc6101abf4ed21718573ce" translate="yes" xml:space="preserve">
+          <source>The Right Way to Implement a Serializable Singleton</source>
+          <target state="translated">实现可序列化的Singleton的正确方法</target>
+        </trans-unit>
+        <trans-unit id="b3e18ec47297de814755ec714fb91e212a427942" translate="yes" xml:space="preserve">
+          <source>The added &lt;code&gt;setInstance&lt;/code&gt; method allows setting a mockup implementation of the singleton class during testing:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;添加的&lt;/font&gt;&lt;/font&gt; &lt;code&gt;setInstance&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;方法允许在测试期间设置单例类的模型实现：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="4521b53cdada5013dc77f66248a6b2ee60f1f330" translate="yes" xml:space="preserve">
+          <source>The best singleton pattern I've ever seen uses the Supplier interface.</source>
+          <target state="translated">我见过的最好的单人模式是使用供应商接口。</target>
+        </trans-unit>
+        <trans-unit id="992c69cb4926f648d77809fc7bae30df43dd03fb" translate="yes" xml:space="preserve">
+          <source>The first attempt might look something like this:</source>
+          <target state="translated">第一次尝试可能看起来像这样。</target>
+        </trans-unit>
+        <trans-unit id="62a5fcdcf2c0644557b079b56916db57c90e3b1b" translate="yes" xml:space="preserve">
+          <source>The method &lt;code&gt;readResolve()&lt;/code&gt; will make sure the only instance will be returned, even when the object was serialized in a previous run of our program.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;readResolve()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;方法&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;将&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;确保返回唯一的实例，即使该对象在程序的先前运行中已序列化也是如此。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9a3cda2ac2d8449008fdb6ba3f67bdcaa4ef8e56" translate="yes" xml:space="preserve">
+          <source>The method &lt;code&gt;readResolve()&lt;/code&gt; will make sure the only instance will be returned, even when the object was serialized in a previous run of your program.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;readResolve()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;方法&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;将&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;确保返回唯一实例，即使该对象在程序的先前运行中已被序列化也是如此。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="d051f06d522a538ce7b8be3c8c2b7e2852f29b98" translate="yes" xml:space="preserve">
+          <source>The process by which enum constants are serialized cannot be customized: any class-specific &lt;code&gt;writeObject&lt;/code&gt;, &lt;code&gt;readObject&lt;/code&gt;, &lt;code&gt;readObjectNoData&lt;/code&gt;, &lt;code&gt;writeReplace&lt;/code&gt;, and &lt;code&gt;readResolve&lt;/code&gt; methods defined by enum types are ignored during serialization and deserialization. Similarly, any &lt;code&gt;serialPersistentFields&lt;/code&gt; or &lt;code&gt;serialVersionUID&lt;/code&gt; field declarations are also ignored--all enum types have a fixed &lt;code&gt;serialVersionUID&lt;/code&gt; of &lt;code&gt;0L&lt;/code&gt;. Documenting serializable fields and data for enum types is unnecessary, since there is no variation in the type of data sent.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;枚举常量的序列化过程无法自定义：&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;在枚举和反序列化过程中，将忽略枚举类型定义的&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;任何特定于类的&lt;/font&gt;&lt;/font&gt; &lt;code&gt;writeObject&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;，&lt;/font&gt;&lt;/font&gt; &lt;code&gt;readObject&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;，&lt;/font&gt;&lt;/font&gt; &lt;code&gt;readObjectNoData&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;，&lt;/font&gt;&lt;/font&gt; &lt;code&gt;writeReplace&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;和&lt;/font&gt;&lt;/font&gt; &lt;code&gt;readResolve&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;方法。同样，任何&lt;/font&gt;&lt;/font&gt; &lt;code&gt;serialPersistentFields&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;或&lt;/font&gt;&lt;/font&gt; &lt;code&gt;serialVersionUID&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;字段声明也将被忽略-所有枚举类型的固定&lt;/font&gt;&lt;/font&gt; &lt;code&gt;serialVersionUID&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;为&lt;/font&gt;&lt;/font&gt; &lt;code&gt;0L&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。不需要为枚举类型记录可序列化的字段和数据，因为发送的数据类型没有变化。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="88232c86e9921f355cbedefbf606e1ec4b0222cb" translate="yes" xml:space="preserve">
+          <source>The simplest way to implement a Singleton that is thread-safe is using an Enum</source>
+          <target state="translated">实现线程安全的Singleton的最简单方法是使用Enum</target>
+        </trans-unit>
+        <trans-unit id="324fafbf3dd017a25265072d69c1504f6acc9259" translate="yes" xml:space="preserve">
+          <source>The solution posted by Stu Thompson is valid in Java5.0 and later. But I would prefer not to use it because I think it is error prone.</source>
+          <target state="translated">Stu Thompson发布的解决方案在Java5.0及以后的版本中是有效的。但我宁愿不要使用它,因为我认为它容易出错。</target>
+        </trans-unit>
+        <trans-unit id="edd7245e8448aa583319dd5b5f37ca9516437706" translate="yes" xml:space="preserve">
+          <source>The use of an enum is very easy to implement and has no drawbacks regarding serializable objects, which have to be circumvented in the other ways.</source>
+          <target state="translated">枚举的使用是非常容易实现的,而且在可序列化对象方面也没有什么缺点,需要通过其他方式来规避。</target>
+        </trans-unit>
+        <trans-unit id="b114fda2f6ec08d969eb2bb4e56a779dc3bcf423" translate="yes" xml:space="preserve">
+          <source>This also works with early initialization approaches:</source>
+          <target state="translated">这也适用于早期的初始化方法。</target>
+        </trans-unit>
+        <trans-unit id="cd43b28c24b9b93c4a94bb6e35e416c97e534d68" translate="yes" xml:space="preserve">
+          <source>This approach gives you a nice decoupled (and therefore flexible and testable) architecture where whether to use a singleton is an easily reversible implementation detail (provided any singletons you use are threadsafe, of course).</source>
+          <target state="translated">这种方法给你提供了一个很好的解耦(因此也是灵活的、可测试的)架构,在这个架构中,是否使用单子是一个很容易可逆的实现细节(当然,前提是你使用的任何单子都是线程安全的)。</target>
+        </trans-unit>
+        <trans-unit id="23a12931b83c281e5be65a44b857d308e3e4b439" translate="yes" xml:space="preserve">
+          <source>This approach is functionally equivalent to the public field approach,
+  except that it is more concise, provides the serialization machinery
+  for free, and provides an  ironclad guarantee against multiple
+  instantiation, even in the face of sophisticated serialization or
+  reflection attacks. While this approach has yet to be widely  adopted,
+  a single-element enum type is the best way to implement a singleton.</source>
+          <target state="translated">这种方法在功能上等同于公共字段方法,只是它更简洁,免费提供了序列化机制,并提供了防止多重实例化的铁证,即使面对复杂的序列化或反射攻击,也能保证不被多重实例化。虽然这种方法还没有被广泛采用,但单元枚举类型是最好的实现方式。</target>
+        </trans-unit>
+        <trans-unit id="0fb64c36eb4df7481b8185546e14c30c29a59641" translate="yes" xml:space="preserve">
+          <source>This can become even more complex if your Singleton Class maintain state, as you need to make them transient, but with in Enum Singleton, Serialization is guaranteed by JVM.</source>
+          <target state="translated">如果你的Singleton类保持状态,这可能会变得更加复杂,因为你需要让它们成为瞬态,但在Enum Singleton中,Serialization是由JVM保证的。</target>
+        </trans-unit>
+        <trans-unit id="5c43167556dc43196560c28fccf6cf8a83bd7631" translate="yes" xml:space="preserve">
+          <source>This code works since the introduction of Enum in Java 1.5</source>
+          <target state="translated">自Java 1.5中引入Enum后,这段代码就开始工作了。</target>
+        </trans-unit>
+        <trans-unit id="07783588bd4a0a5ac185259a31d40270814cbf31" translate="yes" xml:space="preserve">
+          <source>This has the drawback of exposing this functionality to the normal application too. Other developers working on that code could be tempted to use the &amp;acute;setInstance&amp;acute; method to alter alter a specific function and thus changing the whole application behaviour, therefore this method should contain at least a good warning in it's javadoc.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;这也具有将该功能也暴露给普通应用程序的缺点。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;可能会尝试使用该代码的其他开发人员使用&amp;ldquo; setInstance&amp;rdquo;方法来更改特定功能，从而更改整个应用程序的行为，因此，此方法应在其Javadoc中至少包含一个良好的警告。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="f0e4dffb57ee9f672603e4caac113f7aa7a29784" translate="yes" xml:space="preserve">
+          <source>This implementation instantiates the singleton when the class is loaded and provides thread safety.</source>
+          <target state="translated">该实现在加载类时实例化单体,并提供线程安全。</target>
+        </trans-unit>
+        <trans-unit id="3bcdfd6657ae1d877f13ff4b71f5aa0b6a1e61ca" translate="yes" xml:space="preserve">
+          <source>This is called &quot;Double-Checked Locking idiom&quot;. It's easy to forget the volatile statement and difficult to understand why it is necessary.</source>
+          <target state="translated">这就是所谓的 &quot;双锁成语&quot;。这句话很容易让人忘掉不稳定,也很难理解为什么要这样做。</target>
+        </trans-unit>
+        <trans-unit id="85183f87aa9e976e97a8bf574c183e173f4602d0" translate="yes" xml:space="preserve">
+          <source>This is how to implement a simple &lt;code&gt;singleton&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;这是实现简单&lt;/font&gt;&lt;/font&gt; &lt;code&gt;singleton&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="1b7f2b8b2f3a3bb36011ef27da112effbbcca494" translate="yes" xml:space="preserve">
+          <source>This is how to properly lazy create your &lt;code&gt;singleton&lt;/code&gt;:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;这是正确延迟创建&lt;/font&gt;&lt;/font&gt; &lt;code&gt;singleton&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9c226a0d50b9cf5f1f7f7584597d4a9bb7aa0b47" translate="yes" xml:space="preserve">
+          <source>This is not thread-safe before 1.5 because the implementation of the volatile keyword was different.</source>
+          <target state="translated">这在1.5之前并不是线程安全的,因为volatile关键字的实现方式不同。</target>
+        </trans-unit>
+        <trans-unit id="0eae784989f658fbb0307199e73140ce0ea1b6ee" translate="yes" xml:space="preserve">
+          <source>This pattern was invented for performance optimization. But this is really not a real concern anymore. The following lazy initialization code is fast and -more importantly- easier to read.</source>
+          <target state="translated">这种模式是为了性能优化而发明的。但这其实已经不是真正意义上的关注点了。下面的懒人初始化代码速度很快,而且--更重要的是--更容易阅读。</target>
+        </trans-unit>
+        <trans-unit id="2de7e75929ecc9f2fafb60ca0908a1d88f37e8f4" translate="yes" xml:space="preserve">
+          <source>This solves our problem of multiple instantiation. But once again, our solution has presented another challenge. Other threads might not &amp;ldquo;see&amp;rdquo; that the INSTANCE member has been updated. This is because of how Java optimizes memory operations. Threads copy the original values of variables from main memory into the CPU&amp;rsquo;s cache. Changes to values are then written to, and read from, that cache. This is a feature of Java designed to optimize performance. But this creates a problem for our singleton implementation. A second thread &amp;mdash; being processed by a different CPU or core, using a different cache &amp;mdash; will not see the changes made by the first. This will cause the second thread to see the INSTANCE member as null forcing a new instance of our singleton to be created.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;这解决了我们的多重实例化问题。但是，我们的解决方案再次提出了另一个挑战。其他线程可能不会&amp;ldquo;看到&amp;rdquo; INSTANCE成员已更新。这是因为Java如何优化内存操作。线程将变量的原始值从主内存复制到CPU的缓存中。然后，将对值的更改写入该缓存并从中读取。这是Java旨在优化性能的功能。但这给我们的单例实现带来了问题。第二个线程（由不同的CPU或内核使用不同的缓存处理）将看不到第一个线程所做的更改。这将导致第二个线程将INSTANCE成员视为null，从而迫使创建我们的单例的新实例。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="3982534593f5cf37c205bccd98c6c2c2ed3e5381" translate="yes" xml:space="preserve">
+          <source>Thread safe in Java 5+:</source>
+          <target state="translated">Java 5+中的线程安全。</target>
+        </trans-unit>
+        <trans-unit id="04b4f72d8a23d7425a5b14131f70d156c7dc2761" translate="yes" xml:space="preserve">
+          <source>Updated it on my &lt;a href=&quot;http://ajinkyaparakh.blogspot.in/2013/05/implementing-singleton-in-java.html&quot;&gt;&lt;strong&gt;blog&lt;/strong&gt;&lt;/a&gt;.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;在我的&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://ajinkyaparakh.blogspot.in/2013/05/implementing-singleton-in-java.html&quot;&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;博客&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;上更新了它&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9161ee3cf60f6074cfb5c48f3cb43e426db90017" translate="yes" xml:space="preserve">
+          <source>Use a DI framework like Spring, then</source>
+          <target state="translated">使用一个像Spring这样的DI框架,然后</target>
+        </trans-unit>
+        <trans-unit id="e4a5ae13c99482e816948dfcb8fe12927d55920c" translate="yes" xml:space="preserve">
+          <source>Use an enum:</source>
+          <target state="translated">用一个枚举法。</target>
+        </trans-unit>
+        <trans-unit id="776cfab9b61501bc78411c540b320617fa616521" translate="yes" xml:space="preserve">
+          <source>Various ways to make singleton object:</source>
+          <target state="translated">各种各样的单子对象的制作方法。</target>
+        </trans-unit>
+        <trans-unit id="9ad13e2ae424b0243ecb89f19638cd41ed1925d8" translate="yes" xml:space="preserve">
+          <source>We solve this by using the volatile keyword on the declaration of the INSTANCE member. This will tell the compiler to always read from, and write to, main memory, and not the CPU cache.</source>
+          <target state="translated">我们通过在INSTANCE成员的声明中使用volatile关键字来解决这个问题。这将告诉编译器总是从主内存中读取和写入主内存,而不是CPU缓存。</target>
+        </trans-unit>
+        <trans-unit id="1bf5b3bf3c10dd18e5ebfca2eaf0228fc7fbfb5f" translate="yes" xml:space="preserve">
+          <source>What is an efficient way to implement a singleton pattern in Java</source>
+          <target state="translated">在Java中实现单子模式的有效方法是什么?</target>
+        </trans-unit>
+        <trans-unit id="f349af906b6a57f91d39044acff051886e44c477" translate="yes" xml:space="preserve">
+          <source>What is an efficient way to implement a singleton pattern in Java?</source>
+          <target state="translated">在Java中实现单子模式的有效方法是什么?</target>
+        </trans-unit>
+        <trans-unit id="57287d24baa49f04d3f6b5f7078cfe13762fe008" translate="yes" xml:space="preserve">
+          <source>When you also want to be able to serialize your object you need to make sure that deserialization won't create a copy.</source>
+          <target state="translated">当你也希望能够序列化你的对象时,你需要确保反序列化不会创建一个副本。</target>
+        </trans-unit>
+        <trans-unit id="80541c0ebffb0d27ed0ef1c021dac3462b5a7ff4" translate="yes" xml:space="preserve">
+          <source>When you have a very large object or heavy construction code AND also have other accessible static methods or fields that might be used before an instance is needed, then and only then you need to use lazy initialization.</source>
+          <target state="translated">当你有一个非常大的对象或重构代码,并且还有其他可访问的静态方法或字段在需要实例之前可能会用到的时候,那么,也只有在这个时候你才需要使用懒惰的初始化。</target>
+        </trans-unit>
+        <trans-unit id="20ae263969c6f45c33763ef5b07b053acb1b5085" translate="yes" xml:space="preserve">
+          <source>Which internally will be treated like</source>
+          <target state="translated">哪些内部将被视为</target>
+        </trans-unit>
+        <trans-unit id="9fc41d526f2830fe033c939964b2725da50bb8b2" translate="yes" xml:space="preserve">
+          <source>While implementing Singleton we have 2 options</source>
+          <target state="translated">在实施Singleton时,我们有2个选择</target>
+        </trans-unit>
+        <trans-unit id="7943deba045650ecf620b5fc602f8e7f40df67bf" translate="yes" xml:space="preserve">
+          <source>Wikipedia has some &lt;a href=&quot;http://en.wikipedia.org/wiki/Singleton_pattern&quot;&gt;examples&lt;/a&gt; of singletons, also in Java. The Java 5 implementation looks pretty complete, and is thread-safe (double-checked locking applied).</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Wikipedia也有一些&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;单&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Singleton_pattern&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;例的示例&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;，也使用Java。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Java 5实现看起来很完整，并且是线程安全的（应用了双重检查锁定）。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="25a9c997c2a0f10d5c983669f0d673357b7f536a" translate="yes" xml:space="preserve">
+          <source>Yes this is our very same hero :)</source>
+          <target state="translated">是的,这就是我们的英雄)</target>
+        </trans-unit>
+        <trans-unit id="163c3ae95955d8d2c53ef90772f314e7d4a5456e" translate="yes" xml:space="preserve">
+          <source>You can access it by &lt;code&gt;Singleton.INSTANCE&lt;/code&gt;, much easier than calling &lt;code&gt;getInstance()&lt;/code&gt; method on Singleton.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;您可以通过&lt;/font&gt;&lt;/font&gt; &lt;code&gt;Singleton.INSTANCE&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;进行访问&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;，这比&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;在Singleton上&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;调用&lt;/font&gt;&lt;/font&gt; &lt;code&gt;getInstance()&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;方法&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;要容易得多&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="165226e14a9b8a0bc7611c1d847342885fa6b327" translate="yes" xml:space="preserve">
+          <source>You can also learn the example of Singleton from Java native classes themselves.</source>
+          <target state="translated">你也可以从Java原生类本身学习Singleton的例子。</target>
+        </trans-unit>
+        <trans-unit id="da1cdd3c6b13c229a5cef9295f865b1db2ba6086" translate="yes" xml:space="preserve">
+          <source>You can use a &lt;code&gt;private static class&lt;/code&gt; to load the instance. The code would then look like:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;您可以使用&lt;/font&gt;&lt;/font&gt; &lt;code&gt;private static class&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;来加载实例。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;代码如下：&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="da8eb20a2c0def105bbda60af4028ebd2a0428ec" translate="yes" xml:space="preserve">
+          <source>You need &lt;a href=&quot;http://en.wikipedia.org/wiki/Double-checked_locking&quot;&gt;double-checking&lt;/a&gt; idiom if you need to load the instance variable of a class lazily. 
+If you need to load a static variable or a singleton lazily, you need &lt;a href=&quot;http://en.wikipedia.org/wiki/Initialization_on_demand_holder_idiom&quot;&gt;initilization on demand holder&lt;/a&gt; idiom.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;如果需要&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;延迟加载类的实例变量，则需要仔细&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Double-checked_locking&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;检查&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;习惯用法。&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;如果需要延迟加载静态变量或单例，则需要&lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Initialization_on_demand_holder_idiom&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;按需持有者&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;习惯进行&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;初始化&lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;。&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="7299bef205f9fbe8285ad8fd92fe078c02885760" translate="yes" xml:space="preserve">
+          <source>and is it guaranteed to be thread safe.</source>
+          <target state="translated">以及它是否保证螺纹安全。</target>
+        </trans-unit>
+        <trans-unit id="1dade600888158a285ff5b9f54f469f410ee1879" translate="yes" xml:space="preserve">
+          <source>and you are done !!!</source>
+          <target state="translated">然后你就完了!</target>
+        </trans-unit>
+        <trans-unit id="37ad954d0f8bf18aadbea1b38b8284ba8a25ce8b" translate="yes" xml:space="preserve">
+          <source>but it is not enough to protect out hero, Really!!! This is the best we can/should do to help our hero</source>
+          <target state="translated">但这还不足以保护英雄,真的!这就是我们能做的最好的事情,帮助我们的英雄!</target>
+        </trans-unit>
+        <trans-unit id="9faec8995d83b9be3b7e6f2fda57cb3f6eae1310" translate="yes" xml:space="preserve">
+          <source>java.awt.Desktop#getDesktop()</source>
+          <target state="translated">java.awt.Desktop#getDesktop()</target>
+        </trans-unit>
+        <trans-unit id="feb09ab6bb59cc909d31090f3c92bfd63af74174" translate="yes" xml:space="preserve">
+          <source>java.lang.Runtime#getRuntime()</source>
+          <target state="translated">java.lang.Runtime#getRuntime()</target>
+        </trans-unit>
+        <trans-unit id="ae51ce6d9a7b1d933f6941c6e05cfe4d216830e0" translate="yes" xml:space="preserve">
+          <source>java.lang.System#getSecurityManager()</source>
+          <target state="translated">java.lang.System#getSecurityManager()</target>
+        </trans-unit>
+        <trans-unit id="3081145acbbe9e3b7e7bb4c880b445b436f215cc" translate="yes" xml:space="preserve">
+          <source>simplest singleton class</source>
+          <target state="translated">最简单的单子类</target>
+        </trans-unit>
+        <trans-unit id="f3368e90e82c1f778e6130853ddc2c2df1799d82" translate="yes" xml:space="preserve">
+          <source>you can use double check locking also.</source>
+          <target state="translated">你也可以使用双重检查锁。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

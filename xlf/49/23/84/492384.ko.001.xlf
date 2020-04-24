@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ko" datatype="htmlbody" original="https://stackoverflow.com/questions/492384">
+    <body>
+      <group id="492384">
+        <trans-unit id="10ce61d5fc7ebd47aabd8eb8b72014f7f2340586" translate="yes" xml:space="preserve">
+          <source>Another trick is the one mentioned by &lt;a href=&quot;https://stackoverflow.com/users/13422/zan-lynx&quot;&gt;Zan&lt;/a&gt;, which is to stash the size somewhere.  For example, if you're dynamically allocating the array, allocate a block one int bigger than the one you need, stash the size in the first int, and return ptr+1 as the pointer to the array.  When you need the size, decrement the pointer and peek at the stashed value.  Just remember to free the whole block starting from the beginning, and not just the array.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;또 다른 트릭은 &lt;/font&gt;&lt;/font&gt;&lt;a href=&quot;https://stackoverflow.com/users/13422/zan-lynx&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;Zan이&lt;/font&gt;&lt;/font&gt;&lt;/a&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 언급 한 것으로 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;, 크기를 어딘가에 숨길 수 있습니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;예를 들어, 동적으로 배열을 할당하는 경우 필요한 것보다 1 int 큰 블록을 할당하고 첫 번째 int의 크기를 숨기고 배열의 포인터로 ptr + 1을 반환하십시오. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;크기가 필요할 때 포인터를 줄이고 숨김 값을 살펴보십시오. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;배열 만이 아니라 처음부터 전체 블록을 해제해야합니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="d11b1c1385532dc8067a903d480e65fd81e46980" translate="yes" xml:space="preserve">
+          <source>As all the correct answers have stated, you cannot get this information from the decayed pointer value of the array alone. If the decayed pointer is the argument received by the function, then the size of the originating array has to be provided in some other way for the function to come to know that size.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;모든 정답이 언급했듯이 배열의 붕괴 된 포인터 값에서만이 정보를 얻을 수 없습니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;소멸 된 포인터가 함수가받는 인수 인 경우 함수가 해당 크기를 알 수 있도록 다른 방법으로 원래 배열의 크기를 제공해야합니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="dd32328a6e77149b4b9b14f965cf8ff8566078c3" translate="yes" xml:space="preserve">
+          <source>But you have many choices:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그러나 많은 선택이 있습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="602fedc5c9b2886487ee5b0fcc672af11be840a3" translate="yes" xml:space="preserve">
+          <source>But you have to care about set the right length of the array you want to store, because the is no way to check this length, like our friends massively explained.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그러나 친구가 대규모로 설명 했듯이이 길이를 확인할 수있는 방법이 없기 때문에 저장하려는 배열의 올바른 길이를 설정해야합니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="0acd6640891f3785aa71d20d3ffa1780f5e658db" translate="yes" xml:space="preserve">
+          <source>But, this suggestion is kind of silly for your problem, since the function is defined to know exactly the size of the array that is passed in (hence, there is little need to use sizeof at all on the array). What it does do, though, is offer some type safety. It will prohibit you from passing in an array of an unwanted size.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그러나이 제안은 전달 된 배열의 크기를 정확하게 알 수 있도록 정의 되었기 때문에 문제에 대해 어리석은 일입니다 (따라서 배열에서 sizeof를 전혀 사용할 필요가 없습니다). &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그러나 그것이하는 일은 일종의 안전을 제공하는 것입니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;원치 않는 크기의 배열을 전달할 수 없습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6c8c0c8ecdad45c167a9ff434b56aa2d590f0229" translate="yes" xml:space="preserve">
+          <source>First off, here is some code:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;먼저 다음은 몇 가지 코드입니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="fe6d9ac415a8ad19cfbf47f30ac3e96aa0762e2e" translate="yes" xml:space="preserve">
+          <source>For dynamic arrays (&lt;em&gt;malloc&lt;/em&gt; or C++ &lt;em&gt;new&lt;/em&gt;) you need to store the size of the array as mentioned by others or perhaps build an array manager structure which handles add, remove, count, etc. Unfortunately C doesn't do this nearly as well as C++ since you basically have to build it for each different array type you are storing which is cumbersome if you have multiple types of arrays that you need to manage.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;동적 배열 ( &lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;malloc&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 또는 C ++ &lt;/font&gt;&lt;/font&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;new&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; )의 경우 다른 사람들이 언급 한 것처럼 배열의 크기를 저장하거나 추가, 제거, 계산 등을 처리하는 배열 관리자 구조를 구축해야합니다. 불행히도 C는 거의 수행하지 않습니다. C ++은 기본적으로 저장하는 각 배열 유형마다 빌드해야하기 때문에 관리해야 할 배열 유형이 여러 개인 경우 번거 롭습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="2f23b59c4687d469d303210de520e977023550b7" translate="yes" xml:space="preserve">
+          <source>For static arrays, such as the one in your example, there is a common macro used to get the size, but it is &lt;strong&gt;not recommended&lt;/strong&gt; as it does not check if the parameter is really a static array. The macro is used in real code though, e.g. in the Linux kernel headers although it may be slightly different than the one below:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;예제의 것과 같은 정적 배열의 경우 크기를 얻는 데 사용되는 일반적인 매크로가 있지만 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;매개 변수가 실제로 정적 배열인지 확인하지 않으므로 &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;권장&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 하지 않습니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;매크로는 실제 코드에서 사용됩니다. 예를 들어 Linux 커널 헤더에서는 아래와 약간 다를 수 있습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="14ed25bd9732c3c36bf129f1b5cc33c92a8346cd" translate="yes" xml:space="preserve">
+          <source>For this specific example, yes, there is, IF you use typedefs (see below). Of course, if you do it this way, you're just as well off to use SIZEOF_DAYS, since you know what the pointer is pointing to.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이 특정 예제의 경우 typedef를 사용하는 경우 (아래 참조) 있습니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;물론 이렇게하면 포인터가 무엇을 가리키는 지 알기 때문에 SIZEOF_DAYS를 사용하는 것이 좋습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="141956d01f14a420a3dc5c201376daa2dee674fc" translate="yes" xml:space="preserve">
+          <source>Here is an example with a &lt;strong&gt;foo_t&lt;/strong&gt; structure:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;다음은 &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;foo_t&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 구조 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;의 예입니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="86f2f936b59fab1ab3ec6f71cdd72cccfb575caa" translate="yes" xml:space="preserve">
+          <source>Here's a suggestion different from what has been provided thus far,that will work: Pass a pointer to the array instead. This suggestion is similar to the C++ style suggestions, except that C does not support templates or references:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;여기에 지금까지 제공된 것과 다른 제안이 작동합니다. 대신 포인터를 배열에 전달하십시오. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이 제안은 C가 템플리트 또는 참조를 지원하지 않는다는 점을 제외하고 C ++ 스타일 제안과 유사합니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="46693e03cf22d90d0f93108a25e489f5d3a92d46" translate="yes" xml:space="preserve">
+          <source>How to find the 'sizeof' (a pointer pointing to an array)</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;'sizeof'(배열을 가리키는 포인터)를 찾는 방법&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9ab07dd61fdfd8627c1a331bdae0022bd7ae1119" translate="yes" xml:space="preserve">
+          <source>If possible, the C++ stdlib such as vector which is much safer and easier to use.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;가능하면 훨씬 안전하고 사용하기 쉬운 벡터와 같은 C ++ stdlib.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="d0b46d6ef49ee3d75a4dbba073222fed24d0661e" translate="yes" xml:space="preserve">
+          <source>If the function is supposed to be able to operate on any size of array, then you will have to provide the size to the function as additional information.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;함수가 임의의 크기의 배열에서 작동 할 수 있어야하는 경우 추가 정보로 함수에 크기를 제공해야합니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="c6062a3e19049053872338bed9d33476e2751f18" translate="yes" xml:space="preserve">
+          <source>If you have a (void *) pointer, as is returned by malloc()  or the like, then, no, there is no way to determine what data structure the pointer is pointing to and thus, no way to determine its size.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;malloc () 등에 의해 리턴 된 것처럼 (void *) 포인터가 있다면, 아니오, 포인터가 가리키는 데이터 구조를 판별 할 방법이 없으므로 그 크기를 결정할 방법이 없습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e6958f12750bb26b0bccaf4848ffff1b524b5436" translate="yes" xml:space="preserve">
+          <source>In strings there is a &lt;code&gt;'\0'&lt;/code&gt; character at the end so the length of the string can be gotten using functions like &lt;code&gt;strlen&lt;/code&gt;. The problem with an integer array, for example, is that you can't use any value as an end value so one possible solution is to address the array and use as an end value the &lt;code&gt;NULL&lt;/code&gt; pointer.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;문자열에는 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;끝에 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;'\0'&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 문자가 있으므로 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;strlen&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 과 같은 함수를 사용하여 문자열의 길이를 얻을 수 있습니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;예를 들어 정수 배열의 문제점은 값을 종료 값으로 사용할 수 없으므로 배열을 처리하고 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;NULL&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 포인터를 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;종료 값으로 사용하는 것 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;입니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="39198bb1f7eaf58b699e3f8e53d3bcc1dcd2c877" translate="yes" xml:space="preserve">
+          <source>Is there a way to find out the size of the array that &lt;code&gt;ptr&lt;/code&gt; is pointing to (instead of just giving its size, which is four bytes on a 32-bit system)?</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt; &lt;code&gt;ptr&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 이 가리키는 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;배열의 크기를 찾는 방법이 있습니까 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;(32 비트 시스템에서 4 바이트 인 크기를주는 대신)?&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="07880985c52909f262ace43c24cfd089828a2e49" translate="yes" xml:space="preserve">
+          <source>My solution to this problem is to save the length of the array into a struct Array as a meta-information about the array.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이 문제에 대한 나의 해결책은 배열의 길이를 배열에 대한 메타 정보로 구조체 배열에 저장하는 것입니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="601fc31e19a62dcede16df70c47db1339186e28f" translate="yes" xml:space="preserve">
+          <source>No, you can't use &lt;code&gt;sizeof(ptr)&lt;/code&gt; to find the size of array &lt;code&gt;ptr&lt;/code&gt; is pointing to.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;아니요, &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;size &lt;/font&gt;&lt;/font&gt; &lt;code&gt;sizeof(ptr)&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 을 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;사용 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;하여 배열 &lt;/font&gt;&lt;/font&gt; &lt;code&gt;ptr&lt;/code&gt; &lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 이 가리키는 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;배열의 크기를 찾을 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;수 없습니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="2fc50448bc90a910ae322337b63940c931383c72" translate="yes" xml:space="preserve">
+          <source>No, you can't.  The compiler doesn't know what the pointer is pointing to.  There are tricks, like ending the array with a known out-of-band value and then counting the size up until that value, but that's not using sizeof.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;아냐, 못해 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;컴파일러는 포인터가 무엇을 가리키는 지 모릅니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;알려진 대역 외 값으로 배열을 끝내고 해당 값까지 크기를 세는 것과 같은 트릭이 있지만 sizeof를 사용하지 않습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9bec2e0a2ab5d7914b00e66063347a28366e65e1" translate="yes" xml:space="preserve">
+          <source>Obviously, add a parameter</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;분명히, 매개 변수를 추가&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="f3c8c95c5e534bcd2ea0034a0d83177efa6923f4" translate="yes" xml:space="preserve">
+          <source>Output:</source>
+          <target state="translated">Output:</target>
+        </trans-unit>
+        <trans-unit id="cd5ec5f9a89b02a08d6ef27b687b10468a768634" translate="yes" xml:space="preserve">
+          <source>Size of days[] is 20 which is no of elements * size of it's data type.
+While the size of pointer is 4 no matter what it is pointing to.
+Because a pointer points to other element by storing it's address.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;days []의 크기는 20이며 이는 데이터 유형의 크기가 아닙니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;포인터의 크기는 무엇을 가리 키든 4입니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;포인터는 주소를 저장하여 다른 요소를 가리 킵니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="67c386b96a00f5de86c613e320fc011c37e08ea4" translate="yes" xml:space="preserve">
+          <source>The answer is, &quot;No.&quot;</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;내 대답은 아니오 야.&quot;&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="fa9c39995dd1ff8dce2e476e17f4e93ea18afd56" translate="yes" xml:space="preserve">
+          <source>There is a clean solution with C++ templates, without using &lt;strong&gt;sizeof()&lt;/strong&gt;. The following &lt;strong&gt;getSize()&lt;/strong&gt; function returns the size of any static array:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;sizeof ()&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 를 사용하지 않고 C ++ 템플릿을 사용하는 깨끗한 솔루션이 있습니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;다음 &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;getSize ()&lt;/font&gt;&lt;/font&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 함수는 정적 배열의 크기를 반환합니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="e44dd688381f034ce96a93c3bd130b3b8764b361" translate="yes" xml:space="preserve">
+          <source>There is no magic solution. C is not a reflective language. Objects don't automatically know what they are.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;마법의 해결책은 없습니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;C는 반사 언어가 아닙니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;개체는 자신이 무엇인지 자동으로 알지 못합니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="7c3b2b478f2ad5676d40019bf7757cd287e9c0ab" translate="yes" xml:space="preserve">
+          <source>Though allocating extra memory(more than the size of array) will be helpful if you want  to store the length in extra space.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;여분의 공간에 길이를 저장하려면 여분의 메모리 (배열 크기보다 많은)를 할당하는 것이 도움이 될 것입니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="1d0f061328b0e92a7b111b41701869da1907b7af" translate="yes" xml:space="preserve">
+          <source>Usage is:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;사용법은 :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="3d875ab8efb66ba19251aecc0b3be5ad3c5ae8d0" translate="yes" xml:space="preserve">
+          <source>Use a more complex object. Define a structure which contains the dynamic array and also the size of the array. Then, pass the address of the structure.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;더 복잡한 개체를 사용하십시오. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;동적 배열과 배열의 크기를 포함하는 구조를 정의하십시오. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;그런 다음 구조의 주소를 전달하십시오.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="5df51d8bd29ca933544649e006ec229ebaebb906" translate="yes" xml:space="preserve">
+          <source>What C programmers do is store the size of the array somewhere.  It can be part of a structure, or the programmer can cheat a bit and malloc() more memory than requested in order to store a length value before the start of the array.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;C 프로그래머가하는 일은 어딘가에 배열의 크기를 저장하는 것입니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;구조의 일부이거나 프로그래머가 배열을 시작하기 전에 길이 값을 저장하기 위해 요청한 것보다 비트와 malloc () 더 많은 메모리를 속일 수 있습니다.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="9545e86ebbefbb4457f0124949eefa1a6c018333" translate="yes" xml:space="preserve">
+          <source>Wrap the call in a macro and automatically add a parameter</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;매크로로 통화를 감싸고 매개 변수를 자동으로 추가&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="1e68b7703215e610fbb0873d6069896a37f3eb0f" translate="yes" xml:space="preserve">
+          <source>You can do something like this:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;다음과 같이 할 수 있습니다 :&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="b257f0e600c75b1962e5a51ef1795eb149a8574c" translate="yes" xml:space="preserve">
+          <source>You can google for reasons to be wary of macros like this. Be careful.</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;이와 같은 매크로에주의 해야하는 이유로 Google을 사용할 수 있습니다. &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;조심해.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+        <trans-unit id="6665a8e783ec08ddbaf4aed1389a74ddfe999e6d" translate="yes" xml:space="preserve">
+          <source>array_size is passing to the &lt;strong&gt;&lt;em&gt;size&lt;/em&gt;&lt;/strong&gt; variable:</source>
+          <target state="translated">&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;array_size가 &lt;/font&gt;&lt;/font&gt;&lt;strong&gt;&lt;em&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;크기&lt;/font&gt;&lt;/font&gt;&lt;/em&gt;&lt;/strong&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt; 변수로 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;전달됩니다 &lt;/font&gt;&lt;font style=&quot;vertical-align: inherit;&quot;&gt;.&lt;/font&gt;&lt;/font&gt;</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
